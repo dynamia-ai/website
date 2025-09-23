@@ -1,3 +1,4 @@
+This document will help you install dynamia ai platform in aws.
 # 1. Create an IAM role and bind it to the service account
 First, you need to specify a namespace for the application. If you don’t have any special requirements, you can use the default namespace: hami-system.
 If you need to specify your own namespace, please remember to replace the relevant values in the following steps.
