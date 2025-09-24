@@ -77,7 +77,7 @@ export HELM_EXPERIMENTAL_OCI=1
 # The `username` and `password-stdin` correspond to your AWS login credentials.
 aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
 mkdir awsmp-chart && cd awsmp-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/hami --version 1.0.0
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/hami --version 1.0.1
 tar xf $(pwd)/* && find $(pwd) -maxdepth 1 -type f -delete
 helm install --generate-name --namespace hami-system ./*
 ```
@@ -89,7 +89,7 @@ aws ecr get-login-password --region us-east-1 | helm registry login --username A
 mkdir awsmp-chart && cd awsmp-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version 0.4.1
 tar xf $(pwd)/* && find $(pwd) -maxdepth 1 -type f -delete
-helm install dynamia --namespace dynamia-system ./*
+helm install dynamia --namespace dynamia-system ./* --create-namespace
 ```
 ## 3. Install dcgm-exporter (for cluster using NVIDIA devices)
 ```
@@ -97,6 +97,7 @@ helm repo add gpu-helm-charts https://nvidia.github.io/dcgm-exporter/helm-charts
 helm repo update
 helm install dcgm-exporter -n gpu-operator gpu-helm-charts/dcgm-exporter --create-namespace
 ```
+Then label your gpu nodes with gpu=on to enable hami-device-plugin.
 # 5. Start using Dynamia AI Platform
 Use this command to get the service address, then you can access the platform UI.
 ```
