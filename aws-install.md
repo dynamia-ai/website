@@ -51,17 +51,17 @@ cat > custom-policy.json <<EOF
 }
 EOF
 # Create the policy
-aws iam create-policy \ 
---policy-name DynamiaPlatformPolicy \ 
+aws iam create-policy \
+--policy-name DynamiaPlatformPolicy \
 --policy-document file://custom-policy.json
 ```
 #### 2. Create Service Account with Custom Policy
 ```
-eksctl create iamserviceaccount \ 
---cluster=<your-cluster-name> \ 
---namespace=hami-system \ 
---name=dynamia-sa \ 
---attach-policy-arn=arn:aws:iam::<YOUR-ACCOUNT-ID>:policy/DynamiaPlatformPolicy \ 
+eksctl create iamserviceaccount \
+--cluster=<your-cluster-name> \
+--namespace=hami-system \
+--name=dynamia-sa \
+--attach-policy-arn=arn:aws:iam::<YOUR-ACCOUNT-ID>:policy/DynamiaPlatformPolicy \
 --approve
 ```
 # 2. Install required components 
