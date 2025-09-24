@@ -18,13 +18,7 @@ Before you begin, ensure you have:
 eksctl version
 # Should be 0.32.0 or later
 ```
-#### Check if OIDC Provider Exists
-```
-aws eks describe-cluster --name <your-cluster-name> --query "cluster.identity.oidc.issuer" --output text
-```
-If this returns a URL, you already have an OIDC provider. If not, continue to Step 2.
 ### Step 2: Enable OIDC Identity Provider (One-time setup)
-If your cluster doesn't have an OIDC provider, create one:
 ```
 eksctl utils associate-iam-oidc-provider --cluster <your-cluster-name> --approve
 ```
