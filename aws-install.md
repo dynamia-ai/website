@@ -8,7 +8,12 @@ Use this guide to deploy Dynamia AI Platform on AWS, including the required IAM 
 
 Before you start, confirm you have the following in place. If you still need to install any component, use the linked instructions.
 
-- An Amazon EKS cluster running Kubernetes 1.13 or later ([create an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html))
+- An Amazon EKS cluster running Kubernetes 1.13 or later ([create an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)). Ensure the following add-ons are installed and healthy: 
+  - `kube-proxy`
+  - `cert-manager`
+  - `metrics-server`
+  - `Amazon EKS Pod Identity Agent`
+  - `Amazon VPC CNI`.
 - `kubectl` configured for that cluster ([install kubectl](https://kubernetes.io/docs/tasks/tools/))
 - `eksctl` version 0.32.0 or later ([install eksctl](https://eksctl.io/installation/))
 - AWS CLI configured with IAM permissions to create policies and service accounts ([install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
@@ -27,6 +32,19 @@ aws sts get-caller-identity
 
 # Expected: 0.32.0 or later
 eksctl version
+```
+
+Run `eksctl get addons --cluster <your-cluster-name>` and confirm the add-ons listed above are present and report `ACTIVE` status before continuing. Such as
+
+```bash
+~ $ eksctl get addons --cluster demo-gpu
+NAME                    VERSION                 STATUS  ISSUES  IAMROLE UPDATE AVAILABLE                                                                                                                        CONFIGURATION VALUES    NAMESPACE       POD IDENTITY ASSOCIATION ROLES
+cert-manager            v1.18.2-eksbuild.2      ACTIVE  0                                                                                                                                                                               cert-manager
+eks-pod-identity-agent  v1.3.8-eksbuild.2       ACTIVE  0                                                                                                                                                                               kube-system
+kube-proxy              v1.33.0-eksbuild.2      ACTIVE  0               v1.33.3-eksbuild.6,v1.33.3-eksbuild.4                                                                                                                           kube-system
+metrics-server          v0.8.0-eksbuild.2       ACTIVE  0                                                                                                                                                                               kube-system
+vpc-cni                 v1.19.5-eksbuild.1      ACTIVE  0               v1.20.2-eksbuild.1,v1.20.1-eksbuild.3,v1.20.1-eksbuild.1,v1.20.0-eksbuild.1,v1.19.6-eksbuild.7,v1.19.6-eksbuild.1,v1.19.5-eksbuild.3                            kube-system     arn:aws:iam::265950574560:role/AmazonEKSPodIdentityAmazonVPCCNIRole
+
 ```
 
 ## Step 2. Configure IAM Access
