@@ -1,108 +1,220 @@
-This document will help you install dynamia ai platform in aws.
-# 1. Create an IAM role and bind it to the service account
-First, you need to specify a namespace for the application. If you don’t have any special requirements, you can use the default namespace: hami-system.
-If you need to specify your own namespace, please remember to replace the relevant values in the following steps.
-## Setting Up AWS IAM Permissions for Dynamia AI Platform
-This guide explains how to configure AWS IAM permissions for your Kubernetes workloads to access AWS services when using  Dynamia AI Platform.
-### Prerequisites
-Before you begin, ensure you have:
-- An existing Amazon EKS cluster (version 1.13 or later)
-- kubectl configured to access your cluster
-- eksctl installed (version 0.32.0 or later)
-- AWS CLI configured with appropriate permissions
-- Your cluster must have an OIDC identity provider
-- Helm (version 3.6.0 or later)
-### Step 1: Verify Prerequisites
-#### Check eksctl Version
-```
+# Dynamia AI Platform AWS Installation Guide
+
+Use this guide to deploy Dynamia AI Platform on AWS, including the required IAM role, supporting components, and Helm charts.
+
+---
+
+## Step 1. Prepare Prerequisites
+
+Before you start, confirm you have the following in place. If you still need to install any component, use the linked instructions.
+
+- An Amazon EKS cluster running Kubernetes 1.13 or later ([create an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html))
+- `kubectl` configured for that cluster ([install kubectl](https://kubernetes.io/docs/tasks/tools/))
+- `eksctl` version 0.32.0 or later ([install eksctl](https://eksctl.io/installation/))
+- AWS CLI configured with IAM permissions to create policies and service accounts ([install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
+- An OIDC identity provider already associated with the cluster ([associate an OIDC provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html))
+- Helm version 3.6.0 or later ([install Helm](https://helm.sh/docs/intro/install/))
+
+Verify your CLI setup:
+
+```bash
+# Confirms kubectl is installed 
+kubectl version 
+
+# Confirms the AWS CLI is installed and your credentials work.
+aws --version
+aws sts get-caller-identity
+
+# Expected: 0.32.0 or later
 eksctl version
-# Should be 0.32.0 or later
 ```
-### Step 2: Enable OIDC Identity Provider (One-time setup)
-```
+
+## Step 2. Configure IAM Access
+
+Choose the namespace where Dynamia AI Platform will run. The default is `hami-system`. If you select a different namespace, replace it in all following commands.
+
+### 2.1 Associate the OIDC identity provider (run once per cluster)
+
+```bash
 eksctl utils associate-iam-oidc-provider --cluster <your-cluster-name> --approve
 ```
-### Step 3: Create an IAM Service Account
-Using Custom IAM Policy
-#### 1. Create Custom Policy
-```
-cat > custom-policy.json <<EOF
+
+### 2.2 Create a custom IAM policy
+
+```bash
+cat > custom-policy.json <<'JSON'
 {
-   "Version":"2012-10-17",
-   "Statement":[
-      {
-         "Sid":"VisualEditorO",
-         "Effect":"Allow",
-         "Action":[
-            "license-manager:CheckoutLicense",
-            "license-manager:GetLicenseUsage",
-            "license-manager:CheckInLicense",
-            "license-manager:ExtendLicenseConsumption"
-         ],
-         "Resource":"*"
-      }
-   ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "license-manager:CheckoutLicense",
+        "license-manager:GetLicenseUsage",
+        "license-manager:CheckInLicense",
+        "license-manager:ExtendLicenseConsumption"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
-EOF
-# Create the policy
+JSON
+
 aws iam create-policy \
---policy-name DynamiaPlatformPolicy \
---policy-document file://custom-policy.json
+  --policy-name DynamiaPlatformPolicy \
+  --policy-document file://custom-policy.json
 ```
-#### 2. Create Service Account with Custom Policy
-```
+
+### 2.3 Create the IAM service account
+
+```bash
 eksctl create iamserviceaccount \
---cluster=<your-cluster-name> \
---namespace=hami-system \
---name=dynamia-sa \
---attach-policy-arn=arn:aws:iam::<YOUR-ACCOUNT-ID>:policy/DynamiaPlatformPolicy \
---approve
+  --cluster=<your-cluster-name> \
+  --namespace=hami-system \
+  --name=dynamia-sa \
+  --attach-policy-arn=arn:aws:iam::<YOUR-ACCOUNT-ID>:policy/DynamiaPlatformPolicy \
+  --approve
 ```
-# 2. Install required components 
-Dynamia AI Platform leverages on some open-source components, you should install them first.
-## 1. Install prometheus
+
+## Step 3. Install Cluster Dependencies
+
+Dynamia AI Platform relies on several open-source components. Install them before deploying the platform charts.
+
+### 3.1 Prometheus Stack
+
+```bash
+helm install prometheus \
+  oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack \
+  --namespace monitoring \
+  --create-namespace
 ```
-helm install prometheus -n monitoring --create-namespace oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
+
+### 3.2 Envoy Gateway
+
+```bash
+helm install eg \
+  oci://docker.io/envoyproxy/gateway-helm \
+  --version v1.5.0 \
+  --namespace envoy-gateway-system \
+  --create-namespace
 ```
-## 2. Install envoy gataway
-```
-helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.5.0 -n envoy-gateway-system --create-namespace
-```
-## 3. Install certmanager
-You can find it and install it at cluster->add on->community add on，you can also follow the [AWS Doc](https://docs.aws.amazon.com/eks/latest/userguide/lbc-manifest.html#lbc-cert) to install it.
-# 3. Use helm chart to install Dynamia AI Platform
-## 1. Install base components
-```
-export HELM_EXPERIMENTAL_OCI=1
-# The `username` and `password-stdin` correspond to your AWS login credentials.
-aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
-mkdir awsmp-chart && cd awsmp-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/hami --version 1.0.1
-tar xf $(pwd)/* && find $(pwd) -maxdepth 1 -type f -delete
-helm install hami --namespace hami-system ./* --create-namespace
-```
-## 2. Install platform components
-```
-export HELM_EXPERIMENTAL_OCI=1
-# The `username` and `password-stdin` correspond to your AWS login credentials.
-aws ecr get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
-mkdir awsmp-chart && cd awsmp-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version 0.4.2
-tar xf $(pwd)/* && find $(pwd) -maxdepth 1 -type f -delete
-helm install dynamia --namespace dynamia-system ./* --create-namespace
-```
-## 3. Install dcgm-exporter (for cluster using NVIDIA devices)
-```
+
+### 3.3 cert-manager
+
+Install cert-manager from the EKS console under **Cluster → Add-ons → Community add-ons**, or follow the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/lbc-manifest.html#lbc-cert).
+
+### 3.4 (Optional) DCGM exporter for NVIDIA GPU nodes
+
+```bash
 helm repo add gpu-helm-charts https://nvidia.github.io/dcgm-exporter/helm-charts
 helm repo update
-helm install dcgm-exporter -n gpu-operator gpu-helm-charts/dcgm-exporter --create-namespace
-```
-Then label your gpu nodes with gpu=on to enable hami-device-plugin.
-```
+helm install dcgm-exporter \
+  gpu-helm-charts/dcgm-exporter \
+  --namespace gpu-operator \
+  --create-namespace
+
 kubectl label node <YOUR-NVIDIA-NODE> gpu=on
 ```
-# 5. Start using Dynamia AI Platform
-Use this command to get the service address, then you can access the platform UI.
+
+### Verify dependency readiness
+
+Ensure the supporting namespaces and workloads are healthy before moving on to Step 4.
+
+```bash
+kubectl get ns monitoring envoy-gateway-system
+helm list -n monitoring
+helm list -n envoy-gateway-system
+kubectl get pods -n monitoring
+kubectl get pods -n envoy-gateway-system
 ```
-kubectl get service -n envoy-gateway-system envoy-dynamia-system-kantaloupe-2d73d998 -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+
+If you installed the optional GPU exporter, also verify the GPU namespace:
+
+```bash
+kubectl get pods -n gpu-operator
 ```
+
+Continue only after the pods report `Running` or `Completed` statuses.
+
+## Step 4. Deploy Dynamia AI Platform
+
+### 4.1 Install base components
+
+```bash
+export HELM_EXPERIMENTAL_OCI=1
+
+aws ecr get-login-password --region us-east-1 \
+  | helm registry login \
+    --username AWS \
+    --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
+
+rm -rf hami-chart && mkdir hami-chart && cd hami-chart
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/hami --version 1.0.1
+tar xf hami-1.0.1.tgz
+helm install hami ./hami --namespace hami-system --create-namespace
+cd ..
+```
+
+### Verify base component deployment
+
+Check that the base release is installed, the workloads are healthy, and GPU nodes are being prepared.
+
+```bash
+helm list -n hami-system
+kubectl get pods -n hami-system
+```
+
+The pods should report `Running` or `Completed`. Then verify the node annotations and GPU resources:
+
+```bash
+kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}	{.metadata.annotations.hami\.io/node-handshake:-missing}	{.metadata.annotations.hami\.io/node-nvidia-register:-missing}	{.status.allocatable.nvidia\.com/gpu:-0}
+{end}'
+# Expect non-empty handshake and nvidia-register annotations on GPU nodes, and GPU capacity values.
+
+# Inspect any node in detail if needed.
+kubectl describe node <gpu-node-name> | grep -E 'hami.io/node-(handshake|nvidia-register)|nvidia.com/gpu'
+```
+
+Proceed once the annotations are present and GPU capacity is reported.
+
+### 4.2 Install platform components
+
+```bash
+# If the registry login from the previous step has expired, run it again before continuing.
+rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version 0.4.2
+tar xf dynamiaai-0.4.1.tgz
+helm install dynamia ./dynamiaai --namespace dynamia-system --create-namespace
+cd ..
+```
+
+### Verify platform component deployment
+
+Confirm the platform release is installed and pods are healthy before moving on.
+
+```bash
+helm list -n dynamia-system
+kubectl get pods -n dynamia-system
+```
+
+Proceed once the pods report `Running` or `Completed`.
+
+## Step 5. Access the Platform
+
+List the services to identify the Envoy load balancer name, then retrieve its hostname.
+
+```bash
+kubectl get service -n envoy-gateway-system
+
+kubectl get service \
+  -n envoy-gateway-system \
+  <envoy-service-name> \
+  -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+```
+
+Open the hostname in a browser to reach the Dynamia AI Platform UI.
+
+---
+
+Need help? Reach us at info@dynamia.ai with any questions about this guide.
