@@ -37,7 +37,7 @@ eksctl version
 Run `eksctl get addons --cluster <your-cluster-name>` and confirm the add-ons listed above are present and report `ACTIVE` status before continuing. Such as
 
 ```bash
-~ $ eksctl get addons --cluster demo-gpu
+~ $ eksctl get addons --cluster <your-cluster-name>
 NAME                    VERSION                 STATUS  ISSUES  IAMROLE UPDATE AVAILABLE                                                                                                                        CONFIGURATION VALUES    NAMESPACE       POD IDENTITY ASSOCIATION ROLES
 cert-manager            v1.18.2-eksbuild.2      ACTIVE  0                                                                                                                                                                               cert-manager
 eks-pod-identity-agent  v1.3.8-eksbuild.2       ACTIVE  0                                                                                                                                                                               kube-system
@@ -157,7 +157,7 @@ Continue only after the pods report `Running` or `Completed` statuses.
 
 ## Step 4. Deploy Dynamia AI Platform
 
-### 4.1 Install base components
+### 4.1 Install HAMi
 
 ```bash
 export HELM_EXPERIMENTAL_OCI=1
@@ -171,10 +171,9 @@ rm -rf hami-chart && mkdir hami-chart && cd hami-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/hami --version 1.0.1
 tar xf hami-1.0.1.tgz
 helm install hami ./hami --namespace hami-system --create-namespace
-cd ..
 ```
 
-### Verify base component deployment
+### Verify HAMi
 
 Check that the base release is installed, the workloads are healthy, and GPU nodes are being prepared.
 
@@ -200,11 +199,12 @@ Proceed once the annotations are present and GPU capacity is reported.
 
 ```bash
 # If the registry login from the previous step has expired, run it again before continuing.
+
+export DYNAMIA_VERSION=0.4.4
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version 0.4.4
-tar xf dynamiaai-0.4.1.tgz
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version "$DYNAMIA_VERSION"
+tar xf "dynamiaai-${DYNAMIA_VERSION}.tgz"
 helm install dynamia ./dynamiaai --namespace dynamia-system --create-namespace
-cd ..
 ```
 
 ### Verify platform component deployment
