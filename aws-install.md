@@ -201,7 +201,7 @@ Proceed once the annotations are present and GPU capacity is reported.
 ```bash
 # If the registry login from the previous step has expired, run it again before continuing.
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version 0.4.2
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version 0.4.4
 tar xf dynamiaai-0.4.1.tgz
 helm install dynamia ./dynamiaai --namespace dynamia-system --create-namespace
 cd ..
