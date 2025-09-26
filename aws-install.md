@@ -79,7 +79,7 @@ aws ecr get-login-password --region us-east-1 | helm registry login --username A
 mkdir awsmp-chart && cd awsmp-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/hami --version 1.0.1
 tar xf $(pwd)/* && find $(pwd) -maxdepth 1 -type f -delete
-helm install --generate-name --namespace hami-system ./*
+helm install hami --namespace hami-system ./* --create-namespace
 ```
 ## 2. Install platform components
 ```
@@ -98,6 +98,9 @@ helm repo update
 helm install dcgm-exporter -n gpu-operator gpu-helm-charts/dcgm-exporter --create-namespace
 ```
 Then label your gpu nodes with gpu=on to enable hami-device-plugin.
+```
+kubectl label node <YOUR-NVIDIA-NODE> gpu=on
+```
 # 5. Start using Dynamia AI Platform
 Use this command to get the service address, then you can access the platform UI.
 ```
