@@ -1,3 +1,28 @@
+---
+title: "Deploy Dynamia AI Platform on AWS with EKS"
+coverTitle: "Deploy Dynamia AI Platform on AWS with EKS"
+slug: "deploy-dynamia-ai-aws"
+date: "2025-09-26"
+excerpt: "Follow this battle-tested checklist to prepare IAM, install cluster add-ons, and roll out the Dynamia AI Platform on Amazon EKS in about an hour."
+# TODO: Confirm author attribution before publishing
+author: "Dynamia AI Team"
+tags: ["Dynamia AI Platform", "AWS", "EKS", "Helm", "HAMi", "NVIDIA"]
+coverImage: "/images/blog/aws/aws-install-coverpage.png"
+language: "en"
+aiRepostLinks:
+  - label: "ChatGPT Summary"
+    description: "AI-generated highlights of this deployment guide"
+    url: "https://chat.openai.com/"
+    icon: "chatgpt"
+  - label: "Claude Recap"
+    description: "Quick take from Claude on AWS setup steps"
+    url: "https://claude.ai/"
+    icon: "claude"
+  - label: "Gemini Notes"
+    description: "Google Gemini walkthrough and reminders"
+    url: "https://gemini.google.com/"
+    icon: "gemini"
+---
 # Dynamia AI Platform AWS Installation Guide
 
 Use this guide to deploy Dynamia AI Platform on AWS, including the required IAM role, supporting components, and Helm charts.
@@ -8,7 +33,7 @@ Use this guide to deploy Dynamia AI Platform on AWS, including the required IAM 
 
 Before you start, confirm you have the following in place. If you still need to install any component, use the linked instructions.
 
-- An Amazon EKS cluster running Kubernetes 1.13 or later ([create an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)). Ensure the following add-ons are installed and healthy: 
+- An Amazon EKS cluster running Kubernetes 1.31 or later ([create an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)). Ensure the following add-ons are installed and healthy:
   - `kube-proxy`
   - `cert-manager`
   - `metrics-server`
@@ -68,6 +93,7 @@ cat > custom-policy.json <<'JSON'
       "Sid": "VisualEditor0",
       "Effect": "Allow",
       "Action": [
+        "license-manager:ListReceivedLicenses",
         "license-manager:CheckoutLicense",
         "license-manager:GetLicenseUsage",
         "license-manager:CheckInLicense",
@@ -167,11 +193,12 @@ aws ecr get-login-password --region us-east-1 \
     --username AWS \
     --password-stdin 709825985650.dkr.ecr.us-east-1.amazonaws.com
 
+export HAMI_VERSION=1.2.0
 rm -rf hami-chart && mkdir hami-chart && cd hami-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/hami --version 1.0.1
-tar xf hami-1.0.1.tgz
-helm install hami ./hami --namespace hami-system --create-namespace
-```
+
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai-hami --version "$HAMI_VERSION"
+tar xf "dynamia-ai-hami-${HAMI_VERSION}.tgz"
+helm install hami ./dynamia-ai-hami --namespace hami-system --create-namespace
 
 ### Verify HAMi
 
@@ -185,8 +212,7 @@ kubectl get pods -n hami-system
 The pods should report `Running` or `Completed`. Then verify the node annotations and GPU resources:
 
 ```bash
-kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}	{.metadata.annotations.hami\.io/node-handshake:-missing}	{.metadata.annotations.hami\.io/node-nvidia-register:-missing}	{.status.allocatable.nvidia\.com/gpu:-0}
-{end}'
+kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}	{.metadata.annotations.hami\.io/node-handshake:-missing}	{.metadata.annotations.hami\.io/node-nvidia-register:-missing}	{.status.allocatable.nvidia\.com/gpu:-0}{"\n"}{end}'
 # Expect non-empty handshake and nvidia-register annotations on GPU nodes, and GPU capacity values.
 
 # Inspect any node in detail if needed.
@@ -200,11 +226,11 @@ Proceed once the annotations are present and GPU capacity is reported.
 ```bash
 # If the registry login from the previous step has expired, run it again before continuing.
 
-export DYNAMIA_VERSION=0.4.4
+export DYNAMIA_VERSION=0.6.0
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
-helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamiaai --version "$DYNAMIA_VERSION"
-tar xf "dynamiaai-${DYNAMIA_VERSION}.tgz"
-helm install dynamia ./dynamiaai --namespace dynamia-system --create-namespace
+helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai --version "$DYNAMIA_VERSION"
+tar xf "dynamia-ai-${DYNAMIA_VERSION}.tgz"
+helm install dynamia ./dynamia-ai --namespace dynamia-system --create-namespace
 ```
 
 ### Verify platform component deployment
@@ -235,4 +261,4 @@ Open the hostname in a browser to reach the Dynamia AI Platform UI.
 
 ---
 
-Need help? Reach us at info@dynamia.ai with any questions about this guide.
+Need help? Reach us at <info@dynamia.ai> with any questions about this guide.

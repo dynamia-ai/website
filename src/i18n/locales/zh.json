@@ -1,0 +1,1211 @@
+{
+  "navigation": {
+    "home": "首页",
+    "hami": "HAMi",
+    "whatIsHami": "什么是 HAMi",
+    "whatIsHamiDesc": "了解 HAMi 开源项目的核心功能与价值",
+    "hamiWebsite": "HAMi 官网",
+    "hamiWebsiteDesc": "访问 HAMi 的官方网站获取详细信息",
+    "hamiGithub": "GitHub",
+    "hamiGithubDesc": "查看源代码并参与 HAMi 的开源协作",
+    "community": "社区交流",
+    "communityDesc": "加入 HAMi 用户社区，分享经验与获取帮助",
+    "products": "产品",
+    "solutions": "解决方案",
+    "pricing": "定价",
+    "resources": "资源",
+    "resourcesDoc": "文档",
+    "resourcesDocDesc": "访问 HAMi 的全面指南和参考资料",
+    "resourcesBlog": "博客",
+    "resourcesBlogDesc": "阅读有关 HAMi 的最新消息、教程和更新",
+    "adopters": "采用者",
+    "adoptersDesc": "查看哪些组织在生产环境中使用 HAMi",
+    "company": "公司",
+    "freeTrial": "申请试用",
+    "requestDemo": "申请演示",
+    "openMenu": "打开菜单",
+    "caseTelecom": "电信运营商案例",
+    "caseTelecomDesc": "了解某电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",
+    "caseSfTechnology": "顺丰科技案例",
+    "caseSfTechnologyDesc": "探索顺丰科技如何基于 HAMi 打造 EffectiveGPU，提升 AI 效率并降低成本",
+    "casePrepEdu": "PREP EDU 案例",
+    "casePrepEduDesc": "探索 PREP EDU 如何基于 HAMi 实现异构 GPU 智能调度，全面提升资源利用率与运维效率"
+  },
+  "home": {
+    "hero": {
+      "title": "开源，多元异构 GPU 共享、调度系统",
+      "subtitle": "提供灵活、可靠、按需、弹性的多元异构 GPU 虚拟化、调度、管理能力, 最大化提高 GPU 利用率",
+      "chineseSlogan": "统一异构计算，提升资源效率"
+    },
+    "socialProof": {
+      "title": "全球领先AI实验室和企业的信任之选"
+    },
+    "keyAdvantages": {
+      "title": "为什么选择我们？",
+      "advantages": [
+        {
+          "title": "高性能调度",
+          "description": "通过智能工作负载调度优化资源分配"
+        },
+        {
+          "title": "多集群编排",
+          "description": "无缝管理多个集群和环境中的资源"
+        },
+        {
+          "title": "GPU加速管理",
+          "description": "最大化利用专用硬件处理AI、ML和HPC工作负载"
+        },
+        {
+          "title": "成本优化和自动扩展",
+          "description": "根据工作负载需求自动扩展或缩减资源"
+        }
+      ],
+      "tabs": [
+        {
+          "title": "多元异构集群",
+          "subtitle": "多元异构 AI 集群统一调度、管理",
+          "description": "Dynamia.ai 提供统一高效管理多元异构 AI 算力集群，让用户无感使用、管理、调度来自公有云、私有云、本地的 算力集群，最大化利用率，提高管理效率。"
+        },
+        {
+          "title": "GPU 共享",
+          "subtitle": "最大化 GPU 利用率，降低成本，极大提高 AI 效率",
+          "description": "Dynamia.ai 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU  利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
+        },
+        {
+          "title": "GPU 超卖",
+          "subtitle": "对齐 GPU 显存与主机内存，扩大 AI 资源池",
+          "description": "Dynamia.ai 提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
+        },
+        {
+          "title": "自动弹性扩缩容",
+          "subtitle": "AI 应用无感、动态扩缩容",
+          "description": "Dynamia.ai 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
+        }
+      ]
+    },
+    "poweredByHami": {
+      "title": "由 HAMi 提供支持",
+      "description": "领先，开源异构虚拟化中间件，可运行在任意云环境中",
+      "learnMore": "了解更多",
+      "stats": {
+        "contributors": "+60",
+        "forks": "+270",
+        "stars": "+2.8K",
+        "commits": "+600",
+        "pulls": "+50K"
+      }
+    },
+    "joinCommunity": {
+      "title": "加入我们的社区",
+      "bilibili": {
+        "title": "在 Bilibili 上关注我们",
+        "action": "关注"
+      },
+      "slack": {
+        "title": "在 Slack 与我们交流",
+        "action": "加入"
+      },
+      "discord": {
+        "title": "在 Discord 与我们交流",
+        "action": "加入"
+      },
+      "twitter": {
+        "title": "在 X 上关注我们",
+        "action": "关注"
+      },
+      "reddit": {
+        "title": "在 Reddit 上讨论",
+        "action": "加入"
+      },
+      "wechat": {
+        "title": "微信",
+        "action": "添加小助手进群交流"
+      }
+    },
+    "ecosystem": {
+      "title": "生态集成",
+      "subtitle": "GPU 虚拟化与调度的集成由 HAMi 提供支持",
+      "viewDetails": "查看详情"
+    },
+    "testimonials": {
+      "title": "客户评价",
+      "items": [
+        {
+          "quote": "Kantaloupe 大大提高了我们的计算效率，使我们能够比以往更快地扩展 AI 研究。",
+          "author": "Dr. Jane Smith",
+          "position": "首席技术官",
+          "company": "AI 研究所"
+        },
+        {
+          "quote": "在我们的 AI 计算基础设施中，跨异构计算环境的无缝集成减少了 60% 的部署时间。",
+          "author": "Michael Johnson",
+          "position": "工程副总裁",
+          "company": "TechCorp Global"
+        }
+      ]
+    },
+    "cta": {
+      "title": "准备好改造您的 AI 计算基础设施了吗？",
+      "freeTrialButton": "开始申请试用",
+      "requestDemoButton": "申请演示"
+    },
+    "trustedBy": {
+      "title": "行业领导者的信赖选择",
+      "description": "各行业的领先组织都依靠 Dynamia.ai 高效管理其异构计算资源"
+    }
+  },
+  "products": {
+    "kantaloupe": {
+      "title": "Kantaloupe",
+      "subtitle": "下一代异构计算平台",
+      "description": "Kantaloupe 提供了一个统一平台，用于管理异构计算资源，优化性能并降低成本。",
+      "features": [
+        "智能工作负载调度",
+        "实时资源监控",
+        "自动扩展和优化",
+        "跨平台兼容性",
+        "企业级安全"
+      ],
+      "featureComparison": {
+        "title": "特性对比",
+        "subTitle": "HAMi 和 Dynamia AI 功能对比",
+        "categoryHeader": "",
+        "featureHeader": "",
+        "openSource": "HAMi",
+        "enterprise": "Dynamia AI",
+        "categories": [
+          {
+            "name": "架构支持",
+            "features": [
+              {
+                "name": "x86",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "ARM",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "操作系统",
+            "features": [
+              {
+                "name": "Linux",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "WSL",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "规模",
+            "features": [
+              {
+                "name": "节点数",
+                "hamiStatus": "1 - 20 nodes",
+                "kantaloupeStatus": "20 - 1000 nodes"
+              },
+              {
+                "name": "GPU 数量",
+                "hamiStatus": "1 - 160 GPUs",
+                "kantaloupeStatus": "100 - 8000 GPUs"
+              }
+            ]
+          },
+          {
+            "name": "核心能力",
+            "features": [
+              {
+                "name": "显存共享",
+                "hamiStatus": "✅",
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "显存共享强隔离",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "算力共享",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "算力共享强隔离",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "显存超卖",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "算力超卖",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "动态调整",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "自动扩缩容",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "任务优先级",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "故障隔离",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "统计任务空闲时间",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "显存分析",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "调度能力",
+            "features": [
+              {
+                "name": "节点级别 Binpack、Spread 调度",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GPU 级别 Binpack、Spread 调度",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia MIG",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia MIG 动态虚拟化",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia NUMA 亲和调度",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "Nvidia 网络拓扑 亲和调度",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "异构能力",
+            "features": [
+              {
+                "name": "寒武纪 MLU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "海光 DCU",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "昇腾 310 系列",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "昇腾 910 系列",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "摩尔线程",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "天数智芯",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "燧原",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "沐曦",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "监控能力",
+            "features": [
+              {
+                "name": "AI 工作负载 GPU 分配情况",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "AI 工作负载节点绑定管理",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "AI 工作负载真实使用量",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GPU 故障指标",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GPU 故障告警",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GPU 故障自恢复",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "AI多集群管理",
+            "features": [
+              {
+                "name": "AI 算力集群生命周期管理(创建、扩容、更新、卸载)",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "AI 多集群 统一管理视角",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "AI 多集群 统一监控、运维视角",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "多集群 工作台 UI",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "运维能力",
+            "features": [
+              {
+                "name": "GPU 软件栈全生命周期管理",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "GUI",
+                "hamiStatus": true,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "OpenAPI",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "计量计费",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "安全性",
+            "features": [
+              {
+                "name": "KataContainer",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "安全策略",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              },
+              {
+                "name": "可信安全、算力脱敏",
+                "hamiStatus": false,
+                "kantaloupeStatus": true
+              }
+            ]
+          },
+          {
+            "name": "技术支持",
+            "features": [
+              {
+                "name": "Support",
+                "hamiStatus": "✅ 社区支持：GitHub、社区用户群",
+                "kantaloupeStatus": "✅ 专业团队支持"
+              }
+            ]
+          }
+        ]
+      },
+      "technicalArchitecture": "技术架构",
+      "architectureDiagram": "架构示意图",
+      "readyToStart": "准备好开始使用 kantaloupe 了吗？",
+      "customSolutions": {
+        "title": "定制解决方案",
+        "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 kantaloupe 解决方案。",
+        "contactText": "联系我们的解决方案专家，准备好解决您的 AI 计算挑战了吗？"
+      },
+      "exploreResources": {
+        "title": "探索我们的技术文档",
+        "description": "探索我们的技术文档、博客文章和白皮书，了解更多关于 kantaloupe 的信息"
+      },
+      "latestResources": {
+        "title": "最新资源",
+        "newsletterTitle": "订阅我们的技术通讯",
+        "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
+        "subscribeButton": "订阅"
+      },
+      "title": "Dynamia AI",
+      "subtitle": "企业级异构计算虚拟化平台",
+      "viewPricing": "查看定价",
+      "readyToStart": "准备好转变您的计算基础设施了吗？",
+      "ctaDescription": "体验 Dynamia AI 如何优化您的计算资源。立即开始免费试用或申请定制定价方案。",
+      "overview": {
+        "title": "企业级异构计算解决方案",
+        "description": "Dynamia AI 基于 HAMi 开源技术的强大基础，增加了企业级功能、安全性和对关键业务环境的支持。",
+        "highlights": [
+          "基于 HAMi 开源核心",
+          "增强的企业级功能",
+          "专业技术支持",
+          "持续更新和维护"
+        ]
+      },
+      "architectureDescription": "Dynamia AI 提供了全面的基础设施，用于高效管理异构计算资源。",
+      "architectureDiagram": "架构图",
+      "commercialFeatures": {
+        "title": "企业级功能",
+        "subtitle": "Dynamia AI 基于 HAMi 核心能力，打造专为生产环境优化的企业级增强功能。",
+        "list": [
+          {
+            "title": "多元异构集群",
+            "description": "统一管理来自多个厂商的异构算力集群，方便运维。"
+          },
+          {
+            "title": "GPU 共享",
+            "description": "Dynamia.ai 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU 利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
+          },
+          {
+            "title": "GPU 超卖",
+            "description": "Dynamia.ai  提供无损、应用无感的 GPU 显存与 主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
+          },
+          {
+            "title": "自动弹性扩缩容",
+            "description": "Dynamia.ai 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
+          },
+          {
+            "title": "中心化的全链路 AI 可观测性",
+            "description": "集中式可观测性将来自云端、本地以及混合环境的资源进行了统一整合，为企业提供了具有可操作性的见解、策略驱动的管理模式以及精细的资源管理，从而实现高效且可扩展的人工智能运营。"
+          },
+          {
+            "title": "高级 AI 调度",
+            "description": "针对包括非统一内存访问（NUMA）感知、装箱（binpack）、分散（spread）等不同场景的先进 AI 调度。降低数据通信成本，最大程度减少碎片化，优化任务性能。"
+          }
+        ]
+      }
+    }
+  },
+  "solutions": {
+    "title": "解决方案",
+    "subtitle": "为复杂挑战提供强大计算解决方案",
+    "categories": [
+      {
+        "title": "AI/ML",
+        "description": "优化您的机器学习基础设施，实现更快的训练和推理",
+        "learnMore": "了解更多"
+      },
+      {
+        "title": "HPC",
+        "description": "高效扩展您的高性能计算工作负载",
+        "learnMore": "了解更多"
+      },
+      {
+        "title": "边缘计算",
+        "description": "通过优化的资源分配将您的计算能力扩展到边缘",
+        "learnMore": "了解更多"
+      }
+    ],
+    "customSolutions": {
+      "title": "定制解决方案",
+      "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 kantaloupe 解决方案。",
+      "contactButton": "联系我们的解决方案专家"
+    },
+    "successStories": {
+      "title": "成功案例",
+      "subtitle": "了解我们的解决方案如何帮助客户解决复杂的计算挑战",
+      "viewAllButton": "查看所有案例"
+    },
+    "readyForChallenge": "准备好解决您的 AI 计算挑战了吗？"
+  },
+  "freeTrial": {
+    "title": "申请试用",
+    "subtitle": "立即开始申请试用，体验 Dynamia AI 的强大功能",
+    "form": {
+      "name": "姓名",
+      "email": "工作邮箱",
+      "company": "公司名称",
+      "phone": "电话号码",
+      "useCase": "您计划如何使用 Dynamia AI？",
+      "terms": "我同意 dynamia ai 的服务条款和隐私政策",
+      "termsRequired": "您必须同意条款和条件才能继续。",
+      "submitting": "处理中...",
+      "submitButton": "申请试用",
+      "submitSuccess": "谢谢！您的试用请求已提交。我们的团队将很快与您联系，提供后续步骤。",
+      "submitError": "提交请求时发生错误。请重试或直接通过info@dynamia.ai与我们联系。"
+    },
+    "disclaimer": "试用结束后，您可以选择升级到付费计划或取消账户。无需信用卡。"
+  },
+  "requestDemo": {
+    "title": "申请演示",
+    "subtitle": "安排个性化演示，了解 Dynamia AI 如何帮助您的组织优化计算资源",
+    "demoContent": {
+      "title": "演示内容",
+      "items": [
+        "Dynamia AI 平台功能概述",
+        "根据您的需求定制的演示",
+        "与我们的解决方案专家互动",
+        "部署选项和定价的详细探讨"
+      ]
+    },
+    "form": {
+      "title": "您的信息",
+      "name": "姓名",
+      "email": "工作邮箱",
+      "company": "公司名称",
+      "jobTitle": "职位",
+      "message": "您希望在演示中了解什么？",
+      "submitting": "发送请求中...",
+      "submitButton": "申请演示",
+      "submitSuccess": "谢谢！我们已收到您的演示请求。我们的团队将在24小时内联系您安排个性化演示。",
+      "submitError": "提交请求时发生错误。请重试或直接通过info@dynamia.ai与我们联系。"
+    },
+    "followUp": "提交请求后，我们的团队将在24小时内联系您安排演示。"
+  },
+  "resources": {
+    "title": "资源中心",
+    "subtitle": "探索我们的技术文档、博客文章和白皮书，了解更多关于 kantaloupe 的信息",
+    "viewMore": "查看更多",
+    "documentation": {
+      "title": "文档",
+      "description": "技术指南、API 参考和最佳实践"
+    },
+    "blog": {
+      "title": "博客",
+      "description": "来自我们团队的见解、教程和新闻",
+      "filterByTags": "按标签筛选",
+      "allTags": "全部",
+      "more": "更多",
+      "less": "收起",
+      "showingPostsTagged": "显示标签为 \"{{tag}}\" 的文章 ({{count}} 篇)",
+      "tableOfContents": "本页目录",
+      "aiShare": {
+        "exploreTitle": "用 AI 探索",
+        "exploreSubtitle": "使用 AI 工具深入理解文章内容",
+        "shareTitle": "分享这篇文章",
+        "shareAt": "分享到：",
+        "tipLabel": "提示",
+        "tip": "AI将帮助您总结要点并分析技术细节。",
+        "aiPrompt": "请访问这个链接并为我总结这篇文章：{{url}}",
+        "aiTools": {
+          "chatgpt": {
+            "name": "ChatGPT",
+            "desc": "智能总结"
+          },
+          "perplexity": {
+            "name": "Perplexity",
+            "desc": "深度分析"
+          },
+          "claude": {
+            "name": "Claude",
+            "desc": "专业洞察"
+          },
+          "gemini": {
+            "name": "Google AI",
+            "desc": "快速见解"
+          },
+          "grok": {
+            "name": "Grok",
+            "desc": "X AI 分析"
+          },
+          "deepseek": {
+            "name": "DeepSeek",
+            "desc": "深度分析"
+          }
+        }
+      }
+    },
+    "whitepapers": {
+      "title": "白皮书",
+      "description": "深入分析和研究报告"
+    },
+    "latestResources": {
+      "title": "最新资源",
+      "articles": [
+        {
+          "title": "Kantaloupe v2.0 发布：新特性与改进",
+          "category": "博客",
+          "date": "2025-01-15",
+          "excerpt": "了解 Kantaloupe 最新版本中的重要更新和性能提升。",
+          "link": "/resources/blog/kantaloupe-v2-release"
+        },
+        {
+          "title": "异构计算在大规模 AI 训练中的应用",
+          "category": "白皮书",
+          "date": "2024-12-10",
+          "excerpt": "探索如何利用 Kantaloupe 优化大规模 AI 模型训练的资源分配。",
+          "link": "/resources/whitepapers/heterogeneous-computing-ai-training"
+        },
+        {
+          "title": "Kantaloupe API 参考指南",
+          "category": "文档",
+          "date": "2024-11-28",
+          "excerpt": "全面的 API 文档，帮助开发者集成和扩展 Kantaloupe 平台。",
+          "link": "/resources/documentation/api-reference"
+        },
+        {
+          "title": "案例研究：TechCorp 如何节省 40% 的计算成本",
+          "category": "博客",
+          "date": "2024-11-15",
+          "excerpt": "了解 TechCorp 如何使用 Kantaloupe 优化其 HPC 工作负载并显著降低成本。",
+          "link": "/resources/blog/techcorp-case-study"
+        }
+      ],
+      "newsletterTitle": "订阅我们的技术通讯",
+      "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
+      "emailPlaceholder": "您的邮箱地址",
+      "subscribeButton": "订阅"
+    }
+  },
+  "company": {
+    "about": {
+      "title": "公司简介",
+      "description": "我们在异构计算领域开拓创新，帮助组织最大化利用其计算资源",
+      "whoWeAre": {
+        "title": "公司简介",
+        "paragraph1": "密瓜智能，CNCF sandbox HAMi 项目的作者与维护者。HAMi 作为全球增长最快、最受欢迎的开源 AI 原生异构 虚拟化中间件项目。通过灵活、可靠、按需、弹性的 GPU 虚拟化来提升资源利用率，可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。\n",
+        "paragraph2": "HAMi 自开源以来受到广泛欢迎，用户遍布全球，超过 100+ 用户使用 HAMi 构建自己的 AI 基础设施，用于最大化提高 GPU 利用率。\n",
+        "paragraph3": "密瓜智能提供统一的 AI 应用编排与 GPU 调度的企业级平台，最大化的释放 GPU 的所有潜力，提升通用 GPU 利用率，实现异构 算力集群、算力芯片的统一、高效的调度。"
+      },
+      "mission": {
+        "title": "我们的使命",
+        "description1": "在dynamia ai，我们致力于通过创新的异构计算解决方案帮助组织最大化其计算资源的价值。我们相信，通过智能管理和优化计算资源，我们可以加速科学发现，推动技术创新，并为全球各行业的客户创造价值。",
+        "description2": "我们的旗舰产品kantaloupe是一个统一的异构计算平台，专为应对当今最复杂的计算挑战而设计。无论是AI训练、高性能计算还是边缘计算，kantaloupe都能提供无与伦比的资源效率和性能优化。"
+      },
+      "vision": {
+        "title": "公司愿景",
+        "points": [
+          "构建全球领先的异构计算管理平台",
+          "推动计算资源的高效利用，减少能源浪费",
+          "通过优化计算基础设施，赋能组织实现创新"
+        ]
+      }
+    },
+    "team": {
+      "title": "核心团队",
+      "members": [
+        { "name": "张潇", "position": "CEO & 创始人 & HAMi 核心维护者", "image": "CEO" },
+        { "name": "李孟轩", "position": "首席架构师 & 联合创始人 & HAMi 项目创始人", "image": "CTO" },
+        { "name": "尹玉", "position": "产品负责人 & HAMi 核心维护者", "image": "COO" },
+        { "name": "陈文", "position": "技术负责人", "image": "CPO" }
+      ]
+    },
+    "careers": {
+      "title": "职业发展",
+      "description": "加入我们的创新团队，共同塑造计算的未来",
+      "jobs": [
+        { "title": "高级软件工程师", "location": "北京", "type": "全职" },
+        { "title": "机器学习工程师", "location": "上海", "type": "全职" },
+        { "title": "产品经理", "location": "远程", "type": "全职" },
+        { "title": "解决方案架构师", "location": "深圳", "type": "全职" }
+      ],
+      "viewJobsButton": "查看所有职位",
+      "applyButton": "申请"
+    },
+    "contact": {
+      "title": "联系我们",
+      "description": "与我们的团队取得联系",
+      "address": "上海市徐汇区龙台路 180 号 f2 栋 5F503",
+      "email": "info@dynamia.ai",
+      "phone": "+1 (555) 123-4567",
+      "formTitle": "发送消息",
+      "nameLabel": "您的姓名",
+      "emailLabel": "您的邮箱",
+      "messageLabel": "消息内容",
+      "submitting": "发送中...",
+      "submitButton": "发送",
+      "submitSuccess": "感谢您的留言！我们将尽快回复您。",
+      "submitError": "发送消息时出现错误。请重试或直接发送邮件至info@dynamia.ai。",
+      "social": {
+        "email": {
+          "title": "邮件",
+          "action": "发送邮件"
+        },
+        "slack": {
+          "title": "Slack",
+          "action": "加入我们"
+        },
+        "twitter": {
+          "title": "X (Twitter)",
+          "action": "关注我们"
+        },
+        "wechat": {
+          "title": "微信",
+          "action": "扫码关注",
+          "qrPlaceholder": "微信二维码"
+        }
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 DYNAMIA INTELLIGENCE PTE. LTD ",
+    "privacyPolicy": "隐私政策",
+    "cookiesPolicy": "Cookie 政策",
+    "termsOfService": "服务条款",
+    "company": "公司",
+    "aboutUs": "关于我们",
+    "contactUs": "联系我们",
+    "platformTitle": "Dynamia AI 平台",
+    "getDemo": "获取演示",
+    "pricing": "定价",
+    "poweredByHami": "由 HAMi 提供支持"
+  },
+  "search": {
+    "placeholder": "搜索...",
+    "noResults": "未找到相关结果"
+  },
+  "privacyPolicy": {
+    "title": "隐私政策",
+    "lastUpdated": "最后更新：2025年3月3日",
+    "intro": "DYNAMIA INTELLIGENCE PTE. LTD.（以下简称\"我们\"）是网站https://dynamia.ai/（\"本网站\"）的运营者。本页详细说明了我们关于收集、使用和披露本网站用户个人信息的政策。",
+    "consent": "我们仅将您的个人信息用于提供和改进本网站的目的。使用本网站即表示您同意按照本政策收集和使用信息。",
+    "sections": [
+      {
+        "title": "信息收集与使用",
+        "content": "使用我们的网站时，我们可能会要求您提供某些可用于联系或识别您身份的个人身份信息。个人身份信息可能包括但不限于您的姓名和电子邮件地址。"
+      },
+      {
+        "title": "日志数据",
+        "content": "与众多网站运营商一样，我们会收集您的浏览器每次访问我们网站时传输的信息（称为\"日志数据\"）。此日志数据可能包括您计算机的互联网协议（IP）地址、浏览器类型、浏览器版本、您访问的网站页面、访问时间和日期、在这些页面上停留的时间以及其他相关统计数据。此外，我们可能会使用谷歌分析等第三方服务来收集、监控和分析这些数据。"
+      },
+      {
+        "title": "通信",
+        "content": "我们可能会使用您的电子邮件地址向您发送新闻通讯、营销或促销材料以及其他有助于您更好地理解和使用我们产品和服务的信息。您随时可以通过点击电子邮件中的取消订阅链接或在网站上更新您的偏好来取消订阅此类通信。"
+      },
+      {
+        "title": "Cookie",
+        "content": "Cookie是可能包含匿名唯一标识符的小数据文件。它们从网站发送到您的浏览器并存储在您的计算机硬盘上。与许多网站一样，我们使用\"Cookie\"来收集信息。您可以配置浏览器拒绝所有 Cookie 或在发送 Cookie 时提醒您。然而，如果您选择不接受 Cookie，可能会在访问和使用我们网站的某些部分时遇到困难。"
+      },
+      {
+        "title": "安全",
+        "content": "您的个人信息安全对我们至关重要。然而，重要的是要注意，没有任何通过互联网传输或电子存储的方法是完全安全的。虽然我们努力使用商业上合理的手段保护您的个人信息，但我们不能确保其绝对安全。"
+      },
+      {
+        "title": "本隐私政策的变更",
+        "content": "本隐私政策自2025年3月3日起生效，并将保持有效，除非其条款将来有任何变更。此类变更将在发布到此页面后立即生效。我们保留随时更新或修改我们隐私政策的权利。建议您定期查看本隐私政策。在我们在此页面上发布任何对隐私政策的修改后继续使用服务，将表示您认可这些变更并同意遵守和受修订后的隐私政策约束。如果我们对本隐私政策进行任何重大更改，我们将通过您提供给我们的电子邮件地址通知您，或在我们的网站上放置醒目通知。"
+      },
+      {
+        "title": "联系我们",
+        "content": "如果您对本隐私政策有任何疑问，请通过info@dynamia.ai与我们联系。"
+      }
+    ]
+  },
+  "cookiesPolicy": {
+    "title": "Cookie 政策",
+    "lastUpdated": "最后更新：2025年3月3日",
+    "intro": "当您访问或使用我们的网站或应用程序（统称为\"服务\"），或与我们的内容互动时，我们会使用（并授权第三方使用）网络信标、Cookie、像素标签、脚本、标签、API 和其他技术（统称为\"跟踪技术\"）。\n\n这些跟踪技术使我们能够自动收集关于您、您的在线行为和您的设备（如计算机或移动设备）的信息。这些信息用于增强您在我们服务上的导航体验，改进服务性能，并定制您的体验。我们还使用这些数据收集服务使用统计信息，进行分析，提供符合您兴趣的内容，并为我们的用户、广告商、发布商、客户和合作伙伴管理服务。\n\n此外，我们允许第三方通过跟踪技术收集关于您的信息。",
+    "sections": [
+      {
+        "title": "什么是 Cookie",
+        "content": "Cookie 是仅由字母和数字组成的小型文本文件。当您访问网页时，网络服务器会将它们放置在您的计算机或移动设备上。Cookie 可以增强我们服务的用户友好性，例如，通过记住您的语言偏好和设置。有关 Cookie 的更多详情，请访问 www.allaboutcookies.org。\n\nCookie 被广泛用于使网站高效运行。它们允许您在页面之间平滑导航，记住您的偏好，并使您与服务的交互更加无缝和高效。Cookie 还有助于确保您看到的在线广告与您和您的兴趣相关。"
+      },
+      {
+        "title": "存储跟踪技术",
+        "content": "当您访问或使用我们的服务（例如，浏览我们的网站）时，我们会存储跟踪技术；这些被称为\"第一方跟踪技术\"。此外，第三方（如我们的分析服务提供商、业务合作伙伴和广告商）在我们的服务上运行内容时也会存储跟踪技术；这些被称为\"第三方跟踪技术\"。\n\n这两类跟踪技术可能在您访问我们的服务期间或后续重复访问时存储。"
+      },
+      {
+        "title": "我们使用哪些类型的跟踪技术？",
+        "content": "我们主要使用五种类型的跟踪技术：\n\n1. 绝对必要的跟踪技术：这些对于您登录、导航和使用我们服务的功能或接收您请求的服务（如您的用户名）至关重要。我们不需要您的同意即可使用这些技术。它们可用于安全和完整性目的，如检测政策违规和启用支持或安全功能。\n2. 功能性跟踪技术：这些使我们的服务能够记住您的选择（例如，您的语言）并提供增强的个性化功能。例如，它们用于身份验证（记住您何时登录）并支持其他服务功能。\n3. 性能跟踪技术：这些收集有关您的在线活动的信息（例如，您访问我们服务的时长），包括行为数据和内容参与指标。它们用于分析、研究和生成统计数据（基于汇总信息）。\n4. 营销或广告跟踪技术：这些用于根据您推断的兴趣向您提供定制优惠和广告，并进行电子邮件营销活动。它们可以限制您看到广告的次数，并帮助衡量广告活动的有效性。通常由我们的广告商（例如，广告网络）放置，它们为广告商提供有关查看和与其广告互动、访问其网站或使用其应用程序的用户的见解。\n5. 社交媒体跟踪技术：我们的网站整合了社交媒体功能，如 Facebook 的\"赞\"或\"分享\"按钮。这些功能要么由第三方托管，要么直接在我们的服务上。您与这些功能的互动受提供这些功能的公司的隐私声明约束。"
+      },
+      {
+        "title": "关于 Cookie 的选择",
+        "content": "如果您想限制或阻止 Cookie \"帮助\"功能应该会告诉您如何操作。或者，您可以访问www.aboutcookies.org，其中包含有关如何在各种浏览器上限制或阻止 Cookie 的综合信息。您还可以通过首次访问我们网站时出现的 Cookie 同意横幅管理您的 Cookie 偏好。"
+      },
+      {
+        "title": "对我们 Cookie 政策的更改",
+        "content": "我们可能会不时更新我们的 Cookie 政策。对我们 Cookie 政策的更改将在此页面上更新。我们鼓励用户经常查看此页面以了解任何变更。我们Cookie政策的最后更新日期在政策顶部注明。"
+      },
+      {
+        "title": "联系我们",
+        "content": "如果您对我们使用 Cookie 或其他技术有任何疑问，请发送电子邮件至 info@dynamia.ai 与我们联系。"
+      }
+    ]
+  },
+  "hamiPage": {
+    "title": "什么是",
+    "subtitle": "开源，异构虚拟化共享中间件，轻量化、无侵入部署在任意云环境",
+    "introduction": "HAMi，唯一专注多云异构 GPU 共享的开源项目，通过灵活、可靠、按需、弹性的 GPU 共享来提升利用率，插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境，支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。截至目前，HAMi 已经被超过 60+ 操作系统厂商、算力云厂商以及垂直行业客户所采纳，成功地在金融、物流、智驾、机器人、生物科技等行业中实现了从 0 到 1 的落地。",
+    "creator": "HAMi 由密瓜智能团队创作并维护，目前是 CNCF Sandbox 与 CNAI Landscape 项目。",
+    "githubButton": "GitHub 仓库",
+    "websiteButton": "访问官网"
+  },
+  "pricing": {
+    "title": "定价",
+    "headline": "灵活的计算需求定价方案",
+    "description": "我们提供一系列灵活的定价选项，适应您的计算环境规模和复杂度。联系我们获取定制化报价。",
+    "benefits": [
+      "定制化定价方案",
+      "根据集群规模灵活调整",
+      "专业技术支持",
+      "持续的功能更新和升级"
+    ],
+    "form": {
+      "title": "获取定价信息",
+      "name": "姓名",
+      "email": "邮箱",
+      "company": "公司",
+      "jobTitle": "职位",
+      "nodeCount": "节点数量",
+      "gpuCount": "GPU数量",
+      "message": "留言（可选）",
+      "submitButton": "获取定价",
+      "submitting": "提交中...",
+      "submitSuccess": "感谢您的提交！我们的团队将很快与您联系，提供定价信息。",
+      "submitError": "提交请求时发生错误。请重试或直接联系我们：info@dynamia.ai。",
+      "nodeCountOptions": {
+        "small": "少于10个",
+        "medium": "10-50个",
+        "large": "50-200个",
+        "enterprise": "超过200个"
+      },
+      "gpuCountOptions": {
+        "small": "1-10个",
+        "medium": "10-50个",
+        "large": "50-200个",
+        "enterprise": "超过200个"
+      }
+    },
+    "trustedBy": {
+      "title": "行业领导者的信赖选择",
+      "description": "各行业的领先组织都依靠Kantaloupe高效管理其异构计算资源。"
+    }
+  },
+  "cases": {
+    "telecomGpu": {
+      "title": "电信运营商GPU虚拟化案例研究",
+      "subtitle": "某领先电信运营商如何利用HAMi实现GPU虚拟化与异构设备管理",
+      "overview": {
+        "title": "客户概述",
+        "description": "亚洲某大型电信运营商面临着网络运营、客户服务系统和增值服务中对AI/ML能力日益增长的需求。该公司拥有超过2亿用户，业务遍及多个地区，需要一种高效的方式来管理其不断扩展的GPU基础设施。",
+        "keyPoints": [
+          "大规模GPU资源池",
+          "多租户隔离",
+          "高性能与低延迟"
+        ]
+      },
+      "challenge": {
+        "title": "挑战与解决方案",
+        "subtitle": "关键挑战",
+        "points": [
+          "GPU资源利用率低（低于30%）",
+          "多个孤立集群的管理复杂性",
+          "工作负载需求波动",
+          "硬件采购成本高"
+        ]
+      },
+      "solution": {
+        "subtitle": "HAMi解决方案",
+        "points": [
+          "细粒度GPU共享与虚拟化",
+          "统一集群管理界面",
+          "智能工作负载调度",
+          "硬件加速隔离"
+        ]
+      },
+      "architecture": {
+        "title": "实施架构",
+        "description": "HAMi解决方案提供了全面的虚拟化层，实现了异构GPU资源的统一管理，优化了调度和资源分配。"
+      },
+      "results": {
+        "title": "成果与收益",
+        "items": [
+          {
+            "title": "资源利用率提升",
+            "value": "80%",
+            "description": "GPU资源利用率显著提高"
+          },
+          {
+            "title": "成本降低",
+            "value": "40%",
+            "description": "硬件与运营成本大幅减少"
+          },
+          {
+            "title": "响应时间",
+            "value": "90%",
+            "description": "服务部署与响应时间显著缩短"
+          }
+        ]
+      },
+      "cta": {
+        "title": "变革您的GPU基础设施",
+        "description": "了解HAMi如何帮助您的组织通过高效的GPU虚拟化和异构计算管理实现类似的成果。",
+        "button": "联系我们"
+      }
+    },
+    "sfTechnologyEffectiveGpu": {
+      "title": "顺丰科技 × HAMi | 提升 AI 效率并大幅削减成本",
+      "subtitle": "探索顺丰科技如何基于开源 HAMi 框架，通过其 EffectiveGPU 技术实践，深度整合异构算力虚拟化与高效调度能力，在 AI 大模型推理、语音识别等关键场景实现生产落地，显著提升 GPU 利用率，实现降本增效，并推动 HAMi 开源生态发展。",
+      "overview": {
+        "title": "公司概述",
+        "description": "顺丰科技是顺丰速运集团的科技板块，作为中国领先的物流科技公司，专注于为物流、AI 和云计算服务开发创新解决方案。",
+        "keyPoints": [
+          "领先的物流科技服务提供商",
+          "广泛的 AI 和机器学习应用",
+          "大规模 GPU 基础设施需求",
+          "专注于成本优化和效率提升"
+        ]
+      },
+      "challenge": {
+        "title": "传统 GPU 管理模式难以为继",
+        "subtitle": "核心痛点",
+        "description": "传统 GPU 使用方式（如整卡独占）导致 GPU 在推理等轻负载场景\"跑不满\"，资源浪费严重。",
+        "points": [
+          "资源利用率低：GPU 平均利用率长期低于 30%，尤其是在推理和测试场景，算力和显存空置问题尤为突出。",
+          "调度粒度粗：缺乏细粒度的资源切分与共享能力，难以实现多任务并发与资源复用。",
+          "异构适配困难：GPU、NPU、国产 AI 芯片等多类设备混布，调度系统面临生态碎片化与管理复杂度攀升。",
+          "影响 ROI：这些问题直接影响 AI 服务的部署灵活性与算力基础设施的 ROI（投资回报率）。"
+        ]
+      },
+      "solution": {
+        "title": "破局之路：EffectiveGPU 技术实践",
+        "subtitle": "基于 HAMi 的创新",
+        "description": "面对挑战，顺丰科技团队基于开源异构算力调度框架 HAMi，并结合自身业务场景需求，推出了 EffectiveGPU 技术方案。",
+        "objective": "目标是构建高效、灵活、统一的 GPU 资源池化与调度管理体系，解决资源利用率低、管理复杂的问题。",
+        "innovations": [
+          {
+            "title": "GPU 池化与虚拟化",
+            "description": "将分散的 GPU 资源整合为统一的资源池，通过虚拟化技术实现资源的按需分配，此能力基于并拓展了 HAMi 的虚拟化基础。"
+          },
+          {
+            "title": "细粒度资源切分",
+            "description": "支持按核心利用率（算力）和显存容量进行精确切分，允许单个 GPU 卡同时服务于多个不同需求的应用，打破整卡独占的限制，这得益于 HAMi 的灵活切分机制。"
+          },
+          {
+            "title": "弹性资源超配",
+            "description": "引入显存和算力的双维度超分技术（如高达200%的显存超分比），结合优先级调度，进一步压榨 GPU 潜力，在保障高优先级任务 QoS 的前提下运行更多任务。"
+          },
+          {
+            "title": "统一管理与调度",
+            "description": "提供统一的调度接口，抽象屏蔽底层硬件差异，支持包括国产 GPU 在内的异构资源统一纳管和高效调度，这与 HAMi 构建统一抽象驱动框架的理念一致。"
+          }
+        ]
+      },
+      "results": {
+        "title": "显著成效：资源利用率大幅提升，降本效果显著",
+        "description": "方案已在顺丰科技 AI 平台完成多场景落地，取得显著成果。",
+        "items": [
+          {
+            "title": "大模型推理服务",
+            "value": "28 张卡 → 65 个服务",
+            "description": "使用 28 张 GPU 卡部署 65 个服务，节省 37 张卡"
+          },
+          {
+            "title": "测试服务集群",
+            "value": "6 张卡 → 19 个服务",
+            "description": "使用 6 张测试用 GPU 卡部署 19 个服务，节省 13 张卡"
+          },
+          {
+            "title": "语音识别等业务",
+            "value": "实时性保障",
+            "description": "依托优先级调度与资源超分，确保关键任务实时性"
+          },
+          {
+            "title": "国产算力适配",
+            "value": "多厂商支持",
+            "description": "已适配昇腾、昆仑等国产 AI 芯片，具备完整调度支持，此兼容性部分得益于 HAMi 的异构兼容设计"
+          },
+          {
+            "title": "性能影响",
+            "value": "仅下降 0.5%",
+            "description": "添加池化层后最低仅下降 0.5% 性能"
+          }
+        ]
+      },
+      "hamiIntegration": {
+        "title": "深度融合 HAMi 生态，共筑高效算力底座",
+        "description": "EffectiveGPU 技术的成功实践，离不开与开源异构算力调度框架 HAMi 的深度融合。",
+        "points": [
+          "EffectiveGPU 技术架构深度集成了 HAMi 在异构算力虚拟化、多元异构 GPU 高效调度、统一管理及可观测性等领域的核心能力。",
+          "特别在国产 GPU 的管理与调度方面，正是通过集成 HAMi 生态，构建了统一的抽象驱动框架与跨架构调度模型，实现了对包括华为昇腾、百度昆仑等在内的国产 AI 算力平台的良好适配和高效利用。",
+          "EffectiveGPU 方案在虚拟化接口、调度接口以及异构 GPU 兼容性上，均采用了兼容 HAMi 生态的设计，确保了技术的平滑接入和应用的无缝运行。"
+        ]
+      },
+      "validation": {
+        "title": "验证 HAMi 价值，推动开源异构算力调度走向成熟",
+        "description": "顺丰科技 EffectiveGPU 的成功落地，是对 HAMi 技术理念和工程价值的再一次有力验证。",
+        "points": [
+          "证明 HAMi 在灵活可靠虚拟化、高效调度、统一管理和可观测性等关键能力，完全有能力支撑大型企业在复杂生产环境中的实际需求。",
+          "HAMi 作为 CNCF Sandbox & CNAI landscape 项目，此次实践为其进一步推动行业标准化建设与场景落地积累了宝贵经验。"
+        ]
+      },
+      "quote": {
+        "text": "通过与 HAMi 开源社区的紧密合作及基于其框架的二次创新，EffectiveGPU 帮助我们显著提升了 GPU 资源效能，降低了运营成本。这是开源协同与企业实践共赢的典范。",
+        "author": "顺丰科技 AI 平台负责人",
+        "position": "顺丰科技 AI 平台负责人"
+      },
+      "conclusion": {
+        "title": "展望未来",
+        "description": "顺丰科技通过基于 HAMi 的 EffectiveGPU 方案，有效解决了 GPU 资源管理的核心痛点，实现了降本增效。展望未来，HAMi 生态将吸引更多行业用户，共同促进异构算力生态的繁荣。"
+      },
+      "companyCard": {
+        "name": "顺丰科技",
+        "description": "中国领先的物流科技服务提供商"
+      },
+      "cta": {
+        "exploreHami": "探索 HAMi",
+        "contactUs": "联系我们"
+      }
+    },
+    "prepEduHami": {
+      "title": "PREP EDU × HAMi｜异构 GPU 智能调度，全面提升 AI 服务效率",
+      "subtitle": "探索PREP EDU 基于 HAMi，在 Kubernetes（RKE2）生产环境实现异构 GPU 虚拟化与智能调度，解决了多型号显卡利用率低、显存冲突、资源隔离不足等痛点。HAMi 的 vGPU 精细化分配、GPU 类型感知调度、透明设备虚拟化与 Prometheus 监控体系，帮助PREP EDU 在大规模 AI 推理场景中显著提升资源利用率与运维效率。",
+      "overview": {
+        "title": "公司概述",
+        "description": "PREP EDU 是东南亚增长迅速的教育科技公司，专注于以人工智能重塑语言学习与考试备考体验。",
+        "keyPoints": [
+          "AI 驱动的跨境考试备考服务领航者",
+          "专注 AI 个性化学习场景的技术落地与体验优化",
+          "致力于AI 教学场景下的算力管理痛点",
+          "注重开源技术教学与科研实践的融合"
+        ]
+      },
+      "challenge": {
+        "title": "异构 GPU 调度复杂度不断攀升",
+        "description": "在 PREP EDU 的大规模 AI 推理业务中，传统的 GPU 使用模式已无法满足快速增长的服务需求，尤其是在混合显卡（RTX 4070 / RTX 4090）环境下，资源浪费、调度不均衡与兼容性问题愈发明显。",
+        "points": [
+          "GPU 利用率偏低：静态整卡分配方式使得推理服务难以吃满 GPU 资源，平均利用率长期低至 10–20%，大量显存与算力处于闲置状态。",
+          "资源冲突频发：缺乏有效的隔离与调度机制时，多任务竞争显存常导致占用飙升至 90–95%，引发应用崩溃与推理中断，影响业务稳定性。",
+          "异构调度困难：4070 与 4090 并存的环境中，不同项目常需指定 GPU 类型，但缺乏统一的分配能力，使资源调度复杂且易产生调度失配问题。",
+          "兼容性门槛高：新方案需与现有 RKE2、GPU Operator、containerd 等组件完全兼容，任何不透明或侵入式的机制都可能增加维护成本或破坏现有业务链路。"
+        ]
+      },
+      "solution": {
+        "title": "破局之路：基于 HAMi 的高效 GPU Orchestration 实践",
+        "description": "面对异构 GPU 调度复杂、利用率低以及资源隔离不足等核心挑战，PREP EDU 工程团队基于开源异构算力调度框架 HAMi，并结合自身大规模 AI 推理业务场景，构建了新一代的 GPU 虚拟化与智能调度体系。",
+        "objective": "目标是在现有 RKE2 + GPU Operator + NVIDIA 多型号 GPU 的生产环境中，实现 稳定、高效、无侵入 的 GPU 资源管理能力，全面解决资源浪费、冲突频发、扩展困难等问题。",
+        "innovations": [
+          {
+            "title": "虚拟化与 GPU 划分",
+            "description": "针对多个推理服务，根据 NLP token 长度与服务需求为每个工作负载设置特定限制。"
+          },
+          {
+            "title": "异构 GPU 管理",
+            "description": "使用 HAMi，可以按 GPU 类型分配工作负载（例如将某些项目仅运行在 RTX 4070 或 4090 上），通过 annotation 实现基于资源选择的兼容性与效率提升。"
+          },
+          {
+            "title": "无缝应用集成",
+            "description": "通过透明设备虚拟化，在无需修改应用的情况下启用 GPU 共享与隔离。"
+          },
+          {
+            "title": "GPU 指定能力",
+            "description": "能够按 GPU UUID 分配任务（例如在某张 24GB 的 RTX 4090 上运行多个进程）。"
+          },
+          {
+            "title": "兼容性",
+            "description": "HAMi 和 NVIDIA GPU Operator 能在其环境中无冲突共存，两者均被配置为使用 containerd。同时借助 Prometheus 实现监控与告警，并与 Kubernetes（RKE2）及 containerd 无缝集成。"
+          }
+        ]
+      },
+      "results": {
+        "title": "显著成效：GPU 利用率全面提升，推理稳定性大幅增强",
+        "description": "方案已在 PREP EDU 的大规模 AI 推理平台完成生产验证，在接入 HAMi 后，PREP EDU 已完成 GPU 设备的解耦和自动组织：",
+        "items": [
+          {
+            "title": "生产环境使用",
+            "value": "1+ 年",
+            "description": "在生产环境中稳定使用 HAMi 超过 1 年"
+          },
+          {
+            "title": "GPU 基础设施优化",
+            "value": "90%",
+            "description": "通过 HAMi 优化了 90% 的 GPU 基础设施"
+          },
+          {
+            "title": "运维痛点减少",
+            "value": "50%",
+            "description": "减少了 50% 由 GPU 管理引发的运维痛点"
+          }
+        ]
+      },
+      "hamiIntegration": {
+        "title": "深度融合 HAMi 生态，共筑高效 GPU 推理底座",
+        "description": "PREP EDU 在 GPU 虚拟化与智能调度方面的成功实践，离不开与开源异构算力调度框架 HAMi 的深度集成。",
+        "points": [
+          "在生产环境中，PREP EDU 的 GPU Orchestration 架构充分利用了 HAMi 在设备虚拟化、vGPU 精细切分、异构调度与可观测性上的核心能力，使多型号 GPU 能够在无需修改应用的前提下实现高效共享与统一管理。",
+          "在调度与资源管理层面，PREP EDU 通过集成 HAMi 的透明虚拟化、annotation 调度能力与 UUID 精准绑定机制，实现了跨 RTX 4070 与 4090 的一致性调度体验，使 GPU 类型可感知、资源可按需分配、多实例可并发运行。同时，依托 HAMi 与 GPU Operator、RKE2、containerd 的无缝兼容性，PREP EDU 能够在现有架构下平滑接入虚拟化调度能力，并将新节点自动纳入统一资源池中。",
+          "在落地实践方面，PREP EDU 在生产环境中的长期探索——包括 Docker 场景下的自托管模式、节点自动纳管流程以及与 GPU Operator 的协同优化，进一步拓展了 HAMi 的应用边界，使其在真实业务规模下展现出更高的灵活性与工程成熟度。"
+        ]
+      },
+      "conclusion": {
+        "title": "展望未来",
+        "description": "PREP EDU 通过基于 HAMi 的 GPU 虚拟化与智能调度方案，成功解决了多型号 GPU 管理的核心痛点，显著提升了推理效率与资源利用率。展望未来，HAMi 生态将吸引更多行业用户，共同促进异构算力生态的繁荣。"
+      },
+      "companyCard": {
+        "name": "PREP EDU",
+        "description": "东南亚增长迅速的教育科技公司"
+      },
+      "cta": {
+        "exploreHami": "探索 HAMi",
+        "contactUs": "联系我们"
+      }
+    }
+  },
+  "common": {
+    "readMore": "阅读更多",
+    "viewAll": "查看全部",
+    "useCompanyEmail": "请使用公司邮箱提交表单。",
+    "submitting": "提交中..."
+  }
+} 
