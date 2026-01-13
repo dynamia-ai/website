@@ -23,7 +23,7 @@ const GitHubStars: React.FC<GitHubStarsProps> = ({
         
         if (!response.ok) {
           if (process.env.NODE_ENV === 'development') {
-            console.error(`GitHub API 请求失败: ${response.status}`);
+            console.error(`GitHub API 请求失败：${response.status}`);
           }
           return;
         }
@@ -32,7 +32,7 @@ const GitHubStars: React.FC<GitHubStarsProps> = ({
         setStars(data.stargazers_count);
       } catch (err) {
         if (process.env.NODE_ENV === 'development') {
-          console.error('获取 GitHub Stars 失败:', err);
+          console.error('获取 GitHub Stars 失败：', err);
         }
       } finally {
         setIsLoaded(true);
@@ -41,7 +41,7 @@ const GitHubStars: React.FC<GitHubStarsProps> = ({
 
     fetchStars();
     
-    // 每10分钟刷新一次数据
+    // 每 10 分钟刷新一次数据
     const intervalId = setInterval(fetchStars, 10 * 60 * 1000);
     
     return () => clearInterval(intervalId);
@@ -55,7 +55,7 @@ const GitHubStars: React.FC<GitHubStarsProps> = ({
   // 使用占位符数字，确保组件尺寸一致
   const displayStars = stars !== null ? formatNumber(stars) : '0';
   
-  // 使用内联样式代替外部CSS
+  // 使用内联样式代替外部 CSS
   const containerStyle: React.CSSProperties = {
     display: 'inline-flex',
     alignItems: 'center',
