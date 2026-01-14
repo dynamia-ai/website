@@ -1,6 +1,6 @@
 ---
 title: "从顺丰科技到 AWS | 密瓜智能 HAMi 项目在 KubeCon China 广受行业巨头关注"
-coverTitle: "从顺丰科技到AWS | 密瓜智能HAMi项目在KubeConChina广受行业巨头关注"
+coverTitle: "从顺丰科技到 AWS | 密瓜智能 HAMi 项目在 KubeConChina 广受行业巨头关注"
 slug: "kubecon-china-2025-hami-spotlight"
 date: "2025-06-26"
 excerpt: "KubeCon China 2025 盛大落幕，密瓜智能 HAMi 项目作为 CNCF Sandbox 开源项目大放异彩，获得从顺丰科技到 AWS 等行业巨头的高度关注和认可。"
@@ -29,7 +29,7 @@ HAMi 的核心定位之一是提供一个开源、细粒度（支持算力百分
 ![尹玉演讲](/images/blog/kubecon-china-2025/speaker-yin-yu.png)
 *尹玉（Dynamia 密瓜智能产品负责人，核心维护者 @HAMi）发表演讲*
 
-### 议题二：智能 GPU管理：AI工作负载的动态池化、共享和调度
+### 议题二：智能 GPU 管理：AI 工作负载的动态池化、共享和调度
 
 此议题深入探讨了在 K8s 集群中 GPU 管理面临的 "不可能三角" 困境——即难以同时满足高性能、强灵活性和高复用性，导致集群 GPU 利用率通常极低，因为 K8s 倾向于独占分配 GPU。现有的 NVIDIA 方案也往往配置复杂或缺乏灵活性。
 
@@ -49,7 +49,7 @@ HAMi 提出的解决方案旨在实现 GPU 的智能管理、动态池化、共�
 ### 故事二：与 CNCF CTO 的深度对话
 
 ![与 CNCF CTO 合影](/images/blog/kubecon-china-2025/cncf-cto-meeting.png)
-*（从左至右） Keith Chan (Linux Foundation APAC, CNCF China Director)、Chris Aniszczyk (CNCF CTO)、李孟轩、尹玉、陈文*
+*（从左至右）Keith Chan (Linux Foundation APAC, CNCF China Director)、Chris Aniszczyk (CNCF CTO)、李孟轩、尹玉、陈文*
 
 密瓜智能的 HAMi Maintainer 团队与 CNCF CTO Chris Aniszczyk 进行了深入的交流。Chris 对 HAMi 项目表达了高度的认可与支持，并从社区发展的战略高度，给出了极具价值的建议：
 
@@ -102,9 +102,9 @@ HAMi 提出的解决方案旨在实现 GPU 的智能管理、动态池化、共�
 
 面对挑战，社区正在从多个层面寻求突破，形成了一套组合拳：
 
-**Kubernetes 成为 AI基础设施的绝对核心**：无论是利用 Kubespray 在裸金属上构建高性能集群，还是通过 Operator 实现自动化运维（如 Vivo 内部的 KubeOps 实践），K8s 都提供了统一、可移植、高可用的底座。
+**Kubernetes 成为 AI 基础设施的绝对核心**：无论是利用 Kubespray 在裸金属上构建高性能集群，还是通过 Operator 实现自动化运维（如 Vivo 内部的 KubeOps 实践），K8s 都提供了统一、可移植、高可用的底座。
 
-**GPU资源管理的精细化与虚拟化**：
+**GPU 资源管理的精细化与虚拟化**：
 
 - *硬件层*：MIG 和 MPS 作为 NVIDIA 提供的基础切分技术，分别适用于训练和推理场景。
 
@@ -116,7 +116,7 @@ HAMi 提出的解决方案旨在实现 GPU 的智能管理、动态池化、共�
 
 - *LLM 专用编排*：针对 LLM 推理的 P/D 分离（Prefill/Decode）架构，需要更复杂的角色组编排（Role Group Orchestration）来协同不同角色的 Pod，并感知拓扑结构以优化性能。
 
-**LLM推理性能的全栈优化**：
+**LLM 推理性能的全栈优化**：
 
 AIBrix 项目展示了全栈优化的威力，通过 KVCache Offloading 将 KV Cache 卸载到更低成本的存储（如 DRAM）来降低对 GPU 高带宽内存（HBM）的占用，并以此优化首字延迟 (TTFT)，通过 P/D 分离降低后续生成延迟（TPOT），尤其在处理长输出时能提升性能稳定性。并通过 AIGateway 实现基于令牌和缓存感知的智能路由。LoRA 的高密度部署方案也为管理海量微调模型提供了降本增效的利器，尤其适用于长尾模型。
 
