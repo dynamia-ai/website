@@ -7,47 +7,57 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Company() {
-  const { t } = useTranslation();
-  
-  // 获取团队成员
-  const teamMembers = [
-    {
-      name: t('company.team.members.0.name'),
-      position: t('company.team.members.0.position'),
-      image: "/images/leadership/zx.png",
-      github: "https://github.com/wawa0210"
-    },
-    {
-      name: t('company.team.members.1.name'),
-      position: t('company.team.members.1.position'),
-      image: "/images/leadership/lmx.png",
-      github: "https://github.com/archlitchi"
-    },
-    {
-      name: t('company.team.members.2.name'),
-      position: t('company.team.members.2.position'),
-      image: "/images/leadership/yy.jpg",
-      github: "https://github.com/Nimbus318"
-    },
-    {
-      name: t('company.team.members.3.name'),
-      position: t('company.team.members.3.position'),
-      image: "/images/leadership/cw.png",
-      github: "https://github.com/calvin0327"
-    },
-    {
-      name: t('company.team.members.4.name'),
-      position: t('company.team.members.4.position'),
-      image: "/images/leadership/jimmy.png",
-      github: "https://github.com/rootsongjc"
-    },
-    {
-      name: t('company.team.members.5.name'),
-      position: t('company.team.members.5.position'),
-      image: "/images/leadership/reza.png",
-      github: "https://github.com/fishman"
+  const { t, i18n } = useTranslation();
+
+  // 根据语言获取不同的团队成员配置
+  const getTeamMembers = () => {
+    const members = [
+      {
+        name: t('company.team.members.0.name'),
+        position: t('company.team.members.0.position'),
+        image: "/images/leadership/zx.png",
+        github: "https://github.com/wawa0210"
+      },
+      {
+        name: t('company.team.members.1.name'),
+        position: t('company.team.members.1.position'),
+        image: "/images/leadership/lmx.png",
+        github: "https://github.com/archlitchi"
+      },
+      {
+        name: t('company.team.members.2.name'),
+        position: t('company.team.members.2.position'),
+        image: "/images/leadership/yy.jpg",
+        github: "https://github.com/Nimbus318"
+      },
+      {
+        name: t('company.team.members.3.name'),
+        position: t('company.team.members.3.position'),
+        image: "/images/leadership/cw.png",
+        github: "https://github.com/calvin0327"
+      },
+      {
+        name: t('company.team.members.4.name'),
+        position: t('company.team.members.4.position'),
+        image: "/images/leadership/jimmy.png",
+        github: "https://github.com/rootsongjc"
+      }
+    ];
+
+    // 仅在英文版本添加 Reza
+    if (i18n.language === 'en') {
+      members.push({
+        name: t('company.team.members.5.name'),
+        position: t('company.team.members.5.position'),
+        image: "/images/leadership/reza.png",
+        github: "https://github.com/fishman"
+      });
     }
-  ];
+
+    return members;
+  };
+
+  const teamMembers = getTeamMembers();
 
   // 将段落文本内容分割成段落数组
   const formatParagraphs = (text: string): string[] => {

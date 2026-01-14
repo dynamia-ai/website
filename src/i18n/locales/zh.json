@@ -750,8 +750,7 @@
         { "name": "李孟轩", "position": "首席架构师 & 联合创始人 & HAMi 项目创始人", "image": "CTO" },
         { "name": "尹玉", "position": "产品负责人 & HAMi 核心维护者", "image": "COO" },
         { "name": "陈文", "position": "技术负责人", "image": "CPO" },
-        { "name": "宋净超", "position": "开源生态 VP", "image": "jimmy" },
-        { "name": "Reza Jelveh", "position": "全球生态系统首席架构师", "image": "reza" }
+        { "name": "宋净超", "position": "开源生态 VP", "image": "jimmy" }
       ]
     },
     "careers": {
