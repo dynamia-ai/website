@@ -389,6 +389,22 @@ body {
   margin: 2rem 0;
 }
 
+/* Blog image styles with lightbox support */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.blog-content img:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+}
+
 .menu-item a:hover {
   background-color: var(--service-bg-hover, #F7FAFF);
 }

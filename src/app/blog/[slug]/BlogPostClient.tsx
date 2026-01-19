@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -12,6 +12,7 @@ import TableOfContents from '@/components/TableOfContents';
 import DynamicBlogCover from '@/components/DynamicBlogCover';
 import BlogShareButtons from '@/components/BlogShareButtons';
 import BlogAIShareSection from '@/components/BlogAIShareSection';
+import ImageLightbox from '@/components/ImageLightbox';
 
 interface BlogPostClientProps {
   enPost: (BlogPost & { content: string }) | null;
@@ -22,6 +23,10 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
   const { i18n } = useTranslation();
   const router = useRouter();
   const currentLocale = i18n.language as 'en' | 'zh';
+
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState({ src: '', alt: '' });
   
   // Select the appropriate post based on language
   const post = currentLocale === 'zh' ? zhPost : enPost;
@@ -209,6 +214,38 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     };
   }, [displayPost, currentLocale]);
 
+  // Handle image clicks for lightbox
+  useEffect(() => {
+    const container = document.querySelector('.blog-content');
+    if (!container) {
+      return;
+    }
+
+    // Add cursor pointer style to all images
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      (img as HTMLImageElement).style.cursor = 'pointer';
+    });
+
+    // Use event delegation for better performance and to avoid cleanup issues
+    const handleImageClick = (e: Event) => {
+      const target = e.target as HTMLImageElement;
+      if (target.tagName === 'IMG' && container.contains(target)) {
+        setLightboxImage({
+          src: target.src,
+          alt: target.alt || 'Image'
+        });
+        setLightboxOpen(true);
+      }
+    };
+
+    container.addEventListener('click', handleImageClick);
+
+    return () => {
+      container.removeEventListener('click', handleImageClick);
+    };
+  }, []);
+
   // 如果当前语言的博客不存在，但另一个语言的博客存在，显示加载状态（正在重定向）
   // 只有在两个语言的博客都不存在时，才显示 "Post Not Found"
   if (!post && (enPost || zhPost)) {
@@ -376,6 +413,14 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
           </aside>
         </div>
       </article>
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        isOpen={lightboxOpen}
+        src={lightboxImage.src}
+        alt={lightboxImage.alt}
+        onClose={() => setLightboxOpen(false)}
+      />
     </MainLayout>
   );
 } 
