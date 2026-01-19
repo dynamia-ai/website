@@ -9,8 +9,8 @@
   --primary: #0FD05D; /* 主色调 - 绿色 */
   --primary-dark: #0CAB4D; /* 深色版本 - 用于悬停状态 */
   --primary-darker: #0A8F41; /* 更深色版本 - 用于激活状态 */
-  --primary-light: rgba(15, 208, 93, 0.1); /* 淡色版本 - 10%透明度 */
-  --primary-lighter: rgba(15, 208, 93, 0.15); /* 更淡色版本 - 15%透明度 */
+  --primary-light: rgba(15, 208, 93, 0.1); /* 淡色版本 - 10% 透明度 */
+  --primary-lighter: rgba(15, 208, 93, 0.15); /* 更淡色版本 - 15% 透明度 */
   
   /* 文字在主色调背景上的颜色 */
   --on-primary: #ffffff;
@@ -93,7 +93,7 @@ body {
   transform-origin: top left;
 }
 
-/* 卡片hover效果 - 已移除浮动动画 */
+/* 卡片 hover 效果 - 已移除浮动动画 */
 .card-hover {
   transition: background-color 0.2s ease-out;
 }
@@ -105,7 +105,7 @@ body {
 }
 */
 
-/* HAMi菜单自定义样式 */
+/* HAMi 菜单自定义样式 */
 .hami-menu-item:hover {
   background-color: var(--primary-lighter);
 }
@@ -391,18 +391,45 @@ body {
 
 /* Blog image styles with lightbox support */
 .blog-content img {
+  /* Desktop: allow images to be larger but constrained */
   max-width: 100%;
+  max-height: 80vh; /* Limit height to 80% of viewport height */
   height: auto;
   border-radius: 0.5rem;
   margin: 1.5rem 0;
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  /* Ensure images don't exceed their natural size */
+  object-fit: contain;
+  /* Center very tall images */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blog-content img:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transform: scale(1.02);
+}
+
+/* Mobile optimization for blog images */
+@media (max-width: 768px) {
+  .blog-content img {
+    max-width: 100%;
+    margin: 1rem 0;
+    border-radius: 0.375rem;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .blog-content img {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 }
 
 .menu-item a:hover {
