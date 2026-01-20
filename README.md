@@ -1,84 +1,90 @@
-# Dynamia.ai website
+# Dynamia AI Website
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Official website for Dynamia AI, built with Next.js 15.
+
+## Tech Stack
+
+- **Framework:** Next.js 15.2.8 with App Router
+- **React:** 19.0.0
+- **Language:** TypeScript 5 (strict mode)
+- **Styling:** Tailwind CSS v4
+- **Animations:** Framer Motion
+- **i18n:** react-i18next (English/Chinese)
+- **Fonts:** Geist Sans & Geist Mono
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+```
+
+### Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Build and Deployment
-
-### Docker
-
-This project includes a Dockerfile for containerization. To build and run the Docker image locally:
+## Available Scripts
 
 ```bash
-# Build the Docker image
-docker build -t website .
+# Development
+npm run dev              # Start development server
 
-# Run the container
-docker run -p 3000:3000 website
+# Building
+npm run build            # Production build
+npm run build-legacy     # Production build with increased memory (if needed)
+
+# Production
+npm start                # Start production server
+
+# Code Quality
+npm run lint             # Run ESLint
+
+# Search
+npm run algolia:index    # Generate Algolia search index
 ```
 
-### GitHub Actions
+## Project Structure
 
-The project includes a GitHub Actions workflow in `.github/workflows/docker-build.yml` that:
-
-1. Builds the application
-2. Creates a Docker image
-3. Pushes the image to GitHub Container Registry (ghcr.io)
-
-The workflow is triggered on:
-
-- Push to the main branch (tagged as 'latest')
-- Push of tags starting with 'v' (tagged with the version number)
-- Manual workflow dispatch
-
-### Kubernetes Deployment with Helm
-
-A Helm chart is provided in the `charts` directory for deploying to Kubernetes:
-
-```bash
-# Create image pull secret (if not already created)
-kubectl create secret docker-registry ghcr-secret \
-  --docker-server=ghcr.io \
-  --docker-username=YOUR_GITHUB_USERNAME \
-  --docker-password=YOUR_GITHUB_TOKEN \
-  --docker-email=YOUR_EMAIL
-
-# Install/Upgrade the application
-helm upgrade --install website ./charts/website
+```text
+src/
+├── app/              # Next.js App Router pages
+├── components/       # Reusable React components
+├── i18n/            # Internationalization (en.json, zh.json)
+├── lib/             # Utility functions
+└── types/           # TypeScript type definitions
 ```
 
-For more detailed information about the Helm chart, see the [chart README](./charts/website/README.md).
+**Path Alias:** `@/*` maps to `./src/*`
+
+## Deployment
+
+The easiest way to deploy is using [Vercel](https://vercel.com/).
+
+Check the [Next.js deployment documentation](https://nextjs.org/docs/app/getting-started/deploying) for more details.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js GitHub Repository](https://github.com/vercel/next.js)
+- [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4-alpha)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development Guidelines
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project follows specific coding standards. See [AGENTS.md](./AGENTS.md) for:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Component structure patterns
+- Import conventions
+- TypeScript best practices
+- Styling guidelines
+- i18n usage rules
