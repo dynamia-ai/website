@@ -603,11 +603,6 @@
     "blog": {
       "title": "Blog",
       "description": "Insights, tutorials, and news from our team",
-      "filterByTags": "Filter by Tags",
-      "allTags": "All Tags",
-      "more": "More",
-      "less": "Less",
-      "showingPostsTagged": "Showing posts tagged \"{{tag}}\" ({{count}} posts)",
       "tableOfContents": "On this page",
       "aiShare": {
         "exploreTitle": "Explore with AI",

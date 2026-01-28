@@ -10,7 +10,6 @@ import { formatDate } from '@/lib/blog-client';
 import { BlogPost } from '@/types/blog';
 import TableOfContents from '@/components/TableOfContents';
 import DynamicBlogCover from '@/components/DynamicBlogCover';
-import BlogShareButtons from '@/components/BlogShareButtons';
 import BlogAIShareSection from '@/components/BlogAIShareSection';
 import ImageLightbox from '@/components/ImageLightbox';
 
@@ -332,19 +331,6 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
               </time>
             </div>
 
-            {displayPost.tags && displayPost.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
-                {displayPost.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-block bg-primary-lighter text-gray-700 text-sm font-semibold px-3.5 py-1.5 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-
             {/* Excerpt */}
             {displayPost.excerpt && (
               <div className="mb-8 relative pl-6 border-l-4 border-gray-300">
@@ -361,12 +347,6 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 variant="detail"
               />
             </div>
-
-            {/* Share Buttons */}
-            <BlogShareButtons 
-              title={displayPost.title}
-              url={getBlogPostPath(displayPost.slug)}
-            />
           </motion.header>
 
               {/* Content */}

@@ -635,11 +635,6 @@
     "blog": {
       "title": "博客",
       "description": "来自我们团队的见解、教程和新闻",
-      "filterByTags": "按标签筛选",
-      "allTags": "全部",
-      "more": "更多",
-      "less": "收起",
-      "showingPostsTagged": "显示标签为 \"{{tag}}\" 的文章 ({{count}} 篇)",
       "tableOfContents": "本页目录",
       "aiShare": {
         "exploreTitle": "用 AI 探索",

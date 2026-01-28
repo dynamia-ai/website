@@ -124,7 +124,7 @@ export default function BlogAIShareSection({ title, url }: BlogAIShareSectionPro
               <button
                 key={platform.key}
                 onClick={() => window.open(platform.url, '_blank', 'noopener,noreferrer')}
-                className={`group relative flex items-center gap-3 rounded-xl border border-gray-200/80 bg-white/80 backdrop-blur-sm p-4 text-left transition-all duration-300 ${platform.hoverColors} hover:shadow-lg hover:-translate-y-0.5 hover:border-opacity-100 hover:bg-white`}
+                className={`group relative flex cursor-pointer items-center gap-3 rounded-xl border border-gray-200/80 bg-white/80 backdrop-blur-sm p-4 text-left transition-all duration-300 ${platform.hoverColors} hover:shadow-lg hover:-translate-y-0.5 hover:border-opacity-100 hover:bg-white`}
               >
                 <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${platform.bgColor} shadow-sm ring-1 ring-inset ring-black/5 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md`}>
                   <Image
@@ -164,7 +164,7 @@ export default function BlogAIShareSection({ title, url }: BlogAIShareSectionPro
             <button
               key={platform.key}
               onClick={() => window.open(platform.url, '_blank', 'noopener,noreferrer')}
-              className={`group inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-3.5 py-2 text-xs font-medium text-gray-700 transition-all duration-200 ${platform.hoverColors} hover:shadow-sm hover:-translate-y-0.5`}
+              className={`group inline-flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 bg-white px-3.5 py-2 text-xs font-medium text-gray-700 transition-all duration-200 ${platform.hoverColors} hover:shadow-sm hover:-translate-y-0.5`}
             >
               <Image
                 src={platform.icon}
