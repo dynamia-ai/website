@@ -61,12 +61,15 @@ const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 
 interface BlogListClientProps {
   enPosts: BlogPostMeta[];
   zhPosts: BlogPostMeta[];
+  enTags?: string[];
+  zhTags?: string[];
+  selectedTag?: string;
 }
 
-export default function BlogListClient({
-  enPosts,
-  zhPosts,
-}: BlogListClientProps) {
+export default function BlogListClient(
+  { enPosts, zhPosts, ..._unusedProps }: BlogListClientProps
+) {
+  void _unusedProps;
   const { t, i18n } = useTranslation();
   const currentLocale = i18n.language as 'en' | 'zh';
 

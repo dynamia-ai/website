@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 interface ImageLightboxProps {
   isOpen: boolean;
@@ -53,9 +54,12 @@ export default function ImageLightbox({ isOpen, src, alt, onClose }: ImageLightb
             className="relative max-w-[95vw] max-h-[95vh] p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
+            <Image
               src={src}
               alt={alt}
+              width={1200}
+              height={800}
+              unoptimized
               className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl cursor-pointer"
               onClick={onClose}
             />
