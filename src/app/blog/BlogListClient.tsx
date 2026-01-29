@@ -7,6 +7,10 @@ import MainLayout from '@/components/layout/MainLayout';
 import { BlogPostMeta } from '@/types/blog';
 import DynamicBlogCover from '@/components/DynamicBlogCover';
 import { formatDate } from '@/lib/blog-client';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+
+const POSTS_PER_PAGE = 9;
 
 // Animation variants
 const fadeIn = {
@@ -71,10 +75,35 @@ export default function BlogListClient(
 ) {
   void _unusedProps;
   const { t, i18n } = useTranslation();
+  const searchParams = useSearchParams();
   const currentLocale = i18n.language as 'en' | 'zh';
 
   // Get posts for current language
   const posts = currentLocale === 'zh' ? zhPosts : enPosts;
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Sync page with URL query param
+  useEffect(() => {
+    const pageParam = searchParams.get('page');
+    const pageFromUrl = pageParam ? parseInt(pageParam, 10) : 1;
+    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+    const validPage = Math.max(1, Math.min(pageFromUrl, totalPages || 1));
+    setCurrentPage(validPage);
+  }, [searchParams, posts.length]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const currentPosts = posts.slice(startIndex, endIndex);
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <MainLayout>
@@ -98,15 +127,92 @@ export default function BlogListClient(
 
           {/* Blog posts grid */}
           {posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post) => (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {currentPosts.map((post) => (
                 <BlogCard
                   currentLocale={currentLocale}
                   key={post.slug}
                   post={post}
                 />
-              ))}
-            </div>
+                ))}
+              </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="mt-12 flex justify-center items-center gap-2">
+                  <Link
+                    href={currentPage > 1 ? `?page=${currentPage - 1}` : '#'}
+                    onClick={(e) => {
+                      if (currentPage <= 1) e.preventDefault();
+                      else handlePageChange(currentPage - 1);
+                    }}
+                    className={`px-4 py-2 rounded-md border ${
+                      currentPage > 1
+                        ? 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                        : 'border-gray-200 text-gray-400 cursor-not-allowed'
+                    }`}
+                  >
+                    {currentLocale === 'zh' ? '上一页' : 'Previous'}
+                  </Link>
+
+                  <div className="flex gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                      // Show first page, last page, and pages around current page
+                      const showPage =
+                        page === 1 ||
+                        page === totalPages ||
+                        (page >= currentPage - 1 && page <= currentPage + 1);
+
+                      if (!showPage) {
+                        // Show ellipsis for hidden pages
+                        if (page === currentPage - 2 || page === currentPage + 2) {
+                          return (
+                            <span
+                              key={page}
+                              className="px-3 py-2 text-gray-400"
+                            >
+                              ...
+                            </span>
+                          );
+                        }
+                        return null;
+                      }
+
+                      return (
+                        <Link
+                          key={page}
+                          href={`?page=${page}`}
+                          onClick={() => handlePageChange(page)}
+                          className={`px-4 py-2 rounded-md border ${
+                            page === currentPage
+                              ? 'bg-primary text-white border-primary'
+                              : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                          }`}
+                        >
+                          {page}
+                        </Link>
+                      );
+                    })}
+                  </div>
+
+                  <Link
+                    href={currentPage < totalPages ? `?page=${currentPage + 1}` : '#'}
+                    onClick={(e) => {
+                      if (currentPage >= totalPages) e.preventDefault();
+                      else handlePageChange(currentPage + 1);
+                    }}
+                    className={`px-4 py-2 rounded-md border ${
+                      currentPage < totalPages
+                        ? 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                        : 'border-gray-200 text-gray-400 cursor-not-allowed'
+                    }`}
+                  >
+                    {currentLocale === 'zh' ? '下一页' : 'Next'}
+                  </Link>
+                </div>
+              )}
+            </>
           ) : (
             <div className="text-center py-12">
               <div className="max-w-md mx-auto">
@@ -137,7 +243,7 @@ export default function BlogListClient(
           )}
 
           {/* Newsletter CTA */}
-          {posts.length > 0 && (
+          {currentPosts.length > 0 && (
             <div className="mt-16 bg-gradient-to-r from-primary-light to-primary-lighter rounded-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 {currentLocale === 'zh' ? '订阅我们的博客' : 'Subscribe to our blog'}

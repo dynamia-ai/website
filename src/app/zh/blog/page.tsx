@@ -4,7 +4,7 @@ import BlogListClient from '../../blog/BlogListClient';
 export default async function ZhBlogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ tag?: string }>;
+  searchParams: Promise<{ tag?: string; page?: string }>;
 }) {
   const { tag } = await searchParams;
   
