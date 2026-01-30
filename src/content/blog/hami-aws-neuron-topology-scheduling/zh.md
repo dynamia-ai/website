@@ -6,6 +6,7 @@ date: "2025-11-11"
 excerpt: "深度解析 HAMi v2.7.0 如何实现对亚马逊云科技 Trainium 与 Inferentia 芯片的核心级共享与策略性拓扑调度，通过基于先验知识的调度算法，在保持性能稳定的同时显著降低管理成本。"
 author: "Dynamia"
 tags: ["HAMi", "AWS Neuron", "Trainium", "Inferentia", "拓扑调度", "核心级共享", "异构算力", "Kubernetes", "深度解析"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/hami-aws-neuron-topology/cover-zh.png"
 language: "zh"
 ---

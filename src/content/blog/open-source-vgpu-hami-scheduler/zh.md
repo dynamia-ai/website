@@ -6,6 +6,7 @@ date: "2025-07-25"
 excerpt: "本文为 HAMi 原理分析的第三篇，分析 hami-scheduler 工作流程。"
 author: 密瓜智能
 tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/gpu5/cover.jpg"
 language: "zh"
 ---
@@ -24,7 +25,7 @@ language: "zh"
 
 省流：
 
-**HAMi Webhook 、Scheduler 工作流程如下：**
+**HAMi Webhook、Scheduler 工作流程如下：**
 
 ![p1](/images/blog/gpu5/p1.jpg)
 
@@ -38,17 +39,17 @@ language: "zh"
 
 - 对于使用 vGPU 资源但指定了 nodeName 的 Pod，Webhook 会直接拒绝
 
-4. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，**但是 kube-scheduler 还会根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件**
+1. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，**但是 kube-scheduler 还会根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件**
 
 - 这个 Extender Scheduler 就是 hami-scheduler Pod 中的另一个 Container，该 Container 同时提供了 Webhook 和 Scheduler 相关 API。
 
 - 当 Pod 申请了 vGPU 资源时，kube-scheduler 就会根据配置以 HTTP 形式调用 Extender Scheduler 插件，这样就实现了自定义调度逻辑。
 
-5. Extender Scheduler 插件包含了真正的 hami 调度逻辑， 调度时根据节点剩余资源量进行打分选择节点
+1. Extender Scheduler 插件包含了真正的 hami 调度逻辑，调度时根据节点剩余资源量进行打分选择节点
 
 - 这里就包含了 spread & binpark 等 高级调度策略的实现
 
-6. 异步任务，包括 GPU 感知逻辑
+1. 异步任务，包括 GPU 感知逻辑
 
 - devicePlugin 中的后台 Goroutine 定时上报 Node 上的 GPU 资源并写入到 Node 的 Annoations
 
@@ -64,7 +65,7 @@ Hami-scheduler 主要是 Pod 的调度逻辑，从集群节点中为当前 Pod �
 
 Hami-scheduler 也是通过 Scheduler Extender 方式实现的。
 
-但是 HAMi 并没有直接扩展 default-scheduler，而是使用默认的 kube-scheduler 镜像额外启动了一个 scheduler,但是通过配置把名称指定为了 hami-scheduler。
+但是 HAMi 并没有直接扩展 default-scheduler，而是使用默认的 kube-scheduler 镜像额外启动了一个 scheduler，但是通过配置把名称指定为了 hami-scheduler。
 
 然后给这个 hami-scheduler 配置了 Extender，Extender 服务就是同 Pod 中的另一个 Container 启动的一个 http 服务。
 
@@ -250,7 +251,7 @@ extenders:
 
 参数解释：
 
-- urlPrefix: "https://127.0.0.1:443"：这是一个调度器扩展器的服务地址，Kubernetes 调度器会调用这个地址来请求外部调度逻辑。可以通过 HTTPS 访问。(External Scheduler 因为是和 kube-scheduler 部署在一个 Pod 里的，因此使用 127.0.0.1 进行访问)
+- urlPrefix: "<https://127.0.0.1:443"：这是一个调度器扩展器的服务地址，Kubernetes> 调度器会调用这个地址来请求外部调度逻辑。可以通过 HTTPS 访问。(External Scheduler 因为是和 kube-scheduler 部署在一个 Pod 里的，因此使用 127.0.0.1 进行访问)
 
 - filterVerb: filter：这个动词指示了调度器会调用这个扩展器服务来过滤节点，即决定哪些节点适合调度 Pod。(Filter 接口对应这个 http 服务的 url 就是 /filter)
 
@@ -304,7 +305,7 @@ managedResources:
 
 接下来则分析 hami-scheduler 的具体实现，包括两个问题：
 
-1. hami-scheduler 如何感知 Node 上的 GPU 信息的，因为前面提到 gpucore、gpumem 这些都是虚拟资源， DevicePlugin 也是没有直接上报到 Node 上的
+1. hami-scheduler 如何感知 Node 上的 GPU 信息的，因为前面提到 gpucore、gpumem 这些都是虚拟资源，DevicePlugin 也是没有直接上报到 Node 上的
 
 2. hami-scheduler 是如何选择最合适的节点的，spark & binpark 等高级调度策略是如何实现的
 
@@ -350,99 +351,99 @@ go sher.RegisterFromNodeAnnotations()
 
 ```go
 func (s *Scheduler) RegisterFromNodeAnnotations() {
-	klog.V(5).Infoln("Scheduler into RegisterFromNodeAnnotations")
+ klog.V(5).Infoln("Scheduler into RegisterFromNodeAnnotations")
 
-	ticker := time.NewTicker(15 * time.Second)
-	defer ticker.Stop()
+ ticker := time.NewTicker(15 * time.Second)
+ defer ticker.Stop()
 
-	for {
-		select {
-		case <-s.nodeNotify:
-		case <-ticker.C:
-		case <-s.stopCh:
-			return
-		}
+ for {
+  select {
+  case <-s.nodeNotify:
+  case <-ticker.C:
+  case <-s.stopCh:
+   return
+  }
 
-		// 1. 列表节点
-		labelSel := labels.Everything()
-		if len(config.NodeLabelSelector) > 0 {
-			labelSel = (labels.Set)(config.NodeLabelSelector).AsSelector()
-		}
-		rawNodes, err := s.nodeLister.List(labelSel)
-		if err != nil {
-			klog.Errorln("nodes list failed", err.Error())
-			continue
-		}
+  // 1. 列表节点
+  labelSel := labels.Everything()
+  if len(config.NodeLabelSelector) > 0 {
+   labelSel = (labels.Set)(config.NodeLabelSelector).AsSelector()
+  }
+  rawNodes, err := s.nodeLister.List(labelSel)
+  if err != nil {
+   klog.Errorln("nodes list failed", err.Error())
+   continue
+  }
 
-		// 2. 遍历节点并解析 GPU 信息
-		for _, n := range rawNodes {
-			devInfos, err := devInstance.GetNodeDevices(*n)
-			if err != nil {
-				klog.Errorln("get node devices failed", err.Error())
-				continue
-			}
+  // 2. 遍历节点并解析 GPU 信息
+  for _, n := range rawNodes {
+   devInfos, err := devInstance.GetNodeDevices(*n)
+   if err != nil {
+    klog.Errorln("get node devices failed", err.Error())
+    continue
+   }
 
-			nodeInfo := util.NodeInfo{Devices: []util.DeviceInfo{}}
+   nodeInfo := util.NodeInfo{Devices: []util.DeviceInfo{}}
 
-			for _, di := range devInfos {
-				found := false
-				// 更新已缓存的 GPU
-				if cached, ok := s.nodes[n.Name]; ok {
-					for i, cd := range cached.Devices {
-						if cd.ID == di.ID {
-							s.nodes[n.Name].Devices[i].Devmem = di.Devmem
-							s.nodes[n.Name].Devices[i].Devcore = di.Devcore
-							found = true
-							break
-						}
-					}
-				}
-				// 新增 GPU
-				if !found {
-					nodeInfo.Devices = append(nodeInfo.Devices, util.DeviceInfo{
-						ID:           di.ID,
-						Index:        uint(di.Index),
-						Count:        di.Count,
-						Devmem:       di.Devmem,
-						Devcore:      di.Devcore,
-						Type:         di.Type,
-						Numa:         di.Numa,
-						Health:       di.Health,
-						DeviceVendor: devhandsk,
-					})
-				}
-			}
-			s.addNode(n.Name, nodeInfo)
-		}
-	}
+   for _, di := range devInfos {
+    found := false
+    // 更新已缓存的 GPU
+    if cached, ok := s.nodes[n.Name]; ok {
+     for i, cd := range cached.Devices {
+      if cd.ID == di.ID {
+       s.nodes[n.Name].Devices[i].Devmem = di.Devmem
+       s.nodes[n.Name].Devices[i].Devcore = di.Devcore
+       found = true
+       break
+      }
+     }
+    }
+    // 新增 GPU
+    if !found {
+     nodeInfo.Devices = append(nodeInfo.Devices, util.DeviceInfo{
+      ID:           di.ID,
+      Index:        uint(di.Index),
+      Count:        di.Count,
+      Devmem:       di.Devmem,
+      Devcore:      di.Devcore,
+      Type:         di.Type,
+      Numa:         di.Numa,
+      Health:       di.Health,
+      DeviceVendor: devhandsk,
+     })
+    }
+   }
+   s.addNode(n.Name, nodeInfo)
+  }
+ }
 }
 ```
 
-会将最新的 Node 数据存到内存中，便于调度时使用,就是 nodeManager 中的 nodes 这个 map 对象
+会将最新的 Node 数据存到内存中，便于调度时使用，就是 nodeManager 中的 nodes 这个 map 对象
 
 ```go
 type Scheduler struct {
-	nodeManager
-	podManager
+ nodeManager
+ podManager
 
-	stopCh     chan struct{}
-	kubeClient kubernetes.Interface
-	podLister  listerscorev1.PodLister
-	nodeLister listerscorev1.NodeLister
+ stopCh     chan struct{}
+ kubeClient kubernetes.Interface
+ podLister  listerscorev1.PodLister
+ nodeLister listerscorev1.NodeLister
 
-	// Node status returned by Filter
-	cachedstatus map[string]*NodeUsage
-	nodeNotify   chan struct{}
+ // Node status returned by Filter
+ cachedstatus map[string]*NodeUsage
+ nodeNotify   chan struct{}
 
-	// Node Overview
-	overviewstatus map[string]*NodeUsage
+ // Node Overview
+ overviewstatus map[string]*NodeUsage
 
-	eventRecorder record.EventRecorder
+ eventRecorder record.EventRecorder
 }
 
 type nodeManager struct {
-	nodes map[string]*util.NodeInfo
-	mutex sync.RWMutex
+ nodes map[string]*util.NodeInfo
+ mutex sync.RWMutex
 }
 ```
 
@@ -451,90 +452,90 @@ type nodeManager struct {
 ```go
 // getNodesUsage 返回所有节点及其设备显存/核心占用，并过滤 nodeSelector / taints / nodeAffinity / unschedulable / nodeName
 func (s *Scheduler) getNodesUsage(nodes *[]string, task *corev1.Pod) (*map[string]*NodeUsage, map[string]string, error) {
-	overall := make(map[string]*NodeUsage)
-	cache   := make(map[string]*NodeUsage)
-	failed  := make(map[string]string)
+ overall := make(map[string]*NodeUsage)
+ cache   := make(map[string]*NodeUsage)
+ failed  := make(map[string]string)
 
-	// 1. 列出所有节点
-	allNodes, err := s.ListNodes()
-	if err != nil {
-		return &overall, failed, err
-	}
+ // 1. 列出所有节点
+ allNodes, err := s.ListNodes()
+ if err != nil {
+  return &overall, failed, err
+ }
 
-	// 2. 初始化节点设备列表
-	for _, n := range allNodes {
-		nodeU := &NodeUsage{}
-		policy := config.GPUSchedulerPolicy
-		if task != nil && task.Annotations != nil {
-			if v, ok := task.Annotations[policy.GPUSchedulerPolicyAnnotationKey]; ok {
-				policy = v
-			}
-		}
+ // 2. 初始化节点设备列表
+ for _, n := range allNodes {
+  nodeU := &NodeUsage{}
+  policy := config.GPUSchedulerPolicy
+  if task != nil && task.Annotations != nil {
+   if v, ok := task.Annotations[policy.GPUSchedulerPolicyAnnotationKey]; ok {
+    policy = v
+   }
+  }
 
-		nodeU.Devices = policy.DeviceUsageList{
-			Policy:      policy,
-			DeviceLists: []*policy.DeviceListsScore{},
-		}
+  nodeU.Devices = policy.DeviceUsageList{
+   Policy:      policy,
+   DeviceLists: []*policy.DeviceListsScore{},
+  }
 
-		for _, d := range n.Devices {
-			nodeU.Devices.DeviceLists = append(nodeU.Devices.DeviceLists, &policy.DeviceListsScore{
-				Score: 0,
-				Device: &util.DeviceUsage{
-					ID:        d.ID,
-					Index:     d.Index,
-					Used:      0,
-					Count:     d.Count,
-					Usedmem:   0,
-					Totalmem:  d.Devmem,
-					Totalcore: d.Devcore,
-					Usedcores: 0,
-					Type:      d.Type,
-					Numa:      d.Numa,
-					Health:    d.Health,
-				},
-			})
-		}
-		overall[n.ID] = nodeU
-	}
+  for _, d := range n.Devices {
+   nodeU.Devices.DeviceLists = append(nodeU.Devices.DeviceLists, &policy.DeviceListsScore{
+    Score: 0,
+    Device: &util.DeviceUsage{
+     ID:        d.ID,
+     Index:     d.Index,
+     Used:      0,
+     Count:     d.Count,
+     Usedmem:   0,
+     Totalmem:  d.Devmem,
+     Totalcore: d.Devcore,
+     Usedcores: 0,
+     Type:      d.Type,
+     Numa:      d.Numa,
+     Health:    d.Health,
+    },
+   })
+  }
+  overall[n.ID] = nodeU
+ }
 
-	// 3. 叠加已运行 Pod 占用
-	podsInfo := s.ListPodsInfo()
-	for _, p := range podsInfo {
-		node, ok := overall[p.NodeID]
-		if !ok {
-			continue
-		}
-		for _, podSingle := range p.Devices {
-			for _, ctrDevs := range podSingle {
-				for _, uDev := range ctrDevs {
-					for _, d := range node.Devices.DeviceLists {
-						if d.Device.ID == uDev.UUID {
-							d.Device.Used++
-							d.Device.Usedmem += uDev.Usedmem
-							d.Device.Usedcores += uDev.Usedcores
-						}
-					}
-				}
-			}
-		}
-		klog.V(5).Infof("usage: pod %v assigned %v %v", p.Name, p.NodeID, p.Devices)
-	}
+ // 3. 叠加已运行 Pod 占用
+ podsInfo := s.ListPodsInfo()
+ for _, p := range podsInfo {
+  node, ok := overall[p.NodeID]
+  if !ok {
+   continue
+  }
+  for _, podSingle := range p.Devices {
+   for _, ctrDevs := range podSingle {
+    for _, uDev := range ctrDevs {
+     for _, d := range node.Devices.DeviceLists {
+      if d.Device.ID == uDev.UUID {
+       d.Device.Used++
+       d.Device.Usedmem += uDev.Usedmem
+       d.Device.Usedcores += uDev.Usedcores
+      }
+     }
+    }
+   }
+  }
+  klog.V(5).Infof("usage: pod %v assigned %v %v", p.Name, p.NodeID, p.Devices)
+ }
 
-	s.overviewstatus = overall
+ s.overviewstatus = overall
 
-	// 4. 仅保留 caller 指定的节点
-	for _, nodeID := range *nodes {
-		node, err := s.GetNode(nodeID)
-		if err != nil {
-			klog.V(5).InfoS("node unregistered", "node", nodeID, "error", err)
-			failed[nodeID] = "node unregistered"
-			continue
-		}
-		cache[node.ID] = overall[node.ID]
-	}
+ // 4. 仅保留 caller 指定的节点
+ for _, nodeID := range *nodes {
+  node, err := s.GetNode(nodeID)
+  if err != nil {
+   klog.V(5).InfoS("node unregistered", "node", nodeID, "error", err)
+   failed[nodeID] = "node unregistered"
+   continue
+  }
+  cache[node.ID] = overall[node.ID]
+ }
 
-	s.cachedstatus = cache
-	return &cache, failed, nil
+ s.cachedstatus = cache
+ return &cache, failed, nil
 }
 ```
 
@@ -710,7 +711,7 @@ func (s *Scheduler) RegisterFromNodeAnnotations() {
 
 - Bind：将 Pod 最终后某一个节点进行绑定，完成调度
 
-### Filter接口
+### Filter 接口
 
 看下看 Filter 接口是怎么进行节点过滤的
 
@@ -780,6 +781,7 @@ func (s *Scheduler) Filter(args extenderv1.ExtenderArgs) (*extenderv1.ExtenderFi
     return &res, nil
 }
 ```
+
 对于没有申请特殊资源的 Pod 直接返回全部 Node 都可以调度，不做处理
 
 ```go
@@ -847,11 +849,11 @@ res := extenderv1.ExtenderFilterResult{NodeNames: &[]string{m.NodeID}}
 return &res, nil
 ```
 
-到这里，我们已经拿到了最终要调度的 Node 了,调度逻辑就结束了。这里大家可能会有疑问：**为什么 Filter 方法就只返回了一个节点，甚至还融合了打分的逻辑在里面。**
+到这里，我们已经拿到了最终要调度的 Node 了，调度逻辑就结束了。这里大家可能会有疑问：**为什么 Filter 方法就只返回了一个节点，甚至还融合了打分的逻辑在里面。**
 
 如果按照正常逻辑实现 Filter、Score 等方法，最终 Scheduler 会汇总多个插件的打分，然后根据最终结果选择一个节点，**但是 HAMi 这边是要完全控制调度结果的，因此直接将 Filter、Score 逻辑融合到一起，最终就只返回一个目标节点，**这样最后肯定会调度到该节点。
 
-### Bind接口
+### Bind 接口
 
 很简单，直接根据 Filter 的返回结果，将 Pod 和 Node 绑定即可完成调度。
 
@@ -934,7 +936,7 @@ if err = s.kubeClient.CoreV1().Pods(args.PodNamespace).Bind(context.Background()
 
 ### 小结
 
-这里 HAMi 是使用默认的 kube-scheduler 镜像额外启动了一个 scheduler,但是通过配置把名称指定为了 hami-scheduler。
+这里 HAMi 是使用默认的 kube-scheduler 镜像额外启动了一个 scheduler，但是通过配置把名称指定为了 hami-scheduler。
 
 然后给这个 hami-scheduler 配置了 Extender，Extender 服务就是同 Pod 中的另一个 Container 启动的一个 http 服务。
 
@@ -943,20 +945,21 @@ if err = s.kubeClient.CoreV1().Pods(args.PodNamespace).Bind(context.Background()
 然后在调度可以分为两部分：
 
 1. 获取 GPU 信息
-***(从 Node Annoations 中获取节点上的 GPU 资源信息) (从 Pod Annoations 中获取 GPU 的使用情况)***
+_**(从 Node Annoations 中获取节点上的 GPU 资源信息) (从 Pod Annoations 中获取 GPU 的使用情况)**_
 
-2. 按配置策略进行节点选择并完成调 ***(直接在 Filter 接口按照得分排序后返回最推荐的一个节点，以实现完全控制调度结果)***
+2. 按配置策略进行节点选择并完成调 _**(直接在 Filter 接口按照得分排序后返回最推荐的一个节点，以实现完全控制调度结果)**_
+
 - 按照 GPU memory、core 剩余情况计算得分，剩余资源越多得分越低
 
 ## 5.小结
 
-本文主要分析了 hami-scheduler 的实现原理,其中包含两个组件：
+本文主要分析了 hami-scheduler 的实现原理，其中包含两个组件：
 
 - Webhook：根据 Pod Resource 中的 ResourceName 判断该 Pod 是否使用的 HAMi vGPU，如果是则修改 Pod 的 SchedulerName 为 hami-scheduler，让 hami-scheduler 进行调度。
 
-- Scheduler：以 kube-shceduler 为镜像启动服务并改名为 hami-scheduler，然后通过配置 extender 接入真正的 hami-scheduler 逻辑。***（从 Node 的 Annoations 上解析拿到 GPU 资源信息，从已经运行的 Pod Annoations 上解析拿到 Pod 消耗的 GPU 资源计算出每个 Node 上真实可用的 GPU 资源）（根据节点剩余资源进行打分，然后根据配置的 Spread、Binpack 调度策略选择得分最高或最低的节点，将 Pod 进行调度。）***
+- Scheduler：以 kube-shceduler 为镜像启动服务并改名为 hami-scheduler，然后通过配置 extender 接入真正的 hami-scheduler 逻辑。_**（从 Node 的 Annoations 上解析拿到 GPU 资源信息，从已经运行的 Pod Annoations 上解析拿到 Pod 消耗的 GPU 资源计算出每个 Node 上真实可用的 GPU 资源）（根据节点剩余资源进行打分，然后根据配置的 Spread、Binpack 调度策略选择得分最高或最低的节点，将 Pod 进行调度。）**_
 
-### HAMi Webhook 、Scheduler 工作流程如下：
+### HAMi Webhook、Scheduler 工作流程如下
 
 ![p2](/images/blog/gpu5/p1.jpg)
 
@@ -970,17 +973,17 @@ if err = s.kubeClient.CoreV1().Pods(args.PodNamespace).Bind(context.Background()
 
 - 对于使用 vGPU 资源但指定了 nodeName 的 Pod，Webhook 会直接拒绝
 
-4. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，**但是 kube-scheduler 还会根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件** 
+1. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，**但是 kube-scheduler 还会根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件**
 
 - 这个 Extender Scheduler 就是 hami-scheduler Pod 中的另一个 Container，该 Container 同时提供了 Webhook 和 Scheduler 相关 API。
 
 - 当 Pod 申请了 vGPU 资源时，kube-scheduler 就会根据配置以 HTTP 形式调用 Extender Scheduler 插件，这样就实现了自定义调度逻辑
 
-5. Extender Scheduler 插件包含了真正的 hami 调度逻辑， 调度时根据节点剩余资源量进行打分选择节点
+1. Extender Scheduler 插件包含了真正的 hami 调度逻辑，调度时根据节点剩余资源量进行打分选择节点
 
 - 这里就包含了 spread & binpark 等 高级调度策略的实现
 
-6. 异步任务，包括 GPU 感知逻辑
+1. 异步任务，包括 GPU 感知逻辑
 
 - devicePlugin 中的后台 Goroutine 定时上报 Node 上的 GPU 资源并写入到 Node 的 Annoations
 
@@ -988,15 +991,10 @@ if err = s.kubeClient.CoreV1().Pods(args.PodNamespace).Bind(context.Background()
 
 - Extender Scheduler 插件根据 Node Annoations 解析出 GPU 资源总量、从 Node 上已经运行的 Pod 的 Annoations 中解析出 GPU 使用量，计算出每个 Node 剩余的可用资源保存到内存供调度时使用
 
-至此，HAMi Webhook、Scheduler 就分析完了，spread & binpark 等 高级调度策略是如何实现的留着下篇分析~。 
+至此，HAMi Webhook、Scheduler 就分析完了，spread & binpark 等 高级调度策略是如何实现的留着下篇分析~。
 
 ---
 
-*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。* 
+_想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。_
 
 ---
-
-
-
-
-

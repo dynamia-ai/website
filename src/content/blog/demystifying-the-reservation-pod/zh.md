@@ -6,24 +6,25 @@ date: "2025-08-07"
 excerpt: "昨天深入探讨了 KAI-Scheduler 如何实现 GPU 分数共享，非常感谢大家的关注和热烈讨论！有读者指出了一个关键技术细节需要进一步澄清，今天我们就来专门解析这个问题。"
 author: "密瓜智能"
 tags: ["vGPU", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/Demystifying-the-Reservation-Pod/cover.jpg"
 language: "zh"
 ---
 
 
-昨天我们发布的[《Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望》](https://dynamia.ai/zh/blog/Run ai- KAI-scheduler vs hami)深入探讨了 KAI-Scheduler 如何实现 GPU 分数共享，非常感谢大家的关注和热烈讨论！特别是有读者指出了一个关键技术细节需要进一步澄清，今天我们就来专门解析这个问题。
+昨天我们发布的[《Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望》](<https://dynamia.ai/zh/blog/Run> ai- KAI-scheduler vs hami)深入探讨了 KAI-Scheduler 如何实现 GPU 分数共享，非常感谢大家的关注和热烈讨论！特别是有读者指出了一个关键技术细节需要进一步澄清，今天我们就来专门解析这个问题。
 
-### 读者反馈与技术澄清
+## 读者反馈与技术澄清
 
 有读者在评论中提到：
 
-> “文章里少了一个关键的技术点没有讲，就是 GPU 的卡分配是由 device plugin 负责分配的，那么当 reservation pod 调度成功的时候，还不知道是哪个卡，没有办法更新 GpuSharingNodeInfo ”
+> “文章里少了一个关键的技术点没有讲，就是 GPU 的卡分配是由 device plugin 负责分配的，那么当 reservation pod 调度成功的时候，还不知道是哪个卡，没有办法更新 GpuSharingNodeInfo”
 
 这个问题切中要害！不过，首先，我们需要对 GPU 资源分配的责任主体进行更准确的阐述：
 
 **实际上，调度决策完成后，GPU 设备资源的分配涉及三个关键组件的协作：**
 
-1. **设备发现与资源报告（NVIDIA Device Plugin）**  NVIDIA Device Plugin 负责在节点上发现可用的物理 GPU，并通过 Kubernetes 的 Device Plugin API 将这些设备注册给 kubelet（如 nvidia.com/gpu）。它还会持续报告设备的健康状态，并在 kubelet 请求资源分配时，返回容器运行所需的挂载信息和环境变量。 
+1. **设备发现与资源报告（NVIDIA Device Plugin）**  NVIDIA Device Plugin 负责在节点上发现可用的物理 GPU，并通过 Kubernetes 的 Device Plugin API 将这些设备注册给 kubelet（如 nvidia.com/gpu）。它还会持续报告设备的健康状态，并在 kubelet 请求资源分配时，返回容器运行所需的挂载信息和环境变量。
 
 2. **资源分配决策与设备选择（kubelet）**  kubelet 负责在 Pod 被调度到本节点后，**决定使用哪块具体的 GPU 设备**。它根据 Device Plugin 上报的设备列表和健康状态，从未被分配的设备中选择所需数量的 GPU，并调用 Device Plugin 的 Allocate() 接口，传入所选设备的 ID。此过程发生在 Pod 启动之前，是实际资源分配的决策点。
 
@@ -47,7 +48,7 @@ KAI-Scheduler 的核心创新是引入 Reservation Pod 机制，解决原生 Kub
 
 - KAI-Scheduler 在内部管理这个被"预留"的 GPU，实现多个用户 Pod 共享同一个物理 GPU
 
-### 完整的Pod调度与GPU分配流程
+### 完整的 Pod 调度与 GPU 分配流程
 
 为了更清晰地理解整个过程，让我们详细梳理从用户提交 Pod 到最终获取 GPU 资源的完整流程：
 
@@ -157,7 +158,7 @@ func (rsc *service) createResourceReservationPod(
 
 (2) 这意味着该 Pod 不会经过任何调度器（包括默认调度器）的调度流程
 
-(3)它会直接被分配到指定节点上，该节点的 kubelet 负责启动 Pod
+(3) 它会直接被分配到指定节点上，该节点的 kubelet 负责启动 Pod
 
 - **等待 GPU 分配**:
 
@@ -207,42 +208,42 @@ Reservation Pod 容器运行一个小型应用程序（cmd/resourcereservation�
 package discovery
 
 import (
-	"context"
-	"fmt"
-	"os"
-	"path/filepath"
-	"strings"
+ "context"
+ "fmt"
+ "os"
+ "path/filepath"
+ "strings"
 )
 
 const gpusDir = "/proc/driver/nvidia/gpus/"
 
 // GetGPUDevice 返回指定 Pod 所在节点上对应的 GPU UUID
 func GetGPUDevice(ctx context.Context, podName string, namespace string) (string, error) {
-	// 读取 GPU 目录
-	deviceSubDirs, err := os.ReadDir(gpusDir)
-	if err != nil {
-		return "", err
-	}
+ // 读取 GPU 目录
+ deviceSubDirs, err := os.ReadDir(gpusDir)
+ if err != nil {
+  return "", err
+ }
 
-	// 遍历每个 GPU 子目录
-	for _, subDir := range deviceSubDirs {
-		infoFilePath := filepath.Join(gpusDir, subDir.Name(), "information")
-		data, err := os.ReadFile(infoFilePath)
-		if err != nil {
-			continue
-		}
+ // 遍历每个 GPU 子目录
+ for _, subDir := range deviceSubDirs {
+  infoFilePath := filepath.Join(gpusDir, subDir.Name(), "information")
+  data, err := os.ReadFile(infoFilePath)
+  if err != nil {
+   continue
+  }
 
-		content := string(data)
-		lines := strings.Split(content, "\n")
-		for _, line := range lines {
-			if strings.Contains(line, "GPU UUID") {
-				words := strings.Fields(line)
-				return words[len(words)-1], nil // 返回最后一个字段即为 GPU UUID
-			}
-		}
-	}
+  content := string(data)
+  lines := strings.Split(content, "\n")
+  for _, line := range lines {
+   if strings.Contains(line, "GPU UUID") {
+    words := strings.Fields(line)
+    return words[len(words)-1], nil // 返回最后一个字段即为 GPU UUID
+   }
+  }
+ }
 
-	return "", fmt.Errorf("failed to find GPU UUID")
+ return "", fmt.Errorf("failed to find GPU UUID")
 }
 ```
 
@@ -475,7 +476,7 @@ NVIDIA Device Plugin 识别节点上的 GPU 设备并报告给 Kubernetes。
 
 设备挂载体现为环境变量和设备文件：
 
-> 环境变量: NVIDIA_VISIBLE_DEVICES=GPU-UUID 或设备索引设备文件: /dev/nvidia0
+> 环境变量：NVIDIA_VISIBLE_DEVICES=GPU-UUID 或设备索引设备文件：/dev/nvidia0
 
 (5)**Reservation Pod 中的设备信息上报容器启动，它读取 NVIDIA 驱动提供的设备信息，识别出自己被分配的是哪个 GPU 设备的 UUID**
 
@@ -534,9 +535,8 @@ nodeInfo.AllocatedSharedGPUsMemory[gpuGroup] += requestedMemory
 ---
 HAMi，全称是 Heterogeneous AI Computing Virtualization Middleware（异构算力虚拟化中间件），是一套为管理 k8s 集群中的异构 AI 计算设备而设计的“一站式”架构，能够提供异构 AI 设备共享能力，提供任务间的资源隔离。HAMi 致力于提升 k8s 集群中异构计算设备的利用率，为不同类型的异构设备提供统一的复用接口。HAMi 当前是 CNCF Sandbox 项目，已被 CNCF 纳入 CNAI 类别技术全景图。
 
-社区官网：https://project-hami.io
+社区官网：<https://project-hami.io>
 
-Github：https://github.com/Project-HAMi
+Github:<https://github.com/Project-HAMi>
 
-Reddit：https://www.reddit.com/r/HAMi_Community/
-
+Reddit:<https://www.reddit.com/r/HAMi_Community/>

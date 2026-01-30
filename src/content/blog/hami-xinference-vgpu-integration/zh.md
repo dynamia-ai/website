@@ -6,10 +6,10 @@ date: "2025-11-06"
 excerpt: "Xinference 通过 Helm Chart 原生支持 HAMi vGPU，让多模型推理平台实现 GPU 安全共享、精细配额和统一治理。本文详细介绍如何一键启用 HAMi vGPU，以及在生产环境中实现降本增效的最佳实践。"
 author: "Dynamia AI Team"
 tags: ["HAMi", "Xinference", "vGPU", "GPU Sharing", "AI Inference", "Multi-Model", "Kubernetes", "Cost Optimization"]
+category: "Integration & Ecosystem"
 coverImage: "/images/blog/hami-xinference-vgpu/cover-zh.png"
 language: "zh"
 ---
-# Xinference × HAMi | 原生支持 GPU 共享，让 AI 模型服务降本增效
 
 ## 要点速览
 
@@ -17,7 +17,7 @@ language: "zh"
 * 企业落地时，Xinference **自身不做算力隔离**，容易出现"小模型独占整卡"的浪费，以及多租户下的配额与可观测性空缺。
 * 新合并的 **Helm PR #6** 让 Chart 原生支持 **HAMi vGPU**：通过参数开关即可为 **Supervisor/Worker** 传入 `nvidia.com/gpucores`、`nvidia.com/gpumem-percentage` 等资源，安全共享 GPU、提升利用率，并纳入统一的配额与监控。
 
-![Xinference与HAMi集成架构](/images/blog/hami-xinference-vgpu/architecture.png)
+![Xinference 与 HAMi 集成架构](/images/blog/hami-xinference-vgpu/architecture.png)
 
 ## Xinference 是什么：接口友好、形态多样、分布式可伸缩
 
@@ -88,7 +88,7 @@ helm install xinference xinference/xinference -n xinference -f values.yaml
 ## 监控与多租户治理
 
 * **Xinference 侧指标**：Supervisor/Worker 暴露独立指标面板，用于观测模型数量、请求吞吐与延迟等。
-* **HAMi 侧观测/限额**：通过 Kubernetes 原生资源与 HAMi 的 vGPU 指标，配合命名空间-配额策略，构建"项目-任务"的分层治理。
+* **HAMi 侧观测/限额**：通过 Kubernetes 原生资源与 HAMi 的 vGPU 指标，配合命名空间 - 配额策略，构建"项目 - 任务"的分层治理。
 
 ## 结语与致谢
 
@@ -104,4 +104,4 @@ helm install xinference xinference/xinference -n xinference -f values.yaml
 
 Xinference 是杭州未来速度科技有限公司推出的企业级大模型推理平台，致力于为企业提供高效、稳定、安全的一站式模型部署与推理服务。该平台的核心优势在于其卓越的异构算力支持与多引擎推理能力。
 
-平台全面支持英伟达、华为昇腾、海光DCU、寒武纪等国内外主流算力芯片，实现异构硬件的统一纳管与调度。其独一无二的多引擎并行推理能力，可同时运行vLLM、SGLang等多种优化引擎，针对不同应用场景提供最佳性能。基于高性能分布式框架Xoscar，Xinference具备超大规模集群的稳定运营能力，支持多节点分布式推理、动态负载均衡与自动故障恢复，有效保障企业级服务的高可用性。
+平台全面支持英伟达、华为昇腾、海光 DCU、寒武纪等国内外主流算力芯片，实现异构硬件的统一纳管与调度。其独一无二的多引擎并行推理能力，可同时运行 vLLM、SGLang 等多种优化引擎，针对不同应用场景提供最佳性能。基于高性能分布式框架 Xoscar，Xinference 具备超大规模集群的稳定运营能力，支持多节点分布式推理、动态负载均衡与自动故障恢复，有效保障企业级服务的高可用性。

@@ -6,6 +6,7 @@ date: "2025-08-08"
 excerpt: "In the fast-growing field of AI education, PREP EDU (prepedu.com) is emerging as a focal point in Southeast Asia's EdTech sector."
 author: "Dynamia AI Team"
 tags: ["KubeCon", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
+category: "Customer Success Story"
 coverImage: "/images/blog/PREP-EDU-HAMi/cover2.jpg"
 language: "en"
 ---
@@ -86,19 +87,19 @@ After integrating HAMi, PREP EDU has successfully decoupled and automated the or
 
 ![4](/images/blog/PREP-EDU-HAMi/p4.png)
 
->“HAMi is a great option for vGPU scheduling, helping us optimize GPU usage for our AI microservices. Its monitoring and alerting features are also very helpful for long-term tracking. The documentation is clear, and the ability to assign workloads to specific GPU types is a huge advantage for us.”—— **Xeus Nguyen， DevOps Engineer， PREP EDU**
+>“HAMi is a great option for vGPU scheduling, helping us optimize GPU usage for our AI microservices. Its monitoring and alerting features are also very helpful for long-term tracking. The documentation is clear, and the ability to assign workloads to specific GPU types is a huge advantage for us.”—— **Xeus Nguyen, DevOps Engineer, PREP EDU**
 
-> “HAMi allows precise GPU memory and compute allocation for each project, helping optimize overall resource usage. This makes it possible to deploy more AI services on the same limited amount of GPU VRAM, improving efficiency and scalability.”—— **Nhan Phan， AI Engineer， PREP EDU**
+> “HAMi allows precise GPU memory and compute allocation for each project, helping optimize overall resource usage. This makes it possible to deploy more AI services on the same limited amount of GPU VRAM, improving efficiency and scalability.”—— **Nhan Phan, AI Engineer, PREP EDU**
 
->“HAMi helped us overcome challenges in GPU management for our on-premise AI microservices by automating workload allocation and reducing maintenance overhead. It significantly improved resource efficiency with minimal effort from our team.”—— **Phong Nguyen， AI Engineer， PREP EDU**
+>“HAMi helped us overcome challenges in GPU management for our on-premise AI microservices by automating workload allocation and reducing maintenance overhead. It significantly improved resource efficiency with minimal effort from our team.”—— **Phong Nguyen, AI Engineer, PREP EDU**
 
->“HAMi has been a game-changer for our AI engineering workflow. By virtualizing and right-sizing GPU resources at the pod level, we can pack lightweight inference services and large batch jobs onto the same hardware without noisy-neighbor issues. Deployment is practically "plug-and-play" — a Helm chart and a couple of labels. So we kept our existing manifests intact.”—— **Vu Hoang Tran， AI Engineer， PREP EDU**
+>“HAMi has been a game-changer for our AI engineering workflow. By virtualizing and right-sizing GPU resources at the pod level, we can pack lightweight inference services and large batch jobs onto the same hardware without noisy-neighbor issues. Deployment is practically "plug-and-play" — a Helm chart and a couple of labels. So we kept our existing manifests intact.”—— **Vu Hoang Tran, AI Engineer, PREP EDU**
 
 📖 Want to learn more about the specific implementation details of deploying HAMi in PREP EDU's production environment?
 
 We recommend reading the full technical blog post from PREP EDU DevOps Engineer, Xeus Nguyen:
 
-https://wiki.xeusnguyen.xyz/Tech-Second-Brain/Personal/Kubewekend/Kubewekend-Session-Extra-2#setup-gpu-worker
+<https://wiki.xeusnguyen.xyz/Tech-Second-Brain/Personal/Kubewekend/Kubewekend-Session-Extra-2#setup-gpu-worker>
 
 ---
 
@@ -106,6 +107,6 @@ https://wiki.xeusnguyen.xyz/Tech-Second-Brain/Personal/Kubewekend/Kubewekend-Ses
 
 Dynamia Melon Intelligence, focusing on the CNCF HAMi project as its core foundation, provides a global solution for flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing power scheduling and unified management. It can be deployed in a plug-and-play, lightweight, and non-intrusive manner in any public, private, or hybrid cloud environment, supporting heterogeneous chips from NVIDIA, Ascend, Metax, Cambricon, Hygon, Moore Threads, Tianshu Zhixin, and more.
 
->Website: https://dynamia.ai
+>Website: <https://dynamia.ai>
 
->Email: info@dynamia.ai
+>Email: <info@dynamia.ai>

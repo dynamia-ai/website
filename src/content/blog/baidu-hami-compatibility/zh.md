@@ -6,6 +6,7 @@ date: "2026-01-29"
 excerpt: "近日，密瓜智能与百度智能云围绕私有化 AI 平台的协同适配与工程验证，完成产品兼容测试与互认工作。HAMi 已与百度百舸异构计算平台私有化产品完成兼容适配。"
 author: "Dynamia AI Team"
 tags: ["HAMi", "百度智能云", "百舸", "AIHC", "兼容性", "异构计算", "私有化部署", "AI 基础设施"]
+category: "Integration & Ecosystem"
 coverImage: "/images/blog/baidu-hami-compatibility/cover-zh.png"
 language: "zh"
 ---

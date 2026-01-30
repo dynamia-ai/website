@@ -5,8 +5,7 @@ slug: "open-source-vgpu-hami-scheduler-analysis"
 date: "2025-07-25"
 excerpt: "This is the third article in the HAMI principle analysis series, analyzing the hami-scheduler workflow."
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
-coverImage: "/images/blog/gpu5/cover2.jpg"
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Technical Deep Dive"coverImage: "/images/blog/gpu5/cover2.jpg"
 language: "en"
 ---
 
@@ -29,20 +28,20 @@ This article begins the analysis of `hami-scheduler`, addressing another questio
 
 ![p1](/images/blog/gpu5/p1.jpg)
 
-1.  A user creates a Pod and requests vGPU resources in it.
-2.  The kube-apiserver, based on the `MutatingWebhookConfiguration`, sends a request to the HAMI-Webhook.
-3.  The HAMI-Webhook inspects the Pod's `Resource` field. If it requests a vGPU resource managed by HAMI, it changes the Pod's `SchedulerName` to `hami-scheduler`, directing the Pod to be scheduled by `hami-scheduler`.
-    *   For privileged Pods, the Webhook skips processing.
-    *   For Pods using vGPU resources but with a specified `nodeName`, the Webhook rejects them.
-4.  The `hami-scheduler` then schedules the Pod. However, it uses the default `kube-scheduler` image from Kubernetes, so its basic scheduling logic is the same as the `default-scheduler`. **But, this `kube-scheduler` is configured via `KubeSchedulerConfiguration` to call an Extender Scheduler plugin.**
-    *   This Extender Scheduler is another container within the `hami-scheduler` Pod, which provides both the Webhook and Scheduler APIs.
-    *   When a Pod requests vGPU resources, the `kube-scheduler` calls the Extender Scheduler plugin via HTTP as configured, thus implementing custom scheduling logic.
-5.  The Extender Scheduler plugin contains the actual HAMI scheduling logic. It scores nodes based on their remaining resources to select a node.
-    *   This is where advanced scheduling strategies like `spread` & `binpack` are implemented.
-6.  Asynchronous tasks, including GPU perception logic:
-    *   A background Goroutine in the devicePlugin periodically reports GPU resources on the Node and writes them to the Node's Annotations.
-    *   In addition to the DevicePlugin, asynchronous tasks also submit more information by patching annotations.
-    *   The Extender Scheduler plugin parses the total GPU resources from Node annotations and the used GPU resources from the annotations of running Pods on the Node. It then calculates the remaining available resources for each Node and stores them in memory for scheduling.
+1. A user creates a Pod and requests vGPU resources in it.
+2. The kube-apiserver, based on the `MutatingWebhookConfiguration`, sends a request to the HAMI-Webhook.
+3. The HAMI-Webhook inspects the Pod's `Resource` field. If it requests a vGPU resource managed by HAMI, it changes the Pod's `SchedulerName` to `hami-scheduler`, directing the Pod to be scheduled by `hami-scheduler`.
+    * For privileged Pods, the Webhook skips processing.
+    * For Pods using vGPU resources but with a specified `nodeName`, the Webhook rejects them.
+4. The `hami-scheduler` then schedules the Pod. However, it uses the default `kube-scheduler` image from Kubernetes, so its basic scheduling logic is the same as the `default-scheduler`. **But, this `kube-scheduler` is configured via `KubeSchedulerConfiguration` to call an Extender Scheduler plugin.**
+    * This Extender Scheduler is another container within the `hami-scheduler` Pod, which provides both the Webhook and Scheduler APIs.
+    * When a Pod requests vGPU resources, the `kube-scheduler` calls the Extender Scheduler plugin via HTTP as configured, thus implementing custom scheduling logic.
+5. The Extender Scheduler plugin contains the actual HAMI scheduling logic. It scores nodes based on their remaining resources to select a node.
+    * This is where advanced scheduling strategies like `spread` & `binpack` are implemented.
+6. Asynchronous tasks, including GPU perception logic:
+    * A background Goroutine in the devicePlugin periodically reports GPU resources on the Node and writes them to the Node's Annotations.
+    * In addition to the DevicePlugin, asynchronous tasks also submit more information by patching annotations.
+    * The Extender Scheduler plugin parses the total GPU resources from Node annotations and the used GPU resources from the annotations of running Pods on the Node. It then calculates the remaining available resources for each Node and stores them in memory for scheduling.
 
 ---
 
@@ -183,12 +182,14 @@ First, it specifies that the scheduler's name is `hami-scheduler`. The default K
 profiles:
 - schedulerName: hami-scheduler
 ```
+
 When we create a Pod, we don't specify a `schedulerName`, so it defaults to using the `default-scheduler`.
 > The `SchedulerName` modified by the `hami-webhook` needs to correspond to the name configured here.
 
 ### Extenders
 
 The core configuration for the scheduler is as follows:
+
 ```yaml
 extenders:
 - urlPrefix: "https://127.0.0.1:443"
@@ -217,22 +218,25 @@ managedResources:
   ignoredByScheduler: true
 # ... other managed resources
 ```
+
 - `name: nvidia.com/vgpu`: The resource name.
-- `ignoredByScheduler: true`: When set to true, the scheduler will ignore this resource during node resource matching and allocation. All these resources are to be scheduled by the extended `hami-scheduler`.
+* `ignoredByScheduler: true`: When set to true, the scheduler will ignore this resource during node resource matching and allocation. All these resources are to be scheduled by the extended `hami-scheduler`.
 
 With this configuration, for resources like `nvidia.com/vgpu`, `nvidia.com/gpumem`, etc., specified in `managedResources`, the scheduler will ignore them during node resource matching and allocation. This prevents scheduling failures just because a Node doesn't advertise these virtual resources.
 
 When the scheduler requests the extended `hami-scheduler` for scheduling, `hami-scheduler` can then properly handle these resources and find a suitable node based on the Pod's requested resources.
 
 Next, we will analyze the specific implementation of `hami-scheduler`, including two questions:
-1.  How does `hami-scheduler` perceive the GPU information on a Node, since, as mentioned earlier, `gpucore` and `gpumem` are virtual resources not directly reported on the Node by the DevicePlugin?
-2.  How does `hami-scheduler` choose the most suitable node, and how are advanced scheduling strategies like `spread` & `binpack` implemented?
+
+1. How does `hami-scheduler` perceive the GPU information on a Node, since, as mentioned earlier, `gpucore` and `gpumem` are virtual resources not directly reported on the Node by the DevicePlugin?
+2. How does `hami-scheduler` choose the most suitable node, and how are advanced scheduling strategies like `spread` & `binpack` implemented?
 
 ## 3. How HAMI Perceives GPU Resource Status on Nodes
 
 This is divided into two parts:
-1.  Perceiving GPU resource information on the Node.
-2.  Perceiving GPU resource usage on the Node.
+
+1. Perceiving GPU resource information on the Node.
+2. Perceiving GPU resource usage on the Node.
 
 Since `gpucore` and `gpumem` are virtual resources, they cannot be maintained directly by Kubernetes like standard third-party resources reported by a DevicePlugin. HAMI needs to maintain them itself.
 
@@ -250,93 +254,101 @@ capacity:
   nvidia.com/gpucores: "2000"   # Total available cores
   pods: "110"
 ```
+
 The reason is: `hami-scheduler` performs fine-grained splitting of `gpucore` and `gpumem`. Therefore, it needs to know the specific number of GPUs on a node, the VRAM size of each card, etc. Otherwise, if it allocates a Pod to a Node where all GPU VRAM is already consumed, problems will arise.
 
 ### Perceiving GPU resources on the node
 
 How does Hami perceive the GPU situation on a node? This is maintained by the Goroutine in the `start` method mentioned earlier. The core logic is in the `RegisterFromNodeAnnotations` method.
+
 ```go
 // Background goroutine: periodically reads GPU information from Node annotations and syncs it to the scheduler cache
 go sher.RegisterFromNodeAnnotations()
 ```
+
 The simplified code is as follows:
 It calls the kube-apiserver to get a list of nodes, then parses the Device information from the node's Annotations and saves it to memory.
+
 ```go
 func (s *Scheduler) RegisterFromNodeAnnotations() {
-	klog.V(5).Infoln("Scheduler into RegisterFromNodeAnnotations")
+ klog.V(5).Infoln("Scheduler into RegisterFromNodeAnnotations")
 
-	ticker := time.NewTicker(15 * time.Second)
-	defer ticker.Stop()
+ ticker := time.NewTicker(15 * time.Second)
+ defer ticker.Stop()
 
-	for {
-		select {
-		case <-s.nodeNotify:
-		case <-ticker.C:
-		case <-s.stopCh:
-			return
-		}
+ for {
+  select {
+  case <-s.nodeNotify:
+  case <-ticker.C:
+  case <-s.stopCh:
+   return
+  }
 
-		// 1. List nodes
-		// ... list nodes logic
-		
-		// 2. Iterate through nodes and parse GPU info
-		for _, n := range rawNodes {
-			devInfos, err := devInstance.GetNodeDevices(*n)
-			if err != nil {
-				klog.Errorln("get node devices failed", err.Error())
-				continue
-			}
-			
-			// ... logic to update or add GPU info to s.nodes cache
-			
-			s.addNode(n.Name, nodeInfo)
-		}
-	}
+  // 1. List nodes
+  // ... list nodes logic
+  
+  // 2. Iterate through nodes and parse GPU info
+  for _, n := range rawNodes {
+   devInfos, err := devInstance.GetNodeDevices(*n)
+   if err != nil {
+    klog.Errorln("get node devices failed", err.Error())
+    continue
+   }
+   
+   // ... logic to update or add GPU info to s.nodes cache
+   
+   s.addNode(n.Name, nodeInfo)
+  }
+ }
 }
 ```
+
 It will store the latest Node data in memory for use during scheduling, specifically in the `nodes` map object within `nodeManager`.
 
 ```go
 type Scheduler struct {
-	nodeManager
-	podManager
+ nodeManager
+ podManager
     // ... other fields
 }
 
 type nodeManager struct {
-	nodes map[string]*util.NodeInfo
-	mutex sync.RWMutex
+ nodes map[string]*util.NodeInfo
+ mutex sync.RWMutex
 }
 ```
+
 The important point is: the data source here is the node's Annotations, and these Annotations are maintained by a background goroutine in the `hami-device-plugin-nvidia` as mentioned in the previous article.
 
 ```go
 // getNodesUsage returns the VRAM/core usage of all nodes and their devices, filtering by nodeSelector / taints / nodeAffinity / unschedulable / nodeName
 func (s *Scheduler) getNodesUsage(nodes *[]string, task *corev1.Pod) (*map[string]*NodeUsage, map[string]string, error) {
-	// ...
+ // ...
 
-	// 1. List all nodes
-	// ...
+ // 1. List all nodes
+ // ...
 
-	// 2. Initialize node device list
-	// ...
-	
-	// 3. Aggregate usage from running Pods
-	podsInfo := s.ListPodsInfo()
-	for _, p := range podsInfo {
-		node, ok := overall[p.NodeID]
-		if !ok {
-			continue
-		}
-		// ... logic to aggregate used memory and cores from pod's devices
-	}
-	
-	// ...
+ // 2. Initialize node device list
+ // ...
+ 
+ // 3. Aggregate usage from running Pods
+ podsInfo := s.ListPodsInfo()
+ for _, p := range podsInfo {
+  node, ok := overall[p.NodeID]
+  if !ok {
+   continue
+  }
+  // ... logic to aggregate used memory and cores from pod's devices
+ }
+ 
+ // ...
 
-	return &cache, failed, nil
+ return &cache, failed, nil
 }
 ```
+
 It looks something like this:
+
 ```yaml
 apiVersion: v1
 kind: Node
@@ -351,9 +363,11 @@ metadata:
       GPU-1afede84-4e70-2174-49af-f07ebb94d1ae,10,46068,100,NVIDIA-NVIDIA A40,0,true:
     kubeadm.alpha.kubernetes.io/cri-socket: /run/containerd/containerd.sock
 ```
+
 The `hami.io/node-nvidia-register` annotation contains the specific GPU information, including ID, model, memory, etc.
 
 ### Perceiving GPU usage on the node
+
 In addition, **hami needs to perceive GPU usage to calculate how much `gpucore` and `gpumem` are still available.**
 This is achieved using the Informer mechanism provided by `client-go`, which watches for changes in Pods and Nodes. It gets the running Pods on a Node and calculates the remaining resources based on the resources requested by the Pods and the total resources on the Node.
 
@@ -379,7 +393,9 @@ func (s *Scheduler) Start() {
     s.addAllEventHandlers()
 }
 ```
+
 The `onAddPod` logic is triggered during Pod Create and Update:
+
 ```go
 // AssignedNodeAnnotations = "hami.io/vgpu-node"
 
@@ -399,9 +415,11 @@ func (s *Scheduler) onAddPod(obj interface{}) {
     s.addPod(pod, nodeID, podDev)
 }
 ```
+
 This restricts processing to only Pods with the `hami.io/vgpu-node` annotation, filtering out others. It parses the GPU UUID, memory, and core information used by the Pod from its Annotations.
 
 The Pod's Annotations look something like this:
+
 ```yaml
 $ k get po gpu-pod -oyaml
 apiVersion: v1
@@ -415,31 +433,34 @@ metadata:
     hami.io/vgpu-node: test
     hami.io/vgpu-time: "1727251686"
 ```
+
 The value of **`hami.io/vgpu-devices-allocated`** is the GPU information. Formatted, it looks like:
 `GPU-03f69c50-207a-2038-9b45-23cac89cb67d,NVIDIA,3000,30:;`
-- `GPU-03f69c50-207a-2038-9b45-23cac89cb67d`: Device UUID
-- `NVIDIA`: Device type
-- `3000`: 3000M of memory used
-- `30`: 30% of core used
+* `GPU-03f69c50-207a-2038-9b45-23cac89cb67d`: Device UUID
+* `NVIDIA`: Device type
+* `3000`: 3000M of memory used
+* `30`: 30% of core used
 
 When a Pod is deleted, the cached Pod information is simply removed from memory.
 
 Node changes are simpler, just sending a notification to the `nodeNotify` channel, which immediately triggers the `RegisterFromNodeAnnotations` logic.
 
 With this Informer, HAMI knows the following:
-- The state of GPU nodes in the cluster, including device information on each node.
-- The specific GPU usage by Pods, including memory and core usage.
+* The state of GPU nodes in the cluster, including device information on each node.
+* The specific GPU usage by Pods, including memory and core usage.
 
 With this information, it can complete the subsequent Scheduler logic.
 
 ## 4. Scheduling Implementation
 
 After obtaining the GPU information in the cluster, scheduling can begin. The implementation is divided into two interfaces:
-- `Filter`: Filters nodes based on various conditions to select suitable nodes for the current Pod.
-- `Bind`: Binds the Pod to a specific node, completing the scheduling.
+* `Filter`: Filters nodes based on various conditions to select suitable nodes for the current Pod.
+* `Bind`: Binds the Pod to a specific node, completing the scheduling.
 
 ### Filter Interface
+
 Let's look at how the `Filter` interface filters nodes.
+
 ```go
 // pkg/scheduler/scheduler.go#L444
 func (s *Scheduler) Filter(args extenderv1.ExtenderArgs) (*extenderv1.ExtenderFilterResult, error) {
@@ -469,6 +490,7 @@ func (s *Scheduler) Filter(args extenderv1.ExtenderArgs) (*extenderv1.ExtenderFi
     return &res, nil
 }
 ```
+
 For Pods that don't request special resources, it returns all nodes as schedulable without further processing.
 
 Otherwise, it scores the nodes based on the information obtained in the previous step. The scoring logic is based on the ratio of used GPU Core and GPU Memory to the total GPU Core and GPU Memory on each node, normalized by weights to get a final score.
@@ -489,7 +511,9 @@ func (ns *NodeScore) ComputeScore(devices DeviceUsageList) {
     klog.V(2).Infof("node %s computer score is %f", ns.NodeID, ns.Score)
 }
 ```
+
 After the calculation, it selects one node for scheduling.
+
 ```go
 // Calculate scores and get all suitable nodes
 nodeScores, err := s.calcScore(nodeUsage, nums, annos, args.Pod)
@@ -503,12 +527,15 @@ m := (*nodeScores).NodeList[len((*nodeScores).NodeList)-1]
 res := extenderv1.ExtenderFilterResult{NodeNames: &[]string{m.NodeID}}
 return &res, nil
 ```
+
 At this point, we have the final node to schedule to, and the scheduling logic is complete. You might wonder: **Why does the `Filter` method return only one node and even incorporate the scoring logic within it?**
 
 If the `Filter`, `Score`, etc., methods were implemented according to the standard logic, the final Scheduler would aggregate the scores from multiple plugins and then select a node based on the final result. **However, HAMI wants to completely control the scheduling result, so it combines the Filter and Score logic, ultimately returning only a single target node.** This ensures that the Pod will definitely be scheduled to that node.
 
 ### Bind Interface
+
 This is very simple. It just binds the Pod to the Node based on the result returned by `Filter` to complete the scheduling.
+
 ```go
 func (s *Scheduler) Bind(args extenderv1.ExtenderBindingArgs) (*extenderv1.ExtenderBindingResult, error) {
     klog.InfoS("Bind", "pod", args.PodName, "namespace", args.PodNamespace, "podUID", args.PodUID, "node", args.Node)
@@ -538,44 +565,48 @@ if err = s.kubeClient.CoreV1().Pods(args.PodNamespace).Bind(context.Background()
     klog.ErrorS(err, "Failed to bind pod", "pod", args.PodName, "namespace", args.PodNamespace, "podUID", args.PodUID, "node", args.Node)
 }
 ```
+
 It calls the API to create a `binding` object, scheduling the Pod to the specified node.
 
 At this point, we have finished analyzing the Scheduler's logic. After scheduling is complete, the Kubelet starts the Pod, and HAMI's device plugin begins to play its role.
 
 ### Summary
+
 HAMI starts an additional scheduler using the default `kube-scheduler` image, but renames it to `hami-scheduler` through configuration.
 
 This `hami-scheduler` is then configured with an Extender, which is an HTTP service started by another container in the same Pod.
 > PS: When we talk about `hami-scheduler`, we generally refer to the scheduling plugin implemented by this Extender.
 
 The scheduling can be divided into two parts:
-1.  **Get GPU Information**: *(Gets GPU resource information on the node from Node Annotations) (Gets GPU usage from Pod Annotations)*.
-2.  **Node Selection and Scheduling based on configured policy**: *(Directly returns the most recommended node after sorting by score in the Filter interface to achieve complete control over the scheduling result)*.
-    -   Scores are calculated based on the remaining GPU memory and cores; the more resources remaining, the lower the score.
+
+1. **Get GPU Information**: *(Gets GPU resource information on the node from Node Annotations) (Gets GPU usage from Pod Annotations)*.
+2. **Node Selection and Scheduling based on configured policy**: *(Directly returns the most recommended node after sorting by score in the Filter interface to achieve complete control over the scheduling result)*.
+    * Scores are calculated based on the remaining GPU memory and cores; the more resources remaining, the lower the score.
 
 ## 5. Summary
 
 This article has mainly analyzed the implementation principle of `hami-scheduler`, which includes two components:
--   **Webhook**: Determines if a Pod uses HAMI vGPU based on the `ResourceName` in the Pod's `Resource` field. If so, it changes the Pod's `SchedulerName` to `hami-scheduler` to be scheduled by it.
--   **Scheduler**: Starts a service using the `kube-scheduler` image and renames it to `hami-scheduler`. It then integrates the actual `hami-scheduler` logic through extender configuration. ***(It parses GPU resource information from the Node's Annotations, calculates the actual available GPU resources on each Node by parsing the GPU resources consumed by running Pods from their Annotations) (It scores nodes based on remaining resources and then selects the highest or lowest scoring node according to the configured Spread or Binpack scheduling strategy to schedule the Pod.)***
+* **Webhook**: Determines if a Pod uses HAMI vGPU based on the `ResourceName` in the Pod's `Resource` field. If so, it changes the Pod's `SchedulerName` to `hami-scheduler` to be scheduled by it.
+* **Scheduler**: Starts a service using the `kube-scheduler` image and renames it to `hami-scheduler`. It then integrates the actual `hami-scheduler` logic through extender configuration. ***(It parses GPU resource information from the Node's Annotations, calculates the actual available GPU resources on each Node by parsing the GPU resources consumed by running Pods from their Annotations) (It scores nodes based on remaining resources and then selects the highest or lowest scoring node according to the configured Spread or Binpack scheduling strategy to schedule the Pod.)***
 
-### HAMI Webhook & Scheduler Workflow:
+### HAMI Webhook & Scheduler Workflow
+
 ![p2](/images/blog/gpu5/p1.jpg)
 
-1.  A user creates a Pod and requests vGPU resources in it.
-2.  **The kube-apiserver, based on the `MutatingWebhookConfiguration`, sends a request to the HAMI-Webhook.**
-3.  The HAMI-Webhook inspects the Pod's `Resource` field. If it requests a vGPU resource managed by HAMI, it changes the Pod's `SchedulerName` to `hami-scheduler`, directing the Pod to be scheduled by `hami-scheduler`.
-    -   For privileged Pods, the Webhook skips processing.
-    -   For Pods using vGPU resources but with a specified `nodeName`, the Webhook rejects them.
-4.  The `hami-scheduler` then schedules the Pod. However, it uses the default `kube-scheduler` image from Kubernetes, so its basic scheduling logic is the same as the `default-scheduler`. **But, this `kube-scheduler` is configured via `KubeSchedulerConfiguration` to call an Extender Scheduler plugin.**
-    -   This Extender Scheduler is another container within the `hami-scheduler` Pod, which provides both the Webhook and Scheduler APIs.
-    -   When a Pod requests vGPU resources, the `kube-scheduler` calls the Extender Scheduler plugin via HTTP as configured, thus implementing custom scheduling logic.
-5.  The Extender Scheduler plugin contains the actual HAMI scheduling logic. It scores nodes based on their remaining resources to select a node.
-    -   This is where advanced scheduling strategies like `spread` & `binpack` are implemented.
-6.  Asynchronous tasks, including GPU perception logic:
-    -   A background Goroutine in the devicePlugin periodically reports GPU resources on the Node and writes them to the Node's Annotations.
-    -   In addition to the DevicePlugin, asynchronous tasks also submit more information by patching annotations.
-    -   The Extender Scheduler plugin parses the total GPU resources from Node annotations and the used GPU resources from the annotations of running Pods on the Node. It then calculates the remaining available resources for each Node and stores them in memory for scheduling.
+1. A user creates a Pod and requests vGPU resources in it.
+2. **The kube-apiserver, based on the `MutatingWebhookConfiguration`, sends a request to the HAMI-Webhook.**
+3. The HAMI-Webhook inspects the Pod's `Resource` field. If it requests a vGPU resource managed by HAMI, it changes the Pod's `SchedulerName` to `hami-scheduler`, directing the Pod to be scheduled by `hami-scheduler`.
+    * For privileged Pods, the Webhook skips processing.
+    * For Pods using vGPU resources but with a specified `nodeName`, the Webhook rejects them.
+4. The `hami-scheduler` then schedules the Pod. However, it uses the default `kube-scheduler` image from Kubernetes, so its basic scheduling logic is the same as the `default-scheduler`. **But, this `kube-scheduler` is configured via `KubeSchedulerConfiguration` to call an Extender Scheduler plugin.**
+    * This Extender Scheduler is another container within the `hami-scheduler` Pod, which provides both the Webhook and Scheduler APIs.
+    * When a Pod requests vGPU resources, the `kube-scheduler` calls the Extender Scheduler plugin via HTTP as configured, thus implementing custom scheduling logic.
+5. The Extender Scheduler plugin contains the actual HAMI scheduling logic. It scores nodes based on their remaining resources to select a node.
+    * This is where advanced scheduling strategies like `spread` & `binpack` are implemented.
+6. Asynchronous tasks, including GPU perception logic:
+    * A background Goroutine in the devicePlugin periodically reports GPU resources on the Node and writes them to the Node's Annotations.
+    * In addition to the DevicePlugin, asynchronous tasks also submit more information by patching annotations.
+    * The Extender Scheduler plugin parses the total GPU resources from Node annotations and the used GPU resources from the annotations of running Pods on the Node. It then calculates the remaining available resources for each Node and stores them in memory for scheduling.
 
 With this, the analysis of HAMI Webhook and Scheduler is complete. How advanced scheduling strategies like `spread` & `binpack` are implemented will be analyzed in the next article.
 

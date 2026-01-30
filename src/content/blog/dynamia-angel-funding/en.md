@@ -5,6 +5,7 @@ date: "2026-01-05"
 excerpt: "Shanghai Dynamia Intelligence Technology Co., Ltd. ('Dynamia AI'), an AI startup focused on heterogeneous compute scheduling and virtualization, recently completed tens of millions of RMB in angel financing, led by Fosun RCC with strong participation from Zhuopu Investment, seed investors, and industrial partners."
 author: "Dynamia"
 tags: ["financing", "angel round", "Fosun RCC", "Zhuopu Investment", "HAMi"]
+category: "Company News"
 language: "en"
 coverImage: "/images/blog/dynamia-angel-funding/dynamia-angel-funding-announcement.jpg"
 ---

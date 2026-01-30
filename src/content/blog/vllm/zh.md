@@ -1,24 +1,24 @@
 ---
 title: "「全球共建：vLLM 社区原生支持 HAMi，推理效率飞跃」— 来自西班牙开发者的贡献"
-coverTitle: "全球共建：VLLM社区原生支持HAMi，推理效率飞跃"
+coverTitle: "全球共建：VLLM 社区原生支持 HAMi，推理效率飞跃"
 slug: "vllm-community-hami-support-efficiency-spanish-contributor"
 date: "2025-09-15"
 excerpt: "本文将以该 PR 为切入点，结合社区 Issue 和邮件交流记录，从部署到验证，完整还原一条 \"HAMi × vLLM\" 的落地路径，帮助你在 Kubernetes 中快速实现多模型部署与资源复用"
 author: "密瓜智能"
 tags: ["vLLM", "HAMi", "GPU 调度", "多模型部署", "Kubernetes", "AI 推理", "社区贡献", "云原生"]
+category: "Integration & Ecosystem"
 coverImage: "/images/blog/vllm-hami-support/coverpage.png"
 language: "zh"
 ---
-
-# 「全球共建：vLLM 社区原生支持 HAMi，推理效率飞跃」— 来自西班牙开发者的贡献
-
 
 在大模型推理进入生产阶段后，如何最大化利用 GPU 资源、实现多模型共存、提高部署灵活性，成为了许多企业与开发者关注的重点。最近，vLLM 社区正式合并了 PR#579，原生支持了 CNCF Sandbox & CNAI Project HAMi。这不仅代表 HAMi 的能力被主流推理框架接纳，更意味着 vLLM 用户可以通过搭配 HAMi，开箱即用地进行 GPU 显存与算力切分部署。
 
 本文将以该 PR 为切入点，结合社区 Issue 和邮件交流记录，从部署到验证，完整还原一条 "HAMi × vLLM" 的落地路径，帮助你在 Kubernetes 中快速实现多模型部署与资源复用。
 
 ## 一、1+1>2：vLLM × HAMi 的结合点
+
 vLLM 是一款开源高性能推理引擎，以 PagedAttention 与连续批处理提升吞吐/并发并兼容 OpenAI 接口；vLLM Production Stack 的定位是把 vLLM 在 Kubernetes 上产品化，补齐弹性伸缩、可观测监控、流量路由/灰度与运维发布，使其可运营、可扩展地落地到生产环境。而 HAMi 提供了 GPU 的精细化切分与调度能力，包括：
+
 - GPU 算力控制（SM Util）
 - GPU 显存限制（MB / %）
 - 节点/GPU 调度策略（Binpack / Spread）
@@ -27,6 +27,7 @@ vLLM 是一款开源高性能推理引擎，以 PagedAttention 与连续批处�
 实现生产级的 LLM 推理优化，是一个需要同时解决 **“计算”** 与 **“调度”** 的系统性工程。vLLM 专注于 **计算层** ，通过革新内存管理，将单张 GPU 的吞吐性能推向极致；HAMi 则专注于 **调度层与虚拟化** ，为 Kubernetes 带来了 GPU 资源的精细化切分与管理能力。二者结合，完美覆盖了从资源调度到性能优化这两大关键环节。
 
 ## 二、社区驱动的融合：源自真实需求的 PR #579
+
 vLLM 与 HAMi 的这次集成并非项目方“自上而下”的规划，而是一次由真实用户需求驱动、“自下而上”的社区贡献。
 
 这一切都始于 **PR**  #579，社区贡献者 Andrés Doncel 来自西班牙 toB 电商搜索与商品发现平台提供商 Empathy.co。正如该公司在官方博客中所阐述的，其核心技术目标是“弥合生成式 AI 与事实准确性之间的鸿沟”——通过一种先进的 RAG（检索增强生成）框架，确保 AI 的回答有据可查、杜绝“幻觉”。
@@ -43,10 +44,10 @@ vLLM 与 HAMi 的这次集成并非项目方“自上而下”的规划，而是
 ![p7](/images/blog/vllm-hami-support/vllm-and-hami.png)
 
 ### 价值的迅速印证：Issue #649
+
 该 PR 合并后不久，vLLM 社区用户在 Issue [#649](https://github.com/vllm-project/production-stack/issues/649) 中询问：“是否支持单卡部署多个模型？”
 
 ![p7](/images/blog/vllm-hami-support/issue-conversation-0.png)
-
 
 @Nimbus318 回复指出：
 
@@ -59,7 +60,9 @@ vLLM 与 HAMi 的这次集成并非项目方“自上而下”的规划，而是
 从一个真实需求的 PR 贡献，到一个社区问题的完美解决，这形成了一个教科书式的开源社区正向循环。
 
 ## 三、完整实战：从安装部署到测试监控
+
 ### 3.1 准备工作：安装 HAMi 并接管 GPU 调度与分配
+
 ```bash
 # 1. 若使用 NVIDIA GPU Operator，通过 Helm 禁用其默认 devicePlugin
 helm upgrade --install gpu-operator nvidia/gpu-operator \
@@ -75,13 +78,16 @@ kubectl label nodes <your-gpu-node-name> gpu=on
 helm repo add hami-charts https://project-hami.github.io/HAMi/
 helm install hami hami-charts/hami -n kube-system
 ```
+
 执行完毕后，HAMi 正式接管集群的 GPU 调度与分配，基础环境准备就绪。
 
 ### 3.2 核心步骤：通过 Production Stack 部署多模型
+
 由于原生支持功能已被合并到主干分支但尚未包含在正式发版中，我们需要直接从 vLLM Production Stack 的 GitHub 仓库最新的 Helm Chart 进行安装。
 
 1. 拉取最新源码并创建自定义配置文件  
 进入 `production-stack` 项目的 `helm` 目录，创建 `values-hami-demo.yaml` 文件：
+
 ```bash
 git clone https://github.com/vllm-project/production-stack.git
 cd production-stack/helm
@@ -89,6 +95,7 @@ touch values-hami-demo.yaml
 ```
 
 将以下内容写入 values-hami-demo.yaml。这份配置定义了我们的部署蓝图：在单张 L4 卡上，通过 binpack 策略部署一个申请 14GB 显存的 Embedding 模型和一个申请 8GB 显存的 Reranker 模型。
+
 ```yaml
 servingEngineSpec:
   modelSpec:
@@ -141,8 +148,9 @@ servingEngineSpec:
       extraArgs: ["--task", "score"]
 ```
 
-2. 从本地源码执行部署
+1. 从本地源码执行部署
 在 helm 目录下，执行以下命令。注意末尾的 . 代表使用当前目录的 Chart
+
 ```bash
 helm upgrade --install vllm -f values-hami-demo.yaml .
 ```
@@ -150,11 +158,13 @@ helm upgrade --install vllm -f values-hami-demo.yaml .
 ![p7](/images/blog/vllm-hami-support/helm-upgrade.png)
 
 ### 3.3 资源验证与功能测试
+
 #### 1. 资源分配验证：检查 GPU 共享状态
+
 进入两个容器内部，执行 `nvidia-smi -L` 命令，检查 GPU 共享状态。预期的输出会清晰地展示他们处于同一张 GPU，且各自的显存分配符合我们的配置。
 
-
 - **Embedding 模型容器**（`vllm-bge-m3-embed-deployment-vllm-54fb85bf7c-gwjrn`）：
+
 ```bash
 root@vllm-bge-m3-embed-vllm-stack:/vllm-workspace# nvidia-smi
 Mon Sep 1 03:40:08 2025
@@ -183,6 +193,7 @@ GPU 0: NVIDIA L4 (UUID: GPU-ed8ae6fb-ac66-2346-e6a5-d440223e29a2)
 ```
 
 - **Reranker 模型容器**（`vllm-bge-reranker-v2-m3-deployment-vllm-7dcb7965d9-xwvr7`）：
+
 ```bash
 root@vllm-bge-reranker-v2-m3-vllm-stack:/vllm-workspace# nvidia-smi
 Mon Sep 1 03:38:24 2025
@@ -214,9 +225,11 @@ GPU 0: NVIDIA L4 (UUID: GPU-ed8ae6fb-ac66-2346-e6a5-d440223e29a2)
 ![p9](/images/blog/vllm-hami-support/nvidia-smi-2.png)
 
 #### 2. 协同功能测试：模拟真实 RAG 调用链路
+
 我们将通过一个自定义脚本，模拟真实的 RAG 调用链路，验证两个独立的模型服务能否在并发压力下协同工作。
 
 **测试脚本（rag_bench.py）源码：**：
+
 ```python
 import os, time, random, asyncio, aiohttp
 import numpy as np
@@ -324,6 +337,7 @@ if __name__ == "__main__":
 ```
 
 **执行测试**：
+
 ```bash
 # 将 vLLM 路由服务端口转发到本地
 kubectl port-forward svc/vllm-router-service 30080:80 &
@@ -333,12 +347,14 @@ Q_TOTAL=2000 python3 rag_bench.py
 ```
 
 > 注：该脚本为功能测试，存在三处与生产环境的简化：
+>
 > 1. 检索方式非生产级：向量检索在内存中完成，仅为模拟，不代表专用向量数据库性能；
 > 2. 缺乏容错性：无重试或错误处理逻辑，不具备生产级健壮性；
 > 3. 只验证通路：仅确认 API 正常返回，不评估结果相关性，非性能基准测试。
 > 但脚本无错误运行，可证明共享部署方案功能可用、服务畅通。
 
 ### 3.4 测试结果与监控看板
+
 ```bash
 > Q_TOTAL=2000 python3 rag_bench.py
 [info] rerank endpoint = http://localhost:30080/v1/rerank
@@ -352,30 +368,21 @@ Total  p50/p95: 1395.5 / 1647.9 ms
 
 ![p9](/images/blog/vllm-hami-support/production-stack-1.png)
 
-- https://github.com/vllm-project/production-stack/tree/main/observability）
+- <https://github.com/vllm-project/production-stack/tree/main/observability）>
 
 ![p9](/images/blog/vllm-hami-support/production-stack-2.png)
-- https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard_cn.md）
 
-
+- <https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard_cn.md）>
 
 ## 总结与展望
+
 这次 PR #579 的合入标志着： **HAMi 已成为 vLLM Production Stack 官方集成并认可的 GPU 共享方案** 。我们期待着未来更多模型推理部署工程化方案也能原生对接 HAMi，从而在生产中更灵活、更高效地使用 GPU 资源。
-
-
 
 HAMi，全称是 Heterogeneous AI Computing Virtualization Middleware（异构算力虚拟化中间件），是一套为管理 k8s 集群中异构 AI 计算设备设计的“一站式”架构，能提供异构 AI 设备共享能力与任务间资源隔离。HAMi 致力于提升 k8s 集群异构计算设备利用率，为不同类型异构设备提供统一复用接口，当前是 CNCF Sandbox 项目，已被纳入 CNCF CNAI 类别技术全景图。
 
-
-
-
 ![p5](/images/blog/PREP-EDU-HAMi/p5.png)
 
-Dynamia 密瓜智能,  专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
+Dynamia 密瓜智能， 专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
 
->官网：https://dynamia.ai
->邮箱：info@dynamia.ai
-
-
-
-
+>官网：<https://dynamia.ai>
+>邮箱：<info@dynamia.ai>

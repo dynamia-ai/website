@@ -6,6 +6,7 @@ date: "2025-10-09"
 excerpt: "HAMi v2.7.0 is here! Featuring full support for Kunlun XPU, Enflame GCU, AWS Neuron, and MetaX, enhanced scheduler optimizations, expanded application ecosystem integration, improved WebUI functionality, and thriving community growth."
 author: "Dynamia AI Team"
 tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing", "XPU", "GCU", "MetaX", "Neuron", "Release"]
+category: "Product Release"
 coverImage: "/images/blog/hami-v2.7.0/cover-en.png"
 language: "en"
 ---
@@ -123,7 +124,7 @@ spec:
 ```
 
 **Docs & PRs**
-*User guide: AWS **Neuron** Device* (https://project-hami.io/docs/userguide/AWSNeuron-device/enable-awsneuron-managing)
+*User guide: AWS **Neuron** Device* (<https://project-hami.io/docs/userguide/AWSNeuron-device/enable-awsneuron-managing>)
 Related PR: [https://github.com/Project-HAMi/HAMi/pull/1238](https://github.com/Project-HAMi/HAMi/pull/1238)
 *Thanks to @archlitchi and the AWS Neuron team for the collaboration.*
 

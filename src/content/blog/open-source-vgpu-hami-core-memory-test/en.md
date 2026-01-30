@@ -6,17 +6,19 @@ date: "2025-07-22"
 excerpt: "In the previous post, I introduced the open-source vGPU solution HAMI. This article focuses on testing its GPU Core & Memory isolation features."
 author: "Dynamia AI Team"
 tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/gpu2/cover2.jpg"
 language: "en"
 ---
 
 I previously shared an overview of the open-source vGPU solution, HAMI. This article will focus on testing its GPU Core and Memory isolation capabilities.
 
-This article is adapted from: https://mp.weixin.qq.com/s/qfdHqpendMC6_zS_isCluw
+This article is adapted from: <https://mp.weixin.qq.com/s/qfdHqpendMC6_zS_isCluw>
 
+## TL;DR
 
-## TL;DR:
 The Core & Memory isolation provided by the HAMI vGPU solution performs as expected:
+
 - **Core Isolation**: The computing power a Pod can use fluctuates around the set value, but the average over a period of time is consistent with the requested `gpucores` (the GPU core resource quota set for the Pod).
 - **Memory Isolation**: When a Pod requests GPU memory exceeding the set limit, it immediately triggers a CUDA OOM (Out of Memory) error.
 
@@ -25,6 +27,7 @@ The Core & Memory isolation provided by the HAMI vGPU solution performs as expec
 ## 1. Environment Setup
 
 Here’s a simple setup for our test environment:
+
 - GPU: 2 x A40
 - K8s: v1.23.17
 - HAMI: v2.3.13
@@ -34,7 +37,6 @@ Here’s a simple setup for our test environment:
 I'll use the GPU-Operator to install the GPU driver, container runtime, and other necessities.
 
 Then, install HAMI by following the guide in the -> [previous article "Open-Source vGPU Solution: HAMI for Fine-Grained GPU Sharing"](http://192.168.58.58:3001/zh/blog/open-source-vgpu-hami-fine-grained-partitioning)
-
 
 ### Test Environment
 
@@ -321,17 +323,20 @@ Everything is normal. This confirms that HAMI's memory isolation is working corr
 The test results are as follows:
 
 ### **Core Isolation**
+
 - With `gpucores` set to 30%, the task took 0.6s per step, and Grafana showed GPU utilization fluctuating around 30%.
 - With `gpucores` set to 60%, the task took 0.3s per step, and Grafana showed GPU utilization fluctuating around 60%.
 
 **We can conclude that the Core isolation provided by the HAMI vGPU solution behaves as expected.**
 
 ### **Memory Isolation**
+
 - With `gpumem` set to 20000M, attempting to allocate 20000M resulted in an OOM error, while allocating 19500M succeeded.
 
 **We can conclude that the Memory isolation provided by the HAMI vGPU solution behaves as expected.**
 
 ### **In short:**
+
 - **Core Isolation**: A Pod's usable computing power fluctuates around the set value, but the average over time aligns with the requested `gpucores`.
 - **Memory Isolation**: If a Pod attempts to allocate GPU memory beyond the set limit, it will immediately trigger a CUDA OOM error.
 

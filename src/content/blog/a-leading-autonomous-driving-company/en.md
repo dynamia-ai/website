@@ -6,6 +6,7 @@ date: "2025-08-09"
 excerpt: "In its core model training scenarios, a leading autonomous driving company utilizes multi-machine distributed training with scheduling frameworks like Ray and Volcano."
 author: "Dynamia AI Team"
 tags: ["KubeCon", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
+category: "Customer Success Story"
 coverImage: "/images/blog/A-leading-autonomous-driving-company/cover2.jpg"
 language: "en"
 ---
@@ -53,19 +54,19 @@ Among the many GPU virtualization solutions, HAMi ultimately became the technolo
 
 ![2](/images/blog/A-leading-autonomous-driving-company/p2.png)
 
-1.  **Precise Match for Business Scenarios**
+1. **Precise Match for Business Scenarios**
     The cloud desktop scenario mainly relies on container isolation and does not require complex batch co-scheduling. HAMi's lightweight design perfectly meets these needs, and it can also be integrated with Volcano for more advanced use cases in the future.
 
-2.  **Mature and Stable vCUDA Technology**
+2. **Mature and Stable vCUDA Technology**
     Adopting the industry-proven vCUDA virtualization technology, HAMi has been running stably to date, with only occasional scheduling failures caused by host resource contention, far exceeding stability expectations.
 
-3.  **Significant Reduction in TCO (Total Cost of Ownership)**
+3. **Significant Reduction in TCO (Total Cost of Ownership)**
     Compared to other solutions, HAMi has no high-end hardware restrictions and does not add extra kernel maintenance costs. Compared to in-house development, it also significantly reduces development and maintenance investment.
 
-4.  **Cloud-Native Friendly Architecture**
+4. **Cloud-Native Friendly Architecture**
     Based on Kubernetes' native scheduling extensions and device plugin system, the R&D team can quickly get up to speed. Future expansion and maintenance are relatively friendly, and they receive timely and strong support from the Melon Intelligence core team and the HAMi community.
 
-5.  **Future-Proof Heterogeneous Compatibility**
+5. **Future-Proof Heterogeneous Compatibility**
     It not only supports NVIDIA graphics cards but also offers compatibility with domestic GPUs, leaving room for a diversified computing infrastructure layout in the future.
 
 ## Results and Benefits
@@ -74,9 +75,9 @@ By introducing **HAMi** and building a **dual-track GPU management architecture*
 
 ![3](/images/blog/A-leading-autonomous-driving-company/p3.png)
 
--   **GPU utilization increased from over 20% to 60-70%, an improvement of about 200%**: Through single-card virtualization technology, idle resource occupation was effectively eliminated, allowing each graphics card to deliver its maximum value.
--   **Virtual GPU resource pool expanded by 3 times**: The scheduling bottleneck, previously limited by the number of physical cards, was broken, allowing the R&D team to apply for computing resources at any time.
--   **Significant cost optimization**: Compared to the MIG mode, which is only supported on some high-end cards, has fixed partitioning schemes, and limited granularity, single-card virtualization allows for flexible, fine-grained resource partitioning on a wider range of models. This fully unlocks the value of existing hardware, avoids the need to purchase additional graphics cards or expand capacity due to resource fragmentation, and reduces the overall TCO.
+- **GPU utilization increased from over 20% to 60-70%, an improvement of about 200%**: Through single-card virtualization technology, idle resource occupation was effectively eliminated, allowing each graphics card to deliver its maximum value.
+- **Virtual GPU resource pool expanded by 3 times**: The scheduling bottleneck, previously limited by the number of physical cards, was broken, allowing the R&D team to apply for computing resources at any time.
+- **Significant cost optimization**: Compared to the MIG mode, which is only supported on some high-end cards, has fixed partitioning schemes, and limited granularity, single-card virtualization allows for flexible, fine-grained resource partitioning on a wider range of models. This fully unlocks the value of existing hardware, avoids the need to purchase additional graphics cards or expand capacity due to resource fragmentation, and reduces the overall TCO.
 
 ***"Previously, GPUs were often monopolized by a few virtual machines, leading to resource deadlocks that required manual coordination. Now, after implementing single-card, multi-container sharing with HAMi, the same number of cards can support three times as many desktops, and our R&D colleagues can get the computing resources they need at any time." — Senior R&D Engineer, AI Platform at the user company***
 
@@ -84,9 +85,9 @@ By introducing **HAMi** and building a **dual-track GPU management architecture*
 
 As its business scale expands, the company is extending the application of HAMi from cloud desktops to more scenarios, with key exploration directions including:
 
--   **Testing the integration of HAMi with frameworks like Ray and Volcano in model training clusters**:
+- **Testing the integration of HAMi with frameworks like Ray and Volcano in model training clusters**:
     To improve the scheduling efficiency and resource utilization of training tasks, the platform is evaluating the feasibility of introducing HAMi into the model training cluster. It is exploring the synergy between HAMi and existing distributed computing frameworks and batch scheduling systems to address pain points such as resource fragmentation and scheduling queues.
--   **Supporting the integration and unified scheduling of heterogeneous acceleration devices**:
+- **Supporting the integration and unified scheduling of heterogeneous acceleration devices**:
     As the variety of accelerator chip types grows, the platform's need for unified management of heterogeneous resources is becoming more apparent. HAMi natively supports the management and scheduling of multiple types of computing devices. In the future, it will further expand its support for heterogeneous accelerator cards to build a flexible and scalable heterogeneous computing power management platform that can support various AI task scenarios.
 
 ## Conclusion
@@ -99,5 +100,5 @@ The Melon Intelligence team and the HAMi community have helped this leading auto
 
 Dynamia Melon Intelligence, focusing on the CNCF HAMi project as its core foundation, provides a global solution for flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing power scheduling and unified management. It can be deployed in a plug-and-play, lightweight, and non-intrusive manner in any public, private, or hybrid cloud environment, supporting heterogeneous chips from NVIDIA, Ascend, Metax, Cambricon, Hygon, Moore Threads, Tianshu Zhixin, and more.
 
->Website: https://dynamia.ai
->Email: info@dynamia.ai
+>Website: <https://dynamia.ai>
+>Email: <info@dynamia.ai>

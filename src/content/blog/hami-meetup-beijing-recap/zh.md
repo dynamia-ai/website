@@ -5,6 +5,7 @@ date: "2025-12-27"
 excerpt: "12 月 27 日，「不卷算力卷效率｜HAMi Meetup 北京站」在北京海淀区圆满落幕。近百位技术伙伴齐聚，围绕异构算力虚拟化、调度策略演进、AI 业务效率提升等关键议题展开深入交流。"
 author: "Dynamia"
 tags: ["HAMi", "Meetup", "异构算力", "GPU 虚拟化", "云原生"]
+category: "Community & Events"
 language: "zh"
 coverImage: "/images/blog/hami-meetup-beijing-recap/hami-meetup-beijing-banner.webp"
 ---

@@ -6,11 +6,11 @@ date: "2025-06-26"
 excerpt: "KubeCon China 2025 盛大落幕，密瓜智能 HAMi 项目作为 CNCF Sandbox 开源项目大放异彩，获得从顺丰科技到 AWS 等行业巨头的高度关注和认可。"
 author: "密瓜智能"
 tags: ["KubeCon", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
+category: "Customer Success Story"
 coverImage: "/images/blog/kubecon-china-2025/kubecon-china-2025.png"
 language: "zh"
 ---
 
-# 从顺丰科技到 AWS | 密瓜智能 HAMi 项目在 KubeCon China 广受行业巨头关注
 
 KubeCon China 2025 在中国香港盛大落幕，这场云原生领域的顶级盛会汇聚了全球的技术专家、开发者与开源爱好者。在这股技术的浪潮中，由密瓜智能核心团队成员发起并主导的 HAMi 作为行业内唯一专注于异构 GPU 资源共享的 CNCF Sandbox 开源项目，不仅在技术议题上发出了响亮的声音，更在与全球社区的互动中展现了蓬勃的生命力。
 
@@ -144,4 +144,4 @@ HAMi 目前在 GPU 共享与调度这一核心层面积累了深厚的经验，�
 
 ---
 
-*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。* 
+*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*

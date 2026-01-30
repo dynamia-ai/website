@@ -6,6 +6,7 @@ date: "2025-07-26"
 excerpt: "本文为 HAMi 原理分析的第四篇，分析 hami-scheduler 在调度时是如何选择节点的，即：Spread、Binpack 等高级调度策略是怎么实现的。"
 author: 密瓜智能
 tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/gpu6/cover.jpg"
 language: "zh"
 ---
@@ -20,7 +21,7 @@ language: "zh"
 
 >以下分析基于 HAMi v2.4.0
 
-这里在贴一下上一篇总结的 HAMi Webhook 、Scheduler 工作流程：
+这里在贴一下上一篇总结的 HAMi Webhook、Scheduler 工作流程：
 
 ![p1](/images/blog/gpu6/p1.jpg)
 
@@ -29,19 +30,20 @@ language: "zh"
 2. kube-apiserver 根据 MutatingWebhookConfiguration 配置请求 HAMi-Webhook
 
 3. HAMi-Webhook 检测 Pod 中的 Resource，发现是申请的由 HAMi 管理的 vGPU 资源，因此把 Pod 中的 SchedulerName 改成了 hami-scheduler，这样这个 Pod 就会由 hami-scheduler 进行调度了。
+
 - 对于特权模式的 Pod，Webhook 会直接跳过不处理
 
 - 对于使用 vGPU 资源但指定了 nodeName 的 Pod，Webhook 会直接拒绝
 
-4. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，kube-scheduler 根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件
+1. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，kube-scheduler 根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件
 
 - 这个 Extender Scheduler 就是 hami-scheduler Pod 中的另一个 Container，该 Container 同时提供了 Webhook 和 Scheduler 相关 API。
 
 - 当 Pod 申请了 vGPU 资源时，kube-scheduler 就会根据配置以 HTTP 形式调用 Extender Scheduler 插件，这样就实现了自定义调度逻辑
 
-5. Extender Scheduler 插件包含了真正的 hami 调度逻辑， 调度时根据节点剩余资源量进行打分选择节点
+1. Extender Scheduler 插件包含了真正的 hami 调度逻辑，调度时根据节点剩余资源量进行打分选择节点
 
-6. 异步任务，包括 GPU 感知逻辑
+2. 异步任务，包括 GPU 感知逻辑
 
 - devicePlugin 中的后台 Goroutine 定时上报 Node 上的 GPU 资源并写入到 Node 的 Annoations
 
@@ -57,10 +59,10 @@ hami-scheduler 提供了两种不同级别的调度策略：
 
 根据部署文档，我们可以在部署时指定调度策略
 
-- scheduler.defaultSchedulerPolicy.nodeSchedulerPolicy: 字符串类型，预设值为"binpack"，表示 GPU 节点调度策略。***（"binpack"表示尽量将任务分配到同一个 GPU 节点上 ； "spread"表示尽量将任务分配到不同 GPU 节点上。）***
+- scheduler.defaultSchedulerPolicy.nodeSchedulerPolicy: 字符串类型，预设值为"binpack"，表示 GPU 节点调度策略。_**（"binpack"表示尽量将任务分配到同一个 GPU 节点上； "spread"表示尽量将任务分配到不同 GPU 节点上。）**_
 
 - scheduler.defaultSchedulerPolicy.gpuSchedulerPolicy: 字符串类型，预设值为"spread", 表示 GPU 调度策略。
-***（"binpack"表示尽量将任务分配到同一个 GPU 上 ；"spread"表示尽量将任务分配到不同 GPU 上。）***
+_**（"binpack"表示尽量将任务分配到同一个 GPU 上；"spread"表示尽量将任务分配到不同 GPU 上。）**_
 
 就像这样：
 
@@ -309,7 +311,7 @@ func (ns *NodeScore) ComputeScore(devices DeviceUsageList) {
 
 问题不大，等看完后续 根据策略选择节点 章节就清楚了。
 
-## 过滤节点 
+## 过滤节点
 
 打分之后还需要根据 Pod 申请的 GPU 信息，过滤掉不满足条件的节点。
 
@@ -468,6 +470,7 @@ if ctrfit {
 ```go
 fit, _ := fitInDevices(node, n, annos, task, &score.Devices)
 ```
+
 fitInDevices 内容如下：
 
 内容比较多，去掉了其他无关内容，主要就是做了这几个判断，如果都满足则记录对应的 GPU 信息并返回 true，否则返回 false，表示该节点无法调度。
@@ -580,6 +583,7 @@ func (l NodeScoreList) Less(i, j int) bool {
     return l.NodeList[i].Score < l.NodeList[j].Score
 }
 ```
+
 根据我们的 Policy 不同，有两种排序方式，而且排序正好相反。
 
 ```go
@@ -591,9 +595,9 @@ NodeSchedulerPolicySpread SchedulerPolicyName = "spread"
 
 这里涉及到 sort.Sort() 的实现，简单来说：
 
-- 如果Less()方法中使用大于（>）比较，最终排序结果将是降序。
+- 如果 Less() 方法中使用大于（>）比较，最终排序结果将是降序。
 
-- 如果Less()方法中使用小于（<）比较，最终排序结果将是升序。
+- 如果 Less() 方法中使用小于（<）比较，最终排序结果将是升序。
 
 对应到调度策略：
 
@@ -641,7 +645,7 @@ rootCmd.Flags().StringVar(&config.NodeSchedulerPolicy, "node-scheduler-policy", 
 rootCmd.Flags().StringVar(&config.GPUSchedulerPolicy, "gpu-scheduler-policy", policy.GPUSchedulerPolicySpread.String(), "GPU scheduler policy")
 ```
 
-然后解析 Pod 的 Annoations，如果有指定hami.io/node-scheduler-policy 就使用 Pod 上指定的调度策略。
+然后解析 Pod 的 Annoations，如果有指定 hami.io/node-scheduler-policy 就使用 Pod 上指定的调度策略。
 
 至此，Node 调度策略就分析完成了。
 
@@ -649,7 +653,7 @@ rootCmd.Flags().StringVar(&config.GPUSchedulerPolicy, "gpu-scheduler-policy", po
 
 ## 3.GPU 调度策略原理
 
-当 Node 选好之后，Node 上有多块 GPU，Pod 还分配哪块呢? 这时候就该 GPU 调度策略生效了。
+当 Node 选好之后，Node 上有多块 GPU，Pod 还分配哪块呢？这时候就该 GPU 调度策略生效了。
 
 实际上选择 GPU 的逻辑也暗含在 Filter 方法里了。
 
@@ -742,7 +746,7 @@ func (s *Scheduler) Filter(args extenderv1.ExtenderArgs) (*extenderv1.ExtenderFi
 
 ### 过滤 GPU
 
-这部分逻辑隐藏比较深刻，在fitInDevices 方法中
+这部分逻辑隐藏比较深刻，在 fitInDevices 方法中
 
 ```go
 // pkg/scheduler/score.go#L185
@@ -821,7 +825,7 @@ for _, k := range requests {
 
 这里又出现了 sort.Sort 是不是有点熟悉，不过暂时先不管，还是先分析怎么过滤 GPU 的。
 
-核心部分在fitInCertainDevice 中，根据 Pod 申请的 GPU 信息找出当前节点上所有满足条件的 GPU
+核心部分在 fitInCertainDevice 中，根据 Pod 申请的 GPU 信息找出当前节点上所有满足条件的 GPU
 
 ```go
 fit, tmpDevs := fitInCertainDevice(node, k, annos, pod)
@@ -956,7 +960,7 @@ metadata:
 
 >ps：对于已经调度的 Pod hami.io/vgpu-devices-to-allocate 会被清空
 
-调度完成后,DevicePlugin 直接读取 hami.io/vgpu-devices-to-allocate 就知道要为该 Pod 分配哪些 GPU 了。
+调度完成后，DevicePlugin 直接读取 hami.io/vgpu-devices-to-allocate 就知道要为该 Pod 分配哪些 GPU 了。
 
 ## 根据策略选择 GPU
 
@@ -1223,7 +1227,7 @@ hami-scheduler 提供了两种不同级别的调度策略：
 
 - Binpack 表示尽量将任务分配到同一 Node 或者 GPU 上，尽量先占满一个 Node 或者 GPU 后再使用别的
 
-### 具体 Node、GPU 调度策略实现都可以分为以下几步：
+### 具体 Node、GPU 调度策略实现都可以分为以下几步
 
 1. 给 Node、GPU 打分
 
@@ -1235,12 +1239,13 @@ hami-scheduler 提供了两种不同级别的调度策略：
 
 - 对于 Spread 策略就选择剩余资源多的 Node、GPU，Binpack 策略就选择剩余资源少的 Node、GPU
 
-4. 对结果进行记录Node 
+1. 对结果进行记录 Node
 
 - 则是通过 Bind 结果直接和 Pod 绑定
 
 - GPU 则是记录到 Pod 的 Annoations 上
 
 ---
-*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。* 
+
+*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。_
 ---

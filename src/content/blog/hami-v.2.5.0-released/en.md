@@ -5,13 +5,12 @@ slug: "HAMi v2.5.0 Released"
 date: "2025-07-29"
 excerpt: "HAMi v2.5.0 is released! It adds dynamic MIG support and brings significant improvements in stability and usability. Come and see what's new."
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
-coverImage: "/images/blog/gpu8/cover2.jpg"
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Product Release"coverImage: "/images/blog/gpu8/cover2.jpg"
 language: "en"
 ---
 
 
-This article is adapted from: https://mp.weixin.qq.com/s/Af4GaNVhoCUsE5pzd-jnBg
+This article is adapted from: <https://mp.weixin.qq.com/s/Af4GaNVhoCUsE5pzd-jnBg>
 
 ## 1. Overview of New Features
 
@@ -126,7 +125,7 @@ This operation is what affects existing GPU tasks.
 
 ### Solution
 
-> Related PR:(https://github.com/Project-HAMi/HAMi/pull/767)
+> Related PR:(<https://github.com/Project-HAMi/HAMi/pull/767>)
 
 An MD5 check was added to determine if the files are identical. If the files are the same, they are not overwritten.
 
@@ -219,6 +218,7 @@ func GetLibPath() string {
 ```
 
 HAMi-core was also updated to version 2.5.0, fixing some usability issues:
+
 - Fixed an issue where hami-core could get stuck when tasks used the cuMallocAsync API.
 - Fixed an issue where hami-core could get stuck in images with high glibc versions (e.g., tf-serving:latest).
 
@@ -298,6 +298,7 @@ The content when MIG is enabled is as follows:
     ]
 }
 ```
+
 - `name`: change to the corresponding node name.
 - `operatingmode`: change to `mig`.
 
@@ -366,6 +367,7 @@ knownMigGeometries:
 ```
 
 Take A100 40G as an example:
+
 ```yaml
 - models: ["A100-SXM4-40GB", "A100-40GB-PCIe", "A100-PCIE-40GB", "A100-SXM4-40GB"]
   allowedGeometries:
@@ -387,8 +389,9 @@ Take A100 40G as an example:
 ```
 
 This GPU has 7 compute units + 40 G of memory. Considering the combination of compute units and memory, HAMi provides 4 default templates:
+
 - 1g.5gb * 7
-- 2g.10gb * 3 + 1g.5gb * 1
+- 2g.10gb *3 + 1g.5gb* 1
 - 3g.20gb * 2
 - 7g.40gb * 1
 
@@ -420,6 +423,7 @@ $ sudo nvidia-smi mig -lgip
 |                                                             7     1     1   |
 +-----------------------------------------------------------------------------+
 ```
+
 You can see that the default templates provided by HAMi are also selected and combined from the available templates. If you have special requirements, you can also define your own templates by editing the `hami-scheduler-device` configmap.
 
 ```bash
@@ -495,7 +499,7 @@ Taking the A100 40G template as an example:
       count: 1
 ```
 
-The main thing is to match the memory. Here, with 8G of memory requested, the first template `1g.5gb` is not sufficient. The second `2g.10gb`, third `3g.20gb`, and fourth `7g.40gb` are all sufficient, but the last two would waste too much memory. Therefore, it will match the second template, which is: 2g.10gb * 3 + 1g.5gb * 1.
+The main thing is to match the memory. Here, with 8G of memory requested, the first template `1g.5gb` is not sufficient. The second `2g.10gb`, third `3g.20gb`, and fourth `7g.40gb` are all sufficient, but the last two would waste too much memory. Therefore, it will match the second template, which is: 2g.10gb *3 + 1g.5gb* 1.
 
 > It will choose a template that meets the memory requirement without wasting too much.
 
@@ -529,7 +533,7 @@ nodeGPUMigInstance{deviceidx="1",deviceuuid="GPU-30f90f49-43ab-0a78-bf5c-93ed41e
 
 ### Design Principles
 
-> https://github.com/Project-HAMi/HAMi/blob/master/docs/develop/dynamic-mig.md
+> <https://github.com/Project-HAMi/HAMi/blob/master/docs/develop/dynamic-mig.md>
 
 **The core of dynamic MIG is to develop an automatic slicing plugin that can automatically complete MIG slicing when the user needs it.**
 
@@ -556,15 +560,15 @@ The differences between MIG mode and HAMi-core mode are as follows:
 
 1. **Filter Part**
 
-  - In HAMi-core mode, filtering and scoring are done directly based on the GPU Resource on the Node to select the appropriate Node and GPU.
+- In HAMi-core mode, filtering and scoring are done directly based on the GPU Resource on the Node to select the appropriate Node and GPU.
 
-  - In MIG mode, it is based on MIG instances or MIG templates, matching memory to find the most suitable template or instance.
+- In MIG mode, it is based on MIG instances or MIG templates, matching memory to find the most suitable template or instance.
 
-2. **Allocate Part:**
+1. **Allocate Part:**
 
-  - In HAMi-core mode, QoS is implemented with the help of `libvgpu.so`, so it is necessary to mount `libvgpu.so`, specify environment variables according to the requested resources, and finally mount the GPU to the Pod.
+- In HAMi-core mode, QoS is implemented with the help of `libvgpu.so`, so it is necessary to mount `libvgpu.so`, specify environment variables according to the requested resources, and finally mount the GPU to the Pod.
 
-  - In MIG mode, it slices the MIG instance and then mounts the MIG instance to the Pod.
+- In MIG mode, it slices the MIG instance and then mounts the MIG instance to the Pod.
 
 #### Pros and Cons
 
@@ -579,5 +583,6 @@ Of course, hami-core mode also has its own advantages: **it can slice core and m
 Depending on the use case, the two can be used in combination.
 
 ---
+
 *To learn more about the HAMi project, please visit our [GitHub repository](https://github.com/Project-HAMi/HAMi) or join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2).*
 ---

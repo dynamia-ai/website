@@ -5,6 +5,7 @@ date: "2025-12-27"
 excerpt: "On December 27, 'Efficiency Over Compute Power: HAMi Meetup Beijing Station' concluded successfully in Beijing's Haidian District. Nearly 100 technical partners gathered to discuss heterogeneous compute virtualization, scheduling strategy evolution, and AI business efficiency improvements."
 author: "Dynamia"
 tags: ["HAMi", "Meetup", "heterogeneous compute", "GPU virtualization", "cloud native"]
+category: "Community & Events"
 language: "en"
 coverImage: "/images/blog/hami-meetup-beijing-recap/hami-meetup-beijing-banner.webp"
 ---

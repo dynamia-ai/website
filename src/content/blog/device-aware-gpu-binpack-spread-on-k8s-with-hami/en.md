@@ -6,6 +6,7 @@ date: "2025-09-19"
 excerpt: "Explore a practical 2×2 framework for GPU scheduling in Kubernetes: combining node and GPU-level binpack/spread strategies. Learn how HAMi enables device-aware scheduling beyond native K8s capabilities, with hands-on examples of four distinct patterns that balance cost efficiency, GPU availability, and performance for AI workloads."
 author: "Dynamia"
 tags: ["GPU Scheduling", "HAMi", "Device-Aware", "DRA", "AI Infra", "Best Practices"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/cover-en.png"
 language: "en"
 ---

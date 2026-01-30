@@ -6,6 +6,7 @@ date: "2026-01-28"
 excerpt: "近日，密瓜智能与昆仑芯（XPU）围绕国产 AI 加速器与 AI 基础设施软件的协同适配与工程验证，完成阶段性产品兼容测试与互认工作。"
 author: "Dynamia AI Team"
 tags: ["HAMi", "昆仑芯", "XPU", "P800", "兼容性", "异构计算", "国产化", "AI 加速器"]
+category: "Integration & Ecosystem"
 coverImage: "/images/blog/hami-kunlunxin-p800-compatibility/cover-zh.png"
 language: "zh"
 ---

@@ -1,25 +1,25 @@
 ---
-title: "HAMi Heterogeneous Device Virtualization with Hygon DCU: vDCU Resource Scheduling in K8s"
-coverTitle: "Hygon DCU Virtualization with HAMi"
+title: "HAMi 异构设备虚拟化之海光 DCU 实战：K8s 下的 vDCU 资源调度与纳管"
+coverTitle: "HAMi 异构设备虚拟化之海光 DCU 实战：K8s 下的 vDCU 资源调度与纳管"
 slug: "open-source-vgpu-hami-K8s-vDCU"
 date: "2025-07-31"
-excerpt: "This article analyzes how Hygon DCU devices can be virtualized through HAMi to achieve unified management and scheduling."
-author: "Dynamia AI Team"
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
-coverImage: "/images/blog/gpu10/cover2.jpg"
-language: "en"
+excerpt: "本文是分析海光 DCU 设备如何通过 HAMi 完成虚拟化，实现统一纳管与调度。"
+author: "密瓜智能"
+tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+category: "Technical Deep Dive"
+coverImage: "/images/blog/gpu10/cover.jpg"
+language: "zh"
 ---
 
+本文摘自：<https://mp.weixin.qq.com/s/gpyhltXK3CSTkwk4ZwD74A>
 
-This article is adapted from: https://mp.weixin.qq.com/s/gpyhltXK3CSTkwk4ZwD74A
+之前通过一系列文章分析了 HAMI vGPU 部署使用以及背后的实现原理，本文则是分析海光 DCU 设备如何通过 HAMi 完成虚拟化，实现统一纳管与调度。
 
-After a series of articles analyzing the deployment, usage, and underlying implementation principles of HAMi vGPU, this article will analyze how Hygon DCU devices can be virtualized through HAMi to achieve unified management and scheduling.
+## 1. vDCU 相关命令
 
-## 1. vDCU Related Commands
+在这之前简单过一下海光 DCU 自带的 vDCU 功能如何使用。
 
-Before we begin, let's briefly go over how to use the native vDCU functionality of Hygon DCU.
-
-### 1.1 View Physical DCU Resources
+### 1.1 查看物理 DCU 资源
 
 ```bash
 $ hy-smi virtual -show-device-info
@@ -34,9 +34,9 @@ Device 1:
  Global memory: 34342961152 bytes
 ```
 
-### 1.2 Split vDCU
+### 1.2 拆分 vDCU
 
-Split a DCU into 4 parts, containing 5, 15, 20, and 20 compute units, and 4096, 8192, 8192, and 8192MiB of video memory, respectively.
+拆分 DCU 为 4 份，分别包含 5，15，20，20 个计算单元以及 4096，8192，8192，8192MiB 的显存
 
 ```bash
 $ hy-smi virtual -create-vdevices 4 -d 0 \
@@ -46,7 +46,7 @@ $ hy-smi virtual -create-vdevices 4 -d 0 \
 The virtual device is created successfully!
 ```
 
-### 1.3 View vDCU Information
+### 1.3 查看 vdcu 信息
 
 ```bash
 $ hy-smi virtual -show-vdevice-info
@@ -66,19 +66,20 @@ Virtual Device 2:
 Virtual Device 3:
  Actual Device: 7
  Compute units: 20
- Global memory: 8589934592 bytes```
+ Global memory: 8589934592 bytes
+```
 
-### 1.4 Destroy vDCU
+### 1.4 销毁 vDCU
 
 ```bash
-# -d ${dev_id} specifies the physical DCU ID. If not specified, all physical DCUs are selected.
-# -destroy-vdevice destroys all vDCUs on this physical DCU.
+# -d ${dev_id} 指定物理 DCU ID，不指定则选定所有物理 DCU
+# -destroy-vdevice 销毁此物理 DCU 上所有 vDCU
 hy-smi virtual -d ${dev_id} -destroy-vdevice
 ```
 
-### 1.5 Using vDCU with Docker
+### 1.5 Docker 使用 vDCU
 
-Execute the following command when starting the container to mount the vDCU into it. The following command indicates that the user mounts the 0th vDCU instance when starting the container.
+在容器启动的时候执行以下命令将 vDCU 挂载至容器内。以下命令表示用户在启动容器时，挂载第 0 号 vDCU 实例。
 
 ```bash
 docker run -it --name container_name \
@@ -90,38 +91,38 @@ ${docker_image:tag} \
 /bin/bash
 ```
 
-**As you can see, in addition to mounting device files like kfd, dri, and mkfd via the `--device` flag, an additional `/etc/vdev/vdev0.conf` file is mounted into the container.**
+**可以看到除了通过 --device 方式挂载 kfd、dri、mkfd 等设备文件之外，还额外挂载了一个 /etc/vdev/vdev0.conf 文件到容器里**
 
-In fact, this file is the vDCU's configuration file, which records the detailed information of that vDCU.
+实际上这个文件就是 vDCU 的配置文件，内部记录了该 vDCU 的详细信息。
 
-Although we can't see the relevant source code, it's certain that the driver will check for the existence of this file. If it exists, it means a vDCU is currently in use. The driver then uses the information in this file to find the corresponding physical DCU, as well as core, memory, and other information to enforce the limits.
+虽然看不到相关源码，不过可以肯定的是，驱动程序肯定会查看该文件是否存在，如果存在则说明当前使用的是 vDCU，然后根据该文件中的信息来找到对应的物理 DCU，以及 core、mem 等信息以完成限制。
 
-Next, let's see how to use vDCU in HAMi.
+接下来看下 HAMi 中如何使用 vDCU。
 
-## 2. Deploying HAMi
+## 2.部署 HAMi
 
-Prerequisites:
+前提条件：
 
-- dtk driver >= 24.04
+- dtk 驱动程序 >= 24.04
 
-### 2.1 Deployment
+### 2.1 部署
 
-Deploy using Helm.
+使用 Helm 部署
 
 ```bash
-# Add repo
+# 添加 repo
 helm repo add hami-charts https://project-hami.github.io/HAMi/
-# Install
+# 安装
 helm install hami hami-charts/hami -n kube-system
 ```
 
-> PS: You can customize your installation by adjusting the [HAMi deployment configuration](https://github.com/Project-HAMi/HAMi/blob/master/docs/config.md).
+> ps：可以通过调整 [HAMi 部署配置](https://github.com/Project-HAMi/HAMi/blob/master/docs/config.md)来自定义你的安装。
 
-If your current environment cannot pull online images, you can specify an image repository.
+如果当前环境无法拉取在线镜像，可以指定镜像仓库
 
 ```bash
 export registry=192.168.10.172:5000
-# If no tag is specified, the same version as the current cluster will be used automatically. Ensure the Registry has this image.
+# 不指定 tag,会自动使用当前集群同样版本，需要确保 Registry 有该镜像
 export kubescheduler=$registry/kube-scheduler
 
 helm upgrade --install hami hami-charts/hami -n kube-system \
@@ -130,7 +131,7 @@ helm upgrade --install hami hami-charts/hami -n kube-system \
 --set scheduler.patch.imageNew=$registry/liangjw/kube-webhook-certgen:v1.1.1
 ```
 
-### 2.2 Check Pod Running Status
+### 2.2 检查 Pod 运行情况
 
 ```bash
 $ kubectl -n kube-system get po -l app.kubernetes.io/name=hami
@@ -138,61 +139,61 @@ NAME                              READY   STATUS    RESTARTS   AGE
 hami-scheduler-6dbdf69644-mz9m5   2/2     Running   0          2m19s
 ```
 
-If `hami-scheduler` is Running, the installation was successful.
+如果 hami-scheduler Running 说明安装成功。
 
->PS: For a DCU environment, only the hami-scheduler Pod will be started.
+>ps：对于 DCU 环境只会启动 hami-scheduler 一个 Pod。
 
-## 3. Deploying hami-vdcu-device-plugin
+## 3. 部署 hami-vdcu-device-plugin
 
 ```bash
-# The corresponding DevicePlugin also uses the version provided by the HAMi community.
-# First, label the DCU nodes with dcu=on.
+# 对应的 DevicePlugin 也是用 HAMi 社区提供的版本。
+# 先给 DCU 节点打上 label dcu=on
 kubectl label nodes {nodeid} dcu=on
 ```
 
-### 3.1 Preparation
+### 3.1 准备工作
 
-Then, perform the following preparations.
+然后做以下准备工作
 
-Create the vdev directory.
+创建 vdev 目录
 
 ```bash
-# on the dcu node, create this directory:
+# on the dcu node, create these directory:
 $ mkdir /etc/vdev
 ```
 
-Copy dtk to the /opt/dtk directory.
+将 dtk 复制到 /opt/dtk 目录
 
->Because the container will uniformly mount /opt/dtk, we copy it from the deployment directory to the specified directory.
+>因为容器会统一挂载 /opt/dtk，因此将其从部署目录 cp 到指定目录
 
 ```bash
 # should change dtk-xx.xx.x to your installed dtk version
 $ cp -r /opt/dtk-xx.xx.x /opt/dtk
 ```
 
-Note: The `/opt/dtk-xx.xx.x` path depends on the directory specified when you previously deployed DTK.
+注意：/opt/dtk-xx.xx.x 这个位置取决于之前部署 DTK 时指定的目录
 
-### 3.2 Deployment
+### 3.2 部署
 
-Now you can start the deployment.
+然后就可以开始部署了
 
-Get the relevant YAML from the https://github.com/Project-HAMi/dcu-vgpu-device-plugin project:
+从 <https://github.com/Project-HAMi/dcu-vgpu-device-plugin> 项目获取相关 yaml：
 
 ```bash
 wget https://raw.githubusercontent.com/Project-HAMi/dcu-vgpu-device-plugin/refs/heads/master/k8s-dcu-plugin.yaml
 wget https://raw.githubusercontent.com/Project-HAMi/dcu-vgpu-device-plugin/refs/heads/master/k8s-dcu-rbac.yaml
 ```
 
-Then deploy the device-plugin.
+然后部署 device-plugin
 
 ```bash
 kubectl apply -f k8s-dcu-rbac.yaml
 kubectl apply -f k8s-dcu-plugin.yaml
 ```
 
-### 3.3 Check Pod Running Status
+### 3.3 检查 Pod 运行情况
 
-Confirm that the relevant components are running correctly:
+确认相关组件都正常运行：
 
 ```bash
 $ kubectl get po -n kube-code
@@ -204,15 +205,15 @@ kube-code     hami-dcu-vgpu-device-plugin-svwl7        1/1     Running   0      
 kube-code     hami-scheduler-bb5586989-q7bvr           2/2     Running   0          54m
 ```
 
-As you can see, the dcu-vdcu-device-plugin on several DCU nodes is running normally.
+可以看到，几个 DCU 节点上的 dcu-vdcu-device-plugin 都运行正常。
 
-At this point, the relevant components are deployed. Next, let's verify if vDCU can be used correctly.
+至此，相关组件部署完成，接下来验证下 vDCU 能否正常使用了。
 
-## 4. Verifying vDCU
+## 4. 验证 vdcu
 
-### 4.1 View Node Resources
+### 4.1 查看 Node 资源
 
-Next is to check the node's resource situation and whether vDCU is registered correctly.
+接下来就是查看节点资源情况，vdcu 是否正常注册。
 
 ```bash
 $ kubectl describe node d41gpucns41 | grep Capacity -A 8  
@@ -227,13 +228,13 @@ Capacity:
   pods:               500
 ```
 
-Here, `hygon.com/dcunum: 32` is the number of vDCUs. A single node has 8 DCUs, and here it is split 4 ways.
+这里的  hygon.com/dcunum:   32 就是 vdcu 数量，单节点 8 DCU，这里是做了 4 倍切分。
 
->PS: Because a single physical Hygon DCU currently only supports being split into 4 vDCUs.
+>ps: 因为当前一块海光物理 DCU 只支持切分为 4 个 vDCU。
 
-### 4.2 Start a Pod Using vDCU
+### 4.2 启动 Pod 使用 vdcu
 
-The complete YAML is as follows:
+完整 yaml 如下：
 
 ```yaml
 apiVersion: v1
@@ -252,17 +253,18 @@ spec:
         limits:
           hygon.com/dcunum: 1 # requesting a GPU
           hygon.com/dcumem: 2000 # each dcu require 2000 MiB device memory
-          hygon.com/dcucores: 15 # each dcu use 15% of total compute cores```
+          hygon.com/dcucores: 15 # each dcu use 15% of total compute cores
+```
 
-Similar to vGPU, it supports specifying the number of cards, core, memory, and other resources separately.
+和 vGPU 类似，支持单独指定卡数、core、mem 等资源。
 
-After entering the Pod, first source the environment variables.
+进入 Pod 后先 source 下环境变量
 
 ```bash
 source /opt/hygondriver/env.sh
 ```
 
-Then use the following command to verify:
+然后使用以下命令验证
 
 ```bash
 hy-virtual -show-device-info
@@ -275,41 +277,47 @@ Device 0:
         Global memory: 2097152000 bytes
 ```
 
-`Compute units` and `Global memory` are the core and memory we specified earlier.
+Compute units 和 Global memory 就是我们前面指定的 core 和 mem。
 
-This confirms that HAMi vDCU is working.
+至此，说明 HAMi vdcu 已经生效了。
 
-### 4.3 Notes
+### 4.3 注意事项
 
-Some important notes:
+一些注意事项：
 
-1. If your image is not a 'dtk-embedded-image', you need to install `pciutils`, `libelf-dev`, and `kmod` after the task runs. Otherwise, DCU tools like `hy-smi` or `hy-virtual` may not work correctly.
+1. 如果您的镜像不是 'dtk-embedded-image'，则需要在任务运行后安装 pciutiils、libelf-dev、kmod，否则，像 hy-smi 或 hy-virtual 这样的 dcu 工具可能无法正常工作。
 
-2. Sharing DCUs in init containers is not supported. Pods with "hygon.com/dcumem" in an init container will never be scheduled.
+2. 不支持在 init 容器中共享 DCU，init 容器中带有 "hygon.com/dcumem" 的 pod 将永远不会被调度。
 
-3. Each container can only get one vDCU. If you want to mount multiple DCU devices, you should not set `hygon.com/dcumem` or `hygon.com/dcucores`.
+3. 每个容器只能获取一个 vdcu。如果您想挂载多个 dcu 设备，则不应设置 hygon.com/dcumem 或 hygon.com/dcucores。
 
-## 5. Implementation Analysis
+## 5. 实现分析
 
-Let's briefly analyze the vdcu-device-plugin. According to the steps for using vDCU in the first chapter, the vdcu-device-plugin, in addition to the normal reporting of device information and allocation of devices, also needs to handle the following things:
+简单分析一下 vdcu-device-plugin，根据第一章中使用 vDCU 的步骤可知，vdcu-device-plugin
 
-1.  **vDCU Configuration File Maintenance**
-    *   When a Pod is created, generate the corresponding vDCU configuration file based on the core and memory requested in the YAML.
-    *   When the Pod is deleted, the corresponding configuration file also needs to be deleted.
+除了正常的上报设备信息，分配设备之外，还需要处理以下事情：
 
-2.  **Mounting the vDCU Configuration File into the Pod**
-    *   This is the only way for the driver to know how much core and memory to limit this vDCU to.
+1. vDCU 配置文件维护
 
-It's recommended to read this first:
-[HAMi vGPU Solution Analysis Part 1: hami-device-plugin-nvidia Implementation](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)
+- 创建 Pod 时根据 yaml 中申请的 core、mem 生成对应的 vdcu 配置文件
 
-The implementations are similar.
+- Pod 删除后也需要删除对应的配置文件
+
+1. 挂载 vDCU 配置文件到 Pod 中
+
+- 只有这样驱动程序才知道将该 vDCU 限制在多少 core、mem
+
+推荐先看下这篇
+
+[HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现 device-plugin](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)
+
+ 实现上都是类似的。
 
 ### 5.1 Register
 
-First, the DevicePlugin must be registered with the Kubelet. Here, `device-plugin-manager` is used, so there is no separate registration code. However, we can look at what work is done at startup.
+ 首先是要将 DevicePlugin 注册到 Kubelet，这里用的是 device-plugin-manager 因此没有单独注册的代码，不过也可以看下在启动的时候做了哪些工作。
 
-```go
+ ```go
 // Start is an optional interface that could be implemented by plugin.
 // If case Start is implemented, it will be executed by Manager after
 // plugin instantiation and before its registration to kubelet. This
@@ -318,7 +326,7 @@ First, the DevicePlugin must be registered with the Kubelet. Here, `device-plugi
 func (p *Plugin) Start() error {
     var err error
 
-    // Initialize device info
+    // 初始化 device info
     dcgm.Init()
     p.devices, err = dcgm.DeviceInfos()
     if err != nil {
@@ -339,7 +347,7 @@ func (p *Plugin) Start() error {
 }
 ```
 
-At startup, DCU information is obtained through `dcgm.DeviceInfos()`.
+启动时通过dcgm.DeviceInfos() 获取 DCU 信息
 
 ```go
 dcgm.Init()
@@ -360,15 +368,15 @@ for idx, val := range p.devices {
 
 ### DeviceInfos
 
-Specific implementation:
+具体实现
 
 ```go
-// DeviceInfos gets the list of device information.
-// @Summary Get the list of device information
-// @Description Returns a list of detailed information for all devices
+// DeviceInfos 获取设备信息列表
+// @Summary 获取设备信息列表
+// @Description 返回所有设备的详细信息列表
 // @Produce json
-// @Success 200 {array} DeviceInfo "Returns a list of device information"
-// @Failure 500 {object} error "Internal server error"
+// @Success 200 {array} DeviceInfo "返回设备信息列表"
+// @Failure 500 {object} error "服务器内部错误"
 // @Router /DeviceInfos [get]
 func DeviceInfos()(deviceInfos []DeviceInfo, err error) {
     numDevices, err := rsmiNumMonitorDevices()
@@ -380,25 +388,25 @@ func DeviceInfos()(deviceInfos []DeviceInfo, err error) {
         if err != nil {
             return nil, err
         }
-        // Parse BDFID
+        // 解析 BDFID
         domain := (bdfid >> 32) & 0xffffffff
         bus := (bdfid >> 8) & 0xff
         dev := (bdfid >> 3) & 0x1f
         function := bdfid & 0x7
-        // Format PCI ID
+        // 格式化 PCI ID
         pciBusNumber := fmt.Sprintf("%04X:%02X:%02X.%X", domain, bus, dev, function)
-        // Device serial number
+        //设备序列号
         deviceId, _ := rsmiDevSerialNumberGet(i)
-        // Get device type identifier id
+        //获取设备类型标识 id
         devTypeId, _ := rsmiDevIdGet(i)
         devType := fmt.Sprintf("%x", devTypeId)
-        // Model name
+        //型号名称
         devTypeName := type2name[devType]
-        // Get total device memory
+        //获取设备内存总量
         memoryTotal, _ := rsmiDevMemoryTotalGet(i, RSMI_MEM_TYPE_FIRST)
         mt, _ := strconv.ParseFloat(fmt.Sprintf("%f", float64(memoryTotal)/1.0), 64)
         glog.Info(" DCU[%v] memory total memory total: %.0f", i, mt)
-        // Get used device memory
+        //获取设备内存使用量
         memoryUsed, _ := rsmiDevMemoryUsageGet(i, RSMI_MEM_TYPE_FIRST)
         mu, _ := strconv.ParseFloat(fmt.Sprintf("%f", float64(memoryUsed)/1.0), 64)
         glog.Info(" DCU[%v] memory used :%.0f", i, mu)
@@ -448,7 +456,7 @@ import (
     "github.com/golang/glog"
 )
 
-// rsmiNumMonitorDevices gets the number of gpus *
+// rsmiNumMonitorDevices 获取 gpu 数量 *
 func rsmiNumMonitorDevices()(gpuNum int, err error){
     var p C.uint
     ret := C.rsmi_num_monitor_devices(&p)
@@ -461,7 +469,7 @@ func rsmiNumMonitorDevices()(gpuNum int, err error){
     return gpuNum, nil
 }
 
-// rsmiDevPciIdGet gets the unique pci device identifier
+// rsmiDevPciIdGet 获取唯一 pci 设备标识符
 func rsmiDevPciIdGet(dvInd int) (bdfid int64, err error) {
     var cbdfid C.uint64_t
     ret := C.rsmi_dev_pci_id_get(C.uint32_t(dvInd), &cbdfid)
@@ -478,10 +486,11 @@ func rsmiDevPciIdGet(dvInd int) (bdfid int64, err error) {
 
 ### WatchAndRegister
 
-This method mainly calls two other methods:
+该方法主要调用两个方法：
 
--   `RefreshContainerDevices`: Maintains vDCU configuration information, removing corresponding files after a Pod is deleted.
--   `RegistrInAnnotation`: Records the physical DCU information on the node to the node's Annotation.
+- RefreshContainerDevices：维护 vdcu 配置信息，Pod 删除后移除对应文件
+
+- RegistrInAnnotation：将节点上的物理 DCU 信息记录到节点的 Annoation 上。
 
 ```go
 func (r *Plugin) WatchAndRegister() {
@@ -501,7 +510,7 @@ func (r *Plugin) WatchAndRegister() {
 
 ### RefreshContainerDevices
 
-Based on the files in the `/usr/local/vgpu/dcu` directory and the Pod information in Kubernetes, this function updates the vDCU usage status and cleans up unused vDCU configuration files to ensure that the device status information is consistent with the actual usage.
+根据 /usr/local/vgpu/dcu 目录下的文件和 Kubernetes 中的 Pod 信息，更新 vdcu 使用情况，并清理不再使用的 vdcu 配置文件，以确保设备状态信息与实际使用情况保持一致。
 
 ```go
 func (p *Plugin) RefreshContainerDevices() error {
@@ -556,7 +565,7 @@ func (p *Plugin) RefreshContainerDevices() error {
 
 ### RegistrInAnnotation
 
-This records the Device information in the Node's Annotation, so that `hami-scheduler` can get the detailed information of the DCUs on each node from the Annotation.
+将 Device 信息记录到 Node  Annoation 上，这样 hami-scheduler 可以从 Annoation 中拿到每个节点上 DCU 的详细信息。
 
 ```go
 func (r *Plugin) RegistrInAnnotation() error {
@@ -585,9 +594,9 @@ func (r *Plugin) RegistrInAnnotation() error {
 
 ### ListAndWatch
 
-`ListAndWatch` detects the DCUs on the node and reports them to the Kubelet, which is then submitted to the kube-apiserver by the Kubelet, and finally updated in the Node's Resources.
+ListAndWatch 检测节点上的 DCU 并上报给 Kubelet，由 Kubelet 提交 kube-apiserver，最终更新到 Node 的 Resource 上。
 
-The content of the ListAndWatch method is as follows:
+ListAndWatch 方法内容如下：
 
 ```go
 // ListAndWatch returns a stream of List of Devices
@@ -662,7 +671,7 @@ func (p *Plugin) ListAndWatch(e *kubeletdevicepluginv1beta1.Empty, s kubeletdevi
 }
 ```
 
-Looking at it, there is some ineffective code. The useful part is below:
+看了下有部分无效代码，有用的下面这部分：
 
 ```go
 fakedevs := p.apiDevices()
@@ -678,7 +687,7 @@ for {
 
 ### apiDevices
 
-Based on the device information obtained in the `Start` method earlier, `fakeDevice`s are generated and submitted to the kubelet.
+根据前面 Start 方法中获取到的 device 信息生成 fakeDevice 提交给 kubelet。
 
 ```go
 func (r *Plugin) apiDevices() *[]*api.DeviceInfo {
@@ -701,9 +710,9 @@ func (r *Plugin) apiDevices() *[]*api.DeviceInfo {
 }
 ```
 
-Here, `Count` is fixed at 4, meaning each DCU can be split into 4 vDCUs.
+其中 Count 固定为 4，即每个 DCU 可以切分为 4 个 vdcu。
 
->PS: Because the Hygon DCU virtualization function currently supports a maximum of 4 vDCUs on one physical card.
+>ps:因为目前海光 DCU 虚拟化功能在一张物理卡上支持最多 4 个 vDCU。
 
 ### generateFakeDevs
 
@@ -725,13 +734,13 @@ func (p *Plugin) generateFakeDevs(devices *[]*api.DeviceInfo) []*kubeletdevicepl
 }
 ```
 
-Then, in `generateFakeDevs`, a sufficient number of fakedevs are copied based on the Count information. At this point, the number of DCUs perceived by the Kubelet will be 4 times the number of physical DCUs.
+然后在 generateFakeDevs 中在根据 Count 信息复制出足够数量的 fakedev，至此对 Kubelet 来说感知到的 dcu 数量将是 物理 dcu 数量的 4 倍。
 
 ### Allocate
 
-`Allocate` contains the logic for actually allocating vDCUs to the Pod.
+Allocate 则是包含了真正将 vDCU 分配给 Pod 的逻辑。
 
->PS: Because there is no separate container runtime, some extra work needs to be done in Allocate, such as mounting devices or directories like kfd, mkfd, dri, hygondriver, hyhal, etc., into the Pod.
+>ps：因为没有单独的 container runtime,因此在 Allocate 中需要额外做一些工作，比如把kfd、mkfd、dri、hygondriver、hyhal 等等设备或者目录挂载到 Pod 中。
 
 ```go
 func (p *Plugin) Allocate(ctx context.Context, reqs *kubeletdevicepluginv1beta1.AllocateRequest) (*kubeletdevicepluginv1beta1.AllocateResponse, error) {
@@ -850,7 +859,7 @@ func (p *Plugin) Allocate(ctx context.Context, reqs *kubeletdevicepluginv1beta1.
 }
 ```
 
-This is the same logic as `hami-nvidia-device-plugin`; the device to be allocated has already been selected during the `hami-scheduler` phase.
+和 hami-nvidia-device-plugin 一样的逻辑，在 hami-scheduler 的时候就已经把要分配的 device 选好了。
 
 ### DecodePodDevices
 
@@ -885,7 +894,7 @@ func DecodePodDevices(checklist map[string]string, annos map[string]string) (Pod
 
 ### createvdevFiles
 
-Finally, a vdev configuration file will be created and mounted into the Pod.
+最后会创建一个 vdev 配置文件并挂载到 Pod 里
 
 ```go
 filename, err := p.createvdevFiles(current, &currentCtr, devreq)
@@ -903,7 +912,7 @@ if len(filename) > 0 {
 }
 ```
 
-The `RefreshContainerDevices` method from earlier maintains the vdev configuration files created here. When the Pod is deleted, the corresponding directory needs to be cleaned up.
+之前的 RefreshContainerDevices 方法维护的就是这里创建的 vdev 配置文件，当 Pod 删除后需要清理对应的目录。
 
 ```go
 dirName := string(current.UID) + "_" + ctr.Name + "_" + fmt.Sprint(devidx) + "_" + fmt.Sprint(pipeid) + "_" + fmt.Sprint(vdevidx) + "_" + fmt.Sprint(coremsk1) + "_" + fmt.Sprint(coremsk2)
@@ -911,9 +920,10 @@ cacheFileHostDirectory := fmt.Sprintf("/usr/local/vgpu/dcu/%s", dirName)
 err = createvdevFile(pcibusId, coremsk1, coremsk2, reqcores, mem, 0, vdevidx, pipeid, cacheFileHostDirectory, "vdev0.conf")
 if err != nil {
     return "", err
-}```
+}
+```
 
-The content of `createvdevFile` is as follows:
+createvdevFile 内容如下：
 
 ```go
 func createvdevFile(pcibusId, coremsk1, coremsk2 string, reqcores, mem int32, deviceid, vdevidx, pipeid int, cacheFileHostDirectory, cacheFileName string) error {
@@ -949,11 +959,11 @@ func createvdevFile(pcibusId, coremsk1, coremsk2 string, reqcores, mem int32, de
 }
 ```
 
-It simply creates a file and writes all the relevant information into it. The driver can then read this configuration file to know how much core and memory the Pod can use.
+就是简单创建了一个文件，但是把相关信息都写到文件里了，后续驱动程序根据该配置文件就知道该 Pod 可以使用多少 core 多少 mem 了。
 
->PS: This is different from the way vGPU passes information through environment variables, but the purpose is the same.
+>ps：和 vGPU 通过 env 传递信息的方式不同，但是作用都是一样的。
 
-This part of the logic is consistent with the following command, both are used to create vDCU configuration files.
+这部分逻辑和以下命令一致，都是用于创建 vDCU 配置文件。
 
 ```bash
 $ hy-smi virtual -create-vdevices 4 -d 0 \
@@ -962,6 +972,6 @@ $ hy-smi virtual -create-vdevices 4 -d 0 \
 ```
 
 ---
-*To learn more about the HAMi project, please visit our [GitHub repository](https://github.com/Project-HAMi/HAMi) or join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2).*
+*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*
 
 ---

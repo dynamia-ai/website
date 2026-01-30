@@ -6,6 +6,7 @@ date: "2025-08-05"
 excerpt: "Koordinator v1.6 has been released, featuring deep collaboration with the CNCF Sandbox project HAMi to introduce strong GPU sharing isolation capabilities, providing a more efficient resource scheduling and isolation solution for AI training and inference scenarios."
 author: "Dynamia AI Team"
 tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
+category: "Product Release"
 coverImage: "/images/blog/Koordinator-v1.6/cover.jpg"
 language: "en"
 ---
@@ -39,15 +40,15 @@ Since its official open-sourcing in April 2022, Koordinator has released 14 majo
 
 With the rapid development of fields like deep learning and high-performance computing (HPC), GPUs have become a core resource for many compute-intensive workloads. In Kubernetes clusters, the efficient utilization of GPU resources is crucial for improving application performance. However, the performance of GPU resources is not uniform and is affected by hardware topology and resource configuration. For example:
 
-1.  In systems with multiple NUMA nodes, the physical connections between GPUs, CPUs, and memory can affect data transfer speed and computational efficiency.
-2.  For NVIDIA card models like the L20 and L40S, the communication efficiency between GPUs depends on whether they belong to the same PCIe or the same NUMA node.
-3.  For Huawei's Ascend NPUs and NVIDIA H-series machines using the SharedNVSwitch mode in virtualized environments, GPU allocation must adhere to certain predefined Partition rules.
+1. In systems with multiple NUMA nodes, the physical connections between GPUs, CPUs, and memory can affect data transfer speed and computational efficiency.
+2. For NVIDIA card models like the L20 and L40S, the communication efficiency between GPUs depends on whether they belong to the same PCIe or the same NUMA node.
+3. For Huawei's Ascend NPUs and NVIDIA H-series machines using the SharedNVSwitch mode in virtualized environments, GPU allocation must adhere to certain predefined Partition rules.
 
 ![p1](/images/blog/Koordinator-v1.6/p1.png)
 
 Koordinator addresses these device scenarios by providing rich device topology scheduling APIs to meet Pods' demands for GPU topology. Here are some examples of how to use these APIs:
 
-1.  Allocate GPU, CPU, and memory on the same NUMA Node
+1. Allocate GPU, CPU, and memory on the same NUMA Node
 
 ```yaml
 apiVersion: v1
@@ -68,7 +69,7 @@ spec:
         memory: 500Gi
 ```
 
-2.  Allocate GPUs on the same PCIe
+1. Allocate GPUs on the same PCIe
 
 ```yaml
 apiVersion: v1
@@ -88,7 +89,7 @@ spec:
           koordinator.sh/gpu: 200
 ```
 
-3.  Allocate GPUs on the same NUMA Node
+1. Allocate GPUs on the same NUMA Node
 
 ```yaml
 apiVersion: v1
@@ -108,7 +109,7 @@ spec:
           koordinator.sh/gpu: 400
 ```
 
-4.  Allocate GPUs according to a predefined Partition
+1. Allocate GPUs according to a predefined Partition
 
 Typically, predefined GPU Partition rules are determined by the specific GPU model or system configuration, and may also be influenced by the GPU configuration on a particular node. The scheduler cannot know the specific details of the hardware model or GPU type; instead, it relies on node-level components to report these predefined rules to a custom device resource (CR) to become aware of them, as shown below:
 
@@ -162,9 +163,9 @@ When the user does not need to allocate according to the optimal Partition, the 
 
 To learn more details about GPU topology-aware scheduling, please refer to the following design documents:
 
--   [NUMA Topology Scheduling](https://github.com/koordinator-sh/koordinator/blob/main/docs/proposals/scheduling/20230415-numa-topology-scheduling.md)
--   [Device Allocate Hint API](https://github.com/koordinator-sh/koordinator/blob/main/docs/proposals/scheduling/20230803-device-allocate-hint-apis.md)
--   [GPU Partition APIs](https://github.com/koordinator-sh/koordinator/blob/main/docs/proposals/scheduling/20241008-gpu-partition-api.md)
+- [NUMA Topology Scheduling](https://github.com/koordinator-sh/koordinator/blob/main/docs/proposals/scheduling/20230415-numa-topology-scheduling.md)
+- [Device Allocate Hint API](https://github.com/koordinator-sh/koordinator/blob/main/docs/proposals/scheduling/20230803-device-allocate-hint-apis.md)
+- [GPU Partition APIs](https://github.com/koordinator-sh/koordinator/blob/main/docs/proposals/scheduling/20241008-gpu-partition-api.md)
 
 We sincerely thank community developer @eahydra for their contributions to this feature!
 
@@ -176,11 +177,11 @@ In AI model training scenarios, GPUs need to perform frequent collective communi
 
 ![p3](/images/blog/Koordinator-v1.6/p3.png)
 
-1.  Koordlet detects the GPU and RDMA devices on the node and reports the relevant information to the Device CR.
-2.  Koord-Manager synchronizes the resources from the Device CR to `node.status.allocatable`.
-3.  Koord-Scheduler allocates GPUs and RDMA for the Pod based on the device topology and annotates the allocation result on the Pods.
-4.  Multus-CNI accesses the Koordlet PodResources Proxy to get the RDMA devices allocated to the Pods and attaches the corresponding NICs to the Pods' network namespaces.
-5.  Koordlet provides an NRI plugin to mount the devices into the containers.
+1. Koordlet detects the GPU and RDMA devices on the node and reports the relevant information to the Device CR.
+2. Koord-Manager synchronizes the resources from the Device CR to `node.status.allocatable`.
+3. Koord-Scheduler allocates GPUs and RDMA for the Pod based on the device topology and annotates the allocation result on the Pods.
+4. Multus-CNI accesses the Koordlet PodResources Proxy to get the RDMA devices allocated to the Pods and attaches the corresponding NICs to the Pods' network namespaces.
+5. Koordlet provides an NRI plugin to mount the devices into the containers.
 
 Due to the involvement of numerous components and a complex environment, Koordinator v1.6.0 provides [Best Practices](https://koordinator.sh/docs/next/best-practices/gpu-and-rdma-joint-allocation/) to show how to deploy Koordinator, Multus-CNI, and SRIOV-CNI step-by-step. After deploying the relevant components, users can simply use the following Pod specification to request the scheduler to perform joint allocation for the GPU and RDMA it has requested:
 
@@ -222,9 +223,9 @@ In AI applications, GPUs are indispensable core devices for large model training
 
 This situation is particularly common in the following scenarios:
 
--   **Online Inference Services**: Many online inference tasks have low computational requirements but high latency requirements, and they usually need to be deployed on high-performance GPUs to meet real-time needs.
--   **Development and Testing Environments**: When developers are debugging models, they often only need to use a small amount of GPU resources, but traditional scheduling methods lead to low resource utilization.
--   **Multi-tenant Shared Clusters**: In GPU clusters shared by multiple users or teams, having each task exclusively occupy a GPU leads to uneven resource allocation, making it difficult to fully utilize the hardware capabilities.
+- **Online Inference Services**: Many online inference tasks have low computational requirements but high latency requirements, and they usually need to be deployed on high-performance GPUs to meet real-time needs.
+- **Development and Testing Environments**: When developers are debugging models, they often only need to use a small amount of GPU resources, but traditional scheduling methods lead to low resource utilization.
+- **Multi-tenant Shared Clusters**: In GPU clusters shared by multiple users or teams, having each task exclusively occupy a GPU leads to uneven resource allocation, making it difficult to fully utilize the hardware capabilities.
 
 To solve this problem, Koordinator, in collaboration with HAMi, provides users with the ability to share and isolate GPUs, allowing multiple Pods to share the same GPU card. This approach not only significantly improves GPU resource utilization but also reduces enterprise costs while meeting the flexible resource needs of different tasks. For example, in Koordinator's GPU sharing mode, users can precisely allocate the number of GPU cores or the percentage of GPU memory, ensuring that each task gets the resources it needs without interfering with others.
 
@@ -331,7 +332,8 @@ spec:
 ```
 
 For guidance on how to enable HAMi's GPU sharing and isolation capabilities in Koordinator, please refer to:
--   [Device Scheduling - GPU Share With HAMi](https://koordinator.sh/docs/next/user-manuals/device-scheduling-gpu-share-with-hami/)
+
+- [Device Scheduling - GPU Share With HAMi](https://koordinator.sh/docs/next/user-manuals/device-scheduling-gpu-share-with-hami/)
 
 We sincerely thank the HAMi community member @wawa0210 for their support on this feature!
 
@@ -341,13 +343,13 @@ In modern Kubernetes clusters, various types of resources (such as CPU, memory, 
 
 For example:
 
--   **GPU Resources**: In AI model training or inference tasks, to maximize GPU utilization and reduce fragmentation, users usually want to prioritize scheduling GPU tasks to nodes that already have GPUs allocated (i.e., a "packing" strategy). This strategy can avoid resource waste caused by overly dispersed GPU distribution.
--   **CPU and Memory Resources**: In contrast, the demand for CPU and memory resources is more diverse. For some online services or batch processing tasks, users prefer to spread the tasks across multiple nodes (i.e., a "spreading" strategy) to avoid resource hotspots on a single node, thereby improving the overall stability and performance of the cluster.
+- **GPU Resources**: In AI model training or inference tasks, to maximize GPU utilization and reduce fragmentation, users usually want to prioritize scheduling GPU tasks to nodes that already have GPUs allocated (i.e., a "packing" strategy). This strategy can avoid resource waste caused by overly dispersed GPU distribution.
+- **CPU and Memory Resources**: In contrast, the demand for CPU and memory resources is more diverse. For some online services or batch processing tasks, users prefer to spread the tasks across multiple nodes (i.e., a "spreading" strategy) to avoid resource hotspots on a single node, thereby improving the overall stability and performance of the cluster.
 
 In addition, in mixed-workload scenarios, the resource demands of different tasks will also affect each other. For example:
 
--   In a cluster that runs both GPU training tasks and regular CPU-intensive tasks, if a CPU-intensive task is scheduled to a GPU node and consumes a large amount of CPU and memory resources, it may cause subsequent GPU tasks to fail to start due to insufficient non-CPU resources, eventually leaving them in a Pending state.
--   In a multi-tenant environment, some users may only request CPU and memory resources, while others need GPU resources. If the scheduler cannot distinguish between these demands, it may lead to resource contention and unfair resource allocation.
+- In a cluster that runs both GPU training tasks and regular CPU-intensive tasks, if a CPU-intensive task is scheduled to a GPU node and consumes a large amount of CPU and memory resources, it may cause subsequent GPU tasks to fail to start due to insufficient non-CPU resources, eventually leaving them in a Pending state.
+- In a multi-tenant environment, some users may only request CPU and memory resources, while others need GPU resources. If the scheduler cannot distinguish between these demands, it may lead to resource contention and unfair resource allocation.
 
 ![p5](/images/blog/Koordinator-v1.6/p5.png)
 
@@ -429,8 +431,8 @@ profiles:
 
 For detailed design and usage guidance on the differentiated GPU resource scheduling strategy, please refer to:
 
--   [Design Document](https://koordinator.sh/docs/next/designs/node-resource-fit-plus-scoring/)
--   [User Manual](https://koordinator.sh/docs/next/user-manuals/node-resource-fit-plus-scoring/)
+- [Design Document](https://koordinator.sh/docs/next/designs/node-resource-fit-plus-scoring/)
+- [User Manual](https://koordinator.sh/docs/next/user-manuals/node-resource-fit-plus-scoring/)
 
 We sincerely thank community developer @LY-today for their contribution to this feature.
 
@@ -438,31 +440,31 @@ We sincerely thank community developer @LY-today for their contribution to this 
 
 The efficient utilization of heterogeneous resources often depends on the precise alignment of closely coupled CPU and NUMA resources. For example:
 
--   **GPU-accelerated tasks**: In servers with multiple NUMA nodes, if the physical connection between a GPU and CPU or memory crosses a NUMA boundary, it can lead to increased data transfer latency, thereby significantly reducing task performance. Therefore, such tasks usually require the GPU, CPU, and memory to be allocated on the same NUMA node.
--   **AI inference services**: Online inference tasks are very sensitive to latency and require that the resource allocation for GPUs and CPUs be as close as possible to reduce communication overhead across NUMA nodes.
--   **Scientific computing tasks**: Some high-performance computing tasks (such as molecular dynamics simulations or weather forecasting) require high-bandwidth, low-latency memory access, and therefore must strictly align CPU cores with local memory.
+- **GPU-accelerated tasks**: In servers with multiple NUMA nodes, if the physical connection between a GPU and CPU or memory crosses a NUMA boundary, it can lead to increased data transfer latency, thereby significantly reducing task performance. Therefore, such tasks usually require the GPU, CPU, and memory to be allocated on the same NUMA node.
+- **AI inference services**: Online inference tasks are very sensitive to latency and require that the resource allocation for GPUs and CPUs be as close as possible to reduce communication overhead across NUMA nodes.
+- **Scientific computing tasks**: Some high-performance computing tasks (such as molecular dynamics simulations or weather forecasting) require high-bandwidth, low-latency memory access, and therefore must strictly align CPU cores with local memory.
 
 These requirements not only apply to task scheduling but also extend to resource reservation scenarios. In a production environment, resource reservation is an important mechanism for locking in resources for critical tasks in advance, ensuring that they can run smoothly at some future point in time. However, in heterogeneous resource scenarios, simple resource reservation mechanisms often fail to meet the needs of fine-grained resource orchestration. For example:
 
--   Some tasks may need to reserve CPU and GPU resources on a specific NUMA node to ensure optimal performance after the task starts.
--   In multi-tenant clusters, different users may need to reserve different combinations of resources (such as GPU+CPU+memory) and want these resources to be strictly aligned.
--   When reserved resources are not fully utilized, how to flexibly allocate the remaining resources to other tasks without affecting the resource guarantees of the reserved tasks is also an important challenge.
+- Some tasks may need to reserve CPU and GPU resources on a specific NUMA node to ensure optimal performance after the task starts.
+- In multi-tenant clusters, different users may need to reserve different combinations of resources (such as GPU+CPU+memory) and want these resources to be strictly aligned.
+- When reserved resources are not fully utilized, how to flexibly allocate the remaining resources to other tasks without affecting the resource guarantees of the reserved tasks is also an important challenge.
 
 To address these complex scenarios, Koordinator has comprehensively enhanced its resource reservation function in version v1.6, providing more fine-grained and flexible resource orchestration capabilities. The specific improvements include:
 
-1.  Support for fine-grained reservation and preemption of CPU and GPU resources.
-2.  Support for Pods to precisely match the amount of reserved resources.
-3.  Resource reservation affinity now supports specifying reservation names and taint toleration attributes.
-4.  Resource reservation now supports a limit on the number of Pods.
-5.  Support for resource reservation to preempt low-priority Pods.
+1. Support for fine-grained reservation and preemption of CPU and GPU resources.
+2. Support for Pods to precisely match the amount of reserved resources.
+3. Resource reservation affinity now supports specifying reservation names and taint toleration attributes.
+4. Resource reservation now supports a limit on the number of Pods.
+5. Support for resource reservation to preempt low-priority Pods.
 
 Plugin extension interface changes:
 
-1.  The reservation resource validation interface `ReservationFilterPlugin` has been moved from the PreScore stage to the Filter stage to ensure more accurate filtering results.
+1. The reservation resource validation interface `ReservationFilterPlugin` has been moved from the PreScore stage to the Filter stage to ensure more accurate filtering results.
 
 The following are examples of how to use the new features:
 
-1.  Exact-Match Reservation
+1. Exact-Match Reservation
 
 Specify that a Pod must exactly match the amount of reserved resources. This can be used to narrow down the matching relationship between a group of Pods and a group of resource reservations, making the allocation of reserved resources more controllable.
 
@@ -488,7 +490,7 @@ spec:
         nvidia.com/gpu: "1"
 ```
 
-2.  Ignore Reservation (`reservation-ignored`)
+1. Ignore Reservation (`reservation-ignored`)
 
 Specify that a Pod can ignore resource reservations. This allows the Pod to fill the idle resources on a node that are reserved but not yet allocated. When used with preemption, it can further reduce resource fragmentation.
 
@@ -506,7 +508,7 @@ spec:
     command: ["sleep", "3600"]
 ```
 
-3.  Reservation Affinity (by name)
+1. Reservation Affinity (by name)
 
 ```yaml
 apiVersion: v1
@@ -522,7 +524,7 @@ spec:
     command: ["sleep", "3600"]
 ```
 
-4.  Specify Reservation Taints and Tolerations
+1. Specify Reservation Taints and Tolerations
 
 ```yaml
 ---
@@ -562,7 +564,7 @@ spec:
     command: ["sleep", "3600"]
 ```
 
-5.  Enable Reservation Preemption
+1. Enable Reservation Preemption
 
 Note: The use case of a high-priority Pod preempting a low-priority Reservation is not currently supported.
 
@@ -593,17 +595,17 @@ In modern data centers, co-location technology has become an important means of 
 
 In co-location scenarios, the core objectives of resource isolation capabilities are:
 
--   **Guaranteeing the performance of high-priority tasks**: For example, online services require stable CPU, memory, and I/O resources to meet low-latency requirements.
--   **Fully utilizing idle resources**: Offline tasks should use the resources not used by high-priority tasks as much as possible, but without interfering with the high-priority tasks.
--   **Dynamically adjusting resource allocation**: Adjust resource allocation strategies in real-time based on changes in node load to avoid resource contention or waste.
+- **Guaranteeing the performance of high-priority tasks**: For example, online services require stable CPU, memory, and I/O resources to meet low-latency requirements.
+- **Fully utilizing idle resources**: Offline tasks should use the resources not used by high-priority tasks as much as possible, but without interfering with the high-priority tasks.
+- **Dynamically adjusting resource allocation**: Adjust resource allocation strategies in real-time based on changes in node load to avoid resource contention or waste.
 
 To achieve these goals, Koordinator continues to build and improve its resource isolation capabilities. In version v1.6, we have focused on a series of feature optimizations and bug fixes around resource over-commitment and co-location QoS, including the following:
 
-1.  Mid-tier resource over-commitment and node profiling features have optimized their calculation logic to support over-committing unallocated node resources, avoiding secondary over-commitment of node resources.
-2.  The metric degradation logic for load-aware scheduling has been optimized.
-3.  CPU QoS and Resctrl QoS now support pod-level configuration.
-4.  Out-of-band load management has been supplemented with Prometheus metrics to enhance observability.
-5.  Bug fixes for features like Blkio QoS and resource amplification.
+1. Mid-tier resource over-commitment and node profiling features have optimized their calculation logic to support over-committing unallocated node resources, avoiding secondary over-commitment of node resources.
+2. The metric degradation logic for load-aware scheduling has been optimized.
+3. CPU QoS and Resctrl QoS now support pod-level configuration.
+4. Out-of-band load management has been supplemented with Prometheus metrics to enhance observability.
+5. Bug fixes for features like Blkio QoS and resource amplification.
 
 Mid-tier resource over-commitment was introduced in Koordinator v1.3, providing dynamic resource over-commitment based on [node profiling](https://koordinator.sh/docs/designs/node-prediction/). However, to ensure the stability of over-committed resources, Mid-tier resources were entirely derived from the allocated Prod pods on the node. This meant that an empty node initially had no Mid-tier resources, which caused many inconveniences for workloads using Mid-tier resources. The Koordinator community has received feedback and contributions from some enterprise users on this issue.
 
@@ -616,18 +618,18 @@ In version v1.6, Koordinator has updated the over-commitment calculation formula
 
 There are two changes to the calculation logic:
 
-1.  It supports over-committing unallocated resources based on a static ratio to improve the cold start problem.
-2.  It does not allow over-committing of actually used node resources, avoiding situations where the estimated value is too large due to secondary over-commitment. For example, some users used Koordinator's node resource amplification capability to schedule more Prod pods, causing `ProdAllocated > NodeAllocatable` on the node, which led to the estimated value of `MidAllocatable` deviating from the actual node load.
+1. It supports over-committing unallocated resources based on a static ratio to improve the cold start problem.
+2. It does not allow over-committing of actually used node resources, avoiding situations where the estimated value is too large due to secondary over-commitment. For example, some users used Koordinator's node resource amplification capability to schedule more Prod pods, causing `ProdAllocated > NodeAllocatable` on the node, which led to the estimated value of `MidAllocatable` deviating from the actual node load.
 
 In addition, in terms of co-location QoS, Koordinator v1.6 has enhanced the Pod-level QoS policy configuration capability, which is suitable for use cases such as blacklisting interfering Pods on co-located nodes and canary releasing co-location QoS configurations:
 
-1.  The Resctrl feature now supports Pod-level LLC and memory bandwidth isolation capabilities.
-2.  The CPU QoS feature now supports Pod-level CPU QoS configuration.
+1. The Resctrl feature now supports Pod-level LLC and memory bandwidth isolation capabilities.
+2. The CPU QoS feature now supports Pod-level CPU QoS configuration.
 
 The Resctrl feature can be enabled at the Pod level in the following way:
 
-1.  Enable the Resctrl feature in the Koordlet's feature-gate.
-2.  Configure LLC and memory bandwidth (MB) limiting policies through the Pod annotation `node.koordinator.sh/resctrl`. For example:
+1. Enable the Resctrl feature in the Koordlet's feature-gate.
+2. Configure LLC and memory bandwidth (MB) limiting policies through the Pod annotation `node.koordinator.sh/resctrl`. For example:
 
 ```yaml
 apiVersion: v1
@@ -648,8 +650,8 @@ spec:
 
 Pod-level CPU QoS configuration can be enabled as follows:
 
-1.  Enable CPU QoS. Please refer to: https://koordinator.sh/docs/user-manuals/cpu-qos/
-2.  Configure the Pod's CPU QoS policy through the Pod annotation `koordinator.sh/cpuQOS`. For example:
+1. Enable CPU QoS. Please refer to: <https://koordinator.sh/docs/user-manuals/cpu-qos/>
+2. Configure the Pod's CPU QoS policy through the Pod annotation `koordinator.sh/cpuQOS`. For example:
 
 ```yaml
 apiVersion: v1
@@ -670,19 +672,19 @@ We sincerely thank community developers @kangclzjc, @j4ckstraw, @lijunxin559, @t
 
 As cloud-native technology continues to evolve, more and more enterprises are migrating their core business to the Kubernetes platform, leading to an explosive growth in cluster size and the number of tasks. This trend has brought significant technical challenges, especially in terms of scheduling performance and descheduling strategies:
 
--   **Scheduling Performance Requirements**: As cluster sizes expand, the number of tasks that the scheduler needs to handle increases dramatically, placing higher demands on the scheduler's performance and scalability. For example, in large-scale clusters, how to quickly make Pod scheduling decisions and reduce scheduling latency has become a key issue.
--   **Descheduling Strategy Requirements**: In multi-tenant environments, resource competition intensifies, and frequent descheduling can cause workloads to be repeatedly migrated between different nodes, which in turn increases the system load and affects cluster stability. In addition, how to reasonably allocate resources to avoid hotspots while ensuring the stable operation of production tasks has also become an important consideration in descheduling strategy design.
+- **Scheduling Performance Requirements**: As cluster sizes expand, the number of tasks that the scheduler needs to handle increases dramatically, placing higher demands on the scheduler's performance and scalability. For example, in large-scale clusters, how to quickly make Pod scheduling decisions and reduce scheduling latency has become a key issue.
+- **Descheduling Strategy Requirements**: In multi-tenant environments, resource competition intensifies, and frequent descheduling can cause workloads to be repeatedly migrated between different nodes, which in turn increases the system load and affects cluster stability. In addition, how to reasonably allocate resources to avoid hotspots while ensuring the stable operation of production tasks has also become an important consideration in descheduling strategy design.
 
 To address these challenges, Koordinator has comprehensively optimized the scheduler and descheduler in version v1.6.0, aiming to improve scheduling performance and enhance the stability and reasonableness of descheduling strategies. The following are the optimizations we have made to the scheduler's performance in the current version:
 
-1.  Moved the `MinMember` check for PodGroups to `PreEnqueue` to reduce unnecessary scheduling cycles.
-2.  Delayed the resource return for Reservations to the `AfterPreFilter` stage, only returning resources on nodes allowed by the `PreFilterResult`, which reduces algorithmic complexity.
-3.  Optimized the `CycleState` distribution for plugins like `NodeNUMAResource`, `DeviceShare`, and `Reservation` to reduce memory overhead.
-4.  Added latency metrics for the additional extension points in Koordinator, such as `BeforePreFilter` and `AfterPreFilter`.
+1. Moved the `MinMember` check for PodGroups to `PreEnqueue` to reduce unnecessary scheduling cycles.
+2. Delayed the resource return for Reservations to the `AfterPreFilter` stage, only returning resources on nodes allowed by the `PreFilterResult`, which reduces algorithmic complexity.
+3. Optimized the `CycleState` distribution for plugins like `NodeNUMAResource`, `DeviceShare`, and `Reservation` to reduce memory overhead.
+4. Added latency metrics for the additional extension points in Koordinator, such as `BeforePreFilter` and `AfterPreFilter`.
 
 As cluster sizes continue to grow, the stability and reasonableness of the descheduling process have become a core focus. Frequent evictions can lead to workloads being repeatedly migrated between nodes, increasing system load and causing stability risks. To this end, we have made several optimizations to the descheduler in version v1.6.0:
 
-#### 1. `LowNodeLoad` Plugin Optimization:
+#### 1. `LowNodeLoad` Plugin Optimization
 
 a. The `LowNodeLoad` plugin now supports configuring `ProdHighThresholds` and `ProdLowThresholds`, which, combined with Koordinator's priority, allows for differentiated management of workload resource utilization. This can reduce hotspot issues caused by production applications, thereby achieving more fine-grained load balancing.
 
@@ -690,7 +692,7 @@ b. Optimized the sorting logic for Pods to be evicted. By using a segmented func
 
 c. Optimized the pre-eviction check logic for Pods. Before evicting a Pod, `LowNodeLoad` now checks one by one whether the target node will become a new hotspot node due to the descheduling. This optimization effectively prevents repeated descheduling.
 
-#### 2. `MigrationController` Enhancement:
+#### 2. `MigrationController` Enhancement
 
 a. The `MigrationController` has an `ObjectLimiter` capability to control the eviction frequency of a workload within a certain period. It now supports configuring namespace-level eviction rate limiting for more fine-grained control over evictions within a namespace. The `ObjectLimiter` has also been moved from the Arbitrator to inside the `MigrationController` to fix a potential rate-limiting failure issue in concurrent scenarios.
 
@@ -700,7 +702,7 @@ c. A new `MaxMigratingGlobally` configuration item has been added. The `Migratio
 
 d. Optimized the calculation logic of the `GetMaxUnavailable` method. When the calculated maximum number of unavailable replicas for a workload is rounded down to 0, it is now defaulted to 1, preventing the user's control over the number of unavailable replicas from losing its expected accuracy and consistency.
 
-#### 3. A new global descheduling configuration parameter, `MaxNoOfPodsToEvictTotal`, has been added to ensure a global maximum number of Pod evictions for the descheduler, reducing the burden on the cluster and improving stability.
+#### 3. A new global descheduling configuration parameter, `MaxNoOfPodsToEvictTotal`, has been added to ensure a global maximum number of Pod evictions for the descheduler, reducing the burden on the cluster and improving stability
 
 We sincerely thank community developers @AdrianMachao, @songtao98, @LY-today, @zwForrest, @JBinin, @googs1025, and @bogo-y for their contributions to the scheduling and descheduling optimizations!
 
@@ -710,17 +712,17 @@ The Koordinator community will continue to focus on strengthening GPU resource m
 
 The proposals currently being planned by the community are as follows:
 
--   [Fine-grained device scheduling support for Ascend NPU](https://github.com/koordinator-sh/koordinator/issues/2335)
--   [Provide a descheduling plugin to solve the resource imbalance problem](https://github.com/koordinator-sh/koordinator/issues/2332)
--   [Reservation support for binding to already allocated Pods](https://github.com/koordinator-sh/koordinator/issues/2150)
+- [Fine-grained device scheduling support for Ascend NPU](https://github.com/koordinator-sh/koordinator/issues/2335)
+- [Provide a descheduling plugin to solve the resource imbalance problem](https://github.com/koordinator-sh/koordinator/issues/2332)
+- [Reservation support for binding to already allocated Pods](https://github.com/koordinator-sh/koordinator/issues/2150)
 
 The key usage problems to be addressed are as follows:
 
--   [NRI plugin conflicts](https://github.com/koordinator-sh/koordinator/issues/2334)
+- [NRI plugin conflicts](https://github.com/koordinator-sh/koordinator/issues/2334)
 
 Long-term planned proposals are as follows:
 
--   [Provide an end-to-end, evolvable device management solution](https://github.com/koordinator-sh/koordinator/issues/2181)
+- [Provide an end-to-end, evolvable device management solution](https://github.com/koordinator-sh/koordinator/issues/2181)
 
 We encourage users to provide feedback on their experience and welcome more developers to participate in the Koordinator project to jointly promote its development!
 
@@ -728,6 +730,6 @@ We encourage users to provide feedback on their experience and welcome more deve
 
 HAMi, short for Heterogeneous AI Computing Virtualization Middleware, is a "one-stop" architecture designed to manage heterogeneous AI computing devices in a k8s cluster. It provides the ability to share heterogeneous AI devices and offers resource isolation between tasks. HAMi is dedicated to improving the utilization of heterogeneous computing devices in k8s clusters and providing a unified reuse interface for different types of heterogeneous devices. HAMi is currently a CNCF Sandbox project and has been included in the CNCF's CNAI technology landscape.
 
-Community Website: https://project-hami.io
+Community Website: <https://project-hami.io>
 
-GitHub: https://github.com/Project-HAMi
+GitHub: <https://github.com/Project-HAMi>

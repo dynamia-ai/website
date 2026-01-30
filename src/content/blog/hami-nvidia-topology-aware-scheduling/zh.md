@@ -1,15 +1,15 @@
 ---
 title: "【原理解析】HAMi × NVIDIA | GPU 拓扑感知调度实现详解"
-coverTitle: "【原理解析】HAMi×NVIDIA GPU拓扑感知调度实现详解"
+coverTitle: "【原理解析】HAMi×NVIDIA GPU 拓扑感知调度实现详解"
 slug: "hami-nvidia-topology-aware-scheduling-deep-dive"
 date: "2025-10-22"
 excerpt: "HAMi v2.7.0 正式推出 NVIDIA GPU 拓扑感知调度功能。本文深入代码实现，详细剖析 HAMi 在支持拓扑感知调度时的具体设计与实现原理，解析如何通过智能调度将计算任务精确部署到物理连接最紧密的 GPU 组合上。"
 author: "Dynamia AI Team"
 tags: ["HAMi", "NVIDIA", "GPU Topology", "Scheduling", "Deep Dive", "Technical Analysis", "NVLink", "PCIe", "Kubernetes"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/hami-nvidia-topology/cover-zh.png"
 language: "zh"
 ---
-# 【原理解析】HAMi × NVIDIA | GPU 拓扑感知调度实现详解
 
 HAMi 社区在 v2.7.0 版本中正式推出了针对 NVIDIA GPU 的 **拓扑感知调度** 功能。此特性主要解决高性能计算（HPC）和 AI 大模型训练场景下的多卡通信瓶颈问题，通过智能调度，将计算任务精确部署到物理连接最紧密、通信速度最快的 GPU 组合上，从而最大化加速计算任务，提升集群整体的算力效能。
 
@@ -142,7 +142,7 @@ func (nv *NvidiaGPUDevices) Fit(...) {
 
 `Fit` 函数的整体决策逻辑可以用下图来概括：
 
-![Fit函数决策流程](/images/blog/hami-nvidia-topology/1761119607918.png)
+![Fit 函数决策流程](/images/blog/hami-nvidia-topology/1761119607918.png)
 
 #### 策略一：多卡任务的"最佳匹配"原则
 
@@ -190,7 +190,7 @@ spec:
     command: ["sleep", "infinity"]
     resources:
       limits:
-        # 请求4个GPU
+        # 请求 4 个 GPU
         nvidia.com/gpu: "4"
 ```
 
@@ -202,10 +202,10 @@ HAMi 对 NVIDIA GPU 的拓扑感知调度，在设计上体现了清晰的工程
 
 **参考资料**
 
-* **设计文档**：[NVIDIA GPU Topology Scheduler](https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/gpu-topo-policy.md)
-* **使用文档**：[NVIDIA GPU 拓扑调度启用指南](https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/nvidia-gpu-topology-scheduler_cn.md)
-* **相关 PRs**：
-  * [https://github.com/Project-HAMi/HAMi/pull/1018](https://github.com/Project-HAMi/HAMi/pull/1018)
-  * [https://github.com/Project-HAMi/HAMi/pull/1276](https://github.com/Project-HAMi/HAMi/pull/1276)
+- **设计文档**：[NVIDIA GPU Topology Scheduler](https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/gpu-topo-policy.md)
+- **使用文档**：[NVIDIA GPU 拓扑调度启用指南](https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/nvidia-gpu-topology-scheduler_cn.md)
+- **相关 PRs**：
+  - [https://github.com/Project-HAMi/HAMi/pull/1018](https://github.com/Project-HAMi/HAMi/pull/1018)
+  - [https://github.com/Project-HAMi/HAMi/pull/1276](https://github.com/Project-HAMi/HAMi/pull/1276)
 
 再次由衷感谢社区开发者 @lengrongfu，@fyp711 对该特性的贡献！

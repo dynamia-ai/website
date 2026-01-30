@@ -7,6 +7,7 @@ excerpt: "Follow this battle-tested checklist to prepare IAM, install cluster ad
 # TODO: Confirm author attribution before publishing
 author: "Dynamia AI Team"
 tags: ["Dynamia AI Platform", "AWS", "EKS", "Helm", "HAMi", "NVIDIA"]
+category: "Integration & Ecosystem"
 coverImage: "/images/blog/aws/aws-install-coverpage.png"
 language: "en"
 aiRepostLinks:

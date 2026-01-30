@@ -5,14 +5,13 @@ slug: "open-source-vgpu-hami-fine-grained-partitioning"
 date: "2025-07-21"
 excerpt: "This article introduces HAMi, an open-source GPU virtualization solution, including installation, configuration, and usage."
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
-coverImage: "/images/blog/gpu1/cover2.jpg"
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Technical Deep Dive"coverImage: "/images/blog/gpu1/cover2.jpg"
 language: "en"
 ---
 
 > This article introduces an open-source GPU virtualization solution: HAMi, including installation, configuration, and usage.
 
-This article is excerpted from：https://mp.weixin.qq.com/s/7L6NuSSP_iMwbtooQIJUjw
+This article is excerpted from:<https://mp.weixin.qq.com/s/7L6NuSSP_iMwbtooQIJUjw>
 
 ## 1. Why Do We Need GPU Sharing / Partitioning?
 
@@ -285,6 +284,7 @@ Mon Apr 29 06:22:16 2024
 +-----------------------------------------------------------------------------------------+
 [HAMI-core Msg(16:139711087368000:multiprocess_memory_limit.c:434)]: Calling exit handler 16
 ```
+
 The final log is printed by HAMi's CUDA driver.
 
 > `[HAMI-core Msg(...multiprocess_memory_limit.c:434)]: Calling exit handler 16`  
@@ -308,13 +308,12 @@ By replacing the libvgpu.so library in the container, HAMi intercepts CUDA APIs 
 
 **References**
 
-[1] HAMi: https://github.com/Project-HAMi/HAMi
+[1] HAMi: <https://github.com/Project-HAMi/HAMi>
 
-[2] HAMi-config-cn.md: https://github.com/Project-HAMi/HAMi/blob/master/docs/config_cn.md
+[2] HAMi-config-cn.md: <https://github.com/Project-HAMi/HAMi/blob/master/docs/config_cn.md>
 
 ------
 
 *For more information about HAMi, visit the [GitHub repository](https://github.com/Project-HAMi/HAMi) or join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2).*
 
 ---
-

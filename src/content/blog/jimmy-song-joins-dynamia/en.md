@@ -5,6 +5,7 @@ date: "2026-01-13"
 excerpt: "Recently, Jimmy Song (Song Jingchao), a senior technical expert in cloud-native and open-source fields, officially joined Dynamia AI as VP of Open Source Ecosystem, helping Dynamia AI in AI native infrastructure ecosystem construction and global developer collaboration layout."
 author: "Dynamia"
 tags: ["team", "Jimmy Song", "CNCF", "open source ecosystem"]
+category: "Company News"
 language: "en"
 coverImage: "/images/blog/jimmy-song-joins-dynamia/jimmy-song-portrait.PNG"
 ---

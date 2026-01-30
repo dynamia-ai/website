@@ -5,6 +5,7 @@ date: "2026-01-05"
 excerpt: "专注于异构算力调度和虚拟化的 AI 初创企业上海密瓜智能科技有限公司已于近期完成数千万元的天使轮融资，本轮融资由复星创富领投，拙朴投资、种子投资人及产业方强力跟投。"
 author: "Dynamia"
 tags: ["融资", "天使轮", "复星创富", "拙朴投资", "HAMi"]
+category: "Company News"
 language: "zh"
 coverImage: "/images/blog/dynamia-angel-funding/dynamia-angel-funding-announcement.jpg"
 ---

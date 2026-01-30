@@ -1,22 +1,24 @@
 ---
 title: "HAMi vGPU 方案：Core & Memory 隔离测试"
-coverTitle: "vGPU方案HAMi：core & memory 隔离测试"
+coverTitle: "vGPU 方案 HAMi：core & memory 隔离测试"
 slug: "open-source-vgpu-hami-core-memory-test"
 date: "2025-07-22"
-excerpt: "上一篇给大家分享了开源的vGPU方案HAMi，本文主要对其提供的 GPU Core & Memory 隔离功能进行测试。"
+excerpt: "上一篇给大家分享了开源的 vGPU 方案 HAMi，本文主要对其提供的 GPU Core & Memory 隔离功能进行测试。"
 author: "密瓜智能"
 tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/gpu2/cover.jpg"
 language: "zh"
 ---
 
 之前给大家分享了开源的 vGPU 方案 HAMI，本文主要对其提供的 GPU Core & Memory 隔离功能进行测试。
 
-本文摘自：https://mp.weixin.qq.com/s/qfdHqpendMC6_zS_isCluw
+本文摘自：<https://mp.weixin.qq.com/s/qfdHqpendMC6_zS_isCluw>
 
+## 省流
 
-## 省流：
 HAMI vGPU 方案提供的 Core & Memory 隔离基本符合预期：
+
 - **Core 隔离**：Pod 能使用的算力会围绕设定值波动，但是一段时间内平均下来和申请的 gpucores（即为 Pod 设置的 GPU 核心资源配额）基本一致
 - **Memory 隔离**：Pod 中申请的 GPU 内存超过设定值时会直接提示 CUDA OOM
 
@@ -25,6 +27,7 @@ HAMI vGPU 方案提供的 Core & Memory 隔离基本符合预期：
 ## 1. 环境准备
 
 简单设一下测试环境
+
 - GPU: A40 * 2
 - K8s: v1.23.17
 - HAMI: v2.3.13
@@ -34,7 +37,6 @@ HAMI vGPU 方案提供的 Core & Memory 隔离基本符合预期：
 使用 GPU-Operator 安装 GPU 驱动、Container Runtime 之类的
 
 然后安装 HAMI，参考 -> [上一篇文章《开源 vGPU 方案：HAMI，实现细粒度 GPU 切分》](https://dynamia.ai/zh/blog/open-source-vgpu-hami-fine-grained-partitioningg)
-
 
 ### 测试环境
 
@@ -79,7 +81,7 @@ python main.py -a resnet18 --dummy
 
 > Note: 这也算是一种优化，可以提升 GPU 利用率，反正闲着也是闲着，如果要强制限制就必须增加环境变量
 
-### 完整Yaml 
+### 完整 Yaml
 
 以 hostPath 方式将 examples 项目挂载到 Pod 里进行测试，并将 command 配置为启动命令。
 
@@ -132,7 +134,7 @@ spec:
 
 ---
 
-## 2. Core隔离测试
+## 2. Core 隔离测试
 
 ### 30% 算力
 
@@ -172,7 +174,7 @@ GPU 使用率
 
 可以看到，使用率是围绕着我们设定的目标值 30% 进行波动，在一个时间段内平均下来差不多就是 30% 左右。
 
-### 60%算力
+### 60% 算力
 
 60% 算力时的效果
 
@@ -320,7 +322,7 @@ Successfully allocated 19500 MB on GPU.
 
 测试结果如下：
 
-**Core隔离**
+**Core 隔离**
 
 - gpucores 设置为 30% 时任务每一步耗时 0.6s，Grafana 显示 GPU 算力使用率在 30% 附近波动
 

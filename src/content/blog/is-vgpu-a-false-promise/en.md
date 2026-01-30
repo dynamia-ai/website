@@ -5,8 +5,7 @@ slug: "Is vGPU a false promise"
 date: "2025-08-04"
 excerpt: "I'll discuss this from several angles: What is HAMi, and how does it fundamentally differ from NVIDIA's solutions? Why doesn't NVIDIA do it? Is it a technical limitation or a business decision? What are HAMi's core competitiveness and long-term moat?"
 author: “Dynamia AI Team"
-tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-coverImage: "/images/blog/false-promise/cover2.jpg"
+tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]category: "Technical Deep Dive"coverImage: "/images/blog/false-promise/cover2.jpg"
 language: "en"
 ---
 
@@ -59,7 +58,7 @@ The primary business consideration is **protecting its carefully constructed, hi
 
 Furthermore, **maintaining its vast ecosystem and partner relationships** is another strategic priority. Damaging the deep alliances built with partners around vGPU would be a greater loss for NVIDIA. NVIDIA's recent acquisition of Run:ai and its subsequent decision to open-source its scheduling component, KAI-Scheduler, while keeping the runtime-level memory isolation code closed-source, is a telling strategic move. It seems that in the K8s ecosystem, NVIDIA prefers to provide capabilities that are "useful, but not overly so," improving resource utilization through high-level scheduling optimizations. This avoids disrupting its existing commercial products (vGPU, NVIDIA AI Enterprise, etc.) and partner ecosystem, leaving enough market space for them.
 
-### To sum it up in one sentence:
+### To sum it up in one sentence
 
 >For NVIDIA, "not doing it" isn't a matter of technical inability but a comprehensive business choice to protect its high-end hardware premiums, vGPU licensing revenue, and critical ecosystem partnerships—and this is precisely the opportunity that gives HAMi room to thrive in the container-native, fine-grained sharing space.
 
@@ -89,6 +88,6 @@ And HAMi's value lies precisely in its ability to target the demand space "left 
 
 Of course, the above are just some of my own preliminary thoughts as a community developer, based on currently available information and practical experience. I am very much looking forward to hearing more insightful perspectives from friends in the community, and I welcome everyone to exchange ideas, offer critiques, and discuss together to collectively push this field forward.
 
-### Thank you all!
+### Thank you all
 
 ![p5](/images/blog/false-promise/p5.png)

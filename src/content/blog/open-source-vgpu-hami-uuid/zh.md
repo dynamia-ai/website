@@ -1,17 +1,18 @@
 ---
-title: "精准而优雅： HAMi 调度特性之按 GPU 类型和 UUID 调度"
-coverTitle: "精准而优雅： HAMi 调度特性之按 GPU 类型和 UUID 调度"
+title: "精准而优雅：HAMi 调度特性之按 GPU 类型和 UUID 调度"
+coverTitle: "精准而优雅：HAMi 调度特性之按 GPU 类型和 UUID 调度"
 slug: "open-source-vgpu-hami-UUID"
 date: "2025-07-30"
 excerpt: "这一篇我们分析一下 HAMi 的调度特性：根据 GPU 类型甚至 UUID 实现精细调。"
 author: 密瓜智能
 tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/gpu9/cover.jpg"
 language: "zh"
 ---
 
 
-本文摘自：https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw
+本文摘自：<https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw>
 
 上一篇我们简单分析一下 HAMi-Core(libvgpu.so) vCUDA 的工作原理，包括怎么生效的，CUDA API 怎么拦截的，以及是怎么实现的对 GPU 的 core、memory 资源的 limit 的。
 
@@ -21,9 +22,9 @@ language: "zh"
 
 HAMi 提供了按 GPU 类型和 GPU UUID 的精准调度的能力：
 
-- By Type：通过指定 GPU 型号（如 A100、A40）来调度 Pod，让任务仅调度(或者不调度)到某些指定类型的卡上
+- By Type：通过指定 GPU 型号（如 A100、A40）来调度 Pod，让任务仅调度 (或者不调度) 到某些指定类型的卡上
 
-- By UUID：通过指定特定 GPU 的 UUID 来调度任务，让任务仅调度(或者不调度)到调度到特定 UUID 对应的卡上
+- By UUID：通过指定特定 GPU 的 UUID 来调度任务，让任务仅调度 (或者不调度) 到调度到特定 UUID 对应的卡上
 
 这两个特性使得用户能够灵活地控制 Pod 的调度，确保任务在特定 GPU 上运行，从而优化资源利用或满足特定硬件要求。
 
@@ -31,11 +32,11 @@ HAMi 提供了按 GPU 类型和 GPU UUID 的精准调度的能力：
 
 具体 Workflow 可以分为以下几个步骤：
 
-1. Device-Plugin 上报 GPU 信息：GPU 的类型和 UUID 通过device-plugin进行上报，并注册到 Node 的 Annotations 中。
+1. Device-Plugin 上报 GPU 信息：GPU 的类型和 UUID 通过 device-plugin 进行上报，并注册到 Node 的 Annotations 中。
 
 2. Pod 创建时指定 Annotations：Pod 的 Annotations 中指定要调度的 GPU 类型或 UUID。
 
-3. HAMi Scheduler 调度：hami-scheduler根据 Pod 的 Annotations 和节点上注册的 GPU 信息，过滤掉不满足条件的节点和 GPU，并最终选择合适的节点和 GPU。
+3. HAMi Scheduler 调度：hami-scheduler 根据 Pod 的 Annotations 和节点上注册的 GPU 信息，过滤掉不满足条件的节点和 GPU，并最终选择合适的节点和 GPU。
 
 4. GPU 分配：当设备插件为 Pod 分配 GPU 时，它从 Annotations 中获取 GPU 信息，并进行分配。
 
@@ -49,7 +50,7 @@ HAMi 提供了按 GPU 类型和 GPU UUID 的精准调度的能力：
 
 对于 K8s 提供的标准 DevicePlugin 来说，只能上报每个节点上有多少标准资源，通过 ResourceName 区分，例如:nvidia.com/vgpu。
 
-其中并不包括我们调度所需要的 GPU 信息，例如：Type、UUID、显存 等信息,因此新增了部分自定义逻辑，如下：
+其中并不包括我们调度所需要的 GPU 信息，例如：Type、UUID、显存 等信息，因此新增了部分自定义逻辑，如下：
 
 ```go
 // pkg/device-plugin/nvidiadevice/nvinternal/plugin/register.go#L199
@@ -88,7 +89,7 @@ res = append(res, &api.DeviceInfo{
 })
 ```
 
-所以卡的型号应该是 NVIDIA-NVIDIA A40 这样的格式,NVIDIA 为固定值，NVIDIA A40 则是 Model。
+所以卡的型号应该是 NVIDIA-NVIDIA A40 这样的格式，NVIDIA 为固定值，NVIDIA A40 则是 Model。
 
 ### 查看已注册 GPU 信息
 
@@ -102,15 +103,15 @@ GPU-03f69c50-207a-2038-9b45-23cac89cb67d,10,46068,100,NVIDIA-NVIDIA A40,0,true:G
 
 上述节点就包含两个 GPU，UUID 和 Type 分别是：
 
-- Card1：GPU-03f69c50-207a-2038-9b45-23cac89cb67d NVIDIA-NVIDIA A40
+- Card1: GPU-03f69c50-207a-2038-9b45-23cac89cb67d NVIDIA-NVIDIA A40
 
-- Card2：GPU-1afede84-4e70-2174-49af-f07ebb94d1ae NVIDIA-NVIDIA A40
+- Card2: GPU-1afede84-4e70-2174-49af-f07ebb94d1ae NVIDIA-NVIDIA A40
 
 后续使用时就需要指定上述 UUID 或者 Type。
 
 ## 3. 创建 Pod 时指定 GPU
 
-> 在 Examples 目录下提供了相关的 Demo：https://github.com/Project-HAMi/HAMi/tree/master/examples/nvidia
+> 在 Examples 目录下提供了相关的 Demo：<https://github.com/Project-HAMi/HAMi/tree/master/examples/nvidia>
 
 ### By Type
 
@@ -196,7 +197,7 @@ spec:
 
 不管是 By Type、By UUID 还是 Use 以及 NoUse 的处理逻辑都是类似的，就不展开了，以 Use ByType 为例进行分析。
 
-参考前面几篇 HAMi 调度相关的文章:
+参考前面几篇 HAMi 调度相关的文章：
 
 [HAMi vGPU 原理分析 Part3：hami-scheduler 工作流程分析](https://dynamia.ai/zh/blog/open-source-vgpu-hami-scheduler)
 
@@ -216,17 +217,17 @@ spec:
 
 - 对于使用 vGPU 资源但指定了 nodeName 的 Pod，Webhook 会直接拒绝
 
-4. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，**但是 kube-scheduler 还会根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件**
+1. hami-scheduler 进行 Pod 调度，不过就是用的 k8s 的默认 kube-scheduler 镜像，因此调度逻辑和默认的 default-scheduler 是一样的，**但是 kube-scheduler 还会根据 KubeSchedulerConfiguration 配置，调用 Extender Scheduler 插件**
 
 - 这个 Extender Scheduler 就是 hami-scheduler Pod 中的另一个 Container，该 Container 同时提供了 Webhook 和 Scheduler 相关 API。
 
 - 当 Pod 申请了 vGPU 资源时，kube-scheduler 就会根据配置以 HTTP 形式调用 Extender Scheduler 插件，这样就实现了自定义调度逻辑
 
-5. Extender Scheduler 插件包含了真正的 hami 调度逻辑， 调度时根据节点剩余资源量进行打分选择节点
+1. Extender Scheduler 插件包含了真正的 hami 调度逻辑，调度时根据节点剩余资源量进行打分选择节点
 
 - 这里就包含了 spread & binpark 等 高级调度策略的实现
 
-6. 异步任务，包括 GPU 感知逻辑
+1. 异步任务，包括 GPU 感知逻辑
 
 - devicePlugin 中的后台 Goroutine 定时上报 Node 上的 GPU 资源并写入到 Node 的 Annoations
 
@@ -385,7 +386,7 @@ if inuse, ok := annos[GPUInUse]; ok {
 
 这里的 cardtype 就是类似 NVIDIA-NVIDIA-A40 这样的格式，useType 则是用户在 Annoations 中指定的 Type。
 
-同时这里使用 strings.Contains(cardtype, strings.ToUpper(useType)) 进行匹配，因此 Annoations 中可以指定NVIDIA-NVIDIA-A40 这样的 fullname 或者 A40 这样 shortname。
+同时这里使用 strings.Contains(cardtype, strings.ToUpper(useType)) 进行匹配，因此 Annoations 中可以指定 NVIDIA-NVIDIA-A40 这样的 fullname 或者 A40 这样 shortname。
 
 当前 Card 不匹配 Annoations 中指定的任意一个 Use Type 时说明当前 Card 不满足条件，因此返回 false。
 
@@ -585,15 +586,15 @@ func DecodeContainerDevices(str string) (ContainerDevices, error) {
 
 ## 6.小结
 
-1. HAMi 提供了一个指定调度到(或者不调度到)某种(个) GPU 的功能：
+1. HAMi 提供了一个指定调度到 (或者不调度到) 某种 (个) GPU 的功能：
 
-- By Type：指定 GPU Type，仅调度(或者不调度)到某些指定 Type 的卡上，例如：A100、A40
+- By Type：指定 GPU Type，仅调度 (或者不调度) 到某些指定 Type 的卡上，例如：A100、A40
 
-- By UUID：指定 GPU UUID，仅调度(或者不调度)到调度到特定 UUID 对应的卡上
+- By UUID：指定 GPU UUID，仅调度 (或者不调度) 到调度到特定 UUID 对应的卡上
 
 - 通过该特性，可以实现更加精细的调度，当集群中存在多种 GPU 时比较有用
 
-2. 可以通过解析 Node Annoations 中的 hami.io.node-nvidia-register key 找到该节点上注册的 GPU 信息，例如：
+1. 可以通过解析 Node Annoations 中的 hami.io.node-nvidia-register key 找到该节点上注册的 GPU 信息，例如：
 
 ```bash
 root@j99cloudvm:~# node=j99cloudvm
@@ -601,18 +602,16 @@ kubectl get node $node -o jsonpath='{.metadata.annotations.hami\.io/node-nvidia-
 GPU-03f69c50-207a-2038-9b45-23cac89cb67d,10,46068,100,NVIDIA-NVIDIA A40,0,true:GPU-1afede84-4e70-2174-49af-f07ebb94d1ae,10,46068,100,NVIDIA-NVIDIA A40,0,true:
 ```
 
-3. 匹配规则:
+1. 匹配规则：
 
-- 对于 Type 当前使用 strings.Contains 方式，因此可以指定 Type 的 fullnameNVIDIA-NVIDIA A40,或者 shortname A40
+- 对于 Type 当前使用 strings.Contains 方式，因此可以指定 Type 的 fullnameNVIDIA-NVIDIA A40，或者 shortname A40
 
 - 对于 UUID 则是完全匹配，必须一致才行
 
-4. 如果 Annoations 填写错误，比如指定了一个不存在的 UUID 或者 Type 则会导致调度失败，Pod 处于 Pending 状态。
+1. 如果 Annoations 填写错误，比如指定了一个不存在的 UUID 或者 Type 则会导致调度失败，Pod 处于 Pending 状态。
 
 ---
 
-*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。* 
+*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*
 
 ---
-
-

@@ -6,6 +6,7 @@ date: "2025-07-28"
 excerpt: "本文为 HAMi 原理分析的第五篇，简单分析一下 HAMi-Core 的工作原理，包括怎么生效的，CUDA API 怎么拦截的，以及是怎么实现的对 GPU 的 core、memory 资源的 limit 的。"
 author: 密瓜智能
 tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/gpu7/cover.jpg"
 language: "zh"
 ---
@@ -15,8 +16,7 @@ language: "zh"
 
 本文为 HAMi 原理分析的第五篇，简单分析一下 HAMi-Core 的工作原理，包括怎么生效的，CUDA API 怎么拦截的，以及是怎么实现的对 GPU 的 core、memory 资源的 limit 的。
 
-本文摘自：https://mp.weixin.qq.com/s/vN3uDRPpAP3UmE2Hgn75vg
-
+本文摘自：<https://mp.weixin.qq.com/s/vN3uDRPpAP3UmE2Hgn75vg>
 
 ![p1](/images/blog/gpu7/p1.jpg)
 
@@ -46,19 +46,19 @@ language: "zh"
 
 **gpu memory 是怎么限制的？**
 
-首先是拦截 NVMLAPI 中的 _nvmlDeviceGetMemoryInfo，实现在执行 nvidia-smi 命令时只展示申请的 Memory（来源于CUDA_DEVICE_MEMORY_LIMIT_X)。
+首先是拦截 NVMLAPI 中的 _nvmlDeviceGetMemoryInfo，实现在执行 nvidia-smi 命令时只展示申请的 Memory（来源于 CUDA_DEVICE_MEMORY_LIMIT_X)。
 
 然后是拦截内存分配相关的 CUDA API，比如：cuMemoryAllocate 和 cuMemAlloc_v2。
 
-分配内存之前，增加了 oom_check,当前 Pod 的 GPU 内存使用量 超过 限制的内存使用量（来源于CUDA_DEVICE_MEMORY_LIMIT_X）时直接返回 OOM。
+分配内存之前，增加了 oom_check，当前 Pod 的 GPU 内存使用量 超过 限制的内存使用量（来源于 CUDA_DEVICE_MEMORY_LIMIT_X）时直接返回 OOM。
 
 **gpu core 是怎么限制的？**
 
 同理，拦截提交 Kernel 相关的 CUDA API，例如：cuLaunchKernel。
 
-提交 Kernel 之前，增加 rate_limit 逻辑，具体算法类似令牌桶，每次提交 kernel 都会消耗 Token，直到某次提交 kernel 发现没有 Token 时就会直接 sleep， 一段时间之后 Token 恢复了，又可以继续提交任务了。
+提交 Kernel 之前，增加 rate_limit 逻辑，具体算法类似令牌桶，每次提交 kernel 都会消耗 Token，直到某次提交 kernel 发现没有 Token 时就会直接 sleep，一段时间之后 Token 恢复了，又可以继续提交任务了。
 
-恢复 Token 时就会用到CUDA_DEVICE_SM_LIMIT 环境变量。
+恢复 Token 时就会用到 CUDA_DEVICE_SM_LIMIT 环境变量。
 
 ---
 
@@ -71,7 +71,6 @@ language: "zh"
 ## 怎么被挂载进 Pod 的
 
 这部分是 hami-device-plugin-nvidia 组件在处理，具体是 Allocate 方法，相关代码如下：
-
 
 ```go
 // pkg/device-plugin/nvidiadevice/nvinternal/plugin/server.go#L385
@@ -208,7 +207,7 @@ response.Mounts = append(response.Mounts,
 )
 ```
 
-有一个挂载 libvgpu.so 的操作，使用的是 HostPath，来源于环境变量, HAMi 部署时默认用的/usr/local。
+有一个挂载 libvgpu.so 的操作，使用的是 HostPath，来源于环境变量，HAMi 部署时默认用的/usr/local。
 
 ```go
 func init() {
@@ -250,7 +249,7 @@ if !found {
 在 Linux 系统中，/etc/ld.so.preload 是一个特殊的文件，系统会在加载共享库时，优先加载该文件中列出的共享库。这个文件通常用于强制加载特定的共享库，在系统启动或程序运行时覆盖默认的动态链接库行为。
 
 >Linux 下动态库加载顺序为：
-LD_PRELOAD>LD_LIBRARY_PATH>/etc/ld.so.cache>/lib>/usr/lib。
+LD_PRELOAD>LD_LIBRARY_PATH>/etc/ld.so.cache>/lib>/usr/lib.
 
 通过 LD_PRELOAD 可以保证一定加载我们自定义的 libvgpu.so。
 
@@ -281,6 +280,7 @@ for i, dev := range devreq {
 }
 response.Envs["CUDA_DEVICE_SM_LIMIT"] = fmt.Sprint(devreq[0].Usedcores)
 ```
+
 这样 libvgpu.so 就知道该限制在多少了。
 
 ### 小结
@@ -297,7 +297,7 @@ response.Envs["CUDA_DEVICE_SM_LIMIT"] = fmt.Sprint(devreq[0].Usedcores)
 
 ## 2. CUDA API 怎么拦截的
 
-这部分则分析 HAMi-Core(libvgpu.so)中怎么实现对 CUDA API 进行拦截的。
+这部分则分析 HAMi-Core(libvgpu.so) 中怎么实现对 CUDA API 进行拦截的。
 
 ### 重写 dlsym 函数拦截 CUDA API
 
@@ -465,9 +465,9 @@ if (0 == strcmp(symbol, "cuGraphDestroy")) {
 
 主要通过 dlopen 和 dlsym 函数加载 CUDA 库，并重定向 CUDA 库中的函数调用，以实现拦截、监控或修改 CUDA 函数的行为。
 
-### 待拦截 CUDA API 列表 
+### 待拦截 CUDA API 列表
 
-首先是通过cuda_library_entry 定义了哪些 CUDA 函数需要进行拦截,具体要拦截的 CUDA API 列表如下：
+首先是通过 cuda_library_entry 定义了哪些 CUDA 函数需要进行拦截，具体要拦截的 CUDA API 列表如下：
 
 ```c
 // src/cuda/hook.c#L8-L219
@@ -549,7 +549,7 @@ src/include/libcuda_hook.h 里面则是上一步拿到的 CUDA 函数的真正�
 
 >src/include/libnvml\_hook.h 则是对 NVML 库的拦截，类似的，就不在赘述。
 
-这个代码片段定义了一个用于拦截 CUDA 函数调用的机制，它的基本原理是**通过函数指针重定向 CUDA 函数调用，从而实现对 CUDA 函数的拦截和替换。** 
+这个代码片段定义了一个用于拦截 CUDA 函数调用的机制，它的基本原理是**通过函数指针重定向 CUDA 函数调用，从而实现对 CUDA 函数的拦截和替换。**
 
 **原始 CUDA 函数表**cuda_entry_t 就是 hook.c 中得到的：
 
@@ -610,7 +610,7 @@ CUDA_OVERRIDE_CALL 宏通过函数表中的函数指针来重定向 CUDA 函数
 
 - cuda_sym_t 定义为一个函数指针类型，用于调用 CUDA 函数。
 
-- _entry(__VA_ARGS__) 实际上就是调用找到的 CUDA 函数，并传入参数。
+- _entry(**VA_ARGS**) 实际上就是调用找到的 CUDA 函数，并传入参数。
 
 这个宏在每次调用时都会输出日志，例如 LOG_DEBUG("Hijacking %s", #sym) 表示拦截了某个函数。
 
@@ -634,7 +634,7 @@ CUDA_FIND_ENTRY 则在 table 根据名称查询对应的函数地址。
 
 - CUDA API 拦截：第二部分则是真正申请 Memory 时，会限制不能超过 Limit 的内存。
 
-### NVML 
+### NVML
 
 当我们申请 3000M 内存时，Pod 中执行 nvidia-smi 看到的就是 3000M：
 
@@ -644,6 +644,7 @@ resources:
     nvidia.com/gpu: 1          # declare how many physical GPUs the pod needs
     nvidia.com/gpumem: 3000    # identifies 3G GPU memory each physical GPU allocates to the pod
 ```
+
 ![p2](/images/blog/gpu7/p2.jpg)
 
 具体怎么实现的呢？其实是拦截的 NVML 中的 _nvmlDeviceGetMemoryInfo API。
@@ -942,7 +943,7 @@ if (new_allocated > limit) {
 }
 ```
 
-新分配内存如果超过了限制，会进行一次清理，如果清理之后还是内存不够，就直接返回 1 ，配合前面的 if
+新分配内存如果超过了限制，会进行一次清理，如果清理之后还是内存不够，就直接返回 1，配合前面的 if
 
 ```c
 if (oom_check(dev, size))
@@ -963,7 +964,7 @@ if (oom_check(dev, size))
 
 在 CUDA 编程中，Kernel 是在 GPU 上并行执行的函数，开发人员编写 Kernel 来描述并行计算任务，然后在主机上调用 Kernel 来在 GPU 上执行计算。
 
-在 CUDA 程序架构中，host 代码部分在 CPU 上执行，是普通的 C 代码。当遇到数据并行处理的部分，CUDA 会将程序编译成 GPU 能执行的程序，并传送到 GPU，这个程序在 CUDA 里称做核(kernel)。device 代码部分在 GPU 上执行，此代码部分在 kernel 上编写(.cu 文件)。
+在 CUDA 程序架构中，host 代码部分在 CPU 上执行，是普通的 C 代码。当遇到数据并行处理的部分，CUDA 会将程序编译成 GPU 能执行的程序，并传送到 GPU，这个程序在 CUDA 里称做核 (kernel)。device 代码部分在 GPU 上执行，此代码部分在 kernel 上编写 (.cu 文件)。
 
 使用 GPU 真正产生利用率是向 GPU 提交了一个一个的计算任务，可能是矩阵乘法、卷积操作、向量加法等任何并行计算任务，也就是前面提到的 kernel，这个提交的过程被称为 **kernel launch。**
 
@@ -1135,7 +1136,7 @@ static const struct timespec g_wait = {
 };
 ```
 
-算起来就是 10 * 1000 * 1000 纳秒，即使 10 毫秒，也就是每次 Token 不足时会 sleep 10 毫秒，之后再次判断。
+算起来就是 10 *1000* 1000 纳秒，即使 10 毫秒，也就是每次 Token 不足时会 sleep 10 毫秒，之后再次判断。
 
 接下来是第二个问题：**还有什么地方在给 g_cur_cuda_cores 赋值，即：增加 Token 的逻辑在哪里？**
 
@@ -1205,7 +1206,7 @@ void* utilization_watcher() {
 
 - 初始化并获取当前 GPU 使用率
 
-- 根据限制值和当前使用情况计算本轮可以增加的 Token,然后调用 change_token 增加 Token
+- 根据限制值和当前使用情况计算本轮可以增加的 Token，然后调用 change_token 增加 Token
 
 初始化并获取当前 GPU 使用率
 
@@ -1349,7 +1350,7 @@ int delta(int up_limit, int user_current, int share) {
 
 本文主要分析了 HAMi Core 的工作原理，HAMi 这边算力限制用的类似令牌桶的形式限制进程对 kernel 的提交，提交 GPU 任务会消耗 token，消耗完之后就不让提交了，等下一轮 token 恢复之后才能继续提交，实现的效果和你说的这个应该差不多。每轮恢复的 token 是固定的，取决于 Pod 创建时申请的 Resource。(大概是这么个情况)。
 
-#### 现在可以回答开篇的几个问题了：
+#### 现在可以回答开篇的几个问题了
 
 #### libvgpu.so 是怎么生效的？
 
@@ -1365,24 +1366,21 @@ int delta(int up_limit, int user_current, int share) {
 
 #### gpu memory 是怎么限制的？
 
-首先是拦截 NVMLAPI 中的 _nvmlDeviceGetMemoryInfo，实现在执行 nvidia-smi 命令时只展示申请的 Memory（来源于CUDA_DEVICE_MEMORY_LIMIT_X。
+首先是拦截 NVMLAPI 中的 _nvmlDeviceGetMemoryInfo，实现在执行 nvidia-smi 命令时只展示申请的 Memory（来源于 CUDA_DEVICE_MEMORY_LIMIT_X。
 
 然后是拦截内存分配相关的 CUDA API，比如：cuMemoryAllocate 和 cuMemAlloc_v2。
 
-分配内存之前，增加了 oom_check,当前 Pod 的 GPU 内存使用量 超过 限制的内存使用量（来源于CUDA_DEVICE_MEMORY_LIMIT_X）时直接返回 OOM。
+分配内存之前，增加了 oom_check，当前 Pod 的 GPU 内存使用量 超过 限制的内存使用量（来源于 CUDA_DEVICE_MEMORY_LIMIT_X）时直接返回 OOM。
 
 #### gpu core 是怎么限制的？
 
 同理，拦截提交 Kernel 相关的 CUDA API，例如：cuLaunchKernel。
 
-提交 Kernel 之前，增加 rate_limit 逻辑，具体算法类似令牌桶，每次提交 kernel 都会消耗 Token，直到某次提交 kernel 发现没有 Token 时就会直接 sleep， 一段时间之后 Token 恢复了，又可以继续提交任务了。
+提交 Kernel 之前，增加 rate_limit 逻辑，具体算法类似令牌桶，每次提交 kernel 都会消耗 Token，直到某次提交 kernel 发现没有 Token 时就会直接 sleep，一段时间之后 Token 恢复了，又可以继续提交任务了。
 
-恢复 Token 时就会用到CUDA_DEVICE_SM_LIMIT 环境变量。
+恢复 Token 时就会用到 CUDA_DEVICE_SM_LIMIT 环境变量。
 
 ---
-*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。* 
+
+*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*
 ---
-
-
-
-

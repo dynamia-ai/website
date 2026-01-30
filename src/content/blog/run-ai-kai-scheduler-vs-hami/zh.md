@@ -6,9 +6,9 @@ date: "2025-08-06"
 excerpt: "今天，我们进行一次技术专题，对比 KAI-Scheduler 和 HAMi 的实现方式，并展望未来合作的可能性。"
 author: "密瓜智能"
 tags: ["vGPU", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/KAI-Scheduler-VS-HAMi/cover.jpg"
 language: "zh"
-
 ---
 
 最近，随着 Nvidia 收购 Run:ai 并将其核心调度组件 KAI-Scheduler 开源，AI 和 Kubernetes 社区都投入了相当大的关注。其中，KAI-Scheduler 带来的 GPU Sharing 功能，更是让不少专注于 GPU 资源虚拟化的朋友们眼前一亮。
@@ -18,6 +18,7 @@ language: "zh"
 带着这些问题，我们深入研究了 KAI-Scheduler GPU Sharing 的架构与技术实现，特别是其创新的 Reservation Pod 机制。同时，我们近期与 Run:ai 团队的积极交流，包括在 KubeCon EU 2025 现场与 Run:ai CTO Ronen Dar 及其同事就 KAI-Scheduler、HAMi、开源合作等话题进行的深入探讨与交流。今天，我们进行一次技术专题，对比 KAI-Scheduler 和 HAMi 的实现方式，并展望未来合作的可能性。
 
 > 本文速览 痛点分析：
+
 - 为何 K8s 原生共享 GPU 如此困难？
 
 - 机制解析：KAI 如何用 Reservation Pod 巧妙实现共享？
@@ -34,19 +35,19 @@ language: "zh"
 
 在深入 KAI 之前，我们先回顾下为什么在 Kubernetes 中实现 GPU 共享本身就是个挑战：
 
-- 整数限制: Kubernetes 原生资源模型 (nvidia.com/gpu) 只认整数 GPU，无法表达“我要 0.2 个 GPU”这样的需求。
+- 整数限制：Kubernetes 原生资源模型 (nvidia.com/gpu) 只认整数 GPU，无法表达“我要 0.2 个 GPU”这样的需求。
 
-- 调度无知: 标准的 kube-scheduler 看不懂分数 GPU 的概念，可能会把一个本应共享的 GPU 分配给一个请求整卡的 Pod，造成冲突。
+- 调度无知：标准的 kube-scheduler 看不懂分数 GPU 的概念，可能会把一个本应共享的 GPU 分配给一个请求整卡的 Pod，造成冲突。
 
 - 状态“黑盒”: 如何让 Kubernetes 集群知道某个 GPU 已经被部分占用了？缺乏标准表示方法。
 
-- 用户不便: 开发者需要一种简单直观的方式来申请和使用分数 GPU 资源。
+- 用户不便：开发者需要一种简单直观的方式来申请和使用分数 GPU 资源。
 
 ![p1](/images/blog/KAI-Scheduler-VS-HAMi/p1.png)
 
 ## 机制解析
 
-### 二、KAI 的巧思：用 Reservation Pod “瞒天过海”
+### 二、KAI 的巧思：用 Reservation Pod“瞒天过海”
 
 面对这些挑战，KAI-Scheduler 提出了一种非常巧妙的解决方案：**Reservation Pod**。
 
@@ -64,7 +65,7 @@ language: "zh"
 
 这个 Reservation Pod 主要承担以下职责：
 
-- **GPU 预留**: 对 K8s “宣告主权”，占住整个 GPU 资源。
+- **GPU 预留**: 对 K8s“宣告主权”，占住整个 GPU 资源。
 
 - **资源可见性**: 使 GPU 的“已被部分使用”状态在 K8s 体系内间接可见（虽然 K8s 以为是被 Reservation Pod 占满了）。
 
@@ -86,7 +87,7 @@ metadata:
     gpu-fraction: "0.2"  # 请求 20% GPU 资源
 ```
 
-2. **KAI 调度**：
+1. **KAI 调度**：
 
 - KAI-Scheduler 识别到 gpu-fraction 注解。
 
@@ -160,7 +161,7 @@ func (rsc *service) createResourceReservationPod(
 }
 ```
 
-- 内部记账: 在 KAI-Scheduler 的内部状态（GpuSharingNodeInfo 结构）中，精确记录每个 gpu-group 下已分配的 GPU 显存 。在 pkg/scheduler/api/node_info/gpu_sharing_node_info.go 中定义的跟踪 GPU 共享状态的核心结构：
+- 内部记账：在 KAI-Scheduler 的内部状态（GpuSharingNodeInfo 结构）中，精确记录每个 gpu-group 下已分配的 GPU 显存。在 pkg/scheduler/api/node_info/gpu_sharing_node_info.go 中定义的跟踪 GPU 共享状态的核心结构：
 
 ```go
 // GpuSharingNodeInfo 记录节点内 GPU 共享使用的实时状态
@@ -190,7 +191,7 @@ type GpuSharingNodeInfo struct {
 
 ![p4](/images/blog/KAI-Scheduler-VS-HAMi/p4.png)
 
-3. **资源回收**：
+1. **资源回收**：
 
 - 当一个共享 GPU 的用户 Pod 终止时，KAI 更新内部记账。
 
@@ -264,7 +265,7 @@ KAI-Scheduler 的 GPU Sharing 实现，仅是在调度器层面通过创建/管�
 
 - **依赖“君子协定”**: 实际资源使用 完全依赖于 Pod 内运行的应用程序自觉。一个 Pod 即使只申请了 gpu-fraction: "0.2"，它也可以尝试使用 80% 甚至 100% 的 GPU 显存或算力。KAI 纯调度层面无法阻止这一点。
 
-- **潜在干扰**: 这意味着它无法防止行为不端的应用（无论是无意还是恶意）超额使用资源，从而干扰同一块物理 GPU 上的其他“邻居” Pod，导致性能抖动甚至 OOM。
+- **潜在干扰**: 这意味着它无法防止行为不端的应用（无论是无意还是恶意）超额使用资源，从而干扰同一块物理 GPU 上的其他“邻居”Pod，导致性能抖动甚至 OOM。
 
 - **应用需配合**: 为了尽可能模拟隔离效果，用户必须在应用程序代码内部手动设置资源限制（例如使用 torch.cuda.set_per_process_memory_fraction 或 TensorFlow 的类似配置），这增加了使用的复杂性和潜在的出错点。
 
@@ -298,12 +299,12 @@ KAI-Scheduler 的 GPU Sharing 机制无疑是一种巧妙且值得借鉴的设�
 
 同时，我们也看到，对于 GPU 共享的核心需求之一——**可靠的资源隔离与保障**，KAI 的“软隔离”与 HAMi 追求的“硬隔离”代表了不同的技术路径和权衡。
 
-**令人欣喜的是，我们与 Run:ai (Nvidia) 团队已经就这些技术方向展开了积极的交流。 在最近的 KubeCon EU 现场，我们与 Run:ai CTO 及其同事进行了富有成效的讨论，特别是在硬隔离的技术方案上交流了看法，HAMi 分享了我们在这方面的实践和思考。双方都表达了对 GPU 资源管理领域持续探索的热情，并期待未来能有更深入的技术交流与合作。**
+**令人欣喜的是，我们与 Run:ai (Nvidia) 团队已经就这些技术方向展开了积极的交流。在最近的 KubeCon EU 现场，我们与 Run:ai CTO 及其同事进行了富有成效的讨论，特别是在硬隔离的技术方案上交流了看法，HAMi 分享了我们在这方面的实践和思考。双方都表达了对 GPU 资源管理领域持续探索的热情，并期待未来能有更深入的技术交流与合作。**
 
 ![p6](/images/blog/KAI-Scheduler-VS-HAMi/p6.jpg)
 ![p10](/images/blog/KAI-Scheduler-VS-HAMi/p10.jpg)
 
->KubeCon EU 现场HAMi Maintainer 与 Run:ai CTO Ronen Dar 及其同事的愉快合照
+>KubeCon EU 现场 HAMi Maintainer 与 Run:ai CTO Ronen Dar 及其同事的愉快合照
 
 我们认为，KAI-Scheduler 的开源为社区带来了新的活力和选择。它与 HAMi 所代表的硬隔离方案并非相互排斥，而是可以看作是针对不同场景和需求的补充。KAI 的调度策略创新，结合 HAMi 在硬隔离方面的探索，或许能为社区带来更完善、更灵活的 GPU 虚拟化解决方案。
 
@@ -311,7 +312,7 @@ KAI-Scheduler 的 GPU Sharing 机制无疑是一种巧妙且值得借鉴的设�
 
 - KAI-Scheduler GPU Sharing: 设计优雅，兼容 K8s 生态，通过 Reservation Pod 巧妙实现调度层面的分数 GPU 管理。但本质是软隔离，依赖应用自律。
 - HAMi: 追求硬隔离，通过 HAMi Device Plugin 及 HAMi-Core 提供强制性的资源限制和保障，更适合对隔离性要求高的生产环境。
-- 社区与合作: 我们赞赏 KAI 团队的技术创新，并对其开源表示欢迎。通过与 Run:ai (Nvidia) 团队在 KubeCon EU 的积极对话，我们看到了社区合作的巨大潜力。双方的技术交流，特别是在硬隔离等方向的探讨，预示着未来共同推动 GPU 资源管理技术发展的可能性。
+- 社区与合作：我们赞赏 KAI 团队的技术创新，并对其开源表示欢迎。通过与 Run:ai (Nvidia) 团队在 KubeCon EU 的积极对话，我们看到了社区合作的巨大潜力。双方的技术交流，特别是在硬隔离等方向的探讨，预示着未来共同推动 GPU 资源管理技术发展的可能性。
 
 HAMi 社区将持续关注 KAI-Scheduler 的发展，并积极参与社区讨论，期待与包括 Nvidia/Run:ai 在内的伙伴们一起，为 Kubernetes 用户带来更强大、更灵活、更可靠的 GPU 解决方案。
 
@@ -321,13 +322,12 @@ HAMi 社区将持续关注 KAI-Scheduler 的发展，并积极参与社区讨论
 
 感谢阅读！如果你觉得这篇文章对你有帮助，欢迎点赞、推荐、分享给更多朋友！
 
---- 
+---
 
 HAMi，全称是 Heterogeneous AI Computing Virtualization Middleware（异构算力虚拟化中间件），是一套为管理 k8s 集群中的异构 AI 计算设备而设计的“一站式”架构，能够提供异构 AI 设备共享能力，提供任务间的资源隔离。HAMi 致力于提升 k8s 集群中异构计算设备的利用率，为不同类型的异构设备提供统一的复用接口。HAMi 当前是 CNCF Sandbox 项目，已被 CNCF 纳入 CNAI 类别技术全景图。
 
-社区官网：https://project-hami.io
+社区官网：<https://project-hami.io>
 
+Github:<https://github.com/Project-HAMi>
 
-Github：https://github.com/Project-HAMi
-
-Reddit：https://www.reddit.com/r/HAMi_Community/
+Reddit:<https://www.reddit.com/r/HAMi_Community/>

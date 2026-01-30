@@ -5,12 +5,11 @@ slug: "open-source-vgpu-hami-UUID"
 date: "2025-07-30"
 excerpt: "In this article, we analyze HAMi's scheduling feature: fine-grained scheduling based on GPU type and even UUID."
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
-coverImage: "/images/blog/gpu9/cover2.jpg"
+tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Technical Deep Dive"coverImage: "/images/blog/gpu9/cover2.jpg"
 language: "en"
 ---
 
-This article is adapted from: https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw
+This article is adapted from: <https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw>
 
 In the previous article, we briefly analyzed the working principle of HAMi-Core (libvgpu.so) vCUDA, including how it takes effect, how CUDA APIs are intercepted, and how it implements resource limits on GPU core and memory.
 
@@ -109,7 +108,7 @@ When using it later, you will need to specify the UUID or Type mentioned above.
 
 ## 3. Specifying GPU When Creating a Pod
 
-> Related demos are provided in the Examples directory: https://github.com/Project-HAMi/HAMi/tree/master/examples/nvidia
+> Related demos are provided in the Examples directory: <https://github.com/Project-HAMi/HAMi/tree/master/examples/nvidia>
 
 ### By Type
 
@@ -581,11 +580,13 @@ At this point, the entire process is complete.
     - This feature allows for more fine-grained scheduling, which is useful when there are multiple types of GPUs in the cluster.
 
 2. You can find the registered GPU information on a node by parsing the `hami.io.node-nvidia-register` key in the Node's Annotations, for example:
+
     ```bash
     root@j99cloudvm:~# node=j99cloudvm
     kubectl get node $node -o jsonpath='{.metadata.annotations.hami\.io/node-nvidia-register}'
     GPU-03f69c50-207a-2038-9b45-23cac89cb67d,10,46068,100,NVIDIA-NVIDIA A40,0,true:GPU-1afede84-4e70-2174-49af-f07ebb94d1ae,10,46068,100,NVIDIA-NVIDIA A40,0,true:
     ```
+
 3. Matching rules:
     - For Type, `strings.Contains` is currently used, so you can specify the full name of the type, `NVIDIA-NVIDIA A40`, or the short name, `A40`.
     - For UUID, it is an exact match; they must be identical.

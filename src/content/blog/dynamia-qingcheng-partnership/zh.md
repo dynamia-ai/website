@@ -5,6 +5,7 @@ date: "2026-01-13"
 excerpt: '近日，密瓜智能与清程极智在北京宣布达成战略合作，双方直指 AI 产业异构算力调度效率困境，为企业级大模型应用提供了"调度 + 基建"一体化解决方案。'
 author: "Dynamia"
 tags: ["战略合作", "清程极智", "八卦炉", "异构算力", "HAMi"]
+category: "Company News"
 language: "zh"
 coverImage: "/images/blog/dynamia-qingcheng-partnership/dynamia-qingcheng-signing-ceremony.webp"
 ---

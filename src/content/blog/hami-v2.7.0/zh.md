@@ -1,11 +1,12 @@
 ---
 title: "HAMi v2.7.0 重磅发布 | 异构芯片全面拓展，调度更稳、生态更强"
-coverTitle: "HAMiv2.7.0重磅发布 | 异构芯片全面拓展，调度更稳、生态更强"
+coverTitle: "HAMiv2.7.0 重磅发布 | 异构芯片全面拓展，调度更稳、生态更强"
 slug: "hami-v2.7.0-released"
 date: "2025-10-09"
 excerpt: "HAMi v2.7.0 重磅发布！新增昆仑芯 XPU、燧原 GCU、AWS Neuron 及沐曦 MetaX 完整支持，调度器核心优化升级，应用层生态整合增强，WebUI 功能全面提升，社区蓬勃发展。"
 author: "Dynamia AI Team"
 tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing", "XPU", "GCU", "MetaX", "Neuron", "Release"]
+category: "Product Release"
 coverImage: "/images/blog/hami-v2.7.0/cover-zh.png"
 language: "zh"
 ---
@@ -21,7 +22,7 @@ language: "zh"
 > 当多样之芯汇入同一片海，我们不许诺风向，只承诺给出  **可被遵循的序** 。
 > 于是，一个版本得以成形：不是因为一切完美，而是因为 **秩序让不完美也能** **并行** 。
 
-## HAMi 新版本发布：GPU 生态与调度效率全面升级！
+## HAMi 新版本发布：GPU 生态与调度效率全面升级
 
 我们激动地宣布 HAMi 的最新版本正式发布！本次更新在硬件厂商生态支持、核心调度器优化、关键稳定性修复以及开发者社区建设方面取得了显著进展，旨在为用户提供更强大、更稳定、更易用的 GPU 资源管理和调度解决方案。
 
@@ -41,7 +42,7 @@ language: "zh"
 
 HAMi 在云原生社区持续落地，以下为近期的用户实践：
 
-* **顺丰科技（Effective  GPU  ）** ：基于 HAMi 实现大规模异构算力的池化与调度，详见 [CNCF 案例研究](https://www.cncf.io/case-studies/sf-technology/)。
+* **顺丰科技（Effective  GPU）** ：基于 HAMi 实现大规模异构算力的池化与调度，详见 [CNCF 案例研究](https://www.cncf.io/case-studies/sf-technology/)。
 * **PREP-EDU** ：借助 HAMi 优化教育平台的 AI 训练任务，显著提升资源利用率，详见 [CNCF 案例研究](https://www.cncf.io/case-studies/prep-edu/)。
 
 #### vCluster 云原生专家推荐
@@ -67,16 +68,16 @@ HAMi 在云原生社区持续落地，以下为近期的用户实践：
 HAMi v2.7.0 版本为沐曦 MetaX GPU 提供了统一的调度方案，其核心特性包括：
 
 1. **GPU 共享（sGPU）**：允许多个容器任务共享同一张物理 GPU 卡，类似于 vGPU，提高了资源利用率。
-2. **资源隔离与限制** ： 可以精确限制每个任务能使用的显存大小（例如 4G）。可以限制每个任务使用的计算核心（vcore）比例（例如 60%）。
-3. **拓扑感知调度** ： 针对单机多卡的场景，调度器能感知 GPU 间的连接拓扑（如 MetaXLink、PCIe Switch），并为多卡任务优先选择通信带宽最高的 GPU 组合，提升训练性能。
+2. **资源隔离与限制** ：可以精确限制每个任务能使用的显存大小（例如 4G）。可以限制每个任务使用的计算核心（vcore）比例（例如 60%）。
+3. **拓扑感知调度** ：针对单机多卡的场景，调度器能感知 GPU 间的连接拓扑（如 MetaXLink、PCIe Switch），并为多卡任务优先选择通信带宽最高的 GPU 组合，提升训练性能。
 4. **服务质量（QoS）策略**：支持为任务设置不同的资源服务等级，如 BestEffort（尽力而为）、FixedShare（固定份额）和 BurstShare（突发份额），以满足不同业务场景的需求。
-5. **健康检查与监控** ： 提供设备健康状态检查，在 HAMi-WebUI 中打通沐曦监控全链路，使得异构指标在界面中更直观呈现，可视化地展示整个集群的资源分配和使用情况。
+5. **健康检查与监控** ：提供设备健康状态检查，在 HAMi-WebUI 中打通沐曦监控全链路，使得异构指标在界面中更直观呈现，可视化地展示整个集群的资源分配和使用情况。
 
 **拓扑寻优原理详解**
 
 HAMi 调度器对沐曦 MetaX GPU 的拓扑寻优，其核心目标是确保多卡任务在高速互联的 GPU "群组"内部执行，从而最大化通信效率。其核心思想是： **一个结合了节点内“优先级”和节点间“量化评分”的两阶段决策机制** 。
 
-它首先在每个节点内部，通过一套**确定性的优先级规则**直接选出最优的 GPU 组合，优先从单个高速互联域 （linkZone） 中分配。
+它首先在每个节点内部，通过一套**确定性的优先级规则**直接选出最优的 GPU 组合，优先从单个高速互联域（linkZone）中分配。
 
 随后，在多个候选节点之间，它通过一个**综合了“分配质量”和“拓扑损失”的评分公式**进行量化评估，选出不仅对当前任务最好，也对集群未来资源布局最有利的节点。
 
@@ -88,14 +89,14 @@ HAMi 调度器对沐曦 MetaX GPU 的拓扑寻优，其核心目标是确保多�
 
 **工作流程详解**
 
-1. 输入： 节点上所有满足 Pod 资源请求（如显存、算力）的候选 GPU 列表。
-2. 分组： 算法首先将这些候选 GPU 按照它们的 linkZone ID （高速互联域标识） 进行分组。
-3. 决策树： 算法开始按以下优先级顺序进行决策：
-   1. 第一优先级 （最优解：域内满足）: 算法会检查是否存在任何一个 linkZone 分组，其内部的 GPU 数量足以满足任务的全部需求。
-   2. 第二优先级 （次优解：跨域组合）: 算法会创建一个新的空列表，然后逐个遍历所有 linkZone 分组，将里面的 GPU 全部添加到这个新列表中，直到列表中的 GPU 总数满足任务需求。
-   3. 第三优先级 （保底解：补充无互联信息设备）: 如果遍历完所有 linkZone 分组后，列表中的 GPU 数量仍然不够，算法最后会用那些没有 linkZone 信息的 GPU 来补足剩余的数量。
+1. 输入：节点上所有满足 Pod 资源请求（如显存、算力）的候选 GPU 列表。
+2. 分组：算法首先将这些候选 GPU 按照它们的 linkZone ID（高速互联域标识）进行分组。
+3. 决策树：算法开始按以下优先级顺序进行决策：
+   1. 第一优先级（最优解：域内满足）: 算法会检查是否存在任何一个 linkZone 分组，其内部的 GPU 数量足以满足任务的全部需求。
+   2. 第二优先级（次优解：跨域组合）: 算法会创建一个新的空列表，然后逐个遍历所有 linkZone 分组，将里面的 GPU 全部添加到这个新列表中，直到列表中的 GPU 总数满足任务需求。
+   3. 第三优先级（保底解：补充无互联信息设备）: 如果遍历完所有 linkZone 分组后，列表中的 GPU 数量仍然不够，算法最后会用那些没有 linkZone 信息的 GPU 来补足剩余的数量。
 
- **阶段一的本质** ： 通过强制的优先级规则，用最高效的方式锁定节点内部理论上通信性能最高的 GPU 组合。
+ **阶段一的本质** ：通过强制的优先级规则，用最高效的方式锁定节点内部理论上通信性能最高的 GPU 组合。
 
 **第二阶段：节点间评分决策 - “综合评估”**
 
@@ -109,12 +110,12 @@ Final Score = (10 * allocatedScore) - lossScore
 
 我们来拆解这个公式：
 
-1. allocatedScore （分配质量分）: 这个分数衡量的是第一阶段选出的那个 GPU 组合本身的内部连接紧密程度。组合内处于相同 linkZone 的设备对越多，这个分数就越高。10 * allocatedScore 表明调度器极度重视为当前任务分配一个高质量的组合。权重乘以 10，使其在最终得分中占据主导地位。
-2. lossScore （拓扑损失分 / 碎片化惩罚）: 这是一个非常关键的“远见”指标。它衡量的是：“为了完成本次分配，我们对节点上剩余的、未被分配的 GPU 的拓扑完整性造成了多大的破坏？”
+1. allocatedScore（分配质量分）: 这个分数衡量的是第一阶段选出的那个 GPU 组合本身的内部连接紧密程度。组合内处于相同 linkZone 的设备对越多，这个分数就越高。10 * allocatedScore 表明调度器极度重视为当前任务分配一个高质量的组合。权重乘以 10，使其在最终得分中占据主导地位。
+2. lossScore（拓扑损失分 / 碎片化惩罚）: 这是一个非常关键的“远见”指标。它衡量的是：“为了完成本次分配，我们对节点上剩余的、未被分配的 GPU 的拓扑完整性造成了多大的破坏？”
    1. 计算方式：lossScore = （分配前总分） - （分配组合得分） - （剩余设备得分）
    2. 这意味着调度器会惩罚那些会导致节点拓扑资源“碎片化”的分配行为，在分配质量分相同的时候会起作用，保护了集群为未来的大型任务保留优质、完整拓扑资源的能力。
 
-**最终总结**： 这个两阶段原理，首先通过刚性的优先级规则在每个节点内部“优中选优”，然后通过一个兼顾“当前利益”与“长远规划”的评分公式，在所有候选节点中做出全局最优决策。
+**最终总结**：这个两阶段原理，首先通过刚性的优先级规则在每个节点内部“优中选优”，然后通过一个兼顾“当前利益”与“长远规划”的评分公式，在所有候选节点中做出全局最优决策。
 
 **调度策略与拓扑寻优的协同**
 
@@ -168,9 +169,9 @@ spec:
 
 **沐曦 sGPU 的三种 QoS Policy**
 
-1. BestEffort （尽力而为）: 默认策略。资源尽力分配，追求最大化的资源利用率。
-2. FixedShare （固定份额）: 严格保证任务分配到的算力 （vcore） 和显存 （vmemory），性能稳定，不受其他任务干扰。
-3. BurstShare （突发份额）: 有资源份额，但在 GPU 空闲时允许被 sGPU 使用，适合有突发负载的业务。
+1. BestEffort（尽力而为）: 默认策略。资源尽力分配，追求最大化的资源利用率。
+2. FixedShare（固定份额）: 严格保证任务分配到的算力（vcore）和显存（vmemory），性能稳定，不受其他任务干扰。
+3. BurstShare（突发份额）: 有资源份额，但在 GPU 空闲时允许被 sGPU 使用，适合有突发负载的业务。
 
 **sGPU 的 QoS Policy 核心调度原理：“同类聚合”**
 
@@ -217,9 +218,9 @@ spec:
 
 WebUI 现已全面支持沐曦 MetaX GPU 的监控指标展示，提供直观的资源使用情况概览。
 
-![1760022451378](/images/blog/hami-v2.7.0/1760022451378.png)说明文档：MetaX GPU 支持说明 （https://github.com/Project-HAMi/HAMi/blob/master/docs/metax-support_cn.md）
+![1760022451378](/images/blog/hami-v2.7.0/1760022451378.png)说明文档：MetaX GPU 支持说明（<https://github.com/Project-HAMi/HAMi/blob/master/docs/metax-support_cn.md）>
 
-使用文档：MetaX GPU 样例 （https://github.com/Project-HAMi/HAMi/tree/master/examples/metax）
+使用文档：MetaX GPU 样例（<https://github.com/Project-HAMi/HAMi/tree/master/examples/metax）>
 
 Related PRs:
 
@@ -239,7 +240,7 @@ HAMi v2.7.0 版本为昆仑芯 XPU 提供了统一的调度方案，其核心特
 1. **混合部署与虚拟化** ：可以在一个集群中同时调度昆仑芯的整卡和 vXPU（虚拟化切片），虚拟化支持 1/4 卡和 1/2 卡两种粒度的切分。提高了资源利用率的灵活性。
 2. **显存自动对齐** ：用户请求 vXPU 显存时，无需关心硬件具体的显存规格。系统会自动将请求的显存值向上对齐到最接近的硬件支持规格（例如 24G、48G），简化了资源申请。
 3. **拓扑感知调度** ：调度器能够感知节点上 XPU 卡的拓扑结构（如翼侧互联信息：将索引 0-3 的设备视为 leftwing，将索引 4-7 的设备视为 rightwing）。在分配多个 vXPU 切片时，调度算法会 **优先选择位于同一物理卡、同一翼侧的切片组合** ，以确保最低的通信延迟和最高的应用性能。
-4. **精细化设备指定** ：支持通过 Pod 的 annotation （hami.io/use-xpu-uuid & hami.io/no-use-xpu-uuid） 来白名单或黑名单指定具体的物理卡 UUID，满足特定测试或灰度发布等高级调度需求。
+4. **精细化设备指定** ：支持通过 Pod 的 annotation（hami.io/use-xpu-uuid & hami.io/no-use-xpu-uuid）来白名单或黑名单指定具体的物理卡 UUID，满足特定测试或灰度发布等高级调度需求。
 
 **拓扑寻优原理详解**
 
@@ -309,7 +310,7 @@ spec:
 * 不支持同时申请 8 个 1/4 卡规格的 vXPU 实例（即 kunlunxin.com/vxpu: 8 搭配 kunlunxin.com/vxpu-memory: 24576）。
 * 但支持其他组合，例如申请 6 个 1/4 卡规格的 vXPU，或 8 个 1/2 卡规格的 vXPU。
 
-使用文档：Kunlun XPU 支持 （https://github.com/Project-HAMi/HAMi/blob/master/docs/kunlun-vxpu-support_cn.md）
+使用文档：Kunlun XPU 支持（<https://github.com/Project-HAMi/HAMi/blob/master/docs/kunlun-vxpu-support_cn.md）>
 
 Related PRs:
 
@@ -325,13 +326,13 @@ Related PRs:
 
 ##### **AWS Neuron - 支持设备级和核心级两种资源分配粒度和拓扑感知调度**
 
-AWS 自主设计 Inferentia / Trainium 芯片，是为了在其云服务中构建更加高效、成本可控的 AI 加速基础设施。Inferentia 偏向于 推理加速，Trainium 偏向于 训练加速。这些芯片专为 AI 工作负载设计，其设计目标不仅在算力提升，同时在功耗控制和成本效率上发力。Inferentia2 在性能／瓦特比（perf per watt）上做了显著优化，Trainium2 宣称比同类 GPU 实例节省 30–40%。 HAMi 这次也是突破性的完成了和 AWS 芯片的集成、包含调度、虚拟化、可观测性。
+AWS 自主设计 Inferentia / Trainium 芯片，是为了在其云服务中构建更加高效、成本可控的 AI 加速基础设施。Inferentia 偏向于 推理加速，Trainium 偏向于 训练加速。这些芯片专为 AI 工作负载设计，其设计目标不仅在算力提升，同时在功耗控制和成本效率上发力。Inferentia2 在性能／瓦特比（perf per watt）上做了显著优化，Trainium2 宣称比同类 GPU 实例节省 30–40%。HAMi 这次也是突破性的完成了和 AWS 芯片的集成、包含调度、虚拟化、可观测性。
 
 HAMi 对 AWS Neuron 的支持，主要是指能够在 Kubernetes 环境中对 AWS Trainium 和 Inferentia 加速器进行精细化的调度和共享。核心特性如下：
 
-1. **核心级共享** ： AWS Neuron 设备通常包含多个 NeuronCore。HAMi 允许用户以单个 NeuronCore 为最小单位来申请资源，而不是必须占用整个物理设备。这极大地提高了昂贵的加速器芯片的利用率。
-2. **拓扑感知调度** ： 对于需要多个 NeuronCore 的任务，HAMi 调度器能够感知节点的拓扑结构，尽量将任务调度到网络延迟最低、通信效率最高的 NeuronCore 组合上。
-3. **简化用户体验** ： 用户无需关心底层的 NeuronCore 分配细节。只需在 Pod 的 YAML 中像申请 CPU/Memory 一样声明需要多少个 aws.amazon.com/neuron 资源即可。
+1. **核心级共享** ：AWS Neuron 设备通常包含多个 NeuronCore。HAMi 允许用户以单个 NeuronCore 为最小单位来申请资源，而不是必须占用整个物理设备。这极大地提高了昂贵的加速器芯片的利用率。
+2. **拓扑感知调度** ：对于需要多个 NeuronCore 的任务，HAMi 调度器能够感知节点的拓扑结构，尽量将任务调度到网络延迟最低、通信效率最高的 NeuronCore 组合上。
+3. **简化用户体验** ：用户无需关心底层的 NeuronCore 分配细节。只需在 Pod 的 YAML 中像申请 CPU/Memory 一样声明需要多少个 aws.amazon.com/neuron 资源即可。
 
 **拓扑感知原理详解**
 
@@ -339,13 +340,13 @@ HAMi 对 AWS Neuron 的拓扑感知调度，其根本设计思想是基于先验
 
 其实现原理如下：
 
-1. 识别实例类型： 调度器首先读取节点的 EC2 实例类型（如 trn1 或 inf2），以此作为判断硬件拓扑的唯一依据。
-2. 线性抽象： 它将节点上所有 Neuron 设备视为一个从 0 开始的连续编号列表（如 [0， 1， 2， ...]），而不是一个复杂的拓扑图。
-3. 强制连续分配： 这是最核心的规则。当任务请求 N 个设备时，调度器必须在此编号列表中找到一个长度为 N 的、完全空闲的、连续的设备块。如果节点有足够数量的空闲设备但它们不相邻，调度依然会失败。
+1. 识别实例类型：调度器首先读取节点的 EC2 实例类型（如 trn1 或 inf2），以此作为判断硬件拓扑的唯一依据。
+2. 线性抽象：它将节点上所有 Neuron 设备视为一个从 0 开始的连续编号列表（如 [0， 1， 2， ...]），而不是一个复杂的拓扑图。
+3. 强制连续分配：这是最核心的规则。当任务请求 N 个设备时，调度器必须在此编号列表中找到一个长度为 N 的、完全空闲的、连续的设备块。如果节点有足够数量的空闲设备但它们不相邻，调度依然会失败。
 
 ![1760022669789](/images/blog/hami-v2.7.0/1760022669789.png)
 
-此外，针对 Trainium 实例，策略更严格，只允许分配特定数量（如 4， 8， 16 个）的设备组，以匹配其物理上的高速互联集群。
+此外，针对 Trainium 实例，策略更严格，只允许分配特定数量（如 4，8，16 个）的设备组，以匹配其物理上的高速互联集群。
 
 ![1760022681536](/images/blog/hami-v2.7.0/1760022681536.png)
 
@@ -393,11 +394,11 @@ spec:
           memory: 1Gi
 ```
 
-使用文档：AWS Neuron 示例与操作指南 （https://project-hami.io/docs/userguide/AWSNeuron-device/enable-awsneuron-managing）
+使用文档：AWS Neuron 示例与操作指南（<https://project-hami.io/docs/userguide/AWSNeuron-device/enable-awsneuron-managing）>
 
 Related PRs:
 
-* https://github.com/Project-HAMi/HAMi/pull/1238
+* <https://github.com/Project-HAMi/HAMi/pull/1238>
 
 由衷感谢社区开发者 @archlitchi 对该特性的贡献！
 
@@ -407,9 +408,9 @@ Related PRs:
 
 HAMi v2.7.0 版本对燧原 GCU（以 S60 为例）提供了全面的支持，主要包括两种使用模式：整卡调度和虚拟化共享（vGCU）。这使得资源分配更加灵活，能够适应不同业务场景的需求。主要特性如下：
 
-1. GPU 共享： 允许多个任务容器共享同一张物理 GCU 卡，极大提高了资源利用率。
-2. 百分比切片能力： 用户可以通过百分比（例如 25%）来申请 GCU 的算力和显存。
-3. 设备 UUID 选择： 用户可以通过 Pod 的 annotation 来精确指定希望使用或排除的 GCU 设备，方便进行任务隔离或设备绑定。
+1. GPU 共享：允许多个任务容器共享同一张物理 GCU 卡，极大提高了资源利用率。
+2. 百分比切片能力：用户可以通过百分比（例如 25%）来申请 GCU 的算力和显存。
+3. 设备 UUID 选择：用户可以通过 Pod 的 annotation 来精确指定希望使用或排除的 GCU 设备，方便进行任务隔离或设备绑定。
 
 **使用方式**
 
@@ -432,7 +433,7 @@ spec:
           enflame.com/vgcu-percentage: 25
 ```
 
-使用文档：Enflame GCU/GCUshare 支持 （https://github.com/Project-HAMi/HAMi/blob/master/docs/enflame-vgcu-support_cn.md）
+使用文档：Enflame GCU/GCUshare 支持（<https://github.com/Project-HAMi/HAMi/blob/master/docs/enflame-vgcu-support_cn.md）>
 
 Related PRs:
 
@@ -443,21 +444,21 @@ Related PRs:
 
 ##### **NVIDIA GPU 拓扑调度 - 新增 GPU 拓扑感知调度**
 
-此特性主要解决 高性能计算（HPC） 和 AI 大模型训练 场景下的性能瓶颈问题。当一个任务需要使用 2、4、8 甚至更多 GPU 时，如果这些 GPU 只能通过相对较慢的 PCIe 总线通信，数据交换会成为短板，严重影响整体训练效率。而如果它们能被调度到通过 NVLink 高速互联的 GPU 组合上，数据交换速度会成倍提升，从而最大化加速计算任务。
+此特性主要解决 高性能计算（HPC）和 AI 大模型训练 场景下的性能瓶颈问题。当一个任务需要使用 2、4、8 甚至更多 GPU 时，如果这些 GPU 只能通过相对较慢的 PCIe 总线通信，数据交换会成为短板，严重影响整体训练效率。而如果它们能被调度到通过 NVLink 高速互联的 GPU 组合上，数据交换速度会成倍提升，从而最大化加速计算任务。
 
 **拓扑寻优原理详解**
 
 它基于一个核心原则：**优先选择最匹配的，同时最大程度保留大块、完整的拓扑结构给未来的任务。**
 
-其核心分为 “拓扑注册” 和 “调度决策” 两个阶段：
+其核心分为“拓扑注册”和“调度决策”两个阶段：
 
 ###### 阶段一：拓扑注册 - 让物理布局可见
 
 此阶段的目标是将每个节点上不可见的 GPU 物理连接，转化为集群调度器可以理解的标准化数据。
 
-1. 信息探测： 在每个 GPU 节点上，DevicePlugin 会通过 NVIDIA 的 NVML 来获取到所有 GPU 两两之间的物理连接类型，精确识别出哪些是通过高速 NVLink 互联，哪些是通过普通 PCIe 总线连接。
-2. 数据建模： 探测结果被构建成一个清晰的 “连接矩阵”。这本质上是一个二维表格，记录了任意两块 GPU 之间的连接关系（“NVLink” 或 “PCIe”）。这个矩阵就是该节点拓扑结构的数字蓝图。
-3. 公开注册： 系统将这个“连接矩阵”转换成一段 JSON 文本，并将其作为一条 Annotation 附加到该节点上。通过这一步，节点的物理拓扑就从一个本地信息，变成了整个集群可见、可查询的全局数据。
+1. 信息探测：在每个 GPU 节点上，DevicePlugin 会通过 NVIDIA 的 NVML 来获取到所有 GPU 两两之间的物理连接类型，精确识别出哪些是通过高速 NVLink 互联，哪些是通过普通 PCIe 总线连接。
+2. 数据建模：探测结果被构建成一个清晰的“连接矩阵”。这本质上是一个二维表格，记录了任意两块 GPU 之间的连接关系（“NVLink”或“PCIe”）。这个矩阵就是该节点拓扑结构的数字蓝图。
+3. 公开注册：系统将这个“连接矩阵”转换成一段 JSON 文本，并将其作为一条 Annotation 附加到该节点上。通过这一步，节点的物理拓扑就从一个本地信息，变成了整个集群可见、可查询的全局数据。
 
 ###### 阶段二：调度决策 - 智能选择最优解
 
@@ -465,9 +466,9 @@ Related PRs:
 
 1. 过滤：筛选“合格”的节点
 
-这是一个硬性门槛。调度器会检查一个节点**当前空闲的 GPU **中，是否存在一个或多个能满足任务需求的组合。例如，对于一个需要 4 块 NVLink GPU 的任务，节点上必须至少有一组 4 个空闲的、且内部均为 NVLink 互联的 GPU。任何无法满足此基本条件的节点都会被直接淘汰。
+这是一个硬性门槛。调度器会检查一个节点**当前空闲的 GPU**中，是否存在一个或多个能满足任务需求的组合。例如，对于一个需要 4 块 NVLink GPU 的任务，节点上必须至少有一组 4 个空闲的、且内部均为 NVLink 互联的 GPU。任何无法满足此基本条件的节点都会被直接淘汰。
 
-2. 打分：在“合格者”中选出“最优者”
+1. 打分：在“合格者”中选出“最优者”
 
 这是选优的精髓。调度器会对所有合格的节点打分，以找出最佳选择，其核心思想是**最大化满足当前需求，同时最小化对未来资源的破坏。**
 
@@ -505,9 +506,9 @@ spec:
         nvidia.com/gpu: "4"
 ```
 
-设计文档：NVIDIA GPU Topology Scheduler （https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/gpu-topo-policy.md）
+设计文档：NVIDIA GPU Topology Scheduler（<https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/gpu-topo-policy.md）>
 
-使用文档：NVIDIA GPU 拓扑调度启用指南 （https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/nvidia-gpu-topology-scheduler_cn.md）
+使用文档：NVIDIA GPU 拓扑调度启用指南（<https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/nvidia-gpu-topology-scheduler_cn.md）>
 
 Related PRs:
 
@@ -524,9 +525,9 @@ Related PRs:
 
 1. 无法理解资源关联：
 
-原生 ResourceQuota 独立计算每项资源，无法理解其内在关联。例如，当一个 Pod 请求 2 个 GPU，每个分配 2000MB 显存时 （nvidia.com/gpu: 2， nvidia.com/gpumem: 2000），原生 Quota 会错误地将总显存需求记为 2000MB，而不是正确的 2 * 2000MB = 4000MB。这导致配额管理严重失真。
+原生 ResourceQuota 独立计算每项资源，无法理解其内在关联。例如，当一个 Pod 请求 2 个 GPU，每个分配 2000MB 显存时（nvidia.com/gpu: 2，nvidia.com/gpumem: 2000），原生 Quota 会错误地将总显存需求记为 2000MB，而不是正确的 2 * 2000MB = 4000MB。这导致配额管理严重失真。
 
-2. 无法处理动态资源：
+1. 无法处理动态资源：
 
 对于按百分比申请显存的请求（如 gpumem-percentage: 50），其实际显存占用量只有在调度决策完成后（即确定了具体分配到哪一块物理 GPU 上）才能计算出来。原生 ResourceQuota 在调度前进行检查，无法处理这种需要“先调度，后扣减”的动态资源值。
 
@@ -534,7 +535,7 @@ Related PRs:
 
 HAMi 引入了对 ResourceQuota 的扩展机制，使其能够智能地处理与 GPU 设备相关的复合资源请求。HAMi 的解决方案主要包含以下两个核心增强：
 
-1. 智能关联计算：HAMi 调度器能够识别出同一个 Pod 请求中的多个 GPU 资源，并将它们关联起来进行计算。对于上面的例子，HAMi 会正确地将总显存请求量计算为 2 （个 GPU） * 2000MB = 4000MB。这确保了 ResourceQuota 能够精确反映真实的资源消耗。
+1. 智能关联计算：HAMi 调度器能够识别出同一个 Pod 请求中的多个 GPU 资源，并将它们关联起来进行计算。对于上面的例子，HAMi 会正确地将总显存请求量计算为 2（个 GPU） * 2000MB = 4000MB。这确保了 ResourceQuota 能够精确反映真实的资源消耗。
 2. 动态实时计算：对于按百分比或未指定具体值的请求，HAMi 会在调度决策时，根据 Pod 即将被分配到的物理 GPU 的实际规格，动态计算出确切的资源占用量并计入配额。例如，一个 50% 显存的请求若被调度到一块 24GB 的 GPU 上，ResourceQuota 将准确扣除 12GB。
 
 ![1760022741019](/images/blog/hami-v2.7.0/1760022741019.png)
@@ -553,7 +554,7 @@ spec:
     limits.nvidia.com/gpumem: "3000" 
 ```
 
-使用文档：NVIDIA 扩展 ResourceQuota 指南 （https://project-hami.io/docs/userguide/nvidia-device/using-resourcequota/）
+使用文档：NVIDIA 扩展 ResourceQuota 指南（<https://project-hami.io/docs/userguide/nvidia-device/using-resourcequota/）>
 
 Related PRs:
 
@@ -563,11 +564,11 @@ Related PRs:
 
 ##### 调度事件聚合
 
-针对 Pod 仅返回 “no available node” 的模糊提示，调度器现在会在筛选失败时统计每类节点拒绝原因，并将 “CardInsufficientMemory”“NumaNotFit”等标准化标签连同节点数量写入 `FilteringFailed` 事件，直观呈现资源不足、拓扑不匹配等真实瓶颈。
+针对 Pod 仅返回“no available node”的模糊提示，调度器现在会在筛选失败时统计每类节点拒绝原因，并将“CardInsufficientMemory”“NumaNotFit”等标准化标签连同节点数量写入 `FilteringFailed` 事件，直观呈现资源不足、拓扑不匹配等真实瓶颈。
 
 事件系统增强了成功/失败两条链路：若筛选阶段仍未找到候选节点，将按原因聚合写入 Warning 事件；若找到合适节点，则在 Normal 事件里同时列出命中的节点与得分，配合 v4/v5 分级日志格式帮助用户定位问题，详见 `docs/scheduler-event-log.md` 的诊断示例。
 
-使用文档：Scheduler Event 可观测性说明 （https://github.com/Project-HAMi/HAMi/blob/master/docs/scheduler-event-log.md）
+使用文档：Scheduler Event 可观测性说明（<https://github.com/Project-HAMi/HAMi/blob/master/docs/scheduler-event-log.md）>
 
 Related PRs:
 
@@ -596,7 +597,7 @@ HAMi 不仅关注底层硬件支持，也致力于与上层 AI 应用生态的�
 
 Related PRs:
 
-* https://github.com/vllm-project/production-stack/pull/579
+* <https://github.com/vllm-project/production-stack/pull/579>
 
 由衷感谢社区开发者 @andresd95 对该特性的贡献！
 
@@ -615,13 +616,13 @@ Xinference 是 Xorbits 开源的多模型推理框架，提供 Supervisor/Worker
 
 Related PRs:
 
-* https://github.com/xorbitsai/xinference-helm-charts/pull/6
+* <https://github.com/xorbitsai/xinference-helm-charts/pull/6>
 
 由衷感谢社区开发者 @calvin0327 对该特性的贡献！
 
 ##### **Volcano Dynamic MIG**
 
-Volcano 提供的 GPU 虚拟化功能支持按显存和算力申请部分 GPU 资源，通过与 Device Plugin 配合实现硬件隔离，从而提升 GPU 利用率。传统 GPU 虚拟化通过拦截 CUDA API 方式限制 GPU 使用。NVIDIA Ampere 架构引入的 MIG （Multi-Instance GPU） 技术允许将单个物理 GPU 划分为多个独立实例。然而，通用 MIG 方案通常预先固定实例大小，存在资源浪费和灵活性不足的问题。
+Volcano 提供的 GPU 虚拟化功能支持按显存和算力申请部分 GPU 资源，通过与 Device Plugin 配合实现硬件隔离，从而提升 GPU 利用率。传统 GPU 虚拟化通过拦截 CUDA API 方式限制 GPU 使用。NVIDIA Ampere 架构引入的 MIG（Multi-Instance GPU）技术允许将单个物理 GPU 划分为多个独立实例。然而，通用 MIG 方案通常预先固定实例大小，存在资源浪费和灵活性不足的问题。
 
  **Volcano v1.12 提供了动态 MIG 切分与调度能力** ，可根据用户申请的 GPU 用量实时选择合适的 MIG 实例大小，并使用 Best-Fit 算法减少资源浪费。同时支持 BinPack 和 Spread 等 GPU 打分策略，以减少资源碎片并提升 GPU 利用率。用户可使用统一的 `volcano.sh/vgpu-number`、`volcano.sh/vgpu-cores`、`volcano.sh/vgpu-memory` API 申请资源，无需关注底层实现。
 
@@ -651,8 +652,8 @@ spec:
 
  **Related PRs** :
 
-- [https://github.com/volcano-sh/volcano/pull/4290](https://github.com/volcano-sh/volcano/pull/4290)
-- https://github.com/volcano-sh/volcano/pull/3953
+* [https://github.com/volcano-sh/volcano/pull/4290](https://github.com/volcano-sh/volcano/pull/4290)
+* <https://github.com/volcano-sh/volcano/pull/3953>
 
 由衷感谢社区开发者 @sailorvii， @archlitchi 对该特性的贡献！
 
@@ -702,7 +703,7 @@ HAMi 社区的壮大离不开每一位贡献者的辛勤付出！
 * **代码质量提升**
   * **标准化** ：消除硬编码，使用 `CUDA_DEVICE_MAX_COUNT` 宏统一设备限制
   * **代码清理** ：移除冗余注释和空行，提升代码整洁度
-  * **架构优化** ：统计算法从累加模式重构为汇总-赋值模式，提升性能和准确性
+  * **架构优化** ：统计算法从累加模式重构为汇总 - 赋值模式，提升性能和准确性
 
 #### WebUI
 

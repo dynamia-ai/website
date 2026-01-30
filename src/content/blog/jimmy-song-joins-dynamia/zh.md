@@ -5,6 +5,7 @@ date: "2026-01-13"
 excerpt: "近日，云原生与开源领域资深技术人宋净超（Jimmy Song）正式加入密瓜智能，出任开源生态 VP，助力密瓜智能在 AI 原生基础设施生态建设、全球开发者协作领域的布局。"
 author: "Dynamia"
 tags: ["团队", "宋净超", "Jimmy Song", "CNCF", "开源生态"]
+category: "Company News"
 language: "zh"
 coverImage: "/images/blog/jimmy-song-joins-dynamia/jimmy-song-portrait.PNG"
 ---

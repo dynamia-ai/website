@@ -1,15 +1,15 @@
 ---
 title: "【架构解析】HAMi 设备抽象层：以燧原 GCU 为例看异构算力快速集成"
-coverTitle: "【架构】HAMi设备抽象层 | 以燧原GCU为例看异构算力快速集成"
+coverTitle: "【架构】HAMi 设备抽象层 | 以燧原 GCU 为例看异构算力快速集成"
 slug: "hami-device-abstraction-enflame-gcu-integration"
 date: "2025-10-22"
 excerpt: "HAMi 通过精心设计的设备抽象层，为异构算力的快速集成提供了优雅的解决方案。本文深入解析这一核心架构，并以 v2.7.0 版本中集成的燧原 GCU 为例，展示厂商或社区开发者如何基于此架构快速实现对新硬件的支持。"
 author: "Dynamia AI Team"
 tags: ["HAMi", "Device Abstraction", "Enflame GCU", "vGCU", "Architecture", "Heterogeneous Computing", "Kubernetes", "Integration"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/hami-device-abstraction-gcu/cover-zh.png"
 language: "zh"
 ---
-# 【架构解析】HAMi 设备抽象层：以燧原 GCU 为例看异构算力快速集成
 
 在云原生时代，AI 和高性能计算场景下的硬件呈现出百花齐放的态势，调度系统如何高效、快速地适配层出不穷的异构算力，成为了衡量其扩展性的关键。
 
@@ -21,7 +21,7 @@ HAMi 调度器为了能够统一处理不同厂商、不同类型的硬件，定
 
 这种分层抽象的设计，将通用的调度逻辑与特定的硬件实现解耦，其关系如下：
 
-![HAMi设备抽象层架构](/images/blog/hami-device-abstraction-gcu/architecture.png)
+![HAMi 设备抽象层架构](/images/blog/hami-device-abstraction-gcu/architecture.png)
 
 这套接口的核心在于将硬件相关的复杂逻辑"本地化"在各个设备的实现中，对上层调度器屏蔽了底层差异。关键接口函数如下：
 
@@ -142,9 +142,9 @@ HAMi 的设备抽象层设计，是其能够快速响应硬件生态变化、保
 
 **参考资料**
 
-* **使用文档**：[Enflame GCU/GCUshare 支持](https://github.com/Project-HAMi/HAMi/blob/master/docs/enflame-vgcu-support_cn.md)
-* **相关 PRs**：
-  * [https://github.com/Project-HAMi/HAMi/pull/1013](https://github.com/Project-HAMi/HAMi/pull/1013)
-  * [https://github.com/Project-HAMi/HAMi/pull/1334](https://github.com/Project-HAMi/HAMi/pull/1334)
+- **使用文档**：[Enflame GCU/GCUshare 支持](https://github.com/Project-HAMi/HAMi/blob/master/docs/enflame-vgcu-support_cn.md)
+- **相关 PRs**：
+  - [https://github.com/Project-HAMi/HAMi/pull/1013](https://github.com/Project-HAMi/HAMi/pull/1013)
+  - [https://github.com/Project-HAMi/HAMi/pull/1334](https://github.com/Project-HAMi/HAMi/pull/1334)
 
 再次由衷感谢社区开发者 @archlitchi，@zhaikangqi331 对该特性的贡献！

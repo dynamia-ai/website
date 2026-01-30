@@ -3,9 +3,10 @@ title: "【PREP EDU | 密瓜智能】东南亚 AI 教育潜力独角兽，用 HA
 coverTitle: "PREP EDU × HAMi | 东南亚教育 AI GPU 平台"
 slug: "PREP EDU-HAMi"
 date: "2025-08-08"
-excerpt: "在 AI 教育快速发展的当下，PREP EDU（prepedu.com） 正逐渐成为东南亚教育科技领域的关注焦点。"
+excerpt: "在 AI 教育快速发展的当下，PREP EDU（prepedu.com）正逐渐成为东南亚教育科技领域的关注焦点。"
 author: "密瓜智能"
 tags: ["KubeCon", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
+category: "Customer Success Story"
 coverImage: "/images/blog/PREP-EDU-HAMi/cover.jpg"
 language: "zh"
 ---
@@ -14,7 +15,7 @@ language: "zh"
 
 ![p1](/images/blog/PREP-EDU-HAMi/p1.png)
 
-在 AI 教育快速发展的当下，PREP EDU（prepedu.com） 正逐渐成为东南亚教育科技领域的关注焦点。
+在 AI 教育快速发展的当下，PREP EDU（prepedu.com）正逐渐成为东南亚教育科技领域的关注焦点。
 
 这家公司成立于 2020 年，总部位于越南河内，致力于通过人工智能提升语言学习与考试备考的效率与体验。如今，已有 **数十万名学习者** 通过 PREP EDU 平台，在 **雅思（IELTS）、托业（TOEIC）、汉语水平考试[HSK](https://baike.weixin.qq.com/v157465.htm?scene_id=132&sid=17049289953840609596&ch=s1s&fromTitle=HSK)以及越南全国高中毕业考试（THPT Quốc gia）**等多个考试中取得实质性提升。
 
@@ -40,16 +41,15 @@ PREP EDU 的目标明确：用人工智能重塑考试备考方式。他们的�
 
 ### 工程背景
 
-PREP EDU 操作一套**基于 Kubernetes （分发应用环境为 RKE2） 的 AI 推理服务平台**，其 GPU 集群包含多种显卡，其中以 **RTX 4070 和 RTX 4090** 为主。
+PREP EDU 操作一套**基于 Kubernetes（分发应用环境为 RKE2）的 AI 推理服务平台**，其 GPU 集群包含多种显卡，其中以 **RTX 4070 和 RTX 4090** 为主。
 
 ![p2](/images/blog/PREP-EDU-HAMi/p2.png)
 
-
-但在使用 HAMi 之前，这套系统为下列维护随时热点:
+但在使用 HAMi 之前，这套系统为下列维护随时热点：
 
 - 用 GPU Operator 对于不同工作资源进行给定占用，都是按最大资源使用，导致显卡利用率低（大部分时候仅 10%～20%）；
 
-- 多个实例共用 GPU 时，容易出现显存被占满 （90-95%） 导致应用 Crash 情况；
+- 多个实例共用 GPU 时，容易出现显存被占满（90-95%）导致应用 Crash 情况；
 
 - 无法按类分配 GPU 类型，不同项目对 GPU 类型有具体选择需求，却难以实现；
 
@@ -87,9 +87,9 @@ PREP EDU 操作一套**基于 Kubernetes （分发应用环境为 RKE2） 的 AI
 
 ![p4](/images/blog/PREP-EDU-HAMi/p4.png)
 
->“HAMi is a great option for vGPU scheduling, helping us optimize GPU usage for our AI microservices. Its monitoring and alerting features are also very helpful for long-term tracking. 
+>“HAMi is a great option for vGPU scheduling, helping us optimize GPU usage for our AI microservices. Its monitoring and alerting features are also very helpful for long-term tracking.
 
->The documentation is clear, and the ability to assign workloads to specific GPU types is a huge advantage for us.”—— **Xeus Nguyen， DevOps Engineer， PREP EDU**
+>The documentation is clear, and the ability to assign workloads to specific GPU types is a huge advantage for us.”—— **Xeus Nguyen, DevOps Engineer, PREP EDU**
 
 **「HAMi 是非常适合 vGPU 调度的方案，帮助我们优化了 AI 微服务的 GPU 使用率。其监控和告警功能对长期追踪也非常有帮助，文档清晰明确，支持将任务分配给特定 GPU 类型是我们非常看重的一大优势。」**
 
@@ -101,7 +101,7 @@ PREP EDU 操作一套**基于 Kubernetes （分发应用环境为 RKE2） 的 AI
 
 **「HAMi 通过自动分配工作负载，帮助我们解决了私有部署 AI 微服务中 GPU 管理的难题，也显著减少了维护工作量，仅需极少的人力投入就提升了资源效率。」**
 
->“HAMi has been a game-changer for our AI engineering workflow. By virtualizing and right-sizing GPU resources at the pod level, we can pack lightweight inference services and large batch jobs onto the same hardware without noisy-neighbor issues. 
+>“HAMi has been a game-changer for our AI engineering workflow. By virtualizing and right-sizing GPU resources at the pod level, we can pack lightweight inference services and large batch jobs onto the same hardware without noisy-neighbor issues.
 
 >Deployment is practically "plug-and-play"  — a Helm chart and a couple of labels. So we kept our existing manifests intact.”—— Vu Hoang Tran， AI Engineer， PREP EDU
 
@@ -111,18 +111,14 @@ PREP EDU 操作一套**基于 Kubernetes （分发应用环境为 RKE2） 的 AI
 
 推荐阅读来自 PREP EDU DevOps 工程师 Xeus Nguyen 的完整技术博客：
 
-https://wiki.xeusnguyen.xyz/Tech-Second-Brain/Personal/Kubewekend/Kubewekend-Session-Extra-2#setup-gpu-worker
+<https://wiki.xeusnguyen.xyz/Tech-Second-Brain/Personal/Kubewekend/Kubewekend-Session-Extra-2#setup-gpu-worker>
 
 ---
 
 ![p5](/images/blog/PREP-EDU-HAMi/p5.png)
 
-Dynamia 密瓜智能,  专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
+Dynamia 密瓜智能， 专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
 
->官网：https://dynamia.ai
+>官网：<https://dynamia.ai>
 
->邮箱：info@dynamia.ai
-
-
-
-
+>邮箱：<info@dynamia.ai>

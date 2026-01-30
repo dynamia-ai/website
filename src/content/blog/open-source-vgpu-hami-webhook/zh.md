@@ -6,6 +6,7 @@ date: "2025-07-24"
 excerpt: "上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。本文为 HAMi 原理分析的第二篇，分析 hami-scheduler 实现原理。"
 author: "密瓜智能"
 tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
+category: "Technical Deep Dive"
 coverImage: "/images/blog/gpu4/cover.jpg"
 language: "zh"
 ---
@@ -13,7 +14,6 @@ language: "zh"
 上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。
 
 [上一篇文章《HAMi vGPU 方案原理分析 Part1: hami-device-plugin-nvidia 实现》](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)
-
 
 本文为 HAMi 原理分析的第二篇，分析 hami-scheduler 实现原理。
 
@@ -25,13 +25,14 @@ language: "zh"
 
 2. hami-scheduler 逻辑，spread & binpark 等 高级调度策略是如何实现的
 
-由于内容比较多，拆分为了 hami-webhook、 hami-scheduler 以及 Spread&Binpack 调度策略三篇文章，本篇我们主要解决第一个问题。
+由于内容比较多，拆分为了 hami-webhook、hami-scheduler 以及 Spread&Binpack 调度策略三篇文章，本篇我们主要解决第一个问题。
 
 > 以下分析基于 HAMi v2.4.0
 
 ## 1.hami-scheduler 启动命令
 
 hami-scheduler 具体包括两个组件：
+
 - hami-webhook
 
 - hami-scheduler
@@ -42,22 +43,22 @@ hami-scheduler 具体包括两个组件：
 
 ```go
 var (
-	sher        *scheduler.Scheduler
-	tlsKeyFile  string
-	tlsCertFile string
-	rootCmd     = &cobra.Command{
-		Use:   "scheduler",
-		Short: "kubernetes vgpu scheduler",
-		Run: func(cmd *cobra.Command, args []string) {
-			start()
-		},
-	}
+ sher        *scheduler.Scheduler
+ tlsKeyFile  string
+ tlsCertFile string
+ rootCmd     = &cobra.Command{
+  Use:   "scheduler",
+  Short: "kubernetes vgpu scheduler",
+  Run: func(cmd *cobra.Command, args []string) {
+   start()
+  },
+ }
 )
 
 func main() {
-	if err := rootCmd.Execute(); err != nil {
-		klog.Fatal(err)
-	}
+ if err := rootCmd.Execute(); err != nil {
+  klog.Fatal(err)
+ }
 }
 ```
 
@@ -65,36 +66,36 @@ func main() {
 
 ```go
 func start() {
-	// Initialize GPU inventory
-	device.InitDevices()
+ // Initialize GPU inventory
+ device.InitDevices()
 
-	// Build and start the scheduler
-	sher = scheduler.NewScheduler()
-	sher.Start()
-	defer sher.Stop()
+ // Build and start the scheduler
+ sher = scheduler.NewScheduler()
+ sher.Start()
+ defer sher.Stop()
 
-	// Background goroutines
-	go sher.RegisterFromNodeAnnotations()     // Sync node GPU annotations
-	go initMetrics(config.MetricsBindAddress) // Prometheus metrics
+ // Background goroutines
+ go sher.RegisterFromNodeAnnotations()     // Sync node GPU annotations
+ go initMetrics(config.MetricsBindAddress) // Prometheus metrics
 
-	// HTTP routes
-	router := httprouter.New()
-	router.POST("/filter",  routes.PredicateRoute(sher))
-	router.POST("/bind",    routes.Bind(sher))
-	router.POST("/webhook", routes.WebHookRoute())
-	router.GET("/healthz",  routes.HealthzRoute())
+ // HTTP routes
+ router := httprouter.New()
+ router.POST("/filter",  routes.PredicateRoute(sher))
+ router.POST("/bind",    routes.Bind(sher))
+ router.POST("/webhook", routes.WebHookRoute())
+ router.GET("/healthz",  routes.HealthzRoute())
 
-	// Start server (plain or TLS)
-	klog.Info("listen on ", config.HTTPBind)
-	if len(tlsCertFile) == 0 || len(tlsKeyFile) == 0 {
-		if err := http.ListenAndServe(config.HTTPBind, router); err != nil {
-			klog.Fatal("Listen and Serve error, ", err)
-		}
-	} else {
-		if err := http.ListenAndServeTLS(config.HTTPBind, tlsCertFile, tlsKeyFile, router); err != nil {
-			klog.Fatal("Listen and Serve error, ", err)
-		}
-	}
+ // Start server (plain or TLS)
+ klog.Info("listen on ", config.HTTPBind)
+ if len(tlsCertFile) == 0 || len(tlsKeyFile) == 0 {
+  if err := http.ListenAndServe(config.HTTPBind, router); err != nil {
+   klog.Fatal("Listen and Serve error, ", err)
+  }
+ } else {
+  if err := http.ListenAndServeTLS(config.HTTPBind, tlsCertFile, tlsKeyFile, router); err != nil {
+   klog.Fatal("Listen and Serve error, ", err)
+  }
+ }
 }
 ```
 
@@ -254,53 +255,53 @@ service:
   
   接下来就开始分析 hami-webhook 具体做了什么。
 
-  ### 源码分析 ###
+### 源码分析 ###
 
   这个 Webhook 的具体实现如下：
 
   ```go
 // pkg/scheduler/webhook.go#L52
 func (h *webhook) Handle(_ context.Context, req admission.Request) admission.Response {
-	pod := &corev1.Pod{}
-	if err := h.decoder.Decode(req, pod); err != nil {
-		klog.Errorf("Failed to decode request: %v", err)
-		return admission.Errored(http.StatusBadRequest, err)
-	}
-	if len(pod.Spec.Containers) == 0 {
-		klog.Warningf(template+" - Denying admission as pod has no containers", req.Namespace, req.Name, req.UID)
-		return admission.Denied("pod has no containers")
-	}
+ pod := &corev1.Pod{}
+ if err := h.decoder.Decode(req, pod); err != nil {
+  klog.Errorf("Failed to decode request: %v", err)
+  return admission.Errored(http.StatusBadRequest, err)
+ }
+ if len(pod.Spec.Containers) == 0 {
+  klog.Warningf(template+" - Denying admission as pod has no containers", req.Namespace, req.Name, req.UID)
+  return admission.Denied("pod has no containers")
+ }
 
-	klog.Infof(template, req.Namespace, req.Name, req.UID)
-	hasResource := false
-	for idx, ctr := range pod.Spec.Containers {
-		c := &pod.Spec.Containers[idx]
-		if ctr.SecurityContext != nil && ctr.SecurityContext.Privileged != nil && *ctr.SecurityContext.Privileged {
-			klog.Warningf(template+" - Denying admission as container %s is privileged", req.Namespace, req.Name, req.UID, c.Name)
-			continue
-		}
-		for _, val := range device.GetDevices() {
-			found, err := val.MutateAdmission(c)
-			if err != nil {
-				klog.Errorf("validating pod failed:%s", err.Error())
-				return admission.Errored(http.StatusInternalServerError, err)
-			}
-			hasResource = hasResource || found
-		}
-	}
+ klog.Infof(template, req.Namespace, req.Name, req.UID)
+ hasResource := false
+ for idx, ctr := range pod.Spec.Containers {
+  c := &pod.Spec.Containers[idx]
+  if ctr.SecurityContext != nil && ctr.SecurityContext.Privileged != nil && *ctr.SecurityContext.Privileged {
+   klog.Warningf(template+" - Denying admission as container %s is privileged", req.Namespace, req.Name, req.UID, c.Name)
+   continue
+  }
+  for _, val := range device.GetDevices() {
+   found, err := val.MutateAdmission(c)
+   if err != nil {
+    klog.Errorf("validating pod failed:%s", err.Error())
+    return admission.Errored(http.StatusInternalServerError, err)
+   }
+   hasResource = hasResource || found
+  }
+ }
 
-	if !hasResource {
-		klog.Infof(template+" - Allowing admission for pod: no resource found", req.Namespace, req.Name, req.UID)
-	} else if len(config.SchedulerName) > 0 {
-		pod.Spec.SchedulerName = config.SchedulerName
-	}
+ if !hasResource {
+  klog.Infof(template+" - Allowing admission for pod: no resource found", req.Namespace, req.Name, req.UID)
+ } else if len(config.SchedulerName) > 0 {
+  pod.Spec.SchedulerName = config.SchedulerName
+ }
 
-	marshaledPod, err := json.Marshal(pod)
-	if err != nil {
-		klog.Errorf(template+" - Failed to marshal pod, error: %v", req.Namespace, req.Name, req.UID, err)
-		return admission.Errored(http.StatusInternalServerError, err)
-	}
-	return admission.PatchResponseFromRaw(req.Object.Raw, marshaledPod)
+ marshaledPod, err := json.Marshal(pod)
+ if err != nil {
+  klog.Errorf(template+" - Failed to marshal pod, error: %v", req.Namespace, req.Name, req.UID, err)
+  return admission.Errored(http.StatusInternalServerError, err)
+ }
+ return admission.PatchResponseFromRaw(req.Object.Raw, marshaledPod)
 }
 ```
 
@@ -322,12 +323,13 @@ Webhook 中主要根据 Pod 是否申请 vGPU 资源来确定，不过也有一�
 
 ```go
 if ctr.SecurityContext != nil {
-	if ctr.SecurityContext.Privileged != nil && *ctr.SecurityContext.Privileged {
-		klog.Warningf(template+" - Denying admission as container %s is privileged", req.Namespace, req.Name, req.UID, c.Name)
-		continue
-	}
+ if ctr.SecurityContext.Privileged != nil && *ctr.SecurityContext.Privileged {
+  klog.Warningf(template+" - Denying admission as container %s is privileged", req.Namespace, req.Name, req.UID, c.Name)
+  continue
+ }
 }
 ```
+
 因为开启特权模式之后，Pod 可以访问宿主机上的所有设备，再做限制也没意义了，因此这里直接忽略。
 
 ### 具体判断逻辑 ###
@@ -336,12 +338,12 @@ if ctr.SecurityContext != nil {
 
 ```go
 for _, val := range device.GetDevices() {
-	found, err := val.MutateAdmission(c)
-	if err != nil {
-		klog.Errorf("validating pod failed:%s", err.Error())
-		return admission.Errored(http.StatusInternalServerError, err)
-	}
-	hasResource = hasResource || found
+ found, err := val.MutateAdmission(c)
+ if err != nil {
+  klog.Errorf("validating pod failed:%s", err.Error())
+  return admission.Errored(http.StatusInternalServerError, err)
+ }
+ hasResource = hasResource || found
 }
 ```
 
@@ -353,29 +355,29 @@ for _, val := range device.GetDevices() {
 var devices map[string]Devices
 
 func GetDevices() map[string]Devices {
-	return devices
+ return devices
 }
 
 func InitDevices() {
-	devices = make(map[string]Devices)
-	DevicesToHandle = []string{}
+ devices = make(map[string]Devices)
+ DevicesToHandle = []string{}
 
-	devices[cambricon.CambriconMLUDevice] = cambricon.InitMLUDevice()
-	devices[nvidia.NvidiaGPUDevice]       = nvidia.InitNvidiaDevice()
-	devices[hygon.HygonDCUDevice]         = hygon.InitDCUDevice()
-	devices[iluvatar.IluvatarGPUDevice]   = iluvatar.InitIluvatarDevice()
+ devices[cambricon.CambriconMLUDevice] = cambricon.InitMLUDevice()
+ devices[nvidia.NvidiaGPUDevice]       = nvidia.InitNvidiaDevice()
+ devices[hygon.HygonDCUDevice]         = hygon.InitDCUDevice()
+ devices[iluvatar.IluvatarGPUDevice]   = iluvatar.InitIluvatarDevice()
 
-	DevicesToHandle = append(DevicesToHandle,
-		nvidia.NvidiaGPUCommonWord,
-		cambricon.CambriconMLUCommonWord,
-		hygon.HygonDCUCommonWord,
-		iluvatar.IluvatarGPUCommonWord,
-	)
+ DevicesToHandle = append(DevicesToHandle,
+  nvidia.NvidiaGPUCommonWord,
+  cambricon.CambriconMLUCommonWord,
+  hygon.HygonDCUCommonWord,
+  iluvatar.IluvatarGPUCommonWord,
+ )
 
-	for _, dev := range ascend.InitDevices() {
-		devices[dev.CommonWord()] = dev
-		DevicesToHandle = append(DevicesToHandle, dev.CommonWord())
-	}
+ for _, dev := range ascend.InitDevices() {
+  devices[dev.CommonWord()] = dev
+  DevicesToHandle = append(DevicesToHandle, dev.CommonWord())
+ }
 }
 ```
 
@@ -385,38 +387,38 @@ devices 是一个全局变量， InitDevices 则是在初始化该变量，供 W
 
 ```go
 func (dev *NvidiaGPUDevices) MutateAdmission(ctr *corev1.Container) (bool, error) {
-	// GPU-related mutations
-	if priority, ok := ctr.Resources.Limits[corev1.ResourceName(ResourcePriority)]; ok {
-		ctr.Env = append(ctr.Env, corev1.EnvVar{
-			Name:  api.TaskPriority,
-			Value: fmt.Sprint(priority.Value()),
-		})
-	}
+ // GPU-related mutations
+ if priority, ok := ctr.Resources.Limits[corev1.ResourceName(ResourcePriority)]; ok {
+  ctr.Env = append(ctr.Env, corev1.EnvVar{
+   Name:  api.TaskPriority,
+   Value: fmt.Sprint(priority.Value()),
+  })
+ }
 
-	_, resourceNameOK := ctr.Resources.Limits[corev1.ResourceName(ResourceName)]
-	if resourceNameOK {
-		return resourceNameOK, nil
-	}
+ _, resourceNameOK := ctr.Resources.Limits[corev1.ResourceName(ResourceName)]
+ if resourceNameOK {
+  return resourceNameOK, nil
+ }
 
-	_, resourceCoresOK := ctr.Resources.Limits[corev1.ResourceName(ResourceCores)]
-	_, resourceMemOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMem)]
-	_, resourceMemPercentageOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMemPercentage)]
+ _, resourceCoresOK := ctr.Resources.Limits[corev1.ResourceName(ResourceCores)]
+ _, resourceMemOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMem)]
+ _, resourceMemPercentageOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMemPercentage)]
 
-	if resourceCoresOK || resourceMemOK || resourceMemPercentageOK {
-		if config.DefaultResourceNum > 0 {
-			ctr.Resources.Limits[corev1.ResourceName(ResourceName)] =
-				*resource.NewQuantity(int64(config.DefaultResourceNum), resource.BinarySI)
-			resourceNameOK = true
-		}
-	}
+ if resourceCoresOK || resourceMemOK || resourceMemPercentageOK {
+  if config.DefaultResourceNum > 0 {
+   ctr.Resources.Limits[corev1.ResourceName(ResourceName)] =
+    *resource.NewQuantity(int64(config.DefaultResourceNum), resource.BinarySI)
+   resourceNameOK = true
+  }
+ }
 
-	if !resourceNameOK && OverwriteEnv {
-		ctr.Env = append(ctr.Env, corev1.EnvVar{
-			Name:  "NVIDIA_VISIBLE_DEVICES",
-			Value: "none",
-		})
-	}
-	return resourceNameOK, nil
+ if !resourceNameOK && OverwriteEnv {
+  ctr.Env = append(ctr.Env, corev1.EnvVar{
+   Name:  "NVIDIA_VISIBLE_DEVICES",
+   Value: "none",
+  })
+ }
+ return resourceNameOK, nil
 }
 ```
 
@@ -425,7 +427,7 @@ func (dev *NvidiaGPUDevices) MutateAdmission(ctr *corev1.Container) (bool, error
 ```go
 _, resourceNameOK := ctr.Resources.Limits[corev1.ResourceName(ResourceName)]
 if resourceNameOK {
-	return resourceNameOK, nil
+ return resourceNameOK, nil
 }
 ```
 
@@ -438,7 +440,7 @@ fs.StringVar(&ResourceName, "resource-name", "nvidia.com/gpu", "resource name")
 如果 Pod Resource 中申请了这个资源，就需要由 HAMi 进行调度，其他几个 Resource 也是一样的就不细看了。
 
 > HAMi 会支持 NVIDIA、天数、华为、寒武纪、海光等厂家的 GPU，默认 ResourceName 为：nvidia.com/gpu、iluvatar.ai/vgpu、hygon.com/dcunum、cambricon.com/mlu、huawei.com/Ascend310 等等。
-使用这些 ResourceName 时都会有 HAMi-Scheduler 进行调度。                    
+使用这些 ResourceName 时都会有 HAMi-Scheduler 进行调度。
 ps：这些 ResourceName 都是可以在对应 device plugin 中进行配置的。
 
 如果没有直接申请 ***nvidia.com/gpu*** ，但是申请了 gpucore、gpumem 等资源，同时 Webhook 配置的 DefaultResourceNum 大于 0 也会返回 true，并自动添加上 ***nvidia.com/gpu*** 资源的申请。
@@ -449,11 +451,11 @@ _, resourceMemOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMem)]
 _, resourceMemPercentageOK := ctr.Resources.Limits[corev1.ResourceName(ResourceMemPercentage)]
 
 if resourceCoresOK || resourceMemOK || resourceMemPercentageOK {
-	if config.DefaultResourceNum > 0 {
-		ctr.Resources.Limits[corev1.ResourceName(ResourceName)] =
-			*resource.NewQuantity(int64(config.DefaultResourceNum), resource.BinarySI)
-		resourceNameOK = true
-	}
+ if config.DefaultResourceNum > 0 {
+  ctr.Resources.Limits[corev1.ResourceName(ResourceName)] =
+   *resource.NewQuantity(int64(config.DefaultResourceNum), resource.BinarySI)
+  resourceNameOK = true
+ }
 }
 ```
 
@@ -465,9 +467,9 @@ if resourceCoresOK || resourceMemOK || resourceMemPercentageOK {
 
 ```go
 if !hasResource {
-	klog.Infof(template+" - Allowing admission for pod: no resource found", req.Namespace, req.Name, req.UID)
+ klog.Infof(template+" - Allowing admission for pod: no resource found", req.Namespace, req.Name, req.UID)
 } else if len(config.SchedulerName) > 0 {
-	pod.Spec.SchedulerName = config.SchedulerName
+ pod.Spec.SchedulerName = config.SchedulerName
 }
 ```
 
@@ -477,10 +479,11 @@ if !hasResource {
 
 ```go
 if pod.Spec.NodeName != "" {
-	klog.Infof(template+" - Pod already has node assigned", req.Namespace, req.Name, req.UID)
-	return admission.Denied("pod has node assigned")
+ klog.Infof(template+" - Pod already has node assigned", req.Namespace, req.Name, req.UID)
+ return admission.Denied("pod has node assigned")
 }
 ```
+
 ---
 
 ## 3.小结 ##
@@ -495,13 +498,13 @@ if pod.Spec.NodeName != "" {
 
 基于以上特殊情况，可能会出现以下问题，也是社区中多次有同学反馈的：
 
-**特权模式 Pod 申请了 gpucore、gpumem 等资源，创建后一直处于 Pending 状态， 无法调度，提示节点上没有 gpucore、gpumem 等资源。**
+**特权模式 Pod 申请了 gpucore、gpumem 等资源，创建后一直处于 Pending 状态，无法调度，提示节点上没有 gpucore、gpumem 等资源。**
 
 因为 Webhook 直接跳过了特权模式的 Pod，所以该 Pod 会使用 default-scheduler 进行调度，然后 default-scheduler 根据 Pod 中的 ResourceName 查看时发现没有任何 Node 有 gpucore、gpumem 等资源，因此无法调度，Pod 处理 Pending 状态。
 
 > ps：gpucore、gpumem 都是虚拟资源，并不会展示在 Node 上，只有 hami-scheduler 能够处理。
 
-### HAMi Webhook 工作流程如下：
+### HAMi Webhook 工作流程如下
 
 1. 用户创建 Pod 并在 Pod 中申请了 vGPU 资源
 
@@ -513,17 +516,13 @@ if pod.Spec.NodeName != "" {
 
 - 对于使用 vGPU 资源但指定了 nodeName 的 Pod，Webhook 会直接拒绝
 
-4. 接下来则进入 hami-scheduler 调度逻辑，下篇分析~
+1. 接下来则进入 hami-scheduler 调度逻辑，下篇分析~
 
 至此，我们就搞清楚了，**为什么 Pod 会使用上 hami-scheduler 以及哪些 Pod 会使用 hami-scheduler 进行调度。** 同时也说明了为什么特权模式 Pod 会无法调度的问题。
 
 下一篇就开始分析 hami-scheduler 实现了~
 
-
----
-*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。* 
 ---
 
-
-
-
+*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*
+---

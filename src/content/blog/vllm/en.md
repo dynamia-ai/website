@@ -6,11 +6,10 @@ date: "2025-09-15"
 excerpt: "This article takes the PR as an entry point, combined with community Issues and mailing records, to fully restore a 'HAMi × vLLM' landing path from deployment to verification, helping you quickly achieve multi-model deployment and resource reuse in Kubernetes."
 author: "Dynamia"
 tags: ["vLLM", "HAMi", "GPU Scheduling", "Multi-Model Deployment", "Kubernetes", "AI Inference", "Community Contribution", "Cloud Native"]
+category: "Integration & Ecosystem"
 coverImage: "/images/blog/Demystifying-the-Reservation-Pod/cover.jpg"
 language: "en"
 ---
-
-# Global Co-building: vLLM Community Natively Supports HAMi, Inference Efficiency Leap — Contribution from a Spanish Developer
 
 
 After large model inference entered the production stage, how to maximize GPU resource utilization, achieve multi-model coexistence, and improve deployment flexibility has become the focus of many enterprises and developers. Recently, the vLLM community officially merged PR#579, natively supporting CNCF Sandbox & CNAI Project HAMi. This not only represents HAMi’s capability being accepted by mainstream inference frameworks, but also means that vLLM users can directly split GPU memory and computing power for deployment out of the box with HAMi.
@@ -18,7 +17,9 @@ After large model inference entered the production stage, how to maximize GPU re
 This article takes the PR as an entry point, combined with community Issues and email exchanges, to fully restore a "HAMi × vLLM" landing path from deployment to verification, helping you quickly achieve multi-model deployment and resource reuse in Kubernetes.
 
 ## I. 1+1>2: The Combination Point of vLLM × HAMi
+
 vLLM is an open-source high-performance inference engine, improving throughput/concurrency with PagedAttention and continuous batching while being compatible with the OpenAI interface; the positioning of vLLM Production Stack is to productize vLLM on Kubernetes, filling in elastic scaling, observability monitoring, traffic routing/gray release, and operations publishing, making it operable and scalable into production environments. HAMi provides fine-grained GPU partitioning and scheduling capabilities, including:
+
 - GPU computing power control (SM Util)  
 - GPU memory limits (MB / %)  
 - Node/GPU scheduling policies (Binpack / Spread)  
@@ -27,6 +28,7 @@ vLLM is an open-source high-performance inference engine, improving throughput/c
 Achieving production-level LLM inference optimization is a systematic project that needs to solve both **“computation”** and **“scheduling”**. vLLM focuses on the **computation layer**, pushing single-GPU throughput performance to the limit through innovative memory management; HAMi focuses on the **scheduling layer and virtualization**, bringing fine-grained GPU partitioning and management capabilities to Kubernetes. The combination perfectly covers the two key links from resource scheduling to performance optimization.
 
 ## II. Community-driven Integration: PR #579 Originating from Real Needs
+
 The integration of vLLM and HAMi was not a “top-down” plan by the project party, but a community contribution driven by real user needs, “bottom-up”.
 
 It all started with **PR #579**, contributed by community contributor Andrés Doncel from Spain, working at Empathy.co, a toB e-commerce search and product discovery platform provider. As the company explained in its official blog, its core technical goal is to “bridge the gap between generative AI and factual accuracy” — through an advanced RAG (Retrieval Augmented Generation) framework, ensuring AI answers are evidence-based and eliminating “hallucinations”.
@@ -55,7 +57,9 @@ And explained how to enable parameter support, eventually gaining user recogniti
 From a real-need PR contribution to a perfect solution to a community problem, this formed a textbook-style positive open-source community cycle.
 
 ## III. Complete Practice: From Installation and Deployment to Testing and Monitoring
+
 ### 3.1 Preparation: Install HAMi and Take Over GPU Scheduling and Allocation
+
 ```bash
 # 1. If using NVIDIA GPU Operator, disable its default devicePlugin via Helm
 helm upgrade --install gpu-operator nvidia/gpu-operator \
@@ -93,7 +97,7 @@ Write the following content into `values-hami-demo.yaml`. This configuration def
 ... (YAML config unchanged) ...
 ```
 
-2. Deploy from local source
+1. Deploy from local source
    In the helm directory, run the following command. Note the final `.` means using the current directory Chart:
 
 ```bash
@@ -118,11 +122,11 @@ helm upgrade --install vllm -f values-hami-demo.yaml .
 
 ![p9](/images/blog/vllm-hami-support/production-stack-1.png)
 
-* [https://github.com/vllm-project/production-stack/tree/main/observability）](https://github.com/vllm-project/production-stack/tree/main/observability）)
+- [https://github.com/vllm-project/production-stack/tree/main/observability)](https://github.com/vllm-project/production-stack/tree/main/observability）)
 
 ![p9](/images/blog/vllm-hami-support/production-stack-2.png)
 
-* [https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard\_cn.md）](https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard_cn.md）)
+- [https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard\_cn.md)](https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard_cn.md）)
 
 ## Summary and Outlook
 
