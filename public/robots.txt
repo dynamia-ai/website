@@ -1,19 +1,33 @@
-# *
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /private
 Disallow: /api
+Disallow: /*.json$
 
-# GPTBot
+# Crawl-delay to prevent server overload (optional)
+# Crawl-delay: 1
+
+# GPTBot - Block AI training crawlers
 User-agent: GPTBot
 Disallow: /
 
-# Google-Extended
+# Google-Extended - Block Google AI training
 User-agent: Google-Extended
 Disallow: /
 
-# Host
+# Common AI crawlers to block
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Host (for Yandex)
 Host: https://dynamia.ai
 
 # Sitemaps

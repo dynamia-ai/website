@@ -12,6 +12,7 @@ import TableOfContents from '@/components/TableOfContents';
 import DynamicBlogCover from '@/components/DynamicBlogCover';
 import BlogAIShareSection from '@/components/BlogAIShareSection';
 import ImageLightbox from '@/components/ImageLightbox';
+import Breadcrumb from '@/components/Breadcrumb';
 
 interface BlogPostClientProps {
   enPost: (BlogPost & { content: string }) | null;
@@ -294,24 +295,15 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
         <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center items-start">
             <div className="max-w-4xl xl:mr-60">
-          {/* Breadcrumb */}
-          <nav className="mb-8">
-            <ol className="flex items-center space-x-2 text-sm text-gray-500">
-              <li>
-                <Link href="/" className="hover:text-primary">
-                  {currentLocale === 'zh' ? '首页' : 'Home'}
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <Link href={blogListPath} className="hover:text-primary">
-                  {currentLocale === 'zh' ? '博客' : 'Blog'}
-                </Link>
-              </li>
-              <li>/</li>
-              <li className="text-gray-900 font-medium">{displayPost.title}</li>
-            </ol>
-          </nav>
+          {/* Breadcrumb with structured data */}
+          <div className="mb-8">
+            <Breadcrumb
+              items={[
+                { label: currentLocale === 'zh' ? '博客' : 'Blog', href: blogListPath },
+                { label: displayPost.title }
+              ]}
+            />
+          </div>
 
           {/* Header */}
           <motion.header

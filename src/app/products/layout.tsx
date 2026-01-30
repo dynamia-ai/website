@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/utils/seo";
+import { productSchema } from "@/components/StructuredData";
 
 export const metadata: Metadata = pageMetadata.products;
 
@@ -8,5 +9,16 @@ export default function ProductsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {/* Product Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema),
+        }}
+      />
+      {children}
+    </>
+  );
 } 
