@@ -16,6 +16,7 @@ export default async function BlogPage({
     <BlogListClient
       enPosts={enResult.posts}
       zhPosts={zhResult.posts}
+      categories={enResult.categories} // 传递分类列表（两种语言的分类相同）
     />
   );
 }

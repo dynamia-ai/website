@@ -23,6 +23,17 @@ const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 
   // 根据当前语言生成博客文章路径
   const blogPath = currentLocale === 'zh' ? `/zh/blog/${post.slug}` : `/blog/${post.slug}`;
 
+  // 分类名称的中英文映射
+  const categoryNames: Record<string, { en: string; zh: string }> = {
+    'Product Release': { en: 'Product Release', zh: '产品发布' },
+    'Technical Deep Dive': { en: 'Technical Deep Dive', zh: '技术深度' },
+    'Customer Success Story': { en: 'Customer Stories', zh: '客户案例' },
+    'Integration & Ecosystem': { en: 'Integration', zh: '集成生态' },
+    'Company News': { en: 'Company News', zh: '公司动态' },
+    'Community & Events': { en: 'Community', zh: '社区活动' },
+  };
+  const displayCategory = categoryNames[post.category]?.[currentLocale] || post.category;
+
   return (
     <motion.article
       initial="hidden"
@@ -40,6 +51,12 @@ const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 
               title={post.coverTitle || post.title}
               className="w-full h-full"
             />
+          </div>
+          {/* 分类标签 */}
+          <div className="absolute top-3 right-3">
+            <span className="inline-block px-3 py-1 text-xs font-medium bg-white/90 backdrop-blur-sm text-gray-700 rounded-full">
+              {displayCategory}
+            </span>
           </div>
         </div>
         <div className="p-6">
@@ -67,11 +84,12 @@ interface BlogListClientProps {
   zhPosts: BlogPostMeta[];
   enTags?: string[];
   zhTags?: string[];
+  categories?: string[]; // 分类列表
   selectedTag?: string;
 }
 
 export default function BlogListClient(
-  { enPosts, zhPosts, ..._unusedProps }: BlogListClientProps
+  { enPosts, zhPosts, categories = [], ..._unusedProps }: BlogListClientProps
 ) {
   void _unusedProps;
   const { t, i18n } = useTranslation();
@@ -79,7 +97,15 @@ export default function BlogListClient(
   const currentLocale = i18n.language as 'en' | 'zh';
 
   // Get posts for current language
-  const posts = currentLocale === 'zh' ? zhPosts : enPosts;
+  const allPosts = currentLocale === 'zh' ? zhPosts : enPosts;
+
+  // Category filter state
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+
+  // Filter posts by category
+  const posts = selectedCategory === 'All' 
+    ? allPosts 
+    : allPosts.filter(post => post.category === selectedCategory);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -124,6 +150,63 @@ export default function BlogListClient(
               {t('resources.blog.description')}
             </p>
           </motion.div>
+
+          {/* Category Filter */}
+          {categories.length > 0 && (
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-8"
+            >
+              <div className="flex flex-wrap justify-center gap-3">
+                <button
+                  onClick={() => {
+                    setSelectedCategory('All');
+                    setCurrentPage(1);
+                  }}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    selectedCategory === 'All'
+                      ? 'bg-primary text-white shadow-md'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {currentLocale === 'zh' ? '全部' : 'All'} ({allPosts.length})
+                </button>
+                {categories.map((category) => {
+                  const count = allPosts.filter(post => post.category === category).length;
+                  // 分类名称的中英文映射
+                  const categoryNames: Record<string, { en: string; zh: string }> = {
+                    'Product Release': { en: 'Product Release', zh: '产品发布' },
+                    'Technical Deep Dive': { en: 'Technical Deep Dive', zh: '技术深度' },
+                    'Customer Success Story': { en: 'Customer Stories', zh: '客户案例' },
+                    'Integration & Ecosystem': { en: 'Integration', zh: '集成生态' },
+                    'Company News': { en: 'Company News', zh: '公司动态' },
+                    'Community & Events': { en: 'Community', zh: '社区活动' },
+                  };
+                  const displayName = categoryNames[category]?.[currentLocale] || category;
+                  
+                  return (
+                    <button
+                      key={category}
+                      onClick={() => {
+                        setSelectedCategory(category);
+                        setCurrentPage(1);
+                      }}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                        selectedCategory === category
+                          ? 'bg-primary text-white shadow-md'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {displayName} ({count})
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
 
           {/* Blog posts grid */}
           {posts.length > 0 ? (

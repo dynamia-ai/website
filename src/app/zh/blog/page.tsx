@@ -18,6 +18,7 @@ export default async function ZhBlogPage({
       zhPosts={zhResult.posts}
       enTags={enResult.tags}
       zhTags={zhResult.tags}
+      categories={enResult.categories} // 传递分类列表（两种语言的分类相同）
       selectedTag={tag}
     />
   );

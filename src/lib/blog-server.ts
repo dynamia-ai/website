@@ -46,6 +46,7 @@ export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPos
       excerpt: data.excerpt || '',
       author: data.author || '',
       tags: data.tags || [],
+      category: data.category || 'Uncategorized', // 博客分类
       coverImage: data.coverImage,
       coverTitle: data.coverTitle, // 自定义封面标题
       language: data.language || language,
@@ -80,6 +81,7 @@ function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMe
       excerpt: data.excerpt || '',
       author: data.author || '',
       tags: data.tags || [],
+      category: data.category || 'Uncategorized', // 博客分类
       coverImage: data.coverImage,
       coverTitle: data.coverTitle,
       language: data.language || language,
@@ -95,6 +97,7 @@ export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostsRe
   const slugs = getBlogPostSlugs();
   const posts: BlogPostMeta[] = [];
   const tags = new Set<string>();
+  const categories = new Set<string>();
   
   // 需要隐藏的文章 slug 列表
   const hiddenSlugs = ['hello-world'];
@@ -110,6 +113,8 @@ export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostsRe
       posts.push(post);
       // 同时收集标签
       post.tags.forEach(tag => tags.add(tag));
+      // 收集分类
+      categories.add(post.category);
     }
   }
   
@@ -121,6 +126,7 @@ export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostsRe
   return {
     posts: sortedPosts,
     tags: Array.from(tags).sort(),
+    categories: Array.from(categories).sort(),
   };
 });
 
@@ -271,6 +277,14 @@ export function getBlogPostsByTag(tag: string, language: 'en' | 'zh' = 'en'): Bl
     post.tags.some(postTag => 
       postTag.toLowerCase() === tag.toLowerCase()
     )
+  );
+}
+
+// Get posts by category
+export function getBlogPostsByCategory(category: string, language: 'en' | 'zh' = 'en'): BlogPostMeta[] {
+  const { posts } = getAllBlogPosts(language);
+  return posts.filter(post => 
+    post.category.toLowerCase() === category.toLowerCase()
   );
 }
 
