@@ -93,7 +93,7 @@ export default function Home() {
   const handleScroll = () => {
     // 如果正在程序化滚动，忽略手动滚动事件，避免闪烁
     if (isScrollingRef.current) return;
-    
+
     const el = ecosystemRef.current as HTMLDivElement | null;
     if (!el) return;
     const step = getStep();
@@ -101,15 +101,6 @@ export default function Home() {
     // 限制索引在有效范围内
     const clamped = Math.max(0, Math.min(ecoCount - 1, idx));
     if (clamped !== ecoIndex) setEcoIndex(clamped);
-  };
-
-  // 获取卡片的选中状态样式
-  const getCardClassName = (index: number) => {
-    const baseClasses = 'bg-white rounded-lg shadow-sm border border-gray-100 p-5 hover:shadow-md transition-all duration-300 w-[280px] flex-shrink-0';
-    const activeClasses = ecoIndex === index 
-      ? 'ring-2 ring-primary ring-offset-2 shadow-lg opacity-100' 
-      : 'opacity-75';
-    return `${baseClasses} ${activeClasses}`;
   };
 
   const featureTabs = t('home.keyAdvantages.tabs', { returnObjects: true });
@@ -353,7 +344,7 @@ export default function Home() {
           </div>
           {/* 特性内容展示区域 */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-center">
-            {/* 左侧图片区域 (占2/3) */}
+            {/* 左侧图片区域 (占 2/3) */}
             <div className="lg:col-span-2 flex justify-center order-1 lg:order-1">
               <div className="w-full">
                 <Image
@@ -368,7 +359,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            {/* 右侧内容区域 (占1/3) */}
+            {/* 右侧内容区域 (占 1/3) */}
             <div className="lg:col-span-1 order-2 lg:order-2">
               <motion.div
                 key={activeTab}
@@ -453,7 +444,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* 按钮 - 独立居中在HAMi图标下方 */}
+          {/* 按钮 - 独立居中在 HAMi 图标下方 */}
           <motion.div
             initial="hidden"
             whileInView="visible"
