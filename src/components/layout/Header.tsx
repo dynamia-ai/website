@@ -515,62 +515,74 @@ const Header: React.FC = () => {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="pt-2 pb-3 space-y-1">
+            <div className="pt-2 pb-3 space-y-1 px-2">
               {navigation.map((item) => (
                 item.hasSubmenu ? (
-                  <div key={item.name}>
+                  <div key={item.name} className="rounded-lg">
                     <Disclosure>
                       {({ open }) => (
                         <>
                           <Disclosure.Button
-                            className="block w-full text-left px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                            className="w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors touch-manipulation"
                           >
                             <div className="flex justify-between items-center">
-                              <span>{item.name}</span>
-                              <ChevronDownIcon 
-                                className={`h-5 w-5 transition-transform duration-200 ${
+                              <span className="font-semibold">{item.name}</span>
+                              <ChevronDownIcon
+                                className={`h-5 w-5 transition-transform duration-200 text-gray-400 ${
                                   open ? 'transform rotate-180' : ''
-                                }`} 
+                                }`}
                               />
                             </div>
                           </Disclosure.Button>
-                          <Disclosure.Panel className="pl-6 space-y-1">
+                          <Disclosure.Panel className="pt-2 pb-3 px-2 space-y-1">
                             {(
-                              item.submenuType === 'hami' 
-                                ? hamiSubmenu 
-                                : item.submenuType === 'resources' 
-                                  ? resourcesSubmenu 
+                              item.submenuType === 'hami'
+                                ? hamiSubmenu
+                                : item.submenuType === 'resources'
+                                  ? resourcesSubmenu
                                   : solutionsSubmenu
                             ).map((subItem) => (
-                              <div key={subItem.name} className="p-3 rounded-md hover:bg-primary-lighter transition-colors duration-150">
+                              <div key={subItem.name} className="rounded-lg hover:bg-primary-lighter transition-colors duration-150">
                                 {subItem.external ? (
                                   <a
                                     href={subItem.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="block text-gray-500 hover:text-gray-900"
+                                    className="block px-4 py-3"
                                   >
-                                    <div className="flex items-center justify-between">
-                                      <div className="flex items-center">
-                                        <div className="mr-3">
+                                    <div className="flex items-start justify-between">
+                                      <div className="flex items-start flex-1 min-w-0">
+                                        <div className="mr-3 mt-0.5 flex-shrink-0">
                                           <HamiIcon iconName={subItem.iconName} className="h-5 w-5" />
                                         </div>
-                                        <span>{subItem.name}</span>
+                                        <div className="flex-1 min-w-0">
+                                          <div className="font-medium text-gray-900 text-sm mb-1">
+                                            {subItem.name}
+                                          </div>
+                                          <div className="text-xs text-gray-500 leading-snug">
+                                            {subItem.description}
+                                          </div>
+                                        </div>
                                       </div>
-                                      <ExternalLinkIcon className="h-4 w-4 text-gray-400" aria-hidden="true" />
+                                      <ExternalLinkIcon className="h-4 w-4 text-gray-400 flex-shrink-0 ml-2 mt-1" aria-hidden="true" />
                                     </div>
                                   </a>
                                 ) : (
                                   <Link
                                     href={subItem.href}
-                                    className="block text-gray-500 hover:text-gray-900"
+                                    className="block px-4 py-3"
                                   >
-                                    <div className="flex items-center justify-between">
-                                      <div className="flex items-center">
-                                        <div className="mr-3">
-                                          <HamiIcon iconName={subItem.iconName} className="h-5 w-5" />
+                                    <div className="flex items-start">
+                                      <div className="mr-3 mt-0.5 flex-shrink-0">
+                                        <HamiIcon iconName={subItem.iconName} className="h-5 w-5" />
+                                      </div>
+                                      <div className="flex-1 min-w-0">
+                                        <div className="font-medium text-gray-900 text-sm mb-1">
+                                          {subItem.name}
                                         </div>
-                                        <span>{subItem.name}</span>
+                                        <div className="text-xs text-gray-500 leading-snug">
+                                          {subItem.description}
+                                        </div>
                                       </div>
                                     </div>
                                   </Link>
@@ -586,10 +598,10 @@ const Header: React.FC = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`block px-3 py-2 text-base font-medium ${
+                    className={`block px-4 py-3 text-base font-medium rounded-lg transition-colors touch-manipulation ${
                       pathname === item.href
-                        ? 'text-primary-dark bg-primary-lighter'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                        ? 'text-primary-dark bg-primary-lighter font-semibold'
+                        : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                   >
                     {item.name}
@@ -597,32 +609,41 @@ const Header: React.FC = () => {
                 )
               ))}
             </div>
-            <div className="pt-4 pb-3 border-t border-gray-200">
-              <div className="flex items-center px-4">
-                <div className="ml-3 space-y-2">
-                  <Link
-                    href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
-                    className="block rounded-md px-4 py-2 text-base font-medium text-white bg-primary hover:bg-primary-dark text-center whitespace-nowrap"
-                  >
-                    {t('navigation.freeTrial')}
-                  </Link>
-                  <Link
-                    href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
-                    className="block rounded-md px-4 py-2 text-base font-medium text-primary border border-primary hover:bg-gray-50 text-center whitespace-nowrap"
-                  >
-                    {t('navigation.requestDemo')}
-                  </Link>
-                  <button
-                    onClick={() => changeLanguage(currentLocale === 'zh' ? 'en' : 'zh')}
-                    className="block rounded-md px-4 py-2 w-full text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 text-center"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
-                    </svg>
-                    {currentLocale === 'zh' ? 'English' : '中文'}
-                  </button>
+
+            {/* Language Switcher */}
+            <div className="px-2 py-3 border-t border-gray-200">
+              <button
+                onClick={() => changeLanguage(currentLocale === 'zh' ? 'en' : 'zh')}
+                className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors touch-manipulation"
+              >
+                <div className="flex items-center">
+                  <svg className="h-5 w-5 mr-3 flex-shrink-0" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M87.956 73.232C92.2458 66.2434 94.5112 58.2012 94.5 50.001C94.5113 41.8006 92.2459 33.7569 87.956 26.768L87.932 26.729C83.9522 20.2422 78.3754 14.8845 71.7345 11.1676C65.0935 7.45081 57.6103 5.49915 50 5.49915C42.3897 5.49915 34.9065 7.45081 28.2656 11.1676C21.6246 14.8845 16.0478 20.2422 12.068 26.729L12.044 26.768C7.76491 33.7616 5.50049 41.8012 5.50049 50C5.50049 58.1989 7.76491 66.2384 12.044 73.232L12.069 73.272C16.0489 79.7585 21.6258 85.116 28.2667 88.8326C34.9076 92.5492 42.3906 94.5007 50.0008 94.5006C57.6109 94.5005 65.0939 92.5488 71.7347 88.8321C78.3755 85.1153 83.9523 79.7576 87.932 73.271L87.956 73.232ZM55.688 86.873C54.8399 87.6914 53.8637 88.3656 52.798 88.869C51.9236 89.2845 50.9676 89.5001 49.9995 89.5001C49.0314 89.5001 48.0754 89.2845 47.201 88.869C45.1736 87.8335 43.438 86.3063 42.153 84.427C39.5288 80.6346 37.5842 76.4148 36.406 71.956C40.9327 71.6774 45.464 71.5354 50 71.53C54.534 71.53 59.0657 71.672 63.595 71.956C62.9427 74.2484 62.128 76.4914 61.157 78.668C59.8784 81.7292 58.0215 84.515 55.688 86.873ZM10.587 52.5H28.536C28.653 57.5084 29.1959 62.4977 30.159 67.414C25.2523 67.846 20.3583 68.4394 15.477 69.194C12.6183 64.0654 10.9472 58.3605 10.587 52.5ZM15.477 30.807C20.3563 31.563 25.252 32.1564 30.164 32.587C29.1992 37.5028 28.6553 42.4919 28.538 47.5H10.587C10.9473 41.6399 12.6184 35.9353 15.477 30.807ZM44.312 13.127C45.1601 12.3086 46.1363 11.6344 47.202 11.131C48.0764 10.7156 49.0324 10.5 50.0005 10.5C50.9686 10.5 51.9246 10.7156 52.799 11.131C54.8264 12.1666 56.562 13.6938 57.847 15.573C60.4712 19.3654 62.4158 23.5853 63.594 28.044C59.0673 28.3227 54.536 28.4647 50 28.47C45.466 28.47 40.9343 28.328 36.405 28.044C37.0573 25.7516 37.872 23.5086 38.843 21.332C40.1216 18.2709 41.9785 15.485 44.312 13.127ZM89.413 47.5H71.464C71.347 42.4917 70.8041 37.5023 69.841 32.586C74.7477 32.154 79.6417 31.5607 84.523 30.806C87.3818 35.9346 89.0528 41.6395 89.413 47.5ZM35.188 67.025C34.2103 62.2416 33.6582 57.3809 33.538 52.5H66.463C66.344 57.3812 65.7929 62.2422 64.816 67.026C59.8827 66.702 54.944 66.5367 50 66.53C45.06 66.53 40.1227 66.695 35.188 67.025ZM64.812 32.975C65.7897 37.7585 66.3418 42.6192 66.462 47.5H33.538C33.657 42.6189 34.2082 37.7579 35.185 32.974C40.1183 33.298 45.057 33.4634 50.001 33.47C54.941 33.47 59.8783 33.3047 64.813 32.974L64.812 32.975ZM71.462 52.5H89.413C89.0527 58.3602 87.3816 64.0647 84.523 69.193C79.643 68.437 74.7473 67.8437 69.836 67.413C70.8008 62.4973 71.3448 57.5082 71.462 52.5ZM81.525 26.205C77.2583 26.8204 72.9793 27.3077 68.688 27.667C67.9168 24.7951 66.9221 21.9878 65.713 19.271C64.6089 16.7711 63.2197 14.4071 61.573 12.226C69.5306 14.6667 76.5137 19.5592 81.525 26.205ZM22.07 22.069C26.6349 17.4997 32.251 14.12 38.426 12.226C38.332 12.348 38.236 12.464 38.144 12.587C34.97 17.1559 32.658 22.2666 31.322 27.667C27.03 27.3037 22.748 26.8164 18.476 26.205C19.5776 24.7455 20.7785 23.3636 22.07 22.069ZM18.476 73.795C22.742 73.1797 27.021 72.6924 31.313 72.333C32.0842 75.205 33.0789 78.0122 34.288 80.729C35.3921 83.229 36.7813 85.593 38.428 87.774C30.4704 85.3334 23.4874 80.4408 18.476 73.795ZM77.932 77.931C73.3671 82.5004 67.751 85.8801 61.576 87.774C61.67 87.652 61.766 87.536 61.858 87.413C65.032 82.8441 67.344 77.7334 68.68 72.333C72.972 72.6964 77.254 73.1837 81.526 73.795C80.4244 75.2546 79.2235 76.6365 77.932 77.931Z" fill="black"/>
+                  </svg>
+                  <span className="flex-1 text-left">语言 / Language</span>
                 </div>
-              </div>
+                <div className="flex items-center bg-gray-100 px-3 py-1.5 rounded-full">
+                  <span className="text-sm font-semibold text-primary">
+                    {currentLocale === 'zh' ? 'English' : '中文'}
+                  </span>
+                </div>
+              </button>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="px-4 py-4 border-t border-gray-200 space-y-3">
+              <Link
+                href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
+                className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors shadow-sm touch-manipulation"
+              >
+                {t('navigation.freeTrial')}
+              </Link>
+              <Link
+                href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
+                className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-primary border-2 border-primary hover:bg-primary-lighter rounded-lg transition-colors touch-manipulation"
+              >
+                {t('navigation.requestDemo')}
+              </Link>
             </div>
           </Disclosure.Panel>
         </>
