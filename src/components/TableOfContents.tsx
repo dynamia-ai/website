@@ -9,10 +9,16 @@ interface TableOfContentsProps {
   className?: string;
 }
 
+// 自适应阈值：超过这个数量的标题才启用滚动优化
+const TOC_SCROLL_THRESHOLD = 15;
+
 export default function TableOfContents({ toc, className = '' }: TableOfContentsProps) {
   const { t } = useTranslation();
   const [activeId, setActiveId] = useState<string>('');
   const isScrollingRef = useRef(false);
+
+  // 检测是否需要滚动优化
+  const needsScrollOptimization = toc.length > TOC_SCROLL_THRESHOLD;
 
   useEffect(() => {
     if (toc.length === 0) return;
@@ -134,11 +140,21 @@ export default function TableOfContents({ toc, className = '' }: TableOfContents
     return null;
   }
 
+  // 自适应容器样式：长文章添加滚动，短文章保持原样
+  const containerClassName = needsScrollOptimization
+    ? "max-h-[calc(100vh-10rem)] overflow-y-auto pr-3 scrollbar-thin"
+    : "";
+
   return (
     <nav className={`sticky top-24 ${className}`}>
-      <div>
-        <h2 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">
+      <div className={containerClassName}>
+        <h2 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide sticky top-0 bg-white/95 backdrop-blur-sm py-2 -mx-3 px-3 z-10">
           {t('resources.blog.tableOfContents')}
+          {needsScrollOptimization && (
+            <span className="ml-2 text-xs font-normal text-gray-500">
+              ({toc.length})
+            </span>
+          )}
         </h2>
         <ul className="space-y-1.5">
           {toc.map((heading, index) => (
