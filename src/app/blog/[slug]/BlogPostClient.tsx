@@ -296,7 +296,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
           {/* Grid layout: 正文 + TOC */}
           <div className="grid grid-cols-1 xl:grid-cols-[1fr_16rem] gap-8 xl:gap-12">
             {/* 左侧：正文内容 */}
-            <div className="w-full">
+            <div className="w-full min-w-0">
               {/* Breadcrumb with structured data */}
               <div className="mb-6 sm:mb-8">
                 <Breadcrumb
