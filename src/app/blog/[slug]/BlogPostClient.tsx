@@ -10,9 +10,9 @@ import { formatDate } from '@/lib/blog-client';
 import { BlogPost } from '@/types/blog';
 import TableOfContents from '@/components/TableOfContents';
 import DynamicBlogCover from '@/components/DynamicBlogCover';
-import BlogAIShareSection from '@/components/BlogAIShareSection';
 import ImageLightbox from '@/components/ImageLightbox';
 import Breadcrumb from '@/components/Breadcrumb';
+import BlogShareSection from '@/components/BlogAIShareSection';
 
 interface BlogPostClientProps {
   enPost: (BlogPost & { content: string }) | null;
@@ -293,52 +293,55 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     <MainLayout>
       <article className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-          {/* Breadcrumb with structured data */}
-          <div className="mb-6 sm:mb-8">
-            <Breadcrumb
-              items={[
-                { label: currentLocale === 'zh' ? '博客' : 'Blog', href: blogListPath },
-                { label: displayPost.title }
-              ]}
-            />
-          </div>
-
-          {/* Header */}
-          <motion.header
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8 sm:mb-12"
-          >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-              {displayPost.title}
-            </h1>
-
-            {/* Published Date */}
-            <div className="mb-3 sm:mb-4 text-sm text-gray-500">
-              <time dateTime={displayPost.date}>
-                {formatDate(displayPost.date, currentLocale)}
-              </time>
-            </div>
-
-            {/* Excerpt */}
-            {displayPost.excerpt && (
-              <div className="mb-6 sm:mb-8 relative pl-4 sm:pl-6 border-l-4 border-gray-300">
-                <p className="text-base sm:text-lg text-gray-600 leading-6 sm:leading-7 italic">
-                  {displayPost.excerpt}
-                </p>
+          {/* Grid layout: 正文 + TOC */}
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_16rem] gap-8 xl:gap-12">
+            {/* 左侧：正文内容 */}
+            <div className="w-full">
+              {/* Breadcrumb with structured data */}
+              <div className="mb-6 sm:mb-8">
+                <Breadcrumb
+                  items={[
+                    { label: currentLocale === 'zh' ? '博客' : 'Blog', href: blogListPath },
+                    { label: displayPost.title }
+                  ]}
+                />
               </div>
-            )}
 
-            <div className="aspect-video relative rounded-lg overflow-hidden">
-              <DynamicBlogCover
-                title={displayPost.coverTitle || displayPost.title}
-                className="w-full h-full"
-                variant="detail"
-              />
-            </div>
-          </motion.header>
+              {/* Header */}
+              <motion.header
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-8 sm:mb-12"
+              >
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+                  {displayPost.title}
+                </h1>
+
+                {/* Published Date */}
+                <div className="mb-3 sm:mb-4 text-sm text-gray-500">
+                  <time dateTime={displayPost.date}>
+                    {formatDate(displayPost.date, currentLocale)}
+                  </time>
+                </div>
+
+                {/* Excerpt */}
+                {displayPost.excerpt && (
+                  <div className="mb-6 sm:mb-8 relative pl-4 sm:pl-6 border-l-4 border-gray-300">
+                    <p className="text-base sm:text-lg text-gray-600 leading-6 sm:leading-7 italic">
+                      {displayPost.excerpt}
+                    </p>
+                  </div>
+                )}
+
+                <div className="aspect-video relative rounded-lg overflow-hidden">
+                  <DynamicBlogCover
+                    title={displayPost.coverTitle || displayPost.title}
+                    className="w-full h-full"
+                    variant="detail"
+                  />
+                </div>
+              </motion.header>
 
               {/* Content */}
               <motion.div
@@ -349,9 +352,9 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 dangerouslySetInnerHTML={{ __html: displayPost.content }}
               />
 
-              {/* AI Share Section */}
+              {/* Share Section */}
               <div className="mt-8 sm:mt-12">
-                <BlogAIShareSection
+                <BlogShareSection
                   title={displayPost.title}
                   url={getBlogPostPath(displayPost.slug)}
                 />
@@ -376,10 +379,13 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
               </motion.div>
             </div>
 
-          {/* Table of Contents - 固定在页面最右侧 */}
-          <aside className="hidden xl:block fixed right-8 top-24 w-64 z-10">
-            <TableOfContents toc={displayPost.toc || []} />
-          </aside>
+            {/* 右侧：TOC - sticky 定位，只在 xl 以上显示 */}
+            <aside className="hidden xl:block">
+              <div className="sticky top-24">
+                <TableOfContents toc={displayPost.toc || []} />
+              </div>
+            </aside>
+          </div>
         </div>
       </article>
 

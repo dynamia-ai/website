@@ -146,9 +146,9 @@ export default function TableOfContents({ toc, className = '' }: TableOfContents
     : "";
 
   return (
-    <nav className={`sticky top-24 ${className}`}>
+    <nav className={className}>
       <div className={containerClassName}>
-        <h2 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide sticky top-0 bg-white/95 backdrop-blur-sm py-2 -mx-3 px-3 z-10">
+        <h2 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide bg-white/95 backdrop-blur-sm py-2">
           {t('resources.blog.tableOfContents')}
           {needsScrollOptimization && (
             <span className="ml-2 text-xs font-normal text-gray-500">
