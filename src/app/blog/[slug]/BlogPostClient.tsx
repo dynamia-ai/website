@@ -291,12 +291,11 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
 
   return (
     <MainLayout>
-      <article className="py-16 bg-white">
-        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-start">
-            <div className="max-w-4xl xl:mr-60">
+      <article className="py-8 sm:py-12 lg:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
           {/* Breadcrumb with structured data */}
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <Breadcrumb
               items={[
                 { label: currentLocale === 'zh' ? '博客' : 'Blog', href: blogListPath },
@@ -310,14 +309,14 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-12"
+            className="mb-8 sm:mb-12"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
               {displayPost.title}
             </h1>
 
             {/* Published Date */}
-            <div className="mb-4 text-sm text-gray-500">
+            <div className="mb-3 sm:mb-4 text-sm text-gray-500">
               <time dateTime={displayPost.date}>
                 {formatDate(displayPost.date, currentLocale)}
               </time>
@@ -325,8 +324,8 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
 
             {/* Excerpt */}
             {displayPost.excerpt && (
-              <div className="mb-8 relative pl-6 border-l-4 border-gray-300">
-                <p className="text-lg text-gray-600 leading-7 italic">
+              <div className="mb-6 sm:mb-8 relative pl-4 sm:pl-6 border-l-4 border-gray-300">
+                <p className="text-base sm:text-lg text-gray-600 leading-6 sm:leading-7 italic">
                   {displayPost.excerpt}
                 </p>
               </div>
@@ -351,7 +350,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
               />
 
               {/* AI Share Section */}
-              <div className="mt-12">
+              <div className="mt-8 sm:mt-12">
                 <BlogAIShareSection
                   title={displayPost.title}
                   url={getBlogPostPath(displayPost.slug)}
@@ -363,9 +362,9 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="mt-12 pt-8 border-t border-gray-200"
+                className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200"
               >
-                <Link 
+                <Link
                   href={blogListPath}
                   className="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
                 >
@@ -377,8 +376,6 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
               </motion.div>
             </div>
 
-          </div>
-          
           {/* Table of Contents - 固定在页面最右侧 */}
           <aside className="hidden xl:block fixed right-8 top-24 w-64 z-10">
             <TableOfContents toc={displayPost.toc || []} />
