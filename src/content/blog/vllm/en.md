@@ -40,11 +40,11 @@ To explore the motivation behind this contribution, we communicated with Andrés
 
 This confirmed the real scenario demand from community users for the HAMi + vLLM combination.
 
-![p7](/images/blog/vllm-hami-support/vllm-and-hami.png)
+![vLLM and HAMi integration architecture diagram](/images/blog/vllm-hami-support/vllm-and-hami.png)
 
 ### Rapid Verification of Value: Issue [#649](https://github.com/vllm-project/production-stack/issues/649) : “Does it support deploying multiple models on a single GPU?”
 
-![p7](/images/blog/vllm-hami-support/issue-conversation-0.png)
+![vLLM HAMi GitHub issue conversation screenshot](/images/blog/vllm-hami-support/issue-conversation-0.png)
 
 @Nimbus318 replied:
 
@@ -104,7 +104,7 @@ Write the following content into `values-hami-demo.yaml`. This configuration def
 helm upgrade --install vllm -f values-hami-demo.yaml .
 ```
 
-![p7](/images/blog/vllm-hami-support/helm-upgrade.png)
+![vLLM Helm upgrade configuration screenshot](/images/blog/vllm-hami-support/helm-upgrade.png)
 
 ### 3.3 Resource Verification and Function Testing
 
@@ -120,11 +120,11 @@ helm upgrade --install vllm -f values-hami-demo.yaml .
 
 ... (translated log outputs) ...
 
-![p9](/images/blog/vllm-hami-support/production-stack-1.png)
+![vLLM production stack architecture part 1 diagram](/images/blog/vllm-hami-support/production-stack-1.png)
 
 - [https://github.com/vllm-project/production-stack/tree/main/observability)](https://github.com/vllm-project/production-stack/tree/main/observability）)
 
-![p9](/images/blog/vllm-hami-support/production-stack-2.png)
+![vLLM production stack architecture part 2 diagram](/images/blog/vllm-hami-support/production-stack-2.png)
 
 - [https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard\_cn.md)](https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard_cn.md）)
 
@@ -134,7 +134,7 @@ The merging of PR #579 marks: **HAMi has become the officially integrated and re
 
 HAMi, short for Heterogeneous AI Computing Virtualization Middleware, is a “one-stop” architecture designed to manage heterogeneous AI computing devices in Kubernetes clusters, providing sharing capabilities and task-level resource isolation for heterogeneous AI devices. HAMi is committed to improving the utilization of heterogeneous computing devices in Kubernetes clusters, providing a unified reuse interface for different types of heterogeneous devices. Currently, it is a CNCF Sandbox project and has been included in the CNCF CNAI category technology landscape.
 
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
+![HAMi heterogeneous computing support architecture diagram](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia focuses on CNCF HAMi as the core foundation, providing flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing scheduling, and unified management global solutions. It can be deployed in a plug-in, lightweight, non-intrusive way in any public cloud, private cloud, or hybrid cloud environment, and supports heterogeneous chips such as NVIDIA, Ascend, Muxi, Cambricon, Hygon, Moore Threads, and Biren.
 

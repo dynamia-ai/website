@@ -42,7 +42,7 @@ language: "zh"
 
 - 更新 Grafana Dashboard，更新清晰明了
 
-![p1](/images/blog/gpu8/p1.jpg)
+![HAMi v2.5.0 新特性概览图](/images/blog/gpu8/p1.jpg)
 
 **文档：**
 
@@ -56,9 +56,9 @@ language: "zh"
 
 - 新增 E2E 测试，保证项目稳定性
 
-![p2](/images/blog/gpu8/p2.jpg)
+![HAMi v2.5.0 思维导图展示项目架构](/images/blog/gpu8/p2.jpg)
 
-![p3](/images/blog/gpu8/p3.jpg)
+![HAMi v2.5.0 CI/CD 流程图](/images/blog/gpu8/p3.jpg)
 
 更多更新就留给大家自行发现了~，接下来主要展示稳定性增强部分的工作和动态 MIG 功能的使用演示。
 
@@ -569,13 +569,13 @@ nodeGPUMigInstance{deviceidx="1",deviceuuid="GPU-30f90f49-43ab-0a78-bf5c-93ed41e
 
 通过 hami-device-plugin 支持不同模式来分别支持 MIG、HAMi-core 以及 MPS。
 
-![p4](/images/blog/gpu8/p4.jpg)
+![HAMi v2.5.0 设备插件架构图](/images/blog/gpu8/p4.jpg)
 
 #### 工作流程
 
 使用 dynamic-mig 的 vGPU 任务流程如下：
 
-![p5](/images/blog/gpu8/p5.jpg)
+![HAMi v2.5.0 新功能特性概览图](/images/blog/gpu8/p5.jpg)
 
 整个流程也是分为两部分：
 

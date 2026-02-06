@@ -423,7 +423,7 @@ func (b *Binder) Bind(
 }
 ```
 
-![p1](/images/blog/Demystifying-the-Reservation-Pod/p1.png)
+![Reservation Pod 架构示意图](/images/blog/Demystifying-the-Reservation-Pod/p1.png)
 
 ## 二、完整信息流：从调度到设备识别
 

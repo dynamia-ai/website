@@ -31,7 +31,7 @@ To help you grasp HAMi’s core value and day-to-day usage, we created this arti
 
 ### Q1: Which hardware partners does HAMi support?
 
-![Q1](/images/blog/faq/q2.jpg)
+![HAMi supported hardware vendors and accelerators overview](/images/blog/faq/q2.jpg)
 
 ### Q2: What is a vGPU? Why can’t I “multi-open” on one card even though I see 10 vGPUs?
 

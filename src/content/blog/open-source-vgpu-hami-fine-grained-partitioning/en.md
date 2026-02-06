@@ -90,7 +90,7 @@ Currently, the most mature part is the vGPU solution for NVIDIA GPUs, so you can
 
 Overall architecture:
 
-![p3](/images/blog/gpu1/photo3.jpg)
+![HAMi fine-grained GPU partitioning architecture](/images/blog/gpu1/photo3.jpg)
 
 As you can see, there are several components involved, such as Webhook, Scheduler, Device Plugin, HAMi-Core, etc. This article focuses on usage, so the architecture and principles are briefly mentioned.
 
@@ -100,7 +100,7 @@ The main feature of HAMi is fine-grained GPU isolation, allowing you to isolate 
 
 For example:
 
-![p4](/images/blog/gpu1/photo4.jpg)
+![GPU memory allocation diagram](/images/blog/gpu1/photo4.jpg)
 
 - **nvidia.com/gpu**: Request one GPU
 - **nvidia.com/gpumem**: Request 3000M GPU memory
@@ -110,7 +110,7 @@ For example:
 
 HAMi achieves GPU core and memory isolation using a vCUDA approach. The design is as follows:
 
-![p5](/images/blog/gpu1/photo5.jpg)
+![Fine-grained vGPU configuration example](/images/blog/gpu1/photo5.jpg)
 
 HAMi rewrites the native NVIDIA CUDA driver (libvgpu.so) at the software layer, mounts it into the Pod, and intercepts CUDA APIs to enforce resource isolation and limits.
 
@@ -212,7 +212,7 @@ Similar to the TimeSlicing solution, after installation, the Node shows increase
 Default split count is 10, configurable.
 </div>
 
-![p11](/images/blog/gpu1/photo11.jpg)
+![HAMi memory calculation workflow](/images/blog/gpu1/photo11.jpg)
 
 ### Validate Memory and Core Limits ###
 

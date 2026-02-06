@@ -226,7 +226,7 @@ demo-d-node-spread-gpu-spread-c4555d97c-k727x    ip-10-0-52-161.us-west-2.comput
   - [KEP **#5004**](https://github.com/kubernetes/enhancements/blob/3ffc27b7413e285d429025a422dd79473d3e9b50/keps/sig-scheduling/5004-dra-extended-resource/README.md) (DRA: 通过 DRA 驱动处理扩展资源请求)
   - [Issue **#133669**](https://github.com/kubernetes/kubernetes/issues/133669) (添加 `dynamicresources` 评分器；作为 Beta 阶段的要求，需要实现正确的紧凑打包)
 
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
+![HAMi 异构计算支持架构图](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia 密瓜智能， 专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
 

@@ -15,7 +15,7 @@ This is the fifth article in the HAMI principle analysis series, providing a sim
 
 This article is adapted from: <https://mp.weixin.qq.com/s/vN3uDRPpAP3UmE2Hgn75vg>
 
-![p1](/images/blog/gpu7/p1.jpg)
+![HAMi vGPU core architecture diagram](/images/blog/gpu7/p1.jpg)
 
 This article primarily addresses the following questions:
 
@@ -412,7 +412,7 @@ It calculates how many tokens to add back in each cycle using the `delta` functi
 
 This is consistent with the test results from [Open Source vGPU Solution HAMI: Core & Memory Isolation Test](https://dynamia.ai/blog/open-source-vgpu-hami-core-memory-test), where the GPU utilization might exceed the threshold in the short term, but over a longer period, the average value fluctuates around the threshold.
 
-![p3](/images/blog/gpu7/p3.jpg)
+![vGPU memory allocation and isolation diagram](/images/blog/gpu7/p3.jpg)
 > The image above shows the test result when the GPU Core Limit is set to 30.
 
 ## 5. Summary
