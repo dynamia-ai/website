@@ -1,12 +1,20 @@
 ---
-title: "HAMi vGPU Solution: Fine-Grained GPU Partitioning"
-coverTitle: "HAMi vGPU Solution: Fine-Grained GPU Partitioning"
-slug: "open-source-vgpu-hami-fine-grained-partitioning"
-date: "2025-07-21"
-excerpt: "This article introduces HAMi, an open-source GPU virtualization solution, including installation, configuration, and usage."
+title: 'HAMi vGPU Solution: Fine-Grained GPU Partitioning'
+coverTitle: 'HAMi vGPU Solution: Fine-Grained GPU Partitioning'
+date: '2025-07-21'
+excerpt: >-
+  This article introduces HAMi, an open-source GPU virtualization solution,
+  including installation, configuration, and usage.
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Technical Deep Dive"coverImage: "/images/blog/gpu1/cover2.jpg"
-language: "en"
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Computing
+category: Technical Deep Dive
+coverImage: /images/blog/gpu1/cover2.jpg
+language: en
 ---
 
 > This article introduces an open-source GPU virtualization solution: HAMi, including installation, configuration, and usage.
@@ -19,7 +27,7 @@ Before we start, let's consider a question: Why do we need GPU sharing and parti
 
 Or, to put it another way: In bare-metal environments, multiple processes can share a GPU directly—so why is this not possible in Kubernetes environments?
 
-### Resource Awareness ###
+### Resource Awareness
 
 First, in Kubernetes, resources are bound to nodes. For GPU resources, we use NVIDIA's device plugin for detection and reporting to the Kube-apiserver. This allows us to see the corresponding resources on the Node object.
 
@@ -38,7 +46,7 @@ Capacity:
 
 You can see that, in addition to basic cpu and memory, there is also `nvidia.com/gpu: 8`, indicating that there are 8 GPUs on this node.
 
-### Resource Request ###
+### Resource Request
 
 We can then request the corresponding resources when creating a Pod, such as requesting a GPU:
 
@@ -94,7 +102,7 @@ Overall architecture:
 
 As you can see, there are several components involved, such as Webhook, Scheduler, Device Plugin, HAMi-Core, etc. This article focuses on usage, so the architecture and principles are briefly mentioned.
 
-### Features ###
+### Features
 
 The main feature of HAMi is fine-grained GPU isolation, allowing you to isolate core and memory usage at the 1% level.
 
@@ -106,7 +114,7 @@ For example:
 - **nvidia.com/gpumem**: Request 3000M GPU memory
 - **nvidia.com/gpucores**: Request 30% of GPU core, meaning the Pod can only use up to 30% of the GPU's compute power
 
-### Design ###
+### Design
 
 HAMi achieves GPU core and memory isolation using a vCUDA approach. The design is as follows:
 
@@ -128,13 +136,13 @@ ps: Some CUDA and NVML APIs need to be intercepted.
 
 HAMi provides a Helm Chart for easy installation.
 
-### Deploy GPU Operator ###
+### Deploy GPU Operator
 
 HAMi depends on NVIDIA's stack, so it's recommended to deploy GPU Operator first.
 
 After deploying GPU Operator, deploy HAMi.
 
-### Deploy HAMi ###
+### Deploy HAMi
 
 First, add the HAMi Helm repo:
 
@@ -168,7 +176,7 @@ hami-device-plugin-b6mvj                          2/2     Running   0          4
 hami-scheduler-7f5c5ff968-26kjc                   2/2     Running   0          42s
 ```
 
-### Custom Configuration ###
+### Custom Configuration
 
 > 📄 Official documentation: [HAMi-config.cn.md](https://github.com/Project-HAMi/HAMi/blob/master/docs/config_cn.md)
 
@@ -204,7 +212,7 @@ For a simple demo, you can deploy with default settings.
 
 ## 4. Validation
 
-### Check Node GPU Resources ###
+### Check Node GPU Resources
 
 Similar to the TimeSlicing solution, after installation, the Node shows increased GPU resources. With one physical GPU, HAMi by default expands it 10x, so you see 1*10 = 10 GPUs on the Node.
 
@@ -214,7 +222,7 @@ Default split count is 10, configurable.
 
 ![HAMi memory calculation workflow](/images/blog/gpu1/photo11.jpg)
 
-### Validate Memory and Core Limits ###
+### Validate Memory and Core Limits
 
 Use the following yaml to create a Pod. In addition to nvidia.com/gpu, resources.limit also includes nvidia.com/gpumem and nvidia.com/gpucores to specify memory and core limits.
 
@@ -289,8 +297,6 @@ The final log is printed by HAMi's CUDA driver.
 
 > `[HAMI-core Msg(...multiprocess_memory_limit.c:434)]: Calling exit handler 16`  
 
-----
-
 ## 5. Summary
 
 This article introduced the open-source vGPU solution HAMi and validated it with a simple demo.
@@ -308,12 +314,7 @@ By replacing the libvgpu.so library in the container, HAMi intercepts CUDA APIs 
 
 **References**
 
-[1] HAMi: <https://github.com/Project-HAMi/HAMi>
-
-[2] HAMi-config-cn.md: <https://github.com/Project-HAMi/HAMi/blob/master/docs/config_cn.md>
-
-------
+- [HAMi](https://github.com/Project-HAMi/HAMi)
+- [HAMi-config-cn.md](https://github.com/Project-HAMi/HAMi/blob/master/docs/config_cn.md)
 
 *For more information about HAMi, visit the [GitHub repository](https://github.com/Project-HAMi/HAMi) or join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2).*
-
----

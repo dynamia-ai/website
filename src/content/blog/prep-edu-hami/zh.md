@@ -1,14 +1,19 @@
 ---
-title: "【PREP EDU | 密瓜智能】东南亚 AI 教育潜力独角兽，用 HAMi 构建高效 GPU 推理平台"
-coverTitle: "PREP EDU × HAMi | 东南亚教育 AI GPU 平台"
-slug: "PREP EDU-HAMi"
-date: "2025-08-08"
-excerpt: "在 AI 教育快速发展的当下，PREP EDU（prepedu.com）正逐渐成为东南亚教育科技领域的关注焦点。"
-author: "密瓜智能"
-tags: ["KubeCon", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
-category: "Customer Success Story"
-coverImage: "/images/blog/PREP-EDU-HAMi/cover.jpg"
-language: "zh"
+title: 【PREP EDU | 密瓜智能】东南亚 AI 教育潜力独角兽，用 HAMi 构建高效 GPU 推理平台
+coverTitle: PREP EDU × HAMi | 东南亚教育 AI GPU 平台
+date: '2025-08-08'
+excerpt: 在 AI 教育快速发展的当下，PREP EDU（prepedu.com）正逐渐成为东南亚教育科技领域的关注焦点。
+author: 密瓜智能
+tags:
+  - KubeCon
+  - HAMi
+  - GPU 共享
+  - 云原生
+  - Kubernetes
+  - AI 基础设施
+category: Customer Success Story
+coverImage: /images/blog/PREP-EDU-HAMi/cover.jpg
+language: zh
 ---
 
 > 作为一个由密瓜智能发起并主导的 CNCF 活跃开源项目，HAMi 由来自 15+ 国家、350+ 贡献者共同维护，已被 120+ 企业与机构在实际生产环境中采纳，具备良好的可扩展性与支持保障。

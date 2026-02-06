@@ -1,14 +1,29 @@
 ---
-title: "Deep Dive: HAMi Extended ResourceQuota | Precise GPU Resource Quota Management Implementation"
-coverTitle: "ResourceQuota-Based Precise GPU Management with HAMi"
-slug: "hami-extended-resourcequota-implementation"
-date: "2025-11-03"
-excerpt: "HAMi v2.7.0 introduces an extended ResourceQuota mechanism to address limitations of native Kubernetes ResourceQuota in GPU and heterogeneous computing scenarios. This article provides an in-depth code analysis of how HAMi solves the two major pain points of resource correlation and dynamic resources, offering precise GPU resource quota management for multi-tenant environments."
-author: "Dynamia AI Team"
-tags: ["HAMi", "ResourceQuota", "GPU", "Kubernetes", "Resource Management", "Multi-tenancy", "Deep Dive", "NVIDIA"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/hami-extended-resourcequota/cover-en.png"
-language: "en"
+title: >-
+  Deep Dive: HAMi Extended ResourceQuota | Precise GPU Resource Quota Management
+  Implementation
+coverTitle: ResourceQuota-Based Precise GPU Management with HAMi
+date: '2025-11-03'
+excerpt: >-
+  HAMi v2.7.0 introduces an extended ResourceQuota mechanism to address
+  limitations of native Kubernetes ResourceQuota in GPU and heterogeneous
+  computing scenarios. This article provides an in-depth code analysis of how
+  HAMi solves the two major pain points of resource correlation and dynamic
+  resources, offering precise GPU resource quota management for multi-tenant
+  environments.
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - ResourceQuota
+  - GPU
+  - Kubernetes
+  - Resource Management
+  - Multi-tenancy
+  - Deep Dive
+  - NVIDIA
+category: Technical Deep Dive
+coverImage: /images/blog/hami-extended-resourcequota/cover-en.png
+language: en
 ---
 
 In HAMi v2.7.0, the community introduced an **extended ResourceQuota** mechanism to address the limitations of native Kubernetes `ResourceQuota` in GPU and heterogeneous computing scenarios. This feature aims to solve two major pain points that native quota management cannot handle: "resource correlation" and "dynamic resources," providing more precise and reliable control capabilities for GPU resource governance in multi-tenant environments.

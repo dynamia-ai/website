@@ -1,14 +1,18 @@
 ---
-title: "HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现"
-coverTitle: " HAMi vGPU 原理 | device-plugin-nvidia"
-slug: "open-source-vgpu-hami-device-plugin-nvidia"
-date: "2025-07-23"
-excerpt: "本文为开源的 vGPU 方案 HAMi 实现原理分析第一篇，主要分析 hami-device-plugin-nvidia 实现原理。"
-author: "密瓜智能"
-tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu3/cover.jpg"
-language: "zh"
+title: HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现
+coverTitle: ' HAMi vGPU 原理 | device-plugin-nvidia'
+date: '2025-07-23'
+excerpt: 本文为开源的 vGPU 方案 HAMi 实现原理分析第一篇，主要分析 hami-device-plugin-nvidia 实现原理。
+author: 密瓜智能
+tags:
+  - HAMi
+  - GPU 共享
+  - vGPU
+  - Kubernetes
+  - 异构算力
+category: Technical Deep Dive
+coverImage: /images/blog/gpu3/cover.jpg
+language: zh
 ---
 
 本文为开源 vGPU 方案 HAMI 实现原理分析第一篇，主要分析 hami-device-plugin-nvidia 实现原理。

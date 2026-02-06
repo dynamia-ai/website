@@ -1,14 +1,18 @@
 ---
-title: "HAMi vGPU 方案：实现细粒度 GPU 切分"
-coverTitle: "开源 vGPU 方案：HAMi GPU 细粒度切分"
-slug: "open-source-vgpu-hami-fine-grained-partitioning"
-date: "2025-07-21"
-excerpt: "本文主要分享一个开源的 GPU 虚拟化方案：HAMi，包括如何安装、配置以及使用。"
+title: HAMi vGPU 方案：实现细粒度 GPU 切分
+coverTitle: 开源 vGPU 方案：HAMi GPU 细粒度切分
+date: '2025-07-21'
+excerpt: 本文主要分享一个开源的 GPU 虚拟化方案：HAMi，包括如何安装、配置以及使用。
 author: 密瓜智能
-tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu1/cover.jpg"
-language: "zh"
+tags:
+  - HAMi
+  - GPU 共享
+  - vGPU
+  - Kubernetes
+  - 异构算力
+category: Technical Deep Dive
+coverImage: /images/blog/gpu1/cover.jpg
+language: zh
 ---
 
 > 本文主要分享一个开源的 GPU 虚拟化方案：HAMi，包括如何安装、配置以及使用。
@@ -335,12 +339,7 @@ Mon Apr 29 06:22:16 2024
 
 **参考资料**
 
-[1]HAMi: <https://github.com/Project-HAMi/HAMi>
-
-[2]HAMi-config-cn.md: <https://github.com/Project-HAMi/HAMi/blob/master/docs/config_cn.md>
-
-------
+- [HAMi](https://github.com/Project-HAMi/HAMi)
+- [HAMi-config-cn.md](https://github.com/Project-HAMi/HAMi/blob/master/docs/config_cn.md)
 
 *想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*
-
----

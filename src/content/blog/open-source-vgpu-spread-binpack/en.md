@@ -1,12 +1,23 @@
 ---
-title: "HAMI vGPU Principle Analysis Part 4: Spread & Binpack Advanced Scheduling Strategy Implementation"
-coverTitle: "Inside the HAMi vGPU Scheduler Implementation"
-slug: "open-source-vgpu-hami-spread-binpack-analysis"
-date: "2025-07-26"
-excerpt: "This is the fourth article in the HAMI principle analysis series, analyzing how hami-scheduler selects nodes during scheduling, i.e., how advanced scheduling strategies like Spread and Binpack are implemented."
+title: >-
+  HAMI vGPU Principle Analysis Part 4: Spread & Binpack Advanced Scheduling
+  Strategy Implementation
+coverTitle: Inside the HAMi vGPU Scheduler Implementation
+date: '2025-07-26'
+excerpt: >-
+  This is the fourth article in the HAMI principle analysis series, analyzing
+  how hami-scheduler selects nodes during scheduling, i.e., how advanced
+  scheduling strategies like Spread and Binpack are implemented.
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Technical Deep Dive"coverImage: "/images/blog/gpu6/cover2.jpg"
-language: "en"
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Computing
+category: Technical Deep Dive
+coverImage: /images/blog/gpu6/cover2.jpg
+language: en
 ---
 
 
@@ -470,6 +481,3 @@ The implementation for both can be broken down into these steps:
 ---
 
 *To learn more about the HAMI project, please visit the [GitHub repository](https://github.com/Project-HAMi/HAMi) or join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2).*
----
-
-```

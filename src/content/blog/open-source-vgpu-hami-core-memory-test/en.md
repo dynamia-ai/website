@@ -1,14 +1,20 @@
 ---
-title: "HAMI vGPU Solution: Core & Memory Isolation Test"
-coverTitle: "HAMI vGPU Solution: Core & Memory Isolation Test"
-slug: "open-source-vgpu-hami-core-memory-test"
-date: "2025-07-22"
-excerpt: "In the previous post, I introduced the open-source vGPU solution HAMI. This article focuses on testing its GPU Core & Memory isolation features."
-author: "Dynamia AI Team"
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu2/cover2.jpg"
-language: "en"
+title: 'HAMI vGPU Solution: Core & Memory Isolation Test'
+coverTitle: 'HAMI vGPU Solution: Core & Memory Isolation Test'
+date: '2025-07-22'
+excerpt: >-
+  In the previous post, I introduced the open-source vGPU solution HAMI. This
+  article focuses on testing its GPU Core & Memory isolation features.
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Computing
+category: Technical Deep Dive
+coverImage: /images/blog/gpu2/cover2.jpg
+language: en
 ---
 
 I previously shared an overview of the open-source vGPU solution, HAMI. This article will focus on testing its GPU Core and Memory isolation capabilities.

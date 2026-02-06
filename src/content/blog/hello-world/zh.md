@@ -1,14 +1,16 @@
 ---
-title: "Hello World - 欢迎来到我们的博客"
-coverTitle: "Hello World - 欢迎来到我们的博客"
-slug: "hello-world"
-date: "2025-06-25"
-excerpt: "欢迎来到我们的全新博客！这是我们的第一篇文章，展示 HAMi 和 Dynamia AI 的强大功能。"
-author: "密瓜智能"
-tags: ["欢迎", "博客", "HAMi", "入门指南"]
-category: "Company News"
-# coverImage: "/images/blog/hello-world.svg"  # 注释掉以使用动态生成的背景图
-language: "zh"
+title: Hello World - 欢迎来到我们的博客
+coverTitle: Hello World - 欢迎来到我们的博客
+date: '2025-06-25'
+excerpt: 欢迎来到我们的全新博客！这是我们的第一篇文章，展示 HAMi 和 Dynamia AI 的强大功能。
+author: 密瓜智能
+tags:
+  - 欢迎
+  - 博客
+  - HAMi
+  - 入门指南
+category: Company News
+language: zh
 ---
 
 欢迎来到 Dynamia AI 官方博客！我们很高兴推出这个平台，在这里我们将分享关于 HAMi 和异构计算未来的见解、教程、案例研究和更新。

@@ -1,14 +1,20 @@
 ---
-title: "HAMi vGPU 原理分析 Part2：hami-webhook 原理分析"
-coverTitle: "HAMi-webhook 原理分析与实现"
-slug: "open-source-vgpu-hami-webhook-analysis"
-date: "2025-07-24"
-excerpt: "上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。本文为 HAMi 原理分析的第二篇，分析 hami-scheduler 实现原理。"
-author: "密瓜智能"
-tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu4/cover.jpg"
-language: "zh"
+title: HAMi vGPU 原理分析 Part2：hami-webhook 原理分析
+coverTitle: HAMi-webhook 原理分析与实现
+date: '2025-07-24'
+excerpt: >-
+  上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。本文为
+  HAMi 原理分析的第二篇，分析 hami-scheduler 实现原理。
+author: 密瓜智能
+tags:
+  - HAMi
+  - GPU 共享
+  - vGPU
+  - Kubernetes
+  - 异构算力
+category: Technical Deep Dive
+coverImage: /images/blog/gpu4/cover.jpg
+language: zh
 ---
 
 上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。
@@ -151,7 +157,7 @@ router.GET("/healthz",  routes.HealthzRoute())       // liveness probe
 
 核心功能是：**根据 Pod Resource 字段中的 ResourceName 判断该 Pod 是否使用了 HAMi vGPU，如果是则修改 Pod 的 SchedulerName 为 hami-scheduler，让 hami-scheduler 进行调度，否则不做处理。**
 
-### MutatingWebhookConfiguration ###
+### MutatingWebhookConfiguration
 
 为了让 Webhook 生效，HAMi 部署时会创建 **MutatingWebhookConfiguration** 对象，具体内容如下：
 
@@ -255,7 +261,7 @@ service:
   
   接下来就开始分析 hami-webhook 具体做了什么。
 
-### 源码分析 ###
+### 源码分析
 
   这个 Webhook 的具体实现如下：
 
@@ -313,11 +319,11 @@ func (h *webhook) Handle(_ context.Context, req admission.Request) admission.Res
 
 至此，核心部分就是如何判断该 Pod 是否需要使用 hami-scheduler 进行调度呢？
 
-### 如何判断是否使用 hami-scheduler ###
+### 如何判断是否使用 hami-scheduler
 
 Webhook 中主要根据 Pod 是否申请 vGPU 资源来确定，不过也有一些特殊逻辑。
 
-### 特权模式 Pod ###
+### 特权模式 Pod
 
 首先对于特权模式的 Pod，HAMi 是直接忽略的
 
@@ -332,7 +338,7 @@ if ctr.SecurityContext != nil {
 
 因为开启特权模式之后，Pod 可以访问宿主机上的所有设备，再做限制也没意义了，因此这里直接忽略。
 
-### 具体判断逻辑 ###
+### 具体判断逻辑
 
 然后根据 Pod 中的 Resource 来判断是否需要使用 hami-scheduler 进行调度：
 
@@ -459,7 +465,7 @@ if resourceCoresOK || resourceMemOK || resourceMemPercentageOK {
 }
 ```
 
-### 修改SchedulerName ###
+### 修改SchedulerName
 
 对于上述满足条件的 Pod，需要由 HAMi-Scheduler 进行调度，Webhook 中会将 Pod 的 spec.schedulerName 改成 hami-scheduler。
 
@@ -486,7 +492,7 @@ if pod.Spec.NodeName != "" {
 
 ---
 
-## 3.小结 ##
+## 3.小结
 
 该 Webhook 的作用为：将申请了 vGPU 资源的 Pod 的调度器修改为 hami-scheduler，后续使用 hami-scheduler 进行调度。
 
@@ -525,4 +531,3 @@ if pod.Spec.NodeName != "" {
 ---
 
 *想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*
----

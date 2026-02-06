@@ -1,13 +1,23 @@
 ---
-title: "不卷算力卷效率｜HAMi Meetup 上海站技术笔记全回顾！"
-slug: "hami-meetup-shanghai"
-date: "2025-12-16"
-excerpt: '本次 HAMi Meetup 于 11 月 30 日在上海成功举办，围绕「不卷算力卷效率」主题，聚焦 GPU 虚拟化与异构算力调度实践。来自 CNCF 及多家企业的专家分享了 HAMi 在调度可观测性、GPU 共享、国产算力适配与云原生 AI 基建方面的最新进展与落地经验。'
-author: "密瓜智能"
-tags: ["HAMi", "异构算力调度", "GPU 虚拟化", "云原生 AI", "Kubernetes", "国产算力", "AI 训练与推理优化", "开源生态", "HAMi Meetup"]
-category: "Community & Events"
-coverImage: "/images/blog/hami-meetup-shanghai/cover.png"
-language: "zh"
+title: 不卷算力卷效率｜HAMi Meetup 上海站技术笔记全回顾！
+date: '2025-12-16'
+excerpt: >-
+  本次 HAMi Meetup 于 11 月 30 日在上海成功举办，围绕「不卷算力卷效率」主题，聚焦 GPU 虚拟化与异构算力调度实践。来自 CNCF
+  及多家企业的专家分享了 HAMi 在调度可观测性、GPU 共享、国产算力适配与云原生 AI 基建方面的最新进展与落地经验。
+author: 密瓜智能
+tags:
+  - HAMi
+  - 异构算力调度
+  - GPU 虚拟化
+  - 云原生 AI
+  - Kubernetes
+  - 国产算力
+  - AI 训练与推理优化
+  - 开源生态
+  - HAMi Meetup
+category: Community & Events
+coverImage: /images/blog/hami-meetup-shanghai/cover.png
+language: zh
 ---
 
 ![HAMi Meetup 上海站](/images/blog/hami-meetup-shanghai/cover.png)

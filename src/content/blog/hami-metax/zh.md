@@ -1,14 +1,27 @@
 ---
-title: "【原理解析】HAMi × 沐曦 MetaX | sGPU 共享、三档 QoS、拓扑智能调度与 WebUI 全面适配"
-coverTitle: "sGPU 共享、三档 QoS、拓扑智能调度与 WebUl 全面适配"
-slug: "HAMi-Metax-SGPU-QoS-Topology-Scheduling"
-date: "2025-10-13"
-excerpt: "HAMi v2.7.0 版本与沐曦 MetaX 深度整合，推出统一调度方案，实现 sGPU 共享、三档 QoS、拓扑智能调度与 WebUI 适配，本文从功能到代码剖析核心实现原理。"
-author: "密瓜智能"
-tags: ["HAMi", "MetaX", "sGPU", "GPU 共享", "QoS", "拓扑感知调度", "WebUI", "MetaXLink", "DevicePlugin", "binpack", "spread", "GPU 虚拟化"]
-category: "Integration & Ecosystem"
-coverImage: "/images/blog/hami-MetaX/coverpage-Hami-MetaX.png"
-language: "zh"
+title: 【原理解析】HAMi × 沐曦 MetaX | sGPU 共享、三档 QoS、拓扑智能调度与 WebUI 全面适配
+coverTitle: sGPU 共享、三档 QoS、拓扑智能调度与 WebUl 全面适配
+date: '2025-10-13'
+excerpt: >-
+  HAMi v2.7.0 版本与沐曦 MetaX 深度整合，推出统一调度方案，实现 sGPU 共享、三档 QoS、拓扑智能调度与 WebUI
+  适配，本文从功能到代码剖析核心实现原理。
+author: 密瓜智能
+tags:
+  - HAMi
+  - MetaX
+  - sGPU
+  - GPU 共享
+  - QoS
+  - 拓扑感知调度
+  - WebUI
+  - MetaXLink
+  - DevicePlugin
+  - binpack
+  - spread
+  - GPU 虚拟化
+category: Integration & Ecosystem
+coverImage: /images/blog/hami-MetaX/coverpage-Hami-MetaX.png
+language: zh
 ---
 
 

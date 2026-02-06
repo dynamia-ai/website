@@ -1,14 +1,23 @@
 ---
-title: "【架构解析】HAMi 设备抽象层：以燧原 GCU 为例看异构算力快速集成"
-coverTitle: "【架构】HAMi 设备抽象层 | 以燧原 GCU 为例看异构算力快速集成"
-slug: "hami-device-abstraction-enflame-gcu-integration"
-date: "2025-10-22"
-excerpt: "HAMi 通过精心设计的设备抽象层，为异构算力的快速集成提供了优雅的解决方案。本文深入解析这一核心架构，并以 v2.7.0 版本中集成的燧原 GCU 为例，展示厂商或社区开发者如何基于此架构快速实现对新硬件的支持。"
-author: "Dynamia AI Team"
-tags: ["HAMi", "Device Abstraction", "Enflame GCU", "vGCU", "Architecture", "Heterogeneous Computing", "Kubernetes", "Integration"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/hami-device-abstraction-gcu/cover-zh.png"
-language: "zh"
+title: 【架构解析】HAMi 设备抽象层：以燧原 GCU 为例看异构算力快速集成
+coverTitle: 【架构】HAMi 设备抽象层 | 以燧原 GCU 为例看异构算力快速集成
+date: '2025-10-22'
+excerpt: >-
+  HAMi 通过精心设计的设备抽象层，为异构算力的快速集成提供了优雅的解决方案。本文深入解析这一核心架构，并以 v2.7.0 版本中集成的燧原 GCU
+  为例，展示厂商或社区开发者如何基于此架构快速实现对新硬件的支持。
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - Device Abstraction
+  - Enflame GCU
+  - vGCU
+  - Architecture
+  - Heterogeneous Computing
+  - Kubernetes
+  - Integration
+category: Technical Deep Dive
+coverImage: /images/blog/hami-device-abstraction-gcu/cover-zh.png
+language: zh
 ---
 
 在云原生时代，AI 和高性能计算场景下的硬件呈现出百花齐放的态势，调度系统如何高效、快速地适配层出不穷的异构算力，成为了衡量其扩展性的关键。

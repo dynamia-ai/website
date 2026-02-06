@@ -1,30 +1,35 @@
 ---
-title: "Deploy Dynamia AI Platform on AWS with EKS"
-coverTitle: "Deploy Dynamia AI Platform on AWS with EKS"
-slug: "deploy-dynamia-ai-aws"
-date: "2025-09-26"
-excerpt: "Follow this battle-tested checklist to prepare IAM, install cluster add-ons, and roll out the Dynamia AI Platform on Amazon EKS in about an hour."
-# TODO: Confirm author attribution before publishing
-author: "Dynamia AI Team"
-tags: ["Dynamia AI Platform", "AWS", "EKS", "Helm", "HAMi", "NVIDIA"]
-category: "Integration & Ecosystem"
-coverImage: "/images/blog/aws/aws-install-coverpage.png"
-language: "en"
+title: Deploy Dynamia AI Platform on AWS with EKS
+coverTitle: Deploy Dynamia AI Platform on AWS with EKS
+date: '2025-09-26'
+excerpt: >-
+  Follow this battle-tested checklist to prepare IAM, install cluster add-ons,
+  and roll out the Dynamia AI Platform on Amazon EKS in about an hour.
+author: Dynamia AI Team
+tags:
+  - Dynamia AI Platform
+  - AWS
+  - EKS
+  - Helm
+  - HAMi
+  - NVIDIA
+category: Integration & Ecosystem
+coverImage: /images/blog/aws/aws-install-coverpage.png
+language: en
 aiRepostLinks:
-  - label: "ChatGPT Summary"
-    description: "AI-generated highlights of this deployment guide"
-    url: "https://chat.openai.com/"
-    icon: "chatgpt"
-  - label: "Claude Recap"
-    description: "Quick take from Claude on AWS setup steps"
-    url: "https://claude.ai/"
-    icon: "claude"
-  - label: "Gemini Notes"
-    description: "Google Gemini walkthrough and reminders"
-    url: "https://gemini.google.com/"
-    icon: "gemini"
+  - label: ChatGPT Summary
+    description: AI-generated highlights of this deployment guide
+    url: 'https://chat.openai.com/'
+    icon: chatgpt
+  - label: Claude Recap
+    description: Quick take from Claude on AWS setup steps
+    url: 'https://claude.ai/'
+    icon: claude
+  - label: Gemini Notes
+    description: Google Gemini walkthrough and reminders
+    url: 'https://gemini.google.com/'
+    icon: gemini
 ---
-# Dynamia AI Platform AWS Installation Guide
 
 Use this guide to deploy Dynamia AI Platform on AWS, including the required IAM role, supporting components, and Helm charts.
 

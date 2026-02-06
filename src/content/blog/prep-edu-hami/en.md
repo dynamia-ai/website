@@ -1,14 +1,23 @@
 ---
-title: "【PREP EDU | HAMi Project Team】Southeast Asia's Potential AI Education Unicorn Builds an Efficient GPU Inference Platform with HAMi"
-coverTitle: "PREP EDU × HAMi: Scaling AI Workloads in Southeast Asia"
-slug: "PREP-EDU-HAMi"
-date: "2025-08-08"
-excerpt: "In the fast-growing field of AI education, PREP EDU (prepedu.com) is emerging as a focal point in Southeast Asia's EdTech sector."
-author: "Dynamia AI Team"
-tags: ["KubeCon", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-category: "Customer Success Story"
-coverImage: "/images/blog/PREP-EDU-HAMi/cover2.jpg"
-language: "en"
+title: >-
+  【PREP EDU | HAMi Project Team】Southeast Asia's Potential AI Education Unicorn
+  Builds an Efficient GPU Inference Platform with HAMi
+coverTitle: 'PREP EDU × HAMi: Scaling AI Workloads in Southeast Asia'
+date: '2025-08-08'
+excerpt: >-
+  In the fast-growing field of AI education, PREP EDU (prepedu.com) is emerging
+  as a focal point in Southeast Asia's EdTech sector.
+author: Dynamia AI Team
+tags:
+  - KubeCon
+  - HAMi
+  - GPU Sharing
+  - Cloud Native
+  - Kubernetes
+  - AI Infrastructure
+category: Customer Success Story
+coverImage: /images/blog/PREP-EDU-HAMi/cover2.jpg
+language: en
 ---
 
 > As an active CNCF open-source project initiated and led by Melon Intelligence, HAMi is co-maintained by over 350 contributors from more than 15 countries and has been adopted in production environments by over 120 enterprises and institutions, demonstrating its excellent scalability and support.

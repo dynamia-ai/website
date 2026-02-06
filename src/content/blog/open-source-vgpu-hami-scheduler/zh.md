@@ -1,14 +1,18 @@
 ---
-title: "HAMi vGPU 原理分析 Part3：hami- scheduler 工作流程分析"
-coverTitle: "HAMi-scheduler 工作流程分析"
-slug: "open-source-vgpu-hami-scheduler-analysis"
-date: "2025-07-25"
-excerpt: "本文为 HAMi 原理分析的第三篇，分析 hami-scheduler 工作流程。"
+title: HAMi vGPU 原理分析 Part3：hami- scheduler 工作流程分析
+coverTitle: HAMi-scheduler 工作流程分析
+date: '2025-07-25'
+excerpt: 本文为 HAMi 原理分析的第三篇，分析 hami-scheduler 工作流程。
 author: 密瓜智能
-tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu5/cover.jpg"
-language: "zh"
+tags:
+  - HAMi
+  - GPU 共享
+  - vGPU
+  - Kubernetes
+  - 异构算力
+category: Technical Deep Dive
+coverImage: /images/blog/gpu5/cover.jpg
+language: zh
 ---
 
 上篇我们分析了 hami-webhook，该 Webhook 将申请了 vGPU 资源的 Pod 的调度器修改为 hami-scheduler，后续使用 hami-scheduler 进行调度。

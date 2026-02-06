@@ -1,14 +1,29 @@
 ---
-title: "Virtualizing Any GPU on AWS with HAMi: Free Memory Isolation"
-coverTitle: "Virtualizing Any GPU on AWS with HAMi: Free Memory Isolation"
-slug: "virtualizing-gpu-aws-hami-free-memory-isolation"
-date: "2025-09-16"
-excerpt: "This article takes the PR as an entry point, combined with community Issues and mailing records, to fully restore a 'HAMi × vLLM' landing path from deployment to verification, helping you quickly achieve multi-model deployment and resource reuse in Kubernetes."
-author: "Dynamia"
-tags: ["HAMi", "GPU Virtualization", "AWS", "Kubernetes", "vLLM", "GPU Memory Isolation", "Multi-Model Inference", "Cloud AI", "GPU Binpacking", "EKS", "Terraform", "AI Infrastructure"]
-category: "Integration & Ecosystem"
-coverImage: "/images/blog/Demystifying-the-Reservation-Pod/cover.jpg"
-language: "en"
+title: 'Virtualizing Any GPU on AWS with HAMi: Free Memory Isolation'
+coverTitle: 'Virtualizing Any GPU on AWS with HAMi: Free Memory Isolation'
+date: '2025-09-16'
+excerpt: >-
+  This article takes the PR as an entry point, combined with community Issues
+  and mailing records, to fully restore a 'HAMi × vLLM' landing path from
+  deployment to verification, helping you quickly achieve multi-model deployment
+  and resource reuse in Kubernetes.
+author: Dynamia
+tags:
+  - HAMi
+  - GPU Virtualization
+  - AWS
+  - Kubernetes
+  - vLLM
+  - GPU Memory Isolation
+  - Multi-Model Inference
+  - Cloud AI
+  - GPU Binpacking
+  - EKS
+  - Terraform
+  - AI Infrastructure
+category: Integration & Ecosystem
+coverImage: /images/blog/Demystifying-the-Reservation-Pod/cover.jpg
+language: en
 ---
 
 **TL;DR:** This guide spins up an AWS EKS cluster with two GPU node groups (T4 and A10G), installs HAMi automatically, and deploys three vLLM services that share a single physical GPU per node using free memory isolation. You’ll see GPU‑dimension binpack in action: multiple Pods co‑located on the same GPU when limits allow.

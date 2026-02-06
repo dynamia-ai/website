@@ -1,12 +1,20 @@
 ---
-title: "HAMI vGPU Principle Analysis Part 3: hami-scheduler Workflow Analysis"
-coverTitle: "HAMi vGPU Scheduler Workflow Explained"
-slug: "open-source-vgpu-hami-scheduler-analysis"
-date: "2025-07-25"
-excerpt: "This is the third article in the HAMI principle analysis series, analyzing the hami-scheduler workflow."
+title: 'HAMI vGPU Principle Analysis Part 3: hami-scheduler Workflow Analysis'
+coverTitle: HAMi vGPU Scheduler Workflow Explained
+date: '2025-07-25'
+excerpt: >-
+  This is the third article in the HAMI principle analysis series, analyzing the
+  hami-scheduler workflow.
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Technical Deep Dive"coverImage: "/images/blog/gpu5/cover2.jpg"
-language: "en"
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Computing
+category: Technical Deep Dive
+coverImage: /images/blog/gpu5/cover2.jpg
+language: en
 ---
 
 

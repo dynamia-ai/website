@@ -1,12 +1,20 @@
 ---
-title: "Precise and Elegant: HAMi's Scheduling Feature by GPU Type and UUID"
-coverTitle: "Precise and Elegant: HAMi's Scheduling Feature by GPU Type and UUID"
-slug: "open-source-vgpu-hami-UUID"
-date: "2025-07-30"
-excerpt: "In this article, we analyze HAMi's scheduling feature: fine-grained scheduling based on GPU type and even UUID."
+title: 'Precise and Elegant: HAMi''s Scheduling Feature by GPU Type and UUID'
+coverTitle: 'Precise and Elegant: HAMi''s Scheduling Feature by GPU Type and UUID'
+date: '2025-07-30'
+excerpt: >-
+  In this article, we analyze HAMi's scheduling feature: fine-grained scheduling
+  based on GPU type and even UUID.
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Technical Deep Dive"coverImage: "/images/blog/gpu9/cover2.jpg"
-language: "en"
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Computing
+category: Technical Deep Dive
+coverImage: /images/blog/gpu9/cover2.jpg
+language: en
 ---
 
 This article is adapted from: <https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw>
