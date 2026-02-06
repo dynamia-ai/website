@@ -11,6 +11,7 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
 import { cache } from 'react';
 import { BlogPost, BlogPostMeta, BlogPostsResult, TocItem } from '@/types/blog';
+import rehypeImageCaptions from './rehype-image-captions';
 
 const CONTENT_PATH = path.join(process.cwd(), 'src/content/blog');
 
@@ -207,7 +208,10 @@ function extractTocFromAST(ast: any): TocItem[] {
 }
 
 // Convert markdown to HTML and extract TOC
-export async function markdownToHtml(markdown: string): Promise<{ html: string; toc: TocItem[] }> {
+export async function markdownToHtml(
+  markdown: string,
+  language: 'en' | 'zh' = 'en'
+): Promise<{ html: string; toc: TocItem[] }> {
   // 先解析为 AST 以提取目录
   const ast = await unified()
     .use(remarkParse)
@@ -226,6 +230,7 @@ export async function markdownToHtml(markdown: string): Promise<{ html: string; 
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw) // Parse raw HTML in markdown
     .use(rehypeHighlight) // Syntax highlighting
+    .use(rehypeImageCaptions, { language }) // Add image captions with numbering
     .use(rehypeStringify)
     .process(markdown);
 

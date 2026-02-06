@@ -436,6 +436,51 @@ body {
   }
 }
 
+/* Image figure wrapper for captions */
+.blog-content figure.blog-image-figure {
+  margin: 2rem 0;
+  padding: 0;
+  text-align: center;
+  break-inside: avoid; /* Prevent figure from splitting across pages/columns */
+}
+
+/* Ensure images inside figures maintain existing styles */
+.blog-content figure.blog-image-figure img {
+  margin: 0 0 1rem 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Image caption styling */
+.blog-content figcaption.blog-image-caption {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  padding: 0 0.5rem;
+  font-style: normal;
+  text-align: center;
+  font-weight: normal;
+}
+
+/* Mobile optimization for image captions */
+@media (max-width: 768px) {
+  .blog-content figure.blog-image-figure {
+    margin: 1.5rem 0;
+  }
+
+  .blog-content figcaption.blog-image-caption {
+    font-size: 0.8125rem;
+    padding: 0 0.25rem;
+  }
+
+  .blog-content figure.blog-image-figure img {
+    border-radius: 0.375rem;
+  }
+}
+
 .menu-item a:hover {
   background-color: var(--service-bg-hover, #F7FAFF);
 }
