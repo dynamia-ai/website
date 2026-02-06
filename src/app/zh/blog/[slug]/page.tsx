@@ -68,8 +68,8 @@ export default async function ZhBlogPostPage({ params }: PageProps) {
   }
 
   // Convert markdown to HTML and extract TOC for both languages if they exist
-  const enResult = enPost ? await markdownToHtml(enPost.content) : null;
-  const zhResult = zhPost ? await markdownToHtml(zhPost.content) : null;
+  const enResult = enPost ? await markdownToHtml(enPost.content, 'en') : null;
+  const zhResult = zhPost ? await markdownToHtml(zhPost.content, 'zh') : null;
 
   return (
     <BlogPostClient 

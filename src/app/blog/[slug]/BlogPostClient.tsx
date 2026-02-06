@@ -221,8 +221,8 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
       return;
     }
 
-    // Add cursor pointer style to all images
-    const images = container.querySelectorAll('img');
+    // Add cursor pointer style to all images within figures
+    const images = container.querySelectorAll('.blog-content figure img');
     images.forEach((img) => {
       (img as HTMLImageElement).style.cursor = 'pointer';
     });
@@ -230,7 +230,10 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     // Use event delegation for better performance and to avoid cleanup issues
     const handleImageClick = (e: Event) => {
       const target = e.target as HTMLImageElement;
-      if (target.tagName === 'IMG' && container.contains(target)) {
+      // Check if clicked element is an image within a figure
+      if (target.tagName === 'IMG' &&
+          target.closest('.blog-image-figure') &&
+          container.contains(target)) {
         setLightboxImage({
           src: target.src,
           alt: target.alt || 'Image'
