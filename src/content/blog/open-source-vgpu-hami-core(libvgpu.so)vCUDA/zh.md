@@ -18,7 +18,7 @@ language: "zh"
 
 本文摘自：<https://mp.weixin.qq.com/s/vN3uDRPpAP3UmE2Hgn75vg>
 
-![p1](/images/blog/gpu7/p1.jpg)
+![HAMi vGPU 核心架构图](/images/blog/gpu7/p1.jpg)
 
 主要解决下面这几个问题：
 
@@ -645,7 +645,7 @@ resources:
     nvidia.com/gpumem: 3000    # identifies 3G GPU memory each physical GPU allocates to the pod
 ```
 
-![p2](/images/blog/gpu7/p2.jpg)
+![vGPU 内存管理流程图](/images/blog/gpu7/p2.jpg)
 
 具体怎么实现的呢？其实是拦截的 NVML 中的 _nvmlDeviceGetMemoryInfo API。
 
@@ -1342,7 +1342,7 @@ int delta(int up_limit, int user_current, int share) {
 
 这也符合，之前 试[开源 vGPU 方案 HAMi: core\&memory 隔离测](https://dynamia.ai/zh/blog/open-source-vgpu-hami-core-memory-test) 测试的结果，GPU 使用率短期看可能会超过阈值，但是时间拉长来看，平均值始终在阈值附近波动。
 
-![p3](/images/blog/gpu7/p3.jpg)
+![vGPU 内存分配与隔离示意图](/images/blog/gpu7/p3.jpg)
 
 > 上图为 GPU Core Limit 设置为 30 时的测试结果
 

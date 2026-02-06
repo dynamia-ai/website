@@ -212,7 +212,7 @@ demo-d-node-spread-gpu-spread-c4555d97c-k727x  ip-10-0-52-161.us-west-2.compute.
   [KEP **#5004**](https://github.com/kubernetes/enhancements/blob/3ffc27b7413e285d429025a422dd79473d3e9b50/keps/sig-scheduling/5004-dra-extended-resource/README.md) (DRA: handle extended resource requests via DRA driver)
   [Issue **#133669**](https://github.com/kubernetes/kubernetes/issues/133669) (add  **`dynamicresources` scorer** ; correct bin-packing required for Beta)
 
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
+![HAMi heterogeneous computing support architecture diagram](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia focuses on CNCF HAMi as the core foundation, providing flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing scheduling, and unified management global solutions. It can be deployed in a plug-in, lightweight, non-intrusive way in any public cloud, private cloud, or hybrid cloud environment, and supports heterogeneous chips such as NVIDIA, Ascend, Muxi, Cambricon, Hygon, Moore Threads, and Biren.
 

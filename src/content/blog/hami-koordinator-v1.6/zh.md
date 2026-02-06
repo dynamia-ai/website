@@ -45,7 +45,7 @@ language: "zh"
 
 3. 对于华为的晟腾 NPU 以及虚拟化环境中采用 SharedNVSwitch 模式的 NVIDIA H 系列机器，GPU 的分配需要遵守一些预定义的 Partition 规则。
 
-![p1](/images/blog/Koordinator-v1.6/p1.png)
+![HAMi 与 Koordinator 集成架构图](/images/blog/Koordinator-v1.6/p1.png)
 
 Koordinator 针对上述设备场景，提供了丰富的设备拓扑调度 API 来满足 Pod 对于 GPU 拓扑的诉求。下面是这些 API 的使用举例：
 
@@ -174,11 +174,11 @@ spec:
 
 ### 2、端到端 GDR 支持：提升跨机任务的互联性能
 
-![p2](/images/blog/Koordinator-v1.6/p2.png)
+![Koordinator 配额管理系统示意图](/images/blog/Koordinator-v1.6/p2.png)
 
 在 AI 模型训练场景中，GPU 之间需要进行频繁的集合通信，以同步训练过程迭代更新的权重。GDR 全称叫做 GPUDirect RDMA，其目的是解决多机 GPU 设备之间交换数据的效率问题。通过 GDR 技术多机之间 GPU 交换数据可以不经过 CPU 和内存，大幅节省 CPU/Memory 开销同时降低延时。为了实现这一目标，Koordinator v1.6.0 版本中设计实现了 GPU/RDMA 设备联合调度特性，整体架构如下：
 
-![p3](/images/blog/Koordinator-v1.6/p3.png)
+![HAMi-Koordinator 设备编排流程图](/images/blog/Koordinator-v1.6/p3.png)
 
 1. Koordlet 检测节点上的 GPU 和 RDMA 设备，并将相关信息上报给 Device CR。
 
@@ -238,7 +238,7 @@ spec:
 
 为了解决这一问题，Koordinator 结合 HAMi 为用户提供了 GPU 共享隔离的能力，允许多个 Pod 共享同一张 GPU 卡。通过这种方式，不仅可以显著提高 GPU 的资源利用率，还能降低企业成本，同时满足不同任务对资源的灵活需求。例如，在 Koordinator 的 GPU 共享模式下，用户可以精确分配 GPU 核心数或显存比例，确保每个任务都能获得所需的资源，同时避免相互干扰。
 
-![p4](/images/blog/Koordinator-v1.6/p4.png)
+![Pod 资源分配工作流程图](/images/blog/Koordinator-v1.6/p4.png)
 
 HAMi 是 CNCF Sandbox 项目，旨在为 Kubernetes 提供一个设备管理中间件。HAMi-Core 是它的核心模块，通过劫持 CUDA-Runtime（libcudart.so）和 CUDA-Driver（libcuda.so）之间的 API 调用提供 GPU 共享隔离能力。在 v1.6.0 版本中，Koordinator 利用 HAMi-Core 的 GPU 隔离功能，提供端到端的 GPU 共享解决方案。
 
@@ -398,7 +398,7 @@ spec:
 
 - 在多租户环境中，某些用户可能只申请 CPU 和内存资源，而另一些用户则需要 GPU 资源。如果调度器不能区分这些需求，可能会导致资源争用和不公平的资源分配。
 
-![p5](/images/blog/Koordinator-v1.6/p5.png)
+![GPU 设备共享与隔离架构图](/images/blog/Koordinator-v1.6/p5.png)
 
 Kubernetes 原生的 NodeResourcesFit 插件目前对不同资源只支持配置同样的打分策略，举例如下：
 
@@ -685,7 +685,7 @@ profiles:
 
 Mid 资源超卖从 Koordinator v1.3 版本开始引入，提供基于[节点画像](https://koordinator.sh/docs/designs/node-prediction/)的动态资源超卖能力。但是，为了确保超卖资源的稳定性，Mid 资源完全从节点上已分配的 Prod pods 中获取，意味着空节点一开始是没有 Mid 资源的，这给一些工作负载使用 Mid 资源带来了诸多不便，Koordinator 社区也收到了一些企业用户的反馈和贡献。
 
-![p6](/images/blog/Koordinator-v1.6/p6.png)
+![HAMi-Koordinator 资源调度流程图](/images/blog/Koordinator-v1.6/p6.png)
 
 在 v1.6 版本中，Koordinator 更新了超卖计算公式，如下：
 

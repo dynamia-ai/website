@@ -91,7 +91,7 @@ ${docker_image:tag} \
 /bin/bash
 ```
 
-**可以看到除了通过 --device 方式挂载 kfd、dri、mkfd 等设备文件之外，还额外挂载了一个 /etc/vdev/vdev0.conf 文件到容器里**
+可以看到除了通过 --device 方式挂载 kfd、dri、mkfd 等设备文件之外，还额外挂载了一个 /etc/vdev/vdev0.conf 文件到容器里。
 
 实际上这个文件就是 vDCU 的配置文件，内部记录了该 vDCU 的详细信息。
 

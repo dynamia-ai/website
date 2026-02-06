@@ -35,7 +35,7 @@ On 2025-02-06, HAMi v2.5.0 was released, adding dynamic MIG support while also s
 - Enhanced log information to provide a clearer understanding of HAMi's operation.
 - Updated Grafana Dashboard for a clearer and more intuitive interface.
 
-![p1](/images/blog/gpu8/p1.jpg)
+![HAMi v2.5.0 overview diagram showing new features and improvements](/images/blog/gpu8/p1.jpg)
 
 **Documentation:**
 
@@ -47,9 +47,9 @@ On 2025-02-06, HAMi v2.5.0 was released, adding dynamic MIG support while also s
 - Added more unit tests.
 - Added E2E tests to ensure project stability.
 
-![p2](/images/blog/gpu8/p2.jpg)
+![HAMi v2.5.0 mind map showing project architecture and components](/images/blog/gpu8/p2.jpg)
 
-![p3](/images/blog/gpu8/p3.jpg)
+![HAMi v2.5.0 CI/CD pipeline diagram showing test coverage](/images/blog/gpu8/p3.jpg)
 
 We'll leave more updates for you to discover on your own. Next, we will mainly demonstrate the stability enhancements and the use of the dynamic MIG feature.
 
@@ -543,13 +543,13 @@ In HAMi, the automatic slicing function is implemented by hami-device-plugin.
 
 Different modes are supported through hami-device-plugin to support MIG, HAMi-core, and MPS respectively.
 
-![p4](/images/blog/gpu8/p4.jpg)
+![HAMi device plugin multi-mode architecture diagram](/images/blog/gpu8/p4.jpg)
 
 #### Workflow
 
 The workflow for a vGPU task using dynamic-mig is as follows:
 
-![p5](/images/blog/gpu8/p5.jpg)
+![Dynamic MIG workflow diagram showing filter and allocate stages](/images/blog/gpu8/p5.jpg)
 
 The whole process is also divided into two parts:
 
@@ -585,4 +585,3 @@ Depending on the use case, the two can be used in combination.
 ---
 
 *To learn more about the HAMi project, please visit our [GitHub repository](https://github.com/Project-HAMi/HAMi) or join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2).*
----

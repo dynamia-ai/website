@@ -170,7 +170,7 @@ Each step takes about 0.6 seconds.
 
 GPU Usage:
 
-![p7](/images/blog/gpu2/p7.jpg)
+![HAMi memory isolation testing diagram](/images/blog/gpu2/p7.jpg)
 
 As you can see, the usage fluctuates around our target of 30% and averages out to approximately 30% over time.
 
@@ -212,7 +212,7 @@ Each step now takes about 0.3 seconds. This is half the time it took at 30% (0.6
 
 The GPU usage is:
 
-![p9](/images/blog/gpu2/p9.jpg)
+![HAMi GPU memory verification results](/images/blog/gpu2/p9.jpg)
 
 Similarly, it fluctuates within a certain range, with the average being very close to the 60% limit.
 

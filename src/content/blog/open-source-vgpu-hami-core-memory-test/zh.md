@@ -170,7 +170,7 @@ Epoch: [0][ 151/5005]        Time  0.608 ( 0.617)        Data  0.000 ( 0.015)   
 
 GPU 使用率
 
-![p7](/images/blog/gpu2/p7.jpg)
+![HAMi 内存隔离测试图](/images/blog/gpu2/p7.jpg)
 
 可以看到，使用率是围绕着我们设定的目标值 30% 进行波动，在一个时间段内平均下来差不多就是 30% 左右。
 
@@ -212,7 +212,7 @@ Epoch: [0][  171/5005]   Time  0.241 ( 0.290)   Data  0.000 ( 0.058)   Loss 6.94
 
 GPU 使用率则是
 
-![p9](/images/blog/gpu2/p9.jpg)
+![HAMi GPU 内存验证结果](/images/blog/gpu2/p9.jpg)
 
 同样是在一定范围内波动，平均下来和限制的 60% 也基本一致。
 

@@ -25,7 +25,7 @@ Regarding this topic, I've structured my thoughts around a few key areas:
 
 Some of these are open-ended questions, and I certainly don't have all the answers myself, but I hope this short article can offer a perspective. If you're also interested in AI Infra, GPU virtualization, or unified management of heterogeneous computing, I invite you to join the conversation.
 
-![p6](/images/blog/false-promise/p6.jpg)
+![GPU virtualization overhead analysis](/images/blog/false-promise/p6.jpg)
 
 Before we discuss the *Why* (Why NVIDIA 'doesn't do it'), let's first clarify the *What*:
 
@@ -46,7 +46,7 @@ The solutions above each make different trade-offs between isolation, granularit
 
 >So, the question arises: if this gap is so obvious, why hasn't NVIDIA filled it?
 
-![p7](/images/blog/false-promise/p7.jpg)
+![vGPU memory isolation architecture diagram](/images/blog/false-promise/p7.jpg)
 
 NVIDIA controls the entire technology stack. If it were a strategic priority, they could overcome any technical hurdles, whether it's legacy baggage or maintenance costs. Clearly, technology isn't the primary obstacle. The real considerations are **business and ecosystem.**
 
@@ -62,7 +62,7 @@ Furthermore, **maintaining its vast ecosystem and partner relationships** is ano
 
 >For NVIDIA, "not doing it" isn't a matter of technical inability but a comprehensive business choice to protect its high-end hardware premiums, vGPU licensing revenue, and critical ecosystem partnerships—and this is precisely the opportunity that gives HAMi room to thrive in the container-native, fine-grained sharing space.
 
-![p8](/images/blog/false-promise/p8.jpg)
+![GPU sharing performance benchmark results](/images/blog/false-promise/p8.jpg)
 
 Now that we've discussed why NVIDIA "doesn't do it," the next natural question is: if this is primarily a business decision, what is the foundation of HAMi's existence? After all, techniques like CUDA API interception are not some unattainable "magic." What if NVIDIA has a change of heart and enters the market itself one day, or if other powerful competitors emerge? Can HAMi's advantages be sustained? And where does our "moat" lie?
 
@@ -80,7 +80,7 @@ But among all these, I believe the most important moat is the **customer trust a
 
 So, regarding the concern of "will NVIDIA enter the market itself?", my personal judgment, based on their strategy after acquiring Run:ai, is that it's unlikely in the short term. Even if things change in the future, HAMi, with its heterogeneous support and existing market foundation, is not without a fighting chance. The real challenge lies in whether we ourselves can **continuously refine our product, earn the deep trust of more customers, and create more successful benchmark cases.**
 
-![p9](/images/blog/false-promise/p9.jpg)
+![vGPU production deployment best practices](/images/blog/false-promise/p9.jpg)
 
 Returning to the original question, I believe that vGPU, or fine-grained GPU sharing, is by no means a false promise, but rather a technical direction born from real market demand. NVIDIA's choice not to pursue it is more a reflection of its own strategic and business trade-offs.
 
@@ -90,4 +90,4 @@ Of course, the above are just some of my own preliminary thoughts as a community
 
 ### Thank you all
 
-![p5](/images/blog/false-promise/p5.png)
+![vGPU performance isolation comparison diagram](/images/blog/false-promise/p5.png)

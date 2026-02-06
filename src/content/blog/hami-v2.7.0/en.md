@@ -73,11 +73,11 @@ HAMi’s topology-aware scheduling for AWS Neuron is based on **policy encoded f
 2. **Linear abstraction.** All Neuron resources on a node are modeled as a **contiguous, zero-indexed list** (e.g., `[0, 1, 2, …]`), rather than a complex graph.
 3. **Contiguous-block allocation (hard rule).** When a workload requests **N** devices/cores, the scheduler must find a **fully free, contiguous block of length N** within that list. If a node has enough free units but they are  **non-adjacent** , the placement  **fails** .
 
-![1760022669789](/images/blog/hami-v2.7.0/1760022669789.png)
+![Neuron device contiguous allocation visualization](/images/blog/hami-v2.7.0/1760022669789.png)
 
 For Trainium instances, allocation is constrained to specific contiguous group sizes (e.g., 4/8/16) to align with the underlying high-bandwidth interconnect topology.
 
-![1760022681536](/images/blog/hami-v2.7.0/1760022681536.png)
+![Trainium contiguous block allocation diagram showing specific group sizes](/images/blog/hami-v2.7.0/1760022681536.png)
 
 **Examples**
 
@@ -161,13 +161,13 @@ When a GPU-requesting workload arrives, the scheduler reconstructs each node’s
 
 Prefer **exact-size** NVLink groups. If a job needs 4 GPUs, a node with a  **free 4-** **GPU** **NVLink set** scores higher than a node that would  **carve 4 out of an 8-GPU NVLink group** . This avoids breaking large, valuable topology blocks and reduces fragmentation.
 
-![1760023921307](/images/blog/hami-v2.7.0/1760023921307.png)
+![Multi-GPU best-fit scheduling diagram showing exact-size NVLink group preference](/images/blog/hami-v2.7.0/1760023921307.png)
 
 * **Single-GPU jobs — "Least-disruption" principle.**
 
 Prefer **standalone** GPUs that are not members of any NVLink group. Only consume GPUs from within NVLink groups when no standalone options remain. This preserves intact high-bandwidth groups for workloads that truly need them.
 
-![1760023911556](/images/blog/hami-v2.7.0/1760023911556.png)
+![Single-GPU least-disruption scheduling diagram showing preference for standalone GPUs](/images/blog/hami-v2.7.0/1760023911556.png)
 
 ```YAML
 apiVersion: v1
@@ -206,12 +206,12 @@ Related PRs:
 1. **No cross-resource linkage:** For `nvidia.com/gpu: 2` with `nvidia.com/gpumem: 2000` (MB **per** **GPU** ), stock ResourceQuota miscounts total memory as **2000MB** instead of  **2×2000MB** .
 2. **No dynamic values:** Percent-based requests (e.g., `gpumem-percentage: 50`) can only be resolved **after** placement, when the actual device size is known.
 
-**HAMi’s approach**
+**HAMi's approach**
 
 * **Linked accounting:** Understands per-GPU semantics and computes the **true total** for quota enforcement.
 * **Dynamic deduction:** Resolves percent-based/unspecified values **at scheduling time** based on the selected device.
 
-![1760023762746](/images/blog/hami-v2.7.0/1760023762746.png)
+![Extended ResourceQuota accounting diagram showing multi-GPU memory and compute calculation](/images/blog/hami-v2.7.0/1760023762746.png)
 
 **Example**
 
@@ -256,9 +256,9 @@ During Tensor Parallelism (TP), vLLM relies on the **NCCL** library for high-per
 
  In addition, the vLLM community has merged [[PR #579: Feat - Add Support HAMi Resources Variables]](https://github.com/vllm-project/production-stack/pull/579) enabling **native HAMi support** in vLLM. This allows users to configure resources directly via HAMi's virtualization and scheduling layer, reducing integration overhead while improving compatibility and ease of use.
 
-![1760022750966](/images/blog/hami-v2.7.0/1760022750966.png)
+![vLLM production stack PR showing HAMi resource variables integration](/images/blog/hami-v2.7.0/1760022750966.png)
 
-![1760022756700](/images/blog/hami-v2.7.0/1760022756700.png)
+![vLLM HAMi compatibility diagram showing enhanced integration features](/images/blog/hami-v2.7.0/1760022756700.png)
 
 **Related PRs**
 
@@ -273,7 +273,7 @@ In enterprise practice, Xinference often encounters: (a)  **small models monopol
 
 To address this, the community merged **[PR #6]**, adding **native HAMi vGPU support** in the Helm chart. With a simple flag, users can enable HAMi and propagate resource variables such as `gpucores` and `gpumem-percentage` through to both Supervisor and Worker.
 
-![1760022774131](/images/blog/hami-v2.7.0/1760022774131.png)
+![Xinference Helm chart integration with HAMi vGPU support](/images/blog/hami-v2.7.0/1760022774131.png)
 
 **Outcomes**
 
@@ -292,7 +292,7 @@ Volcano’s GPU virtualization supports requesting **partial GPU resources** (me
 
 **Volcano v1.12** introduces **dynamic MIG creation and scheduling**. It selects MIG instance sizes **at runtime** based on requested GPU usage and applies a **best-fit** strategy to reduce waste. It also supports **binpack** and **spread** scoring to control fragmentation and boost utilization. Users request resources via a **unified API** (`volcano.sh/vgpu-number`, `…/vgpu-cores`, `…/vgpu-memory`) without worrying about the underlying implementation.
 
-![1760022781830](/images/blog/hami-v2.7.0/1760022781830.png)
+![Volcano Dynamic MIG architecture showing runtime instance creation and best-fit allocation](/images/blog/hami-v2.7.0/1760022781830.png)
 
 **Example**
 
@@ -351,7 +351,7 @@ spec:
 
 # Contributors & New Roles
 
-![1760022871607](/images/blog/hami-v2.7.0/1760022871607.png)
+![HAMi contributors and team roles organizational chart](/images/blog/hami-v2.7.0/1760022871607.png)
 
 * **HAMi Member:** @fyp711
 * **HAMi Reviewers:** @lengrongfu, @chaunceyjiang, @Shouren, @ouyangluwei163

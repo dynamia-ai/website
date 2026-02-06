@@ -27,7 +27,7 @@ language: "zh"
 **3. HAMi 的核心竞争力与长期护城河到底在哪里？**
 
 其中有的是开放性问题，我自己肯定也没完全看清楚，但希望这篇小文能提供一点视角。如果你也关心 AI Infra、GPU 虚拟化或异构算力统一管理，欢迎一起来聊聊。
-![p1](/images/blog/false-promise/p1.png)
+![vGPU 性能隔离对比示意图](/images/blog/false-promise/p1.png)
 
 在讨论 Why（NVIDIA“为何不为”）之前，我们不妨先厘清 What：
 
@@ -48,7 +48,7 @@ HAMi 在 GPU 虚拟化方向上的差异化定位是什么？
 
 >那问题来了：既然空白如此明显，为何 NVIDIA 自己迟迟不补？
 
-![p2](/images/blog/false-promise/p2.png)
+![GPU 虚拟化性能开销分析图](/images/blog/false-promise/p2.png)
 
 NVIDIA 掌握完整技术栈，如果战略需要，历史包袱也好，维护成本也好，技术层面必定攻克。显然，技术并非决定性障碍，真正的考量在**商业与生态上**。
 
@@ -64,7 +64,7 @@ NVIDIA 掌握完整技术栈，如果战略需要，历史包袱也好，维护�
 
 > 对 NVIDIA 而言，“不为”并非力有不逮，而是为了守护高端硬件溢价、vGPU 许可收入，以及既有关键生态伙伴关系的综合商业选择——这正给了 HAMi 在容器原生、细粒度共享上的机会空间。
 
-![p3](/images/blog/false-promise/p3.png)
+![vGPU 内存隔离架构示意图](/images/blog/false-promise/p3.png)
 
 聊完了 NVIDIA 为何“不为”，下一个自然的问题就是：如果这主要是商业选择，那 HAMi 的立身之本是什么？毕竟 CUDA API 拦截这类技术本身并非遥不可及的“魔法”，万一哪天 NVIDIA“想通了”自己下场，或者有其他强大的竞争者入场，HAMi 的优势能持续吗？我们的“护城河”又在哪里？
 
@@ -82,7 +82,7 @@ NVIDIA 掌握完整技术栈，如果战略需要，历史包袱也好，维护�
 
 所以，对于“NVIDIA 会不会自己下场”的担忧，结合他们收购 Run:ai 后的策略来看，我个人判断短期内可能性不大。即使未来出现变化，HAMi 凭借其异构支持和已有的市场基础，也并非没有一战之力。真正的挑战，其实在于我们自己能否**持续打磨产品，赢得更多客户的深度信任，并创造更多成功的标杆案例**。
 
-![p4](/images/blog/false-promise/p4.png)
+![GPU 共享性能基准测试结果](/images/blog/false-promise/p4.png)
 
 回到最初的问题，vGPU 或者说细粒度的 GPU 共享，我认为绝非伪命题，而是真实存在的市场需求催生出的技术方向。NVIDIA 选择不做，更多是其自身战略和商业上的权衡。
 
@@ -92,4 +92,4 @@ NVIDIA 掌握完整技术栈，如果战略需要，历史包袱也好，维护�
 
 ### 谢谢大家
 
-![p5](/images/blog/false-promise/p5.png)
+![vGPU 生产环境最佳实践](/images/blog/false-promise/p5.png)

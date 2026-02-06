@@ -43,7 +43,7 @@ language: "zh"
 
 - 用户不便：开发者需要一种简单直观的方式来申请和使用分数 GPU 资源。
 
-![p1](/images/blog/KAI-Scheduler-VS-HAMi/p1.png)
+![Kubernetes GPU 共享挑战示意图](/images/blog/KAI-Scheduler-VS-HAMi/p1.png)
 
 ## 机制解析
 
@@ -61,7 +61,7 @@ language: "zh"
 
 4. 而实际的分数管理和分配逻辑，则完全由 KAI-Scheduler 在内部维护。
 
-![p2](/images/blog/KAI-Scheduler-VS-HAMi/p2.png)
+![KAI Reservation Pod 机制示意图](/images/blog/KAI-Scheduler-VS-HAMi/p2.png)
 
 这个 Reservation Pod 主要承担以下职责：
 
@@ -73,7 +73,7 @@ language: "zh"
 
 - **逻辑分组**: 通过给 Reservation Pod 和共享它的用户 Pod 打上相同的标签 (如 gpu-group: xyz123)，将它们逻辑上绑定在一起。
 
-![p3](/images/blog/KAI-Scheduler-VS-HAMi/p3.png)
+![KAI Reservation Pod 逻辑分组示意图](/images/blog/KAI-Scheduler-VS-HAMi/p3.png)
 
 ### 三、深入技术细节：KAI GPU Sharing 如何运作？
 
@@ -189,7 +189,7 @@ type GpuSharingNodeInfo struct {
 - **AllocatedSharedGPUsMemory**  
   记录每个 GPU 组上 **已被 Scheduler 分配** 给 Pod、但 Pod 可能尚未真正占用的显存总量（字节）。
 
-![p4](/images/blog/KAI-Scheduler-VS-HAMi/p4.png)
+![KAI GPU 共享内存跟踪结构示意图](/images/blog/KAI-Scheduler-VS-HAMi/p4.png)
 
 1. **资源回收**：
 
@@ -197,7 +197,7 @@ type GpuSharingNodeInfo struct {
 
 - 当最后一个关联到某个 gpu-group 的用户 Pod 结束时，KAI-Scheduler 会检查到这个 gpu-group 不再有活跃用户 Pod，于是删除对应的 Reservation Pod（syncForPods 中的逻辑），将 GPU 资源“归还”给 K8s。
 
-![p5](/images/blog/KAI-Scheduler-VS-HAMi/p5.png)
+![KAI GPU 共享内存跟踪结构示意图](/images/blog/KAI-Scheduler-VS-HAMi/p5.png)
 
 - syncForPods 函数中实现的资源回收逻辑：
 
@@ -301,8 +301,8 @@ KAI-Scheduler 的 GPU Sharing 机制无疑是一种巧妙且值得借鉴的设�
 
 **令人欣喜的是，我们与 Run:ai (Nvidia) 团队已经就这些技术方向展开了积极的交流。在最近的 KubeCon EU 现场，我们与 Run:ai CTO 及其同事进行了富有成效的讨论，特别是在硬隔离的技术方案上交流了看法，HAMi 分享了我们在这方面的实践和思考。双方都表达了对 GPU 资源管理领域持续探索的热情，并期待未来能有更深入的技术交流与合作。**
 
-![p6](/images/blog/KAI-Scheduler-VS-HAMi/p6.jpg)
-![p10](/images/blog/KAI-Scheduler-VS-HAMi/p10.jpg)
+![KAI GPU 资源回收流程图](/images/blog/KAI-Scheduler-VS-HAMi/p6.jpg)
+![KAI 调度器资源分配工作流程图](/images/blog/KAI-Scheduler-VS-HAMi/p10.jpg)
 
 >KubeCon EU 现场 HAMi Maintainer 与 Run:ai CTO Ronen Dar 及其同事的愉快合照
 

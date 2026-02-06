@@ -27,7 +27,7 @@ language: "zh"
 
 **HAMi Webhook、Scheduler 工作流程如下：**
 
-![p1](/images/blog/gpu5/p1.jpg)
+![HAMi 调度器工作流程图](/images/blog/gpu5/p1.jpg)
 
 1. 用户创建 Pod 并在 Pod 中申请了 vGPU 资源
 
@@ -961,7 +961,7 @@ _**(从 Node Annoations 中获取节点上的 GPU 资源信息) (从 Pod Annoati
 
 ### HAMi Webhook、Scheduler 工作流程如下
 
-![p2](/images/blog/gpu5/p1.jpg)
+![HAMi 设备插件工作流程图](/images/blog/gpu5/p1.jpg)
 
 1. 用户创建 Pod 并在 Pod 中申请了 vGPU 资源
 

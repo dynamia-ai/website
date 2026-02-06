@@ -35,7 +35,7 @@ language: "zh"
 
 ## 解决方案
 
-![1](/images/blog/A-leading-autonomous-driving-company/p1.jpg)
+![领先自动驾驶公司 GPU 集群架构图](/images/blog/A-leading-autonomous-driving-company/p1.jpg)
 
 面对 GPU 资源调度的复杂需求，该公司创新性地采用了 **HAMi + KubeVirt** 混合架构，在云桌面平台中实现了灵活高效的 GPU 管理。该方案的核心设计在于：
 
@@ -51,7 +51,7 @@ HAMi 负责容器环境的 GPU 调度，支持按需分配 vGPU 资源，用户�
 
 在众多 GPU 虚拟化方案中，HAMi 最终成为该头部智驾公司的技术选择，主要基于以下关键考量：
 
-![2](/images/blog/A-leading-autonomous-driving-company/p2.png)
+![HAMi vGPU 部署架构示意图](/images/blog/A-leading-autonomous-driving-company/p2.png)
 
 1. **精准匹配业务场景**
 
@@ -77,7 +77,7 @@ HAMi 负责容器环境的 GPU 调度，支持按需分配 vGPU 资源，用户�
 
 通过引入 **HAMi** 并构建 **双轨 GPU 管理架构**，该公司在云桌面场景中实现了从资源紧张到高效调度的转变，具体成效包括：
 
-![3](/images/blog/A-leading-autonomous-driving-company/p3.png)
+![GPU 资源利用率优化结果](/images/blog/A-leading-autonomous-driving-company/p3.png)
 
 - **GPU 利用率从大于 20% 提升至 60~70%，提升约 200%**：通过单卡虚拟化技术，有效消除资源闲置占用，让每块显卡发挥最大价值；
 
@@ -103,7 +103,7 @@ HAMi 负责容器环境的 GPU 调度，支持按需分配 vGPU 资源，用户�
 
 ---
 
-![5](/images/blog/PREP-EDU-HAMi/p5.png)
+![HAMi 异构计算支持架构图](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia 密瓜智能， 专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
 

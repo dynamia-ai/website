@@ -64,7 +64,7 @@ kubectl get pods -n kube-system | grep -i hami
 
 Example output:
 
-```
+```text
 hami-device-plugin-mtkmg             2/2     Running   0          3h6m
 hami-device-plugin-sg5wl             2/2     Running   0          3h6m
 hami-scheduler-574cb577b9-p4xd9      2/2     Running   0          3h6m
@@ -78,12 +78,10 @@ kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}\t{.metadata.ann
 
 Example output:
 
-```
+```text
 ip-10-0-38-240.us-west-2.compute.internal GPU-f8e75627-86ed-f202-cf2b-6363fb18d516,10,15360,100,NVIDIA-Tesla T4,0,true,0,hami-core:GPU-7f2003cf-a542-71cf-121f-0e489699bbcf,10,15360,100,NVIDIA-Tesla T4,0,true,1,hami-core:GPU-90e2e938-7ac3-3b5e-e9d2-94b0bd279cf2,10,15360,100,NVIDIA-Tesla T4,0,true,2,hami-core:GPU-2facdfa8-853c-e117-ed59-f0f55a4d536f,10,15360,100,NVIDIA-Tesla T4,0,true,3,hami-core:
 ip-10-0-53-156.us-west-2.compute.internal GPU-bd5e2639-a535-7cba-f018-d41309048f4e,10,23028,100,NVIDIA-NVIDIA A10G,0,true,0,hami-core:GPU-06f444bc-af98-189a-09b1-d283556db9ef,10,23028,100,NVIDIA-NVIDIA A10G,0,true,1,hami-core:GPU-6385a85d-0ce2-34ea-040d-23c94299db3c,10,23028,100,NVIDIA-NVIDIA A10G,0,true,2,hami-core:GPU-d4acf062-3ba9-8454-2660-aae402f7a679,10,23028,100,NVIDIA-NVIDIA A10G,0,true,3,hami-core:
 ```
-
----
 
 ## Deploy the Demo Workloads
 
@@ -97,15 +95,13 @@ kubectl get pods -o wide
 
 Example output:
 
-```
+```text
 NAME                                       READY   STATUS    RESTARTS   AGE    IP            NODE                                        NOMINATED NODE   READINESS GATES
 vllm-a10g-mistral7b-awq-5f78b4c6b4-q84k7   1/1     Running   0          172m   10.0.50.145   ip-10-0-53-156.us-west-2.compute.internal   <none>           <none>
 vllm-a10g-qwen25-7b-awq-6d5b5d94b-nxrbj    1/1     Running   0          172m   10.0.49.180   ip-10-0-53-156.us-west-2.compute.internal   <none>           <none>
 vllm-t4-qwen25-1-5b-55f98dbcf4-mgw8d       1/1     Running   0          117m   10.0.44.2     ip-10-0-38-240.us-west-2.compute.internal   <none>           <none>
 vllm-t4-qwen25-1-5b-55f98dbcf4-rn5m4       1/1     Running   0          117m   10.0.37.202   ip-10-0-38-240.us-west-2.compute.internal   <none>           <none>
 ```
-
----
 
 ## What the Two Key Annotations Do
 
@@ -139,8 +135,6 @@ HAMi enforces these limits inside the container and on the host, so Pods can’t
 - **T4 deployment** (`vllm-t4-qwen25-1-5b` with replicas: 2): both replicas are scheduled to the same T4 GPU on the T4 node.
 - **A10G deployments** (`vllm-a10g-mistral7b-awq` and `vllm-a10g-qwen25-7b-awq`): both land on the same A10G GPU on the A10G node (45% + 45% < 100%).
 
----
-
 ## How to Verify Co‑location & Memory Caps
 
 ### In‑pod verification (`nvidia-smi`)
@@ -165,7 +159,7 @@ done
 
 Example output:
 
-```
+```text
 == pod/vllm-a10g-mistral7b-awq-5f78b4c6b4-q84k7 ==
 GPU-d4acf062-3ba9-8454-2660-aae402f7a679
 NVIDIA A10G, 10362 MiB, 7241 MiB
@@ -192,7 +186,7 @@ done
 
 Example output:
 
-```
+```text
 == pod/vllm-t4-qwen25-1-5b-55f98dbcf4-mgw8d ==
 GPU-f8e75627-86ed-f202-cf2b-6363fb18d516
 Tesla T4, 7500 MiB, 5111 MiB
@@ -233,7 +227,7 @@ JSON
 
 Example output:
 
-```
+```text
 Summary:
 - Request for renewal quote with preference for monthly billing.
 - Need Single Sign-On (SSO) by the end of the month.
@@ -264,7 +258,7 @@ JSON
 
 Example output:
 
-```
+```text
 In our ongoing efforts to optimize cloud resources, we're pleased to announce significant progress in enhancing GPU sharing on Amazon Elastic Kubernetes Service (EKS). By implementing memory capping, we're ensuring that each GPU-enabled pod on EKS is allocated a defined amount of memory, preventing overuse and improving overall system efficiency. This update will lead to reduced costs and improved performance for our GPU-intensive applications, ultimately boosting our competitive edge in the market.
 ```
 
@@ -293,7 +287,7 @@ JSON
 
 Example output:
 
-```
+```json
 {
   "intent": "Request for exchange",
   "sentiment": "Neutral",
@@ -305,16 +299,12 @@ Example output:
 }
 ```
 
----
-
 ## Clean Up
 
 ```bash
 cd infra/aws
 terraform destroy -auto-approve
 ```
-
----
 
 ## Coming next (mini-series)
 
@@ -328,7 +318,7 @@ terraform destroy -auto-approve
 
 HAMi, short for Heterogeneous AI Computing Virtualization Middleware, is a “one-stop” architecture designed to manage heterogeneous AI computing devices in Kubernetes clusters, providing sharing capabilities and task-level resource isolation for heterogeneous AI devices. HAMi is committed to improving the utilization of heterogeneous computing devices in Kubernetes clusters, providing a unified reuse interface for different types of heterogeneous devices. Currently, it is a CNCF Sandbox project and has been included in the CNCF CNAI category technology landscape.
 
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
+![HAMi heterogeneous computing support architecture diagram](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia focuses on CNCF HAMi as the core foundation, providing flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing scheduling, and unified management global solutions. It can be deployed in a plug-in, lightweight, non-intrusive way in any public cloud, private cloud, or hybrid cloud environment, and supports heterogeneous chips such as NVIDIA, Ascend, Muxi, Cambricon, Hygon, Moore Threads, and Biren.
 

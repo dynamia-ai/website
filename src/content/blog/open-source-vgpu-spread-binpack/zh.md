@@ -23,7 +23,7 @@ language: "zh"
 
 这里在贴一下上一篇总结的 HAMi Webhook、Scheduler 工作流程：
 
-![p1](/images/blog/gpu6/p1.jpg)
+![HAMi 调度器工作流程图](/images/blog/gpu6/p1.jpg)
 
 1. 用户创建 Pod 并在 Pod 中申请了 vGPU 资源
 

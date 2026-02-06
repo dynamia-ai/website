@@ -64,7 +64,7 @@ kubectl get pods -n kube-system | grep -i hami
 
 示例输出：
 
-```
+```text
 hami-device-plugin-mtkmg             2/2     Running   0          3h6m
 hami-device-plugin-sg5wl             2/2     Running   0          3h6m
 hami-scheduler-574cb577b9-p4xd9      2/2     Running   0          3h6m
@@ -78,12 +78,10 @@ kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}\t{.metadata.ann
 
 示例输出：
 
-```
+```text
 ip-10-0-38-240.us-west-2.compute.internal GPU-f8e75627-86ed-f202-cf2b-6363fb18d516,10,15360,100,NVIDIA-Tesla T4,0,true,0,hami-core:GPU-7f2003cf-a542-71cf-121f-0e489699bbcf,10,15360,100,NVIDIA-Tesla T4,0,true,1,hami-core:GPU-90e2e938-7ac3-3b5e-e9d2-94b0bd279cf2,10,15360,100,NVIDIA-Tesla T4,0,true,2,hami-core:GPU-2facdfa8-853c-e117-ed59-f0f55a4d536f,10,15360,100,NVIDIA-Tesla T4,0,true,3,hami-core:
 ip-10-0-53-156.us-west-2.compute.internal GPU-bd5e2639-a535-7cba-f018-d41309048f4e,10,23028,100,NVIDIA-NVIDIA A10G,0,true,0,hami-core:GPU-06f444bc-af98-189a-09b1-d283556db9ef,10,23028,100,NVIDIA-NVIDIA A10G,0,true,1,hami-core:GPU-6385a85d-0ce2-34ea-040d-23c94299db3c,10,23028,100,NVIDIA-NVIDIA A10G,0,true,2,hami-core:GPU-d4acf062-3ba9-8454-2660-aae402f7a679,10,23028,100,NVIDIA-NVIDIA A10G,0,true,3,hami-core:
 ```
-
----
 
 ## 部署演示工作负载
 
@@ -97,15 +95,13 @@ kubectl get pods -o wide
 
 示例输出：
 
-```
+```text
 NAME                                       READY   STATUS    RESTARTS   AGE    IP            NODE                                        NOMINATED NODE   READINESS GATES
 vllm-a10g-mistral7b-awq-5f78b4c6b4-q84k7   1/1     Running   0          172m   10.0.50.145   ip-10-0-53-156.us-west-2.compute.internal   <none>           <none>
 vllm-a10g-qwen25-7b-awq-6d5b5d94b-nxrbj    1/1     Running   0          172m   10.0.49.180   ip-10-0-53-156.us-west-2.compute.internal   <none>           <none>
 vllm-t4-qwen25-1-5b-55f98dbcf4-mgw8d       1/1     Running   0          117m   10.0.44.2     ip-10-0-38-240.us-west-2.compute.internal   <none>           <none>
 vllm-t4-qwen25-1-5b-55f98dbcf4-rn5m4       1/1     Running   0          117m   10.0.37.202   ip-10-0-38-240.us-west-2.compute.internal   <none>           <none>
 ```
-
----
 
 ## 两个关键注解的作用
 
@@ -121,8 +117,6 @@ metadata:
 - `nvidia.com/use-gputype` 会限制调度到指定的 GPU 型号（例如 A10G、T4）。
 - `hami.io/gpu-scheduler-policy: binpack` 告知 HAMi，当内存/核心限制允许时，将 Pod 共置在 **同一块物理 GPU**  上（GPU 维度的装箱）。
 
----
-
 ## 显存隔离的请求方式
 
 每个容器通过 HAMi 资源名称设置 GPU 内存限制，以便多个 Pod 能安全共享一块显卡：
@@ -132,14 +126,10 @@ metadata:
 
 HAMi 会在容器内部和主机上强制执行这些限制，因此 Pod 不会超出分配的 GPU 内存。
 
----
-
 ## 预期结果：GPU 装箱
 
 - **T4 部署**（`vllm-t4-qwen25-1-5b`，副本数为 2）：两个副本都调度到 T4 节点上的同一块 T4 GPU。
 - **A10G 部署**（`vllm-a10g-mistral7b-awq` 和 `vllm-a10g-qwen25-7b-awq`）：两者都部署在 A10G 节点上的同一块 A10G GPU（45% + 45% < 100%）。
-
----
 
 ## 如何验证共置与内存限制
 
@@ -165,7 +155,7 @@ done
 
 示例输出：
 
-```
+```text
 == pod/vllm-a10g-mistral7b-awq-5f78b4c6b4-q84k7 ==
 GPU-d4acf062-3ba9-8454-2660-aae402f7a679
 NVIDIA A10G, 10362 MiB, 7241 MiB
@@ -192,7 +182,7 @@ done
 
 示例输出：
 
-```
+```text
 == pod/vllm-t4-qwen25-1-5b-55f98dbcf4-mgw8d ==
 GPU-f8e75627-86ed-f202-cf2b-6363fb18d516
 Tesla T4, 7500 MiB, 5111 MiB
@@ -201,8 +191,6 @@ Tesla T4, 7500 MiB, 5111 MiB
 GPU-f8e75627-86ed-f202-cf2b-6363fb18d516
 Tesla T4, 7500 MiB, 5045 MiB
 ```
-
----
 
 ## 快速推理检查
 
@@ -233,7 +221,7 @@ JSON
 
 示例输出：
 
-```
+```text
 总结：
 - 要求提供续费报价，倾向于月度账单。
 - 需要在本月底前完成单点登录（SSO）。
@@ -264,7 +252,7 @@ JSON
 
 示例输出：
 
-```
+```text
 在我们持续优化云资源的过程中，很高兴地宣布，在增强 Amazon Elastic Kubernetes Service（EKS）上的 GPU 共享方面取得了重大进展。通过实施内存限制，我们确保 EKS 上每个支持 GPU 的 Pod 都被分配了一定量的内存，防止过度使用，提高了整体系统效率。此次更新将为我们的 GPU 密集型应用降低成本并提升性能，最终增强我们在市场上的竞争优势。
 ```
 
@@ -294,19 +282,17 @@ JSON
 
 示例输出：
 
-```
+```json
 {
   "intent": "请求换货",
   "sentiment": "中性",
   "order_id": "A1234",
   "item": "跑鞋",
-  "eligibility": "30天内可换货",
-  "next_steps": "我们可以为你更换10码的鞋子。请寄回当前的鞋子，我们会寄出新的。",
+  "eligibility": "30 天内可换货",
+  "next_steps": "我们可以为你更换 10 码的鞋子。请寄回当前的鞋子，我们会寄出新的。",
   "customer_reply": "谢谢！能请你确认一下邮寄详情吗？"
 }
 ```
-
----
 
 ## 清理环境
 
@@ -314,8 +300,6 @@ JSON
 cd infra/aws
 terraform destroy -auto-approve
 ```
-
----
 
 ## 后续内容（系列短文）
 
@@ -329,7 +313,7 @@ terraform destroy -auto-approve
 
 HAMi 是异构 AI 计算虚拟化中间件（Heterogeneous AI Computing Virtualization Middleware）的缩写，是一种“一站式”架构，旨在管理 Kubernetes 集群中的异构 AI 计算设备，为异构 AI 设备提供共享能力和任务级资源隔离。HAMi 致力于提高 Kubernetes 集群中异构计算设备的利用率，为不同类型的异构设备提供统一的复用接口。目前，它是 CNCF 沙箱项目，并已被纳入 CNCF CNAI 类别技术图谱。
 
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
+![HAMi 异构计算支持架构图](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia 以 CNCF HAMi 为核心基础，提供灵活、可靠、按需、弹性的 GPU 虚拟化和异构计算调度及统一管理全球解决方案。它可以以插件化、轻量级、非侵入的方式部署在任何公有云、私有云或混合云环境中，并支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程、壁仞等异构芯片。
 

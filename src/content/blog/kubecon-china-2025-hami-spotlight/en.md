@@ -73,7 +73,7 @@ On the second day's conference Keynote, an exciting moment occurred. Linux Found
 
 In the open-source project independent booth area, HAMi attracted many visitors. Among them, Frank Fan, Senior Container Solutions Architect from AWS, had an extended in-depth exchange with us. He inquired in detail about HAMi's virtualization implementation principles and conducted detailed comparative discussions with other technical solutions. At the end, our team's HAMi author Li Mengxuan was invited on the spot to participate in the next day's AWS Pioneer Forum to share more possibilities for cloud-native and AI innovation.
 
-![p1](/images/blog/kubecon-china-2025/p1.jpg)
+![KubeCon China 2025 HAMi booth presentation](/images/blog/kubecon-china-2025/p1.jpg)
 
 ### Story 5: "Manual Likes" at the Lunch Table
 
@@ -85,7 +85,7 @@ Looking at KubeCon overall, GPU-related topics reached unprecedented popularity.
 
 ### Core Challenges: The "Impossible Triangle" of Cost and Efficiency
 
-![p2](/images/blog/kubecon-china-2025/p2.jpg)
+![KubeCon China 2025 HAMi community meetup](/images/blog/kubecon-china-2025/p2.jpg)
 
 Almost all discussions revolved around several core pain points:
 
@@ -97,7 +97,7 @@ Almost all discussions revolved around several core pain points:
 
 ### Technology Trends: Moving Toward Refinement, Automation, and Full-Stack Optimization
 
-![p3](/images/blog/kubecon-china-2025/p3.jpg)
+![KubeCon China 2025 HAMi team photo with attendees](/images/blog/kubecon-china-2025/p3.jpg)
 
 Facing challenges, the community is seeking breakthroughs from multiple levels, forming a combination approach:
 
@@ -121,7 +121,7 @@ The AIBrix project demonstrated the power of full-stack optimization, reducing G
 
 ### Future Outlook: Integration, Simplification, and Openness
 
-![p4](/images/blog/kubecon-china-2025/p4.jpg)
+![KubeCon China 2025 HAMi project presentation](/images/blog/kubecon-china-2025/p4.jpg)
 
 - **"Less is More"**: Basic tools like Kubespray are streamlining functions, focusing on generating standardized K8s clusters, reducing complexity and maintenance costs.
 

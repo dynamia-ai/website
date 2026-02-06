@@ -92,7 +92,7 @@ HAMi 全称是： **Heterogeneous AI Computing Virtualization Middleware** ，HA
 
 整体架构如下：
 
-![p3](/images/blog/gpu1/photo3.jpg)
+![HAMi 细粒度 GPU 分区架构图](/images/blog/gpu1/photo3.jpg)
 
 可以看到组件还是比较多的，涉及到 Webhook、Scheduler、Device Plugin、HAMi-Core 等等。这篇文章只讲使用，因此架构、原理就一笔带过。
 
@@ -128,7 +128,7 @@ spec:
 
 HAMi 实现 GPU core 和 memory 隔离、限制是使用的 vCUDA 方案，具体设计如下：
 
-![p5](/images/blog/gpu1/photo5.jpg)
+![细粒度 vGPU 配置示例](/images/blog/gpu1/photo5.jpg)
 
 HAMi 使用的是软件层面的 vCUDA 方案，对 NVIDIA 原生的 CUDA 驱动进行重写 (libvgpu.so)，然后挂载到 Pod 中进行替换，然后在自己的实现的 CUDA 驱动中对 API 进行拦截，实现资源隔离以及限制的效果。
 

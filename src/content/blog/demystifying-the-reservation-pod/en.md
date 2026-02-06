@@ -403,7 +403,7 @@ func (b *Binder) Bind(
 }
 ```
 
-![p2](/images/blog/Demystifying-the-Reservation-Pod/p2.jpg)
+![KAI Reservation Pod creation workflow diagram](/images/blog/Demystifying-the-Reservation-Pod/p2.jpg)
 
 ## II. The Complete Information Flow: From Scheduling to Device Identification
 

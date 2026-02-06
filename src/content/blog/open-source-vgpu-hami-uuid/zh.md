@@ -205,7 +205,7 @@ spec:
 
 调度流程如下：
 
-![p1](/images/blog/gpu9/p1.jpg)
+![HAMi 调度工作流程图展示 Pod 创建和 GPU 分配过程](/images/blog/gpu9/p1.jpg)
 
 1. 用户创建 Pod 并在 Pod 中申请了 vGPU 资源
 

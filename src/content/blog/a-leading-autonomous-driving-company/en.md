@@ -36,7 +36,7 @@ These limitations made it difficult for the company to balance flexibility and c
 
 ## Solution
 
-![1](/images/blog/A-leading-autonomous-driving-company/p1.jpg)
+![Leading autonomous driving company GPU cluster architecture](/images/blog/A-leading-autonomous-driving-company/p1.jpg)
 
 Facing the complex demands of GPU resource scheduling, the company innovatively adopted a **HAMi + KubeVirt** hybrid architecture, achieving flexible and efficient GPU management in its cloud desktop platform. The core design of this solution lies in:
 
@@ -52,7 +52,7 @@ Users can freely choose between a container desktop or a GPU passthrough virtual
 
 Among the many GPU virtualization solutions, HAMi ultimately became the technology of choice for this leading autonomous driving company, primarily based on the following key considerations:
 
-![2](/images/blog/A-leading-autonomous-driving-company/p2.png)
+![HAMi vGPU deployment architecture diagram](/images/blog/A-leading-autonomous-driving-company/p2.png)
 
 1. **Precise Match for Business Scenarios**
     The cloud desktop scenario mainly relies on container isolation and does not require complex batch co-scheduling. HAMi's lightweight design perfectly meets these needs, and it can also be integrated with Volcano for more advanced use cases in the future.
@@ -73,7 +73,7 @@ Among the many GPU virtualization solutions, HAMi ultimately became the technolo
 
 By introducing **HAMi** and building a **dual-track GPU management architecture**, the company has transformed its cloud desktop scenario from resource contention to efficient scheduling. The specific results include:
 
-![3](/images/blog/A-leading-autonomous-driving-company/p3.png)
+![GPU resource utilization optimization results](/images/blog/A-leading-autonomous-driving-company/p3.png)
 
 - **GPU utilization increased from over 20% to 60-70%, an improvement of about 200%**: Through single-card virtualization technology, idle resource occupation was effectively eliminated, allowing each graphics card to deliver its maximum value.
 - **Virtual GPU resource pool expanded by 3 times**: The scheduling bottleneck, previously limited by the number of physical cards, was broken, allowing the R&D team to apply for computing resources at any time.
@@ -96,7 +96,7 @@ The Melon Intelligence team and the HAMi community have helped this leading auto
 
 ---
 
-![5](/images/blog/PREP-EDU-HAMi/p5.png)
+![HAMi heterogeneous computing support architecture diagram](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia Melon Intelligence, focusing on the CNCF HAMi project as its core foundation, provides a global solution for flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing power scheduling and unified management. It can be deployed in a plug-and-play, lightweight, and non-intrusive manner in any public, private, or hybrid cloud environment, supporting heterogeneous chips from NVIDIA, Ascend, Metax, Cambricon, Hygon, Moore Threads, Tianshu Zhixin, and more.
 

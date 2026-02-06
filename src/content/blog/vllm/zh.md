@@ -41,13 +41,13 @@ vLLM 与 HAMi 的这次集成并非项目方“自上而下”的规划，而是
 
 这印证了社区用户真实使用 HAMi + vLLM 组合的场景需求。
 
-![p7](/images/blog/vllm-hami-support/vllm-and-hami.png)
+![vLLM 与 HAMi 集成架构图](/images/blog/vllm-hami-support/vllm-and-hami.png)
 
 ### 价值的迅速印证：Issue #649
 
 该 PR 合并后不久，vLLM 社区用户在 Issue [#649](https://github.com/vllm-project/production-stack/issues/649) 中询问：“是否支持单卡部署多个模型？”
 
-![p7](/images/blog/vllm-hami-support/issue-conversation-0.png)
+![vLLM HAMi GitHub issue 讨论截图](/images/blog/vllm-hami-support/issue-conversation-0.png)
 
 @Nimbus318 回复指出：
 
@@ -155,7 +155,7 @@ servingEngineSpec:
 helm upgrade --install vllm -f values-hami-demo.yaml .
 ```
 
-![p7](/images/blog/vllm-hami-support/helm-upgrade.png)
+![vLLM Helm 升级配置截图](/images/blog/vllm-hami-support/helm-upgrade.png)
 
 ### 3.3 资源验证与功能测试
 
@@ -221,8 +221,8 @@ root@vllm-bge-reranker-v2-m3-vllm-stack:/vllm-workspace# nvidia-smi -L
 GPU 0: NVIDIA L4 (UUID: GPU-ed8ae6fb-ac66-2346-e6a5-d440223e29a2)
 ```
 
-![p8](/images/blog/vllm-hami-support/nvidia-smi-1.png)
-![p9](/images/blog/vllm-hami-support/nvidia-smi-2.png)
+![nvidia-smi GPU 验证截图 1](/images/blog/vllm-hami-support/nvidia-smi-1.png)
+![nvidia-smi GPU 验证截图 2](/images/blog/vllm-hami-support/nvidia-smi-2.png)
 
 #### 2. 协同功能测试：模拟真实 RAG 调用链路
 
@@ -366,11 +366,11 @@ Rerank p50/p95: 1225.6 / 1401.4 ms
 Total  p50/p95: 1395.5 / 1647.9 ms
 ```
 
-![p9](/images/blog/vllm-hami-support/production-stack-1.png)
+![vLLM 生产栈架构图（第一部分）](/images/blog/vllm-hami-support/production-stack-1.png)
 
 - <https://github.com/vllm-project/production-stack/tree/main/observability）>
 
-![p9](/images/blog/vllm-hami-support/production-stack-2.png)
+![vLLM 生产栈架构图（第二部分）](/images/blog/vllm-hami-support/production-stack-2.png)
 
 - <https://github.com/Project-HAMi/HAMi/blob/master/docs/dashboard_cn.md）>
 
@@ -380,7 +380,7 @@ Total  p50/p95: 1395.5 / 1647.9 ms
 
 HAMi，全称是 Heterogeneous AI Computing Virtualization Middleware（异构算力虚拟化中间件），是一套为管理 k8s 集群中异构 AI 计算设备设计的“一站式”架构，能提供异构 AI 设备共享能力与任务间资源隔离。HAMi 致力于提升 k8s 集群异构计算设备利用率，为不同类型异构设备提供统一复用接口，当前是 CNCF Sandbox 项目，已被纳入 CNCF CNAI 类别技术全景图。
 
-![p5](/images/blog/PREP-EDU-HAMi/p5.png)
+![HAMi 异构计算支持架构图](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia 密瓜智能， 专注以 CNCF HAMi 项目为核心底座，提供 灵活、可靠、按需、弹性的 GPU 虚拟化 与异构算力调度、统一管理的全球化解决方案。可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。
 
