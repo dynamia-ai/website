@@ -1,14 +1,21 @@
 ---
-title: "HAMI vGPU Principle Analysis Part 2: hami-webhook Principle Analysis"
-coverTitle: "HAMI vGPU Principle Analysis Part 2: hami-webhook Principle Analysis"
-slug: "open-source-vgpu-hami-webhook-analysis"
-date: "2025-07-24"
-excerpt: "In the last article, we analyzed hami-device-plugin-nvidia and understood how HAMI's NVIDIA device plugin works. This is the second article in the HAMI principle analysis series, analyzing the implementation of hami-scheduler."
-author: "Dynamia AI Team"
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu4/cover2.jpg"
-language: "en"
+title: 'HAMI vGPU Principle Analysis Part 2: hami-webhook Principle Analysis'
+coverTitle: 'HAMI vGPU Principle Analysis Part 2: hami-webhook Principle Analysis'
+date: '2025-07-24'
+excerpt: >-
+  In the last article, we analyzed hami-device-plugin-nvidia and understood how
+  HAMI's NVIDIA device plugin works. This is the second article in the HAMI
+  principle analysis series, analyzing the implementation of hami-scheduler.
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Computing
+category: Technical Deep Dive
+coverImage: /images/blog/gpu4/cover2.jpg
+language: en
 ---
 
 In the last article, we analyzed `hami-device-plugin-nvidia` and understood how HAMI's NVIDIA device plugin works.
@@ -145,7 +152,7 @@ The Webhook here is a Mutating Webhook, primarily serving the Scheduler.
 
 Its core function is: **To determine if a Pod is using HAMI vGPU based on the `ResourceName` in the Pod's `Resource` field. If so, it modifies the Pod's `SchedulerName` to `hami-scheduler` so that it can be scheduled by `hami-scheduler`. Otherwise, it does nothing.**
 
-### MutatingWebhookConfiguration ###
+### MutatingWebhookConfiguration
 
 To make the Webhook effective, HAMI creates a **MutatingWebhookConfiguration** object during deployment. The content is as follows:
 
@@ -235,7 +242,9 @@ objectSelector:
 
 This means that any namespace or resource object with the label `hami.io/webhook=ignore` will not trigger this Webhook logic.
 
-The requested Webhook is:```yaml
+The requested Webhook is:
+
+```yaml
 service:
   name: vgpu-hami-scheduler
   namespace: kube-system
@@ -243,13 +252,15 @@ service:
   port: 443
 
 ```
+
 This means that for a `CREATE` event on a matching Pod, the kube-apiserver will call the service specified, which is our `hami-webhook`.
 
 Now let's analyze what `hami-webhook` actually does.
 
-### Source Code Analysis ###
+### Source Code Analysis
 
 The specific implementation of this Webhook is as follows:
+
 ```go
 // pkg/scheduler/webhook.go#L52
 func (h *webhook) Handle(_ context.Context, req admission.Request) admission.Response {
@@ -303,11 +314,11 @@ The logic is quite simple:
 
 So, the core question is: how does it determine if the Pod needs to be scheduled by `hami-scheduler`?
 
-### How to Determine if `hami-scheduler` Should Be Used ###
+### How to Determine if `hami-scheduler` Should Be Used
 
 The Webhook mainly determines this based on whether the Pod requests vGPU resources, but there are some special cases.
 
-### Privileged Pods ###
+### Privileged Pods
 
 First, HAMI ignores privileged Pods directly.
 
@@ -322,7 +333,7 @@ if ctr.SecurityContext != nil {
 
 This is because when privileged mode is enabled, the Pod can access all devices on the host, making restrictions meaningless. Therefore, it is ignored here.
 
-### Specific Judgment Logic ###
+### Specific Judgment Logic
 
 Then, it determines whether to use `hami-scheduler` based on the resources in the Pod:
 
@@ -447,7 +458,7 @@ if resourceCoresOK || resourceMemOK || resourceMemPercentageOK {
 }
 ```
 
-### Modifying SchedulerName ###
+### Modifying SchedulerName
 
 For Pods that meet the above conditions, they need to be scheduled by `hami-scheduler`. The Webhook will change the Pod's `spec.schedulerName` to `hami-scheduler`.
 
@@ -474,7 +485,7 @@ if pod.Spec.NodeName != "" {
 
 ---
 
-## 3. Summary ##
+## 3. Summary
 
 The purpose of this Webhook is: to change the scheduler for Pods requesting vGPU resources to `hami-scheduler`, which will then handle their scheduling.
 

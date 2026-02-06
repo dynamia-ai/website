@@ -1,14 +1,27 @@
 ---
-title: "HAMi 2.7.0 — Of Silicon & Scheduling | Stronger, Smarter, Broader."
-coverTitle: "HAMi 2.7.0 — Of Silicon & Scheduling | Stronger, Smarter, Broade"
-slug: "hami-v2.7.0-released"
-date: "2025-10-09"
-excerpt: "HAMi v2.7.0 is here! Featuring full support for Kunlun XPU, Enflame GCU, AWS Neuron, and MetaX, enhanced scheduler optimizations, expanded application ecosystem integration, improved WebUI functionality, and thriving community growth."
-author: "Dynamia AI Team"
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing", "XPU", "GCU", "MetaX", "Neuron", "Release"]
-category: "Product Release"
-coverImage: "/images/blog/hami-v2.7.0/cover-en.png"
-language: "en"
+title: 'HAMi 2.7.0 — Of Silicon & Scheduling | Stronger, Smarter, Broader.'
+coverTitle: 'HAMi 2.7.0 — Of Silicon & Scheduling | Stronger, Smarter, Broade'
+date: '2025-10-09'
+excerpt: >-
+  HAMi v2.7.0 is here! Featuring full support for Kunlun XPU, Enflame GCU, AWS
+  Neuron, and MetaX, enhanced scheduler optimizations, expanded application
+  ecosystem integration, improved WebUI functionality, and thriving community
+  growth.
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Computing
+  - XPU
+  - GCU
+  - MetaX
+  - Neuron
+  - Release
+category: Product Release
+coverImage: /images/blog/hami-v2.7.0/cover-en.png
+language: en
 ---
 **GPU** ecosystem & scheduling efficiency, upgraded
 
@@ -20,7 +33,7 @@ language: "en"
 > We do not promise the wind; we promise an **order** you can sail by.
 > A release takes shape not because all is perfect, but because  ***order lets imperfection run in parallel*** *.*
 
-# Release Highlights
+## Release Highlights
 
 * **Broader hardware coverage:** Added backends for multiple heterogeneous accelerators across whole-device, virtualization, and topology-aware modes (details in docs). **NVIDIA** topology-aware scheduling is upgraded; **AWS Neuron** is integrated from device- to core-level sharing with topology awareness.
 * **Scheduler core:** Failure-event aggregation, quarantine of abnormal NVIDIA cards, and **extended ResourceQuota** that correctly accounts for multi-GPU memory/compute requests—improving observability and robustness.
@@ -28,30 +41,30 @@ language: "en"
 * **Community:** New maintainers/reviewers; CNCF case studies and ecosystem talks highlight real-world adoption.
 * **WebUI:** Clearer heterogeneous GPU telemetry for faster triage and capacity insights.
 
-# Community Updates
+## Community Updates
 
-## CNCF Case Studies
+### CNCF Case Studies
 
 HAMi continues to see real-world adoption in the cloud-native community. Recent examples include:
 
 * **SF Technology (Effective GPU):** Large-scale pooling and scheduling of heterogeneous compute with HAMi. See the [CNCF case study](https://www.cncf.io/case-studies/sf-technology/) for details.
 * **PREP-EDU:** Improved resource utilization for training workloads using HAMi. See the [CNCF case study](https://www.cncf.io/case-studies/prep-edu/) for details.
 
-## vCluster Workshop Recognition
+### vCluster Workshop Recognition
 
 At a vCluster technical workshop, cloud-native experts highlighted HAMi as an innovative approach, noting its core advantage: a proxy layer that intercepts **CUDA** API calls to enable fine-grained resource control and isolation. A recording is available on [YouTube](https://youtu.be/eBbjSfxwL30?si=PcPBonbQJfN7maeh&t=1811).
 
-## The Linux Foundation AI_dev
+### The Linux Foundation AI_dev
 
 At the AI_dev summit, we presented how HAMi's flexible GPU slicing and software-defined isolation help mitigate compute waste in cloud-native environments. The session recording is available on [YouTube](https://youtu.be/pjHA0JfPNfw?si=djB-R71tswDn9JAq&t=875).
 
-## Vietnam Telecom: GPUs on Kubernetes with eBPF
+### Vietnam Telecom: GPUs on Kubernetes with eBPF
 
 In Vietnam Telecom's production practice, HAMi demonstrated robust GPU resource management and observability on Kubernetes. See the [CNCF Cloud Native Hanoi Meetup](https://community.cncf.io/events/details/cncf-cloud-native-hanoi-presents-may-meetup-gpu-and-ebpf-on-kubernetes/) and [YouTube video](https://youtu.be/UtPv8P7v0YU?si=UH1uwe07IV4bT5kL) for more information.
 
-# Core Feature Deep-Dive
+## Core Feature Deep-Dive
 
-## AWS Neuron — Device- and **Core-Level** Sharing with Topology Awareness
+### AWS Neuron — Device- and **Core-Level** Sharing with Topology Awareness
 
 AWS-designed **Inferentia** and **Trainium** accelerators aim to deliver more efficient and cost-controlled AI infrastructure on AWS. **Inferentia** targets inference acceleration, while **Trainium** targets training. These chips are purpose-built for AI workloads, focusing not only on raw performance but also on **performance-per-watt** and overall cost efficiency. **Inferentia2** brings notable gains in perf-per-watt, and **Trainium2** is stated to reduce costs by **30–40%** versus comparable GPU instances. HAMi now provides integrated support for these AWS accelerators—covering **scheduling**, **virtualization**, and **observability**.
 
@@ -128,17 +141,17 @@ spec:
 Related PR: [https://github.com/Project-HAMi/HAMi/pull/1238](https://github.com/Project-HAMi/HAMi/pull/1238)
 *Thanks to @archlitchi and the AWS Neuron team for the collaboration.*
 
-## NVIDIA GPU — **Topology-Aware Scheduling** (NVLink-First, Fragment-Aware)
+### NVIDIA GPU — **Topology-Aware Scheduling** (NVLink-First, Fragment-Aware)
 
 This feature targets performance bottlenecks in **high-performance computing (HPC)** and **large-scale AI training**. When a job needs 2, 4, 8, or more GPUs, forcing those GPUs to communicate solely over the relatively slow **PCIe** bus makes data exchange the bottleneck and degrades end-to-end training throughput. By contrast, if the GPUs are placed on **NVLink-connected** sets, communication bandwidth increases dramatically, unlocking substantially higher overall performance.
 
-### Topology Optimization: Design Rationale
+#### Topology Optimization: Design Rationale
 
 We follow one core principle: prefer the best fit for the current job while preserving large, intact ***topology** *groups for future jobs** .
 
 The mechanism has two stages: **Topology** **Registration** and  **Scheduling Decision** .
 
-#### Stage 1: Topology Registration — Making the Physical Layout Visible
+##### Stage 1: Topology Registration — Making the Physical Layout Visible
 
 Goal: turn each node’s otherwise invisible physical GPU interconnects into standardized data that the cluster scheduler can reason about.
 
@@ -146,16 +159,16 @@ Goal: turn each node’s otherwise invisible physical GPU interconnects into sta
 2. **Modeling.** The results are assembled into a clear **connectivity matrix** (an adjacency table) that records, for any two GPUs, whether they are connected via NVLink or PCIe. This matrix is the node’s digital blueprint of its GPU topology.
 3. **Publication.** The matrix is serialized to **JSON** and attached to the node as an  **annotation** . From that point, the node’s physical topology is globally visible and queryable by the scheduler.
 
-#### Stage 2: Scheduling Decision — Selecting the Optimal Placement
+##### Stage 2: Scheduling Decision — Selecting the Optimal Placement
 
 When a GPU-requesting workload arrives, the scheduler reconstructs each node’s connectivity matrix from annotations and performs a two-step decision process.
 
 1. **Filter (eligibility gate).** The scheduler checks whether the node’s currently **free GPUs** contain one or more combinations that satisfy the request. For example, for a job that requires  **4 NVLink-connected GPUs** , the node must have  **at least one free 4-** **GPU NVLink** **set** . Nodes that cannot satisfy this hard constraint are discarded.
 2. **Score (choose the best among eligibles).** Remaining nodes are scored to pick the best placement—maximizing the quality of the current fit while minimizing future **fragmentation** of high-bandwidth groups.
 
-#### **Usage**
+##### **Usage**
 
-#### Concrete Policies
+##### Concrete Policies
 
 * **Multi-GPU jobs — “Best-fit” principle.**
 
@@ -186,7 +199,7 @@ spec:
         nvidia.com/gpu: "4"
 ```
 
-#### **Design & How-to**
+##### **Design & How-to**
 
 Design: [https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/gpu-topo-policy.md](https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/gpu-topo-policy.md)
 Guide: [https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/nvidia-gpu-topology-scheduler_cn.md](https://github.com/Project-HAMi/HAMi/blob/master/docs/proposals/nvidia-gpu-topology-scheduler_cn.md)
@@ -197,9 +210,9 @@ Related PRs:
 
 *Thanks to @lengrongfu and @fyp711.*
 
-# Scheduler Core Enhancements
+## Scheduler Core Enhancements
 
-## Extended **ResourceQuota** (multi-GPU memory/compute that actually adds up)
+### Extended **ResourceQuota** (multi-GPU memory/compute that actually adds up)
 
 **Gaps in stock Kubernetes**
 
@@ -231,7 +244,7 @@ Guide: [https://project-hami.io/zh/docs/userguide/nvidia-device/using-resourcequ
  Related PR: [https://github.com/Project-HAMi/HAMi/pull/1359](https://github.com/Project-HAMi/HAMi/pull/1359)
 *Thanks to @FouoF.*
 
-## Scheduling **Event Aggregation** (clear reasons, faster root-cause)
+### Scheduling **Event Aggregation** (clear reasons, faster root-cause)
 
 * Aggregates filter-stage failures into standardized tags (e.g., `CardInsufficientMemory`, `NumaNotFit`) with **counts** in `FilteringFailed` events.
 * On success, **Normal** events include chosen nodes and scores; on failure, **Warning** events summarize why no nodes matched.
@@ -241,11 +254,11 @@ Docs: [https://github.com/Project-HAMi/HAMi/blob/master/docs/scheduler-event-log
  Related PR: [https://github.com/Project-HAMi/HAMi/pull/1333](https://github.com/Project-HAMi/HAMi/pull/1333)
 *Thanks to @Wangmin362.*
 
-# Application Ecosystem
+## Application Ecosystem
 
 HAMi not only advances low-level hardware support but also focuses on tight integration with the upper AI application stack to improve developer experience and operational efficiency.
 
-## vLLM — Compatibility Enhancements
+### vLLM — Compatibility Enhancements
 
 During Tensor Parallelism (TP), vLLM relies on the **NCCL** library for high-performance communication. Building on that, the latest HAMi-core brings the following improvements and fixes:
 
@@ -265,7 +278,7 @@ During Tensor Parallelism (TP), vLLM relies on the **NCCL** library for high-per
 * [https://github.com/vllm-project/production-stack/pull/579](https://github.com/vllm-project/production-stack/pull/579)
   *Sincere thanks to @andresd95 for the contribution.*
 
-## Xinference
+### Xinference
 
 **Xinference** is an open-source multi-model inference framework from Xorbits. It adopts a **Supervisor/Worker** architecture that simplifies deploying and managing multi-model services on Kubernetes.
 
@@ -286,7 +299,7 @@ To address this, the community merged **[PR #6]**, adding **native HAMi vGPU sup
 * [https://github.com/xorbitsai/xinference-helm-charts/pull/6](https://github.com/xorbitsai/xinference-helm-charts/pull/6)
   *Many thanks to @calvin0327 for the contribution.*
 
-## Volcano Dynamic MIG
+### Volcano Dynamic MIG
 
 Volcano’s GPU virtualization supports requesting **partial GPU resources** (memory/compute) and, together with the Device Plugin, enforces **hardware isolation** to improve utilization. Traditional GPU virtualization typically intercepts CUDA API calls to limit usage. With NVIDIA Ampere, **MIG** (  **Multi-Instance GPU** **)** allows a single physical GPU to be partitioned into multiple isolated instances; however, generic MIG schemes often rely on  **pre-fixed instance sizes** , which can introduce waste and reduce flexibility.
 
@@ -319,9 +332,9 @@ spec:
 **Related** **PRs** **:** [https://github.com/volcano-sh/volcano/pull/4290](https://github.com/volcano-sh/volcano/pull/4290), [https://github.com/volcano-sh/volcano/pull/3953](https://github.com/volcano-sh/volcano/pull/3953)
 *Thanks to @sailorvii and @archlitchi for the contributions.*
 
-# Engineering Improvements & Fixes
+## Engineering Improvements & Fixes
 
-## HAMi
+### HAMi
 
 **Core scheduling** :
 
@@ -337,19 +350,19 @@ spec:
 * vGPU metric corrections; allocation fixes
 * Linting & refactors for a cleaner codebase
 
-## HAMi-core
+### HAMi-core
 
 * **Enhancements:** `cuMemcpy2D` hook; slimmer Dockerfiles; CI/CD + `cpplint`; contributor guidelines
 * **Stability:** NVML null-pointer guards; accurate per-process utilization under concurrency; fix rare empty-record access
 * **Code quality:** Remove magic numbers (use `CUDA_DEVICE_MAX_COUNT`); restructure statistics from accumulate→summarize-assign
 
-## WebUI
+### WebUI
 
 * **Heterogeneous telemetry:** clearer, at-a-glance utilization for capacity planning and incident triage.
 
 ---
 
-# Contributors & New Roles
+## Contributors & New Roles
 
 ![HAMi contributors and team roles organizational chart](/images/blog/hami-v2.7.0/1760022871607.png)
 
@@ -362,7 +375,7 @@ spec:
 
 ---
 
-# Looking Ahead
+## Looking Ahead
 
 * **Kubernetes DRA:** First-class **Dynamic Resource Allocation** for finer-grained, policy-driven heterogeneous scheduling.
 * **WebUI:** More analytics, custom alerts, and historical insights.

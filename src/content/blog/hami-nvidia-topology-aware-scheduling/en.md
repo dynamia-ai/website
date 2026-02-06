@@ -1,14 +1,27 @@
 ---
-title: "Deep Dive: HAMi × NVIDIA | GPU Topology-Aware Scheduling Implementation"
-coverTitle: "Deep Dive: HAMi × NVIDIA | GPU Topology-Aware Scheduling Implementation"
-slug: "hami-nvidia-topology-aware-scheduling-deep-dive"
-date: "2025-10-22"
-excerpt: "HAMi v2.7.0 introduces topology-aware scheduling for NVIDIA GPUs. This article provides an in-depth code analysis of HAMi's design and implementation principles for topology-aware scheduling, explaining how intelligent scheduling precisely deploys compute tasks on the most tightly connected GPU combinations."
-author: "Dynamia AI Team"
-tags: ["HAMi", "NVIDIA", "GPU Topology", "Scheduling", "Deep Dive", "Technical Analysis", "NVLink", "PCIe", "Kubernetes"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/hami-nvidia-topology/cover-en.png"
-language: "en"
+title: 'Deep Dive: HAMi × NVIDIA | GPU Topology-Aware Scheduling Implementation'
+coverTitle: 'Deep Dive: HAMi × NVIDIA | GPU Topology-Aware Scheduling Implementation'
+date: '2025-10-22'
+excerpt: >-
+  HAMi v2.7.0 introduces topology-aware scheduling for NVIDIA GPUs. This article
+  provides an in-depth code analysis of HAMi's design and implementation
+  principles for topology-aware scheduling, explaining how intelligent
+  scheduling precisely deploys compute tasks on the most tightly connected GPU
+  combinations.
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - NVIDIA
+  - GPU Topology
+  - Scheduling
+  - Deep Dive
+  - Technical Analysis
+  - NVLink
+  - PCIe
+  - Kubernetes
+category: Technical Deep Dive
+coverImage: /images/blog/hami-nvidia-topology/cover-en.png
+language: en
 ---
 
 The HAMi community officially released **topology-aware scheduling** for NVIDIA GPUs in v2.7.0. This feature primarily addresses multi-GPU communication bottlenecks in high-performance computing (HPC) and large-scale AI training scenarios. Through intelligent scheduling, it precisely deploys compute tasks on GPU combinations with the tightest physical connections and fastest communication speeds, thereby maximizing compute acceleration and improving overall cluster efficiency.

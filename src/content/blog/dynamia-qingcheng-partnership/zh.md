@@ -1,13 +1,18 @@
 ---
-title: '密瓜智能 × 清程极智：为企业级大模型应用提供"调度 + 基建"一体化解决方案'
-slug: "dynamia-qingcheng-partnership"
-date: "2026-01-13"
-excerpt: '近日，密瓜智能与清程极智在北京宣布达成战略合作，双方直指 AI 产业异构算力调度效率困境，为企业级大模型应用提供了"调度 + 基建"一体化解决方案。'
-author: "Dynamia"
-tags: ["战略合作", "清程极智", "八卦炉", "异构算力", "HAMi"]
-category: "Company News"
-language: "zh"
-coverImage: "/images/blog/dynamia-qingcheng-partnership/dynamia-qingcheng-signing-ceremony.webp"
+title: 密瓜智能 × 清程极智：为企业级大模型应用提供"调度 + 基建"一体化解决方案
+date: '2026-01-13'
+excerpt: 近日，密瓜智能与清程极智在北京宣布达成战略合作，双方直指 AI 产业异构算力调度效率困境，为企业级大模型应用提供了"调度 + 基建"一体化解决方案。
+author: Dynamia
+tags:
+  - 战略合作
+  - 清程极智
+  - 八卦炉
+  - 异构算力
+  - HAMi
+category: Company News
+language: zh
+coverImage: >-
+  /images/blog/dynamia-qingcheng-partnership/dynamia-qingcheng-signing-ceremony.webp
 ---
 
 > 作为一个活跃的开源项目，HAMi 由来自 15+ 国家、350+ 贡献者共同维护，已被 200+ 企业与机构在实际生产环境中采纳，具备良好的可扩展性与支持保障。

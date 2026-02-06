@@ -1,14 +1,24 @@
 ---
-title: "【原理解析】HAMi × NVIDIA | GPU 拓扑感知调度实现详解"
-coverTitle: "【原理解析】HAMi×NVIDIA GPU 拓扑感知调度实现详解"
-slug: "hami-nvidia-topology-aware-scheduling-deep-dive"
-date: "2025-10-22"
-excerpt: "HAMi v2.7.0 正式推出 NVIDIA GPU 拓扑感知调度功能。本文深入代码实现，详细剖析 HAMi 在支持拓扑感知调度时的具体设计与实现原理，解析如何通过智能调度将计算任务精确部署到物理连接最紧密的 GPU 组合上。"
-author: "Dynamia AI Team"
-tags: ["HAMi", "NVIDIA", "GPU Topology", "Scheduling", "Deep Dive", "Technical Analysis", "NVLink", "PCIe", "Kubernetes"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/hami-nvidia-topology/cover-zh.png"
-language: "zh"
+title: 【原理解析】HAMi × NVIDIA | GPU 拓扑感知调度实现详解
+coverTitle: 【原理解析】HAMi×NVIDIA GPU 拓扑感知调度实现详解
+date: '2025-10-22'
+excerpt: >-
+  HAMi v2.7.0 正式推出 NVIDIA GPU 拓扑感知调度功能。本文深入代码实现，详细剖析 HAMi
+  在支持拓扑感知调度时的具体设计与实现原理，解析如何通过智能调度将计算任务精确部署到物理连接最紧密的 GPU 组合上。
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - NVIDIA
+  - GPU Topology
+  - Scheduling
+  - Deep Dive
+  - Technical Analysis
+  - NVLink
+  - PCIe
+  - Kubernetes
+category: Technical Deep Dive
+coverImage: /images/blog/hami-nvidia-topology/cover-zh.png
+language: zh
 ---
 
 HAMi 社区在 v2.7.0 版本中正式推出了针对 NVIDIA GPU 的 **拓扑感知调度** 功能。此特性主要解决高性能计算（HPC）和 AI 大模型训练场景下的多卡通信瓶颈问题，通过智能调度，将计算任务精确部署到物理连接最紧密、通信速度最快的 GPU 组合上，从而最大化加速计算任务，提升集群整体的算力效能。

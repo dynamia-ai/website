@@ -1,13 +1,21 @@
 ---
-title: "DaoCloud: Building a More Flexible GPU Cloud Platform with HAMi"
-slug: "daocloud-hami-gpu-platform"
-date: "2026-01-13"
-excerpt: "Against the backdrop of sustained growth in AI training and inference demand, DaoCloud uses CNCF Sandbox open-source project HAMi in its public and private GPU cloud platforms to build a more flexible, cloud-native GPU resource management approach."
-author: "Dynamia"
-tags: ["DaoCloud", "HAMi", "case study", "GPU cloud platform", "vGPU"]
-category: "Customer Success Story"
-language: "en"
-coverImage: "/images/blog/daocloud-hami-gpu-platform/daocloud-product-lines.png"
+title: 'DaoCloud: Building a More Flexible GPU Cloud Platform with HAMi'
+date: '2026-01-13'
+excerpt: >-
+  Against the backdrop of sustained growth in AI training and inference demand,
+  DaoCloud uses CNCF Sandbox open-source project HAMi in its public and private
+  GPU cloud platforms to build a more flexible, cloud-native GPU resource
+  management approach.
+author: Dynamia
+tags:
+  - DaoCloud
+  - HAMi
+  - case study
+  - GPU cloud platform
+  - vGPU
+category: Customer Success Story
+language: en
+coverImage: /images/blog/daocloud-hami-gpu-platform/daocloud-product-lines.png
 ---
 
 Against the backdrop of sustained growth in AI training and inference demand, how to improve GPU utilization, reduce compute costs, and simultaneously accommodate diverse business scenarios has become a core challenge facing cloud platforms.

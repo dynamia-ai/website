@@ -1,14 +1,24 @@
 ---
-title: "HAMi v2.8 重磅发布详解：标准化与生态完整性的双重演进"
-coverTitle: "HAMi v2.8 重磅发布详解：标准化与生态完整性的双重演进"
-slug: "hami-2.8-deep-dive"
-date: "2026-02-04"
-excerpt: "HAMi v2.8 深度解析：新增 Kubernetes DRA 支持、Leader 选举机制、CDI 模式支持，异构 GPU 生态扩展（天数智芯、沐曦 GPU、华为昇腾），上下游生态集成（Kueue、vLLM），关键问题修复与稳定性提升。"
-author: "Dynamia AI Team"
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "DRA", "Leader Election", "CDI", "Heterogeneous Computing", "Release"]
-category: "Product Release"
-coverImage: "/images/blog/hami-2.8-deep-dive/cover-zh.png"
-language: "zh"
+title: HAMi v2.8 重磅发布详解：标准化与生态完整性的双重演进
+coverTitle: HAMi v2.8 重磅发布详解：标准化与生态完整性的双重演进
+date: '2026-02-04'
+excerpt: >-
+  HAMi v2.8 深度解析：新增 Kubernetes DRA 支持、Leader 选举机制、CDI 模式支持，异构 GPU 生态扩展（天数智芯、沐曦
+  GPU、华为昇腾），上下游生态集成（Kueue、vLLM），关键问题修复与稳定性提升。
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - DRA
+  - Leader Election
+  - CDI
+  - Heterogeneous Computing
+  - Release
+category: Product Release
+coverImage: /images/blog/hami-2.8-deep-dive/cover-zh.png
+language: zh
 ---
 
 > **根深叶茂，生生不息。**

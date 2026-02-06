@@ -1,12 +1,24 @@
 ---
-title: "HAMI vGPU Principle Analysis Part 5: HAMI-core (libvgpu.so) vCUDA Working Principle Analysis"
-coverTitle: "HAMi-Core (ibvgpu.so): How Fine-Grained vGPU Works"
-slug: "open-source-vgpu-hami-core-libvgpu-so-vcuda-analysis"
-date: "2025-07-28"
-excerpt: "This is the fifth article in the HAMI principle analysis series, providing a simple analysis of the working principles of HAMI-Core, including how it takes effect, how CUDA APIs are intercepted, and how it implements resource limits for GPU core and memory."
+title: >-
+  HAMI vGPU Principle Analysis Part 5: HAMI-core (libvgpu.so) vCUDA Working
+  Principle Analysis
+coverTitle: 'HAMi-Core (ibvgpu.so): How Fine-Grained vGPU Works'
+date: '2025-07-28'
+excerpt: >-
+  This is the fifth article in the HAMI principle analysis series, providing a
+  simple analysis of the working principles of HAMI-Core, including how it takes
+  effect, how CUDA APIs are intercepted, and how it implements resource limits
+  for GPU core and memory.
 author: “Dynamia AI Team”
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Computing"]category: "Technical Deep Dive"coverImage: "/images/blog/gpu7/cover2.jpg"
-language: "en"
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Computing
+category: Technical Deep Dive
+coverImage: /images/blog/gpu7/cover2.jpg
+language: en
 ---
 
 In the last article, we analyzed how advanced scheduling strategies like Spread and Binpack are implemented in `hami-scheduler`.
@@ -446,4 +458,3 @@ This article has mainly analyzed the working principle of HAMI-Core. HAMI's comp
 ---
 
 *To learn more about the HAMI project, please visit the [GitHub repository](https://github.com/Project-HAMi/HAMi) or join our [Slack community](https://cloud-native.slack.com/archives/C07T10BU4R2).*
----

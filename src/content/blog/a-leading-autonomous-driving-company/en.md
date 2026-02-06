@@ -1,14 +1,24 @@
 ---
-title: "【HAMi Project Team | User Case】A Leading Autonomous Driving Company Achieves Fine-Grained GPU Management and Maximizes Resource Utilization with HAMi"
-coverTitle: "User Case: HAMi GPU Governance for Autonomous Driving"
-slug: "A leading autonomous-driving company"
-date: "2025-08-09"
-excerpt: "In its core model training scenarios, a leading autonomous driving company utilizes multi-machine distributed training with scheduling frameworks like Ray and Volcano."
-author: "Dynamia AI Team"
-tags: ["KubeCon", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-category: "Customer Success Story"
-coverImage: "/images/blog/A-leading-autonomous-driving-company/cover2.jpg"
-language: "en"
+title: >-
+  【HAMi Project Team | User Case】A Leading Autonomous Driving Company Achieves
+  Fine-Grained GPU Management and Maximizes Resource Utilization with HAMi
+coverTitle: 'User Case: HAMi GPU Governance for Autonomous Driving'
+date: '2025-08-09'
+excerpt: >-
+  In its core model training scenarios, a leading autonomous driving company
+  utilizes multi-machine distributed training with scheduling frameworks like
+  Ray and Volcano.
+author: Dynamia AI Team
+tags:
+  - KubeCon
+  - HAMi
+  - GPU Sharing
+  - Cloud Native
+  - Kubernetes
+  - AI Infrastructure
+category: Customer Success Story
+coverImage: /images/blog/A-leading-autonomous-driving-company/cover2.jpg
+language: en
 ---
 
 

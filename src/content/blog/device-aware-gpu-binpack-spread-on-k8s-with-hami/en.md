@@ -1,16 +1,25 @@
 ---
-title: "Two Axes, Four Patterns: Device-Aware GPU Binpack/Spread on K8s with HAMi"
-coverTitle: "Device-Aware GPU Binpack/Spread Scheduling on Kubernetes"
-slug: "device-aware-gpu-binpack-spread-on-k8s-with-hami"
-date: "2025-09-19"
-excerpt: "Explore a practical 2×2 framework for GPU scheduling in Kubernetes: combining node and GPU-level binpack/spread strategies. Learn how HAMi enables device-aware scheduling beyond native K8s capabilities, with hands-on examples of four distinct patterns that balance cost efficiency, GPU availability, and performance for AI workloads."
-author: "Dynamia"
-tags: ["GPU Scheduling", "HAMi", "Device-Aware", "DRA", "AI Infra", "Best Practices"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/cover-en.png"
-language: "en"
+title: 'Two Axes, Four Patterns: Device-Aware GPU Binpack/Spread on K8s with HAMi'
+coverTitle: Device-Aware GPU Binpack/Spread Scheduling on Kubernetes
+date: '2025-09-19'
+excerpt: >-
+  Explore a practical 2×2 framework for GPU scheduling in Kubernetes: combining
+  node and GPU-level binpack/spread strategies. Learn how HAMi enables
+  device-aware scheduling beyond native K8s capabilities, with hands-on examples
+  of four distinct patterns that balance cost efficiency, GPU availability, and
+  performance for AI workloads.
+author: Dynamia
+tags:
+  - GPU Scheduling
+  - HAMi
+  - Device-Aware
+  - DRA
+  - AI Infra
+  - Best Practices
+category: Technical Deep Dive
+coverImage: /images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/cover-en.png
+language: en
 ---
-# Two Axes, Four Patterns: Device-Aware GPU Binpack/Spread on K8s with HAMi
 
 Pods don’t just “land on nodes”—GPU pods also land on  **GPUs** . Kubernetes today gives you solid **node-level** bin-packing/spreading (eg. `MostAllocated`, topology spread). But **GPU-level** bin-packing/spreading still requires a  **device-aware implementation** . Kubernetes 1.34’s **DRA** makes device *description and allocation* first-class and even bridges back to **extended resources** for a smooth migration path—but **generic device scoring** (the bit that would enable built-in GPU bin-pack/spread) is still in flight.
 

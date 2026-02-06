@@ -1,14 +1,18 @@
 ---
-title: "Hello World - Welcome to Our Blog"
-coverTitle: "Hello World - Welcome to Our Blog"
-slug: "hello-world"
-date: "2025-06-25"
-excerpt: "Welcome to our new blog! This is our first post showcasing the power of HAMi and Dynamia AI."
-author: "Dynamia AI Team"
-tags: ["Welcome", "Blog", "HAMi", "Getting-Started"]
-category: "Company News"
-# coverImage: "/images/blog/hello-world.svg"  # 注释掉以使用动态生成的背景图
-language: "en"
+title: Hello World - Welcome to Our Blog
+coverTitle: Hello World - Welcome to Our Blog
+date: '2025-06-25'
+excerpt: >-
+  Welcome to our new blog! This is our first post showcasing the power of HAMi
+  and Dynamia AI.
+author: Dynamia AI Team
+tags:
+  - Welcome
+  - Blog
+  - HAMi
+  - Getting-Started
+category: Company News
+language: en
 ---
 
 Welcome to the official Dynamia AI blog! We're excited to launch this platform where we'll share insights, tutorials, case studies, and updates about HAMi and the future of heterogeneous computing.

@@ -1,14 +1,24 @@
 ---
-title: "基于 HAMi 实现亚马逊云科技 Trainium 与 Inferentia 核心级共享与策略性拓扑调度"
-coverTitle: "基于 HAMi 实现亚马逊云科技 Trainium 与 Inferentia 核心级共享与策略性拓扑调度"
-slug: "hami-aws-neuron-core-sharing-topology-scheduling"
-date: "2025-11-11"
-excerpt: "深度解析 HAMi v2.7.0 如何实现对亚马逊云科技 Trainium 与 Inferentia 芯片的核心级共享与策略性拓扑调度，通过基于先验知识的调度算法，在保持性能稳定的同时显著降低管理成本。"
-author: "Dynamia"
-tags: ["HAMi", "AWS Neuron", "Trainium", "Inferentia", "拓扑调度", "核心级共享", "异构算力", "Kubernetes", "深度解析"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/hami-aws-neuron-topology/cover-zh.png"
-language: "zh"
+title: 基于 HAMi 实现亚马逊云科技 Trainium 与 Inferentia 核心级共享与策略性拓扑调度
+coverTitle: 基于 HAMi 实现亚马逊云科技 Trainium 与 Inferentia 核心级共享与策略性拓扑调度
+date: '2025-11-11'
+excerpt: >-
+  深度解析 HAMi v2.7.0 如何实现对亚马逊云科技 Trainium 与 Inferentia
+  芯片的核心级共享与策略性拓扑调度，通过基于先验知识的调度算法，在保持性能稳定的同时显著降低管理成本。
+author: Dynamia
+tags:
+  - HAMi
+  - AWS Neuron
+  - Trainium
+  - Inferentia
+  - 拓扑调度
+  - 核心级共享
+  - 异构算力
+  - Kubernetes
+  - 深度解析
+category: Technical Deep Dive
+coverImage: /images/blog/hami-aws-neuron-topology/cover-zh.png
+language: zh
 ---
 亚马逊云科技自研的**亚马逊云科技 Trainium** 与 **Inferentia** 芯片，在构建更高效、成本可控的 AI 加速基础设施方面具有明显优势，目标不仅是算力提升，也强调功耗与成本效率。**Inferentia2** 在性能/瓦特（perf/W）上做了显著优化，**Trainium2** 相较同类 GPU 实例可节省约 30–40% 成本，因此在大规模推理与训练任务中，其应用规模持续增长并展现出良好的性价比。
 

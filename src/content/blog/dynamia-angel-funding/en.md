@@ -1,13 +1,24 @@
 ---
-title: "Dynamia AI Raises Tens of Millions in Angel Round: Rooted in Open Source, Driving Heterogeneous Compute Efficiency"
-slug: "dynamia-angel-funding"
-date: "2026-01-05"
-excerpt: "Shanghai Dynamia Intelligence Technology Co., Ltd. ('Dynamia AI'), an AI startup focused on heterogeneous compute scheduling and virtualization, recently completed tens of millions of RMB in angel financing, led by Fosun RCC with strong participation from Zhuopu Investment, seed investors, and industrial partners."
-author: "Dynamia"
-tags: ["financing", "angel round", "Fosun RCC", "Zhuopu Investment", "HAMi"]
-category: "Company News"
-language: "en"
-coverImage: "/images/blog/dynamia-angel-funding/dynamia-angel-funding-announcement.jpg"
+title: >-
+  Dynamia AI Raises Tens of Millions in Angel Round: Rooted in Open Source,
+  Driving Heterogeneous Compute Efficiency
+date: '2026-01-05'
+excerpt: >-
+  Shanghai Dynamia Intelligence Technology Co., Ltd. ('Dynamia AI'), an AI
+  startup focused on heterogeneous compute scheduling and virtualization,
+  recently completed tens of millions of RMB in angel financing, led by Fosun
+  RCC with strong participation from Zhuopu Investment, seed investors, and
+  industrial partners.
+author: Dynamia
+tags:
+  - financing
+  - angel round
+  - Fosun RCC
+  - Zhuopu Investment
+  - HAMi
+category: Company News
+language: en
+coverImage: /images/blog/dynamia-angel-funding/dynamia-angel-funding-announcement.jpg
 ---
 
 Shanghai Dynamia Intelligence Technology Co., Ltd. ("Dynamia AI"), an AI startup focused on heterogeneous compute scheduling and virtualization, **recently completed tens of millions of RMB in angel financing**. This round was **led by Fosun RCC**, with **strong participation from Zhuopu Investment, seed investors, and industrial partners**. Since receiving over 5 million RMB in seed financing last March, Dynamia AI has rapidly completed 2 rounds of financing in less than a year, demonstrating strong development momentum, with its technical prospects and commercial value gaining wide market recognition.

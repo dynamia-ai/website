@@ -1,14 +1,24 @@
 ---
-title: "Nvidia's Open-Sourced KAI-Scheduler vs. HAMi: An Analysis of Technical Paths to GPU Sharing and a Look at Future Synergy"
-coverTitle: "KAI-Scheduler vs. HAMi: Technical Paths to GPU Sharing"
-slug: "KAI-Scheduler-vs-HAMi: Technical Paths to GPU Sharing and Synergy Outlook"
-date: "2025-08-06"
-excerpt: "Today, we're doing a technical deep dive to compare the implementation methods of KAI-Scheduler and HAMi, and to look ahead at the possibilities for future collaboration."
-author: "Dynamia AI Team"
-tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/KAI-Scheduler-VS-HAMi/cover.jpg"
-language: "en"
+title: >-
+  Nvidia's Open-Sourced KAI-Scheduler vs. HAMi: An Analysis of Technical Paths
+  to GPU Sharing and a Look at Future Synergy
+coverTitle: 'KAI-Scheduler vs. HAMi: Technical Paths to GPU Sharing'
+date: '2025-08-06'
+excerpt: >-
+  Today, we're doing a technical deep dive to compare the implementation methods
+  of KAI-Scheduler and HAMi, and to look ahead at the possibilities for future
+  collaboration.
+author: Dynamia AI Team
+tags:
+  - vGPU
+  - HAMi
+  - GPU Sharing
+  - Cloud Native
+  - Kubernetes
+  - AI Infrastructure
+category: Technical Deep Dive
+coverImage: /images/blog/KAI-Scheduler-VS-HAMi/cover.jpg
+language: en
 ---
 
 Recently, with Nvidia's acquisition of Run:ai and the subsequent open-sourcing of its core scheduling component, KAI-Scheduler, both the AI and Kubernetes communities have been paying close attention. The GPU Sharing feature introduced by KAI-Scheduler, in particular, has caught the eye of many who focus on GPU resource virtualization.

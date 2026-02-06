@@ -1,14 +1,18 @@
 ---
-title: "HAMi vGPU 方案：Core & Memory 隔离测试"
-coverTitle: "vGPU 方案 HAMi：core & memory 隔离测试"
-slug: "open-source-vgpu-hami-core-memory-test"
-date: "2025-07-22"
-excerpt: "上一篇给大家分享了开源的 vGPU 方案 HAMi，本文主要对其提供的 GPU Core & Memory 隔离功能进行测试。"
-author: "密瓜智能"
-tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu2/cover.jpg"
-language: "zh"
+title: HAMi vGPU 方案：Core & Memory 隔离测试
+coverTitle: vGPU 方案 HAMi：core & memory 隔离测试
+date: '2025-07-22'
+excerpt: 上一篇给大家分享了开源的 vGPU 方案 HAMi，本文主要对其提供的 GPU Core & Memory 隔离功能进行测试。
+author: 密瓜智能
+tags:
+  - HAMi
+  - GPU 共享
+  - vGPU
+  - Kubernetes
+  - 异构算力
+category: Technical Deep Dive
+coverImage: /images/blog/gpu2/cover.jpg
+language: zh
 ---
 
 之前给大家分享了开源的 vGPU 方案 HAMI，本文主要对其提供的 GPU Core & Memory 隔离功能进行测试。

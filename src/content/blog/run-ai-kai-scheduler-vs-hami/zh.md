@@ -1,14 +1,19 @@
 ---
-title: "Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望"
-coverTitle: "NVIDIA KAI-Scheduler vs HAMi | GPU 共享路线解析"
-slug: "KAI-Scheduler vs HAMi: Technical Paths to GPU Sharing and Synergy Outlook"
-date: "2025-08-06"
-excerpt: "今天，我们进行一次技术专题，对比 KAI-Scheduler 和 HAMi 的实现方式，并展望未来合作的可能性。"
-author: "密瓜智能"
-tags: ["vGPU", "HAMi", "GPU 共享", "云原生", "Kubernetes", "AI 基础设施"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/KAI-Scheduler-VS-HAMi/cover.jpg"
-language: "zh"
+title: 'Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望'
+coverTitle: NVIDIA KAI-Scheduler vs HAMi | GPU 共享路线解析
+date: '2025-08-06'
+excerpt: 今天，我们进行一次技术专题，对比 KAI-Scheduler 和 HAMi 的实现方式，并展望未来合作的可能性。
+author: 密瓜智能
+tags:
+  - vGPU
+  - HAMi
+  - GPU 共享
+  - 云原生
+  - Kubernetes
+  - AI 基础设施
+category: Technical Deep Dive
+coverImage: /images/blog/KAI-Scheduler-VS-HAMi/cover.jpg
+language: zh
 ---
 
 最近，随着 Nvidia 收购 Run:ai 并将其核心调度组件 KAI-Scheduler 开源，AI 和 Kubernetes 社区都投入了相当大的关注。其中，KAI-Scheduler 带来的 GPU Sharing 功能，更是让不少专注于 GPU 资源虚拟化的朋友们眼前一亮。

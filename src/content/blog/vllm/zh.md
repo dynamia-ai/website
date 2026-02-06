@@ -1,14 +1,23 @@
 ---
-title: "「全球共建：vLLM 社区原生支持 HAMi，推理效率飞跃」— 来自西班牙开发者的贡献"
-coverTitle: "全球共建：VLLM 社区原生支持 HAMi，推理效率飞跃"
-slug: "vllm-community-hami-support-efficiency-spanish-contributor"
-date: "2025-09-15"
-excerpt: "本文将以该 PR 为切入点，结合社区 Issue 和邮件交流记录，从部署到验证，完整还原一条 \"HAMi × vLLM\" 的落地路径，帮助你在 Kubernetes 中快速实现多模型部署与资源复用"
-author: "密瓜智能"
-tags: ["vLLM", "HAMi", "GPU 调度", "多模型部署", "Kubernetes", "AI 推理", "社区贡献", "云原生"]
-category: "Integration & Ecosystem"
-coverImage: "/images/blog/vllm-hami-support/coverpage.png"
-language: "zh"
+title: 「全球共建：vLLM 社区原生支持 HAMi，推理效率飞跃」— 来自西班牙开发者的贡献
+coverTitle: 全球共建：VLLM 社区原生支持 HAMi，推理效率飞跃
+date: '2025-09-15'
+excerpt: >-
+  本文将以该 PR 为切入点，结合社区 Issue 和邮件交流记录，从部署到验证，完整还原一条 "HAMi × vLLM" 的落地路径，帮助你在
+  Kubernetes 中快速实现多模型部署与资源复用
+author: 密瓜智能
+tags:
+  - vLLM
+  - HAMi
+  - GPU 调度
+  - 多模型部署
+  - Kubernetes
+  - AI 推理
+  - 社区贡献
+  - 云原生
+category: Integration & Ecosystem
+coverImage: /images/blog/vllm-hami-support/coverpage.png
+language: zh
 ---
 
 在大模型推理进入生产阶段后，如何最大化利用 GPU 资源、实现多模型共存、提高部署灵活性，成为了许多企业与开发者关注的重点。最近，vLLM 社区正式合并了 PR#579，原生支持了 CNCF Sandbox & CNAI Project HAMi。这不仅代表 HAMi 的能力被主流推理框架接纳，更意味着 vLLM 用户可以通过搭配 HAMi，开箱即用地进行 GPU 显存与算力切分部署。

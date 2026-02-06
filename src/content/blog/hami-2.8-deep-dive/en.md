@@ -1,14 +1,24 @@
 ---
-title: "HAMi v2.8 Deep Dive: Standardization and Ecosystem Evolution"
-coverTitle: "HAMi v2.8 Deep Dive: Standardization and Ecosystem Evolution"
-slug: "hami-2.8-deep-dive"
-date: "2026-02-04"
-excerpt: "HAMi v2.8 deep dive: Kubernetes DRA support, Leader Election mechanism, CDI mode support, upstream ecosystem integration (Kueue, vLLM), critical bug fixes, and stability improvements."
-author: "Dynamia AI Team"
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "DRA", "Leader Election", "CDI", "Release"]
-category: "Product Release"
-coverImage: "/images/blog/hami-2.8-deep-dive/cover-en.png"
-language: "en"
+title: 'HAMi v2.8 Deep Dive: Standardization and Ecosystem Evolution'
+coverTitle: 'HAMi v2.8 Deep Dive: Standardization and Ecosystem Evolution'
+date: '2026-02-04'
+excerpt: >-
+  HAMi v2.8 deep dive: Kubernetes DRA support, Leader Election mechanism, CDI
+  mode support, upstream ecosystem integration (Kueue, vLLM), critical bug
+  fixes, and stability improvements.
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - DRA
+  - Leader Election
+  - CDI
+  - Release
+category: Product Release
+coverImage: /images/blog/hami-2.8-deep-dive/cover-en.png
+language: en
 ---
 
 > **Deep roots, lush leaves.**

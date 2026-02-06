@@ -1,14 +1,23 @@
 ---
-title: "HAMi Quick-Start: 9 Key Questions Every New User Must Know"
-coverTitle: "HAMi Quick-Start: 9 Key Questions Every New User Must Know"
-slug: "hami-getting-started-9-key-questions"
-date: "2025-06-25"
-excerpt: "Low GPU utilization? Struggling with heterogeneous devices? This article answers 9 must-know questions to get you up to speed with HAMi, covering hardware compatibility, vGPU mechanics, distributed training, dynamic resources, and the project roadmap."
-author: "Dynamia AI Team"
-tags: ["HAMi", "GPU Sharing", "vGPU", "Kubernetes", "Heterogeneous Compute", "Getting-Started"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/faq/coverimage2.jpg"
-language: "en"
+title: 'HAMi Quick-Start: 9 Key Questions Every New User Must Know'
+coverTitle: 'HAMi Quick-Start: 9 Key Questions Every New User Must Know'
+date: '2025-06-25'
+excerpt: >-
+  Low GPU utilization? Struggling with heterogeneous devices? This article
+  answers 9 must-know questions to get you up to speed with HAMi, covering
+  hardware compatibility, vGPU mechanics, distributed training, dynamic
+  resources, and the project roadmap.
+author: Dynamia AI Team
+tags:
+  - HAMi
+  - GPU Sharing
+  - vGPU
+  - Kubernetes
+  - Heterogeneous Compute
+  - Getting-Started
+category: Technical Deep Dive
+coverImage: /images/blog/faq/coverimage2.jpg
+language: en
 ---
 
 ## 00 Preface

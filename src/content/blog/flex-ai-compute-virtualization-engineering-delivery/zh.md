@@ -1,13 +1,22 @@
 ---
-title: "面向算力虚拟化的开源探索：如何看待 Flex:ai，以及为什么工程交付如此重要"
-coverTitle: "如何看待 Flex:ai：算力虚拟化的工程交付边界"
-slug: "flex-ai-compute-virtualization-engineering-delivery"
-date: "2026-01-19"
-excerpt: "随着 AI 推理与训练走向多模型混部与碎片化并发，算力虚拟化正从局部优化演进为关键的基础设施能力。本文基于公开仓库与社区可见信息，从工程视角分析 Flex:ai 的当前可验证交付边界，并讨论算力虚拟化项目从“能跑”走向“可依赖基础设施”过程中常见的工程落差。"
-author: "Dynamia"
-tags: ["算力虚拟化", "Flex:ai", "GPU 虚拟化", "AI 基础设施", "工程交付", "调度", "可验证性", "开源生态"]
-category: "Technical Deep Dive"
-language: "zh"
+title: '面向算力虚拟化的开源探索：如何看待 Flex:ai，以及为什么工程交付如此重要'
+coverTitle: '如何看待 Flex:ai：算力虚拟化的工程交付边界'
+date: '2026-01-19'
+excerpt: >-
+  随着 AI 推理与训练走向多模型混部与碎片化并发，算力虚拟化正从局部优化演进为关键的基础设施能力。本文基于公开仓库与社区可见信息，从工程视角分析
+  Flex:ai 的当前可验证交付边界，并讨论算力虚拟化项目从“能跑”走向“可依赖基础设施”过程中常见的工程落差。
+author: Dynamia
+tags:
+  - 算力虚拟化
+  - 'Flex:ai'
+  - GPU 虚拟化
+  - AI 基础设施
+  - 工程交付
+  - 调度
+  - 可验证性
+  - 开源生态
+category: Technical Deep Dive
+language: zh
 ---
 
 AI 推理与训练正在快速走向“多模型混部、碎片化并发”的新常态。算力虚拟化也因此从“局部工程优化”，逐步上升为 AI 基础设施的关键能力：不仅要能切分，还要能调度、能治理、能长期稳定运行。

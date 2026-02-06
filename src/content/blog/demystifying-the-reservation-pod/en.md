@@ -1,18 +1,29 @@
 ---
-title: "【Run:ai KAI-Scheduler Deep Dive】Supplement: Demystifying How the Reservation Pod Discovers GPU Allocation Details"
-coverTitle: "Deep Dive: HAMi’s KAI-Scheduler Mechanics"
-slug: "Run:ai KAI-Scheduler Deep Dive"
-date: "2025-08-07"
-excerpt: "Yesterday, we took a deep dive into how KAI-Scheduler achieves fractional GPU sharing. Thank you all for your attention and lively discussion! A reader pointed out a key technical detail that needed further clarification, and today we're going to break down that very issue."
-author: "Dynamia AI Team"
-tags: ["vGPU", "HAMi", "GPU Sharing", "Cloud Native", "Kubernetes", "AI Infrastructure"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/Demystifying-the-Reservation-Pod/cover.jpg"
+title: >-
+  【Run:ai KAI-Scheduler Deep Dive】Supplement: Demystifying How the Reservation
+  Pod Discovers GPU Allocation Details
+coverTitle: 'Deep Dive: HAMi’s KAI-Scheduler Mechanics'
+date: '2025-08-07'
+excerpt: >-
+  Yesterday, we took a deep dive into how KAI-Scheduler achieves fractional GPU
+  sharing. Thank you all for your attention and lively discussion! A reader
+  pointed out a key technical detail that needed further clarification, and
+  today we're going to break down that very issue.
+author: Dynamia AI Team
+tags:
+  - vGPU
+  - HAMi
+  - GPU Sharing
+  - Cloud Native
+  - Kubernetes
+  - AI Infrastructure
+category: Technical Deep Dive
+coverImage: /images/blog/Demystifying-the-Reservation-Pod/cover.jpg
 ---
 
 Yesterday, our article, [Nvidia's Open-Sourced KAI-Scheduler vs. HAMi: An Analysis of Technical Paths to GPU Sharing and a Look at Future Synergy](<https://dynamia.ai/en/blog/KAI-Scheduler> vs HAMi: Technical Paths to GPU Sharing and Synergy Outlook), took a deep dive into how KAI-Scheduler achieves fractional GPU sharing. We're very grateful for all the attention and lively discussion it generated! In particular, a reader pointed out a key technical detail that needed further clarification. Today, we're going to dedicate this post to analyzing that very issue.
 
-### Reader Feedback and Technical Clarification
+## Reader Feedback and Technical Clarification
 
 A reader mentioned in the comments:
 

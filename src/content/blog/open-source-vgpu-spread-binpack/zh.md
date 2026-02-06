@@ -1,14 +1,20 @@
 ---
-title: "HAMi vGPU 原理分析 Part4：Spread&Binpack 高级调度策略实现"
-coverTitle: "HAMi Spread&Binpack 高级调度策略实现"
-slug: "open-source-vgpu-hami-Spread-Binpack"
-date: "2025-07-26"
-excerpt: "本文为 HAMi 原理分析的第四篇，分析 hami-scheduler 在调度时是如何选择节点的，即：Spread、Binpack 等高级调度策略是怎么实现的。"
+title: HAMi vGPU 原理分析 Part4：Spread&Binpack 高级调度策略实现
+coverTitle: HAMi Spread&Binpack 高级调度策略实现
+date: '2025-07-26'
+excerpt: >-
+  本文为 HAMi 原理分析的第四篇，分析 hami-scheduler 在调度时是如何选择节点的，即：Spread、Binpack
+  等高级调度策略是怎么实现的。
 author: 密瓜智能
-tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu6/cover.jpg"
-language: "zh"
+tags:
+  - HAMi
+  - GPU 共享
+  - vGPU
+  - Kubernetes
+  - 异构算力
+category: Technical Deep Dive
+coverImage: /images/blog/gpu6/cover.jpg
+language: zh
 ---
 
 上篇我们分析了 hami-scheduler 工作流程，知道了 hami-webhook、hami-scheduler 是怎么配合工作的。
@@ -1247,5 +1253,4 @@ hami-scheduler 提供了两种不同级别的调度策略：
 
 ---
 
-*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。_
----
+*想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*

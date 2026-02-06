@@ -4,9 +4,9 @@ import { NextRequest, NextResponse } from 'next/server';
 export const locales = ['en', 'zh'];
 export const defaultLocale = 'en';
 
-// 获取请求中的locale
+// 获取请求中的 locale
 function getLocale(request: NextRequest) {
-  // 从路径中提取locale
+  // 从路径中提取 locale
   const pathname = request.nextUrl.pathname;
   const pathnameLocale = locales.find(
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -14,11 +14,11 @@ function getLocale(request: NextRequest) {
   
   if (pathnameLocale) return pathnameLocale;
   
-  // 从cookie中获取locale
+  // 从 cookie 中获取 locale
   const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
   if (cookieLocale && locales.includes(cookieLocale)) return cookieLocale;
   
-  // 从Accept-Language头获取locale
+  // 从 Accept-Language 头获取 locale
   const acceptLanguage = request.headers.get('accept-language');
   if (acceptLanguage) {
     const parsedLocales = acceptLanguage.split(',')
@@ -35,17 +35,17 @@ function getLocale(request: NextRequest) {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  
+
   // 创建响应
   const response = NextResponse.next();
-  
+
   // 添加安全头
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('X-XSS-Protection', '1; mode=block');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  
+
   // 排除不需要处理的路径
   if (
     pathname.startsWith('/_next') ||
@@ -56,20 +56,20 @@ export function middleware(request: NextRequest) {
     return response;
   }
   
-  // 获取locale
+  // 获取 locale
   const locale = getLocale(request);
   
-  // 检查是否已经有locale前缀
+  // 检查是否已经有 locale 前缀
   const pathnameHasLocale = locales.some(
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
   
   if (pathnameHasLocale) return response;
   
-  // 如果是默认locale且没有前缀，不重定向
+  // 如果是默认 locale 且没有前缀，不重定向
   if (locale === defaultLocale) return response;
   
-  // 重定向到带有locale前缀的路由
+  // 重定向到带有 locale 前缀的路由
   const newUrl = new URL(
     `/${locale}${pathname === '/' ? '' : pathname}`,
     request.url
@@ -86,7 +86,7 @@ export function middleware(request: NextRequest) {
   return redirectResponse;
 }
 
-// 在文件末尾添加config导出
+// 在文件末尾添加 config 导出
 export const config = {
   matcher: [
     // 匹配所有路径，但排除以下路径

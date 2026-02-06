@@ -1,14 +1,27 @@
 ---
-title: "在 AWS 上虚拟化任意 GPU：HAMi 实现自由显存隔离"
-coverTitle: "在 AWS 上虚拟化任意 GPU：HAMi 实现自由显存隔离"
-slug: "virtualizing-gpu-aws-hami-free-memory-isolation"
-date: "2025-09-16"
-excerpt: "本文以 PR 为切入点，结合社区 Issue 和邮件记录，完整还原一条 'HAMi × vLLM' 的落地路径，帮助你在 Kubernetes 中快速实现多模型部署与资源复用。"
-author: ""
-tags: ["HAMi", "GPU 虚拟化", "AWS", "Kubernetes", "vLLM", "GPU 内存隔离", "多模型推理", "云端 AI", "GPU 紧凑调度", "EKS", "Terraform", "AI 基础设施"]
-category: "Integration & Ecosystem"
-coverImage: "/images/blog/aws/aws-coverpage.png"
-language: "zh"
+title: 在 AWS 上虚拟化任意 GPU：HAMi 实现自由显存隔离
+coverTitle: 在 AWS 上虚拟化任意 GPU：HAMi 实现自由显存隔离
+date: '2025-09-16'
+excerpt: >-
+  本文以 PR 为切入点，结合社区 Issue 和邮件记录，完整还原一条 'HAMi × vLLM' 的落地路径，帮助你在 Kubernetes
+  中快速实现多模型部署与资源复用。
+author: ''
+tags:
+  - HAMi
+  - GPU 虚拟化
+  - AWS
+  - Kubernetes
+  - vLLM
+  - GPU 内存隔离
+  - 多模型推理
+  - 云端 AI
+  - GPU 紧凑调度
+  - EKS
+  - Terraform
+  - AI 基础设施
+category: Integration & Ecosystem
+coverImage: /images/blog/aws/aws-coverpage.png
+language: zh
 ---
 
 **摘要**：本指南在 AWS EKS 集群中创建两个 GPU 节点组（T4 和 A10G），自动安装 HAMi，并部署三个 vLLM 服务，借助自由显存隔离让每个节点上的多个服务共享同一块物理 GPU。你将看到 GPU 维度的装箱（binpack）效果：当资源允许时，多个 Pod 会共置在同一块 GPU 上。

@@ -1,14 +1,20 @@
 ---
-title: "HAMi vGPU 原理分析 Part5：HAMi-core(libvgpu.so) vCUDA 工作原理分析"
-coverTitle: "HAMi-core vCUDA 工作原理分析"
-slug: "open-source-vgpu-hami-core-libvgpu.so vCUDA"
-date: "2025-07-28"
-excerpt: "本文为 HAMi 原理分析的第五篇，简单分析一下 HAMi-Core 的工作原理，包括怎么生效的，CUDA API 怎么拦截的，以及是怎么实现的对 GPU 的 core、memory 资源的 limit 的。"
+title: HAMi vGPU 原理分析 Part5：HAMi-core(libvgpu.so) vCUDA 工作原理分析
+coverTitle: HAMi-core vCUDA 工作原理分析
+date: '2025-07-28'
+excerpt: >-
+  本文为 HAMi 原理分析的第五篇，简单分析一下 HAMi-Core 的工作原理，包括怎么生效的，CUDA API 怎么拦截的，以及是怎么实现的对 GPU
+  的 core、memory 资源的 limit 的。
 author: 密瓜智能
-tags: ["HAMi", "GPU 共享", "vGPU", "Kubernetes", "异构算力"]
-category: "Technical Deep Dive"
-coverImage: "/images/blog/gpu7/cover.jpg"
-language: "zh"
+tags:
+  - HAMi
+  - GPU 共享
+  - vGPU
+  - Kubernetes
+  - 异构算力
+category: Technical Deep Dive
+coverImage: /images/blog/gpu7/cover.jpg
+language: zh
 ---
 
 
@@ -1383,4 +1389,3 @@ int delta(int up_limit, int user_current, int share) {
 ---
 
 *想了解更多 HAMi 项目信息，请访问 [GitHub 仓库](https://github.com/Project-HAMi/HAMi) 或加入我们的 [Slack 社区](https://cloud-native.slack.com/archives/C07T10BU4R2)。*
----
