@@ -7,10 +7,10 @@ const title = zhTranslation.cases?.prepEduHami?.title || 'PREP EDU × HAMi 案�
 const description = zhTranslation.cases?.prepEduHami?.subtitle || '';
 
 export const metadata: Metadata = {
-  title: `${title} | Dynamia AI`,
+  title: `客户案例｜${title} | Dynamia AI`,
   description,
   openGraph: {
-    title: `${title} | Dynamia AI`,
+    title: `客户案例｜${title} | Dynamia AI`,
     description,
     url: '/zh/case-studies/prep-edu',
     siteName: 'Dynamia AI',

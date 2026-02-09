@@ -11,6 +11,7 @@
     "community": "社区交流",
     "communityDesc": "加入 HAMi 用户社区，分享经验与获取帮助",
     "products": "产品",
+    "caseStudies": "客户案例",
     "solutions": "解决方案",
     "pricing": "定价",
     "resources": "资源",
@@ -931,6 +932,7 @@
   "caseStudiesPage": {
     "title": "案例研究",
     "subtitle": "了解团队如何借助 HAMi 与异构 GPU 调度扩展 AI、HPC 与推理工作负载。",
+    "h1Prefix": "客户案例｜",
     "cardButton": "查看案例",
     "cta": {
       "title": "准备好打造你的成功案例了吗？",

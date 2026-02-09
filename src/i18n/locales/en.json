@@ -11,6 +11,7 @@
     "community": "Community",
     "communityDesc": "Join the HAMi user community to share experiences and get help",
     "products": "Products",
+    "caseStudies": "Case Studies",
     "solutions": "Solutions",
     "pricing": "Pricing",
     "resources": "Resources",
@@ -863,6 +864,7 @@
   "caseStudiesPage": {
     "title": "Case Studies",
     "subtitle": "See how teams scale AI, HPC, and inference workloads with HAMi and heterogeneous GPU scheduling.",
+    "h1Prefix": "Case Study | ",
     "cardButton": "Read case study",
     "cta": {
       "title": "Ready to build your own success story?",

@@ -6,10 +6,10 @@ const title = enTranslation.cases?.telecomGpu?.title || 'Telecom Provider GPU Ca
 const description = enTranslation.cases?.telecomGpu?.subtitle || '';
 
 export const metadata: Metadata = {
-  title: `${title} | Dynamia AI`,
+  title: `Case Study | ${title} | Dynamia AI`,
   description,
   openGraph: {
-    title: `${title} | Dynamia AI`,
+    title: `Case Study | ${title} | Dynamia AI`,
     description,
     url: '/case-studies/telecom',
     siteName: 'Dynamia AI',

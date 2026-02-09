@@ -7,10 +7,10 @@ const title = zhTranslation.cases?.telecomGpu?.title || '电信运营商 GPU 案
 const description = zhTranslation.cases?.telecomGpu?.subtitle || '';
 
 export const metadata: Metadata = {
-  title: `${title} | Dynamia AI`,
+  title: `客户案例｜${title} | Dynamia AI`,
   description,
   openGraph: {
-    title: `${title} | Dynamia AI`,
+    title: `客户案例｜${title} | Dynamia AI`,
     description,
     url: '/zh/case-studies/telecom',
     siteName: 'Dynamia AI',
