@@ -29,6 +29,8 @@
     "caseTelecomDesc": "Learn how a telecom provider leverages HAMi for GPU virtualization and heterogeneous device management",
     "caseKeHoldings": "Ke Holdings Case",
     "caseKeHoldingsDesc": "Discover how Ke Holdings scales ML infrastructure with GPU virtualization using Kubernetes and HAMi",
+    "caseDaoCloud": "DaoCloud Case",
+    "caseDaoCloudDesc": "Discover how DaoCloud builds flexible GPU clouds with HAMi across D.run Compute Cloud and DaoCloud Enterprise",
     "caseSfTechnology": "SF Technology Case",
     "caseSfTechnologyDesc": "Discover how SF Technology builds EffectiveGPU based on HAMi to enhance AI efficiency and reduce costs",
     "casePrepEdu": "PREP EDU Case",
@@ -1271,6 +1273,128 @@
       "conclusion": {
         "title": "Open-Source Success Story",
         "description": "Ke Holdings has successfully demonstrated how leveraging HAMi and Kubernetes can dramatically improve GPU utilization while supporting massive-scale AI workloads. The AIStudio platform serves as a model for organizations seeking to optimize their machine learning infrastructure."
+      }
+    },
+    "daoCloud": {
+      "title": "Building Flexible GPU Clouds with HAMi at DaoCloud",
+      "subtitle": "Discover how DaoCloud operates two major cloud native platforms for AI workloads—D.run Compute Cloud and DaoCloud Enterprise—using HAMi to achieve >80% GPU utilization across 10,000+ GPUs spanning 10+ data centers.",
+      "stats": [
+        { "value": "10,000+", "label": "GPUs across platforms" },
+        { "value": ">80%", "label": "average GPU utilization" },
+        { "value": "20-30%", "label": "reduction in operating costs" }
+      ],
+      "overview": {
+        "title": "Company Overview",
+        "description": "DaoCloud operates two major cloud native platforms for AI workloads. D.run Compute Cloud is a public GPU cloud serving individual developers and small teams, while DaoCloud Enterprise (DCE) is a private Kubernetes platform for enterprise customers running both training and inference.",
+        "keyPoints": [
+          "Two major cloud native platforms",
+          "D.run Compute Cloud for public GPU cloud",
+          "DaoCloud Enterprise (DCE) for private K8s",
+          "10+ data centers across China and Hong Kong"
+        ]
+      },
+      "challenge": {
+        "title": "Challenges in GPU Resource Management",
+        "description": "As GPU demand grew rapidly across both platforms, several challenges emerged that required a flexible GPU virtualization solution.",
+        "points": [
+          {
+            "title": "Whole-card Allocation",
+            "description": "Many inference and lightweight workloads used only a fraction of GPU resources, leaving significant portions of compute and memory underutilized and limiting how DaoCloud could package GPU SKUs."
+          },
+          {
+            "title": "Heterogeneous Hardware",
+            "description": "DaoCloud needed to support mainstream NVIDIA GPUs while also integrating domestic accelerators from multiple vendors. Proprietary vGPU solutions increased licensing costs."
+          },
+          {
+            "title": "Multi-tenant Governance",
+            "description": "On DCE, enterprise customers wanted shared GPU pools with department-level quotas, queue-based resource allocation, and clear isolation across teams."
+          },
+          {
+            "title": "Cloud Native Alignment",
+            "description": "DaoCloud's core strategy revolves around Kubernetes and open-source technologies. Any GPU sharing solution had to stay fully cloud native, vendor-agnostic, and compatible with existing CNCF tooling."
+          }
+        ]
+      },
+      "solution": {
+        "title": "HAMi as the Unified GPU Layer",
+        "description": "DaoCloud adopted HAMi, a CNCF Sandbox project, for heterogeneous AI computing virtualization, as the unified GPU layer across both D.run and DCE. HAMi provides device virtualization, vGPU partitioning, and scheduling for heterogeneous accelerators in Kubernetes clusters.",
+        "drun": {
+          "title": "D.run Compute Cloud: vGPU SKUs for Public GPU Users",
+          "description": "On D.run, DaoCloud integrated HAMi into each regional Kubernetes cluster to enable fine-grained GPU sharing and higher utilization.",
+          "features": [
+            {
+              "title": "vGPU Slicing",
+              "description": "Physical GPUs partitioned into multiple vGPU slices with defined compute and memory. Lightweight inference jobs can run on fractional GPUs."
+            },
+            {
+              "title": "SKU-based Marketplace",
+              "description": "vGPU slices are exposed as standardized SKUs in a central marketplace. Users select GPU SKUs based on workload size."
+            },
+            {
+              "title": "Multi-region Deployment",
+              "description": "HAMi powers 7 active D.run regions across Mainland China and Hong Kong, covering over 10 data centers."
+            },
+            {
+              "title": "Domestic Accelerator Support",
+              "description": "DaoCloud extended HAMi to support domestic GPU vendors, ensuring consistent management under a unified abstraction layer."
+            }
+          ]
+        },
+        "dce": {
+          "title": "DaoCloud Enterprise (DCE): Shared GPU Pool for Enterprise",
+          "description": "On DCE, DaoCloud built a centralized GPU resource pool using HAMi, unifying GPU capacity for multiple enterprise tenants.",
+          "features": [
+            {
+              "title": "Unified GPU Pool",
+              "description": "Enterprise users contribute and consume GPUs from a central pool that serves both training and inference workloads."
+            },
+            {
+              "title": "Quotas & RBAC",
+              "description": "HAMi's vGPU resources are integrated with DaoCloud's existing quota and role-based access systems."
+            },
+            {
+              "title": "Simplified Experience",
+              "description": "Algorithm engineers request GPU resources through the platform without worrying about underlying hardware differences."
+            }
+          ]
+        }
+      },
+      "opensource": {
+        "title": "Co-developing HAMi with the Community",
+        "description": "DaoCloud has been one of HAMi's earliest and most active contributors.",
+        "points": [
+          "Contributed real-world insights from D.run and DCE back to the open-source community",
+          "Collaborated upstream to improve GPU over-subscription mechanisms, node configuration management, and heterogeneous hardware handling",
+          "Helped maintain documentation and deployment guides to support production adoption by other cloud providers"
+        ]
+      },
+      "results": {
+        "title": "Significant Results: Cost Reduction and Improved Efficiency",
+        "description": "By integrating HAMi, DaoCloud consolidated previously fragmented GPU resources into a more unified, efficient, and scalable GPU layer across both public and private clouds.",
+        "items": [
+          { "title": "GPU Utilization", "value": ">80%", "description": "Average utilization per card after HAMi deployment" },
+          { "title": "Cost Reduction", "value": "20-30%", "description": "Reduction in GPU-related operating costs" },
+          { "title": "Unified Abstraction", "value": "Single Layer", "description": "Across NVIDIA and domestic GPUs" },
+          { "title": "Deployment Scale", "value": "10,000+ GPUs", "description": "Across 10+ data centers" },
+          { "title": "Multi-region", "value": "7 Regions", "description": "Active D.run regions across China" },
+          { "title": "Open Collaboration", "value": "Active", "description": "Contributing improvements upstream" }
+        ]
+      },
+      "quote": {
+        "text": "HAMi is more than compatible with DaoCloud's business, it's something we've built together. As one of HAMi's earliest contributors, we've witnessed its evolution from inception to maturity. HAMi now runs across both D.run and DCE, and our real-world improvements continuously flow back to the community. HAMi and DaoCloud share the same open-source DNA, and we'll continue contributing to HAMi to bring true vGPU technology to the world.",
+        "author": "Captain, AI/LLM Infra Product Lead, DaoCloud"
+      },
+      "companyCard": {
+        "name": "DaoCloud",
+        "description": "Cloud native platform provider for AI workloads"
+      },
+      "cta": {
+        "exploreHami": "Explore HAMi",
+        "contactUs": "Contact Us"
+      },
+      "conclusion": {
+        "title": "Open-Source Partnership Success",
+        "description": "DaoCloud has successfully integrated HAMi across both its public and private GPU cloud platforms, achieving dramatic improvements in utilization and cost efficiency while contributing back to the open-source community."
       }
     }
   },

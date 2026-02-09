@@ -12,7 +12,7 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 }
 };
 
-const CaseKeHoldings: React.FC = () => {
+const CaseDaoCloud: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -31,8 +31,8 @@ const CaseKeHoldings: React.FC = () => {
               <div className="flex items-center space-x-8">
                 <div className="w-24 h-24 bg-gray-50 rounded-lg border border-gray-200 shadow-sm flex items-center justify-center">
                   <Image
-                    src="/images/case-studies/icons/beike.png"
-                    alt="Ke Holdings Logo"
+                    src="/images/case-studies/icons/daocloud.svg"
+                    alt="DaoCloud Logo"
                     width={80}
                     height={80}
                     className="w-full h-auto"
@@ -52,10 +52,10 @@ const CaseKeHoldings: React.FC = () => {
             </div>
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
               {t('caseStudiesPage.h1Prefix')}
-              {t('cases.keHoldings.title')}
+              {t('cases.daoCloud.title')}
             </h1>
             <p className="mt-4 text-xl text-gray-600 leading-relaxed">
-              {t('cases.keHoldings.subtitle')}
+              {t('cases.daoCloud.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -66,13 +66,13 @@ const CaseKeHoldings: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(function() {
-              const stats = t('cases.keHoldings.stats', { returnObjects: true });
+              const stats = t('cases.daoCloud.stats', { returnObjects: true });
               return Array.isArray(stats)
                 ? stats
                 : [
-                    { value: '3x', label: 'GPU utilization improvement' },
-                    { value: '10,000+', label: 'pods running simultaneously' },
-                    { value: '10M+', label: 'daily requests processed' }
+                    { value: '10,000+', label: 'GPUs across platforms' },
+                    { value: '>80%', label: 'average GPU utilization' },
+                    { value: '20-30%', label: 'reduction in operating costs' }
                   ];
             }()).map((stat: any, index: number) => (
               <motion.div
@@ -105,17 +105,17 @@ const CaseKeHoldings: React.FC = () => {
           >
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                {t('cases.keHoldings.overview.title')}
+                {t('cases.daoCloud.overview.title')}
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                {t('cases.keHoldings.overview.description')}
+                {t('cases.daoCloud.overview.description')}
               </p>
               <div className="space-y-4">
                 {(function() {
-                  const keyPoints = t('cases.keHoldings.overview.keyPoints', { returnObjects: true });
+                  const keyPoints = t('cases.daoCloud.overview.keyPoints', { returnObjects: true });
                   return Array.isArray(keyPoints)
                     ? keyPoints
-                    : ['中国领先的房产交易服务平台', '集中化机器学习平台', '跨业务单元的 AI 基础设施', '大规模 GPU 集群需求'];
+                    : ['Two major cloud native platforms', 'D.run Compute Cloud for public GPU cloud', 'DaoCloud Enterprise (DCE) for private K8s', '10+ data centers across China and Hong Kong'];
                 }()).map((point: string, index: number) => (
                   <div key={index} className="flex items-start">
                     <div className="flex-shrink-0">
@@ -133,15 +133,15 @@ const CaseKeHoldings: React.FC = () => {
                 <div className="text-center">
                   <div className="w-20 h-20 bg-gray-50 rounded-lg border border-gray-200 shadow-sm mx-auto mb-4 flex items-center justify-center">
                     <Image
-                      src="/images/case-studies/icons/beike.png"
-                      alt="Ke Holdings Logo"
+                      src="/images/case-studies/icons/daocloud.svg"
+                      alt="DaoCloud Logo"
                       width={80}
                       height={80}
                       className="w-full h-auto"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{t('cases.keHoldings.companyCard.name')}</h3>
-                  <p className="text-gray-600 text-sm">{t('cases.keHoldings.companyCard.description')}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{t('cases.daoCloud.companyCard.name')}</h3>
+                  <p className="text-gray-600 text-sm">{t('cases.daoCloud.companyCard.description')}</p>
                 </div>
               </div>
             </div>
@@ -161,23 +161,23 @@ const CaseKeHoldings: React.FC = () => {
             className="max-w-4xl mx-auto mb-12 text-center"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {t('cases.keHoldings.challenge.title')}
+              {t('cases.daoCloud.challenge.title')}
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              {t('cases.keHoldings.challenge.description')}
+              {t('cases.daoCloud.challenge.description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {(function() {
-              const challenges = t('cases.keHoldings.challenge.points', { returnObjects: true });
+              const challenges = t('cases.daoCloud.challenge.points', { returnObjects: true });
               return Array.isArray(challenges)
                 ? challenges
                 : [
-                    { title: 'Scale and Complexity', description: '5 clusters across public and private clouds, thousands of GPU cards' },
-                    { title: 'Hybrid-cloud Environment', description: 'Managing GPU resources across multiple cloud providers' },
-                    { title: 'Diverse Workload Requirements', description: 'Training vs inference with different resource needs' },
-                    { title: 'Low GPU Utilization', description: 'Only 13% initial utilization rate' }
+                    { title: 'Whole-card Allocation', description: 'Many inference workloads used only a fraction of GPU resources, leaving significant capacity underutilized' },
+                    { title: 'Heterogeneous Hardware', description: 'Need to support mainstream NVIDIA GPUs while integrating domestic accelerators from multiple vendors' },
+                    { title: 'Multi-tenant Governance', description: 'Enterprise customers wanted shared GPU pools with department-level quotas and clear isolation' },
+                    { title: 'Cloud Native Alignment', description: 'GPU sharing solution had to stay fully cloud native, vendor-agnostic, and compatible with CNCF tooling' }
                   ];
             }()).map((challenge: any, index: number) => (
               <motion.div
@@ -218,119 +218,81 @@ const CaseKeHoldings: React.FC = () => {
             className="max-w-4xl mx-auto mb-12 text-center"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {t('cases.keHoldings.solution.title')}
+              {t('cases.daoCloud.solution.title')}
             </h2>
             <p className="text-lg text-gray-600 mb-4">
-              {t('cases.keHoldings.solution.description')}
-            </p>
-            <p className="text-lg text-gray-700 font-medium">
-              {t('cases.keHoldings.solution.platform')}
+              {t('cases.daoCloud.solution.description')}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {(function() {
-              const features = t('cases.keHoldings.solution.features', { returnObjects: true });
-              return Array.isArray(features)
-                ? features
-                : [
-                    { title: 'Multi-scenario Support', description: 'Supports inference, A/B testing, and training tasks on same infrastructure' },
-                    { title: 'Advanced Optimization', description: 'Acceleration for inference frameworks, datasets, models, and fault tolerance' },
-                    { title: 'Multi-framework Support', description: 'PyTorch, DeepSpeed, Megatron, VLLM, RLHF, SGLang' },
-                    { title: 'AI Asset Management', description: 'Unified management of resource pools, models, images, queues, and monitoring' }
-                  ];
-            }()).map((feature: any, index: number) => (
-              <motion.div
-                key={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg border border-green-100"
-              >
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4">
-                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                    <p className="text-gray-700 leading-relaxed text-sm">{feature.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Architecture */}
+          {/* D.run Compute Cloud */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
             transition={{ duration: 0.5 }}
-            className="mt-12 bg-white rounded-lg p-8 border border-gray-200"
+            className="bg-white rounded-lg p-8 border border-gray-200 mb-8"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-              {t('cases.keHoldings.solution.architecture.title')}
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {t('cases.daoCloud.solution.drun.title')}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-3 flex items-center">
-                  <svg className="w-6 h-6 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                  </svg>
-                  {t('cases.keHoldings.solution.architecture.gpuCluster.title')}
-                </h4>
-                <p className="text-gray-700 text-sm mb-3">{t('cases.keHoldings.solution.architecture.gpuCluster.description')}</p>
-                <div className="space-y-2">
-                  {(function() {
-                    const gpuItems = t('cases.keHoldings.solution.architecture.gpuCluster.items', { returnObjects: true });
-                    return Array.isArray(gpuItems)
-                      ? gpuItems
-                      : ['Native NVIDIA device plugin', 'High-performance GPUs (H200, H100)', 'Dedicated for LLM training', 'Full GPU resource allocation'];
-                  }()).map((item: string, i: number) => (
-                    <div key={i} className="flex items-center text-sm text-gray-600">
-                      <svg className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </div>
-                  ))}
+            <p className="text-gray-700 mb-6">{t('cases.daoCloud.solution.drun.description')}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {(function() {
+                const features = t('cases.daoCloud.solution.drun.features', { returnObjects: true });
+                return Array.isArray(features)
+                  ? features
+                  : [
+                      { title: 'vGPU Slicing', description: 'Physical GPUs partitioned into multiple vGPU slices with defined compute and memory' },
+                      { title: 'SKU-based Marketplace', description: 'vGPU slices exposed as standardized SKUs in a central marketplace' },
+                      { title: 'Multi-region Deployment', description: '7 active regions across Mainland China and Hong Kong, over 10 data centers' },
+                      { title: 'Domestic Accelerator Support', description: 'Extended HAMi to support domestic GPU vendors under unified abstraction' }
+                    ];
+              }()).map((feature: any, index: number) => (
+                <div key={index} className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-bold text-gray-900 mb-2">{feature.title}</h4>
+                  <p className="text-gray-700 text-sm">{feature.description}</p>
                 </div>
-              </div>
-              <div className="bg-green-50 p-6 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-3 flex items-center">
-                  <svg className="w-6 h-6 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                  </svg>
-                  {t('cases.keHoldings.solution.architecture.vgpuCluster.title')}
-                </h4>
-                <p className="text-gray-700 text-sm mb-3">{t('cases.keHoldings.solution.architecture.vgpuCluster.description')}</p>
-                <div className="space-y-2">
-                  {(function() {
-                    const vgpuItems = t('cases.keHoldings.solution.architecture.vgpuCluster.items', { returnObjects: true });
-                    return Array.isArray(vgpuItems)
-                      ? vgpuItems
-                      : ['HAMi GPU memory virtualization', 'GPUs (H20, V100, A100, 4090)', 'Fine-grained allocation (1-2GB)', 'Small model inference'];
-                  }()).map((item: string, i: number) => (
-                    <div key={i} className="flex items-center text-sm text-gray-600">
-                      <svg className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </div>
-                  ))}
+              ))}
+            </div>
+          </motion.div>
+
+          {/* DaoCloud Enterprise */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-lg p-8 border border-gray-200"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {t('cases.daoCloud.solution.dce.title')}
+            </h3>
+            <p className="text-gray-700 mb-6">{t('cases.daoCloud.solution.dce.description')}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {(function() {
+                const features = t('cases.daoCloud.solution.dce.features', { returnObjects: true });
+                return Array.isArray(features)
+                  ? features
+                  : [
+                      { title: 'Unified GPU Pool', description: 'Enterprise users contribute and consume GPUs from central pool' },
+                      { title: 'Quotas & RBAC', description: 'vGPU resources integrated with existing quota and access systems' },
+                      { title: 'Simplified Experience', description: 'AI engineers request resources without worrying about hardware differences' }
+                    ];
+              }()).map((feature: any, index: number) => (
+                <div key={index} className="bg-green-50 p-4 rounded-lg">
+                  <h4 className="font-bold text-gray-900 mb-2">{feature.title}</h4>
+                  <p className="text-gray-700 text-sm">{feature.description}</p>
                 </div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Results */}
+      {/* Open Source Collaboration */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
@@ -342,74 +304,22 @@ const CaseKeHoldings: React.FC = () => {
             className="max-w-4xl mx-auto mb-12 text-center"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              {t('cases.keHoldings.results.title')}
-            </h2>
-            <p className="text-lg text-gray-600">
-              {t('cases.keHoldings.results.description')}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {(function() {
-              const resultItems = t('cases.keHoldings.results.items', { returnObjects: true });
-              return Array.isArray(resultItems)
-                ? resultItems
-                : [
-                    { title: "GPU Utilization", value: "13% → 37%", description: "Nearly 3x improvement" },
-                    { title: "Platform Scale", value: "10,000+ pods", description: "Running simultaneously" },
-                    { title: "Daily Requests", value: "10M+", description: "Processed per day" },
-                    { title: "Cluster Coverage", value: "5 clusters", description: "Public and private cloud" },
-                    { title: "Zero Downtime", value: "100%", description: "During transition and operation" },
-                    { title: "Workload Types", value: "Unified", description: "Training and inference on same platform" }
-                  ];
-            }()).map((item: any, index: number) => (
-              <motion.div
-                key={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center"
-              >
-                <h3 className="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-2xl font-bold text-[#0FD05D] my-3">{item.value}</p>
-                <p className="text-gray-600 text-sm">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* HAMi Integration */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto mb-12 text-center"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              {t('cases.keHoldings.hamiIntegration.title')}
+              {t('cases.daoCloud.opensource.title')}
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              {t('cases.keHoldings.hamiIntegration.description')}
+              {t('cases.daoCloud.opensource.description')}
             </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 max-w-4xl mx-auto">
             {(function() {
-              const points = t('cases.keHoldings.hamiIntegration.points', { returnObjects: true });
+              const points = t('cases.daoCloud.opensource.points', { returnObjects: true });
               return Array.isArray(points)
                 ? points
                 : [
-                    'Kubernetes serves as the foundation for stable operations with robust scheduling',
-                    'HAMi enables GPU multiplexing and heterogeneous scheduling optimization',
-                    'Dual-cluster approach separates workloads based on resource requirements',
-                    'Seamless integration between public and private cloud environments'
+                    'Contributed real-world insights from D.run and DCE back to the open-source community',
+                    'Collaborated upstream to improve GPU over-subscription mechanisms and node configuration',
+                    'Helped maintain documentation and deployment guides for production adoption'
                   ];
             }()).map((point: string, index: number) => (
               <motion.div
@@ -419,7 +329,7 @@ const CaseKeHoldings: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg border-l-4 border-[#0FD05D]"
+                className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border-l-4 border-[#0FD05D]"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-6 h-6 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4 mt-1">
@@ -435,8 +345,8 @@ const CaseKeHoldings: React.FC = () => {
         </div>
       </section>
 
-      {/* Future Plans */}
-      <section className="py-16 bg-white">
+      {/* Results */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -447,24 +357,27 @@ const CaseKeHoldings: React.FC = () => {
             className="max-w-4xl mx-auto mb-12 text-center"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              {t('cases.keHoldings.futurePlans.title')}
+              {t('cases.daoCloud.results.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              {t('cases.keHoldings.futurePlans.description')}
+            <p className="text-lg text-gray-600">
+              {t('cases.daoCloud.results.description')}
             </p>
           </motion.div>
 
-          <div className="space-y-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {(function() {
-              const plans = t('cases.keHoldings.futurePlans.plans', { returnObjects: true });
-              return Array.isArray(plans)
-                ? plans
+              const resultItems = t('cases.daoCloud.results.items', { returnObjects: true });
+              return Array.isArray(resultItems)
+                ? resultItems
                 : [
-                    'Adopting heterogeneous devices: Huawei Ascend and other non-NVIDIA accelerators',
-                    'Cloud expansion: Integration with Alibaba Cloud',
-                    'Advanced scheduling policies: network topology-awareness, card type specification, UUID-based allocation'
+                    { title: "GPU Utilization", value: ">80%", description: "Average utilization per card after HAMi deployment" },
+                    { title: "Cost Reduction", value: "20-30%", description: "Reduction in GPU-related operating costs" },
+                    { title: "Unified Abstraction", value: "Single Layer", description: "Across NVIDIA and domestic GPUs" },
+                    { title: "Deployment Scale", value: "10,000+ GPUs", description: "Across 10+ data centers" },
+                    { title: "Multi-region", value: "7 Regions", description: "Active D.run regions across China" },
+                    { title: "Open Collaboration", value: "Active", description: "Contributing improvements upstream" }
                   ];
-            }()).map((plan: string, index: number) => (
+            }()).map((item: any, index: number) => (
               <motion.div
                 key={index}
                 initial="hidden"
@@ -472,19 +385,40 @@ const CaseKeHoldings: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border border-green-200"
+                className="bg-white p-6 rounded-lg border border-gray-200 text-center"
               >
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4 mt-1">
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">{plan}</p>
-                </div>
+                <h3 className="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-2xl font-bold text-[#0FD05D] my-3">{item.value}</p>
+                <p className="text-gray-600 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Quote */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-2xl border border-green-100">
+              <svg className="w-12 h-12 text-[#0FD05D] mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+              </svg>
+              <blockquote className="text-xl italic text-gray-700 mb-6">
+                &ldquo;{t('cases.daoCloud.quote.text')}&rdquo;
+              </blockquote>
+              <div className="text-center">
+                <div className="font-bold text-gray-900">{t('cases.daoCloud.quote.author')}</div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -500,10 +434,10 @@ const CaseKeHoldings: React.FC = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              {t('cases.keHoldings.conclusion.title')}
+              {t('cases.daoCloud.conclusion.title')}
             </h2>
             <p className="text-lg text-gray-700 mb-8">
-              {t('cases.keHoldings.conclusion.description')}
+              {t('cases.daoCloud.conclusion.description')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -516,13 +450,13 @@ const CaseKeHoldings: React.FC = () => {
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
-                {t('cases.keHoldings.cta.exploreHami')}
+                {t('cases.daoCloud.cta.exploreHami')}
               </a>
               <a
                 href="mailto:info@dynamia.ai"
                 className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
               >
-                {t('cases.keHoldings.cta.contactUs')}
+                {t('cases.daoCloud.cta.contactUs')}
               </a>
             </div>
           </motion.div>
@@ -532,4 +466,4 @@ const CaseKeHoldings: React.FC = () => {
   );
 };
 
-export default CaseKeHoldings;
+export default CaseDaoCloud;

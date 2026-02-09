@@ -31,7 +31,16 @@ const CaseStudiesList: React.FC = () => {
       titleKey: 'cases.keHoldings.title',
       subtitleKey: 'cases.keHoldings.subtitle',
       logos: [
-        { src: '/logos/beike.png', alt: 'Ke Holdings Logo', width: 40, height: 40 },
+        { src: '/images/case-studies/icons/beike.png', alt: 'Ke Holdings Logo', width: 40, height: 40 },
+        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
+      ],
+    },
+    {
+      slug: 'daocloud',
+      titleKey: 'cases.daoCloud.title',
+      subtitleKey: 'cases.daoCloud.subtitle',
+      logos: [
+        { src: '/images/case-studies/icons/daocloud.svg', alt: 'DaoCloud Logo', width: 40, height: 40 },
         { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
@@ -40,7 +49,7 @@ const CaseStudiesList: React.FC = () => {
       titleKey: 'cases.sfTechnologyEffectiveGpu.title',
       subtitleKey: 'cases.sfTechnologyEffectiveGpu.subtitle',
       logos: [
-        { src: '/sf-tech.svg', alt: 'SF Tech Logo', width: 40, height: 40 },
+        { src: '/images/case-studies/icons/sf-tech.svg', alt: 'SF Tech Logo', width: 40, height: 40 },
         { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
@@ -49,15 +58,16 @@ const CaseStudiesList: React.FC = () => {
       titleKey: 'cases.prepEduHami.title',
       subtitleKey: 'cases.prepEduHami.subtitle',
       logos: [
-        { src: '/images/solutions/icons/prep-logo.svg', alt: 'PREP EDU Logo', width: 44, height: 44 },
+        { src: '/images/case-studies/icons/prep-logo.svg', alt: 'PREP EDU Logo', width: 44, height: 44 },
         { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
-    {
-      slug: 'telecom',
-      titleKey: 'cases.telecomGpu.title',
-      subtitleKey: 'cases.telecomGpu.subtitle',
-    },
+    // Temporarily hidden from list
+    // {
+    //   slug: 'telecom',
+    //   titleKey: 'cases.telecomGpu.title',
+    //   subtitleKey: 'cases.telecomGpu.subtitle',
+    // },
   ];
 
   const basePath = currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies';
@@ -102,7 +112,7 @@ const CaseStudiesList: React.FC = () => {
                       {item.logos.map((logo) => {
                         // Raster logos need a clearer badge container than SVG logos.
                         // Otherwise the rounded rectangle looks visually "missing".
-                        const isRasterLogo = logo.src.endsWith('.webp');
+                        const isRasterLogo = logo.src.endsWith('.webp') || logo.src.endsWith('.png');
 
                         return (
                           <div
