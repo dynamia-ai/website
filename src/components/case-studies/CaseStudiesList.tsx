@@ -27,6 +27,15 @@ const CaseStudiesList: React.FC = () => {
 
   const cases: CaseStudyCard[] = [
     {
+      slug: 'ke-holdings',
+      titleKey: 'cases.keHoldings.title',
+      subtitleKey: 'cases.keHoldings.subtitle',
+      logos: [
+        { src: '/logos/beike.webp', alt: 'Ke Holdings Logo', width: 40, height: 40 },
+        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
+      ],
+    },
+    {
       slug: 'sf-technology',
       titleKey: 'cases.sfTechnologyEffectiveGpu.title',
       subtitleKey: 'cases.sfTechnologyEffectiveGpu.subtitle',
@@ -90,20 +99,30 @@ const CaseStudiesList: React.FC = () => {
                 <div className="flex items-center gap-3 mb-4">
                   {item.logos ? (
                     <div className="flex items-center gap-3">
-                      {item.logos.map((logo) => (
-                        <div
-                          key={logo.src}
-                          className="w-12 h-12 bg-white rounded-lg border border-gray-100 flex items-center justify-center"
-                        >
-                          <Image
-                            src={logo.src}
-                            alt={logo.alt}
-                            width={logo.width}
-                            height={logo.height}
-                            className="h-auto w-auto"
-                          />
-                        </div>
-                      ))}
+                      {item.logos.map((logo) => {
+                        // Raster logos need a clearer badge container than SVG logos.
+                        // Otherwise the rounded rectangle looks visually "missing".
+                        const isRasterLogo = logo.src.endsWith('.webp');
+
+                        return (
+                          <div
+                            key={logo.src}
+                            className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                              isRasterLogo
+                                ? 'bg-gray-50 border border-gray-200 shadow-sm'
+                                : 'bg-white border border-gray-100'
+                            }`}
+                          >
+                            <Image
+                              src={logo.src}
+                              alt={logo.alt}
+                              width={logo.width}
+                              height={logo.height}
+                              className={`h-auto w-auto ${isRasterLogo ? 'rounded-md' : ''}`}
+                            />
+                          </div>
+                        );
+                      })}
                     </div>
                   ) : (
                     <div className="w-12 h-12 rounded-lg bg-primary-light flex items-center justify-center text-primary font-semibold">

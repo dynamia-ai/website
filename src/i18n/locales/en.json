@@ -27,6 +27,8 @@
     "openMenu": "Open menu",
     "caseTelecom": "Telecom Provider Case",
     "caseTelecomDesc": "Learn how a telecom provider leverages HAMi for GPU virtualization and heterogeneous device management",
+    "caseKeHoldings": "Ke Holdings Case",
+    "caseKeHoldingsDesc": "Discover how Ke Holdings scales ML infrastructure with GPU virtualization using Kubernetes and HAMi",
     "caseSfTechnology": "SF Technology Case",
     "caseSfTechnologyDesc": "Discover how SF Technology builds EffectiveGPU based on HAMi to enhance AI efficiency and reduce costs",
     "casePrepEdu": "PREP EDU Case",
@@ -1139,6 +1141,136 @@
       "cta": {
         "exploreHami": "Explore HAMi",
         "contactUs": "Contact Us"
+      }
+    },
+    "keHoldings": {
+      "title": "Ke Holdings Scales ML Infrastructure with GPU Virtualization using Kubernetes and HAMi",
+      "subtitle": "Discover how Ke Holdings built AIStudio based on HAMi and Kubernetes, achieving nearly 3x GPU utilization improvement (13% → 37%) while supporting 10,000+ pods and 10M+ daily requests across hybrid cloud environments.",
+      "stats": [
+        { "value": "3x", "label": "GPU utilization improvement" },
+        { "value": "10,000+", "label": "pods running simultaneously" },
+        { "value": "10M+", "label": "daily requests processed" }
+      ],
+      "overview": {
+        "title": "Company Overview",
+        "description": "Ke Holdings Inc. is an integrated online and offline platform for housing transactions and related services based in China. The centralized infrastructure team operates a shared machine learning platform used across all business units, providing end-to-end compute services for model development, training, and large-scale inference.",
+        "keyPoints": [
+          "Leading housing transaction platform in China",
+          "Centralized machine learning platform for all business units",
+          "End-to-end compute services for AI workloads",
+          "Massive GPU infrastructure across hybrid clouds"
+        ]
+      },
+      "challenge": {
+        "title": "Challenges in Scaling ML Infrastructure",
+        "description": "As machine learning initiatives scaled, the infrastructure team faced significant challenges in GPU resource management across a complex hybrid-cloud environment.",
+        "points": [
+          {
+            "title": "Scale and Complexity",
+            "description": "5 clusters across public and private clouds, thousands of GPU cards including diverse models (H200, H20, V100, 4090, H100, A100)"
+          },
+          {
+            "title": "Hybrid-cloud Environment",
+            "description": "Managing GPU resources across public cloud (Volcano Engine, Tencent Cloud, Ali Cloud) and private cloud with ~1,000 NVIDIA GPUs"
+          },
+          {
+            "title": "Diverse Workload Requirements",
+            "description": "Large-scale model training requiring full GPU access vs. small model inference needing minimal GPU memory (1-2GB)"
+          },
+          {
+            "title": "Low GPU Utilization",
+            "description": "Only 13% initial utilization rate due to multi-cloud complexity and diverse workload requirements"
+          }
+        ]
+      },
+      "solution": {
+        "title": "AIStudio Platform Built on Kubernetes and HAMi",
+        "description": "Using CNCF projects HAMi and Kubernetes as foundation, Ke Holdings designed and implemented AIStudio, a smart computing platform serving as the basis for the organization's machine learning infrastructure.",
+        "platform": "Leveraging Kubernetes and HAMi for GPU virtualization, AIStudio provides a unified platform bridging upper-layer SaaS services with underlying compute resources.",
+        "features": [
+          {
+            "title": "Multi-scenario Support",
+            "description": "Simultaneously supports inference services, A/B testing tasks, and training tasks on same infrastructure"
+          },
+          {
+            "title": "Advanced Optimization",
+            "description": "Acceleration capabilities for inference frameworks, datasets, images, checkpoints, and models with fault tolerance"
+          },
+          {
+            "title": "Multi-framework Support",
+            "description": "PyTorch, DeepSpeed, Megatron, VLLM, RLHF, and SGLang"
+          },
+          {
+            "title": "AI Asset Management",
+            "description": "Centralized management of resource pools, model repositories, image repositories, queues, CubeFS volumes, and monitoring"
+          }
+        ],
+        "architecture": {
+          "title": "Dual-Cluster Architecture for Different Workloads",
+          "gpuCluster": {
+            "title": "GPU Clusters",
+            "description": "Managed by native NVIDIA device plugin for training workloads requiring complete GPU resources:",
+            "items": [
+              "Native NVIDIA device plugin",
+              "High-performance GPUs (H200, H100)",
+              "Dedicated for LLM training",
+              "Full GPU resource allocation"
+            ]
+          },
+          "vgpuCluster": {
+            "title": "vGPU Clusters",
+            "description": "Managed by HAMi for GPU memory virtualization for small model inference:",
+            "items": [
+              "HAMi GPU memory virtualization",
+              "GPUs (H20, V100, A100, 4090)",
+              "Fine-grained allocation (1-2GB)",
+              "Small model inference"
+            ]
+          }
+        }
+      },
+      "results": {
+        "title": "Significant Results: 3x GPU Utilization Improvement",
+        "description": "By leveraging open-source technologies including HAMi and Kubernetes, AIStudio has achieved remarkable results at massive scale.",
+        "items": [
+          { "title": "GPU Utilization", "value": "13% → 37%", "description": "Nearly 3x improvement" },
+          { "title": "Platform Scale", "value": "10,000+ pods", "description": "Running simultaneously" },
+          { "title": "Daily Requests", "value": "10M+", "description": "Processed per day" },
+          { "title": "Cluster Coverage", "value": "5 clusters", "description": "Public and private cloud" },
+          { "title": "Zero Downtime", "value": "100%", "description": "During transition and operation" },
+          { "title": "Workload Types", "value": "Unified", "description": "Training and inference on same platform" }
+        ]
+      },
+      "hamiIntegration": {
+        "title": "HAMi Enables GPU Multiplexing and Heterogeneous Scheduling",
+        "description": "The successful integration of HAMi demonstrates how open-source technologies enable organizations to achieve remarkable infrastructure efficiency.",
+        "points": [
+          "Kubernetes serves as the foundation for stable operations with robust scheduling and management capabilities",
+          "HAMi enables GPU multiplexing and heterogeneous scheduling optimization, increasing cluster GPU utilization by nearly 3x",
+          "Dual-cluster approach separates workloads based on resource requirements for optimal efficiency",
+          "Seamless integration between public and private cloud environments enables unified platform management"
+        ]
+      },
+      "futurePlans": {
+        "title": "Future Innovation Plans",
+        "description": "Ke Holdings' infrastructure team continues to innovate and expand their platform on top of HAMi and Kubernetes.",
+        "plans": [
+          "Adopting heterogeneous devices: Plans to incorporate Huawei Ascend and other non-NVIDIA accelerators",
+          "Cloud expansion: Integration with Alibaba Cloud to complement existing Volcano Engine and Tencent Cloud deployments",
+          "Advanced scheduling policies: Network topology-awareness, card type specification, and UUID-based allocation"
+        ]
+      },
+      "companyCard": {
+        "name": "Ke Holdings",
+        "description": "Leading housing transaction platform in China"
+      },
+      "cta": {
+        "exploreHami": "Explore HAMi",
+        "contactUs": "Contact Us"
+      },
+      "conclusion": {
+        "title": "Open-Source Success Story",
+        "description": "Ke Holdings has successfully demonstrated how leveraging HAMi and Kubernetes can dramatically improve GPU utilization while supporting massive-scale AI workloads. The AIStudio platform serves as a model for organizations seeking to optimize their machine learning infrastructure."
       }
     }
   },

@@ -27,6 +27,8 @@
     "openMenu": "打开菜单",
     "caseTelecom": "电信运营商案例",
     "caseTelecomDesc": "了解某电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",
+    "caseKeHoldings": "贝壳案例",
+    "caseKeHoldingsDesc": "探索贝壳如何基于 HAMi 与 Kubernetes 实现机器学习基础设施 GPU 虚拟化，利用率提升近 3 倍",
     "caseSfTechnology": "顺丰科技案例",
     "caseSfTechnologyDesc": "探索顺丰科技如何基于 HAMi 打造 EffectiveGPU，提升 AI 效率并降低成本",
     "casePrepEdu": "PREP EDU 案例",
@@ -1207,6 +1209,136 @@
       "cta": {
         "exploreHami": "探索 HAMi",
         "contactUs": "联系我们"
+      }
+    },
+    "keHoldings": {
+      "title": "贝壳基于 HAMi 与 Kubernetes 实现机器学习基础设施 GPU 虚拟化，利用率提升近 3 倍",
+      "subtitle": "探索贝壳如何基于 HAMi 和 Kubernetes 打造 AIStudio 平台，实现 GPU 利用率从 13% 提升至 37%（近 3 倍提升），同时支持 10,000+ Pod 并发运行和日均 1,000 万+ 请求处理，涵盖混合云环境。",
+      "stats": [
+        { "value": "3x", "label": "GPU 利用率提升" },
+        { "value": "10,000+", "label": "并发运行 Pod 数" },
+        { "value": "1,000万+", "label": "日均处理请求数" }
+      ],
+      "overview": {
+        "title": "公司概述",
+        "description": "贝壳是中国领先的线上线下房产交易平台和服务提供商。公司集中化基础设施团队运营着跨所有业务单元的共享机器学习平台，为模型开发、训练和大规模推理提供端到端的计算服务。",
+        "keyPoints": [
+          "中国领先的房产交易平台",
+          "集中化机器学习平台服务所有业务单元",
+          "端到端的 AI 工作负载计算服务",
+          "跨混合云的大规模 GPU 基础设施"
+        ]
+      },
+      "challenge": {
+        "title": "机器学习基础设施扩展面临的挑战",
+        "description": "随着机器学习计划的扩展，基础设施团队在跨复杂混合云环境管理 GPU 资源方面面临重大挑战。",
+        "points": [
+          {
+            "title": "规模与复杂性",
+            "description": "跨公有云和私有云的 5 个集群，数千张 GPU 卡包括多种型号（H200、H20、V100、4090、H100、A100）"
+          },
+          {
+            "title": "混合云环境",
+            "description": "跨公有云（火山引擎、腾讯云、阿里云）和拥有约 1,000 张 NVIDIA GPU 的私有云管理 GPU 资源"
+          },
+          {
+            "title": "多样化工作负载需求",
+            "description": "需要完整 GPU 访问的大规模模型训练 vs. 只需最少 GPU 显存（1-2GB）的小模型推理"
+          },
+          {
+            "title": "GPU 利用率低",
+            "description": "由于多云复杂性和多样化工作负载需求，初始利用率仅为 13%"
+          }
+        ]
+      },
+      "solution": {
+        "title": "基于 Kubernetes 和 HAMi 的 AIStudio 平台",
+        "description": "使用 CNCF 项目 HAMi 和 Kubernetes 作为基础，贝壳设计并实施了 AIStudio，一个智能计算平台，作为组织机器学习基础设施的基础。",
+        "platform": "利用 Kubernetes 和 HAMi 进行 GPU 虚拟化，AIStudio 提供统一平台，连接上层 SaaS 服务与底层计算资源。",
+        "features": [
+          {
+            "title": "多场景支持",
+            "description": "在同一基础设施上同时支持推理服务、A/B 测试任务和训练任务"
+          },
+          {
+            "title": "高级优化",
+            "description": "针对推理框架、数据集、镜像、检查点和模型的加速能力，以及硬件故障容错"
+          },
+          {
+            "title": "多框架支持",
+            "description": "PyTorch、DeepSpeed、Megatron、VLLM、RLHF 和 SGLang"
+          },
+          {
+            "title": "AI 资产管理",
+            "description": "资源池、模型仓库、镜像仓库、队列、CubeFS 卷和监控组件的集中管理"
+          }
+        ],
+        "architecture": {
+          "title": "针对不同工作负载的双集群架构",
+          "gpuCluster": {
+            "title": "GPU 集群",
+            "description": "由原生 NVIDIA 设备插件管理，用于需要完整 GPU 资源的训练工作负载：",
+            "items": [
+              "原生 NVIDIA 设备插件",
+              "高性能 GPU（H200、H100）",
+              "专用于 LLM 训练",
+              "完整 GPU 资源分配"
+            ]
+          },
+          "vgpuCluster": {
+            "title": "vGPU 集群",
+            "description": "由 HAMi 管理 GPU 显存虚拟化，用于小模型推理：",
+            "items": [
+              "HAMi GPU 显存虚拟化",
+              "GPU（H20、V100、A100、4090）",
+              "精细化分配（1-2GB）",
+              "小模型推理"
+            ]
+          }
+        }
+      },
+      "results": {
+        "title": "显著成效：GPU 利用率提升近 3 倍",
+        "description": "通过利用包括 HAMi 和 Kubernetes 在内的开源技术，AIStudio 在大规模环境中取得了显著成果。",
+        "items": [
+          { "title": "GPU 利用率", "value": "13% → 37%", "description": "近 3 倍提升" },
+          { "title": "平台规模", "value": "10,000+ Pod", "description": "并发运行" },
+          { "title": "日请求量", "value": "1,000万+", "description": "日均处理" },
+          { "title": "集群覆盖", "value": "5 个集群", "description": "公有云和私有云" },
+          { "title": "零停机", "value": "100%", "description": "迁移和运营期间" },
+          { "title": "工作负载类型", "value": "统一", "description": "训练和推理在同一平台" }
+        ]
+      },
+      "hamiIntegration": {
+        "title": "HAMi 实现 GPU 复用与异构调度优化",
+        "description": "HAMi 的成功集成展示了开源技术如何帮助组织实现卓越的基础设施效率。",
+        "points": [
+          "Kubernetes 作为基础，通过强大的调度和管理能力实现稳定运营",
+          "HAMi 实现 GPU 复用和异构调度优化，将集群 GPU 利用率提升近 3 倍",
+          "双集群方法根据资源需求分离工作负载，实现最佳效率",
+          "公有云和私有云环境之间的无缝集成实现统一平台管理"
+        ]
+      },
+      "futurePlans": {
+        "title": "未来创新计划",
+        "description": "贝壳基础设施团队继续在 HAMi 和 Kubernetes 之上创新和扩展其平台。",
+        "plans": [
+          "采用异构设备：计划集成华为昇腾和其他非 NVIDIA 加速器",
+          "云扩展：集成阿里云以补充现有的火山引擎和腾讯云部署",
+          "高级调度策略：网络拓扑感知、卡类型指定和基于 UUID 的分配"
+        ]
+      },
+      "companyCard": {
+        "name": "贝壳",
+        "description": "中国领先的房产交易平台"
+      },
+      "cta": {
+        "exploreHami": "探索 HAMi",
+        "contactUs": "联系我们"
+      },
+      "conclusion": {
+        "title": "开源成功案例",
+        "description": "贝壳成功展示了如何利用 HAMi 和 Kubernetes 显著提升 GPU 利用率，同时支持大规模 AI 工作负载。AIStudio 平台为寻求优化机器学习基础设施的组织树立了典范。"
       }
     }
   },
