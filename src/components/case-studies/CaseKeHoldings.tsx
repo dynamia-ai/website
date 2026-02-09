@@ -29,16 +29,14 @@ const CaseKeHoldings: React.FC = () => {
           >
             <div className="flex justify-center mb-6">
               <div className="flex items-center space-x-8">
-                <div className="w-24 h-24 bg-white rounded-lg shadow-sm p-2 flex items-center justify-center">
-                  <div className="w-full h-full rounded-md border border-gray-200 bg-gray-50 shadow-sm flex items-center justify-center p-1">
-                    <Image
-                      src="/logos/beike.webp"
-                      alt="Ke Holdings Logo"
-                      width={80}
-                      height={80}
-                      className="w-full h-auto rounded-md"
-                    />
-                  </div>
+                <div className="w-24 h-24 bg-gray-50 rounded-lg border border-gray-200 shadow-sm flex items-center justify-center">
+                  <Image
+                    src="/logos/beike.png"
+                    alt="Ke Holdings Logo"
+                    width={80}
+                    height={80}
+                    className="w-full h-auto"
+                  />
                 </div>
                 <div className="text-4xl text-gray-400">+</div>
                 <div className="w-24 h-24 bg-white rounded-lg shadow-sm p-2 flex items-center justify-center">
@@ -133,16 +131,14 @@ const CaseKeHoldings: React.FC = () => {
             <div className="flex justify-center">
               <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-green-50 rounded-lg p-8">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-white rounded-lg shadow-sm p-2 mx-auto mb-4 flex items-center justify-center">
-                    <div className="w-full h-full rounded-md border border-gray-200 bg-gray-50 shadow-sm flex items-center justify-center p-1">
-                      <Image
-                        src="/logos/beike.webp"
-                        alt="Ke Holdings Logo"
-                        width={80}
-                        height={80}
-                        className="w-full h-auto rounded-md"
-                      />
-                    </div>
+                  <div className="w-20 h-20 bg-gray-50 rounded-lg border border-gray-200 shadow-sm mx-auto mb-4 flex items-center justify-center">
+                    <Image
+                      src="/logos/beike.png"
+                      alt="Ke Holdings Logo"
+                      width={80}
+                      height={80}
+                      className="w-full h-auto"
+                    />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{t('cases.keHoldings.companyCard.name')}</h3>
                   <p className="text-gray-600 text-sm">{t('cases.keHoldings.companyCard.description')}</p>
