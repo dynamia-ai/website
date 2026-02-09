@@ -12,15 +12,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${title} | Dynamia AI`,
     description,
-    url: '/zh/case-studies/sf-technology-effective-gpu',
+    url: '/zh/case-studies/sf-technology',
     siteName: 'Dynamia AI',
     type: 'article',
   },
   alternates: {
-    canonical: 'https://dynamia.ai/zh/case-studies/sf-technology-effective-gpu',
+    canonical: 'https://dynamia.ai/zh/case-studies/sf-technology',
     languages: {
-      en: 'https://dynamia.ai/case-studies/sf-technology-effective-gpu',
-      zh: 'https://dynamia.ai/zh/case-studies/sf-technology-effective-gpu',
+      en: 'https://dynamia.ai/case-studies/sf-technology',
+      zh: 'https://dynamia.ai/zh/case-studies/sf-technology',
     },
   },
 };

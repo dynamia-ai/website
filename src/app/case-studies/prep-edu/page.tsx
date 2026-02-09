@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${title} | Dynamia AI`,
     description,
-    url: '/case-studies/prep-edu-hami',
+    url: '/case-studies/prep-edu',
     siteName: 'Dynamia AI',
     type: 'article',
   },
   alternates: {
-    canonical: 'https://dynamia.ai/case-studies/prep-edu-hami',
+    canonical: 'https://dynamia.ai/case-studies/prep-edu',
     languages: {
-      en: 'https://dynamia.ai/case-studies/prep-edu-hami',
-      zh: 'https://dynamia.ai/zh/case-studies/prep-edu-hami',
+      en: 'https://dynamia.ai/case-studies/prep-edu',
+      zh: 'https://dynamia.ai/zh/case-studies/prep-edu',
     },
   },
 };

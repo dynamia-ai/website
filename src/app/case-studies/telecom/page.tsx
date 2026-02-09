@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${title} | Dynamia AI`,
     description,
-    url: '/case-studies/telecom-gpu',
+    url: '/case-studies/telecom',
     siteName: 'Dynamia AI',
     type: 'article',
   },
   alternates: {
-    canonical: 'https://dynamia.ai/case-studies/telecom-gpu',
+    canonical: 'https://dynamia.ai/case-studies/telecom',
     languages: {
-      en: 'https://dynamia.ai/case-studies/telecom-gpu',
-      zh: 'https://dynamia.ai/zh/case-studies/telecom-gpu',
+      en: 'https://dynamia.ai/case-studies/telecom',
+      zh: 'https://dynamia.ai/zh/case-studies/telecom',
     },
   },
 };
