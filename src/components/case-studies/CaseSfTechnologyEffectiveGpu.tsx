@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import MainLayout from '@/components/layout/MainLayout';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 // Animation configurations
 const fadeIn = {
@@ -12,7 +12,7 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 }
 };
 
-export default function SfTechnologyEffectiveGpuCasePage() {
+const CaseSfTechnologyEffectiveGpu: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -442,4 +442,6 @@ export default function SfTechnologyEffectiveGpuCasePage() {
       </section>
     </MainLayout>
   );
-} 
+};
+
+export default CaseSfTechnologyEffectiveGpu;

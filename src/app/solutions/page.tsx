@@ -1,9 +1,10 @@
 "use client";
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import MainLayout from '@/components/layout/MainLayout';
 
 // Animation variants
@@ -14,6 +15,8 @@ const fadeIn = {
 
 export default function Solutions() {
   const { t } = useTranslation();
+  const pathname = usePathname();
+  const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
   
   const categoriesData = t('solutions.categories', { returnObjects: true });
   const categories = Array.isArray(categoriesData)
@@ -101,7 +104,7 @@ export default function Solutions() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{t('solutions.successStories.title')}</h3>
                 <p className="text-gray-500 mb-6">{t('solutions.successStories.subtitle')}</p>
                 <Link
-                  href="/solutions/case-studies"
+                  href={currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies'}
                   className="text-primary hover:text-primary-dark font-medium"
                 >
                   {t('solutions.successStories.viewAllButton')} &rarr;

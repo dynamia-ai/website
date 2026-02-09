@@ -860,6 +860,16 @@
       "description": "Leading organizations across various industries rely on Kantaloupe to manage their heterogeneous computing resources efficiently."
     }
   },
+  "caseStudiesPage": {
+    "title": "Case Studies",
+    "subtitle": "See how teams scale AI, HPC, and inference workloads with HAMi and heterogeneous GPU scheduling.",
+    "cardButton": "Read case study",
+    "cta": {
+      "title": "Ready to build your own success story?",
+      "description": "Talk with our team about how HAMi can improve utilization, stability, and cost efficiency in your GPU infrastructure.",
+      "button": "Request a Demo"
+    }
+  },
   "cases": {
     "telecomGpu": {
       "title": "Telecom Provider GPU Virtualization Case Study",

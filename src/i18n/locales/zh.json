@@ -928,6 +928,16 @@
       "description": "各行业的领先组织都依靠 Kantaloupe 高效管理其异构计算资源。"
     }
   },
+  "caseStudiesPage": {
+    "title": "案例研究",
+    "subtitle": "了解团队如何借助 HAMi 与异构 GPU 调度扩展 AI、HPC 与推理工作负载。",
+    "cardButton": "查看案例",
+    "cta": {
+      "title": "准备好打造你的成功案例了吗？",
+      "description": "与我们交流，看看 HAMi 如何提升 GPU 利用率、稳定性与成本效率。",
+      "button": "预约演示"
+    }
+  },
   "cases": {
     "telecomGpu": {
       "title": "电信运营商 GPU 虚拟化案例研究",

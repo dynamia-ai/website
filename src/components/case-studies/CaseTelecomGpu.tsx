@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import MainLayout from '@/components/layout/MainLayout';
 
 // 动画配置
 const fadeIn = {
@@ -12,7 +12,7 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 }
 };
 
-export default function TelecomGpuCasePage() {
+const CaseTelecomGpu: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -284,4 +284,6 @@ export default function TelecomGpuCasePage() {
       </section>
     </MainLayout>
   );
-} 
+};
+
+export default CaseTelecomGpu;
