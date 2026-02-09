@@ -6,10 +6,10 @@ const title = enTranslation.cases?.prepEduHami?.title || 'PREP EDU × HAMi Case 
 const description = enTranslation.cases?.prepEduHami?.subtitle || '';
 
 export const metadata: Metadata = {
-  title: `${title} | Dynamia AI`,
+  title: `Case Study | ${title} | Dynamia AI`,
   description,
   openGraph: {
-    title: `${title} | Dynamia AI`,
+    title: `Case Study | ${title} | Dynamia AI`,
     description,
     url: '/case-studies/prep-edu',
     siteName: 'Dynamia AI',

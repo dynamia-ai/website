@@ -6,10 +6,10 @@ const title = enTranslation.cases?.sfTechnologyEffectiveGpu?.title || 'SF Techno
 const description = enTranslation.cases?.sfTechnologyEffectiveGpu?.subtitle || '';
 
 export const metadata: Metadata = {
-  title: `${title} | Dynamia AI`,
+  title: `Case Study | ${title} | Dynamia AI`,
   description,
   openGraph: {
-    title: `${title} | Dynamia AI`,
+    title: `Case Study | ${title} | Dynamia AI`,
     description,
     url: '/case-studies/sf-technology',
     siteName: 'Dynamia AI',

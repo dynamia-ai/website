@@ -86,7 +86,7 @@ const Header: React.FC = () => {
   const navigation = [
     { name: t('navigation.hami'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.products'), href: currentLocale === 'zh' ? '/zh/products' : '/products' },
-    { name: t('navigation.solutions'), href: '#', hasSubmenu: true, submenuType: 'solutions' },
+    { name: t('navigation.caseStudies'), href: currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies' },
     { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
     { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },

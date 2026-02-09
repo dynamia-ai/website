@@ -51,6 +51,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
               </div>
             </div>
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
+              {t('caseStudiesPage.h1Prefix')}
               {t('cases.sfTechnologyEffectiveGpu.title')}
             </h1>
             <p className="mt-4 text-xl text-gray-600 leading-relaxed">
