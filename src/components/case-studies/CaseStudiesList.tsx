@@ -27,7 +27,7 @@ const CaseStudiesList: React.FC = () => {
 
   const cases: CaseStudyCard[] = [
     {
-      slug: 'sf-technology-effective-gpu',
+      slug: 'sf-technology',
       titleKey: 'cases.sfTechnologyEffectiveGpu.title',
       subtitleKey: 'cases.sfTechnologyEffectiveGpu.subtitle',
       logos: [
@@ -36,7 +36,7 @@ const CaseStudiesList: React.FC = () => {
       ],
     },
     {
-      slug: 'prep-edu-hami',
+      slug: 'prep-edu',
       titleKey: 'cases.prepEduHami.title',
       subtitleKey: 'cases.prepEduHami.subtitle',
       logos: [
@@ -45,7 +45,7 @@ const CaseStudiesList: React.FC = () => {
       ],
     },
     {
-      slug: 'telecom-gpu',
+      slug: 'telecom',
       titleKey: 'cases.telecomGpu.title',
       subtitleKey: 'cases.telecomGpu.subtitle',
     },

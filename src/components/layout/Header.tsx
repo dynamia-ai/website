@@ -154,14 +154,14 @@ const Header: React.FC = () => {
     {
       name: t('navigation.caseSfTechnology'),
       description: t('navigation.caseSfTechnologyDesc'),
-      href: currentLocale === 'zh' ? '/zh/case-studies/sf-technology-effective-gpu' : '/case-studies/sf-technology-effective-gpu',
+      href: currentLocale === 'zh' ? '/zh/case-studies/sf-technology' : '/case-studies/sf-technology',
       external: false,
       iconName: 'document'
     },
     {
       name: t('navigation.casePrepEdu'),
       description: t('navigation.casePrepEduDesc'),
-      href: currentLocale === 'zh' ? '/zh/case-studies/prep-edu-hami' : '/case-studies/prep-edu-hami',
+      href: currentLocale === 'zh' ? '/zh/case-studies/prep-edu' : '/case-studies/prep-edu',
       external: false,
       iconName: 'document'
     },
@@ -169,7 +169,7 @@ const Header: React.FC = () => {
     // { 
     //   name: t('navigation.caseTelecom'), 
     //   description: t('navigation.caseTelecomDesc'),
-    //   href: currentLocale === 'zh' ? '/zh/case-studies/telecom-gpu' : '/case-studies/telecom-gpu', 
+    //   href: currentLocale === 'zh' ? '/zh/case-studies/telecom' : '/case-studies/telecom', 
     //   external: false,
     //   iconName: 'document'
     // },
