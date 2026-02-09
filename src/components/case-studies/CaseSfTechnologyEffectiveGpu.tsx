@@ -31,7 +31,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
               <div className="flex items-center space-x-8">
                 <div className="w-24 h-24 bg-white rounded-lg shadow-sm p-2 flex items-center justify-center">
                   <Image
-                    src="/sf-tech.svg"
+                    src="/images/case-studies/icons/sf-tech.svg"
                     alt="SF Tech Logo"
                     width={80}
                     height={80}

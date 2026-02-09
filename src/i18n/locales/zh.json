@@ -29,6 +29,8 @@
     "caseTelecomDesc": "了解某电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",
     "caseKeHoldings": "贝壳案例",
     "caseKeHoldingsDesc": "探索贝壳如何基于 HAMi 与 Kubernetes 实现机器学习基础设施 GPU 虚拟化，利用率提升近 3 倍",
+    "caseDaoCloud": " DaoCloud 案例",
+    "caseDaoCloudDesc": "探索 DaoCloud 如何基于 HAMi 构建灵活的 GPU 云，涵盖 D.run 算力云和 DaoCloud 企业版",
     "caseSfTechnology": "顺丰科技案例",
     "caseSfTechnologyDesc": "探索顺丰科技如何基于 HAMi 打造 EffectiveGPU，提升 AI 效率并降低成本",
     "casePrepEdu": "PREP EDU 案例",
@@ -1339,6 +1341,128 @@
       "conclusion": {
         "title": "开源成功案例",
         "description": "贝壳成功展示了如何利用 HAMi 和 Kubernetes 显著提升 GPU 利用率，同时支持大规模 AI 工作负载。AIStudio 平台为寻求优化机器学习基础设施的组织树立了典范。"
+      }
+    },
+    "daoCloud": {
+      "title": " DaoCloud 基于 HAMi 构建灵活 GPU 云，利用率超 80%",
+      "subtitle": "探索 DaoCloud 如何运营两大云原生 AI 工作负载平台——D.run 算力云和 DaoCloud 企业版（DCE），使用 HAMi 在跨 10+ 数据中心的 10,000+ GPU 上实现 >80% 的 GPU 利用率。",
+      "stats": [
+        { "value": "10,000+", "label": "跨平台 GPU 数量" },
+        { "value": ">80%", "label": "平均 GPU 利用率" },
+        { "value": "20-30%", "label": "运营成本降低" }
+      ],
+      "overview": {
+        "title": "公司概述",
+        "description": " DaoCloud 运营着两大面向 AI 工作负载的云原生平台。D.run 算力云是面向个人开发者和小团队的公共 GPU 云，而 DaoCloud 企业版（DCE）则是为企业客户运行训练和推理的私有 Kubernetes 平台。",
+        "keyPoints": [
+          "两大云原生 AI 平台",
+          "D.run 算力云面向公共 GPU 云",
+          "DaoCloud 企业版（DCE）面向私有 K8s",
+          "在中国大陆和香港拥有 10+ 数据中心"
+        ]
+      },
+      "challenge": {
+        "title": "GPU 资源管理面临的挑战",
+        "description": "随着两个平台对 GPU 需求的快速增长，出现了多个需要灵活 GPU 虚拟化解决方案的挑战。",
+        "points": [
+          {
+            "title": "整卡分配模式",
+            "description": "许多推理和轻量级工作负载仅使用 GPU 资源的一小部分，导致计算和显存的大部分容量利用不足，限制了 DaoCloud 打包 GPU SKU 的方式。"
+          },
+          {
+            "title": "异构硬件管理",
+            "description": "DaoCloud 需要支持主流 NVIDIA GPU，同时集成来自多个厂商的国产加速器。专有 vGPU 解决方案增加了许可成本。"
+          },
+          {
+            "title": "多租户治理",
+            "description": "在 DCE 上，企业客户需要具有部门级配额、基于队列的资源分配以及跨团队的清晰隔离的共享 GPU 池。"
+          },
+          {
+            "title": "云原生对齐",
+            "description": "DaoCloud 的核心战略围绕 Kubernetes 和开源技术展开。任何 GPU 共享解决方案都必须保持完全云原生、供应商中立，并与现有 CNCF 工具兼容。"
+          }
+        ]
+      },
+      "solution": {
+        "title": "HAMi 作为统一 GPU 层",
+        "description": " DaoCloud 采用了 CNCF Sandbox 项目 HAMi 进行异构 AI 计算虚拟化，作为跨 D.run 和 DCE 的统一 GPU 层。HAMi 为 Kubernetes 集群中的异构加速器提供设备虚拟化、vGPU 分区和调度。",
+        "drun": {
+          "title": "D.run 算力云：面向公共 GPU 用户的 vGPU SKU",
+          "description": "在 D.run 上，DaoCloud 将 HAMi 集成到每个区域 Kubernetes 集群中，以实现细粒度 GPU 共享和更高利用率。",
+          "features": [
+            {
+              "title": "vGPU 切片",
+              "description": "物理 GPU 被划分为多个具有定义计算和显存的 vGPU 切片。轻量级推理作业可以在部分 GPU 上运行。"
+            },
+            {
+              "title": "基于 SKU 的市场",
+              "description": "vGPU 切片在中心市场中作为标准化 SKU 公开。用户根据工作负载大小选择 GPU SKU。"
+            },
+            {
+              "title": "多区域部署",
+              "description": "HAMi 为中国大陆和香港的 7 个活跃 D.run 区域提供支持，覆盖 10 多个数据中心。"
+            },
+            {
+              "title": "国产加速器支持",
+              "description": "DaoCloud 扩展了 HAMi 以支持国产 GPU 供应商，确保在统一抽象层下的一致管理。"
+            }
+          ]
+        },
+        "dce": {
+          "title": "DaoCloud 企业版（DCE）：面向企业的共享 GPU 池",
+          "description": "在 DCE 上，DaoCloud 使用 HAMi 构建了集中式 GPU 资源池，为多个企业租户统一 GPU 容量。",
+          "features": [
+            {
+              "title": "统一 GPU 池",
+              "description": "企业用户从服务训练和推理工作负载的中心池中贡献和使用 GPU。"
+            },
+            {
+              "title": "配额和 RBAC",
+              "description": "HAMi 的 vGPU 资源与 DaoCloud 现有的配额和基于角色的访问系统集成。"
+            },
+            {
+              "title": "简化体验",
+              "description": "算法工程师通过平台请求 GPU 资源，而无需担心底层硬件差异。"
+            }
+          ]
+        }
+      },
+      "opensource": {
+        "title": "与社区共同开发 HAMi",
+        "description": " DaoCloud 是 HAMi 最早和最活跃的贡献者之一。",
+        "points": [
+          "将 D.run 和 DCE 的真实见解回馈给开源社区",
+          "与上游合作改进 GPU 超分机制、节点配置管理和异构硬件处理",
+          "帮助维护文档和部署指南，支持其他云提供商的生产采用"
+        ]
+      },
+      "results": {
+        "title": "显著成效：成本降低和效率提升",
+        "description": "通过集成 HAMi，DaoCloud 将以前分散的 GPU 资源整合为跨公共云和私有云的更加统一、高效和可扩展的 GPU 层。",
+        "items": [
+          { "title": "GPU 利用率", "value": ">80%", "description": "部署 HAMi 后每卡平均利用率" },
+          { "title": "成本降低", "value": "20-30%", "description": "GPU 相关运营成本降低" },
+          { "title": "统一抽象", "value": "单一层", "description": "跨 NVIDIA 和国产 GPU" },
+          { "title": "部署规模", "value": "10,000+ GPU", "description": "跨 10+ 数据中心" },
+          { "title": "多区域", "value": "7 个区域", "description": "中国活跃的 D.run 区域" },
+          { "title": "开放协作", "value": "活跃", "description": "向上游贡献改进" }
+        ]
+      },
+      "quote": {
+        "text": "HAMi 不仅仅与 DaoCloud 的业务兼容，它是我们共同构建的产物。作为 HAMi 最早的贡献者之一，我们见证了它从诞生到成熟的演进。HAMi 现在运行在 D.run 和 DCE 上，我们的实际改进不断回馈给社区。HAMi 和 DaoCloud 拥有相同的开源 DNA，我们将继续为 HAMi 做出贡献，将真正的 vGPU 技术带给世界。",
+        "author": "Captain，DaoCloud AI/LLM 基础架构产品负责人"
+      },
+      "companyCard": {
+        "name": " DaoCloud",
+        "description": "面向 AI 工作负载的云原生平台提供商"
+      },
+      "cta": {
+        "exploreHami": "探索 HAMi",
+        "contactUs": "联系我们"
+      },
+      "conclusion": {
+        "title": "开源合作成功",
+        "description": " DaoCloud 成功地将 HAMi 集成到其公共和私有 GPU 云平台中，在利用率和成本效率方面实现了显著改进，同时回馈开源社区。"
       }
     }
   },

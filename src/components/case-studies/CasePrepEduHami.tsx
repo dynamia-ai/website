@@ -30,7 +30,7 @@ const CasePrepEduHami: React.FC = () => {
             <div className="flex justify-center mb-6">
               <div className="flex items-center space-x-8">
                 <Image
-                  src="/images/solutions/icons/prep-logo.svg"
+                  src="/images/case-studies/icons/prep-logo.svg"
                   alt="PREP EDU Logo"
                   width={120}
                   height={120}
@@ -98,7 +98,7 @@ const CasePrepEduHami: React.FC = () => {
                 <div className="text-center">
                   <div className="w-20 h-20 bg-white rounded-lg shadow-sm p-2 mx-auto mb-4 flex items-center justify-center">
                     <Image
-                      src="/images/solutions/icons/prep-logo.svg"
+                      src="/images/case-studies/icons/prep-logo.svg"
                       alt="PREP EDU Logo"
                       width={100}
                       height={100}
