@@ -22,8 +22,12 @@ module.exports = {
       priority = 0.9;
       changefreq = 'weekly';
     }
-    // Blog and case studies get medium-high priority
-    else if (path.startsWith('/blog/') || path.startsWith('/resources/')) {
+    // Blog, case studies, and resources get medium-high priority
+    else if (
+      path.startsWith('/blog/') ||
+      path.startsWith('/resources/') ||
+      path.startsWith('/case-studies')
+    ) {
       priority = 0.8;
       changefreq = 'monthly';
     }
@@ -36,6 +40,13 @@ module.exports = {
       } else if (['/products', '/pricing', '/company'].includes(englishPath)) {
         priority = 0.9;
         changefreq = 'weekly';
+      } else if (
+        englishPath.startsWith('/blog/') ||
+        englishPath.startsWith('/resources/') ||
+        englishPath.startsWith('/case-studies')
+      ) {
+        priority = 0.8;
+        changefreq = 'monthly';
       } else {
         priority = 0.7;
         changefreq = 'weekly';
