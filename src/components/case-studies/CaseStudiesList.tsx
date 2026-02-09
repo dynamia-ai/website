@@ -31,7 +31,7 @@ const CaseStudiesList: React.FC = () => {
       titleKey: 'cases.keHoldings.title',
       subtitleKey: 'cases.keHoldings.subtitle',
       logos: [
-        { src: '/logos/beike.webp', alt: 'Ke Holdings Logo', width: 40, height: 40 },
+        { src: '/logos/beike.png', alt: 'Ke Holdings Logo', width: 40, height: 40 },
         { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
