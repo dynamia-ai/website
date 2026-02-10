@@ -309,7 +309,7 @@ const Header: React.FC = () => {
                 <div className="flex-shrink-0 flex items-center">
                   <Link href={currentLocale === 'zh' ? '/zh' : '/'}>
                     <Image
-                      src="/LOGO.svg"
+                      src="/dynamia-logo.svg"
                       alt="Dynamia AI Logo"
                       width={160}
                       height={40}

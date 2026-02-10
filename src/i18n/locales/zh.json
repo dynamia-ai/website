@@ -811,7 +811,28 @@
     "platformTitle": "Dynamia AI 平台",
     "getDemo": "获取演示",
     "pricing": "定价",
-    "poweredByHami": "由 HAMi 提供支持"
+    "poweredByHami": "由 HAMi 提供支持",
+    "followWechat": "关注微信公众号",
+    "companyDescription": "Dynamia 密瓜智能专注 GPU 虚拟化与异构算力调度，是 CNCF 开源项目 HAMi 的发起与主导方。",
+    "companyIntro": "企业级 GPU 虚拟化与调度平台，基于 CNCF 开源项目 HAMi 深度优化。",
+    "about": "关于",
+    "aboutCompany": "公司概况",
+    "news": "最新动态",
+    "partners": "合作伙伴",
+    "joinUs": "加入我们",
+    "resources": "资源",
+    "documentation": "文档",
+    "blog": "博客",
+    "caseStudies": "客户案例",
+    "community": "社区",
+    "github": "GitHub",
+    "slack": "Slack",
+    "discord": "Discord",
+    "wechat": "微信",
+    "contactSection": "联系我们",
+    "emailUs": "联系邮箱",
+    "email": "info@dynamia.ai",
+    "socialMedia": "关注我们"
   },
   "search": {
     "placeholder": "搜索...",
@@ -1215,11 +1236,11 @@
     },
     "keHoldings": {
       "title": "贝壳基于 HAMi 与 Kubernetes 实现机器学习基础设施 GPU 虚拟化，利用率提升近 3 倍",
-      "subtitle": "探索贝壳如何基于 HAMi 和 Kubernetes 打造 AIStudio 平台，实现 GPU 利用率从 13% 提升至 37%（近 3 倍提升），同时支持 10,000+ Pod 并发运行和日均 1,000 万+ 请求处理，涵盖混合云环境。",
+      "subtitle": "探索贝壳如何基于 HAMi 和 Kubernetes 打造 AIStudio 平台，实现 GPU 利用率从 13% 提升至 37%（近 3 倍提升），同时支持 10,000+ Pod 并发运行和日均 1,000 万 + 请求处理，涵盖混合云环境。",
       "stats": [
         { "value": "3x", "label": "GPU 利用率提升" },
         { "value": "10,000+", "label": "并发运行 Pod 数" },
-        { "value": "1,000万+", "label": "日均处理请求数" }
+        { "value": "1,000 万+", "label": "日均处理请求数" }
       ],
       "overview": {
         "title": "公司概述",
@@ -1292,7 +1313,7 @@
             "description": "由 HAMi 管理 GPU 显存虚拟化，用于小模型推理：",
             "items": [
               "HAMi GPU 显存虚拟化",
-              "GPU（H20、V100、A100、4090）",
+              "GPU (H20, V100, A100, 4090)",
               "精细化分配（1-2GB）",
               "小模型推理"
             ]
@@ -1305,7 +1326,7 @@
         "items": [
           { "title": "GPU 利用率", "value": "13% → 37%", "description": "近 3 倍提升" },
           { "title": "平台规模", "value": "10,000+ Pod", "description": "并发运行" },
-          { "title": "日请求量", "value": "1,000万+", "description": "日均处理" },
+          { "title": "日请求量", "value": "1,000 万+", "description": "日均处理" },
           { "title": "集群覆盖", "value": "5 个集群", "description": "公有云和私有云" },
           { "title": "零停机", "value": "100%", "description": "迁移和运营期间" },
           { "title": "工作负载类型", "value": "统一", "description": "训练和推理在同一平台" }
