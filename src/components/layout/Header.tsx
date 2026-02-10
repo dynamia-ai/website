@@ -13,7 +13,7 @@ import {
 import HamiIcon from '@/components/HamiIcon';
 import ExternalLinkIcon from '@/components/ExternalLinkIcon';
 import Image from 'next/image';
-// 暂时注释Search组件导入
+// 暂时注释 Search 组件导入
 // import Search from '@/components/Search';
 
 // 定义子菜单项类型
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
     
     if (newLocale === currentLocale) return;
     
-    // 设置Cookie，持久化语言选择
+    // 设置 Cookie，持久化语言选择
     if (typeof document !== 'undefined') {
       document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`; // 一年有效期
     }
@@ -71,9 +71,9 @@ const Header: React.FC = () => {
       }
     }
     
-    // 使用window.location直接跳转，绕过Next.js的客户端路由
+    // 使用 window.location 直接跳转，绕过 Next.js 的客户端路由
     if (newPath !== currentPath && typeof window !== 'undefined') {
-      // 构建完整的URL
+      // 构建完整的 URL
       const baseUrl = window.location.origin;
       const fullUrl = `${baseUrl}${newPath}`;
       
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
   ];
 
-  // HAMi子菜单
+  // HAMi 子菜单
   const hamiSubmenu: SubmenuItem[] = [
     { 
       name: t('navigation.whatIsHami'), 
@@ -207,18 +207,18 @@ const Header: React.FC = () => {
     }
   };
   
-  // 打开HAMi菜单
+  // 打开 HAMi 菜单
   const handleHamiMouseEnter = () => {
     clearHamiCloseTimeout();
     setIsHamiMenuOpen(true);
   };
   
-  // 延迟关闭HAMi菜单
+  // 延迟关闭 HAMi 菜单
   const handleHamiMouseLeave = () => {
     clearHamiCloseTimeout();
     hamiTimeoutRef.current = setTimeout(() => {
       setIsHamiMenuOpen(false);
-    }, 300); // 300ms延迟，给用户足够时间移动到下拉菜单
+    }, 300); // 300ms 延迟，给用户足够时间移动到下拉菜单
   };
 
   // 打开资源菜单
@@ -232,7 +232,7 @@ const Header: React.FC = () => {
     clearResourcesCloseTimeout();
     resourcesTimeoutRef.current = setTimeout(() => {
       setIsResourcesMenuOpen(false);
-    }, 300); // 300ms延迟，给用户足够时间移动到下拉菜单
+    }, 300); // 300ms 延迟，给用户足够时间移动到下拉菜单
   };
 
   // 打开解决方案菜单
@@ -517,10 +517,9 @@ const Header: React.FC = () => {
             <div className="pt-2 pb-3 space-y-1 px-2">
               {navigation.map((item) => (
                 item.hasSubmenu ? (
-                  <div key={item.name} className="rounded-lg">
-                    <Disclosure>
-                      {({ open }) => (
-                        <>
+                  <Disclosure as="div" key={item.name} className="rounded-lg">
+                    {({ open }) => (
+                      <>
                           <Disclosure.Button
                             className="w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors touch-manipulation"
                           >
@@ -592,7 +591,6 @@ const Header: React.FC = () => {
                         </>
                       )}
                     </Disclosure>
-                  </div>
                 ) : (
                   <Link
                     key={item.href}
