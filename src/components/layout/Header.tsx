@@ -29,6 +29,8 @@ const Header: React.FC = () => {
   const { t } = useTranslation();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const [isEventBannerVisible, setIsEventBannerVisible] = useState(false);
+  const EVENT_BANNER_DISMISSED_KEY = 'kubecon-eu-hami-banner-dismissed-v1';
   
   // 确定当前语言
   const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
@@ -37,6 +39,19 @@ const Header: React.FC = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const dismissed = window.localStorage.getItem(EVENT_BANNER_DISMISSED_KEY) === '1';
+    setIsEventBannerVisible(!dismissed);
+  }, []);
+
+  const closeEventBanner = () => {
+    setIsEventBannerVisible(false);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(EVENT_BANNER_DISMISSED_KEY, '1');
+    }
+  };
 
   // 切换语言
   const changeLanguage = (newLocale: string) => {
@@ -299,10 +314,40 @@ const Header: React.FC = () => {
     );
   }
 
+  const desktopMenuTopClass = isEventBannerVisible ? 'top-[104px]' : 'top-16';
+
   return (
     <Disclosure as="nav" className="bg-white shadow-sm sticky top-0 z-50">
       {({ open }) => (
         <>
+          {isEventBannerVisible && (
+            <div className="bg-primary-light border-b border-primary/20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+                <div className="flex items-start justify-between gap-3">
+                  <p className="text-xs sm:text-sm text-gray-800 leading-relaxed">
+                    <span className="font-semibold mr-2">{t('navigation.eventBannerLabel')}</span>
+                    {t('navigation.eventBannerMessage')}
+                    <a
+                      href="https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-flex items-center font-medium text-primary hover:text-primary-dark underline underline-offset-2"
+                      aria-label={t('navigation.eventBannerDetailsAria')}
+                    >
+                      {t('navigation.eventBannerDetails')}
+                    </a>
+                  </p>
+                  <button
+                    onClick={closeEventBanner}
+                    className="shrink-0 text-gray-500 hover:text-gray-700 transition-colors"
+                    aria-label={t('navigation.eventBannerClose')}
+                  >
+                    <XMarkIcon className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex">
@@ -369,7 +414,7 @@ const Header: React.FC = () => {
                           (item.submenuType === 'resources' && isResourcesMenuOpen) ||
                           (item.submenuType === 'solutions' && isSolutionsMenuOpen)) && (
                           <div
-                            className="fixed left-0 right-0 top-16 bg-white shadow-lg z-50 fadeIn"
+                            className={`fixed left-0 right-0 ${desktopMenuTopClass} bg-white shadow-lg z-50 fadeIn`}
                             onMouseEnter={
                               item.submenuType === 'hami'
                                 ? handleHamiMouseEnter
