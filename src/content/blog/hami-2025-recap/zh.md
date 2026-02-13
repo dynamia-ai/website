@@ -19,8 +19,6 @@ language: zh
 slug: hami-2025-recap
 ---
 
-> 本文将首发在 dynamia.ai 网站上，然后是 HAMi 的公众号（设置原创），然后再发布到其他的一些渠道，并设置显示作者和原文链接。
-
 ![2025 年 HAMi 从 GPU 调度器到云原生 AI 基础设施的中流砥柱](/images/blog/hami-2025-recap/hami-2025.png)
 
 > 回顾过去一年，HAMi 项目如何从单一 GPU 虚拟化方案成长为支持 11+ 厂商异构 AI 加速器的统一平台。
