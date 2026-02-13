@@ -250,7 +250,10 @@ const CaseDaoCloud: React.FC = () => {
                       { title: 'Domestic Accelerator Support', description: 'Extended HAMi to support domestic GPU vendors under unified abstraction' }
                     ];
               }()).map((feature: any, index: number) => (
-                <div key={index} className="bg-blue-50 p-4 rounded-lg">
+                <div
+                  key={index}
+                  className="bg-blue-50 dark:bg-gray-800 p-4 rounded-lg border border-blue-100 dark:border-gray-700"
+                >
                   <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{feature.title}</h4>
                   <p className="text-gray-700 dark:text-gray-300 text-sm">{feature.description}</p>
                 </div>
@@ -282,7 +285,10 @@ const CaseDaoCloud: React.FC = () => {
                       { title: 'Simplified Experience', description: 'AI engineers request resources without worrying about hardware differences' }
                     ];
               }()).map((feature: any, index: number) => (
-                <div key={index} className="bg-green-50 p-4 rounded-lg">
+                <div
+                  key={index}
+                  className="bg-green-50 dark:bg-gray-800 p-4 rounded-lg border border-green-100 dark:border-gray-700"
+                >
                   <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{feature.title}</h4>
                   <p className="text-gray-700 dark:text-gray-300 text-sm">{feature.description}</p>
                 </div>
