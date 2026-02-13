@@ -18,7 +18,7 @@ const CaseKeHoldings: React.FC = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-white to-gray-50 pt-20 pb-12">
+      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 pt-20 pb-12 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -29,7 +29,7 @@ const CaseKeHoldings: React.FC = () => {
           >
             <div className="flex justify-center mb-6">
               <div className="flex items-center space-x-8">
-                <div className="w-24 h-24 bg-gray-50 rounded-lg border border-gray-200 shadow-sm flex items-center justify-center">
+                <div className="w-24 h-24 bg-gray-50 dark:bg-white/95 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm flex items-center justify-center">
                   <Image
                     src="/images/case-studies/icons/beike.png"
                     alt="Ke Holdings Logo"
@@ -38,8 +38,8 @@ const CaseKeHoldings: React.FC = () => {
                     className="w-full h-auto"
                   />
                 </div>
-                <div className="text-4xl text-gray-400">+</div>
-                <div className="w-24 h-24 bg-white rounded-lg shadow-sm p-2 flex items-center justify-center">
+                <div className="text-4xl text-gray-400 dark:text-gray-500">+</div>
+                <div className="w-24 h-24 bg-white dark:bg-white/95 rounded-lg shadow-sm p-2 flex items-center justify-center">
                   <Image
                     src="/hami.svg"
                     alt="HAMi Logo"
@@ -50,11 +50,11 @@ const CaseKeHoldings: React.FC = () => {
                 </div>
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl mb-6">
               {t('caseStudiesPage.h1Prefix')}
               {t('cases.keHoldings.title')}
             </h1>
-            <p className="mt-4 text-xl text-gray-600 leading-relaxed">
+            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('cases.keHoldings.subtitle')}
             </p>
           </motion.div>
@@ -62,7 +62,7 @@ const CaseKeHoldings: React.FC = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(function() {
@@ -85,7 +85,7 @@ const CaseKeHoldings: React.FC = () => {
                 className="text-center"
               >
                 <div className="text-4xl font-bold text-[#0FD05D] mb-2">{stat.value}</div>
-                <div className="text-gray-600">{stat.label}</div>
+                <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -93,7 +93,7 @@ const CaseKeHoldings: React.FC = () => {
       </section>
 
       {/* Company Overview */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -104,10 +104,10 @@ const CaseKeHoldings: React.FC = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 {t('cases.keHoldings.overview.title')}
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
                 {t('cases.keHoldings.overview.description')}
               </p>
               <div className="space-y-4">
@@ -123,15 +123,15 @@ const CaseKeHoldings: React.FC = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p className="ml-3 text-base text-gray-600">{point}</p>
+                    <p className="ml-3 text-base text-gray-600 dark:text-gray-300">{point}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-green-50 rounded-lg p-8">
+              <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-800 rounded-lg p-8">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gray-50 rounded-lg border border-gray-200 shadow-sm mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-gray-50 dark:bg-white/95 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm mx-auto mb-4 flex items-center justify-center">
                     <Image
                       src="/images/case-studies/icons/beike.png"
                       alt="Ke Holdings Logo"
@@ -140,8 +140,8 @@ const CaseKeHoldings: React.FC = () => {
                       className="w-full h-auto"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{t('cases.keHoldings.companyCard.name')}</h3>
-                  <p className="text-gray-600 text-sm">{t('cases.keHoldings.companyCard.description')}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{t('cases.keHoldings.companyCard.name')}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{t('cases.keHoldings.companyCard.description')}</p>
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ const CaseKeHoldings: React.FC = () => {
       </section>
 
       {/* Challenges */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -160,15 +160,15 @@ const CaseKeHoldings: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.keHoldings.challenge.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
               {t('cases.keHoldings.challenge.description')}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
               const challenges = t('cases.keHoldings.challenge.points', { returnObjects: true });
               return Array.isArray(challenges)
@@ -187,7 +187,7 @@ const CaseKeHoldings: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gray-50 p-6 rounded-lg border border-gray-200"
+                className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-4">
@@ -196,8 +196,8 @@ const CaseKeHoldings: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{challenge.title}</h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">{challenge.description}</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{challenge.title}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{challenge.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -207,7 +207,7 @@ const CaseKeHoldings: React.FC = () => {
       </section>
 
       {/* Solution */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -217,18 +217,18 @@ const CaseKeHoldings: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.keHoldings.solution.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-4">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
               {t('cases.keHoldings.solution.description')}
             </p>
-            <p className="text-lg text-gray-700 font-medium">
+            <p className="text-lg text-gray-700 dark:text-gray-300 font-medium">
               {t('cases.keHoldings.solution.platform')}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
               const features = t('cases.keHoldings.solution.features', { returnObjects: true });
               return Array.isArray(features)
@@ -247,7 +247,7 @@ const CaseKeHoldings: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg border border-green-100"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-green-100"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-8 h-8 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4">
@@ -256,8 +256,8 @@ const CaseKeHoldings: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                    <p className="text-gray-700 leading-relaxed text-sm">{feature.description}</p>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{feature.title}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">{feature.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -271,20 +271,20 @@ const CaseKeHoldings: React.FC = () => {
             viewport={{ once: true }}
             variants={fadeIn}
             transition={{ duration: 0.5 }}
-            className="mt-12 bg-white rounded-lg p-8 border border-gray-200"
+            className="mt-12 bg-white dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-gray-700"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
               {t('cases.keHoldings.solution.architecture.title')}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
               <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-3 flex items-center">
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
                   <svg className="w-6 h-6 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                   </svg>
                   {t('cases.keHoldings.solution.architecture.gpuCluster.title')}
                 </h4>
-                <p className="text-gray-700 text-sm mb-3">{t('cases.keHoldings.solution.architecture.gpuCluster.description')}</p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">{t('cases.keHoldings.solution.architecture.gpuCluster.description')}</p>
                 <div className="space-y-2">
                   {(function() {
                     const gpuItems = t('cases.keHoldings.solution.architecture.gpuCluster.items', { returnObjects: true });
@@ -292,7 +292,7 @@ const CaseKeHoldings: React.FC = () => {
                       ? gpuItems
                       : ['Native NVIDIA device plugin', 'High-performance GPUs (H200, H100)', 'Dedicated for LLM training', 'Full GPU resource allocation'];
                   }()).map((item: string, i: number) => (
-                    <div key={i} className="flex items-center text-sm text-gray-600">
+                    <div key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                       <svg className="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -302,13 +302,13 @@ const CaseKeHoldings: React.FC = () => {
                 </div>
               </div>
               <div className="bg-green-50 p-6 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-3 flex items-center">
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
                   <svg className="w-6 h-6 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                   </svg>
                   {t('cases.keHoldings.solution.architecture.vgpuCluster.title')}
                 </h4>
-                <p className="text-gray-700 text-sm mb-3">{t('cases.keHoldings.solution.architecture.vgpuCluster.description')}</p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">{t('cases.keHoldings.solution.architecture.vgpuCluster.description')}</p>
                 <div className="space-y-2">
                   {(function() {
                     const vgpuItems = t('cases.keHoldings.solution.architecture.vgpuCluster.items', { returnObjects: true });
@@ -316,7 +316,7 @@ const CaseKeHoldings: React.FC = () => {
                       ? vgpuItems
                       : ['HAMi GPU memory virtualization', 'GPUs (H20, V100, A100, 4090)', 'Fine-grained allocation (1-2GB)', 'Small model inference'];
                   }()).map((item: string, i: number) => (
-                    <div key={i} className="flex items-center text-sm text-gray-600">
+                    <div key={i} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                       <svg className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
@@ -331,7 +331,7 @@ const CaseKeHoldings: React.FC = () => {
       </section>
 
       {/* Results */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -341,10 +341,10 @@ const CaseKeHoldings: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.keHoldings.results.title')}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               {t('cases.keHoldings.results.description')}
             </p>
           </motion.div>
@@ -370,11 +370,11 @@ const CaseKeHoldings: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center"
+                className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center"
               >
-                <h3 className="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+                <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-2">{item.title}</h3>
                 <p className="text-2xl font-bold text-[#0FD05D] my-3">{item.value}</p>
-                <p className="text-gray-600 text-sm">{item.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -382,7 +382,7 @@ const CaseKeHoldings: React.FC = () => {
       </section>
 
       {/* HAMi Integration */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -392,10 +392,10 @@ const CaseKeHoldings: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.keHoldings.hamiIntegration.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
               {t('cases.keHoldings.hamiIntegration.description')}
             </p>
           </motion.div>
@@ -419,7 +419,7 @@ const CaseKeHoldings: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg border-l-4 border-[#0FD05D]"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg border-l-4 border-[#0FD05D]"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-6 h-6 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4 mt-1">
@@ -427,7 +427,7 @@ const CaseKeHoldings: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">{point}</p>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{point}</p>
                 </div>
               </motion.div>
             ))}
@@ -436,7 +436,7 @@ const CaseKeHoldings: React.FC = () => {
       </section>
 
       {/* Future Plans */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -446,10 +446,10 @@ const CaseKeHoldings: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.keHoldings.futurePlans.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
               {t('cases.keHoldings.futurePlans.description')}
             </p>
           </motion.div>
@@ -472,7 +472,7 @@ const CaseKeHoldings: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border border-green-200"
+                className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-800 p-6 rounded-lg border border-green-200 dark:border-gray-700"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-6 h-6 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4 mt-1">
@@ -480,7 +480,7 @@ const CaseKeHoldings: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">{plan}</p>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{plan}</p>
                 </div>
               </motion.div>
             ))}
@@ -489,7 +489,7 @@ const CaseKeHoldings: React.FC = () => {
       </section>
 
       {/* Conclusion & CTA */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-green-50">
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -499,10 +499,10 @@ const CaseKeHoldings: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.keHoldings.conclusion.title')}
             </h2>
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
               {t('cases.keHoldings.conclusion.description')}
             </p>
 
@@ -520,7 +520,7 @@ const CaseKeHoldings: React.FC = () => {
               </a>
               <a
                 href="mailto:info@dynamia.ai"
-                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
               >
                 {t('cases.keHoldings.cta.contactUs')}
               </a>

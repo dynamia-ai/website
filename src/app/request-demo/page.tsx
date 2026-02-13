@@ -112,21 +112,21 @@ export default function RequestDemo() {
 
   return (
     <MainLayout>
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="text-center">
-              <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-4xl">
                 {t('requestDemo.title')}
               </h1>
-              <p className="mt-4 text-lg text-gray-500">
+              <p className="mt-4 text-lg text-gray-500 dark:text-gray-400 dark:text-gray-500">
                 {t('requestDemo.subtitle')}
               </p>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
               <div className="bg-primary-lighter rounded-lg p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">{t('requestDemo.demoContent.title')}</h2>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{t('requestDemo.demoContent.title')}</h2>
                 <ul className="space-y-4">
                   {demoItems.map((item, index) => (
                     <li key={index} className="flex items-start">
@@ -135,14 +135,14 @@ export default function RequestDemo() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <p className="ml-3 text-gray-600">{item}</p>
+                      <p className="ml-3 text-gray-600 dark:text-gray-300">{item}</p>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="bg-white p-6 border border-gray-200 rounded-lg shadow-sm">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">{t('requestDemo.form.title')}</h2>
+              <div className="bg-white dark:bg-gray-900 p-6 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{t('requestDemo.form.title')}</h2>
                 
                 {submitStatus === 'success' && (
                   <FormSuccessMessage translationKey="requestDemo.form.submitSuccess" />
@@ -159,7 +159,7 @@ export default function RequestDemo() {
                   <input type="hidden" name="_template" value="box" />
                   
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">{t('requestDemo.form.name')}</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.name')}</label>
                     <input 
                       type="text" 
                       id="name" 
@@ -171,7 +171,7 @@ export default function RequestDemo() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">{t('requestDemo.form.email')}</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.email')}</label>
                     <input 
                       type="email" 
                       id="email" 
@@ -183,7 +183,7 @@ export default function RequestDemo() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">{t('requestDemo.form.company')}</label>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.company')}</label>
                     <input 
                       type="text" 
                       id="company" 
@@ -195,7 +195,7 @@ export default function RequestDemo() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700">{t('requestDemo.form.jobTitle')}</label>
+                    <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.jobTitle')}</label>
                     <input 
                       type="text" 
                       id="jobTitle" 
@@ -207,7 +207,7 @@ export default function RequestDemo() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">{t('requestDemo.form.message')}</label>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.message')}</label>
                     <textarea 
                       id="message" 
                       name="message"
@@ -231,7 +231,7 @@ export default function RequestDemo() {
             </div>
 
             <div className="mt-12 text-center">
-              <p className="text-gray-500">
+              <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">
                 {t('requestDemo.followUp')}
               </p>
             </div>

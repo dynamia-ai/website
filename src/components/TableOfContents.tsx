@@ -148,10 +148,10 @@ export default function TableOfContents({ toc, className = '' }: TableOfContents
   return (
     <nav className={className}>
       <div className={containerClassName}>
-        <h2 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide bg-white/95 backdrop-blur-sm py-2">
+        <h2 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wide bg-white dark:bg-gray-900/95 backdrop-blur-sm py-2">
           {t('resources.blog.tableOfContents')}
           {needsScrollOptimization && (
-            <span className="ml-2 text-xs font-normal text-gray-500">
+            <span className="ml-2 text-xs font-normal text-gray-500 dark:text-gray-400 dark:text-gray-500">
               ({toc.length})
             </span>
           )}
@@ -172,8 +172,8 @@ export default function TableOfContents({ toc, className = '' }: TableOfContents
                     : 'pl-12'
                 } ${
                   activeId === heading.id
-                    ? 'text-gray-900 font-bold'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'text-gray-900 dark:text-gray-100 font-bold'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:text-gray-100'
                 }`}
               >
                 {heading.text}

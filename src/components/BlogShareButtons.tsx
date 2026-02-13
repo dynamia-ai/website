@@ -49,7 +49,7 @@ export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) 
         />
       ),
       href: `https://chat.openai.com/?q=${encodeURIComponent(aiPrompt)}`,
-      color: 'text-gray-600'
+      color: 'text-gray-600 dark:text-gray-300'
     },
     {
       name: 'Claude',
@@ -77,7 +77,7 @@ export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) 
         />
       ),
       href: `https://chat.deepseek.com/?q=${encodeURIComponent(aiPrompt)}`,
-      color: 'text-gray-600'
+      color: 'text-gray-600 dark:text-gray-300'
     },
     {
       name: 'Google AI',
@@ -91,7 +91,7 @@ export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) 
         />
       ),
       href: `https://www.google.com/search?udm=50&aep=11&q=${encodeURIComponent(aiPrompt)}`,
-      color: 'text-gray-600'
+      color: 'text-gray-600 dark:text-gray-300'
     },
     {
       name: 'Perplexity',
@@ -105,7 +105,7 @@ export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) 
         />
       ),
       href: `https://www.perplexity.ai/search/new?q=${encodeURIComponent(aiPrompt)}`,
-      color: 'text-gray-600'
+      color: 'text-gray-600 dark:text-gray-300'
     },
     {
       name: 'Grok',
@@ -119,7 +119,7 @@ export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) 
         />
       ),
       href: `https://x.com/i/grok?text=${encodeURIComponent(aiPrompt)}`,
-      color: 'text-gray-600'
+      color: 'text-gray-600 dark:text-gray-300'
     },
     {
       name: 'LinkedIn',
@@ -147,7 +147,7 @@ export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) 
         />
       ),
       href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-      color: 'text-gray-900'
+      color: 'text-gray-900 dark:text-gray-100'
     },
     {
       name: 'WhatsApp',
@@ -166,9 +166,9 @@ export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) 
   ];
 
   return (
-    <div className="mt-6 pb-6 border-b border-gray-200">
+    <div className="mt-6 pb-6 border-b border-gray-200 dark:border-gray-700">
       <div className="flex items-start gap-3">
-        <span className="text-sm font-medium text-gray-700 pt-1 whitespace-nowrap shrink-0">
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 pt-1 whitespace-nowrap shrink-0">
           {t('resources.blog.aiShare.shareAt')}
         </span>
         <div className="flex items-center gap-3 flex-wrap">
@@ -178,12 +178,12 @@ export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) 
               href={button.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-gray-200 bg-white hover:bg-gray-50 transition-colors text-xs font-medium"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors text-xs font-medium"
             >
               <span className={button.color}>
                 {button.icon}
               </span>
-              <span className="text-gray-700">{button.name}</span>
+              <span className="text-gray-700 dark:text-gray-300">{button.name}</span>
             </a>
           ))}
         </div>

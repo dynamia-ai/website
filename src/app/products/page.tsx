@@ -67,7 +67,7 @@ export default function Products() {
   return (
     <MainLayout>
       {/* 页面标题区域 */}
-      <section className="bg-gradient-to-b from-white to-gray-50 pt-20 pb-12">
+      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 pt-20 pb-12 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -76,10 +76,10 @@ export default function Products() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl">
               {t('products.kantaloupe.title')}
             </h1>
-            <p className="mt-6 text-xl text-gray-600 leading-relaxed">
+            <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('products.kantaloupe.subtitle')}
             </p>
           </motion.div>
@@ -87,7 +87,7 @@ export default function Products() {
       </section>
 
       {/* 产品概述区域 */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 items-center">
             <motion.div
@@ -98,10 +98,10 @@ export default function Products() {
               transition={{ duration: 0.5 }}
               className="flex flex-col justify-center"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 {t('products.kantaloupe.overview.title')}
               </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 {t('products.kantaloupe.overview.description')}
               </p>
               <div className="space-y-4">
@@ -117,7 +117,7 @@ export default function Products() {
                     <div className="flex-shrink-0">
                       <CheckIcon className="h-6 w-6 text-primary" />
                     </div>
-                    <p className="ml-3 text-base text-gray-600">{highlight}</p>
+                    <p className="ml-3 text-base text-gray-600 dark:text-gray-300">{highlight}</p>
                   </div>
                 ))}
               </div>
@@ -130,7 +130,7 @@ export default function Products() {
                 </Link>
                 <Link
                   href="/request-demo"
-                  className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition-colors"
+                  className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
                 >
                   {t('navigation.requestDemo')}
                 </Link>
@@ -144,8 +144,9 @@ export default function Products() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex justify-center"
             >
-              <div className="w-full bg-primary-light rounded-lg overflow-hidden p-0">
+              <div className="w-full bg-primary-light dark:bg-white/95 rounded-lg overflow-hidden p-0 border border-transparent dark:border-gray-700 shadow-sm">
                 <div className="p-2 flex items-center justify-center">
+                  <div className="w-full rounded-md bg-white dark:bg-white/95 p-2 shadow-sm">
                   <Image 
                     src="/images/products/product-overview.png" 
                     alt="Kantaloupe Overview" 
@@ -155,6 +156,7 @@ export default function Products() {
                     style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                     quality={100}
                   />
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -173,10 +175,10 @@ export default function Products() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('products.kantaloupe.commercialFeatures.title')}
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('products.kantaloupe.commercialFeatures.subtitle')}
             </p>
           </motion.div>
@@ -187,7 +189,7 @@ export default function Products() {
           {features.map((feature: Feature, index: number) => (
             <div
               key={index}
-              className={`w-full ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+              className={`w-full ${index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-900'}`}
             >
               <motion.div
                 initial="hidden"
@@ -201,7 +203,7 @@ export default function Products() {
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 } items-center justify-center gap-1 lg:gap-8 w-full max-w-6xl mx-auto`}>
                   <div className="w-full lg:w-1/2 flex justify-center items-start lg:items-center py-8">
-                    <div className="flex items-center justify-center p-2 bg-white rounded-xl shadow-lg">
+                    <div className="flex items-center justify-center p-2 bg-white dark:bg-white/95 border border-gray-100 dark:border-gray-700 rounded-xl shadow-lg">
                       <Image
                         src={`/images/features/${featureIcons[index]}.svg`}
                         alt={feature.title}
@@ -215,8 +217,8 @@ export default function Products() {
                   </div>
                   <div className="w-full lg:w-1/2 flex items-start lg:items-center px-6">
                     <div className="max-w-xl">
-                      <h3 className="text-3xl font-bold text-gray-900 mb-5">{feature.title}</h3>
-                      <p className="text-xl text-gray-600 leading-relaxed">{feature.description}</p>
+                      <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-5">{feature.title}</h3>
+                      <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 </div>
@@ -237,10 +239,10 @@ export default function Products() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('products.kantaloupe.readyToStart')}
             </h2>
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
               {t('products.kantaloupe.ctaDescription')}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -252,7 +254,7 @@ export default function Products() {
               </Link>
               <Link
                 href="/apply-trial"
-                className="inline-flex items-center justify-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50"
+                className="inline-flex items-center justify-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900"
               >
                 {t('navigation.freeTrial')}
               </Link>

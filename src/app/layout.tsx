@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import I18nProvider from "../components/I18nProvider";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -188,11 +189,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <I18nProvider>
-          {children}
-          <SpeedInsights />
-          <Analytics />
-        </I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>
+            {children}
+            <SpeedInsights />
+            <Analytics />
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

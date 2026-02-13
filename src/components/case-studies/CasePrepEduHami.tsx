@@ -18,7 +18,7 @@ const CasePrepEduHami: React.FC = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-white to-gray-50 pt-20 pb-12">
+      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 pt-20 pb-12 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -36,7 +36,7 @@ const CasePrepEduHami: React.FC = () => {
                   height={120}
                   className="h-auto"
                 />
-                <div className="text-4xl text-gray-400">×</div>
+                <div className="text-4xl text-gray-400 dark:text-gray-500">×</div>
                 <Image
                   src="/hami.svg"
                   alt="HAMi Logo"
@@ -46,11 +46,11 @@ const CasePrepEduHami: React.FC = () => {
                 />
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl mb-6">
               {t('caseStudiesPage.h1Prefix')}
               {t('cases.prepEduHami.title')}
             </h1>
-            <p className="mt-4 text-xl text-gray-600 leading-relaxed">
+            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('cases.prepEduHami.subtitle')}
             </p>
           </motion.div>
@@ -58,7 +58,7 @@ const CasePrepEduHami: React.FC = () => {
       </section>
 
       {/* Company Overview */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -69,10 +69,10 @@ const CasePrepEduHami: React.FC = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 {t('cases.prepEduHami.overview.title')}
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
                 {t('cases.prepEduHami.overview.description')}
               </p>
               <div className="space-y-4">
@@ -88,15 +88,15 @@ const CasePrepEduHami: React.FC = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p className="ml-3 text-base text-gray-600">{point}</p>
+                    <p className="ml-3 text-base text-gray-600 dark:text-gray-300">{point}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-green-50 rounded-lg p-8">
+              <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-800 rounded-lg p-8">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-white rounded-lg shadow-sm p-2 mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white dark:bg-white/95 rounded-lg shadow-sm p-2 mx-auto mb-4 flex items-center justify-center">
                     <Image
                       src="/images/case-studies/icons/prep-logo.svg"
                       alt="PREP EDU Logo"
@@ -105,8 +105,8 @@ const CasePrepEduHami: React.FC = () => {
                       className="h-auto"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{t('cases.prepEduHami.companyCard.name')}</h3>
-                  <p className="text-gray-600 text-sm">{t('cases.prepEduHami.companyCard.description')}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{t('cases.prepEduHami.companyCard.name')}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{t('cases.prepEduHami.companyCard.description')}</p>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ const CasePrepEduHami: React.FC = () => {
       </section>
 
       {/* Challenges */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -125,15 +125,15 @@ const CasePrepEduHami: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.prepEduHami.challenge.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
               {t('cases.prepEduHami.challenge.description')}
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
               const challenges = t('cases.prepEduHami.challenge.points', { returnObjects: true });
               return Array.isArray(challenges) 
@@ -147,7 +147,7 @@ const CasePrepEduHami: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg shadow-md"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-4">
@@ -156,7 +156,7 @@ const CasePrepEduHami: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-700 leading-relaxed">{challenge}</p>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{challenge}</p>
                   </div>
                 </div>
               </motion.div>
@@ -166,7 +166,7 @@ const CasePrepEduHami: React.FC = () => {
       </section>
 
       {/* Solution */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -176,18 +176,18 @@ const CasePrepEduHami: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.prepEduHami.solution.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-4">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
               {t('cases.prepEduHami.solution.description')}
             </p>
-            <p className="text-lg text-gray-700 font-medium">
+            <p className="text-lg text-gray-700 dark:text-gray-300 font-medium">
               {t('cases.prepEduHami.solution.objective')}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
               const innovations = t('cases.prepEduHami.solution.innovations', { returnObjects: true });
               return Array.isArray(innovations) 
@@ -207,7 +207,7 @@ const CasePrepEduHami: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg border border-green-100"
+                className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-6 rounded-lg border border-green-100 dark:border-gray-700"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-8 h-8 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4">
@@ -216,8 +216,8 @@ const CasePrepEduHami: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{innovation.title}</h3>
-                    <p className="text-gray-700 leading-relaxed">{innovation.description}</p>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{innovation.title}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{innovation.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -227,7 +227,7 @@ const CasePrepEduHami: React.FC = () => {
       </section>
 
       {/* Results */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -237,10 +237,10 @@ const CasePrepEduHami: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.prepEduHami.results.title')}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               {t('cases.prepEduHami.results.description')}
             </p>
           </motion.div>
@@ -263,11 +263,11 @@ const CasePrepEduHami: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg shadow-md text-center"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md text-center"
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{item.title}</h3>
                 <p className="text-2xl font-bold text-[#0FD05D] my-4">{item.value}</p>
-                <p className="text-gray-600">{item.description}</p>
+                <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -275,7 +275,7 @@ const CasePrepEduHami: React.FC = () => {
       </section>
 
       {/* HAMi Integration */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -285,10 +285,10 @@ const CasePrepEduHami: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.prepEduHami.hamiIntegration.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
               {t('cases.prepEduHami.hamiIntegration.description')}
             </p>
           </motion.div>
@@ -307,7 +307,7 @@ const CasePrepEduHami: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border-l-4 border-[#0FD05D]"
+                className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-6 rounded-lg border-l-4 border-[#0FD05D]"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-6 h-6 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4 mt-1">
@@ -315,7 +315,7 @@ const CasePrepEduHami: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">{point}</p>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{point}</p>
                 </div>
               </motion.div>
             ))}
@@ -324,7 +324,7 @@ const CasePrepEduHami: React.FC = () => {
       </section>
 
       {/* Conclusion & CTA */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-green-50">
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -334,10 +334,10 @@ const CasePrepEduHami: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.prepEduHami.conclusion.title')}
             </h2>
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
               {t('cases.prepEduHami.conclusion.description')}
             </p>
             
@@ -355,7 +355,7 @@ const CasePrepEduHami: React.FC = () => {
               </a>
               <a
                 href="mailto:info@dynamia.ai"
-                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
               >
                 {t('cases.prepEduHami.cta.contactUs')}
               </a>

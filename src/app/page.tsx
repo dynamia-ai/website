@@ -140,7 +140,7 @@ export default function Home() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div
@@ -150,10 +150,10 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="flex flex-col gap-4 md:gap-6 order-2 md:order-1"
             >
-              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
                 {t('home.hero.title')}
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300">
                 {t('home.hero.subtitle')}
               </p>
               <div className="mt-2 md:mt-4 flex flex-col sm:flex-wrap sm:flex-row items-start sm:items-center gap-3">
@@ -165,7 +165,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/request-demo"
-                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition-colors"
+                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
                 >
                   {t('home.cta.requestDemoButton')}
                 </Link>
@@ -204,9 +204,9 @@ export default function Home() {
       </section>
 
       {/* 社会证明部分
-      <section className="py-12 bg-white border-t border-b border-gray-100 overflow-hidden">
+      <section className="py-12 bg-white dark:bg-gray-900 border-t border-b border-gray-100 dark:border-gray-800 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-lg text-gray-600 mb-8">{t('home.socialProof.title')}</p>
+          <p className="text-center text-lg text-gray-600 dark:text-gray-300 mb-8">{t('home.socialProof.title')}</p>
           <div className="relative">
             <div className="logo-scroll-container overflow-hidden whitespace-nowrap">
               <div className="logos-slide inline-block animate-scroll">
@@ -265,7 +265,7 @@ export default function Home() {
       */}
 
       {/* 客户信任展示区域 */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -275,10 +275,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-8 md:mb-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3 md:mb-4">
               {t('home.trustedBy.title')}
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               {t('home.trustedBy.description')}
             </p>
           </motion.div>
@@ -304,15 +304,17 @@ export default function Home() {
                   viewport={{ once: true }}
                   variants={fadeIn}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-center justify-center h-16 md:h-20 bg-white rounded-lg shadow-sm p-3 md:p-4"
+                  className="flex items-center justify-center h-16 md:h-20 bg-white dark:bg-gray-900 rounded-lg shadow-sm p-3 md:p-4"
                 >
-                  <Image
-                    src={company.logo}
-                    alt={company.name}
-                    width={200}
-                    height={40}
-                    className="object-contain max-h-16 md:max-h-20 w-auto"
-                  />
+                  <div className="w-full h-full rounded-md flex items-center justify-center dark:bg-white/95 dark:px-3 dark:py-2 dark:shadow-sm">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      width={200}
+                      height={40}
+                      className="object-contain max-h-12 md:max-h-14 w-auto"
+                    />
+                  </div>
                 </motion.div>
               ));
             })()}
@@ -321,10 +323,10 @@ export default function Home() {
       </section>
 
       {/* 核心优势部分 */}
-      <section className="py-12 md:py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">{t('home.keyAdvantages.title')}</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100">{t('home.keyAdvantages.title')}</h2>
           </div>
           {/* 特性标签切换区域 */}
           <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12 px-2">
@@ -335,7 +337,7 @@ export default function Home() {
                 className={`px-3 py-2 md:px-4 md:py-2 rounded-md text-xs sm:text-sm md:text-base font-medium transition-colors touch-manipulation ${
                   activeTab === index
                     ? 'bg-primary text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200'
                 }`}
               >
                 {tab.title}
@@ -347,16 +349,18 @@ export default function Home() {
             {/* 左侧图片区域 (占 2/3) */}
             <div className="lg:col-span-2 flex justify-center order-1 lg:order-1">
               <div className="w-full">
-                <Image
-                  src={`/images/features/feature${activeTab + 1}.svg`}
-                  alt={featureTabsArray[activeTab].title}
-                  width={600}
-                  height={400}
-                  quality={90}
-                  priority
-                  className="rounded-lg w-full h-auto"
-                  style={{ objectFit: 'contain' }}
-                />
+                <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-white/95 p-3 md:p-4 shadow-sm">
+                  <Image
+                    src={`/images/features/feature${activeTab + 1}.svg`}
+                    alt={featureTabsArray[activeTab].title}
+                    width={600}
+                    height={400}
+                    quality={90}
+                    priority
+                    className="rounded-lg w-full h-auto"
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
               </div>
             </div>
             {/* 右侧内容区域 (占 1/3) */}
@@ -368,10 +372,10 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
                 className="space-y-3 md:space-y-4"
               >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100">
                   {featureTabsArray[activeTab].subtitle}
                 </h3>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                   {featureTabsArray[activeTab].description}
                 </p>
                 <div className="pt-2 md:pt-4">
@@ -392,10 +396,10 @@ export default function Home() {
       </section>
 
       {/* Powered by HAMi 板块 */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{t('home.poweredByHami.title')}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">{t('home.poweredByHami.title')}</h2>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-6 md:gap-8 items-center mb-8 md:mb-12 relative">
@@ -417,7 +421,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="lg:w-1/2 flex flex-col items-center text-center px-2"
             >
-              <p className="text-base md:text-lg text-gray-700 max-w-md">
+              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-md">
                 {t('home.poweredByHami.description')}
               </p>
             </motion.div>
@@ -432,14 +436,16 @@ export default function Home() {
               className="lg:w-1/2 flex items-center justify-center"
             >
               <div className="w-full flex items-center justify-center">
-                <Image
-                  src="/images/cncfsandbox.png"
-                  alt="CNCF Sandbox Project"
-                  width={300}
-                  height={173}
-                  className="object-contain w-auto h-auto"
-                  style={{ maxHeight: '120px', maxWidth: '100%' }}
-                />
+                <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-white/95 px-4 py-3 shadow-sm">
+                  <Image
+                    src="/images/cncfsandbox.png"
+                    alt="CNCF Sandbox Project"
+                    width={300}
+                    height={173}
+                    className="object-contain w-auto h-auto"
+                    style={{ maxHeight: '120px', maxWidth: '100%' }}
+                  />
+                </div>
               </div>
             </motion.div>
           </div>
@@ -469,17 +475,17 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 md:p-6">
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 md:p-6">
               <div className="container">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 items-center justify-items-center">
                   <div className="text-center px-2">
                     <span className="block text-xl md:text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.contributors')}</span>
-                    <span className="text-xs md:text-sm text-gray-600">[ Contributors ]</span>
+                    <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Contributors ]</span>
                   </div>
 
                   <div className="text-center px-2">
                     <span className="block text-xl md:text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.forks')}</span>
-                    <span className="text-xs md:text-sm text-gray-600">[ Forks ]</span>
+                    <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Forks ]</span>
                   </div>
 
                   <div className="text-center px-2">
@@ -489,7 +495,7 @@ export default function Home() {
                       </svg>
                       <span className="ml-1 text-xl md:text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.stars')}</span>
                     </div>
-                    <span className="text-xs md:text-sm text-gray-600">[ Stars ]</span>
+                    <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Stars ]</span>
                   </div>
 
                   <div className="text-center px-2">
@@ -500,12 +506,12 @@ export default function Home() {
                       </svg>
                       <span className="ml-1 text-xl md:text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.commits')}</span>
                     </div>
-                    <span className="text-xs md:text-sm text-gray-600">[ Commits ]</span>
+                    <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Commits ]</span>
                   </div>
 
                   <div className="text-center px-2 col-span-2 sm:col-span-1">
                     <span className="block text-xl md:text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.pulls')}</span>
-                    <span className="text-xs md:text-sm text-gray-600">[ Pulls ]</span>
+                    <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Pulls ]</span>
                   </div>
                 </div>
               </div>
@@ -515,10 +521,10 @@ export default function Home() {
       </section>
 
       {/* Join our community 板块 */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{t('home.joinCommunity.title')}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">{t('home.joinCommunity.title')}</h2>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-6xl mx-auto">
@@ -529,7 +535,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px]"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px]"
             >
               <Link href="https://space.bilibili.com/1105878584" className="flex flex-col items-center">
                 <div className="w-12 h-12 mb-3 flex items-center justify-center">
@@ -537,7 +543,7 @@ export default function Home() {
                     <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.283-.249.585-.373.907-.373.322 0 .624.124.907.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.283-.249.585-.373.907-.373.322 0 .624.124.907.373.249.249.373.551.373.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96v-1.173c0-.373.129-.689.387-.947.258-.258.574-.387.947-.387zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96v-1.173c0-.373.129-.689.387-.947.258-.258.574-.387.947-.387z" fill="#00A1D6"/>
                   </svg>
                 </div>
-                <h3 className="text-sm font-medium text-gray-900 mb-1">{t('home.joinCommunity.bilibili.title')}</h3>
+                <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.bilibili.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.bilibili.action')}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -555,7 +561,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px]"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px]"
             >
               <Link href="https://cloud-native.slack.com/archives/C07T10BU4R2" className="flex flex-col items-center">
                 <div className="w-10 h-10 md:w-12 md:h-12 mb-2 md:mb-3 flex items-center justify-center">
@@ -566,7 +572,7 @@ export default function Home() {
                     <path d="M77.6 97c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9-12.9-5.8-12.9-12.9V97h12.9zm0-6.5c-7.1 0-12.9-5.8-12.9-12.9s5.8-12.9 12.9-12.9h32.3c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H77.6z" fill="#ecb22e"></path>
                   </svg>
                 </div>
-                <h3 className="text-xs md:text-sm font-medium text-gray-900 mb-1">{t('home.joinCommunity.slack.title')}</h3>
+                <h3 className="text-xs md:text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.slack.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.slack.action')}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -584,7 +590,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.35 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px]"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px]"
             >
               <Link href="https://discord.gg/AgdQt5Xp" className="flex flex-col items-center">
                 <div className="w-10 h-10 md:w-12 md:h-12 mb-2 md:mb-3 flex items-center justify-center">
@@ -592,7 +598,7 @@ export default function Home() {
                     <path fill="#5865F2" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
                   </svg>
                 </div>
-                <h3 className="text-xs md:text-sm font-medium text-gray-900 mb-1">{t('home.joinCommunity.discord.title')}</h3>
+                <h3 className="text-xs md:text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.discord.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.discord.action')}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -610,7 +616,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px]"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px]"
             >
               <Link href="https://www.reddit.com/r/HAMi_Community/" className="flex flex-col items-center">
                 <div className="w-10 h-10 md:w-12 md:h-12 mb-2 md:mb-3 flex items-center justify-center">
@@ -621,7 +627,7 @@ export default function Home() {
                     </g>
                   </svg>
                 </div>
-                <h3 className="text-xs md:text-sm font-medium text-gray-900 mb-1">{t('home.joinCommunity.reddit.title')}</h3>
+                <h3 className="text-xs md:text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.reddit.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.reddit.action')}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -639,7 +645,7 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px] group relative"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-3 md:p-4 hover:shadow-md transition-shadow w-[140px] sm:w-[160px] md:w-[200px] group relative"
             >
               <div className="flex flex-col items-center">
                 <div className="w-10 h-10 md:w-12 md:h-12 mb-2 md:mb-3 flex items-center justify-center">
@@ -647,12 +653,12 @@ export default function Home() {
                     <path d="M199.836 135.671C199.836 106.419 171.913 82.7169 137.478 82.7169C103.024 82.7169 75.1018 106.425 75.1018 135.671C75.1018 164.918 103.024 188.626 137.478 188.626C148.299 188.626 158.483 186.266 167.368 182.139L191.95 192.778L189.103 165.355C195.89 156.888 199.842 146.661 199.842 135.671H199.836ZM116.455 121.323C111.547 121.323 107.583 117.352 107.583 112.45C107.583 107.549 111.547 103.578 116.455 103.578C121.357 103.578 125.321 107.555 125.321 112.45C125.321 117.346 121.344 121.323 116.455 121.323ZM158.483 121.323C153.594 121.323 149.616 117.352 149.616 112.45C149.616 107.549 153.594 103.578 158.483 103.578C163.397 103.578 167.368 107.555 167.368 112.45C167.368 117.346 163.397 121.323 158.483 121.323ZM137.478 75.705C147.113 75.705 156.291 77.4221 164.652 80.5128C164.714 79.3951 164.845 78.3212 164.845 77.1973C164.845 38.5475 127.938 7.22186 82.4196 7.22186C36.914 7.22186 0.00634766 38.5413 0.00634766 77.1973C0.00634766 91.7331 5.23874 105.251 14.1925 116.44L10.4337 152.667L42.9082 138.6C50.9503 142.346 59.8417 144.875 69.2262 146.167C68.5207 142.752 68.0899 139.255 68.0899 135.671C68.0961 102.61 99.222 75.7112 137.478 75.7112V75.705ZM110.199 34.8074C116.674 34.8074 121.906 40.0523 121.906 46.5147C121.906 52.9897 116.674 58.2345 110.199 58.2345C103.724 58.2345 98.4852 52.9897 98.4852 46.5147C98.4852 40.0461 103.73 34.8074 110.199 34.8074ZM54.6405 58.2345C48.1656 58.2345 42.9332 52.9897 42.9332 46.5147C42.9332 40.0461 48.1718 34.8074 54.6405 34.8074C61.1154 34.8074 66.354 40.0523 66.354 46.5147C66.354 52.9772 61.1092 58.2345 54.6405 58.2345Z" fill="#51C332"/>
                   </svg>
                 </div>
-                <h3 className="text-xs md:text-sm font-medium text-gray-900 mb-1">{t('home.joinCommunity.wechat.title')}</h3>
+                <h3 className="text-xs md:text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.wechat.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.wechat.action')}</span>
                 </div>
                 {/* 悬浮显示二维码 */}
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white p-2 rounded-lg shadow-lg z-10 w-[130px] md:w-[150px]">
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white dark:bg-gray-900 p-2 rounded-lg shadow-lg z-10 w-[130px] md:w-[150px]">
                   <Image
                     src="/images/hami-qr-code.png"
                     alt="WeChat QR Code"
@@ -668,11 +674,11 @@ export default function Home() {
       </section>
 
       {/* 生态集成 板块 */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{t('home.ecosystem.title')}</h2>
-            <p className="mt-3 md:mt-4 text-base md:text-lg text-gray-600 px-4">{t('home.ecosystem.subtitle')}</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">{t('home.ecosystem.title')}</h2>
+            <p className="mt-3 md:mt-4 text-base md:text-lg text-gray-600 dark:text-gray-300 px-4">{t('home.ecosystem.subtitle')}</p>
           </div>
 
           <div
@@ -694,10 +700,10 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className={`bg-white rounded-lg shadow-sm border border-gray-100 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 0 ? 'ring-2 ring-primary ring-offset-2 shadow-lg opacity-100' : 'opacity-75'}`}
+              className={`bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 0 ? 'ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-gray-900 shadow-lg opacity-100' : 'opacity-75'}`}
             >
               <Link href="https://github.com/vllm-project/production-stack/" className="flex flex-col items-center">
-                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center">
+                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center rounded-md dark:bg-white/95 dark:px-3 dark:py-2">
                   <Image
                     src="/images/vllm.png"
                     alt="vLLM"
@@ -720,10 +726,10 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className={`bg-white rounded-lg shadow-sm border border-gray-100 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 1 ? 'ring-2 ring-primary ring-offset-2 shadow-lg opacity-100' : 'opacity-75'}`}
+              className={`bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 1 ? 'ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-gray-900 shadow-lg opacity-100' : 'opacity-75'}`}
             >
               <Link href="https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_volcano_vgpu.md" className="flex flex-col items-center">
-                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center">
+                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center rounded-md dark:bg-white/95 dark:px-3 dark:py-2">
                   <Image
                     src="/images/volcano.png"
                     alt="Volcano"
@@ -746,10 +752,10 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className={`bg-white rounded-lg shadow-sm border border-gray-100 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 2 ? 'ring-2 ring-primary ring-offset-2 shadow-lg opacity-100' : 'opacity-75'}`}
+              className={`bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 2 ? 'ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-gray-900 shadow-lg opacity-100' : 'opacity-75'}`}
             >
               <Link href="https://koordinator.sh/docs/user-manuals/device-scheduling-gpu-share-with-hami" className="flex flex-col items-center">
-                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center">
+                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center rounded-md dark:bg-white/95 dark:px-3 dark:py-2">
                   <Image
                     src="/images/koordinator.png"
                     alt="Koordinator"
@@ -772,10 +778,10 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className={`bg-white rounded-lg shadow-sm border border-gray-100 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 3 ? 'ring-2 ring-primary ring-offset-2 shadow-lg opacity-100' : 'opacity-75'}`}
+              className={`bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 3 ? 'ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-gray-900 shadow-lg opacity-100' : 'opacity-75'}`}
             >
               <Link href="https://inference.readthedocs.io/en/latest/" className="flex flex-col items-center">
-                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center">
+                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center rounded-md dark:bg-white/95 dark:px-3 dark:py-2">
                   <Image
                     src="/images/xinference.png"
                     alt="Xinference"
@@ -798,10 +804,10 @@ export default function Home() {
               variants={fadeIn}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className={`bg-white rounded-lg shadow-sm border border-gray-100 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 4 ? 'ring-2 ring-primary ring-offset-2 shadow-lg opacity-100' : 'opacity-75'}`}
+              className={`bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-300 flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] ${ecoIndex === 4 ? 'ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-gray-900 shadow-lg opacity-100' : 'opacity-75'}`}
             >
               <Link href="https://kueue.sigs.k8s.io/docs/tasks/run/using_hami/" className="flex flex-col items-center">
-                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center">
+                <div className="w-36 h-16 md:w-48 md:h-20 flex items-center justify-center rounded-md dark:bg-white/95 dark:px-3 dark:py-2">
                   <div className="flex items-center -translate-x-2 md:-translate-x-4">
                     <Image
                       src="/images/kueue.svg"
@@ -810,7 +816,7 @@ export default function Home() {
                       height={50}
                       className="object-contain max-w-[90px] max-h-[40px] md:max-w-[120px] md:max-h-[50px] -mr-6 md:-mr-8"
                     />
-                    <span className="text-[#326ce5] font-bold text-xl md:text-2xl tracking-tight">Kueue</span>
+                    <span className="text-[#326ce5] dark:text-[#2758bf] font-bold text-xl md:text-2xl tracking-tight">Kueue</span>
                   </div>
                 </div>
                 <div className="flex items-center text-primary text-xs md:text-sm mt-2">
@@ -826,7 +832,7 @@ export default function Home() {
               aria-label="Previous"
               onClick={() => scrollToIndex(ecoIndex - 1)}
               disabled={ecoIndex === 0}
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-[#0FD05D] hover:text-white hover:border-[#0FD05D] text-gray-700 border border-gray-200 rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 disabled:hover:scale-100 active:bg-[#0FD05D] active:text-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0FD05D] focus:ring-offset-2 z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-900/90 hover:bg-[#0FD05D] hover:text-white hover:border-[#0FD05D] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 disabled:hover:scale-100 active:bg-[#0FD05D] active:text-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0FD05D] focus:ring-offset-2 z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
@@ -834,7 +840,7 @@ export default function Home() {
               aria-label="Next"
               onClick={() => scrollToIndex(ecoIndex + 1)}
               disabled={ecoIndex >= ecoCount - 1}
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-[#0FD05D] hover:text-white hover:border-[#0FD05D] text-gray-700 border border-gray-200 rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 disabled:hover:scale-100 active:bg-[#0FD05D] active:text-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0FD05D] focus:ring-offset-2 z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-900/90 hover:bg-[#0FD05D] hover:text-white hover:border-[#0FD05D] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 disabled:hover:scale-100 active:bg-[#0FD05D] active:text-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0FD05D] focus:ring-offset-2 z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
             </button>
@@ -861,7 +867,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-wrap sm:flex-row justify-center gap-3 md:gap-4">
             <Link
               href="/apply-trial"
-              className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition-colors w-full sm:w-auto"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-100 dark:bg-gray-800 transition-colors w-full sm:w-auto"
             >
               {t('home.cta.freeTrialButton')}
             </Link>

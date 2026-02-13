@@ -41,10 +41,10 @@ const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 
       variants={fadeIn}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden group hover:shadow-md transition-shadow duration-300"
+      className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden group hover:shadow-md transition-shadow duration-300"
     >
       <Link href={blogPath}>
-        <div className="aspect-video relative overflow-hidden bg-gray-100">
+        <div className="aspect-video relative overflow-hidden bg-gray-100 dark:bg-gray-800">
           {/* 悬停时封面图放大 */}
           <div className="absolute inset-0 transition-transform duration-300 ease-out group-hover:scale-105">
             <DynamicBlogCover
@@ -54,21 +54,21 @@ const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 
           </div>
           {/* 分类标签 */}
           <div className="absolute top-3 right-3">
-            <span className="inline-block px-3 py-1 text-xs font-medium bg-white/90 backdrop-blur-sm text-gray-700 rounded-full">
+            <span className="inline-block px-3 py-1 text-xs font-medium bg-white dark:bg-gray-900/90 backdrop-blur-sm text-gray-700 dark:text-gray-300 rounded-full">
               {displayCategory}
             </span>
           </div>
         </div>
         <div className="p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-primary transition-colors">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 line-clamp-2 hover:text-primary transition-colors">
             {post.title}
           </h2>
 
-          <p className="text-gray-600 mb-4 line-clamp-2">
+          <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
             {post.excerpt}
           </p>
 
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
             <time dateTime={post.date}>
               {formatDate(post.date, currentLocale)}
             </time>
@@ -133,7 +133,7 @@ export default function BlogListClient(
 
   return (
     <MainLayout>
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
@@ -143,10 +143,10 @@ export default function BlogListClient(
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl mb-4">
               {t('resources.blog.title')}
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               {t('resources.blog.description')}
             </p>
           </motion.div>
@@ -169,7 +169,7 @@ export default function BlogListClient(
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     selectedCategory === 'All'
                       ? 'bg-primary text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200'
                   }`}
                 >
                   {currentLocale === 'zh' ? '全部' : 'All'} ({allPosts.length})
@@ -197,7 +197,7 @@ export default function BlogListClient(
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                         selectedCategory === category
                           ? 'bg-primary text-white shadow-md'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200'
                       }`}
                     >
                       {displayName} ({count})
@@ -232,8 +232,8 @@ export default function BlogListClient(
                     }}
                     className={`px-4 py-2 rounded-md border ${
                       currentPage > 1
-                        ? 'border-gray-300 text-gray-700 hover:bg-gray-50'
-                        : 'border-gray-200 text-gray-400 cursor-not-allowed'
+                        ? 'border-gray-300 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-900'
+                        : 'border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
                     }`}
                   >
                     {currentLocale === 'zh' ? '上一页' : 'Previous'}
@@ -253,7 +253,7 @@ export default function BlogListClient(
                           return (
                             <span
                               key={page}
-                              className="px-3 py-2 text-gray-400"
+                              className="px-3 py-2 text-gray-400 dark:text-gray-500"
                             >
                               ...
                             </span>
@@ -270,7 +270,7 @@ export default function BlogListClient(
                           className={`px-4 py-2 rounded-md border ${
                             page === currentPage
                               ? 'bg-primary text-white border-primary'
-                              : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                              : 'border-gray-300 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-900'
                           }`}
                         >
                           {page}
@@ -287,8 +287,8 @@ export default function BlogListClient(
                     }}
                     className={`px-4 py-2 rounded-md border ${
                       currentPage < totalPages
-                        ? 'border-gray-300 text-gray-700 hover:bg-gray-50'
-                        : 'border-gray-200 text-gray-400 cursor-not-allowed'
+                        ? 'border-gray-300 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:bg-gray-900'
+                        : 'border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
                     }`}
                   >
                     {currentLocale === 'zh' ? '下一页' : 'Next'}
@@ -300,7 +300,7 @@ export default function BlogListClient(
             <div className="text-center py-12">
               <div className="max-w-md mx-auto">
                 <svg
-                  className="mx-auto h-12 w-12 text-gray-400"
+                  className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500"
                   stroke="currentColor"
                   fill="none"
                   viewBox="0 0 48 48"
@@ -312,10 +312,10 @@ export default function BlogListClient(
                     strokeLinejoin="round"
                   />
                 </svg>
-                <h3 className="mt-2 text-sm font-medium text-gray-900">
+                <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-gray-100">
                   {currentLocale === 'zh' ? '暂无文章' : 'No posts yet'}
                 </h3>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                   {currentLocale === 'zh'
                     ? '我们即将发布第一篇博客文章，敬请期待！'
                     : "We're working on our first blog posts. Stay tuned!"
@@ -328,10 +328,10 @@ export default function BlogListClient(
           {/* Newsletter CTA */}
           {currentPosts.length > 0 && (
             <div className="mt-16 bg-gradient-to-r from-primary-light to-primary-lighter rounded-lg p-8 text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 {currentLocale === 'zh' ? '订阅我们的博客' : 'Subscribe to our blog'}
               </h2>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
                 {currentLocale === 'zh'
                   ? '获取最新的技术文章、教程和 HAMi 社区更新。'
                   : 'Get the latest technical articles, tutorials, and HAMi community updates.'

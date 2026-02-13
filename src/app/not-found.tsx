@@ -25,7 +25,7 @@ export default function NotFound() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 text-center">
         {/* Logo */}
         <div className="flex justify-center">
@@ -37,10 +37,10 @@ export default function NotFound() {
         {/* 404 Message */}
         <div>
           <h1 className="text-9xl font-bold text-primary mb-4">404</h1>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Page Not Found
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-gray-600 dark:text-gray-300 mb-8">
             The page you are looking for could not be found. It might have been moved, deleted, or you entered the wrong URL.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function NotFound() {
           
           <button
             onClick={() => window.history.back()}
-            className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+            className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
           >
             <ArrowLeftIcon className="h-5 w-5 mr-2" />
             Go Back
@@ -66,7 +66,7 @@ export default function NotFound() {
         
         {/* Popular Links */}
         <div className="mt-12">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">
             Popular Pages
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

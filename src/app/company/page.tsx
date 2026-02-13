@@ -75,11 +75,11 @@ export default function Company() {
 
   return (
     <MainLayout>
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 公司介绍部分 */}
           <div className="mb-16">
-            <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl text-left">
+            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-4xl text-left">
               {t('company.about.title')}
             </h1>
           </div>
@@ -89,15 +89,15 @@ export default function Company() {
             <div className="flex items-center">
               <div className="prose prose-lg max-w-none space-y-6">
                 {paragraph1.map((p: string, index: number) => (
-                  <p key={`p1-${index}`} className="text-gray-600 text-xl">{p}</p>
+                  <p key={`p1-${index}`} className="text-gray-600 dark:text-gray-300 text-xl">{p}</p>
                 ))}
                 
                 {paragraph2.map((p: string, index: number) => (
-                  <p key={`p2-${index}`} className="text-gray-600 text-xl">{p}</p>
+                  <p key={`p2-${index}`} className="text-gray-600 dark:text-gray-300 text-xl">{p}</p>
                 ))}
                 
                 {paragraph3.length > 0 && paragraph3.map((p: string, index: number) => (
-                  <p key={`p3-${index}`} className="text-gray-600 text-xl">{p}</p>
+                  <p key={`p3-${index}`} className="text-gray-600 dark:text-gray-300 text-xl">{p}</p>
                 ))}
               </div>
             </div>
@@ -118,12 +118,12 @@ export default function Company() {
 
           {/* 团队部分 */}
           <div className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-left">{t('company.team.title')}</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-left">{t('company.team.title')}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
               {teamMembers.map((member, index) => (
                 <motion.div 
                   key={index} 
-                  className="bg-white p-6 text-left"
+                  className="bg-white dark:bg-gray-900 p-6 text-left"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -138,19 +138,19 @@ export default function Company() {
                       className="object-cover w-full h-full"
                     />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{member.name}</h3>
                   <div className="h-12 flex items-center">
-                    <p className="text-sm text-gray-500 w-50 break-words">{member.position}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 w-50 break-words">{member.position}</p>
                   </div>
                   <div className="flex gap-3">
                     <a href={member.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="text-gray-600 hover:text-primary transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
                         <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                       </svg>
                     </a>
                     {member.linkedin && (
                       <a href={member.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="text-gray-600 hover:text-primary transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
                           <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                         </svg>
                       </a>
@@ -164,7 +164,7 @@ export default function Company() {
           {/* 联系部分 */}
           <div className="mt-20">
             <div className="mb-12 text-left">
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 {t('company.contact.title')}
               </h2>
             </div>
@@ -176,7 +176,7 @@ export default function Company() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0"
+                className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0"
               >
                 <a href="mailto:info@dynamia.ai" className="flex flex-col items-center">
                   <div className="w-12 h-12 mb-3 flex items-center justify-center">
@@ -185,7 +185,7 @@ export default function Company() {
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                     </svg>
                   </div>
-                  <h3 className="text-sm font-medium text-gray-900 mb-1">{t('company.contact.social.email.title')}</h3>
+                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('company.contact.social.email.title')}</h3>
                   <div className="flex items-center text-primary text-xs">
                     <span className="mr-1">info@dynamia.ai</span>
                   </div>
@@ -198,7 +198,7 @@ export default function Company() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0"
+                className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0"
               >
                 <a href="https://dynamiaai.slack.com/join/shared_invite/zt-32j04j1s4-LPGJb8SzLOrYikNepsmC1A#/shared-invite/email" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center">
                   <div className="w-12 h-12 mb-3 flex items-center justify-center">
@@ -209,7 +209,7 @@ export default function Company() {
                       <path d="M77.6 97c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9-12.9-5.8-12.9-12.9V97h12.9zm0-6.5c-7.1 0-12.9-5.8-12.9-12.9s5.8-12.9 12.9-12.9h32.3c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H77.6z" fill="#ecb22e"></path>
                     </svg>
                   </div>
-                  <h3 className="text-sm font-medium text-gray-900 mb-1">{t('company.contact.social.slack.title')}</h3>
+                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('company.contact.social.slack.title')}</h3>
                   <div className="flex items-center text-primary text-xs">
                     <span className="mr-1">{t('company.contact.social.slack.action')}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -226,7 +226,7 @@ export default function Company() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0"
+                className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0"
               >
                 <a href="https://x.com/dynamia_ai" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center">
                   <div className="w-12 h-12 mb-3 flex items-center justify-center">
@@ -234,7 +234,7 @@ export default function Company() {
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#000000"/>
                     </svg>
                   </div>
-                  <h3 className="text-sm font-medium text-gray-900 mb-1">{t('company.contact.social.twitter.title')}</h3>
+                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('company.contact.social.twitter.title')}</h3>
                   <div className="flex items-center text-primary text-xs">
                     <span className="mr-1">{t('company.contact.social.twitter.action')}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -251,7 +251,7 @@ export default function Company() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0 group relative"
+                className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-4 hover:shadow-md transition-shadow w-[200px] flex-grow flex-shrink-0 group relative"
               >
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 mb-3 flex items-center justify-center">
@@ -259,12 +259,12 @@ export default function Company() {
                     <path d="M199.836 135.671C199.836 106.419 171.913 82.7169 137.478 82.7169C103.024 82.7169 75.1018 106.425 75.1018 135.671C75.1018 164.918 103.024 188.626 137.478 188.626C148.299 188.626 158.483 186.266 167.368 182.139L191.95 192.778L189.103 165.355C195.89 156.888 199.842 146.661 199.842 135.671H199.836ZM116.455 121.323C111.547 121.323 107.583 117.352 107.583 112.45C107.583 107.549 111.547 103.578 116.455 103.578C121.357 103.578 125.321 107.555 125.321 112.45C125.321 117.346 121.344 121.323 116.455 121.323ZM158.483 121.323C153.594 121.323 149.616 117.352 149.616 112.45C149.616 107.549 153.594 103.578 158.483 103.578C163.397 103.578 167.368 107.555 167.368 112.45C167.368 117.346 163.397 121.323 158.483 121.323ZM137.478 75.705C147.113 75.705 156.291 77.4221 164.652 80.5128C164.714 79.3951 164.845 78.3212 164.845 77.1973C164.845 38.5475 127.938 7.22186 82.4196 7.22186C36.914 7.22186 0.00634766 38.5413 0.00634766 77.1973C0.00634766 91.7331 5.23874 105.251 14.1925 116.44L10.4337 152.667L42.9082 138.6C50.9503 142.346 59.8417 144.875 69.2262 146.167C68.5207 142.752 68.0899 139.255 68.0899 135.671C68.0961 102.61 99.222 75.7112 137.478 75.7112V75.705ZM110.199 34.8074C116.674 34.8074 121.906 40.0523 121.906 46.5147C121.906 52.9897 116.674 58.2345 110.199 58.2345C103.724 58.2345 98.4852 52.9897 98.4852 46.5147C98.4852 40.0461 103.73 34.8074 110.199 34.8074ZM54.6405 58.2345C48.1656 58.2345 42.9332 52.9897 42.9332 46.5147C42.9332 40.0461 48.1718 34.8074 54.6405 34.8074C61.1154 34.8074 66.354 40.0523 66.354 46.5147C66.354 52.9772 61.1092 58.2345 54.6405 58.2345Z" fill="#51C332"/>
                   </svg>
                   </div>
-                  <h3 className="text-sm font-medium text-gray-900 mb-1">{t('company.contact.social.wechat.title')}</h3>
+                  <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('company.contact.social.wechat.title')}</h3>
                   <div className="flex items-center text-primary text-xs">
                     <span className="mr-1">{t('company.contact.social.wechat.action')}</span>
                   </div>
                   {/* 悬浮显示二维码 */}
-                  <div className="absolute top-[-170px] left-[50%] translate-x-[-50%] opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white p-2 rounded-lg shadow-lg z-10">
+                  <div className="absolute top-[-170px] left-[50%] translate-x-[-50%] opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white dark:bg-gray-900 p-2 rounded-lg shadow-lg z-10">
                     <div className="w-[150px] h-[150px] flex items-center justify-center">
                       <Image 
                         src="/images/wechat-qr-code.png" 

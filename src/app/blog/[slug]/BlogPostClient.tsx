@@ -257,7 +257,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-r-2 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               {currentLocale === 'zh' ? '正在跳转...' : 'Redirecting...'}
             </p>
           </div>
@@ -271,10 +271,10 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
       <MainLayout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {currentLocale === 'zh' ? '文章未找到' : 'Post Not Found'}
             </h1>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-600 dark:text-gray-300 mb-8">
               {currentLocale === 'zh' 
                 ? '您要查找的文章不存在或已被删除。' 
                 : 'The post you are looking for does not exist or has been removed.'
@@ -294,7 +294,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
 
   return (
     <MainLayout>
-      <article className="py-8 sm:py-12 lg:py-16 bg-white">
+      <article className="py-8 sm:py-12 lg:py-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Grid layout: 正文 + TOC */}
           <div className="grid grid-cols-1 xl:grid-cols-[1fr_16rem] gap-8 xl:gap-12">
@@ -317,12 +317,12 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 transition={{ duration: 0.5 }}
                 className="mb-8 sm:mb-12"
               >
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">
                   {displayPost.title}
                 </h1>
 
                 {/* Published Date */}
-                <div className="mb-3 sm:mb-4 text-sm text-gray-500">
+                <div className="mb-3 sm:mb-4 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                   <time dateTime={displayPost.date}>
                     {formatDate(displayPost.date, currentLocale)}
                   </time>
@@ -331,7 +331,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 {/* Excerpt */}
                 {displayPost.excerpt && (
                   <div className="mb-6 sm:mb-8 relative pl-4 sm:pl-6 border-l-4 border-gray-300">
-                    <p className="text-base sm:text-lg text-gray-600 leading-6 sm:leading-7 italic">
+                    <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-6 sm:leading-7 italic">
                       {displayPost.excerpt}
                     </p>
                   </div>
@@ -368,7 +368,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200"
+                className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200 dark:border-gray-700"
               >
                 <Link
                   href={blogListPath}

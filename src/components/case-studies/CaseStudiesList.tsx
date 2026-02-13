@@ -74,7 +74,7 @@ const CaseStudiesList: React.FC = () => {
 
   return (
     <MainLayout>
-      <section className="bg-gradient-to-b from-white to-gray-50 pt-20 pb-12">
+      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 pt-20 pb-12 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -83,17 +83,17 @@ const CaseStudiesList: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl mb-6">
               {t('caseStudiesPage.title')}
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('caseStudiesPage.subtitle')}
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cases.map((item, index) => (
@@ -104,7 +104,7 @@ const CaseStudiesList: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col p-6"
+                className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col p-6"
               >
                 <div className="flex items-center gap-3 mb-4">
                   {item.logos ? (
@@ -119,8 +119,8 @@ const CaseStudiesList: React.FC = () => {
                             key={logo.src}
                             className={`w-12 h-12 rounded-lg flex items-center justify-center ${
                               isRasterLogo
-                                ? 'bg-gray-50 border border-gray-200 shadow-sm'
-                                : 'bg-white border border-gray-100'
+                                ? 'bg-gray-50 dark:bg-white/95 border border-gray-200 dark:border-gray-700 shadow-sm'
+                                : 'bg-white dark:bg-white/95 border border-gray-100 dark:border-gray-700'
                             }`}
                           >
                             <Image
@@ -140,16 +140,16 @@ const CaseStudiesList: React.FC = () => {
                     </div>
                   )}
                 </div>
-                <h2 className="text-lg font-semibold text-gray-900 mb-3">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
                   {t(item.titleKey)}
                 </h2>
-                <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                <p className="text-sm text-gray-600 dark:text-gray-200 leading-relaxed mb-6">
                   {t(item.subtitleKey)}
                 </p>
                 <div className="mt-auto">
                   <Link
                     href={`${basePath}/${item.slug}`}
-                    className="text-primary hover:text-primary-dark font-medium"
+                    className="text-primary hover:text-primary-dark dark:hover:text-primary font-medium"
                   >
                     {t('caseStudiesPage.cardButton')} →
                   </Link>
@@ -160,13 +160,13 @@ const CaseStudiesList: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 md:p-10 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-8 md:p-10 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('caseStudiesPage.cta.title')}
             </h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-600 dark:text-gray-300 mb-8">
               {t('caseStudiesPage.cta.description')}
             </p>
             <Link

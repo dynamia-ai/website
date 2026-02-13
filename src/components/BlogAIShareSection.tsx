@@ -30,7 +30,7 @@ export default function BlogShareSection({ title, url }: BlogShareSectionProps) 
       key: 'x',
       icon: '/icons/share/x.svg',
       label: 'X',
-      hoverColors: 'hover:border-gray-800 hover:bg-gray-50 hover:text-gray-800',
+      hoverColors: 'hover:border-gray-800 hover:bg-gray-50 dark:bg-gray-900 hover:text-gray-800 dark:text-gray-200',
       url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`
     },
     {
@@ -50,21 +50,21 @@ export default function BlogShareSection({ title, url }: BlogShareSectionProps) 
   ];
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-6 shadow-sm">
+    <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 shadow-sm">
       <div className="flex items-center gap-2.5 mb-4">
-        <div className="text-gray-600">
+        <div className="text-gray-600 dark:text-gray-300">
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
           </svg>
         </div>
-        <h4 className="text-sm font-semibold text-gray-700">{t('resources.blog.aiShare.shareTitle')}</h4>
+        <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('resources.blog.aiShare.shareTitle')}</h4>
       </div>
       <div className="flex flex-wrap gap-2.5">
         {socialPlatforms.map((platform) => (
           <button
             key={platform.key}
             onClick={() => window.open(platform.url, '_blank', 'noopener,noreferrer')}
-            className={`group inline-flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 bg-white px-3.5 py-2 text-xs font-medium text-gray-700 transition-all duration-200 ${platform.hoverColors} hover:shadow-sm hover:-translate-y-0.5`}
+            className={`group inline-flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-2 text-xs font-medium text-gray-700 dark:text-gray-300 transition-all duration-200 ${platform.hoverColors} hover:shadow-sm hover:-translate-y-0.5`}
           >
             <Image
               src={platform.icon}
@@ -80,4 +80,3 @@ export default function BlogShareSection({ title, url }: BlogShareSectionProps) 
     </div>
   );
 }
-

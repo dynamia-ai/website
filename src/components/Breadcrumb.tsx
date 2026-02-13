@@ -51,7 +51,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' }) => {
           <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
             <Link 
               href="/" 
-              className="text-gray-400 hover:text-gray-500 flex items-center transition-colors duration-200"
+              className="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:text-gray-400 dark:text-gray-500 flex items-center transition-colors duration-200"
               itemProp="item"
               title={t('navigation.home')}
             >
@@ -70,11 +70,11 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' }) => {
               itemScope 
               itemType="https://schema.org/ListItem"
             >
-              <ChevronRightIcon className="h-4 w-4 text-gray-400 mx-2" aria-hidden="true" />
+              <ChevronRightIcon className="h-4 w-4 text-gray-400 dark:text-gray-500 mx-2" aria-hidden="true" />
               {item.href ? (
                 <Link 
                   href={item.href} 
-                  className="text-gray-500 hover:text-gray-700 text-sm font-medium transition-colors duration-200"
+                  className="text-gray-500 dark:text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors duration-200"
                   itemProp="item"
                   title={item.label}
                 >
@@ -82,7 +82,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' }) => {
                 </Link>
               ) : (
                 <span 
-                  className="text-gray-900 text-sm font-medium" 
+                  className="text-gray-900 dark:text-gray-100 text-sm font-medium" 
                   itemProp="name"
                   aria-current="page"
                 >
