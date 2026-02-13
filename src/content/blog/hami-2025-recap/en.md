@@ -27,7 +27,7 @@ slug: hami-2025-recap
 
 If HAMi's acceptance into [CNCF Sandbox](https://www.cncf.io/projects/hami/) in August 2024 marked community recognition, then 2025 was the year HAMi proved its value with tangible results.
 
-This year, HAMi evolved beyond a GPU virtualization scheduler into a comprehensive **AI computing virtualization middleware**, supporting unified management and scheduling for AI accelerators from NVIDIA GPU to Huawei Ascend, Cambricon MLU, Metax, Iluvatar, Swei Yuan and more.
+This year, HAMi evolved beyond a GPU virtualization scheduler into a comprehensive **AI computing virtualization middleware**, supporting unified management and scheduling for AI accelerators from NVIDIA GPU and other vendors.
 
 More importantly, HAMi received large-scale production validation—enterprises like Beike, DaoCloud, SF Technology, Prep EDU, and others built stable AI platforms on HAMi, processing millions of daily business requests across hundreds of enterprise users.
 
@@ -45,17 +45,11 @@ This shift not only broadened HAMi's applicability but also provided a practical
 
 In multi-vendor support, HAMi implemented a series of important features in 2025, pushing accelerator support to new heights.
 
-![HAMi GPU Ecosystem Landscape](/images/blog/hami-2025-recap/ecosystem.png)
+HAMi implemented advanced scheduling features including topology-aware scheduling and resource reuse capabilities, improving resource utilization efficiency in multi-task sharing scenarios.
 
-Huawei Ascend 910C device SuperPod modular allocation was implemented, enabling precise resource allocation for Huawei Ascend devices in SuperPod environments. Swei Yuan's GCU device plugin development was completed, providing full GCU support and enterprise-grade virtualization for Swei Yuan accelerator users. HAMi also added topology-aware scheduling and reuse (vXPU) capabilities for XPU devices, improving resource utilization efficiency in multi-task sharing scenarios.
+HAMi added application-level GPU isolation support for inference scenarios with more flexible resource management, supporting multiple QoS modes and topology-aware scheduling. WebUI also achieved heterogeneous metric visualization.
 
-Metax sGPU application-level support was implemented, providing application-level GPU isolation for inference scenarios with more flexible resource management, supporting three QoS modes (BestEffort, FixedShare, BurstShare) and MetaxLink-based topology-aware scheduling. WebUI also achieved heterogeneous metric visualization. Kunlunxin XPU device completed vGPU mode support, enabling domestic AI chip users to enjoy virtualization experiences equivalent to NVIDIA GPU. HAMi optimized vXPU features on P800 chips in v2.8 and enhanced scheduling failure event output.
-
-Iluvatar GPU gained enhanced support including memory management and core isolation. Swei Yuan GCU, AWS Neuron and other domestic and international AI accelerators continued adaptation, forming the industry's broadest AI accelerator support landscape.
-
-For Huawei Ascend vNPU support, the HAMi community's ascend-device-plugin project now supports **vNPU (virtual NPU) features**, supporting virtual slicing of Huawei Ascend 910 series chips, achieving official integration with Volcano scheduler (Volcano v1.14.0 release), supporting Ascend 310 and 910 series vNPU scheduling across accelerator clusters, implementing automatic alignment through memory virtualization, providing Huawei Ascend chip users with virtualization scheduling experiences equivalent to NVIDIA GPU.
-
-The HAMi community maintains a [complete device support list](https://project-hami.io/docs/userguide/Device-supported) on the official website, including unified management and scheduling for 11+ AI accelerators including NVIDIA GPU, Huawei Ascend, Metax, Iluvatar, Swei Yuan, Kunlunxin, Hygon, Cambricon, AMD, AWS Neuron, Moore Threads and more.
+The HAMi community maintains a [complete device support list](https://project-hami.io/docs/userguide/Device-supported) on the official website, including unified management and scheduling for multiple AI accelerators including NVIDIA GPU, AMD, AWS Neuron, and more.
 
 These achievements enabled HAMi to form the industry's broadest AI accelerator support, avoiding single-vendor lock-in and providing a practical technical solution for autonomous, controllable AI infrastructure.
 
@@ -107,7 +101,7 @@ The HAMi project gradually evolved into a complete ecosystem in 2025, with multi
 
 **volcano-vgpu-device-plugin** project integrated HAMi's vGPU capabilities into the Volcano batch scheduler, providing GPU virtualization support for AI training, big data processing and other batch scenarios. This project continued updating in 2025, ensuring compatibility with the Volcano scheduler.
 
-**ascend-device-plugin** achieved official integration with Volcano scheduler in 2025, supporting **volcano+vNPU mode**. This functionality was officially released in Volcano v1.14.0, supporting vNPU scheduling across Ascend 310 and 910 series accelerator clusters (including 910A, 910B2, 910B3, 310P and other heterogeneous clusters), implementing automatic alignment through memory virtualization, providing Huawei Ascend chip users with virtualization scheduling experiences equivalent to NVIDIA GPU.
+**ascend-device-plugin** achieved official integration with Volcano scheduler in 2025. This functionality was officially released in Volcano v1.14.0.
 
 **HAMi-WebUI** provides a visual management interface for HAMi, enabling users to view GPU resource usage, monitor Pod running status, and manage resource allocation policies through web pages. This project underwent multiple feature iterations in 2025, improving user experience.
 
@@ -123,7 +117,7 @@ In 2025, HAMi actively pursued deep integration with upstream open-source projec
 
 **For scheduler ecosystem integration**, HAMi actively pursued deep integration with mainstream schedulers and inference frameworks, providing optimal scheduling solutions for different scenarios:
 
-* **Volcano scheduler**: Beyond continuously enhancing compatibility with Volcano scheduler, HAMi achieved official integration with ascend-device-plugin in [Volcano v1.14.0](https://github.com/volcano-sh/volcano/releases/tag/v1.14.0), supporting **volcano+vNPU mode**, providing complete scheduling capabilities for Huawei Ascend 310 and 910 series accelerator cluster vNPU scheduling.
+* **Volcano scheduler**: Beyond continuously enhancing compatibility with Volcano scheduler, HAMi achieved official integration with ascend-device-plugin in [Volcano v1.14.0](https://github.com/volcano-sh/volcano/releases/tag/v1.14.0).
 
 * **Kueue batch scheduling system**: HAMi is actively adapting to Kueue and other batch scheduling systems, providing unified resource management and scheduling capabilities for large-scale batch processing tasks.
 
@@ -264,9 +258,9 @@ SF Technology published the "[EffectiveGPU Technical White Paper](https://mp.wei
 
 This practice marks that HAMi is not just an open-source project but has become a key component in enterprise production environments.
 
-In 2025's ecosystem expansion, HAMi also conducted in-depth collaboration with multiple domestic accelerator and data infrastructure vendors. Including domestic GPU/CPU ecosystem partners like Hygon, who conducted technical docking and adaptation verification with HAMi in accelerator scheduling and resource governance directions, jointly promoting domestic accelerator standardized access and unified scheduling in cloud-native environments. Meanwhile, big data and AI platform vendors like Transwarp also conducted exchanges and collaborative exploration around multi-tenant accelerator management and inference resource sharing scenarios.
+In 2025's ecosystem expansion, HAMi also conducted in-depth collaboration with multiple accelerator and data infrastructure vendors, jointly promoting accelerator standardized access and unified scheduling in cloud-native environments.
 
-We welcome more chip vendors and platform partners to join the HAMi ecosystem, jointly promoting China AI infrastructure collaborative innovation under open standards.
+We welcome more chip vendors and platform partners to join the HAMi ecosystem, jointly promoting AI infrastructure collaborative innovation under open standards.
 
 ## 2026: KubeCon Europe · Project Pavilion
 
