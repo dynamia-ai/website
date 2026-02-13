@@ -120,7 +120,7 @@ export default function PricingPage() {
   return (
     <MainLayout>
       {/* 页面顶部区域 */}
-      <section className="bg-gradient-to-b from-white to-gray-50 py-16">
+      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 py-16 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -129,7 +129,7 @@ export default function PricingPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl mb-4">
               {t('pricing.title')}
             </h1>
           </motion.div>
@@ -137,10 +137,10 @@ export default function PricingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
             {/* 左侧内容区域 */}
             <div className="flex flex-col justify-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 {t('pricing.headline')}
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
                 {t('pricing.description')}
               </p>
               <div className="space-y-4">
@@ -154,15 +154,15 @@ export default function PricingPage() {
                     <div className="flex-shrink-0">
                       <CheckIcon className="h-6 w-6 text-primary" />
                     </div>
-                    <p className="ml-3 text-base text-gray-600">{benefit}</p>
+                    <p className="ml-3 text-base text-gray-600 dark:text-gray-300">{benefit}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* 右侧联系表单 */}
-            <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">{t('pricing.form.title')}</h3>
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t('pricing.form.title')}</h3>
               
               {submitStatus === 'success' && (
                 <FormSuccessMessage translationKey="pricing.form.submitSuccess" />
@@ -181,7 +181,7 @@ export default function PricingPage() {
                 {/* 节点数量和GPU数量放在同一行 */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="nodeCount" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="nodeCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                       {t('pricing.form.nodeCount')}
                     </label>
                     <select
@@ -190,7 +190,7 @@ export default function PricingPage() {
                       value={formState.nodeCount}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     >
                       <option value="<10">{t('pricing.form.nodeCountOptions.small')}</option>
                       <option value="10-50">{t('pricing.form.nodeCountOptions.medium')}</option>
@@ -199,7 +199,7 @@ export default function PricingPage() {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="gpuCount" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="gpuCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                       {t('pricing.form.gpuCount')}
                     </label>
                     <select
@@ -208,7 +208,7 @@ export default function PricingPage() {
                       value={formState.gpuCount}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     >
                       <option value="1-10">{t('pricing.form.gpuCountOptions.small')}</option>
                       <option value="10-50">{t('pricing.form.gpuCountOptions.medium')}</option>
@@ -221,7 +221,7 @@ export default function PricingPage() {
                 {/* 姓名和电子邮箱放在同一行 */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                       {t('pricing.form.name')}
                     </label>
                     <input
@@ -231,11 +231,11 @@ export default function PricingPage() {
                       value={formState.name}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                       {t('pricing.form.email')}
                     </label>
                     <input
@@ -245,7 +245,7 @@ export default function PricingPage() {
                       value={formState.email}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     />
                   </div>
                 </div>
@@ -253,7 +253,7 @@ export default function PricingPage() {
                 {/* 公司名称和职位放在同一行 */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                       {t('pricing.form.company')}
                     </label>
                     <input
@@ -263,11 +263,11 @@ export default function PricingPage() {
                       value={formState.company}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     />
                   </div>
                   <div>
-                    <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                       {t('pricing.form.jobTitle')}
                     </label>
                     <input
@@ -277,13 +277,13 @@ export default function PricingPage() {
                       value={formState.jobTitle}
                       onChange={handleInputChange}
                       required
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     {t('pricing.form.message')}
                   </label>
                   <textarea
@@ -292,14 +292,14 @@ export default function PricingPage() {
                     rows={4}
                     value={formState.message}
                     onChange={handleInputChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                    className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                   ></textarea>
                 </div>
                 <div>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                    className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-gray-900 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? t('pricing.form.submitting') : t('pricing.form.submitButton')}
                   </button>
@@ -311,7 +311,7 @@ export default function PricingPage() {
       </section>
 
       {/* 特性对比表格区域 */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"

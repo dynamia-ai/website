@@ -18,7 +18,7 @@ const CaseTelecomGpu: React.FC = () => {
   return (
     <MainLayout>
       {/* 案例标题区域 */}
-      <section className="bg-gradient-to-b from-white to-gray-50 pt-20 pb-12">
+      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 pt-20 pb-12 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -27,11 +27,11 @@ const CaseTelecomGpu: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl mb-6">
               {t('caseStudiesPage.h1Prefix')}
               {t('cases.telecomGpu.title')}
             </h1>
-            <p className="mt-4 text-xl text-gray-600 leading-relaxed">
+            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('cases.telecomGpu.subtitle')}
             </p>
           </motion.div>
@@ -39,7 +39,7 @@ const CaseTelecomGpu: React.FC = () => {
       </section>
 
       {/* 案例概览 */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -50,10 +50,10 @@ const CaseTelecomGpu: React.FC = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 {t('cases.telecomGpu.overview.title')}
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
                 {t('cases.telecomGpu.overview.description')}
               </p>
               <div className="space-y-4">
@@ -69,7 +69,7 @@ const CaseTelecomGpu: React.FC = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p className="ml-3 text-base text-gray-600">{point}</p>
+                    <p className="ml-3 text-base text-gray-600 dark:text-gray-300">{point}</p>
                   </div>
                 ))}
               </div>
@@ -80,7 +80,7 @@ const CaseTelecomGpu: React.FC = () => {
                 alt="Telecom GPU Virtualization"
                 width={540}
                 height={360}
-                className="rounded-lg shadow-lg object-cover"
+                className="rounded-lg shadow-lg object-cover bg-white dark:bg-white/95 border border-gray-200 dark:border-gray-700 p-2"
               />
             </div>
           </motion.div>
@@ -88,7 +88,7 @@ const CaseTelecomGpu: React.FC = () => {
       </section>
 
       {/* 挑战与解决方案 */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -98,7 +98,7 @@ const CaseTelecomGpu: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.telecomGpu.challenge.title')}
             </h2>
           </motion.div>
@@ -111,12 +111,12 @@ const CaseTelecomGpu: React.FC = () => {
               viewport={{ once: true }}
               variants={fadeIn}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white p-8 rounded-lg shadow-md"
+              className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 {t('cases.telecomGpu.challenge.subtitle')}
               </h3>
-              <ul className="space-y-4 text-gray-600">
+              <ul className="space-y-4 text-gray-600 dark:text-gray-300">
                 {(function() {
                   const challenges = t('cases.telecomGpu.challenge.points', { returnObjects: true });
                   return Array.isArray(challenges) 
@@ -138,12 +138,12 @@ const CaseTelecomGpu: React.FC = () => {
               viewport={{ once: true }}
               variants={fadeIn}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white p-8 rounded-lg shadow-md"
+              className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 {t('cases.telecomGpu.solution.subtitle')}
               </h3>
-              <ul className="space-y-4 text-gray-600">
+              <ul className="space-y-4 text-gray-600 dark:text-gray-300">
                 {(function() {
                   const solutions = t('cases.telecomGpu.solution.points', { returnObjects: true });
                   return Array.isArray(solutions) 
@@ -162,7 +162,7 @@ const CaseTelecomGpu: React.FC = () => {
       </section>
 
       {/* 架构图 */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -172,10 +172,10 @@ const CaseTelecomGpu: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.telecomGpu.architecture.title')}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               {t('cases.telecomGpu.architecture.description')}
             </p>
           </motion.div>
@@ -193,14 +193,14 @@ const CaseTelecomGpu: React.FC = () => {
               alt="Architecture Diagram"
               width={900}
               height={500}
-              className="rounded-lg shadow-lg object-contain"
+              className="rounded-lg shadow-lg object-contain bg-white dark:bg-white/95 border border-gray-200 dark:border-gray-700 p-2"
             />
           </motion.div>
         </div>
       </section>
 
       {/* 实施成果 */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -210,7 +210,7 @@ const CaseTelecomGpu: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.telecomGpu.results.title')}
             </h2>
           </motion.div>
@@ -246,11 +246,11 @@ const CaseTelecomGpu: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg shadow-md text-center"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md text-center"
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{item.title}</h3>
                 <p className="text-4xl font-bold text-primary my-4">{item.value}</p>
-                <p className="text-gray-600">{item.description}</p>
+                <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -268,10 +268,10 @@ const CaseTelecomGpu: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.telecomGpu.cta.title')}
             </h2>
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
               {t('cases.telecomGpu.cta.description')}
             </p>
             <a

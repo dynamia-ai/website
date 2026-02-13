@@ -41,13 +41,13 @@ export default function Solutions() {
 
   return (
     <MainLayout>
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-4xl">
               {t('solutions.title')}
             </h1>
-            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400 dark:text-gray-500 sm:mt-4">
               {t('solutions.subtitle')}
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function Solutions() {
                   variants={fadeIn}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white overflow-hidden shadow rounded-lg"
+                  className="bg-white dark:bg-gray-900 overflow-hidden shadow rounded-lg"
                 >
                   <div className="h-48 bg-primary-light flex items-center justify-center">
                     <div className="w-24 h-24 bg-primary-light rounded-full flex items-center justify-center">
@@ -70,8 +70,8 @@ export default function Solutions() {
                     </div>
                   </div>
                   <div className="px-4 py-5 sm:p-6">
-                    <h3 className="text-lg font-medium text-gray-900">{category.title}</h3>
-                    <p className="mt-2 text-base text-gray-500">{category.description}</p>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">{category.title}</h3>
+                    <p className="mt-2 text-base text-gray-500 dark:text-gray-400 dark:text-gray-500">{category.description}</p>
                     <div className="mt-4">
                       <Link
                         href={`/solutions/${category.title.toLowerCase().replace(/\//g, '-')}`}
@@ -89,8 +89,8 @@ export default function Solutions() {
           <div className="mt-16 bg-primary-lighter rounded-lg p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('solutions.customSolutions.title')}</h2>
-                <p className="text-gray-600 mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">{t('solutions.customSolutions.title')}</h2>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
                   {t('solutions.customSolutions.description')}
                 </p>
                 <Link
@@ -100,9 +100,9 @@ export default function Solutions() {
                   {t('solutions.customSolutions.contactButton')}
                 </Link>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{t('solutions.successStories.title')}</h3>
-                <p className="text-gray-500 mb-6">{t('solutions.successStories.subtitle')}</p>
+              <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{t('solutions.successStories.title')}</h3>
+                <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-6">{t('solutions.successStories.subtitle')}</p>
                 <Link
                   href={currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies'}
                   className="text-primary hover:text-primary-dark font-medium"
@@ -114,7 +114,7 @@ export default function Solutions() {
           </div>
 
           <div className="mt-16 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('solutions.readyForChallenge')}
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
@@ -126,7 +126,7 @@ export default function Solutions() {
               </Link>
               <Link
                 href="/request-demo"
-                className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
               >
                 {t('navigation.requestDemo')}
               </Link>

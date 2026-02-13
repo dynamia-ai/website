@@ -19,7 +19,7 @@ export default function HamiPage() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-5 gap-12 items-center">
             {/* Left Content */}
@@ -30,20 +30,20 @@ export default function HamiPage() {
               transition={{ duration: 0.5 }}
               className="flex flex-col gap-6 md:col-span-3"
             >
-              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
                 <span className={isZh ? "text-1xl md:text-5xl" : "text-3xl md:text-5xl"}>
                   {t('hamiPage.title')}
                 </span>
                 {' '}<span className="text-[#0FD05D]">HAMi</span>?
               </h1>
-              <h2 className="text-xl md:text-2xl text-gray-700">
+              <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300">
                 {t('hamiPage.subtitle')}
               </h2>
               <div className="space-y-4">
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-gray-600 dark:text-gray-300">
                   {t('hamiPage.introduction')}
                 </p>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-gray-600 dark:text-gray-300">
                   {t('hamiPage.creator')}
                 </p>
               </div>
@@ -56,7 +56,7 @@ export default function HamiPage() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="flex justify-center md:col-span-2"
             >
-              <div className="w-full max-w-xs bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+              <div className="w-full max-w-xs bg-white dark:bg-gray-900 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-800">
                 <Image
                   src="/hami.svg"
                   alt="HAMi Logo"
@@ -72,7 +72,7 @@ export default function HamiPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -81,17 +81,17 @@ export default function HamiPage() {
             variants={fadeIn}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-6">
               <div className="container">
                 <div className="flex flex-wrap items-center justify-around">
                   <div className="mb-4 md:mb-0 text-center px-4">
                     <span className="block text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.contributors')}</span>
-                    <span className="text-gray-600">[ Contributors ]</span>
+                    <span className="text-gray-600 dark:text-gray-300">[ Contributors ]</span>
                   </div>
 
                   <div className="mb-4 md:mb-0 text-center px-4">
                     <span className="block text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.forks')}</span>
-                    <span className="text-gray-600">[ Forks ]</span>
+                    <span className="text-gray-600 dark:text-gray-300">[ Forks ]</span>
                   </div>
 
                   <div className="mb-4 md:mb-0 text-center px-4">
@@ -101,7 +101,7 @@ export default function HamiPage() {
                       </svg>
                       <span className="ml-2 text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.stars')}</span>
                     </div>
-                    <span className="text-gray-600">[ Stars ]</span>
+                    <span className="text-gray-600 dark:text-gray-300">[ Stars ]</span>
                   </div>
 
                   <div className="mb-4 md:mb-0 text-center px-4">
@@ -112,12 +112,12 @@ export default function HamiPage() {
                       </svg>
                       <span className="ml-2 text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.commits')}</span>
                     </div>
-                    <span className="text-gray-600">[ Commits ]</span>
+                    <span className="text-gray-600 dark:text-gray-300">[ Commits ]</span>
                   </div>
 
                   <div className="text-center px-4">
                     <span className="block text-2xl font-bold text-[#0FD05D]">{t('home.poweredByHami.stats.pulls')}</span>
-                    <span className="text-gray-600">[ Pulls ]</span>
+                    <span className="text-gray-600 dark:text-gray-300">[ Pulls ]</span>
                   </div>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function HamiPage() {
       </section>
 
       {/* GitHub Button Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial="hidden"
@@ -152,7 +152,7 @@ export default function HamiPage() {
       </section>
 
       {/* Images Section */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <motion.div
@@ -174,7 +174,7 @@ export default function HamiPage() {
                   alt="CNCF Sandbox Project"
                   width={250}
                   height={150}
-                  className="rounded-lg shadow-sm object-contain bg-white p-4 hover:shadow-md"
+                  className="rounded-lg shadow-sm object-contain bg-white dark:bg-white/95 border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md"
                 />
               </a>
             </motion.div>
@@ -197,7 +197,7 @@ export default function HamiPage() {
                   alt="CNAI Landscape"
                   width={250}
                   height={150}
-                  className="rounded-lg shadow-sm object-contain bg-white p-4 hover:shadow-md"
+                  className="rounded-lg shadow-sm object-contain bg-white dark:bg-white/95 border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md"
                 />
               </a>
             </motion.div>

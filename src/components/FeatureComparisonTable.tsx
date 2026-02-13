@@ -67,7 +67,7 @@ export default function FeatureComparisonTable() {
               </svg>
             </div>
             {note ? (
-              <span className="text-xs text-gray-500 mt-1 text-center">
+              <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-center">
                 {note}
               </span>
             ) : null}
@@ -76,7 +76,7 @@ export default function FeatureComparisonTable() {
       }
 
       return (
-        <div className="text-sm font-semibold text-gray-900 text-center">
+        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 text-center">
           {trimmedStatus}
         </div>
       );
@@ -111,7 +111,7 @@ export default function FeatureComparisonTable() {
         transition={{ duration: 0.5 }}
         className="text-center max-w-4xl mx-auto mb-12"
       >
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
           {title}
         </h2>
       </motion.div>
@@ -125,7 +125,7 @@ export default function FeatureComparisonTable() {
         className="w-full px-2 lg:px-0"
       >
         <div className="max-w-7xl mx-auto overflow-x-auto">
-          <table className="w-full divide-y divide-gray-200 border border-gray-200 shadow-md rounded-lg">
+          <table className="w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700 shadow-md rounded-lg">
             <thead className="bg-primary">
               <tr>
                 <th scope="col" className="px-3 py-3 text-center text-xs font-bold text-white uppercase tracking-wider w-[22%] min-w-[100px]">
@@ -142,7 +142,7 @@ export default function FeatureComparisonTable() {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
               {categories.map((category, categoryIndex) => (
                 category.features.map((feature, featureIndex) => (
                   <tr 
@@ -151,18 +151,18 @@ export default function FeatureComparisonTable() {
                     {featureIndex === 0 ? (
                       <td 
                         rowSpan={category.features.length} 
-                        className="px-3 py-3 bg-gray-50 text-md font-extrabold text-center align-middle border-r border-gray-200"
+                        className="px-3 py-3 bg-gray-50 dark:bg-gray-800 text-md font-extrabold text-gray-900 dark:text-gray-100 text-center align-middle border-r border-gray-200 dark:border-gray-700"
                       >
                         {category.name}
                       </td>
                     ) : null}
-                    <td className="pl-5 pr-3 text-center text-md font-bold border-r border-gray-200 break-words hyphens-auto">
+                    <td className="pl-5 pr-3 text-center text-md font-bold text-gray-900 dark:text-gray-100 border-r border-gray-200 dark:border-gray-700 break-words hyphens-auto">
                       {feature.name}
                     </td>
-                    <td className="px-2 py-3 text-sm text-gray-700 text-center border-r border-gray-200">
+                    <td className="px-2 py-3 text-sm text-gray-700 dark:text-gray-300 text-center border-r border-gray-200 dark:border-gray-700">
                       {renderStatus(feature.hamiStatus)}
                     </td>
-                    <td className="px-2 py-3 text-sm text-gray-700 text-center">
+                    <td className="px-2 py-3 text-sm text-gray-700 dark:text-gray-300 text-center">
                       {renderStatus(feature.kantaloupeStatus)}
                     </td>
                   </tr>

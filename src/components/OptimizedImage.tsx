@@ -47,7 +47,7 @@ export default function OptimizedImage({
       {/* 错误状态 */}
       {hasError ? (
         <div 
-          className="flex items-center justify-center bg-gray-100 text-gray-400"
+          className="flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500"
           style={{ width, height }}
         >
           <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
@@ -85,7 +85,7 @@ export default function OptimizedImage({
       {/* 加载状态 */}
       {isLoading && !hasError && (
         <div 
-          className="absolute inset-0 bg-gray-100 animate-pulse"
+          className="absolute inset-0 bg-gray-100 dark:bg-gray-800 animate-pulse"
           style={{ width, height }}
         />
       )}

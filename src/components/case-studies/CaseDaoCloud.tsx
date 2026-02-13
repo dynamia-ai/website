@@ -18,7 +18,7 @@ const CaseDaoCloud: React.FC = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-white to-gray-50 pt-20 pb-12">
+      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 pt-20 pb-12 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -29,7 +29,7 @@ const CaseDaoCloud: React.FC = () => {
           >
             <div className="flex justify-center mb-6">
               <div className="flex items-center space-x-8">
-                <div className="w-24 h-24 bg-gray-50 rounded-lg border border-gray-200 shadow-sm flex items-center justify-center">
+                <div className="w-24 h-24 bg-gray-50 dark:bg-white/95 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm flex items-center justify-center">
                   <Image
                     src="/images/case-studies/icons/daocloud.svg"
                     alt="DaoCloud Logo"
@@ -38,8 +38,8 @@ const CaseDaoCloud: React.FC = () => {
                     className="w-full h-auto"
                   />
                 </div>
-                <div className="text-4xl text-gray-400">+</div>
-                <div className="w-24 h-24 bg-white rounded-lg shadow-sm p-2 flex items-center justify-center">
+                <div className="text-4xl text-gray-400 dark:text-gray-500">+</div>
+                <div className="w-24 h-24 bg-white dark:bg-white/95 rounded-lg shadow-sm p-2 flex items-center justify-center">
                   <Image
                     src="/hami.svg"
                     alt="HAMi Logo"
@@ -50,11 +50,11 @@ const CaseDaoCloud: React.FC = () => {
                 </div>
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl mb-6">
               {t('caseStudiesPage.h1Prefix')}
               {t('cases.daoCloud.title')}
             </h1>
-            <p className="mt-4 text-xl text-gray-600 leading-relaxed">
+            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('cases.daoCloud.subtitle')}
             </p>
           </motion.div>
@@ -62,7 +62,7 @@ const CaseDaoCloud: React.FC = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(function() {
@@ -85,7 +85,7 @@ const CaseDaoCloud: React.FC = () => {
                 className="text-center"
               >
                 <div className="text-4xl font-bold text-[#0FD05D] mb-2">{stat.value}</div>
-                <div className="text-gray-600">{stat.label}</div>
+                <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -93,7 +93,7 @@ const CaseDaoCloud: React.FC = () => {
       </section>
 
       {/* Company Overview */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -104,10 +104,10 @@ const CaseDaoCloud: React.FC = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 {t('cases.daoCloud.overview.title')}
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
                 {t('cases.daoCloud.overview.description')}
               </p>
               <div className="space-y-4">
@@ -123,15 +123,15 @@ const CaseDaoCloud: React.FC = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p className="ml-3 text-base text-gray-600">{point}</p>
+                    <p className="ml-3 text-base text-gray-600 dark:text-gray-300">{point}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-green-50 rounded-lg p-8">
+              <div className="w-full max-w-md bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-800 rounded-lg p-8">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gray-50 rounded-lg border border-gray-200 shadow-sm mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-gray-50 dark:bg-white/95 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm mx-auto mb-4 flex items-center justify-center">
                     <Image
                       src="/images/case-studies/icons/daocloud.svg"
                       alt="DaoCloud Logo"
@@ -140,8 +140,8 @@ const CaseDaoCloud: React.FC = () => {
                       className="w-full h-auto"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{t('cases.daoCloud.companyCard.name')}</h3>
-                  <p className="text-gray-600 text-sm">{t('cases.daoCloud.companyCard.description')}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{t('cases.daoCloud.companyCard.name')}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{t('cases.daoCloud.companyCard.description')}</p>
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ const CaseDaoCloud: React.FC = () => {
       </section>
 
       {/* Challenges */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -160,15 +160,15 @@ const CaseDaoCloud: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.daoCloud.challenge.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
               {t('cases.daoCloud.challenge.description')}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
               const challenges = t('cases.daoCloud.challenge.points', { returnObjects: true });
               return Array.isArray(challenges)
@@ -187,7 +187,7 @@ const CaseDaoCloud: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gray-50 p-6 rounded-lg border border-gray-200"
+                className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-4">
@@ -196,8 +196,8 @@ const CaseDaoCloud: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{challenge.title}</h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">{challenge.description}</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{challenge.title}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{challenge.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -207,7 +207,7 @@ const CaseDaoCloud: React.FC = () => {
       </section>
 
       {/* Solution */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -217,10 +217,10 @@ const CaseDaoCloud: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.daoCloud.solution.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-4">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
               {t('cases.daoCloud.solution.description')}
             </p>
           </motion.div>
@@ -232,12 +232,12 @@ const CaseDaoCloud: React.FC = () => {
             viewport={{ once: true }}
             variants={fadeIn}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-lg p-8 border border-gray-200 mb-8"
+            className="bg-white dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-gray-700 mb-8"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.daoCloud.solution.drun.title')}
             </h3>
-            <p className="text-gray-700 mb-6">{t('cases.daoCloud.solution.drun.description')}</p>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">{t('cases.daoCloud.solution.drun.description')}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {(function() {
                 const features = t('cases.daoCloud.solution.drun.features', { returnObjects: true });
@@ -251,8 +251,8 @@ const CaseDaoCloud: React.FC = () => {
                     ];
               }()).map((feature: any, index: number) => (
                 <div key={index} className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-bold text-gray-900 mb-2">{feature.title}</h4>
-                  <p className="text-gray-700 text-sm">{feature.description}</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{feature.title}</h4>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -265,12 +265,12 @@ const CaseDaoCloud: React.FC = () => {
             viewport={{ once: true }}
             variants={fadeIn}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-lg p-8 border border-gray-200"
+            className="bg-white dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-gray-700"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t('cases.daoCloud.solution.dce.title')}
             </h3>
-            <p className="text-gray-700 mb-6">{t('cases.daoCloud.solution.dce.description')}</p>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">{t('cases.daoCloud.solution.dce.description')}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {(function() {
                 const features = t('cases.daoCloud.solution.dce.features', { returnObjects: true });
@@ -283,8 +283,8 @@ const CaseDaoCloud: React.FC = () => {
                     ];
               }()).map((feature: any, index: number) => (
                 <div key={index} className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-bold text-gray-900 mb-2">{feature.title}</h4>
-                  <p className="text-gray-700 text-sm">{feature.description}</p>
+                  <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-2">{feature.title}</h4>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -293,7 +293,7 @@ const CaseDaoCloud: React.FC = () => {
       </section>
 
       {/* Open Source Collaboration */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -303,10 +303,10 @@ const CaseDaoCloud: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.daoCloud.opensource.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
               {t('cases.daoCloud.opensource.description')}
             </p>
           </motion.div>
@@ -329,7 +329,7 @@ const CaseDaoCloud: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border-l-4 border-[#0FD05D]"
+                className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-800 p-6 rounded-lg border-l-4 border-[#0FD05D]"
               >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-6 h-6 bg-[#0FD05D] rounded-full flex items-center justify-center mr-4 mt-1">
@@ -337,7 +337,7 @@ const CaseDaoCloud: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">{point}</p>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{point}</p>
                 </div>
               </motion.div>
             ))}
@@ -346,7 +346,7 @@ const CaseDaoCloud: React.FC = () => {
       </section>
 
       {/* Results */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial="hidden"
@@ -356,10 +356,10 @@ const CaseDaoCloud: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.daoCloud.results.title')}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
               {t('cases.daoCloud.results.description')}
             </p>
           </motion.div>
@@ -385,11 +385,11 @@ const CaseDaoCloud: React.FC = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg border border-gray-200 text-center"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center"
               >
-                <h3 className="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+                <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-2">{item.title}</h3>
                 <p className="text-2xl font-bold text-[#0FD05D] my-3">{item.value}</p>
-                <p className="text-gray-600 text-sm">{item.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -397,7 +397,7 @@ const CaseDaoCloud: React.FC = () => {
       </section>
 
       {/* Quote */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -407,15 +407,15 @@ const CaseDaoCloud: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-2xl border border-green-100">
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-800 p-8 rounded-2xl border border-green-100 dark:border-gray-700">
               <svg className="w-12 h-12 text-[#0FD05D] mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
               </svg>
-              <blockquote className="text-xl italic text-gray-700 mb-6">
+              <blockquote className="text-xl italic text-gray-700 dark:text-gray-300 mb-6">
                 &ldquo;{t('cases.daoCloud.quote.text')}&rdquo;
               </blockquote>
               <div className="text-center">
-                <div className="font-bold text-gray-900">{t('cases.daoCloud.quote.author')}</div>
+                <div className="font-bold text-gray-900 dark:text-gray-100">{t('cases.daoCloud.quote.author')}</div>
               </div>
             </div>
           </motion.div>
@@ -423,7 +423,7 @@ const CaseDaoCloud: React.FC = () => {
       </section>
 
       {/* Conclusion & CTA */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-green-50">
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -433,10 +433,10 @@ const CaseDaoCloud: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {t('cases.daoCloud.conclusion.title')}
             </h2>
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
               {t('cases.daoCloud.conclusion.description')}
             </p>
 
@@ -454,7 +454,7 @@ const CaseDaoCloud: React.FC = () => {
               </a>
               <a
                 href="mailto:info@dynamia.ai"
-                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
               >
                 {t('cases.daoCloud.cta.contactUs')}
               </a>

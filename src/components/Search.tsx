@@ -18,14 +18,14 @@ const Search: React.FC = () => {
       <div className="relative">
         <input
           ref={inputRef}
-          className="w-full sm:w-64 pl-10 pr-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white"
+          className="w-full sm:w-64 pl-10 pr-4 py-2 text-sm text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white dark:bg-gray-900"
           placeholder={t('search.placeholder') || '搜索...'}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           disabled={!SEARCH_ENABLED}
         />
         <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-          <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+          <MagnifyingGlassIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
         </div>
         {SEARCH_ENABLED && query.length > 0 && (
           <button
@@ -35,7 +35,7 @@ const Search: React.FC = () => {
               inputRef.current?.focus();
             }}
           >
-            <XMarkIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+            <XMarkIcon className="h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
           </button>
         )}
       </div>

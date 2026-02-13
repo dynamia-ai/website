@@ -112,18 +112,18 @@ export default function FreeTrial() {
 
   return (
     <MainLayout>
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-white dark:bg-gray-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-4xl">
               {t('freeTrial.title')}
             </h1>
-            <p className="mt-4 text-lg text-gray-500">
+            <p className="mt-4 text-lg text-gray-500 dark:text-gray-400 dark:text-gray-500">
               {t('freeTrial.subtitle')}
             </p>
           </div>
 
-          <div className="mt-12 bg-white p-8 border border-gray-200 rounded-lg shadow-sm">
+          <div className="mt-12 bg-white dark:bg-gray-900 p-8 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm">
             {submitStatus === 'success' && (
               <FormSuccessMessage translationKey="freeTrial.form.submitSuccess" />
             )}
@@ -139,7 +139,7 @@ export default function FreeTrial() {
               <input type="hidden" name="_template" value="box" />
               
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">{t('freeTrial.form.name')}</label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.name')}</label>
                 <input 
                   type="text" 
                   id="name" 
@@ -151,7 +151,7 @@ export default function FreeTrial() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">{t('freeTrial.form.email')}</label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.email')}</label>
                 <input 
                   type="email" 
                   id="email" 
@@ -163,7 +163,7 @@ export default function FreeTrial() {
                 />
               </div>
               <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700">{t('freeTrial.form.company')}</label>
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.company')}</label>
                 <input 
                   type="text" 
                   id="company" 
@@ -175,7 +175,7 @@ export default function FreeTrial() {
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">{t('freeTrial.form.phone')}</label>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.phone')}</label>
                 <input 
                   type="tel" 
                   id="phone" 
@@ -186,7 +186,7 @@ export default function FreeTrial() {
                 />
               </div>
               <div>
-                <label htmlFor="useCase" className="block text-sm font-medium text-gray-700">{t('freeTrial.form.useCase')}</label>
+                <label htmlFor="useCase" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.useCase')}</label>
                 <textarea 
                   id="useCase" 
                   name="useCase"
@@ -206,7 +206,7 @@ export default function FreeTrial() {
                   className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" 
                   required
                 />
-                <label htmlFor="acceptTerms" className="ml-2 block text-sm text-gray-500">
+                <label htmlFor="acceptTerms" className="ml-2 block text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                   {t('freeTrial.form.terms')}
                 </label>
               </div>
@@ -222,7 +222,7 @@ export default function FreeTrial() {
             </form>
           </div>
 
-          {/* <div className="mt-8 text-center text-sm text-gray-500">
+          {/* <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
             <p>{t('freeTrial.disclaimer')}</p>
           </div> */}
         </div>

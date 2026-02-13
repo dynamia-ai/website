@@ -1,19 +1,43 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* 基础颜色 */
+  /* 基础颜色 - Light Mode */
   --background: #ffffff;
   --foreground: #171717;
-  
+
   /* 主题色系统 */
   --primary: #0FD05D; /* 主色调 - 绿色 */
   --primary-dark: #0CAB4D; /* 深色版本 - 用于悬停状态 */
   --primary-darker: #0A8F41; /* 更深色版本 - 用于激活状态 */
   --primary-light: rgba(15, 208, 93, 0.1); /* 淡色版本 - 10% 透明度 */
   --primary-lighter: rgba(15, 208, 93, 0.15); /* 更淡色版本 - 15% 透明度 */
-  
+
   /* 文字在主色调背景上的颜色 */
   --on-primary: #ffffff;
+
+  /* Navigation submenu hover surface */
+  --menu-item-hover-bg: #f7faff;
+}
+
+/* Dark Mode */
+.dark {
+  /* 基础颜色 - Dark Mode */
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+
+  /* 主题色系统 - Dark Mode (更亮的绿色以适应深色背景) */
+  --primary: #1be884;
+  --primary-dark: #16cc78;
+  --primary-darker: #13b068;
+  --primary-light: rgba(27, 232, 132, 0.15);
+  --primary-lighter: rgba(27, 232, 132, 0.2);
+
+  /* 文字在主色调背景上的颜色 */
+  --on-primary: #ffffff;
+
+  /* Navigation submenu hover surface in dark mode */
+  --menu-item-hover-bg: rgba(31, 41, 55, 0.9);
 }
 
 @theme inline {
@@ -27,6 +51,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* 主题色辅助类 */
@@ -393,6 +419,66 @@ body {
   margin: 2rem 0;
 }
 
+/* Blog content dark mode readability overrides */
+.dark .blog-content {
+  color: #d1d5db;
+}
+
+.dark .blog-content h1,
+.dark .blog-content h2,
+.dark .blog-content h3,
+.dark .blog-content h4 {
+  color: #f3f4f6;
+}
+
+.dark .blog-content p,
+.dark .blog-content li {
+  color: #d1d5db;
+}
+
+.dark .blog-content strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.dark .blog-content em {
+  color: #e5e7eb;
+}
+
+.dark .blog-content a {
+  color: #60a5fa;
+  text-decoration-color: rgba(96, 165, 250, 0.7);
+}
+
+.dark .blog-content a:hover {
+  color: #93c5fd;
+  text-decoration-color: rgba(147, 197, 253, 0.9);
+}
+
+.dark .blog-content code {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+.dark .blog-content blockquote {
+  border-left-color: #4b5563;
+  color: #9ca3af;
+}
+
+.dark .blog-content hr {
+  border-top-color: #374151;
+}
+
+/* Force brand logos to monochrome white in dark mode for readability */
+.dark-logo-monochrome {
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.dark .dark-logo-monochrome {
+  filter: brightness(0) invert(1) grayscale(1);
+  opacity: 0.95;
+}
+
 /* Blog image styles with lightbox support */
 .blog-content img {
   /* Desktop: allow images to be larger but constrained */
@@ -482,7 +568,7 @@ body {
 }
 
 .menu-item a:hover {
-  background-color: var(--service-bg-hover, #F7FAFF);
+  background-color: var(--menu-item-hover-bg);
 }
 
 .menu-item__title {
@@ -494,6 +580,10 @@ body {
 .menu-item__text {
   color: #6B7280;
   font-size: 0.875rem;
+}
+
+.dark .menu-item__text {
+  color: #9ca3af;
 }
 
 .menu-item__viewbutton {
