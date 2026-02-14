@@ -9,7 +9,6 @@ import MainLayout from '@/components/layout/MainLayout';
 import { formatDate } from '@/lib/blog-client';
 import { BlogPost } from '@/types/blog';
 import TableOfContents from '@/components/TableOfContents';
-import DynamicBlogCover from '@/components/DynamicBlogCover';
 import ImageLightbox from '@/components/ImageLightbox';
 import Breadcrumb from '@/components/Breadcrumb';
 import BlogShareSection from '@/components/BlogAIShareSection';
@@ -222,7 +221,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     }
 
     // Add cursor pointer style to all images within figures
-    const images = container.querySelectorAll('.blog-content figure img');
+    const images = container.querySelectorAll('figure img');
     images.forEach((img) => {
       (img as HTMLImageElement).style.cursor = 'pointer';
     });
@@ -247,7 +246,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     return () => {
       container.removeEventListener('click', handleImageClick);
     };
-  }, []);
+  }, [displayPost]);
 
   // 如果当前语言的博客不存在，但另一个语言的博客存在，显示加载状态（正在重定向）
   // 只有在两个语言的博客都不存在时，才显示 "Post Not Found"
@@ -299,7 +298,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
           {/* Grid layout: 正文 + TOC */}
           <div className="grid grid-cols-1 xl:grid-cols-[1fr_16rem] gap-8 xl:gap-12">
             {/* 左侧：正文内容 */}
-            <div className="w-full min-w-0">
+            <div className="w-full min-w-0 xl:max-w-4xl">
               {/* Breadcrumb with structured data */}
               <div className="mb-6 sm:mb-8">
                 <Breadcrumb
@@ -337,13 +336,6 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                   </div>
                 )}
 
-                <div className="aspect-video relative rounded-lg overflow-hidden">
-                  <DynamicBlogCover
-                    title={displayPost.coverTitle || displayPost.title}
-                    className="w-full h-full"
-                    variant="detail"
-                  />
-                </div>
               </motion.header>
 
               {/* Content */}
@@ -351,7 +343,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="blog-content"
+                className="blog-content mx-auto max-w-3xl lg:max-w-none"
                 dangerouslySetInnerHTML={{ __html: displayPost.content }}
               />
 
