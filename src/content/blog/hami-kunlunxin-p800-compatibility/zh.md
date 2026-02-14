@@ -14,7 +14,7 @@ tags:
   - 国产化
   - AI 加速器
 category: Integration & Ecosystem
-coverImage: /images/blog/hami-kunlunxin-p800-compatibility/cover-zh.png
+coverImage: /images/blog/hami-kunlunxin-p800-compatibility/kunlunxin.webp
 language: zh
 ---
 
