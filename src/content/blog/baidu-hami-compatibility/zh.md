@@ -14,7 +14,7 @@ tags:
   - 私有化部署
   - AI 基础设施
 category: Integration & Ecosystem
-coverImage: /images/blog/baidu-hami-compatibility/cover-zh.png
+coverImage: /images/blog/baidu-hami-compatibility/certificate.jpg
 language: zh
 ---
 

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getBlogPost, getBlogPostSlugs, markdownToHtml } from '@/lib/blog-server';
+import { getBlogPost, getBlogPostSlugs, getPostSocialImage, markdownToHtml } from '@/lib/blog-server';
 import BlogPostClient from '../../../blog/[slug]/BlogPostClient';
 
 interface PageProps {
@@ -28,6 +28,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const socialImage = getPostSocialImage(post);
+
   return {
     title: `${post.title} | Dynamia AI 博客`,
     description: post.excerpt,
@@ -37,9 +39,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      images: post.coverImage ? [
+      images: socialImage ? [
         {
-          url: post.coverImage,
+          url: socialImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -50,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: post.coverImage ? [post.coverImage] : undefined,
+      images: socialImage ? [socialImage] : undefined,
     },
   };
 }

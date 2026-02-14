@@ -14,7 +14,7 @@ tags:
   - Year in Review
   - CNCF
 category: Year in Review
-coverImage: /images/blog/hami-2025-recap/cover-zh.png
+coverImage: /images/blog/hami-2025-recap/hami-2025.png
 language: zh
 slug: hami-2025-recap
 ---

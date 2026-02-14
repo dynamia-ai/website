@@ -13,7 +13,7 @@ tags:
   - 开源生态
 category: Company News
 language: zh
-coverImage: /images/blog/jimmy-song-joins-dynamia/jimmy-song-portrait.PNG
+coverImage: /images/blog/jimmy-song-joins-dynamia/jimmy-song-portrait.png
 ---
 
 近日，云原生与开源领域资深技术人 **宋净超（Jimmy Song）** 正式加入密瓜智能，出任 **开源生态 VP**。随着 Jimmy 加入，将助力密瓜智能在 AI 原生基础设施生态建设、全球开发者协作领域的布局，为**AI 原生基础设施生态方向**相关实践提供经验参考。

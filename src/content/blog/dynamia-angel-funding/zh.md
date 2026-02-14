@@ -13,7 +13,7 @@ tags:
   - HAMi
 category: Company News
 language: zh
-coverImage: /images/blog/dynamia-angel-funding/dynamia-angel-funding-announcement.jpg
+coverImage: /images/blog/dynamia-angel-funding/dynamia-founding-team.jpg
 ---
 
 专注于异构算力调度和虚拟化的 AI 初创企业**上海密瓜智能科技有限公司（"密瓜智能"）已于近期完成数千万元的天使轮融资**，本轮融资由**复星创富**领投，**拙朴投资、种子投资人及产业方**强力跟投。自去年 3 月获得超五百万元种子轮融资以来，密瓜智能在不足一年时间内已迅速完成 2 轮融资，展现出强劲的发展势能，其技术前景与商业价值备受市场认可。

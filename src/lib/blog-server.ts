@@ -14,6 +14,34 @@ import { BlogPost, BlogPostMeta, BlogPostsResult, TocItem } from '@/types/blog';
 import rehypeImageCaptions from './rehype-image-captions';
 
 const CONTENT_PATH = path.join(process.cwd(), 'src/content/blog');
+const PUBLIC_PATH = path.join(process.cwd(), 'public');
+
+function doesPublicImageExist(imagePath: string): boolean {
+  if (!imagePath.startsWith('/')) {
+    return false;
+  }
+
+  return fs.existsSync(path.join(PUBLIC_PATH, imagePath));
+}
+
+function extractFirstLocalImage(markdown: string): string | undefined {
+  const imageRegex = /!\[[^\]]*]\((\/[^)\s]+)(?:\s+"[^"]*")?\)/;
+  const match = markdown.match(imageRegex);
+  return match?.[1];
+}
+
+export function getPostSocialImage(post: Pick<BlogPost, 'coverImage' | 'content'>): string | undefined {
+  if (post.coverImage && doesPublicImageExist(post.coverImage)) {
+    return post.coverImage;
+  }
+
+  const firstImage = extractFirstLocalImage(post.content);
+  if (firstImage && doesPublicImageExist(firstImage)) {
+    return firstImage;
+  }
+
+  return undefined;
+}
 
 // Get all blog post directories
 export function getBlogPostSlugs(): string[] {
