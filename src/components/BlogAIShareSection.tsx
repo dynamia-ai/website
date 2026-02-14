@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faLinkedin, faRedditAlien, faWhatsapp, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 
 interface BlogShareSectionProps {
   title: string;
@@ -28,24 +29,38 @@ export default function BlogShareSection({ title, url }: BlogShareSectionProps) 
   const socialPlatforms = [
     {
       key: 'x',
-      icon: '/icons/share/x.svg',
+      icon: faXTwitter,
       label: 'X',
       hoverColors: 'hover:border-gray-800 hover:bg-gray-50 dark:bg-gray-900 hover:text-gray-800 dark:text-gray-200',
       url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`
     },
     {
       key: 'whatsapp',
-      icon: '/icons/share/whatsapp.svg',
+      icon: faWhatsapp,
       label: 'WhatsApp',
       hoverColors: 'hover:border-green-600 hover:bg-green-50 hover:text-green-700',
       url: `https://wa.me/?text=${encodedTitle}+${encodedUrl}`
     },
     {
       key: 'linkedin',
-      icon: '/icons/share/linkedin.svg',
+      icon: faLinkedin,
       label: 'LinkedIn',
       hoverColors: 'hover:border-blue-600 hover:bg-blue-50 hover:text-blue-700',
       url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
+    },
+    {
+      key: 'reddit',
+      icon: faRedditAlien,
+      label: 'Reddit',
+      hoverColors: 'hover:border-orange-600 hover:bg-orange-50 hover:text-orange-700',
+      url: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`
+    },
+    {
+      key: 'facebook',
+      icon: faFacebookF,
+      label: 'Facebook',
+      hoverColors: 'hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700',
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
     }
   ];
 
@@ -66,11 +81,8 @@ export default function BlogShareSection({ title, url }: BlogShareSectionProps) 
             onClick={() => window.open(platform.url, '_blank', 'noopener,noreferrer')}
             className={`group inline-flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-2 text-xs font-medium text-gray-700 dark:text-gray-300 transition-all duration-200 ${platform.hoverColors} hover:shadow-sm hover:-translate-y-0.5`}
           >
-            <Image
-              src={platform.icon}
-              alt={platform.label}
-              width={16}
-              height={16}
+            <FontAwesomeIcon
+              icon={platform.icon}
               className="h-4 w-4 transition-transform duration-200 group-hover:scale-110"
             />
             {platform.label}
