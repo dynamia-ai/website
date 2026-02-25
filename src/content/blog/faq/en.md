@@ -20,7 +20,7 @@ coverImage: /images/blog/faq/coverimage2.jpg
 language: en
 ---
 
-## 00 Preface
+## Preface
 
 🚀 Say goodbye to GPU-resource headaches—HAMi puts you in control of heterogeneous clusters.
 
@@ -34,15 +34,11 @@ HAMi is purpose-built to solve these pain points. It specializes in GPU sharing 
 
 To help you grasp HAMi’s core value and day-to-day usage, we created this article—“9 Key Questions Every New User Must Know.” Let’s clear common hurdles and tackle heterogeneous AI compute like pros.
 
----
-
-## 01 FAQ
-
-### Q1: Which hardware partners does HAMi support?
+## Q1: Which hardware partners does HAMi support?
 
 ![HAMi supported hardware vendors and accelerators overview](/images/blog/faq/q2.jpg)
 
-### Q2: What is a vGPU? Why can’t I “multi-open” on one card even though I see 10 vGPUs?
+## Q2: What is a vGPU? Why can’t I “multi-open” on one card even though I see 10 vGPUs?
 
 In short:
 
@@ -58,7 +54,7 @@ Detailed explanation:
 
 Bottom line: vGPU over-commitment boosts overall utilization by letting more tasks share one card, rather than increasing an individual task’s resources.
 
-### Q3: Which open-source schedulers can HAMi integrate with?
+## Q3: Which open-source schedulers can HAMi integrate with?
 
 **Currently supported:**
 
@@ -68,7 +64,7 @@ Bottom line: vGPU over-commitment boosts overall utilization by letting more tas
 
 * **KubeVirt & Kata Containers** – Both rely on virtualization (PCI passthrough or Virtio) for isolation. HAMi’s device plugin requires direct device mounting into containers, making architectural integration non-trivial. For performance and complexity reasons, we focus on bare-metal / container runtimes for now.
 
-### Q4: Does HAMi support multi-node, multi-GPU distributed training? Cross-node & cross-GPU?
+## Q4: Does HAMi support multi-node, multi-GPU distributed training? Cross-node & cross-GPU?
 
 Absolutely.
 
@@ -80,7 +76,7 @@ Absolutely.
 
 * **Single Pod spanning multiple nodes** – K8s design forbids this; HAMi does not implement remote GPU invocation. Use the multi-Pod distributed pattern instead.
 
-### Q5: Can GPU resources be changed on the fly? Does HAMi support dynamic adjustment?
+## Q5: Can GPU resources be changed on the fly? Does HAMi support dynamic adjustment?
 
 **Not yet.** True dynamic adjustment is **unsupported**.
 
@@ -95,7 +91,7 @@ Future outlook:
 * If “runtime limits on compute & memory” become a strong demand, HAMi may explore program-level throttling.
 * Native dynamic GPU resizing remains a long-term community goal.
 
-### Q6: Why are there so many device plugins? Some from vendors, some from HAMi?
+## Q6: Why are there so many device plugins? Some from vendors, some from HAMi?
 
 **Why some domestic vendors ship without a separate runtime:**
 
@@ -112,7 +108,7 @@ Examples:
 * **Ascend**: Each card type required its own plugin; HAMi abstracts card-type templates into one plugin.
 * **NVIDIA**: Limited resource info; HAMi re-implements to expose compute, memory, and topology data.
 
-### Q7: vGPU split count not working? Compute/memory limits ignored? How to debug?
+## Q7: vGPU split count not working? Compute/memory limits ignored? How to debug?
 
 * **Split count ignored** – Check for conflicting NVIDIA official device plugin or incorrect `devicePlugin.deviceSplitCount`.
 * **Compute not limited** – Add `GPU_CORE_UTILIZATION_POLICY=force`; otherwise a single container on the card runs unrestricted.
@@ -121,11 +117,11 @@ Examples:
 
 ⚠️ Compute-limit note: A 50 % limit means *long-term average* usage will be ~50 %; instantaneous spikes above that are possible.
 
-### Q8: Why does `nvidia-smi` inside a GPU Pod show no processes?
+## Q8: Why does `nvidia-smi` inside a GPU Pod show no processes?
 
 PID namespace isolation hides host PIDs. To see GPU processes, set `hostPID=true` (security trade-off—use with caution).
 
-### Q9: What’s on HAMi’s roadmap? Next-gen feature preview
+## Q9: What’s on HAMi’s roadmap? Next-gen feature preview
 
 HAMi is continuously evolving. Key directions:
 
