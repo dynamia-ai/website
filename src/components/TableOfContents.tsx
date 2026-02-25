@@ -162,7 +162,7 @@ export default function TableOfContents({ toc, className = '' }: TableOfContents
               <a
                 href={`#${heading.id}`}
                 onClick={(e) => handleClick(e, heading.id)}
-                className={`block text-sm transition-colors duration-200 ${
+                className={`block text-sm rounded transition-all duration-200 ${
                   heading.level === 1
                     ? 'pl-0 font-medium'
                     : heading.level === 2
@@ -172,8 +172,8 @@ export default function TableOfContents({ toc, className = '' }: TableOfContents
                     : 'pl-12'
                 } ${
                   activeId === heading.id
-                    ? 'text-gray-900 dark:text-gray-100 font-bold'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:text-gray-100'
+                    ? 'text-primary dark:text-primary font-bold bg-gray-100 dark:bg-gray-800'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800/50'
                 }`}
               >
                 {heading.text}
