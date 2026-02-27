@@ -1,10 +1,10 @@
 ---
-title: Deploy Dynamia AI Platform on AWS with EKS
-coverTitle: Deploy Dynamia AI Platform on AWS with EKS
+title: 在 AWS 上使用 EKS 部署 Dynamia AI 平台
+coverTitle: 在 AWS 上使用 EKS 部署 Dynamia AI 平台
 date: '2025-09-26'
 excerpt: >-
-  Follow this battle-tested checklist to prepare IAM, install cluster add-ons,
-  and roll out the Dynamia AI Platform on Amazon EKS in about an hour.
+  遵循这套经过实战检验的清单，准备 IAM、安装集群附加组件，
+  并在大约一小时内通过 Amazon EKS 部署 Dynamia AI 平台。
 author: Dynamia AI Team
 tags:
   - Dynamia AI Platform
@@ -15,57 +15,57 @@ tags:
   - NVIDIA
 category: Integration & Ecosystem
 coverImage: /images/blog/aws/aws-install-coverpage.png
-language: en
+language: zh
 aiRepostLinks:
-  - label: ChatGPT Summary
-    description: AI-generated highlights of this deployment guide
+  - label: ChatGPT 摘要
+    description: AI 生成的部署指南要点
     url: 'https://chat.openai.com/'
     icon: chatgpt
-  - label: Claude Recap
-    description: Quick take from Claude on AWS setup steps
+  - label: Claude 回顾
+    description: Claude 对 AWS 设置步骤的快速总结
     url: 'https://claude.ai/'
     icon: claude
-  - label: Gemini Notes
-    description: Google Gemini walkthrough and reminders
+  - label: Gemini 笔记
+    description: Google Gemini 的操作指南和提醒
     url: 'https://gemini.google.com/'
     icon: gemini
 ---
 
-Use this guide to deploy Dynamia AI Platform on AWS, including the required IAM role, supporting components, and Helm charts.
+使用本指南在 AWS 上部署 Dynamia AI 平台，包括所需的 IAM 角色、支持组件和 Helm charts。
 
 ---
 
-## Step 1. Prepare Prerequisites
+## 第 1 步：准备先决条件
 
-Before you start, confirm you have the following in place. If you still need to install any component, use the linked instructions.
+在开始之前，请确认您已完成以下准备工作。如果还需要安装任何组件，请使用链接中的说明。
 
-- An Amazon EKS cluster running Kubernetes 1.31 or later ([create an EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)). Ensure the following add-ons are installed and healthy:
+- 一个运行 Kubernetes 1.31 或更高版本的 Amazon EKS 集群（[创建 EKS 集群](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)）。确保已安装以下附加组件并运行正常：
   - `kube-proxy`
   - `cert-manager`
   - `metrics-server`
   - `Amazon EKS Pod Identity Agent`
   - `Amazon VPC CNI`
-- `kubectl` configured for that cluster ([install kubectl](https://kubernetes.io/docs/tasks/tools/))
-- `eksctl` version 0.32.0 or later ([install eksctl](https://eksctl.io/installation/))
-- AWS CLI configured with IAM permissions to create policies and service accounts ([install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
-- An OIDC identity provider already associated with the cluster ([associate an OIDC provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html))
-- Helm version 3.6.0 or later ([install Helm](https://helm.sh/docs/intro/install/))
+- 已为该集群配置 `kubectl`（[安装 kubectl](https://kubernetes.io/docs/tasks/tools/)）
+- `eksctl` 版本 0.32.0 或更高版本（[安装 eksctl](https://eksctl.io/installation/)）
+- 已配置 AWS CLI，并拥有创建策略和服务账户的 IAM 权限（[安装 AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)）
+- 已将 OIDC 身份提供商关联到集群（[关联 OIDC 提供商](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)）
+- Helm 版本 3.6.0 或更高版本（[安装 Helm](https://helm.sh/docs/intro/install/)）
 
-Verify your CLI setup:
+验证您的 CLI 设置：
 
 ```bash
-# Confirms kubectl is installed 
-kubectl version 
+# 确认 kubectl 已安装
+kubectl version
 
-# Confirms the AWS CLI is installed and your credentials work.
+# 确认 AWS CLI 已安装且您的凭据有效
 aws --version
 aws sts get-caller-identity
 
-# Expected: 0.32.0 or later
+# 预期：0.32.0 或更高版本
 eksctl version
 ```
 
-Run `eksctl get addons --cluster <your-cluster-name>` and confirm the add-ons listed above are present and report `ACTIVE` status before continuing. Such as
+运行 `eksctl get addons --cluster <your-cluster-name>` 并确认上述列出的附加组件已存在且报告 `ACTIVE` 状态后再继续。例如：
 
 ```bash
 ~ $ eksctl get addons --cluster <your-cluster-name>
@@ -73,22 +73,22 @@ NAME                    VERSION                 STATUS  ISSUES  IAMROLE UPDATE A
 cert-manager            v1.18.2-eksbuild.2      ACTIVE  0                                                                                                                                                                               cert-manager
 eks-pod-identity-agent  v1.3.8-eksbuild.2       ACTIVE  0                                                                                                                                                                               kube-system
 kube-proxy              v1.33.0-eksbuild.2      ACTIVE  0               v1.33.3-eksbuild.6,v1.33.3-eksbuild.4                                                                                                                           kube-system
-metrics-server          v0.8.0-eksbuild.2       ACTIVE  0                                                                                                                                                                               kube-system
+metrics-server          v0.8.0-eksbuild.2      ACTIVE  0                                                                                                                                                                               kube-system
 vpc-cni                 v1.19.5-eksbuild.1      ACTIVE  0               v1.20.2-eksbuild.1,v1.20.1-eksbuild.3,v1.20.1-eksbuild.1,v1.20.0-eksbuild.1,v1.19.6-eksbuild.7,v1.19.6-eksbuild.1,v1.19.5-eksbuild.3                            kube-system     arn:aws:iam::265950574560:role/AmazonEKSPodIdentityAmazonVPCCNIRole
 
 ```
 
-## Step 2. Configure IAM Access
+## 第 2 步：配置 IAM 访问
 
-Choose the namespace where Dynamia AI Platform will run. The default is `hami-system`. If you select a different namespace, replace it in all following commands.
+选择运行 Dynamia AI 平台的命名空间。默认为 `hami-system`。如果您选择不同的命名空间，请在以下所有命令中替换它。
 
-### 2.1 Associate the OIDC identity provider (run once per cluster)
+### 2.1 关联 OIDC 身份提供商（每个集群运行一次）
 
 ```bash
 eksctl utils associate-iam-oidc-provider --cluster <your-cluster-name> --approve
 ```
 
-### 2.2 Create a custom IAM policy
+### 2.2 创建自定义 IAM 策略
 
 ```bash
 cat > custom-policy.json <<'JSON'
@@ -116,7 +116,7 @@ aws iam create-policy \
   --policy-document file://custom-policy.json
 ```
 
-### 2.3 Create the IAM service account
+### 2.3 创建 IAM 服务账户
 
 ```bash
 eksctl create iamserviceaccount \
@@ -127,9 +127,9 @@ eksctl create iamserviceaccount \
   --approve
 ```
 
-## Step 3. Install Cluster Dependencies
+## 第 3 步：安装集群依赖项
 
-Dynamia AI Platform relies on several open-source components. Install them before deploying the platform charts.
+Dynamia AI 平台依赖于多个开源组件。在部署平台 charts 之前，请先安装这些组件。
 
 ### 3.1 Prometheus Stack
 
@@ -152,9 +152,9 @@ helm install eg \
 
 ### 3.3 cert-manager
 
-Install cert-manager from the EKS console under **Cluster → Add-ons → Community add-ons**, or follow the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/lbc-manifest.html#lbc-cert).
+从 EKS 控制台中的 **Cluster → Add-ons → Community add-ons** 安装 cert-manager，或遵循 [AWS 文档](https://docs.aws.amazon.com/eks/latest/userguide/lbc-manifest.html#lbc-cert)。
 
-### 3.4 (Optional) DCGM exporter for NVIDIA GPU nodes
+### 3.4（可选）用于 NVIDIA GPU 节点的 DCGM exporter
 
 ```bash
 helm repo add gpu-helm-charts https://nvidia.github.io/dcgm-exporter/helm-charts
@@ -167,9 +167,9 @@ helm install dcgm-exporter \
 kubectl label node <YOUR-NVIDIA-NODE> gpu=on
 ```
 
-### Verify dependency readiness
+### 验证依赖项准备情况
 
-Ensure the supporting namespaces and workloads are healthy before moving on to Step 4.
+在进入第 4 步之前，确保支持的命名空间和工作负载运行正常。
 
 ```bash
 kubectl get ns monitoring envoy-gateway-system
@@ -179,17 +179,17 @@ kubectl get pods -n monitoring
 kubectl get pods -n envoy-gateway-system
 ```
 
-If you installed the optional GPU exporter, also verify the GPU namespace:
+如果您安装了可选的 GPU exporter，还需要验证 GPU 命名空间：
 
 ```bash
 kubectl get pods -n gpu-operator
 ```
 
-Continue only after the pods report `Running` or `Completed` statuses.
+仅在 Pod 报告 `Running` 或 `Completed` 状态后才继续。
 
-## Step 4. Deploy Dynamia AI Platform
+## 第 4 步：部署 Dynamia AI 平台
 
-### 4.1 Install HAMi
+### 4.1 安装 HAMi
 
 ```bash
 export HELM_EXPERIMENTAL_OCI=1
@@ -205,32 +205,33 @@ rm -rf hami-chart && mkdir hami-chart && cd hami-chart
 helm pull oci://709825985650.dkr.ecr.us-east-1.amazonaws.com/dynamia-intelligence/dynamia-ai-hami --version "$HAMI_VERSION"
 tar xf "dynamia-ai-hami-${HAMI_VERSION}.tgz"
 helm install hami ./dynamia-ai-hami --namespace hami-system --create-namespace
+```
 
-### Verify HAMi
+### 验证 HAMi
 
-Check that the base release is installed, the workloads are healthy, and GPU nodes are being prepared.
+检查基础版本是否已安装、工作负载是否健康以及 GPU 节点是否正在准备中。
 
 ```bash
 helm list -n hami-system
 kubectl get pods -n hami-system
 ```
 
-The pods should report `Running` or `Completed`. Then verify the node annotations and GPU resources:
+Pod 应该报告 `Running` 或 `Completed` 状态。然后验证节点注解和 GPU 资源：
 
 ```bash
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name} {.metadata.annotations.hami\.io/node-handshake:-missing} {.metadata.annotations.hami\.io/node-nvidia-register:-missing} {.status.allocatable.nvidia\.com/gpu:-0}{"\n"}{end}'
-# Expect non-empty handshake and nvidia-register annotations on GPU nodes, and GPU capacity values.
+# 预期 GPU 节点上有非空的 handshake 和 nvidia-register 注解，以及 GPU 容量值
 
-# Inspect any node in detail if needed.
+# 如需要，详细检查任何节点
 kubectl describe node <gpu-node-name> | grep -E 'hami.io/node-(handshake|nvidia-register)|nvidia.com/gpu'
 ```
 
-Proceed once the annotations are present and GPU capacity is reported.
+一旦注解存在并报告 GPU 容量，即可继续。
 
-### 4.2 Install platform components
+### 4.2 安装平台组件
 
 ```bash
-# If the registry login from the previous step has expired, run it again before continuing.
+# 如果上一步的 registry 登录已过期，请在继续之前重新运行
 
 export DYNAMIA_VERSION=0.6.0
 rm -rf dynamia-chart && mkdir dynamia-chart && cd dynamia-chart
@@ -239,20 +240,20 @@ tar xf "dynamia-ai-${DYNAMIA_VERSION}.tgz"
 helm install dynamia ./dynamia-ai --namespace dynamia-system --create-namespace
 ```
 
-### Verify platform component deployment
+### 验证平台组件部署
 
-Confirm the platform release is installed and pods are healthy before moving on.
+在继续之前，确认平台版本已安装且 Pod 运行正常。
 
 ```bash
 helm list -n dynamia-system
 kubectl get pods -n dynamia-system
 ```
 
-Proceed once the pods report `Running` or `Completed`.
+仅在 Pod 报告 `Running` 或 `Completed` 状态后才继续。
 
-## Step 5. Access the Platform
+## 第 5 步：访问平台
 
-List the services to identify the Envoy load balancer name, then retrieve its hostname.
+列出服务以识别 Envoy 负载均衡器名称，然后检索其主机名。
 
 ```bash
 kubectl get service -n envoy-gateway-system
@@ -263,8 +264,8 @@ kubectl get service \
   -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ```
 
-Open the hostname in a browser to reach the Dynamia AI Platform UI.
+在浏览器中打开主机名以访问 Dynamia AI 平台 UI。
 
 ---
 
-Need help? Reach us at <info@dynamia.ai> with any questions about this guide.
+需要帮助？如有任何关于本指南的问题，请联系我们 <info@dynamia.ai>
