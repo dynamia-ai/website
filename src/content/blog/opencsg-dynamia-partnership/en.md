@@ -1,15 +1,15 @@
 ---
-title: 'Dynamia AI x OpenCSG Strategic Partnership: From Model Hosting to Compute-Native, Building Enterprise-Grade Heterogeneous Compute Scheduling Foundation'
+title: 'Dynamia x OpenCSG Strategic Partnership: From Model Hosting to Compute-Native, Building Enterprise-Grade Heterogeneous Compute Scheduling Foundation'
 date: '2026-03-03'
 excerpt: >-
-  OpenCSG and Dynamia AI announce a strategic partnership to build a compute-native foundation
+  Dynamia and OpenCSG announce a strategic partnership to build a compute-native foundation
   for enterprise AI workloads. By natively integrating HAMi's heterogeneous GPU virtualization
   and scheduling capabilities into CSGHub, both parties will advance model platforms from "model hosting"
   to "compute-native."
 author: Dynamia
 tags:
-  - OpenCSG
   - HAMi
+  - OpenCSG
   - Strategic Partnership
   - Compute-Native
   - Enterprise AI
@@ -28,9 +28,21 @@ GPU resource exclusive card allocation, fragmented inference tasks, fragmented h
 
 > Model platforms must possess "Compute-Native" capabilities to truly support enterprise-grade AI production systems.
 
-Against this backdrop, OpenCSG and Dynamia AI announce a strategic partnership to jointly build a compute-native foundation for enterprise AI workloads.
+Against this backdrop, **Dynamia and OpenCSG** announce a strategic partnership to jointly build a compute-native foundation for enterprise AI workloads.
 
 ![From Model Hosting to Compute-Native](/images/blog/opencsg-dynamia-partnership/f1.png)
+
+## Dynamia × HAMi: Heterogeneous Compute Virtualization and Scheduling Provider
+
+Dynamia focuses on the AI infrastructure field, leading the open-source project **HAMi** (CNCF Sandbox project), dedicated to solving virtualization and scheduling challenges in heterogeneous GPU environments.
+
+HAMi's core capabilities include:
+
+* **VRAM hard isolation + compute power proportional allocation**, supporting fine-grained vGPU slicing
+* Unified scheduling support for 9+ heterogeneous chips including NVIDIA, Ascend, Cambricon, Maxxiri, Moore Threads, and more
+* Native compatibility with Kubernetes ecosystem, supporting enterprise-grade production environment deployment
+
+As of early 2026, HAMi has attracted 360+ developers from 16 countries to contribute, and has been adopted by 300+ enterprises across finance, logistics, autonomous driving, biotechnology, and other industries. Its goal is to build the standard GPU virtualization capability layer for the AI era.
 
 ## OpenCSG: From Model Community Platform to "Runtime Era"
 
@@ -44,18 +56,6 @@ However, as enterprise requirements upgrade, the center of gravity for model pla
 * Need to meet private deployment and enterprise-grade compliance governance requirements
 
 CSGHub is evolving from a "model hosting platform" to a "compute-native platform." This partnership marks an important step in this underlying capability upgrade.
-
-## Dynamia AI × HAMi: Heterogeneous Compute Virtualization and Scheduling Provider
-
-Dynamia AI focuses on the AI infrastructure field, leading the open-source project **HAMi** (CNCF Sandbox project), dedicated to solving virtualization and scheduling challenges in heterogeneous GPU environments.
-
-HAMi's core capabilities include:
-
-* **VRAM hard isolation + compute power proportional allocation**, supporting fine-grained vGPU slicing
-* Unified scheduling support for 9+ heterogeneous chips including NVIDIA, Ascend, Cambricon, Maxxiri, Moore Threads, and more
-* Native compatibility with Kubernetes ecosystem, supporting enterprise-grade production environment deployment
-
-As of early 2026, HAMi has attracted 360+ developers from 16 countries to contribute, and has been adopted by 300+ enterprises across finance, logistics, autonomous driving, biotechnology, and other industries. Its goal is to build the standard GPU virtualization capability layer for the AI era.
 
 ## Partnership Content: Introducing "Compute-Native" Scheduling Layer into CSGHub
 
@@ -102,7 +102,7 @@ Unlike common "plug-in" solutions, this partnership emphasizes **Native Integrat
 
 Against the backdrop of diversified domestic computing power and enhanced enterprise privatization requirements, heterogeneous GPU scheduling capability is becoming a key capability at the infrastructure layer.
 
-The partnership between OpenCSG and Dynamia AI marks the deep integration of model platforms and compute foundations. Both parties will continue advancing AI infrastructure from "resource assembly" to "compute-native" around:
+The partnership between **Dynamia and OpenCSG** marks the deep integration of model platforms and compute foundations. Both parties will continue advancing AI infrastructure from "resource assembly" to "compute-native" around:
 
 * Unified heterogeneous compute scheduling
 * Enterprise-grade privatization capabilities
@@ -111,13 +111,13 @@ The partnership between OpenCSG and Dynamia AI marks the deep integration of mod
 
 ## Perspectives from Both Parties
 
-**Chen Ran (Founder and CEO of OpenCSG):**
-
-> "CSGHub's goal is not only to make models easier to manage, but also to make models easier to run and deploy at scale. Compute scheduling capability is the necessary path for platforms to become enterprise production systems. Our collaboration with Dynamia AI's HAMi will help us sink compute capabilities to the platform foundation, serving enterprise deployment in a more open and privatizable manner."
-
-**Zhang Xiao (Founder and CEO of Dynamia AI):**
+**Zhang Xiao (Founder and CEO of Dynamia):**
 
 > "When model platforms enter the production stage, compute power is no longer about 'just buying cards,' but must be infrastructure capability that is finely governed. HAMi hopes to become the key piece for heterogeneous compute management and virtualization on Kubernetes, and our partnership with OpenCSG will deliver this capability to more enterprise users in a platform-native manner."
+
+**Chen Ran (Founder and CEO of OpenCSG):**
+
+> "CSGHub's goal is not only to make models easier to manage, but also to make models easier to run and deploy at scale. Compute scheduling capability is the necessary path for platforms to become enterprise production systems. Our collaboration with Dynamia's HAMi will help us sink compute capabilities to the platform foundation, serving enterprise deployment in a more open and privatizable manner."
 
 ## Next Steps
 
@@ -127,27 +127,27 @@ The partnership between OpenCSG and Dynamia AI marks the deep integration of mod
 
 ## Get Started Today
 
-### CSGHub Trial Application
-
-* Official website: https://opencsg.com/
-* Open source repository: https://github.com/OpenCSGs/csghub
-* Official documentation: https://opencsg.com/docs
-
 ### HAMi Open Source Project
 
 * Official website: https://project-hami.io
 * Open source repository: https://github.com/project-hami/hami
 * Official documentation: https://project-hami.io
 
+### CSGHub Trial Application
+
+* Official website: https://opencsg.com/
+* Open source repository: https://github.com/OpenCSGs/csghub
+* Official documentation: https://opencsg.com/docs
+
+## About Dynamia
+
+Dynamia focuses on GPU virtualization and heterogeneous compute scheduling, improving compute utilization in AI scenarios. The company initiated and leads the CNCF open-source project HAMi, the industry's only open-source project achieving flexible, on-demand, elastic, and reliable GPU virtualization, supporting mainstream AI chip ecosystems.
+
 ## About OpenCSG
 
 OpenCSG is a globally leading open-source large model community platform, dedicated to building an open, collaborative, and sustainable ecosystem. Its core product CSGHub provides one-stop hosting, collaboration, and sharing services for models, datasets, code, and AI applications, possessing industry-leading model asset management capabilities and supporting multi-role collaboration and efficient reuse.
 
-## About Dynamia AI
-
-Dynamia AI focuses on GPU virtualization and heterogeneous compute scheduling, improving compute utilization in AI scenarios. The company initiated and leads the CNCF open-source project HAMi, the industry's only open-source project achieving flexible, on-demand, elastic, and reliable GPU virtualization, supporting mainstream AI chip ecosystems.
-
 ## Contact Information
 
+Dynamia Partnership Inquiry: <info@dynamia.ai>
 OpenCSG Business Cooperation: <business@opencsg.com>
-Dynamia AI Partnership Inquiry: <info@dynamia.ai>
