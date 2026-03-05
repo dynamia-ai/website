@@ -15,6 +15,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu1/cover2.jpg
 language: en
+linktitle: GPU Fine-Grained Partitioning
 ---
 
 > This article introduces an open-source GPU virtualization solution: HAMi, including installation, configuration, and usage.

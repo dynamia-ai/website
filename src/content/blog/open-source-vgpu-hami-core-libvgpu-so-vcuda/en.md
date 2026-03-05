@@ -19,6 +19,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu7/cover2.jpg
 language: en
+linktitle: HAMi Core CUDA Compatibility
 ---
 
 In the last article, we analyzed how advanced scheduling strategies like Spread and Binpack are implemented in `hami-scheduler`.

@@ -17,6 +17,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu10/cover2.jpg
 language: en
+linktitle: HAMi DCU Support
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: Hello World - Welcome to Our Blog
+linktitle: Hello World
 coverTitle: Hello World - Welcome to Our Blog
 date: '2025-06-25'
 excerpt: >-

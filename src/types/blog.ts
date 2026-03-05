@@ -9,6 +9,7 @@ export interface TocItem {
 export interface BlogPost {
   slug: string;
   title: string;
+  linktitle?: string; // 用于博客卡片显示的短标题
   date: string;
   excerpt: string;
   author: string;
@@ -25,6 +26,7 @@ export interface BlogPost {
 export interface BlogPostMeta {
   slug: string;
   title: string;
+  linktitle?: string; // 用于博客卡片显示的短标题
   date: string;
   excerpt: string;
   author: string;

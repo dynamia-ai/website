@@ -1,5 +1,6 @@
 ---
 title: Hello World - 欢迎来到我们的博客
+linktitle: Hello World
 coverTitle: Hello World - 欢迎来到我们的博客
 date: '2025-06-25'
 excerpt: 欢迎来到我们的全新博客！这是我们的第一篇文章，展示 HAMi 和 Dynamia AI 的强大功能。

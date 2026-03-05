@@ -1,5 +1,6 @@
 ---
 title: 'Dynamia x OpenCSG Strategic Partnership: From Model Hosting to Compute-Native, Building Enterprise-Grade Heterogeneous Compute Scheduling Foundation'
+linktitle: Dynamia x OpenCSG Strategic Partnership
 date: '2026-03-03'
 excerpt: >-
   Dynamia and OpenCSG announce a strategic partnership to build a compute-native foundation

@@ -18,6 +18,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/false-promise/cover2.jpg
 language: en
+linktitle: Is vGPU a False Promise?
 ---
 
 Hello everyone, I'm a developer from the HAMi community.

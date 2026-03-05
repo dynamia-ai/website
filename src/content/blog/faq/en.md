@@ -18,6 +18,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/faq/coverimage2.jpg
 language: en
+linktitle: HAMi FAQ
 ---
 
 ## Preface

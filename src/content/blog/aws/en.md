@@ -24,6 +24,7 @@ tags:
 category: Integration & Ecosystem
 coverImage: /images/blog/Demystifying-the-Reservation-Pod/cover.jpg
 language: en
+linktitle: AWS Trainium Integration
 ---
 
 **TL;DR:** This guide spins up an AWS EKS cluster with two GPU node groups (T4 and A10G), installs HAMi automatically, and deploys three vLLM services that share a single physical GPU per node using free memory isolation. You’ll see GPU‑dimension binpack in action: multiple Pods co‑located on the same GPU when limits allow.

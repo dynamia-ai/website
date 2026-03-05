@@ -18,6 +18,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu3/cover2.jpg
 language: en
+linktitle: HAMi NVIDIA Device Plugin
 ---
 
 This is the first article in a series analyzing the implementation principles of the open-source vGPU solution HAMI, focusing on the implementation of `hami-device-plugin-nvidia`.

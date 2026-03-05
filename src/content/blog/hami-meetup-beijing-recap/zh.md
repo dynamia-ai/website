@@ -14,6 +14,7 @@ tags:
 category: Community & Events
 language: zh
 coverImage: /images/blog/hami-meetup-beijing-recap/hami-meetup-beijing-banner.webp
+linktitle: HAMi 北京 Meetup 回顾
 ---
 
 ![HAMi Meetup 北京站](/images/blog/hami-meetup-beijing-recap/hami-meetup-beijing-banner.webp)

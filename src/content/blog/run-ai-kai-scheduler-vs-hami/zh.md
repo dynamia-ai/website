@@ -1,5 +1,6 @@
 ---
 title: 'Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望'
+linktitle: Run:AI KAI vs HAMi
 coverTitle: NVIDIA KAI-Scheduler vs HAMi | GPU 共享路线解析
 date: '2025-08-06'
 excerpt: 今天，我们进行一次技术专题，对比 KAI-Scheduler 和 HAMi 的实现方式，并展望未来合作的可能性。

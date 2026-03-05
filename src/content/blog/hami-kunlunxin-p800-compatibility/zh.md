@@ -16,6 +16,7 @@ tags:
 category: Integration & Ecosystem
 coverImage: /images/blog/hami-kunlunxin-p800-compatibility/kunlunxin.webp
 language: zh
+linktitle: HAMi 昆仑芯 P800 兼容性
 ---
 
 ## 产品兼容互认

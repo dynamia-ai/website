@@ -17,6 +17,7 @@ tags:
   - 开源生态
 category: Technical Deep Dive
 language: zh
+linktitle: Flex AI 工程化交付实践
 ---
 
 AI 推理与训练正在快速走向“多模型混部、碎片化并发”的新常态。算力虚拟化也因此从“局部工程优化”，逐步上升为 AI 基础设施的关键能力：不仅要能切分，还要能调度、能治理、能长期稳定运行。

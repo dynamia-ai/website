@@ -17,6 +17,7 @@ category: Year in Review
 coverImage: /images/blog/hami-2025-recap/hami-2025.png
 language: zh
 slug: hami-2025-recap
+linktitle: HAMi 2025 年度回顾
 ---
 
 ![2025 年 HAMi 从 GPU 调度器到云原生 AI 基础设施的中流砥柱](/images/blog/hami-2025-recap/hami-2025.png)

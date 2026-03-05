@@ -16,6 +16,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/Demystifying-the-Reservation-Pod/cover.jpg
 language: zh
+linktitle: 深入理解 Reservation Pod
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: CNCF Ambassador Jimmy Song Joins Dynamia AI as VP of Open Source Ecosystem
+linktitle: CNCF Ambassador Jimmy Song Joins
 date: '2026-01-13'
 excerpt: >-
   Recently, Jimmy Song (Song Jingchao), a senior technical expert in

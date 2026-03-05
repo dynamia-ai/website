@@ -15,6 +15,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu5/cover2.jpg
 language: en
+linktitle: HAMi Scheduler Deep Dive
 ---
 
 

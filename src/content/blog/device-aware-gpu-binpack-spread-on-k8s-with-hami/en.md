@@ -19,6 +19,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/cover-en.png
 language: en
+linktitle: Device-Aware GPU Scheduling
 ---
 
 Pods don’t just “land on nodes”—GPU pods also land on  **GPUs** . Kubernetes today gives you solid **node-level** bin-packing/spreading (eg. `MostAllocated`, topology spread). But **GPU-level** bin-packing/spreading still requires a  **device-aware implementation** . Kubernetes 1.34’s **DRA** makes device *description and allocation* first-class and even bridges back to **extended resources** for a smooth migration path—but **generic device scoring** (the bit that would enable built-in GPU bin-pack/spread) is still in flight.

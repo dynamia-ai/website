@@ -18,6 +18,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/hami-extended-resourcequota/cover-zh.png
 language: zh
+linktitle: HAMi 扩展 ResourceQuota
 ---
 
 HAMi 社区在 v2.7.0 版本中，针对原生 Kubernetes `ResourceQuota` 在 GPU 等异构算力场景下的局限性，推出了一套**扩展 ResourceQuota** 机制。此特性旨在解决原生配额管理无法处理的"资源关联"与"动态资源"两大痛点，为多租户环境下的 GPU 资源治理提供了更为精准、可靠的控制能力。

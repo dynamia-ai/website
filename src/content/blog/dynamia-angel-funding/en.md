@@ -2,6 +2,7 @@
 title: >-
   Dynamia AI Raises Tens of Millions in Angel Round: Rooted in Open Source,
   Driving Heterogeneous Compute Efficiency
+linktitle: Dynamia Angel Funding
 date: '2026-01-05'
 excerpt: >-
   Shanghai Dynamia Intelligence Technology Co., Ltd. ('Dynamia AI'), an AI

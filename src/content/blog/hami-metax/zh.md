@@ -22,6 +22,7 @@ tags:
 category: Integration & Ecosystem
 coverImage: /images/blog/hami-MetaX/coverpage-Hami-MetaX.png
 language: zh
+linktitle: HAMi 支持 Metax GPU
 ---
 
 

@@ -18,6 +18,7 @@ tags:
 category: Integration & Ecosystem
 coverImage: /images/blog/hami-xinference-vgpu/cover-zh.png
 language: zh
+linktitle: HAMi × Xinference vGPU 集成
 ---
 
 ## 要点速览

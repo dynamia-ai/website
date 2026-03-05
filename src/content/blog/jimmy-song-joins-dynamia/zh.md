@@ -1,5 +1,6 @@
 ---
 title: 密瓜重磅！CNCF 大使宋净超（Jimmy Song）加入密瓜智能
+linktitle: CNCF 大使 Jimmy Song 加入密瓜
 date: '2026-01-13'
 excerpt: >-
   近日，云原生与开源领域资深技术人宋净超（Jimmy Song）正式加入密瓜智能，出任开源生态 VP，助力密瓜智能在 AI

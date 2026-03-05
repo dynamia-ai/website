@@ -19,6 +19,7 @@ tags:
 category: Customer Success Story
 coverImage: /images/blog/kubecon-china-2025/cover.en.jpg
 language: en
+linktitle: KubeCon China 2025 Spotlight
 ---
 
 KubeCon China 2025 concluded magnificently in Hong Kong, bringing together global technical experts, developers, and open-source enthusiasts in this premier cloud-native event. In this wave of technological innovation, HAMi - initiated and led by Dynamia AI's core team as the industry's only CNCF Sandbox open-source project focused on heterogeneous GPU resource sharing - not only made a strong voice in technical sessions but also demonstrated vibrant vitality through interactions with the global community.

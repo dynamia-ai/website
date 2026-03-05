@@ -14,6 +14,7 @@ tags:
 category: Customer Success Story
 language: zh
 coverImage: /images/blog/daocloud-hami-gpu-platform/daocloud-product-lines.png
+linktitle: DaoCloud GPU 云平台实践
 ---
 
 在 AI 训练与推理需求持续增长的背景下，如何提升 GPU 利用率、降低算力成本，并同时兼顾多样化业务场景，成为云平台面临的核心挑战。

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-const BACKGROUND_IMAGE = '/images/blog/blog-cover-background.png';
+const BACKGROUND_IMAGE = '/images/blog/blog-cover-background.jpg';
 
 interface DynamicBlogCoverProps {
   title: string;
@@ -35,7 +35,7 @@ export default function DynamicBlogCover({
 
       <div className="absolute top-4 left-4 z-10">
         <Image
-          src="/LOGO.svg"
+          src="/dynamia-logo.svg"
           alt=""
           width={160}
           height={40}

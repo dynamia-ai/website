@@ -19,6 +19,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/hami-aws-neuron-topology/cover-zh.png
 language: zh
+linktitle: AWS Neuron 拓扑感知调度
 ---
 亚马逊云科技自研的**亚马逊云科技 Trainium** 与 **Inferentia** 芯片，在构建更高效、成本可控的 AI 加速基础设施方面具有明显优势，目标不仅是算力提升，也强调功耗与成本效率。**Inferentia2** 在性能/瓦特（perf/W）上做了显著优化，**Trainium2** 相较同类 GPU 实例可节省约 30–40% 成本，因此在大规模推理与训练任务中，其应用规模持续增长并展现出良好的性价比。
 

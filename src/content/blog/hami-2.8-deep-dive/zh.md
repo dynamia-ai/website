@@ -19,6 +19,7 @@ tags:
 category: Product Release
 coverImage: /images/blog/hami-2.8-deep-dive/heterogeneous-gpu-ecosystem.png
 language: zh
+linktitle: HAMi 2.8 版本深度解析
 ---
 
 > **根深叶茂，生生不息。**

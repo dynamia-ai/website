@@ -16,6 +16,7 @@ tags:
 category: Customer Success Story
 coverImage: /images/blog/kubecon-china-2025/kubecon-china-2025.png
 language: zh
+linktitle: KubeCon China 2025 HAMi 亮点
 ---
 
 

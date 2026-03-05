@@ -20,6 +20,7 @@ tags:
 category: Product Release
 coverImage: /images/blog/Koordinator-v1.6/cover.jpg
 language: en
+linktitle: HAMi × Koordinator v1.6
 ---
 
 

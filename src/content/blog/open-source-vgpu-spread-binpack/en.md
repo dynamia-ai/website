@@ -18,6 +18,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu6/cover2.jpg
 language: en
+linktitle: GPU Spread & Binpack
 ---
 
 

@@ -18,6 +18,7 @@ tags:
 category: Community & Events
 coverImage: /images/blog/hami-meetup-shanghai/cover.png
 language: zh
+linktitle: HAMi 上海 Meetup 回顾
 ---
 
 ![HAMi Meetup 上海站](/images/blog/hami-meetup-shanghai/cover.png)

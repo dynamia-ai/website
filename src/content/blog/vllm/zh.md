@@ -1,5 +1,6 @@
 ---
 title: 「全球共建：vLLM 社区原生支持 HAMi，推理效率飞跃」— 来自西班牙开发者的贡献
+linktitle: vLLM 与 HAMi 集成
 coverTitle: 全球共建：VLLM 社区原生支持 HAMi，推理效率飞跃
 date: '2025-09-15'
 excerpt: >-

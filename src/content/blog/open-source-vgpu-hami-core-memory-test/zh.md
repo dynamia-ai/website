@@ -13,6 +13,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu2/cover.jpg
 language: zh
+linktitle: HAMi 显存隔离测试
 ---
 
 之前给大家分享了开源的 vGPU 方案 HAMI，本文主要对其提供的 GPU Core & Memory 隔离功能进行测试。
