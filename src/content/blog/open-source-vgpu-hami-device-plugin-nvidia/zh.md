@@ -13,6 +13,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu3/cover.jpg
 language: zh
+linktitle: HAMi NVIDIA 设备插件
 ---
 
 本文为开源 vGPU 方案 HAMI 实现原理分析第一篇，主要分析 hami-device-plugin-nvidia 实现原理。

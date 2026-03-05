@@ -13,6 +13,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu10/cover.jpg
 language: zh
+linktitle: HAMi 支持 DCU
 ---
 
 本文摘自：<https://mp.weixin.qq.com/s/gpyhltXK3CSTkwk4ZwD74A>

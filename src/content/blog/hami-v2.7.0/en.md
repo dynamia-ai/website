@@ -22,6 +22,7 @@ tags:
 category: Product Release
 coverImage: /images/blog/hami-v2.7.0/cover-en.png
 language: en
+linktitle: HAMi v2.7.0 Release
 ---
 **GPU** ecosystem & scheduling efficiency, upgraded
 

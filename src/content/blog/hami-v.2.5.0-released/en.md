@@ -15,6 +15,7 @@ tags:
 category: Product Release
 coverImage: /images/blog/gpu8/cover2.jpg
 language: en
+linktitle: HAMi v2.5.0 Release
 ---
 
 

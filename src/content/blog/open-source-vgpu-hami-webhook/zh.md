@@ -15,6 +15,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu4/cover.jpg
 language: zh
+linktitle: HAMi Webhook 机制
 ---
 
 上篇我们分析了 hami-device-plugin-nvidia，知道了 HAMi 的 NVIDIA device plugin 工作原理。

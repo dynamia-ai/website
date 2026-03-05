@@ -29,6 +29,7 @@ aiRepostLinks:
     description: Google Gemini walkthrough and reminders
     url: 'https://gemini.google.com/'
     icon: gemini
+linktitle: Dynamia AI on AWS
 ---
 
 Use this guide to deploy Dynamia AI Platform on AWS, including the required IAM role, supporting components, and Helm charts.

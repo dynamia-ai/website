@@ -26,6 +26,7 @@ tags:
   - open source ecosystem
 category: Technical Deep Dive
 language: en
+linktitle: Flex AI Engineering Delivery
 ---
 
 AI inference and training are rapidly moving toward a new normal of "multi-model co-location and fragmented concurrency." Consequently, compute virtualization is rising from "local engineering optimization" to become a critical capability of AI infrastructure: it must not only partition resources, but also schedule, govern, and operate stably over the long term.

@@ -13,6 +13,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu1/cover.jpg
 language: zh
+linktitle: GPU 细粒度切分
 ---
 
 > 本文主要分享一个开源的 GPU 虚拟化方案：HAMi，包括如何安装、配置以及使用。

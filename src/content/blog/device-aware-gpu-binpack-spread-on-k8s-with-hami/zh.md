@@ -18,6 +18,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/cover-zh.png
 language: zh
+linktitle: 设备感知 GPU 调度策略
 ---
 ## Kubernetes GPU 调度：一个 2x2 的实践模型 (节点 × GPU 的紧凑与分散策略)
 

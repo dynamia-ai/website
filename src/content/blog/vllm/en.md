@@ -2,6 +2,7 @@
 title: >-
   Global Co-building: vLLM Community Natively Supports HAMi, Inference
   Efficiency Leap — Contribution from a Spanish Developer
+linktitle: vLLM Integration
 coverTitle: 'Global Co-building: vLLM Community Natively Supports HAMi'
 date: '2025-09-15'
 excerpt: >-

@@ -14,6 +14,7 @@ tags:
 category: Customer Success Story
 coverImage: /images/blog/A-leading-autonomous-driving-company/cover.jpg
 language: zh
+linktitle: 某自动驾驶公司实践案例
 ---
 
 >作为一个活跃的开源项目，HAMi 由来自 15+ 国家、350+ 贡献者共同维护，已被 200+ 企业与机构在实际生产环境中采纳，具备良好的可扩展性与支持保障。

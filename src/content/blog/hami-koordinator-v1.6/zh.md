@@ -16,6 +16,7 @@ tags:
 category: Product Release
 coverImage: /images/blog/Koordinator-v1.6/cover.jpg
 language: zh
+linktitle: HAMi × Koordinator v1.6 集成
 ---
 
 > 原文作者：王建宇、曾凡松、宋涛、韩柔刚

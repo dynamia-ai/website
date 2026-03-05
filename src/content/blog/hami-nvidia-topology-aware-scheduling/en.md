@@ -22,6 +22,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/hami-nvidia-topology/cover-en.png
 language: en
+linktitle: NVIDIA Topology Scheduling
 ---
 
 The HAMi community officially released **topology-aware scheduling** for NVIDIA GPUs in v2.7.0. This feature primarily addresses multi-GPU communication bottlenecks in high-performance computing (HPC) and large-scale AI training scenarios. Through intelligent scheduling, it precisely deploys compute tasks on GPU combinations with the tightest physical connections and fastest communication speeds, thereby maximizing compute acceleration and improving overall cluster efficiency.

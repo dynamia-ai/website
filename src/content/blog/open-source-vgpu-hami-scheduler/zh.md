@@ -13,6 +13,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu5/cover.jpg
 language: zh
+linktitle: HAMi 调度器深度解析
 ---
 
 上篇我们分析了 hami-webhook，该 Webhook 将申请了 vGPU 资源的 Pod 的调度器修改为 hami-scheduler，后续使用 hami-scheduler 进行调度。

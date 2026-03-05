@@ -22,6 +22,7 @@ tags:
 category: Integration & Ecosystem
 coverImage: /images/blog/aws/aws-coverpage.png
 language: zh
+linktitle: AWS Trainium 与 HAMi 集成
 ---
 
 **摘要**：本指南在 AWS EKS 集群中创建两个 GPU 节点组（T4 和 A10G），自动安装 HAMi，并部署三个 vLLM 服务，借助自由显存隔离让每个节点上的多个服务共享同一块物理 GPU。你将看到 GPU 维度的装箱（binpack）效果：当资源允许时，多个 Pod 会共置在同一块 GPU 上。

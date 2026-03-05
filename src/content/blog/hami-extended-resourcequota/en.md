@@ -24,6 +24,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/hami-extended-resourcequota/cover-en.png
 language: en
+linktitle: HAMi Extended ResourceQuota
 ---
 
 In HAMi v2.7.0, the community introduced an **extended ResourceQuota** mechanism to address the limitations of native Kubernetes `ResourceQuota` in GPU and heterogeneous computing scenarios. This feature aims to solve two major pain points that native quota management cannot handle: "resource correlation" and "dynamic resources," providing more precise and reliable control capabilities for GPU resource governance in multi-tenant environments.

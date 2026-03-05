@@ -48,7 +48,7 @@ const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 
           {/* 悬停时封面图放大 */}
           <div className="absolute inset-0 transition-transform duration-300 ease-out group-hover:scale-105">
             <DynamicBlogCover
-              title={post.coverTitle || post.title}
+              title={post.linktitle || post.coverTitle || post.title}
               className="w-full h-full"
             />
           </div>

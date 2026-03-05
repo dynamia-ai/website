@@ -71,6 +71,7 @@ export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPos
     return {
       slug,
       title: data.title || '',
+      linktitle: data.linktitle,
       date: data.date || '',
       excerpt: data.excerpt || '',
       author: data.author || '',
@@ -91,7 +92,7 @@ export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPos
 function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMeta | null {
   try {
     const fullPath = path.join(CONTENT_PATH, slug, `${language}.md`);
-    
+
     if (!fs.existsSync(fullPath)) {
       return null;
     }
@@ -103,9 +104,15 @@ function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMe
       excerpt: false,
     });
 
+    // 调试日志：检查 linktitle 是否被正确读取
+    if (data.linktitle) {
+      console.log(`[blog-debug] ${slug} has linktitle: "${data.linktitle}"`);
+    }
+
     return {
       slug,
       title: data.title || '',
+      linktitle: data.linktitle,
       date: data.date || '',
       excerpt: data.excerpt || '',
       author: data.author || '',

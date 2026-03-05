@@ -15,6 +15,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu7/cover.jpg
 language: zh
+linktitle: HAMi Core 兼容 CUDA
 ---
 
 

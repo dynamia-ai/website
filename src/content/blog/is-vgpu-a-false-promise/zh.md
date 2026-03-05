@@ -16,6 +16,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/false-promise/cover.jpg
 language: zh
+linktitle: vGPU 是虚假承诺吗？
 ---
 
 

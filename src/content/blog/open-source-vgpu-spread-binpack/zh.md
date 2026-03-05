@@ -15,6 +15,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu6/cover.jpg
 language: zh
+linktitle: GPU 调度 Spread 与 Binpack
 ---
 
 上篇我们分析了 hami-scheduler 工作流程，知道了 hami-webhook、hami-scheduler 是怎么配合工作的。

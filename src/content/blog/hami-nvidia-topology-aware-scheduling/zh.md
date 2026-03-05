@@ -19,6 +19,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/hami-nvidia-topology/cover-zh.png
 language: zh
+linktitle: NVIDIA 拓扑感知调度
 ---
 
 HAMi 社区在 v2.7.0 版本中正式推出了针对 NVIDIA GPU 的 **拓扑感知调度** 功能。此特性主要解决高性能计算（HPC）和 AI 大模型训练场景下的多卡通信瓶颈问题，通过智能调度，将计算任务精确部署到物理连接最紧密、通信速度最快的 GPU 组合上，从而最大化加速计算任务，提升集群整体的算力效能。

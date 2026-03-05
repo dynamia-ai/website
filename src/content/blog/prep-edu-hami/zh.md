@@ -1,5 +1,6 @@
 ---
 title: 【PREP EDU | 密瓜智能】东南亚 AI 教育潜力独角兽，用 HAMi 构建高效 GPU 推理平台
+linktitle: 普瑞教育 × HAMi 实践
 coverTitle: PREP EDU × HAMi | 东南亚教育 AI GPU 平台
 date: '2025-08-08'
 excerpt: 在 AI 教育快速发展的当下，PREP EDU（prepedu.com）正逐渐成为东南亚教育科技领域的关注焦点。

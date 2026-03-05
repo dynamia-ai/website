@@ -29,6 +29,7 @@ aiRepostLinks:
     description: Google Gemini 的操作指南和提醒
     url: 'https://gemini.google.com/'
     icon: gemini
+linktitle: Dynamia AI 在 AWS 上的安装指南
 ---
 
 使用本指南在 AWS 上部署 Dynamia AI 平台，包括所需的 IAM 角色、支持组件和 Helm charts。

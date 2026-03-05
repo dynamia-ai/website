@@ -13,6 +13,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/faq/coverimage.jpg
 language: zh
+linktitle: HAMi 常见问题解答
 ---
 
 ## 前言

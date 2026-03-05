@@ -16,6 +16,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu4/cover2.jpg
 language: en
+linktitle: HAMi Webhook Explained
 ---
 
 In the last article, we analyzed `hami-device-plugin-nvidia` and understood how HAMI's NVIDIA device plugin works.

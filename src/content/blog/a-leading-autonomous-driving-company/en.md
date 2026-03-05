@@ -19,6 +19,7 @@ tags:
 category: Customer Success Story
 coverImage: /images/blog/A-leading-autonomous-driving-company/cover2.jpg
 language: en
+linktitle: Autonomous Driving Case Study
 ---
 
 

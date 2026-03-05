@@ -16,6 +16,7 @@ tags:
 category: Customer Success Story
 language: en
 coverImage: /images/blog/daocloud-hami-gpu-platform/daocloud-product-lines.png
+linktitle: DaoCloud GPU Platform
 ---
 
 Against the backdrop of sustained growth in AI training and inference demand, how to improve GPU utilization, reduce compute costs, and simultaneously accommodate diverse business scenarios has become a core challenge facing cloud platforms.

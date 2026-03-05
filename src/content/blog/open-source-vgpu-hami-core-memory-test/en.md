@@ -15,6 +15,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu2/cover2.jpg
 language: en
+linktitle: HAMi Memory Isolation Test
 ---
 
 I previously shared an overview of the open-source vGPU solution, HAMI. This article will focus on testing its GPU Core and Memory isolation capabilities.

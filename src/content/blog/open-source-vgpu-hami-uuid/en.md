@@ -15,6 +15,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu9/cover2.jpg
 language: en
+linktitle: GPU UUID Explained
 ---
 
 This article is adapted from: <https://mp.weixin.qq.com/s/1eQC2_WGhN7DMNnTW4r0cw>

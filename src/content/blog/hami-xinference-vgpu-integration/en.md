@@ -23,6 +23,7 @@ tags:
 category: Integration & Ecosystem
 coverImage: /images/blog/hami-xinference-vgpu/cover-en.png
 language: en
+linktitle: HAMi × Xinference Integration
 ---
 
 ## Key Highlights

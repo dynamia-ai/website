@@ -20,6 +20,7 @@ tags:
 category: Product Release
 coverImage: /images/blog/hami-v2.7.0/cover-zh.png
 language: zh
+linktitle: HAMi v2.7.0 发布
 ---
 > **芯与序（Of Silicon & Scheduling）**
 >

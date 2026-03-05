@@ -13,6 +13,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/gpu9/cover.jpg
 language: zh
+linktitle: GPU UUID 机制解析
 ---
 
 

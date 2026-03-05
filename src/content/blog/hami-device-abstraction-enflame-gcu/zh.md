@@ -18,6 +18,7 @@ tags:
 category: Technical Deep Dive
 coverImage: /images/blog/hami-device-abstraction-gcu/cover-zh.png
 language: zh
+linktitle: HAMi 支持燧原 GCU
 ---
 
 在云原生时代，AI 和高性能计算场景下的硬件呈现出百花齐放的态势，调度系统如何高效、快速地适配层出不穷的异构算力，成为了衡量其扩展性的关键。

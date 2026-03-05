@@ -17,6 +17,7 @@ category: Year in Review
 coverImage: /images/blog/hami-2025-recap/hami-2025.png
 language: en
 slug: hami-2025-recap
+linktitle: HAMi 2025 Recap
 ---
 
 ![HAMi 2025 From GPU Scheduler to Cloud-Native AI Infrastructure Pillar](/images/blog/hami-2025-recap/hami-2025.png)
