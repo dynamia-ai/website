@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faXTwitter, faZhihu } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faXTwitter, faZhihu, faGithub, faSlack, faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faBuilding, faFileAlt, faShieldAlt, faBook, faTag, faVideo, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -58,17 +59,20 @@ const Footer: React.FC = () => {
                 <h3 className="text-base font-medium text-gray-900 dark:text-gray-100 mb-4">{t('footer.about')}</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link href={getLocalizedHref('/company')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href={getLocalizedHref('/company')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faBuilding} className="h-4 w-4 opacity-70" />
                       {t('footer.aboutCompany')}
                     </Link>
                   </li>
                   <li>
-                    <Link href={getLocalizedHref('/case-studies')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href={getLocalizedHref('/case-studies')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faFileAlt} className="h-4 w-4 opacity-70" />
                       {t('footer.caseStudies')}
                     </Link>
                   </li>
                   <li>
-                    <Link href={getLocalizedHref('/privacy-policy')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href={getLocalizedHref('/privacy-policy')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faShieldAlt} className="h-4 w-4 opacity-70" />
                       {t('footer.privacyPolicy')}
                     </Link>
                   </li>
@@ -80,17 +84,20 @@ const Footer: React.FC = () => {
                 <h3 className="text-base font-medium text-gray-900 dark:text-gray-100 mb-4">{t('footer.resources')}</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link href={getLocalizedHref('/what-is-hami')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href={getLocalizedHref('/what-is-hami')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faBook} className="h-4 w-4 opacity-70" />
                       {t('footer.documentation')}
                     </Link>
                   </li>
                   <li>
-                    <Link href={getLocalizedHref('/pricing')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href={getLocalizedHref('/pricing')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faTag} className="h-4 w-4 opacity-70" />
                       {t('footer.pricing')}
                     </Link>
                   </li>
                   <li>
-                    <Link href={currentLocale === 'zh' ? "https://www.bilibili.com/video/BV1A7dNYAED5" : "https://youtu.be/gxUobykvNH4"} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href={currentLocale === 'zh' ? "https://www.bilibili.com/video/BV1A7dNYAED5" : "https://youtu.be/gxUobykvNH4"} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faVideo} className="h-4 w-4 opacity-70" />
                       {t('footer.getDemo')}
                     </Link>
                   </li>
@@ -102,17 +109,20 @@ const Footer: React.FC = () => {
                 <h3 className="text-base font-medium text-gray-900 dark:text-gray-100 mb-4">{t('footer.community')}</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="https://github.com/Project-HAMi/HAMi" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href="https://github.com/Project-HAMi/HAMi" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faGithub} className="h-4 w-4 opacity-70" />
                       {t('footer.github')}
                     </Link>
                   </li>
                   <li>
-                    <Link href="https://cloud-native.slack.com/archives/C04NHKBFAVC" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href="https://cloud-native.slack.com/archives/C04NHKBFAVC" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faSlack} className="h-4 w-4 opacity-70" />
                       {t('footer.slack')}
                     </Link>
                   </li>
                   <li>
-                    <Link href="https://discord.gg/Amhy7XmbNq" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <Link href="https://discord.gg/Amhy7XmbNq" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faDiscord} className="h-4 w-4 opacity-70" />
                       {t('footer.discord')}
                     </Link>
                   </li>
@@ -125,7 +135,8 @@ const Footer: React.FC = () => {
                 <div className="space-y-4">
                   <div>
                     <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">{t('footer.emailUs')}</p>
-                    <a href="mailto:info@dynamia.ai" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
+                    <a href="mailto:info@dynamia.ai" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 opacity-70" />
                       {t('footer.email')}
                     </a>
                   </div>
