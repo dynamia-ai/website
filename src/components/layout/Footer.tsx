@@ -60,19 +60,19 @@ const Footer: React.FC = () => {
                 <ul className="space-y-3">
                   <li>
                     <Link href={getLocalizedHref('/company')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faBuilding} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faBuilding as any} className="h-4 w-4 opacity-70" />
                       {t('footer.aboutCompany')}
                     </Link>
                   </li>
                   <li>
                     <Link href={getLocalizedHref('/case-studies')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faFileAlt} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faFileAlt as any} className="h-4 w-4 opacity-70" />
                       {t('footer.caseStudies')}
                     </Link>
                   </li>
                   <li>
                     <Link href={getLocalizedHref('/privacy-policy')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faShieldAlt} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faShieldAlt as any} className="h-4 w-4 opacity-70" />
                       {t('footer.privacyPolicy')}
                     </Link>
                   </li>
@@ -85,19 +85,19 @@ const Footer: React.FC = () => {
                 <ul className="space-y-3">
                   <li>
                     <Link href={getLocalizedHref('/what-is-hami')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faBook} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faBook as any} className="h-4 w-4 opacity-70" />
                       {t('footer.documentation')}
                     </Link>
                   </li>
                   <li>
                     <Link href={getLocalizedHref('/pricing')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faTag} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faTag as any} className="h-4 w-4 opacity-70" />
                       {t('footer.pricing')}
                     </Link>
                   </li>
                   <li>
                     <Link href={currentLocale === 'zh' ? "https://www.bilibili.com/video/BV1A7dNYAED5" : "https://youtu.be/gxUobykvNH4"} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faVideo} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faVideo as any} className="h-4 w-4 opacity-70" />
                       {t('footer.getDemo')}
                     </Link>
                   </li>
@@ -110,19 +110,19 @@ const Footer: React.FC = () => {
                 <ul className="space-y-3">
                   <li>
                     <Link href="https://github.com/Project-HAMi/HAMi" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faGithub} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faGithub as any} className="h-4 w-4 opacity-70" />
                       {t('footer.github')}
                     </Link>
                   </li>
                   <li>
                     <Link href="https://cloud-native.slack.com/archives/C04NHKBFAVC" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faSlack} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faSlack as any} className="h-4 w-4 opacity-70" />
                       {t('footer.slack')}
                     </Link>
                   </li>
                   <li>
                     <Link href="https://discord.gg/Amhy7XmbNq" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faDiscord} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faDiscord as any} className="h-4 w-4 opacity-70" />
                       {t('footer.discord')}
                     </Link>
                   </li>
@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
                   <div>
                     <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">{t('footer.emailUs')}</p>
                     <a href="mailto:info@dynamia.ai" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 opacity-70" />
+                      <FontAwesomeIcon icon={faEnvelope as any} className="h-4 w-4 opacity-70" />
                       {t('footer.email')}
                     </a>
                   </div>
@@ -153,7 +153,7 @@ const Footer: React.FC = () => {
                         className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                         aria-label="LinkedIn"
                       >
-                        <FontAwesomeIcon icon={faLinkedin} className="h-5 w-5" />
+                        <FontAwesomeIcon icon={faLinkedin as any} className="h-5 w-5" />
                       </a>
 
                       {/* X (Twitter) */}
@@ -164,7 +164,7 @@ const Footer: React.FC = () => {
                         className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                         aria-label="X (Twitter)"
                       >
-                        <FontAwesomeIcon icon={faXTwitter} className="h-5 w-5" />
+                        <FontAwesomeIcon icon={faXTwitter as any} className="h-5 w-5" />
                       </a>
 
                       {/* Zhihu - Only show on Chinese pages */}
@@ -176,7 +176,7 @@ const Footer: React.FC = () => {
                           className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                           aria-label="知乎"
                         >
-                          <FontAwesomeIcon icon={faZhihu} className="h-5 w-5" />
+                          <FontAwesomeIcon icon={faZhihu as any} className="h-5 w-5" />
                         </a>
                       )}
                     </div>
