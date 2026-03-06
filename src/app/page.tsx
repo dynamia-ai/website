@@ -7,6 +7,25 @@ import { motion } from 'framer-motion';
 import MainLayout from '@/components/layout/MainLayout';
 import GitHubStars from '@/components/GitHubStars';
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faNetworkWired,
+  faMicrochip,
+  faMemory,
+  faChartLine,
+  faEye,
+  faCalendarCheck,
+  faUsers,
+  faCodeBranch,
+  faStar,
+  faComments,
+  faEnvelope,
+  faRocket,
+  faArrowRight,
+  faServer,
+  faCogs
+} from '@fortawesome/free-solid-svg-icons';
+import { faSlack, faDiscord, faReddit, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 // 动画变体
 const fadeIn = {
@@ -32,6 +51,24 @@ export default function Home() {
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const [ecoCount, setEcoCount] = useState(0);
+
+  // Icon mapping for feature tabs
+  const featureIcons = [
+    faNetworkWired,      // Hetero multi-cluster
+    faMicrochip,         // GPU Sharing
+    faMemory,            // GPU Oversubscription
+    faChartLine,         // Auto Scale
+    faEye,               // Observability
+    faCogs               // Advanced Scheduling
+  ];
+
+  // Social platform icons mapping
+  const socialIcons = {
+    slack: faSlack,
+    discord: faDiscord,
+    reddit: faReddit,
+    github: faGithub
+  };
 
   useEffect(() => {
     const el = ecosystemRef.current;
@@ -334,12 +371,13 @@ export default function Home() {
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`px-3 py-2 md:px-4 md:py-2 rounded-md text-xs sm:text-sm md:text-base font-medium transition-colors touch-manipulation ${
+                className={`px-3 py-2 md:px-4 md:py-2 rounded-md text-xs sm:text-sm md:text-base font-medium transition-colors touch-manipulation flex items-center gap-2 ${
                   activeTab === index
                     ? 'bg-primary text-white'
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200'
                 }`}
               >
+                <FontAwesomeIcon icon={featureIcons[index]} className="h-4 w-4" />
                 {tab.title}
               </button>
             ))}
@@ -384,9 +422,7 @@ export default function Home() {
                     className="inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary hover:bg-primary-lighter transition-colors"
                   >
                     {t('home.poweredByHami.learnMore')}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
+                    <FontAwesomeIcon icon={faArrowRight} className="h-4 w-4 ml-2" />
                   </Link>
                 </div>
               </motion.div>
@@ -546,10 +582,7 @@ export default function Home() {
                 <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.bilibili.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.bilibili.action')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
                 </div>
               </Link>
             </motion.div>
@@ -575,10 +608,7 @@ export default function Home() {
                 <h3 className="text-xs md:text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.slack.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.slack.action')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
                 </div>
               </Link>
             </motion.div>
@@ -601,10 +631,7 @@ export default function Home() {
                 <h3 className="text-xs md:text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.discord.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.discord.action')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
                 </div>
               </Link>
             </motion.div>
@@ -630,10 +657,7 @@ export default function Home() {
                 <h3 className="text-xs md:text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">{t('home.joinCommunity.reddit.title')}</h3>
                 <div className="flex items-center text-primary text-xs">
                   <span className="mr-1">{t('home.joinCommunity.reddit.action')}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
+                  <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
                 </div>
               </Link>
             </motion.div>
