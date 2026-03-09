@@ -1,0 +1,88 @@
+flowchart TD
+    subgraph Left [Resource Allocation Architecture]
+        direction TB
+        subgraph L_Business [Business layer]
+            direction LR
+            B1[Training Mission]
+            B2[Development machine]
+            B3[Reasoning application]
+        end
+
+        subgraph L_Container [Container layer]
+            direction LR
+            C1[GPU]:::blueBox
+            C2[GPU Mem]:::yellowBox
+        end
+
+        subgraph L_Physical [Physical layer]
+            direction LR
+            P1[Exclusive Allocation<br>Node]:::blueBox
+            P2[Exclusive Allocation<br>Node]:::blueBox
+            P3[Memory allocation<br>Node]:::yellowBox
+            P4[Memory allocation<br>Node]:::yellowBox
+        end
+
+        subgraph L_Plugin [Device Plugins]
+            direction LR
+            DP1[Nvidia Device<br>Plugin]:::blueBox
+            DP2[Hami Device<br>Plugin]:::yellowBox
+        end
+
+        %% Left side relations
+        L_Container --> L_Business
+        P1 & P2 --> C1
+        P3 & P4 --> C2
+        P1 & P2 --> DP1
+        P3 & P4 --> DP2
+    end
+
+    subgraph Right [Scheduling and Deployment Architecture]
+        direction TB
+        subgraph R_Deploy [Deployments]
+            direction LR
+            D1[Deployment Group 1]
+            D2[Deployment Group 2]
+            D3[Deployment Group 3]
+            D4[Deployment Group 4]
+        end
+
+        subgraph R_Sched [Scheduling Components]
+            direction LR
+            S1[Scheduler]:::yellowBox
+            S2[webhook]:::yellowBox
+            S3[libvgpu.so]:::yellowBox
+        end
+
+        subgraph R_Physical [Physical layer]
+            N1["Node1<br>Annotation: GPU0 16GB<br>GPU1 16GB"]:::yellowBox
+        end
+
+        subgraph R_Hardware [Hardware / vGPU]
+            direction LR
+            subgraph G0 [GPU0]
+                direction LR
+                V1[vGPU]:::greenBox
+                V2[vGPU]:::greenBox
+                V3[vGPU]:::greenBox
+            end
+            subgraph G1 [GPU1]
+                direction LR
+                V4[vGPU]:::greenBox
+                V5[vGPU]:::greenBox
+                V6[vGPU]:::greenBox
+            end
+        end
+
+        %% Right side relations
+        D1 & D2 & D3 & D4 --> R_Sched
+        R_Sched --> N1
+        N1 --> G0
+        N1 --> G1
+    end
+
+    %% Cross diagram relations
+    DP2 -.->|HAMi Virtualization Mapping| R_Hardware
+
+    classDef blueBox fill:#d9e2f3,stroke:#4472c4,stroke-width:1px,color:#000
+    classDef yellowBox fill:#fff2cc,stroke:#d6b656,stroke-width:1px,color:#000
+    classDef greenBox fill:#e2efda,stroke:#70ad47,stroke-width:1px,color:#000
