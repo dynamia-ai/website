@@ -320,7 +320,7 @@ const Header: React.FC = () => {
   }
 
   const desktopMenuTopClass = isEventBannerVisible ? 'top-[104px]' : 'top-16';
-  const logoSrc = resolvedTheme === 'dark' ? '/dynamia-logo.svg' : '/dynamia-logo.svg';
+  const logoSrc = resolvedTheme === 'dark' ? '/dynamia-logo-white.svg' : '/dynamia-logo.svg';
 
   return (
     <Disclosure as="nav" className="bg-white dark:bg-gray-950 shadow-sm sticky top-0 z-50 transition-colors duration-300">
