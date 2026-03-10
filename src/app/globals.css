@@ -663,7 +663,7 @@ body {
 
 /* Force brand logos to monochrome white in dark mode for readability */
 .dark-logo-monochrome {
-  transition: filter 0.25s ease, opacity 0.25s ease;
+  transition: opacity 0.25s ease;
 }
 
 .dark .dark-logo-monochrome {

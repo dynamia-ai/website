@@ -12,7 +12,6 @@ import {
 } from '@heroicons/react/24/outline';
 import HamiIcon from '@/components/HamiIcon';
 import ExternalLinkIcon from '@/components/ExternalLinkIcon';
-import Image from 'next/image';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useTheme } from '@/components/ThemeProvider';
 // 暂时注释 Search 组件导入
@@ -321,6 +320,7 @@ const Header: React.FC = () => {
   }
 
   const desktopMenuTopClass = isEventBannerVisible ? 'top-[104px]' : 'top-16';
+  const logoSrc = resolvedTheme === 'dark' ? '/dynamia-logo.svg' : '/dynamia-logo.svg';
 
   return (
     <Disclosure as="nav" className="bg-white dark:bg-gray-950 shadow-sm sticky top-0 z-50 transition-colors duration-300">
@@ -358,14 +358,14 @@ const Header: React.FC = () => {
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <Link href={currentLocale === 'zh' ? '/zh' : '/'}>
-                    <Image
-                      src="/dynamia-logo.svg"
+                  <Link href={currentLocale === 'zh' ? '/zh' : '/'} className="flex items-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={logoSrc}
                       alt="Dynamia AI Logo"
                       width={160}
                       height={40}
-                      priority
-                      className="dark-logo-monochrome"
+                      className="block w-40 h-10 shrink-0"
                     />
                   </Link>
                 </div>
