@@ -316,6 +316,7 @@ export default function Home() {
                 { name: 'Company 6', logo: '/logos/company6.png' },
                 { name: 'Company 7', logo: '/logos/company7.png' },
                 { name: 'Company 9', logo: '/logos/company9.svg' },
+                { name: 'OpenCSG', logo: '/logos/opencsg.svg' },
               ];
               return companies.map((company, index) => (
                 <motion.div
@@ -456,15 +457,18 @@ export default function Home() {
               className="lg:w-1/2 flex items-center justify-center"
             >
               <div className="w-full flex items-center justify-center">
-                <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-white/95 px-4 py-3 shadow-sm">
-                  <Image
-                    src="/images/cncfsandbox.png"
-                    alt="CNCF Sandbox Project"
-                    width={300}
-                    height={173}
-                    className="object-contain w-auto h-auto"
-                    style={{ maxHeight: '120px', maxWidth: '100%' }}
-                  />
+                <div className="flex flex-col items-center gap-2">
+                  <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-white/95 px-4 py-3 shadow-sm">
+                    <img
+                      src="/images/cncf.svg"
+                      alt="CNCF Sandbox Project"
+                      width={300}
+                      height={57}
+                      className="object-contain"
+                      style={{ maxHeight: '120px', maxWidth: '100%' }}
+                    />
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">HAMi is a CNCF Sandbox Project</p>
                 </div>
               </div>
             </motion.div>

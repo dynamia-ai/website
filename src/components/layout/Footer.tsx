@@ -187,23 +187,29 @@ const Footer: React.FC = () => {
 
             {/* CNCF logos */}
             <div className="mt-12 flex items-center space-x-6">
-              <div className="rounded-lg border border-gray-200 bg-white/80 px-3 py-2 dark:border-gray-700 dark:bg-white/95">
-                <Image
-                  src="/images/cncfsandbox.png"
-                  alt="CNCF Sandbox"
-                  width={120}
-                  height={48}
-                  className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity dark:brightness-95"
-                />
+              <div className="flex flex-col items-center gap-1">
+                <div className="rounded-lg border border-gray-200 bg-white/80 px-3 py-2 dark:border-gray-700 dark:bg-white/95">
+                  <img
+                    src="/images/cncf.svg"
+                    alt="CNCF Sandbox"
+                    width={120}
+                    height={48}
+                    className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity dark:brightness-95"
+                  />
+                </div>
+                <span className="text-xs text-gray-400 dark:text-gray-500">HAMi is a CNCF Sandbox Project</span>
               </div>
-              <div className="rounded-lg border border-gray-200 bg-white/80 px-3 py-2 dark:border-gray-700 dark:bg-white/95">
-                <Image
-                  src="/images/cnailandscape.png"
-                  alt="CN AI Landscape"
-                  width={120}
-                  height={48}
-                  className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity dark:brightness-95"
-                />
+              <div className="flex flex-col items-center gap-1">
+                <div className="rounded-lg border border-gray-200 bg-white/80 px-3 py-2 dark:border-gray-700 dark:bg-white/95">
+                  <Image
+                    src="/images/cnai.svg"
+                    alt="CNAI Landscape"
+                    width={120}
+                    height={48}
+                    className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity dark:brightness-95"
+                  />
+                </div>
+                <span className="text-xs text-gray-400 dark:text-gray-500">HAMi is a CNAI Landscape Project</span>
               </div>
             </div>
           </div>

@@ -167,15 +167,16 @@ export default function HamiPage() {
                 href="https://landscape.cncf.io/?selected=hami&item=orchestration-management--scheduling-orchestration--hami"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-transform duration-300 hover:scale-105 block"
+                className="transition-transform duration-300 hover:scale-105 block text-center"
               >
-                <Image
-                  src="/images/cncfsandbox.png"
+                <img
+                  src="/images/cncf.svg"
                   alt="CNCF Sandbox Project"
                   width={250}
                   height={150}
                   className="rounded-lg shadow-sm object-contain bg-white dark:bg-white/95 border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md"
                 />
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">HAMi is a CNCF Sandbox Project</p>
               </a>
             </motion.div>
             <motion.div
@@ -190,15 +191,16 @@ export default function HamiPage() {
                 href="https://landscape.cncf.io/?selected=hami&group=cnai&item=orchestration-management--scheduling-orchestration--hami"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-transform duration-300 hover:scale-105 block"
+                className="transition-transform duration-300 hover:scale-105 block text-center"
               >
                 <Image
-                  src="/images/cnailandscape.png"
+                  src="/images/cnai.svg"
                   alt="CNAI Landscape"
                   width={250}
                   height={150}
                   className="rounded-lg shadow-sm object-contain bg-white dark:bg-white/95 border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md"
                 />
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">HAMi is a CNAI Landscape Project</p>
               </a>
             </motion.div>
           </div>
