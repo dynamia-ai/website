@@ -1,5 +1,5 @@
 ---
-title: "A Community-Oriented Refactor: Why HAMi Docs and Website Underwent a Complete Redesign"
+title: "HAMi Website and Documentation Overhaul: More Than a Redesign, a Systematic Upgrade"
 linktitle: "HAMi Website Redesign Overview"
 date: "2026-03-17"
 excerpt: >-
