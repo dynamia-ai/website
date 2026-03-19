@@ -15,8 +15,13 @@ import {
   faChartLine,
   faEye,
   faArrowRight,
-  faCogs
+  faCogs,
+  faUsers,
+  faCodeBranch,
+  faCodeCommit,
+  faStar
 } from '@fortawesome/free-solid-svg-icons';
+import { faDocker } from '@fortawesome/free-brands-svg-icons';
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 // 动画变体
@@ -503,39 +508,43 @@ export default function Home() {
               <div className="container">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 items-center justify-items-center">
                   <div className="text-center px-2">
-                    <span className="block text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.contributors')}</span>
+                    <div className="flex items-center justify-center">
+                      <FontAwesomeIcon icon={faUsers} className="h-4 w-4 text-[#76b900] mr-1" />
+                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.contributors')}</span>
+                    </div>
                     <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Contributors ]</span>
                   </div>
 
                   <div className="text-center px-2">
-                    <span className="block text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.forks')}</span>
+                    <div className="flex items-center justify-center">
+                      <FontAwesomeIcon icon={faCodeBranch} className="h-4 w-4 text-[#76b900] mr-1" />
+                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.forks')}</span>
+                    </div>
                     <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Forks ]</span>
                   </div>
 
                   <div className="text-center px-2">
                     <div className="flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#76b900" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                      </svg>
-                      <span className="ml-1 text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.stars')}</span>
+                      <FontAwesomeIcon icon={faStar} className="h-4 w-4 text-[#76b900] mr-1" />
+                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.stars')}</span>
                     </div>
                     <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Stars ]</span>
                   </div>
 
                   <div className="text-center px-2">
                     <div className="flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#76b900" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 20h9"></path>
-                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                      </svg>
-                      <span className="ml-1 text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.commits')}</span>
+                      <FontAwesomeIcon icon={faCodeCommit} className="h-4 w-4 text-[#76b900] mr-1" />
+                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.commits')}</span>
                     </div>
                     <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Commits ]</span>
                   </div>
 
                   <div className="text-center px-2 col-span-2 sm:col-span-1">
-                    <span className="block text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.pulls')}</span>
-                    <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Pulls ]</span>
+                    <div className="flex items-center justify-center">
+                      <FontAwesomeIcon icon={faDocker} className="h-4 w-4 text-[#76b900] mr-1" />
+                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.dockerPulls')}</span>
+                    </div>
+                    <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Docker Pulls ]</span>
                   </div>
                 </div>
               </div>

@@ -8,8 +8,10 @@
     "hamiWebsiteDesc": "访问 HAMi 的官方网站获取详细信息",
     "hamiGithub": "GitHub",
     "hamiGithubDesc": "查看源代码并参与 HAMi 的开源协作",
-    "community": "社区交流",
+    "community": "社区",
     "communityDesc": "加入 HAMi 用户社区，分享经验与获取帮助",
+    "joinCommunity": "加入社区",
+    "joinCommunityDesc": "加入 HAMi 用户社区，分享经验与获取帮助",
     "products": "产品",
     "caseStudies": "客户案例",
     "solutions": "解决方案",
@@ -25,7 +27,7 @@
     "freeTrial": "申请试用",
     "requestDemo": "申请演示",
     "openMenu": "打开菜单",
-    "eventBannerLabel": "KubeCon + CloudNativeCon Europe：",
+    "eventBannerLabel": "KubeCon + CloudNativeCon Europe:",
     "eventBannerMessage": "HAMi 社区展位：Project Pavilion P-13B。Dynamia 团队在 3 月 24 日 15:10-19:00、3 月 26 日 12:30-14:00 与你现场交流。",
     "eventBannerDetails": "活动详情",
     "eventBannerDetailsAria": "打开 KubeCon Europe 活动详情页面",
@@ -98,11 +100,11 @@
       "description": "领先，开源异构虚拟化中间件，可运行在任意云环境中",
       "learnMore": "了解更多",
       "stats": {
-        "contributors": "+60",
-        "forks": "+270",
-        "stars": "+2.8K",
-        "commits": "+600",
-        "pulls": "+50K"
+        "contributors": "500+",
+        "forks": "400+",
+        "stars": "3.1K",
+        "commits": "1200+",
+        "dockerPulls": "100K+"
       }
     },
     "joinCommunity": {
@@ -1489,6 +1491,160 @@
       "conclusion": {
         "title": "开源合作成功",
         "description": " DaoCloud 成功地将 HAMi 集成到其公共和私有 GPU 云平台中，在利用率和成本效率方面实现了显著改进，同时回馈开源社区。"
+      }
+    },
+    "nio": {
+      "title": "蔚来汽车 × HAMi | 提升自动驾驶工作负载 GPU 利用率",
+      "subtitle": "探索蔚来汽车如何采用混合 GPU 共享策略，利用 HAMi 实现 CI 流水线 GPU 利用率提升 10 倍、模拟工作负载 GPU 小时数减少 30%，在 600 张 GPU 规模的自动驾驶 AI 基础设施中实现显著效率提升。",
+      "stats": [
+        { "value": "600", "label": "张 GPU，分布于约 80 个节点" },
+        { "value": "10×", "label": "CI 流水线 GPU 利用率提升" },
+        { "value": "30%", "label": "模拟工作负载 GPU 小时数减少" }
+      ],
+      "overview": {
+        "title": "公司概述",
+        "description": "蔚来汽车运营大规模云基础设施以支持自动驾驶工作负载，包括模型训练、模拟、CI/测试和在线推理。团队专注于 GPU 性能优化，并参与其综合自动驾驶平台的 GPU 和计算资源规划决策。",
+        "keyPoints": [
+          "大规模 GPU 集群：约 80 个节点上的 600 张 GPU",
+          "多样化自动驾驶工作负载：训练、模拟、CI/测试、推理",
+          "专注于 GPU 性能优化和资源规划",
+          "针对不同工作负载类型的混合 GPU 共享策略"
+        ]
+      },
+      "challenge": {
+        "title": "挑战：多样化工作负载下的 GPU 低利用率",
+        "description": "蔚来汽车的大规模云基础设施支持多样化的自动驾驶工作负载。这种多样性导致工作负载 - 资源不匹配，产生了持续的效率挑战，存在几个具体痛点。",
+        "points": [
+          {
+            "title": "CI 和测试任务",
+            "description": "CI 任务的大部分执行时间花费在 CPU 密集型操作（编译、文件获取、预处理）上。GPU 仅间歇性使用，在整卡分配下平均利用率仅为 5–10%。"
+          },
+          {
+            "title": "模拟工作负载",
+            "description": "模拟流水线处理视频流、雷达数据和推理验证。单个任务的计算需求相对较低，适合在共享 GPU 上并发执行。"
+          },
+          {
+            "title": "在线推理",
+            "description": "许多推理服务仅需 ¼ 或 ½ 张 GPU。为这些小工作负载分配整张 GPU 既低效又昂贵。"
+          },
+          {
+            "title": "GPU 集群规模受限",
+            "description": "GPU 集群规模有限，部分容量来自按时间计费的公共云提供商。GPU 低利用率浪费了 GPU 小时数并增加运营成本。"
+          }
+        ]
+      },
+      "solution": {
+        "title": "基于 HAMi 的混合 GPU 共享策略",
+        "description": "蔚来汽车采用了混合 GPU 共享策略，根据工作负载特征选择不同的 GPU 分配机制，而不是强制执行单一方法。HAMi 通过调度器扩展和设备插件集成，为 Kubernetes 提供细粒度 GPU 共享能力。",
+        "approaches": {
+          "title": "评估的方法",
+          "items": [
+            {
+              "title": "NVIDIA MIG",
+              "description": "提供强隔离但仅支持预定义的分区大小，难以匹配更细粒度的需求（例如 1/6 或 1/8 张 GPU）。"
+            },
+            {
+              "title": "时间分片",
+              "description": "允许工作负载以最小开销自由竞争 GPU 资源。但它缺乏对内存和计算使用的严格限制，不适合某些生产工作负载。"
+            },
+            {
+              "title": "HAMi（CNCF Sandbox 项目）",
+              "description": "支持对 GPU 内存和计算分配进行细粒度控制，实现基于实际工作负载需求的比例分配，开销最小。"
+            }
+          ]
+        },
+        "productionStrategy": {
+          "title": "生产策略：组合多种方法",
+          "description": "蔚来汽车没有替代现有机制，而是将它们组合起来以实现不同工作负载类型的最佳效率。",
+          "items": [
+            "MIG：用于算法开发以及需要强隔离的环境",
+            "HAMi：用于 CI 任务以及选定的推理和模拟工作负载",
+            "时间分片：用于可以容忍资源竞争的工作负载"
+          ]
+        },
+        "implementation": {
+          "title": "实施细节",
+          "scale": "HAMi 部署在约 50–70 个活动节点上，涵盖 400–560 张 GPU",
+          "resourceDesign": {
+            "title": "资源分配设计",
+            "description": "对于模拟工作负载，蔚来汽车将 GPU 内存（VRAM）作为主要约束，因为计算能力不足可以通过调度延迟缓解，但内存耗尽会立即触发 OOM 失败。",
+            "insight": "分区越细并不总是越好。对于某些模拟工作负载，分配约 1/6 张 GPU 提供了最佳效率。更小的分区（如 1/8）引入了额外的调度和虚拟化开销，降低了整体吞吐量。"
+          }
+        }
+      },
+      "results": {
+        "title": "影响：效率大幅提升",
+        "description": "混合 GPU 共享策略在多种工作负载类型上提供了可衡量的改进，提高了整体系统吞吐量，同时直接降低了 GPU 成本。",
+        "items": [
+          {
+            "title": "CI 工作负载利用率",
+            "value": "5% → 30-50%",
+            "description": "通过将 GPU 分区为 ¼ 或更小的分数，CI 流水线中的有效 GPU 利用率提高了约 4 倍"
+          },
+          {
+            "title": "模拟 GPU 小时数",
+            "value": "-30%",
+            "description": "细粒度 GPU 共享使总体 GPU 小时数减少约 30%"
+          },
+          {
+            "title": "模拟任务持续时间",
+            "value": "3 天 → 2 天",
+            "description": "端到端模拟任务从约 3 天减少到约 2 天"
+          },
+          {
+            "title": "部署规模",
+            "value": "400-560 张 GPU",
+            "description": "使用 HAMi 的 50-70 个节点"
+          },
+          {
+            "title": "总基础设施",
+            "value": "600 张 GPU",
+            "description": "跨约 80 个节点支持自动驾驶工作负载"
+          },
+          {
+            "title": "策略",
+            "value": "混合",
+            "description": "HAMi + MIG + 时间分片实现最佳结果"
+          }
+        ]
+      },
+      "lessonsLearned": {
+        "title": "经验教训",
+        "description": "蔚来汽车的 HAMi 部署为大规模实施 GPU 虚拟化的组织提供了宝贵的见解。",
+        "points": [
+          {
+            "title": "GPU 分区优化",
+            "description": "GPU 分区并非'越细越好'。每个工作负载都有最佳分区大小。过度碎片化可能会降低效率。"
+          },
+          {
+            "title": "性能验证",
+            "description": "版本升级需要性能验证。新的 GPU 虚拟化组件可能会引入性能回归。蔚来汽车采用了分阶段升级策略，在允许不同的 HAMi 组件以不同版本运行之前验证性能基准。"
+          },
+          {
+            "title": "生产安全",
+            "description": "运营变更必须确保生产安全。对于在线推理工作负载，设备插件升级遵循类似蓝绿部署的流程：首先迁移流量，部署新 Pod，然后逐步停用旧实例。"
+          },
+          {
+            "title": "工具链兼容性",
+            "description": "工具链兼容性至关重要。某些编译器或库功能（如指针或地址分析）可能与 GPU 拦截机制冲突。需要在功能和稳定性之间仔细权衡。"
+          }
+        ]
+      },
+      "quote": {
+        "text": "蔚来汽车的 HAMi 部署展示了细粒度 GPU 共享如何显著提高自动驾驶工作负载的基础设施效率。通过将 HAMi 与 Kubernetes 以及现有的 GPU 分配机制（如 MIG 和时间分片）相结合，蔚来汽车在不牺牲稳定性的前提下提高了 GPU 利用率，减少了总体 GPU 小时数，并提高了工作负载吞吐量。",
+        "author": "蔚来汽车基础设施团队"
+      },
+      "companyCard": {
+        "name": "蔚来汽车",
+        "description": "领先的电动汽车公司，拥有自动驾驶 AI 平台"
+      },
+      "cta": {
+        "exploreHami": "探索 HAMi",
+        "contactUs": "联系我们"
+      },
+      "conclusion": {
+        "title": "混合策略成功",
+        "description": "蔚来汽车的混合资源管理策略使其能够在同一 Kubernetes 环境中更高效地支持多样化的 AI 工作负载——从 CI 流水线到模拟和推理。这种方法展示了如何将 HAMi 与其他 GPU 分配机制相结合，为不同的工作负载类型提供最佳结果。"
       }
     }
   },
