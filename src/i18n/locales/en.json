@@ -10,6 +10,8 @@
     "hamiGithubDesc": "View the source code and contribute to HAMi's open source collaboration",
     "community": "Community",
     "communityDesc": "Join the HAMi user community to share experiences and get help",
+    "joinCommunity": "Join Community",
+    "joinCommunityDesc": "Join the HAMi user community to share experiences and get help",
     "products": "Products",
     "caseStudies": "Case Studies",
     "solutions": "Solutions",
@@ -98,11 +100,11 @@
       "description": "Leading, open source, heterogeneous AI computing virtualization middleware",
       "learnMore": "Learn More",
       "stats": {
-        "contributors": "+60",
-        "forks": "+270",
-        "stars": "+2.8K",
-        "commits": "+600",
-        "pulls": "+50K"
+        "contributors": "500+",
+        "forks": "400+",
+        "stars": "3.1K",
+        "commits": "1200+",
+        "dockerPulls": "100K+"
       }
     },
     "joinCommunity": {
@@ -1420,6 +1422,160 @@
       "conclusion": {
         "title": "Open-Source Partnership Success",
         "description": "DaoCloud has successfully integrated HAMi across both its public and private GPU cloud platforms, achieving dramatic improvements in utilization and cost efficiency while contributing back to the open-source community."
+      }
+    },
+    "nio": {
+      "title": "NIO Improves GPU Utilization for Autonomous Driving Workloads with HAMi",
+      "subtitle": "Discover how NIO adopted a hybrid GPU sharing strategy using HAMi to achieve 10× GPU utilization improvement in CI pipelines and 30% reduction in GPU hours for simulation workloads across 600 GPUs supporting autonomous driving AI infrastructure.",
+      "stats": [
+        { "value": "600", "label": "GPUs across ~80 nodes" },
+        { "value": "10×", "label": "GPU utilization improvement in CI" },
+        { "value": "30%", "label": "reduction in GPU hours for simulation" }
+      ],
+      "overview": {
+        "title": "Company Overview",
+        "description": "NIO operates large-scale cloud infrastructure to support autonomous driving workloads, including model training, simulation, CI/testing, and online inference. The team focuses on GPU performance optimization and participates in GPU and compute resource planning decisions for their comprehensive autonomous driving platform.",
+        "keyPoints": [
+          "Large-scale GPU cluster: 600 GPUs across ~80 nodes",
+          "Diverse autonomous driving workloads: training, simulation, CI/testing, inference",
+          "Focus on GPU performance optimization and resource planning",
+          "Hybrid GPU sharing strategy for different workload types"
+        ]
+      },
+      "challenge": {
+        "title": "Challenge: Low GPU Utilization Across Diverse Workloads",
+        "description": "NIO's large-scale cloud infrastructure supports diverse autonomous driving workloads. This diversity led to persistent efficiency challenges due to workload-resource mismatch, with several specific pain points.",
+        "points": [
+          {
+            "title": "CI and Testing Tasks",
+            "description": "Most execution time for CI tasks spent on CPU-intensive operations (compilation, file fetching, preprocessing). GPUs used intermittently with only 5–10% average utilization under full-GPU allocation."
+          },
+          {
+            "title": "Simulation Workloads",
+            "description": "Simulation pipelines process video streams, radar data, and inference validation. Individual tasks have relatively low compute requirements, making them suitable for concurrent execution on shared GPUs."
+          },
+          {
+            "title": "Online Inference",
+            "description": "Many inference services require only ¼ or ½ of a GPU. Allocating an entire GPU is both inefficient and costly for these small workloads."
+          },
+          {
+            "title": "Limited GPU Cluster",
+            "description": "The GPU cluster size is limited, with part of capacity sourced from public cloud providers with time-based billing. Low GPU utilization wastes GPU hours and increases operational costs."
+          }
+        ]
+      },
+      "solution": {
+        "title": "Hybrid GPU Sharing Strategy with HAMi",
+        "description": "NIO adopted a hybrid GPU sharing strategy, selecting different GPU allocation mechanisms based on workload characteristics rather than enforcing a single approach. HAMi extends Kubernetes with fine-grained GPU sharing capabilities through scheduler extensions and device plugin integration.",
+        "approaches": {
+          "title": "Evaluated Approaches",
+          "items": [
+            {
+              "title": "NVIDIA MIG",
+              "description": "Provides strong isolation but supports only predefined partition sizes, making it difficult to match finer-grained requirements (e.g., 1/6 or 1/8 of a GPU)."
+            },
+            {
+              "title": "Time-Slicing",
+              "description": "Allows workloads to compete freely for GPU resources with minimal overhead. However, it lacks strict limits on memory and compute usage, making it unsuitable for certain production workloads."
+            },
+            {
+              "title": "HAMi (CNCF Sandbox)",
+              "description": "Supports fine-grained control over both GPU memory and compute allocation, enabling proportional allocation based on actual workload requirements with minimal overhead."
+            }
+          ]
+        },
+        "productionStrategy": {
+          "title": "Production Strategy: Combining Multiple Approaches",
+          "description": "Rather than replacing existing mechanisms, NIO combined them for optimal efficiency across different workload types.",
+          "items": [
+            "MIG: Used for algorithm development and environments requiring strong isolation",
+            "HAMi: Used for CI tasks and selected inference and simulation workloads",
+            "Time-slicing: Used for workloads that can tolerate resource contention"
+          ]
+        },
+        "implementation": {
+          "title": "Implementation Details",
+          "scale": "HAMi deployed on approximately 50–70 active nodes with 400–560 GPUs",
+          "resourceDesign": {
+            "title": "Resource Allocation Design",
+            "description": "For simulation workloads, NIO treated GPU memory (VRAM) as the primary constraint since insufficient compute capacity can be mitigated through scheduling delay, but memory exhaustion immediately triggers OOM failure.",
+            "insight": "Finer partitioning is not always better. For certain simulation workloads, allocating approximately 1/6 of a GPU provided optimal efficiency. Smaller fractions (such as 1/8) introduced additional scheduling and virtualization overhead, reducing overall throughput."
+          }
+        }
+      },
+      "results": {
+        "title": "Impact: Dramatic Efficiency Gains",
+        "description": "The hybrid GPU sharing strategy delivered measurable improvements across multiple workload types, increasing overall system throughput while directly reducing GPU costs.",
+        "items": [
+          {
+            "title": "CI Workloads Utilization",
+            "value": "5% → 30-50%",
+            "description": "By partitioning GPUs into ¼ or smaller fractions, effective GPU utilization in CI pipelines increased by approximately 4×"
+          },
+          {
+            "title": "Simulation GPU Hours",
+            "value": "-30%",
+            "description": "Fine-grained GPU sharing reduced overall GPU hours by approximately 30%"
+          },
+          {
+            "title": "Simulation Task Duration",
+            "value": "3 days → 2 days",
+            "description": "End-to-end simulation tasks reduced from about 3 days to about 2 days"
+          },
+          {
+            "title": "Deployment Scale",
+            "value": "400-560 GPUs",
+            "description": "Across 50-70 nodes using HAMi"
+          },
+          {
+            "title": "Total Infrastructure",
+            "value": "600 GPUs",
+            "description": "Across ~80 nodes supporting autonomous driving workloads"
+          },
+          {
+            "title": "Strategy",
+            "value": "Hybrid",
+            "description": "HAMi + MIG + Time-slicing for optimal results"
+          }
+        ]
+      },
+      "lessonsLearned": {
+        "title": "Lessons Learned",
+        "description": "NIO's deployment of HAMi provided valuable insights for organizations implementing GPU virtualization at scale.",
+        "points": [
+          {
+            "title": "GPU Partitioning Optimization",
+            "description": "GPU partitioning is not 'the finer, the better.' Each workload has an optimal partition size. Over-fragmentation can reduce efficiency."
+          },
+          {
+            "title": "Performance Validation",
+            "description": "Version upgrades require performance validation. New GPU virtualization components may introduce performance regressions. NIO adopted a phased upgrade strategy, validating performance benchmarks before allowing different HAMi components to run at different versions."
+          },
+          {
+            "title": "Production Safety",
+            "description": "Operational changes must ensure production safety. For online inference workloads, device plugin upgrades follow a blue–green deployment–like process: traffic is migrated first, new Pods are deployed, and old instances are gradually decommissioned."
+          },
+          {
+            "title": "Toolchain Compatibility",
+            "description": "Toolchain compatibility is critical. Certain compiler or library features (such as pointer or address analysis) may conflict with GPU interception mechanisms. Careful trade-offs between functionality and stability are required."
+          }
+        ]
+      },
+      "quote": {
+        "text": "NIO's deployment of HAMi demonstrates how fine-grained GPU sharing can significantly improve infrastructure efficiency for autonomous driving workloads. By combining HAMi with Kubernetes and existing GPU allocation mechanisms such as MIG and time-slicing, NIO increased GPU utilization, reduced overall GPU hours, and improved workload throughput without compromising stability.",
+        "author": "NIO Infrastructure Team"
+      },
+      "companyCard": {
+        "name": "NIO",
+        "description": "Leading electric vehicle company with autonomous driving AI platform"
+      },
+      "cta": {
+        "exploreHami": "Explore HAMi",
+        "contactUs": "Contact Us"
+      },
+      "conclusion": {
+        "title": "Hybrid Strategy Success",
+        "description": "NIO's hybrid resource management strategy enables the company to support diverse AI workloads—from CI pipelines to simulation and inference—more efficiently within the same Kubernetes environment. This approach demonstrates how combining HAMi with other GPU allocation mechanisms can deliver optimal results for different workload types."
       }
     }
   },

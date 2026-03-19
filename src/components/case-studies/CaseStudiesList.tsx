@@ -62,6 +62,15 @@ const CaseStudiesList: React.FC = () => {
         { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
+    {
+      slug: 'nio',
+      titleKey: 'cases.nio.title',
+      subtitleKey: 'cases.nio.subtitle',
+      logos: [
+        { src: '/images/case-studies/icons/nio.svg', alt: 'NIO Logo', width: 40, height: 40 },
+        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
+      ],
+    },
     // Temporarily hidden from list
     // {
     //   slug: 'telecom',

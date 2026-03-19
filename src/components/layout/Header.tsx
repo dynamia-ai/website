@@ -104,11 +104,11 @@ const Header: React.FC = () => {
 
   // 导航链接
   const navigation = [
-    { name: t('navigation.hami'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.products'), href: currentLocale === 'zh' ? '/zh/products' : '/products' },
     { name: t('navigation.caseStudies'), href: currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies' },
-    { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
     { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
+    { name: t('navigation.community'), href: '#', hasSubmenu: true, submenuType: 'hami' },
+    { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
   ];
 
@@ -135,9 +135,9 @@ const Header: React.FC = () => {
       external: true,
       iconName: 'code'
     },
-    { 
-      name: t('navigation.community'), 
-      description: t('navigation.communityDesc'),
+    {
+      name: t('navigation.joinCommunity'),
+      description: t('navigation.joinCommunityDesc'),
       href: 'https://project-hami.io/community/',
       external: true,
       iconName: 'users'
@@ -163,7 +163,7 @@ const Header: React.FC = () => {
     { 
       name: t('navigation.adopters'), 
       description: t('navigation.adoptersDesc'),
-      href: 'https://project-hami.io/adopters', 
+      href: 'https://github.com/Project-HAMi/HAMi/issues/4', 
       external: true,
       iconName: 'users'
     }
@@ -384,7 +384,7 @@ const Header: React.FC = () => {
                         className="relative flex items-center h-full"
                       >
                         <div
-                          className={`inline-flex items-center px-1 pt-1 h-full border-b-2 text-sm font-medium ${
+                          className={`inline-flex items-center whitespace-nowrap px-1 pt-1 h-full border-b-2 text-base font-medium ${
                             (item.submenuType === 'hami' && isHamiMenuOpen) ||
                             (item.submenuType === 'resources' && isResourcesMenuOpen) ||
                             (item.submenuType === 'solutions' && isSolutionsMenuOpen)
@@ -516,7 +516,7 @@ const Header: React.FC = () => {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className={`inline-flex items-center h-full px-1 pt-1 border-b-2 text-sm font-medium ${
+                        className={`inline-flex items-center whitespace-nowrap h-full px-1 pt-1 border-b-2 text-base font-medium ${
                           pathname === item.href || (pathname === '/' && item.href === '/') || (pathname === '/zh' && item.href === '/zh')
                             ? 'border-primary text-gray-900 dark:text-gray-100'
                             : 'border-transparent text-gray-500 dark:text-gray-400 hover:border-gray-300 dark:hover:border-primary/60 hover:text-gray-700 dark:hover:text-gray-100'
