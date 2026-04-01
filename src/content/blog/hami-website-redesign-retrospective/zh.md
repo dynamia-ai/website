@@ -11,7 +11,7 @@ tags:
   - 文档
   - 社区
   - 开源
-category: 开源
+category: Open Source
 language: zh
 coverImage: /images/blog/hami-website-redesign-retrospective/banner.webp
 ---

@@ -250,7 +250,6 @@ body {
 
 /* === Code Block Styling === */
 .blog-content pre {
-  background-color: var(--code-background);
   border: 1px solid var(--code-border);
 }
 
@@ -418,8 +417,8 @@ body {
 }
 
 .blog-content pre {
-  background-color: #1f2937;
-  color: #f9fafb;
+  background-color: var(--code-background);
+  color: var(--text-primary);
   padding: 1.25rem 1rem 1rem 1rem;
   padding-right: 4rem;
   border-radius: 0.75rem;
@@ -561,13 +560,16 @@ body {
 
 .blog-content blockquote {
   border-left: 4px solid var(--primary);
-  padding-left: 1rem;
+  padding: 1rem 1rem 1rem 1rem;
   margin: 1.5rem 0;
   font-style: italic;
   color: var(--text-tertiary);
   background: var(--primary-subtle);
   border-radius: 0.5rem;
-  padding: 1rem;
+}
+
+.blog-content blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 .blog-content hr {
@@ -631,10 +633,6 @@ body {
   color: var(--text-secondary);
 }
 
-.light .blog-content code {
-  background-color: #f3f4f6;
-  color: #1f2937;
-}
 
 .light .blog-content blockquote {
   border-left-color: var(--border-default);

@@ -28,9 +28,14 @@ const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 
     'Product Release': { en: 'Product Release', zh: '产品发布' },
     'Technical Deep Dive': { en: 'Technical Deep Dive', zh: '技术深度' },
     'Customer Success Story': { en: 'Customer Stories', zh: '客户案例' },
+    'Case Study': { en: 'Case Study', zh: '案例研究' },
     'Integration & Ecosystem': { en: 'Integration', zh: '集成生态' },
     'Company News': { en: 'Company News', zh: '公司动态' },
+    'Events': { en: 'Events', zh: '活动' },
     'Community & Events': { en: 'Community', zh: '社区活动' },
+    'Open Source': { en: 'Open Source', zh: '开源' },
+    'Partnership': { en: 'Partnership', zh: '合作伙伴' },
+    'Year in Review': { en: 'Year in Review', zh: '年度回顾' },
   };
   const displayCategory = categoryNames[post.category]?.[currentLocale] || post.category;
 
@@ -181,9 +186,14 @@ export default function BlogListClient(
                     'Product Release': { en: 'Product Release', zh: '产品发布' },
                     'Technical Deep Dive': { en: 'Technical Deep Dive', zh: '技术深度' },
                     'Customer Success Story': { en: 'Customer Stories', zh: '客户案例' },
+                    'Case Study': { en: 'Case Study', zh: '案例研究' },
                     'Integration & Ecosystem': { en: 'Integration', zh: '集成生态' },
                     'Company News': { en: 'Company News', zh: '公司动态' },
+                    'Events': { en: 'Events', zh: '活动' },
                     'Community & Events': { en: 'Community', zh: '社区活动' },
+                    'Open Source': { en: 'Open Source', zh: '开源' },
+                    'Partnership': { en: 'Partnership', zh: '合作伙伴' },
+                    'Year in Review': { en: 'Year in Review', zh: '年度回顾' },
                   };
                   const displayName = categoryNames[category]?.[currentLocale] || category;
                   
