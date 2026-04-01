@@ -12,7 +12,7 @@ tags:
   - GPU 虚拟化
   - Kubernetes
   - CNCF
-category: 案例研究
+category: Case Study
 language: zh
 coverImage: /images/blog/ke-holdings-ml-infrastructure-scaling/solution-diagram.png
 linktitle: 贝壳 GPU 基础设施实践

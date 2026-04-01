@@ -1,6 +1,6 @@
 ---
 title: 密瓜智能亮相 KubeCon EU 2026：从展台、演讲到主论坛 Demo，HAMi 进入 AI 基础设施核心视野
-linktitle: HAMi 在 KubeCon EU 2026 的全面亮相
+linktitle: 密瓜智能携 HAMi 在 KubeCon EU 2026 的全面亮相
 date: '2026-03-31'
 excerpt: >-
   KubeCon EU 2026 已经落下帷幕，云原生正在从"应用运行平台"快速演进为 AI 基础设施的运行底座。
