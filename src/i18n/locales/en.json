@@ -21,6 +21,8 @@
     "resourcesDocDesc": "Access comprehensive guides and reference materials for HAMi",
     "resourcesBlog": "Blog",
     "resourcesBlogDesc": "Read the latest news, tutorials and updates about HAMi",
+    "resourcesTools": "Tools",
+    "resourcesToolsDesc": "Open practical tools for operations and troubleshooting",
     "adopters": "Adopters",
     "adoptersDesc": "See who's using HAMi in production environments",
     "company": "Company",
@@ -692,6 +694,15 @@
       "newsletterDescription": "Receive regular updates on product improvements, technical articles, and industry insights delivered directly to your inbox.",
       "emailPlaceholder": "Your email address",
       "subscribeButton": "Subscribe"
+    }
+  },
+  "tools": {
+    "title": "Tools",
+    "subtitle": "Useful tools for day-to-day operations and analysis",
+    "openTool": "Open tool",
+    "hamiMetricsExplorer": {
+      "title": "HAMi Metrics Explorer",
+      "description": "Upload Prometheus metrics and inspect GPU inventory, utilization, and merge/export results."
     }
   },
   "company": {

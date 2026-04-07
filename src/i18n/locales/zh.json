@@ -21,6 +21,8 @@
     "resourcesDocDesc": "访问 HAMi 的全面指南和参考资料",
     "resourcesBlog": "博客",
     "resourcesBlogDesc": "阅读有关 HAMi 的最新消息、教程和更新",
+    "resourcesTools": "工具",
+    "resourcesToolsDesc": "打开运维与排障常用工具",
     "adopters": "采用者",
     "adoptersDesc": "查看哪些组织在生产环境中使用 HAMi",
     "company": "公司",
@@ -542,7 +544,7 @@
           },
           {
             "title": "GPU 超卖",
-            "description": "Dynamia.ai  提供无损、应用无感的 GPU 显存与 主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
+            "description": "Dynamia.ai  提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
           },
           {
             "title": "自动弹性扩缩容",
@@ -724,6 +726,15 @@
       "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
       "emailPlaceholder": "您的邮箱地址",
       "subscribeButton": "订阅"
+    }
+  },
+  "tools": {
+    "title": "工具列表",
+    "subtitle": "用于日常运维和分析的实用工具",
+    "openTool": "打开工具",
+    "hamiMetricsExplorer": {
+      "title": "HAMi 指标分析工具",
+      "description": "上传 Prometheus 指标文件，快速查看 GPU 清单、利用率并支持合并和导出。"
     }
   },
   "company": {

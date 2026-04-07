@@ -160,6 +160,13 @@ const Header: React.FC = () => {
       external: false,
       iconName: 'blog'
     },
+    {
+      name: t('navigation.resourcesTools'),
+      description: t('navigation.resourcesToolsDesc'),
+      href: currentLocale === 'zh' ? '/zh/tools' : '/tools',
+      external: false,
+      iconName: 'folder'
+    },
     { 
       name: t('navigation.adopters'), 
       description: t('navigation.adoptersDesc'),
