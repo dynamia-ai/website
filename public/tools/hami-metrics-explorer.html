@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMi Metrics Explorer — Dynamia AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080c15;--bg2:#0c1221;--sf:#111a2e;--sf2:#162035;--sf3:#1c2844;
+  --bd:#1a2744;--bd2:#243356;
+  --tx:#edf2f7;--tx2:#8b9dc3;--tx3:#5a6f94;
+  --teal:#2dd4a8;--teal-bg:#2dd4a815;--teal-dim:#1a9e7a;
+  --blue:#4f8df7;--blue-bg:#4f8df715;
+  --amber:#f5b731;--amber-bg:#f5b73115;
+  --red:#f06565;--red-bg:#f0656515;
+  --purple:#a78bfa;--purple-bg:#a78bfa15;
+  --green:#2dd4a8;
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --r:14px;--rs:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--tx);min-height:100vh;font-size:14px}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,#2dd4a808,transparent),radial-gradient(ellipse 50% 50% at 80% 20%,#4f8df706,transparent);pointer-events:none;z-index:0}
+.wrap{max-width:1320px;margin:0 auto;padding:1.5rem 2rem 4rem;position:relative;z-index:1}
+
+/* Header */
+.hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid var(--bd)}
+.hdr-left{display:flex;align-items:center;gap:12px}
+.hdr-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--teal),var(--blue));border-radius:10px;display:flex;align-items:center;justify-content:center}
+.hdr-logo svg{width:20px;height:20px;color:#fff}
+.hdr h1{font-size:1.15rem;font-weight:700;letter-spacing:-0.02em}
+.hdr h1 span{color:var(--teal)}
+.hdr-right{font-size:.72rem;color:var(--tx3);display:flex;align-items:center;gap:6px}
+.hdr-right .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* Upload */
+.upload{border:1.5px dashed var(--bd2);border-radius:var(--r);padding:2rem;text-align:center;cursor:pointer;transition:all .25s;margin-bottom:2rem;background:var(--sf)}
+.upload:hover,.upload.drag{border-color:var(--teal);background:var(--sf2)}
+.upload svg{width:32px;height:32px;color:var(--tx3);margin-bottom:6px}
+.upload .ut{font-size:.88rem;font-weight:600;color:var(--tx2)}
+.upload .us{font-size:.72rem;color:var(--tx3);margin-top:2px}
+.upload input{display:none}
+
+/* Summary */
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:1rem}
+.sc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:.85rem 1rem;position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--teal);opacity:0;transition:opacity .3s}
+.sc:hover::before{opacity:1}
+.sc-l{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--tx3);margin-bottom:4px;font-weight:600}
+.sc-v{font-family:var(--mono);font-size:1.3rem;font-weight:700}
+.sc-s{font-size:.68rem;color:var(--tx3);margin-top:2px}
+
+/* Type chips */
+.type-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem}
+.tc{display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;font-size:.74rem;transition:all .2s}
+.tc:hover{border-color:var(--teal);background:var(--sf2)}
+.tc .td{width:8px;height:8px;border-radius:3px;flex-shrink:0}
+.tc .tn{color:var(--tx2)}.tc .tv{font-family:var(--mono);font-weight:700;color:var(--tx)}
+
+/* Toolbar */
+.toolbar{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
+.btn{font-family:var(--font);font-size:.78rem;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s;border:none}
+.btn svg{width:14px;height:14px}
+.btn-primary{background:var(--teal);color:#080c15}
+.btn-primary:hover{background:#3ee0b8;transform:translateY(-1px);box-shadow:0 4px 20px #2dd4a833}
+.btn-diff{background:transparent;border:1px solid var(--amber);color:var(--amber)}
+.btn-diff:hover{background:var(--amber-bg);transform:translateY(-1px)}
+
+/* Section */
+.section{margin-bottom:1.5rem}
+.section h2{font-size:.9rem;font-weight:700;margin-bottom:.6rem;color:var(--tx);display:flex;align-items:center;gap:7px;letter-spacing:-0.01em}
+.section h2 svg{width:15px;height:15px;color:var(--teal);flex-shrink:0}
+
+/* Insights */
+.ins-grid{display:grid;gap:8px}
+.ins{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:10px 14px;display:flex;gap:10px;align-items:flex-start;transition:border-color .2s}
+.ins:hover{border-color:var(--bd2)}
+.ii{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ii svg{width:13px;height:13px}
+.it{font-size:.78rem;font-weight:600;margin-bottom:2px}
+.id{font-size:.7rem;color:var(--tx2);line-height:1.5}
+.id code{font-family:var(--mono);font-size:.64rem;background:var(--sf3);padding:1px 4px;border-radius:3px;color:var(--tx)}
+.ins.si .ii{background:var(--blue-bg);color:var(--blue)}
+.ins.sw .ii{background:var(--amber-bg);color:var(--amber)}
+.ins.so .ii{background:var(--teal-bg);color:var(--teal)}
+.ins.sc .ii{background:var(--red-bg);color:var(--red)}
+.tag{font-size:.56rem;padding:2px 5px;border-radius:3px;font-weight:600;margin-left:4px;vertical-align:middle}
+.tw{background:var(--amber-bg);color:var(--amber)}.to{background:var(--teal-bg);color:var(--teal)}.tc2{background:var(--red-bg);color:var(--red)}.ti{background:var(--blue-bg);color:var(--blue)}
+
+/* Inventory */
+.inv-wrap{max-height:320px;overflow-y:auto;border:1px solid var(--bd);border-radius:var(--rs);background:var(--sf)}
+.inv-t{width:100%;border-collapse:collapse;font-size:.72rem}
+.inv-t th{text-align:left;padding:8px 10px;font-size:.6rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);border-bottom:1px solid var(--bd);font-weight:600;position:sticky;top:0;background:var(--sf2)}
+.inv-t td{padding:6px 10px;border-bottom:1px solid var(--bd);color:var(--tx2)}
+.inv-t tr:hover td{background:var(--sf2)}
+.inv-t .mono{font-family:var(--mono);font-size:.64rem}
+.tb2{font-size:.62rem;padding:2px 6px;border-radius:4px;font-weight:600;white-space:nowrap}
+
+/* Pool / Node tree */
+.pool{margin-bottom:8px}
+.pool-h{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs) var(--rs) 0 0;cursor:pointer;user-select:none;transition:background .15s}
+.pool-h:hover{background:var(--sf2)}
+.pool-h.collapsed{border-radius:var(--rs)}
+.pool-h .arr{width:14px;height:14px;transition:transform .2s;color:var(--tx3);flex-shrink:0}
+.pool-h.collapsed .arr{transform:rotate(-90deg)}
+.pn{font-size:.8rem;font-weight:600;flex:1}
+.pb{font-size:.62rem;padding:3px 8px;border-radius:99px;font-weight:600;white-space:nowrap}
+.pool-b{border:1px solid var(--bd);border-top:none;border-radius:0 0 var(--rs) var(--rs);padding:8px;display:grid;gap:6px}
+.pool-b.hide{display:none}
+.nr{background:var(--sf2);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.nh{display:flex;align-items:center;gap:6px;padding:8px 12px;cursor:pointer;user-select:none;font-size:.74rem;transition:background .15s}
+.nh:hover{background:var(--sf3)}
+.nh .nd{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.nh .nn{font-family:var(--mono);font-size:.72rem;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nh .nb2{font-size:.6rem;padding:2px 7px;border-radius:99px;font-weight:600}
+.nh .arr2{width:12px;height:12px;transition:transform .2s;color:var(--tx3);flex-shrink:0}
+.nh.collapsed .arr2{transform:rotate(-90deg)}
+.nb3{display:none;padding:8px 10px}
+.nb3.show{display:block}
+/* NUMA */
+.numa-d{display:flex;align-items:center;gap:6px;margin:6px 0;padding:0 4px}
+.numa-d span{font-size:.62rem;color:var(--tx3);font-weight:600;white-space:nowrap}
+.numa-d .nl{flex:1;height:1px;background:var(--bd)}
+.numa-l{font-size:.58rem;color:var(--amber);font-family:var(--mono)}
+/* GPU mini card */
+.gpu-r{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px}
+.gc{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:8px 10px;border-left:3px solid var(--tx3);transition:all .15s}
+.gc:hover{border-color:var(--bd2)}
+.gc.low{border-left-color:var(--teal)}.gc.mid{border-left-color:var(--amber)}.gc.high{border-left-color:var(--red)}
+.gc-top{display:flex;align-items:center;gap:5px;margin-bottom:4px}
+.gc-type{font-size:.72rem;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gc-idx{font-family:var(--mono);font-size:.6rem;color:var(--tx3);background:var(--sf3);padding:2px 6px;border-radius:4px}
+.gc-uuid{font-family:var(--mono);font-size:.58rem;color:var(--tx3);margin-bottom:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.br{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.bl{font-size:.6rem;color:var(--tx3);width:30px;flex-shrink:0;font-weight:500}
+.bt{flex:1;height:5px;background:var(--sf3);border-radius:3px;overflow:hidden}
+.bf{height:100%;border-radius:3px;transition:width .4s}
+.bv{font-family:var(--mono);font-size:.58rem;color:var(--tx2);width:36px;text-align:right;flex-shrink:0}
+.gc-pods{border-top:1px solid var(--bd);padding-top:4px;margin-top:5px}
+.gp{display:flex;align-items:center;gap:4px;font-size:.64rem;padding:2px 0}
+.gp .pd{width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.gp .ppn{font-family:var(--mono);font-size:.62rem;color:var(--tx2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gp .pns{font-size:.56rem;color:var(--tx3);background:var(--sf3);padding:0 4px;border-radius:2px;flex-shrink:0}
+.gp .pr{font-family:var(--mono);font-size:.58rem;color:var(--tx3);flex-shrink:0}
+.gc-idle{font-size:.62rem;color:var(--tx3);font-style:italic}
+/* Quota */
+.q-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.qc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:8px 10px}
+.qn{font-family:var(--mono);font-size:.72rem;font-weight:600;margin-bottom:4px}
+.qr{display:flex;justify-content:space-between;font-size:.66rem;color:var(--tx3);padding:2px 0}
+.qr span:last-child{font-family:var(--mono);color:var(--tx2)}
+.build{margin-top:1rem;font-size:.66rem;color:var(--tx3);display:flex;gap:14px;flex-wrap:wrap}
+.build span{font-family:var(--mono)}
+/* Modal */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:999;display:none;align-items:center;justify-content:center;padding:1.5rem;animation:fi .2s}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.mo.show{display:flex}
+.ml{background:var(--sf);border:1px solid var(--bd);border-radius:16px;width:100%;max-width:760px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;animation:su .25s ease}
+@keyframes su{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.mh{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--bd);background:var(--sf2)}
+.mh h3{font-size:.92rem;font-weight:700;flex:1}
+.mx{width:30px;height:30px;border-radius:8px;border:1px solid var(--bd);background:transparent;color:var(--tx3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:16px;font-family:var(--font)}
+.mx:hover{background:var(--red-bg);color:var(--red);border-color:var(--red)}
+.mb{flex:1;overflow-y:auto;padding:16px 20px}
+.mb pre{font-family:var(--mono);font-size:.7rem;line-height:1.7;color:var(--tx2);background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:16px;white-space:pre-wrap;word-break:break-all;max-height:58vh;overflow-y:auto}
+.mf{display:flex;align-items:center;gap:8px;padding:12px 20px;border-top:1px solid var(--bd);background:var(--sf2)}
+.mf .mc{font-family:var(--font);font-size:.78rem;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:none;background:var(--teal);color:#080c15;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.mf .mc:hover{background:#3ee0b8}
+.mf .mc svg,.mf .md svg{width:13px;height:13px}
+.mf .md{font-family:var(--font);font-size:.78rem;font-weight:600;padding:8px 18px;border-radius:8px;cursor:pointer;border:1px solid var(--bd);background:transparent;color:var(--tx2);display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.mf .md:hover{border-color:var(--teal);color:var(--teal)}
+.mf .ok{font-size:.74rem;color:var(--teal);display:none;align-items:center;gap:4px}
+.mf .ok svg{width:13px;height:13px}
+.mf .cnt{font-size:.7rem;color:var(--tx3);margin-left:auto;font-family:var(--mono)}
+/* Merge */
+.di{width:100%;min-height:140px;max-height:220px;font-family:var(--mono);font-size:.7rem;line-height:1.6;color:var(--tx2);background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px;resize:vertical;outline:none;transition:border .2s}
+.di:focus{border-color:var(--teal);box-shadow:0 0 0 3px #2dd4a818}
+.di::placeholder{color:var(--tx3)}
+.dor{text-align:center;font-size:.72rem;color:var(--tx3);margin:10px 0;display:flex;align-items:center;gap:10px}
+.dor .dl2{flex:1;height:1px;background:var(--bd)}
+.dfb{font-family:var(--font);font-size:.74rem;font-weight:600;padding:7px 18px;border-radius:8px;cursor:pointer;border:1px solid var(--bd);background:transparent;color:var(--tx2);transition:all .15s}
+.dfb:hover{border-color:var(--teal);color:var(--teal)}
+.drn{font-family:var(--font);font-size:.82rem;font-weight:700;padding:10px;border-radius:10px;cursor:pointer;border:none;background:linear-gradient(135deg,var(--teal),var(--blue));color:#080c15;transition:all .2s;width:100%;margin-top:14px}
+.drn:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 4px 20px #2dd4a833}
+.ds{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.ds div{font-size:.74rem;display:flex;align-items:center;gap:5px;padding:5px 12px;background:var(--sf2);border:1px solid var(--bd);border-radius:6px}
+.ds .dd{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.ds .dv{font-family:var(--mono);font-weight:700}
+.dr{font-family:var(--mono);font-size:.68rem;line-height:1.8;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;overflow:auto;max-height:50vh}
+.dr .dl3{padding:3px 12px 3px 10px;white-space:pre;border-left:3px solid transparent;display:flex;min-height:1.8em}
+.dr .ln{width:28px;text-align:right;color:var(--tx3);opacity:.4;flex-shrink:0;padding-right:8px;user-select:none}
+.dr .da{background:#2dd4a810;color:#6ee7b7;border-left-color:var(--teal)}
+.dr .dd2{background:#f0656510;color:#fca5a5;border-left-color:var(--red)}
+.dr .dc{background:#f5b73110;color:#fde68a;border-left-color:var(--amber)}
+.dr .dx{color:var(--tx3)}
+.dr .dh{color:var(--blue);background:var(--sf2);padding:6px 12px 6px 10px;font-weight:600;border-left-color:var(--blue);font-size:.72rem}
+.dsm{margin-top:12px;padding:12px 14px;background:var(--sf2);border:1px solid var(--bd);border-radius:10px;font-size:.74rem;color:var(--tx2);line-height:1.7;display:grid;grid-template-columns:1fr 1fr;gap:4px 20px}
+.dsm code{font-family:var(--mono);font-size:.68rem;background:var(--sf3);padding:1px 5px;border-radius:3px;color:var(--tx)}
+.dsm .dsl{color:var(--tx3);font-size:.6rem;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+#content{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/></svg></div>
+    <h1>HAMi <span>Metrics Explorer</span></h1>
+  </div>
+  <div class="hdr-right"><div class="dot"></div>Dynamia AI</div>
+</div>
+
+<div class="upload" id="dz">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0l-4 4m4-4l4 4M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>
+  <div class="ut">Drop Prometheus metrics file or click to browse</div>
+  <div class="us">Supports HAMi / kantaloupe metrics format</div>
+  <input type="file" id="fi" accept="*">
+</div>
+
+<div id="content">
+  <div class="summary" id="sum"></div>
+  <div class="type-bar" id="tyB"></div>
+  <div class="toolbar" id="tb"></div>
+  <div class="section" id="secA"></div>
+  <div class="section" id="secI"></div>
+  <div class="section" id="secN"></div>
+  <div class="section" id="secQ"></div>
+  <div class="build" id="bi"></div>
+</div>
+</div>
+
+<div class="mo" id="mo1" onclick="if(event.target===this)cm()"><div class="ml"><div class="mh"><h3 id="m1t">Export GPU inventory</h3><button class="mx" onclick="cm()">&times;</button></div><div class="mb"><pre id="m1j"></pre></div><div class="mf"><button class="mc" onclick="cj()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy</button><button class="md" onclick="dj()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 11v6m-3-3l3 3 3-3"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/></svg>Download</button><span class="ok" id="ok1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Copied!</span><span class="cnt1" id="cnt1"></span></div></div></div>
+
+<div class="mo" id="mo2" onclick="if(event.target===this)cd()"><div class="ml" style="max-width:840px"><div class="mh"><h3 id="m2t">Merge inventory</h3><button class="mx" onclick="cd()">&times;</button></div><div class="mb" id="m2b"><div id="dIn"><div style="font-size:.8rem;color:var(--tx2);margin-bottom:8px;font-weight:500">Paste old JSON or upload file:</div><textarea class="di" id="dOld" placeholder='{ "kube-system-uuid": "...", "nodes": [...] }'></textarea><div class="dor"><div class="dl2"></div>or<div class="dl2"></div></div><div style="text-align:center"><button class="dfb" onclick="document.getElementById('dFi').click()">Choose .json file</button><input type="file" id="dFi" accept=".json" style="display:none"><span id="dFn" style="font-size:.68rem;color:var(--tx3);margin-left:8px"></span></div><button class="drn" onclick="runMerge()">Run Merge</button></div><div id="dR" style="display:none"></div></div><div class="mf" id="dF" style="display:none"><button class="md" onclick="document.getElementById('dR').style.display='none';document.getElementById('dIn').style.display='block';document.getElementById('dF').style.display='none';document.getElementById('m2t').textContent='Merge inventory'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Back</button><button class="mc" onclick="cpD()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy</button><button class="md" onclick="dlf('merged_inventory.json', window._mergedText || '', 'application/json')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 11v6m-3-3l3 3 3-3"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/></svg>Download</button><span class="ok" id="ok2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Copied!</span><span class="cnt" id="cnt2"></span></div></div></div>
+
+<script>
+const dz=document.getElementById('dz'),fi=document.getElementById('fi');
+dz.onclick=()=>fi.click();dz.ondragover=e=>{e.preventDefault();dz.classList.add('drag')};dz.ondragleave=()=>dz.classList.remove('drag');dz.ondrop=e=>{e.preventDefault();dz.classList.remove('drag');ld(e.dataTransfer.files[0])};fi.onchange=e=>{if(e.target.files[0])ld(e.target.files[0])};
+function ld(f){const r=new FileReader();r.onload=e=>{render(e.target.result);dz.querySelector('.ut').textContent=f.name;dz.querySelector('.us').textContent='Loaded'};r.readAsText(f)}
+document.getElementById('dFi').onchange=e=>{const f=e.target.files[0];if(!f)return;document.getElementById('dFn').textContent=f.name;const r=new FileReader();r.onload=ev=>{document.getElementById('dOld').value=ev.target.result};r.readAsText(f)};
+function parse(t){const m=[];for(const l of t.split('\n')){if(!l||l[0]==='#')continue;const r=l.match(/^(\w+)\{([^}]*)\}\s+(.+)$/);if(!r)continue;const lb={};for(const p of(r[2].match(/(\w+)="([^"]*)"/g)||[])){const[,k,v]=p.match(/(\w+)="([^"]*)"/);lb[k]=v}m.push({n:r[1],l:lb,v:parseFloat(r[3])})}return m}
+function fmt(b){if(b===0)return'0';if(b>=1e9)return(b/1e9).toFixed(1)+'G';if(b>=1e6)return(b/1e6).toFixed(0)+'M';return b.toFixed(0)+'B'}
+function dlf(fn,c,m){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:m}));a.download=fn;a.click()}
+const SI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+const SW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+const SO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+const SX='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+const AR='<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+const AR2='<svg class="arr2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+
+function render(text){
+  const all=parse(text);document.getElementById('content').style.display='block';
+  const G={};function g(u){if(!G[u])G[u]={uuid:u,type:'',idx:'',node:'',memLimit:0,memAlloc:0,coreLimit:0,coreAlloc:0,shared:0,memLimitMB:0,pods:[]};return G[u]}
+  all.filter(m=>m.n==='nodeGPUOverview').forEach(m=>{const x=g(m.l.deviceuuid);x.type=m.l.devicetype||x.type;x.idx=m.l.deviceidx||x.idx;x.node=m.l.nodeid||x.node;x.shared=parseInt(m.l.sharedcontainers)||0;x.memLimitMB=parseInt(m.l.devicememorylimit)||0;x.coreAlloc=parseInt(m.l.devicecores)||x.coreAlloc;x.memAlloc=m.v||x.memAlloc});
+  all.filter(m=>m.n==='GPUDeviceCoreAllocated').forEach(m=>{const x=g(m.l.deviceuuid);x.type=m.l.devicetype||x.type;x.idx=m.l.deviceidx||x.idx;x.node=m.l.nodeid||x.node;x.coreAlloc=m.v||x.coreAlloc});
+  all.filter(m=>m.n==='GPUDeviceCoreLimit').forEach(m=>{g(m.l.deviceuuid).coreLimit=m.v});
+  all.filter(m=>m.n==='GPUDeviceMemoryLimit').forEach(m=>{const x=g(m.l.deviceuuid);x.memLimit=m.v;if(!x.memLimitMB)x.memLimitMB=Math.round(m.v/1048576)});
+  all.filter(m=>m.n==='GPUDeviceMemoryAllocated').forEach(m=>{g(m.l.deviceuuid).memAlloc=m.v||g(m.l.deviceuuid).memAlloc});
+  all.filter(m=>m.n==='GPUDeviceSharedNum').forEach(m=>{g(m.l.deviceuuid).shared=m.v||g(m.l.deviceuuid).shared});
+  all.filter(m=>m.n==='vGPUMemoryAllocated').forEach(m=>{const x=g(m.l.deviceuuid);const e=x.pods.find(p=>p.name===m.l.podname);if(e)e.mem=m.v;else x.pods.push({name:m.l.podname,ns:m.l.podnamespace,mem:m.v,cores:0})});
+  all.filter(m=>m.n==='vGPUCoreAllocated').forEach(m=>{const x=g(m.l.deviceuuid);const e=x.pods.find(p=>p.name===m.l.podname);if(e)e.cores=m.v;else x.pods.push({name:m.l.podname,ns:m.l.podnamespace,mem:0,cores:m.v})});
+  const NM={};Object.values(G).forEach(x=>{if(!NM[x.node])NM[x.node]={name:x.node,gpus:[]};NM[x.node].gpus.push(x)});
+  Object.values(NM).forEach(n=>n.gpus.sort((a,b)=>+a.idx-+b.idx));
+  const nodes=Object.values(NM),gpus=Object.values(G),types=[...new Set(gpus.map(x=>x.type).filter(Boolean))];
+  const totalPods=gpus.reduce((s,x)=>s+x.pods.length,0);
+  const totalMem=gpus.reduce((s,x)=>s+x.memLimit,0),usedMem=gpus.reduce((s,x)=>s+x.memAlloc,0);
+  function poolName(n){const p=n.match(/(.*-pool)/);return p?p[1]:n}
+  const pools={};nodes.forEach(n=>{const p=poolName(n.name);if(!pools[p])pools[p]={name:p,nodes:[]};pools[p].nodes.push(n)});
+  const poolArr=Object.values(pools).sort((a,b)=>a.name.localeCompare(b.name));
+  const memPct=totalMem>0?Math.round(usedMem/totalMem*100):0;
+  const typeCounts={};gpus.forEach(x=>{const t=x.type||'?';typeCounts[t]=(typeCounts[t]||0)+1});
+  const typeEntries=Object.entries(typeCounts).sort((a,b)=>b[1]-a[1]);
+  const pal=['#2dd4a8','#4f8df7','#f5b731','#f06565','#a78bfa','#f472b6','#fb923c','#38bdf8','#818cf8','#4ade80','#e879f9','#fcd34d'];
+  const tc={};types.forEach((t,i)=>{tc[t]=pal[i%pal.length]});
+
+  document.getElementById('sum').innerHTML=[
+    {l:'Nodes',v:nodes.length,c:'var(--blue)',s:poolArr.length+' pools'},
+    {l:'GPUs',v:gpus.length,c:'var(--teal)',s:types.length+' types'},
+    {l:'GPU types',v:types.length,c:'var(--amber)',s:typeEntries.slice(0,3).map(([t])=>t.replace('NVIDIA ','').split('-')[0]).join(', ')},
+    {l:'Memory',v:fmt(usedMem)+'/'+fmt(totalMem),c:memPct>70?'var(--red)':memPct>40?'var(--amber)':'var(--teal)',s:memPct+'% used'},
+    {l:'Active pods',v:totalPods,c:'var(--purple)',s:'on '+gpus.filter(x=>x.pods.length>0).length+' GPUs'},
+    {l:'Idle GPUs',v:gpus.filter(x=>x.memAlloc===0&&x.coreAlloc===0).length,c:'var(--tx3)',s:'no allocation'},
+  ].map(s=>`<div class="sc"><div class="sc-l">${s.l}</div><div class="sc-v" style="color:${s.c}">${s.v}</div><div class="sc-s">${s.s}</div></div>`).join('');
+
+  document.getElementById('tyB').innerHTML=typeEntries.map(([t,c])=>`<div class="tc"><div class="td" style="background:${tc[t]}"></div><span class="tv">${c}×</span><span class="tn">${t}</span></div>`).join('');
+
+  function genUUID(ns){let h=0;for(const n of ns)for(let i=0;i<n.length;i++){h=((h<<5)-h)+n.charCodeAt(i);h|=0}const x=Math.abs(h).toString(16).padStart(8,'0');return x.slice(0,8)+'-'+x.slice(0,4)+'-4'+x.slice(1,4)+'-'+x.slice(0,4)+'-'+x.slice(0,12).padEnd(12,'0')}
+  const cUUID=genUUID(nodes.map(n=>n.name));
+  const seen=new Set();const clean=[];gpus.forEach(x=>{if(seen.has(x.uuid)||!x.uuid||!x.node)return;seen.add(x.uuid);clean.push(x)});
+  const ng={};clean.forEach(x=>{if(!ng[x.node])ng[x.node]={};const t=x.type||'unknown';if(!ng[x.node][t])ng[x.node][t]=[];ng[x.node][t].push(x.uuid)});
+  const eNodes=Object.keys(ng).sort().map(n=>({"node-name":n,"gpu-types":Object.keys(ng[n]).sort().map(t=>({"gpu-type":t,"gpu-uuids":ng[n][t].sort()}))}));
+  const eData={"kube-system-uuid":cUUID,"nodes":eNodes};
+  window._ed=eData;window._gc=clean.length;
+
+  document.getElementById('tb').innerHTML=`<button class="btn btn-primary" onclick="om()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/><path d="M12 11v6m-3-3l3 3 3-3"/></svg>Export JSON (${clean.length})</button><button class="btn btn-diff" onclick="od()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 13H5m0 0l7-7m-7 7l7 7"/></svg>Merge with old data</button>`;
+
+  const ins=[];
+  const idle=gpus.filter(x=>x.memAlloc===0&&x.coreAlloc===0);
+  if(idle.length){const p=Math.round(idle.length/gpus.length*100);ins.push({s:p>50?'sw':'si',i:p>50?SW:SI,t:`${idle.length} idle GPUs <span class="tag ${p>50?'tw':'ti'}">${p}%</span>`,d:'Consolidate workloads or scale down.'})}
+  const hi=gpus.filter(x=>x.memLimit>0&&x.memAlloc/x.memLimit>0.8);
+  if(hi.length)ins.push({s:'sc',i:SX,t:`${hi.length} GPUs near capacity <span class="tag tc2">&gt;80%</span>`,d:'OOM risk.'});
+  if(types.length>1)ins.push({s:'si',i:SI,t:`${types.length} GPU types <span class="tag ti">heterogeneous</span>`,d:typeEntries.slice(0,5).map(([t,c])=>`${c}× <code>${t}</code>`).join(', ')});
+  const sh=gpus.filter(x=>x.shared>0);if(sh.length)ins.push({s:'so',i:SO,t:`${sh.length} GPUs sharing <span class="tag to">vGPU</span>`,d:'HAMi active.'});
+  if(totalMem>0&&usedMem/totalMem>.7)ins.push({s:'sc',i:SX,t:`Cluster ${memPct}% <span class="tag tc2">high</span>`,d:'Plan expansion.'});
+  nodes.filter(n=>n.gpus.length>2).forEach(n=>{const h=Math.ceil(n.gpus.length/2),s0=n.gpus.slice(0,h),s1=n.gpus.slice(h),b0=s0.filter(x=>x.memAlloc>0).length,b1=s1.filter(x=>x.memAlloc>0).length;if(b0>0&&b1>0&&(s0.length-b0>0||s1.length-b1>0)){const sh=n.name.split('-').slice(-2).join('-');ins.push({s:'si',i:SI,t:`Cross-NUMA <code>${sh}</code>`,d:`S0:${b0}/${s0.length} S1:${b1}/${s1.length}`})}});
+  const lic=all.filter(m=>m.n==='vGPULicenseRemains');if(lic.length){const d=Math.round(Math.min(...lic.map(l=>l.v))/86400);ins.push(d<30?{s:'sc',i:SX,t:`License <span class="tag tc2">${d}d</span>`,d:'Renew.'}:{s:'so',i:SO,t:`License <span class="tag to">${d}d+</span>`,d:'OK.'})}
+  document.getElementById('secA').innerHTML=`<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Analysis</h2><div class="ins-grid">${ins.map(x=>`<div class="ins ${x.s}"><div class="ii">${x.i}</div><div><div class="it">${x.t}</div><div class="id">${x.d}</div></div></div>`).join('')}</div>`;
+
+  let inv=`<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/></svg>GPU inventory (${gpus.length})</h2><div class="inv-wrap"><table class="inv-t"><thead><tr><th>#</th><th>Node</th><th>GPU type</th><th>UUID</th><th>Mem</th><th>Core</th></tr></thead><tbody>`;
+  gpus.forEach((x,i)=>{const mp=x.memLimit>0?Math.round(x.memAlloc/x.memLimit*100):0;inv+=`<tr><td style="color:var(--tx3)">${i+1}</td><td class="mono" style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${x.node}">${x.node.split('-').slice(-3).join('-')}</td><td><span class="tb2" style="background:${tc[x.type]||pal[0]}22;color:${tc[x.type]||pal[0]}">${x.type}</span></td><td class="mono" style="font-size:.6rem;color:var(--tx3);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${x.uuid}">${x.uuid.slice(4,20)}…</td><td class="mono" style="font-size:.62rem">${mp}%</td><td class="mono" style="font-size:.62rem">${x.coreAlloc}%</td></tr>`});
+  inv+='</tbody></table></div>';document.getElementById('secI').innerHTML=inv;
+
+  function gc2(x){const mp=x.memLimit>0?x.memAlloc/x.memLimit*100:0,cp=x.coreLimit>0?x.coreAlloc/x.coreLimit*100:0;let lv='idle';if(mp>0&&mp<=50)lv='low';else if(mp>50&&mp<=80)lv='mid';else if(mp>80)lv='high';const mc=lv==='idle'?'var(--tx3)':lv==='low'?'var(--teal)':lv==='mid'?'var(--amber)':'var(--red)';const cc=cp===0?'var(--tx3)':cp<=50?'var(--teal)':cp<=80?'var(--amber)':'var(--red)';let ph='';if(x.pods.length)ph='<div class="gc-pods">'+x.pods.map(p=>`<div class="gp"><div class="pd"></div><div class="ppn" title="${p.name}">${p.name}</div><div class="pns">${p.ns}</div><div class="pr">${p.cores}%/${fmt(p.mem)}</div></div>`).join('')+'</div>';else ph='<div class="gc-idle">idle</div>';return`<div class="gc ${lv}"><div class="gc-top"><div class="gc-type" title="${x.type}">${x.type}</div><div class="gc-idx">#${x.idx}</div></div><div class="gc-uuid" title="${x.uuid}">${x.uuid.slice(4,24)}…</div><div class="br"><div class="bl">Mem</div><div class="bt"><div class="bf" style="width:${Math.min(mp,100)}%;background:${mc}"></div></div><div class="bv">${Math.round(mp)}%</div></div><div class="br"><div class="bl">Core</div><div class="bt"><div class="bf" style="width:${Math.min(cp,100)}%;background:${cc}"></div></div><div class="bv">${Math.round(cp)}%</div></div>${ph}</div>`}
+  let nH=`<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><rect x="6" y="6" width="12" height="12" rx="2"/></svg>Nodes (${poolArr.length} pools · ${nodes.length} nodes)</h2>`;
+  poolArr.forEach((pool,pi)=>{const pG=pool.nodes.reduce((s,n)=>s+n.gpus.length,0);const pT=[...new Set(pool.nodes.flatMap(n=>n.gpus.map(x=>x.type)).filter(Boolean))];const pid='p'+pi;
+    nH+=`<div class="pool"><div class="pool-h" onclick="this.classList.toggle('collapsed');this.nextElementSibling.classList.toggle('hide')">${AR}<div class="pn">${pool.name}</div><div class="pb" style="background:var(--teal-bg);color:var(--teal)">${pool.nodes.length} nodes</div><div class="pb" style="background:var(--sf3);color:var(--tx2)">${pG} GPUs</div><div class="pb" style="background:${tc[pT[0]]||pal[0]}22;color:${tc[pT[0]]||pal[0]}">${pT[0]||'?'}</div></div><div class="pool-b" id="${pid}">`;
+    pool.nodes.forEach((node,ni)=>{const gs=node.gpus,nid=pid+'n'+ni,half=Math.ceil(gs.length/2),hasN=gs.length>2,bc=gs.filter(x=>x.memAlloc>0||x.coreAlloc>0).length,dc=bc===0?'var(--tx3)':bc<gs.length?'var(--amber)':'var(--teal)';
+      let gh='';if(hasN){gh+=`<div class="numa-d"><div class="nl"></div><span>NUMA 0</span><div class="nl"></div></div><div class="gpu-r">${gs.slice(0,half).map(gc2).join('')}</div><div class="numa-d"><div class="nl"></div><span class="numa-l">QPI/UPI</span><div class="nl"></div></div><div class="numa-d"><div class="nl"></div><span>NUMA 1</span><div class="nl"></div></div><div class="gpu-r">${gs.slice(half).map(gc2).join('')}</div>`}else gh=`<div class="gpu-r">${gs.map(gc2).join('')}</div>`;
+      nH+=`<div class="nr"><div class="nh" onclick="const b=document.getElementById('${nid}');b.classList.toggle('show');this.classList.toggle('collapsed')"><div class="nd" style="background:${dc}"></div><div class="nn" title="${node.name}">${node.name}</div><div class="nb2" style="background:var(--sf3);color:var(--tx2)">${gs.length}G</div><div class="nb2" style="background:${bc>0?'var(--teal-bg)':'var(--sf3)'};color:${bc>0?'var(--teal)':'var(--tx3)'}">${bc} active</div>${AR2}</div><div class="nb3" id="${nid}">${gh}</div></div>`});
+    nH+=`</div></div>`});
+  document.getElementById('secN').innerHTML=nH;
+
+  const qs=all.filter(m=>m.n==='QuotaUsed');if(qs.length){const qM={};qs.forEach(q=>{const ns=q.l.quotanamespace;if(!qM[ns])qM[ns]=[];qM[ns].push({n:q.l.quotaName,u:q.v,l:parseInt(q.l.limit)})});let qH='<h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M7 7l5 5M7 17l5-5"/></svg>Quotas</h2><div class="q-grid">';Object.entries(qM).forEach(([ns,items])=>{qH+=`<div class="qc"><div class="qn">${ns}</div>`;items.forEach(i=>{qH+=`<div class="qr"><span>${i.n}</span><span>${i.u}/${i.l||'∞'}</span></div>`});qH+='</div>'});qH+='</div>';document.getElementById('secQ').innerHTML=qH}
+  const bi=all.find(m=>m.n==='hami_build_info');if(bi){const l=bi.l;document.getElementById('bi').innerHTML=`<span>HAMi ${l.version}</span><span>${l.build_date}</span><span>${l.go_version}</span><span>${l.platform}</span>`}
+}
+
+function om(){const d=window._ed;if(!d)return;document.getElementById('m1j').textContent=JSON.stringify(d,null,2);const nc=d.nodes?d.nodes.length:0,gc=d.nodes?d.nodes.reduce((s,n)=>s+n['gpu-types'].reduce((s2,t)=>s2+t['gpu-uuids'].length,0),0):0;document.getElementById('cnt1').textContent=nc+' nodes · '+gc+' GPUs';document.getElementById('mo1').classList.add('show');document.getElementById('ok1').style.display='none';document.body.style.overflow='hidden'}
+function cm(){document.getElementById('mo1').classList.remove('show');document.body.style.overflow=''}
+function cj(){navigator.clipboard.writeText(document.getElementById('m1j').textContent).then(()=>{const o=document.getElementById('ok1');o.style.display='inline-flex';setTimeout(()=>o.style.display='none',2e3)})}
+function dj(){dlf('gpu_inventory.json',document.getElementById('m1j').textContent,'application/json')}
+function od(){if(!window._ed)return;document.getElementById('dIn').style.display='block';document.getElementById('dR').style.display='none';document.getElementById('dF').style.display='none';document.getElementById('m2t').textContent='Merge inventory';document.getElementById('mo2').classList.add('show');document.body.style.overflow='hidden'}
+function cd(){document.getElementById('mo2').classList.remove('show');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){cm();cd()}});
+
+function runMerge() {
+  const raw = document.getElementById('dOld').value.trim();
+  if (!raw) { alert('Please paste old JSON first.'); return; }
+
+  let oldData;
+  try { oldData = JSON.parse(raw); }
+  catch (e) { alert('Invalid JSON: ' + e.message); return; }
+
+  const currData = window._ed;
+  if (!currData) { alert('No current data to merge'); return; }
+
+  const uuidSet = new Set();
+  const mergedNodes = [];
+
+  const collectUUIDs = (node) => {
+    node['gpu-types']?.forEach(type => {
+      type['gpu-uuids']?.forEach(uuid => uuidSet.add(uuid));
+    });
+  };
+
+  currData.nodes.forEach(node => {
+    mergedNodes.push(JSON.parse(JSON.stringify(node)));
+    collectUUIDs(node);
+  });
+
+  oldData.nodes?.forEach(oldNode => {
+    const existNode = mergedNodes.find(n => n['node-name'] === oldNode['node-name']);
+    if (!existNode) {
+      const newNode = JSON.parse(JSON.stringify(oldNode));
+      const filteredTypes = [];
+      newNode['gpu-types']?.forEach(type => {
+        const filteredUUIDs = type['gpu-uuids'].filter(u => !uuidSet.has(u));
+        if (filteredUUIDs.length) {
+          filteredTypes.push({ ...type, 'gpu-uuids': filteredUUIDs });
+          filteredUUIDs.forEach(u => uuidSet.add(u));
+        }
+      });
+      if (filteredTypes.length) mergedNodes.push({ ...newNode, 'gpu-types': filteredTypes });
+    } else {
+      oldNode['gpu-types']?.forEach(oldType => {
+        const existType = existNode['gpu-types'].find(t => t['gpu-type'] === oldType['gpu-type']);
+        if (!existType) {
+          const filteredUUIDs = oldType['gpu-uuids'].filter(u => !uuidSet.has(u));
+          if (filteredUUIDs.length) {
+            existNode['gpu-types'].push({ ...oldType, 'gpu-uuids': filteredUUIDs });
+            filteredUUIDs.forEach(u => uuidSet.add(u));
+          }
+        } else {
+          const newUUIDs = oldType['gpu-uuids'].filter(u => !uuidSet.has(u));
+          if (newUUIDs.length) {
+            existType['gpu-uuids'].push(...newUUIDs);
+            newUUIDs.forEach(u => uuidSet.add(u));
+          }
+        }
+      });
+    }
+  });
+
+  const mergedResult = {
+    'kube-system-uuid': currData['kube-system-uuid'],
+    'nodes': mergedNodes
+  };
+
+  const currTotal = currData.nodes.reduce((s, n) => s + n['gpu-types'].reduce((s2, t) => s2 + t['gpu-uuids'].length, 0), 0);
+  const oldTotal = oldData.nodes ? oldData.nodes.reduce((s, n) => s + n['gpu-types'].reduce((s2, t) => s2 + t['gpu-uuids'].length, 0), 0) : 0;
+  const finalTotal = mergedResult.nodes.reduce((s, n) => s + n['gpu-types'].reduce((s2, t) => s2 + t['gpu-uuids'].length, 0), 0);
+  const duplicateCount = currTotal + oldTotal - finalTotal;
+
+  const mergedText = JSON.stringify(mergedResult, null, 2);
+  window._mergedText = mergedText;
+  window._diffText = mergedText;
+
+  let html = `
+  <div class="ds">
+    <div><div class="dd" style="background:var(--teal)"></div>Current: <span class="dv">${currTotal}</span> GPUs</div>
+    <div><div class="dd" style="background:var(--blue)"></div>Old: <span class="dv">${oldTotal}</span> GPUs</div>
+    <div><div class="dd" style="background:var(--amber)"></div>Duplicates removed: <span class="dv">${duplicateCount}</span></div>
+    <div><div class="dd" style="background:var(--red)"></div>Merged total: <span class="dv">${finalTotal}</span> GPUs</div>
+  </div>
+  <div class="dr" style="white-space:pre-wrap; padding:16px;">${mergedText}</div>`;
+
+  document.getElementById('dR').innerHTML = html;
+  document.getElementById('dIn').style.display = 'none';
+  document.getElementById('dR').style.display = 'block';
+  document.getElementById('dF').style.display = 'flex';
+  document.getElementById('m2t').textContent = 'Merge Result';
+}
+
+function cpD() {
+  navigator.clipboard.writeText(window._mergedText || '').then(() => {
+    const o = document.getElementById('ok2');
+    o.style.display = 'inline-flex';
+    setTimeout(() => o.style.display = 'none', 2000);
+  });
+}
+</script>
+</body>
+</html>
