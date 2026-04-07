@@ -16,7 +16,7 @@ tags:
 category: Integration & Ecosystem
 coverImage: /images/blog/baidu-hami-compatibility/certificate.jpg
 language: zh
-linktitle: 百度百川 × HAMi 兼容性测试
+linktitle: 百度百舸 × HAMi 兼容性测试
 ---
 
 ## 产品兼容互认
