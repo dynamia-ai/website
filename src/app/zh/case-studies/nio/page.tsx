@@ -6,13 +6,13 @@ const title = zhTranslation.cases?.nio?.title || '蔚来汽车案例研究';
 const description = zhTranslation.cases?.nio?.subtitle || '';
 
 export const metadata: Metadata = {
-  title: `案例研究 | ${title} | Dynamia AI`,
+  title: `案例研究 | ${title} | 密瓜智能`,
   description,
   openGraph: {
-    title: `案例研究 | ${title} | Dynamia AI`,
+    title: `案例研究 | ${title} | 密瓜智能`,
     description,
     url: '/zh/case-studies/nio',
-    siteName: 'Dynamia AI',
+    siteName: '密瓜智能',
     type: 'article',
   },
   alternates: {

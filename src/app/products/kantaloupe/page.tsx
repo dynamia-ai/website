@@ -30,12 +30,12 @@ export default function KantaloupeProduct() {
                     {t('products.kantaloupe.description')}
                   </p>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Kantaloupe 是一个专为企业级异构计算环境设计的统一管理平台。它能够无缝整合各种计算资源，包括 CPU、GPU、NPU、DCU 和专用加速器，以优化工作负载分配和资源利用率。
+                    Dynamia AI 是一个专为企业级异构计算环境设计的统一管理平台。它能够无缝整合各种计算资源，包括 CPU、GPU、NPU、DCU 和专用加速器，以优化工作负载分配和资源利用率。
                   </p>
                 </div>
                 <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-6 flex items-center justify-center">
                   <div className="w-full h-64 bg-[#3867D6]/10 rounded flex items-center justify-center">
-                    <span className="text-[#3867D6] font-bold text-xl">kantaloupe UI</span>
+                    <span className="text-[#3867D6] font-bold text-xl">Dynamia AI UI</span>
                   </div>
                 </div>
               </div>
@@ -71,9 +71,9 @@ export default function KantaloupeProduct() {
             <div className="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 p-8">
               <div className="w-full h-96 bg-gray-100 dark:bg-gray-800 rounded flex items-center justify-center">
                 <div className="text-center max-w-lg">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Kantaloupe 架构图</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Dynamia AI 架构图</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    Kantaloupe 采用分层架构设计，包括资源抽象层、调度引擎、策略管理器和用户接口层。
+                    Dynamia AI 采用分层架构设计，包括资源抽象层、调度引擎、策略管理器和用户接口层。
                   </p>
                   <div className="w-full h-40 bg-[#3867D6]/10 rounded flex items-center justify-center">
                     <span className="text-[#3867D6]">架构示意图</span>
@@ -85,7 +85,7 @@ export default function KantaloupeProduct() {
 
           <div className="mt-16 text-center">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-              准备好开始使用 kantaloupe 了吗？
+              准备好开始使用 Dynamia AI 了吗？
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               <Link

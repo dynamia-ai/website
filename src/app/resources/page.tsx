@@ -43,11 +43,11 @@ export default function Resources() {
     ? articlesFromTranslation 
     : [
         {
-          title: "Kantaloupe v2.0 Release: New Features and Improvements",
+          title: "Dynamia AI v2.0 Release: New Features and Improvements",
           category: "Blog",
           date: "2025-01-15",
-          excerpt: "Learn about the important updates and performance enhancements in the latest version of Kantaloupe.",
-          link: "/resources/blog/kantaloupe-v2-release"
+          excerpt: "Learn about the important updates and performance enhancements in the latest version of Dynamia AI.",
+          link: "/resources/blog/dynamia-ai-v2-release"
         }
       ];
 

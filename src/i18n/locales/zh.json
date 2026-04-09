@@ -30,7 +30,7 @@
     "requestDemo": "申请演示",
     "openMenu": "打开菜单",
     "eventBannerLabel": "KubeCon + CloudNativeCon Europe:",
-    "eventBannerMessage": "HAMi 社区展位：Project Pavilion P-13B。Dynamia 团队在 3 月 24 日 15:10-19:00、3 月 26 日 12:30-14:00 与你现场交流。",
+    "eventBannerMessage": "HAMi 社区展位：Project Pavilion P-13B。密瓜智能 团队在 3 月 24 日 15:10-19:00、3 月 26 日 12:30-14:00 与你现场交流。",
     "eventBannerDetails": "活动详情",
     "eventBannerDetailsAria": "打开 KubeCon Europe 活动详情页面",
     "eventBannerClose": "关闭顶部通知",
@@ -78,22 +78,22 @@
         {
           "title": "多元异构集群",
           "subtitle": "多元异构 AI 集群统一调度、管理",
-          "description": "Dynamia.ai 提供统一高效管理多元异构 AI 算力集群，让用户无感使用、管理、调度来自公有云、私有云、本地的 算力集群，最大化利用率，提高管理效率。"
+          "description": "密瓜智能 提供统一高效管理多元异构 AI 算力集群，让用户无感使用、管理、调度来自公有云、私有云、本地的 算力集群，最大化利用率，提高管理效率。"
         },
         {
           "title": "GPU 共享",
           "subtitle": "最大化 GPU 利用率，降低成本，极大提高 AI 效率",
-          "description": "Dynamia.ai 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU  利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
+          "description": "密瓜智能 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU  利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
         },
         {
           "title": "GPU 超卖",
           "subtitle": "对齐 GPU 显存与主机内存，扩大 AI 资源池",
-          "description": "Dynamia.ai 提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
+          "description": "密瓜智能 提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
         },
         {
           "title": "自动弹性扩缩容",
           "subtitle": "AI 应用无感、动态扩缩容",
-          "description": "Dynamia.ai 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
+          "description": "密瓜智能 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
         }
       ]
     },
@@ -145,7 +145,7 @@
       "title": "客户评价",
       "items": [
         {
-          "quote": "Kantaloupe 大大提高了我们的计算效率，使我们能够比以往更快地扩展 AI 研究。",
+          "quote": "密瓜智能 大大提高了我们的计算效率，使我们能够比以往更快地扩展 AI 研究。",
           "author": "Dr. Jane Smith",
           "position": "首席技术官",
           "company": "AI 研究所"
@@ -165,14 +165,14 @@
     },
     "trustedBy": {
       "title": "行业领导者的信赖选择",
-      "description": "各行业的领先组织都依靠 Dynamia.ai 高效管理其异构计算资源"
+      "description": "各行业的领先组织都依靠 密瓜智能 高效管理其异构计算资源"
     }
   },
   "products": {
     "kantaloupe": {
-      "title": "Kantaloupe",
-      "subtitle": "下一代异构计算平台",
-      "description": "Kantaloupe 提供了一个统一平台，用于管理异构计算资源，优化性能并降低成本。",
+      "title": "Dynamia AI",
+      "subtitle": "企业级异构计算虚拟化平台",
+      "description": "密瓜智能 提供了一个统一平台，用于管理异构计算资源，优化性能并降低成本。",
       "features": [
         "智能工作负载调度",
         "实时资源监控",
@@ -182,11 +182,11 @@
       ],
       "featureComparison": {
         "title": "特性对比",
-        "subTitle": "HAMi 和 Dynamia AI 功能对比",
+        "subTitle": "HAMi 和 密瓜智能 功能对比",
         "categoryHeader": "",
         "featureHeader": "",
         "openSource": "HAMi",
-        "enterprise": "Dynamia AI",
+        "enterprise": "密瓜智能",
         "categories": [
           {
             "name": "架构支持",
@@ -496,16 +496,16 @@
         ]
       },
       "technicalArchitecture": "技术架构",
-      "architectureDiagram": "架构示意图",
-      "readyToStart": "准备好开始使用 kantaloupe 了吗？",
+      "architectureDiagram": "架构图",
+      "readyToStart": "准备好转变您的计算基础设施了吗？",
       "customSolutions": {
         "title": "定制解决方案",
-        "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 kantaloupe 解决方案。",
+        "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 密瓜智能 解决方案。",
         "contactText": "联系我们的解决方案专家，准备好解决您的 AI 计算挑战了吗？"
       },
       "exploreResources": {
         "title": "探索我们的技术文档",
-        "description": "探索我们的技术文档、博客文章和白皮书，了解更多关于 kantaloupe 的信息"
+        "description": "探索我们的技术文档、博客文章和白皮书，了解更多关于 密瓜智能 的信息"
       },
       "latestResources": {
         "title": "最新资源",
@@ -513,14 +513,11 @@
         "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
         "subscribeButton": "订阅"
       },
-      "title": "Dynamia AI",
-      "subtitle": "企业级异构计算虚拟化平台",
       "viewPricing": "查看定价",
-      "readyToStart": "准备好转变您的计算基础设施了吗？",
-      "ctaDescription": "体验 Dynamia AI 如何优化您的计算资源。立即开始免费试用或申请定制定价方案。",
+      "ctaDescription": "体验 密瓜智能 如何优化您的计算资源。立即开始免费试用或申请定制定价方案。",
       "overview": {
         "title": "企业级异构计算解决方案",
-        "description": "Dynamia AI 基于 HAMi 开源技术的强大基础，增加了企业级功能、安全性和对关键业务环境的支持。",
+        "description": "密瓜智能 基于 HAMi 开源技术的强大基础，增加了企业级功能、安全性和对关键业务环境的支持。",
         "highlights": [
           "基于 HAMi 开源核心",
           "增强的企业级功能",
@@ -528,11 +525,10 @@
           "持续更新和维护"
         ]
       },
-      "architectureDescription": "Dynamia AI 提供了全面的基础设施，用于高效管理异构计算资源。",
-      "architectureDiagram": "架构图",
+      "architectureDescription": "密瓜智能 提供了全面的基础设施，用于高效管理异构计算资源。",
       "commercialFeatures": {
         "title": "企业级功能",
-        "subtitle": "Dynamia AI 基于 HAMi 核心能力，打造专为生产环境优化的企业级增强功能。",
+        "subtitle": "密瓜智能 基于 HAMi 核心能力，打造专为生产环境优化的企业级增强功能。",
         "list": [
           {
             "title": "多元异构集群",
@@ -540,15 +536,15 @@
           },
           {
             "title": "GPU 共享",
-            "description": "Dynamia.ai 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU 利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
+            "description": "密瓜智能 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU 利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
           },
           {
             "title": "GPU 超卖",
-            "description": "Dynamia.ai  提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
+            "description": "密瓜智能  提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
           },
           {
             "title": "自动弹性扩缩容",
-            "description": "Dynamia.ai 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
+            "description": "密瓜智能 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
           },
           {
             "title": "中心化的全链路 AI 可观测性",
@@ -584,7 +580,7 @@
     ],
     "customSolutions": {
       "title": "定制解决方案",
-      "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 kantaloupe 解决方案。",
+      "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 密瓜智能 解决方案。",
       "contactButton": "联系我们的解决方案专家"
     },
     "successStories": {
@@ -596,13 +592,13 @@
   },
   "freeTrial": {
     "title": "申请试用",
-    "subtitle": "立即开始申请试用，体验 Dynamia AI 的强大功能",
+    "subtitle": "立即开始申请试用，体验 密瓜智能 的强大功能",
     "form": {
       "name": "姓名",
       "email": "工作邮箱",
       "company": "公司名称",
       "phone": "电话号码",
-      "useCase": "您计划如何使用 Dynamia AI？",
+      "useCase": "您计划如何使用 密瓜智能？",
       "terms": "我同意 dynamia ai 的服务条款和隐私政策",
       "termsRequired": "您必须同意条款和条件才能继续。",
       "submitting": "处理中...",
@@ -614,11 +610,11 @@
   },
   "requestDemo": {
     "title": "申请演示",
-    "subtitle": "安排个性化演示，了解 Dynamia AI 如何帮助您的组织优化计算资源",
+    "subtitle": "安排个性化演示，了解 密瓜智能 如何帮助您的组织优化计算资源",
     "demoContent": {
       "title": "演示内容",
       "items": [
-        "Dynamia AI 平台功能概述",
+        "密瓜智能 平台功能概述",
         "根据您的需求定制的演示",
         "与我们的解决方案专家互动",
         "部署选项和定价的详细探讨"
@@ -640,7 +636,7 @@
   },
   "resources": {
     "title": "资源中心",
-    "subtitle": "探索我们的技术文档、博客文章和白皮书，了解更多关于 kantaloupe 的信息",
+    "subtitle": "探索我们的技术文档、博客文章和白皮书，了解更多关于 密瓜智能 的信息",
     "viewMore": "查看更多",
     "documentation": {
       "title": "文档",
@@ -694,31 +690,31 @@
       "title": "最新资源",
       "articles": [
         {
-          "title": "Kantaloupe v2.0 发布：新特性与改进",
+          "title": "密瓜智能 v2.0 发布：新特性与改进",
           "category": "博客",
           "date": "2025-01-15",
-          "excerpt": "了解 Kantaloupe 最新版本中的重要更新和性能提升。",
-          "link": "/resources/blog/kantaloupe-v2-release"
+          "excerpt": "了解 密瓜智能 最新版本中的重要更新和性能提升。",
+          "link": "/resources/blog/密瓜智能-v2-release"
         },
         {
           "title": "异构计算在大规模 AI 训练中的应用",
           "category": "白皮书",
           "date": "2024-12-10",
-          "excerpt": "探索如何利用 Kantaloupe 优化大规模 AI 模型训练的资源分配。",
+          "excerpt": "探索如何利用 密瓜智能 优化大规模 AI 模型训练的资源分配。",
           "link": "/resources/whitepapers/heterogeneous-computing-ai-training"
         },
         {
-          "title": "Kantaloupe API 参考指南",
+          "title": "密瓜智能 API 参考指南",
           "category": "文档",
           "date": "2024-11-28",
-          "excerpt": "全面的 API 文档，帮助开发者集成和扩展 Kantaloupe 平台。",
+          "excerpt": "全面的 API 文档，帮助开发者集成和扩展 密瓜智能 平台。",
           "link": "/resources/documentation/api-reference"
         },
         {
           "title": "案例研究：TechCorp 如何节省 40% 的计算成本",
           "category": "博客",
           "date": "2024-11-15",
-          "excerpt": "了解 TechCorp 如何使用 Kantaloupe 优化其 HPC 工作负载并显著降低成本。",
+          "excerpt": "了解 TechCorp 如何使用 密瓜智能 优化其 HPC 工作负载并显著降低成本。",
           "link": "/resources/blog/techcorp-case-study"
         }
       ],
@@ -750,7 +746,7 @@
       "mission": {
         "title": "我们的使命",
         "description1": "在 dynamia ai，我们致力于通过创新的异构计算解决方案帮助组织最大化其计算资源的价值。我们相信，通过智能管理和优化计算资源，我们可以加速科学发现，推动技术创新，并为全球各行业的客户创造价值。",
-        "description2": "我们的旗舰产品 kantaloupe 是一个统一的异构计算平台，专为应对当今最复杂的计算挑战而设计。无论是 AI 训练、高性能计算还是边缘计算，kantaloupe 都能提供无与伦比的资源效率和性能优化。"
+        "description2": "我们的旗舰产品 密瓜智能 是一个统一的异构计算平台，专为应对当今最复杂的计算挑战而设计。无论是 AI 训练、高性能计算还是边缘计算，密瓜智能 都能提供无与伦比的资源效率和性能优化。"
       },
       "vision": {
         "title": "公司愿景",
@@ -764,21 +760,57 @@
     "team": {
       "title": "核心团队",
       "members": [
-        { "name": "张潇", "position": "CEO & 创始人 & HAMi 核心维护者", "image": "CEO" },
-        { "name": "李孟轩", "position": "首席架构师 & 联合创始人 & HAMi 项目创始人", "image": "CTO" },
-        { "name": "尹玉", "position": "产品负责人 & HAMi 核心维护者", "image": "COO" },
-        { "name": "陈文", "position": "技术负责人", "image": "CPO" },
-        { "name": "宋净超", "position": "开源生态 VP", "image": "jimmy" }
+        {
+          "name": "张潇",
+          "position": "CEO & 创始人 & HAMi 核心维护者",
+          "image": "CEO"
+        },
+        {
+          "name": "李孟轩",
+          "position": "首席架构师 & 联合创始人 & HAMi 项目创始人",
+          "image": "CTO"
+        },
+        {
+          "name": "尹玉",
+          "position": "产品负责人 & HAMi 核心维护者",
+          "image": "COO"
+        },
+        {
+          "name": "陈文",
+          "position": "技术负责人",
+          "image": "CPO"
+        },
+        {
+          "name": "宋净超",
+          "position": "开源生态 VP",
+          "image": "jimmy"
+        }
       ]
     },
     "careers": {
       "title": "职业发展",
       "description": "加入我们的创新团队，共同塑造计算的未来",
       "jobs": [
-        { "title": "高级软件工程师", "location": "北京", "type": "全职" },
-        { "title": "机器学习工程师", "location": "上海", "type": "全职" },
-        { "title": "产品经理", "location": "远程", "type": "全职" },
-        { "title": "解决方案架构师", "location": "深圳", "type": "全职" }
+        {
+          "title": "高级软件工程师",
+          "location": "北京",
+          "type": "全职"
+        },
+        {
+          "title": "机器学习工程师",
+          "location": "上海",
+          "type": "全职"
+        },
+        {
+          "title": "产品经理",
+          "location": "远程",
+          "type": "全职"
+        },
+        {
+          "title": "解决方案架构师",
+          "location": "深圳",
+          "type": "全职"
+        }
       ],
       "viewJobsButton": "查看所有职位",
       "applyButton": "申请"
@@ -826,12 +858,12 @@
     "company": "公司",
     "aboutUs": "关于我们",
     "contactUs": "联系我们",
-    "platformTitle": "Dynamia AI 平台",
+    "platformTitle": "密瓜智能 平台",
     "getDemo": "获取演示",
     "pricing": "定价",
     "poweredByHami": "由 HAMi 提供支持",
     "followWechat": "关注微信公众号",
-    "companyDescription": "Dynamia 密瓜智能专注 GPU 虚拟化与异构算力调度，是 CNCF 开源项目 HAMi 的发起与主导方。",
+    "companyDescription": "密瓜智能 密瓜智能专注 GPU 虚拟化与异构算力调度，是 CNCF 开源项目 HAMi 的发起与主导方。",
     "companyIntro": "企业级 GPU 虚拟化与调度平台，基于 CNCF 开源项目 HAMi 深度优化。",
     "about": "关于",
     "aboutCompany": "公司概况",
@@ -969,7 +1001,7 @@
     },
     "trustedBy": {
       "title": "行业领导者的信赖选择",
-      "description": "各行业的领先组织都依靠 Kantaloupe 高效管理其异构计算资源。"
+      "description": "各行业的领先组织都依靠 密瓜智能 高效管理其异构计算资源。"
     }
   },
   "caseStudiesPage": {
@@ -1256,9 +1288,18 @@
       "title": "贝壳基于 HAMi 与 Kubernetes 实现机器学习基础设施 GPU 虚拟化，利用率提升近 3 倍",
       "subtitle": "探索贝壳如何基于 HAMi 和 Kubernetes 打造 AIStudio 平台，实现 GPU 利用率从 13% 提升至 37%（近 3 倍提升），同时支持 10,000+ Pod 并发运行和日均 1,000 万 + 请求处理，涵盖混合云环境。",
       "stats": [
-        { "value": "3x", "label": "GPU 利用率提升" },
-        { "value": "10,000+", "label": "并发运行 Pod 数" },
-        { "value": "1,000 万+", "label": "日均处理请求数" }
+        {
+          "value": "3x",
+          "label": "GPU 利用率提升"
+        },
+        {
+          "value": "10,000+",
+          "label": "并发运行 Pod 数"
+        },
+        {
+          "value": "1,000 万+",
+          "label": "日均处理请求数"
+        }
       ],
       "overview": {
         "title": "公司概述",
@@ -1342,12 +1383,36 @@
         "title": "显著成效：GPU 利用率提升近 3 倍",
         "description": "通过利用包括 HAMi 和 Kubernetes 在内的开源技术，AIStudio 在大规模环境中取得了显著成果。",
         "items": [
-          { "title": "GPU 利用率", "value": "13% → 37%", "description": "近 3 倍提升" },
-          { "title": "平台规模", "value": "10,000+ Pod", "description": "并发运行" },
-          { "title": "日请求量", "value": "1,000 万+", "description": "日均处理" },
-          { "title": "集群覆盖", "value": "5 个集群", "description": "公有云和私有云" },
-          { "title": "零停机", "value": "100%", "description": "迁移和运营期间" },
-          { "title": "工作负载类型", "value": "统一", "description": "训练和推理在同一平台" }
+          {
+            "title": "GPU 利用率",
+            "value": "13% → 37%",
+            "description": "近 3 倍提升"
+          },
+          {
+            "title": "平台规模",
+            "value": "10,000+ Pod",
+            "description": "并发运行"
+          },
+          {
+            "title": "日请求量",
+            "value": "1,000 万+",
+            "description": "日均处理"
+          },
+          {
+            "title": "集群覆盖",
+            "value": "5 个集群",
+            "description": "公有云和私有云"
+          },
+          {
+            "title": "零停机",
+            "value": "100%",
+            "description": "迁移和运营期间"
+          },
+          {
+            "title": "工作负载类型",
+            "value": "统一",
+            "description": "训练和推理在同一平台"
+          }
         ]
       },
       "hamiIntegration": {
@@ -1386,9 +1451,18 @@
       "title": " DaoCloud 基于 HAMi 构建灵活 GPU 云，利用率超 80%",
       "subtitle": "探索 DaoCloud 如何运营两大云原生 AI 工作负载平台——D.run 算力云和 DaoCloud 企业版（DCE），使用 HAMi 在跨 10+ 数据中心的 10,000+ GPU 上实现 >80% 的 GPU 利用率。",
       "stats": [
-        { "value": "10,000+", "label": "跨平台 GPU 数量" },
-        { "value": ">80%", "label": "平均 GPU 利用率" },
-        { "value": "20-30%", "label": "运营成本降低" }
+        {
+          "value": "10,000+",
+          "label": "跨平台 GPU 数量"
+        },
+        {
+          "value": ">80%",
+          "label": "平均 GPU 利用率"
+        },
+        {
+          "value": "20-30%",
+          "label": "运营成本降低"
+        }
       ],
       "overview": {
         "title": "公司概述",
@@ -1479,12 +1553,36 @@
         "title": "显著成效：成本降低和效率提升",
         "description": "通过集成 HAMi，DaoCloud 将以前分散的 GPU 资源整合为跨公共云和私有云的更加统一、高效和可扩展的 GPU 层。",
         "items": [
-          { "title": "GPU 利用率", "value": ">80%", "description": "部署 HAMi 后每卡平均利用率" },
-          { "title": "成本降低", "value": "20-30%", "description": "GPU 相关运营成本降低" },
-          { "title": "统一抽象", "value": "单一层", "description": "跨 NVIDIA 和国产 GPU" },
-          { "title": "部署规模", "value": "10,000+ GPU", "description": "跨 10+ 数据中心" },
-          { "title": "多区域", "value": "7 个区域", "description": "中国活跃的 D.run 区域" },
-          { "title": "开放协作", "value": "活跃", "description": "向上游贡献改进" }
+          {
+            "title": "GPU 利用率",
+            "value": ">80%",
+            "description": "部署 HAMi 后每卡平均利用率"
+          },
+          {
+            "title": "成本降低",
+            "value": "20-30%",
+            "description": "GPU 相关运营成本降低"
+          },
+          {
+            "title": "统一抽象",
+            "value": "单一层",
+            "description": "跨 NVIDIA 和国产 GPU"
+          },
+          {
+            "title": "部署规模",
+            "value": "10,000+ GPU",
+            "description": "跨 10+ 数据中心"
+          },
+          {
+            "title": "多区域",
+            "value": "7 个区域",
+            "description": "中国活跃的 D.run 区域"
+          },
+          {
+            "title": "开放协作",
+            "value": "活跃",
+            "description": "向上游贡献改进"
+          }
         ]
       },
       "quote": {
@@ -1508,9 +1606,18 @@
       "title": "蔚来汽车 × HAMi | 提升自动驾驶工作负载 GPU 利用率",
       "subtitle": "探索蔚来汽车如何采用混合 GPU 共享策略，利用 HAMi 实现 CI 流水线 GPU 利用率提升 10 倍、模拟工作负载 GPU 小时数减少 30%，在 600 张 GPU 规模的自动驾驶 AI 基础设施中实现显著效率提升。",
       "stats": [
-        { "value": "600", "label": "张 GPU，分布于约 80 个节点" },
-        { "value": "10×", "label": "CI 流水线 GPU 利用率提升" },
-        { "value": "30%", "label": "模拟工作负载 GPU 小时数减少" }
+        {
+          "value": "600",
+          "label": "张 GPU，分布于约 80 个节点"
+        },
+        {
+          "value": "10×",
+          "label": "CI 流水线 GPU 利用率提升"
+        },
+        {
+          "value": "30%",
+          "label": "模拟工作负载 GPU 小时数减少"
+        }
       ],
       "overview": {
         "title": "公司概述",
@@ -1665,4 +1772,4 @@
     "useCompanyEmail": "请使用公司邮箱提交表单。",
     "submitting": "提交中..."
   }
-} 
+}

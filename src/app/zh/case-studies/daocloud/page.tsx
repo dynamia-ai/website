@@ -6,13 +6,13 @@ const title = zhTranslation.cases?.daoCloud?.title || ' DaoCloud HAMi 案例研�
 const description = zhTranslation.cases?.daoCloud?.subtitle || '';
 
 export const metadata: Metadata = {
-  title: `案例研究 | ${title} | Dynamia AI`,
+  title: `案例研究 | ${title} | 密瓜智能`,
   description,
   openGraph: {
-    title: `案例研究 | ${title} | Dynamia AI`,
+    title: `案例研究 | ${title} | 密瓜智能`,
     description,
     url: '/zh/case-studies/daocloud',
-    siteName: 'Dynamia AI',
+    siteName: '密瓜智能',
     type: 'article',
   },
   alternates: {

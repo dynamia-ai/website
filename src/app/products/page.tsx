@@ -149,7 +149,7 @@ export default function Products() {
                   <div className="w-full rounded-md bg-white dark:bg-white/95 p-2 shadow-sm">
                   <Image 
                     src="/images/products/product-overview.png" 
-                    alt="Kantaloupe Overview" 
+                    alt="Dynamia AI Overview"
                     width={550}
                     height={550}
                     className="rounded-lg"
