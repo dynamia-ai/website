@@ -22,14 +22,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://dynamia.ai'),
   title: {
-    default: "Dynamia AI - Unified Heterogeneous Computing",
-    template: "%s | Dynamia AI"
+    default: "Dynamia AI（密瓜智能） - Unified Heterogeneous Computing",
+    template: "%s | Dynamia AI（密瓜智能）"
   },
-  description: "Accelerate AI, HPC, and Edge workloads seamlessly with kantaloupe. Enterprise-grade GPU virtualization and resource management platform.",
-  keywords: "dynamia ai, heterogeneous computing, GPU virtualization, AI infrastructure, HAMi, kantaloupe, enterprise computing",
+  description: "Accelerate AI, HPC, and Edge workloads seamlessly. Enterprise-grade GPU virtualization and resource management platform by Dynamia AI（密瓜智能）.",
+  keywords: "dynamia ai, 密瓜智能，heterogeneous computing, GPU virtualization, AI infrastructure, HAMi, GPU sharing, enterprise computing",
   authors: [{ name: "Dynamia AI Team" }],
-  creator: "Dynamia AI",
-  publisher: "Dynamia AI",
+  creator: "Dynamia AI（密瓜智能）",
+  publisher: "Dynamia AI（密瓜智能）",
   formatDetection: {
     email: false,
     address: false,
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://dynamia.ai',
-    title: 'Dynamia AI - Unified Heterogeneous Computing',
-    description: 'Accelerate AI, HPC, and Edge workloads seamlessly with kantaloupe. Enterprise-grade GPU virtualization and resource management platform.',
-    siteName: 'Dynamia AI',
+    title: 'Dynamia AI（密瓜智能） - Unified Heterogeneous Computing',
+    description: 'Accelerate AI, HPC, and Edge workloads seamlessly. Enterprise-grade GPU virtualization and resource management platform.',
+    siteName: 'Dynamia AI（密瓜智能）',
     images: [
       {
         url: '/LOGO-small.svg',
@@ -61,8 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dynamia AI - Unified Heterogeneous Computing',
-    description: 'Accelerate AI, HPC, and Edge workloads seamlessly with kantaloupe.',
+    title: 'Dynamia AI（密瓜智能） - Unified Heterogeneous Computing',
+    description: 'Accelerate AI, HPC, and Edge workloads seamlessly. Enterprise-grade GPU virtualization platform.',
     images: ['/LOGO-small.svg'],
   },
   robots: {
@@ -143,9 +143,10 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Dynamia AI",
+              "alternateName": "密瓜智能",
               "url": "https://dynamia.ai",
               "logo": "https://dynamia.ai/LOGO-small.svg",
-              "description": "Enterprise-grade heterogeneous computing platform for AI, HPC, and Edge workloads",
+              "description": "Enterprise-grade heterogeneous computing platform for AI, HPC, and Edge workloads. 密瓜智能（Dynamia AI）provides GPU virtualization and resource management solutions.",
               "foundingDate": "2023",
               "sameAs": [
                 "https://github.com/Project-HAMi/HAMi"
@@ -171,11 +172,13 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Dynamia AI",
+              "alternateName": "密瓜智能",
               "url": "https://dynamia.ai",
-              "description": "Enterprise-grade heterogeneous computing platform",
+              "description": "Enterprise-grade heterogeneous computing platform by Dynamia AI（密瓜智能）",
               "publisher": {
                 "@type": "Organization",
-                "name": "Dynamia AI"
+                "name": "Dynamia AI",
+                "alternateName": "密瓜智能"
               },
               "potentialAction": {
                 "@type": "SearchAction",

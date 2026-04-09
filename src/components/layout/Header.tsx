@@ -31,9 +31,7 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [isEventBannerVisible, setIsEventBannerVisible] = useState(false);
-  const EVENT_BANNER_DISMISSED_KEY = 'kubecon-eu-hami-banner-dismissed-v1';
-  
+
   // 确定当前语言
   const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
 
@@ -41,19 +39,6 @@ const Header: React.FC = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const dismissed = window.localStorage.getItem(EVENT_BANNER_DISMISSED_KEY) === '1';
-    setIsEventBannerVisible(!dismissed);
-  }, []);
-
-  const closeEventBanner = () => {
-    setIsEventBannerVisible(false);
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(EVENT_BANNER_DISMISSED_KEY, '1');
-    }
-  };
 
   // 切换语言
   const changeLanguage = (newLocale: string) => {
@@ -326,41 +311,17 @@ const Header: React.FC = () => {
     );
   }
 
-  const desktopMenuTopClass = isEventBannerVisible ? 'top-[104px]' : 'top-16';
-  const logoSrc = resolvedTheme === 'dark' ? '/dynamia-logo-white.svg' : '/dynamia-logo.svg';
+  const desktopMenuTopClass = 'top-16';
+  const logoSrc = currentLocale === 'zh'
+    ? '/dynamia-logo-zh.svg'
+    : resolvedTheme === 'dark'
+      ? '/dynamia-logo-white.svg'
+      : '/dynamia-logo.svg';
 
   return (
     <Disclosure as="nav" className="bg-white dark:bg-gray-950 shadow-sm sticky top-0 z-50 transition-colors duration-300">
       {({ open }) => (
         <>
-          {isEventBannerVisible && (
-            <div className="bg-primary-light dark:bg-primary/10 border-b border-primary/20">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
-                <div className="flex items-start justify-between gap-3">
-                  <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 leading-relaxed">
-                    <span className="font-semibold mr-2">{t('navigation.eventBannerLabel')}</span>
-                    {t('navigation.eventBannerMessage')}
-                    <a
-                      href="https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-2 inline-flex items-center font-medium text-primary hover:text-primary-dark underline underline-offset-2"
-                      aria-label={t('navigation.eventBannerDetailsAria')}
-                    >
-                      {t('navigation.eventBannerDetails')}
-                    </a>
-                  </p>
-                  <button
-                    onClick={closeEventBanner}
-                    className="shrink-0 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
-                    aria-label={t('navigation.eventBannerClose')}
-                  >
-                    <XMarkIcon className="h-4 w-4" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex">

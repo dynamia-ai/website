@@ -7,13 +7,13 @@ const title = zhTranslation.cases?.sfTechnologyEffectiveGpu?.title || '顺丰科
 const description = zhTranslation.cases?.sfTechnologyEffectiveGpu?.subtitle || '';
 
 export const metadata: Metadata = {
-  title: `客户案例｜${title} | Dynamia AI`,
+  title: `客户案例｜${title} | 密瓜智能`,
   description,
   openGraph: {
-    title: `客户案例｜${title} | Dynamia AI`,
+    title: `客户案例｜${title} | 密瓜智能`,
     description,
     url: '/zh/case-studies/sf-technology',
-    siteName: 'Dynamia AI',
+    siteName: '密瓜智能',
     type: 'article',
   },
   alternates: {

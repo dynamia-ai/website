@@ -145,7 +145,7 @@
       "title": "What Our Customers Say",
       "items": [
         {
-          "quote": "Kantaloupe has dramatically improved our computational efficiency, allowing us to scale our AI research faster than ever before.",
+          "quote": "Dynamia AI has dramatically improved our computational efficiency, allowing us to scale our AI research faster than ever before.",
           "author": "Dr. Jane Smith",
           "position": "CTO",
           "company": "AI Research Institute"
@@ -662,31 +662,31 @@
       "title": "Latest Resources",
       "articles": [
         {
-          "title": "Kantaloupe v2.0 Release: New Features and Improvements",
+          "title": "Dynamia AI v2.0 Release: New Features and Improvements",
           "category": "Blog",
           "date": "2025-01-15",
-          "excerpt": "Learn about the important updates and performance enhancements in the latest version of Kantaloupe.",
-          "link": "/resources/blog/kantaloupe-v2-release"
+          "excerpt": "Learn about the important updates and performance enhancements in the latest version of Dynamia AI.",
+          "link": "/resources/blog/Dynamia AI-v2-release"
         },
         {
           "title": "Heterogeneous Computing in Large-Scale AI Training",
           "category": "Whitepaper",
           "date": "2024-12-10",
-          "excerpt": "Explore how to use Kantaloupe to optimize resource allocation for large-scale AI model training.",
+          "excerpt": "Explore how to use Dynamia AI to optimize resource allocation for large-scale AI model training.",
           "link": "/resources/whitepapers/heterogeneous-computing-ai-training"
         },
         {
-          "title": "Kantaloupe API Reference Guide",
+          "title": "Dynamia AI API Reference Guide",
           "category": "Documentation",
           "date": "2024-11-28",
-          "excerpt": "Comprehensive API documentation to help developers integrate and extend the Kantaloupe platform.",
+          "excerpt": "Comprehensive API documentation to help developers integrate and extend the Dynamia AI platform.",
           "link": "/resources/documentation/api-reference"
         },
         {
           "title": "Case Study: How TechCorp Saved 40% on Computing Costs",
           "category": "Blog",
           "date": "2024-11-15",
-          "excerpt": "Learn how TechCorp used Kantaloupe to optimize their HPC workloads and significantly reduce costs.",
+          "excerpt": "Learn how TechCorp used Dynamia AI to optimize their HPC workloads and significantly reduce costs.",
           "link": "/resources/blog/techcorp-case-study"
         }
       ],
@@ -713,12 +713,12 @@
         "title": "Who we are",
         "paragraph1": "Dynamia.ai is the creator and maintainer of HAMi, which is the world's fastest-growing and most widely adopted open-source, heterogeneous AI computing virtualization middleware, scales AI workloads seamlessly across hybrid and multi-cloud environments.",
         "paragraph2": "Dynamia.ai offers an enterprise platform for AI workloads and GPU orchestration, unlocking the full potential of AI infrastructure.  This allows enterprises to effortlessly tackle the challenges of AI infrastructure utilization and hybrid complexity.",
-        "paragraph3":""
+        "paragraph3": ""
       },
       "mission": {
         "title": "Our Mission",
         "description1": "At dynamia ai, we are committed to helping organizations maximize the value of their computing resources through innovative heterogeneous computing solutions. We believe that by intelligently managing and optimizing computing resources, we can accelerate scientific discovery, drive technological innovation, and create value for customers across industries worldwide.",
-        "description2": "Our flagship product, Dynamia AI, is a unified heterogeneous computing platform designed to handle today's most complex computational challenges. Whether for AI training, high-performance computing, or edge computing, kantaloupe delivers unparalleled resource efficiency and performance optimization."
+        "description2": "Our flagship product, Dynamia AI, is a unified heterogeneous computing platform designed to handle today's most complex computational challenges. Whether for AI training, high-performance computing, or edge computing, Dynamia AI delivers unparalleled resource efficiency and performance optimization."
       },
       "vision": {
         "title": "Company Vision",
@@ -732,22 +732,62 @@
     "team": {
       "title": "Leadership",
       "members": [
-        { "name": "Xiao Zhang", "position": "CEO & Founder & HAMi Maintainer", "image": "CEO" },
-        { "name": "Mengxuan Li", "position": "Chief Architect & Co-founder & HAMi Maintainer", "image": "CTO" },
-        { "name": "Yu Yin", "position": "Product Leader & HAMi Maintainer", "image": "COO" },
-        { "name": "Wen Chen", "position": "Tech Leader", "image": "CPO" },
-        { "name": "Jimmy Song", "position": "VP of Open Source Ecosystem", "image": "jimmy" },
-        { "name": "Reza Jelveh", "position": "Head of Global Market & Solution Engineer", "image": "reza" }
+        {
+          "name": "Xiao Zhang",
+          "position": "CEO & Founder & HAMi Maintainer",
+          "image": "CEO"
+        },
+        {
+          "name": "Mengxuan Li",
+          "position": "Chief Architect & Co-founder & HAMi Maintainer",
+          "image": "CTO"
+        },
+        {
+          "name": "Yu Yin",
+          "position": "Product Leader & HAMi Maintainer",
+          "image": "COO"
+        },
+        {
+          "name": "Wen Chen",
+          "position": "Tech Leader",
+          "image": "CPO"
+        },
+        {
+          "name": "Jimmy Song",
+          "position": "VP of Open Source Ecosystem",
+          "image": "jimmy"
+        },
+        {
+          "name": "Reza Jelveh",
+          "position": "Head of Global Market & Solution Engineer",
+          "image": "reza"
+        }
       ]
     },
     "careers": {
       "title": "Careers",
       "description": "Join our team of innovators and shape the future of computing",
       "jobs": [
-        { "title": "Senior Software Engineer", "location": "Beijing", "type": "Full-time" },
-        { "title": "Machine Learning Engineer", "location": "Shanghai", "type": "Full-time" },
-        { "title": "Product Manager", "location": "Remote", "type": "Full-time" },
-        { "title": "Solutions Architect", "location": "Shenzhen", "type": "Full-time" }
+        {
+          "title": "Senior Software Engineer",
+          "location": "Beijing",
+          "type": "Full-time"
+        },
+        {
+          "title": "Machine Learning Engineer",
+          "location": "Shanghai",
+          "type": "Full-time"
+        },
+        {
+          "title": "Product Manager",
+          "location": "Remote",
+          "type": "Full-time"
+        },
+        {
+          "title": "Solutions Architect",
+          "location": "Shenzhen",
+          "type": "Full-time"
+        }
       ],
       "viewJobsButton": "View all positions",
       "applyButton": "Apply"
@@ -900,7 +940,7 @@
     },
     "trustedBy": {
       "title": "Trusted by Industry Leaders",
-      "description": "Leading organizations across various industries rely on Kantaloupe to manage their heterogeneous computing resources efficiently."
+      "description": "Leading organizations across various industries rely on Dynamia AI to manage their heterogeneous computing resources efficiently."
     }
   },
   "caseStudiesPage": {
@@ -1034,7 +1074,7 @@
             "description": "Deployed 65 services using 28 GPU cards, saving 37 cards"
           },
           {
-            "title": "Testing Service Cluster", 
+            "title": "Testing Service Cluster",
             "value": "6 GPUs → 19 Services",
             "description": "Deployed 19 services using 6 test GPU cards, saving 13 cards"
           },
@@ -1187,9 +1227,18 @@
       "title": "Ke Holdings Scales ML Infrastructure with GPU Virtualization using Kubernetes and HAMi",
       "subtitle": "Discover how Ke Holdings built AIStudio based on HAMi and Kubernetes, achieving nearly 3x GPU utilization improvement (13% → 37%) while supporting 10,000+ pods and 10M+ daily requests across hybrid cloud environments.",
       "stats": [
-        { "value": "3x", "label": "GPU utilization improvement" },
-        { "value": "10,000+", "label": "pods running simultaneously" },
-        { "value": "10M+", "label": "daily requests processed" }
+        {
+          "value": "3x",
+          "label": "GPU utilization improvement"
+        },
+        {
+          "value": "10,000+",
+          "label": "pods running simultaneously"
+        },
+        {
+          "value": "10M+",
+          "label": "daily requests processed"
+        }
       ],
       "overview": {
         "title": "Company Overview",
@@ -1273,12 +1322,36 @@
         "title": "Significant Results: 3x GPU Utilization Improvement",
         "description": "By leveraging open-source technologies including HAMi and Kubernetes, AIStudio has achieved remarkable results at massive scale.",
         "items": [
-          { "title": "GPU Utilization", "value": "13% → 37%", "description": "Nearly 3x improvement" },
-          { "title": "Platform Scale", "value": "10,000+ pods", "description": "Running simultaneously" },
-          { "title": "Daily Requests", "value": "10M+", "description": "Processed per day" },
-          { "title": "Cluster Coverage", "value": "5 clusters", "description": "Public and private cloud" },
-          { "title": "Zero Downtime", "value": "100%", "description": "During transition and operation" },
-          { "title": "Workload Types", "value": "Unified", "description": "Training and inference on same platform" }
+          {
+            "title": "GPU Utilization",
+            "value": "13% → 37%",
+            "description": "Nearly 3x improvement"
+          },
+          {
+            "title": "Platform Scale",
+            "value": "10,000+ pods",
+            "description": "Running simultaneously"
+          },
+          {
+            "title": "Daily Requests",
+            "value": "10M+",
+            "description": "Processed per day"
+          },
+          {
+            "title": "Cluster Coverage",
+            "value": "5 clusters",
+            "description": "Public and private cloud"
+          },
+          {
+            "title": "Zero Downtime",
+            "value": "100%",
+            "description": "During transition and operation"
+          },
+          {
+            "title": "Workload Types",
+            "value": "Unified",
+            "description": "Training and inference on same platform"
+          }
         ]
       },
       "hamiIntegration": {
@@ -1317,9 +1390,18 @@
       "title": "Building Flexible GPU Clouds with HAMi at DaoCloud",
       "subtitle": "Discover how DaoCloud operates two major cloud native platforms for AI workloads—D.run Compute Cloud and DaoCloud Enterprise—using HAMi to achieve >80% GPU utilization across 10,000+ GPUs spanning 10+ data centers.",
       "stats": [
-        { "value": "10,000+", "label": "GPUs across platforms" },
-        { "value": ">80%", "label": "average GPU utilization" },
-        { "value": "20-30%", "label": "reduction in operating costs" }
+        {
+          "value": "10,000+",
+          "label": "GPUs across platforms"
+        },
+        {
+          "value": ">80%",
+          "label": "average GPU utilization"
+        },
+        {
+          "value": "20-30%",
+          "label": "reduction in operating costs"
+        }
       ],
       "overview": {
         "title": "Company Overview",
@@ -1410,12 +1492,36 @@
         "title": "Significant Results: Cost Reduction and Improved Efficiency",
         "description": "By integrating HAMi, DaoCloud consolidated previously fragmented GPU resources into a more unified, efficient, and scalable GPU layer across both public and private clouds.",
         "items": [
-          { "title": "GPU Utilization", "value": ">80%", "description": "Average utilization per card after HAMi deployment" },
-          { "title": "Cost Reduction", "value": "20-30%", "description": "Reduction in GPU-related operating costs" },
-          { "title": "Unified Abstraction", "value": "Single Layer", "description": "Across NVIDIA and domestic GPUs" },
-          { "title": "Deployment Scale", "value": "10,000+ GPUs", "description": "Across 10+ data centers" },
-          { "title": "Multi-region", "value": "7 Regions", "description": "Active D.run regions across China" },
-          { "title": "Open Collaboration", "value": "Active", "description": "Contributing improvements upstream" }
+          {
+            "title": "GPU Utilization",
+            "value": ">80%",
+            "description": "Average utilization per card after HAMi deployment"
+          },
+          {
+            "title": "Cost Reduction",
+            "value": "20-30%",
+            "description": "Reduction in GPU-related operating costs"
+          },
+          {
+            "title": "Unified Abstraction",
+            "value": "Single Layer",
+            "description": "Across NVIDIA and domestic GPUs"
+          },
+          {
+            "title": "Deployment Scale",
+            "value": "10,000+ GPUs",
+            "description": "Across 10+ data centers"
+          },
+          {
+            "title": "Multi-region",
+            "value": "7 Regions",
+            "description": "Active D.run regions across China"
+          },
+          {
+            "title": "Open Collaboration",
+            "value": "Active",
+            "description": "Contributing improvements upstream"
+          }
         ]
       },
       "quote": {
@@ -1439,9 +1545,18 @@
       "title": "NIO Improves GPU Utilization for Autonomous Driving Workloads with HAMi",
       "subtitle": "Discover how NIO adopted a hybrid GPU sharing strategy using HAMi to achieve 10× GPU utilization improvement in CI pipelines and 30% reduction in GPU hours for simulation workloads across 600 GPUs supporting autonomous driving AI infrastructure.",
       "stats": [
-        { "value": "600", "label": "GPUs across ~80 nodes" },
-        { "value": "10×", "label": "GPU utilization improvement in CI" },
-        { "value": "30%", "label": "reduction in GPU hours for simulation" }
+        {
+          "value": "600",
+          "label": "GPUs across ~80 nodes"
+        },
+        {
+          "value": "10×",
+          "label": "GPU utilization improvement in CI"
+        },
+        {
+          "value": "30%",
+          "label": "reduction in GPU hours for simulation"
+        }
       ],
       "overview": {
         "title": "Company Overview",
@@ -1663,4 +1778,4 @@
     "useCompanyEmail": "Please use a company email to submit the form.",
     "submitting": "Submitting..."
   }
-} 
+}

@@ -150,11 +150,11 @@ export const breadcrumbSchema = (items: Array<{name: string, url: string}>) => (
   }))
 });
 
-// Product schema for Kantaloupe platform
+// Product schema for Dynamia AI platform
 export const productSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Kantaloupe - Enterprise Heterogeneous Computing Platform",
+  "name": "Dynamia AI - Enterprise Heterogeneous Computing Platform",
   "applicationCategory": "BusinessApplication, DeveloperApplication",
   "operatingSystem": "Linux, Kubernetes",
   "description": "Enterprise-grade heterogeneous computing platform built on HAMi technology. Provides GPU sharing, auto-scaling, and unified management for AI, HPC, and Edge workloads.",

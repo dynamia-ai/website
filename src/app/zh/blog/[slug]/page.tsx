@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const socialImage = getPostSocialImage(post);
 
   return {
-    title: `${post.title} | Dynamia AI 博客`,
+    title: `${post.title} | 密瓜智能博客`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
