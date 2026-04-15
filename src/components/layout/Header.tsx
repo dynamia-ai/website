@@ -313,7 +313,9 @@ const Header: React.FC = () => {
 
   const desktopMenuTopClass = 'top-16';
   const logoSrc = currentLocale === 'zh'
-    ? '/dynamia-logo-zh.svg'
+    ? resolvedTheme === 'dark'
+      ? '/dynamia-logo-zh-white.svg'
+      : '/dynamia-logo-zh.svg'
     : resolvedTheme === 'dark'
       ? '/dynamia-logo-white.svg'
       : '/dynamia-logo.svg';
