@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -9,26 +9,26 @@ import GitHubStars from '@/components/GitHubStars';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faNetworkWired,
-  faMicrochip,
-  faMemory,
-  faChartLine,
-  faEye,
   faArrowRight,
-  faCogs,
   faUsers,
   faCodeBranch,
   faCodeCommit,
   faStar
 } from '@fortawesome/free-solid-svg-icons';
 import { faDocker } from '@fortawesome/free-brands-svg-icons';
-import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 // 动画变体
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
+
+const FEATURE_TAB_IMAGES = [
+  '/images/features/feature1.svg',
+  '/images/features/feature2.svg',
+  '/images/features/feature3.svg',
+  '/images/features/feature4.svg',
+];
 
 // 箭头图标组件
 const ArrowIcon = () => (
@@ -39,8 +39,14 @@ const ArrowIcon = () => (
 );
 
 export default function Home() {
+  const FEATURE_AUTOPLAY_MS = 4000;
+  const FEATURE_PROGRESS_TICK_MS = 50;
+
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(0);
+  const [featureAutoplayPaused, setFeatureAutoplayPaused] = useState(false);
+  const [featureProgress, setFeatureProgress] = useState(0);
+  const [playedFeatureTabs, setPlayedFeatureTabs] = useState<number[]>([]);
   const ecosystemRef = useRef<HTMLDivElement>(null);
   const [ecoIndex, setEcoIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -48,16 +54,6 @@ export default function Home() {
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const [ecoCount, setEcoCount] = useState(0);
-
-  // Icon mapping for feature tabs
-  const featureIcons: IconDefinition[] = [
-    faNetworkWired,      // Hetero multi-cluster
-    faMicrochip,         // GPU Sharing
-    faMemory,            // GPU Oversubscription
-    faChartLine,         // Auto Scale
-    faEye,               // Observability
-    faCogs               // Advanced Scheduling
-  ];
 
   useEffect(() => {
     const el = ecosystemRef.current;
@@ -130,34 +126,87 @@ export default function Home() {
   };
 
   const featureTabs = t('home.keyAdvantages.tabs', { returnObjects: true });
-  const featureTabsArray = Array.isArray(featureTabs)
-    ? featureTabs
-    : [
-        {
-          title: "Hetero multi-cluster",
-          description: "Dynamia.ai provides a centralized approach to managing AI infrastructure, ensuring optimal workload distribution across hybrid, multi-cloud, and on-premises environments."
-        },
-        {
-          title: "GPU Sharing",
-          description: "Dynamia.ai dynamically consolidates and orchestrates GPU resources. By eliminating waste, maximizing resource utilization, enterprises achieve superior ROI, reduced operational costs, and faster scaling of AI initiatives."
-        },
-        {
-          title: "GPU Oversubscription",
-          description: "Dynamia.ai supports seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
-        },
-        {
-          title: "Seamlessly Auto Scale",
-          description: "GPU on-demand auto-scaling, seamless VPA scaling for AI workloads without restarts during GPU consumption surges."
-        },
-        {
-          title: "Centralized Observability for Complete AI insight",
-          description: "Its centralized observability unifies resources from cloud, on-premises, and hybrid environments, empowering enterprises with actionable insights, policy-driven governance, and fine-grained resource management for efficient and scalable AI operations. "
-        },
-        {
-          title: "Advanced AI Scheduling",
-          description: "Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, minimize fragments, optimize task performance."
-        }
-      ];
+  const featureTabsArray = useMemo(
+    () => (Array.isArray(featureTabs)
+      ? featureTabs
+      : [
+          {
+            title: "Hetero multi-cluster",
+            description: "Dynamia.ai provides a centralized approach to managing AI infrastructure, ensuring optimal workload distribution across hybrid, multi-cloud, and on-premises environments."
+          },
+          {
+            title: "GPU Sharing",
+            description: "Dynamia.ai dynamically consolidates and orchestrates GPU resources. By eliminating waste, maximizing resource utilization, enterprises achieve superior ROI, reduced operational costs, and faster scaling of AI initiatives."
+          },
+          {
+            title: "GPU Oversubscription",
+            description: "Dynamia.ai supports seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
+          },
+          {
+            title: "Seamlessly Auto Scale",
+            description: "GPU on-demand auto-scaling, seamless VPA scaling for AI workloads without restarts during GPU consumption surges."
+          },
+          {
+            title: "Centralized Observability for Complete AI insight",
+            description: "Its centralized observability unifies resources from cloud, on-premises, and hybrid environments, empowering enterprises with actionable insights, policy-driven governance, and fine-grained resource management for efficient and scalable AI operations. "
+          },
+          {
+            title: "Advanced AI Scheduling",
+            description: "Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, minimize fragments, optimize task performance."
+          }
+        ]),
+    [featureTabs]
+  );
+  const featureSlides = useMemo(
+    () => {
+      const total = Math.min(featureTabsArray.length, FEATURE_TAB_IMAGES.length);
+      return featureTabsArray.slice(0, total).map((tab, index) => ({
+        ...tab,
+        image: FEATURE_TAB_IMAGES[index],
+      }));
+    },
+    [featureTabsArray]
+  );
+
+  useEffect(() => {
+    if (activeTab >= featureSlides.length) {
+      setActiveTab(0);
+      setFeatureProgress(0);
+      setPlayedFeatureTabs([]);
+    }
+  }, [activeTab, featureSlides.length]);
+
+  useEffect(() => {
+    if (featureAutoplayPaused || featureSlides.length <= 1) return;
+
+    const id = setTimeout(() => {
+      setActiveTab((prev) => {
+        const next = (prev + 1) % featureSlides.length;
+        setPlayedFeatureTabs((played) => {
+          if (next === 0) return [];
+          return played.includes(prev) ? played : [...played, prev];
+        });
+        return next;
+      });
+    }, FEATURE_AUTOPLAY_MS);
+
+    return () => clearTimeout(id);
+  }, [featureAutoplayPaused, activeTab, featureSlides.length]);
+
+  useEffect(() => {
+    if (featureAutoplayPaused || featureSlides.length <= 1) return;
+
+    const startedAt = Date.now();
+    setFeatureProgress(0);
+
+    const id = setInterval(() => {
+      const elapsed = Date.now() - startedAt;
+      const progress = Math.min((elapsed / FEATURE_AUTOPLAY_MS) * 100, 100);
+      setFeatureProgress(progress);
+    }, FEATURE_PROGRESS_TICK_MS);
+
+    return () => clearInterval(id);
+  }, [featureAutoplayPaused, activeTab, featureSlides.length]);
 
   // Testimonials are currently not used in the UI but kept for future use
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -185,13 +234,13 @@ export default function Home() {
               <div className="mt-2 md:mt-4 flex flex-col sm:flex-wrap sm:flex-row items-start sm:items-center gap-3">
                 <Link
                   href="/apply-trial"
-                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
+                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary shadow-md transition-all duration-200 ease-out hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
                 >
                   {t('home.cta.freeTrialButton')}
                 </Link>
                 <Link
                   href="/request-demo"
-                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
+                  className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-primary/80 text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 shadow-sm transition-all duration-200 ease-out hover:border-primary hover:bg-primary-light hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
                 >
                   {t('home.cta.requestDemoButton')}
                 </Link>
@@ -355,22 +404,47 @@ export default function Home() {
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100">{t('home.keyAdvantages.title')}</h2>
           </div>
-          {/* 特性标签切换区域 */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12 px-2">
-            {featureTabsArray.map((tab, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveTab(index)}
-                className={`px-3 py-2 md:px-4 md:py-2 rounded-md text-xs sm:text-sm md:text-base font-medium transition-colors touch-manipulation flex items-center gap-2 ${
-                  activeTab === index
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200'
-                }`}
-              >
-                <FontAwesomeIcon icon={featureIcons[index] as any} className="h-4 w-4" />
-                {tab.title}
-              </button>
-            ))}
+          <div
+            onMouseEnter={() => setFeatureAutoplayPaused(true)}
+            onMouseLeave={() => setFeatureAutoplayPaused(false)}
+          >
+          {/* 顶部进度条切换区域 */}
+          <div className="mb-8 md:mb-12 px-2">
+            <div className="flex items-center gap-2 md:gap-3">
+              {featureSlides.map((tab, index) => {
+                const isPlayed = playedFeatureTabs.includes(index);
+                const isActive = activeTab === index;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setActiveTab(index);
+                      setFeatureProgress(0);
+                      setPlayedFeatureTabs(
+                        Array.from({ length: index }, (_, playedIndex) => playedIndex)
+                      );
+                    }}
+                    aria-label={tab.title}
+                    className="group cursor-pointer flex-1 py-1 touch-manipulation"
+                  >
+                    <span
+                      className={`relative block h-1.5 w-full overflow-hidden rounded-full transition-colors duration-200 ${
+                        isPlayed ? 'bg-[#b6c0ea]' : 'bg-[#e5e8f2]'
+                      }`}
+                    >
+                      <span
+                        className={`absolute left-0 top-0 h-full rounded-full transition-[width] duration-75 ease-linear ${
+                          isPlayed ? 'bg-[#8fcd57]' : 'bg-primary'
+                        }`}
+                        style={{
+                          width: isPlayed ? '100%' : isActive ? `${featureProgress}%` : '0%',
+                        }}
+                      />
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
           {/* 特性内容展示区域 */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-center">
@@ -379,8 +453,8 @@ export default function Home() {
               <div className="w-full">
                 <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-white/95 p-3 md:p-4 shadow-sm">
                   <Image
-                    src={`/images/features/feature${activeTab + 1}.svg`}
-                    alt={featureTabsArray[activeTab].title}
+                    src={featureSlides[activeTab]?.image || FEATURE_TAB_IMAGES[0]}
+                    alt={featureSlides[activeTab]?.title || ''}
                     width={600}
                     height={400}
                     quality={90}
@@ -400,23 +474,24 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
                 className="space-y-3 md:space-y-4"
               >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100">
-                  {featureTabsArray[activeTab].subtitle}
+                <h3 className="pt-1 text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  {featureSlides[activeTab]?.subtitle}
                 </h3>
                 <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {featureTabsArray[activeTab].description}
+                  {featureSlides[activeTab]?.description}
                 </p>
                 <div className="pt-2 md:pt-4">
                   <Link
                     href="/products"
-                    className="inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary hover:bg-primary-lighter transition-colors"
+                    className="group inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary hover:bg-primary-lighter transition-colors duration-200 ease-out"
                   >
                     {t('home.poweredByHami.learnMore')}
-                    <FontAwesomeIcon icon={faArrowRight as any} className="h-4 w-4 ml-2" />
+                    <FontAwesomeIcon icon={faArrowRight as any} className="h-4 w-4 ml-2 transition-transform duration-200 ease-out group-hover:translate-x-1" />
                   </Link>
                 </div>
               </motion.div>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -888,13 +963,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-wrap sm:flex-row justify-center gap-3 md:gap-4">
             <Link
               href="/apply-trial"
-              className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-100 dark:bg-gray-800 transition-colors w-full sm:w-auto"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 shadow-md transition-all duration-200 ease-out hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary w-full sm:w-auto"
             >
               {t('home.cta.freeTrialButton')}
             </Link>
             <Link
               href="/request-demo"
-              className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-primary-dark transition-colors w-full sm:w-auto"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/90 text-base font-medium rounded-md text-white bg-transparent shadow-sm transition-all duration-200 ease-out hover:border-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary w-full sm:w-auto"
             >
               {t('home.cta.requestDemoButton')}
             </Link>
