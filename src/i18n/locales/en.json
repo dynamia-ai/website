@@ -23,6 +23,8 @@
     "resourcesBlogDesc": "Read the latest news, tutorials and updates about HAMi",
     "resourcesTools": "Tools",
     "resourcesToolsDesc": "Open practical tools for operations and troubleshooting",
+    "resourcesVideos": "Videos",
+    "resourcesVideosDesc": "Watch product demos and introductions",
     "adopters": "Adopters",
     "adoptersDesc": "See who's using HAMi in production environments",
     "company": "Company",
@@ -1774,6 +1776,35 @@
         "content": "If you have any questions about our use of cookies or other technologies, please email us at info@dynamia.ai."
       }
     ]
+  },
+  "videos": {
+    "pageTitle": "Product Videos",
+    "pageSubtitle": "Built by the creators of HAMi — the CNCF sandbox project for heterogeneous GPU sharing and scheduling. See how Dynamia turns open-source innovation into enterprise-grade GPU orchestration.",
+    "locked": "Locked",
+    "gate": {
+      "title": "Watch Product Videos",
+      "subtitle": "Fill in your details to unlock",
+      "submit": "Unlock Videos",
+      "success": "Thanks! Unlocking now...",
+      "error": "Something went wrong. Please retry or email info@dynamia.ai."
+    },
+    "player": {
+      "close": "Close"
+    },
+    "items": {
+      "productOverview": {
+        "title": "Product Overview",
+        "description": "GPU sharing, scheduling & orchestration — a quick platform walkthrough."
+      },
+      "hamiIntro": {
+        "title": "What is HAMi",
+        "description": "Open-source heterogeneous GPU virtualization middleware, by Dynamia's founders."
+      },
+      "gpuOversell": {
+        "title": "GPU Oversubscription in Practice",
+        "description": "Enterprise-grade GPU oversubscription — real-world demo of resource optimization."
+      }
+    }
   },
   "common": {
     "readMore": "Read More",
