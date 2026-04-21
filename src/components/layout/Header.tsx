@@ -152,8 +152,15 @@ const Header: React.FC = () => {
       external: false,
       iconName: 'folder'
     },
-    { 
-      name: t('navigation.adopters'), 
+    {
+      name: t('navigation.resourcesVideos'),
+      description: t('navigation.resourcesVideosDesc'),
+      href: currentLocale === 'zh' ? '/zh/videos' : '/videos',
+      external: false,
+      iconName: 'document'
+    },
+    {
+      name: t('navigation.adopters'),
       description: t('navigation.adoptersDesc'),
       href: 'https://github.com/Project-HAMi/HAMi/issues/4', 
       external: true,
