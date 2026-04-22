@@ -2,12 +2,15 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { usePathname } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import { isCompanyEmail } from '@/utils/validation';
 
 export default function FreeTrial() {
   const { t } = useTranslation();
+  const pathname = usePathname();
+  const isZhPage = pathname?.startsWith('/zh');
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -39,8 +42,18 @@ export default function FreeTrial() {
       return;
     }
     
-    // 验证是否为公司邮箱
-    if (!isCompanyEmail(formState.email)) {
+    if (isZhPage && !formState.phone.trim()) {
+      alert(t('freeTrial.form.phoneRequired'));
+      return;
+    }
+
+    if (!isZhPage && !formState.email.trim()) {
+      alert(t('freeTrial.form.emailRequired'));
+      return;
+    }
+
+    // 中文页邮箱选填，英文页邮箱必填；填写后校验公司邮箱
+    if (formState.email.trim() && !isCompanyEmail(formState.email)) {
       alert(t('common.useCompanyEmail'));
       return;
     }
@@ -139,7 +152,9 @@ export default function FreeTrial() {
               <input type="hidden" name="_template" value="box" />
               
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.name')}</label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {t('freeTrial.form.name')} <span className="text-red-500">*</span>
+                </label>
                 <input 
                   type="text" 
                   id="name" 
@@ -151,19 +166,23 @@ export default function FreeTrial() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.email')}</label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {t('freeTrial.form.email')} {!isZhPage && <span className="text-red-500">*</span>}
+                </label>
                 <input 
                   type="email" 
                   id="email" 
                   name="email"
                   value={formState.email}
                   onChange={handleInputChange}
-                  required
+                  required={!isZhPage}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary" 
                 />
               </div>
               <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.company')}</label>
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {t('freeTrial.form.company')} <span className="text-red-500">*</span>
+                </label>
                 <input 
                   type="text" 
                   id="company" 
@@ -175,13 +194,16 @@ export default function FreeTrial() {
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('freeTrial.form.phone')}</label>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {isZhPage ? t('freeTrial.form.phoneWechat') : t('freeTrial.form.phone')} {isZhPage && <span className="text-red-500">*</span>}
+                </label>
                 <input 
                   type="tel" 
                   id="phone" 
                   name="phone"
                   value={formState.phone}
                   onChange={handleInputChange}
+                  required={isZhPage}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary" 
                 />
               </div>
