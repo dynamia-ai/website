@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import { Disclosure } from '@headlessui/react';
-import { 
-  Bars3Icon, 
-  XMarkIcon, 
-  ChevronDownIcon
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ChevronDownIcon,
+  PhoneIcon
 } from '@heroicons/react/24/outline';
 import HamiIcon from '@/components/HamiIcon';
 import ExternalLinkIcon from '@/components/ExternalLinkIcon';
@@ -509,6 +510,16 @@ const Header: React.FC = () => {
                 {/* 暂时隐藏搜索栏 */}
                 {/* <Search /> */}
 
+                {currentLocale === 'zh' && (
+                  <a
+                    href="tel:4000267800"
+                    className="inline-flex items-center px-1.5 xl:px-2 py-2 text-xs xl:text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white whitespace-nowrap"
+                  >
+                    <PhoneIcon className="h-4 w-4 mr-1.5 flex-shrink-0" />
+                    400-026-7800
+                  </a>
+                )}
+
                 <Link
                   href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
                   className="inline-flex items-center px-2 xl:px-3 py-1 xl:py-2 border border-transparent text-xs xl:text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark whitespace-nowrap"
@@ -688,6 +699,15 @@ const Header: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="px-4 py-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
+              {currentLocale === 'zh' && (
+                <a
+                  href="tel:4000267800"
+                  className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors touch-manipulation"
+                >
+                  <PhoneIcon className="h-5 w-5 mr-2 flex-shrink-0" />
+                  400-026-7800
+                </a>
+              )}
               <Link
                 href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
                 className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors shadow-sm touch-manipulation"
