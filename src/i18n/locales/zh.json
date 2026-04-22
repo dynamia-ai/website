@@ -23,6 +23,8 @@
     "resourcesBlogDesc": "阅读有关 HAMi 的最新消息、教程和更新",
     "resourcesTools": "工具",
     "resourcesToolsDesc": "打开运维与排障常用工具",
+    "resourcesVideos": "视频",
+    "resourcesVideosDesc": "观看产品演示和介绍视频",
     "adopters": "采用者",
     "adoptersDesc": "查看哪些组织在生产环境中使用 HAMi",
     "company": "公司",
@@ -1768,6 +1770,35 @@
       "conclusion": {
         "title": "混合策略成功",
         "description": "蔚来汽车的混合资源管理策略使其能够在同一 Kubernetes 环境中更高效地支持多样化的 AI 工作负载——从 CI 流水线到模拟和推理。这种方法展示了如何将 HAMi 与其他 GPU 分配机制相结合，为不同的工作负载类型提供最佳结果。"
+      }
+    }
+  },
+  "videos": {
+    "pageTitle": "产品视频",
+    "pageSubtitle": "由 HAMi 发起团队打造 —— HAMi 是 CNCF Sandbox 异构 GPU 共享调度项目。了解密瓜智能如何将开源创新转化为企业级 GPU 编排方案。",
+    "locked": "需解锁",
+    "gate": {
+      "title": "观看产品视频",
+      "subtitle": "填写信息即可解锁全部视频内容",
+      "submit": "解锁视频",
+      "success": "感谢提交！正在解锁视频...",
+      "error": "提交失败，请重试或联系 info@dynamia.ai。"
+    },
+    "player": {
+      "close": "关闭"
+    },
+    "items": {
+      "productOverview": {
+        "title": "密瓜智能产品概览",
+        "description": "全面了解密瓜智能平台的异构 GPU 共享、调度与编排能力。"
+      },
+      "hamiIntro": {
+        "title": "HAMi 介绍",
+        "description": "了解由密瓜智能创始团队创建的开源异构 AI 计算虚拟化中间件 HAMi。"
+      },
+      "gpuOversell": {
+        "title": "GPU 超卖企业级特性实战",
+        "description": "企业级 GPU 超卖能力演示 — 资源优化实战。"
       }
     }
   },
