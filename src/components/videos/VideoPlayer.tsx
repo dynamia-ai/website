@@ -10,7 +10,10 @@ interface VideoPlayerProps {
 }
 
 export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEn = i18n.language === 'en';
+  const videoUrl = (isEn && video.videoUrlEn) ? video.videoUrlEn : video.videoUrl;
+  const videoType = (isEn && video.videoTypeEn) ? video.videoTypeEn : video.videoType;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={onClose}>
@@ -30,18 +33,18 @@ export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
         </button>
 
         <div className="rounded-xl overflow-hidden shadow-2xl bg-black">
-          {video.videoType === 'native' ? (
+          {videoType === 'native' ? (
             <video
-              src={video.videoUrl}
+              src={videoUrl}
               controls
               autoPlay
               className="w-full aspect-video"
             >
               Your browser does not support the video tag.
             </video>
-          ) : video.videoType === 'youtube' ? (
+          ) : videoType === 'youtube' ? (
             <iframe
-              src={video.videoUrl}
+              src={videoUrl}
               className="w-full aspect-video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -50,7 +53,7 @@ export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
           ) : (
             /* Bilibili embed */
             <iframe
-              src={video.videoUrl}
+              src={videoUrl}
               className="w-full aspect-video border-0"
               allowFullScreen
               title={t(video.titleKey)}

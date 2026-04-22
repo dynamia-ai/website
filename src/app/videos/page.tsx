@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import MainLayout from '@/components/layout/MainLayout';
 import VideoGateModal from '@/components/videos/VideoGateModal';
 import VideoPlayer from '@/components/videos/VideoPlayer';
-import { videos, DEFAULT_COVER, type Video } from '@/data/videos';
+import { videos, DEFAULT_COVER, DEFAULT_COVER_EN, type Video } from '@/data/videos';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -15,7 +15,7 @@ const fadeIn = {
 };
 
 export default function VideosPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [unlocked, setUnlocked] = useState(false);
   const [showGate, setShowGate] = useState(false);
   const [pendingVideo, setPendingVideo] = useState<Video | null>(null);
@@ -84,7 +84,7 @@ export default function VideosPage() {
                   {/* Thumbnail */}
                   <div className="relative aspect-video bg-gray-100 dark:bg-gray-800">
                     <Image
-                      src={video.thumbnail || DEFAULT_COVER}
+                      src={i18n.language === 'en' ? (video.thumbnailEn || DEFAULT_COVER_EN) : (video.thumbnail || DEFAULT_COVER)}
                       alt={t(video.titleKey)}
                       fill
                       className="object-cover"
