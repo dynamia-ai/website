@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faXTwitter, faZhihu, faGithub, faSlack, faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { faBuilding, faFileAlt, faShieldAlt, faBook, faTag, faVideo, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding, faFileAlt, faShieldAlt, faBook, faTag, faVideo, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -115,15 +115,15 @@ const Footer: React.FC = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="https://cloud-native.slack.com/archives/C04NHKBFAVC" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faSlack as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.slack')}
-                    </Link>
-                  </li>
-                  <li>
                     <Link href="https://discord.gg/Amhy7XmbNq" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
                       <FontAwesomeIcon icon={faDiscord as any} className="h-4 w-4 opacity-70" />
                       {t('footer.discord')}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="https://cloud-native.slack.com/archives/C04NHKBFAVC" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faSlack as any} className="h-4 w-4 opacity-70" />
+                      {t('footer.slack')}
                     </Link>
                   </li>
                 </ul>
@@ -140,6 +140,17 @@ const Footer: React.FC = () => {
                       {t('footer.email')}
                     </a>
                   </div>
+
+                  {/* Phone - Only show on Chinese pages */}
+                  {currentLocale === 'zh' && (
+                    <div>
+                      <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">服务热线</p>
+                      <a href="tel:4000267800" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                        <FontAwesomeIcon icon={faPhone as any} className="h-4 w-4 opacity-70" />
+                        400-026-7800
+                      </a>
+                    </div>
+                  )}
 
                   {/* Social Media Icons */}
                   <div>
