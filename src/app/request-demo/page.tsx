@@ -2,16 +2,20 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { usePathname } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import { isCompanyEmail } from '@/utils/validation';
 
 export default function RequestDemo() {
   const { t } = useTranslation();
+  const pathname = usePathname();
+  const isZhPage = pathname?.startsWith('/zh');
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     company: '',
+    contact: '',
     jobTitle: '',
     message: ''
   });
@@ -30,9 +34,19 @@ export default function RequestDemo() {
   // 处理表单提交
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // 验证是否为公司邮箱
-    if (!isCompanyEmail(formState.email)) {
+
+    if (isZhPage && !formState.contact.trim()) {
+      alert(t('requestDemo.form.contactRequired'));
+      return;
+    }
+
+    if (!isZhPage && !formState.email.trim()) {
+      alert(t('requestDemo.form.emailRequired'));
+      return;
+    }
+
+    // 中文页邮箱选填，英文页邮箱必填；两者都在填写后校验公司邮箱
+    if (formState.email.trim() && !isCompanyEmail(formState.email)) {
       alert(t('common.useCompanyEmail'));
       return;
     }
@@ -41,25 +55,6 @@ export default function RequestDemo() {
     setSubmitStatus('idle');
     
     try {
-      // Prepare email content
-      const formData = new FormData();
-      
-      // Add all form fields to FormData
-      Object.entries(formState).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      
-      // Add email subject
-      formData.append('_subject', `Demo Request - ${formState.company}`);
-      
-      // Specify the target email
-      formData.append('_replyto', formState.email);
-      
-      // Add hidden fields for FormSubmit configuration
-      formData.append('_next', typeof window !== 'undefined' ? window.location.href : '');
-      formData.append('_captcha', 'true');
-      formData.append('_template', 'box');
-      
       // Send to API route using Resend
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -70,8 +65,10 @@ export default function RequestDemo() {
           name: formState.name,
           email: formState.email,
           company: formState.company,
+          contact: formState.contact,
           jobTitle: formState.jobTitle,
           message: formState.message,
+          locale: isZhPage ? 'zh' : 'en',
           _subject: `Demo Request - ${formState.company}`,
           _replyto: formState.email
         })
@@ -83,6 +80,7 @@ export default function RequestDemo() {
           name: '',
           email: '',
           company: '',
+          contact: '',
           jobTitle: '',
           message: ''
         });
@@ -159,7 +157,9 @@ export default function RequestDemo() {
                   <input type="hidden" name="_template" value="box" />
                   
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.name')}</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {t('requestDemo.form.name')} <span className="text-red-500">*</span>
+                    </label>
                     <input 
                       type="text" 
                       id="name" 
@@ -171,19 +171,23 @@ export default function RequestDemo() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.email')}</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {t('requestDemo.form.email')} {!isZhPage && <span className="text-red-500">*</span>}
+                    </label>
                     <input 
                       type="email" 
                       id="email" 
                       name="email"
                       value={formState.email}
                       onChange={handleInputChange}
-                      required
+                      required={!isZhPage}
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary" 
                     />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.company')}</label>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {t('requestDemo.form.company')} <span className="text-red-500">*</span>
+                    </label>
                     <input 
                       type="text" 
                       id="company" 
@@ -194,8 +198,40 @@ export default function RequestDemo() {
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary" 
                     />
                   </div>
+                  {isZhPage ? (
+                    <div>
+                      <label htmlFor="contact" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {t('requestDemo.form.contact')} <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="contact"
+                        name="contact"
+                        value={formState.contact}
+                        onChange={handleInputChange}
+                        required
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                      />
+                    </div>
+                  ) : (
+                    <div>
+                      <label htmlFor="contact" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {t('requestDemo.form.phone')}
+                      </label>
+                      <input
+                        type="tel"
+                        id="contact"
+                        name="contact"
+                        value={formState.contact}
+                        onChange={handleInputChange}
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                      />
+                    </div>
+                  )}
                   <div>
-                    <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('requestDemo.form.jobTitle')}</label>
+                    <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {t('requestDemo.form.jobTitle')} <span className="text-red-500">*</span>
+                    </label>
                     <input 
                       type="text" 
                       id="jobTitle" 
