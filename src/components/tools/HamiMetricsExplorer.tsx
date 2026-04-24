@@ -933,13 +933,13 @@ export default function HamiMetricsExplorer() {
           <div className="w-full max-w-3xl max-h-[85vh] bg-white rounded-xl border border-gray-200 flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="p-4 border-b border-gray-200 flex justify-between items-center">
               <h3 className="font-semibold">{t('tools.hamiMetricsExplorerPage.exportTitle')}</h3>
-              <button type="button" onClick={() => setShowExport(false)}>x</button>
+              <button type="button" className="cursor-pointer" onClick={() => setShowExport(false)}>x</button>
             </div>
             <pre className="p-4 overflow-auto text-xs flex-1">{JSON.stringify(result.exportData, null, 2)}</pre>
             <div className="p-4 border-t border-gray-200 flex gap-2">
               <button
                 type="button"
-                className="px-4 py-2 rounded bg-primary text-white"
+                className="cursor-pointer rounded-md bg-primary px-3 py-1.5 text-sm text-white"
                 onClick={async () => {
                   await navigator.clipboard.writeText(JSON.stringify(result.exportData, null, 2));
                   setCopyOk(true);
@@ -950,7 +950,7 @@ export default function HamiMetricsExplorer() {
               </button>
               <button
                 type="button"
-                className="px-4 py-2 rounded border border-gray-300 text-gray-700"
+                className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700"
                 onClick={() => download('gpu_inventory.json', JSON.stringify(result.exportData, null, 2), 'application/json')}
               >
                 {t('tools.hamiMetricsExplorerPage.downloadButton')}
@@ -966,7 +966,7 @@ export default function HamiMetricsExplorer() {
           <div className="w-full max-w-4xl max-h-[88vh] bg-white rounded-xl border border-gray-200 flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="p-4 border-b border-gray-200 flex justify-between items-center">
               <h3 className="font-semibold">{mergeOutput ? t('tools.hamiMetricsExplorerPage.mergeResultTitle') : t('tools.hamiMetricsExplorerPage.mergeTitle')}</h3>
-              <button type="button" onClick={() => setShowMerge(false)}>x</button>
+              <button type="button" className="cursor-pointer" onClick={() => setShowMerge(false)}>x</button>
             </div>
             <div className="p-4 overflow-auto flex-1 space-y-3">
               {!mergeOutput ? (
@@ -989,12 +989,12 @@ export default function HamiMetricsExplorer() {
                         setMergeInput(await file.text());
                       }}
                     />
-                    <button type="button" className="px-4 py-2 rounded border border-gray-300 text-gray-700 bg-white" onClick={() => mergeFileRef.current?.click()}>
+                    <button type="button" className="cursor-pointer rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700" onClick={() => mergeFileRef.current?.click()}>
                       {t('tools.hamiMetricsExplorerPage.chooseJsonFile')}
                     </button>
                   </div>
                   {mergeError ? <div className="text-sm text-red-500">{mergeError}</div> : null}
-                  <button type="button" className="w-full px-4 py-2 rounded bg-primary text-white font-semibold" onClick={onMerge}>
+                  <button type="button" className="cursor-pointer w-full rounded-md bg-primary px-3 py-1.5 text-sm font-semibold text-white" onClick={onMerge}>
                     {t('tools.hamiMetricsExplorerPage.runMerge')}
                   </button>
                 </>
@@ -1006,7 +1006,7 @@ export default function HamiMetricsExplorer() {
               <div className="p-4 border-t border-gray-200 flex gap-2">
                 <button
                   type="button"
-                  className="px-4 py-2 rounded border border-gray-300 text-gray-700"
+                  className="cursor-pointer px-4 py-2 rounded border border-gray-300 text-gray-700"
                   onClick={() => {
                     setMergeOutput('');
                     setMergeStats(null);
@@ -1016,7 +1016,7 @@ export default function HamiMetricsExplorer() {
                 </button>
                 <button
                   type="button"
-                  className="px-4 py-2 rounded bg-primary text-white"
+                  className="cursor-pointer px-4 py-2 rounded bg-primary text-white"
                   onClick={async () => {
                     await navigator.clipboard.writeText(mergeOutput);
                     setCopyMergeOk(true);
@@ -1025,7 +1025,7 @@ export default function HamiMetricsExplorer() {
                 >
                   {t('tools.hamiMetricsExplorerPage.copyButton')}
                 </button>
-                <button type="button" className="px-4 py-2 rounded border border-gray-300 text-gray-700" onClick={() => download('merged_inventory.json', mergeOutput, 'application/json')}>
+                <button type="button" className="cursor-pointer px-4 py-2 rounded border border-gray-300 text-gray-700" onClick={() => download('merged_inventory.json', mergeOutput, 'application/json')}>
                   {t('tools.hamiMetricsExplorerPage.downloadButton')}
                 </button>
                 {copyMergeOk ? <span className="text-sm text-primary self-center">{t('tools.hamiMetricsExplorerPage.copied')}</span> : null}
