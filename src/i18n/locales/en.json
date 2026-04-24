@@ -708,6 +708,38 @@
     "hamiMetricsExplorer": {
       "title": "HAMi Metrics Explorer",
       "description": "Upload Prometheus metrics and inspect GPU inventory, utilization, and merge/export results."
+    },
+    "hamiMetricsExplorerPage": {
+      "subtitle": "Parse HAMi metrics, inspect GPU allocation and export inventory JSON.",
+      "uploadTitle": "Drop Prometheus metrics file or click to browse",
+      "uploadDesc": "Supports HAMi / kantaloupe metrics format",
+      "exportButton": "Export JSON",
+      "mergeButton": "Merge with old data",
+      "analysisTitle": "Analysis",
+      "inventoryTitle": "GPU inventory",
+      "indexHeader": "No.",
+      "nodesTitle": "Nodes",
+      "poolsUnit": "pools",
+      "nodesUnit": "nodes",
+      "activeShort": "active",
+      "idle": "idle",
+      "memShort": "Mem",
+      "coreShort": "Core",
+      "quotaTitle": "Quotas",
+      "buildInfoLabel": "Build info",
+      "exportTitle": "Export GPU inventory",
+      "copyButton": "Copy",
+      "downloadButton": "Download",
+      "copied": "Copied!",
+      "mergeTitle": "Merge inventory",
+      "mergeResultTitle": "Merge result",
+      "chooseJsonFile": "Choose .json file",
+      "runMerge": "Run merge",
+      "backButton": "Back",
+      "errors": {
+        "mergeEmpty": "Please paste old JSON first.",
+        "invalidJson": "Invalid JSON"
+      }
     }
   },
   "company": {

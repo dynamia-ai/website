@@ -15,7 +15,7 @@ interface ToolItem {
 const TOOLS: ToolItem[] = [
   {
     id: 'hami-metrics-explorer',
-    href: '/tools/hami-metrics-explorer.html',
+    href: '/tools/hami-metrics-explorer',
     iconSrc: '/icons/chart-line.svg',
     titleKey: 'tools.hamiMetricsExplorer.title',
     descriptionKey: 'tools.hamiMetricsExplorer.description',
@@ -43,8 +43,6 @@ export default function ToolsPage() {
               <a
                 key={tool.id}
                 href={tool.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200"
               >
                 <div className="flex items-center mb-4">
