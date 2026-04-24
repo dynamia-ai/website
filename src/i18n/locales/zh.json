@@ -738,6 +738,38 @@
     "hamiMetricsExplorer": {
       "title": "HAMi 指标分析工具",
       "description": "上传 Prometheus 指标文件，快速查看 GPU 清单、利用率并支持合并和导出。"
+    },
+    "hamiMetricsExplorerPage": {
+      "subtitle": "解析 HAMi 指标，查看 GPU 分配状态并导出清单 JSON。",
+      "uploadTitle": "拖拽 Prometheus 指标文件到这里，或点击选择文件",
+      "uploadDesc": "支持 HAMi / kantaloupe 指标格式",
+      "exportButton": "导出 JSON",
+      "mergeButton": "与旧数据合并",
+      "analysisTitle": "分析",
+      "inventoryTitle": "GPU 清单",
+      "indexHeader": "序号",
+      "nodesTitle": "节点",
+      "poolsUnit": "池",
+      "nodesUnit": "节点",
+      "activeShort": "活跃",
+      "idle": "空闲",
+      "memShort": "显存",
+      "coreShort": "核心",
+      "quotaTitle": "配额",
+      "buildInfoLabel": "构建信息",
+      "exportTitle": "导出 GPU 清单",
+      "copyButton": "复制",
+      "downloadButton": "下载",
+      "copied": "已复制",
+      "mergeTitle": "合并清单",
+      "mergeResultTitle": "合并结果",
+      "chooseJsonFile": "选择 .json 文件",
+      "runMerge": "执行合并",
+      "backButton": "返回",
+      "errors": {
+        "mergeEmpty": "请先粘贴旧 JSON。",
+        "invalidJson": "JSON 无效"
+      }
     }
   },
   "company": {
