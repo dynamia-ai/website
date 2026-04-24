@@ -78,18 +78,31 @@ const formatBytes = (b: number) => {
 
 const parseMetrics = (text: string): MetricEntry[] => {
   const result: MetricEntry[] = [];
+
+  const unescapeLabelValue = (value: string) =>
+    value.replace(/\\([\\n"])/g, (_, ch: string) => {
+      if (ch === 'n') return '\n';
+      return ch;
+    });
+
+  const parseLabels = (raw: string): Record<string, string> => {
+    const labels: Record<string, string> = {};
+    // Support escaped characters in quoted label values, e.g. a="x\"y\\z"
+    const labelRe = /([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*"((?:\\.|[^"\\])*)"/g;
+
+    for (const match of raw.matchAll(labelRe)) {
+      labels[match[1]] = unescapeLabelValue(match[2]);
+    }
+
+    return labels;
+  };
+
   for (const line of text.split('\n')) {
     if (!line || line.startsWith('#')) continue;
-    const matched = line.match(/^(\w+)\{([^}]*)\}\s+(.+)$/);
+    const matched = line.match(/^([a-zA-Z_:][a-zA-Z0-9_:]*)(?:\s*\{\s*([^}]*)\s*\})?\s+(.+)$/);
     if (!matched) continue;
 
-    const labels: Record<string, string> = {};
-    const parts = matched[2].match(/(\w+)="([^"]*)"/g) ?? [];
-    for (const part of parts) {
-      const kv = part.match(/(\w+)="([^"]*)"/);
-      if (!kv) continue;
-      labels[kv[1]] = kv[2];
-    }
+    const labels = matched[2] ? parseLabels(matched[2]) : {};
 
     result.push({
       n: matched[1],
@@ -124,57 +137,68 @@ const buildResult = (text: string): DerivedResult => {
     return gpuMap[uuid];
   };
 
-  all.filter((m) => m.n === 'nodeGPUOverview').forEach((m) => {
+  all.forEach((m) => {
+    if (!m.l.deviceuuid) return;
     const x = getGpu(m.l.deviceuuid);
-    x.type = m.l.devicetype || x.type;
-    x.idx = m.l.deviceidx || x.idx;
-    x.node = m.l.nodeid || x.node;
-    x.shared = parseInt(m.l.sharedcontainers || '0', 10) || 0;
-    x.memLimitMB = parseInt(m.l.devicememorylimit || '0', 10) || 0;
-    x.coreAlloc = parseInt(m.l.devicecores || '0', 10) || x.coreAlloc;
-    x.memAlloc = m.v || x.memAlloc;
-  });
 
-  all.filter((m) => m.n === 'GPUDeviceCoreAllocated').forEach((m) => {
-    const x = getGpu(m.l.deviceuuid);
-    x.type = m.l.devicetype || x.type;
-    x.idx = m.l.deviceidx || x.idx;
-    x.node = m.l.nodeid || x.node;
-    x.coreAlloc = m.v || x.coreAlloc;
-  });
-  all.filter((m) => m.n === 'GPUDeviceCoreLimit').forEach((m) => {
-    getGpu(m.l.deviceuuid).coreLimit = m.v;
-  });
-  all.filter((m) => m.n === 'GPUDeviceMemoryLimit').forEach((m) => {
-    const x = getGpu(m.l.deviceuuid);
-    x.memLimit = m.v;
-    if (!x.memLimitMB) x.memLimitMB = Math.round(m.v / 1048576);
-  });
-  all.filter((m) => m.n === 'GPUDeviceMemoryAllocated').forEach((m) => {
-    const x = getGpu(m.l.deviceuuid);
-    x.memAlloc = m.v || x.memAlloc;
-  });
-  all.filter((m) => m.n === 'GPUDeviceSharedNum').forEach((m) => {
-    const x = getGpu(m.l.deviceuuid);
-    x.shared = m.v || x.shared;
-  });
-  all.filter((m) => m.n === 'vGPUMemoryAllocated').forEach((m) => {
-    const x = getGpu(m.l.deviceuuid);
-    const existing = x.pods.find((p) => p.name === m.l.podname);
-    if (existing) {
-      existing.mem = m.v;
-      return;
+    switch (m.n) {
+      case 'nodeGPUOverview': {
+        x.type = m.l.devicetype || x.type;
+        x.idx = m.l.deviceidx || x.idx;
+        x.node = m.l.nodeid || x.node;
+
+        const shared = parseInt(m.l.sharedcontainers || '0', 10);
+        x.shared = Number.isNaN(shared) ? 0 : shared;
+
+        const memLimitMB = parseInt(m.l.devicememorylimit || '0', 10);
+        x.memLimitMB = Number.isNaN(memLimitMB) ? 0 : memLimitMB;
+
+        const coreAlloc = parseInt(m.l.devicecores || '0', 10);
+        if (!Number.isNaN(coreAlloc)) x.coreAlloc = coreAlloc;
+
+        x.memAlloc = m.v;
+        break;
+      }
+      case 'GPUDeviceCoreAllocated':
+        x.type = m.l.devicetype || x.type;
+        x.idx = m.l.deviceidx || x.idx;
+        x.node = m.l.nodeid || x.node;
+        x.coreAlloc = m.v;
+        break;
+      case 'GPUDeviceCoreLimit':
+        x.coreLimit = m.v;
+        break;
+      case 'GPUDeviceMemoryLimit':
+        x.memLimit = m.v;
+        if (!x.memLimitMB) x.memLimitMB = Math.round(m.v / 1048576);
+        break;
+      case 'GPUDeviceMemoryAllocated':
+        x.memAlloc = m.v;
+        break;
+      case 'GPUDeviceSharedNum':
+        x.shared = m.v;
+        break;
+      case 'vGPUMemoryAllocated': {
+        const existing = x.pods.find((p) => p.name === m.l.podname);
+        if (existing) {
+          existing.mem = m.v;
+        } else {
+          x.pods.push({ name: m.l.podname, ns: m.l.podnamespace, mem: m.v, cores: 0 });
+        }
+        break;
+      }
+      case 'vGPUCoreAllocated': {
+        const existing = x.pods.find((p) => p.name === m.l.podname);
+        if (existing) {
+          existing.cores = m.v;
+        } else {
+          x.pods.push({ name: m.l.podname, ns: m.l.podnamespace, mem: 0, cores: m.v });
+        }
+        break;
+      }
+      default:
+        break;
     }
-    x.pods.push({ name: m.l.podname, ns: m.l.podnamespace, mem: m.v, cores: 0 });
-  });
-  all.filter((m) => m.n === 'vGPUCoreAllocated').forEach((m) => {
-    const x = getGpu(m.l.deviceuuid);
-    const existing = x.pods.find((p) => p.name === m.l.podname);
-    if (existing) {
-      existing.cores = m.v;
-      return;
-    }
-    x.pods.push({ name: m.l.podname, ns: m.l.podnamespace, mem: 0, cores: m.v });
   });
 
   const gpus = Object.values(gpuMap);
@@ -282,7 +306,7 @@ const download = (filename: string, content: string, mime: string) => {
 };
 
 export default function HamiMetricsExplorer() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const fileRef = useRef<HTMLInputElement | null>(null);
   const mergeFileRef = useRef<HTMLInputElement | null>(null);
   const [raw, setRaw] = useState('');
@@ -330,14 +354,14 @@ export default function HamiMetricsExplorer() {
     };
 
     currData.nodes.forEach((node) => {
-      mergedNodes.push(JSON.parse(JSON.stringify(node)) as ExportNode);
+      mergedNodes.push(structuredClone(node) as ExportNode);
       collectUUIDs(node);
     });
 
     oldData.nodes?.forEach((oldNode) => {
       const existingNode = mergedNodes.find((n) => n['node-name'] === oldNode['node-name']);
       if (!existingNode) {
-        const copied = JSON.parse(JSON.stringify(oldNode)) as ExportNode;
+        const copied = structuredClone(oldNode) as ExportNode;
         const filteredTypes: ExportNodeType[] = [];
         copied['gpu-types']?.forEach((type) => {
           const filtered = type['gpu-uuids'].filter((uuid) => !uuidSet.has(uuid));
@@ -497,12 +521,8 @@ export default function HamiMetricsExplorer() {
     ];
   }, [result]);
 
-  const poolsUnitText = t('tools.hamiMetricsExplorerPage.poolsUnit') === 'tools.hamiMetricsExplorerPage.poolsUnit'
-    ? (i18n.language.startsWith('zh') ? '池' : 'pools')
-    : t('tools.hamiMetricsExplorerPage.poolsUnit');
-  const nodesUnitText = t('tools.hamiMetricsExplorerPage.nodesUnit') === 'tools.hamiMetricsExplorerPage.nodesUnit'
-    ? (i18n.language.startsWith('zh') ? '节点' : 'nodes')
-    : t('tools.hamiMetricsExplorerPage.nodesUnit');
+  const poolsUnitText = t('tools.hamiMetricsExplorerPage.poolsUnit');
+  const nodesUnitText = t('tools.hamiMetricsExplorerPage.nodesUnit');
 
   return (
     <MainLayout>
@@ -1006,7 +1026,7 @@ export default function HamiMetricsExplorer() {
               <div className="p-4 border-t border-gray-200 flex gap-2">
                 <button
                   type="button"
-                  className="cursor-pointer px-4 py-2 rounded border border-gray-300 text-gray-700"
+                  className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700"
                   onClick={() => {
                     setMergeOutput('');
                     setMergeStats(null);
@@ -1016,7 +1036,7 @@ export default function HamiMetricsExplorer() {
                 </button>
                 <button
                   type="button"
-                  className="cursor-pointer px-4 py-2 rounded bg-primary text-white"
+                  className="cursor-pointer rounded-md bg-primary px-3 py-1.5 text-sm text-white"
                   onClick={async () => {
                     await navigator.clipboard.writeText(mergeOutput);
                     setCopyMergeOk(true);
@@ -1025,7 +1045,7 @@ export default function HamiMetricsExplorer() {
                 >
                   {t('tools.hamiMetricsExplorerPage.copyButton')}
                 </button>
-                <button type="button" className="cursor-pointer px-4 py-2 rounded border border-gray-300 text-gray-700" onClick={() => download('merged_inventory.json', mergeOutput, 'application/json')}>
+                <button type="button" className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700" onClick={() => download('merged_inventory.json', mergeOutput, 'application/json')}>
                   {t('tools.hamiMetricsExplorerPage.downloadButton')}
                 </button>
                 {copyMergeOk ? <span className="text-sm text-primary self-center">{t('tools.hamiMetricsExplorerPage.copied')}</span> : null}
