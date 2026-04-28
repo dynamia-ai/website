@@ -39,12 +39,11 @@ const ArrowIcon = () => (
 );
 
 export default function Home() {
-  const FEATURE_AUTOPLAY_MS = 4000;
+  const FEATURE_AUTOPLAY_MS = 10000;
   const FEATURE_PROGRESS_TICK_MS = 50;
 
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(0);
-  const [featureAutoplayPaused, setFeatureAutoplayPaused] = useState(false);
   const [featureProgress, setFeatureProgress] = useState(0);
   const [playedFeatureTabs, setPlayedFeatureTabs] = useState<number[]>([]);
   const ecosystemRef = useRef<HTMLDivElement>(null);
@@ -177,7 +176,7 @@ export default function Home() {
   }, [activeTab, featureSlides.length]);
 
   useEffect(() => {
-    if (featureAutoplayPaused || featureSlides.length <= 1) return;
+    if (featureSlides.length <= 1) return;
 
     const id = setTimeout(() => {
       setActiveTab((prev) => {
@@ -191,10 +190,10 @@ export default function Home() {
     }, FEATURE_AUTOPLAY_MS);
 
     return () => clearTimeout(id);
-  }, [featureAutoplayPaused, activeTab, featureSlides.length]);
+  }, [activeTab, featureSlides.length]);
 
   useEffect(() => {
-    if (featureAutoplayPaused || featureSlides.length <= 1) return;
+    if (featureSlides.length <= 1) return;
 
     const startedAt = Date.now();
     setFeatureProgress(0);
@@ -206,7 +205,7 @@ export default function Home() {
     }, FEATURE_PROGRESS_TICK_MS);
 
     return () => clearInterval(id);
-  }, [featureAutoplayPaused, activeTab, featureSlides.length]);
+  }, [activeTab, featureSlides.length]);
 
   // Testimonials are currently not used in the UI but kept for future use
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -404,10 +403,7 @@ export default function Home() {
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100">{t('home.keyAdvantages.title')}</h2>
           </div>
-          <div
-            onMouseEnter={() => setFeatureAutoplayPaused(true)}
-            onMouseLeave={() => setFeatureAutoplayPaused(false)}
-          >
+          <div>
           {/* 顶部进度条切换区域 */}
           <div className="mb-8 md:mb-12 px-2">
             <div className="flex items-center gap-2 md:gap-3">
@@ -418,6 +414,7 @@ export default function Home() {
                   <button
                     key={index}
                     onClick={() => {
+                      if (index === activeTab) return;
                       setActiveTab(index);
                       setFeatureProgress(0);
                       setPlayedFeatureTabs(
