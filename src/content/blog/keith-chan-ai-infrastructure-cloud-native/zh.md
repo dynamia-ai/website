@@ -19,6 +19,8 @@ coverImage: /images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-sp
 linktitle: "Keith Chan：AI 基础设施与云原生趋势"
 ---
 
+「不卷算力卷效率 | HAMi 社区 Meetup」深圳站由 HAMi 社区发起，密瓜智能主办，2026 年 4 月 25 日在深圳圆满结束。本文为 HAMi 社区 Meetup 深圳站回顾系列第一篇，CNCF 亚太区副总裁 Keith Chan 从全球视角解读 AI 基础设施的云原生演进趋势，并预告 9 月 KubeCon 上海站的 AI 议题盛况。
+
 ![Keith Chan 演讲现场](/images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-speaking.jpg)
 
 **演讲嘉宾：** Keith Chan（CNCF China Director, Linux Foundation 亚太区副总裁 / VP, Linux Foundation APAC）

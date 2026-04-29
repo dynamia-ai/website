@@ -19,6 +19,8 @@ coverImage: /images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-sp
 linktitle: "Keith Chan: AI Infrastructure Trends"
 ---
 
+"Maximize Efficiency, Not Compute" — the HAMi Community Meetup Shenzhen was hosted by the HAMi community and organized by Dynamia AI, concluding successfully on April 25, 2026. 
+
 ![Keith Chan Speaking](/images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-speaking.jpg)
 
 **Speaker:** Keith Chan (CNCF China Director, VP of APAC at Linux Foundation)
