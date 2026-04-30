@@ -147,7 +147,7 @@ SF Technology's practices fully demonstrate the production value of HAMi in ente
 Chen Junchao's team at SF Technology previously published the **EffectiveGPU Technical White Paper**, systematically introducing SF Technology's self-developed GPU pooling technology. This white paper is closely related to the Meetup presentation and serves as an in-depth supplement:
 
 - **EffectiveGPU White Paper: How to Better Improve Compute Efficiency in the LLM Era?**
-  The white paper details the overall architecture and core technologies of the EffectiveGPU (egpu) pooling solution, including heterogeneous device unified management, device sharing and resource isolation (performance overhead controlled within 5%), elastic resource oversubscription (up to 200% memory oversubscription), and priority QoS guarantees. In terms of results: SF Technology's AI production model serving deployed 65 services on 28 GPU cards, saving 37 cards; the test service cluster deployed 19 services on 6 cards, saving 13 cards.
+  The white paper details the overall architecture and core technologies of the EffectiveGPU (egpu) pooling solution, including heterogeneous device unified management, device sharing and resource isolation (performance overhead controlled within 5%), elastic resource oversubscription (up to 200% memory oversubscription), and priority QoS guarantees.
 
   **Read more:** [EffectiveGPU White Paper (Chinese)](https://mp.weixin.qq.com/s/zZKJfJJOzBhpcq1FMttqsA) *(Chinese only)*
 
