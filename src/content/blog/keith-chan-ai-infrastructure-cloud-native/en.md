@@ -15,25 +15,26 @@ tags:
   - NVIDIA
 category: Community & Events
 language: en
-coverImage: /images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-speaking.jpg
+coverImage: /images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-portrait.jpg
 linktitle: "Keith Chan: AI Infrastructure Trends"
 ---
 
-"Maximize Efficiency, Not Compute" — the HAMi Community Meetup Shenzhen was hosted by the HAMi community and organized by Dynamia AI, concluding successfully on April 25, 2026. 
-
-![Keith Chan Speaking](/images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-speaking.jpg)
+> "Maximize Efficiency, Not Compute" — the HAMi Community Meetup Shenzhen was hosted by the HAMi community and organized by Dynamia AI, concluding successfully on April 25, 2026. This is the first article in the HAMi Shenzhen Meetup recap series. CNCF VP of APAC Keith Chan shares global perspectives on cloud-native evolution trends for AI infrastructure and previews the AI session lineup at KubeCon Shanghai this September.
 
 **Speaker:** Keith Chan (CNCF China Director, VP of APAC at Linux Foundation)
 
+![Keith Chan Speaking](/images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-portrait.jpg)
+
 ## Video Replay & Slide Downloads
 
-- **Bilibili:** [The infrastructure of AI's future - Keith Chan (CNCF)](https://www.bilibili.com/video/BV1Sqo6BBE2h/)
-
-- **Download Slides:** https://github.com/Project-HAMi/community/blob/main/hami-meetup/03-shenzhen-20260425/opening-cncf-keith-chan.pdf
+- **Bilibili:** [The infrastructure of AI's future - Keith Chan(CNCF)](https://www.bilibili.com/video/BV1Sqo6BBE2h/)
+- **Download Slides:** [opening-cncf-keith-chan.pdf](https://github.com/Project-HAMi/community/blob/main/hami-meetup/03-shenzhen-20260425/opening-cncf-keith-chan.pdf)
 
 ## 1. 66% of Enterprises Already Run AI on Cloud-Native
 
 Keith Chan opened with CNCF end-of-2025 survey data: **66% of enterprises globally are already running AI workloads on cloud-native environments**. Domestic survey data shows that over 90% of enterprises using AI have adopted cloud-native AI technologies.
+
+![Chart: 66% of enterprises run AI workloads on cloud-native environments](/images/blog/keith-chan-ai-infrastructure-cloud-native/cncf-survey-66-percent.png)
 
 The core trend behind this data is clear: **Kubernetes has become the unified orchestration layer for AI infrastructure**. K8s features like auto-scaling, CI/CD pipelines, and high availability precisely meet the stringent real-time and elasticity requirements of generative AI.
 
@@ -41,10 +42,9 @@ The core trend behind this data is clear: **Kubernetes has become the unified or
 
 The competitive landscape in AI has shifted from simply accumulating compute power to **"how to leverage compute at the lowest cost and highest efficiency."** Keith noted that enterprises are no longer relying solely on off-the-shelf models, but building core competitiveness through infrastructure optimization.
 
-Leading companies have 率先 embraced the "Infrastructure First" strategy:
+Leading companies have embraced the "Infrastructure First" strategy:
 
 - **OpenAI** manages thousands of nodes through Kubernetes and leverages technologies like FluentBit to improve GPU utilization by over 50%
-
 - **Hugging Face** similarly adopts a cloud-native-first architecture strategy
 
 ## 3. Three Major Ecosystem Shifts
@@ -63,6 +63,8 @@ Keith revealed a striking statistic: at this year's KubeCon, **AI-related sessio
 
 ## 4. HAMi: The Key Missing Piece in CNCF GPU Scheduling
 
+![HAMi's CNCF Case Studies](/images/blog/keith-chan-ai-infrastructure-cloud-native/hami-cncf-case-studies.png)
+
 Keith specifically highlighted HAMi's unique value in the CNCF ecosystem:
 
 **Breaking convention as a Sandbox project.** HAMi joined CNCF at the Sandbox level, but recently **appeared in a KubeCon Europe Keynote as the first Sandbox project to do so** — breaking convention, as typically only Graduated or Incubating projects receive this honor.
@@ -73,12 +75,12 @@ Keith specifically highlighted HAMi's unique value in the CNCF ecosystem:
 
 ## 5. KubeCon Shanghai Preview
 
+![KubeCon China, September 8-9, 2026 in Shanghai](/images/blog/keith-chan-ai-infrastructure-cloud-native/kubecon-shanghai-2026.png)
+
 Keith closed with a preview of KubeCon Shanghai this September:
 
 - Expected strong participation from international experts
-
 - **First time integrating PyTorch and MCP AI sessions into conference tracks**
-
 - AI-related content will be the core theme of the conference
 
 ## 6. Implications for Developers
