@@ -28,12 +28,18 @@ Thanks to SF Technology for co-hosting this event and providing the venue.
 
 ![Chen Junchao presenting](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/speaker-portrait.jpg)
 
+## Key Highlights
+
+- 5 private clouds + 4 public clouds multi-cloud hybrid architecture, scheduler fully switched to Volcano
+- GPU model-level resource reporting, eliminating the need for labels and taints in operations
+- Sandbox and high-priority inference tasks sharing physical GPUs, resource reuse through staggered scheduling
+- Memory oversubscription: up to 200% memory overcommit, zero intrusion
+- Production and test clusters saved up to 57% GPU
+
 ## Video Recording & Slides
 
 - **Bilibili:** [HAMi Multi-Cloud Practice at SF Technology - Chen Junchao](https://www.bilibili.com/video/BV13RozBMEjm/)
 - **Download Slides:** [hami-multi-cloud-practice-sf-tech-chenjunchao.pdf](https://github.com/Project-HAMi/community/blob/main/hami-meetup/03-shenzhen-20260425/hami-multi-cloud-practice-sf-tech-chenjunchao.pdf)
-
-***
 
 ## I. AI Platform Evolution: From Kubeflow to Multi-Cloud Hybrid
 
@@ -67,7 +73,7 @@ The platform currently manages **5 private cloud K8s clusters** and has integrat
 
 The native Device Plugin reports all GPUs uniformly as `nvidia.com/gpu`, making different models indistinguishable. The SF Technology team modified the Device Plugin configuration to refine resource reporting types to:
 
-```
+```plaintext
 gpu-a100, gpu-v100, gpu-h20 ...
 ```
 
@@ -123,11 +129,7 @@ The team collects not only physical card monitoring data but also HAMi virtual c
 
 > Two strategies. First, **periodic sandbox utilization monitoring** — if continuously idle (e.g., 6-12 hours), automatically commit the image and exit. Second, **high-priority task direct preemption** — low-priority tasks become blocked (unavailable), with no current degradation plan.
 
-### Q2: How exactly is memory oversubscription implemented?
-
-> The community edition doesn't support it yet. SF Technology implemented it independently with assistance from community developers. Implementation details can be discussed further.
-
-### Q3: How do local clusters and public clouds work together?
+### Q2: How do local clusters and public clouds work together?
 
 > On-premises data centers primarily run persistent workloads. Compute gaps are supplemented through monthly/annual public cloud resource subscriptions.
 

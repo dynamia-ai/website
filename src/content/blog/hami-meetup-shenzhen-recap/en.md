@@ -4,7 +4,7 @@ date: '2026-04-25'
 excerpt: >-
   On April 25, 2026, the HAMi Community successfully held its third offline
   Meetup in Shenzhen. Seven technical experts from CNCF, SF Technology, China
-  Merchants Bank, Enflame, Sangfor, Bowei Smart Technology, and Dynamia AI
+  Merchants Bank, Enflame, Sangfor, BroadWare Technology, and Dynamia AI
   gathered to discuss AI infrastructure cloud-native evolution, GPU compute
   pooling, heterogeneous scheduling, and DRA technology outlook.
 author: Dynamia
@@ -21,7 +21,7 @@ coverImage: /images/blog/hami-meetup-shenzhen-recap/shenzhen-meetup-group-photo.
 linktitle: HAMi Shenzhen Meetup Recap
 ---
 
-On April 25, 2026, the HAMi Community successfully hosted its third offline Meetup in Shenzhen. Seven technical experts from CNCF, SF Technology, China Merchants Bank, Enflame, Sangfor, Bowei Smart Technology, and Dynamia AI delivered an in-depth technical feast, covering frontier topics including cloud-native evolution of AI infrastructure, GPU compute pooling, heterogeneous scheduling, and DRA technology outlook.
+On April 25, 2026, the HAMi Community successfully hosted its third offline Meetup in Shenzhen. Seven technical experts from CNCF, SF Technology, China Merchants Bank, Enflame, Sangfor, BroadWare Technology, and Dynamia AI delivered an in-depth technical feast, covering frontier topics including cloud-native evolution of AI infrastructure, GPU compute pooling, heterogeneous scheduling, and DRA technology outlook.
 
 ## Event Highlights
 
@@ -31,13 +31,13 @@ On April 25, 2026, the HAMi Community successfully hosted its third offline Meet
 
 - **Chen Junchao, SF Technology** shared real-world GPU pooling deployment across 5 private cloud clusters and multiple public clouds, raising average cluster utilization from 40% to 90%
 
-- **Su Qian, China Merchants Bank** revealed supernode hardware adaptation and network topology-aware scheduling, reducing cross-machine scheduling probability by 30%
+- **Su Xi, China Merchants Bank** revealed supernode hardware adaptation and network topology-aware scheduling, reducing cross-machine scheduling probability by 30%
 
 - **Ma Da, Enflame** demonstrated a full-stack cloud-native integration solution with GPU Operator + CDI + DRA
 
 - **Jia Haojie, Sangfor** shared AI compute gateway governance strategies, using intelligent routing to achieve optimal cost-effectiveness balance
 
-- **Ou Binkai, Bowei Smart Technology** showcased GPU virtualization and Agent RL training-inference integration in research scenarios
+- **Ou Binkai, BroadWare Technology** showcased GPU virtualization and Agent RL training-inference integration in research scenarios
 
 ## Event Scene
 
@@ -47,7 +47,7 @@ Below is a group photo from the event.
 
 ## Video Replay
 
-- **Bilibili:** HAMi Community Meetup Shenzhen — https://www.bilibili.com/video/BV1Sqo6BBE2h/
+- **Bilibili:** [HAMi Community Meetup Shenzhen](https://www.bilibili.com/video/BV1Sqo6BBE2h/)
 
 - **WeChat Video Channel:** HAMi Community
 
@@ -55,7 +55,7 @@ Below is a group photo from the event.
 
 ## Slide Downloads
 
-Speaker slides from the HAMi Community Meetup Shenzhen have been archived on the HAMi Community GitHub: https://github.com/Project-HAMi/community/tree/main/hami-meetup/03-shenzhen-20260425
+Speaker slides from the HAMi Community Meetup Shenzhen have been archived on the [HAMi Community GitHub](https://github.com/Project-HAMi/community/tree/main/hami-meetup/03-shenzhen-20260425).
 
 ## Core Technology Trends
 

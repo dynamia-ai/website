@@ -27,12 +27,18 @@ linktitle: "HAMi 驱动顺丰科技算力池化实战"
 
 ![陈俊超正在分享](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/speaker-portrait.jpg)
 
+## 核心亮点
+
+- 5 私有云 + 4 公有云多云混合架构，调度器全面切换至 Volcano
+- GPU 型号级资源上报，告别标签与污点运维
+- 沙盒与高优推理混部共享物理 GPU，错峰调度资源复用
+- 显存超分：最高 200% 显存超配，零侵入
+- 生产测试集群最高节省  57% GPU
+
 ## 视频回放及 PPT 下载
 
 - **B 站：** [HAMi 在顺丰科技的多云落地实践 - 陈俊超](https://www.bilibili.com/video/BV13RozBMEjm/)
 - **下载 PPT：** [hami-multi-cloud-practice-sf-tech-chenjunchao.pdf](https://github.com/Project-HAMi/community/blob/main/hami-meetup/03-shenzhen-20260425/hami-multi-cloud-practice-sf-tech-chenjunchao.pdf)
-
-***
 
 ## 一、AI 平台架构演进：从 Kubeflow 到多云混合
 
@@ -66,7 +72,7 @@ AI 平台最初基于 Kubeflow 构建，核心业务涵盖三大模块：
 
 原生 Device Plugin 将所有 GPU 统一上报为 `nvidia.com/gpu`，不同型号无法区分。顺丰团队通过改造 Device Plugin 配置，将资源上报类型细化为：
 
-```
+```plaintext
 gpu-a100、gpu-v100、gpu-h20 ...
 ```
 
