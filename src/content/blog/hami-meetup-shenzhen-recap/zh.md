@@ -44,7 +44,7 @@ linktitle: "HAMi 深圳 Meetup 回顾"
 
 ## 视频回放
 
-- **B 站回放：** HAMi Community Meetup 深圳站 https://www.bilibili.com/video/BV1Sqo6BBE2h/
+- **B 站回放：** [HAMi Community Meetup 深圳站](https://www.bilibili.com/video/BV1Sqo6BBE2h/)
 
 - **视频号回放：** HAMi 社区
 
@@ -52,7 +52,7 @@ linktitle: "HAMi 深圳 Meetup 回顾"
 
 ## PPT 下载
 
-HAMi 社区 Meetup 深圳站讲师幻灯片已归档到 HAMi Community GitHub：https://github.com/Project-HAMi/community/tree/main/hami-meetup/03-shenzhen-20260425
+HAMi 社区 Meetup 深圳站讲师幻灯片已归档到 [HAMi Community GitHub](https://github.com/Project-HAMi/community/tree/main/hami-meetup/03-shenzhen-20260425)。
 
 ## 核心技术趋势
 

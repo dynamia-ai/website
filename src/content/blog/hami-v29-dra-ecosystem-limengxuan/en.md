@@ -19,11 +19,19 @@ coverImage: /images/blog/hami-v29-dra-ecosystem-limengxuan/speaker-portrait.jpg
 linktitle: "HAMi DRA Ecosystem and v2.9 Preview"
 ---
 
-> "Maximize Efficiency, Not Compute" — the HAMi Community Meetup Shenzhen was hosted by the HAMi community and organized by Dynamia AI, concluding successfully on April 25, 2026. This is the second article in the HAMi Shenzhen Meetup recap series. HAMi Maintainer Li Mengxuan revealed v2.9 core features for the first time, provided an in-depth analysis of the DRA technology roadmap, and shared the community's vision for unified heterogeneous compute management.
+"Maximize Efficiency, Not Compute" — the HAMi Community Meetup Shenzhen was hosted by the HAMi community and organized by Dynamia AI, concluding successfully on April 25, 2026. This is the second article in the HAMi Shenzhen Meetup recap series. HAMi Maintainer Li Mengxuan revealed v2.9 core features for the first time, provided an in-depth analysis of the DRA technology roadmap, and shared the community's vision for unified heterogeneous compute management.
 
 **Speaker:** Li Mengxuan (Co-founder & CTO of Dynamia AI / HAMi Maintainer)
 
 ![Li Mengxuan presenting](/images/blog/hami-v29-dra-ecosystem-limengxuan/speaker-portrait.jpg)
+
+## Key Highlights
+
+- GPU sharing increases cluster utilization from 20% to 70%, more than doubling available resources
+- v2.9 introduces kai-resource-isolator, moving from "capable of sharing" to "secure sharing"
+- Ascend 910C user-space soft partitioning, achieving MIG-like virtualization without hardware isolation
+- DRA's three major challenges — HAMi addresses them with a "lightweight" approach
+- Memory expansion and contraction expected to be merged into the mainline in version 2.10
 
 ## Video Recording & Slides
 

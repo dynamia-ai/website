@@ -1,5 +1,5 @@
 ---
-title: "The Infrastructure of AI's Future: Keith Chan on AI Infrastructure and Cloud-Native Ecosystem Trends"
+title: 'AI Infrastructure from CNCF's Perspective: From \"Stacking Compute\" to \"Optimizing Compute\"'
 date: '2026-04-25'
 excerpt: >-
   In this HAMi Community Meetup Shenzhen recap, CNCF VP of APAC Keith Chan shares
@@ -16,14 +16,22 @@ tags:
 category: Community & Events
 language: en
 coverImage: /images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-portrait.jpg
-linktitle: "Keith Chan: AI Infrastructure Trends"
+linktitle: "AI Infrastructure from CNCF's Perspective"
 ---
 
-> "Maximize Efficiency, Not Compute" — the HAMi Community Meetup Shenzhen was hosted by the HAMi community and organized by Dynamia AI, concluding successfully on April 25, 2026. This is the first article in the HAMi Shenzhen Meetup recap series. CNCF VP of APAC Keith Chan shares global perspectives on cloud-native evolution trends for AI infrastructure and previews the AI session lineup at KubeCon Shanghai this September.
+"Maximize Efficiency, Not Compute" — the HAMi Community Meetup Shenzhen was hosted by the HAMi community and organized by Dynamia AI, concluding successfully on April 25, 2026. This is the first article in the HAMi Shenzhen Meetup recap series. CNCF VP of APAC Keith Chan shares global perspectives on cloud-native evolution trends for AI infrastructure and previews the AI session lineup at KubeCon Shanghai this September.
 
 **Speaker:** Keith Chan (CNCF China Director, VP of APAC at Linux Foundation)
 
 ![Keith Chan Speaking](/images/blog/keith-chan-ai-infrastructure-cloud-native/keith-chan-portrait.jpg)
+
+## Key Highlights
+
+- 66% of enterprises are already running AI on cloud-native, with K8s becoming the unified orchestration layer for AI infrastructure
+- NVIDIA officially joins CNCF as a Platinum member, accelerating GPU-K8s integration
+- AI-related sessions account for 60%-80% of KubeCon proposals, becoming the absolute mainstream
+- HAMi is the first Sandbox project featured in a KubeCon Europe Keynote
+- OpenAI leverages technologies like FluentBit to improve GPU utilization by over 50%
 
 ## Video Replay & Slide Downloads
 

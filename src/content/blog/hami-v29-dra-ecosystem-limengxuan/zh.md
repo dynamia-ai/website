@@ -18,11 +18,19 @@ coverImage: /images/blog/hami-v29-dra-ecosystem-limengxuan/speaker-portrait.jpg
 linktitle: "HAMi DRA 生态联盟与 v2.9 版本前瞻"
 ---
 
-> 「不卷算力卷效率 | HAMi 社区 Meetup」深圳站由 HAMi 社区发起，密瓜智能主办，2026 年 4 月 25 日在深圳圆满结束。本文为 HAMi 社区 Meetup 深圳站回顾系列第二篇。HAMi Maintainer 李孟轩首次公开 v2.9 版本核心特性，深度解析 DRA 技术演进路径，并展望异构算力统一管理的社区愿景。
+「不卷算力卷效率 | HAMi 社区 Meetup」深圳站由 HAMi 社区发起，密瓜智能主办，2026 年 4 月 25 日在深圳圆满结束。本文为 HAMi 社区 Meetup 深圳站回顾系列第二篇。HAMi Maintainer 李孟轩首次公开 v2.9 版本核心特性，深度解析 DRA 技术演进路径，并展望异构算力统一管理的社区愿景。
 
 **演讲嘉宾：** 李孟轩（密瓜智能联合创始人兼 CTO / HAMi Maintainer）
 
 ![李孟轩正在分享](/images/blog/hami-v29-dra-ecosystem-limengxuan/speaker-portrait.jpg)
+
+## 核心亮点
+
+- GPU 共享让集群利用率从 20% 提升到 70%，可用资源翻两倍以上
+- v2.9 引入 kai-resource-isolator，从「能共享」迈向「安全共享」
+- 昇腾 910C 用户态软切分，无硬件隔离也能实现类 MIG 虚拟化
+- DRA 三大挑战——HAMi 以「轻量版」思路补齐
+- 显存扩缩容预计 2.10 版本合入主干
 
 ## 视频回放及 PPT 下载
 
