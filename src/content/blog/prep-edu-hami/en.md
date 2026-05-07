@@ -116,7 +116,3 @@ We recommend reading the full technical blog post from PREP EDU DevOps Engineer,
 ![HAMi heterogeneous computing support overview](/images/blog/PREP-EDU-HAMi/p5.png)
 
 Dynamia Melon Intelligence, focusing on the CNCF HAMi project as its core foundation, provides a global solution for flexible, reliable, on-demand, and elastic GPU virtualization and heterogeneous computing power scheduling and unified management. It can be deployed in a plug-and-play, lightweight, and non-intrusive manner in any public, private, or hybrid cloud environment, supporting heterogeneous chips from NVIDIA, Ascend, Metax, Cambricon, Hygon, Moore Threads, Tianshu Zhixin, and more.
-
->Website: <https://dynamia.ai>
-
->Email: <info@dynamia.ai>
