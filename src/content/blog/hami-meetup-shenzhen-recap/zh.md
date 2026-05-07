@@ -1,5 +1,5 @@
 ---
-title: "HAMi Community Meetup 深圳站圆满落幕：七位专家共话 AI 算力云原生未来"
+title: "HAMi 社区 Meetup 深圳站圆满落幕：七位专家共话 AI 算力云原生未来"
 date: '2026-04-25'
 excerpt: >-
   4 月 25 日，HAMi 社区在深圳成功举办第三场线下 Meetup。来自 CNCF、顺丰科技、招商银行、燧原科技、深信服、博维智慧科技及密瓜智能的七位技术专家，围绕

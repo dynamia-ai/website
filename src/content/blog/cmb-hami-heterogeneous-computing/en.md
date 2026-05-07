@@ -24,7 +24,7 @@ coverImage: /images/blog/cmb-hami-heterogeneous-computing/speaker-suxi.webp
 linktitle: "CMB Heterogeneous Compute Infrastructure on HAMi"
 ---
 
-The HAMi Community Meetup Shenzhen, organized by the HAMi community and hosted by Dynamia AI, concluded successfully on April 25, 2026. This is the fifth article in the Shenzhen Meetup recap series. Su Xi from China Merchants Bank shared an in-depth look at building a heterogeneous compute infrastructure for the financial industry, focusing on super-node hardware adaptation, vNPU-Core software partitioning, and network topology-aware scheduling algorithms.
+The HAMi Community Meetup Shenzhen, organized by the HAMi community and hosted by Dynamia AI, concluded successfully on April 25, 2026. This is the fourth article in the Shenzhen Meetup recap series. Su Xi from China Merchants Bank shared an in-depth look at building a heterogeneous compute infrastructure for the financial industry, focusing on super-node hardware adaptation, vNPU-Core software partitioning, and network topology-aware scheduling algorithms.
 
 **Key Highlights:**
 
