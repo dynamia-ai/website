@@ -893,6 +893,7 @@
     "copyright": "© 2025 DYNAMIA INTELLIGENCE PTE. LTD ",
     "privacyPolicy": "隐私政策",
     "cookiesPolicy": "Cookie 政策",
+    "cookieSettings": "Cookie 设置",
     "termsOfService": "服务条款",
     "company": "公司",
     "aboutUs": "关于我们",
@@ -922,6 +923,37 @@
     "emailUs": "联系邮箱",
     "email": "info@dynamia.ai",
     "socialMedia": "关注我们"
+  },
+  "cookieConsent": {
+    "bannerTitle": "我们使用 Cookie",
+    "bannerDescription": "我们使用必要 Cookie 来保证网站正常运行。经您同意后，我们还会使用分析 Cookie 来了解网站使用情况并改进服务。营销和功能 Cookie 默认关闭，只有在您启用后才会使用。",
+    "cookiePolicy": "阅读 Cookie 政策",
+    "accept": "全部接受",
+    "reject": "全部拒绝",
+    "manage": "管理偏好",
+    "save": "保存偏好",
+    "close": "关闭 Cookie 偏好设置",
+    "alwaysOn": "始终开启",
+    "preferencesTitle": "Cookie 偏好设置",
+    "preferencesDescription": "请选择密瓜智能可以使用的可选 Cookie 类别。必要 Cookie 是网站运行所必需的，无法在此处关闭。",
+    "categories": {
+      "necessary": {
+        "title": "必要 Cookie",
+        "description": "用于网站核心功能，例如安全、语言路由、视频访问状态以及保存您的同意选择。"
+      },
+      "analytics": {
+        "title": "分析 Cookie",
+        "description": "帮助我们通过 Google Analytics 和 Vercel Analytics 等服务衡量流量和页面性能。"
+      },
+      "marketing": {
+        "title": "营销 Cookie",
+        "description": "可能用于营销活动衡量、广告或再营销。除非您主动同意，否则不会启用。"
+      },
+      "functional": {
+        "title": "功能 Cookie",
+        "description": "用于记住非必要的体验偏好，以改进网站使用体验。"
+      }
+    }
   },
   "search": {
     "placeholder": "搜索...",
@@ -965,24 +997,28 @@
   },
   "cookiesPolicy": {
     "title": "Cookie 政策",
-    "lastUpdated": "最后更新：2025 年 3 月 3 日",
-    "intro": "当您访问或使用我们的网站或应用程序（统称为\"服务\"），或与我们的内容互动时，我们会使用（并授权第三方使用）网络信标、Cookie、像素标签、脚本、标签、API 和其他技术（统称为\"跟踪技术\"）。\n\n这些跟踪技术使我们能够自动收集关于您、您的在线行为和您的设备（如计算机或移动设备）的信息。这些信息用于增强您在我们服务上的导航体验，改进服务性能，并定制您的体验。我们还使用这些数据收集服务使用统计信息，进行分析，提供符合您兴趣的内容，并为我们的用户、广告商、发布商、客户和合作伙伴管理服务。\n\n此外，我们允许第三方通过跟踪技术收集关于您的信息。",
+    "lastUpdated": "最后更新：2026 年 5 月 7 日",
+    "intro": "本 Cookie 政策说明 DYNAMIA INTELLIGENCE PTE. LTD. 如何在 https://dynamia.ai/ 使用 Cookie 和类似技术。\n\n我们使用必要 Cookie 来运营本网站。分析、营销和功能 Cookie 等可选类别默认关闭，只有在您通过 Cookie 横幅或偏好设置面板同意后才会使用。\n\n您可以随时通过页脚中的 Cookie 设置更改选择。",
     "sections": [
       {
         "title": "什么是 Cookie",
         "content": "Cookie 是仅由字母和数字组成的小型文本文件。当您访问网页时，网络服务器会将它们放置在您的计算机或移动设备上。Cookie 可以增强我们服务的用户友好性，例如，通过记住您的语言偏好和设置。有关 Cookie 的更多详情，请访问 www.allaboutcookies.org。\n\nCookie 被广泛用于使网站高效运行。它们允许您在页面之间平滑导航，记住您的偏好，并使您与服务的交互更加无缝和高效。Cookie 还有助于确保您看到的在线广告与您和您的兴趣相关。"
       },
       {
-        "title": "存储跟踪技术",
-        "content": "当您访问或使用我们的服务（例如，浏览我们的网站）时，我们会存储跟踪技术；这些被称为\"第一方跟踪技术\"。此外，第三方（如我们的分析服务提供商、业务合作伙伴和广告商）在我们的服务上运行内容时也会存储跟踪技术；这些被称为\"第三方跟踪技术\"。\n\n这两类跟踪技术可能在您访问我们的服务期间或后续重复访问时存储。"
+        "title": "我们使用的 Cookie 类别",
+        "content": "必要 Cookie：用于网站核心功能，例如语言路由、记住您的 Cookie 同意选择，以及保存视频内容的有限访问状态。\n\n分析 Cookie：仅在您同意后使用，用于通过 Google Analytics、Vercel Analytics 和 Vercel Speed Insights 了解流量与性能。\n\n营销 Cookie：预留用于营销活动衡量、广告或再营销。除非您主动同意，否则不会启用。\n\n功能 Cookie：预留用于严格必要功能之外的可选体验偏好。除非您主动同意，否则不会启用。"
       },
       {
-        "title": "我们使用哪些类型的跟踪技术？",
-        "content": "我们主要使用五种类型的跟踪技术：\n\n1. 绝对必要的跟踪技术：这些对于您登录、导航和使用我们服务的功能或接收您请求的服务（如您的用户名）至关重要。我们不需要您的同意即可使用这些技术。它们可用于安全和完整性目的，如检测政策违规和启用支持或安全功能。\n2. 功能性跟踪技术：这些使我们的服务能够记住您的选择（例如，您的语言）并提供增强的个性化功能。例如，它们用于身份验证（记住您何时登录）并支持其他服务功能。\n3. 性能跟踪技术：这些收集有关您的在线活动的信息（例如，您访问我们服务的时长），包括行为数据和内容参与指标。它们用于分析、研究和生成统计数据（基于汇总信息）。\n4. 营销或广告跟踪技术：这些用于根据您推断的兴趣向您提供定制优惠和广告，并进行电子邮件营销活动。它们可以限制您看到广告的次数，并帮助衡量广告活动的有效性。通常由我们的广告商（例如，广告网络）放置，它们为广告商提供有关查看和与其广告互动、访问其网站或使用其应用程序的用户的见解。\n5. 社交媒体跟踪技术：我们的网站整合了社交媒体功能，如 Facebook 的\"赞\"或\"分享\"按钮。这些功能要么由第三方托管，要么直接在我们的服务上。您与这些功能的互动受提供这些功能的公司的隐私声明约束。"
+        "title": "当前使用的 Cookie 和类似技术",
+        "content": "dynamia_cookie_consent：第一方必要 Cookie，用于保存您的同意记录，包括政策版本、时间戳和已启用类别。最长保存 180 天。\n\nNEXT_LOCALE：第一方必要 Cookie，用于记住语言偏好。最长保存一年。\n\nvideo_unlocked：第一方必要 Cookie，用于记住当前浏览器已解锁视频内容。最长保存 30 天。\n\nGoogle Analytics（_ga 及相关 Cookie）：第三方分析 Cookie，仅在您同意分析 Cookie 后使用。保存期限由 Google Analytics 设置控制。\n\nVercel Analytics 和 Speed Insights：分析与性能衡量技术，仅在您同意分析 Cookie 后使用。保存期限由 Vercel 控制。"
       },
       {
         "title": "关于 Cookie 的选择",
-        "content": "如果您想限制或阻止 Cookie \"帮助\"功能应该会告诉您如何操作。或者，您可以访问 www.aboutcookies.org，其中包含有关如何在各种浏览器上限制或阻止 Cookie 的综合信息。您还可以通过首次访问我们网站时出现的 Cookie 同意横幅管理您的 Cookie 偏好。"
+        "content": "您可以通过 Cookie 横幅接受所有可选类别、拒绝所有可选类别，或分别管理各个类别。您也可以稍后通过页脚中的 Cookie 设置更改选择。\n\n您还可以通过浏览器设置限制或阻止 Cookie。阻止必要 Cookie 可能影响网站功能。"
+      },
+      {
+        "title": "同意记录",
+        "content": "当您保存选择时，我们会在您的浏览器中保存一份同意记录。该记录包括政策版本、时间戳，以及分析、营销、功能类别是否启用。必要 Cookie 会保持启用，因为它们是网站运行所必需的。"
       },
       {
         "title": "对我们 Cookie 政策的更改",
