@@ -21,7 +21,7 @@ coverImage: /images/blog/cmb-hami-heterogeneous-computing/speaker-suxi.webp
 linktitle: "招商银行基于 HAMi 构建异构算力底座"
 ---
 
-「不卷算力卷效率 | HAMi 社区 Meetup」深圳站由 HAMi 社区发起，密瓜智能主办，2026 年 4 月 25 日在深圳圆满结束。本文为 HAMi 社区 Meetup 深圳站回顾系列第五篇。招商银行苏茜分享了金融行业异构算力底座建设的深度实践，聚焦超节点硬件适配、vNPU-Core 软切分、以及网络拓扑感知调度算法。
+「不卷算力卷效率 | HAMi 社区 Meetup」深圳站由 HAMi 社区发起，密瓜智能主办，2026 年 4 月 25 日在深圳圆满结束。本文为 HAMi 社区 Meetup 深圳站回顾系列第四篇。招商银行苏茜分享了金融行业异构算力底座建设的深度实践，聚焦超节点硬件适配、vNPU-Core 软切分、以及网络拓扑感知调度算法。
 
 **核心亮点：**
 
