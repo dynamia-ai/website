@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faXTwitter, faZhihu, faGithub, faSlack, faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { faBuilding, faFileAlt, faShieldAlt, faBook, faTag, faVideo, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding, faCookieBite, faFileAlt, faShieldAlt, faBook, faTag, faVideo, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { openCookiePreferences } from '@/lib/cookieConsent';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -75,6 +76,22 @@ const Footer: React.FC = () => {
                       <FontAwesomeIcon icon={faShieldAlt as any} className="h-4 w-4 opacity-70" />
                       {t('footer.privacyPolicy')}
                     </Link>
+                  </li>
+                  <li>
+                    <Link href={getLocalizedHref('/cookies-policy')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <FontAwesomeIcon icon={faCookieBite as any} className="h-4 w-4 opacity-70" />
+                      {t('footer.cookiesPolicy')}
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={openCookiePreferences}
+                      className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2 text-left"
+                    >
+                      <FontAwesomeIcon icon={faCookieBite as any} className="h-4 w-4 opacity-70" />
+                      {t('footer.cookieSettings')}
+                    </button>
                   </li>
                 </ul>
               </div>

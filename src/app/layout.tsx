@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import I18nProvider from "../components/I18nProvider";
 import { ThemeProvider } from "../components/ThemeProvider";
+import ConsentAwareAnalytics from "../components/ConsentAwareAnalytics";
+import CookieConsentManager from "../components/CookieConsentManager";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -92,19 +91,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-HHZL7ECT9C"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-HHZL7ECT9C');
-          `}
-        </Script>
         {/* Performance optimizations */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
@@ -195,8 +181,8 @@ export default function RootLayout({
         <ThemeProvider>
           <I18nProvider>
             {children}
-            <SpeedInsights />
-            <Analytics />
+            <CookieConsentManager />
+            <ConsentAwareAnalytics />
           </I18nProvider>
         </ThemeProvider>
       </body>
