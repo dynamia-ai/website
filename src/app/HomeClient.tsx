@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import MainLayout from '@/components/layout/MainLayout';
 import GitHubStars from '@/components/GitHubStars';
+import WebMCPProvider from '@/components/agent/WebMCPProvider';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -213,6 +214,7 @@ export default function Home() {
 
   return (
     <MainLayout>
+      <WebMCPProvider />
       {/* Hero Section */}
       <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto">

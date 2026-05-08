@@ -4,14 +4,17 @@ Allow: /
 Disallow: /admin
 Disallow: /private
 Disallow: /api
+Content-Signal: ai-train=no, search=yes, ai-input=no
 
 # GPTBot
 User-agent: GPTBot
 Disallow: /
+Content-Signal: ai-train=no, search=yes, ai-input=no
 
 # Google-Extended
 User-agent: Google-Extended
 Disallow: /
+Content-Signal: ai-train=no, search=yes, ai-input=no
 
 # Host
 Host: https://dynamia.ai

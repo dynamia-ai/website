@@ -72,6 +72,19 @@ module.exports = {
   ],
   // Optional: 配置 robots.txt
   robotsTxtOptions: {
+    transformRobotsTxt: async (config, robotsTxt) => robotsTxt
+      .replace(
+        'Disallow: /api\n\n# GPTBot',
+        'Disallow: /api\nContent-Signal: ai-train=no, search=yes, ai-input=no\n\n# GPTBot'
+      )
+      .replace(
+        'User-agent: GPTBot\nDisallow: /\n\n# Google-Extended',
+        'User-agent: GPTBot\nDisallow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\n\n# Google-Extended'
+      )
+      .replace(
+        'User-agent: Google-Extended\nDisallow: /\n\n# Host',
+        'User-agent: Google-Extended\nDisallow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\n\n# Host'
+      ),
     policies: [
       {
         userAgent: '*',

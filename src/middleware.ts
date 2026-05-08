@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { AGENT_LINK_HEADERS, HOME_MARKDOWN } from '@/lib/agent-discovery';
 
 // 支持的语言
 export const locales = ['en', 'zh'];
@@ -35,6 +36,23 @@ function getLocale(request: NextRequest) {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const isHomepage = pathname === '/' || pathname === '/zh';
+
+  if (isHomepage && request.headers.get('accept')?.includes('text/markdown')) {
+    return new NextResponse(HOME_MARKDOWN, {
+      headers: {
+        'Content-Type': 'text/markdown; charset=utf-8',
+        'Link': AGENT_LINK_HEADERS.join(', '),
+        'Vary': 'Accept',
+        'x-markdown-tokens': String(HOME_MARKDOWN.split(/\s+/).filter(Boolean).length),
+        'X-Frame-Options': 'DENY',
+        'X-Content-Type-Options': 'nosniff',
+        'X-XSS-Protection': '1; mode=block',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+      },
+    });
+  }
 
   // 创建响应
   const response = NextResponse.next();
@@ -45,6 +63,10 @@ export function middleware(request: NextRequest) {
   response.headers.set('X-XSS-Protection', '1; mode=block');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  if (isHomepage) {
+    response.headers.set('Link', AGENT_LINK_HEADERS.join(', '));
+    response.headers.append('Vary', 'Accept');
+  }
 
   // 排除不需要处理的路径
   if (
