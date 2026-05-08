@@ -56,20 +56,6 @@ const CaseSnowCorp: React.FC = () => {
             <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('cases.snowCorp.subtitle')}
             </p>
-            {/* CNCF Badge */}
-            <div className="mt-6">
-              <a
-                href={t('cases.snowCorp.cncfNote.link')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
-              >
-                <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0L1.5 6v12L12 24l10.5-6V6L12 0zm0 2.16l8.34 4.82v9.64L12 21.44l-8.34-4.82V6.98L12 2.16zM7.68 7.68h4.32c.6 0 1.08.48 1.08 1.08v1.08h-1.08V8.76H8.76v6.48h3.24v-1.08h1.08v1.08c0 .6-.48 1.08-1.08 1.08H7.68c-.6 0-1.08-.48-1.08-1.08V8.76c0-.6.48-1.08 1.08-1.08zm4.32 0h3.24v1.08h-2.16v1.08h1.08v1.08h-1.08v1.08h2.16v1.08h-3.24V7.68z"/>
-                </svg>
-                {t('cases.snowCorp.cncfNote.title')}
-              </a>
-            </div>
           </motion.div>
         </div>
       </section>
