@@ -1772,6 +1772,145 @@
         "title": "Hybrid Strategy Success",
         "description": "NIO's hybrid resource management strategy enables the company to support diverse AI workloads—from CI pipelines to simulation and inference—more efficiently within the same Kubernetes environment. This approach demonstrates how combining HAMi with other GPU allocation mechanisms can deliver optimal results for different workload types."
       }
+    },
+    "snowCorp": {
+      "title": "SNOW Corp Scales GenAI for 200M Users with HAMi GPU Sharing and KEDA Autoscaling",
+      "subtitle": "Discover how SNOW Corp orchestrates 1,000+ GPUs to handle 700% viral traffic spikes, achieving 91% MTTR reduction, 85% fewer surge errors, and USD 17.4M in estimated cost savings using HAMi and KEDA on Kubernetes.",
+      "stats": [
+        {
+          "value": "1,000+",
+          "label": "A100 GPUs orchestrated"
+        },
+        {
+          "value": "200M+",
+          "label": "global users across 3 apps"
+        },
+        {
+          "value": "700%",
+          "label": "viral traffic spikes handled"
+        }
+      ],
+      "overview": {
+        "title": "Company Overview",
+        "description": "SNOW Corp., a subsidiary of NAVER from South Korea, operates a fleet of 1,000+ A100 GPUs serving GenAI features for 200M+ global users across three top-ranked apps (SNOW, EPIK, B612). The infrastructure serves 1,200+ AI workflows and 400+ models, handling extreme traffic volatility from viral AI trends.",
+        "keyPoints": [
+          "Subsidiary of NAVER, South Korea's leading tech platform",
+          "Three top-ranked GenAI apps: SNOW, EPIK, B612",
+          "1,200+ AI workflows and 400+ models in production",
+          "Multi-region on-premise Kubernetes platform"
+        ]
+      },
+      "challenge": {
+        "title": "Challenge: GPU Scheduling at Extreme Scale",
+        "description": "Kubernetes' native GPU scheduling treats GPUs as atomic resources — a pod either gets a full GPU or nothing. This model broke down under SNOW's heterogeneous workload demands and unpredictable viral traffic spikes.",
+        "points": [
+          {
+            "title": "Heterogeneous Workload Demands",
+            "description": "Training pipelines, inference services, and batch processing have vastly different GPU utilization profiles. A training job might consume 80% of GPU compute but only 20% of memory, while inference has the opposite profile."
+          },
+          {
+            "title": "Traffic Unpredictability",
+            "description": "Viral AI trends and heterogeneous inference workflows created 700% traffic spikes. Without GPU-level observability, scaling decisions were either manual or based on crude CPU/memory metrics that don't reflect GPU saturation."
+          },
+          {
+            "title": "Scheduling Blindness",
+            "description": "Before Kubernetes adoption, 2-3 containers in the same pod competed for GPU resources with no coordination. Manual GPU provisioning based on load predictions led to ~2x over-provisioning."
+          },
+          {
+            "title": "Cost Explosion",
+            "description": "To handle peak loads, SNOW had to over-provision by approximately 2x — one GPU for training, one for inference — when one could theoretically suffice."
+          }
+        ]
+      },
+      "solution": {
+        "title": "Solution: CNCF-Powered GPU Orchestration Stack",
+        "description": "SNOW migrated to a multi-region on-premise Kubernetes platform with the CNCF ecosystem underpinning the entire stack: Cilium for CNI, Helm for GitOps-based deployment, Traefik for ingress, Prometheus/Loki/Grafana for observability, HAMi for GPU sharing, and KEDA for autoscaling.",
+        "hamiSharing": {
+          "title": "GPU Sharing with HAMi",
+          "description": "Kubernetes' default scheduler enforces strict GPU isolation, which blocked migration of SNOW's sequential Train-to-Inference pipelines — where a trainer and inference engine must share a single GPU. HAMi resolves this by virtualizing GPU resources (vGPU), enabling multiple containers within the same pod to share a single GPU concurrently.",
+          "features": [
+            "Integrates natively with kube-scheduler with zero changes to application code",
+            "Fully compatible with the broader autoscaling ecosystem",
+            "Enables 2x fewer GPUs needed for training + inference pipelines"
+          ]
+        },
+        "kedaAutoscaling": {
+          "title": "Proactive GPU Orchestration with KEDA",
+          "description": "Standard metrics (CPU/RAM, DCGM utilization) proved unreliable for SNOW's heterogeneous workloads. KEDA's built-in RabbitMQ scaler functioned as a lagging indicator — given a ~60-second model warm-up time, scaling triggered after a queue backlog formed was consistently too late.",
+          "features": [
+            "Custom Metric Server (Python/FastAPI) exposing Consumer Saturation metric to KEDA",
+            "Proactive scaling: when active_ratio exceeds threshold (e.g., 0.7), KEDA provisions new GPU pods before worker pool saturates",
+            "Smart scale-in: longer stabilizationWindowSeconds and cooldownPeriod prevent premature deallocation"
+          ]
+        },
+        "cloudBursting": {
+          "title": "Hybrid Cloud Bursting for Viral Spikes",
+          "description": "When viral trends like the 'Ghibli Filter' tripled traffic within 3 hours, SNOW expanded dynamically into CSP regions using a unified GitOps pipeline that deployed identical Helm charts across all clusters.",
+          "features": [
+            "Unified GitOps pipeline deploying identical Helm charts across all clusters",
+            "CSP worker nodes consumed tasks directly from central RabbitMQ queue",
+            "Seamless multi-cluster scaling with zero service interruption"
+          ]
+        }
+      },
+      "results": {
+        "title": "Impact and Results",
+        "description": "SNOW's cloud-native transformation demonstrates how combining Kubernetes with the broader CNCF ecosystem can overcome fundamental limitations in GPU scheduling and observability at extreme scale.",
+        "items": [
+          {
+            "title": "MTTR Improvement",
+            "value": "91%",
+            "description": "Reduced from ~2 hrs to ~10 min"
+          },
+          {
+            "title": "Surge Error Reduction",
+            "value": "85%",
+            "description": "GPU surge-related user errors during peak traffic"
+          },
+          {
+            "title": "Cost Savings",
+            "value": "USD 17.4M",
+            "description": "Estimated savings vs. on-demand cloud GPU provisioning"
+          },
+          {
+            "title": "GPU Usage Time",
+            "value": "-55%",
+            "description": "Average GPU usage time reduced by proactive autoscaling"
+          },
+          {
+            "title": "GPU Requirement",
+            "value": "2× Fewer",
+            "description": "GPUs needed for training + inference via HAMi sharing"
+          },
+          {
+            "title": "Operational Savings",
+            "value": "10.8 Man-month",
+            "description": "Manual scaling eliminated, metric-driven automation adopted"
+          }
+        ]
+      },
+      "cncfNote": {
+        "title": "CNCF Case Study",
+        "description": "This case study was originally published by the Cloud Native Computing Foundation (CNCF) as part of its end-user case study program. It demonstrates SNOW Corp.'s success with HAMi, a CNCF Sandbox project, within the broader CNCF ecosystem.",
+        "link": "https://www.cncf.io/case-studies/snow-corp/"
+      },
+      "quote": {
+        "text": "SNOW's cloud-native transformation demonstrates how combining Kubernetes with the broader CNCF ecosystem can overcome fundamental limitations in GPU scheduling and observability at extreme scale. By introducing HAMi for GPU sharing and augmenting KEDA with proactive, custom metrics, SNOW shifted from reactive, manual operations to predictive, automated orchestration.",
+        "author": "SNOW Corp. Infrastructure Team",
+        "position": "Infrastructure Team, SNOW Corp."
+      },
+      "companyCard": {
+        "name": "SNOW Corp.",
+        "description": "NAVER subsidiary serving 200M+ GenAI users globally"
+      },
+      "cta": {
+        "exploreHami": "Explore HAMi",
+        "contactUs": "Contact Us"
+      },
+      "conclusion": {
+        "title": "A Replicable Blueprint for Large-Scale GenAI",
+        "description": "SNOW's approach highlights a replicable blueprint for running large-scale GenAI workloads — where intelligent resource utilization, autoscaling precision, and deep observability are critical to turning infrastructure challenges into competitive advantage."
+      }
     }
   },
   "privacyPolicy": {

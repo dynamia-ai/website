@@ -71,6 +71,15 @@ const CaseStudiesList: React.FC = () => {
         { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
+    {
+      slug: 'snow-corp',
+      titleKey: 'cases.snowCorp.title',
+      subtitleKey: 'cases.snowCorp.subtitle',
+      logos: [
+        { src: '/images/case-studies/icons/snow-corp.jpg', alt: 'SNOW Corp Logo', width: 40, height: 40 },
+        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
+      ],
+    },
     // Temporarily hidden from list
     // {
     //   slug: 'telecom',
