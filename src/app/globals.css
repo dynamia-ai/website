@@ -579,9 +579,9 @@ body {
 }
 
 .blog-content table {
-  width: 100%;
-  display: block;
-  overflow-x: auto;
+  width: auto;
+  min-width: 100%;
+  display: table;
   border-collapse: collapse;
   margin: 1.5rem 0;
   border: 1px solid var(--border-default);
@@ -589,12 +589,16 @@ body {
   background: var(--surface-primary);
 }
 
+.blog-content .table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .blog-content th,
 .blog-content td {
   padding: 0.65rem 0.85rem;
   border-bottom: 1px solid var(--border-subtle);
   text-align: left;
-  white-space: nowrap;
   color: var(--text-secondary);
 }
 
