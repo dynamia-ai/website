@@ -34,7 +34,7 @@ export default function Products() {
   const { t } = useTranslation();
 
   // 使用翻译数据获取商业特性
-  const commercialFeatures = t('products.kantaloupe.commercialFeatures.list', { returnObjects: true });
+  const commercialFeatures = t('products.hamiAiPlatform.commercialFeatures.list', { returnObjects: true });
   const features = Array.isArray(commercialFeatures) 
     ? commercialFeatures 
     : [
@@ -77,10 +77,10 @@ export default function Products() {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl">
-              {t('products.kantaloupe.title')}
+              {t('products.hamiAiPlatform.title')}
             </h1>
             <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-              {t('products.kantaloupe.subtitle')}
+              {t('products.hamiAiPlatform.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -99,15 +99,15 @@ export default function Products() {
               className="flex flex-col justify-center"
             >
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-                {t('products.kantaloupe.overview.title')}
+                {t('products.hamiAiPlatform.overview.title')}
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                {t('products.kantaloupe.overview.description')}
+                {t('products.hamiAiPlatform.overview.description')}
               </p>
               <div className="space-y-4">
                 {(
                   function() {
-                    const highlights = t('products.kantaloupe.overview.highlights', { returnObjects: true });
+                    const highlights = t('products.hamiAiPlatform.overview.highlights', { returnObjects: true });
                     return Array.isArray(highlights) 
                       ? highlights 
                       : ['基于 HAMi 开源核心', '企业级功能增强', '专业技术支持', '持续更新与维护'];
@@ -126,13 +126,13 @@ export default function Products() {
                   href="/pricing"
                   className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
                 >
-                  {t('products.kantaloupe.viewPricing')}
+                  {t('products.hamiAiPlatform.viewPricing')}
                 </Link>
                 <Link
-                  href="/request-demo"
+                  href="/apply-trial"
                   className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
                 >
-                  {t('navigation.requestDemo')}
+                  {t('navigation.freeTrial')}
                 </Link>
               </div>
             </motion.div>
@@ -176,10 +176,10 @@ export default function Products() {
             className="text-center max-w-4xl mx-auto mb-12"
           >
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              {t('products.kantaloupe.commercialFeatures.title')}
+              {t('products.hamiAiPlatform.commercialFeatures.title')}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              {t('products.kantaloupe.commercialFeatures.subtitle')}
+              {t('products.hamiAiPlatform.commercialFeatures.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -240,17 +240,17 @@ export default function Products() {
             className="text-center max-w-4xl mx-auto"
           >
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-              {t('products.kantaloupe.readyToStart')}
+              {t('products.hamiAiPlatform.readyToStart')}
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-              {t('products.kantaloupe.ctaDescription')}
+              {t('products.hamiAiPlatform.ctaDescription')}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/pricing"
                 className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark"
               >
-                {t('products.kantaloupe.viewPricing')}
+                {t('products.hamiAiPlatform.viewPricing')}
               </Link>
               <Link
                 href="/apply-trial"

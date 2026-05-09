@@ -90,12 +90,30 @@ const Header: React.FC = () => {
 
   // 导航链接
   const navigation = [
-    { name: t('navigation.products'), href: currentLocale === 'zh' ? '/zh/products' : '/products' },
+    { name: t('navigation.products'), href: '#', hasSubmenu: true, submenuType: 'products' },
     { name: t('navigation.caseStudies'), href: currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies' },
     { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
     { name: t('navigation.community'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
+  ];
+
+  // Products 子菜单
+  const productsSubmenu: SubmenuItem[] = [
+    {
+      name: t('navigation.productsOverview'),
+      description: t('navigation.productsOverviewDesc'),
+      href: currentLocale === 'zh' ? '/zh/products' : '/products',
+      external: false,
+      iconName: 'infoCircle',
+    },
+    {
+      name: t('navigation.enterpriseDownloads'),
+      description: t('navigation.enterpriseDownloadsDesc'),
+      href: currentLocale === 'zh' ? '/zh/enterprise' : '/enterprise',
+      external: false,
+      iconName: 'folder',
+    },
   ];
 
   // HAMi 子菜单
@@ -199,12 +217,15 @@ const Header: React.FC = () => {
   const [isHamiMenuOpen, setIsHamiMenuOpen] = useState(false);
   const [isResourcesMenuOpen, setIsResourcesMenuOpen] = useState(false);
   const [isSolutionsMenuOpen, setIsSolutionsMenuOpen] = useState(false);
+  const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
   const hamiMenuRef = useRef<HTMLDivElement>(null);
   const resourcesMenuRef = useRef<HTMLDivElement>(null);
   const solutionsMenuRef = useRef<HTMLDivElement>(null);
+  const productsMenuRef = useRef<HTMLDivElement>(null);
   const hamiTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const solutionsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const productsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   const clearHamiCloseTimeout = () => {
     if (hamiTimeoutRef.current) {
@@ -225,6 +246,25 @@ const Header: React.FC = () => {
       clearTimeout(solutionsTimeoutRef.current);
       solutionsTimeoutRef.current = null;
     }
+  };
+
+  const clearProductsCloseTimeout = () => {
+    if (productsTimeoutRef.current) {
+      clearTimeout(productsTimeoutRef.current);
+      productsTimeoutRef.current = null;
+    }
+  };
+
+  const handleProductsMouseEnter = () => {
+    clearProductsCloseTimeout();
+    setIsProductsMenuOpen(true);
+  };
+
+  const handleProductsMouseLeave = () => {
+    clearProductsCloseTimeout();
+    productsTimeoutRef.current = setTimeout(() => {
+      setIsProductsMenuOpen(false);
+    }, 300);
   };
   
   // 打开 HAMi 菜单
@@ -275,6 +315,7 @@ const Header: React.FC = () => {
       clearHamiCloseTimeout();
       clearResourcesCloseTimeout();
       clearSolutionsCloseTimeout();
+      clearProductsCloseTimeout();
     };
   }, []);
   
@@ -290,13 +331,16 @@ const Header: React.FC = () => {
       if (solutionsMenuRef.current && !solutionsMenuRef.current.contains(event.target as Node)) {
         setIsSolutionsMenuOpen(false);
       }
+      if (productsMenuRef.current && !productsMenuRef.current.contains(event.target as Node)) {
+        setIsProductsMenuOpen(false);
+      }
     }
-    
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [hamiMenuRef, resourcesMenuRef, solutionsMenuRef]);
+  }, [hamiMenuRef, resourcesMenuRef, solutionsMenuRef, productsMenuRef]);
 
   // 如果组件未挂载，返回一个占位符避免水合错误
   if (!mounted) {
@@ -357,7 +401,9 @@ const Header: React.FC = () => {
                             ? hamiMenuRef
                             : item.submenuType === 'resources'
                               ? resourcesMenuRef
-                              : solutionsMenuRef
+                              : item.submenuType === 'products'
+                                ? productsMenuRef
+                                : solutionsMenuRef
                         }
                         className="relative flex items-center h-full"
                       >
@@ -365,6 +411,7 @@ const Header: React.FC = () => {
                           className={`inline-flex items-center whitespace-nowrap px-1 pt-1 h-full border-b-2 text-sm xl:text-base font-medium ${
                             (item.submenuType === 'hami' && isHamiMenuOpen) ||
                             (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                            (item.submenuType === 'products' && isProductsMenuOpen) ||
                             (item.submenuType === 'solutions' && isSolutionsMenuOpen)
                               ? 'border-primary text-gray-900 dark:text-gray-100'
                               : 'border-transparent text-gray-500 dark:text-gray-400 hover:border-gray-300 dark:hover:border-primary/60 hover:text-gray-700 dark:hover:text-gray-100'
@@ -374,14 +421,18 @@ const Header: React.FC = () => {
                               ? handleHamiMouseEnter
                               : item.submenuType === 'resources'
                                 ? handleResourcesMouseEnter
-                                : handleSolutionsMouseEnter
+                                : item.submenuType === 'products'
+                                  ? handleProductsMouseEnter
+                                  : handleSolutionsMouseEnter
                           }
                           onMouseLeave={
                             item.submenuType === 'hami'
                               ? handleHamiMouseLeave
                               : item.submenuType === 'resources'
                                 ? handleResourcesMouseLeave
-                                : handleSolutionsMouseLeave
+                                : item.submenuType === 'products'
+                                  ? handleProductsMouseLeave
+                                  : handleSolutionsMouseLeave
                           }
                         >
                           {item.name}
@@ -389,6 +440,7 @@ const Header: React.FC = () => {
                             className={`ml-1 h-4 w-4 transition-transform duration-200 ${
                               (item.submenuType === 'hami' && isHamiMenuOpen) ||
                               (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                              (item.submenuType === 'products' && isProductsMenuOpen) ||
                               (item.submenuType === 'solutions' && isSolutionsMenuOpen)
                                 ? 'transform rotate-180' : ''
                             }`}
@@ -397,6 +449,7 @@ const Header: React.FC = () => {
 
                         {((item.submenuType === 'hami' && isHamiMenuOpen) ||
                           (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                          (item.submenuType === 'products' && isProductsMenuOpen) ||
                           (item.submenuType === 'solutions' && isSolutionsMenuOpen)) && (
                           <div
                             className={`fixed left-0 right-0 ${desktopMenuTopClass} bg-white dark:bg-gray-950 shadow-lg z-50 fadeIn transition-colors duration-300`}
@@ -405,14 +458,18 @@ const Header: React.FC = () => {
                                 ? handleHamiMouseEnter
                                 : item.submenuType === 'resources'
                                   ? handleResourcesMouseEnter
-                                  : handleSolutionsMouseEnter
+                                  : item.submenuType === 'products'
+                                    ? handleProductsMouseEnter
+                                    : handleSolutionsMouseEnter
                             }
                             onMouseLeave={
                               item.submenuType === 'hami'
                                 ? handleHamiMouseLeave
                                 : item.submenuType === 'resources'
                                   ? handleResourcesMouseLeave
-                                  : handleSolutionsMouseLeave
+                                  : item.submenuType === 'products'
+                                    ? handleProductsMouseLeave
+                                    : handleSolutionsMouseLeave
                             }
                           >
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -440,7 +497,9 @@ const Header: React.FC = () => {
                                         ? hamiSubmenu
                                         : item.submenuType === 'resources'
                                           ? resourcesSubmenu
-                                          : solutionsSubmenu
+                                          : item.submenuType === 'products'
+                                            ? productsSubmenu
+                                            : solutionsSubmenu
                                     ).map((subItem) => (
                                       <li
                                         key={subItem.name}
@@ -526,12 +585,6 @@ const Header: React.FC = () => {
                 >
                   {t('navigation.freeTrial')}
                 </Link>
-                <Link
-                  href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
-                  className="hidden xl:inline-flex items-center px-3 py-2 border border-primary text-sm font-medium rounded-md text-primary bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-primary/15 whitespace-nowrap"
-                >
-                  {t('navigation.requestDemo')}
-                </Link>
 
                 {/* Dark Mode Toggle */}
                 <ThemeToggle />
@@ -586,7 +639,9 @@ const Header: React.FC = () => {
                                 ? hamiSubmenu
                                 : item.submenuType === 'resources'
                                   ? resourcesSubmenu
-                                  : solutionsSubmenu
+                                  : item.submenuType === 'products'
+                                    ? productsSubmenu
+                                    : solutionsSubmenu
                             ).map((subItem) => (
                               <div key={subItem.name} className="rounded-lg hover:bg-primary-lighter dark:hover:bg-primary/20 transition-colors duration-150">
                                 {subItem.external ? (
@@ -713,12 +768,6 @@ const Header: React.FC = () => {
                 className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors shadow-sm touch-manipulation"
               >
                 {t('navigation.freeTrial')}
-              </Link>
-              <Link
-                href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
-                className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-primary border-2 border-primary hover:bg-primary-lighter rounded-lg transition-colors touch-manipulation"
-              >
-                {t('navigation.requestDemo')}
               </Link>
             </div>
           </Disclosure.Panel>

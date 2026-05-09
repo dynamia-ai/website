@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 interface FeatureProps {
   name: string;
   hamiStatus: string | boolean;
-  kantaloupeStatus: string | boolean;
+  platformStatus: string | boolean;
 }
 
 // 定义表格数据结构，用于类型检查
@@ -32,7 +32,7 @@ export default function FeatureComparisonTable() {
   const { t } = useTranslation();
   
   // 从i18n中获取表格配置
-  const featureComparisonData = t('products.kantaloupe.featureComparison', { returnObjects: true }) as FeatureComparisonData;
+  const featureComparisonData = t('products.hamiAiPlatform.featureComparison', { returnObjects: true }) as FeatureComparisonData;
   
   // 确保数据可用
   if (!featureComparisonData || !featureComparisonData.categories) {
@@ -163,7 +163,7 @@ export default function FeatureComparisonTable() {
                       {renderStatus(feature.hamiStatus)}
                     </td>
                     <td className="px-2 py-3 text-sm text-gray-700 dark:text-gray-300 text-center">
-                      {renderStatus(feature.kantaloupeStatus)}
+                      {renderStatus(feature.platformStatus)}
                     </td>
                   </tr>
                 ))

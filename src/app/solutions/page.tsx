@@ -125,10 +125,10 @@ export default function Solutions() {
                 {t('navigation.freeTrial')}
               </Link>
               <Link
-                href="/request-demo"
+                href="/apply-trial"
                 className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
               >
-                {t('navigation.requestDemo')}
+                {t('navigation.freeTrial')}
               </Link>
             </div>
           </div>

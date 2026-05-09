@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 // import Image from 'next/image';
+import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
-import FeatureComparisonTable from '@/components/FeatureComparisonTable';
 import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/solid';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
@@ -295,6 +295,14 @@ export default function PricingPage() {
                     className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
                   ></textarea>
                 </div>
+                <label className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400 leading-snug cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    required
+                    className="mt-0.5 h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary"
+                  />
+                  <span dangerouslySetInnerHTML={{ __html: t('enterprise.gate.consentLabel') }} />
+                </label>
                 <div>
                   <button
                     type="submit"
@@ -310,7 +318,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* 特性对比表格区域 */}
+      {/* 跨页引流：选型 + 详细对比 + 下载 */}
       <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
@@ -319,8 +327,30 @@ export default function PricingPage() {
             viewport={{ once: true }}
             variants={fadeIn}
             transition={{ duration: 0.5 }}
+            className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-8 md:p-10"
           >
-            <FeatureComparisonTable />
+            <div className="flex items-start justify-between gap-6 flex-wrap">
+              <div className="flex-1 min-w-0 max-w-2xl">
+                <div className="text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 mb-3">
+                  {t('pricing.compareCTA.eyebrow')}
+                </div>
+                <h2 className="text-2xl md:text-[28px] font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+                  {t('pricing.compareCTA.title')}
+                </h2>
+                <p className="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {t('pricing.compareCTA.desc')}
+                </p>
+              </div>
+              <Link
+                href="/enterprise"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-primary text-white text-sm font-semibold hover:bg-primary-dark shadow-sm hover:shadow-md transition-all"
+              >
+                {t('pricing.compareCTA.button')}
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
