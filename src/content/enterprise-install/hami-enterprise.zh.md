@@ -67,7 +67,37 @@ helm install --wait --generate-name \
 
 ## 安装 HAMi Enterprise
 
-### 步骤 1：申请离线安装包
+> 三种安装路径，按场景选：
+> - **All-in-One 离线一体包**（推荐，金融/政府/运营商等隔离网络场景）
+> - 镜像离线包 + Helm Chart 分离下载（自有交付流水线）
+> - 在线 OCI 安装（评估、PoC）
+
+### 路径 A：All-in-One 离线一体包（推荐 air-gap 场景）
+
+下载 `hami-enterprise-vX.Y.Z-airgap-<arch>.tar.gz`，一个 tarball 内含全部物料：
+
+```bash
+# 1. 解压
+tar -xzf hami-enterprise-v2.6.0-airgap-amd64.tar.gz
+cd hami-enterprise-v2.6.0-airgap
+
+# 2. 推镜像到内网私有仓库（脚本自动处理 retag + push）
+./load-images.sh --registry harbor.intra/hami
+
+# 3. Helm 安装（chart 已就近）
+helm install hami ./charts/hami-enterprise-2.6.0.tgz \
+  -n hami-system --create-namespace \
+  --set image.registry=harbor.intra/hami
+
+# 4. 校验
+kubectl -n hami-system get pods
+```
+
+> 一体包 SHA256 在 download 页显示，离线机房传输完务必比对。
+
+---
+
+### 路径 B：分件下载（自有 CI/CD 流水线）
 
 向密瓜智能销售或支持团队申请 **HAMi Enterprise 离线包**，包含：
 

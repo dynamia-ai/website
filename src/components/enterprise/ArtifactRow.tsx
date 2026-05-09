@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
+  ArchiveBoxIcon,
   ArrowDownTrayIcon,
   CubeIcon,
   DocumentTextIcon,
@@ -11,7 +12,7 @@ import {
   CheckIcon,
   GlobeAltIcon,
 } from '@heroicons/react/24/outline';
-import type { Artifact, Locale, Mirror } from '@/types/enterprise';
+import type { Artifact, ArtifactType, Locale, Mirror } from '@/types/enterprise';
 import { pickI18n } from '@/lib/enterprise';
 import CopyableCommand from './CopyableCommand';
 
@@ -23,11 +24,21 @@ interface ArtifactRowProps {
 }
 
 const TYPE_ICON: Record<string, React.ComponentType<{ className?: string }>> = {
+  'airgap-bundle': ArchiveBoxIcon,
   'image-bundle': CubeIcon,
   'helm-chart': CubeIcon,
   'install-doc': DocumentTextIcon,
   'release-notes': DocumentTextIcon,
   'checksum': DocumentTextIcon,
+};
+
+const CONTENT_LABEL_KEY: Record<ArtifactType, string> = {
+  'airgap-bundle': 'enterprise.artifact.contentBundle',
+  'image-bundle': 'enterprise.artifact.contentImage',
+  'helm-chart': 'enterprise.artifact.contentChart',
+  'install-doc': 'enterprise.artifact.contentDocs',
+  'release-notes': 'enterprise.artifact.contentReleaseNotes',
+  'checksum': 'enterprise.artifact.contentChecksum',
 };
 
 const MIRROR_PREF_KEY = 'enterprise.mirror.region';
@@ -182,6 +193,22 @@ export default function ArtifactRow({ artifact, locale, unlocked, onDownload }: 
             {t('enterprise.artifact.installCommand')}
           </p>
           <CopyableCommand command={artifact.installCommand} />
+        </div>
+      )}
+
+      {artifact.contents && artifact.contents.length > 0 && (
+        <div className="mt-3 flex items-center gap-2 flex-wrap">
+          <span className="text-xs text-gray-500 dark:text-gray-400">
+            {t('enterprise.artifact.bundleContents')}
+          </span>
+          {artifact.contents.map((c) => (
+            <span
+              key={c}
+              className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-primary/5 text-primary border border-primary/20"
+            >
+              {t(CONTENT_LABEL_KEY[c] ?? c)}
+            </span>
+          ))}
         </div>
       )}
     </div>

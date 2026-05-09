@@ -74,6 +74,56 @@
           "upgradeGuideUrl": "https://docs.dynamia.ai/hami-enterprise/upgrade",
           "artifacts": [
             {
+              "type": "airgap-bundle",
+              "arch": "amd64",
+              "label": {
+                "en": "All-in-One Air-gap Bundle (amd64)",
+                "zh": "All-in-One 离线一体包 (amd64)"
+              },
+              "filename": "hami-enterprise-v2.6.0-airgap-amd64.tar.gz",
+              "url": "https://github.com/dynamia-ai/hami-enterprise/releases/download/v2.6.0/hami-enterprise-v2.6.0-airgap-amd64.tar.gz",
+              "mirrors": [
+                {
+                  "region": "global",
+                  "label": { "en": "GitHub Releases", "zh": "GitHub Releases" },
+                  "url": "https://github.com/dynamia-ai/hami-enterprise/releases/download/v2.6.0/hami-enterprise-v2.6.0-airgap-amd64.tar.gz"
+                },
+                {
+                  "region": "cn",
+                  "label": { "en": "China Mirror (Aliyun OSS)", "zh": "国内镜像（阿里云 OSS）" },
+                  "url": "https://release-cn.dynamia.ai/hami-enterprise/v2.6.0/hami-enterprise-v2.6.0-airgap-amd64.tar.gz"
+                }
+              ],
+              "size": "1.95 GB",
+              "sha256": "TBD",
+              "contents": ["image-bundle", "helm-chart", "install-doc"]
+            },
+            {
+              "type": "airgap-bundle",
+              "arch": "arm64",
+              "label": {
+                "en": "All-in-One Air-gap Bundle (arm64)",
+                "zh": "All-in-One 离线一体包 (arm64)"
+              },
+              "filename": "hami-enterprise-v2.6.0-airgap-arm64.tar.gz",
+              "url": "https://github.com/dynamia-ai/hami-enterprise/releases/download/v2.6.0/hami-enterprise-v2.6.0-airgap-arm64.tar.gz",
+              "mirrors": [
+                {
+                  "region": "global",
+                  "label": { "en": "GitHub Releases", "zh": "GitHub Releases" },
+                  "url": "https://github.com/dynamia-ai/hami-enterprise/releases/download/v2.6.0/hami-enterprise-v2.6.0-airgap-arm64.tar.gz"
+                },
+                {
+                  "region": "cn",
+                  "label": { "en": "China Mirror (Aliyun OSS)", "zh": "国内镜像（阿里云 OSS）" },
+                  "url": "https://release-cn.dynamia.ai/hami-enterprise/v2.6.0/hami-enterprise-v2.6.0-airgap-arm64.tar.gz"
+                }
+              ],
+              "size": "1.85 GB",
+              "sha256": "TBD",
+              "contents": ["image-bundle", "helm-chart", "install-doc"]
+            },
+            {
               "type": "image-bundle",
               "arch": "amd64",
               "label": {
@@ -258,6 +308,56 @@
           "releaseNotesUrl": "https://github.com/dynamia-ai/hami-ai-platform/releases/tag/v1.4.0",
           "upgradeGuideUrl": "https://docs.dynamia.ai/hami-ai-platform/upgrade",
           "artifacts": [
+            {
+              "type": "airgap-bundle",
+              "arch": "amd64",
+              "label": {
+                "en": "All-in-One Air-gap Bundle (amd64)",
+                "zh": "All-in-One 离线一体包 (amd64)"
+              },
+              "filename": "hami-ai-platform-v1.4.0-airgap-amd64.tar.gz",
+              "url": "https://github.com/dynamia-ai/hami-ai-platform/releases/download/v1.4.0/hami-ai-platform-v1.4.0-airgap-amd64.tar.gz",
+              "mirrors": [
+                {
+                  "region": "global",
+                  "label": { "en": "GitHub Releases", "zh": "GitHub Releases" },
+                  "url": "https://github.com/dynamia-ai/hami-ai-platform/releases/download/v1.4.0/hami-ai-platform-v1.4.0-airgap-amd64.tar.gz"
+                },
+                {
+                  "region": "cn",
+                  "label": { "en": "China Mirror (Aliyun OSS)", "zh": "国内镜像（阿里云 OSS）" },
+                  "url": "https://release-cn.dynamia.ai/hami-ai-platform/v1.4.0/hami-ai-platform-v1.4.0-airgap-amd64.tar.gz"
+                }
+              ],
+              "size": "3.45 GB",
+              "sha256": "TBD",
+              "contents": ["image-bundle", "helm-chart", "install-doc"]
+            },
+            {
+              "type": "airgap-bundle",
+              "arch": "arm64",
+              "label": {
+                "en": "All-in-One Air-gap Bundle (arm64)",
+                "zh": "All-in-One 离线一体包 (arm64)"
+              },
+              "filename": "hami-ai-platform-v1.4.0-airgap-arm64.tar.gz",
+              "url": "https://github.com/dynamia-ai/hami-ai-platform/releases/download/v1.4.0/hami-ai-platform-v1.4.0-airgap-arm64.tar.gz",
+              "mirrors": [
+                {
+                  "region": "global",
+                  "label": { "en": "GitHub Releases", "zh": "GitHub Releases" },
+                  "url": "https://github.com/dynamia-ai/hami-ai-platform/releases/download/v1.4.0/hami-ai-platform-v1.4.0-airgap-arm64.tar.gz"
+                },
+                {
+                  "region": "cn",
+                  "label": { "en": "China Mirror (Aliyun OSS)", "zh": "国内镜像（阿里云 OSS）" },
+                  "url": "https://release-cn.dynamia.ai/hami-ai-platform/v1.4.0/hami-ai-platform-v1.4.0-airgap-arm64.tar.gz"
+                }
+              ],
+              "size": "3.25 GB",
+              "sha256": "TBD",
+              "contents": ["image-bundle", "helm-chart", "install-doc"]
+            },
             {
               "type": "image-bundle",
               "arch": "amd64",

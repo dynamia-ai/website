@@ -67,7 +67,10 @@ if (!Array.isArray(data.products)) {
         if (!a.url) err(`${aTag}: url missing`);
 
         // sha256 required for downloadable binary artifacts
-        const isBinary = a.type === 'image-bundle' || a.type === 'helm-chart';
+        const isBinary =
+          a.type === 'image-bundle' ||
+          a.type === 'helm-chart' ||
+          a.type === 'airgap-bundle';
         if (isBinary) {
           if (!a.sha256) err(`${aTag}: sha256 required for ${a.type}`);
           else if (a.sha256 === 'TBD') err(`${aTag}: sha256 is "TBD" — release blocked`);
