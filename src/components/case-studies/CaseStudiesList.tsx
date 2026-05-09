@@ -188,7 +188,7 @@ const CaseStudiesList: React.FC = () => {
               {t('caseStudiesPage.cta.description')}
             </p>
             <Link
-              href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
+              href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
               className="inline-flex items-center px-6 py-3 rounded-md bg-primary text-white font-medium hover:bg-primary-dark transition-colors"
             >
               {t('caseStudiesPage.cta.button')}

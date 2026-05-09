@@ -12,6 +12,16 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/request-demo',
+        destination: '/apply-trial',
+        permanent: true,
+      },
+      {
+        source: '/zh/request-demo',
+        destination: '/zh/apply-trial',
+        permanent: true,
+      },
+      {
         source: '/blog/case-prep-edu-hami',
         destination: '/case-studies/prep-edu',
         permanent: true,

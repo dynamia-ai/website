@@ -94,10 +94,10 @@ export default function FAQ() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/request-demo"
+              href="/apply-trial"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-colors"
             >
-              Request Demo
+              Apply for Trial
             </a>
             <a
               href="mailto:info@dynamia.ai"

@@ -434,11 +434,48 @@ body {
   position: relative;
   margin-bottom: 1.5rem;
   max-width: 100%;
-  overflow-x: auto;
 }
 
 .blog-content .code-block pre {
   margin-bottom: 0;
+  /* leave room for top bar (badge + copy button) */
+  padding-top: 2.6rem;
+}
+
+.blog-content .code-block[data-has-badge='1'] pre {
+  padding-top: 2.6rem;
+}
+
+.blog-content .code-language-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.15);
+  color: rgba(226, 232, 240, 0.9);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  z-index: 2;
+  user-select: none;
+}
+
+/* nicer scrollbar inside code blocks */
+.blog-content .code-block pre::-webkit-scrollbar {
+  height: 6px;
+}
+.blog-content .code-block pre::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 3px;
+}
+.blog-content .code-block pre::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .blog-content pre code {

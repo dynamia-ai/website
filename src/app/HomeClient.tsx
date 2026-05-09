@@ -240,10 +240,10 @@ export default function Home() {
                   {t('home.cta.freeTrialButton')}
                 </Link>
                 <Link
-                  href="/request-demo"
+                  href="/apply-trial"
                   className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 border border-primary/80 text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 shadow-sm transition-all duration-200 ease-out hover:border-primary hover:bg-primary-light hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
                 >
-                  {t('home.cta.requestDemoButton')}
+                  {t('home.cta.freeTrialButton')}
                 </Link>
                 <div className="w-full sm:w-auto">
                   <GitHubStars
@@ -967,10 +967,10 @@ export default function Home() {
               {t('home.cta.freeTrialButton')}
             </Link>
             <Link
-              href="/request-demo"
+              href="/apply-trial"
               className="inline-flex items-center justify-center px-6 py-3 border border-white/90 text-base font-medium rounded-md text-white bg-transparent shadow-sm transition-all duration-200 ease-out hover:border-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary w-full sm:w-auto"
             >
-              {t('home.cta.requestDemoButton')}
+              {t('home.cta.freeTrialButton')}
             </Link>
           </div>
         </div>

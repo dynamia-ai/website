@@ -1,0 +1,39 @@
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import EnterpriseDetailClient from '@/components/enterprise/EnterpriseDetailClient';
+import { getProductById, getProductIds, getLatestRelease } from '@/lib/enterprise';
+
+interface PageProps {
+  params: Promise<{ productId: string }>;
+}
+
+export function generateStaticParams() {
+  return getProductIds().map((productId) => ({ productId }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { productId } = await params;
+  const product = getProductById(productId);
+  if (!product) return { title: 'Product Not Found' };
+  const latest = getLatestRelease(product);
+  const name = product.name.en;
+  const tagline = product.tagline.en;
+  const versionLabel = latest ? ` ${latest.version}` : '';
+
+  return {
+    title: `${name}${versionLabel} - Download | Dynamia AI`,
+    description: tagline,
+    keywords: (product.tags ?? []).concat([name, 'download', 'enterprise']).join(', '),
+    openGraph: {
+      title: `${name}${versionLabel}`,
+      description: tagline,
+      type: 'website',
+    },
+  };
+}
+
+export default async function EnterpriseDetailPage({ params }: PageProps) {
+  const { productId } = await params;
+  if (!getProductById(productId)) notFound();
+  return <EnterpriseDetailClient productId={productId} locale="en" />;
+}

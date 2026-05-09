@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
 
-export default function KantaloupeProduct() {
+export default function HamiAiPlatformProduct() {
   const { t } = useTranslation();
 
   return (
@@ -14,10 +14,10 @@ export default function KantaloupeProduct() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-4xl">
-              {t('products.kantaloupe.title')}
+              {t('products.hamiAiPlatform.title')}
             </h1>
             <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400 dark:text-gray-500 sm:mt-4">
-              {t('products.kantaloupe.subtitle')}
+              {t('products.hamiAiPlatform.subtitle')}
             </p>
           </div>
 
@@ -27,7 +27,7 @@ export default function KantaloupeProduct() {
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">产品概述</h2>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    {t('products.kantaloupe.description')}
+                    {t('products.hamiAiPlatform.description')}
                   </p>
                   <p className="text-gray-600 dark:text-gray-300">
                     Dynamia AI 是一个专为企业级异构计算环境设计的统一管理平台。它能够无缝整合各种计算资源，包括 CPU、GPU、NPU、DCU 和专用加速器，以优化工作负载分配和资源利用率。
@@ -47,7 +47,7 @@ export default function KantaloupeProduct() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {(
                 function() {
-                  const features = t('products.kantaloupe.features', { returnObjects: true });
+                  const features = t('products.hamiAiPlatform.features', { returnObjects: true });
                   return Array.isArray(features) 
                     ? features 
                     : ['智能工作负载调度', '实时资源监控', '自动化扩展和优化', '跨平台兼容性', '企业级安全'];
@@ -95,10 +95,10 @@ export default function KantaloupeProduct() {
                 {t('navigation.freeTrial')}
               </Link>
               <Link
-                href="/request-demo"
+                href="/apply-trial"
                 className="inline-flex items-center px-6 py-3 border border-[#3867D6] text-base font-medium rounded-md text-[#3867D6] bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
               >
-                {t('navigation.requestDemo')}
+                {t('navigation.freeTrial')}
               </Link>
             </div>
           </div>
