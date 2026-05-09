@@ -203,6 +203,29 @@ Gateway API routes workspace traffic for VSCode / SSH / Jupyter etc.
 
 ## Install HAMi AI Platform
 
+> Three install paths — pick by environment:
+> - **All-in-One Air-gap Bundle** (recommended for air-gap; one tarball, all artifacts)
+> - Image bundle + Helm chart, downloaded separately (your own pipelines)
+> - Online OCI install (eval / PoC)
+
+### Path A · All-in-One Air-gap Bundle (recommended)
+
+```bash
+# 1. Extract
+tar -xzf hami-ai-platform-v1.4.0-airgap-amd64.tar.gz
+cd hami-ai-platform-v1.4.0-airgap
+
+# 2. Push images to your private registry
+./load-images.sh --registry harbor.intra/hami
+
+# 3. Helm install (chart bundled in)
+helm install hami-ai-platform ./charts/hami-ai-platform-1.4.0.tgz \
+  -n hami-ai-platform-system --create-namespace \
+  --set image.registry=harbor.intra/hami
+```
+
+### Path B · Separate downloads
+
 **Helm install:**
 
 ```bash

@@ -67,7 +67,37 @@ helm install --wait --generate-name \
 
 ## Install HAMi Enterprise
 
-### Step 1 · Request the offline bundle
+> Three install paths — pick by environment:
+> - **All-in-One Air-gap Bundle** (recommended for isolated networks: finance, gov, telco)
+> - Image bundle + Helm chart, downloaded separately (your own CI/CD)
+> - Online OCI install (eval / PoC)
+
+### Path A · All-in-One Air-gap Bundle (recommended for air-gap)
+
+Download `hami-enterprise-vX.Y.Z-airgap-<arch>.tar.gz` — a single tarball containing everything:
+
+```bash
+# 1. Extract
+tar -xzf hami-enterprise-v2.6.0-airgap-amd64.tar.gz
+cd hami-enterprise-v2.6.0-airgap
+
+# 2. Push images to your private registry (script handles retag + push)
+./load-images.sh --registry harbor.intra/hami
+
+# 3. Helm install (chart bundled in)
+helm install hami ./charts/hami-enterprise-2.6.0.tgz \
+  -n hami-system --create-namespace \
+  --set image.registry=harbor.intra/hami
+
+# 4. Verify
+kubectl -n hami-system get pods
+```
+
+> Bundle SHA256 is shown on the download page — verify after transferring into the isolated environment.
+
+---
+
+### Path B · Separate downloads (your own pipelines)
 
 Contact dynamia.ai sales or support to request the **HAMi Enterprise offline bundle**, which includes:
 

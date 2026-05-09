@@ -6,6 +6,7 @@ export interface I18nText {
 }
 
 export type ArtifactType =
+  | 'airgap-bundle'
   | 'image-bundle'
   | 'helm-chart'
   | 'install-doc'
@@ -32,6 +33,11 @@ export interface Artifact {
   size?: string;
   sha256?: string;
   installCommand?: string;
+  /**
+   * For `airgap-bundle`: list of artifact-types contained inside the tarball.
+   * Lets the UI show "Includes: image / chart / install-script / docs" chips.
+   */
+  contents?: ArtifactType[];
 }
 
 export type ReleaseChannel = 'stable' | 'beta' | 'rc' | 'eol';
