@@ -227,9 +227,11 @@ const Header: React.FC = () => {
     }
   };
   
-  // 打开 HAMi 菜单
+  // 打开 HAMi 菜单；与资源菜单互斥，避免快速划过时两个全宽面板重叠
   const handleHamiMouseEnter = () => {
     clearHamiCloseTimeout();
+    clearResourcesCloseTimeout();
+    setIsResourcesMenuOpen(false);
     setIsHamiMenuOpen(true);
   };
   
@@ -241,9 +243,11 @@ const Header: React.FC = () => {
     }, 300); // 300ms 延迟，给用户足够时间移动到下拉菜单
   };
 
-  // 打开资源菜单
+  // 打开资源菜单；与 HAMi 菜单互斥
   const handleResourcesMouseEnter = () => {
     clearResourcesCloseTimeout();
+    clearHamiCloseTimeout();
+    setIsHamiMenuOpen(false);
     setIsResourcesMenuOpen(true);
   };
   
