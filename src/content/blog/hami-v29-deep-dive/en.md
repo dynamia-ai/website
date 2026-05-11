@@ -191,7 +191,7 @@ DRA is the next-generation device resource declaration and allocation mechanism 
 
 DRA standardizes device resource declaration, allocation, and management by introducing new APIs like `ResourceClaim` and `DeviceClass`.
 
-![Device Plugin vs DRA Model Comparison](/images/blog/hami-v29-deep-dive/dra-device-plugin-comparison.png)
+![Device Plugin vs DRA Model Comparison](/images/blog/hami-v29-deep-dive/dra-device-plugin-comparison-en.png)
 
 ### HAMi-DRA Design Philosophy
 
@@ -200,6 +200,8 @@ HAMi-DRA adopts a Mutating Webhook architecture. The core philosophy can be summ
 1. **Don't change user habits:** Continue using Device Plugin syntax, automatically converting to DRA resource models underneath
 2. **Internalize complexity:** Webhook, Driver, and lifecycle management are all handled by the system
 3. **Drive evolution through community collaboration:** Contributors from different companies validate solutions in real production environments
+
+![HAMi-DRA Request Flow](/images/blog/hami-v29-deep-dive/hami-dra-flow-en.png)
 
 ### Platform Support
 
@@ -320,6 +322,8 @@ Scheduler routes add `io.LimitReader` to limit HTTP request body size, preventin
 
 v2.9.0 adds **Resource Quota checking** capability in the Webhook. GPU resource requests can be validated against quota limits at the Pod submission stage, avoiding post-scheduling rollbacks and improving overall scheduling efficiency.
 
+![Resource Quota Checking](/images/blog/hami-v29-deep-dive/webhook-quota-en.png)
+
 ### Critical Bug Fixes
 
 v2.9.0 fixes multiple critical issues affecting production stability:
@@ -409,7 +413,7 @@ spec:
           vastaitech.com/va: "2"
 ```
 
-With Vastai device support, HAMi now covers **NVIDIA, Huawei Ascend, Cambricon, Hygon DCU, Biren, Enflame, MetaX, Kunlunxin, AMD, Iluvatar, AWS Neuron**, and **Vastai** — over a dozen heterogeneous computing devices, making it one of the most broadly 覆盖 heterogeneous device virtualization and scheduling projects in the Kubernetes ecosystem.
+With Vastai device support, HAMi now covers **NVIDIA, Huawei Ascend, Cambricon, Hygon DCU, Biren, Enflame, MetaX, Kunlunxin, AMD, Iluvatar, AWS Neuron**, and **Vastai** — over a dozen heterogeneous computing devices, making it one of the most broadly covering heterogeneous device virtualization and scheduling projects in the Kubernetes ecosystem.
 
 ### DRA Ecosystem Alliance
 
@@ -476,7 +480,7 @@ An increasing number of enterprises are using HAMi in production environments to
 
 The v2.9.0 release welcomed **19 new contributors** to the HAMi project from different countries and organizations:
 
-maishivamhoo123, hoteye, jsl9208, ashergaga, Atroxgod, MyoungHaSong, charford, jcustenborder, Nov11, ilia-medvedev, Yonsun-w, CFH2436, kenwoodjw, anandj91, ManishSharma1609, maverick123123, almazkhalikov, lin121291, mesutoezdil
+[@maishivamhoo123](https://github.com/maishivamhoo123), [@hoteye](https://github.com/hoteye), [@jsl9208](https://github.com/jsl9208), [@ashergaga](https://github.com/ashergaga), [@Atroxgod](https://github.com/Atroxgod), [@MyoungHaSong](https://github.com/MyoungHaSong), [@charford](https://github.com/charford), [@jcustenborder](https://github.com/jcustenborder), [@Nov11](https://github.com/Nov11), [@ilia-medvedev](https://github.com/ilia-medvedev), [@Yonsun-w](https://github.com/Yonsun-w), [@CFH2436](https://github.com/CFH2436), [@kenwoodjw](https://github.com/kenwoodjw), [@anandj91](https://github.com/anandj91), [@ManishSharma1609](https://github.com/ManishSharma1609), [@maverick123123](https://github.com/maverick123123), [@almazkhalikov](https://github.com/almazkhalikov), [@lin121291](https://github.com/lin121291), [@mesutoezdil](https://github.com/mesutoezdil)
 
 Thank you to every contributor!
 
