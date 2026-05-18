@@ -15,7 +15,7 @@ tags:
   - NIO
   - Autonomous Driving
   - Case Study
-category: Case Study
+category: Customer Success Story
 coverImage: /images/blog/nio-hami-gpu-sharing/resource-management-chart.png
 language: en
 linktitle: NIO HAMi GPU Sharing Case Study

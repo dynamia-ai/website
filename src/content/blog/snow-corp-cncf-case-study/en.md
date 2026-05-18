@@ -18,7 +18,7 @@ tags:
   - NAVER
   - Case Study
   - GenAI
-category: Case Study
+category: Customer Success Story
 coverImage: /images/blog/snow-corp-cncf-case-study/snowcorp.jpg
 language: en
 linktitle: SNOW Corp HAMi Case Study

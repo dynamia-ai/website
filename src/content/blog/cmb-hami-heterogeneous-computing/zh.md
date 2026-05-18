@@ -15,7 +15,7 @@ tags:
   - 拓扑感知调度
   - 云原生
   - AI 基础设施
-category: User Stories
+category: Customer Success Story
 language: zh
 coverImage: /images/blog/cmb-hami-heterogeneous-computing/speaker-suxi.webp
 linktitle: "招商银行基于 HAMi 构建异构算力底座"
