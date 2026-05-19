@@ -13,7 +13,7 @@ tags:
   - GPU virtualization
   - Kubernetes
   - CNCF
-category: Case Study
+category: Customer Success Story
 language: en
 coverImage: /images/blog/ke-holdings-ml-infrastructure-scaling/solution-diagram.png
 linktitle: Ke Holdings GPU Infrastructure

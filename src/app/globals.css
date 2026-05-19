@@ -486,6 +486,146 @@ body {
   font-size: 0.875rem;
 }
 
+.blog-content pre code.hljs,
+.blog-content pre code .hljs {
+  color: #dbeafe;
+}
+
+.blog-content .hljs-comment,
+.blog-content .hljs-quote {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.blog-content .hljs-keyword,
+.blog-content .hljs-selector-tag,
+.blog-content .hljs-subst {
+  color: #c4b5fd;
+}
+
+.blog-content .hljs-literal,
+.blog-content .hljs-number,
+.blog-content .hljs-boolean,
+.blog-content .hljs-symbol {
+  color: #fbbf24;
+}
+
+.blog-content .hljs-string,
+.blog-content .hljs-doctag,
+.blog-content .hljs-regexp {
+  color: #86efac;
+}
+
+.blog-content .hljs-title,
+.blog-content .hljs-section,
+.blog-content .hljs-selector-id {
+  color: #93c5fd;
+  font-weight: 600;
+}
+
+.blog-content .hljs-type,
+.blog-content .hljs-class .hljs-title,
+.blog-content .hljs-built_in,
+.blog-content .hljs-builtin-name {
+  color: #67e8f9;
+}
+
+.blog-content .hljs-attr,
+.blog-content .hljs-attribute,
+.blog-content .hljs-name,
+.blog-content .hljs-property,
+.blog-content .hljs-variable,
+.blog-content .hljs-template-variable {
+  color: #7dd3fc;
+}
+
+.blog-content .hljs-tag,
+.blog-content .hljs-selector-class,
+.blog-content .hljs-selector-attr,
+.blog-content .hljs-selector-pseudo {
+  color: #f0abfc;
+}
+
+.blog-content .hljs-meta,
+.blog-content .hljs-operator,
+.blog-content .hljs-punctuation {
+  color: #cbd5e1;
+}
+
+.blog-content .hljs-addition {
+  color: #86efac;
+  background: rgba(22, 101, 52, 0.22);
+}
+
+.blog-content .hljs-deletion {
+  color: #fca5a5;
+  background: rgba(153, 27, 27, 0.22);
+}
+
+.light .blog-content pre code.hljs,
+.light .blog-content pre code .hljs {
+  color: #1f2937;
+}
+
+.light .blog-content .hljs-comment,
+.light .blog-content .hljs-quote {
+  color: #64748b;
+}
+
+.light .blog-content .hljs-keyword,
+.light .blog-content .hljs-selector-tag,
+.light .blog-content .hljs-subst {
+  color: #7c3aed;
+}
+
+.light .blog-content .hljs-literal,
+.light .blog-content .hljs-number,
+.light .blog-content .hljs-boolean,
+.light .blog-content .hljs-symbol {
+  color: #b45309;
+}
+
+.light .blog-content .hljs-string,
+.light .blog-content .hljs-doctag,
+.light .blog-content .hljs-regexp {
+  color: #15803d;
+}
+
+.light .blog-content .hljs-title,
+.light .blog-content .hljs-section,
+.light .blog-content .hljs-selector-id {
+  color: #1d4ed8;
+}
+
+.light .blog-content .hljs-type,
+.light .blog-content .hljs-class .hljs-title,
+.light .blog-content .hljs-built_in,
+.light .blog-content .hljs-builtin-name {
+  color: #0e7490;
+}
+
+.light .blog-content .hljs-attr,
+.light .blog-content .hljs-attribute,
+.light .blog-content .hljs-name,
+.light .blog-content .hljs-property,
+.light .blog-content .hljs-variable,
+.light .blog-content .hljs-template-variable {
+  color: #0369a1;
+}
+
+.light .blog-content .hljs-tag,
+.light .blog-content .hljs-selector-class,
+.light .blog-content .hljs-selector-attr,
+.light .blog-content .hljs-selector-pseudo {
+  color: #a21caf;
+}
+
+.light .blog-content .hljs-meta,
+.light .blog-content .hljs-operator,
+.light .blog-content .hljs-punctuation {
+  color: #475569;
+}
+
 .blog-content .code-copy-button {
   position: absolute;
   top: 0.85rem;

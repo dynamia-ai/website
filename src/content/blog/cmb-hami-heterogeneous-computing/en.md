@@ -18,7 +18,7 @@ tags:
   - Topology-Aware Scheduling
   - Cloud Native
   - AI Infrastructure
-category: User Stories
+category: Customer Success Story
 language: en
 coverImage: /images/blog/cmb-hami-heterogeneous-computing/speaker-suxi.webp
 linktitle: "CMB Heterogeneous Compute Infrastructure on HAMi"
