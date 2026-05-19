@@ -28,6 +28,8 @@ coverImage: "/images/blog/sangfor-ai-computing-gateway/architecture-overview.png
 
 The "Focus on Efficiency, Not Raw Power | HAMi Community Meetup" Shenzhen edition, initiated by the HAMi community and hosted by Dynamia AI, was successfully held on April 25, 2026 in Shenzhen. This article is the sixth installment of the HAMi Community Meetup Shenzhen recap series. Sangfor Cloud AI Chief Architect Jia Haojie shared a complete enterprise AI computing governance practice — from the computing challenges of the Agent era to intelligent routing and safety guardrails of the AI Computing Gateway, to Volcano + HAMi production-grade vGPU scheduling.
 
+![Jia Haojie on site](/images/blog/sangfor-ai-computing-gateway/jiahaojie.jpg)
+
 **Speaker:** Jia Haojie (Sangfor Cloud AI Chief Architect)
 
 ## Video Replay & Slide Download

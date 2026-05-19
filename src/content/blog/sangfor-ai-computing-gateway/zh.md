@@ -28,6 +28,8 @@ coverImage: "/images/blog/sangfor-ai-computing-gateway/architecture-overview.png
 
 「不卷算力卷效率 | HAMi 社区 Meetup」深圳站由 HAMi 社区发起，密瓜智能主办，2026 年 4 月 25 日在深圳圆满结束。本文为 HAMi 社区 Meetup 深圳站回顾系列第六篇。深信服云 AI 总架构师贾毫杰分享了企业级 AI 算力治理的完整实践——从 Agent 时代的算力挑战出发，深入解析 AI 算力网关的智能路由与安全护栏，再到基于 Volcano + HAMi 的 vGPU 生产级调度方案。
 
+![贾毫杰现场照片](/images/blog/sangfor-ai-computing-gateway/jiahaojie.jpg)
+
 **演讲嘉宾：** 贾毫杰（深信服云 AI 总架构师）
 
 ## 视频回放及 PPT 下载
