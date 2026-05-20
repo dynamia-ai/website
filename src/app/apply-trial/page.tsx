@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
-import { isCompanyEmail } from '@/utils/validation';
+import { isCompanyEmail, isValidName, isValidCompany, isValidPhone, isValidEmailFormat } from '@/utils/validation';
 
 export default function FreeTrial() {
   const { t } = useTranslation();
@@ -58,6 +58,26 @@ export default function FreeTrial() {
     // 中文页邮箱选填，英文页邮箱必填；填写后校验公司邮箱
     if (formState.email.trim() && !isCompanyEmail(formState.email)) {
       alert(t('common.useCompanyEmail'));
+      return;
+    }
+
+    if (!isValidName(formState.name)) {
+      alert(t('freeTrial.form.invalidName'));
+      return;
+    }
+
+    if (!isValidCompany(formState.company)) {
+      alert(t('freeTrial.form.invalidCompany'));
+      return;
+    }
+
+    if (formState.email.trim() && !isValidEmailFormat(formState.email)) {
+      alert(t('freeTrial.form.invalidEmail'));
+      return;
+    }
+
+    if (formState.phone.trim() && !isValidPhone(formState.phone, !!isZhPage)) {
+      alert(t('freeTrial.form.invalidPhone'));
       return;
     }
     

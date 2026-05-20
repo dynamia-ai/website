@@ -20,4 +20,29 @@ export function isCompanyEmail(email: string): boolean {
   
   // 检查是否在个人邮箱列表中
   return !personalDomains.includes(domain);
+}
+
+const SPECIAL_CHARS = /[<>{}[\]|\\]/;
+
+export function isValidName(name: string): boolean {
+  const trimmed = name.trim();
+  return trimmed.length >= 1 && trimmed.length <= 50 && !SPECIAL_CHARS.test(trimmed);
+}
+
+export function isValidCompany(company: string): boolean {
+  const trimmed = company.trim();
+  return trimmed.length >= 1 && trimmed.length <= 100 && !SPECIAL_CHARS.test(trimmed);
+}
+
+export function isValidPhone(phone: string, isZh: boolean): boolean {
+  const trimmed = phone.trim();
+  if (!trimmed) return false;
+  if (isZh) {
+    return /^1[3-9]\d{9}$/.test(trimmed);
+  }
+  return /^\+?[\d\s\-()]{7,20}$/.test(trimmed);
+}
+
+export function isValidEmailFormat(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 } 
