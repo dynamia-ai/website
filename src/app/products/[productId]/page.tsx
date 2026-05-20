@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const versionLabel = latest ? ` ${latest.version}` : '';
 
   return {
-    title: `${name}${versionLabel} - Download | Dynamia AI`,
+    title: `${name}${versionLabel} | Dynamia AI`,
     description: tagline,
-    keywords: (product.tags ?? []).concat([name, 'download', 'enterprise']).join(', '),
+    keywords: (product.tags ?? []).concat([name, 'product', 'download']).join(', '),
     openGraph: {
       title: `${name}${versionLabel}`,
       description: tagline,
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function EnterpriseDetailPage({ params }: PageProps) {
+export default async function ProductDetailPage({ params }: PageProps) {
   const { productId } = await params;
   if (!getProductById(productId)) notFound();
   return <EnterpriseDetailClient productId={productId} locale="en" />;

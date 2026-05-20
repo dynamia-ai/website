@@ -15,6 +15,10 @@
     "products": "Products",
     "productsOverview": "Product Overview",
     "productsOverviewDesc": "Explore Dynamia AI's heterogeneous compute platform and the open-source HAMi project",
+    "hamiEnterprise": "HAMi Enterprise",
+    "hamiEnterpriseDesc": "Enterprise-grade GPU virtualization built on the CNCF Sandbox project",
+    "hamiAiPlatform": "HAMi AI Platform",
+    "hamiAiPlatformDesc": "Full-stack control plane for heterogeneous compute clusters",
     "enterpriseDownloads": "Enterprise Downloads",
     "enterpriseDownloadsDesc": "Browse enterprise editions and download offline image bundles, Helm charts and installation guides",
     "caseStudies": "Case Studies",
@@ -99,6 +103,16 @@
           "title": "Seamlessly Auto Scale",
           "subtitle": "Seamlessly Accelerate AI From V1 to V1 Plus",
           "description": "Dynamia.ai  support GPU on-demand auto-scaling, seamless auto-scaling for AI workloads without restarts during GPU consumption surges."
+        },
+        {
+          "title": "Centralized Observability",
+          "subtitle": "Complete AI Infrastructure Insights",
+          "description": "Its centralized observability unifies resources across cloud, on-premises, and hybrid environments, empowering teams with actionable insights, policy-driven governance, and fine-grained resource management."
+        },
+        {
+          "title": "Advanced AI Scheduling",
+          "subtitle": "Scenario-Aware Scheduling Strategies",
+          "description": "Advanced AI scheduling supports NUMA-aware, binpack, and spread strategies to reduce communication overhead, minimize fragmentation, and optimize workload performance."
         }
       ]
     },
@@ -2006,8 +2020,8 @@
   },
   "enterprise": {
     "list": {
-      "title": "Enterprise Editions & Downloads",
-      "subtitle": "Commercial distributions from Dynamia AI. Browse, download, deploy.",
+      "title": "Dynamia Product Overview",
+      "subtitle": "Compare HAMi Enterprise and HAMi AI Platform, then choose the right path for production-grade heterogeneous compute.",
       "noRelease": "No Releases Yet",
       "viewDetail": "View Details",
       "downloadCta": "Get Downloads",
@@ -2015,26 +2029,26 @@
       "metaVersion": "Version",
       "metaReleased": "Released",
       "metaArtifacts": "Artifacts",
-      "heroBadge": "Enterprise · Production-Ready",
+      "heroBadge": "Products · Production-Ready",
       "heroApplyTrial": "Apply for Trial",
-      "statEditions": "Editions",
-      "statGA": "GA editions",
+      "statEditions": "Products",
+      "statGA": "GA products",
       "statReleases": "Releases",
       "statArtifacts": "Artifacts",
-      "matrixTitle": "Enterprise Edition Matrix",
-      "matrixDesc": "Downloads, install guide and compatibility per product.",
-      "matrixCount": "{{count}} editions available",
-      "helpTitle": "Need Help Choosing the Right Edition?",
+      "matrixTitle": "Product Lineup",
+      "matrixDesc": "Choose a product to view its introduction, downloads, install guide and compatibility matrix.",
+      "matrixCount": "{{count}} products available",
+      "helpTitle": "Need Help Choosing the Right Product?",
       "helpDesc": "Sizing, eval licenses, air-gap support — talk to our team.",
       "applyTrial": "Apply for Trial",
       "viewPricing": "View Pricing",
       "comingSoonBadge": "Coming Soon",
-      "comingSoonTitle": "More Editions Coming Soon",
-      "comingSoonDesc": "We're packaging more accelerator-specific editions. Contact sales for early access.",
+      "comingSoonTitle": "More Products Coming Soon",
+      "comingSoonDesc": "We're packaging more accelerator-specific products. Contact sales for early access.",
       "comingSoonHint": "Quarterly roadmap"
     },
     "detail": {
-      "backToList": "Back to Enterprise Editions",
+      "backToList": "Back to Products",
       "latest": "Latest",
       "latestLabel": "Latest",
       "openDocs": "Documentation",
@@ -2107,6 +2121,22 @@
       "error": "Something went wrong. Please retry or email info@dynamia.ai.",
       "consentLabel": "I agree to the <a href='/privacy-policy' target='_blank' class='text-primary underline'>Privacy Policy</a> and consent to the processing of my information for sales follow-up (GDPR Article 6).",
       "consentRequired": "Please review and accept the privacy policy to continue."
+    },
+    "hamiEnterprisePage": {
+      "heroBadge": "Enterprise Edition",
+      "heroTitle": "HAMi Enterprise",
+      "heroSubtitle": "Production-grade GPU virtualization built on the CNCF Sandbox project — lift GPU utilization from 40% to 70%+",
+      "overviewTitle": "Built for Production",
+      "overviewDescription": "HAMi Enterprise is the GPU-license-based enterprise edition of HAMi, designed for teams that need hardened, supported GPU virtualization with enterprise-grade reliability.",
+      "highlightsTitle": "Enterprise Highlights",
+      "compatTitle": "Compatibility",
+      "compatKubernetes": "Kubernetes",
+      "compatOs": "Operating Systems",
+      "compatGpu": "GPU Drivers",
+      "ctaTitle": "Ready to Get Started?",
+      "ctaDescription": "Contact our team for enterprise licensing, deployment assistance, and 24/7 support.",
+      "viewDownloads": "View Downloads",
+      "applyTrial": "Apply for Trial"
     }
   },
   "common": {

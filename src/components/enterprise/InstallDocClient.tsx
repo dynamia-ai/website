@@ -28,13 +28,13 @@ interface InstallDocClientProps {
 // (avoids EN/ZH flash on the SSG'd install page).
 const CHROME = {
   en: {
-    back: 'Back to Enterprise Editions',
+    back: 'Back to Product',
     label: 'Installation Guide',
     lastUpdated: 'Last updated',
     tocTitle: 'On this page',
   },
   zh: {
-    back: '返回企业版矩阵',
+    back: '返回产品页',
     label: '安装指南',
     lastUpdated: '最后更新',
     tocTitle: '本页目录',
@@ -53,7 +53,7 @@ export default function InstallDocClient({
 }: InstallDocClientProps) {
   const labels = CHROME[locale] ?? CHROME.en;
   const backHref =
-    locale === 'zh' ? `/zh/enterprise/${productId}` : `/enterprise/${productId}`;
+    locale === 'zh' ? `/zh/products/${productId}` : `/products/${productId}`;
 
   const [activeId, setActiveId] = useState<string | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);

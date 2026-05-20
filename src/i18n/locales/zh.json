@@ -15,6 +15,10 @@
     "products": "产品",
     "productsOverview": "产品概览",
     "productsOverviewDesc": "了解密瓜智能异构算力平台与开源 HAMi 项目",
+    "hamiEnterprise": "HAMi 企业版",
+    "hamiEnterpriseDesc": "基于 CNCF Sandbox 项目构建的企业级 GPU 虚拟化方案",
+    "hamiAiPlatform": "HAMi 平台版",
+    "hamiAiPlatformDesc": "异构算力集群全栈管控平台",
     "enterpriseDownloads": "企业版下载",
     "enterpriseDownloadsDesc": "查看企业版矩阵，下载镜像离线包、Helm Chart 与安装指南",
     "caseStudies": "客户案例",
@@ -99,6 +103,16 @@
           "title": "自动弹性扩缩容",
           "subtitle": "AI 应用无感、动态扩缩容",
           "description": "密瓜智能 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
+        },
+        {
+          "title": "集中可观测",
+          "subtitle": "全栈 AI 运行洞察",
+          "description": "通过集中可观测能力统一汇聚公有云、私有云与本地资源，提供可执行洞察、策略化治理与细粒度资源管理，保障 AI 业务高效稳定运行。"
+        },
+        {
+          "title": "高级 AI 调度",
+          "subtitle": "面向场景的智能调度策略",
+          "description": "支持 NUMA-aware、Binpack、Spread 等高级调度策略，降低数据通信开销，减少资源碎片，持续优化任务性能。"
         }
       ]
     },
@@ -2001,8 +2015,8 @@
   },
   "enterprise": {
     "list": {
-      "title": "企业版矩阵与下载",
-      "subtitle": "密瓜智能生产级企业版与平台版。浏览矩阵 · 下载介质 · 部署上线。",
+      "title": "密瓜智能产品概览",
+      "subtitle": "对比 HAMi 企业版与 HAMi 平台版，为生产级异构算力选择合适路径。",
       "noRelease": "暂无版本",
       "viewDetail": "查看详情",
       "downloadCta": "查看下载",
@@ -2010,26 +2024,26 @@
       "metaVersion": "版本",
       "metaReleased": "发布",
       "metaArtifacts": "介质",
-      "heroBadge": "企业级 · 生产就绪",
+      "heroBadge": "产品 · 生产就绪",
       "heroApplyTrial": "申请试用",
-      "statEditions": "企业版",
-      "statGA": "GA 版本",
+      "statEditions": "产品",
+      "statGA": "GA 产品",
       "statReleases": "已发布版本",
       "statArtifacts": "可下载介质",
-      "matrixTitle": "全部企业版",
-      "matrixDesc": "选择一款产品，查看下载介质、安装指南与兼容矩阵。",
-      "matrixCount": "{{count}} 款企业版",
+      "matrixTitle": "产品线",
+      "matrixDesc": "选择一款产品，查看产品介绍、下载介质、安装指南与兼容矩阵。",
+      "matrixCount": "{{count}} 款产品",
       "helpTitle": "选型咨询",
       "helpDesc": "容量规划、评估授权、离线部署 — 联系我们。",
       "applyTrial": "申请试用",
       "viewPricing": "查看定价",
       "comingSoonBadge": "即将推出",
-      "comingSoonTitle": "更多企业版即将推出",
-      "comingSoonDesc": "更多异构加速卡企业版正在打包，联系销售获取首发。",
+      "comingSoonTitle": "更多产品即将推出",
+      "comingSoonDesc": "更多异构加速卡产品正在打包，联系销售获取首发。",
       "comingSoonHint": "产品路线持续更新"
     },
     "detail": {
-      "backToList": "返回企业版矩阵",
+      "backToList": "返回产品列表",
       "latest": "最新",
       "latestLabel": "最新版本",
       "openDocs": "在线文档",
@@ -2102,6 +2116,22 @@
       "error": "提交失败，请重试或邮件 info@dynamia.ai。",
       "consentLabel": "我已阅读并同意 <a href='/zh/privacy-policy' target='_blank' class='text-primary underline'>隐私政策</a>，同意密瓜智能依据《个人信息保护法》处理我的信息用于销售跟进。",
       "consentRequired": "请先阅读并同意隐私政策。"
+    },
+    "hamiEnterprisePage": {
+      "heroBadge": "企业版",
+      "heroTitle": "HAMi 企业版",
+      "heroSubtitle": "基于 CNCF Sandbox 项目构建的企业级 GPU 虚拟化方案，将 GPU 利用率从 40% 提升至 70%+",
+      "overviewTitle": "为生产环境而生",
+      "overviewDescription": "HAMi 企业版基于 GPU License 授权，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴，提供生产级加固与企业级支持。",
+      "highlightsTitle": "企业级特性",
+      "compatTitle": "兼容性",
+      "compatKubernetes": "Kubernetes",
+      "compatOs": "操作系统",
+      "compatGpu": "GPU 驱动",
+      "ctaTitle": "准备开始？",
+      "ctaDescription": "联系我们的团队获取企业授权、部署协助和 7×24 技术支持。",
+      "viewDownloads": "查看下载",
+      "applyTrial": "申请试用"
     }
   },
   "common": {

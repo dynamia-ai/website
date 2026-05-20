@@ -44,7 +44,7 @@ const TAG_EN_MAP: Record<string, string> = {
 export default function ProductCard({ product, locale }: ProductCardProps) {
   const { t } = useTranslation();
   const latest = getLatestRelease(product);
-  const href = locale === 'zh' ? `/zh/enterprise/${product.id}` : `/enterprise/${product.id}`;
+  const href = locale === 'zh' ? `/zh/products/${product.id}` : `/products/${product.id}`;
   const productName = pickI18n(product.name, locale);
   const visual = PRODUCT_VISUAL[product.id] ?? { kind: 'mark' };
   const statusInfo = STATUS_LABEL[product.status] ?? STATUS_LABEL.ga;
