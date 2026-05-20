@@ -486,17 +486,25 @@ const Header: React.FC = () => {
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                               <div className="flex">
                                 {/* Left side - Large title */}
-                                <div className="w-1/3 pr-10 sm:pl-45">
-                                  <div className={`dropdown-description ${
-                                    item.submenuType === 'hami'
-                                      ? 'bg-hami-pattern'
-                                      : item.submenuType === 'resources'
-                                        ? 'bg-resources-pattern'
-                                        : ''
-                                  }`}>
-                                    <div className="dropdown-title text-3xl font-bold text-gray-900 dark:text-gray-100 pt-0 mt-0">
+                                <div className="w-1/3 pr-10 pl-2 xl:pl-4">
+                                  <div className="dropdown-description">
+                                    <div className="dropdown-title text-gray-900 dark:text-gray-100">
                                       {item.name}
                                     </div>
+                                    {(item.submenuType === 'products' || item.submenuType === 'resources' || item.submenuType === 'hami') && (
+                                      <div className="mt-auto pb-1">
+                                        <HamiIcon
+                                          iconName={
+                                            item.submenuType === 'products'
+                                              ? 'folder'
+                                              : item.submenuType === 'resources'
+                                                ? 'document'
+                                                : 'users'
+                                          }
+                                          className="h-24 w-24"
+                                        />
+                                      </div>
+                                    )}
                                   </div>
                                 </div>
 
