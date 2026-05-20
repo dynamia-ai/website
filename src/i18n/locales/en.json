@@ -165,7 +165,8 @@
     },
     "cta": {
       "title": "Ready to transform your computing infrastructure?",
-      "freeTrialButton": "Apply for Trial"
+      "freeTrialButton": "Apply for Trial",
+      "viewPricing": "View Pricing"
     },
     "trustedBy": {
       "title": "Trusted by Industry Leaders",
