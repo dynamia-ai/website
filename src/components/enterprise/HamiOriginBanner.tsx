@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
+import { ArrowLongRightIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import type { Locale } from '@/types/enterprise';
 
 interface HamiOriginBannerProps {
@@ -21,11 +21,12 @@ const COPY = {
       { title: '100% upstream', desc: 'No fork drift · no lock-in' },
       { title: 'OEM-grade SLA', desc: '24/7 support · long-term release lines' },
     ],
-    statsLabel: {
-      stars: 'GitHub Stars',
-      contributors: 'Contributors',
-      forks: 'Forks',
-      pulls: 'Docker Pulls',
+    relation: {
+      origin: 'Founded and core-maintained',
+      delivery: 'Enterprise delivery and SLA',
+      nodeDynamia: 'dynamia.ai team',
+      nodeHami: 'HAMi open source',
+      nodeEnterprise: 'Enterprise editions',
     },
     ctaPrimary: 'HAMi project',
     ctaCommunity: 'Community',
@@ -43,11 +44,12 @@ const COPY = {
       { title: '上游 100% 兼容', desc: '同源同 API · 无 fork 漂移、无锁定' },
       { title: '原厂级 SLA', desc: '7×24 支持 · 长期版本来自源头' },
     ],
-    statsLabel: {
-      stars: 'GitHub Stars',
-      contributors: 'Contributors',
-      forks: 'Forks',
-      pulls: 'Docker Pulls',
+    relation: {
+      origin: '密瓜智能发起并持续维护',
+      delivery: '企业版由原厂交付与 SLA 保障',
+      nodeDynamia: '密瓜智能团队',
+      nodeHami: 'HAMi 开源项目',
+      nodeEnterprise: '企业版产品',
     },
     ctaPrimary: 'HAMi 项目',
     ctaCommunity: '社区',
@@ -56,15 +58,11 @@ const COPY = {
   },
 } as const;
 
-const STATS = [
-  { key: 'stars', value: '3.1K' },
-  { key: 'contributors', value: '500+' },
-  { key: 'forks', value: '400+' },
-  { key: 'pulls', value: '100K+' },
-] as const;
-
 export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
   const c = COPY[locale] ?? COPY.en;
+  const dynamiaLogoLight = locale === 'zh' ? '/dynamia-logo-zh.svg' : '/dynamia-logo.svg';
+  const dynamiaLogoDark =
+    locale === 'zh' ? '/dynamia-logo-zh-white.svg' : '/dynamia-logo-white.svg';
 
   return (
     <section className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
@@ -131,21 +129,69 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
             </div>
           </div>
 
-          {/* Stats — single mono treatment */}
-          <div className="grid grid-cols-2 gap-x-10 gap-y-5 self-center">
-            {STATS.map((s) => {
-              const label = c.statsLabel[s.key as keyof typeof c.statsLabel];
-              return (
-                <div key={s.key}>
-                  <div className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 tabular-nums">
-                    {s.value}
-                  </div>
-                  <div className="mt-1 text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                    {label}
+          {/* Relationship diagram */}
+          <div className="self-center w-full lg:w-auto">
+            <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50/70 dark:bg-gray-950/60 p-5 md:p-6">
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-3 md:gap-2">
+                <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 text-center">
+                  <Image
+                    src={dynamiaLogoLight}
+                    alt="dynamia.ai"
+                    width={168}
+                    height={36}
+                    className="h-8 w-auto mx-auto dark:hidden"
+                  />
+                  <Image
+                    src={dynamiaLogoDark}
+                    alt="dynamia.ai"
+                    width={168}
+                    height={36}
+                    className="h-8 w-auto mx-auto hidden dark:block"
+                  />
+                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                    {c.relation.nodeDynamia}
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="flex flex-col items-center justify-center gap-1 text-primary">
+                  <ArrowLongRightIcon className="h-4 w-4 md:h-5 md:w-5 md:block hidden" />
+                  <ArrowLongRightIcon className="h-4 w-4 rotate-90 md:hidden" />
+                  <span className="text-[11px] font-medium tracking-wide text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                    {c.relation.origin}
+                  </span>
+                </div>
+
+                <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 text-center">
+                  <Image
+                    src="/hami.svg"
+                    alt="HAMi"
+                    width={120}
+                    height={36}
+                    className="h-8 w-auto mx-auto dark:bg-white/95 dark:rounded-md dark:p-1"
+                  />
+                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                    {c.relation.nodeHami}
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center justify-center gap-1 text-primary">
+                  <ArrowLongRightIcon className="h-4 w-4 md:h-5 md:w-5 md:block hidden" />
+                  <ArrowLongRightIcon className="h-4 w-4 rotate-90 md:hidden" />
+                  <span className="text-[11px] font-medium tracking-wide text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                    {c.relation.delivery}
+                  </span>
+                </div>
+
+                <div className="rounded-xl border border-primary/40 bg-primary/5 p-4 text-center">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    {c.relation.nodeEnterprise}
+                  </div>
+                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                    SLA · LTS · OEM Support
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
