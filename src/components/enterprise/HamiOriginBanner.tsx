@@ -12,7 +12,7 @@ interface HamiOriginBannerProps {
 const COPY = {
   en: {
     eyebrow: 'Same DNA',
-    title: 'HAMi & dynamia.ai',
+    title: 'HAMi & Dynamia',
     subtitle:
       'HAMi is the CNCF Sandbox project for heterogeneous AI computing virtualization. Founded and core-maintained by the dynamia.ai team. Our enterprise editions ship the same upstream code — hardened, supported, SLA-backed.',
     pillars: [
@@ -24,9 +24,9 @@ const COPY = {
     relation: {
       origin: 'Founded and core-maintained',
       delivery: 'Enterprise delivery and SLA',
-      nodeDynamia: 'dynamia.ai team',
-      nodeHami: 'HAMi open source',
-      nodeEnterprise: 'Enterprise editions',
+      nodeDynamia: 'Dynamia AI Team',
+      nodeHami: 'HAMi Open Source',
+      nodeEnterprise: 'Enterprise Editions',
     },
     ctaPrimary: 'HAMi project',
     ctaCommunity: 'Community',

@@ -32,6 +32,15 @@ const PRODUCT_VISUAL: Record<string, { kind: 'hami' | 'mark'; src?: string }> = 
   'hami-ai-platform': { kind: 'mark' },
 };
 
+const TAG_EN_MAP: Record<string, string> = {
+  'GPU 虚拟化': 'GPU Virtualization',
+  '异构算力': 'Heterogeneous Compute',
+  '多集群': 'Multi-Cluster',
+  '调度': 'Scheduling',
+  '资源池化': 'Resource Pooling',
+  '租户隔离': 'Tenant Isolation',
+};
+
 export default function ProductCard({ product, locale }: ProductCardProps) {
   const { t } = useTranslation();
   const latest = getLatestRelease(product);
@@ -104,7 +113,7 @@ export default function ProductCard({ product, locale }: ProductCardProps) {
                 key={tag}
                 className="px-2 py-0.5 rounded text-[11px] text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700"
               >
-                {tag}
+                {locale === 'en' ? TAG_EN_MAP[tag] ?? tag : tag}
               </span>
             ))}
           </div>
