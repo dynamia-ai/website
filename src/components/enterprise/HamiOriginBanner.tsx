@@ -31,7 +31,7 @@ const COPY = {
     ctaPrimary: 'HAMi project',
     ctaCommunity: 'Community',
     ctaGithub: 'GitHub',
-    ctaSlack: 'Slack',
+    ctaDiscord: 'Discord',
   },
   zh: {
     eyebrow: '同根同源',
@@ -54,7 +54,7 @@ const COPY = {
     ctaPrimary: 'HAMi 项目',
     ctaCommunity: '社区',
     ctaGithub: 'GitHub',
-    ctaSlack: 'Slack',
+    ctaDiscord: 'Discord',
   },
 } as const;
 
@@ -118,12 +118,12 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
                 <ArrowUpRightIcon className="h-3.5 w-3.5" />
               </a>
               <a
-                href="https://cloud-native.slack.com/archives/C07T10BU4S2"
+                href="https://discord.gg/Amhy7XmbNq"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-gray-900 dark:text-gray-100 hover:text-primary border-b border-gray-300 dark:border-gray-700 hover:border-primary transition-colors pb-0.5"
               >
-                {c.ctaSlack}
+                {c.ctaDiscord}
                 <ArrowUpRightIcon className="h-3.5 w-3.5" />
               </a>
             </div>
