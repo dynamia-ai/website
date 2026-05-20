@@ -130,23 +130,12 @@ export default function ProductHero({ product, latest, locale, onJumpDownload }:
               {t('enterprise.detail.openInstallGuide')}
             </Link>
           )}
-          {product.docsUrl && (
-            <a
-              href={product.docsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-semibold hover:border-primary hover:text-primary transition-all"
-            >
-              <BookOpenIcon className="h-4 w-4" />
-              {t('enterprise.detail.openDocs')}
-            </a>
-          )}
           <Link
             href={locale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
             className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-semibold hover:border-primary hover:text-primary transition-all"
           >
             <ChatBubbleLeftRightIcon className="h-4 w-4" />
-            {t('enterprise.detail.contactCta')}
+            {t('enterprise.list.applyTrial')}
           </Link>
         </div>
       </div>

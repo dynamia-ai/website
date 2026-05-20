@@ -1,32 +1,13 @@
 ---
 title: "HAMi AI Platform: Installation Guide"
 productId: "hami-ai-platform"
-version: "v1.4.0"
-lastUpdated: "2026-04-25"
+version: "v2.9.0"
+lastUpdated: "2026-05-20"
 language: "en"
 description: "Deploy HAMi AI Platform on Kubernetes — component dependencies and verification steps."
 ---
 
-# HAMi AI Platform: Installation Guide
-
 > This guide is for SREs and platform engineers. It walks through deploying **HAMi AI Platform** to a Kubernetes cluster and integrating with HAMi, Prometheus, NVIDIA GPU Operator, Gateway API and other foundational components.
-
-## Contents
-
-1. [Architecture & positioning](#architecture--positioning)
-2. [Prerequisites](#prerequisites)
-3. [Component dependencies](#component-dependencies)
-   - 3.1 [Prometheus](#31-prometheus)
-   - 3.2 [NVIDIA GPU Operator](#32-nvidia-gpu-operator)
-   - 3.3 [HAMi Enterprise](#33-hami-enterprise)
-   - 3.4 [ServiceMonitor integration](#34-servicemonitor-integration)
-   - 3.5 [Gateway API](#35-gateway-api)
-4. [Install HAMi AI Platform](#install-hami-ai-platform)
-5. [Post-install verification](#post-install-verification)
-6. [Troubleshooting](#troubleshooting)
-7. [Get support](#get-support)
-
----
 
 ## Architecture & positioning
 
@@ -37,8 +18,6 @@ HAMi AI Platform is a Kubernetes-native application platform that provides unifi
 - **Open & composable**: relies on standard K8s ecosystem (Prometheus, Helm, Gateway API, HAMi device plugin)
 
 > Before you start, complete the **Prerequisites** section to make sure your cluster meets the minimum requirements.
-
----
 
 ## Prerequisites
 
@@ -69,13 +48,11 @@ containerd is the default runtime for Kubernetes 1.24+. See [Kubernetes containe
 
 > For air-gapped environments, pre-download all Helm charts and images and serve them from a local registry.
 
----
-
 ## Component dependencies
 
 HAMi AI Platform depends on the components below. **Install in the documented order** — out-of-order installs will fail later verification.
 
-### 3.1 Prometheus
+### Prometheus
 
 HAMi AI Platform relies on Prometheus for cluster monitoring. Bring your own or install fresh.
 
@@ -93,9 +70,7 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
 
 > If reusing an existing Prometheus: version must be >= 2.37.0. Capture the labels in `prometheus.spec.serviceMonitorSelector` — you'll use them in the ServiceMonitor section below.
 
----
-
-### 3.2 NVIDIA GPU Operator
+### NVIDIA GPU Operator
 
 Because HAMi ships an enhanced device-plugin, you must **disable GPU Operator's built-in device-plugin**.
 
@@ -136,7 +111,7 @@ Sample output:
 
 ---
 
-### 3.3 HAMi Enterprise
+### HAMi Enterprise
 
 Contact dynamia.ai sales/support for the **HAMi Enterprise offline bundle** (`hami.tgz` Helm chart + image tarball).
 
@@ -168,9 +143,7 @@ kubectl label nodes <node-name> gpu=on
 
 > Verify: `kubectl -n hami-system get pods` should show `hami-device-plugin-*` and `hami-scheduler-*` in `Running` state.
 
----
-
-### 3.4 ServiceMonitor integration
+### ServiceMonitor integration
 
 Make sure Prometheus can scrape HAMi and DCGM-Exporter metrics.
 
@@ -186,9 +159,7 @@ Make sure Prometheus can scrape HAMi and DCGM-Exporter metrics.
 
 > Troubleshooting: if metrics are missing, first confirm `kubectl get servicemonitor -A` shows the ServiceMonitor, then check label selector alignment.
 
----
-
-### 3.5 Gateway API
+### Gateway API
 
 Gateway API routes workspace traffic for VSCode / SSH / Jupyter etc.
 
@@ -199,11 +170,10 @@ Gateway API routes workspace traffic for VSCode / SSH / Jupyter etc.
 | A · Use existing Gateway | You already run Istio / Envoy / Cilium / etc. with Gateway API | Provide listener / endpoint to install command |
 | B · Install Envoy Gateway | Evaluation env or no existing gateway | Follow [Envoy Gateway install guide](https://gateway.envoyproxy.io/docs/install/install-helm/) |
 
----
-
 ## Install HAMi AI Platform
 
 > Three install paths — pick by environment:
+>
 > - **All-in-One Air-gap Bundle** (recommended for air-gap; one tarball, all artifacts)
 > - Image bundle + Helm chart, downloaded separately (your own pipelines)
 > - Online OCI install (eval / PoC)
