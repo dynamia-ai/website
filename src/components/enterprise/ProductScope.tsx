@@ -263,10 +263,10 @@ const GROUPS: FeatureGroup[] = [
 
 const COPY = {
   en: {
-    title: 'Choose the right edition',
+    title: 'Choose the Right Edition',
     subtitle:
       'Three editions — open-source foundation, hardened commercial release, and full-stack enterprise platform.',
-    decisionTitle: 'Choose in 30 seconds',
+    decisionTitle: 'Choose in 30 Seconds',
     decisionRows: [
       {
         scenario: 'Evaluating, building on top, or running a single-cluster proof-of-concept — community support is sufficient',
@@ -299,9 +299,9 @@ const COPY = {
       ossLink: 'GitHub',
       ossHref: 'https://github.com/Project-HAMi/HAMi',
       commercialLabel: 'HAMi Enterprise',
-      commercialLink: 'View downloads',
+      commercialLink: 'View Downloads',
       enterpriseLabel: 'HAMi AI Platform',
-      enterpriseLink: 'View downloads',
+      enterpriseLink: 'View Downloads',
     },
   },
   zh: {

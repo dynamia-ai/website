@@ -38,6 +38,15 @@ const PRODUCT_VISUAL: Record<string, { kind: 'hami' | 'mark'; src?: string }> = 
   'hami-ai-platform': { kind: 'mark' },
 };
 
+const TAG_EN_MAP: Record<string, string> = {
+  'GPU 虚拟化': 'GPU Virtualization',
+  '异构算力': 'Heterogeneous Compute',
+  '多集群': 'Multi-Cluster',
+  '调度': 'Scheduling',
+  '资源池化': 'Resource Pooling',
+  '租户隔离': 'Tenant Isolation',
+};
+
 export default function ProductHero({ product, latest, locale, onJumpDownload }: ProductHeroProps) {
   const { t } = useTranslation();
   const backHref = locale === 'zh' ? '/zh/enterprise' : '/enterprise';
@@ -130,7 +139,7 @@ export default function ProductHero({ product, latest, locale, onJumpDownload }:
                     key={tag}
                     className="px-2 py-0.5 rounded text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
                   >
-                    {tag}
+                    {locale === 'en' ? TAG_EN_MAP[tag] ?? tag : tag}
                   </span>
                 ))}
               </div>
