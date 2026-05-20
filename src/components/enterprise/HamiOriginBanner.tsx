@@ -67,13 +67,13 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
   return (
     <section className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
       <div className="px-6 py-10 md:px-12 md:py-12">
-        {/* Top — narrative */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-start">
-          <div className="max-w-2xl">
+        {/* Top — narrative + relationship */}
+        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] gap-8 xl:gap-10 items-start">
+          <div className="max-w-2xl space-y-6">
             <div className="text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 mb-3">
               {c.eyebrow}
             </div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3">
               <Image
                 src="/hami.svg"
                 alt=""
@@ -86,15 +86,15 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
                 {c.title}
               </h2>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               {c.subtitle}
             </p>
-            <div className="mt-6 flex items-center gap-5 text-sm">
+            <div className="flex flex-wrap items-center gap-2.5 text-sm">
               <a
                 href="https://project-hami.io/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-gray-900 dark:text-gray-100 hover:text-primary border-b border-gray-300 dark:border-gray-700 hover:border-primary transition-colors pb-0.5"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-1.5 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary transition-colors"
               >
                 {c.ctaPrimary}
                 <ArrowUpRightIcon className="h-3.5 w-3.5" />
@@ -103,7 +103,7 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
                 href="https://project-hami.io/community"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-gray-900 dark:text-gray-100 hover:text-primary border-b border-gray-300 dark:border-gray-700 hover:border-primary transition-colors pb-0.5"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-1.5 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary transition-colors"
               >
                 {c.ctaCommunity}
                 <ArrowUpRightIcon className="h-3.5 w-3.5" />
@@ -112,7 +112,7 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
                 href="https://github.com/Project-HAMi/HAMi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-gray-900 dark:text-gray-100 hover:text-primary border-b border-gray-300 dark:border-gray-700 hover:border-primary transition-colors pb-0.5"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-1.5 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary transition-colors"
               >
                 {c.ctaGithub}
                 <ArrowUpRightIcon className="h-3.5 w-3.5" />
@@ -121,7 +121,7 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
                 href="https://discord.gg/Amhy7XmbNq"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-gray-900 dark:text-gray-100 hover:text-primary border-b border-gray-300 dark:border-gray-700 hover:border-primary transition-colors pb-0.5"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-1.5 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary transition-colors"
               >
                 {c.ctaDiscord}
                 <ArrowUpRightIcon className="h-3.5 w-3.5" />
@@ -130,7 +130,7 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
           </div>
 
           {/* Relationship diagram */}
-          <div className="self-center w-full lg:w-auto">
+          <div className="w-full">
             <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50/70 dark:bg-gray-950/60 p-5 md:p-6">
               <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-3 md:gap-2">
                 <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 text-center">
@@ -154,11 +154,11 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
                 </div>
 
                 <div className="flex flex-col items-center justify-center gap-1 text-primary">
-                  <ArrowLongRightIcon className="h-4 w-4 md:h-5 md:w-5 md:block hidden" />
-                  <ArrowLongRightIcon className="h-4 w-4 rotate-90 md:hidden" />
-                  <span className="text-[11px] font-medium tracking-wide text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                  <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-primary text-center leading-tight max-w-[118px]">
                     {c.relation.origin}
                   </span>
+                  <ArrowLongRightIcon className="h-4 w-4 md:h-5 md:w-5 md:block hidden" />
+                  <ArrowLongRightIcon className="h-4 w-4 rotate-90 md:hidden" />
                 </div>
 
                 <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 text-center">
@@ -175,11 +175,11 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
                 </div>
 
                 <div className="flex flex-col items-center justify-center gap-1 text-primary">
-                  <ArrowLongRightIcon className="h-4 w-4 md:h-5 md:w-5 md:block hidden" />
-                  <ArrowLongRightIcon className="h-4 w-4 rotate-90 md:hidden" />
-                  <span className="text-[11px] font-medium tracking-wide text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                  <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-primary text-center leading-tight max-w-[118px]">
                     {c.relation.delivery}
                   </span>
+                  <ArrowLongRightIcon className="h-4 w-4 md:h-5 md:w-5 md:block hidden" />
+                  <ArrowLongRightIcon className="h-4 w-4 rotate-90 md:hidden" />
                 </div>
 
                 <div className="rounded-xl border border-primary/40 bg-primary/5 p-4 text-center">
@@ -195,10 +195,13 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
           </div>
         </div>
 
-        {/* Bottom — pillars (text only, restrained) */}
-        <div className="mt-10 pt-10 border-t border-gray-100 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
+        {/* Bottom — key pillars */}
+        <div className="mt-10 pt-8 border-t border-gray-100 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {c.pillars.map((p, i) => (
-            <div key={i} className="border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+            <div
+              key={i}
+              className="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/60 dark:bg-gray-950/50 p-4"
+            >
               <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
                 {p.title}
               </div>
