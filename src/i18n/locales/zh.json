@@ -165,7 +165,8 @@
     },
     "cta": {
       "title": "准备好改造您的 AI 计算基础设施了吗？",
-      "freeTrialButton": "开始申请试用"
+      "freeTrialButton": "开始申请试用",
+      "viewPricing": "查看定价"
     },
     "trustedBy": {
       "title": "行业领导者的信赖选择",
