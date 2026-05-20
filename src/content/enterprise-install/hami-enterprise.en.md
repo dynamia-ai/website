@@ -1,28 +1,13 @@
 ---
 title: "HAMi Enterprise: Installation Guide"
 productId: "hami-enterprise"
-version: "v2.6.0"
-lastUpdated: "2026-04-15"
+version: "v2.9.0"
+lastUpdated: "2026-05-20"
 language: "en"
 description: "Deploy HAMi Enterprise on Kubernetes with GPU node onboarding and monitoring integration."
 ---
 
-# HAMi Enterprise: Installation Guide
-
 > This guide is for SREs and platform engineers. It walks through deploying **HAMi Enterprise** to a Kubernetes cluster, enabling GPU nodes, integrating monitoring, and verifying functionality.
-
-## Contents
-
-1. [Architecture & positioning](#architecture--positioning)
-2. [Prerequisites](#prerequisites)
-3. [Install HAMi Enterprise](#install-hami-enterprise)
-4. [Enable GPU nodes](#enable-gpu-nodes)
-5. [Monitoring integration](#monitoring-integration)
-6. [Post-install verification](#post-install-verification)
-7. [Troubleshooting](#troubleshooting)
-8. [Get support](#get-support)
-
----
 
 ## Architecture & positioning
 
@@ -34,8 +19,6 @@ HAMi Enterprise is the enterprise edition of the open-source HAMi project. It co
 - **Enterprise hardening**: signed images, CVE patching pipeline, long-term support
 
 > Best fit for: multi-tenant GPU sharing, memory oversubscription, heterogeneous accelerator (NVIDIA / Ascend / Hygon DCU / etc.) unified scheduling.
-
----
 
 ## Prerequisites
 
@@ -63,11 +46,10 @@ helm install --wait --generate-name \
   --version=v25.3.0
 ```
 
----
-
 ## Install HAMi Enterprise
 
 > Three install paths — pick by environment:
+>
 > - **All-in-One Air-gap Bundle** (recommended for isolated networks: finance, gov, telco)
 > - Image bundle + Helm chart, downloaded separately (your own CI/CD)
 > - Online OCI install (eval / PoC)
@@ -94,8 +76,6 @@ kubectl -n hami-system get pods
 ```
 
 > Bundle SHA256 is shown on the download page — verify after transferring into the isolated environment.
-
----
 
 ### Path B · Separate downloads (your own pipelines)
 
@@ -133,8 +113,6 @@ helm install hami hami-enterprise.tgz \
 
 > For air-gapped environments, also pass `--set image.registry=<your-registry>` to point at your local registry.
 
----
-
 ## Enable GPU nodes
 
 The HAMi device plugin only starts on nodes labeled `gpu=on`:
@@ -144,8 +122,6 @@ kubectl label nodes <node-name> gpu=on
 ```
 
 > Verify: `kubectl -n hami-system get pods` should show `hami-device-plugin-*` and `hami-scheduler-*` in `Running` state.
-
----
 
 ## Monitoring integration
 
@@ -160,8 +136,6 @@ Make sure Prometheus can scrape HAMi and DCGM-Exporter metrics.
 | dcgm-exporter | `DCGM_FI_DEV_GPU_UTIL` | non-empty value |
 | hami-exporter | `HostCoreUtilization` | non-empty value |
 | hami-device-plugin-exporter | `GPUDeviceCoreAllocated` | non-empty value |
-
----
 
 ## Post-install verification
 
@@ -195,8 +169,6 @@ kubectl logs hami-smoke
 
 Expected: `nvidia-smi` shows the GPU and memory is capped at 2000 MiB.
 
----
-
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
@@ -206,8 +178,6 @@ Expected: `nvidia-smi` shows the GPU and memory is capped at 2000 MiB.
 | Prometheus missing HAMi metrics | ServiceMonitor labels don't match selector | Align `spec.serviceMonitorSelector` |
 | `nvidia-smi` errors | GPU driver not ready | Inspect driver pod in `gpu-operator` namespace |
 | Helm install image pull fails | Offline images not loaded | Run `docker load` + `docker push` to local registry |
-
----
 
 ## Get support
 

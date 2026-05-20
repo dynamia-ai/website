@@ -372,6 +372,11 @@ body {
   line-height: 1.5;
 }
 
+/* Ensure TOC hash navigation aligns heading position below fixed site header */
+.install-doc-content :is(h1, h2, h3, h4, h5, h6)[id] {
+  scroll-margin-top: 7.5rem;
+}
+
 .blog-content p {
   margin-bottom: 1.25rem;
   color: var(--text-secondary);

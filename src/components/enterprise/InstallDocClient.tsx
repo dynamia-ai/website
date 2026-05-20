@@ -92,7 +92,7 @@ export default function InstallDocClient({
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <Link
             href={backHref}
-            className="inline-flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-primary mb-4"
+            className="flex w-fit items-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-primary mb-6"
           >
             <ArrowLeftIcon className="h-4 w-4" />
             {labels.back}

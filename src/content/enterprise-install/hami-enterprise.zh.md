@@ -1,28 +1,13 @@
 ---
 title: "HAMi 企业版 安装指南"
 productId: "hami-enterprise"
-version: "v2.6.0"
-lastUpdated: "2026-04-15"
+version: "v2.9.0"
+lastUpdated: "2026-05-20"
 language: "zh"
 description: "HAMi Enterprise 在 Kubernetes 集群上的部署、GPU 节点对接与监控配置。"
 ---
 
-# HAMi 企业版 · 安装指南
-
 > 本文档面向 SRE / 平台工程师，介绍如何在 Kubernetes 集群上部署 **HAMi Enterprise**（HAMi 企业版），并完成 GPU 节点开启、监控对接与功能验证。
-
-## 目录
-
-1. [架构与定位](#架构与定位)
-2. [前置条件清单](#前置条件清单)
-3. [安装 HAMi Enterprise](#安装-hami-enterprise)
-4. [启用 GPU 节点](#启用-gpu-节点)
-5. [监控对接](#监控对接)
-6. [安装后验证](#安装后验证)
-7. [常见问题](#常见问题)
-8. [获取支持](#获取支持)
-
----
 
 ## 架构与定位
 
@@ -68,6 +53,7 @@ helm install --wait --generate-name \
 ## 安装 HAMi Enterprise
 
 > 三种安装路径，按场景选：
+>
 > - **All-in-One 离线一体包**（推荐，金融/政府/运营商等隔离网络场景）
 > - 镜像离线包 + Helm Chart 分离下载（自有交付流水线）
 > - 在线 OCI 安装（评估、PoC）
