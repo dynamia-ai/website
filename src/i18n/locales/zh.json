@@ -603,10 +603,14 @@
       "company": "公司名称",
       "phoneWechat": "电话号码/微信",
       "useCase": "您计划如何使用密瓜智能企业级异构计算虚拟化平台？",
-      "terms": "我同意密瓜智能企业级异构计算虚拟化平台的服务条款和隐私政策",
+      "terms": "我同意密瓜智能的服务条款和隐私政策",
       "termsRequired": "您必须同意条款和条件才能继续。",
       "emailRequired": "工作邮箱为必填项。",
       "phoneRequired": "电话号码/微信为必填项。",
+      "invalidName": "请输入有效的姓名（1-50 个字符，不含特殊符号）。",
+      "invalidCompany": "请输入有效的公司名称（1-100 个字符，不含特殊符号）。",
+      "invalidEmail": "请输入有效的邮箱地址。",
+      "invalidPhone": "请输入有效的手机号码（11 位数字）。",
       "jobTitle": "职位",
       "message": "您希望了解或讨论的内容？",
       "intent": "您本次的需求？",
@@ -1844,7 +1848,7 @@
       ],
       "overview": {
         "title": "公司概述",
-        "description": "SNOW Corp. 是韩国 NAVER 集团旗下子公司，运营着 1,000+ 张 A100 GPU 的计算集群，为 SNOW、EPIK、B612 三款全球排名领先的 GenAI 应用提供 AI 功能服务，覆盖 2 亿+全球用户。基础设施承载 1,200+ AI 工作流和 400+ 模型，需要应对病毒式 AI 趋势带来的极端流量波动。",
+        "description": "SNOW Corp. 是韩国 NAVER 集团旗下子公司，运营着 1,000+ 张 A100 GPU 的计算集群，为 SNOW、EPIK、B612 三款全球排名领先的 GenAI 应用提供 AI 功能服务，覆盖 2 亿 + 全球用户。基础设施承载 1,200+ AI 工作流和 400+ 模型，需要应对病毒式 AI 趋势带来的极端流量波动。",
         "keyPoints": [
           "韩国领先科技平台 NAVER 集团旗下子公司",
           "三款全球领先的 GenAI 应用：SNOW、EPIK、B612",
@@ -1879,7 +1883,7 @@
         "description": "SNOW 迁移至多区域本地化 Kubernetes 平台，整个技术栈由 CNCF 生态支撑：Cilium 作为 CNI、Helm 实现 GitOps 部署、Traefik 作为 Ingress、Prometheus/Loki/Grafana 提供可观测性、HAMi 实现 GPU 共享、KEDA 实现自动伸缩。",
         "hamiSharing": {
           "title": "基于 HAMi 的 GPU 共享",
-          "description": "Kubernetes 默认调度器执行严格的 GPU 隔离，这阻断了 SNOW 顺序式训练-推理流水线的迁移——训练器和推理引擎必须共享同一张 GPU。HAMi 通过虚拟化 GPU 资源（vGPU）解决此问题，使同一 Pod 中的多个容器能够并发共享单张 GPU。",
+          "description": "Kubernetes 默认调度器执行严格的 GPU 隔离，这阻断了 SNOW 顺序式训练 - 推理流水线的迁移——训练器和推理引擎必须共享同一张 GPU。HAMi 通过虚拟化 GPU 资源（vGPU）解决此问题，使同一 Pod 中的多个容器能够并发共享单张 GPU。",
           "features": [
             "与 kube-scheduler 原生集成，无需修改任何应用代码",
             "与更广泛的自动伸缩生态系统完全兼容",
@@ -1953,7 +1957,7 @@
       },
       "companyCard": {
         "name": "SNOW Corp.",
-        "description": "NAVER 旗下子公司，服务全球 2 亿+ GenAI 用户"
+        "description": "NAVER 旗下子公司，服务全球 2 亿 + GenAI 用户"
       },
       "cta": {
         "exploreHami": "探索 HAMi",
