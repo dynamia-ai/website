@@ -5,8 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import {
   ShieldCheckIcon,
-  CubeTransparentIcon,
-  CloudArrowDownIcon,
   ArrowRightIcon,
 } from '@heroicons/react/24/outline';
 import MainLayout from '@/components/layout/MainLayout';
@@ -30,14 +28,6 @@ interface EnterpriseListClientProps {
 export default function EnterpriseListClient({ locale }: EnterpriseListClientProps) {
   const { t } = useTranslation();
   const products = getProducts();
-  const totalReleases = products.reduce((sum, p) => sum + p.releases.length, 0);
-  const gaCount = products.filter((p) => p.status === 'ga').length;
-  const totalArtifacts = products.reduce(
-    (sum, p) =>
-      sum +
-      p.releases.reduce((s, r) => s + r.artifacts.filter((a) => a.type !== 'install-doc').length, 0),
-    0,
-  );
 
   useEffect(() => {
     captureAttribution();
@@ -89,50 +79,6 @@ export default function EnterpriseListClient({ locale }: EnterpriseListClientPro
             </div>
           </motion.div>
 
-          {/* Stats strip */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
-          >
-            {[
-              {
-                value: products.length,
-                label: t('enterprise.list.statEditions'),
-                icon: CubeTransparentIcon,
-              },
-              {
-                value: gaCount,
-                label: t('enterprise.list.statGA'),
-                icon: ShieldCheckIcon,
-              },
-              {
-                value: totalReleases,
-                label: t('enterprise.list.statReleases'),
-                icon: CloudArrowDownIcon,
-              },
-              {
-                value: totalArtifacts,
-                label: t('enterprise.list.statArtifacts'),
-                icon: CloudArrowDownIcon,
-              },
-            ].map((s) => (
-              <div
-                key={s.label}
-                className="rounded-xl border border-gray-200/80 dark:border-gray-700/80 bg-white/60 dark:bg-gray-900/60 backdrop-blur p-4 text-center"
-              >
-                <s.icon className="h-5 w-5 text-primary mx-auto mb-2" />
-                <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-                  {s.value}
-                </div>
-                <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
