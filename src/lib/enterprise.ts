@@ -38,13 +38,13 @@ export function getProductIds(): string[] {
 
 /**
  * Derive "has local install doc" from JSON: returns true iff any artifact in
- * the latest release is an install-doc whose URL points to /enterprise/* (local route).
+ * the latest release is an install-doc whose URL points to /products/* (local route).
  * Source of truth = JSON, so adding/removing a md+url stays in sync without extra plumbing.
  */
 export function hasLocalInstallDoc(product: EnterpriseProduct): boolean {
   const latest = getLatestRelease(product);
   if (!latest) return false;
   return latest.artifacts.some(
-    (a) => a.type === 'install-doc' && a.url.startsWith('/enterprise/'),
+    (a) => a.type === 'install-doc' && a.url.startsWith('/products/'),
   );
 }

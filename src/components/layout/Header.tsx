@@ -108,11 +108,18 @@ const Header: React.FC = () => {
       iconName: 'infoCircle',
     },
     {
-      name: t('navigation.enterpriseDownloads'),
-      description: t('navigation.enterpriseDownloadsDesc'),
-      href: currentLocale === 'zh' ? '/zh/enterprise' : '/enterprise',
+      name: t('navigation.hamiEnterprise'),
+      description: t('navigation.hamiEnterpriseDesc'),
+      href: currentLocale === 'zh' ? '/zh/products/hami-enterprise' : '/products/hami-enterprise',
       external: false,
       iconName: 'folder',
+    },
+    {
+      name: t('navigation.hamiAiPlatform'),
+      description: t('navigation.hamiAiPlatformDesc'),
+      href: currentLocale === 'zh' ? '/zh/products/hami-ai-platform' : '/products/hami-ai-platform',
+      external: false,
+      iconName: 'globe',
     },
   ];
 

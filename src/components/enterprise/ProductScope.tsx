@@ -349,9 +349,9 @@ const COPY = {
 
 export default function ProductScope({ locale }: ProductScopeProps) {
   const c = COPY[locale] ?? COPY.en;
-  const hamiHref = locale === 'zh' ? '/zh/enterprise/hami-enterprise' : '/enterprise/hami-enterprise';
+  const hamiHref = locale === 'zh' ? '/zh/products/hami-enterprise' : '/products/hami-enterprise';
   const entHref =
-    locale === 'zh' ? '/zh/enterprise/hami-ai-platform' : '/enterprise/hami-ai-platform';
+    locale === 'zh' ? '/zh/products/hami-ai-platform' : '/products/hami-ai-platform';
   const pricingHref = locale === 'zh' ? '/zh/pricing' : '/pricing';
 
   const totals = {

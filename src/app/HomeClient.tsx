@@ -29,6 +29,8 @@ const FEATURE_TAB_IMAGES = [
   '/images/features/feature2.svg',
   '/images/features/feature3.svg',
   '/images/features/feature4.svg',
+  '/images/features/feature5.svg',
+  '/images/features/feature6.svg',
 ];
 
 // 箭头图标组件

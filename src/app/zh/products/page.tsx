@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Products from '../../products/page';
+import EnterpriseListClient from '@/components/enterprise/EnterpriseListClient';
 
-export default function ZhProductsPage() {
+export default function ZhProductsListPage() {
   const { i18n } = useTranslation();
-  
+
   useEffect(() => {
     i18n.changeLanguage('zh');
   }, [i18n]);
 
-  return <Products />;
-} 
+  return <EnterpriseListClient locale="zh" />;
+}

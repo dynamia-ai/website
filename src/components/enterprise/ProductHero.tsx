@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import {
   ArrowLeftIcon,
@@ -33,11 +32,6 @@ const STATUS_LABEL: Record<string, { en: string; zh: string }> = {
   eol: { en: 'End of Life', zh: '已停止维护' },
 };
 
-const PRODUCT_VISUAL: Record<string, { kind: 'hami' | 'mark'; src?: string }> = {
-  'hami-enterprise': { kind: 'hami', src: '/hami.svg' },
-  'hami-ai-platform': { kind: 'mark' },
-};
-
 const TAG_EN_MAP: Record<string, string> = {
   'GPU 虚拟化': 'GPU Virtualization',
   '异构算力': 'Heterogeneous Compute',
@@ -49,14 +43,13 @@ const TAG_EN_MAP: Record<string, string> = {
 
 export default function ProductHero({ product, latest, locale, onJumpDownload }: ProductHeroProps) {
   const { t } = useTranslation();
-  const backHref = locale === 'zh' ? '/zh/enterprise' : '/enterprise';
+  const backHref = locale === 'zh' ? '/zh/products' : '/products';
   const productName = pickI18n(product.name, locale);
-  const visual = PRODUCT_VISUAL[product.id] ?? { kind: 'mark' };
   const statusInfo = STATUS_LABEL[product.status] ?? STATUS_LABEL.ga;
   const showInstallGuide = hasLocalInstallDoc(product);
   const installHref = locale === 'zh'
-    ? `/zh/enterprise/${product.id}/install`
-    : `/enterprise/${product.id}/install`;
+    ? `/zh/products/${product.id}/install`
+    : `/products/${product.id}/install`;
 
   return (
     <section className="relative overflow-hidden border-b border-gray-200 dark:border-gray-800">
@@ -79,35 +72,7 @@ export default function ProductHero({ product, latest, locale, onJumpDownload }:
           {t('enterprise.detail.backToList')}
         </Link>
 
-        <div className="flex items-start gap-5 flex-wrap">
-          <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-            {visual.kind === 'hami' && visual.src ? (
-              <Image
-                src={visual.src}
-                alt=""
-                width={40}
-                height={40}
-                className="h-9 w-9"
-                aria-hidden="true"
-              />
-            ) : (
-              <svg
-                viewBox="0 0 24 24"
-                className="h-7 w-7 text-gray-700 dark:text-gray-300"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.6}
-                aria-hidden="true"
-              >
-                <rect x="3" y="3" width="7" height="7" rx="1" />
-                <rect x="14" y="3" width="7" height="7" rx="1" />
-                <rect x="3" y="14" width="7" height="7" rx="1" />
-                <rect x="14" y="14" width="7" height="7" rx="1" />
-              </svg>
-            )}
-          </div>
-
-          <div className="flex-1 min-w-0">
+        <div className="min-w-0">
             <div className="flex items-center gap-3 flex-wrap mb-2">
               <span className="inline-flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-400">
                 <span className={`inline-block w-1.5 h-1.5 rounded-full ${STATUS_DOT[product.status] ?? STATUS_DOT.ga}`} />
@@ -144,7 +109,6 @@ export default function ProductHero({ product, latest, locale, onJumpDownload }:
                 ))}
               </div>
             )}
-          </div>
         </div>
 
         {/* Quick-actions row */}
