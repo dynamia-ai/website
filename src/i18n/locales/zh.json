@@ -875,6 +875,10 @@
           "title": "Slack",
           "action": "加入我们"
         },
+        "linkedin": {
+          "title": "LinkedIn",
+          "action": "关注我们"
+        },
         "twitter": {
           "title": "X (Twitter)",
           "action": "关注我们"

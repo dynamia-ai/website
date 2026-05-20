@@ -851,14 +851,13 @@
           "title": "Slack",
           "action": "Join Us"
         },
+        "linkedin": {
+          "title": "LinkedIn",
+          "action": "Follow Us"
+        },
         "twitter": {
           "title": "X (Twitter)",
           "action": "Follow Us"
-        },
-        "wechat": {
-          "title": "WeChat",
-          "action": "Scan QR Code",
-          "qrPlaceholder": "WeChat QR Code Placeholder"
         }
       }
     }
