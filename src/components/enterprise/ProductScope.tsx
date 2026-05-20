@@ -352,7 +352,6 @@ export default function ProductScope({ locale }: ProductScopeProps) {
   const hamiHref = locale === 'zh' ? '/zh/products/hami-enterprise' : '/products/hami-enterprise';
   const entHref =
     locale === 'zh' ? '/zh/products/hami-ai-platform' : '/products/hami-ai-platform';
-  const pricingHref = locale === 'zh' ? '/zh/pricing' : '/pricing';
 
   const totals = {
     oss: GROUPS.reduce((s, g) => s + g.rows.filter((r) => r.oss).length, 0),
@@ -522,49 +521,40 @@ export default function ProductScope({ locale }: ProductScopeProps) {
           href={c.cta.ossHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center justify-between gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-5 py-4 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-sm transition-all"
+          className="group flex items-center justify-between gap-3 rounded-xl border border-primary bg-primary text-white px-5 py-4 hover:bg-primary-dark transition-colors duration-200"
         >
           <div>
-            <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+            <div className="text-sm font-semibold text-white transition-colors duration-200">
               {c.cta.ossLabel}
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">{c.cta.ossLink}</div>
+            <div className="text-xs text-white/80 transition-colors duration-200">{c.cta.ossLink}</div>
           </div>
-          <ArrowRightIcon className="h-4 w-4 text-gray-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+          <ArrowRightIcon className="h-4 w-4 text-white/85 group-hover:translate-x-1 transition-transform duration-200" />
         </a>
         <Link
           href={hamiHref}
-          className="group flex items-center justify-between gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-5 py-4 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-sm transition-all"
+          className="group flex items-center justify-between gap-3 rounded-xl border border-primary bg-primary text-white px-5 py-4 hover:bg-primary-dark transition-colors duration-200"
         >
           <div>
-            <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+            <div className="text-sm font-semibold text-white transition-colors duration-200">
               {c.cta.commercialLabel}
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">{c.cta.commercialLink}</div>
+            <div className="text-xs text-white/80 transition-colors duration-200">{c.cta.commercialLink}</div>
           </div>
-          <ArrowRightIcon className="h-4 w-4 text-gray-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
+          <ArrowRightIcon className="h-4 w-4 text-white/85 group-hover:translate-x-1 transition-transform duration-200" />
         </Link>
         <Link
           href={entHref}
-          className="group flex items-center justify-between gap-3 rounded-xl border border-primary/30 bg-primary text-white px-5 py-4 hover:bg-primary-dark hover:shadow-md transition-all"
+          className="group flex items-center justify-between gap-3 rounded-xl border border-primary bg-primary text-white px-5 py-4 hover:bg-primary-dark transition-colors duration-200"
         >
           <div>
-            <div className="text-sm font-semibold">{c.cta.enterpriseLabel}</div>
-            <div className="text-xs text-white/80">{c.cta.enterpriseLink}</div>
+            <div className="text-sm font-semibold text-white transition-colors duration-200">{c.cta.enterpriseLabel}</div>
+            <div className="text-xs text-white/80 transition-colors duration-200">{c.cta.enterpriseLink}</div>
           </div>
-          <ArrowRightIcon className="h-4 w-4 text-white/80 group-hover:translate-x-0.5 transition-all" />
+          <ArrowRightIcon className="h-4 w-4 text-white/85 group-hover:translate-x-1 transition-transform duration-200" />
         </Link>
       </div>
 
-      <div className="text-center flex justify-center gap-6 text-sm">
-        <Link
-          href={pricingHref}
-          className="inline-flex items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-primary"
-        >
-          {locale === 'zh' ? '获取报价' : 'Get a quote'}
-          <ArrowRightIcon className="h-3.5 w-3.5" />
-        </Link>
-      </div>
     </section>
   );
 }
