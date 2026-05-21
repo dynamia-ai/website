@@ -327,15 +327,6 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                   </time>
                 </div>
 
-                {/* Excerpt */}
-                {displayPost.excerpt && (
-                  <div className="mb-6 sm:mb-8 relative pl-4 sm:pl-6 border-l-4 border-gray-300">
-                    <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-6 sm:leading-7 italic">
-                      {displayPost.excerpt}
-                    </p>
-                  </div>
-                )}
-
               </motion.header>
 
               {/* Content */}
