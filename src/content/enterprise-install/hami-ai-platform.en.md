@@ -13,7 +13,7 @@ description: "Deploy HAMi AI Platform on Kubernetes — component dependencies a
 
 HAMi AI Platform is a Kubernetes-native application platform that provides unified scheduling, tenant quota, monitoring and developer workspaces for heterogeneous compute clusters. Key characteristics:
 
-- **Federated control plane**: connects to the dynamia.ai cloud control plane; one tenant manages many clusters
+- **Federated control plane**: connects to the Dynamia cloud control plane; one tenant manages many clusters
 - **Unified UI**: built-in admin, monitoring and user consoles
 - **Open & composable**: relies on standard K8s ecosystem (Prometheus, Helm, Gateway API, HAMi device plugin)
 
@@ -109,8 +109,6 @@ Sample output:
 
 > Troubleshooting: [NVIDIA GPU Operator troubleshooting guide](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/troubleshooting.html)
 
----
-
 ### HAMi Enterprise
 
 Contact dynamia.ai sales/support for the **HAMi Enterprise offline bundle** (`hami.tgz` Helm chart + image tarball).
@@ -182,14 +180,14 @@ Gateway API routes workspace traffic for VSCode / SSH / Jupyter etc.
 
 ```bash
 # 1. Extract
-tar -xzf hami-ai-platform-v1.4.0-airgap-amd64.tar.gz
-cd hami-ai-platform-v1.4.0-airgap
+tar -xzf hami-ai-platform-v2.9.0-airgap-amd64.tar.gz
+cd hami-ai-platform-v2.9.0-airgap
 
 # 2. Push images to your private registry
 ./load-images.sh --registry harbor.intra/hami
 
 # 3. Helm install (chart bundled in)
-helm install hami-ai-platform ./charts/hami-ai-platform-1.4.0.tgz \
+helm install hami-ai-platform ./charts/hami-ai-platform-2.9.0.tgz \
   -n hami-ai-platform-system --create-namespace \
   --set image.registry=harbor.intra/hami
 ```
@@ -208,13 +206,11 @@ helm install hami-ai-platform hami-ai-platform.tgz \
 ```bash
 helm install hami-ai-platform \
   oci://ghcr.io/dynamia-ai/charts/hami-ai-platform \
-  --version 1.4.0 \
+  --version 2.9.0 \
   -n hami-ai-platform-system --create-namespace
 ```
 
 > Pass `--set` or `-f values.yaml` for custom configuration (external Prometheus endpoint, Gateway endpoint, image registry etc.). See the chart's bundled `values.yaml` for the full field reference.
-
----
 
 ## Post-install verification
 
@@ -234,8 +230,6 @@ kubectl -n hami-ai-platform-system get clusters
 
 Expected: all pods `Running`, no `CrashLoopBackOff`; CRDs include `clusters.hami-ai-platform.dynamia.ai` and other core resources.
 
----
-
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
@@ -246,12 +240,9 @@ Expected: all pods `Running`, no `CrashLoopBackOff`; CRDs include `clusters.hami
 | Helm install image pull fails | Offline images not loaded | Run `docker load` + `docker push` to local registry |
 | dynamia.ai pod `ImagePullBackOff` | Wrong image registry in values.yaml | Check `image.registry` / `image.repository` |
 
----
-
 ## Get support
 
 - Email: [info@dynamia.ai](mailto:info@dynamia.ai)
-- Documentation: [docs.dynamia.ai/hami-ai-platform](https://docs.dynamia.ai/hami-ai-platform)
 - Customers under commercial contract: please use your dedicated support channel for issues
 
 > **Enterprise SLA**: Both HAMi Enterprise and HAMi AI Platform come with 24/7 support, hotfix response and long-term release maintenance.

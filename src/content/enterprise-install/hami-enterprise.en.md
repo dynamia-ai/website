@@ -60,14 +60,14 @@ Download `hami-enterprise-vX.Y.Z-airgap-<arch>.tar.gz` — a single tarball cont
 
 ```bash
 # 1. Extract
-tar -xzf hami-enterprise-v2.6.0-airgap-amd64.tar.gz
-cd hami-enterprise-v2.6.0-airgap
+tar -xzf hami-enterprise-v2.9.0-airgap-amd64.tar.gz
+cd hami-enterprise-v2.9.0-airgap
 
 # 2. Push images to your private registry (script handles retag + push)
 ./load-images.sh --registry harbor.intra/hami
 
 # 3. Helm install (chart bundled in)
-helm install hami ./charts/hami-enterprise-2.6.0.tgz \
+helm install hami ./charts/hami-enterprise-2.9.0.tgz \
   -n hami-system --create-namespace \
   --set image.registry=harbor.intra/hami
 
@@ -87,11 +87,11 @@ Contact dynamia.ai sales or support to request the **HAMi Enterprise offline bun
 Or install online via OCI (evaluation environments):
 
 ```bash
-helm install hami oci://ghcr.io/dynamia-ai/charts/hami-enterprise --version 2.6.0 \
+helm install hami oci://ghcr.io/dynamia-ai/charts/hami-enterprise --version 2.9.0 \
   -n hami-system --create-namespace
 ```
 
-### Step 2 · Import offline images
+### Import offline images
 
 ```bash
 # Load images
@@ -102,7 +102,7 @@ docker tag <image>:<tag> <your-registry>/<image>:<tag>
 docker push <your-registry>/<image>:<tag>
 ```
 
-### Step 3 · Helm install
+### Helm install
 
 ```bash
 helm install hami hami-enterprise.tgz \
@@ -182,7 +182,6 @@ Expected: `nvidia-smi` shows the GPU and memory is capped at 2000 MiB.
 ## Get support
 
 - Email: [info@dynamia.ai](mailto:info@dynamia.ai)
-- Documentation: [docs.dynamia.ai/hami-enterprise](https://docs.dynamia.ai/hami-enterprise)
 - Customers under commercial contract: please use your dedicated support channel for issues
 
 > **Enterprise SLA**: HAMi Enterprise ships 24/7 support, hotfix response, and long-term release maintenance.
