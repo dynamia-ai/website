@@ -69,9 +69,9 @@ The team fully embraced Kubernetes, achieving lightweight compute and flexible s
 
 ![K8s + HAMi Architecture Evolution](/images/blog/boardware-hami-gpu-virtualization/k8s-hami-architecture.webp)
 
-## 3. Custom Scheduling Platform: One Kick Deployment Platform
+## 3. Custom Scheduling Platform: One Click Deployment Platform
 
-To address customers' "out-of-the-box" localized deployment needs, Boardware developed the **"One Kick Deployment Platform"** — an AI compute management platform designed for research and university scenarios. It abstracts away the complexity of underlying K8s and HAMi, enabling researchers to quickly launch training tasks without operational knowledge. Core capabilities include:
+To address customers' "out-of-the-box" localized deployment needs, Boardware developed the **"One Click Deployment Platform"** — an AI compute management platform designed for research and university scenarios. It abstracts away the complexity of underlying K8s and HAMi, enabling researchers to quickly launch training tasks without operational knowledge. Core capabilities include:
 
 - **Multi-cluster management:** Unified management of GPU resources across multiple K8s clusters
 - **Multi-region deployment:** Cross-region compute resource scheduling support

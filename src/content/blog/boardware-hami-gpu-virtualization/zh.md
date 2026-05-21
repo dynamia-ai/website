@@ -69,9 +69,9 @@ linktitle: "博维智慧 GPU 虚拟化实战"
 
 ![K8s + HAMi 架构演进](/images/blog/boardware-hami-gpu-virtualization/k8s-hami-architecture.webp)
 
-## 三、自研调度平台：One Kick Deployment Platform
+## 三、自研调度平台：One Click Deployment Platform
 
-为解决客户"开箱即用"的本地化部署需求，博维自研了 **"One Kick Deployment Platform"**——一套面向科研和高校场景的 AI 算力管理平台。它屏蔽了底层 K8s 和 HAMi 的复杂性，让研究人员无需运维知识即可快速启动训练任务。具备以下核心能力：
+为解决客户"开箱即用"的本地化部署需求，博维自研了 **"One Click Deployment Platform"**——一套面向科研和高校场景的 AI 算力管理平台。它屏蔽了底层 K8s 和 HAMi 的复杂性，让研究人员无需运维知识即可快速启动训练任务。具备以下核心能力：
 
 - **多集群管理：** 统一管理多个 K8s 集群的 GPU 资源
 - **多地区异地部署：** 支持跨地域的算力资源调度
