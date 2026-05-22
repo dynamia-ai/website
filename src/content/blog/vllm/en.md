@@ -108,7 +108,55 @@ touch values-hami-demo.yaml
 Write the following content into `values-hami-demo.yaml`. This configuration defines our deployment blueprint: on a single L4 card, using the binpack strategy to deploy one Embedding model requesting 14GB memory and one Reranker model requesting 8GB memory.
 
 ```yaml
-... (YAML config unchanged) ...
+servingEngineSpec:
+  modelSpec:
+  # BAAI/bge-m3 Embedding Model
+  - name: "bge-m3-embed"
+    repository: "vllm/vllm-openai"
+    tag: "latest"
+    modelURL: "BAAI/bge-m3"
+    replicaCount: 1
+    requestCPU: 2
+    requestMemory: "6Gi"
+    requestGPU: 1
+    limitGPU: 1
+    requestGPUMem: "14000"
+    limitGPUMem: "14000"
+    podAnnotations:
+      nvidia.com/use-gputype: "L4"
+      hami.io/gpu-scheduler-policy: "binpack"
+    pvcStorage: "10Gi"
+
+    vllmConfig:
+      dtype: "auto"
+      maxModelLen: 8192
+      maxNumSeqs: 32
+      gpuMemoryUtilization: 0.85
+      extraArgs: ["--task", "embed"]
+
+  # BAAI/bge-reranker-v2-m3 Reranker Model
+  - name: "bge-reranker-v2-m3"
+    repository: "vllm/vllm-openai"
+    tag: "latest"
+    modelURL: "BAAI/bge-reranker-v2-m3"
+    replicaCount: 1
+    requestCPU: 2
+    requestMemory: "4Gi"
+    requestGPU: 1
+    limitGPU: 1
+    requestGPUMem: "8000"
+    limitGPUMem: "8000"
+    podAnnotations:
+      nvidia.com/use-gputype: "L4"
+      hami.io/gpu-scheduler-policy: "binpack"
+    pvcStorage: "5Gi"
+
+    vllmConfig:
+      dtype: "auto"
+      maxModelLen: 512
+      maxNumSeqs: 8
+      gpuMemoryUtilization: 0.85
+      extraArgs: ["--task", "score"]
 ```
 
 1. Deploy from local source
