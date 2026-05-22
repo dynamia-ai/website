@@ -144,6 +144,21 @@ const PRODUCT_INTRO = {
 
 const CAPABILITY_ICONS = [CpuChipIcon, CubeTransparentIcon, ChartBarIcon];
 
+const COMPATIBILITY_LABELS: Record<string, Record<Locale, string>> = {
+  kubernetes: {
+    en: 'Kubernetes',
+    zh: 'Kubernetes',
+  },
+  os: {
+    en: 'Operating systems',
+    zh: '操作系统',
+  },
+  gpu: {
+    en: 'GPU drivers',
+    zh: 'GPU 驱动',
+  },
+};
+
 interface EnterpriseDetailClientProps {
   productId: string;
   locale: Locale;
@@ -376,7 +391,9 @@ export default function EnterpriseDetailClient({
                 </h2>
                 {downloadsComingSoon ? (
                   <span className="inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wider bg-primary/10 text-primary">
-                    {t('enterprise.detail.downloadComingSoonBadge')}
+                    {t('enterprise.detail.downloadComingSoonBadge', {
+                      defaultValue: 'Coming Soon',
+                    })}
                   </span>
                 ) : (
                   <VersionSelector
@@ -395,10 +412,18 @@ export default function EnterpriseDetailClient({
                     </span>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-gray-100">
-                        {t('enterprise.detail.downloadComingSoonTitle')}
+                        {t('enterprise.detail.downloadComingSoonTitle', {
+                          defaultValue:
+                            locale === 'zh' ? '下载页面即将开放' : 'Downloads coming soon',
+                        })}
                       </p>
                       <p className="mt-1 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                        {t('enterprise.detail.downloadComingSoonDesc')}
+                        {t('enterprise.detail.downloadComingSoonDesc', {
+                          defaultValue:
+                            locale === 'zh'
+                              ? '版本下载、交付流程与下载路径还在准备中，确认后会在这里更新。'
+                              : 'Version downloads, delivery workflow, and download paths are still being prepared. This section will be updated when they are finalized.',
+                        })}
                       </p>
                     </div>
                   </div>
@@ -454,19 +479,21 @@ export default function EnterpriseDetailClient({
           >
             {product!.compatibility && (
               <div className="rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6">
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100">
                   {t('enterprise.detail.compatTitle')}
                 </h3>
-                <dl className="space-y-3 text-sm">
+                <dl className="mt-4 divide-y divide-gray-100 dark:divide-gray-800">
                   {Object.entries(product!.compatibility).map(([key, values]) =>
                     values && values.length > 0 ? (
-                      <div key={key}>
-                        <dt className="text-gray-500 dark:text-gray-400 capitalize">{key}</dt>
-                        <dd className="mt-1 flex flex-wrap gap-1">
+                      <div key={key} className="py-3 first:pt-0 last:pb-0">
+                        <dt className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {COMPATIBILITY_LABELS[key]?.[locale] ?? key}
+                        </dt>
+                        <dd className="mt-2 flex flex-wrap gap-1.5">
                           {values.map((v) => (
                             <span
                               key={v}
-                              className="px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs"
+                              className="inline-flex items-center rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/70 px-2.5 py-1 text-xs font-medium leading-none text-gray-700 dark:text-gray-200"
                             >
                               {v}
                             </span>

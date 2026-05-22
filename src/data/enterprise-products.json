@@ -58,9 +58,9 @@
       ],
       "compatibility": {
         "kubernetes": [">= 1.24", "<= 1.31"],
-        "os": ["RHEL 8/9", "Ubuntu 20.04/22.04", "Kylin V10", "openEuler 22.03"],
+        "os": ["RHEL 8/9", "Ubuntu 20.04 / 22.04", "Kylin V10", "openEuler 22.03"],
         "gpu": [
-          "NVIDIA driver >= 470",
+          "NVIDIA Driver >= 470",
           "Ascend CANN >= 7.0",
           "Hygon DCU DTK >= 23.10"
         ]
