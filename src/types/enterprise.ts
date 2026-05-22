@@ -78,6 +78,7 @@ export interface EnterpriseProduct {
   tags?: string[];
   docsUrl?: string;
   githubRepo?: string;
+  downloadsComingSoon?: boolean;
   highlights?: ProductHighlight[];
   compatibility?: CompatibilityMatrix;
   releases: Release[];

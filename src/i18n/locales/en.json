@@ -2072,7 +2072,10 @@
       "channelRc": "RC",
       "channelEol": "EOL",
       "eolWarning": "End-of-life — no security updates. Use the latest stable in production.",
-      "betaWarning": "Beta — evaluation only. Not for production."
+      "betaWarning": "Beta — evaluation only. Not for production.",
+      "downloadComingSoonBadge": "Coming Soon",
+      "downloadComingSoonTitle": "Downloads coming soon",
+      "downloadComingSoonDesc": "Version downloads, delivery workflow, and download paths are still being prepared. This section will be updated when they are finalized."
     },
     "artifact": {
       "download": "Download",
