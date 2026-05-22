@@ -184,6 +184,7 @@ export default function EnterpriseDetailClient({
   }, [initialVersion]);
 
   const selectedRelease = getReleaseByVersion(product!, selectedVersion) ?? latest;
+  const downloadsComingSoon = product!.downloadsComingSoon === true;
   const intro =
     PRODUCT_INTRO[product!.id as keyof typeof PRODUCT_INTRO]?.[locale] ??
     PRODUCT_INTRO['hami-enterprise'][locale];
@@ -369,18 +370,40 @@ export default function EnterpriseDetailClient({
               id="downloads"
               className="rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6 scroll-mt-20"
             >
-              <div className="flex items-center justify-between gap-3 flex-wrap mb-4">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                   {t('enterprise.detail.downloadTitle')}
                 </h2>
-                <VersionSelector
-                  releases={product!.releases}
-                  selectedVersion={selectedVersion}
-                  onChange={handleVersionChange}
-                />
+                {downloadsComingSoon ? (
+                  <span className="inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wider bg-primary/10 text-primary">
+                    {t('enterprise.detail.downloadComingSoonBadge')}
+                  </span>
+                ) : (
+                  <VersionSelector
+                    releases={product!.releases}
+                    selectedVersion={selectedVersion}
+                    onChange={handleVersionChange}
+                  />
+                )}
               </div>
 
-              {selectedRelease ? (
+              {downloadsComingSoon ? (
+                <div className="mt-5 rounded-lg border border-dashed border-primary/30 bg-primary/5 dark:bg-primary/10 p-5">
+                  <div className="flex items-start gap-3">
+                    <span className="flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <Squares2X2Icon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <p className="font-medium text-gray-900 dark:text-gray-100">
+                        {t('enterprise.detail.downloadComingSoonTitle')}
+                      </p>
+                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {t('enterprise.detail.downloadComingSoonDesc')}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : selectedRelease ? (
                 <>
                   <div className="mb-4 flex items-center gap-3 flex-wrap text-sm">
                     <span className="text-gray-500 dark:text-gray-400">

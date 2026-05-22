@@ -2072,7 +2072,10 @@
       "channelRc": "RC",
       "channelEol": "已停止维护",
       "eolWarning": "已停止维护，无安全更新。生产请用最新稳定版。",
-      "betaWarning": "Beta — 仅供评估，勿用于生产。"
+      "betaWarning": "Beta — 仅供评估，勿用于生产。",
+      "downloadComingSoonBadge": "Coming Soon",
+      "downloadComingSoonTitle": "下载页面即将开放",
+      "downloadComingSoonDesc": "版本下载、交付流程与下载路径还在准备中，确认后会在这里更新。"
     },
     "artifact": {
       "download": "下载",
