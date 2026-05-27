@@ -343,9 +343,9 @@ const COPY = {
       ossLink: 'GitHub',
       ossHref: 'https://github.com/Project-HAMi/HAMi',
       commercialLabel: 'HAMi Enterprise',
-      commercialLink: 'View Downloads',
+      commercialLink: 'Download',
       enterpriseLabel: 'HAMi AI Platform',
-      enterpriseLink: 'View Downloads',
+      enterpriseLink: 'Download',
     },
   },
   zh: {
@@ -386,9 +386,9 @@ const COPY = {
       ossLink: 'GitHub',
       ossHref: 'https://github.com/Project-HAMi/HAMi',
       commercialLabel: 'HAMi 企业版',
-      commercialLink: '查看下载',
+      commercialLink: '下载',
       enterpriseLabel: 'HAMi 平台版',
-      enterpriseLink: '查看下载',
+      enterpriseLink: '下载',
     },
   },
 } as const;
