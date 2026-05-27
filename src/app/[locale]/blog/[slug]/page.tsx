@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import {
   getBlogPost,
   getBlogPostSlugs,
@@ -26,23 +26,19 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: "blogUI" });
 
-  // Try the requested locale first, then fall back to the other
   const lang = locale as "en" | "zh";
   const post =
     getBlogPost(slug, lang) ||
     getBlogPost(slug, lang === "en" ? "zh" : "en");
 
   if (!post) {
-    return { title: locale === "zh" ? "文章未找到" : "Post Not Found" };
+    return { title: t("notFound") };
   }
 
   const socialImage = getPostSocialImage(post);
-
-  const title =
-    locale === "zh"
-      ? `${post.title} | 密瓜智能博客`
-      : `${post.title} | Dynamia AI Blog`;
+  const title = t("titleTemplate", { title: post.title });
 
   return {
     title,
