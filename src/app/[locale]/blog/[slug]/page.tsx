@@ -29,10 +29,7 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "blogUI" });
 
-  const lang = locale as "en" | "zh";
-  const post =
-    getBlogPost(slug, lang) ||
-    getBlogPost(slug, lang === "en" ? "zh" : "en");
+  const post = getBlogPost(slug, locale);
 
   if (!post) {
     return { title: t("notFound") };

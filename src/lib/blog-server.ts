@@ -65,7 +65,7 @@ export function getBlogPostSlugs(): string[] {
 }
 
 // Get blog post by slug and language
-export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPost | null {
+export function getBlogPost(slug: string, language = 'en'): BlogPost | null {
   try {
     const fullPath = path.join(CONTENT_PATH, slug, `${language}.md`);
     
@@ -97,7 +97,7 @@ export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPos
 }
 
 // 仅获取博客文章元数据（不读取完整内容，优化列表页性能）
-function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMeta | null {
+function getBlogPostMeta(slug: string, language = 'en'): BlogPostMeta | null {
   try {
     const fullPath = path.join(CONTENT_PATH, slug, `${language}.md`);
 
@@ -137,7 +137,7 @@ function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMe
 }
 
 // 获取所有博客文章元数据和标签（使用缓存优化性能）
-export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostsResult => {
+export const getAllBlogPosts = cache((language = 'en'): BlogPostsResult => {
   const slugs = getBlogPostSlugs();
   const posts: BlogPostMeta[] = [];
   const tags = new Set<string>();
@@ -253,7 +253,7 @@ function extractTocFromAST(ast: any): TocItem[] {
 // Convert markdown to HTML and extract TOC
 export async function markdownToHtml(
   markdown: string,
-  language: 'en' | 'zh' = 'en'
+  language = 'en'
 ): Promise<{ html: string; toc: TocItem[] }> {
   // 先解析为 AST 以提取目录
   const ast = await unified()
@@ -381,7 +381,7 @@ export async function attachmentMarkdownToHtml(
 }
 
 // Get posts by tag
-export function getBlogPostsByTag(tag: string, language: 'en' | 'zh' = 'en'): BlogPostMeta[] {
+export function getBlogPostsByTag(tag: string, language = 'en'): BlogPostMeta[] {
   const { posts } = getAllBlogPosts(language);
   return posts.filter(post => 
     post.tags.some(postTag => 
@@ -391,7 +391,7 @@ export function getBlogPostsByTag(tag: string, language: 'en' | 'zh' = 'en'): Bl
 }
 
 // Get posts by category
-export function getBlogPostsByCategory(category: string, language: 'en' | 'zh' = 'en'): BlogPostMeta[] {
+export function getBlogPostsByCategory(category: string, language = 'en'): BlogPostMeta[] {
   const { posts } = getAllBlogPosts(language);
   return posts.filter(post => 
     post.category.toLowerCase() === category.toLowerCase()
@@ -399,20 +399,11 @@ export function getBlogPostsByCategory(category: string, language: 'en' | 'zh' =
 }
 
 // Format date for display
-export function formatDate(dateString: string, language: 'en' | 'zh' = 'en'): string {
+export function formatDate(dateString: string, locale = 'en'): string {
   const date = new Date(dateString);
-  
-  if (language === 'zh') {
-    return date.toLocaleDateString('zh-CN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }
-  
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString(locale, {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
-} 
+}
