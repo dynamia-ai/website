@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import {
   getBlogPost,
   getBlogPostSlugs,
@@ -61,11 +62,13 @@ export async function generateMetadata({
       images: socialImage ? [socialImage] : undefined,
     },
     alternates: {
-      canonical: `https://dynamia.ai/${locale === "zh" ? "zh/" : ""}blog/${slug}`,
-      languages: {
-        en: `https://dynamia.ai/blog/${slug}`,
-        zh: `https://dynamia.ai/zh/blog/${slug}`,
-      },
+      canonical: `https://dynamia.ai/${locale === routing.defaultLocale ? "" : `${locale}/`}blog/${slug}`,
+      languages: Object.fromEntries(
+        routing.locales.map((loc) => [
+          loc,
+          `https://dynamia.ai/${loc === routing.defaultLocale ? "" : `${loc}/`}blog/${slug}`,
+        ])
+      ),
     },
   };
 }
