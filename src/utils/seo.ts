@@ -11,6 +11,10 @@ export function localizedUrl(path: string, locale: string): string {
   return `${DOMAIN}${prefix}${path}`;
 }
 
+export function localizedPath(path: string, locale: string): string {
+  return locale === routing.defaultLocale ? path : `/${locale}${path}`;
+}
+
 export function localizedAlternates(path: string): Record<string, string> {
   return Object.fromEntries(
     routing.locales.map((loc) => [loc, localizedUrl(path, loc)])
