@@ -2,7 +2,14 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowLongRightIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  ChevronDownIcon,
+  GlobeAltIcon,
+  ShieldCheckIcon,
+  UserGroupIcon,
+} from '@heroicons/react/24/outline';
 import type { Locale } from '@/types/enterprise';
 
 interface HamiOriginBannerProps {
@@ -22,13 +29,23 @@ const COPY = {
       { title: 'OEM-grade SLA', desc: '24/7 support · long-term release lines' },
     ],
     relation: {
-      origin: 'Founded and core-maintained',
-      delivery: 'Enterprise delivery and SLA',
-      nodeDynamia: 'Dynamia AI Team',
-      nodeHami: 'HAMi Open Source',
-      nodeEnterprise: 'Enterprise Editions',
+      connector1: 'Founded & maintained',
+      connector2: 'OEM delivery · SLA',
+      team: {
+        title: 'Dynamia AI',
+        titleSub: 'dynamia.ai',
+        desc: 'Founder and core maintainer of HAMi, delivering enterprise editions as the OEM.',
+      },
+      opensource: {
+        title: 'HAMi',
+        desc: 'Heterogeneous AI computing virtualization middleware · open source, community-driven.',
+      },
+      commercial: {
+        title: 'Enterprise Editions',
+        desc: 'Commercial distribution based on HAMi, with support and services from Dynamia AI.',
+      },
     },
-    ctaPrimary: 'HAMi project',
+    ctaPrimary: 'HAMi website',
     ctaCommunity: 'Community',
     ctaGithub: 'GitHub',
     ctaDiscord: 'Discord',
@@ -45,30 +62,128 @@ const COPY = {
       { title: '原厂级 SLA', desc: '7×24 支持 · 长期版本来自源头' },
     ],
     relation: {
-      origin: '密瓜智能发起并持续维护',
-      delivery: '企业版由原厂交付与 SLA 保障',
-      nodeDynamia: '密瓜智能团队',
-      nodeHami: 'HAMi 开源项目',
-      nodeEnterprise: '企业版产品',
+      connector1: '发起并维护',
+      connector2: '原厂交付 · SLA',
+      team: {
+        title: '密瓜智能',
+        titleSub: 'Dynamia.AI',
+        desc: 'HAMi 项目的发起者与持续维护方，并以原厂身份交付企业版',
+      },
+      opensource: {
+        title: 'HAMi',
+        desc: '异构 AI 计算虚拟化中间件 · 开源项目，社区驱动',
+      },
+      commercial: {
+        title: '企业版产品',
+        desc: '基于 HAMi 的商业发行版，由密瓜智能提供保障与服务',
+      },
     },
-    ctaPrimary: 'HAMi 项目',
+    ctaPrimary: 'HAMi 官网',
     ctaCommunity: '社区',
     ctaGithub: 'GitHub',
     ctaDiscord: 'Discord',
   },
 } as const;
 
+const COMMUNITY_LINKS = [
+  {
+    key: 'community',
+    href: 'https://project-hami.io/community/',
+    icon: 'users' as const,
+    labelKey: 'ctaCommunity' as const,
+  },
+  {
+    key: 'github',
+    href: 'https://github.com/Project-HAMi/HAMi',
+    icon: 'github' as const,
+    labelKey: 'ctaGithub' as const,
+  },
+  {
+    key: 'discord',
+    href: 'https://discord.gg/Amhy7XmbNq',
+    icon: 'discord' as const,
+    labelKey: 'ctaDiscord' as const,
+  },
+] as const;
+
+const communityIconClass =
+  'h-4 w-4 shrink-0 text-gray-500 dark:text-gray-400 transition-colors duration-200 group-hover:text-primary';
+
+function RelationConnector({ label }: { label: string }) {
+  return (
+    <div
+      className="flex flex-row flex-nowrap items-center justify-center gap-1.5 py-1"
+      aria-hidden="true"
+    >
+      <ChevronDownIcon className="h-3.5 w-3.5 shrink-0 text-gray-300 dark:text-gray-600" />
+      <span className="text-[11px] leading-tight whitespace-nowrap text-gray-400 dark:text-gray-500">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+interface FlowStepCardProps {
+  highlight?: boolean;
+  icon: React.ReactNode;
+  title?: string;
+  titleSub?: string;
+  desc?: string;
+}
+
+function FlowStepCard({ highlight = false, icon, title, titleSub, desc }: FlowStepCardProps) {
+  return (
+    <div
+      className={`flex items-start gap-3 rounded-lg border px-3 py-2.5 ${
+        highlight
+          ? 'border-primary/35 bg-primary/[0.05] dark:bg-primary/[0.08]'
+          : 'border-gray-200/90 dark:border-gray-700/80 bg-white dark:bg-gray-900'
+      }`}
+    >
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center">{icon}</div>
+      {(title || titleSub || desc) && (
+        <div className="min-w-0 flex-1">
+          {(title || titleSub) && (
+            <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
+              {title ? (
+                <span className="text-[13px] font-semibold leading-snug text-gray-900 dark:text-gray-100">
+                  {title}
+                </span>
+              ) : null}
+              {titleSub ? (
+                <span className="text-[11px] text-gray-400 dark:text-gray-500">{titleSub}</span>
+              ) : null}
+            </div>
+          )}
+          {desc ? (
+            <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
+              {desc}
+            </p>
+          ) : null}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CommunityLinkIcon({ type }: { type: (typeof COMMUNITY_LINKS)[number]['icon'] }) {
+  if (type === 'github') {
+    return <FontAwesomeIcon icon={faGithub} className={communityIconClass} aria-hidden />;
+  }
+  if (type === 'discord') {
+    return <FontAwesomeIcon icon={faDiscord} className={communityIconClass} aria-hidden />;
+  }
+  return <UserGroupIcon className={communityIconClass} aria-hidden />;
+}
+
 export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
   const c = COPY[locale] ?? COPY.en;
-  const dynamiaLogoLight = locale === 'zh' ? '/dynamia-logo-zh.svg' : '/dynamia-logo.svg';
-  const dynamiaLogoDark =
-    locale === 'zh' ? '/dynamia-logo-zh-white.svg' : '/dynamia-logo-white.svg';
 
   return (
     <section className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
       <div className="px-6 py-10 md:px-12 md:py-12">
         {/* Top — narrative + relationship */}
-        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] gap-8 xl:gap-10 items-start">
+        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] gap-8 xl:gap-10 xl:items-center">
           <div className="max-w-2xl space-y-6">
             <div className="text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 mb-3">
               {c.eyebrow}
@@ -89,108 +204,89 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               {c.subtitle}
             </p>
-            <div className="flex flex-wrap items-center gap-2.5 text-sm">
+            <div className="flex flex-wrap items-center gap-2">
               <a
                 href="https://project-hami.io/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-1.5 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-dark hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
               >
+                <GlobeAltIcon className="h-4 w-4 shrink-0" aria-hidden />
                 {c.ctaPrimary}
-                <ArrowUpRightIcon className="h-3.5 w-3.5" />
               </a>
-              <a
-                href="https://project-hami.io/community"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-1.5 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary transition-colors"
-              >
-                {c.ctaCommunity}
-                <ArrowUpRightIcon className="h-3.5 w-3.5" />
-              </a>
-              <a
-                href="https://github.com/Project-HAMi/HAMi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-1.5 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary transition-colors"
-              >
-                {c.ctaGithub}
-                <ArrowUpRightIcon className="h-3.5 w-3.5" />
-              </a>
-              <a
-                href="https://discord.gg/Amhy7XmbNq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3.5 py-1.5 text-gray-800 dark:text-gray-200 hover:border-primary hover:text-primary transition-colors"
-              >
-                {c.ctaDiscord}
-                <ArrowUpRightIcon className="h-3.5 w-3.5" />
-              </a>
+              {COMMUNITY_LINKS.map((link) => (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-3 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-200 ease-out hover:-translate-y-px hover:border-primary/45 hover:bg-primary/[0.07] hover:text-primary hover:shadow-[0_1px_3px_rgba(0,0,0,0.06)] active:translate-y-0 dark:hover:bg-primary/10 dark:hover:border-primary/40 dark:hover:shadow-[0_1px_3px_rgba(0,0,0,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+                >
+                  <CommunityLinkIcon type={link.icon} />
+                  {c[link.labelKey]}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Relationship diagram */}
-          <div className="w-full">
-            <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50/70 dark:bg-gray-950/60 p-5 md:p-6">
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-3 md:gap-2">
-                <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 text-center">
+          {/* Relationship flow */}
+          <div className="w-full max-w-lg xl:max-w-lg xl:ml-auto">
+            <div
+              className="rounded-xl border border-gray-200/90 dark:border-gray-800 bg-gray-50/40 dark:bg-gray-950/30 p-3 space-y-0"
+              role="img"
+              aria-label={
+                locale === 'zh'
+                  ? '密瓜智能团队发起维护 HAMi 开源项目，并提供企业版产品与 SLA'
+                  : 'Dynamia team maintains HAMi open source and delivers enterprise editions with SLA'
+              }
+            >
+              <FlowStepCard
+                icon={
                   <Image
-                    src={dynamiaLogoLight}
-                    alt="dynamia.ai"
-                    width={168}
-                    height={36}
-                    className="h-8 w-auto mx-auto dark:hidden"
+                    src="/LOGO-small.svg"
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain"
+                    aria-hidden
                   />
-                  <Image
-                    src={dynamiaLogoDark}
-                    alt="dynamia.ai"
-                    width={168}
-                    height={36}
-                    className="h-8 w-auto mx-auto hidden dark:block"
-                  />
-                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                    {c.relation.nodeDynamia}
-                  </div>
-                </div>
+                }
+                title={c.relation.team.title}
+                titleSub={c.relation.team.titleSub}
+                desc={c.relation.team.desc}
+              />
 
-                <div className="flex flex-col items-center justify-center gap-1 text-primary">
-                  <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-primary text-center leading-tight max-w-[118px]">
-                    {c.relation.origin}
-                  </span>
-                  <ArrowLongRightIcon className="h-4 w-4 md:h-5 md:w-5 md:block hidden" />
-                  <ArrowLongRightIcon className="h-4 w-4 rotate-90 md:hidden" />
-                </div>
+              <RelationConnector label={c.relation.connector1} />
 
-                <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 text-center">
+              <FlowStepCard
+                icon={
                   <Image
                     src="/hami.svg"
-                    alt="HAMi"
-                    width={120}
-                    height={36}
-                    className="h-8 w-auto mx-auto dark:bg-white/95 dark:rounded-md dark:p-1"
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain dark:bg-white/95 dark:rounded-md dark:p-0.5"
+                    aria-hidden
                   />
-                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                    {c.relation.nodeHami}
-                  </div>
-                </div>
+                }
+                title={c.relation.opensource.title}
+                desc={c.relation.opensource.desc}
+              />
 
-                <div className="flex flex-col items-center justify-center gap-1 text-primary">
-                  <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-primary text-center leading-tight max-w-[118px]">
-                    {c.relation.delivery}
-                  </span>
-                  <ArrowLongRightIcon className="h-4 w-4 md:h-5 md:w-5 md:block hidden" />
-                  <ArrowLongRightIcon className="h-4 w-4 rotate-90 md:hidden" />
-                </div>
+              <RelationConnector label={c.relation.connector2} />
 
-                <div className="rounded-xl border border-primary/40 bg-primary/5 p-4 text-center">
-                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                    {c.relation.nodeEnterprise}
-                  </div>
-                  <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                    SLA · LTS · OEM Support
-                  </div>
-                </div>
-              </div>
+              <FlowStepCard
+                highlight
+                icon={
+                  <ShieldCheckIcon
+                    className="h-7 w-7 text-primary shrink-0"
+                    strokeWidth={1.5}
+                    aria-hidden
+                  />
+                }
+                title={c.relation.commercial.title}
+                desc={c.relation.commercial.desc}
+              />
             </div>
           </div>
         </div>

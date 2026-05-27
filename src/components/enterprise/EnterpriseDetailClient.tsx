@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useMemo, useState } from 'react';
-import { notFound, useRouter, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { notFound, useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import {
@@ -12,15 +12,14 @@ import {
 } from '@heroicons/react/24/outline';
 import MainLayout from '@/components/layout/MainLayout';
 import ProductHero from '@/components/enterprise/ProductHero';
-import VersionSelector from '@/components/enterprise/VersionSelector';
-import ArtifactList from '@/components/enterprise/ArtifactList';
+import DownloadDeliveryTabs from '@/components/enterprise/DownloadDeliveryTabs';
 import DownloadGateModal, {
   type PendingDownloadContext,
 } from '@/components/enterprise/DownloadGateModal';
 import {
   getProductById,
-  getReleaseByVersion,
   getLatestRelease,
+  isOfflineDownloadsComingSoon,
   pickI18n,
 } from '@/lib/enterprise';
 import { captureAttribution, attributionToPayload } from '@/utils/utm';
@@ -170,7 +169,6 @@ export default function EnterpriseDetailClient({
 }: EnterpriseDetailClientProps) {
   const { t } = useTranslation();
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const product = getProductById(productId);
   if (!product) {
@@ -178,13 +176,7 @@ export default function EnterpriseDetailClient({
   }
 
   const latest = getLatestRelease(product!);
-  const initialVersion = useMemo(() => {
-    const fromQuery = searchParams.get('v');
-    if (fromQuery && getReleaseByVersion(product!, fromQuery)) return fromQuery;
-    return latest?.version ?? product!.releases[0]?.version ?? '';
-  }, [searchParams, product, latest]);
-
-  const [selectedVersion, setSelectedVersion] = useState<string>(initialVersion);
+  const downloadVersion = latest?.version ?? product!.releases[0]?.version ?? '';
   const [unlocked, setUnlocked] = useState(false);
   const [gateContext, setGateContext] = useState<PendingDownloadContext | null>(null);
   const [pendingArtifact, setPendingArtifact] = useState<Artifact | null>(null);
@@ -194,22 +186,10 @@ export default function EnterpriseDetailClient({
     captureAttribution();
   }, []);
 
-  useEffect(() => {
-    setSelectedVersion(initialVersion);
-  }, [initialVersion]);
-
-  const selectedRelease = getReleaseByVersion(product!, selectedVersion) ?? latest;
-  const downloadsComingSoon = product!.downloadsComingSoon === true;
+  const offlineDownloadsComingSoon = isOfflineDownloadsComingSoon(product!);
   const intro =
     PRODUCT_INTRO[product!.id as keyof typeof PRODUCT_INTRO]?.[locale] ??
     PRODUCT_INTRO['hami-enterprise'][locale];
-
-  const handleVersionChange = (v: string) => {
-    setSelectedVersion(v);
-    const params = new URLSearchParams(searchParams.toString());
-    params.set('v', v);
-    router.replace(`?${params.toString()}`, { scroll: false });
-  };
 
   const [pendingResolvedUrl, setPendingResolvedUrl] = useState<string | null>(null);
 
@@ -220,10 +200,10 @@ export default function EnterpriseDetailClient({
         locale === 'zh' && resolvedUrl.startsWith('/products/')
           ? `/zh${resolvedUrl}`
           : resolvedUrl;
-      window.open(docUrl, '_blank', 'noopener,noreferrer');
+      router.push(docUrl);
       return;
     }
-    void fireDownloadAnalytics(artifact, product!.id, selectedVersion, locale, resolvedUrl);
+    void fireDownloadAnalytics(artifact, product!.id, downloadVersion, locale, resolvedUrl);
     window.location.href = resolvedUrl;
   };
 
@@ -238,7 +218,7 @@ export default function EnterpriseDetailClient({
     setGateContext({
       productId: product!.id,
       productName: pickI18n(product!.name, locale),
-      version: selectedVersion,
+      version: downloadVersion,
       artifactType: artifact.type,
       artifactLabel: pickI18n(artifact.label, locale),
     });
@@ -383,87 +363,22 @@ export default function EnterpriseDetailClient({
 
             <div
               id="downloads"
-              className="rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6 scroll-mt-20"
+              className="scroll-mt-20 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900 lg:p-7"
             >
-              <div className="flex items-center justify-between gap-3 flex-wrap">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-                  {t('enterprise.detail.downloadTitle')}
-                </h2>
-                {downloadsComingSoon ? (
-                  <span className="inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wider bg-primary/10 text-primary">
-                    {t('enterprise.detail.downloadComingSoonBadge', {
-                      defaultValue: 'Coming Soon',
-                    })}
-                  </span>
-                ) : (
-                  <VersionSelector
-                    releases={product!.releases}
-                    selectedVersion={selectedVersion}
-                    onChange={handleVersionChange}
-                  />
-                )}
-              </div>
+              <h2 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-xl">
+                {t('enterprise.detail.downloadTitle')}
+              </h2>
 
-              {downloadsComingSoon ? (
-                <div className="mt-5 rounded-lg border border-dashed border-primary/30 bg-primary/5 dark:bg-primary/10 p-5">
-                  <div className="flex items-start gap-3">
-                    <span className="flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <Squares2X2Icon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="font-medium text-gray-900 dark:text-gray-100">
-                        {t('enterprise.detail.downloadComingSoonTitle', {
-                          defaultValue:
-                            locale === 'zh' ? '下载页面即将开放' : 'Downloads coming soon',
-                        })}
-                      </p>
-                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                        {t('enterprise.detail.downloadComingSoonDesc', {
-                          defaultValue:
-                            locale === 'zh'
-                              ? '版本下载、交付流程与下载路径还在准备中，确认后会在这里更新。'
-                              : 'Version downloads, delivery workflow, and download paths are still being prepared. This section will be updated when they are finalized.',
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ) : selectedRelease ? (
-                <>
-                  <div className="mb-4 flex items-center gap-3 flex-wrap text-sm">
-                    <span className="text-gray-500 dark:text-gray-400">
-                      {t('enterprise.detail.releasedAt')}: {selectedRelease.releasedAt}
-                    </span>
-                    {selectedRelease.releaseNotesUrl && (
-                      <a
-                        href={selectedRelease.releaseNotesUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        {t('enterprise.detail.releaseNotes')}
-                      </a>
-                    )}
-                    {selectedRelease.upgradeGuideUrl && (
-                      <a
-                        href={selectedRelease.upgradeGuideUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        {t('enterprise.detail.upgradeGuide')}
-                      </a>
-                    )}
-                  </div>
-                  <ArtifactList
-                    artifacts={selectedRelease.artifacts}
-                    locale={locale}
-                    unlocked={unlocked}
-                    onDownload={handleDownload}
-                  />
-                </>
+              {latest ? (
+                <DownloadDeliveryTabs
+                  release={latest}
+                  locale={locale}
+                  unlocked={unlocked}
+                  offlineComingSoon={offlineDownloadsComingSoon}
+                  onDownload={handleDownload}
+                />
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="mt-5 text-gray-500 dark:text-gray-400">
                   {t('enterprise.detail.noRelease')}
                 </p>
               )}

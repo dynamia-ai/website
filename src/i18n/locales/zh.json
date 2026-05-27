@@ -2036,6 +2036,8 @@
       "statArtifacts": "可下载介质",
       "matrixTitle": "产品线",
       "matrixDesc": "选择一款产品，查看产品介绍、下载介质、安装指南与兼容矩阵。",
+      "cardEyebrowHamiEnterprise": "GPU 虚拟化",
+      "cardEyebrowHamiAiPlatform": "异构算力平台",
       "matrixCount": "{{count}} 款产品",
       "helpTitle": "选型咨询",
       "helpDesc": "容量规划、评估授权、离线部署 — 联系我们。",
@@ -2075,7 +2077,17 @@
       "betaWarning": "Beta — 仅供评估，勿用于生产。",
       "downloadComingSoonBadge": "Coming Soon",
       "downloadComingSoonTitle": "下载页面即将开放",
-      "downloadComingSoonDesc": "版本下载、交付流程与下载路径还在准备中，确认后会在这里更新。"
+      "downloadComingSoonDesc": "版本下载、交付流程与下载路径还在准备中，确认后会在这里更新。",
+      "deliveryTabsLabel": "安装方式",
+      "deliveryTabOnline": "在线安装",
+      "deliveryTabOffline": "离线安装",
+      "deliveryTabSoon": "筹备中",
+      "deliveryOnlineDesc": "在线安装步骤、OCI / Helm 命令与验证说明均见安装指南。",
+      "deliveryOfflineDesc": "离线一体包、镜像 tar 与校验信息，适用于隔离网络与生产交付场景。",
+      "onlineInstallTitle": "推荐：OCI 在线安装",
+      "onlineInstallDesc": "集群可访问 OCI 仓库时，执行以下命令即可完成安装。",
+      "offlineComingSoonTitle": "离线安装包筹备中",
+      "offlineComingSoonDesc": "All-in-One 离线一体包与分件镜像包正在打包与校验，开放后将在本页提供下载与 SHA256。"
     },
     "artifact": {
       "download": "下载",
@@ -2097,6 +2109,9 @@
       "groupImagesDesc": "面向离线 / 隔离网络环境的镜像离线包。",
       "groupCharts": "Helm Charts",
       "groupChartsDesc": "在线 OCI 安装，或下载 Chart 离线包。",
+      "groupChartsDescOnline": "无法使用 OCI 时，可下载 Chart 归档包。",
+      "groupChartsDescOffline": "下载 Chart 包用于离线或内网 Helm 安装。",
+      "groupChartsOptional": "Chart 归档包（可选）",
       "groupDocs": "文档资料",
       "groupDocsDesc": "安装指南与版本说明。"
     },

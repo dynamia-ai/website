@@ -1,5 +1,8 @@
 export type Locale = 'en' | 'zh';
 
+/** Product download section: online (OCI/Helm) vs offline bundles */
+export type DeliveryMode = 'online' | 'offline';
+
 export interface I18nText {
   en: string;
   zh: string;
@@ -78,7 +81,10 @@ export interface EnterpriseProduct {
   tags?: string[];
   docsUrl?: string;
   githubRepo?: string;
+  /** @deprecated Use offlineDownloadsComingSoon — when true, treated as offline-not-ready */
   downloadsComingSoon?: boolean;
+  /** Offline bundles (air-gap / image tar) not yet available for download */
+  offlineDownloadsComingSoon?: boolean;
   highlights?: ProductHighlight[];
   compatibility?: CompatibilityMatrix;
   releases: Release[];

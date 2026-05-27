@@ -2036,6 +2036,8 @@
       "statArtifacts": "Artifacts",
       "matrixTitle": "Product Lineup",
       "matrixDesc": "Choose a product to view its introduction, downloads, install guide and compatibility matrix.",
+      "cardEyebrowHamiEnterprise": "GPU virtualization",
+      "cardEyebrowHamiAiPlatform": "Heterogeneous compute platform",
       "matrixCount": "{{count}} products available",
       "helpTitle": "Need Help Choosing the Right Product?",
       "helpDesc": "Sizing, eval licenses, air-gap support — talk to our team.",
@@ -2075,7 +2077,17 @@
       "betaWarning": "Beta — evaluation only. Not for production.",
       "downloadComingSoonBadge": "Coming Soon",
       "downloadComingSoonTitle": "Downloads coming soon",
-      "downloadComingSoonDesc": "Version downloads, delivery workflow, and download paths are still being prepared. This section will be updated when they are finalized."
+      "downloadComingSoonDesc": "Version downloads, delivery workflow, and download paths are still being prepared. This section will be updated when they are finalized.",
+      "deliveryTabsLabel": "Delivery mode",
+      "deliveryTabOnline": "Online install",
+      "deliveryTabOffline": "Offline install",
+      "deliveryTabSoon": "Soon",
+      "deliveryOnlineDesc": "Online install steps, OCI/Helm commands, and verification are in the installation guide.",
+      "deliveryOfflineDesc": "Air-gap bundles and image tarballs for isolated networks and production handoff.",
+      "onlineInstallTitle": "Recommended: OCI install",
+      "onlineInstallDesc": "Run this command when your cluster can reach the OCI registry.",
+      "offlineComingSoonTitle": "Offline packages in preparation",
+      "offlineComingSoonDesc": "All-in-one air-gap bundles and image archives are being packaged and verified. Downloads and SHA256 checksums will appear here when ready."
     },
     "artifact": {
       "download": "Download",
@@ -2097,6 +2109,9 @@
       "groupImagesDesc": "Offline image bundles for air-gapped environments.",
       "groupCharts": "Helm Charts",
       "groupChartsDesc": "Install via OCI online, or download a chart tarball.",
+      "groupChartsDescOnline": "Download the chart archive if OCI is unavailable.",
+      "groupChartsDescOffline": "Chart package for offline or private Helm installs.",
+      "groupChartsOptional": "Chart archive (optional)",
       "groupDocs": "Documentation",
       "groupDocsDesc": "Installation guides and release notes."
     },
