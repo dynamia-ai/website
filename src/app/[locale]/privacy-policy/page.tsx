@@ -1,5 +1,6 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { localizedUrl, localizedAlternates } from "@/utils/seo";
 import PrivacyPolicyPage from "@/components/pages/PrivacyPolicyPage";
 
 export default function PrivacyPolicy({
@@ -26,12 +27,13 @@ export async function generateMetadata({
     openGraph: {
       title: t("title"),
       description: t("intro").substring(0, 160),
-      url: `/${locale === "zh" ? "zh/" : ""}privacy-policy`,
+      url: localizedUrl("/privacy-policy", locale),
       siteName: meta("siteName"),
       type: "website",
     },
     alternates: {
-      canonical: `/${locale === "zh" ? "zh/" : ""}privacy-policy`,
+      canonical: localizedUrl("/privacy-policy", locale),
+      languages: localizedAlternates("/privacy-policy"),
     },
   };
 }

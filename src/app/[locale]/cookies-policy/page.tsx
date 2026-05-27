@@ -1,5 +1,6 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { localizedUrl, localizedAlternates } from "@/utils/seo";
 import CookiesPolicyPage from "@/components/pages/CookiesPolicyPage";
 
 export default function CookiesPolicy({
@@ -26,12 +27,13 @@ export async function generateMetadata({
     openGraph: {
       title: t("title"),
       description: t("intro").substring(0, 160),
-      url: `/${locale === "zh" ? "zh/" : ""}cookies-policy`,
+      url: localizedUrl("/cookies-policy", locale),
       siteName: meta("siteName"),
       type: "website",
     },
     alternates: {
-      canonical: `/${locale === "zh" ? "zh/" : ""}cookies-policy`,
+      canonical: localizedUrl("/cookies-policy", locale),
+      languages: localizedAlternates("/cookies-policy"),
     },
   };
 }

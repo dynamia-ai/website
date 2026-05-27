@@ -1,6 +1,7 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { localizedUrl, localizedAlternates } from "@/utils/seo";
 import CaseTelecomGpu from "@/components/case-studies/CaseTelecomGpu";
 
 export default function CaseTelecomGpuPage({
@@ -25,7 +26,6 @@ export async function generateMetadata({
   const title = t("telecomGpu.title");
   const description = t("telecomGpu.subtitle");
   const path = "/case-studies/telecom";
-  const url = locale === "zh" ? `/zh${path}` : path;
 
   return {
     title: `Case Study | ${title}`,
@@ -33,16 +33,13 @@ export async function generateMetadata({
     openGraph: {
       title: `Case Study | ${title}`,
       description,
-      url,
+      url: localizedUrl(path, locale),
       siteName: "Dynamia AI",
       type: "article",
     },
     alternates: {
-      canonical: `https://dynamia.ai${url}`,
-      languages: {
-        en: `https://dynamia.ai${path}`,
-        zh: `https://dynamia.ai/zh${path}`,
-      },
+      canonical: localizedUrl(path, locale),
+      languages: localizedAlternates(path),
     },
   };
 }
