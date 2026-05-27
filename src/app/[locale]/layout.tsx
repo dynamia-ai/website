@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
+import { localizedUrl, localizedAlternates } from "@/utils/seo";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -188,11 +189,8 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: DOMAIN,
-      languages: {
-        en: `${DOMAIN}`,
-        zh: `${DOMAIN}/zh`,
-      },
+      canonical: localizedUrl("/", locale),
+      languages: localizedAlternates("/"),
     },
   };
 }
