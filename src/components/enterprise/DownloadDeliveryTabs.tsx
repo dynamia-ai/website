@@ -70,36 +70,6 @@ function ReleaseMeta({
           {release.releasedAt}
         </span>
       </span>
-      {release.releaseNotesUrl && (
-        <>
-          <span className="text-gray-300 dark:text-gray-600" aria-hidden>
-            ·
-          </span>
-          <a
-            href={release.releaseNotesUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-primary hover:underline"
-          >
-            {t('enterprise.detail.releaseNotes')}
-          </a>
-        </>
-      )}
-      {release.upgradeGuideUrl && (
-        <>
-          <span className="text-gray-300 dark:text-gray-600" aria-hidden>
-            ·
-          </span>
-          <a
-            href={release.upgradeGuideUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-primary hover:underline"
-          >
-            {t('enterprise.detail.upgradeGuide')}
-          </a>
-        </>
-      )}
     </div>
   );
 }

@@ -2023,7 +2023,7 @@
       "subtitle": "Compare HAMi Enterprise and HAMi AI Platform, then choose the right path for production-grade heterogeneous compute.",
       "noRelease": "No Releases Yet",
       "viewDetail": "View Details",
-      "downloadCta": "Get Downloads",
+      "downloadCta": "Download",
       "artifactCount": "{{count}} download artifacts",
       "metaVersion": "Version",
       "metaReleased": "Released",
@@ -2152,7 +2152,7 @@
       "compatGpu": "GPU Drivers",
       "ctaTitle": "Ready to Get Started?",
       "ctaDescription": "Contact our team for enterprise licensing, deployment assistance, and 24/7 support.",
-      "viewDownloads": "View Downloads",
+      "viewDownloads": "Download",
       "applyTrial": "Apply for Trial"
     }
   },

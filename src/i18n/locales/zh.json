@@ -2023,7 +2023,7 @@
       "subtitle": "对比 HAMi 企业版与 HAMi 平台版，为生产级异构算力选择合适路径。",
       "noRelease": "暂无版本",
       "viewDetail": "查看详情",
-      "downloadCta": "查看下载",
+      "downloadCta": "下载",
       "artifactCount": "{{count}} 个下载介质",
       "metaVersion": "版本",
       "metaReleased": "发布",
@@ -2152,7 +2152,7 @@
       "compatGpu": "GPU 驱动",
       "ctaTitle": "准备开始？",
       "ctaDescription": "联系我们的团队获取企业授权、部署协助和 7×24 技术支持。",
-      "viewDownloads": "查看下载",
+      "viewDownloads": "下载",
       "applyTrial": "申请试用"
     }
   },

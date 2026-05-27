@@ -24,7 +24,7 @@ const COPY = {
       'HAMi is the CNCF Sandbox project for heterogeneous AI computing virtualization. Founded and core-maintained by the dynamia.ai team. Our enterprise editions ship the same upstream code — hardened, supported, SLA-backed.',
     pillars: [
       { title: 'CNCF Sandbox', desc: 'Open governance · vendor-neutral foundation' },
-      { title: 'Maintainers = us', desc: 'HAMi maintainers are the dynamia.ai team' },
+      { title: 'Created by Dynamia', desc: 'HAMi maintainers are the dynamia.ai team' },
       { title: '100% upstream', desc: 'No fork drift · no lock-in' },
       { title: 'OEM-grade SLA', desc: '24/7 support · long-term release lines' },
     ],
@@ -57,7 +57,7 @@ const COPY = {
       'HAMi 是 CNCF Sandbox 异构 AI 计算虚拟化项目，由密瓜智能创始团队发起并担任核心 Maintainer。我们的企业版与开源同源同代码，加固、运维、SLA 一站式由原厂提供。',
     pillars: [
       { title: 'CNCF Sandbox 项目', desc: '开放治理 · 厂商中立基金会背书' },
-      { title: 'Maintainer = 我们', desc: 'HAMi 的核心 Maintainer 即密瓜工程团队' },
+      { title: '由密瓜智能发起', desc: 'HAMi 的核心 Maintainer 即密瓜工程团队' },
       { title: '上游 100% 兼容', desc: '同源同 API · 无 fork 漂移、无锁定' },
       { title: '原厂级 SLA', desc: '7×24 支持 · 长期版本来自源头' },
     ],
