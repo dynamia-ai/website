@@ -1,5 +1,6 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { localizedUrl, localizedAlternates } from "@/utils/seo";
 import { faqSchema, JsonLd } from "@/components/StructuredData";
 
 const faqs = [
@@ -120,12 +121,13 @@ export async function generateMetadata({
     openGraph: {
       title: "FAQ - Frequently Asked Questions | Dynamia AI",
       description: "Find answers to frequently asked questions about Dynamia AI, HAMi, GPU virtualization, and our enterprise platform.",
-      url: `/${locale === "zh" ? "zh/" : ""}faq`,
+      url: localizedUrl("/faq", locale),
       siteName: t("siteName"),
       type: "website",
     },
     alternates: {
-      canonical: `/${locale === "zh" ? "zh/" : ""}faq`,
+      canonical: localizedUrl("/faq", locale),
+      languages: localizedAlternates("/faq"),
     },
   };
 }

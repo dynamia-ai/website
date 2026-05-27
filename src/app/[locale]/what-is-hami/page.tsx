@@ -1,5 +1,6 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { localizedUrl, localizedAlternates } from "@/utils/seo";
 import HamiPage from "@/components/pages/HamiPage";
 
 export default function WhatIsHami({
@@ -26,12 +27,13 @@ export async function generateMetadata({
     openGraph: {
       title: `${t("title")} HAMi?`,
       description: t("subtitle"),
-      url: `/${locale === "zh" ? "zh/" : ""}what-is-hami`,
+      url: localizedUrl("/what-is-hami", locale),
       siteName: meta("siteName"),
       type: "website",
     },
     alternates: {
-      canonical: `/${locale === "zh" ? "zh/" : ""}what-is-hami`,
+      canonical: localizedUrl("/what-is-hami", locale),
+      languages: localizedAlternates("/what-is-hami"),
     },
   };
 }

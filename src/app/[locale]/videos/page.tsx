@@ -1,5 +1,6 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { localizedUrl, localizedAlternates } from "@/utils/seo";
 import VideosPage from "@/components/pages/VideosPage";
 
 export default function Videos({
@@ -26,12 +27,13 @@ export async function generateMetadata({
     openGraph: {
       title: t("pageTitle"),
       description: t("pageSubtitle"),
-      url: `/${locale === "zh" ? "zh/" : ""}videos`,
+      url: localizedUrl("/videos", locale),
       siteName: meta("siteName"),
       type: "website",
     },
     alternates: {
-      canonical: `/${locale === "zh" ? "zh/" : ""}videos`,
+      canonical: localizedUrl("/videos", locale),
+      languages: localizedAlternates("/videos"),
     },
   };
 }
