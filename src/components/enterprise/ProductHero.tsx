@@ -41,6 +41,10 @@ const TAG_EN_MAP: Record<string, string> = {
   '租户隔离': 'Tenant Isolation',
 };
 
+const ACTION_SHADOW_CLASS = 'shadow-sm hover:shadow-md transition-all';
+
+const SECONDARY_ACTION_CLASS = `inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-200 ${ACTION_SHADOW_CLASS}`;
+
 export default function ProductHero({ product, latest, locale, onJumpDownload }: ProductHeroProps) {
   const { t } = useTranslation();
   const backHref = locale === 'zh' ? '/zh/products' : '/products';
@@ -116,23 +120,20 @@ export default function ProductHero({ product, latest, locale, onJumpDownload }:
           <button
             type="button"
             onClick={onJumpDownload}
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-md bg-primary text-white text-sm font-semibold hover:bg-primary-dark shadow-sm hover:shadow-md transition-all"
+            className={`inline-flex cursor-pointer items-center gap-1.5 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-dark ${ACTION_SHADOW_CLASS}`}
           >
             <ArrowDownTrayIcon className="h-4 w-4" />
             {t('enterprise.detail.downloadLatest')}
           </button>
           {showInstallGuide && (
-            <Link
-              href={installHref}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-semibold hover:border-primary hover:text-primary transition-all"
-            >
+            <Link href={installHref} className={SECONDARY_ACTION_CLASS}>
               <BookOpenIcon className="h-4 w-4" />
               {t('enterprise.detail.openInstallGuide')}
             </Link>
           )}
           <Link
             href={locale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm font-semibold hover:border-primary hover:text-primary transition-all"
+            className={SECONDARY_ACTION_CLASS}
           >
             <ChatBubbleLeftRightIcon className="h-4 w-4" />
             {t('enterprise.list.applyTrial')}

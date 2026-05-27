@@ -20,7 +20,7 @@
       "tags": ["GPU 虚拟化", "vGPU", "K8s Device Plugin", "异构算力"],
       "docsUrl": "https://docs.dynamia.ai/hami-enterprise",
       "githubRepo": "dynamia-ai/hami-enterprise",
-      "downloadsComingSoon": true,
+      "offlineDownloadsComingSoon": true,
       "highlights": [
         {
           "iconName": "shield",
@@ -260,6 +260,7 @@
       "tags": ["异构算力", "多集群", "调度", "资源池化", "租户隔离"],
       "docsUrl": "https://docs.dynamia.ai/hami-ai-platform",
       "githubRepo": "dynamia-ai/hami-ai-platform",
+      "offlineDownloadsComingSoon": true,
       "highlights": [
         {
           "iconName": "cube",

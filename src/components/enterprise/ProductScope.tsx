@@ -261,12 +261,56 @@ const GROUPS: FeatureGroup[] = [
   },
 ];
 
+const MATRIX_GRID =
+  'grid grid-cols-[minmax(11rem,1fr)_minmax(7rem,9rem)_minmax(7.5rem,9.5rem)_minmax(7.5rem,9.5rem)]';
+
+interface ScopeCtaCardProps {
+  href: string;
+  title: string;
+  subtitle: string;
+  external?: boolean;
+}
+
+function ScopeCtaCard({ href, title, subtitle, external }: ScopeCtaCardProps) {
+  const className =
+    'group flex h-full items-center justify-between gap-3 rounded-xl border border-[var(--primary)] bg-white dark:bg-gray-900 px-5 py-4 transition-all duration-200 hover:bg-primary/[0.04] dark:hover:bg-primary/[0.08] hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-950';
+
+  const content = (
+    <>
+      <div className="min-w-0">
+        <div className="text-sm font-semibold leading-snug text-[var(--primary)]">{title}</div>
+        <div className="mt-0.5 text-xs text-gray-600 dark:text-gray-400">{subtitle}</div>
+      </div>
+      <ArrowRightIcon
+        className="h-4 w-4 shrink-0 text-gray-800 dark:text-gray-200 transition-[color,transform] duration-200 ease-out group-hover:translate-x-0.5 group-hover:text-[var(--primary)]"
+        aria-hidden
+      />
+    </>
+  );
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {content}
+    </Link>
+  );
+}
+
 const COPY = {
   en: {
-    title: 'Choose the Right Edition',
+    title: 'Which Product Is Right for You?',
     subtitle:
-      'Three editions — open-source foundation, hardened commercial release, and full-stack enterprise platform.',
+      'Three product lines — open-source HAMi, HAMi Enterprise, and HAMi AI Platform.',
     decisionTitle: 'Choose in 30 Seconds',
+    totalsLabel: 'Capabilities covered',
+    totalsHint: 'Checkmark = supported in that edition',
     decisionRows: [
       {
         scenario: 'Evaluating, building on top, or running a single-cluster proof-of-concept — community support is sufficient',
@@ -305,9 +349,11 @@ const COPY = {
     },
   },
   zh: {
-    title: '如何选择版本',
-    subtitle: '三个版本 —— 开源底座、加固商业版、全栈企业平台。',
+    title: '如何选择产品',
+    subtitle: '三条产品线 —— 开源 HAMi、HAMi 企业版、HAMi 平台版。',
     decisionTitle: '30 秒选型',
+    totalsLabel: '能力覆盖',
+    totalsHint: '勾选表示该版本支持',
     decisionRows: [
       {
         scenario: '评估、二次开发、单集群验证；可接受社区支持',
@@ -391,23 +437,23 @@ export default function ProductScope({ locale }: ProductScopeProps) {
 
       {/* Decision banner */}
       <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 md:p-8">
-        <div className="text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 mb-5">
+        <div className="text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 mb-5 text-center">
           {c.decisionTitle}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
           {c.decisionRows.map((r, i) => (
-            <div
-              key={i}
-              className="flex items-start gap-4 py-2 border-l border-gray-200 dark:border-gray-700 pl-4"
-            >
+            <div key={i} className="flex items-start gap-3">
+              <span
+                className="mt-0.5 block h-10 w-1 shrink-0 rounded-full bg-[var(--primary)]"
+                aria-hidden
+              />
               <div className="min-w-0 flex-1">
-                <p className="text-sm text-gray-700 dark:text-gray-300 leading-snug">
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   {r.scenario}
                 </p>
-                <p className="mt-1.5 text-xs font-semibold text-primary inline-flex items-center gap-1">
-                  <ArrowRightIcon className="h-3 w-3" />
-                  {r.choice}
-                </p>
+                <span className="mt-2 inline-flex items-center rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
+                  {locale === 'zh' ? `推荐：${r.choice}` : `→ ${r.choice}`}
+                </span>
               </div>
             </div>
           ))}
@@ -416,8 +462,12 @@ export default function ProductScope({ locale }: ProductScopeProps) {
 
       {/* Comparison matrix · 3 columns */}
       <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden shadow-sm">
+        <div className="overflow-x-auto">
+          <div className="min-w-[44rem]">
         {/* Header row */}
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(130px,160px)_minmax(140px,180px)_minmax(140px,180px)] border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
+        <div
+          className={`${MATRIX_GRID} border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50`}
+        >
           <div className="px-5 py-5 text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
             {c.columns.feature}
           </div>
@@ -425,27 +475,29 @@ export default function ProductScope({ locale }: ProductScopeProps) {
             <div className="text-sm font-bold text-gray-900 dark:text-gray-100 leading-tight">
               {c.columns.oss}
             </div>
-            {c.columns.ossSub && (
-              <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">{c.columns.ossSub}</div>
-            )}
+            {c.columns.ossSub ? (
+              <div className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 leading-snug">
+                {c.columns.ossSub}
+              </div>
+            ) : null}
           </div>
           <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700">
             <div className="text-sm font-bold text-gray-900 dark:text-gray-100 leading-tight">
               {c.columns.commercial}
             </div>
-            {c.columns.commercialSub && (
-              <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            {c.columns.commercialSub ? (
+              <div className="mt-1 text-[11px] text-primary/80 dark:text-primary/70 leading-snug">
                 {c.columns.commercialSub}
               </div>
-            )}
+            ) : null}
           </div>
           <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700 bg-primary/5 dark:bg-primary/10">
             <div className="text-sm font-bold text-primary leading-tight">{c.columns.enterprise}</div>
-            {c.columns.enterpriseSub && (
-              <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            {c.columns.enterpriseSub ? (
+              <div className="mt-1 text-[11px] text-primary/80 dark:text-primary/70 leading-snug">
                 {c.columns.enterpriseSub}
               </div>
-            )}
+            ) : null}
           </div>
         </div>
 
@@ -454,7 +506,9 @@ export default function ProductScope({ locale }: ProductScopeProps) {
           const Icon = g.Icon;
           return (
             <div key={g.id} className="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
-              <div className="grid grid-cols-[minmax(0,1fr)_minmax(130px,160px)_minmax(140px,180px)_minmax(140px,180px)] bg-gray-50/60 dark:bg-gray-800/40 border-t border-gray-200 dark:border-gray-700">
+              <div
+                className={`${MATRIX_GRID} bg-gray-50/60 dark:bg-gray-800/40 border-t border-gray-200 dark:border-gray-700`}
+              >
                 <div className="px-5 py-4 flex items-center gap-2.5">
                   <Icon className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
                   <div className="min-w-0">
@@ -474,7 +528,7 @@ export default function ProductScope({ locale }: ProductScopeProps) {
               {g.rows.map((row, idx) => (
                 <div
                   key={idx}
-                  className="grid grid-cols-[minmax(0,1fr)_minmax(130px,160px)_minmax(140px,180px)_minmax(140px,180px)] hover:bg-gray-50/60 dark:hover:bg-gray-800/30 transition-colors"
+                  className={`${MATRIX_GRID} hover:bg-gray-50/60 dark:hover:bg-gray-800/30 transition-colors`}
                 >
                   <div className="px-5 py-3.5 text-[15px] text-gray-700 dark:text-gray-300 flex items-center leading-snug">
                     {row.feature[locale]}
@@ -493,9 +547,16 @@ export default function ProductScope({ locale }: ProductScopeProps) {
         })}
 
         {/* Footer summary */}
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(130px,160px)_minmax(140px,180px)_minmax(140px,180px)] bg-gray-50 dark:bg-gray-800/50 border-t-2 border-gray-200 dark:border-gray-700">
-          <div className="px-5 py-4 text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
-            {locale === 'zh' ? '能力小计' : 'Total capabilities'}
+        <div
+          className={`${MATRIX_GRID} bg-gray-50 dark:bg-gray-800/50 border-t-2 border-gray-200 dark:border-gray-700`}
+        >
+          <div className="px-5 py-4">
+            <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
+              {c.totalsLabel}
+            </div>
+            <p className="mt-1 text-[11px] text-gray-400 dark:text-gray-500 leading-snug max-w-[14rem]">
+              {c.totalsHint}
+            </p>
           </div>
           <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700">
             <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 tabular-nums">
@@ -513,46 +574,28 @@ export default function ProductScope({ locale }: ProductScopeProps) {
             </div>
           </div>
         </div>
+          </div>
+        </div>
       </div>
 
       {/* Bottom CTAs · 3 cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a
+        <ScopeCtaCard
           href={c.cta.ossHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center justify-between gap-3 rounded-xl border border-primary bg-primary text-white px-5 py-4 hover:bg-primary-dark transition-colors duration-200"
-        >
-          <div>
-            <div className="text-sm font-semibold text-white transition-colors duration-200">
-              {c.cta.ossLabel}
-            </div>
-            <div className="text-xs text-white/80 transition-colors duration-200">{c.cta.ossLink}</div>
-          </div>
-          <ArrowRightIcon className="h-4 w-4 text-white/85 group-hover:translate-x-1 transition-transform duration-200" />
-        </a>
-        <Link
+          title={c.cta.ossLabel}
+          subtitle={c.cta.ossLink}
+          external
+        />
+        <ScopeCtaCard
           href={hamiHref}
-          className="group flex items-center justify-between gap-3 rounded-xl border border-primary bg-primary text-white px-5 py-4 hover:bg-primary-dark transition-colors duration-200"
-        >
-          <div>
-            <div className="text-sm font-semibold text-white transition-colors duration-200">
-              {c.cta.commercialLabel}
-            </div>
-            <div className="text-xs text-white/80 transition-colors duration-200">{c.cta.commercialLink}</div>
-          </div>
-          <ArrowRightIcon className="h-4 w-4 text-white/85 group-hover:translate-x-1 transition-transform duration-200" />
-        </Link>
-        <Link
+          title={c.cta.commercialLabel}
+          subtitle={c.cta.commercialLink}
+        />
+        <ScopeCtaCard
           href={entHref}
-          className="group flex items-center justify-between gap-3 rounded-xl border border-primary bg-primary text-white px-5 py-4 hover:bg-primary-dark transition-colors duration-200"
-        >
-          <div>
-            <div className="text-sm font-semibold text-white transition-colors duration-200">{c.cta.enterpriseLabel}</div>
-            <div className="text-xs text-white/80 transition-colors duration-200">{c.cta.enterpriseLink}</div>
-          </div>
-          <ArrowRightIcon className="h-4 w-4 text-white/85 group-hover:translate-x-1 transition-transform duration-200" />
-        </Link>
+          title={c.cta.enterpriseLabel}
+          subtitle={c.cta.enterpriseLink}
+        />
       </div>
 
     </section>

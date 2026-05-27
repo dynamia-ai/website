@@ -1,10 +1,37 @@
 import productsData from '@/data/enterprise-products.json';
 import type {
+  Artifact,
+  ArtifactType,
   EnterpriseProduct,
   EnterpriseProductsFile,
   Locale,
   Release,
 } from '@/types/enterprise';
+
+const OFFLINE_ARTIFACT_TYPES: ArtifactType[] = ['airgap-bundle', 'image-bundle'];
+
+/** Online tab: installation guide only */
+const ONLINE_ARTIFACT_TYPES: ArtifactType[] = ['install-doc'];
+
+export function isOfflineArtifactType(type: ArtifactType): boolean {
+  return OFFLINE_ARTIFACT_TYPES.includes(type);
+}
+
+export function filterArtifactsByDelivery(
+  artifacts: Artifact[],
+  delivery: 'online' | 'offline',
+): Artifact[] {
+  if (delivery === 'online') {
+    return artifacts.filter((a) => ONLINE_ARTIFACT_TYPES.includes(a.type));
+  }
+  return artifacts.filter(
+    (a) => isOfflineArtifactType(a.type) || a.type === 'helm-chart' || a.type === 'checksum',
+  );
+}
+
+export function isOfflineDownloadsComingSoon(product: EnterpriseProduct): boolean {
+  return product.offlineDownloadsComingSoon === true || product.downloadsComingSoon === true;
+}
 
 const data = productsData as EnterpriseProductsFile;
 

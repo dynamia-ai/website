@@ -89,21 +89,19 @@ export default function EnterpriseListClient({ locale }: EnterpriseListClientPro
             <HamiOriginBanner locale={locale} />
           </div>
 
-          <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-                {t('enterprise.list.matrixTitle')}
-              </h2>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {t('enterprise.list.matrixDesc')}
-              </p>
-            </div>
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+          <div className="text-center max-w-3xl mx-auto mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+              {t('enterprise.list.matrixTitle')}
+            </h2>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              {t('enterprise.list.matrixDesc')}
+            </p>
+            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
               {t('enterprise.list.matrixCount', { count: products.length })}
-            </span>
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {products.map((product, index) => (
               <motion.div
                 key={product.id}

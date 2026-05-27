@@ -12,7 +12,7 @@ import {
   CheckIcon,
   GlobeAltIcon,
 } from '@heroicons/react/24/outline';
-import type { Artifact, ArtifactType, Locale, Mirror } from '@/types/enterprise';
+import type { Artifact, ArtifactType, DeliveryMode, Locale, Mirror } from '@/types/enterprise';
 import { pickI18n } from '@/lib/enterprise';
 import CopyableCommand from './CopyableCommand';
 
@@ -20,6 +20,8 @@ interface ArtifactRowProps {
   artifact: Artifact;
   locale: Locale;
   unlocked: boolean;
+  delivery?: DeliveryMode;
+  layout?: 'card' | 'compact';
   onDownload: (artifact: Artifact, resolvedUrl: string) => void;
 }
 
@@ -50,7 +52,14 @@ function detectDefaultRegion(mirrors: Mirror[], locale: Locale): string {
   return (global ?? mirrors[0]).region;
 }
 
-export default function ArtifactRow({ artifact, locale, unlocked, onDownload }: ArtifactRowProps) {
+export default function ArtifactRow({
+  artifact,
+  locale,
+  unlocked,
+  delivery,
+  layout = 'card',
+  onDownload,
+}: ArtifactRowProps) {
   const { t } = useTranslation();
   const [shaCopied, setShaCopied] = useState(false);
   const mirrors = useMemo(() => artifact.mirrors ?? [], [artifact.mirrors]);
@@ -75,6 +84,10 @@ export default function ArtifactRow({ artifact, locale, unlocked, onDownload }: 
   const Icon = TYPE_ICON[artifact.type] ?? CubeIcon;
   const label = pickI18n(artifact.label, locale);
   const isDoc = artifact.type === 'install-doc' || artifact.type === 'release-notes';
+  const showInstallCommand =
+    Boolean(artifact.installCommand) &&
+    !(delivery === 'online' && artifact.type === 'helm-chart');
+  const downloadSecondary = delivery === 'online' && artifact.type === 'helm-chart';
 
   const resolvedMirror = hasMirrors
     ? mirrors.find((m) => m.region === selectedRegion) ?? mirrors[0]
@@ -101,9 +114,19 @@ export default function ArtifactRow({ artifact, locale, unlocked, onDownload }: 
     }
   };
 
+  const isCompact = layout === 'compact';
+
   return (
-    <div className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 hover:border-primary/50 transition-colors">
-      <div className="flex items-start justify-between gap-4 flex-wrap">
+    <div
+      className={
+        isCompact
+          ? 'rounded-lg bg-gray-50 p-4 ring-1 ring-inset ring-gray-200/80 transition-shadow hover:ring-primary/30 dark:bg-gray-800/40 dark:ring-gray-700/80 sm:p-4'
+          : 'rounded-lg border border-gray-200 bg-white p-4 transition-colors hover:border-primary/50 dark:border-gray-700 dark:bg-gray-900'
+      }
+    >
+      <div
+        className={`flex gap-4 ${isCompact ? 'flex-col sm:flex-row sm:items-center' : 'flex-wrap items-start justify-between'}`}
+      >
         <div className="flex items-start gap-3 min-w-0 flex-1">
           <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
             <Icon className="h-5 w-5 text-primary" />
@@ -145,7 +168,9 @@ export default function ArtifactRow({ artifact, locale, unlocked, onDownload }: 
           </div>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
+        <div
+          className={`flex items-center gap-2 ${isCompact ? 'w-full sm:w-auto sm:shrink-0' : 'flex-wrap'}`}
+        >
           {hasMirrors && !isDoc && (
             <div className="inline-flex items-center gap-1 text-xs">
               <GlobeAltIcon className="h-4 w-4 text-gray-400" />
@@ -167,7 +192,13 @@ export default function ArtifactRow({ artifact, locale, unlocked, onDownload }: 
           <button
             type="button"
             onClick={() => onDownload(artifact, resolvedUrl)}
-            className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-sm font-medium text-white bg-primary hover:bg-primary-dark transition-colors"
+            className={`inline-flex flex-shrink-0 items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
+              isCompact ? 'w-full sm:w-auto' : ''
+            } ${
+              downloadSecondary
+                ? 'border border-gray-300 bg-white text-gray-700 hover:border-primary/50 hover:text-primary dark:border-gray-600 dark:bg-gray-900 dark:text-gray-200'
+                : 'cursor-pointer bg-primary text-white shadow-sm transition-shadow hover:shadow-md'
+            }`}
           >
             {isDoc ? (
               <DocumentTextIcon className="h-4 w-4" />
@@ -187,7 +218,7 @@ export default function ArtifactRow({ artifact, locale, unlocked, onDownload }: 
         </div>
       </div>
 
-      {artifact.installCommand && (
+      {showInstallCommand && artifact.installCommand && (
         <div className="mt-3">
           <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
             {t('enterprise.artifact.installCommand')}
