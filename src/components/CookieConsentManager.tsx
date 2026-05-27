@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { Cog6ToothIcon, ShieldCheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { routing } from '@/i18n/routing';
 
 import {
   COOKIE_PREFERENCES_EVENT,
@@ -28,14 +29,13 @@ const CookieConsentManager: React.FC = () => {
   const [showPreferences, setShowPreferences] = useState(false);
   const [preferences, setPreferences] = useState<CookieConsentPreferences>(DEFAULT_COOKIE_CONSENT);
 
-  const currentLocale = locale === 'zh' ? 'zh' : 'en';
-  const cookiePolicyHref = currentLocale === 'zh' ? '/zh/cookies-policy' : '/cookies-policy';
+  const cookiePolicyHref = locale === routing.defaultLocale ? '/cookies-policy' : `/${locale}/cookies-policy`;
 
   useEffect(() => {
     const existingConsent = readCookieConsent();
     setMounted(true);
 
-    if (currentLocale === 'zh') return;
+    if (locale === 'zh') return;
 
     if (existingConsent) {
       setPreferences({
@@ -48,7 +48,7 @@ const CookieConsentManager: React.FC = () => {
     }
 
     setShowBanner(true);
-  }, [currentLocale]);
+  }, [locale]);
 
   useEffect(() => {
     const handleOpenPreferences = () => {
