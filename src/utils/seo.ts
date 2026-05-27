@@ -1,9 +1,21 @@
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
+
+const DOMAIN = "https://dynamia.ai";
 
 type SeoPage = "home" | "products" | "pricing" | "company" | "solutions" | "resources" | "whatIsHami";
 
-const DOMAIN = "https://dynamia.ai";
+export function localizedUrl(path: string, locale: string): string {
+  const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+  return `${DOMAIN}${prefix}${path}`;
+}
+
+export function localizedAlternates(path: string): Record<string, string> {
+  return Object.fromEntries(
+    routing.locales.map((loc) => [loc, localizedUrl(path, loc)])
+  );
+}
 
 export async function generatePageMetadata(
   locale: string,
@@ -16,7 +28,7 @@ export async function generatePageMetadata(
   const title = t(`${page}.title`);
   const description = t(`${page}.description`);
   const keywords = t(`${page}.keywords`);
-  const zhPath = path === "/" ? "/zh" : `/zh${path}`;
+  const url = localizedUrl(path, locale);
 
   return {
     title,
@@ -25,7 +37,7 @@ export async function generatePageMetadata(
     openGraph: {
       title,
       description,
-      url: `${DOMAIN}${path}`,
+      url,
       siteName: mt("siteName"),
       type: "website",
       locale: mt("ogLocale"),
@@ -38,11 +50,8 @@ export async function generatePageMetadata(
       images: [`${DOMAIN}/LOGO-small.svg`],
     },
     alternates: {
-      canonical: `${DOMAIN}${path}`,
-      languages: {
-        en: `${DOMAIN}${path}`,
-        zh: `${DOMAIN}${zhPath}`,
-      },
+      canonical: url,
+      languages: localizedAlternates(path),
     },
     robots: {
       index: true,
