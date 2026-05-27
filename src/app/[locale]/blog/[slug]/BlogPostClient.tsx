@@ -23,15 +23,14 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
   const locale = useLocale();
   const t = useTranslations();
   const router = useRouter();
-  const currentLocale = locale as 'en' | 'zh';
   const urlPrefix = locale === routing.defaultLocale ? '' : `/${locale}`;
 
   // Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState({ src: '', alt: '' });
 
-  const postMap = { en: enPost, zh: zhPost };
-  const post = postMap[currentLocale];
+  const postMap: Record<string, typeof enPost> = { en: enPost, zh: zhPost, de: enPost };
+  const post = postMap[locale];
   const blogListPath = `${urlPrefix}/blog`;
   const getBlogPostPath = (slug: string) => `${urlPrefix}/blog/${slug}`;
   
@@ -40,7 +39,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     if (!post && (enPost || zhPost)) {
       router.replace(blogListPath);
     }
-  }, [currentLocale, post, enPost, zhPost, router, blogListPath]);
+  }, [locale, post, enPost, zhPost, router, blogListPath]);
   
   const displayPost = post;
 
@@ -213,7 +212,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     return () => {
       cleanups.forEach((cleanup) => cleanup());
     };
-  }, [displayPost, currentLocale]);
+  }, [displayPost, locale]);
 
   // Handle image clicks for lightbox
   useEffect(() => {
@@ -322,7 +321,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
                 {/* Published Date */}
                 <div className="mb-3 sm:mb-4 text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
                   <time dateTime={displayPost.date}>
-                    {formatDate(displayPost.date, currentLocale)}
+                    {formatDate(displayPost.date, locale)}
                   </time>
                 </div>
 

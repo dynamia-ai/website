@@ -128,10 +128,8 @@ export default async function RootLayout({
   );
 }
 
-const locales = ["en", "zh"] as const;
-
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
