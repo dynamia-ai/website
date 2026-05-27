@@ -20,9 +20,9 @@ const fadeIn = {
 };
 
 // Blog card component
-const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 'en' | 'zh' }) => {
+const BlogCard = ({ post, locale }: { post: BlogPostMeta; locale: string }) => {
   const bt = useTranslations();
-  const prefix = currentLocale === routing.defaultLocale ? '' : `/${currentLocale}`;
+  const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
   const blogPath = `${prefix}/blog/${post.slug}`;
   const displayCategory = bt(`blogUI.categories.${post.category}`) || post.category;
 
@@ -62,7 +62,7 @@ const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 
 
           <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">
             <time dateTime={post.date}>
-              {formatDate(post.date, currentLocale)}
+              {formatDate(post.date, locale)}
             </time>
           </div>
         </div>
@@ -87,10 +87,9 @@ export default function BlogListClient(
   const t = useTranslations();
   const locale = useLocale();
   const searchParams = useSearchParams();
-  const currentLocale = locale as 'en' | 'zh';
 
   // Get posts for current language
-  const allPosts = currentLocale === 'zh' ? zhPosts : enPosts;
+  const allPosts = locale === 'zh' ? zhPosts : enPosts;
 
   // Category filter state
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -198,7 +197,7 @@ export default function BlogListClient(
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {currentPosts.map((post) => (
                 <BlogCard
-                  currentLocale={currentLocale}
+                  locale={locale}
                   key={post.slug}
                   post={post}
                 />

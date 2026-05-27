@@ -1,7 +1,8 @@
 import enDict from "../../dictionary/en.json";
 import zhDict from "../../dictionary/zh.json";
+import deDict from "../../dictionary/de.json";
 
-export type Locale = "en" | "zh";
+export type Locale = "en" | "zh" | "de";
 
 export interface SiteLocaleConfig {
   name: string;
@@ -33,6 +34,7 @@ function dictToConfig(dict: { Site: { name: string; alternateName: string; tagli
 const siteConfig: Record<Locale, SiteLocaleConfig> = {
   en: dictToConfig(enDict),
   zh: dictToConfig(zhDict),
+  de: dictToConfig(deDict),
 };
 
 export function getSiteConfig(locale: Locale): SiteLocaleConfig {
@@ -40,4 +42,4 @@ export function getSiteConfig(locale: Locale): SiteLocaleConfig {
 }
 
 export const defaultLocale: Locale = "en";
-export const locales: Locale[] = ["en", "zh"];
+export const locales: Locale[] = ["en", "zh", "de"];
