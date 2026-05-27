@@ -2,7 +2,7 @@ import { visit } from 'unist-util-visit';
 import type { Root, Element } from 'hast';
 
 interface RehypeImageCaptionsOptions {
-  language: 'en' | 'zh';
+  language: string;
 }
 
 export default function rehypeImageCaptions(options: RehypeImageCaptionsOptions) {
@@ -26,7 +26,7 @@ export default function rehypeImageCaptions(options: RehypeImageCaptionsOptions)
 
         // Generate caption based on language
         let captionNumber: string;
-        if (options.language === 'zh') {
+        if (options.language.startsWith('zh')) {
           // Chinese numbering: 图1, 图2, 图3...
           captionNumber = `图${imageCounter}`;
         } else {
