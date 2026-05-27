@@ -81,8 +81,13 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const enResult = enPost ? await markdownToHtml(enPost.content, "en") : null;
-  const zhResult = zhPost ? await markdownToHtml(zhPost.content, "zh") : null;
+  const [enT, zhT] = await Promise.all([
+    getTranslations({ locale: "en", namespace: "blogUI" }),
+    getTranslations({ locale: "zh", namespace: "blogUI" }),
+  ]);
+
+  const enResult = enPost ? await markdownToHtml(enPost.content, enT("figureLabel")) : null;
+  const zhResult = zhPost ? await markdownToHtml(zhPost.content, zhT("figureLabel")) : null;
 
   const primaryPost = enPost || zhPost;
   const articleJsonLd = primaryPost
