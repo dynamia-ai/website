@@ -576,7 +576,7 @@ const Header: React.FC = () => {
                         key={item.href}
                         href={item.href}
                         className={`inline-flex items-center whitespace-nowrap h-full px-1 pt-1 border-b-2 text-sm xl:text-base font-medium ${
-                          pathname === item.href || (pathname === '/' && item.href === '/') || (pathname === '/zh' && item.href === '/zh')
+                          pathname === item.href || (pathname === '/' && item.href === '/')
                             ? 'border-primary text-gray-900 dark:text-gray-100'
                             : 'border-transparent text-gray-500 dark:text-gray-400 hover:border-gray-300 dark:hover:border-primary/60 hover:text-gray-700 dark:hover:text-gray-100'
                         }`}

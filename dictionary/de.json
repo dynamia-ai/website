@@ -80,7 +80,7 @@
     "adopters": "Anwender",
     "adoptersDesc": "Sehen Sie, wer HAMi in Produktionsumgebungen einsetzt",
     "company": "Unternehmen",
-    "freeTrial": "Kostenlose Testversion",
+    "freeTrial": "Testversion",
     "requestDemo": "Demo",
     "logo": "/dynamia-logo.svg",
     "logoDark": "/dynamia-logo-white.svg",
@@ -653,6 +653,7 @@
       "functional": { "title": "Funktionale Cookies", "description": "Speichern optionale Einstellungen, die das Erlebnis ueber das streng Notwendige hinaus verbessern." }
     }
   },
+  "locales": { "en": "English", "zh": "中文", "de": "Deutsch" },
   "search": { "placeholder": "Suchen...", "noResults": "Keine Ergebnisse gefunden" },
   "hamiPage": {
     "title": "Was ist",
