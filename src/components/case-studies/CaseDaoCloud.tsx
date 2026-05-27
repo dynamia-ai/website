@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 // Animation configurations
@@ -13,7 +13,7 @@ const fadeIn = {
 };
 
 const CaseDaoCloud: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <MainLayout>
@@ -66,7 +66,7 @@ const CaseDaoCloud: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(function() {
-              const stats = t('cases.daoCloud.stats', { returnObjects: true });
+              const stats = t.raw('cases.daoCloud.stats');
               return Array.isArray(stats)
                 ? stats
                 : [
@@ -112,7 +112,7 @@ const CaseDaoCloud: React.FC = () => {
               </p>
               <div className="space-y-4">
                 {(function() {
-                  const keyPoints = t('cases.daoCloud.overview.keyPoints', { returnObjects: true });
+                  const keyPoints = t.raw('cases.daoCloud.overview.keyPoints');
                   return Array.isArray(keyPoints)
                     ? keyPoints
                     : ['Two major cloud native platforms', 'D.run Compute Cloud for public GPU cloud', 'DaoCloud Enterprise (DCE) for private K8s', '10+ data centers across China and Hong Kong'];
@@ -170,7 +170,7 @@ const CaseDaoCloud: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
-              const challenges = t('cases.daoCloud.challenge.points', { returnObjects: true });
+              const challenges = t.raw('cases.daoCloud.challenge.points');
               return Array.isArray(challenges)
                 ? challenges
                 : [
@@ -240,7 +240,7 @@ const CaseDaoCloud: React.FC = () => {
             <p className="text-gray-700 dark:text-gray-300 mb-6">{t('cases.daoCloud.solution.drun.description')}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {(function() {
-                const features = t('cases.daoCloud.solution.drun.features', { returnObjects: true });
+                const features = t.raw('cases.daoCloud.solution.drun.features');
                 return Array.isArray(features)
                   ? features
                   : [
@@ -276,7 +276,7 @@ const CaseDaoCloud: React.FC = () => {
             <p className="text-gray-700 dark:text-gray-300 mb-6">{t('cases.daoCloud.solution.dce.description')}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {(function() {
-                const features = t('cases.daoCloud.solution.dce.features', { returnObjects: true });
+                const features = t.raw('cases.daoCloud.solution.dce.features');
                 return Array.isArray(features)
                   ? features
                   : [
@@ -319,7 +319,7 @@ const CaseDaoCloud: React.FC = () => {
 
           <div className="space-y-6 max-w-4xl mx-auto">
             {(function() {
-              const points = t('cases.daoCloud.opensource.points', { returnObjects: true });
+              const points = t.raw('cases.daoCloud.opensource.points');
               return Array.isArray(points)
                 ? points
                 : [
@@ -372,7 +372,7 @@ const CaseDaoCloud: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {(function() {
-              const resultItems = t('cases.daoCloud.results.items', { returnObjects: true });
+              const resultItems = t.raw('cases.daoCloud.results.items');
               return Array.isArray(resultItems)
                 ? resultItems
                 : [

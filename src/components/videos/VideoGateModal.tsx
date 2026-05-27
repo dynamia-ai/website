@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { isCompanyEmail } from '@/utils/validation';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 
@@ -11,7 +11,7 @@ interface VideoGateModalProps {
 }
 
 export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [formState, setFormState] = useState({
     name: '',
     email: '',

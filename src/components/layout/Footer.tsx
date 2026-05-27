@@ -3,17 +3,16 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
-import { usePathname } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faXTwitter, faZhihu, faGithub, faSlack, faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { faBuilding, faCookieBite, faFileAlt, faShieldAlt, faBook, faTag, faVideo, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { openCookiePreferences } from '@/lib/cookieConsent';
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation();
-  const pathname = usePathname();
-  const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
+  const t = useTranslations();
+  const locale = useLocale();
+  const currentLocale = locale === 'zh' ? 'zh' : 'en';
 
   // Get localized href based on current language
   const getLocalizedHref = (path: string) => {

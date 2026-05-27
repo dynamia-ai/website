@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 // Animation configurations
@@ -13,7 +13,7 @@ const fadeIn = {
 };
 
 const CaseNio: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <MainLayout>
@@ -66,7 +66,7 @@ const CaseNio: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(function() {
-              const stats = t('cases.nio.stats', { returnObjects: true });
+              const stats = t.raw('cases.nio.stats');
               return Array.isArray(stats)
                 ? stats
                 : [
@@ -112,7 +112,7 @@ const CaseNio: React.FC = () => {
               </p>
               <div className="space-y-4">
                 {(function() {
-                  const keyPoints = t('cases.nio.overview.keyPoints', { returnObjects: true });
+                  const keyPoints = t.raw('cases.nio.overview.keyPoints');
                   return Array.isArray(keyPoints)
                     ? keyPoints
                     : [
@@ -175,7 +175,7 @@ const CaseNio: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
-              const challenges = t('cases.nio.challenge.points', { returnObjects: true });
+              const challenges = t.raw('cases.nio.challenge.points');
               return Array.isArray(challenges)
                 ? challenges
                 : [
@@ -244,7 +244,7 @@ const CaseNio: React.FC = () => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {(function() {
-                const approaches = t('cases.nio.solution.approaches.items', { returnObjects: true });
+                const approaches = t.raw('cases.nio.solution.approaches.items');
                 return Array.isArray(approaches)
                   ? approaches
                   : [
@@ -290,7 +290,7 @@ const CaseNio: React.FC = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {(function() {
-                const items = t('cases.nio.solution.productionStrategy.items', { returnObjects: true });
+                const items = t.raw('cases.nio.solution.productionStrategy.items');
                 return Array.isArray(items)
                   ? items
                   : [
@@ -360,7 +360,7 @@ const CaseNio: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {(function() {
-              const resultItems = t('cases.nio.results.items', { returnObjects: true });
+              const resultItems = t.raw('cases.nio.results.items');
               return Array.isArray(resultItems)
                 ? resultItems
                 : [
@@ -411,7 +411,7 @@ const CaseNio: React.FC = () => {
 
           <div className="space-y-6 max-w-5xl mx-auto">
             {(function() {
-              const lessons = t('cases.nio.lessonsLearned.points', { returnObjects: true });
+              const lessons = t.raw('cases.nio.lessonsLearned.points');
               return Array.isArray(lessons)
                 ? lessons
                 : [

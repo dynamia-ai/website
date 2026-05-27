@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { TocItem } from '@/types/blog';
 
 interface TableOfContentsProps {
@@ -13,7 +13,7 @@ interface TableOfContentsProps {
 const TOC_SCROLL_THRESHOLD = 15;
 
 export default function TableOfContents({ toc, className = '' }: TableOfContentsProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [activeId, setActiveId] = useState<string>('');
   const isScrollingRef = useRef(false);
 
