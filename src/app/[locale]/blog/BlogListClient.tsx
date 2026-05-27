@@ -9,6 +9,7 @@ import DynamicBlogCover from '@/components/DynamicBlogCover';
 import { formatDate } from '@/lib/blog-client';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { routing } from '@/i18n/routing';
 
 const POSTS_PER_PAGE = 9;
 
@@ -21,7 +22,8 @@ const fadeIn = {
 // Blog card component
 const BlogCard = ({ post, currentLocale }: { post: BlogPostMeta; currentLocale: 'en' | 'zh' }) => {
   const bt = useTranslations();
-  const blogPath = currentLocale === 'en' ? `/blog/${post.slug}` : `/${currentLocale}/blog/${post.slug}`;
+  const prefix = currentLocale === routing.defaultLocale ? '' : `/${currentLocale}`;
+  const blogPath = `${prefix}/blog/${post.slug}`;
   const displayCategory = bt(`blogUI.categories.${post.category}`) || post.category;
 
   return (

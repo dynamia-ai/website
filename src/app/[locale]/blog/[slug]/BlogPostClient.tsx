@@ -12,6 +12,7 @@ import TableOfContents from '@/components/TableOfContents';
 import ImageLightbox from '@/components/ImageLightbox';
 import Breadcrumb from '@/components/Breadcrumb';
 import BlogShareSection from '@/components/BlogAIShareSection';
+import { routing } from '@/i18n/routing';
 
 interface BlogPostClientProps {
   enPost: (BlogPost & { content: string }) | null;
@@ -23,16 +24,16 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
   const t = useTranslations();
   const router = useRouter();
   const currentLocale = locale as 'en' | 'zh';
+  const urlPrefix = locale === routing.defaultLocale ? '' : `/${locale}`;
 
   // Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState({ src: '', alt: '' });
-  
-  // Select the appropriate post based on language
-  const post = currentLocale === 'zh' ? zhPost : enPost;
-  // 根据当前语言生成博客路径
-  const blogListPath = locale === 'en' ? '/blog' : '/${locale}/blog';
-  const getBlogPostPath = (slug: string) => currentLocale === 'zh' ? `/zh/blog/${slug}` : `/blog/${slug}`;
+
+  const postMap = { en: enPost, zh: zhPost };
+  const post = postMap[currentLocale];
+  const blogListPath = `${urlPrefix}/blog`;
+  const getBlogPostPath = (slug: string) => `${urlPrefix}/blog/${slug}`;
   
   // 如果当前语言的博客不存在，但另一个语言的博客存在，重定向到博客列表页
   useEffect(() => {
@@ -275,10 +276,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
               {t('blogUI.notFound')}
             </h1>
             <p className="text-gray-600 dark:text-gray-300 mb-8">
-              {currentLocale === 'zh' 
-                ? '您要查找的文章不存在或已被删除。' 
-                : 'The post you are looking for does not exist or has been removed.'
-              }
+              {t('blogUI.notFoundDesc')}
             </p>
             <Link 
               href={blogListPath}
