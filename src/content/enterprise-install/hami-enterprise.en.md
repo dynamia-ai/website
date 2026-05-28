@@ -22,14 +22,14 @@ HAMi Enterprise is the enterprise edition of the open-source HAMi project. It co
 
 ## Prerequisites
 
-| Type | Requirement | Verify |
-|---|---|---|
-| Kubernetes | >= 1.24 | `kubectl version --short` |
-| Container Runtime | containerd or Docker | `kubectl get nodes -o wide` |
-| Helm | >= 3.14 | `helm version --short` |
-| GPU Driver | NVIDIA driver >= 470 (>= 550 recommended) | `nvidia-smi` |
-| Prometheus | >= 2.37 (if integrating monitoring) | `kubectl get pods -A \| grep prom` |
-| GPU Operator | Installed AND **devicePlugin.enabled=false** (recommended version: v25.3.2) | `helm list -A \| grep gpu-operator` |
+| Type              | Requirement                                                                   | Verify                              |
+|-------------------|-------------------------------------------------------------------------------|-------------------------------------|
+| Kubernetes        | >= 1.24                                                                       | `kubectl version --short`           |
+| Container Runtime | containerd or Docker                                                          | `kubectl get nodes -o wide`         |
+| Helm              | >= 3.14                                                                       | `helm version --short`              |
+| GPU Driver        | NVIDIA driver >= 470 (>= 550 recommended)                                     | `nvidia-smi`                        |
+| Prometheus        | >= 2.37 (if integrating monitoring)                                           | `kubectl get pods -A \| grep prom`  |
+| GPU Operator      | Installed AND **devicePlugin.enabled = false** (recommended version: v25.3.2) | `helm list -A \| grep gpu-operator` |
 
 > Critical constraint: HAMi ships its own device-plugin and **conflicts with the NVIDIA GPU Operator's built-in device-plugin**. If GPU Operator is installed, you must disable its device-plugin via `--set devicePlugin.enabled=false`.
 
@@ -131,10 +131,10 @@ Ensure Prometheus can scrape HAMi and DCGM-Exporter metrics.
 
 ### Verify Metrics Collection
 
-| Exporter | Query | Expected |
-|---|---|---|
-| dcgm-exporter | `DCGM_FI_DEV_GPU_UTIL` | non-empty value |
-| hami-exporter | `HostCoreUtilization` | non-empty value |
+| Exporter                    | Query                    | Expected        |
+|-----------------------------|--------------------------|-----------------|
+| dcgm-exporter               | `DCGM_FI_DEV_GPU_UTIL`   | non-empty value |
+| hami-exporter               | `HostCoreUtilization`    | non-empty value |
 | hami-device-plugin-exporter | `GPUDeviceCoreAllocated` | non-empty value |
 
 ## License Activation
@@ -207,13 +207,13 @@ Expected: `nvidia-smi` shows GPU information with memory capped at 2000 MiB.
 
 ## Troubleshooting
 
-| Symptom | Likely Cause | Fix |
-|---|---|---|
-| Images fail to pull | Node has no external network or poor connectivity to ghcr.io | Contact Dynamia.ai sales/support for domestic mirror registry or the All-in-One air-gap bundle |
-| device-plugin pod `Pending` or missing | Node not labeled `gpu=on` | `kubectl label nodes <node> gpu=on` |
-| device-plugin pod `CrashLoopBackOff` | Conflict with NVIDIA's default device-plugin | Disable GPU Operator's devicePlugin (`--set devicePlugin.enabled=false`) |
-| Prometheus missing HAMi metrics | serviceMonitorNamespaceSelector doesn't match ServiceMonitor label | Align `prometheus/prometheus-kube-prometheus-prometheus` `.spec.serviceMonitorSelector` with hami-enterprise serviceMonitor labels |
-| `nvidia-smi` errors | GPU driver not ready | Check driver pod status in `gpu-operator` namespace |
+| Symptom                                | Likely Cause                                                       | Fix                                                                                                                                |
+|----------------------------------------|--------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Images fail to pull                    | Node has no external network or poor connectivity to ghcr.io       | Contact Dynamia.ai sales/support for domestic mirror registry or the All-in-One air-gap bundle                                     |
+| device-plugin pod `Pending` or missing | Node not labeled `gpu=on`                                          | `kubectl label nodes <node> gpu=on`                                                                                                |
+| device-plugin pod `CrashLoopBackOff`   | Conflict with NVIDIA's default device-plugin                       | Disable GPU Operator's devicePlugin (`--set devicePlugin.enabled=false`)                                                           |
+| Prometheus missing HAMi metrics        | serviceMonitorNamespaceSelector doesn't match ServiceMonitor label | Align `prometheus/prometheus-kube-prometheus-prometheus` `.spec.serviceMonitorSelector` with hami-enterprise serviceMonitor labels |
+| `nvidia-smi` errors                    | GPU driver not ready                                               | Check driver pod status in `gpu-operator` namespace                                                                                |
 
 ## Get Support
 
