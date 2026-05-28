@@ -1,20 +1,27 @@
 ---
-title: "HAMi AI Platform: Installation Guide"
+title: "HAMi AI Platform: Installation and Onboarding Guide"
 productId: "hami-ai-platform"
 version: "v2.9.0"
 lastUpdated: "2026-05-20"
 language: "en"
-description: "Deploy HAMi AI Platform on Kubernetes with HAMi Enterprise dependency installation, license activation, and platform verification."
+description: "Deploy HAMi AI Platform on Kubernetes, including component dependencies, HAMi activation, and verification steps."
 ---
 
-> This guide is for SREs and platform engineers. It walks through deploying **HAMi AI Platform** to a Kubernetes cluster, installing and activating the underlying **HAMi Enterprise** layer, and integrating with Prometheus, NVIDIA GPU Operator, and Gateway API.
+> This guide is for SREs and platform engineers. It walks through deploying **HAMi AI Platform** to a Kubernetes cluster and integrating with HAMi, Prometheus, NVIDIA GPU Operator, Gateway API, and other foundational components.
+>
+> ⚠️ **Installation ≠ Activation**
+>
+> After completing the Helm installation in this section, HAMi AI Platform components will be running. However, **HAMi Enterprise's underlying GPU virtualization and scheduling features require a license activation to work properly**.
+> The installation itself does not depend on a license, so you can complete the deployment first, then apply for and import the license in the subsequent steps.
+>
+> In short: **Install the software first, then obtain the license; vGPU partitioning and scheduling will not work without activation, and verification will fail.**
 
 ## Architecture & Positioning
 
-HAMi AI Platform is a Kubernetes-native application platform that provides unified scheduling, tenant quota, monitoring visualization, and developer workspaces for heterogeneous compute clusters. Key characteristics:
+HAMi AI Platform (Dynamia Intelligent Heterogeneous Compute Scheduling and Virtualization System) is an application platform deployed on top of Kubernetes clusters, providing unified scheduling, tenant quota, monitoring visualization, and developer workspaces for heterogeneous compute. Key characteristics:
 
-- **Federated control plane**: connects to the Dynamia cloud control plane; one tenant manages many clusters
-- **Unified UI**: built-in admin, monitoring, and user consoles
+- **Federated control plane**: connects to the Dynamia cloud HAMi enterprise platform control plane; one tenant manages multiple clusters
+- **Unified management interface**: built-in admin, monitoring, and user consoles
 - **Open & composable**: relies on standard K8s ecosystem (Prometheus, Helm, Gateway API, HAMi device plugin)
 
 > Best fit for: multi-tenant GPU sharing, memory oversubscription, heterogeneous accelerator (NVIDIA / Ascend / Hygon DCU / etc.) unified scheduling, plus developer workspaces and federated cluster management.
@@ -25,11 +32,11 @@ Run the checks below on **each Kubernetes cluster you plan to onboard**:
 
 | Type              | Requirement                                                                   | Verify                              |
 |-------------------|-------------------------------------------------------------------------------|-------------------------------------|
-| Kubernetes        | >= 1.24                                                                       | `kubectl version --short`           |
+| Kubernetes        | ≥ 1.24                                                                        | `kubectl version --short`           |
 | Container Runtime | containerd or Docker                                                          | `kubectl get nodes -o wide`         |
-| Helm              | >= 3.14                                                                       | `helm version --short`              |
-| GPU Driver        | NVIDIA driver >= 470 (>= 550 recommended)                                     | `nvidia-smi`                        |
-| Prometheus        | >= 2.37 (if integrating monitoring)                                           | `kubectl get pods -A \| grep prom`  |
+| Helm              | ≥ 3.14                                                                        | `helm version --short`              |
+| GPU Driver        | NVIDIA driver ≥ 470 (≥ 550 recommended)                                       | `nvidia-smi`                        |
+| Prometheus        | ≥ 2.37 (if integrating monitoring)                                            | `kubectl get pods -A \| grep prom`  |
 | GPU Operator      | Installed AND **devicePlugin.enabled = false** (recommended version: v25.3.2) | `helm list -A \| grep gpu-operator` |
 | Cluster Storage   | default StorageClass configured or self-managed PVC                           | `kubectl get sc`                    |
 
@@ -48,7 +55,7 @@ HAMi AI Platform depends on HAMi Enterprise as the underlying GPU virtualization
 
 ### Path A: Online OCI Chart Install
 
-**If you wish to use a domestic mirror registry, please contact Dynamia.ai sales/support for details.**
+**If you wish to use a Chinese domestic mirror registry, please contact Dynamia.ai sales/support for details.**
 
 After selecting the correct kubeconfig context, proceed:
 
@@ -74,7 +81,7 @@ helm install prometheus oci://ghcr.io/prometheus-community/charts/kube-prometheu
   --set grafana.enabled=false
 ```
 
-Then install `dynamia-ai/hami-enterprise`.
+Install `dynamia-ai/hami-enterprise`.
 
 ```sh
 helm install hami \
@@ -82,15 +89,74 @@ helm install hami \
   --create-namespace oci://ghcr.io/dynamia-ai/hami-commercial/hami:2.9.0-rc1
 ```
 
-We recommend using a version tracking system to maintain values files for all Helm releases in the cluster. Use `-f example-values.yaml` to override corresponding keys in the chart's default values. For the complete values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
+For the complete HAMi Enterprise values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
+
+(Optional) Install `envoyproxy/envoy-gateway` for service exposure.
+
+```sh
+helm install eg oci://docker.io/envoyproxy/gateway-helm:v1.6.2 \
+  -n envoy-gateway-system --create-namespace \
+  --set global.images.envoyGateway.image=docker.io/envoyproxy/gateway:v1.6.2 \
+  --set global.image.ratelimit.image=docker.io/envoyproxy/ratelimit:99d85510 \
+  --set config.envoyGateway.gateway.controllerName=gateway.envoyproxy.io/gatewayclass-controller \
+  --set config.envoyGateway.provider.type=Kubernetes
+```
+
+Install `dynamia-ai/hami-ai-platform(kantaloupe)`.
+
+```sh
+helm install kantaloupe oci://ghcr.io/dynamia-ai/kantaloupe/kantaloupe-chart:0.15.0 \
+  -n kantaloupe-system --create-namespace \
+  --set fullnameOverride=kantaloupe
+```
+
+Because HAMi AI Platform requires feature configuration, service exposure, monitoring metrics collection, and has high configuration flexibility, see the complete values reference: [HAMi AI Platform Helm Values Reference](/attachments/kantaloupe-helm-values). If you don't want to use `envoyproxy/envoy-gateway`, make sure to set `--set gateway.enabled=false`.
+
+Common configuration values examples:
+
+- Cloud environment: use LoadBalancer to expose services
+
+```yaml
+gateway:
+  enabled: true
+  service:
+    type: LoadBalancer
+  tls:
+    enabled: true
+    secretName: your-tls-secret
+    httpRedirect: true
+  hostnames:
+    - your.domain
+```
+
+- Air-gapped environment: use envoy-gateway NodePort to expose services
+
+```yaml
+gateway:
+  enabled: true
+  service:
+    type: NodePort
+    nodePort: 30080
+  tls:
+    enabled: false
+```
+
+- No additional gateway configuration
+
+```yaml
+gateway:
+  enabled: false
+```
+
+**We recommend using a version tracking system to maintain values files for all Helm releases in the cluster.** Use `-f example-values.yaml` to override corresponding keys in the chart's default values.
 
 ### Path B: All-in-One Air-gap Bundle
 
 **Please contact Dynamia.ai sales/support to obtain the download URL.**
 
-Download `hami-enterprise-v<VERSION>-airgap-<ARCH>.tar.gz` and `hami-enterprise-v<VERSION>-airgap-<ARCH>.tar.gz.sha256`.
+Download `hami-ai-platform-v<VERSION>-airgap-<ARCH>.tar.gz` and `hami-ai-platform-v<VERSION>-airgap-<ARCH>.tar.gz.sha256`.
 
-The `hami-enterprise` air-gap bundle includes `dynamia-ai/hami-enterprise`, `nvidia/gpu-operator`, and `prometheus-community/kube-prometheus-stack`. Install as needed.
+The `hami-ai-platform` air-gap bundle includes `dynamia-ai/hami-enterprise`, `nvidia/gpu-operator`, `prometheus-community/kube-prometheus-stack`, `envoyproxy/envoy-gateway`, and `dynamia-ai/hami-ai-platform(kantaloupe)`. Install as needed.
 
 ```bash
 # Download
@@ -99,20 +165,20 @@ curl -L -O <URL>
 
 # Extract outer tar.gz
 # macOS
-tar -xzf hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz
+tar -xzf hami-ai-platform-vX.Y.Z-airgap-amd64.tar.gz
 # Linux (GNU tar)
-tar -xaf hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz
+tar -xaf hami-ai-platform-vX.Y.Z-airgap-amd64.tar.gz
 ```
 
 Verify integrity:
 
 ```sh
 # Linux / macOS
-shasum -a 256 -c hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz.sha256
+shasum -a 256 -c hami-ai-platform-vX.Y.Z-airgap-amd64.tar.gz.sha256
 
 # Or manually compare
-shasum -a 256 hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz
-cat hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz.sha256
+shasum -a 256 hami-ai-platform-vX.Y.Z-airgap-amd64.tar.gz
+cat hami-ai-platform-vX.Y.Z-airgap-amd64.tar.gz.sha256
 ```
 
 For the subsequent installation steps, refer to the extracted `DEPLOY.md` file.
@@ -176,72 +242,7 @@ After execution, you will see JSON output like:
 
 Send this information to Dynamia.ai sales/support to obtain your license.
 
-## Gateway API
-
-Gateway API routes HAMi AI Platform workspace traffic (VSCode, SSH, Jupyter, etc.).
-
-**Choose one:**
-
-| Option                    | When to use                                                    | Action                                                                                         |
-|---------------------------|----------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| A · Use existing Gateway  | You already run Istio / Envoy / Cilium / etc. with Gateway API | Provide listener / endpoint to install command                                                 |
-| B · Install Envoy Gateway | Evaluation env or no existing gateway                          | Follow [Envoy Gateway install guide](https://gateway.envoyproxy.io/docs/install/install-helm/) |
-
-## Install HAMi AI Platform
-
-> HAMi AI Platform (Kantaloupe) control plane installation.
->
-> - **All-in-One Air-gap Bundle** (recommended for air-gap; one tarball, all artifacts)
-> - Image bundle + Helm chart, downloaded separately (your own pipelines)
-> - Online OCI install (eval / PoC)
-
-### Path A: All-in-One Air-gap Bundle (recommended)
-
-**Please contact Dynamia.ai sales/support to obtain the download URL.**
-
-```bash
-# 1. Extract
-tar -xzf hami-ai-platform-v<VERSION>-airgap-<ARCH>.tar.gz
-cd hami-ai-platform-vX.Y.Z-airgap
-
-# 2. Push images to your private registry
-./load-images.sh --registry harbor.intra/hami
-
-# 3. Helm install (chart bundled in)
-helm install hami-ai-platform ./charts/hami-ai-platform-<VERSION>.tgz \
-  -n hami-ai-platform-system --create-namespace \
-  --set image.registry=harbor.intra/hami
-```
-
-### Path B: Image Bundle + Helm Chart (Separate Downloads)
-
-```bash
-# 1. Load images
-docker load < hami-ai-platform-images.tar
-
-# 2. Push to local registry
-docker tag <image>:<tag> <your-registry>/<image>:<tag>
-docker push <your-registry>/<image>:<tag>
-
-# 3. Helm install
-helm install hami-ai-platform hami-ai-platform.tgz \
-  -n hami-ai-platform-system --create-namespace \
-  --set image.registry=<your-registry>
-```
-
-### Path C: Online OCI Install
-
-```bash
-helm install hami-ai-platform \
-  oci://ghcr.io/dynamia-ai/hami-commercial/hami-ai-platform:2.9.0-rc1 \
-  -n hami-ai-platform-system --create-namespace
-```
-
-> Pass `--set` or `-f values.yaml` for custom configuration (external Prometheus endpoint, Gateway endpoint, image registry, etc.). See the chart's bundled `values.yaml` for the full field reference.
-
 ## Post-install Verification
-
-### HAMi Enterprise Verification
 
 ```bash
 # 1. Pod status
@@ -278,10 +279,10 @@ Expected: `nvidia-smi` shows GPU information with memory capped at 2000 MiB.
 
 ```bash
 # 1. Pod status
-kubectl -n hami-ai-platform-system get pods
+kubectl -n kantaloupe-system get pods
 
 # 2. Service reachability
-kubectl -n hami-ai-platform-system get svc
+kubectl -n kantaloupe-system get svc
 ```
 
 After the HAMi AI Platform service is exposed, open the site and confirm that both frontend and backend are working properly.
@@ -290,17 +291,19 @@ For more product features and usage instructions, see: TODO.
 
 ## Troubleshooting
 
-| Symptom                                 | Likely Cause                                                       | Fix                                                                                                                                |
-|-----------------------------------------|--------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| Images fail to pull                     | Node has no external network or poor connectivity to ghcr.io       | Contact Dynamia.ai sales/support for domestic mirror registry or the All-in-One air-gap bundle                                     |
-| device-plugin pod `Pending` or missing  | Node not labeled `gpu=on`                                          | `kubectl label nodes <node> gpu=on`                                                                                                |
-| device-plugin pod `CrashLoopBackOff`    | Conflict with NVIDIA's default device-plugin                       | Disable GPU Operator's devicePlugin (`--set devicePlugin.enabled=false`)                                                           |
+| Symptom                                 | Likely Cause                                                 | Fix                                                          |
+| --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Images fail to pull                     | Node has no external network or poor connectivity to ghcr.io | Contact Dynamia.ai sales/support for Chinese domestic mirror registry or the All-in-One air-gap bundle |
+| device-plugin pod `Pending` or missing  | Node not labeled `gpu=on`                                    | `kubectl label nodes <node> gpu=on`                          |
+| device-plugin pod `CrashLoopBackOff`    | Conflict with NVIDIA's default device-plugin                 | Disable GPU Operator's devicePlugin (`--set devicePlugin.enabled=false`) |
 | Prometheus missing HAMi metrics         | serviceMonitorNamespaceSelector doesn't match ServiceMonitor label | Align `prometheus/prometheus-kube-prometheus-prometheus` `.spec.serviceMonitorSelector` with hami-enterprise serviceMonitor labels |
-| `nvidia-smi` errors                     | GPU driver not ready                                               | Check driver pod status in `gpu-operator` namespace                                                                                |
-| HAMi AI Platform pod `ImagePullBackOff` | Wrong image registry in values.yaml                                | Check `image.registry` / `image.repository` configuration                                                                          |
+| `nvidia-smi` errors                     | GPU driver not ready                                         | Check driver pod status in `gpu-operator` namespace          |
+| HAMi AI Platform pod `ImagePullBackOff` | Wrong image registry in values.yaml                          | Check `image.registry` / `image.repository` configuration    |
 
 ## Get Support
 
 - Email: [info@dynamia.ai](mailto:info@dynamia.ai)
 - Sales / Support: 400-026-7800
 - Customers under commercial contract: please use your dedicated support channel for issues
+
+> **Enterprise SLA**: Both HAMi Enterprise and HAMi AI Platform come with 24/7 support, hotfix response, and long-term release maintenance.
