@@ -8,6 +8,13 @@ description: "HAMi 平台版在 Kubernetes 集群上的部署、组件依赖、H
 ---
 
 > 本文档面向 SRE / 平台工程师，介绍如何将 **HAMi 平台版** 部署到 Kubernetes 集群，并完成与 HAMi、Prometheus、NVIDIA GPU Operator、Gateway API 等基础组件的对接。
+>
+> ⚠️ **安装 ≠ 激活**
+>
+> 完成本节的 Helm 安装后，HAMi 平台版的组件会运行，但 **HAMi Enterprise 底层的 GPU 虚拟化与调度功能需要激活证书后才能正常使用**。
+> 安装过程本身不依赖证书，您可以先完成部署，再通过后续步骤申请并导入证书。
+>
+> 简而言之：**先装软件，后拿证书；不激活则 vGPU 切分与调度功能不可用，验证也会失败。**
 
 ## 架构与定位
 
@@ -105,7 +112,7 @@ helm install kantaloupe oci://ghcr.io/dynamia-ai/kantaloupe/kantaloupe-chart:0.1
 
 hami-ai-platform 由于需要配置功能特性，服务暴露，采集监控指标，配置自由度较高。完整 values 配置请见：[HAMi AI Platform Helm Values Reference](/zh/attachments/kantaloupe-helm-values)。如果不想使用 `envoyproxy/envoy-gateway`，请务必设置  `--set gateway.enabled=false`。
 
-常见的配置示例：
+常见的配置 values 示例：
 
 - 云厂商环境，可以使用 LoadBalancer 暴露服务
 
@@ -141,7 +148,7 @@ gateway:
   enabled: false
 ```
 
-推荐使用版本追踪系统维护集群中所有 helm release 的 values 文件。通过使用 `-f example-values.yaml` 覆盖 chart 中默认 values 中与之相对应的 key。
+**推荐使用版本追踪系统维护集群中所有 helm release 的 values 文件。** 通过使用 `-f example-values.yaml` 覆盖 chart 中默认 values 中与之相对应的 key。
 
 ### 路径 B：All-in-One 离线一体包
 

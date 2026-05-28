@@ -8,6 +8,13 @@ description: "Deploy HAMi Enterprise on Kubernetes with GPU node onboarding, mon
 ---
 
 > This guide is for SREs and platform engineers. It walks through deploying **HAMi Enterprise** to a Kubernetes cluster, enabling GPU nodes, integrating monitoring, and verifying functionality.
+>
+> ⚠️ **Installation ≠ Activation**
+>
+> After completing the Helm installation in this section, HAMi Enterprise core components will be running. However, **GPU virtualization and scheduling features require a license activation to work properly**.
+> The installation itself does not depend on a license, so you can complete the deployment first, then apply for and import the license in the subsequent steps.
+>
+> In short: **Install the software first, then obtain the license; vGPU partitioning and scheduling will not work without activation, and verification will fail.**
 
 ## Architecture & Positioning
 
@@ -44,7 +51,7 @@ HAMi Enterprise is the enterprise edition of the open-source HAMi project. It co
 
 ### Path A: Online OCI Chart Install
 
-**If you wish to use a domestic mirror registry, please contact Dynamia.ai sales/support for details.**
+**If you wish to use a Chinese domestic mirror registry, please contact Dynamia.ai sales/support for details.**
 
 After selecting the correct kubeconfig context, proceed:
 
@@ -78,7 +85,7 @@ helm install hami \
   --create-namespace oci://ghcr.io/dynamia-ai/hami-commercial/hami:2.9.0-rc1
 ```
 
-We recommend using a version tracking system to maintain values files for all Helm releases in the cluster. Use `-f example-values.yaml` to override corresponding keys in the chart's default values. For the complete values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
+**We recommend using a version tracking system to maintain values files for all Helm releases in the cluster.** Use `-f example-values.yaml` to override corresponding keys in the chart's default values. For the complete values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
 
 ### Path B: All-in-One Air-gap Bundle
 
