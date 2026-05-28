@@ -4,79 +4,57 @@ productId: "hami-ai-platform"
 version: "v2.9.0"
 lastUpdated: "2026-05-20"
 language: "en"
-description: "Deploy HAMi AI Platform on Kubernetes — component dependencies and verification steps."
+description: "Deploy HAMi AI Platform on Kubernetes with HAMi Enterprise dependency installation, license activation, and platform verification."
 ---
 
-> This guide is for SREs and platform engineers. It walks through deploying **HAMi AI Platform** to a Kubernetes cluster and integrating with HAMi, Prometheus, NVIDIA GPU Operator, Gateway API and other foundational components.
+> This guide is for SREs and platform engineers. It walks through deploying **HAMi AI Platform** to a Kubernetes cluster, installing and activating the underlying **HAMi Enterprise** layer, and integrating with Prometheus, NVIDIA GPU Operator, and Gateway API.
 
-## Architecture & positioning
+## Architecture & Positioning
 
-HAMi AI Platform is a Kubernetes-native application platform that provides unified scheduling, tenant quota, monitoring and developer workspaces for heterogeneous compute clusters. Key characteristics:
+HAMi AI Platform is a Kubernetes-native application platform that provides unified scheduling, tenant quota, monitoring visualization, and developer workspaces for heterogeneous compute clusters. Key characteristics:
 
 - **Federated control plane**: connects to the Dynamia cloud control plane; one tenant manages many clusters
-- **Unified UI**: built-in admin, monitoring and user consoles
+- **Unified UI**: built-in admin, monitoring, and user consoles
 - **Open & composable**: relies on standard K8s ecosystem (Prometheus, Helm, Gateway API, HAMi device plugin)
 
-> Before you start, complete the **Prerequisites** section to make sure your cluster meets the minimum requirements.
+> Best fit for: multi-tenant GPU sharing, memory oversubscription, heterogeneous accelerator (NVIDIA / Ascend / Hygon DCU / etc.) unified scheduling, plus developer workspaces and federated cluster management.
 
 ## Prerequisites
 
 Run the checks below on **each Kubernetes cluster you plan to onboard**:
 
-| Type | Requirement | Verify |
-|---|---|---|
-| Kubernetes | version >= 1.24 and <= 1.31 | `kubectl version --short` |
-| Container runtime | containerd or Docker | `kubectl get nodes -o wide` (CONTAINER-RUNTIME column) |
-| Helm | >= 3.14 | `helm version --short` |
-| GPU driver | NVIDIA driver >= 440 (550+ recommended) | `nvidia-smi` |
-| Egress / registry | reachable image registry or pre-loaded offline bundle | `curl -I <registry>` |
-| Cluster storage | default StorageClass configured | `kubectl get sc` |
+| Type              | Requirement                                                                   | Verify                              |
+|-------------------|-------------------------------------------------------------------------------|-------------------------------------|
+| Kubernetes        | >= 1.24                                                                       | `kubectl version --short`           |
+| Container Runtime | containerd or Docker                                                          | `kubectl get nodes -o wide`         |
+| Helm              | >= 3.14                                                                       | `helm version --short`              |
+| GPU Driver        | NVIDIA driver >= 470 (>= 550 recommended)                                     | `nvidia-smi`                        |
+| Prometheus        | >= 2.37 (if integrating monitoring)                                           | `kubectl get pods -A \| grep prom`  |
+| GPU Operator      | Installed AND **devicePlugin.enabled = false** (recommended version: v25.3.2) | `helm list -A \| grep gpu-operator` |
+| Cluster Storage   | default StorageClass configured or self-managed PVC                           | `kubectl get sc`                    |
 
-### Install Helm (if missing)
+> Critical constraint: HAMi ships its own device-plugin and **conflicts with the NVIDIA GPU Operator's built-in device-plugin**. If GPU Operator is installed, you must disable its device-plugin via `--set devicePlugin.enabled=false`.
 
-```bash
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
-```
+## Install HAMi Enterprise
 
-Reference: [Helm install docs](https://helm.sh/docs/intro/install/)
+HAMi AI Platform depends on HAMi Enterprise as the underlying GPU virtualization and scheduling layer. Complete HAMi Enterprise deployment and activation first.
 
-### Container runtime
+> Two installation paths — choose based on your scenario:
+>
+> - Online OCI install (evaluation, PoC, clusters with external network access)
+> - All-in-One Air-gap Bundle (finance / government / telecom isolated networks)
+>
+> Regardless of path, you must apply for and activate a license at the end.
 
-containerd is the default runtime for Kubernetes 1.24+. See [Kubernetes container runtimes](https://kubernetes.io/docs/setup/production-environment/container-runtimes/).
+### Path A: Online OCI Chart Install
 
-> For air-gapped environments, pre-download all Helm charts and images and serve them from a local registry.
+**If you wish to use a domestic mirror registry, please contact Dynamia.ai sales/support for details.**
 
-## Component dependencies
+After selecting the correct kubeconfig context, proceed:
 
-HAMi AI Platform depends on the components below. **Install in the documented order** — out-of-order installs will fail later verification.
+If you haven't installed `nvidia/gpu-operator` yet, install it first.
 
-### Prometheus
-
-HAMi AI Platform relies on Prometheus for cluster monitoring. Bring your own or install fresh.
-
-**Install fresh (recommended for evaluation):**
-
-```bash
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-
-helm install prometheus prometheus-community/kube-prometheus-stack \
-  -n monitoring --create-namespace \
-  --set grafana.enabled=false \
-  --version=75.15.1
-```
-
-> If reusing an existing Prometheus: version must be >= 2.37.0. Capture the labels in `prometheus.spec.serviceMonitorSelector` — you'll use them in the ServiceMonitor section below.
-
-### NVIDIA GPU Operator
-
-Because HAMi ships an enhanced device-plugin, you must **disable GPU Operator's built-in device-plugin**.
-
-**Install:**
-
-```bash
+```sh
 helm repo add nvidia https://helm.ngc.nvidia.com/nvidia && helm repo update
 
 helm install --wait --generate-name \
@@ -84,54 +62,62 @@ helm install --wait --generate-name \
   nvidia/gpu-operator \
   --set devicePlugin.enabled=false \
   --set dcgmExporter.serviceMonitor.enabled=true \
-  --version=v25.3.0
+  --version=v25.3.2
 ```
 
-**Verify GPU driver:**
+If the cluster doesn't have a Prometheus monitoring stack, you'll also need to install one. Here's how to install `prometheus-community/kube-prometheus-stack`:
+
+```sh
+helm install prometheus oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack:72.3.0 \
+  -n monitoring --create-namespace \
+  --set alertmanager.enabled=false \
+  --set grafana.enabled=false
+```
+
+Then install `dynamia-ai/hami-enterprise`.
+
+```sh
+helm install hami \
+	--namespace hami-system \
+  --create-namespace oci://ghcr.io/dynamia-ai/hami-commercial/hami:2.9.0-rc1
+```
+
+We recommend using a version tracking system to maintain values files for all Helm releases in the cluster. Use `-f example-values.yaml` to override corresponding keys in the chart's default values. For the complete values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
+
+### Path B: All-in-One Air-gap Bundle
+
+**Please contact Dynamia.ai sales/support to obtain the download URL.**
+
+Download `hami-enterprise-v<VERSION>-airgap-<ARCH>.tar.gz` and `hami-enterprise-v<VERSION>-airgap-<ARCH>.tar.gz.sha256`.
+
+The `hami-enterprise` air-gap bundle includes `dynamia-ai/hami-enterprise`, `nvidia/gpu-operator`, and `prometheus-community/kube-prometheus-stack`. Install as needed.
 
 ```bash
-# Exec into nvidia-driver-daemonset pod
-kubectl -n gpu-operator exec -it \
-  $(kubectl get pods -n gpu-operator -l app=nvidia-driver-daemonset -o name | head -1) \
-  -- nvidia-smi
+# Download
+curl -L -O <URL>
+# Or: wget <URL>
+
+# Extract outer tar.gz
+# macOS
+tar -xzf hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz
+# Linux (GNU tar)
+tar -xaf hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz
 ```
 
-Sample output:
+Verify integrity:
 
-```text
-+-----------------------------------------------------------------------------------------+
-| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
-+-----------------------------------------------------------------------------------------+
-|   0  Tesla P4                       On  |   00000000:03:00.0 Off |                  Off |
-| N/A   31C    P8              6W /   75W |       0MiB /   8192MiB |      0%      Default |
-+-----------------------------------------------------------------------------------------+
+```sh
+# Linux / macOS
+shasum -a 256 -c hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz.sha256
+
+# Or manually compare
+shasum -a 256 hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz
+cat hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz.sha256
 ```
 
-> Troubleshooting: [NVIDIA GPU Operator troubleshooting guide](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/troubleshooting.html)
+For the subsequent installation steps, refer to the extracted `DEPLOY.md` file.
 
-### HAMi Enterprise
-
-Contact dynamia.ai sales/support for the **HAMi Enterprise offline bundle** (`hami.tgz` Helm chart + image tarball).
-
-**Step 1 · Import images to a registry the cluster can reach**
-
-```bash
-# Load images
-docker load < hami-images.tar
-docker tag <image>:<tag> <your-registry>/<image>:<tag>
-docker push <your-registry>/<image>:<tag>
-```
-
-**Step 2 · Helm install HAMi**
-
-```bash
-helm install hami hami.tgz \
-  -n hami-system --create-namespace \
-  --set scheduler.serviceMonitor.enabled=true \
-  --set devicePlugin.serviceMonitor.enabled=true
-```
-
-**Step 3 · Label GPU nodes**
+## Enable GPU Nodes
 
 The HAMi device plugin only starts on nodes labeled `gpu=on`:
 
@@ -141,78 +127,154 @@ kubectl label nodes <node-name> gpu=on
 
 > Verify: `kubectl -n hami-system get pods` should show `hami-device-plugin-*` and `hami-scheduler-*` in `Running` state.
 
-### ServiceMonitor integration
+## Monitoring Integration
 
-Make sure Prometheus can scrape HAMi and DCGM-Exporter metrics.
+Ensure Prometheus can scrape HAMi and DCGM-Exporter metrics.
 
-> Important: ServiceMonitor `metadata.labels` must match Prometheus's `spec.serviceMonitorSelector`, otherwise Prometheus will not discover them.
+> The ServiceMonitor resource's `metadata.labels` must match Prometheus's `spec.serviceMonitorSelector` — otherwise Prometheus won't discover these monitors.
 
-**Verify metrics scraping** (via Prometheus UI / API):
+### Verify Metrics Collection
 
-| Exporter | Query | Expected |
-|---|---|---|
-| dcgm-exporter | `DCGM_FI_DEV_GPU_UTIL` | non-empty |
-| hami-exporter | `HostCoreUtilization` | non-empty |
-| hami-device-plugin-exporter | `GPUDeviceCoreAllocated` | non-empty |
+| Exporter                    | Query                    | Expected        |
+|-----------------------------|--------------------------|-----------------|
+| dcgm-exporter               | `DCGM_FI_DEV_GPU_UTIL`   | non-empty value |
+| hami-exporter               | `HostCoreUtilization`    | non-empty value |
+| hami-device-plugin-exporter | `GPUDeviceCoreAllocated` | non-empty value |
 
-> Troubleshooting: if metrics are missing, first confirm `kubectl get servicemonitor -A` shows the ServiceMonitor, then check label selector alignment.
+## Activation
 
-### Gateway API
+**Please complete the above installation steps and ensure all component pods are running before proceeding with activation.**
 
-Gateway API routes workspace traffic for VSCode / SSH / Jupyter etc.
+Run the following script to collect license information (requires kubectl, jq):
+
+```bash
+# Online install
+curl -fsSL https://dynamia.ai/scripts/collect-hami-license-info.sh | bash
+
+# Air-gap install (bundled in the package)
+bash collect-hami-license-info.sh
+```
+
+After execution, you will see JSON output like:
+
+```json
+{
+  "kube_system_uid": "bd8bce4f-f440-48e0-bf74-4ea2b6419c8b",
+  "collection_time": "2026-05-28T03:00:39Z",
+  "hami_install_location_namespace": "hami-system",
+  "total_licenses": 1,
+  "licenses": [
+    {
+      "uuid": "GPU-6762ec8e-2ce2-9ae4-df13-3e2e5cf17e53",
+      "reminder": 10,
+      "expire": "2026-06-21T10:04:41.468Z",
+      "node_name": "172.28.135.11"
+    }
+  ]
+}
+```
+
+Send this information to Dynamia.ai sales/support to obtain your license.
+
+## Gateway API
+
+Gateway API routes HAMi AI Platform workspace traffic (VSCode, SSH, Jupyter, etc.).
 
 **Choose one:**
 
-| Option | When to use | Action |
-|---|---|---|
-| A · Use existing Gateway | You already run Istio / Envoy / Cilium / etc. with Gateway API | Provide listener / endpoint to install command |
-| B · Install Envoy Gateway | Evaluation env or no existing gateway | Follow [Envoy Gateway install guide](https://gateway.envoyproxy.io/docs/install/install-helm/) |
+| Option                    | When to use                                                    | Action                                                                                         |
+|---------------------------|----------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| A · Use existing Gateway  | You already run Istio / Envoy / Cilium / etc. with Gateway API | Provide listener / endpoint to install command                                                 |
+| B · Install Envoy Gateway | Evaluation env or no existing gateway                          | Follow [Envoy Gateway install guide](https://gateway.envoyproxy.io/docs/install/install-helm/) |
 
 ## Install HAMi AI Platform
 
-> Three install paths — pick by environment:
+> HAMi AI Platform (Kantaloupe) control plane installation.
 >
 > - **All-in-One Air-gap Bundle** (recommended for air-gap; one tarball, all artifacts)
 > - Image bundle + Helm chart, downloaded separately (your own pipelines)
 > - Online OCI install (eval / PoC)
 
-### Path A · All-in-One Air-gap Bundle (recommended)
+### Path A: All-in-One Air-gap Bundle (recommended)
+
+**Please contact Dynamia.ai sales/support to obtain the download URL.**
 
 ```bash
 # 1. Extract
-tar -xzf hami-ai-platform-v2.9.0-airgap-amd64.tar.gz
-cd hami-ai-platform-v2.9.0-airgap
+tar -xzf hami-ai-platform-v<VERSION>-airgap-<ARCH>.tar.gz
+cd hami-ai-platform-vX.Y.Z-airgap
 
 # 2. Push images to your private registry
 ./load-images.sh --registry harbor.intra/hami
 
 # 3. Helm install (chart bundled in)
-helm install hami-ai-platform ./charts/hami-ai-platform-2.9.0.tgz \
+helm install hami-ai-platform ./charts/hami-ai-platform-<VERSION>.tgz \
   -n hami-ai-platform-system --create-namespace \
   --set image.registry=harbor.intra/hami
 ```
 
-### Path B · Separate downloads
-
-**Helm install:**
+### Path B: Image Bundle + Helm Chart (Separate Downloads)
 
 ```bash
+# 1. Load images
+docker load < hami-ai-platform-images.tar
+
+# 2. Push to local registry
+docker tag <image>:<tag> <your-registry>/<image>:<tag>
+docker push <your-registry>/<image>:<tag>
+
+# 3. Helm install
 helm install hami-ai-platform hami-ai-platform.tgz \
-  -n hami-ai-platform-system --create-namespace
+  -n hami-ai-platform-system --create-namespace \
+  --set image.registry=<your-registry>
 ```
 
-**Or install online via OCI:**
+### Path C: Online OCI Install
 
 ```bash
 helm install hami-ai-platform \
-  oci://ghcr.io/dynamia-ai/charts/hami-ai-platform \
-  --version 2.9.0 \
+  oci://ghcr.io/dynamia-ai/hami-commercial/hami-ai-platform:2.9.0-rc1 \
   -n hami-ai-platform-system --create-namespace
 ```
 
-> Pass `--set` or `-f values.yaml` for custom configuration (external Prometheus endpoint, Gateway endpoint, image registry etc.). See the chart's bundled `values.yaml` for the full field reference.
+> Pass `--set` or `-f values.yaml` for custom configuration (external Prometheus endpoint, Gateway endpoint, image registry, etc.). See the chart's bundled `values.yaml` for the full field reference.
 
-## Post-install verification
+## Post-install Verification
+
+### HAMi Enterprise Verification
+
+```bash
+# 1. Pod status
+kubectl -n hami-system get pods
+
+# 2. Device Plugin GPU resources
+kubectl describe node <gpu-node> | grep -A 5 'Capacity:'
+# Expect: nvidia.com/gpu: <N> and nvidia.com/gpumem: <MB>
+
+# 3. Submit a test pod to verify scheduling
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hami-smoke
+spec:
+  restartPolicy: Never
+  containers:
+  - name: cuda
+    image: nvidia/cuda:12.4.0-base-ubuntu22.04
+    command: ["nvidia-smi"]
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+        nvidia.com/gpumem: 2000
+EOF
+
+kubectl logs hami-smoke
+```
+
+Expected: `nvidia-smi` shows GPU information with memory capped at 2000 MiB.
+
+### HAMi AI Platform Verification
 
 ```bash
 # 1. Pod status
@@ -220,33 +282,25 @@ kubectl -n hami-ai-platform-system get pods
 
 # 2. Service reachability
 kubectl -n hami-ai-platform-system get svc
-
-# 3. CRD registration
-kubectl get crds | grep hami-ai-platform
-
-# 4. Cluster onboarding state (if connected to cloud control plane)
-kubectl -n hami-ai-platform-system get clusters
 ```
 
-Expected: all pods `Running`, no `CrashLoopBackOff`; CRDs include `clusters.hami-ai-platform.dynamia.ai` and other core resources.
+After the HAMi AI Platform service is exposed, open the site and confirm that both frontend and backend are working properly.
+
+For more product features and usage instructions, see: TODO.
 
 ## Troubleshooting
 
-| Symptom | Likely cause | Fix |
-|---|---|---|
-| HAMi device-plugin pod stuck `Pending` | Node missing `gpu=on` label | `kubectl label nodes <node> gpu=on` |
-| Prometheus missing HAMi metrics | ServiceMonitor labels don't match | Align `spec.serviceMonitorSelector` |
-| `nvidia-smi` errors | GPU driver not ready | Inspect driver pod in `gpu-operator` namespace |
-| Helm install image pull fails | Offline images not loaded | Run `docker load` + `docker push` to local registry |
-| dynamia.ai pod `ImagePullBackOff` | Wrong image registry in values.yaml | Check `image.registry` / `image.repository` |
+| Symptom                                 | Likely Cause                                                       | Fix                                                                                                                                |
+|-----------------------------------------|--------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Images fail to pull                     | Node has no external network or poor connectivity to ghcr.io       | Contact Dynamia.ai sales/support for domestic mirror registry or the All-in-One air-gap bundle                                     |
+| device-plugin pod `Pending` or missing  | Node not labeled `gpu=on`                                          | `kubectl label nodes <node> gpu=on`                                                                                                |
+| device-plugin pod `CrashLoopBackOff`    | Conflict with NVIDIA's default device-plugin                       | Disable GPU Operator's devicePlugin (`--set devicePlugin.enabled=false`)                                                           |
+| Prometheus missing HAMi metrics         | serviceMonitorNamespaceSelector doesn't match ServiceMonitor label | Align `prometheus/prometheus-kube-prometheus-prometheus` `.spec.serviceMonitorSelector` with hami-enterprise serviceMonitor labels |
+| `nvidia-smi` errors                     | GPU driver not ready                                               | Check driver pod status in `gpu-operator` namespace                                                                                |
+| HAMi AI Platform pod `ImagePullBackOff` | Wrong image registry in values.yaml                                | Check `image.registry` / `image.repository` configuration                                                                          |
 
-## Related attachments
-
-- [Kantaloupe Helm Values Reference](/attachments/kantaloupe-helm-values) — generated `helm-docs` values reference for the Kantaloupe chart used by HAMi AI Platform.
-
-## Get support
+## Get Support
 
 - Email: [info@dynamia.ai](mailto:info@dynamia.ai)
+- Sales / Support: 400-026-7800
 - Customers under commercial contract: please use your dedicated support channel for issues
-
-> **Enterprise SLA**: Both HAMi Enterprise and HAMi AI Platform come with 24/7 support, hotfix response and long-term release maintenance.
