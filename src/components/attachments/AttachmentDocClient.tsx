@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   ClockIcon,
   PaperClipIcon,
@@ -8,6 +8,7 @@ import {
 } from '@heroicons/react/24/outline';
 import MainLayout from '@/components/layout/MainLayout';
 import { enhanceCodeBlocks } from '@/lib/code-block-enhancer';
+import { useActiveHeading } from '@/hooks/useActiveHeading';
 import type { Locale } from '@/types/enterprise';
 import type { TocItem } from '@/types/blog';
 
@@ -42,34 +43,13 @@ export default function AttachmentDocClient({
   locale,
 }: AttachmentDocClientProps) {
   const labels = CHROME[locale] ?? CHROME.en;
-  const [activeId, setActiveId] = useState<string | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const { activeId, scrollToHeading } = useActiveHeading(toc);
 
   useEffect(() => {
     const cleanup = enhanceCodeBlocks({ container: contentRef.current, locale });
     return cleanup;
   }, [html, locale]);
-
-  useEffect(() => {
-    if (!toc.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (visible) setActiveId(visible.target.id);
-      },
-      { rootMargin: '-100px 0px -70% 0px', threshold: [0, 1] },
-    );
-
-    toc.forEach((item) => {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [toc]);
 
   return (
     <MainLayout>
@@ -115,6 +95,10 @@ export default function AttachmentDocClient({
                       <a
                         key={item.id}
                         href={`#${item.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          scrollToHeading(item.id);
+                        }}
                         className={`block py-1 leading-snug transition-colors ${
                           item.level === 1 ? 'pl-0 font-medium' : item.level === 2 ? 'pl-3' : 'pl-6 text-xs'
                         } ${
