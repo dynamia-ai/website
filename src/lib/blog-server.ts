@@ -24,6 +24,14 @@ function doesPublicImageExist(imagePath: string): boolean {
   return fs.existsSync(path.join(PUBLIC_PATH, imagePath));
 }
 
+/** Wrap markdown tables so borders are not clipped by `.blog-content { overflow-x: hidden }`. */
+function wrapTablesInHtml(html: string): string {
+  return html.replace(/<table[\s\S]*?<\/table>/gi, (table) => {
+    if (table.includes('class="table-wrapper"')) return table;
+    return `<div class="table-wrapper">${table}</div>`;
+  });
+}
+
 function extractFirstLocalImage(markdown: string): string | undefined {
   const imageRegex = /!\[[^\]]*]\((\/[^)\s]+)(?:\s+"[^"]*")?\)/;
   const match = markdown.match(imageRegex);
@@ -305,7 +313,7 @@ export async function markdownToHtml(
   }
 
   return {
-    html,
+    html: wrapTablesInHtml(html),
     toc,
   };
 }
@@ -367,7 +375,7 @@ export async function attachmentMarkdownToHtml(
   }
 
   return {
-    html,
+    html: wrapTablesInHtml(html),
     toc,
   };
 }

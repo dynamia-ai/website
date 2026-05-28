@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   ArrowLeftIcon,
@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import MainLayout from '@/components/layout/MainLayout';
 import { enhanceCodeBlocks } from '@/lib/code-block-enhancer';
+import { useActiveHeading } from '@/hooks/useActiveHeading';
 import type { Locale } from '@/types/enterprise';
 import type { TocItem } from '@/types/blog';
 
@@ -55,8 +56,8 @@ export default function InstallDocClient({
   const backHref =
     locale === 'zh' ? `/zh/products/${productId}` : `/products/${productId}`;
 
-  const [activeId, setActiveId] = useState<string | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const { activeId, scrollToHeading } = useActiveHeading(toc);
 
   useEffect(() => {
     const cleanup = enhanceCodeBlocks({
@@ -65,25 +66,6 @@ export default function InstallDocClient({
     });
     return cleanup;
   }, [html, locale]);
-
-  useEffect(() => {
-    if (!toc.length) return;
-    const ids = toc.map((i) => i.id);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (visible) setActiveId(visible.target.id);
-      },
-      { rootMargin: '-100px 0px -70% 0px', threshold: [0, 1] },
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [toc]);
 
   return (
     <MainLayout>
@@ -143,6 +125,10 @@ export default function InstallDocClient({
                       <a
                         key={item.id}
                         href={`#${item.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          scrollToHeading(item.id);
+                        }}
                         className={`block py-1 leading-snug transition-colors ${
                           item.level === 1
                             ? 'pl-0 font-medium'
