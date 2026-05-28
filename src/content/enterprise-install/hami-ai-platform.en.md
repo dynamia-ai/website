@@ -240,6 +240,10 @@ Expected: all pods `Running`, no `CrashLoopBackOff`; CRDs include `clusters.hami
 | Helm install image pull fails | Offline images not loaded | Run `docker load` + `docker push` to local registry |
 | dynamia.ai pod `ImagePullBackOff` | Wrong image registry in values.yaml | Check `image.registry` / `image.repository` |
 
+## Related attachments
+
+- [Kantaloupe Helm Values Reference](/attachments/kantaloupe-helm-values) — generated `helm-docs` values reference for the Kantaloupe chart used by HAMi AI Platform.
+
 ## Get support
 
 - Email: [info@dynamia.ai](mailto:info@dynamia.ai)
