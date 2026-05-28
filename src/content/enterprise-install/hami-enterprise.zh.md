@@ -55,6 +55,8 @@ HAMi Enterprise 是开源 HAMi 项目的企业版，包含：
 
 **如果希望使用国内镜像仓库，请联系 Dynamia.ai 的售前/技术支持获取相关信息。**
 
+**推荐使用版本追踪系统维护集群中所有 Helm release 的 values 文件。** 通过使用 `-f example-values.yaml` 覆盖 chart 中默认 values 中与之相对应的 key。
+
 选择好 kubeconfig context 后，开始操作：
 
 如果没有安装过 `nvidia/gpu-operator`，先安装。
@@ -73,21 +75,35 @@ helm install --wait --generate-name \
 如果集群里没有 Prometheus 等监控栈，还需要安装，这里展示 `prometheus-community/kube-prometheus-stack` 的安装方法。
 
 ```sh
-helm install prometheus oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack:72.3.0 \
-  -n monitoring --create-namespace \
+helm install prometheus \
+  oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack \
+  --version 72.3.0 \
+  --namespace monitoring \
+  --create-namespace \
   --set alertmanager.enabled=false \
   --set grafana.enabled=false
 ```
 
-然后开始安装 `dynamia-ai/hami-enterprise`。
+安装 `dynamia-ai/hami-enterprise(hami-commercial)`：
 
 ```sh
 helm install hami \
-	--namespace hami-system \
-  --create-namespace oci://ghcr.io/dynamia-ai/hami-commercial/hami:2.9.0-rc1
+  oci://ghcr.io/dynamia-ai/hami-commercial/hami \
+  --version 2.9.0-rc1 \
+  --namespace hami-system \
+  --create-namespace
 ```
 
-**推荐使用版本追踪系统维护集群中所有 helm release 的 values 文件。** 通过使用 `-f example-values.yaml` 覆盖 chart 中默认 values 中与之相对应的 key。hami-enterprise 的完整 values 配置请见：[HAMi Helm Values Reference](/zh/attachments/hami-helm-values)。
+`hami-enterprise(hami-commercial)` 常见 Chart 自定义选项如下表，完整 values 配置请见：[HAMi Helm Values Reference](/zh/attachments/hami-helm-values)。
+
+| 参数 | 说明 | 默认值 |
+|---|---|---|
+| `dra.enabled` | 是否部署启用 [DRA](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/) | `false` |
+| `scheduler.leaderElect` | 是否启用`hami-scheduler`的多节点选举 | `true` |
+| `scheduler.replicas` | 调整 `hami-scheduler`的实例数量 | 1 |
+| `scheduler.kubeScheduler.image.registry` | `hami-scheduler`所使用的`kube-scheduler`镜像仓库。 | `"registry.cn-hangzhou.aliyuncs.com"` |
+| `scheduler.kubeScheduler.image.repository` | `hami-scheduler`所使用的`kube-scheduler`镜像名称。 | `"scheduler.kubeScheduler.image.repository"` |
+| `scheduler.kubeScheduler.image.tag` | `hami-scheduler`所使用的`kube-scheduler`镜像版本。如果不填，chart 会推算一个合适的版本。 | `""` |
 
 ### 路径 B：All-in-One 离线一体包
 
@@ -95,7 +111,7 @@ helm install hami \
 
 下载 `hami-enterprise-v<VERSION>-airgap-<ARCH>.tar.gz` 和 `hami-enterprise-v<VERSION>-airgap-<ARCH>.tar.gz.sha256`。
 
-`hami-enterprise` 离线包包括 `dynamia-ai/hami-enterprise`、`nvidia/gpu-operator` 和 `prometheus-community/kube-prometheus-stack`，可以按需安装。
+`hami-enterprise` 离线包里包括 `dynamia-ai/hami-enterprise`、`nvidia/gpu-operator` 和 `prometheus-community/kube-prometheus-stack`，可以按需安装。
 
 ```bash
 # 下载
@@ -124,7 +140,7 @@ cat hami-enterprise-vX.Y.Z-airgap-amd64.tar.gz.sha256
 
 ## 启用 GPU 节点
 
-HAMi device plugin 仅在带 `gpu=on` 标签的节点上启动：
+HAMi device-plugin 仅在带 `gpu=on` 标签的节点上启动：
 
 ```bash
 kubectl label nodes <node-name> gpu=on
@@ -141,17 +157,17 @@ kubectl label nodes <node-name> gpu=on
 
 ### 验证指标采集
 
-| Exporter                    | 查询指标                     | 预期    |
-|-----------------------------|--------------------------|-------|
-| dcgm-exporter               | `DCGM_FI_DEV_GPU_UTIL`   | 返回非空值 |
-| hami-exporter               | `HostCoreUtilization`    | 返回非空值 |
-| hami-device-plugin-exporter | `GPUDeviceCoreAllocated` | 返回非空值 |
+| Exporter                      | 查询指标                 | 预期       |
+| ----------------------------- | ------------------------ | ---------- |
+| `dcgm-exporter`               | `DCGM_FI_DEV_GPU_UTIL`   | 返回非空值 |
+| `hami-exporter`               | `HostCoreUtilization`    | 返回非空值 |
+| `hami-device-plugin-exporter` | `GPUDeviceCoreAllocated` | 返回非空值 |
 
 ## 证书激活
 
 **请完成上述安装任务，确保所有组件的 Pod 都正常启动后再开始激活流程。**
 
-执行以下脚本收集许可证信息（需要 kubectl、jq）：
+执行以下脚本收集许可证信息（需要 `kubectl`、`jq`）：
 
 ```bash
 # 在线安装
@@ -180,7 +196,7 @@ bash collect-hami-license-info.sh
 }
 ```
 
-把上述信息发送给 Dynamia.ai 的售前/技术支持获取证书。
+**把上述信息发送给 Dynamia.ai 的售前/技术支持获取证书。**
 
 ## 激活后验证
 
@@ -217,13 +233,13 @@ kubectl logs hami-smoke
 
 ## 常见问题
 
-| 现象                                   | 可能原因                                                       | 处理                                                                                                                                |
-|--------------------------------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| 镜像拉不下来                               | Node 没有外部网络或者与 ghcr.io 连接不畅。                               | 联系 Dynamia.ai 的售前/技术支持获取国内镜像仓库地址或 All-in-One 离线一体包。                                                                               |
-| device-plugin Pod `Pending` 或者不存在    | 节点未打 `gpu=on` 标签                                           | `kubectl label nodes <node> gpu=on`                                                                                               |
-| device-plugin Pod `CrashLoopBackOff` | 与 NVIDIA 默认 device-plugin 冲突                               | 禁用 GPU Operator 的 devicePlugin（`--set devicePlugin.enabled=false`）。                                                               |
-| Prometheus 查不到 HAMi 指标               | serviceMonitorNamespaceSelector 与 ServiceMonitor label 不匹配 | 对齐 `prometheus/prometheus-kube-prometheus-prometheus` 的 `.spec.serviceMonitorSelector` 和 hami-enterprise 的 serviceMonitor labels。 |
-| `nvidia-smi` 报错                      | GPU 驱动未就绪                                                  | 检查 `gpu-operator` namespace 下 driver Pod 状态。                                                                                      |
+| 现象                                   | 可能原因                                                     | 处理                                                         |
+| -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 镜像拉不下来                           | Node 没有外部网络或者与 `ghcr.io` 连接不畅。                 | 联系 Dynamia.ai 的售前/技术支持获取国内镜像仓库地址或 All-in-One 离线一体包。 |
+| device-plugin Pod `Pending` 或者不存在 | 节点未打 `gpu=on` 标签                                       | `kubectl label nodes <node> gpu=on`                          |
+| device-plugin Pod `CrashLoopBackOff`   | 与 NVIDIA 默认 device-plugin 冲突                            | 禁用 GPU Operator 的 devicePlugin（`--set devicePlugin.enabled=false`）。 |
+| Prometheus 查不到 HAMi 指标            | `serviceMonitorNamespaceSelector` 与 `ServiceMonitor label 不匹配 | 对齐 `prometheus/prometheus-kube-prometheus-prometheus` 的 `.spec.serviceMonitorSelector` 和 hami-enterprise 的 serviceMonitor labels。 |
+| `nvidia-smi` 报错                      | GPU 驱动未就绪                                               | 检查 `gpu-operator` namespace 下 driver Pod 状态。           |
 
 ## 获取支持
 
