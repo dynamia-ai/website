@@ -99,7 +99,7 @@ export default function AttachmentDocClient({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 xl:grid-cols-[1fr_16rem] gap-8 xl:gap-12">
           <div
             ref={contentRef}
-            className="install-doc-content blog-content w-full min-w-0"
+            className="install-doc-content attachment-content w-full min-w-0"
             dangerouslySetInnerHTML={{ __html: html }}
           />
           {toc.length > 0 && (

@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { cache } from 'react';
-import { markdownToHtml } from '@/lib/blog-server';
+import { attachmentMarkdownToHtml } from '@/lib/blog-server';
 import type { TocItem } from '@/types/blog';
 
 const ATTACHMENTS_PATH = path.join(process.cwd(), 'src/content/attachments');
@@ -45,7 +45,7 @@ export const getAttachmentDoc = cache(
     const { data, content } = matter(raw);
     const fm = data as Partial<AttachmentFrontmatter>;
     const language = fm.language === 'zh' ? 'zh' : 'en';
-    const { html, toc } = await markdownToHtml(content, language);
+    const { html, toc } = await attachmentMarkdownToHtml(content);
 
     return {
       frontmatter: {
