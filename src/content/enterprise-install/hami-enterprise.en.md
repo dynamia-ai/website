@@ -53,6 +53,8 @@ HAMi Enterprise is the enterprise edition of the open-source HAMi project. It co
 
 **If you wish to use a Chinese domestic mirror registry, please contact Dynamia.ai sales/support for details.**
 
+**We recommend using a version tracking system to maintain values files for all Helm releases in the cluster.** Use `-f example-values.yaml` to override corresponding keys in the chart's default values.
+
 After selecting the correct kubeconfig context, proceed:
 
 If you haven't installed `nvidia/gpu-operator` yet, install it first.
@@ -71,21 +73,35 @@ helm install --wait --generate-name \
 If the cluster doesn't have a Prometheus monitoring stack, you'll also need to install one. Here's how to install `prometheus-community/kube-prometheus-stack`:
 
 ```sh
-helm install prometheus oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack:72.3.0 \
-  -n monitoring --create-namespace \
+helm install prometheus \
+  oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack \
+  --version 72.3.0 \
+  --namespace monitoring \
+  --create-namespace \
   --set alertmanager.enabled=false \
   --set grafana.enabled=false
 ```
 
-Then install `dynamia-ai/hami-enterprise`.
+Install `dynamia-ai/hami-enterprise(hami-commercial)`:
 
 ```sh
 helm install hami \
-	--namespace hami-system \
-  --create-namespace oci://ghcr.io/dynamia-ai/hami-commercial/hami:2.9.0-rc1
+  oci://ghcr.io/dynamia-ai/hami-commercial/hami \
+  --version 2.9.0-rc1 \
+  --namespace hami-system \
+  --create-namespace
 ```
 
-**We recommend using a version tracking system to maintain values files for all Helm releases in the cluster.** Use `-f example-values.yaml` to override corresponding keys in the chart's default values. For the complete values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
+`hami-enterprise(hami-commercial)` common chart customization options are listed below. For the complete values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
+
+| Parameter | Description | Default |
+|---|---|---|
+| `dra.enabled` | Enable [DRA](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/) | `false` |
+| `scheduler.leaderElect` | Enable leader election for `hami-scheduler` | `true` |
+| `scheduler.replicas` | Number of `hami-scheduler` replicas | 1 |
+| `scheduler.kubeScheduler.image.registry` | Registry for `kube-scheduler` image used by `hami-scheduler` | `"registry.cn-hangzhou.aliyuncs.com"` |
+| `scheduler.kubeScheduler.image.repository` | Repository for `kube-scheduler` image used by `hami-scheduler` | `"google-containers/kube-scheduler"` |
+| `scheduler.kubeScheduler.image.tag` | Tag for `kube-scheduler` image used by `hami-scheduler`. If empty, the chart will infer an appropriate version. | `""` |
 
 ### Path B: All-in-One Air-gap Bundle
 
@@ -138,11 +154,11 @@ Ensure Prometheus can scrape HAMi and DCGM-Exporter metrics.
 
 ### Verify Metrics Collection
 
-| Exporter                    | Query                    | Expected        |
-|-----------------------------|--------------------------|-----------------|
-| dcgm-exporter               | `DCGM_FI_DEV_GPU_UTIL`   | non-empty value |
-| hami-exporter               | `HostCoreUtilization`    | non-empty value |
-| hami-device-plugin-exporter | `GPUDeviceCoreAllocated` | non-empty value |
+| Exporter                      | Query                    | Expected        |
+| ----------------------------- | ------------------------ | --------------- |
+| `dcgm-exporter`               | `DCGM_FI_DEV_GPU_UTIL`   | non-empty value |
+| `hami-exporter`               | `HostCoreUtilization`    | non-empty value |
+| `hami-device-plugin-exporter` | `GPUDeviceCoreAllocated` | non-empty value |
 
 ## License Activation
 
@@ -177,7 +193,7 @@ After execution, you will see JSON output like:
 }
 ```
 
-Send this information to Dynamia.ai sales/support to obtain your license.
+**Send this information to Dynamia.ai sales/support to obtain your license.**
 
 ## Post-Activation Verification
 
@@ -215,7 +231,7 @@ Expected: `nvidia-smi` shows GPU information with memory capped at 2000 MiB.
 ## Troubleshooting
 
 | Symptom                                | Likely Cause                                                       | Fix                                                                                                                                |
-|----------------------------------------|--------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | Images fail to pull                    | Node has no external network or poor connectivity to ghcr.io       | Contact Dynamia.ai sales/support for domestic mirror registry or the All-in-One air-gap bundle                                     |
 | device-plugin pod `Pending` or missing | Node not labeled `gpu=on`                                          | `kubectl label nodes <node> gpu=on`                                                                                                |
 | device-plugin pod `CrashLoopBackOff`   | Conflict with NVIDIA's default device-plugin                       | Disable GPU Operator's devicePlugin (`--set devicePlugin.enabled=false`)                                                           |

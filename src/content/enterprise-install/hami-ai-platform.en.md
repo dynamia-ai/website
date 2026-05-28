@@ -57,6 +57,8 @@ HAMi AI Platform depends on HAMi Enterprise as the underlying GPU virtualization
 
 **If you wish to use a Chinese domestic mirror registry, please contact Dynamia.ai sales/support for details.**
 
+**We recommend using a version tracking system to maintain values files for all Helm releases in the cluster.** Use `-f example-values.yaml` to override corresponding keys in the chart's default values.
+
 After selecting the correct kubeconfig context, proceed:
 
 If you haven't installed `nvidia/gpu-operator` yet, install it first.
@@ -75,42 +77,83 @@ helm install --wait --generate-name \
 If the cluster doesn't have a Prometheus monitoring stack, you'll also need to install one. Here's how to install `prometheus-community/kube-prometheus-stack`:
 
 ```sh
-helm install prometheus oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack:72.3.0 \
-  -n monitoring --create-namespace \
+helm install prometheus \
+  oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack \
+  --version 72.3.0 \
+  --namespace monitoring \
+  --create-namespace \
   --set alertmanager.enabled=false \
   --set grafana.enabled=false
 ```
 
-Install `dynamia-ai/hami-enterprise`.
+Install `dynamia-ai/hami-enterprise(hami-commercial)`:
 
 ```sh
 helm install hami \
-	--namespace hami-system \
-  --create-namespace oci://ghcr.io/dynamia-ai/hami-commercial/hami:2.9.0-rc1
+  oci://ghcr.io/dynamia-ai/hami-commercial/hami \
+  --version 2.9.0-rc1 \
+  --namespace hami-system \
+  --create-namespace
 ```
 
-For the complete HAMi Enterprise values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
+`hami-enterprise(hami-commercial)` common chart customization options are listed below. For the complete values reference, see: [HAMi Helm Values Reference](/attachments/hami-helm-values).
 
-(Optional) Install `envoyproxy/envoy-gateway` for service exposure.
+| Parameter | Description | Default |
+|---|---|---|
+| `dra.enabled` | Enable [DRA](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/) | `false` |
+| `scheduler.leaderElect` | Enable leader election for `hami-scheduler` | `true` |
+| `scheduler.replicas` | Number of `hami-scheduler` replicas | 1 |
+| `scheduler.kubeScheduler.image.registry` | Registry for `kube-scheduler` image used by `hami-scheduler` | `"registry.cn-hangzhou.aliyuncs.com"` |
+| `scheduler.kubeScheduler.image.repository` | Repository for `kube-scheduler` image used by `hami-scheduler` | `"google-containers/kube-scheduler"` |
+| `scheduler.kubeScheduler.image.tag` | Tag for `kube-scheduler` image used by `hami-scheduler`. If empty, the chart will infer an appropriate version. | `""` |
+
+(Optional) Install `envoyproxy/envoy-gateway` for service exposure:
 
 ```sh
-helm install eg oci://docker.io/envoyproxy/gateway-helm:v1.6.2 \
-  -n envoy-gateway-system --create-namespace \
+helm install eg \
+  oci://docker.io/envoyproxy/gateway-helm \
+  --version v1.6.2 \
+  --namespace envoy-gateway-system \
+  --create-namespace \
   --set global.images.envoyGateway.image=docker.io/envoyproxy/gateway:v1.6.2 \
   --set global.image.ratelimit.image=docker.io/envoyproxy/ratelimit:99d85510 \
   --set config.envoyGateway.gateway.controllerName=gateway.envoyproxy.io/gatewayclass-controller \
   --set config.envoyGateway.provider.type=Kubernetes
 ```
 
-Install `dynamia-ai/hami-ai-platform(kantaloupe)`.
+Install `dynamia-ai/hami-ai-platform(kantaloupe)`:
 
 ```sh
-helm install kantaloupe oci://ghcr.io/dynamia-ai/kantaloupe/kantaloupe-chart:0.15.0 \
-  -n kantaloupe-system --create-namespace \
+helm install kantaloupe \
+  oci://ghcr.io/dynamia-ai/kantaloupe/kantaloupe-chart \
+  --version 0.15.1 \
+  --namespace kantaloupe-system \
+  --create-namespace \
   --set fullnameOverride=kantaloupe
 ```
 
-Because HAMi AI Platform requires feature configuration, service exposure, monitoring metrics collection, and has high configuration flexibility, see the complete values reference: [HAMi AI Platform Helm Values Reference](/attachments/kantaloupe-helm-values). If you don't want to use `envoyproxy/envoy-gateway`, make sure to set `--set gateway.enabled=false`.
+`hami-ai-platform(kantaloupe)` requires configuration for "feature flags", "service exposure", "monitoring metrics collection", etc. It has high configuration flexibility, please configure as needed.
+
+`hami-ai-platform(kantaloupe)` common chart customization options are listed below. For the complete values reference, see: [HAMi AI Platform Helm Values Reference](/attachments/kantaloupe-helm-values).
+
+| Parameter | Description | Default |
+|---|---|---|
+| `gateway.enabled` | Whether to create Gateway API resources and integrate with envoy-gateway | `true` |
+| `gateway.service.type` | Gateway Service type, one of `LoadBalancer`, `NodePort` | `LoadBalancer` |
+| `gateway.service.nodePort` | HTTP node port used when type is `NodePort` | `30080` |
+| `gateway.tls.enabled` | Whether to enable HTTPS/TLS termination | `false` |
+| `gateway.tls.secretName` | Secret name containing the TLS certificate | `cloudflare-origin-tls` |
+| `gateway.endpoint` | External gateway base URL used by the control plane (e.g. `https://dashboard.example.com`). When set, controller-manager uses this address directly and skips auto-discovery from Gateway status | `""` |
+| `gateway.hostnames` | List of hostnames the Gateway listens on | `[]` |
+| `auth.enabled` | Whether to enable platform authentication (JWT login, RBAC, audit) | `false` |
+| `auth.bootstrapAdminUsername` | Initial platform administrator username | `""` |
+| `auth.existingAuthSecret` | Name of an existing Secret containing `jwt-secret` and `bootstrap-admin-password` (recommended for production) | `""` |
+| `monitoring.enabled` | Whether to create monitoring resources such as ServiceMonitor and PrometheusRule | `true` |
+| `monitoring.namespace` | Namespace where monitoring resources (ServiceMonitor, etc.) are created | `monitoring` |
+| `hamiNamespace` | Namespace where HAMi Enterprise is installed | `hami-system` |
+| `controllerManager.replicaCount` | controller-manager replica count | `1` |
+| `installCRDs` | Whether to create/update CRD resources during installation | `true` |
+| `fullnameOverride` | Override prefix for all resource names | `kantaloupe` |
 
 Common configuration values examples:
 
@@ -147,8 +190,6 @@ gateway:
 gateway:
   enabled: false
 ```
-
-**We recommend using a version tracking system to maintain values files for all Helm releases in the cluster.** Use `-f example-values.yaml` to override corresponding keys in the chart's default values.
 
 ### Path B: All-in-One Air-gap Bundle
 
