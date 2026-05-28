@@ -4,8 +4,8 @@ module.exports = {
   generateRobotsTxt: true,
   // Optional: 更改 sitemap 的默认输出目录
   outDir: 'public',
-  // Exclude admin, private routes and API routes
-  exclude: ['/admin/*', '/private/*', '/api/*', '/server-sitemap.xml'],
+  // Exclude admin, private routes, API routes, and attachment routes
+  exclude: ['/admin/*', '/private/*', '/api/*', '/server-sitemap.xml', '/attachments/*', '/zh/attachments/*'],
   // Configure change frequency and priority for different route patterns
   transform: async (config, path) => {
     // Default settings
