@@ -109,6 +109,7 @@ export function enhanceCodeBlocks({
       return false;
     }
   };
+  const resetTimeouts = new WeakMap<HTMLButtonElement, number>();
 
   const ensureWrapper = (preEl: HTMLElement): HTMLDivElement | null => {
     const parent = preEl.parentElement;
@@ -121,69 +122,106 @@ export function enhanceCodeBlocks({
     return wrapper;
   };
 
-  const cleanups: Array<() => void> = [];
-  const preElements = Array.from(container.querySelectorAll('pre'));
+  const enhanceOnce = () => {
+    const preElements = Array.from(container.querySelectorAll('pre'));
 
-  preElements.forEach((pre) => {
-    const preEl = pre as HTMLElement;
-    const codeEl = preEl.querySelector<HTMLElement>('code');
-    if (!codeEl) return;
+    preElements.forEach((pre) => {
+      const preEl = pre as HTMLElement;
+      const codeEl = preEl.querySelector<HTMLElement>('code');
+      if (!codeEl) return;
 
-    const wrapper = ensureWrapper(preEl);
-    if (!wrapper) return;
+      const wrapper = ensureWrapper(preEl);
+      if (!wrapper) return;
 
-    // Language badge
-    const lang = detectLang(codeEl);
-    let badge = wrapper.querySelector<HTMLSpanElement>('.code-language-badge');
-    if (lang) {
-      if (!badge) {
-        badge = document.createElement('span');
-        badge.className = 'code-language-badge';
-        wrapper.insertBefore(badge, preEl);
+      // Language badge
+      const lang = detectLang(codeEl);
+      let badge = wrapper.querySelector<HTMLSpanElement>('.code-language-badge');
+      if (lang) {
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'code-language-badge';
+          wrapper.insertBefore(badge, preEl);
+        }
+        badge.textContent = lang;
+        wrapper.setAttribute('data-has-badge', '1');
+      } else if (badge) {
+        badge.remove();
+        wrapper.removeAttribute('data-has-badge');
       }
-      badge.textContent = lang;
-      wrapper.setAttribute('data-has-badge', '1');
-    } else if (badge) {
-      badge.remove();
-      wrapper.removeAttribute('data-has-badge');
-    }
 
-    // Copy button
-    let copyButton = wrapper.querySelector<HTMLButtonElement>('button.code-copy-button');
-    if (!copyButton) {
-      copyButton = document.createElement('button');
-      copyButton.type = 'button';
-      copyButton.className = 'code-copy-button';
-      wrapper.appendChild(copyButton);
-    }
-    ensureButtonStructure(copyButton);
-    setButtonLabel(copyButton, copyLabel);
-    setButtonState(copyButton, 'idle');
-    copyButton.setAttribute('aria-label', ariaLabel);
-
-    let resetTimeoutId: number | undefined;
-    const handleCopy = async () => {
-      if (resetTimeoutId) window.clearTimeout(resetTimeoutId);
-      const success = await writeToClipboard(codeEl.textContent ?? '');
-      if (success) {
-        setButtonState(copyButton!, 'copied');
-        setButtonLabel(copyButton!, copiedLabel);
-      } else {
-        setButtonState(copyButton!, 'failed');
-        setButtonLabel(copyButton!, failedLabel);
+      // Copy button
+      let copyButton = wrapper.querySelector<HTMLButtonElement>('button.code-copy-button');
+      if (!copyButton) {
+        const existingInsidePre = preEl.querySelector<HTMLButtonElement>('button.code-copy-button');
+        if (existingInsidePre) {
+          copyButton = existingInsidePre;
+          wrapper.appendChild(existingInsidePre);
+        }
       }
-      resetTimeoutId = window.setTimeout(() => {
-        setButtonState(copyButton!, 'idle');
-        setButtonLabel(copyButton!, copyLabel);
-      }, 2000);
-    };
-    copyButton.onclick = handleCopy;
+      if (!copyButton) {
+        copyButton = document.createElement('button');
+        copyButton.type = 'button';
+        copyButton.className = 'code-copy-button';
+        wrapper.appendChild(copyButton);
+      }
+      ensureButtonStructure(copyButton);
+      setButtonLabel(copyButton, copyLabel);
+      setButtonState(copyButton, 'idle');
+      copyButton.setAttribute('aria-label', ariaLabel);
 
-    cleanups.push(() => {
-      if (resetTimeoutId) window.clearTimeout(resetTimeoutId);
-      if (copyButton) copyButton.onclick = null;
+      const handleCopy = async () => {
+        const currentResetTimeout = resetTimeouts.get(copyButton!);
+        if (currentResetTimeout) window.clearTimeout(currentResetTimeout);
+        const success = await writeToClipboard(codeEl.textContent ?? '');
+        if (success) {
+          setButtonState(copyButton!, 'copied');
+          setButtonLabel(copyButton!, copiedLabel);
+        } else {
+          setButtonState(copyButton!, 'failed');
+          setButtonLabel(copyButton!, failedLabel);
+        }
+        const nextResetTimeout = window.setTimeout(() => {
+          setButtonState(copyButton!, 'idle');
+          setButtonLabel(copyButton!, copyLabel);
+        }, 2000);
+        resetTimeouts.set(copyButton!, nextResetTimeout);
+      };
+      copyButton.onclick = handleCopy;
     });
-  });
+  };
 
-  return () => cleanups.forEach((fn) => fn());
+  const needsEnhancement = () =>
+    Array.from(container.querySelectorAll('pre')).some((pre) => {
+      const preEl = pre as HTMLElement;
+      const codeEl = preEl.querySelector<HTMLElement>('code');
+      if (!codeEl) return false;
+      const wrapper = preEl.parentElement;
+      if (!wrapper?.classList.contains('code-block')) return true;
+      return !wrapper.querySelector('button.code-copy-button');
+    });
+
+  let rafId: number | null = null;
+  const observer =
+    typeof MutationObserver === 'undefined'
+      ? null
+      : new MutationObserver(() => {
+          if (rafId !== null) return;
+          rafId = window.requestAnimationFrame(() => {
+            rafId = null;
+            if (needsEnhancement()) enhanceOnce();
+          });
+        });
+
+  enhanceOnce();
+  observer?.observe(container, { childList: true, subtree: true });
+
+  return () => {
+    if (rafId !== null) window.cancelAnimationFrame(rafId);
+    observer?.disconnect();
+    container.querySelectorAll<HTMLButtonElement>('button.code-copy-button').forEach((button) => {
+      const resetTimeoutId = resetTimeouts.get(button);
+      if (resetTimeoutId) window.clearTimeout(resetTimeoutId);
+      button.onclick = null;
+    });
+  };
 }
