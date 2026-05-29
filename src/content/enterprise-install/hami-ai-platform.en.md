@@ -328,7 +328,22 @@ kubectl -n kantaloupe-system get svc
 
 After the HAMi AI Platform service is exposed, open the site and confirm that both frontend and backend are working properly.
 
-For more product features and usage instructions, see: TODO.
+#### Create a Workload
+
+On the **Workloads** page in the console, create an application (e.g. `gpu-burn`) via the creation wizard or an **Example** template:
+
+![Create workload](/images/enterprise-install/hami-ai-platform/create-workload-en.png)
+
+After creation, confirm that all of the following checks pass:
+
+1. **Created successfully** with no console errors
+2. **Workload list**: status, search, list metrics, and monitoring panels (GPU SM / GPU MEM / CPU / Memory) are correct; time-range switching and charts match expectations
+
+   ![Workload list](/images/enterprise-install/hami-ai-platform/workload-list-en.png)
+
+3. **Application details**: basic info, resource overview, GPU Memory Allocation (see [HAMi Enterprise](/products/hami-enterprise) for verification), and monitoring data are correct; GPU and node drill-down pages show correct resource overview and monitoring data
+
+   ![Application details](/images/enterprise-install/hami-ai-platform/workload-detail-en.png)![Application details](/images/enterprise-install/hami-ai-platform/workload-detail-en-2.png)
 
 ## Troubleshooting
 
