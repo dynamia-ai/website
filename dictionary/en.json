@@ -2098,7 +2098,7 @@
       "noRelease": "No Releases Yet",
       "viewDetail": "View Details",
       "downloadCta": "Download",
-      "artifactCount": "{{count}} download artifacts",
+      "artifactCount": "{count} download artifacts",
       "metaVersion": "Version",
       "metaReleased": "Released",
       "metaArtifacts": "Artifacts",
@@ -2112,7 +2112,7 @@
       "matrixDesc": "Choose a product to view its introduction, downloads, install guide and compatibility matrix.",
       "cardEyebrowHamiEnterprise": "GPU virtualization",
       "cardEyebrowHamiAiPlatform": "Heterogeneous compute platform",
-      "matrixCount": "{{count}} products available",
+      "matrixCount": "{count} products available",
       "helpTitle": "Need Help Choosing the Right Product?",
       "helpDesc": "Sizing, eval licenses, air-gap support — talk to our team.",
       "applyTrial": "Apply for Trial",
@@ -2190,6 +2190,7 @@
       "groupDocsDesc": "Installation guides and release notes."
     },
     "installDoc": {
+      "back": "Back to Product",
       "label": "Installation Guide",
       "lastUpdated": "Last updated",
       "tocTitle": "On this page"
@@ -2228,6 +2229,355 @@
       "ctaDescription": "Contact our team for enterprise licensing, deployment assistance, and 24/7 support.",
       "viewDownloads": "Download",
       "applyTrial": "Apply for Trial"
+    },
+    "status": {
+      "ga": "Generally Available",
+      "beta": "Beta",
+      "eol": "End of Life"
+    },
+    "compatLabels": {
+      "kubernetes": "Kubernetes",
+      "os": "Operating systems",
+      "gpu": "GPU drivers"
+    },
+    "productIntro": {
+      "hami-enterprise": {
+        "eyebrow": "Product introduction",
+        "title": "Production-grade GPU virtualization for teams that already run Kubernetes.",
+        "body": "HAMi Enterprise packages the open-source HAMi foundation into a hardened commercial distribution for real production clusters. It focuses on high-density GPU sharing, multi-vendor accelerator support, security maintenance, hotfix delivery and enterprise support while fitting into an existing PaaS or internal developer platform.",
+        "scenarioTitle": "Best fit",
+        "scenarios": [
+          "You already operate Kubernetes or a PaaS and need a supported HAMi distribution.",
+          "You need higher GPU utilization, controlled vGPU sharing and production stability.",
+          "You want enterprise support, long-term maintenance and air-gap deployment packages."
+        ],
+        "capabilitiesTitle": "Core product capabilities",
+        "capabilities": [
+          {
+            "title": "Fine-grained GPU sharing",
+            "desc": "Allocate GPU core and memory fractions to improve utilization across training, inference and developer workloads."
+          },
+          {
+            "title": "Hardened production delivery",
+            "desc": "Signed images, CVE response, release packaging, upgrade guides and deployment support for enterprise environments."
+          },
+          {
+            "title": "Multi-vendor accelerator support",
+            "desc": "Run heterogeneous GPU and accelerator fleets through one scheduling and virtualization layer."
+          }
+        ]
+      },
+      "hami-ai-platform": {
+        "eyebrow": "Product introduction",
+        "title": "A full-stack heterogeneous compute control plane with HAMi Enterprise built in.",
+        "body": "HAMi AI Platform is the platform edition for organizations that need more than a virtualization layer. It includes HAMi Enterprise and adds a multi-cluster GUI, unified observability, tenant quota, chargeback, OpenAPI and operational workflows for cluster administrators, platform teams and AI application owners.",
+        "scenarioTitle": "Best fit",
+        "scenarios": [
+          "You need a visual platform for heterogeneous compute operations across multiple clusters.",
+          "You need tenant quotas, chargeback and resource governance for multiple teams.",
+          "You need cluster, application and GPU observability in one control plane."
+        ],
+        "capabilitiesTitle": "Platform capabilities",
+        "capabilities": [
+          {
+            "title": "Multi-cluster resource control",
+            "desc": "Pool and schedule heterogeneous resources across clusters, data centers and cloud environments."
+          },
+          {
+            "title": "Observability and governance",
+            "desc": "Track GPU/NPU utilization, queues, tenants, applications and SLOs with platform-level visibility."
+          },
+          {
+            "title": "Tenant quota and OpenAPI",
+            "desc": "Expose quota, billing, automation and integration workflows to platform teams and internal systems."
+          }
+        ]
+      }
+    },
+    "origin": {
+      "eyebrow": "Same DNA",
+      "title": "HAMi & Dynamia",
+      "subtitle": "HAMi is the CNCF Sandbox project for heterogeneous AI computing virtualization. Founded and core-maintained by the dynamia.ai team. Our enterprise editions ship the same upstream code — hardened, supported, SLA-backed.",
+      "pillars": [
+        {
+          "title": "CNCF Sandbox",
+          "desc": "Open governance · vendor-neutral foundation"
+        },
+        {
+          "title": "Created by Dynamia",
+          "desc": "HAMi maintainers are the dynamia.ai team"
+        },
+        {
+          "title": "100% upstream",
+          "desc": "No fork drift · no lock-in"
+        },
+        {
+          "title": "OEM-grade SLA",
+          "desc": "24/7 support · long-term release lines"
+        }
+      ],
+      "relation": {
+        "connector1": "Founded & maintained",
+        "connector2": "OEM delivery · SLA",
+        "team": {
+          "title": "Dynamia AI",
+          "titleSub": "dynamia.ai",
+          "desc": "Founder and core maintainer of HAMi, delivering enterprise editions as the OEM."
+        },
+        "opensource": {
+          "title": "HAMi",
+          "desc": "Heterogeneous AI computing virtualization middleware · open source, community-driven."
+        },
+        "commercial": {
+          "title": "Enterprise Editions",
+          "desc": "Commercial distribution based on HAMi, with support and services from Dynamia AI."
+        }
+      },
+      "ctaPrimary": "HAMi website",
+      "ctaCommunity": "Community",
+      "ctaGithub": "GitHub",
+      "ctaDiscord": "Discord"
+    },
+    "scope": {
+      "title": "Which Product Is Right for You?",
+      "subtitle": "Three product lines — open-source HAMi, HAMi Enterprise, and HAMi AI Platform.",
+      "decisionTitle": "Choose in 30 Seconds",
+      "totalsLabel": "Capabilities covered",
+      "totalsHint": "Checkmark = supported in that edition",
+      "decisionRows": [
+        {
+          "scenario": "I want to experiment with GPU sharing on my own",
+          "choice": "Open-source HAMi"
+        },
+        {
+          "scenario": "I need a supported, hardened GPU virtualization layer",
+          "choice": "HAMi Enterprise"
+        },
+        {
+          "scenario": "I also need a multi-cluster GUI, quotas, and observability",
+          "choice": "HAMi AI Platform"
+        },
+        {
+          "scenario": "I want to manage a platform for multiple internal teams",
+          "choice": "HAMi AI Platform"
+        }
+      ],
+      "columns": {
+        "feature": "Capability",
+        "oss": "Open-source HAMi",
+        "ossSub": "",
+        "commercial": "HAMi Enterprise",
+        "commercialSub": "",
+        "enterprise": "HAMi AI Platform",
+        "enterpriseSub": ""
+      },
+      "cta": {
+        "ossLabel": "Open-source HAMi",
+        "ossLink": "GitHub",
+        "ossHref": "https://github.com/Project-HAMi/HAMi",
+        "commercialLabel": "HAMi Enterprise",
+        "commercialLink": "Download",
+        "enterpriseLabel": "HAMi AI Platform",
+        "enterpriseLink": "Download"
+      },
+      "recommendPrefix": "→ ",
+      "groups": [
+        {
+          "id": "gpu-core",
+          "title": "GPU Virtualization Core",
+          "desc": "Open-source HAMi base — extended in commercial editions.",
+          "rows": [
+            {
+              "feature": "GPU memory sharing"
+            },
+            {
+              "feature": "GPU compute sharing"
+            },
+            {
+              "feature": "Memory hard isolation"
+            },
+            {
+              "feature": "Compute hard isolation"
+            },
+            {
+              "feature": "Memory & compute oversubscription"
+            },
+            {
+              "feature": "High-perf mode (no virtualization overhead)"
+            },
+            {
+              "feature": "HAMi Turbo mode"
+            },
+            {
+              "feature": "Auto-scaling without restart"
+            },
+            {
+              "feature": "Task priority & preemption"
+            },
+            {
+              "feature": "Idle-time analytics & memory profiling"
+            },
+            {
+              "feature": "Optimized scheduler engine (parallel)"
+            },
+            {
+              "feature": "Binpack / Spread strategies"
+            },
+            {
+              "feature": "NVIDIA topology-aware affinity"
+            },
+            {
+              "feature": "Volcano deep integration (preemption / vGPU joint)"
+            }
+          ]
+        },
+        {
+          "id": "gpu-vendors",
+          "title": "Heterogeneous GPU Vendor Support",
+          "desc": "Broad vendor coverage from NVIDIA to leading domestic accelerators and AMD.",
+          "rows": [
+            {
+              "feature": "NVIDIA (full lineup)"
+            },
+            {
+              "feature": "AMD MI series (incl. MI300X)"
+            },
+            {
+              "feature": "Ascend (910B / 910C)"
+            },
+            {
+              "feature": "MetaX (MXC500)"
+            },
+            {
+              "feature": "Kunlunxin (P800)"
+            },
+            {
+              "feature": "Hygon DCU (K100)"
+            },
+            {
+              "feature": "Iluvatar (BI)"
+            },
+            {
+              "feature": "Cambricon (MLU370)"
+            },
+            {
+              "feature": "Enflame (SG2042)"
+            },
+            {
+              "feature": "Moore Threads (MTT S3000)"
+            }
+          ]
+        },
+        {
+          "id": "multi-cluster",
+          "title": "Multi-cluster Control Plane",
+          "desc": "Enterprise-only — turn-key UI, observability, lifecycle management.",
+          "rows": [
+            {
+              "feature": "Multi-cluster observability (cluster / app / GPU)"
+            },
+            {
+              "feature": "GPU hardware monitoring"
+            },
+            {
+              "feature": "Rich alert policies"
+            },
+            {
+              "feature": "Turn-key GUI (multi-cluster dashboard, quota, workload)"
+            },
+            {
+              "feature": "Visual Binpack / Spread strategy editor"
+            },
+            {
+              "feature": "Global time-range search & filters"
+            },
+            {
+              "feature": "Multi-cluster lifecycle management (LCM)"
+            }
+          ]
+        },
+        {
+          "id": "enterprise-ops",
+          "title": "Enterprise Operations",
+          "desc": "Enterprise-only — tenant, security, billing, OpenAPI, SLA.",
+          "rows": [
+            {
+              "feature": "Enterprise-grade tenant quota"
+            },
+            {
+              "feature": "Network security policies"
+            },
+            {
+              "feature": "Tenant-level security isolation"
+            },
+            {
+              "feature": "Metering & billing"
+            },
+            {
+              "feature": "OpenAPI & automation"
+            },
+            {
+              "feature": "SLA-backed support (24/7)"
+            },
+            {
+              "feature": "Air-gap / offline deployment"
+            }
+          ]
+        }
+      ]
+    },
+    "checksumPending": "Checksum pending",
+    "copyCommand": "Copy",
+    "copiedCommand": "Copied",
+    "downloadContactNeedBundles": "Need bundles early? Contact sales",
+    "downloadContactCallPrefix": "Need bundles early?",
+    "downloadContactSales": "Contact sales",
+    "downloadContactPhone": "or call 400-026-7800",
+    "productsData": {
+      "hami-enterprise": {
+        "name": "HAMi Enterprise",
+        "tagline": "Enterprise edition of HAMi — production-grade GPU virtualization built on the CNCF Sandbox project",
+        "description": "HAMi Enterprise is the GPU-license-based enterprise edition of HAMi, focused on lifting GPU utilization from the open-source 40% to 70%+. It targets vertical-internet teams and channel partners that already operate a PaaS and need a hardened, supported HAMi.",
+        "highlights": [
+          {
+            "title": "Enterprise SLA",
+            "desc": "24/7 support, hotfix delivery and long-term version maintenance."
+          },
+          {
+            "title": "Multi-vendor GPU",
+            "desc": "NVIDIA, Ascend, MLU, Iluvatar, Hygon DCU and more."
+          },
+          {
+            "title": "Hardened Security",
+            "desc": "Signed images, CVE patching pipeline and audit logs."
+          }
+        ]
+      },
+      "hami-ai-platform": {
+        "name": "HAMi AI Platform",
+        "tagline": "Enterprise heterogeneous compute scheduling & virtualization platform — includes everything in HAMi Enterprise plus GUI, multi-cluster observability, tenant quota and OpenAPI",
+        "description": "HAMi AI Platform is the full-stack control plane for heterogeneous compute clusters. It bundles HAMi Enterprise with multi-cluster GUI, end-to-end observability (cluster/app/GPU), enterprise tenant quota, billing, OpenAPI, and SLA support — for public-cloud marketplaces, mid-market and KA customers.",
+        "highlights": [
+          {
+            "title": "Multi-cluster Federation",
+            "desc": "Pool resources across data centers and clouds with a single control plane."
+          },
+          {
+            "title": "Tenant-aware Quota",
+            "desc": "Hierarchical quota, fair-share scheduling and chargeback reports."
+          },
+          {
+            "title": "Real-time Observability",
+            "desc": "GPU/NPU utilization, queue latency, SLO dashboards."
+          }
+        ]
+      }
+    },
+    "codeLabels": {
+      "copy": "Copy",
+      "copied": "Copied",
+      "failed": "Copy failed",
+      "aria": "Copy code snippet"
     }
   },
   "common": {

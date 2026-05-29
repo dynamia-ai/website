@@ -4,7 +4,6 @@ import type {
   ArtifactType,
   EnterpriseProduct,
   EnterpriseProductsFile,
-  Locale,
   Release,
 } from '@/types/enterprise';
 
@@ -53,10 +52,6 @@ export function getReleaseByVersion(
   version: string,
 ): Release | undefined {
   return product.releases.find((r) => r.version === version);
-}
-
-export function pickI18n(text: { en: string; zh: string }, locale: Locale): string {
-  return text[locale] ?? text.en;
 }
 
 export function getProductIds(): string[] {

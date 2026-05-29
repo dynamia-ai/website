@@ -15,6 +15,12 @@ export function localizedPath(path: string, locale: string): string {
   return locale === routing.defaultLocale ? path : `/${locale}${path}`;
 }
 
+export function shortenDescription(text: string, locale: string): string {
+  const maxChars = locale === 'zh' ? 72 : 140;
+  if (text.length <= maxChars) return text;
+  return `${text.slice(0, maxChars).trimEnd()}…`;
+}
+
 export function localizedAlternates(path: string): Record<string, string> {
   return Object.fromEntries(
     routing.locales.map((loc) => [loc, localizedUrl(path, loc)])

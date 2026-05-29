@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { notFound, useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import {
   ChartBarIcon,
@@ -20,160 +20,34 @@ import {
   getProductById,
   getLatestRelease,
   isOfflineDownloadsComingSoon,
-  pickI18n,
+
 } from '@/lib/enterprise';
 import { captureAttribution, attributionToPayload } from '@/utils/utm';
-import type { Artifact, Locale } from '@/types/enterprise';
+import { localizedPath } from '@/utils/i18n';
+import type { Artifact } from '@/types/enterprise';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 16 },
   visible: { opacity: 1, y: 0 },
 };
 
-const PRODUCT_INTRO = {
-  'hami-enterprise': {
-    en: {
-      eyebrow: 'Product introduction',
-      title: 'Production-grade GPU virtualization for teams that already run Kubernetes.',
-      body: 'HAMi Enterprise packages the open-source HAMi foundation into a hardened commercial distribution for real production clusters. It focuses on high-density GPU sharing, multi-vendor accelerator support, security maintenance, hotfix delivery and enterprise support while fitting into an existing PaaS or internal developer platform.',
-      scenarioTitle: 'Best fit',
-      scenarios: [
-        'You already operate Kubernetes or a PaaS and need a supported HAMi distribution.',
-        'You need higher GPU utilization, controlled vGPU sharing and production stability.',
-        'You want enterprise support, long-term maintenance and air-gap deployment packages.',
-      ],
-      capabilitiesTitle: 'Core product capabilities',
-      capabilities: [
-        {
-          title: 'Fine-grained GPU sharing',
-          desc: 'Allocate GPU core and memory fractions to improve utilization across training, inference and developer workloads.',
-        },
-        {
-          title: 'Hardened production delivery',
-          desc: 'Signed images, CVE response, release packaging, upgrade guides and deployment support for enterprise environments.',
-        },
-        {
-          title: 'Multi-vendor accelerator support',
-          desc: 'Run heterogeneous GPU and accelerator fleets through one scheduling and virtualization layer.',
-        },
-      ],
-    },
-    zh: {
-      eyebrow: '产品介绍',
-      title: '面向已有 Kubernetes/PaaS 团队的生产级 GPU 虚拟化产品。',
-      body: 'HAMi 企业版将开源 HAMi 的核心能力打包为经过生产加固的商业发行版，重点解决 GPU 细粒度共享、多厂商加速卡适配、安全维护、热修复交付和企业级支持问题，并可集成到客户已有的 PaaS 或内部开发者平台中。',
-      scenarioTitle: '适用场景',
-      scenarios: [
-        '已经有 Kubernetes 或 PaaS，需要可被企业支持的 HAMi 发行版。',
-        '需要提升 GPU 利用率，并稳定承载 vGPU 共享、训练、推理和开发机负载。',
-        '需要长期版本维护、离线部署包、安装指南和企业级技术支持。',
-      ],
-      capabilitiesTitle: '核心产品能力',
-      capabilities: [
-        {
-          title: 'GPU 细粒度共享',
-          desc: '按 GPU 算力和显存切分资源，提升训练、推理和开发负载的整体利用率。',
-        },
-        {
-          title: '生产级交付加固',
-          desc: '提供镜像签名、CVE 响应、版本包、升级指南和企业部署支持。',
-        },
-        {
-          title: '多厂商异构加速卡适配',
-          desc: '通过统一调度与虚拟化层管理多种 GPU/NPU/DCU 加速卡资源。',
-        },
-      ],
-    },
-  },
-  'hami-ai-platform': {
-    en: {
-      eyebrow: 'Product introduction',
-      title: 'A full-stack heterogeneous compute control plane with HAMi Enterprise built in.',
-      body: 'HAMi AI Platform is the platform edition for organizations that need more than a virtualization layer. It includes HAMi Enterprise and adds a multi-cluster GUI, unified observability, tenant quota, chargeback, OpenAPI and operational workflows for cluster administrators, platform teams and AI application owners.',
-      scenarioTitle: 'Best fit',
-      scenarios: [
-        'You need a visual platform for heterogeneous compute operations across multiple clusters.',
-        'You need tenant quotas, chargeback and resource governance for multiple teams.',
-        'You need cluster, application and GPU observability in one control plane.',
-      ],
-      capabilitiesTitle: 'Platform capabilities',
-      capabilities: [
-        {
-          title: 'Multi-cluster resource control',
-          desc: 'Pool and schedule heterogeneous resources across clusters, data centers and cloud environments.',
-        },
-        {
-          title: 'Observability and governance',
-          desc: 'Track GPU/NPU utilization, queues, tenants, applications and SLOs with platform-level visibility.',
-        },
-        {
-          title: 'Tenant quota and OpenAPI',
-          desc: 'Expose quota, billing, automation and integration workflows to platform teams and internal systems.',
-        },
-      ],
-    },
-    zh: {
-      eyebrow: '产品介绍',
-      title: '内置 HAMi 企业版能力的异构算力全栈控制面。',
-      body: 'HAMi 平台版面向不只需要虚拟化组件、还需要完整平台能力的组织。它包含 HAMi 企业版，并叠加多集群 GUI、统一可观测、租户配额、计量计费、OpenAPI 与运维工作流，服务于集群管理员、平台团队和 AI 应用负责人。',
-      scenarioTitle: '适用场景',
-      scenarios: [
-        '需要通过可视化平台统一管理多个异构算力集群。',
-        '需要面向多个团队做租户配额、计量计费和资源治理。',
-        '需要把集群、应用和 GPU/NPU 可观测统一到一个控制面中。',
-      ],
-      capabilitiesTitle: '平台能力',
-      capabilities: [
-        {
-          title: '多集群资源管控',
-          desc: '跨集群、跨数据中心、跨云统一资源池化与调度异构算力。',
-        },
-        {
-          title: '可观测与治理',
-          desc: '统一查看 GPU/NPU 利用率、队列、租户、应用和 SLO 运行状态。',
-        },
-        {
-          title: '租户配额与 OpenAPI',
-          desc: '面向平台团队和内部系统开放配额、计费、自动化和集成能力。',
-        },
-      ],
-    },
-  },
-} as const;
 
 const CAPABILITY_ICONS = [CpuChipIcon, CubeTransparentIcon, ChartBarIcon];
 
-const COMPATIBILITY_LABELS: Record<string, Record<Locale, string>> = {
-  kubernetes: {
-    en: 'Kubernetes',
-    zh: 'Kubernetes',
-  },
-  os: {
-    en: 'Operating systems',
-    zh: '操作系统',
-  },
-  gpu: {
-    en: 'GPU drivers',
-    zh: 'GPU 驱动',
-  },
-};
 
-interface EnterpriseDetailClientProps {
-  productId: string;
-  locale: Locale;
-}
+interface EnterpriseDetailClientProps { productId: string; }
 
-export default function EnterpriseDetailClient({
-  productId,
-  locale,
-}: EnterpriseDetailClientProps) {
-  const t = useTranslations();
+export default function EnterpriseDetailClient({ productId }: EnterpriseDetailClientProps) {
+  const t = useTranslations('enterprise');
+  const locale = useLocale();
   const router = useRouter();
 
   const product = getProductById(productId);
   if (!product) {
     notFound();
   }
+
+  const pd = (t.raw('productsData') as any)?.[productId];
 
   const latest = getLatestRelease(product!);
   const downloadVersion = latest?.version ?? product!.releases[0]?.version ?? '';
@@ -188,18 +62,15 @@ export default function EnterpriseDetailClient({
 
   const offlineDownloadsComingSoon = isOfflineDownloadsComingSoon(product!);
   const intro =
-    PRODUCT_INTRO[product!.id as keyof typeof PRODUCT_INTRO]?.[locale] ??
-    PRODUCT_INTRO['hami-enterprise'][locale];
+    (t.raw as any)(`productIntro.${product!.id}`) ??
+    (t.raw as any)('productIntro.hami-enterprise');
 
   const [pendingResolvedUrl, setPendingResolvedUrl] = useState<string | null>(null);
 
   const triggerDownload = (artifact: Artifact, resolvedUrl: string) => {
     const isDoc = artifact.type === 'install-doc' || artifact.type === 'release-notes';
     if (isDoc) {
-      const docUrl =
-        locale === 'zh' && resolvedUrl.startsWith('/products/')
-          ? `/zh${resolvedUrl}`
-          : resolvedUrl;
+      const docUrl = localizedPath(resolvedUrl, locale);
       router.push(docUrl);
       return;
     }
@@ -217,10 +88,10 @@ export default function EnterpriseDetailClient({
     setPendingResolvedUrl(resolvedUrl);
     setGateContext({
       productId: product!.id,
-      productName: pickI18n(product!.name, locale),
+      productName: pd?.name ?? product!.name.en,
       version: downloadVersion,
       artifactType: artifact.type,
-      artifactLabel: pickI18n(artifact.label, locale),
+      artifactLabel: artifact.label[locale] ?? artifact.label.en,
     });
   };
 
@@ -251,7 +122,6 @@ export default function EnterpriseDetailClient({
       <ProductHero
         product={product!}
         latest={latest}
-        locale={locale}
         onJumpDownload={handleJumpDownload}
       />
 
@@ -281,7 +151,7 @@ export default function EnterpriseDetailClient({
                 {intro.scenarioTitle}
               </h3>
               <ul className="mt-5 space-y-4">
-                {intro.scenarios.map((scenario) => (
+                {intro.scenarios.map((scenario: string) => (
                   <li key={scenario} className="flex gap-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
                     <span>{scenario}</span>
@@ -296,7 +166,7 @@ export default function EnterpriseDetailClient({
               {intro.capabilitiesTitle}
             </h2>
             <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
-              {intro.capabilities.map((capability, index) => {
+              {intro.capabilities.map((capability: { title: string; desc: string }, index: number) => {
                 const Icon = CAPABILITY_ICONS[index] ?? Squares2X2Icon;
                 return (
                   <motion.div
@@ -336,24 +206,24 @@ export default function EnterpriseDetailClient({
           >
             <div className="rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                {t('enterprise.detail.aboutTitle')}
+                {t('detail.aboutTitle')}
               </h2>
               <p className="text-gray-600 dark:text-gray-300 whitespace-pre-line leading-relaxed">
-                {pickI18n(product!.description, locale)}
+                {pd?.description ?? product!.description.en}
               </p>
 
-              {product!.highlights && product!.highlights.length > 0 && (
+              {pd?.highlights && pd.highlights.length > 0 && (
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {product!.highlights.map((h, i) => (
+                  {pd.highlights.map((h: { title: string; desc: string }, i: number) => (
                     <div
                       key={i}
                       className="rounded-lg border border-gray-100 dark:border-gray-800 p-4 bg-gray-50/50 dark:bg-gray-900/50"
                     >
                       <h3 className="font-medium text-gray-900 dark:text-gray-100 text-sm">
-                        {pickI18n(h.title, locale)}
+                        {h.title}
                       </h3>
                       <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                        {pickI18n(h.desc, locale)}
+                        {h.desc}
                       </p>
                     </div>
                   ))}
@@ -366,20 +236,19 @@ export default function EnterpriseDetailClient({
               className="scroll-mt-20 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900 lg:p-7"
             >
               <h2 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-xl">
-                {t('enterprise.detail.downloadTitle')}
+                {t('detail.downloadTitle')}
               </h2>
 
               {latest ? (
                 <DownloadDeliveryTabs
                   release={latest}
-                  locale={locale}
                   unlocked={unlocked}
                   offlineComingSoon={offlineDownloadsComingSoon}
                   onDownload={handleDownload}
                 />
               ) : (
                 <p className="mt-5 text-gray-500 dark:text-gray-400">
-                  {t('enterprise.detail.noRelease')}
+                  {t('detail.noRelease')}
                 </p>
               )}
             </div>
@@ -395,14 +264,14 @@ export default function EnterpriseDetailClient({
             {product!.compatibility && (
               <div className="rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6">
                 <h3 className="font-semibold text-gray-900 dark:text-gray-100">
-                  {t('enterprise.detail.compatTitle')}
+                  {t('detail.compatTitle')}
                 </h3>
                 <dl className="mt-4 divide-y divide-gray-100 dark:divide-gray-800">
                   {Object.entries(product!.compatibility).map(([key, values]) =>
                     values && values.length > 0 ? (
                       <div key={key} className="py-3 first:pt-0 last:pb-0">
                         <dt className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                          {COMPATIBILITY_LABELS[key]?.[locale] ?? key}
+                          {t(`compatLabels.${key}` as any) || key}
                         </dt>
                         <dd className="mt-2 flex flex-wrap gap-1.5">
                           {values.map((v) => (
@@ -423,31 +292,31 @@ export default function EnterpriseDetailClient({
 
             <div className="rounded-xl bg-primary/5 dark:bg-primary/10 border border-primary/20 p-6">
               <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                {t('enterprise.detail.contactTitle')}
+                {t('detail.contactTitle')}
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                {t('enterprise.detail.contactDesc')}
+                {t('detail.contactDesc')}
               </p>
               <a
-                href={locale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
+                href={localizedPath('/apply-trial', locale)}
                 className="mt-4 inline-flex items-center px-4 py-2 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-dark transition-colors"
               >
-                {t('enterprise.detail.contactCta')}
+                {t('detail.contactCta')}
               </a>
             </div>
 
             <div className="rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6">
               <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                {t('enterprise.detail.casesTitle')}
+                {t('detail.casesTitle')}
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                {t('enterprise.detail.casesDesc')}
+                {t('detail.casesDesc')}
               </p>
               <a
-                href={locale === 'zh' ? '/zh/case-studies' : '/case-studies'}
+                href={localizedPath('/case-studies', locale)}
                 className="inline-flex items-center text-sm font-medium text-primary hover:underline"
               >
-                {t('enterprise.detail.casesCta')} →
+                {t('detail.casesCta')} →
               </a>
             </div>
           </motion.aside>
@@ -469,7 +338,7 @@ async function fireDownloadAnalytics(
   artifact: Artifact,
   productId: string,
   version: string,
-  locale: Locale,
+  locale: string,
   resolvedUrl: string,
 ) {
   try {

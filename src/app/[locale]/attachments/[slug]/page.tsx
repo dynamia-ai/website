@@ -43,7 +43,6 @@ export default async function AttachmentPage({ params }: PageProps) {
       lastUpdated={doc.frontmatter.lastUpdated}
       html={doc.html}
       toc={doc.toc}
-      locale={docLocale}
     />
   );
 }

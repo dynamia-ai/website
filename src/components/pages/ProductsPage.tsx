@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function ProductsListPage() {
-  return <EnterpriseListClient locale="en" />;
+  return <EnterpriseListClient />;
 }

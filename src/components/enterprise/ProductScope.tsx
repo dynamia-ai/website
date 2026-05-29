@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { localizedPath } from '@/utils/i18n';
 import {
   CheckIcon,
   MinusIcon,
@@ -11,254 +13,60 @@ import {
   BuildingOffice2Icon,
   ServerStackIcon,
 } from '@heroicons/react/24/outline';
-import type { Locale } from '@/types/enterprise';
 
-interface ProductScopeProps {
-  locale: Locale;
-}
-
-interface FeatureRow {
-  feature: { en: string; zh: string };
-  oss: boolean;
-  commercial: boolean;
-  enterprise: boolean;
-}
-
-interface FeatureGroup {
+interface GroupMeta {
   id: string;
-  title: { en: string; zh: string };
-  desc: { en: string; zh: string };
   Icon: React.ComponentType<{ className?: string }>;
-  rows: FeatureRow[];
+  rows: { oss: boolean; commercial: boolean; enterprise: boolean }[];
 }
 
-const GROUPS: FeatureGroup[] = [
-  {
-    id: 'gpu-core',
-    title: { en: 'GPU Virtualization Core', zh: 'GPU 虚拟化核心' },
-    desc: {
-      en: 'Open-source HAMi base — extended in commercial editions.',
-      zh: '开源 HAMi 基础能力 —— 商业版强化',
-    },
-    Icon: CpuChipIcon,
-    rows: [
-      {
-        feature: { en: 'GPU memory sharing', zh: '显存共享' },
-        oss: true,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'GPU compute sharing', zh: '算力共享' },
-        oss: true,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Memory hard isolation', zh: '显存共享强隔离' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Compute hard isolation', zh: '算力共享强隔离' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Memory & compute oversubscription', zh: '显存、算力超卖' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'High-perf mode (no virtualization overhead)', zh: '高性能模式（虚拟化无性能损失）' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'HAMi Turbo mode', zh: 'HAMi Turbo 模式' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Auto-scaling without restart', zh: '应用无缝自动扩缩容（不重启）' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Task priority & preemption', zh: '任务优先级抢占' },
-        oss: true,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Idle-time analytics & memory profiling', zh: '空闲统计 & 显存占用分析' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Optimized scheduler engine (parallel)', zh: '调度引擎并行优化' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Binpack / Spread strategies', zh: 'Binpack / Spread 策略' },
-        oss: true,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'NVIDIA topology-aware affinity', zh: 'NVIDIA 网络拓扑亲和调度' },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-      {
-        feature: {
-          en: 'Volcano deep integration (preemption / vGPU joint)',
-          zh: 'Volcano 深度集成（抢占 / vGPU 联合调度）',
-        },
-        oss: false,
-        commercial: true,
-        enterprise: true,
-      },
-    ],
-  },
-  {
-    id: 'gpu-vendors',
-    title: { en: 'Heterogeneous GPU Vendor Support', zh: '异构 GPU 厂商支持' },
-    desc: {
-      en: 'Broad vendor coverage from NVIDIA to leading domestic accelerators and AMD.',
-      zh: 'NVIDIA + 国产 8 家 + AMD',
-    },
-    Icon: ServerStackIcon,
-    rows: [
-      { feature: { en: 'NVIDIA (full lineup)', zh: 'NVIDIA 全系列' }, oss: true, commercial: true, enterprise: true },
-      { feature: { en: 'AMD MI series (incl. MI300X)', zh: 'AMD MI 系列（含 MI300X）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'Ascend (910B / 910C)', zh: '昇腾（910B / 910C）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'MetaX (MXC500)', zh: '沐曦（MXC500）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'Kunlunxin (P800)', zh: '昆仑芯（P800）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'Hygon DCU (K100)', zh: '海光 DCU（K100）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'Iluvatar (BI)', zh: '天数智芯（BI）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'Cambricon (MLU370)', zh: '寒武纪（MLU370）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'Enflame (SG2042)', zh: '燧原（SG2042）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'Moore Threads (MTT S3000)', zh: '摩尔线程（MTT S3000）' }, oss: false, commercial: true, enterprise: true },
-    ],
-  },
-  {
-    id: 'multi-cluster',
-    title: { en: 'Multi-cluster Control Plane', zh: '多集群控制面' },
-    desc: {
-      en: 'Enterprise-only — turn-key UI, observability, lifecycle management.',
-      zh: '仅企业版 —— 一站式 UI、可观测、生命周期管理',
-    },
-    Icon: ChartBarIcon,
-    rows: [
-      {
-        feature: {
-          en: 'Multi-cluster observability (cluster / app / GPU)',
-          zh: '多集群一站式可观测（集群 / 应用 / GPU）',
-        },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'GPU hardware monitoring', zh: 'GPU 硬件监控' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Rich alert policies', zh: '丰富完备的告警策略' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: {
-          en: 'Turn-key GUI (multi-cluster dashboard, quota, workload)',
-          zh: '一站式 GUI（多集群 Dashboard / 资源 / 配额 / 工作负载）',
-        },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Visual Binpack / Spread strategy editor', zh: '可视化 Binpack / Spread 策略' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Global time-range search & filters', zh: '全局时间检索 / 表格筛选' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Multi-cluster lifecycle management (LCM)', zh: '完备多集群生命周期管理（LCM）' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-    ],
-  },
-  {
-    id: 'enterprise-ops',
-    title: { en: 'Enterprise Operations', zh: '企业运营' },
-    desc: {
-      en: 'Enterprise-only — tenant, security, billing, OpenAPI, SLA.',
-      zh: '仅企业版 —— 租户 / 安全 / 计费 / OpenAPI / SLA',
-    },
-    Icon: BuildingOffice2Icon,
-    rows: [
-      {
-        feature: { en: 'Enterprise-grade tenant quota', zh: '企业级租户配额' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Network security policies', zh: '网络安全策略' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Tenant-level security isolation', zh: '租户级安全隔离策略' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Metering & billing', zh: '计量、计费' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      { feature: { en: 'OpenAPI', zh: 'OpenAPI' }, oss: false, commercial: false, enterprise: true },
-      {
-        feature: { en: 'Enterprise SLA support', zh: '企业级 SLA 支持' },
-        oss: false,
-        commercial: false,
-        enterprise: true,
-      },
-      {
-        feature: { en: 'Community support', zh: '社区支持' },
-        oss: true,
-        commercial: false,
-        enterprise: false,
-      },
-    ],
-  },
+const GROUP_META: GroupMeta[] = [
+  { id: 'gpu-core', Icon: CpuChipIcon, rows: [
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+  ]},
+  { id: 'gpu-vendors', Icon: ServerStackIcon, rows: [
+    { oss: true, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+  ]},
+  { id: 'multi-cluster', Icon: ChartBarIcon, rows: [
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+  ]},
+  { id: 'enterprise-ops', Icon: BuildingOffice2Icon, rows: [
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
+  ]},
 ];
 
 const MATRIX_GRID =
@@ -303,106 +111,18 @@ function ScopeCtaCard({ href, title, subtitle, external }: ScopeCtaCardProps) {
   );
 }
 
-const COPY = {
-  en: {
-    title: 'Which Product Is Right for You?',
-    subtitle:
-      'Three product lines — open-source HAMi, HAMi Enterprise, and HAMi AI Platform.',
-    decisionTitle: 'Choose in 30 Seconds',
-    totalsLabel: 'Capabilities covered',
-    totalsHint: 'Checkmark = supported in that edition',
-    decisionRows: [
-      {
-        scenario: 'Evaluating, building on top, or running a single-cluster proof-of-concept — community support is sufficient',
-        choice: 'Open-source HAMi',
-      },
-      {
-        scenario: 'You already operate a PaaS or scheduler and need hardened GPU virtualization with vendor support',
-        choice: 'HAMi Enterprise',
-      },
-      {
-        scenario: 'You want a turn-key, multi-cluster control plane — UI, observability, tenant quota and billing',
-        choice: 'HAMi AI Platform',
-      },
-      {
-        scenario: 'Public-cloud marketplace, mid-market or key-account customer',
-        choice: 'HAMi AI Platform',
-      },
-    ],
-    columns: {
-      feature: 'Capability',
-      oss: 'Open-source HAMi',
-      ossSub: '',
-      commercial: 'HAMi Enterprise',
-      commercialSub: '',
-      enterprise: 'HAMi AI Platform',
-      enterpriseSub: '',
-    },
-    cta: {
-      ossLabel: 'Open-source HAMi',
-      ossLink: 'GitHub',
-      ossHref: 'https://github.com/Project-HAMi/HAMi',
-      commercialLabel: 'HAMi Enterprise',
-      commercialLink: 'Download',
-      enterpriseLabel: 'HAMi AI Platform',
-      enterpriseLink: 'Download',
-    },
-  },
-  zh: {
-    title: '如何选择产品',
-    subtitle: '三条产品线 —— 开源 HAMi、HAMi 企业版、HAMi 平台版。',
-    decisionTitle: '30 秒选型',
-    totalsLabel: '能力覆盖',
-    totalsHint: '勾选表示该版本支持',
-    decisionRows: [
-      {
-        scenario: '评估、二次开发、单集群验证；可接受社区支持',
-        choice: '开源 HAMi',
-      },
-      {
-        scenario: '已运营 PaaS 或调度系统，需要加固版 GPU 虚拟化能力与原厂支持',
-        choice: 'HAMi 企业版',
-      },
-      {
-        scenario: '需要开箱即用的多集群控制面 —— UI、可观测、租户配额、计量计费',
-        choice: 'HAMi 平台版',
-      },
-      {
-        scenario: '公有云应用市场、中型企业、行业 KA 客户',
-        choice: 'HAMi 平台版',
-      },
-    ],
-    columns: {
-      feature: '能力',
-      oss: '开源 HAMi',
-      ossSub: '',
-      commercial: 'HAMi 企业版',
-      commercialSub: '',
-      enterprise: 'HAMi 平台版',
-      enterpriseSub: '',
-    },
-    cta: {
-      ossLabel: '开源 HAMi',
-      ossLink: 'GitHub',
-      ossHref: 'https://github.com/Project-HAMi/HAMi',
-      commercialLabel: 'HAMi 企业版',
-      commercialLink: '下载',
-      enterpriseLabel: 'HAMi 平台版',
-      enterpriseLink: '下载',
-    },
-  },
-} as const;
-
-export default function ProductScope({ locale }: ProductScopeProps) {
-  const c = COPY[locale] ?? COPY.en;
-  const hamiHref = locale === 'zh' ? '/zh/products/hami-enterprise' : '/products/hami-enterprise';
-  const entHref =
-    locale === 'zh' ? '/zh/products/hami-ai-platform' : '/products/hami-ai-platform';
+export default function ProductScope() {
+  const t = useTranslations('enterprise');
+  const locale = useLocale();
+  const c = t.raw('scope');
+  const scopeGroups = t.raw('scope.groups');
+  const hamiHref = localizedPath('/products/hami-enterprise', locale);
+  const entHref = localizedPath('/products/hami-ai-platform', locale);
 
   const totals = {
-    oss: GROUPS.reduce((s, g) => s + g.rows.filter((r) => r.oss).length, 0),
-    commercial: GROUPS.reduce((s, g) => s + g.rows.filter((r) => r.commercial).length, 0),
-    enterprise: GROUPS.reduce((s, g) => s + g.rows.filter((r) => r.enterprise).length, 0),
+    oss: GROUP_META.reduce((s, g) => s + g.rows.filter((r) => r.oss).length, 0),
+    commercial: GROUP_META.reduce((s, g) => s + g.rows.filter((r) => r.commercial).length, 0),
+    enterprise: GROUP_META.reduce((s, g) => s + g.rows.filter((r) => r.enterprise).length, 0),
   };
 
   const renderCell = (
@@ -441,7 +161,7 @@ export default function ProductScope({ locale }: ProductScopeProps) {
           {c.decisionTitle}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
-          {c.decisionRows.map((r, i) => (
+          {c.decisionRows.map((r: { scenario: string; choice: string }, i: number) => (
             <div key={i} className="flex items-start gap-3">
               <span
                 className="mt-0.5 block h-10 w-1 shrink-0 rounded-full bg-[var(--primary)]"
@@ -452,7 +172,7 @@ export default function ProductScope({ locale }: ProductScopeProps) {
                   {r.scenario}
                 </p>
                 <span className="mt-2 inline-flex items-center rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
-                  {locale === 'zh' ? `推荐：${r.choice}` : `→ ${r.choice}`}
+                  {c.recommendPrefix}{r.choice}
                 </span>
               </div>
             </div>
@@ -502,8 +222,9 @@ export default function ProductScope({ locale }: ProductScopeProps) {
         </div>
 
         {/* Group rows */}
-        {GROUPS.map((g) => {
+        {GROUP_META.map((g, gIdx) => {
           const Icon = g.Icon;
+          const dg = scopeGroups[gIdx];
           return (
             <div key={g.id} className="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
               <div
@@ -513,10 +234,10 @@ export default function ProductScope({ locale }: ProductScopeProps) {
                   <Icon className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
                   <div className="min-w-0">
                     <div className="text-base font-semibold text-gray-900 dark:text-gray-100">
-                      {g.title[locale]}
+                      {dg.title}
                     </div>
                     <div className="text-xs text-gray-500 dark:text-gray-400 leading-snug mt-0.5">
-                      {g.desc[locale]}
+                      {dg.desc}
                     </div>
                   </div>
                 </div>
@@ -531,7 +252,7 @@ export default function ProductScope({ locale }: ProductScopeProps) {
                   className={`${MATRIX_GRID} hover:bg-gray-50/60 dark:hover:bg-gray-800/30 transition-colors`}
                 >
                   <div className="px-5 py-3.5 text-[15px] text-gray-700 dark:text-gray-300 flex items-center leading-snug">
-                    {row.feature[locale]}
+                    {dg.rows[idx].feature}
                   </div>
                   {renderCell(row.oss)}
                   {renderCell(row.commercial)}

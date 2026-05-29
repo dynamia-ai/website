@@ -2090,7 +2090,7 @@
       "noRelease": "暂无版本",
       "viewDetail": "查看详情",
       "downloadCta": "下载",
-      "artifactCount": "{{count}} 个下载介质",
+      "artifactCount": "{count} 个下载介质",
       "metaVersion": "版本",
       "metaReleased": "发布",
       "metaArtifacts": "介质",
@@ -2104,7 +2104,7 @@
       "matrixDesc": "选择一款产品，查看产品介绍、下载介质、安装指南与兼容矩阵。",
       "cardEyebrowHamiEnterprise": "GPU 虚拟化",
       "cardEyebrowHamiAiPlatform": "异构算力平台",
-      "matrixCount": "{{count}} 款产品",
+      "matrixCount": "{count} 款产品",
       "helpTitle": "选型咨询",
       "helpDesc": "容量规划、评估授权、离线部署 — 联系我们。",
       "applyTrial": "申请试用",
@@ -2182,6 +2182,7 @@
       "groupDocsDesc": "安装指南与版本说明。"
     },
     "installDoc": {
+      "back": "返回产品页",
       "label": "安装指南",
       "lastUpdated": "最后更新",
       "tocTitle": "本页目录"
@@ -2220,6 +2221,354 @@
       "ctaDescription": "联系我们的团队获取企业授权、部署协助和 7×24 技术支持。",
       "viewDownloads": "下载",
       "applyTrial": "申请试用"
+    },
+    "status": {
+      "ga": "正式版",
+      "beta": "Beta",
+      "eol": "已停止维护"
+    },
+    "compatLabels": {
+      "kubernetes": "Kubernetes",
+      "os": "操作系统",
+      "gpu": "GPU 驱动"
+    },
+    "checksumPending": "校验和待发布",
+    "copyCommand": "复制",
+    "copiedCommand": "已复制",
+    "downloadContactNeedBundles": "如需提前获取离线包，请",
+    "downloadContactSales": "联系销售",
+    "downloadContactPhone": "或致电 400-026-7800",
+    "origin": {
+      "eyebrow": "同根同源",
+      "title": "HAMi 与密瓜智能",
+      "subtitle": "HAMi 是 CNCF Sandbox 异构 AI 计算虚拟化项目，由密瓜智能创始团队发起并担任核心 Maintainer。我们的企业版与开源同源同代码，加固、运维、SLA 一站式由原厂提供。",
+      "pillars": [
+        {
+          "title": "CNCF Sandbox 项目",
+          "desc": "开放治理 · 厂商中立基金会背书"
+        },
+        {
+          "title": "由密瓜智能发起",
+          "desc": "HAMi 的核心 Maintainer 即密瓜工程团队"
+        },
+        {
+          "title": "上游 100% 兼容",
+          "desc": "同源同 API · 无 fork 漂移、无锁定"
+        },
+        {
+          "title": "原厂级 SLA",
+          "desc": "7×24 支持 · 长期版本来自源头"
+        }
+      ],
+      "relation": {
+        "connector1": "发起并维护",
+        "connector2": "原厂交付 · SLA",
+        "team": {
+          "title": "密瓜智能",
+          "titleSub": "Dynamia.AI",
+          "desc": "HAMi 项目的发起者与持续维护方，并以原厂身份交付企业版"
+        },
+        "opensource": {
+          "title": "HAMi",
+          "desc": "异构 AI 计算虚拟化中间件 · 开源项目，社区驱动"
+        },
+        "commercial": {
+          "title": "企业版产品",
+          "desc": "基于 HAMi 的商业发行版，由密瓜智能提供保障与服务"
+        }
+      },
+      "ctaPrimary": "HAMi 官网",
+      "ctaCommunity": "社区",
+      "ctaGithub": "GitHub",
+      "ctaDiscord": "Discord"
+    },
+    "scope": {
+      "title": "如何选择产品",
+      "subtitle": "三条产品线 —— 开源 HAMi、HAMi 企业版、HAMi 平台版。",
+      "decisionTitle": "30 秒选型",
+      "totalsLabel": "能力覆盖",
+      "totalsHint": "勾选表示该版本支持",
+      "recommendPrefix": "推荐：",
+      "decisionRows": [
+        {
+          "scenario": "我想自己试验 GPU 共享",
+          "choice": "开源 HAMi"
+        },
+        {
+          "scenario": "我需要可被支持、加固的 GPU 虚拟化层",
+          "choice": "HAMi 企业版"
+        },
+        {
+          "scenario": "我还需要多集群 GUI、配额和可观测",
+          "choice": "HAMi 平台版"
+        },
+        {
+          "scenario": "我想为多个内部团队管理平台",
+          "choice": "HAMi 平台版"
+        }
+      ],
+      "columns": {
+        "feature": "能力",
+        "oss": "开源 HAMi",
+        "ossSub": "",
+        "commercial": "HAMi 企业版",
+        "commercialSub": "",
+        "enterprise": "HAMi 平台版",
+        "enterpriseSub": ""
+      },
+      "cta": {
+        "ossLabel": "开源 HAMi",
+        "ossLink": "GitHub",
+        "ossHref": "https://github.com/Project-HAMi/HAMi",
+        "commercialLabel": "HAMi 企业版",
+        "commercialLink": "下载",
+        "enterpriseLabel": "HAMi 平台版",
+        "enterpriseLink": "下载"
+      },
+      "groups": [
+        {
+          "id": "gpu-core",
+          "title": "GPU 虚拟化核心",
+          "desc": "开源 HAMi 基础能力 —— 商业版强化",
+          "rows": [
+            {
+              "feature": "显存共享"
+            },
+            {
+              "feature": "算力共享"
+            },
+            {
+              "feature": "显存共享强隔离"
+            },
+            {
+              "feature": "算力共享强隔离"
+            },
+            {
+              "feature": "显存、算力超卖"
+            },
+            {
+              "feature": "高性能模式（虚拟化无性能损失）"
+            },
+            {
+              "feature": "HAMi Turbo 模式"
+            },
+            {
+              "feature": "应用无缝自动扩缩容（不重启）"
+            },
+            {
+              "feature": "任务优先级抢占"
+            },
+            {
+              "feature": "空闲统计 & 显存占用分析"
+            },
+            {
+              "feature": "调度引擎并行优化"
+            },
+            {
+              "feature": "Binpack / Spread 策略"
+            },
+            {
+              "feature": "NVIDIA 网络拓扑亲和调度"
+            },
+            {
+              "feature": "Volcano 深度集成（抢占 / vGPU 联合调度）"
+            }
+          ]
+        },
+        {
+          "id": "gpu-vendors",
+          "title": "异构 GPU 厂商支持",
+          "desc": "NVIDIA + 国产 8 家 + AMD",
+          "rows": [
+            {
+              "feature": "NVIDIA 全系列"
+            },
+            {
+              "feature": "AMD MI 系列（含 MI300X）"
+            },
+            {
+              "feature": "昇腾（910B / 910C）"
+            },
+            {
+              "feature": "沐曦（MXC500）"
+            },
+            {
+              "feature": "昆仑芯（P800）"
+            },
+            {
+              "feature": "海光 DCU（K100）"
+            },
+            {
+              "feature": "天数智芯（BI）"
+            },
+            {
+              "feature": "寒武纪（MLU370）"
+            },
+            {
+              "feature": "燧原（SG2042）"
+            },
+            {
+              "feature": "摩尔线程（MTT S3000）"
+            }
+          ]
+        },
+        {
+          "id": "multi-cluster",
+          "title": "多集群控制面",
+          "desc": "仅企业版 —— 一站式 UI、可观测、生命周期管理",
+          "rows": [
+            {
+              "feature": "多集群一站式可观测（集群 / 应用 / GPU）"
+            },
+            {
+              "feature": "GPU 硬件监控"
+            },
+            {
+              "feature": "丰富完备的告警策略"
+            },
+            {
+              "feature": "一站式 GUI（多集群 Dashboard / 资源 / 配额 / 工作负载）"
+            },
+            {
+              "feature": "可视化 Binpack / Spread 策略"
+            },
+            {
+              "feature": "全局时间检索 / 表格筛选"
+            },
+            {
+              "feature": "完备多集群生命周期管理（LCM）"
+            }
+          ]
+        },
+        {
+          "id": "enterprise-ops",
+          "title": "企业运营",
+          "desc": "仅企业版 —— 租户 / 安全 / 计费 / OpenAPI / SLA",
+          "rows": [
+            {
+              "feature": "企业级租户配额"
+            },
+            {
+              "feature": "网络安全策略"
+            },
+            {
+              "feature": "租户级安全隔离策略"
+            },
+            {
+              "feature": "计量、计费"
+            },
+            {
+              "feature": "OpenAPI / 开放能力"
+            },
+            {
+              "feature": "SLA 保障（7×24 交付 SLA）"
+            },
+            {
+              "feature": "Air-gap / 离线部署"
+            }
+          ]
+        }
+      ]
+    },
+    "productsData": {
+      "hami-enterprise": {
+        "name": "HAMi 企业版",
+        "tagline": "HAMi 企业版 —— 在开源 HAMi（CNCF Sandbox 项目）之上提供企业级 GPU 虚拟化能力",
+        "description": "HAMi 企业版基于 GPU License 授权，把 GPU 利用率从社区版 40% 提升到 70%+，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴/代理商，提供生产级加固与企业级支持。",
+        "highlights": [
+          {
+            "title": "企业级 SLA",
+            "desc": "7×24 技术支持、热修复响应、长期版本维护。"
+          },
+          {
+            "title": "多厂商 GPU 适配",
+            "desc": "支持英伟达、昇腾、寒武纪、天数智芯、海光 DCU 等主流加速卡。"
+          },
+          {
+            "title": "安全加固",
+            "desc": "镜像签名、CVE 修复流水线、完整审计日志。"
+          }
+        ]
+      },
+      "hami-ai-platform": {
+        "name": "HAMi AI Platform",
+        "tagline": "异构算力集群全栈管控平台",
+        "description": "HAMi 平台版是面向异构算力集群的全栈控制面。在 HAMi 企业版基础上叠加多集群一站式 GUI、集群/应用/GPU 三维度可观测、企业级租户配额、计量计费、OpenAPI 与 SLA 支持，面向公有云应用市场、中小腰部客户与 KA 客户。",
+        "highlights": [
+          {
+            "title": "多集群联邦",
+            "desc": "跨数据中心、跨云资源池化，单一控制面统一调度。"
+          },
+          {
+            "title": "租户配额",
+            "desc": "层级配额、公平调度、计费报表一站式打通。"
+          },
+          {
+            "title": "实时观测",
+            "desc": "GPU/NPU 利用率、排队延迟、SLO 仪表盘全链路可视。"
+          }
+        ]
+      }
+    },
+    "codeLabels": {
+      "copy": "复制",
+      "copied": "已复制",
+      "failed": "复制失败",
+      "aria": "复制代码块"
+    },
+    "productIntro": {
+      "hami-enterprise": {
+        "eyebrow": "产品介绍",
+        "title": "面向已有 Kubernetes/PaaS 团队的生产级 GPU 虚拟化产品。",
+        "body": "HAMi 企业版将开源 HAMi 的核心能力打包为经过生产加固的商业发行版，重点解决 GPU 细粒度共享、多厂商加速卡适配、安全维护、热修复交付和企业级支持问题，并可集成到客户已有的 PaaS 或内部开发者平台中。",
+        "scenarioTitle": "适用场景",
+        "scenarios": [
+          "已经有 Kubernetes 或 PaaS，需要可被企业支持的 HAMi 发行版。",
+          "需要提升 GPU 利用率，并稳定承载 vGPU 共享、训练、推理和开发机负载。",
+          "需要长期版本维护、离线部署包、安装指南和企业级技术支持。"
+        ],
+        "capabilitiesTitle": "核心产品能力",
+        "capabilities": [
+          {
+            "title": "GPU 细粒度共享",
+            "desc": "按 GPU 算力和显存切分资源，提升训练、推理和开发负载的整体利用率。"
+          },
+          {
+            "title": "生产级交付加固",
+            "desc": "提供镜像签名、CVE 响应、版本包、升级指南和企业部署支持。"
+          },
+          {
+            "title": "多厂商异构加速卡适配",
+            "desc": "通过统一调度与虚拟化层管理多种 GPU/NPU/DCU 加速卡资源。"
+          }
+        ]
+      },
+      "hami-ai-platform": {
+        "eyebrow": "产品介绍",
+        "title": "内置 HAMi 企业版能力的异构算力全栈控制面。",
+        "body": "HAMi 平台版面向不只需要虚拟化组件、还需要完整平台能力的组织。它包含 HAMi 企业版，并叠加多集群 GUI、统一可观测、租户配额、计量计费、OpenAPI 与运维工作流，服务于集群管理员、平台团队和 AI 应用负责人。",
+        "scenarioTitle": "适用场景",
+        "scenarios": [
+          "需要通过可视化平台统一管理多个异构算力集群。",
+          "需要面向多个团队做租户配额、计量计费和资源治理。",
+          "需要把集群、应用和 GPU/NPU 可观测统一到一个控制面中。"
+        ],
+        "capabilitiesTitle": "平台能力",
+        "capabilities": [
+          {
+            "title": "多集群资源管控",
+            "desc": "跨集群、跨数据中心、跨云统一资源池化与调度异构算力。"
+          },
+          {
+            "title": "可观测与治理",
+            "desc": "统一查看 GPU/NPU 利用率、队列、租户、应用和 SLO 运行状态。"
+          },
+          {
+            "title": "租户配额与 OpenAPI",
+            "desc": "面向平台团队和内部系统开放配额、计费、自动化和集成能力。"
+          }
+        ]
+      }
     }
   },
   "common": {

@@ -1,6 +1,6 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { localizedUrl, localizedAlternates } from "@/utils/seo";
+import { localizedUrl, localizedAlternates } from "@/utils/i18n";
 import PrivacyPolicyPage from "@/components/pages/PrivacyPolicyPage";
 
 export default function PrivacyPolicy({

@@ -3,13 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import type { Locale } from '@/types/enterprise';
-
-interface TrustBlockProps {
-  locale: Locale;
-}
+import { localizedPath, shortenDescription } from '@/utils/i18n';
 
 const COMPANIES = [
   { name: 'Company 8', logo: '/logos/company8.svg' },
@@ -49,15 +45,10 @@ const CASE_LINKS = [
   },
 ] as const;
 
-function shortenDescription(text: string, locale: Locale): string {
-  const maxChars = locale === 'zh' ? 72 : 140;
-  if (text.length <= maxChars) return text;
-  return `${text.slice(0, maxChars).trimEnd()}…`;
-}
-
-export default function TrustBlock({ locale }: TrustBlockProps) {
+export default function TrustBlock() {
   const t = useTranslations();
-  const caseRoot = locale === 'zh' ? '/zh/case-studies' : '/case-studies';
+  const locale = useLocale();
+  const caseRoot = localizedPath('/case-studies', locale);
 
   return (
     <div className="space-y-12">
