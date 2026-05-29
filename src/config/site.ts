@@ -2,7 +2,7 @@ import enDict from "../../dictionary/en.json";
 import zhDict from "../../dictionary/zh.json";
 import deDict from "../../dictionary/de.json";
 
-export type Locale = "en" | "zh" | "de";
+export type Locale = "en" | "zh";
 
 export interface SiteLocaleConfig {
   name: string;
@@ -42,4 +42,4 @@ export function getSiteConfig(locale: Locale): SiteLocaleConfig {
 }
 
 export const defaultLocale: Locale = "en";
-export const locales: Locale[] = ["en", "zh", "de"];
+export const locales: Locale[] = ["en", "zh"];
