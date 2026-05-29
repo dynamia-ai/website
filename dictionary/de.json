@@ -2125,5 +2125,8 @@
     "logoDark": "/dynamia-logo-white.svg",
     "ogImage": "/LOGO-small.svg",
     "url": "https://dynamia.ai"
+  },
+  "attachments": {
+    "notFound": "Anhang nicht gefunden"
   }
 }
