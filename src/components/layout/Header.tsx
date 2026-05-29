@@ -52,10 +52,10 @@ const Header: React.FC = () => {
   const navigation = [
     { name: t('navigation.products'), href: '#', hasSubmenu: true, submenuType: 'products' },
     { name: t('navigation.caseStudies'), href: localizedPath('/case-studies') },
-    { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
-    { name: t('navigation.community'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.pricing'), href: localizedPath('/pricing') },
     { name: t('navigation.company'), href: localizedPath('/company') },
+    { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
+    { name: t('navigation.community'), href: '#', hasSubmenu: true, submenuType: 'hami' },
   ];
 
   // Products 子菜单
