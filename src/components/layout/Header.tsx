@@ -355,7 +355,6 @@ const Header: React.FC = () => {
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <Link href={localizedPath('/')} className="flex items-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={logoSrc}
                       alt="Dynamia AI Logo"
