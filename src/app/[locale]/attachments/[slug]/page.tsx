@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
 import AttachmentDocClient from '@/components/attachments/AttachmentDocClient';
 import { getAttachmentDoc, getAttachmentSlugs } from '@/lib/attachments';
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }
 
 export function generateStaticParams() {
@@ -12,21 +14,26 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const doc = await getAttachmentDoc(slug, 'en');
-  if (!doc) return { title: 'Attachment Not Found', robots: { index: false, follow: false } };
+  const { locale, slug } = await params;
+  const docLocale = locale === 'zh' ? 'zh' : 'en';
+  const doc = await getAttachmentDoc(slug, docLocale);
+  const t = await getTranslations({ locale, namespace: 'attachments' });
+
+  if (!doc) return { title: t('notFound'), robots: { index: false, follow: false } };
 
   return {
-    title: `${doc.frontmatter.title} | Dynamia AI`,
+    title: doc.frontmatter.title,
     description: doc.frontmatter.description,
     robots: { index: false, follow: false },
-    alternates: { canonical: `/attachments/${slug}` },
+    alternates: { canonical: `/${locale === routing.defaultLocale ? '' : locale + '/'}attachments/${slug}` },
   };
 }
 
 export default async function AttachmentPage({ params }: PageProps) {
-  const { slug } = await params;
-  const doc = await getAttachmentDoc(slug, 'en');
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const docLocale = locale === 'zh' ? 'zh' : 'en';
+  const doc = await getAttachmentDoc(slug, docLocale);
   if (!doc) notFound();
 
   return (
@@ -36,7 +43,7 @@ export default async function AttachmentPage({ params }: PageProps) {
       lastUpdated={doc.frontmatter.lastUpdated}
       html={doc.html}
       toc={doc.toc}
-      locale="en"
+      locale={docLocale}
     />
   );
 }
