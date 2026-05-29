@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 
 interface FeatureProps {
@@ -29,7 +29,7 @@ const fadeIn = {
 };
 
 export default function FeatureComparisonTable() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   
   // 从i18n中获取表格配置
   const featureComparisonData = t('products.hamiAiPlatform.featureComparison', { returnObjects: true }) as FeatureComparisonData;

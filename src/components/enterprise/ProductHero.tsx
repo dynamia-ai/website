@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import {
   ArrowLeftIcon,
   BookOpenIcon,
@@ -46,7 +46,7 @@ const ACTION_SHADOW_CLASS = 'shadow-sm hover:shadow-md transition-all';
 const SECONDARY_ACTION_CLASS = `inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-200 ${ACTION_SHADOW_CLASS}`;
 
 export default function ProductHero({ product, latest, locale, onJumpDownload }: ProductHeroProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const backHref = locale === 'zh' ? '/zh/products' : '/products';
   const productName = pickI18n(product.name, locale);
   const statusInfo = STATUS_LABEL[product.status] ?? STATUS_LABEL.ga;

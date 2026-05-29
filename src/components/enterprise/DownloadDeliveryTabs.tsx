@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useId, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import {
   ArchiveBoxIcon,
   CloudIcon,
@@ -58,7 +58,7 @@ function ReleaseMeta({
   release: Release;
   className?: string;
 }) {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <div
@@ -85,7 +85,7 @@ function InstallGuideCta({
   description: string;
   onDownload: (artifact: Artifact, resolvedUrl: string) => void;
 }) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const label = pickI18n(artifact.label, locale);
 
   return (
@@ -129,7 +129,7 @@ export default function DownloadDeliveryTabs({
   offlineComingSoon,
   onDownload,
 }: DownloadDeliveryTabsProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const tablistId = useId();
   const [delivery, setDelivery] = useState<DeliveryMode>('online');
 

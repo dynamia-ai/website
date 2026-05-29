@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { isCompanyEmail } from '@/utils/validation';
 import { attributionToPayload } from '@/utils/utm';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
@@ -25,7 +25,7 @@ export default function DownloadGateModal({
   onSuccess,
   onClose,
 }: DownloadGateModalProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [formState, setFormState] = useState({
     name: '',
     email: '',

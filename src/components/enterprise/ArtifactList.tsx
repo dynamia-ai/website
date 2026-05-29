@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import {
   ArchiveBoxIcon,
   CircleStackIcon,
@@ -78,7 +78,7 @@ export default function ArtifactList({
   rowLayout = 'card',
   onDownload,
 }: ArtifactListProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const grouped: Record<GroupKey, Artifact[]> = { bundles: [], images: [], charts: [], docs: [] };
   for (const a of artifacts) grouped[groupOf(a)].push(a);

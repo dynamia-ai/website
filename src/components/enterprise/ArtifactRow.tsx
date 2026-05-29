@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import {
   ArchiveBoxIcon,
   ArrowDownTrayIcon,
@@ -60,7 +60,7 @@ export default function ArtifactRow({
   layout = 'card',
   onDownload,
 }: ArtifactRowProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [shaCopied, setShaCopied] = useState(false);
   const mirrors = useMemo(() => artifact.mirrors ?? [], [artifact.mirrors]);
   const hasMirrors = mirrors.length > 1;

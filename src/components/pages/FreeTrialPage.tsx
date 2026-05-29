@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import { isCompanyEmail, isValidName, isValidCompany, isValidPhone, isValidEmailFormat } from '@/utils/validation';
 
 export default function FreeTrial() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const pathname = usePathname();
   const isZhPage = pathname?.startsWith('/zh');
   const [formState, setFormState] = useState({

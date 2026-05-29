@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import type { Locale } from '@/types/enterprise';
 
@@ -56,7 +56,7 @@ function shortenDescription(text: string, locale: Locale): string {
 }
 
 export default function TrustBlock({ locale }: TrustBlockProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const caseRoot = locale === 'zh' ? '/zh/case-studies' : '/case-studies';
 
   return (

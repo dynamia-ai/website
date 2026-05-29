@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import {
   CheckIcon,
@@ -67,7 +67,7 @@ export default function VersionSelector({
   onChange,
   compact = false,
 }: VersionSelectorProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const selected = releases.find((r) => r.version === selectedVersion) ?? releases[0];
 
   const listbox = (
