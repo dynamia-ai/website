@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 interface CaseStudyCard {
@@ -21,7 +21,7 @@ const fadeIn = {
 };
 
 const CaseStudiesList: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const pathname = usePathname();
   const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
   const shortenDescription = (text: string) => {

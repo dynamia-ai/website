@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Disclosure } from '@headlessui/react';
 import {
@@ -13,8 +13,8 @@ import {
 } from '@heroicons/react/24/outline';
 import HamiIcon from '@/components/HamiIcon';
 import ExternalLinkIcon from '@/components/ExternalLinkIcon';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { useTheme } from '@/components/ThemeProvider';
+import { ModeToggle } from '@/components/ModeToggle';
+import { useTheme } from 'next-themes';
 // 暂时注释 Search 组件导入
 // import Search from '@/components/Search';
 
@@ -28,7 +28,7 @@ type SubmenuItem = {
 }
 
 const Header: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -609,7 +609,7 @@ const Header: React.FC = () => {
                 </Link>
 
                 {/* Dark Mode Toggle */}
-                <ThemeToggle />
+                <ModeToggle />
 
                 <div className="relative group">
                   <button

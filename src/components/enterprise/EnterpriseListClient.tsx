@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import {
   ShieldCheckIcon,
@@ -26,7 +26,7 @@ interface EnterpriseListClientProps {
 }
 
 export default function EnterpriseListClient({ locale }: EnterpriseListClientProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const products = getProducts();
 
   useEffect(() => {

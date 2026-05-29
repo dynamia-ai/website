@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { notFound, useRouter } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import {
   ChartBarIcon,
@@ -167,7 +167,7 @@ export default function EnterpriseDetailClient({
   productId,
   locale,
 }: EnterpriseDetailClientProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const router = useRouter();
 
   const product = getProductById(productId);

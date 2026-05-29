@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 // import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
@@ -19,7 +19,7 @@ const fadeIn = {
 
 
 export default function PricingPage() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [formState, setFormState] = useState({
     name: '',
     email: '',

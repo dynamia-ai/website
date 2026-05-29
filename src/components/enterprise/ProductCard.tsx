@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import type { EnterpriseProduct, Locale } from '@/types/enterprise';
 import { pickI18n, getLatestRelease } from '@/lib/enterprise';
@@ -57,7 +57,7 @@ const EYEBROW_I18N_KEY: Partial<Record<string, string>> = {
 };
 
 export default function ProductCard({ product, locale }: ProductCardProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const latest = getLatestRelease(product);
   const href = locale === 'zh' ? `/zh/products/${product.id}` : `/products/${product.id}`;
   const productName = pickI18n(product.name, locale);

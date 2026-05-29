@@ -1,14 +1,15 @@
 "use client";
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useLocale, useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Company() {
-  const { t, i18n } = useTranslation();
-  const isZhPage = i18n.language?.startsWith('zh');
+  const t = useTranslations();
+  const locale = useLocale();
+  const isZhPage = locale === 'zh';
 
   // 根据语言获取不同的团队成员配置
   const getTeamMembers = () => {
@@ -49,7 +50,7 @@ export default function Company() {
     ];
 
     // 仅在英文版本添加 Reza
-    if (i18n.language === 'en') {
+    if (locale === 'en') {
       members.push({
         name: t('company.team.members.5.name'),
         position: t('company.team.members.5.position'),

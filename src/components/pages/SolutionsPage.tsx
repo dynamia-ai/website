@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 // Animation variants
@@ -14,7 +14,7 @@ const fadeIn = {
 };
 
 export default function Solutions() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const pathname = usePathname();
   const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
   
