@@ -212,7 +212,7 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
     return () => {
       cleanups.forEach((cleanup) => cleanup());
     };
-  }, [displayPost, locale]);
+  }, [displayPost, locale, t]);
 
   // Handle image clicks for lightbox
   useEffect(() => {

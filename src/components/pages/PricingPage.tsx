@@ -145,7 +145,7 @@ export default function PricingPage() {
               </p>
               <div className="space-y-4">
                 {(function() {
-                  const benefits = t('pricing.benefits', { returnObjects: true });
+                  const benefits = t.raw('pricing.benefits');
                   return Array.isArray(benefits) 
                     ? benefits 
                     : ['定制化定价方案', '根据您的集群规模灵活调整', '专业技术支持', '持续的功能更新和升级'];

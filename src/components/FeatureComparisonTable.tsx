@@ -32,7 +32,7 @@ export default function FeatureComparisonTable() {
   const t = useTranslations();
   
   // 从i18n中获取表格配置
-  const featureComparisonData = t('products.hamiAiPlatform.featureComparison', { returnObjects: true }) as FeatureComparisonData;
+  const featureComparisonData = t.raw('products.hamiAiPlatform.featureComparison') as FeatureComparisonData;
   
   // 确保数据可用
   if (!featureComparisonData || !featureComparisonData.categories) {

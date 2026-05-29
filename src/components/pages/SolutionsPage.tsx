@@ -18,7 +18,7 @@ export default function Solutions() {
   const pathname = usePathname();
   const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
   
-  const categoriesData = t('solutions.categories', { returnObjects: true });
+  const categoriesData = t.raw('solutions.categories');
   const categories = Array.isArray(categoriesData)
     ? categoriesData
     : [
