@@ -90,12 +90,37 @@ const Header: React.FC = () => {
 
   // 导航链接
   const navigation = [
-    { name: t('navigation.products'), href: currentLocale === 'zh' ? '/zh/products' : '/products' },
+    { name: t('navigation.products'), href: '#', hasSubmenu: true, submenuType: 'products' },
     { name: t('navigation.caseStudies'), href: currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies' },
     { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
     { name: t('navigation.community'), href: '#', hasSubmenu: true, submenuType: 'hami' },
     { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
     { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
+  ];
+
+  // Products 子菜单
+  const productsSubmenu: SubmenuItem[] = [
+    {
+      name: t('navigation.productsOverview'),
+      description: t('navigation.productsOverviewDesc'),
+      href: currentLocale === 'zh' ? '/zh/products' : '/products',
+      external: false,
+      iconName: 'infoCircle',
+    },
+    {
+      name: t('navigation.hamiEnterprise'),
+      description: t('navigation.hamiEnterpriseDesc'),
+      href: currentLocale === 'zh' ? '/zh/products/hami-enterprise' : '/products/hami-enterprise',
+      external: false,
+      iconName: 'folder',
+    },
+    {
+      name: t('navigation.hamiAiPlatform'),
+      description: t('navigation.hamiAiPlatformDesc'),
+      href: currentLocale === 'zh' ? '/zh/products/hami-ai-platform' : '/products/hami-ai-platform',
+      external: false,
+      iconName: 'globe',
+    },
   ];
 
   // HAMi 子菜单
@@ -199,12 +224,15 @@ const Header: React.FC = () => {
   const [isHamiMenuOpen, setIsHamiMenuOpen] = useState(false);
   const [isResourcesMenuOpen, setIsResourcesMenuOpen] = useState(false);
   const [isSolutionsMenuOpen, setIsSolutionsMenuOpen] = useState(false);
+  const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
   const hamiMenuRef = useRef<HTMLDivElement>(null);
   const resourcesMenuRef = useRef<HTMLDivElement>(null);
   const solutionsMenuRef = useRef<HTMLDivElement>(null);
+  const productsMenuRef = useRef<HTMLDivElement>(null);
   const hamiTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const solutionsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const productsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   const clearHamiCloseTimeout = () => {
     if (hamiTimeoutRef.current) {
@@ -225,6 +253,25 @@ const Header: React.FC = () => {
       clearTimeout(solutionsTimeoutRef.current);
       solutionsTimeoutRef.current = null;
     }
+  };
+
+  const clearProductsCloseTimeout = () => {
+    if (productsTimeoutRef.current) {
+      clearTimeout(productsTimeoutRef.current);
+      productsTimeoutRef.current = null;
+    }
+  };
+
+  const handleProductsMouseEnter = () => {
+    clearProductsCloseTimeout();
+    setIsProductsMenuOpen(true);
+  };
+
+  const handleProductsMouseLeave = () => {
+    clearProductsCloseTimeout();
+    productsTimeoutRef.current = setTimeout(() => {
+      setIsProductsMenuOpen(false);
+    }, 300);
   };
   
   // 打开 HAMi 菜单；与资源菜单互斥，避免快速划过时两个全宽面板重叠
@@ -279,6 +326,7 @@ const Header: React.FC = () => {
       clearHamiCloseTimeout();
       clearResourcesCloseTimeout();
       clearSolutionsCloseTimeout();
+      clearProductsCloseTimeout();
     };
   }, []);
   
@@ -294,13 +342,16 @@ const Header: React.FC = () => {
       if (solutionsMenuRef.current && !solutionsMenuRef.current.contains(event.target as Node)) {
         setIsSolutionsMenuOpen(false);
       }
+      if (productsMenuRef.current && !productsMenuRef.current.contains(event.target as Node)) {
+        setIsProductsMenuOpen(false);
+      }
     }
-    
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [hamiMenuRef, resourcesMenuRef, solutionsMenuRef]);
+  }, [hamiMenuRef, resourcesMenuRef, solutionsMenuRef, productsMenuRef]);
 
   // 如果组件未挂载，返回一个占位符避免水合错误
   if (!mounted) {
@@ -361,7 +412,9 @@ const Header: React.FC = () => {
                             ? hamiMenuRef
                             : item.submenuType === 'resources'
                               ? resourcesMenuRef
-                              : solutionsMenuRef
+                              : item.submenuType === 'products'
+                                ? productsMenuRef
+                                : solutionsMenuRef
                         }
                         className="relative flex items-center h-full"
                       >
@@ -369,6 +422,7 @@ const Header: React.FC = () => {
                           className={`inline-flex items-center whitespace-nowrap px-1 pt-1 h-full border-b-2 text-sm xl:text-base font-medium ${
                             (item.submenuType === 'hami' && isHamiMenuOpen) ||
                             (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                            (item.submenuType === 'products' && isProductsMenuOpen) ||
                             (item.submenuType === 'solutions' && isSolutionsMenuOpen)
                               ? 'border-primary text-gray-900 dark:text-gray-100'
                               : 'border-transparent text-gray-500 dark:text-gray-400 hover:border-gray-300 dark:hover:border-primary/60 hover:text-gray-700 dark:hover:text-gray-100'
@@ -378,14 +432,18 @@ const Header: React.FC = () => {
                               ? handleHamiMouseEnter
                               : item.submenuType === 'resources'
                                 ? handleResourcesMouseEnter
-                                : handleSolutionsMouseEnter
+                                : item.submenuType === 'products'
+                                  ? handleProductsMouseEnter
+                                  : handleSolutionsMouseEnter
                           }
                           onMouseLeave={
                             item.submenuType === 'hami'
                               ? handleHamiMouseLeave
                               : item.submenuType === 'resources'
                                 ? handleResourcesMouseLeave
-                                : handleSolutionsMouseLeave
+                                : item.submenuType === 'products'
+                                  ? handleProductsMouseLeave
+                                  : handleSolutionsMouseLeave
                           }
                         >
                           {item.name}
@@ -393,6 +451,7 @@ const Header: React.FC = () => {
                             className={`ml-1 h-4 w-4 transition-transform duration-200 ${
                               (item.submenuType === 'hami' && isHamiMenuOpen) ||
                               (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                              (item.submenuType === 'products' && isProductsMenuOpen) ||
                               (item.submenuType === 'solutions' && isSolutionsMenuOpen)
                                 ? 'transform rotate-180' : ''
                             }`}
@@ -401,6 +460,7 @@ const Header: React.FC = () => {
 
                         {((item.submenuType === 'hami' && isHamiMenuOpen) ||
                           (item.submenuType === 'resources' && isResourcesMenuOpen) ||
+                          (item.submenuType === 'products' && isProductsMenuOpen) ||
                           (item.submenuType === 'solutions' && isSolutionsMenuOpen)) && (
                           <div
                             className={`fixed left-0 right-0 ${desktopMenuTopClass} bg-white dark:bg-gray-950 shadow-lg z-50 fadeIn transition-colors duration-300`}
@@ -409,30 +469,42 @@ const Header: React.FC = () => {
                                 ? handleHamiMouseEnter
                                 : item.submenuType === 'resources'
                                   ? handleResourcesMouseEnter
-                                  : handleSolutionsMouseEnter
+                                  : item.submenuType === 'products'
+                                    ? handleProductsMouseEnter
+                                    : handleSolutionsMouseEnter
                             }
                             onMouseLeave={
                               item.submenuType === 'hami'
                                 ? handleHamiMouseLeave
                                 : item.submenuType === 'resources'
                                   ? handleResourcesMouseLeave
-                                  : handleSolutionsMouseLeave
+                                  : item.submenuType === 'products'
+                                    ? handleProductsMouseLeave
+                                    : handleSolutionsMouseLeave
                             }
                           >
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                               <div className="flex">
                                 {/* Left side - Large title */}
-                                <div className="w-1/3 pr-10 sm:pl-45">
-                                  <div className={`dropdown-description ${
-                                    item.submenuType === 'hami'
-                                      ? 'bg-hami-pattern'
-                                      : item.submenuType === 'resources'
-                                        ? 'bg-resources-pattern'
-                                        : ''
-                                  }`}>
-                                    <div className="dropdown-title text-3xl font-bold text-gray-900 dark:text-gray-100 pt-0 mt-0">
+                                <div className="w-1/3 pr-10 pl-2 xl:pl-4">
+                                  <div className="dropdown-description">
+                                    <div className="dropdown-title text-gray-900 dark:text-gray-100">
                                       {item.name}
                                     </div>
+                                    {(item.submenuType === 'products' || item.submenuType === 'resources' || item.submenuType === 'hami') && (
+                                      <div className="mt-auto pb-1">
+                                        <HamiIcon
+                                          iconName={
+                                            item.submenuType === 'products'
+                                              ? 'folder'
+                                              : item.submenuType === 'resources'
+                                                ? 'document'
+                                                : 'users'
+                                          }
+                                          className="h-24 w-24"
+                                        />
+                                      </div>
+                                    )}
                                   </div>
                                 </div>
 
@@ -444,7 +516,9 @@ const Header: React.FC = () => {
                                         ? hamiSubmenu
                                         : item.submenuType === 'resources'
                                           ? resourcesSubmenu
-                                          : solutionsSubmenu
+                                          : item.submenuType === 'products'
+                                            ? productsSubmenu
+                                            : solutionsSubmenu
                                     ).map((subItem) => (
                                       <li
                                         key={subItem.name}
@@ -530,25 +604,44 @@ const Header: React.FC = () => {
                 >
                   {t('navigation.freeTrial')}
                 </Link>
-                <Link
-                  href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
-                  className="hidden xl:inline-flex items-center px-3 py-2 border border-primary text-sm font-medium rounded-md text-primary bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-primary/15 whitespace-nowrap"
-                >
-                  {t('navigation.requestDemo')}
-                </Link>
 
                 {/* Dark Mode Toggle */}
                 <ThemeToggle />
 
-                <button
-                  onClick={() => changeLanguage(currentLocale === 'zh' ? 'en' : 'zh')}
-                  className="inline-flex items-center px-1.5 xl:px-2 py-2 text-xs xl:text-sm font-medium cursor-pointer text-gray-500 hover:text-gray-700 whitespace-nowrap"
-                >
-                  <svg className="h-5 w-5 mr-1.5 flex-shrink-0 text-gray-600 dark:text-gray-300" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M87.956 73.232C92.2458 66.2434 94.5112 58.2012 94.5 50.001C94.5113 41.8006 92.2459 33.7569 87.956 26.768L87.932 26.729C83.9522 20.2422 78.3754 14.8845 71.7345 11.1676C65.0935 7.45081 57.6103 5.49915 50 5.49915C42.3897 5.49915 34.9065 7.45081 28.2656 11.1676C21.6246 14.8845 16.0478 20.2422 12.068 26.729L12.044 26.768C7.76491 33.7616 5.50049 41.8012 5.50049 50C5.50049 58.1989 7.76491 66.2384 12.044 73.232L12.069 73.272C16.0489 79.7585 21.6258 85.116 28.2667 88.8326C34.9076 92.5492 42.3906 94.5007 50.0008 94.5006C57.6109 94.5005 65.0939 92.5488 71.7347 88.8321C78.3755 85.1153 83.9523 79.7576 87.932 73.271L87.956 73.232ZM55.688 86.873C54.8399 87.6914 53.8637 88.3656 52.798 88.869C51.9236 89.2845 50.9676 89.5001 49.9995 89.5001C49.0314 89.5001 48.0754 89.2845 47.201 88.869C45.1736 87.8335 43.438 86.3063 42.153 84.427C39.5288 80.6346 37.5842 76.4148 36.406 71.956C40.9327 71.6774 45.464 71.5354 50 71.53C54.534 71.53 59.0657 71.672 63.595 71.956C62.9427 74.2484 62.128 76.4914 61.157 78.668C59.8784 81.7292 58.0215 84.515 55.688 86.873ZM10.587 52.5H28.536C28.653 57.5084 29.1959 62.4977 30.159 67.414C25.2523 67.846 20.3583 68.4394 15.477 69.194C12.6183 64.0654 10.9472 58.3605 10.587 52.5ZM15.477 30.807C20.3563 31.563 25.252 32.1564 30.164 32.587C29.1992 37.5028 28.6553 42.4919 28.538 47.5H10.587C10.9473 41.6399 12.6184 35.9353 15.477 30.807ZM44.312 13.127C45.1601 12.3086 46.1363 11.6344 47.202 11.131C48.0764 10.7156 49.0324 10.5 50.0005 10.5C50.9686 10.5 51.9246 10.7156 52.799 11.131C54.8264 12.1666 56.562 13.6938 57.847 15.573C60.4712 19.3654 62.4158 23.5853 63.594 28.044C59.0673 28.3227 54.536 28.4647 50 28.47C45.466 28.47 40.9343 28.328 36.405 28.044C37.0573 25.7516 37.872 23.5086 38.843 21.332C40.1216 18.2709 41.9785 15.485 44.312 13.127ZM89.413 47.5H71.464C71.347 42.4917 70.8041 37.5023 69.841 32.586C74.7477 32.154 79.6417 31.5607 84.523 30.806C87.3818 35.9346 89.0528 41.6395 89.413 47.5ZM35.188 67.025C34.2103 62.2416 33.6582 57.3809 33.538 52.5H66.463C66.344 57.3812 65.7929 62.2422 64.816 67.026C59.8827 66.702 54.944 66.5367 50 66.53C45.06 66.53 40.1227 66.695 35.188 67.025ZM64.812 32.975C65.7897 37.7585 66.3418 42.6192 66.462 47.5H33.538C33.657 42.6189 34.2082 37.7579 35.185 32.974C40.1183 33.298 45.057 33.4634 50.001 33.47C54.941 33.47 59.8783 33.3047 64.813 32.974L64.812 32.975ZM71.462 52.5H89.413C89.0527 58.3602 87.3816 64.0647 84.523 69.193C79.643 68.437 74.7473 67.8437 69.836 67.413C70.8008 62.4973 71.3448 57.5082 71.462 52.5ZM81.525 26.205C77.2583 26.8204 72.9793 27.3077 68.688 27.667C67.9168 24.7951 66.9221 21.9878 65.713 19.271C64.6089 16.7711 63.2197 14.4071 61.573 12.226C69.5306 14.6667 76.5137 19.5592 81.525 26.205ZM22.07 22.069C26.6349 17.4997 32.251 14.12 38.426 12.226C38.332 12.348 38.236 12.464 38.144 12.587C34.97 17.1559 32.658 22.2666 31.322 27.667C27.03 27.3037 22.748 26.8164 18.476 26.205C19.5776 24.7455 20.7785 23.3636 22.07 22.069ZM18.476 73.795C22.742 73.1797 27.021 72.6924 31.313 72.333C32.0842 75.205 33.0789 78.0122 34.288 80.729C35.3921 83.229 36.7813 85.593 38.428 87.774C30.4704 85.3334 23.4874 80.4408 18.476 73.795ZM77.932 77.931C73.3671 82.5004 67.751 85.8801 61.576 87.774C61.67 87.652 61.766 87.536 61.858 87.413C65.032 82.8441 67.344 77.7334 68.68 72.333C72.972 72.6964 77.254 73.1837 81.526 73.795C80.4244 75.2546 79.2235 76.6365 77.932 77.931Z" fill="currentColor"/>
-                  </svg>
-                  {currentLocale === 'zh' ? 'EN' : '中文'}
-                </button>
+                <div className="relative group">
+                  <button
+                    className="inline-flex items-center px-1.5 xl:px-2 py-2 text-xs xl:text-sm font-medium cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 whitespace-nowrap"
+                  >
+                    {currentLocale === 'zh' ? '简体中文' : 'English'}
+                    <svg className="h-3.5 w-3.5 ml-1" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </button>
+                  <div className="absolute right-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="bg-white dark:bg-gray-900 rounded-md shadow-lg ring-1 ring-black/5 dark:ring-white/10 py-1 min-w-[140px]">
+                      <button
+                        onClick={() => changeLanguage('en')}
+                        className={`block w-full text-left px-4 py-2 text-sm ${
+                          currentLocale === 'en'
+                            ? 'text-primary font-medium bg-primary/5'
+                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                        }`}
+                      >
+                        English
+                      </button>
+                      <button
+                        onClick={() => changeLanguage('zh')}
+                        className={`block w-full text-left px-4 py-2 text-sm ${
+                          currentLocale === 'zh'
+                            ? 'text-primary font-medium bg-primary/5'
+                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                        }`}
+                      >
+                        简体中文
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="-mr-2 flex items-center lg:hidden">
                 <Disclosure.Button
@@ -590,7 +683,9 @@ const Header: React.FC = () => {
                                 ? hamiSubmenu
                                 : item.submenuType === 'resources'
                                   ? resourcesSubmenu
-                                  : solutionsSubmenu
+                                  : item.submenuType === 'products'
+                                    ? productsSubmenu
+                                    : solutionsSubmenu
                             ).map((subItem) => (
                               <div key={subItem.name} className="rounded-lg hover:bg-primary-lighter dark:hover:bg-primary/20 transition-colors duration-150">
                                 {subItem.external ? (
@@ -682,23 +777,30 @@ const Header: React.FC = () => {
               </button>
 
               <div className="px-2 py-3 border-t border-gray-200 dark:border-gray-700">
-              <button
-                onClick={() => changeLanguage(currentLocale === 'zh' ? 'en' : 'zh')}
-                className="w-full flex items-center justify-between px-4 py-3 text-base font-medium cursor-pointer text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors touch-manipulation"
-              >
-                <div className="flex items-center">
-                  <svg className="h-5 w-5 mr-3 flex-shrink-0 text-gray-600 dark:text-gray-300" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M87.956 73.232C92.2458 66.2434 94.5112 58.2012 94.5 50.001C94.5113 41.8006 92.2459 33.7569 87.956 26.768L87.932 26.729C83.9522 20.2422 78.3754 14.8845 71.7345 11.1676C65.0935 7.45081 57.6103 5.49915 50 5.49915C42.3897 5.49915 34.9065 7.45081 28.2656 11.1676C21.6246 14.8845 16.0478 20.2422 12.068 26.729L12.044 26.768C7.76491 33.7616 5.50049 41.8012 5.50049 50C5.50049 58.1989 7.76491 66.2384 12.044 73.232L12.069 73.272C16.0489 79.7585 21.6258 85.116 28.2667 88.8326C34.9076 92.5492 42.3906 94.5007 50.0008 94.5006C57.6109 94.5005 65.0939 92.5488 71.7347 88.8321C78.3755 85.1153 83.9523 79.7576 87.932 73.271L87.956 73.232ZM55.688 86.873C54.8399 87.6914 53.8637 88.3656 52.798 88.869C51.9236 89.2845 50.9676 89.5001 49.9995 89.5001C49.0314 89.5001 48.0754 89.2845 47.201 88.869C45.1736 87.8335 43.438 86.3063 42.153 84.427C39.5288 80.6346 37.5842 76.4148 36.406 71.956C40.9327 71.6774 45.464 71.5354 50 71.53C54.534 71.53 59.0657 71.672 63.595 71.956C62.9427 74.2484 62.128 76.4914 61.157 78.668C59.8784 81.7292 58.0215 84.515 55.688 86.873ZM10.587 52.5H28.536C28.653 57.5084 29.1959 62.4977 30.159 67.414C25.2523 67.846 20.3583 68.4394 15.477 69.194C12.6183 64.0654 10.9472 58.3605 10.587 52.5ZM15.477 30.807C20.3563 31.563 25.252 32.1564 30.164 32.587C29.1992 37.5028 28.6553 42.4919 28.538 47.5H10.587C10.9473 41.6399 12.6184 35.9353 15.477 30.807ZM44.312 13.127C45.1601 12.3086 46.1363 11.6344 47.202 11.131C48.0764 10.7156 49.0324 10.5 50.0005 10.5C50.9686 10.5 51.9246 10.7156 52.799 11.131C54.8264 12.1666 56.562 13.6938 57.847 15.573C60.4712 19.3654 62.4158 23.5853 63.594 28.044C59.0673 28.3227 54.536 28.4647 50 28.47C45.466 28.47 40.9343 28.328 36.405 28.044C37.0573 25.7516 37.872 23.5086 38.843 21.332C40.1216 18.2709 41.9785 15.485 44.312 13.127ZM89.413 47.5H71.464C71.347 42.4917 70.8041 37.5023 69.841 32.586C74.7477 32.154 79.6417 31.5607 84.523 30.806C87.3818 35.9346 89.0528 41.6395 89.413 47.5ZM35.188 67.025C34.2103 62.2416 33.6582 57.3809 33.538 52.5H66.463C66.344 57.3812 65.7929 62.2422 64.816 67.026C59.8827 66.702 54.944 66.5367 50 66.53C45.06 66.53 40.1227 66.695 35.188 67.025ZM64.812 32.975C65.7897 37.7585 66.3418 42.6192 66.462 47.5H33.538C33.657 42.6189 34.2082 37.7579 35.185 32.974C40.1183 33.298 45.057 33.4634 50.001 33.47C54.941 33.47 59.8783 33.3047 64.813 32.974L64.812 32.975ZM71.462 52.5H89.413C89.0527 58.3602 87.3816 64.0647 84.523 69.193C79.643 68.437 74.7473 67.8437 69.836 67.413C70.8008 62.4973 71.3448 57.5082 71.462 52.5ZM81.525 26.205C77.2583 26.8204 72.9793 27.3077 68.688 27.667C67.9168 24.7951 66.9221 21.9878 65.713 19.271C64.6089 16.7711 63.2197 14.4071 61.573 12.226C69.5306 14.6667 76.5137 19.5592 81.525 26.205ZM22.07 22.069C26.6349 17.4997 32.251 14.12 38.426 12.226C38.332 12.348 38.236 12.464 38.144 12.587C34.97 17.1559 32.658 22.2666 31.322 27.667C27.03 27.3037 22.748 26.8164 18.476 26.205C19.5776 24.7455 20.7785 23.3636 22.07 22.069ZM18.476 73.795C22.742 73.1797 27.021 72.6924 31.313 72.333C32.0842 75.205 33.0789 78.0122 34.288 80.729C35.3921 83.229 36.7813 85.593 38.428 87.774C30.4704 85.3334 23.4874 80.4408 18.476 73.795ZM77.932 77.931C73.3671 82.5004 67.751 85.8801 61.576 87.774C61.67 87.652 61.766 87.536 61.858 87.413C65.032 82.8441 67.344 77.7334 68.68 72.333C72.972 72.6964 77.254 73.1837 81.526 73.795C80.4244 75.2546 79.2235 76.6365 77.932 77.931Z" fill="currentColor"/>
-                  </svg>
-                  <span className="flex-1 text-left">语言 / Language</span>
+                <div className="px-4 py-2 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+                  {currentLocale === 'zh' ? '语言' : 'Language'}
                 </div>
-                <div className="flex items-center bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full">
-                  <span className="text-sm font-semibold text-primary">
-                    {currentLocale === 'zh' ? 'English' : '中文'}
-                  </span>
-                </div>
-              </button>
-            </div>
+                <button
+                  onClick={() => changeLanguage('en')}
+                  className={`w-full flex items-center px-4 py-2.5 text-base font-medium rounded-lg transition-colors touch-manipulation ${
+                    currentLocale === 'en'
+                      ? 'text-primary bg-primary/5'
+                      : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }`}
+                >
+                  English
+                </button>
+                <button
+                  onClick={() => changeLanguage('zh')}
+                  className={`w-full flex items-center px-4 py-2.5 text-base font-medium rounded-lg transition-colors touch-manipulation ${
+                    currentLocale === 'zh'
+                      ? 'text-primary bg-primary/5'
+                      : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }`}
+                >
+                  简体中文
+                </button>
+              </div>
             </div>
 
             {/* CTA Buttons */}
@@ -717,12 +819,6 @@ const Header: React.FC = () => {
                 className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors shadow-sm touch-manipulation"
               >
                 {t('navigation.freeTrial')}
-              </Link>
-              <Link
-                href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
-                className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-primary border-2 border-primary hover:bg-primary-lighter rounded-lg transition-colors touch-manipulation"
-              >
-                {t('navigation.requestDemo')}
               </Link>
             </div>
           </Disclosure.Panel>

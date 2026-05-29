@@ -5,13 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
-import { isCompanyEmail } from '@/utils/validation';
+import { isCompanyEmail, isValidName, isValidCompany, isValidPhone, isValidEmailFormat } from '@/utils/validation';
 
 export default function FreeTrial() {
   const { t } = useTranslation();
   const pathname = usePathname();
   const isZhPage = pathname?.startsWith('/zh');
   const [formState, setFormState] = useState({
+    intent: 'selfTrial',
     name: '',
     email: '',
     company: '',
@@ -23,10 +24,12 @@ export default function FreeTrial() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   // 处理表单字段变化
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
-    
+
     setFormState(prevState => ({
       ...prevState,
       [name]: type === 'checkbox' ? checked : value
@@ -57,6 +60,26 @@ export default function FreeTrial() {
       alert(t('common.useCompanyEmail'));
       return;
     }
+
+    if (!isValidName(formState.name)) {
+      alert(t('freeTrial.form.invalidName'));
+      return;
+    }
+
+    if (!isValidCompany(formState.company)) {
+      alert(t('freeTrial.form.invalidCompany'));
+      return;
+    }
+
+    if (formState.email.trim() && !isValidEmailFormat(formState.email)) {
+      alert(t('freeTrial.form.invalidEmail'));
+      return;
+    }
+
+    if (formState.phone.trim() && !isValidPhone(formState.phone, !!isZhPage)) {
+      alert(t('freeTrial.form.invalidPhone'));
+      return;
+    }
     
     setIsSubmitting(true);
     setSubmitStatus('idle');
@@ -72,17 +95,24 @@ export default function FreeTrial() {
         }
       });
       
+      const intentLabel =
+        formState.intent === 'demo'
+          ? 'Demo'
+          : formState.intent === 'sales'
+          ? 'Sales'
+          : 'Trial';
+
       // Add email subject
-      formData.append('_subject', `Trial Application - ${formState.company}`);
-      
+      formData.append('_subject', `${intentLabel} Application - ${formState.company}`);
+
       // Specify the target email
       formData.append('_replyto', formState.email);
-      
+
       // Add hidden fields for FormSubmit configuration
       formData.append('_next', typeof window !== 'undefined' ? window.location.href : '');
       formData.append('_captcha', 'true');
       formData.append('_template', 'box');
-      
+
       // Send to API route using Resend
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -90,12 +120,13 @@ export default function FreeTrial() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          intent: formState.intent,
           name: formState.name,
           email: formState.email,
           company: formState.company,
           phone: formState.phone,
           useCase: formState.useCase,
-          _subject: `Trial Application - ${formState.company}`,
+          _subject: `${intentLabel} Application - ${formState.company}`,
           _replyto: formState.email
         })
       });
@@ -103,6 +134,7 @@ export default function FreeTrial() {
       if (response.ok) {
         // Reset form
         setFormState({
+          intent: 'selfTrial',
           name: '',
           email: '',
           company: '',
@@ -150,7 +182,35 @@ export default function FreeTrial() {
               <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
               <input type="hidden" name="_captcha" value="true" />
               <input type="hidden" name="_template" value="box" />
-              
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  {t('freeTrial.form.intent')} <span className="text-red-500">*</span>
+                </label>
+                <div className="space-y-2">
+                  {[
+                    { value: 'selfTrial', labelKey: 'freeTrial.form.intentSelfTrial' },
+                    { value: 'demo', labelKey: 'freeTrial.form.intentDemo' },
+                    { value: 'sales', labelKey: 'freeTrial.form.intentSales' },
+                  ].map((opt) => (
+                    <label
+                      key={opt.value}
+                      className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
+                    >
+                      <input
+                        type="radio"
+                        name="intent"
+                        value={opt.value}
+                        checked={formState.intent === opt.value}
+                        onChange={handleInputChange}
+                        className="h-4 w-4 text-primary focus:ring-primary border-gray-300"
+                      />
+                      {t(opt.labelKey)}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   {t('freeTrial.form.name')} <span className="text-red-500">*</span>

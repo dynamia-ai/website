@@ -110,7 +110,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="gate-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('requestDemo.form.name')}
+              {t('freeTrial.form.name')}
             </label>
             <input
               type="text"
@@ -124,7 +124,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
           </div>
           <div>
             <label htmlFor="gate-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('requestDemo.form.email')}
+              {t('freeTrial.form.email')}
             </label>
             <input
               type="email"
@@ -138,7 +138,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
           </div>
           <div>
             <label htmlFor="gate-company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('requestDemo.form.company')}
+              {t('freeTrial.form.company')}
             </label>
             <input
               type="text"
@@ -152,7 +152,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
           </div>
           <div>
             <label htmlFor="gate-jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('requestDemo.form.jobTitle')}
+              {t('freeTrial.form.jobTitle')}
             </label>
             <input
               type="text"
@@ -166,7 +166,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
           </div>
           <div>
             <label htmlFor="gate-message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('requestDemo.form.message')}
+              {t('freeTrial.form.message')}
             </label>
             <textarea
               id="gate-message"
@@ -184,7 +184,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
               isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
             }`}
           >
-            {isSubmitting ? t('requestDemo.form.submitting') : t('videos.gate.submit')}
+            {isSubmitting ? t('freeTrial.form.submitting') : t('videos.gate.submit')}
           </button>
         </form>
       </div>

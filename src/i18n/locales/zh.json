@@ -13,6 +13,14 @@
     "joinCommunity": "加入社区",
     "joinCommunityDesc": "加入 HAMi 用户社区，分享经验与获取帮助",
     "products": "产品",
+    "productsOverview": "产品概览",
+    "productsOverviewDesc": "了解密瓜智能异构算力平台与开源 HAMi 项目",
+    "hamiEnterprise": "HAMi 企业版",
+    "hamiEnterpriseDesc": "基于 CNCF Sandbox 项目构建的企业级 GPU 虚拟化方案",
+    "hamiAiPlatform": "HAMi 平台版",
+    "hamiAiPlatformDesc": "异构算力集群全栈管控平台",
+    "enterpriseDownloads": "企业版下载",
+    "enterpriseDownloadsDesc": "查看企业版矩阵，下载镜像离线包、Helm Chart 与安装指南",
     "caseStudies": "客户案例",
     "solutions": "解决方案",
     "pricing": "定价",
@@ -29,7 +37,6 @@
     "adoptersDesc": "查看哪些组织在生产环境中使用 HAMi",
     "company": "公司",
     "freeTrial": "申请试用",
-    "requestDemo": "申请演示",
     "openMenu": "打开菜单",
     "eventBannerLabel": "KubeCon + CloudNativeCon Europe:",
     "eventBannerMessage": "HAMi 社区展位：Project Pavilion P-13B。密瓜智能 团队在 3 月 24 日 15:10-19:00、3 月 26 日 12:30-14:00 与你现场交流。",
@@ -96,6 +103,16 @@
           "title": "自动弹性扩缩容",
           "subtitle": "AI 应用无感、动态扩缩容",
           "description": "密瓜智能 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
+        },
+        {
+          "title": "集中可观测",
+          "subtitle": "全栈 AI 运行洞察",
+          "description": "通过集中可观测能力统一汇聚公有云、私有云与本地资源，提供可执行洞察、策略化治理与细粒度资源管理，保障 AI 业务高效稳定运行。"
+        },
+        {
+          "title": "高级 AI 调度",
+          "subtitle": "面向场景的智能调度策略",
+          "description": "支持 NUMA-aware、Binpack、Spread 等高级调度策略，降低数据通信开销，减少资源碎片，持续优化任务性能。"
         }
       ]
     },
@@ -163,7 +180,7 @@
     "cta": {
       "title": "准备好改造您的 AI 计算基础设施了吗？",
       "freeTrialButton": "开始申请试用",
-      "requestDemoButton": "申请演示"
+      "viewPricing": "查看定价"
     },
     "trustedBy": {
       "title": "行业领导者的信赖选择",
@@ -171,8 +188,8 @@
     }
   },
   "products": {
-    "kantaloupe": {
-      "title": "Dynamia AI",
+    "hamiAiPlatform": {
+      "title": "HAMi 平台版",
       "subtitle": "企业级异构计算虚拟化平台",
       "description": "密瓜智能 提供了一个统一平台，用于管理异构计算资源，优化性能并降低成本。",
       "features": [
@@ -196,12 +213,12 @@
               {
                 "name": "x86",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "ARM",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -211,12 +228,12 @@
               {
                 "name": "Linux",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "WSL",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -226,12 +243,12 @@
               {
                 "name": "节点数",
                 "hamiStatus": "1 - 20 nodes",
-                "kantaloupeStatus": "20 - 1000 nodes"
+                "platformStatus": "20 - 1000 nodes"
               },
               {
                 "name": "GPU 数量",
                 "hamiStatus": "1 - 160 GPUs",
-                "kantaloupeStatus": "100 - 8000 GPUs"
+                "platformStatus": "100 - 8000 GPUs"
               }
             ]
           },
@@ -241,62 +258,62 @@
               {
                 "name": "显存共享",
                 "hamiStatus": "✅",
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "显存共享强隔离",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "算力共享",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "算力共享强隔离",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "显存超卖",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "算力超卖",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "动态调整",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "自动扩缩容",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "任务优先级",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "故障隔离",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "统计任务空闲时间",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "显存分析",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -306,32 +323,32 @@
               {
                 "name": "节点级别 Binpack、Spread 调度",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU 级别 Binpack、Spread 调度",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Nvidia MIG",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Nvidia MIG 动态虚拟化",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Nvidia NUMA 亲和调度",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Nvidia 网络拓扑 亲和调度",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -341,42 +358,42 @@
               {
                 "name": "寒武纪 MLU",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "海光 DCU",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "昇腾 310 系列",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "昇腾 910 系列",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "摩尔线程",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "天数智芯",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "燧原",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "沐曦",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -386,32 +403,32 @@
               {
                 "name": "AI 工作负载 GPU 分配情况",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "AI 工作负载节点绑定管理",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "AI 工作负载真实使用量",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU 故障指标",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU 故障告警",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU 故障自恢复",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -421,22 +438,22 @@
               {
                 "name": "AI 算力集群生命周期管理 (创建、扩容、更新、卸载)",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "AI 多集群 统一管理视角",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "AI 多集群 统一监控、运维视角",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "多集群 工作台 UI",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -446,22 +463,22 @@
               {
                 "name": "GPU 软件栈全生命周期管理",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GUI",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "OpenAPI",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "计量计费",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -471,17 +488,17 @@
               {
                 "name": "KataContainer",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "安全策略",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "可信安全、算力脱敏",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -491,7 +508,7 @@
               {
                 "name": "Support",
                 "hamiStatus": "✅ 社区支持：GitHub、社区用户群",
-                "kantaloupeStatus": "✅ 专业团队支持"
+                "platformStatus": "✅ 专业团队支持"
               }
             ]
           }
@@ -601,45 +618,26 @@
       "company": "公司名称",
       "phoneWechat": "电话号码/微信",
       "useCase": "您计划如何使用密瓜智能企业级异构计算虚拟化平台？",
-      "terms": "我同意密瓜智能企业级异构计算虚拟化平台的服务条款和隐私政策",
+      "terms": "我同意密瓜智能的服务条款和隐私政策",
       "termsRequired": "您必须同意条款和条件才能继续。",
       "emailRequired": "工作邮箱为必填项。",
       "phoneRequired": "电话号码/微信为必填项。",
+      "invalidName": "请输入有效的姓名（1-50 个字符，不含特殊符号）。",
+      "invalidCompany": "请输入有效的公司名称（1-100 个字符，不含特殊符号）。",
+      "invalidEmail": "请输入有效的邮箱地址。",
+      "invalidPhone": "请输入有效的手机号码（11 位数字）。",
+      "jobTitle": "职位",
+      "message": "您希望了解或讨论的内容？",
+      "intent": "您本次的需求？",
+      "intentSelfTrial": "自助试用（License & 部署）",
+      "intentDemo": "安排个性化演示",
+      "intentSales": "商务咨询（报价 / 合作）",
       "submitting": "处理中...",
-      "submitButton": "申请试用",
-      "submitSuccess": "谢谢！您的试用请求已提交。我们的团队将很快与您联系，提供后续步骤。",
+      "submitButton": "提交申请",
+      "submitSuccess": "谢谢！您的请求已提交。我们的团队将在 24 小时内与您联系。",
       "submitError": "提交请求时发生错误。请重试或直接通过 info@dynamia.ai 与我们联系。"
     },
     "disclaimer": "试用结束后，您可以选择升级到付费计划或取消账户。无需信用卡。"
-  },
-  "requestDemo": {
-    "title": "申请演示",
-    "subtitle": "安排个性化演示，了解密瓜智能企业级异构计算虚拟化平台如何帮助您的组织优化计算资源",
-    "demoContent": {
-      "title": "演示内容",
-      "items": [
-        "密瓜智能企业级异构计算虚拟化平台功能概述",
-        "根据您的需求定制的演示",
-        "与我们的解决方案专家互动",
-        "部署选项和定价的详细探讨"
-      ]
-    },
-    "form": {
-      "title": "您的信息",
-      "name": "姓名",
-      "email": "工作邮箱",
-      "company": "公司名称",
-      "contact": "电话号码/微信",
-      "jobTitle": "职位",
-      "message": "您希望在演示中了解什么？",
-      "contactRequired": "电话号码/微信为必填项。",
-      "emailRequired": "工作邮箱为必填项。",
-      "submitting": "发送请求中...",
-      "submitButton": "申请演示",
-      "submitSuccess": "谢谢！我们已收到您的演示请求。我们的团队将在 24 小时内联系您安排个性化演示。",
-      "submitError": "提交请求时发生错误。请重试或直接通过 info@dynamia.ai 与我们联系。"
-    },
-    "followUp": "提交请求后，我们的团队将在 24 小时内联系您安排演示。"
   },
   "resources": {
     "title": "资源中心",
@@ -742,7 +740,7 @@
     "hamiMetricsExplorerPage": {
       "subtitle": "解析 HAMi 指标，查看 GPU 分配状态并导出清单 JSON。",
       "uploadTitle": "拖拽 Prometheus 指标文件到这里，或点击选择文件",
-      "uploadDesc": "支持 HAMi / kantaloupe 指标格式",
+      "uploadDesc": "支持 HAMi / HAMi AI Platform 指标格式",
       "exportButton": "导出 JSON",
       "mergeButton": "与旧数据合并",
       "analysisTitle": "分析",
@@ -877,6 +875,10 @@
           "title": "Slack",
           "action": "加入我们"
         },
+        "linkedin": {
+          "title": "LinkedIn",
+          "action": "关注我们"
+        },
         "twitter": {
           "title": "X (Twitter)",
           "action": "关注我们"
@@ -903,7 +905,7 @@
     "pricing": "定价",
     "poweredByHami": "由 HAMi 提供支持",
     "followWechat": "关注微信公众号",
-    "companyDescription": "密瓜智能 密瓜智能专注 GPU 虚拟化与异构算力调度，是 CNCF 开源项目 HAMi 的发起与主导方。",
+    "companyDescription": "密瓜智能专注 GPU 虚拟化与异构算力调度，是 CNCF 开源项目 HAMi 的发起与主导方。",
     "companyIntro": "企业级 GPU 虚拟化与调度平台，基于 CNCF 开源项目 HAMi 深度优化。",
     "about": "关于",
     "aboutCompany": "公司概况",
@@ -1041,7 +1043,13 @@
   "pricing": {
     "title": "定价",
     "headline": "灵活的计算需求定价方案",
-    "description": "我们提供一系列灵活的定价选项，适应您的计算环境规模和复杂度。联系我们获取定制化报价。",
+    "description": "灵活定价，按集群规模与复杂度定制。联系我们获取报价。",
+    "compareCTA": {
+      "eyebrow": "版本与下载",
+      "title": "查看版本对比 + 获取下载",
+      "desc": "查看三档完整能力矩阵，下载镜像离线包、Helm Chart 与安装指南。",
+      "button": "查看企业版"
+    },
     "benefits": [
       "定制化定价方案",
       "根据集群规模灵活调整",
@@ -1087,7 +1095,7 @@
     "cta": {
       "title": "准备好打造你的成功案例了吗？",
       "description": "与我们交流，看看 HAMi 如何提升 GPU 利用率、稳定性与成本效率。",
-      "button": "预约演示"
+      "button": "申请试用"
     }
   },
   "cases": {
@@ -1859,7 +1867,7 @@
       ],
       "overview": {
         "title": "公司概述",
-        "description": "SNOW Corp. 是韩国 NAVER 集团旗下子公司，运营着 1,000+ 张 A100 GPU 的计算集群，为 SNOW、EPIK、B612 三款全球排名领先的 GenAI 应用提供 AI 功能服务，覆盖 2 亿+全球用户。基础设施承载 1,200+ AI 工作流和 400+ 模型，需要应对病毒式 AI 趋势带来的极端流量波动。",
+        "description": "SNOW Corp. 是韩国 NAVER 集团旗下子公司，运营着 1,000+ 张 A100 GPU 的计算集群，为 SNOW、EPIK、B612 三款全球排名领先的 GenAI 应用提供 AI 功能服务，覆盖 2 亿 + 全球用户。基础设施承载 1,200+ AI 工作流和 400+ 模型，需要应对病毒式 AI 趋势带来的极端流量波动。",
         "keyPoints": [
           "韩国领先科技平台 NAVER 集团旗下子公司",
           "三款全球领先的 GenAI 应用：SNOW、EPIK、B612",
@@ -1894,7 +1902,7 @@
         "description": "SNOW 迁移至多区域本地化 Kubernetes 平台，整个技术栈由 CNCF 生态支撑：Cilium 作为 CNI、Helm 实现 GitOps 部署、Traefik 作为 Ingress、Prometheus/Loki/Grafana 提供可观测性、HAMi 实现 GPU 共享、KEDA 实现自动伸缩。",
         "hamiSharing": {
           "title": "基于 HAMi 的 GPU 共享",
-          "description": "Kubernetes 默认调度器执行严格的 GPU 隔离，这阻断了 SNOW 顺序式训练-推理流水线的迁移——训练器和推理引擎必须共享同一张 GPU。HAMi 通过虚拟化 GPU 资源（vGPU）解决此问题，使同一 Pod 中的多个容器能够并发共享单张 GPU。",
+          "description": "Kubernetes 默认调度器执行严格的 GPU 隔离，这阻断了 SNOW 顺序式训练 - 推理流水线的迁移——训练器和推理引擎必须共享同一张 GPU。HAMi 通过虚拟化 GPU 资源（vGPU）解决此问题，使同一 Pod 中的多个容器能够并发共享单张 GPU。",
           "features": [
             "与 kube-scheduler 原生集成，无需修改任何应用代码",
             "与更广泛的自动伸缩生态系统完全兼容",
@@ -1968,7 +1976,7 @@
       },
       "companyCard": {
         "name": "SNOW Corp.",
-        "description": "NAVER 旗下子公司，服务全球 2 亿+ GenAI 用户"
+        "description": "NAVER 旗下子公司，服务全球 2 亿 + GenAI 用户"
       },
       "cta": {
         "exploreHami": "探索 HAMi",
@@ -2007,6 +2015,145 @@
         "title": "GPU 超卖企业级特性实战",
         "description": "企业级 GPU 超卖能力演示 — 资源优化实战。"
       }
+    }
+  },
+  "enterprise": {
+    "list": {
+      "title": "密瓜智能产品概览",
+      "subtitle": "对比 HAMi 企业版与 HAMi 平台版，为生产级异构算力选择合适路径。",
+      "noRelease": "暂无版本",
+      "viewDetail": "查看详情",
+      "downloadCta": "下载",
+      "artifactCount": "{{count}} 个下载介质",
+      "metaVersion": "版本",
+      "metaReleased": "发布",
+      "metaArtifacts": "介质",
+      "heroBadge": "产品 · 生产就绪",
+      "heroApplyTrial": "申请试用",
+      "statEditions": "产品",
+      "statGA": "GA 产品",
+      "statReleases": "已发布版本",
+      "statArtifacts": "可下载介质",
+      "matrixTitle": "产品线",
+      "matrixDesc": "选择一款产品，查看产品介绍、下载介质、安装指南与兼容矩阵。",
+      "cardEyebrowHamiEnterprise": "GPU 虚拟化",
+      "cardEyebrowHamiAiPlatform": "异构算力平台",
+      "matrixCount": "{{count}} 款产品",
+      "helpTitle": "选型咨询",
+      "helpDesc": "容量规划、评估授权、离线部署 — 联系我们。",
+      "applyTrial": "申请试用",
+      "viewPricing": "查看定价",
+      "comingSoonBadge": "即将推出",
+      "comingSoonTitle": "更多产品即将推出",
+      "comingSoonDesc": "更多异构加速卡产品正在打包，联系销售获取首发。",
+      "comingSoonHint": "产品路线持续更新"
+    },
+    "detail": {
+      "backToList": "返回产品列表",
+      "latest": "最新",
+      "latestLabel": "最新版本",
+      "openDocs": "在线文档",
+      "downloadLatest": "下载最新版",
+      "openInstallGuide": "安装指南",
+      "aboutTitle": "产品介绍",
+      "downloadTitle": "下载",
+      "versionLabel": "版本",
+      "releasedAt": "发布时间",
+      "releaseNotes": "Release Notes",
+      "upgradeGuide": "升级指南",
+      "noRelease": "当前版本暂无下载介质。",
+      "compatTitle": "兼容性矩阵",
+      "contactTitle": "需要企业级支持？",
+      "contactDesc": "获取定制报价、部署交付与 7×24 SLA。",
+      "contactCta": "联系销售",
+      "casesTitle": "客户部署案例",
+      "casesDesc": "查看真实客户部署架构与生产实践。",
+      "casesCta": "浏览客户案例",
+      "channelStable": "稳定版",
+      "channelBeta": "Beta",
+      "channelRc": "RC",
+      "channelEol": "已停止维护",
+      "eolWarning": "已停止维护，无安全更新。生产请用最新稳定版。",
+      "betaWarning": "Beta — 仅供评估，勿用于生产。",
+      "downloadComingSoonBadge": "Coming Soon",
+      "downloadComingSoonTitle": "下载页面即将开放",
+      "downloadComingSoonDesc": "版本下载、交付流程与下载路径还在准备中，确认后会在这里更新。",
+      "deliveryTabsLabel": "安装方式",
+      "deliveryTabOnline": "在线安装",
+      "deliveryTabOffline": "离线安装",
+      "deliveryTabSoon": "筹备中",
+      "deliveryOnlineDesc": "在线安装步骤、OCI / Helm 命令与验证说明均见安装指南。",
+      "deliveryOfflineDesc": "离线一体包、镜像 tar 与校验信息，适用于隔离网络与生产交付场景。",
+      "onlineInstallTitle": "推荐：OCI 在线安装",
+      "onlineInstallDesc": "集群可访问 OCI 仓库时，执行以下命令即可完成安装。",
+      "offlineComingSoonTitle": "离线安装包筹备中",
+      "offlineComingSoonDesc": "All-in-One 离线一体包与分件镜像包正在打包与校验，开放后将在本页提供下载与 SHA256。"
+    },
+    "artifact": {
+      "download": "下载",
+      "view": "查看",
+      "unlockToDownload": "解锁后下载",
+      "installCommand": "安装命令",
+      "mirrorLabel": "下载镜像",
+      "groupBundles": "All-in-One 离线一体包",
+      "groupBundlesDesc": "一个 tarball 内含镜像 + Helm Chart + 安装脚本 + 文档，面向完全隔离网络的私有化部署。",
+      "recommendedBadge": "推荐",
+      "bundleContents": "内含：",
+      "contentBundle": "一体包",
+      "contentImage": "容器镜像",
+      "contentChart": "Helm Chart",
+      "contentDocs": "安装文档",
+      "contentReleaseNotes": "版本说明",
+      "contentChecksum": "校验和",
+      "groupImages": "容器镜像",
+      "groupImagesDesc": "面向离线 / 隔离网络环境的镜像离线包。",
+      "groupCharts": "Helm Charts",
+      "groupChartsDesc": "在线 OCI 安装，或下载 Chart 离线包。",
+      "groupChartsDescOnline": "无法使用 OCI 时，可下载 Chart 归档包。",
+      "groupChartsDescOffline": "下载 Chart 包用于离线或内网 Helm 安装。",
+      "groupChartsOptional": "Chart 归档包（可选）",
+      "groupDocs": "文档资料",
+      "groupDocsDesc": "安装指南与版本说明。"
+    },
+    "installDoc": {
+      "label": "安装指南",
+      "lastUpdated": "最后更新",
+      "tocTitle": "本页目录"
+    },
+    "trust": {
+      "deployedBy": "已在生产环境部署",
+      "caseTitle": "真实生产案例",
+      "caseDesc": "头部企业如何大规模部署密瓜智能企业版。",
+      "viewAllCases": "查看全部案例",
+      "readCase": "阅读案例",
+      "contactEyebrow": "联系销售",
+      "contactPhone": "电话",
+      "contactEmail": "邮箱"
+    },
+    "gate": {
+      "title": "解锁企业版下载",
+      "subtitle": "填写信息解锁下载，30 天有效。",
+      "submit": "解锁下载",
+      "success": "提交成功，正在为您解锁下载。",
+      "error": "提交失败，请重试或邮件 info@dynamia.ai。",
+      "consentLabel": "我已阅读并同意 <a href='/zh/privacy-policy' target='_blank' class='text-primary underline'>隐私政策</a>，同意密瓜智能依据《个人信息保护法》处理我的信息用于销售跟进。",
+      "consentRequired": "请先阅读并同意隐私政策。"
+    },
+    "hamiEnterprisePage": {
+      "heroBadge": "企业版",
+      "heroTitle": "HAMi 企业版",
+      "heroSubtitle": "基于 CNCF Sandbox 项目构建的企业级 GPU 虚拟化方案，将 GPU 利用率从 40% 提升至 70%+",
+      "overviewTitle": "为生产环境而生",
+      "overviewDescription": "HAMi 企业版基于 GPU License 授权，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴，提供生产级加固与企业级支持。",
+      "highlightsTitle": "企业级特性",
+      "compatTitle": "兼容性",
+      "compatKubernetes": "Kubernetes",
+      "compatOs": "操作系统",
+      "compatGpu": "GPU 驱动",
+      "ctaTitle": "准备开始？",
+      "ctaDescription": "联系我们的团队获取企业授权、部署协助和 7×24 技术支持。",
+      "viewDownloads": "下载",
+      "applyTrial": "申请试用"
     }
   },
   "common": {

@@ -24,6 +24,14 @@ function doesPublicImageExist(imagePath: string): boolean {
   return fs.existsSync(path.join(PUBLIC_PATH, imagePath));
 }
 
+/** Wrap markdown tables so borders are not clipped by `.blog-content { overflow-x: hidden }`. */
+function wrapTablesInHtml(html: string): string {
+  return html.replace(/<table[\s\S]*?<\/table>/gi, (table) => {
+    if (table.includes('class="table-wrapper"')) return table;
+    return `<div class="table-wrapper">${table}</div>`;
+  });
+}
+
 function extractFirstLocalImage(markdown: string): string | undefined {
   const imageRegex = /!\[[^\]]*]\((\/[^)\s]+)(?:\s+"[^"]*")?\)/;
   const match = markdown.match(imageRegex);
@@ -305,7 +313,69 @@ export async function markdownToHtml(
   }
 
   return {
-    html,
+    html: wrapTablesInHtml(html),
+    toc,
+  };
+}
+
+// Convert markdown to HTML without image captions (for attachments)
+export async function attachmentMarkdownToHtml(
+  markdown: string
+): Promise<{ html: string; toc: TocItem[] }> {
+  // 先解析为 AST 以提取目录
+  const ast = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkBreaks)
+    .parse(markdown);
+
+  // 提取目录
+  const toc = extractTocFromAST(ast);
+
+  // 转换为 HTML (no image captions)
+  const htmlResult = await unified()
+    .use(remarkParse)
+    .use(remarkGfm) // GitHub Flavored Markdown
+    .use(remarkBreaks) // Convert line breaks to <br>
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw) // Parse raw HTML in markdown
+    .use(rehypeHighlight) // Syntax highlighting
+    // NOTE: no rehypeImageCaptions for attachments
+    .use(rehypeStringify)
+    .process(markdown);
+
+  let html = htmlResult.toString();
+
+  // 为标题添加 ID（按顺序匹配）
+  if (toc.length > 0) {
+    toc.forEach((tocItem) => {
+      const regex = new RegExp(
+        `<h${tocItem.level}([^>]*)>([\\s\\S]*?)</h${tocItem.level}>`,
+        'gi'
+      );
+      
+      let found = false;
+      html = html.replace(regex, (match, attrs, content) => {
+        if (attrs.includes('id=') || found) {
+          return match;
+        }
+
+        const cleanContent = content.replace(/<[^>]*>/g, '').trim();
+        const cleanText = tocItem.text.trim();
+        
+        if (cleanContent === cleanText || 
+            (cleanText.length > 10 && cleanContent.includes(cleanText.substring(0, Math.min(20, cleanText.length))))) {
+          found = true;
+          return `<h${tocItem.level}${attrs} id="${tocItem.id}">${content}</h${tocItem.level}>`;
+        }
+
+        return match;
+      });
+    });
+  }
+
+  return {
+    html: wrapTablesInHtml(html),
     toc,
   };
 }

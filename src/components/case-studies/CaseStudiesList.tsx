@@ -24,6 +24,11 @@ const CaseStudiesList: React.FC = () => {
   const { t } = useTranslation();
   const pathname = usePathname();
   const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
+  const shortenDescription = (text: string) => {
+    const maxChars = currentLocale === 'zh' ? 72 : 160;
+    if (text.length <= maxChars) return text;
+    return `${text.slice(0, maxChars).trimEnd()}...`;
+  };
 
   const cases: CaseStudyCard[] = [
     {
@@ -161,8 +166,8 @@ const CaseStudiesList: React.FC = () => {
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
                   {t(item.titleKey)}
                 </h2>
-                <p className="text-sm text-gray-600 dark:text-gray-200 leading-relaxed mb-6">
-                  {t(item.subtitleKey)}
+                <p className="text-sm text-gray-600 dark:text-gray-200 leading-relaxed mb-6 line-clamp-2 h-[45px] overflow-hidden">
+                  {shortenDescription(String(t(item.subtitleKey)))}
                 </p>
                 <div className="mt-auto">
                   <Link
@@ -188,7 +193,7 @@ const CaseStudiesList: React.FC = () => {
               {t('caseStudiesPage.cta.description')}
             </p>
             <Link
-              href={currentLocale === 'zh' ? '/zh/request-demo' : '/request-demo'}
+              href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
               className="inline-flex items-center px-6 py-3 rounded-md bg-primary text-white font-medium hover:bg-primary-dark transition-colors"
             >
               {t('caseStudiesPage.cta.button')}
