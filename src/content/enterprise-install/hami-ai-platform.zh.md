@@ -329,7 +329,22 @@ kubectl -n kantaloupe-system get svc
 
 HAMi AI Platform 服务暴露后，打开站点，确认前后端正常工作。
 
-更多产品特性和使用说明详见：TODO。
+#### 创建工作负载
+
+在控制台 **工作负载** 页面，创建应用（如 `gpu-burn`）：
+
+![创建工作负载](/images/enterprise-install/hami-ai-platform/create-workload-zh.png)
+
+创建完成后，确认以下验证项均通过：
+
+1. **创建成功**，控制台无报错
+2. **负载列表**：应用状态、检索、列表指标与监控面板（GPU SM / GPU MEM / CPU / Memory）正常，时间切换与图表符合预期
+
+   ![负载列表](/images/enterprise-install/hami-ai-platform/workload-list-zh.png)
+
+3. **应用详情**：基础信息、资源总览、与监控数据正常；从详情页跳转 GPU / 节点页面，资源总览与监控数据正常
+
+   ![应用详情](/images/enterprise-install/hami-ai-platform/workload-detail-zh.png)![应用详情](/images/enterprise-install/hami-ai-platform/workload-detail-zh-2.png)
 
 ## 常见问题与故障排查
 
