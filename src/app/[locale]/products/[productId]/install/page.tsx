@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
 import InstallDocClient from '@/components/enterprise/InstallDocClient';
 import { getInstallDoc, getInstallDocSlugs } from '@/lib/enterprise-docs';
 
 interface PageProps {
-  params: Promise<{ productId: string }>;
+  params: Promise<{ locale: string; productId: string }>;
 }
 
 export function generateStaticParams() {
@@ -12,19 +13,22 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { productId } = await params;
-  const doc = await getInstallDoc(productId, 'zh');
-  if (!doc) return { title: '安装指南未找到' };
+  const { locale, productId } = await params;
+  const docLocale = locale === 'zh' ? 'zh' : 'en';
+  const doc = await getInstallDoc(productId, docLocale);
+  if (!doc) return { title: 'Install Guide Not Found' };
 
   return {
-    title: `${doc.frontmatter.title} | 密瓜智能`,
+    title: `${doc.frontmatter.title} | Dynamia AI`,
     description: doc.frontmatter.description,
   };
 }
 
-export default async function ZhInstallDocPage({ params }: PageProps) {
-  const { productId } = await params;
-  const doc = await getInstallDoc(productId, 'zh');
+export default async function InstallDocPage({ params }: PageProps) {
+  const { locale, productId } = await params;
+  setRequestLocale(locale);
+  const docLocale = locale === 'zh' ? 'zh' : 'en';
+  const doc = await getInstallDoc(productId, docLocale);
   if (!doc) notFound();
 
   return (
@@ -36,7 +40,7 @@ export default async function ZhInstallDocPage({ params }: PageProps) {
       description={doc.frontmatter.description}
       html={doc.html}
       toc={doc.toc}
-      locale="zh"
+      locale={docLocale}
     />
   );
 }
