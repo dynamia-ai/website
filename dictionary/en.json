@@ -65,6 +65,14 @@
     "joinCommunity": "Join Community",
     "joinCommunityDesc": "Join the HAMi user community to share experiences and get help",
     "products": "Products",
+    "productsOverview": "Product Overview",
+    "productsOverviewDesc": "Explore Dynamia AI's heterogeneous compute platform and the open-source HAMi project",
+    "hamiEnterprise": "HAMi Enterprise",
+    "hamiEnterpriseDesc": "Enterprise-grade GPU virtualization built on the CNCF Sandbox project",
+    "hamiAiPlatform": "HAMi AI Platform",
+    "hamiAiPlatformDesc": "Full-stack control plane for heterogeneous compute clusters",
+    "enterpriseDownloads": "Enterprise Downloads",
+    "enterpriseDownloadsDesc": "Browse enterprise editions and download offline image bundles, Helm charts and installation guides",
     "caseStudies": "Customers",
     "solutions": "Solutions",
     "pricing": "Pricing",
@@ -104,7 +112,7 @@
   "home": {
     "hero": {
       "title": "Open source, Accelerate AI Workflows With GPU sharing, Dynamic Orchestration",
-      "subtitle": "Dynamic AI GPU sharing, scheduling and orchestration that accelerates AI throughput, delivers seamless auto scaling, and maximizes GPU utilization.",
+      "subtitle": "Dynamic GPU sharing, scheduling and orchestration — higher throughput, seamless auto-scaling, maximum utilization.",
       "chineseSlogan": "Unified heterogeneous computing for resource efficiency"
     },
     "socialProof": {
@@ -150,6 +158,16 @@
           "title": "Seamlessly Auto Scale",
           "subtitle": "Seamlessly Accelerate AI From V1 to V1 Plus",
           "description": "Dynamia.ai  support GPU on-demand auto-scaling, seamless auto-scaling for AI workloads without restarts during GPU consumption surges."
+        },
+        {
+          "title": "Centralized Observability",
+          "subtitle": "Complete AI Infrastructure Insights",
+          "description": "Its centralized observability unifies resources across cloud, on-premises, and hybrid environments, empowering teams with actionable insights, policy-driven governance, and fine-grained resource management."
+        },
+        {
+          "title": "Advanced AI Scheduling",
+          "subtitle": "Scenario-Aware Scheduling Strategies",
+          "description": "Advanced AI scheduling supports NUMA-aware, binpack, and spread strategies to reduce communication overhead, minimize fragmentation, and optimize workload performance."
         }
       ]
     },
@@ -217,7 +235,7 @@
     "cta": {
       "title": "Ready to transform your computing infrastructure?",
       "freeTrialButton": "Apply for Trial",
-      "requestDemoButton": "Request a Demo"
+      "viewPricing": "View Pricing"
     },
     "trustedBy": {
       "title": "Trusted by Industry Leaders",
@@ -225,8 +243,8 @@
     }
   },
   "products": {
-    "kantaloupe": {
-      "title": "Dynamia AI",
+    "hamiAiPlatform": {
+      "title": "HAMi AI Platform",
       "subtitle": "Enterprise-grade heterogeneous computing virtualization platform",
       "description": "Dynamia AI provides a unified platform for managing heterogeneous computing resources, optimizing performance and reducing costs.",
       "overviewTitle": "Product Overview",
@@ -269,12 +287,12 @@
               {
                 "name": "x86",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "ARM",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -284,12 +302,12 @@
               {
                 "name": "Linux",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "WSL",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -299,12 +317,12 @@
               {
                 "name": "Nodes",
                 "hamiStatus": "1 - 20 nodes",
-                "kantaloupeStatus": "20 - 1000 nodes"
+                "platformStatus": "20 - 1000 nodes"
               },
               {
                 "name": "GPUs",
                 "hamiStatus": "1 - 160 GPUs",
-                "kantaloupeStatus": "100 - 8000 GPUs"
+                "platformStatus": "100 - 8000 GPUs"
               }
             ]
           },
@@ -314,62 +332,62 @@
               {
                 "name": "GPU Memory share",
                 "hamiStatus": "✅",
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "QOS GPU Memory share",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU Core share",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "QOS GPU Core share",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU Memory oversubscribe",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Computing Core oversubscribe",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Dynamic Adjustment",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Auto Scaling",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Task Priority",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Fault Isolation",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Task Idle Time Statistics",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Memory Analysis",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -379,32 +397,32 @@
               {
                 "name": "Node-level Binpack, Spread Scheduling",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU-level Binpack, Spread Scheduling",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Nvidia MIG",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Nvidia MIG Dynamic Virtualization",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Nvidia NUMA Affinity Scheduling",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Nvidia Network Topology Affinity Scheduling",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -414,42 +432,42 @@
               {
                 "name": "Cambricon MLU",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Hygon DCU",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Ascend 310 Series",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Ascend 910 Series",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Moore Threads GPU",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Iluvatar GPU",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Enflame GPU",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Metax GPU",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -459,32 +477,32 @@
               {
                 "name": "GPU Allocation of AI Workloads",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Node Binding AI workloads",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "AI workloads usage",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU Fault Metrics",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU Fault Alerts",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GPU Fault Self-recovery",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -494,22 +512,22 @@
               {
                 "name": "AI Cluster Lifecycle Management",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "AI Multi-cluster Unified Management View",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "AI Multi-cluster Unified Monitoring and Operations View",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Multi-cluster Workbench UI",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -519,22 +537,22 @@
               {
                 "name": "GPU Stack LCM",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "GUI",
                 "hamiStatus": true,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "OpenAPI",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Metering and Billing",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -544,12 +562,12 @@
               {
                 "name": "KataContainer",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               },
               {
                 "name": "Security Policy",
                 "hamiStatus": false,
-                "kantaloupeStatus": true
+                "platformStatus": true
               }
             ]
           },
@@ -559,7 +577,7 @@
               {
                 "name": "Support",
                 "hamiStatus": "✅ Community support: GitHub, Slack channel",
-                "kantaloupeStatus": "✅ Professional team support"
+                "platformStatus": "✅ Professional team support"
               }
             ]
           }
@@ -634,50 +652,32 @@
   },
   "freeTrial": {
     "title": "Apply for a Trial",
-    "subtitle": "Start your trial and experience the power of Dynamia AI",
+    "subtitle": "Start your trial and experience the power of Dynamia",
     "form": {
       "name": "Name",
       "email": "Work Email",
       "company": "Company Name",
       "phone": "Phone Number",
       "useCase": "How do you plan to use Dynamia AI?",
-      "terms": "I agree to dynamia ai's Terms of Service and Privacy Policy",
+      "terms": "I agree to Dynamia's Terms of Service and Privacy Policy",
       "termsRequired": "You must agree to the terms and conditions to proceed.",
       "emailRequired": "Work email is required.",
+      "invalidName": "Please enter a valid name (1-50 characters, no special characters).",
+      "invalidCompany": "Please enter a valid company name (1-100 characters, no special characters).",
+      "invalidEmail": "Please enter a valid email address.",
+      "invalidPhone": "Please enter a valid phone number.",
+      "jobTitle": "Job Title",
+      "message": "What would you like to learn or discuss?",
+      "intent": "What do you need?",
+      "intentSelfTrial": "Self-serve trial (license & access)",
+      "intentDemo": "Schedule a personalized demo",
+      "intentSales": "Talk to sales (pricing / partnership)",
       "submitting": "Processing...",
       "submitButton": "Apply for Trial",
-      "submitSuccess": "Thank you! Your trial application has been submitted. Our team will contact you shortly with next steps.",
+      "submitSuccess": "Thank you! Your request has been submitted. Our team will contact you shortly with next steps.",
       "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai."
     },
     "disclaimer": "After your trial ends, you can choose to upgrade to a paid plan or cancel your account. No credit card required."
-  },
-  "requestDemo": {
-    "title": "Request a Demo",
-    "subtitle": "Schedule a personalized demo to learn how Dynamia AI can help your organization optimize computing resources",
-    "demoContent": {
-      "title": "Demo Content",
-      "items": [
-        "Overview of Dynamia AI platform features",
-        "Customized demonstration tailored to your needs",
-        "Interactive session with our solution experts",
-        "Detailed exploration of deployment options and pricing"
-      ]
-    },
-    "form": {
-      "title": "Your Information",
-      "name": "Name",
-      "email": "Work Email",
-      "company": "Company Name",
-      "phone": "Phone Number",
-      "jobTitle": "Job Title",
-      "message": "What would you like to learn in the demo?",
-      "emailRequired": "Work email is required.",
-      "submitting": "Sending request...",
-      "submitButton": "Request Demo",
-      "submitSuccess": "Thank you! Your demo request has been received. Our team will contact you within 24 hours to schedule your personalized demo.",
-      "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai."
-    },
-    "followUp": "After submitting your request, our team will contact you within 24 hours to schedule your demo."
   },
   "resources": {
     "title": "Resources",
@@ -780,7 +780,7 @@
     "hamiMetricsExplorerPage": {
       "subtitle": "Parse HAMi metrics, inspect GPU allocation and export inventory JSON.",
       "uploadTitle": "Drop Prometheus metrics file or click to browse",
-      "uploadDesc": "Supports HAMi / kantaloupe metrics format",
+      "uploadDesc": "Supports HAMi / HAMi AI Platform metrics format",
       "exportButton": "Export JSON",
       "mergeButton": "Merge with old data",
       "analysisTitle": "Analysis",
@@ -920,14 +920,13 @@
           "title": "Slack",
           "action": "Join Us"
         },
+        "linkedin": {
+          "title": "LinkedIn",
+          "action": "Follow Us"
+        },
         "twitter": {
           "title": "X (Twitter)",
           "action": "Follow Us"
-        },
-        "wechat": {
-          "title": "WeChat",
-          "action": "Scan QR Code",
-          "qrPlaceholder": "WeChat QR Code Placeholder"
         }
       }
     }
@@ -945,8 +944,8 @@
     "getDemo": "Get a demo",
     "pricing": "Pricing",
     "poweredByHami": "Powered by HAMi",
-    "companyDescription": "Dynamia focuses on GPU virtualization and scheduling, leading the CNCF open-source project HAMi.",
-    "companyIntro": "Enterprise-grade GPU virtualization and scheduling platform, optimized from the CNCF open-source project HAMi.",
+    "companyDescription": "Dynamia leads the CNCF project HAMi — GPU virtualization and scheduling.",
+    "companyIntro": "Enterprise GPU virtualization and scheduling, built on the CNCF project HAMi.",
     "about": "About",
     "aboutCompany": "Company Overview",
     "news": "News",
@@ -1047,7 +1046,13 @@
   "pricing": {
     "title": "Pricing",
     "headline": "Flexible Pricing for your Computational Needs",
-    "description": "We offer a range of flexible pricing options tailored to the size and complexity of your computing environment. Contact us for a customized quote.",
+    "description": "Flexible pricing tailored to your cluster size and complexity. Contact us for a quote.",
+    "compareCTA": {
+      "eyebrow": "Editions & downloads",
+      "title": "Compare editions and grab downloads",
+      "desc": "Compare HAMi (open-source / enterprise) and HAMi AI Platform — download offline bundles, Helm charts and install guides.",
+      "button": "View Enterprise editions"
+    },
     "benefits": [
       "Customized pricing plans",
       "Flexible scaling based on your cluster size",
@@ -1093,7 +1098,7 @@
     "cta": {
       "title": "Ready to build your own success story?",
       "description": "Talk with our team about how HAMi can improve utilization, stability, and cost efficiency in your GPU infrastructure.",
-      "button": "Request a Demo"
+      "button": "Apply for Trial"
     }
   },
   "cases": {
@@ -2084,6 +2089,145 @@
         "title": "GPU Oversubscription in Practice",
         "description": "Enterprise-grade GPU oversubscription — real-world demo of resource optimization."
       }
+    }
+  },
+  "enterprise": {
+    "list": {
+      "title": "Dynamia Product Overview",
+      "subtitle": "Compare HAMi Enterprise and HAMi AI Platform, then choose the right path for production-grade heterogeneous compute.",
+      "noRelease": "No Releases Yet",
+      "viewDetail": "View Details",
+      "downloadCta": "Download",
+      "artifactCount": "{{count}} download artifacts",
+      "metaVersion": "Version",
+      "metaReleased": "Released",
+      "metaArtifacts": "Artifacts",
+      "heroBadge": "Products · Production-Ready",
+      "heroApplyTrial": "Apply for Trial",
+      "statEditions": "Products",
+      "statGA": "GA products",
+      "statReleases": "Releases",
+      "statArtifacts": "Artifacts",
+      "matrixTitle": "Product Lineup",
+      "matrixDesc": "Choose a product to view its introduction, downloads, install guide and compatibility matrix.",
+      "cardEyebrowHamiEnterprise": "GPU virtualization",
+      "cardEyebrowHamiAiPlatform": "Heterogeneous compute platform",
+      "matrixCount": "{{count}} products available",
+      "helpTitle": "Need Help Choosing the Right Product?",
+      "helpDesc": "Sizing, eval licenses, air-gap support — talk to our team.",
+      "applyTrial": "Apply for Trial",
+      "viewPricing": "View Pricing",
+      "comingSoonBadge": "Coming Soon",
+      "comingSoonTitle": "More Products Coming Soon",
+      "comingSoonDesc": "We're packaging more accelerator-specific products. Contact sales for early access.",
+      "comingSoonHint": "Quarterly roadmap"
+    },
+    "detail": {
+      "backToList": "Back to Products",
+      "latest": "Latest",
+      "latestLabel": "Latest",
+      "openDocs": "Documentation",
+      "downloadLatest": "Download Latest",
+      "openInstallGuide": "Install Guide",
+      "aboutTitle": "About This Product",
+      "downloadTitle": "Downloads",
+      "versionLabel": "Version",
+      "releasedAt": "Released",
+      "releaseNotes": "Release Notes",
+      "upgradeGuide": "Upgrade Guide",
+      "noRelease": "No release available for this version.",
+      "compatTitle": "Compatibility Matrix",
+      "contactTitle": "Need Enterprise Support?",
+      "contactDesc": "Get a tailored quote, deployment assistance and 24/7 SLA.",
+      "contactCta": "Contact Sales",
+      "casesTitle": "Customer Deployments",
+      "casesDesc": "Real architectures, production deployments.",
+      "casesCta": "Browse Case Studies",
+      "channelStable": "Stable",
+      "channelBeta": "Beta",
+      "channelRc": "RC",
+      "channelEol": "EOL",
+      "eolWarning": "End-of-life — no security updates. Use the latest stable in production.",
+      "betaWarning": "Beta — evaluation only. Not for production.",
+      "downloadComingSoonBadge": "Coming Soon",
+      "downloadComingSoonTitle": "Downloads coming soon",
+      "downloadComingSoonDesc": "Version downloads, delivery workflow, and download paths are still being prepared. This section will be updated when they are finalized.",
+      "deliveryTabsLabel": "Delivery mode",
+      "deliveryTabOnline": "Online install",
+      "deliveryTabOffline": "Offline install",
+      "deliveryTabSoon": "Soon",
+      "deliveryOnlineDesc": "Online install steps, OCI/Helm commands, and verification are in the installation guide.",
+      "deliveryOfflineDesc": "Air-gap bundles and image tarballs for isolated networks and production handoff.",
+      "onlineInstallTitle": "Recommended: OCI install",
+      "onlineInstallDesc": "Run this command when your cluster can reach the OCI registry.",
+      "offlineComingSoonTitle": "Offline packages in preparation",
+      "offlineComingSoonDesc": "All-in-one air-gap bundles and image archives are being packaged and verified. Downloads and SHA256 checksums will appear here when ready."
+    },
+    "artifact": {
+      "download": "Download",
+      "view": "View",
+      "unlockToDownload": "Unlock to download",
+      "installCommand": "Install command",
+      "mirrorLabel": "Download mirror",
+      "groupBundles": "All-in-One Air-gap Bundle",
+      "groupBundlesDesc": "Single tarball with images + Helm chart + install scripts + docs — for fully isolated networks.",
+      "recommendedBadge": "Recommended",
+      "bundleContents": "Includes:",
+      "contentBundle": "All-in-One",
+      "contentImage": "Container images",
+      "contentChart": "Helm chart",
+      "contentDocs": "Install docs",
+      "contentReleaseNotes": "Release notes",
+      "contentChecksum": "Checksum",
+      "groupImages": "Container Images",
+      "groupImagesDesc": "Offline image bundles for air-gapped environments.",
+      "groupCharts": "Helm Charts",
+      "groupChartsDesc": "Install via OCI online, or download a chart tarball.",
+      "groupChartsDescOnline": "Download the chart archive if OCI is unavailable.",
+      "groupChartsDescOffline": "Chart package for offline or private Helm installs.",
+      "groupChartsOptional": "Chart archive (optional)",
+      "groupDocs": "Documentation",
+      "groupDocsDesc": "Installation guides and release notes."
+    },
+    "installDoc": {
+      "label": "Installation Guide",
+      "lastUpdated": "Last updated",
+      "tocTitle": "On this page"
+    },
+    "trust": {
+      "deployedBy": "Deployed in Production At",
+      "caseTitle": "Real-World Deployments",
+      "caseDesc": "Leading enterprises running at scale, across heterogeneous accelerators.",
+      "viewAllCases": "View All Cases",
+      "readCase": "Read Case Study",
+      "contactEyebrow": "Talk to Sales",
+      "contactPhone": "Phone",
+      "contactEmail": "Email"
+    },
+    "gate": {
+      "title": "Unlock Enterprise Downloads",
+      "subtitle": "Unlock with your details — 30-day access.",
+      "submit": "Unlock Downloads",
+      "success": "Thanks! Unlocking now...",
+      "error": "Something went wrong. Please retry or email info@dynamia.ai.",
+      "consentLabel": "I agree to the <a href='/privacy-policy' target='_blank' class='text-primary underline'>Privacy Policy</a> and consent to the processing of my information for sales follow-up (GDPR Article 6).",
+      "consentRequired": "Please review and accept the privacy policy to continue."
+    },
+    "hamiEnterprisePage": {
+      "heroBadge": "Enterprise Edition",
+      "heroTitle": "HAMi Enterprise",
+      "heroSubtitle": "Production-grade GPU virtualization built on the CNCF Sandbox project — lift GPU utilization from 40% to 70%+",
+      "overviewTitle": "Built for Production",
+      "overviewDescription": "HAMi Enterprise is the GPU-license-based enterprise edition of HAMi, designed for teams that need hardened, supported GPU virtualization with enterprise-grade reliability.",
+      "highlightsTitle": "Enterprise Highlights",
+      "compatTitle": "Compatibility",
+      "compatKubernetes": "Kubernetes",
+      "compatOs": "Operating Systems",
+      "compatGpu": "GPU Drivers",
+      "ctaTitle": "Ready to Get Started?",
+      "ctaDescription": "Contact our team for enterprise licensing, deployment assistance, and 24/7 support.",
+      "viewDownloads": "Download",
+      "applyTrial": "Apply for Trial"
     }
   },
   "common": {
