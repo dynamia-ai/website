@@ -382,6 +382,9 @@ const Header: React.FC = () => {
     : resolvedTheme === 'dark'
       ? '/dynamia-logo-white.svg'
       : '/dynamia-logo.svg';
+  const logoClassName = currentLocale === 'zh'
+    ? 'block w-32 h-8 -ml-3 lg:w-36 lg:h-9 lg:-ml-4 xl:w-40 xl:h-10 xl:-ml-5 shrink-0'
+    : 'block w-32 h-8 lg:w-36 lg:h-9 xl:w-40 xl:h-10 shrink-0';
 
   return (
     <Disclosure as="nav" className="bg-white dark:bg-gray-950 shadow-sm sticky top-0 z-50 transition-colors duration-300">
@@ -398,7 +401,7 @@ const Header: React.FC = () => {
                       alt="Dynamia AI Logo"
                       width={160}
                       height={40}
-                      className="block w-32 h-8 lg:w-36 lg:h-9 xl:w-40 xl:h-10 shrink-0"
+                      className={logoClassName}
                     />
                   </Link>
                 </div>
