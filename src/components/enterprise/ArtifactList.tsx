@@ -8,13 +8,10 @@ import {
   CubeIcon,
   DocumentTextIcon,
 } from '@heroicons/react/24/outline';
-import type { Artifact, DeliveryMode, Locale } from '@/types/enterprise';
+import type { Artifact, DeliveryMode } from '@/types/enterprise';
 import ArtifactRow from './ArtifactRow';
 
-interface ArtifactListProps {
-  artifacts: Artifact[];
-  locale: Locale;
-  unlocked: boolean;
+interface ArtifactListProps { artifacts: Artifact[]; unlocked: boolean;
   delivery?: DeliveryMode;
   rowLayout?: 'card' | 'compact';
   onDownload: (artifact: Artifact, resolvedUrl: string) => void;
@@ -70,10 +67,7 @@ function groupOf(artifact: Artifact): GroupKey {
   return 'images';
 }
 
-export default function ArtifactList({
-  artifacts,
-  locale,
-  unlocked,
+export default function ArtifactList({ artifacts, unlocked,
   delivery,
   rowLayout = 'card',
   onDownload,
@@ -136,7 +130,6 @@ export default function ArtifactList({
                 <ArtifactRow
                   key={`${artifact.type}-${artifact.arch ?? 'all'}-${artifact.url}`}
                   artifact={artifact}
-                  locale={locale}
                   unlocked={unlocked}
                   delivery={delivery}
                   layout={rowLayout}

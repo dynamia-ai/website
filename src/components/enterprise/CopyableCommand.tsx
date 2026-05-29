@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { ClipboardIcon, CheckIcon } from '@heroicons/react/24/outline';
 
 interface CopyableCommandProps {
@@ -9,6 +10,7 @@ interface CopyableCommandProps {
 }
 
 export default function CopyableCommand({ command, className = '' }: CopyableCommandProps) {
+  const t = useTranslations('enterprise');
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -30,17 +32,17 @@ export default function CopyableCommand({ command, className = '' }: CopyableCom
         type="button"
         onClick={handleCopy}
         className="flex-shrink-0 inline-flex items-center gap-1 rounded border border-gray-700 px-2 py-1 text-xs font-medium text-gray-300 hover:bg-gray-800 transition-colors"
-        aria-label="Copy command"
+        aria-label={t('copyCommand')}
       >
         {copied ? (
           <>
             <CheckIcon className="h-3.5 w-3.5 text-green-400" />
-            <span className="text-green-400">Copied</span>
+            <span className="text-green-400">{t('copiedCommand')}</span>
           </>
         ) : (
           <>
             <ClipboardIcon className="h-3.5 w-3.5" />
-            <span>Copy</span>
+            <span>{t('copyCommand')}</span>
           </>
         )}
       </button>

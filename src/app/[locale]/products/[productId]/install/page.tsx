@@ -40,7 +40,6 @@ export default async function InstallDocPage({ params }: PageProps) {
       description={doc.frontmatter.description}
       html={doc.html}
       toc={doc.toc}
-      locale={docLocale}
     />
   );
 }

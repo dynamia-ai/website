@@ -1,6 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
-import { generatePageMetadata } from "@/utils/seo";
+import { generatePageMetadata } from "@/utils/i18n";
 import SEOHead from "@/components/SEOHead";
 
 export async function generateMetadata({

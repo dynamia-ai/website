@@ -1,6 +1,6 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { localizedUrl, localizedAlternates } from "@/utils/seo";
+import { localizedUrl, localizedAlternates } from "@/utils/i18n";
 import CookiesPolicyPage from "@/components/pages/CookiesPolicyPage";
 
 export default function CookiesPolicy({

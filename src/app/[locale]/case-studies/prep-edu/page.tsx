@@ -1,7 +1,7 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import { localizedUrl, localizedAlternates } from "@/utils/seo";
+import { localizedUrl, localizedAlternates } from "@/utils/i18n";
 import CasePrepEduHami from "@/components/case-studies/CasePrepEduHami";
 
 export default function CasePrepEduHamiPage({

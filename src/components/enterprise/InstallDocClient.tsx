@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   ArrowLeftIcon,
   ClockIcon,
@@ -11,50 +12,18 @@ import {
 import MainLayout from '@/components/layout/MainLayout';
 import { enhanceCodeBlocks } from '@/lib/code-block-enhancer';
 import { useActiveHeading } from '@/hooks/useActiveHeading';
-import type { Locale } from '@/types/enterprise';
+import { localizedPath } from '@/utils/i18n';
 import type { TocItem } from '@/types/blog';
 
-interface InstallDocClientProps {
-  productId: string;
-  title: string;
-  version?: string;
-  lastUpdated?: string;
-  description?: string;
-  html: string;
-  toc?: TocItem[];
-  locale: Locale;
-}
+interface InstallDocClientProps { productId: string; title: string; version?: string; lastUpdated?: string; description?: string; html: string; toc?: TocItem[]; }
 
 // Locale-aware chrome labels — bypass useTranslation so first paint matches URL locale
 // (avoids EN/ZH flash on the SSG'd install page).
-const CHROME = {
-  en: {
-    back: 'Back to Product',
-    label: 'Installation Guide',
-    lastUpdated: 'Last updated',
-    tocTitle: 'On this page',
-  },
-  zh: {
-    back: '返回产品页',
-    label: '安装指南',
-    lastUpdated: '最后更新',
-    tocTitle: '本页目录',
-  },
-} as const;
 
-export default function InstallDocClient({
-  productId,
-  title,
-  version,
-  lastUpdated,
-  description,
-  html,
-  toc = [],
-  locale,
-}: InstallDocClientProps) {
-  const labels = CHROME[locale] ?? CHROME.en;
-  const backHref =
-    locale === 'zh' ? `/zh/products/${productId}` : `/products/${productId}`;
+export default function InstallDocClient({ productId, title, version, lastUpdated, description, html, toc = [] }: InstallDocClientProps) {
+  const t = useTranslations('enterprise');
+  const locale = useLocale();
+  const backHref = localizedPath(`/products/${productId}`, locale);
 
   const contentRef = useRef<HTMLDivElement | null>(null);
   const { activeId, scrollToHeading } = useActiveHeading(toc);
@@ -62,10 +31,15 @@ export default function InstallDocClient({
   useEffect(() => {
     const cleanup = enhanceCodeBlocks({
       container: contentRef.current,
-      locale,
+      labels: {
+        copy: t('codeLabels.copy'),
+        copied: t('codeLabels.copied'),
+        failed: t('codeLabels.failed'),
+        aria: t('codeLabels.aria'),
+      },
     });
     return cleanup;
-  }, [html, locale]);
+  }, [html, t]);
 
   return (
     <MainLayout>
@@ -77,11 +51,11 @@ export default function InstallDocClient({
             className="flex w-fit items-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-primary mb-6"
           >
             <ArrowLeftIcon className="h-4 w-4" />
-            {labels.back}
+            {t('installDoc.back')}
           </Link>
           <div className="inline-flex items-center gap-1.5 text-xs text-primary font-semibold uppercase tracking-wider mb-2">
             <BookOpenIcon className="h-4 w-4" />
-            {labels.label}
+            {t('installDoc.label')}
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
             {title}
@@ -98,7 +72,7 @@ export default function InstallDocClient({
             {lastUpdated && (
               <span className="inline-flex items-center gap-1">
                 <ClockIcon className="h-4 w-4" />
-                {labels.lastUpdated}: {lastUpdated}
+                {t('installDoc.lastUpdated')}: {lastUpdated}
               </span>
             )}
           </div>
@@ -118,7 +92,7 @@ export default function InstallDocClient({
                 <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
                   <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
                     <ListBulletIcon className="h-4 w-4" />
-                    {labels.tocTitle}
+                    {t('installDoc.tocTitle')}
                   </div>
                   <nav className="space-y-1 text-sm">
                     {toc.map((item) => (

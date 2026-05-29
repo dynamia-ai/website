@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   ClockIcon,
   PaperClipIcon,
@@ -9,7 +10,6 @@ import {
 import MainLayout from '@/components/layout/MainLayout';
 import { enhanceCodeBlocks } from '@/lib/code-block-enhancer';
 import { useActiveHeading } from '@/hooks/useActiveHeading';
-import type { Locale } from '@/types/enterprise';
 import type { TocItem } from '@/types/blog';
 
 interface AttachmentDocClientProps {
@@ -18,21 +18,8 @@ interface AttachmentDocClientProps {
   lastUpdated?: string;
   html: string;
   toc?: TocItem[];
-  locale: Locale;
 }
 
-const CHROME = {
-  en: {
-    label: 'Attachment',
-    lastUpdated: 'Last updated',
-    tocTitle: 'On this page',
-  },
-  zh: {
-    label: '附件',
-    lastUpdated: '最后更新',
-    tocTitle: '本页目录',
-  },
-} as const;
 
 export default function AttachmentDocClient({
   title,
@@ -40,16 +27,23 @@ export default function AttachmentDocClient({
   lastUpdated,
   html,
   toc = [],
-  locale,
 }: AttachmentDocClientProps) {
-  const labels = CHROME[locale] ?? CHROME.en;
+  const t = useTranslations('enterprise');
   const contentRef = useRef<HTMLDivElement | null>(null);
   const { activeId, scrollToHeading } = useActiveHeading(toc);
 
   useEffect(() => {
-    const cleanup = enhanceCodeBlocks({ container: contentRef.current, locale });
+    const cleanup = enhanceCodeBlocks({
+      container: contentRef.current,
+      labels: {
+        copy: t('codeLabels.copy'),
+        copied: t('codeLabels.copied'),
+        failed: t('codeLabels.failed'),
+        aria: t('codeLabels.aria'),
+      },
+    });
     return cleanup;
-  }, [html, locale]);
+  }, [html, t]);
 
   return (
     <MainLayout>
@@ -58,7 +52,7 @@ export default function AttachmentDocClient({
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="inline-flex items-center gap-1.5 text-xs text-primary font-semibold uppercase tracking-wider mb-2">
             <PaperClipIcon className="h-4 w-4" />
-            {labels.label}
+            {t('installDoc.label')}
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
             {title}
@@ -69,7 +63,7 @@ export default function AttachmentDocClient({
           {lastUpdated && (
             <div className="mt-3 inline-flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
               <ClockIcon className="h-4 w-4" />
-              {labels.lastUpdated}: {lastUpdated}
+              {t('installDoc.lastUpdated')}: {lastUpdated}
             </div>
           )}
         </div>
@@ -88,7 +82,7 @@ export default function AttachmentDocClient({
                 <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
                   <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
                     <ListBulletIcon className="h-4 w-4" />
-                    {labels.tocTitle}
+                    {t('installDoc.tocTitle')}
                   </div>
                   <nav className="space-y-1 text-sm">
                     {toc.map((item) => (

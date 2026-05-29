@@ -1,7 +1,7 @@
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import { localizedUrl, localizedAlternates } from "@/utils/seo";
+import { localizedUrl, localizedAlternates } from "@/utils/i18n";
 import CaseSnowCorp from "@/components/case-studies/CaseSnowCorp";
 
 export default function CaseSnowCorpPage({

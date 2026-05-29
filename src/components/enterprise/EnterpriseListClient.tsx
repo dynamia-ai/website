@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import {
   ShieldCheckIcon,
@@ -14,19 +14,16 @@ import ProductScope from '@/components/enterprise/ProductScope';
 import TrustBlock from '@/components/enterprise/TrustBlock';
 import { getProducts, getLatestRelease } from '@/lib/enterprise';
 import { captureAttribution } from '@/utils/utm';
-import type { Locale } from '@/types/enterprise';
+import { localizedPath } from '@/utils/i18n';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
-interface EnterpriseListClientProps {
-  locale: Locale;
-}
-
-export default function EnterpriseListClient({ locale }: EnterpriseListClientProps) {
+export default function EnterpriseListClient() {
   const t = useTranslations();
+  const locale = useLocale();
   const products = getProducts();
 
   useEffect(() => {
@@ -70,7 +67,7 @@ export default function EnterpriseListClient({ locale }: EnterpriseListClientPro
 
             <div className="mt-8 flex justify-center gap-3 flex-wrap">
               <a
-                href={locale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
+                href={localizedPath('/apply-trial', locale)}
                 className="inline-flex items-center gap-1.5 px-6 py-3 rounded-md bg-primary text-white font-semibold hover:bg-primary-dark shadow-sm hover:shadow-md transition-all"
               >
                 {t('enterprise.list.heroApplyTrial')}
@@ -86,7 +83,7 @@ export default function EnterpriseListClient({ locale }: EnterpriseListClientPro
       <section className="py-16 bg-gray-50 dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <HamiOriginBanner locale={locale} />
+            <HamiOriginBanner />
           </div>
 
           <div className="text-center max-w-3xl mx-auto mb-8">
@@ -113,7 +110,6 @@ export default function EnterpriseListClient({ locale }: EnterpriseListClientPro
               >
                 <ProductCard
                   product={product}
-                  locale={locale}
                   latestVersion={getLatestRelease(product)?.version}
                 />
               </motion.div>
@@ -121,11 +117,11 @@ export default function EnterpriseListClient({ locale }: EnterpriseListClientPro
           </div>
 
           <div className="mt-20">
-            <ProductScope locale={locale} />
+            <ProductScope />
           </div>
 
           <div className="mt-20">
-            <TrustBlock locale={locale} />
+            <TrustBlock />
           </div>
 
           <div className="mt-16 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white to-primary/[0.03] dark:from-gray-900 dark:to-primary/[0.06] p-8 md:p-10">
@@ -140,13 +136,13 @@ export default function EnterpriseListClient({ locale }: EnterpriseListClientPro
               </div>
               <div className="flex gap-3 flex-wrap">
                 <a
-                  href={locale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
+                  href={localizedPath('/apply-trial', locale)}
                   className="inline-flex items-center px-5 py-2.5 rounded-md bg-primary text-white font-medium hover:bg-primary-dark shadow-sm hover:shadow-md transition-all"
                 >
                   {t('enterprise.list.applyTrial')}
                 </a>
                 <a
-                  href={locale === 'zh' ? '/zh/pricing' : '/pricing'}
+                  href={localizedPath('/pricing', locale)}
                   className="inline-flex items-center px-5 py-2.5 rounded-md border border-primary text-primary font-medium hover:bg-primary/5 transition-colors"
                 >
                   {t('enterprise.list.viewPricing')}

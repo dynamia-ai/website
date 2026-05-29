@@ -1,6 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
-import { generatePageMetadata } from "@/utils/seo";
+import { generatePageMetadata } from "@/utils/i18n";
 import { productSchema, JsonLd } from "@/components/StructuredData";
 import SEOHead from "@/components/SEOHead";
 
