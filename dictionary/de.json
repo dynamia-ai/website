@@ -1238,6 +1238,32 @@
       "cta": {
         "exploreHami": "HAMi erkunden",
         "contactUs": "Kontaktieren Sie uns"
+      },
+      "hamiIntegration": {
+        "title": "Tiefe Integration mit dem HAMi-Oekosystem, Aufbau einer effizienten Computing-Infrastruktur",
+        "description": "Der erfolgreiche Einsatz der EffectiveGPU-Technologie ist untrennbar mit der tiefen Integration in das Open-Source-Framework fuer heterogene Computing-Planung HAMi verbunden.",
+        "points": [
+          "Die technische Architektur von EffectiveGPU integriert die Kernfaehigkeiten von HAMi in den Bereichen heterogene Computing-Virtualisierung, effiziente Planung mehrerer heterogener GPUs, einheitliche Verwaltung und Observability.",
+          "Insbesondere bei der Verwaltung und Planung inlaendischer GPUs wurden durch die Integration des HAMi-Oekosystems einheitliche Abstraktionstreiber-Frameworks und architekturubergreifende Planungsmodelle entwickelt, die eine gute Anpassung und effiziente Nutzung inlaendischer KI-Computing-Plattformen einschliesslich Huawei Ascend und Baidu Kunlun erreichen.",
+          "Die EffectiveGPU-Loesung verwendet HAMi-oekosystemkompatible Designs bei Virtualisierungsschnittstellen, Planungsschnittstellen und heterogener GPU-Kompatibilitaet, um eine reibungslose Technologieintegration und einen nahtlosen Anwendungsbetrieb zu gewaehrleisten."
+        ]
+      },
+      "validation": {
+        "title": "Validierung des HAMi-Werts, Foerderung der Reife heterogener Computing-Planung",
+        "description": "Der erfolgreiche EffectiveGPU-Einsatz von SF Technology ist eine weitere ueberzeugende Validierung der technischen Konzepte und des technischen Werts von HAMi.",
+        "points": [
+          "Beweist, dass die Schluesselfaehigkeiten von HAMi in flexibler und zuverlaessiger Virtualisierung, effizienter Planung, einheitlicher Verwaltung und Observability die tatsaechlichen Anforderungen grosser Unternehmen in komplexen Produktionsumgebungen vollstaendig unterstuetzen koennen.",
+          "Als CNCF Sandbox & CNAI Landscape-Projekt hat diese Praxis wertvolle Erfahrungen fuer die weitere Foerderung der Industriestandardisierung und Szenarioimplementierung durch HAMi gesammelt."
+        ]
+      },
+      "quote": {
+        "text": "Durch die enge Zusammenarbeit mit der HAMi-Open-Source-Community und sekundaere Innovation auf Basis seines Frameworks hat EffectiveGPU uns geholfen, die GPU-Ressourceneffizienz erheblich zu verbessern und die Betriebskosten zu senken. Dies ist ein beispielhafter Fall fuer eine Win-Win-Kooperation zwischen Open-Source-Kollaboration und Unternehmenspraxis.",
+        "author": "SF Technology AI Platform Lead",
+        "position": "AI Platform Lead, SF Technology"
+      },
+      "conclusion": {
+        "title": "Zukunftsausblick",
+        "description": "SF Technology hat durch die EffectiveGPU-Loesung auf Basis von HAMi die Kernprobleme des GPU-Ressourcenmanagements effektiv geloest und Kostensenkung sowie Effizienzsteigerung erreicht. In Zukunft wird das HAMi-Oekosystem mehr Branchennutzer anziehen und gemeinsam den Wohlstand heterogener Computing-Oekosysteme foerdern."
       }
     },
     "prepEduHami": {
@@ -1317,6 +1343,19 @@
       "cta": {
         "exploreHami": "HAMi erkunden",
         "contactUs": "Kontaktieren Sie uns"
+      },
+      "hamiIntegration": {
+        "title": "Tiefe Integration mit dem HAMi-Oekosystem zum Aufbau einer leistungsstarken Inferenz-Grundlage",
+        "description": "Die Fortschritte von PREP EDU bei GPU-Virtualisierung und intelligenter Planung basieren auf der tiefen Integration mit dem HAMi-Oekosystem.",
+        "points": [
+          "Durch die Integration von HAMis Geraetevirtualisierung, feingranularer vGPU-Partitionierung, heterogener Planung und integrierter Observability kann PREP EDU mehrere GPU-Modelle einheitlich und effizient gemeinsam nutzen — ohne Aenderungen an bestehenden Anwendungen.",
+          "Durch den Einsatz von HAMis transparenter Virtualisierung, annotationsbasierter Planung und UUID-Level-Bindung erreicht PREP EDU eine konsistente Planung ueber RTX 4070 und 4090 GPUs hinweg, sodass Aufgaben GPU-Typen erkennen, Ressourcen nach Bedarf zuweisen und mehrere Instanzen gleichzeitig ausfuehren koennen. HAMis nahtlose Kompatibilitaet mit GPU Operator, RKE2 und containerd stellt zudem sicher, dass neue Knoten automatisch dem einheitlichen Ressourcenpool beitreten.",
+          "Durch die Validierung von HAMi in realen Produktionsablaeufen — einschliesslich Docker-basiertem Self-Hosting, automatisiertem Node-Onboarding und gemeinsamer Optimierung mit GPU Operator — erweitert PREP EDU die Anwendbarkeit von HAMi und demonstriert seine Flexibilitaet und technische Reife im grossen Massstab."
+        ]
+      },
+      "conclusion": {
+        "title": "Zukunftsausblick",
+        "description": "Durch den Einsatz von HAMi-basierter GPU-Virtualisierung und intelligenter Planung hat PREP EDU die Kernherausforderungen der Verwaltung heterogener GPUs im grossen Massstab geloest und die Inferenzeffizienz und Ressourcenauslastung erheblich verbessert. In Zukunft wird das HAMi-Oekosystem weitere Branchenanwender anziehen und das Wachstum heterogener Computing-Infrastrukturen weiter beschleunigen."
       }
     },
     "keHoldings": {
@@ -1423,6 +1462,46 @@
       "cta": {
         "exploreHami": "HAMi erkunden",
         "contactUs": "Kontaktieren Sie uns"
+      },
+      "hamiIntegration": {
+        "title": "Tiefe HAMi-Integration fuer unternehmensweite ML-Infrastruktur",
+        "description": "Ke Holdings' AIStudio-Plattform nutzt die Kernfaehigkeiten von HAMi fuer unternehmensweite GPU-Virtualisierung und -Planung.",
+        "points": [
+          "AIStudio integriert HAMis GPU-Virtualisierung auf der Infrastrukturebene und ermoeglicht feingranulares GPU-Sharing und Ressourcenisolierung fuer Tausende von Pods.",
+          "HAMis heterogene GPU-Planung unterstuetzt AIStudio bei der einheitlichen Verwaltung verschiedener GPU-Typen ueber Hybrid-Cloud-Umgebungen hinweg.",
+          "Durch die Integration von HAMis Observability-Faehigkeiten erreicht AIStudio umfassende Transparenz ueber GPU-Nutzung, Auslastung und Workload-Performance."
+        ]
+      },
+      "futurePlans": {
+        "title": "Zukunftsplaene",
+        "description": "Ke Holdings plant, die HAMi-Integration weiter zu vertiefen und zusaetzliche Funktionen fuer erweiterte GPU-Orchestrierung und Kostenoptimierung zu erkunden."
+      },
+      "conclusion": {
+        "title": "Zusammenfassung",
+        "description": "Durch die Einfuehrung von HAMi-basierter GPU-Virtualisierung hat Ke Holdings die GPU-Auslastung von 13% auf 37% nahezu verdreifacht und gleichzeitig eine stabile, skalierbare ML-Infrastruktur fuer Tausende von Pods und ueber 10 Millionen taegliche Anfragen aufrechterhalten."
+      },
+      "architecture": {
+        "title": "Dual-Cluster-Architektur fuer verschiedene Workloads",
+        "gpuCluster": {
+          "title": "GPU-Cluster",
+          "description": "Verwaltet durch das native NVIDIA Device Plugin fuer Trainings-Workloads, die vollstaendige GPU-Ressourcen benoetigen:",
+          "items": [
+            "Natives NVIDIA Device Plugin",
+            "Hochleistungs-GPUs (H200, H100)",
+            "Speziell fuer LLM-Training",
+            "Vollstaendige GPU-Ressourcenzuweisung"
+          ]
+        },
+        "vgpuCluster": {
+          "title": "vGPU-Cluster",
+          "description": "Verwaltet durch HAMi fuer GPU-Speichervirtualisierung fuer Small-Model-Inferenz:",
+          "items": [
+            "HAMi GPU-Speichervirtualisierung",
+            "GPUs (H20, V100, A100, 4090)",
+            "Feingranulare Zuweisung (1-2 GB)",
+            "Small-Model-Inferenz"
+          ]
+        }
       }
     },
     "daoCloud": {
@@ -1505,6 +1584,64 @@
       "cta": {
         "exploreHami": "HAMi erkunden",
         "contactUs": "Kontaktieren Sie uns"
+      },
+      "opensource": {
+        "title": "Gemeinsame Entwicklung von HAMi mit der Community",
+        "description": "DaoCloud ist einer der fruehesten und aktivsten Mitwirkenden von HAMi.",
+        "points": [
+          "Lieferte Erkenntnisse aus realen D.run- und DCE-Einsaetzen an die Open-Source-Community zurueck",
+          "Arbeitete upstream an der Verbesserung von GPU-UEberbuchungsmechanismen, Knotenkonfigurationsverwaltung und heterogener Hardware-Behandlung mit",
+          "Half bei der Pflege von Dokumentation und Bereitstellungsleitfaeden, um die Produktionsakzeptanz durch andere Cloud-Anbieter zu unterstuetzen"
+        ]
+      },
+      "quote": {
+        "text": "HAMi bietet die flexible GPU-Virtualisierungsschicht, die wir fuer unsere Multi-Tenant-Cloud-Plattformen benoetigen. Die Integration mit Kubernetes ist nahtlos und die Community-Unterstuetzung ist ausgezeichnet.",
+        "author": "DaoCloud Platform Team",
+        "position": "Platform Engineering, DaoCloud"
+      },
+      "conclusion": {
+        "title": "Zusammenfassung",
+        "description": "Der Einsatz von HAMi bei DaoCloud ueber zwei grosse Cloud-native Plattformen hinweg zeigt die Skalierbarkeit und Flexibilitaet von HAMi in Multi-Tenant-Umgebungen mit ueber 10.000 GPUs und einer GPU-Auslastung von ueber 80%."
+      },
+      "drun": {
+        "title": "D.run Compute Cloud: vGPU-SKUs fuer oeffentliche GPU-Nutzer",
+        "description": "Auf D.run integrierte DaoCloud HAMi in jeden regionalen Kubernetes-Cluster, um feingranulares GPU-Sharing und hoehere Auslastung zu ermoeglichen.",
+        "features": [
+          {
+            "title": "vGPU-Slicing",
+            "description": "Physische GPUs werden in mehrere vGPU-Slices mit definierter Rechen- und Speicherkapazitaet partitioniert. Leichte Inferenzjobs koennen auf Teil-GPUs ausgefuehrt werden."
+          },
+          {
+            "title": "SKU-basierter Marktplatz",
+            "description": "vGPU-Slices werden als standardisierte SKUs in einem zentralen Marktplatz angeboten. Nutzer waehlen GPU-SKUs basierend auf der Workload-Groesse."
+          },
+          {
+            "title": "Multi-Region-Bereitstellung",
+            "description": "HAMi betreibt 7 aktive D.run-Regionen in Festlandchina und Hongkong mit ueber 10 Rechenzentren."
+          },
+          {
+            "title": "Unterstuetzung inlaendischer Beschleuniger",
+            "description": "DaoCloud erweiterte HAMi um die Unterstuetzung inlaendischer GPU-Hersteller und gewaehrleistet einheitliche Verwaltung unter einer einheitlichen Abstraktionsschicht."
+          }
+        ]
+      },
+      "dce": {
+        "title": "DaoCloud Enterprise (DCE): Gemeinsamer GPU-Pool fuer Unternehmen",
+        "description": "Auf DCE baute DaoCloud einen zentralisierten GPU-Ressourcenpool mit HAMi auf, der GPU-Kapazitaet fuer mehrere Enterprise-Mandanten vereinheitlicht.",
+        "features": [
+          {
+            "title": "Einheitlicher GPU-Pool",
+            "description": "Enterprise-Nutzer stellen GPUs in einen zentralen Pool ein und nutzen diesen, der sowohl Trainings- als auch Inferenz-Workloads bedient."
+          },
+          {
+            "title": "Kontingente & RBAC",
+            "description": "HAMis vGPU-Ressourcen sind in die bestehenden Kontingent- und rollenbasierten Zugriffssysteme von DaoCloud integriert."
+          },
+          {
+            "title": "Vereinfachte Nutzung",
+            "description": "Algorithmeningenieure fordern GPU-Ressourcen ueber die Plattform an, ohne sich um zugrunde liegende Hardware-Unterschiede kuemmern zu muessen."
+          }
+        ]
       }
     },
     "nio": {
@@ -1587,6 +1724,19 @@
       "cta": {
         "exploreHami": "HAMi erkunden",
         "contactUs": "Kontaktieren Sie uns"
+      },
+      "lessonsLearned": {
+        "title": "Erkenntnisse",
+        "description": "NIOs hybride GPU-Sharing-Strategie mit HAMi zeigt, dass verschiedene Workload-Typen unterschiedliche GPU-Zuweisungsmechanismen benoetigen."
+      },
+      "quote": {
+        "text": "HAMis flexible GPU-Sharing-Faehigkeiten haben es uns ermoeglicht, eine hybride Strategie zu implementieren, die die GPU-Auslastung fuer CI-Workloads um das 10-fache verbessert und gleichzeitig die GPU-Stunden in Simulationsumgebungen um 30% reduziert.",
+        "author": "NIO Autonomous Driving Infrastructure Team",
+        "position": "Infrastructure Team, NIO"
+      },
+      "conclusion": {
+        "title": "Zusammenfassung",
+        "description": "NIOs hybride GPU-Sharing-Strategie mit HAMi hat die GPU-Auslastung in verschiedenen Workload-Typen erfolgreich optimiert und damit die Effizienz in der Infrastruktur fuer autonomes Fahren signifikant gesteigert."
       }
     },
     "snowCorp": {
@@ -1669,6 +1819,19 @@
       "cta": {
         "exploreHami": "HAMi erkunden",
         "contactUs": "Kontaktieren Sie uns"
+      },
+      "cncfNote": {
+        "title": "CNCF-Oekosystem",
+        "description": "SNOW Corp betreibt einen vollstaendig CNCF-basierten Stack mit Cilium, Helm, Traefik, Prometheus und HAMi fuer GPU-Orchestrierung und zeigt damit die Leistungsfaehigkeit von Cloud-nativen Oekosystemen in extremen Produktionsumgebungen."
+      },
+      "quote": {
+        "text": "Mit 1.000+ GPUs, die GenAI-Workloads fuer ueber 200 Millionen Nutzer bedienen, hat uns HAMis GPU-Planung und -Virtualisierung geholfen, 91% schnellere Wiederherstellungszeiten zu erreichen und GPU-bezogene Fehler um 85% zu reduzieren.",
+        "author": "SNOW Corp Infrastructure Team",
+        "position": "Infrastructure Team, SNOW Corp"
+      },
+      "conclusion": {
+        "title": "Zusammenfassung",
+        "description": "Der Einsatz von HAMi bei SNOW Corp demonstriert seine Skalierbarkeit unter extremen Bedingungen — Orchestrierung von ueber 1.000 GPUs fuer Millionen von Nutzern bei gleichzeitiger drastischer Reduzierung der Betriebskosten und Verbesserung der Zuverlaessigkeit."
       }
     }
   },
