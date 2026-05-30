@@ -2203,7 +2203,7 @@
       "submit": "解锁下载",
       "success": "提交成功，正在为您解锁下载。",
       "error": "提交失败，请重试或邮件 info@dynamia.ai。",
-      "consentLabel": "我已阅读并同意 <a href='/zh/privacy-policy' target='_blank' class='text-primary underline'>隐私政策</a>，同意密瓜智能依据《个人信息保护法》处理我的信息用于销售跟进。",
+      "consentLabel": "我同意<link>隐私政策</link>并同意处理我的信息用于销售跟进（GDPR 第 6 条）。",
       "consentRequired": "请先阅读并同意隐私政策。"
     },
     "hamiEnterprisePage": {

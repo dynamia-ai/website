@@ -2211,7 +2211,7 @@
       "submit": "Downloads freischalten",
       "success": "Danke! Wird freigeschaltet...",
       "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder senden Sie eine E-Mail an info@dynamia.ai.",
-      "consentLabel": "Ich stimme der <a href='/privacy-policy' target='_blank' class='text-primary underline'>Datenschutzerklaerung</a> zu (DSGVO Artikel 6).",
+      "consentLabel": "Ich stimme der <link>Datenschutzerklaerung</link> zu und willige in die Verarbeitung meiner Daten fuer die Vertriebsnachverfolgung ein (DSGVO Artikel 6).",
       "consentRequired": "Bitte akzeptieren Sie die Datenschutzerklaerung, um fortzufahren."
     },
     "hamiEnterprisePage": {
