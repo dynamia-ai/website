@@ -157,6 +157,15 @@ Uses the `LanguageSwitcher` component from `@/components/LanguageSwitcher`. It h
 9. **Remove dead code.** Delete COPY, CHROME, PRODUCT_INTRO, STATUS_LABEL, GROUPS text objects after migrating to dictionaries.
 10. **Dynamic `[slug]` routes.** One page file, not per-item directories. Case studies, blog, products all use this.
 11. **`{count}` not `{{count}}`.** ICU interpolation uses single braces.
+12. **`t.rich()` for text with markup.** Use ICU tags in dictionary values and render via `t.rich()`:
+    ```tsx
+    // Dictionary: "I agree to the <link>Privacy Policy</link>."
+    // Component:
+    {t.rich('enterprise.gate.consentLabel', {
+      link: (chunks) => <a href="/privacy-policy" className="text-primary underline">{chunks}</a>,
+    })}
+    ```
+    Never put raw HTML in translation strings. Extract repeated `t.rich()` calls into a shared component.
 12. **Locale type from routing.** `import type { Locale } from '@/i18n/routing'` — never hardcode `'en' | 'zh' | 'de'`.
 13. **Lib functions accept `string` locale.** No `locale: 'en' | 'zh'` in function signatures. Default to `'en'`, not `'zh'`.
 14. **`enhanceCodeBlocks` takes labels, not locale.** Pass `{ copy, copied, failed, aria }` from dictionary, not a locale string.
