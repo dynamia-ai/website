@@ -313,35 +313,8 @@ const Header: React.FC = () => {
     };
   }, [hamiMenuRef, resourcesMenuRef, solutionsMenuRef, productsMenuRef]);
 
-  // 如果组件未挂载，返回一个占位符避免水合错误
-  if (!mounted) {
-    return (
-      <div className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <div className="w-40 h-10 bg-gray-200 animate-pulse rounded"></div>
-              </div>
-            </div>
-            <div className="hidden sm:flex sm:items-center sm:space-x-4">
-              <div className="w-20 h-8 bg-gray-200 animate-pulse rounded"></div>
-              <div className="w-24 h-8 bg-gray-200 animate-pulse rounded"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const desktopMenuTopClass = 'top-16';
-  const logoSrc = locale === 'zh'
-    ? resolvedTheme === 'dark'
-      ? '/dynamia-logo-zh-white.svg'
-      : '/dynamia-logo-zh.svg'
-    : resolvedTheme === 'dark'
-      ? '/dynamia-logo-white.svg'
-      : '/dynamia-logo.svg';
+  const logoSrc = (resolvedTheme === 'dark' && mounted) ? t('navigation.logoDark') : t('navigation.logo');
   const logoClassName = locale === 'zh'
     ? 'block w-32 h-8 -ml-3 lg:w-36 lg:h-9 lg:-ml-4 xl:w-40 xl:h-10 xl:-ml-5 shrink-0'
     : 'block w-32 h-8 lg:w-36 lg:h-9 xl:w-40 xl:h-10 shrink-0';
