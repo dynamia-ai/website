@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { isCompanyEmail } from '@/utils/validation';
 import { attributionToPayload } from '@/utils/utm';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
+import ConsentLabel from '@/components/enterprise/ConsentLabel';
 
 interface PendingDownloadContext {
   productId: string;
@@ -243,16 +244,7 @@ export default function DownloadGateModal({
               className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
             />
           </div>
-          <label className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400 leading-snug cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={consent}
-              onChange={(e) => setConsent(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary"
-              required
-            />
-            <span dangerouslySetInnerHTML={{ __html: t('enterprise.gate.consentLabel') }} />
-          </label>
+          <ConsentLabel checked={consent} onChange={setConsent} />
 
           <button
             type="submit"

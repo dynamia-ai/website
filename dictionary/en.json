@@ -2211,7 +2211,7 @@
       "submit": "Unlock Downloads",
       "success": "Thanks! Unlocking now...",
       "error": "Something went wrong. Please retry or email info@dynamia.ai.",
-      "consentLabel": "I agree to the <a href='/privacy-policy' target='_blank' class='text-primary underline'>Privacy Policy</a> and consent to the processing of my information for sales follow-up (GDPR Article 6).",
+      "consentLabel": "I agree to the <link>Privacy Policy</link> and consent to the processing of my information for sales follow-up (GDPR Article 6).",
       "consentRequired": "Please review and accept the privacy policy to continue."
     },
     "hamiEnterprisePage": {
