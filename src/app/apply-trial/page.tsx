@@ -12,7 +12,7 @@ export default function FreeTrial() {
   const pathname = usePathname();
   const isZhPage = pathname?.startsWith('/zh');
   const [formState, setFormState] = useState({
-    intent: 'selfTrial',
+    intent: 'demo',
     name: '',
     email: '',
     company: '',
@@ -134,7 +134,7 @@ export default function FreeTrial() {
       if (response.ok) {
         // Reset form
         setFormState({
-          intent: 'selfTrial',
+          intent: 'demo',
           name: '',
           email: '',
           company: '',
@@ -189,7 +189,6 @@ export default function FreeTrial() {
                 </label>
                 <div className="space-y-2">
                   {[
-                    { value: 'selfTrial', labelKey: 'freeTrial.form.intentSelfTrial' },
                     { value: 'demo', labelKey: 'freeTrial.form.intentDemo' },
                     { value: 'sales', labelKey: 'freeTrial.form.intentSales' },
                   ].map((opt) => (

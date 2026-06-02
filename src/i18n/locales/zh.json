@@ -629,7 +629,6 @@
       "jobTitle": "职位",
       "message": "您希望了解或讨论的内容？",
       "intent": "您本次的需求？",
-      "intentSelfTrial": "自助试用（License & 部署）",
       "intentDemo": "安排个性化演示",
       "intentSales": "商务咨询（报价 / 合作）",
       "submitting": "处理中...",

@@ -2,7 +2,6 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
 const INTENT_LABELS: Record<string, string> = {
-  selfTrial: '自助试用',
   demo: '申请演示',
   sales: '商务咨询',
 };

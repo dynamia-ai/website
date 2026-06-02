@@ -341,7 +341,7 @@ After creation, confirm that all of the following checks pass:
 
    ![Workload list](/images/enterprise-install/hami-ai-platform/workload-list-en.png)
 
-3. **Application details**: basic info, resource overview, GPU Memory Allocation (see [HAMi Enterprise](/products/hami-enterprise) for verification), and monitoring data are correct; GPU and node drill-down pages show correct resource overview and monitoring data
+3. **Application details**: basic info, resource overview, and monitoring data are correct; GPU and node drill-down pages show correct resource overview and monitoring data
 
    ![Application details](/images/enterprise-install/hami-ai-platform/workload-detail-en.png)![Application details](/images/enterprise-install/hami-ai-platform/workload-detail-en-2.png)
 
