@@ -32,6 +32,7 @@ export default function DownloadGateModal({
     company: '',
     jobTitle: '',
     message: '',
+    _gotcha: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -76,7 +77,7 @@ export default function DownloadGateModal({
           ...attributionToPayload(),
           _subject: `[企业版下载登记] ${context?.productName ?? ''} ${context?.version ?? ''} - ${formState.company}`,
           _replyto: formState.email,
-          _gotcha: '',
+          _gotcha: formState._gotcha,
         }),
       });
 
@@ -160,6 +161,16 @@ export default function DownloadGateModal({
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Honeypot field — hidden from real users, bots may fill it */}
+          <input
+            type="text"
+            name="_gotcha"
+            value={formState._gotcha}
+            onChange={handleInputChange}
+            tabIndex={-1}
+            autoComplete="off"
+            style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+          />
           <div>
             <label
               htmlFor="dl-gate-name"

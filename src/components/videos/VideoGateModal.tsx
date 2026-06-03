@@ -18,6 +18,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
     company: '',
     jobTitle: '',
     message: '',
+    _gotcha: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -51,7 +52,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
           message: formState.message,
           _subject: `[官网视频] Video Access Request - ${formState.company}`,
           _replyto: formState.email,
-          _gotcha: '',
+          _gotcha: formState._gotcha,
         }),
       });
 
@@ -109,6 +110,16 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Honeypot field — hidden from real users, bots may fill it */}
+          <input
+            type="text"
+            name="_gotcha"
+            value={formState._gotcha}
+            onChange={handleInputChange}
+            tabIndex={-1}
+            autoComplete="off"
+            style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+          />
           <div>
             <label htmlFor="gate-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               {t('freeTrial.form.name')}

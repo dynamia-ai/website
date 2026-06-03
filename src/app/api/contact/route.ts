@@ -17,6 +17,9 @@ const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX = 10; // max requests per window per IP
 
 function getClientIp(request: Request): string {
+  // On Vercel, x-forwarded-for is set by the edge network and generally trustworthy.
+  // If running behind other proxies, ensure the proxy overwrites these headers
+  // to prevent clients from spoofing their IP and bypassing rate limits.
   const xff = request.headers.get('x-forwarded-for');
   if (xff) {
     return xff.split(',')[0].trim();
@@ -55,6 +58,15 @@ function sanitizeString(str: string, maxLen: number): string {
   return str.trim().slice(0, maxLen);
 }
 
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 /* ─── Email builder ─── */
 function buildHtmlEmail(data: Record<string, string>, subject: string): string {
   const intentLabel = INTENT_LABELS[data.intent] || data.intent || '—';
@@ -71,8 +83,8 @@ function buildHtmlEmail(data: Record<string, string>, subject: string): string {
     .map(
       (f) => `
       <tr>
-        <td style="padding:8px 12px;font-weight:600;color:#374151;background:#f9fafb;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${f.label}</td>
-        <td style="padding:8px 12px;color:#111827;border-bottom:1px solid #e5e7eb;">${f.value}</td>
+        <td style="padding:8px 12px;font-weight:600;color:#374151;background:#f9fafb;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHtml(f.label)}</td>
+        <td style="padding:8px 12px;color:#111827;border-bottom:1px solid #e5e7eb;">${escapeHtml(f.value)}</td>
       </tr>`,
     )
     .join('');
@@ -80,7 +92,7 @@ function buildHtmlEmail(data: Record<string, string>, subject: string): string {
   return `
     <div style="max-width:600px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
       <div style="background:#1e40af;padding:20px 24px;border-radius:8px 8px 0 0;">
-        <h2 style="margin:0;color:#fff;font-size:18px;">${subject}</h2>
+        <h2 style="margin:0;color:#fff;font-size:18px;">${escapeHtml(subject)}</h2>
       </div>
       <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;overflow:hidden;">
         ${rows}
@@ -132,6 +144,10 @@ export async function POST(request: Request) {
     const email = typeof body.email === 'string' ? sanitizeString(body.email, 200) : '';
     const subject =
       typeof _subject === 'string' ? sanitizeString(_subject, 300) : 'New Form Submission';
+    const replyTo =
+      typeof _replyto === 'string' && _replyto.trim().length > 0
+        ? sanitizeString(_replyto, 200)
+        : undefined;
 
     // Only enforce required fields when they are explicitly sent (form submissions)
     if (body.name !== undefined && name.length === 0) {
@@ -142,6 +158,9 @@ export async function POST(request: Request) {
     }
     if (email.length > 0 && !isValidEmail(email)) {
       return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    }
+    if (replyTo !== undefined && !isValidEmail(replyTo)) {
+      return NextResponse.json({ error: 'Invalid reply-to email format' }, { status: 400 });
     }
 
     /* 6. Build sanitized string-only record for email HTML */
@@ -158,15 +177,20 @@ export async function POST(request: Request) {
 
     /* 7. Send email */
     const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Dynamia AI <noreply@dynamia.ai>',
       to: 'info@dynamia.ai',
-      replyTo: typeof _replyto === 'string' && _replyto.trim().length > 0 ? _replyto : undefined,
+      replyTo,
       subject,
       html,
     });
 
-    return NextResponse.json({ success: true });
+    if (error) {
+      console.error('Resend API error:', error);
+      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true, id: data?.id });
   } catch (error) {
     console.error('Email sending failed:', error);
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
