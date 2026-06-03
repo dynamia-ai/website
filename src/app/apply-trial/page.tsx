@@ -127,7 +127,8 @@ export default function FreeTrial() {
           phone: formState.phone,
           useCase: formState.useCase,
           _subject: `${intentLabel} Application - ${formState.company}`,
-          _replyto: formState.email
+          _replyto: formState.email,
+          _gotcha: '',
         })
       });
       

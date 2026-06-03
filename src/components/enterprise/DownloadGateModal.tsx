@@ -76,6 +76,7 @@ export default function DownloadGateModal({
           ...attributionToPayload(),
           _subject: `[企业版下载登记] ${context?.productName ?? ''} ${context?.version ?? ''} - ${formState.company}`,
           _replyto: formState.email,
+          _gotcha: '',
         }),
       });
 

@@ -89,7 +89,8 @@ export default function PricingPage() {
           gpuCount: formState.gpuCount,
           message: formState.message,
           _subject: `New Pricing Inquiry - ${formState.company}`,
-          _replyto: formState.email
+          _replyto: formState.email,
+          _gotcha: '',
         })
       });
       

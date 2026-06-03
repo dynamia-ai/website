@@ -51,6 +51,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
           message: formState.message,
           _subject: `[官网视频] Video Access Request - ${formState.company}`,
           _replyto: formState.email,
+          _gotcha: '',
         }),
       });
 
