@@ -105,6 +105,7 @@ export default function PricingPage() {
           nodeCount: '10-50',
           gpuCount: '1-10',
           message: '',
+          _gotcha: '',
         });
         setSubmitStatus('success');
       } else {

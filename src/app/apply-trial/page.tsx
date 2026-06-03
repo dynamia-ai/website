@@ -142,7 +142,8 @@ export default function FreeTrial() {
           company: '',
           phone: '',
           useCase: '',
-          acceptTerms: false
+          acceptTerms: false,
+          _gotcha: '',
         });
         setSubmitStatus('success');
       } else {
