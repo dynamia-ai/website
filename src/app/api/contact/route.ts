@@ -7,7 +7,7 @@ const INTENT_LABELS: Record<string, string> = {
 };
 
 function buildHtmlEmail(data: Record<string, string>, subject: string): string {
-  const intentLabel = INTENT_LABELS[data.intent] || data.intent;
+  const intentLabel = INTENT_LABELS[data.intent] || data.intent || '—';
   const fields: { label: string; value: string }[] = [
     { label: '需求类型', value: intentLabel },
     { label: '姓名', value: data.name },
