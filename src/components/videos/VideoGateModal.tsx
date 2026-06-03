@@ -57,6 +57,11 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
       });
 
       if (response.ok) {
+        const result = await response.json();
+        if (result.honeypot) {
+          setSubmitStatus('error');
+          return;
+        }
         document.cookie = 'video_unlocked=1; max-age=2592000; path=/';
         setSubmitStatus('success');
         setTimeout(() => onSuccess(), 800);

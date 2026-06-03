@@ -17,22 +17,32 @@ const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX = 10; // max requests per window per IP
 
 function getClientIp(request: Request): string {
-  // On Vercel, x-forwarded-for is set by the edge network and generally trustworthy.
-  // If running behind other proxies, ensure the proxy overwrites these headers
-  // to prevent clients from spoofing their IP and bypassing rate limits.
-  const xff = request.headers.get('x-forwarded-for');
-  if (xff) {
-    return xff.split(',')[0].trim();
-  }
+  // Prioritize x-real-ip because it is securely overwritten by the edge
+  // network and cannot be spoofed by the client. Fall back to the first
+  // entry of x-forwarded-for only when x-real-ip is absent.
   const xri = request.headers.get('x-real-ip');
   if (xri) {
     return xri.trim();
+  }
+  const xff = request.headers.get('x-forwarded-for');
+  if (xff) {
+    return xff.split(',')[0].trim();
   }
   return 'unknown';
 }
 
 function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {
   const now = Date.now();
+
+  // Periodically clean up expired entries to prevent memory leaks
+  if (rateLimitMap.size > 1000) {
+    for (const [key, record] of rateLimitMap.entries()) {
+      if (now > record.resetAt) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
   const record = rateLimitMap.get(ip);
 
   if (!record || now > record.resetAt) {
@@ -58,8 +68,11 @@ function sanitizeString(str: string, maxLen: number): string {
   return str.trim().slice(0, maxLen);
 }
 
-function escapeHtml(unsafe: string): string {
-  return unsafe
+function escapeHtml(unsafe: unknown): string {
+  if (unsafe === undefined || unsafe === null) {
+    return '—';
+  }
+  return String(unsafe)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -117,23 +130,29 @@ export async function POST(request: Request) {
     }
 
     /* 2. Payload size guard */
-    const contentLength = Number(request.headers.get('content-length') || '0');
-    if (contentLength > 100 * 1024) {
+    const rawBody = await request.text();
+    if (new TextEncoder().encode(rawBody).length > 100 * 1024) {
       return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
     }
 
     /* 3. Parse JSON safely */
-    let body: Record<string, unknown>;
+    let parsedBody: unknown;
     try {
-      body = await request.json();
+      parsedBody = JSON.parse(rawBody);
     } catch {
       return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
     }
 
+    if (!parsedBody || typeof parsedBody !== 'object' || Array.isArray(parsedBody)) {
+      return NextResponse.json({ error: 'JSON body must be an object' }, { status: 400 });
+    }
+
+    const body = parsedBody as Record<string, unknown>;
+
     /* 4. Honeypot check — silently accept to not tip off bots */
     const gotcha = body._gotcha;
     if (typeof gotcha === 'string' && gotcha.trim().length > 0) {
-      return NextResponse.json({ success: true }, { status: 200 });
+      return NextResponse.json({ success: true, honeypot: true }, { status: 200 });
     }
 
     const { _subject, _replyto, ...formDataRaw } = body;
@@ -167,11 +186,16 @@ export async function POST(request: Request) {
     const formData: Record<string, string> = {};
     for (const [key, value] of Object.entries(formDataRaw)) {
       if (typeof value === 'string') {
-        formData[key] = value;
+        formData[key] = value.trim().slice(0, 1000);
       } else if (value !== undefined && value !== null) {
         formData[key] = String(value).slice(0, 500);
       }
     }
+
+    // Use the sanitized and validated values for known fields
+    if (body.name !== undefined) formData.name = name;
+    if (body.company !== undefined) formData.company = company;
+    if (body.email !== undefined) formData.email = email;
 
     const html = buildHtmlEmail(formData, subject);
 

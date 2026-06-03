@@ -82,6 +82,11 @@ export default function DownloadGateModal({
       });
 
       if (response.ok) {
+        const result = await response.json();
+        if (result.honeypot) {
+          setSubmitStatus('error');
+          return;
+        }
         document.cookie = 'download_unlocked=1; max-age=2592000; path=/';
         setSubmitStatus('success');
         setTimeout(() => onSuccess(), 800);
