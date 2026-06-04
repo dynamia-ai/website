@@ -6,6 +6,11 @@ const INTENT_LABELS: Record<string, string> = {
   sales: '商务咨询',
 };
 
+const LOCALE_LABELS: Record<string, string> = {
+  en: 'English',
+  zh: '中文',
+};
+
 /* ─── Rate Limiting ─── */
 interface RateLimitRecord {
   count: number;
@@ -84,6 +89,9 @@ function escapeHtml(unsafe: unknown): string {
 function buildHtmlEmail(data: Record<string, string>, subject: string): string {
   const intentLabel = INTENT_LABELS[data.intent] || data.intent || '—';
   const fields: { label: string; value: string }[] = [
+    ...(data.locale
+      ? [{ label: '语言 / Locale', value: LOCALE_LABELS[data.locale] || data.locale }]
+      : []),
     { label: '需求类型', value: intentLabel },
     { label: '姓名', value: data.name },
     { label: '公司', value: data.company },
@@ -196,6 +204,12 @@ export async function POST(request: Request) {
     if (body.name !== undefined) formData.name = name;
     if (body.company !== undefined) formData.company = company;
     if (body.email !== undefined) formData.email = email;
+    if (typeof body.locale === 'string') {
+      const locale = sanitizeString(body.locale, 10);
+      if (locale === 'en' || locale === 'zh') {
+        formData.locale = locale;
+      }
+    }
 
     const html = buildHtmlEmail(formData, subject);
 

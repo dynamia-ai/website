@@ -43,6 +43,13 @@ export function isValidPhone(phone: string, isZh: boolean): boolean {
   return /^\+?[\d\s\-()]{7,20}$/.test(trimmed);
 }
 
+export function isValidPhoneOrWechat(value: string): boolean {
+  const trimmed = value.trim();
+  if (!trimmed) return false;
+  if (/^1[3-9]\d{9}$/.test(trimmed)) return true;
+  return /^[a-zA-Z][a-zA-Z0-9_-]{5,19}$/.test(trimmed);
+}
+
 export function isValidEmailFormat(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 } 

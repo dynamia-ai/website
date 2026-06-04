@@ -86,16 +86,6 @@ export default function FreeTrial() {
     setSubmitStatus('idle');
     
     try {
-      // Prepare email content
-      const formData = new FormData();
-      
-      // Add all form fields to FormData
-      Object.entries(formState).forEach(([key, value]) => {
-        if (key !== 'acceptTerms') {
-          formData.append(key, value.toString());
-        }
-      });
-      
       const intentLabel =
         formState.intent === 'demo'
           ? 'Demo'
@@ -103,36 +93,27 @@ export default function FreeTrial() {
           ? 'Sales'
           : 'Trial';
 
-      // Add email subject
-      formData.append('_subject', `${intentLabel} Application - ${formState.company}`);
+      const payload = {
+        intent: formState.intent,
+        name: formState.name,
+        email: formState.email,
+        company: formState.company,
+        phone: formState.phone,
+        useCase: formState.useCase,
+        locale: isZhPage ? 'zh' : 'en',
+        _subject: `${intentLabel} Application - ${formState.company}`,
+        _replyto: formState.email,
+        _gotcha: formState._gotcha,
+      };
 
-      // Specify the target email
-      formData.append('_replyto', formState.email);
-
-      // Add hidden fields for FormSubmit configuration
-      formData.append('_next', typeof window !== 'undefined' ? window.location.href : '');
-      formData.append('_captcha', 'true');
-      formData.append('_template', 'box');
-
-      // Send to API route using Resend
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          intent: formState.intent,
-          name: formState.name,
-          email: formState.email,
-          company: formState.company,
-          phone: formState.phone,
-          useCase: formState.useCase,
-          _subject: `${intentLabel} Application - ${formState.company}`,
-          _replyto: formState.email,
-          _gotcha: formState._gotcha,
-        })
+        body: JSON.stringify(payload),
       });
-      
+
       if (response.ok) {
         // Reset form
         setFormState({
@@ -191,10 +172,6 @@ export default function FreeTrial() {
                 autoComplete="off"
                 style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
               />
-              {/* Hidden field for FormSubmit configuration */}
-              <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
-              <input type="hidden" name="_captcha" value="true" />
-              <input type="hidden" name="_template" value="box" />
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">

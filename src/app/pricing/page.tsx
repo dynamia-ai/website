@@ -56,26 +56,6 @@ export default function PricingPage() {
     }
     
     try {
-      // Prepare email content
-      const formData = new FormData();
-      
-      // Add all form fields to FormData
-      Object.entries(formState).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      
-      // Add email subject
-      formData.append('_subject', `New Pricing Inquiry - ${formState.company}`);
-      
-      // Specify the target email
-      formData.append('_replyto', formState.email);
-      
-      // Add hidden fields for FormSubmit configuration
-      formData.append('_next', typeof window !== 'undefined' ? window.location.href : '');
-      formData.append('_captcha', 'true');
-      formData.append('_template', 'box');
-      
-      // Send to API route using Resend
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -92,7 +72,7 @@ export default function PricingPage() {
           _subject: `New Pricing Inquiry - ${formState.company}`,
           _replyto: formState.email,
           _gotcha: formState._gotcha,
-        })
+        }),
       });
       
       if (response.ok) {
@@ -186,16 +166,12 @@ export default function PricingPage() {
                   autoComplete="off"
                   style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
                 />
-                {/* Hidden field for FormSubmit configuration */}
-                <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
-                <input type="hidden" name="_captcha" value="true" />
-                <input type="hidden" name="_template" value="box" />
-                
+
                 {/* 节点数量和GPU数量放在同一行 */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="nodeCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.nodeCount')}
+                      {t('pricing.form.nodeCount')} <span className="text-red-500">*</span>
                     </label>
                     <select
                       id="nodeCount"
@@ -213,7 +189,7 @@ export default function PricingPage() {
                   </div>
                   <div>
                     <label htmlFor="gpuCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.gpuCount')}
+                      {t('pricing.form.gpuCount')} <span className="text-red-500">*</span>
                     </label>
                     <select
                       id="gpuCount"
@@ -235,7 +211,7 @@ export default function PricingPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.name')}
+                      {t('pricing.form.name')} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -249,7 +225,7 @@ export default function PricingPage() {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.email')}
+                      {t('pricing.form.email')} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -267,7 +243,7 @@ export default function PricingPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.company')}
+                      {t('pricing.form.company')} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -281,7 +257,7 @@ export default function PricingPage() {
                   </div>
                   <div>
                     <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.jobTitle')}
+                      {t('pricing.form.jobTitle')} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
