@@ -28,6 +28,7 @@ export default function PricingPage() {
     nodeCount: '10-50',
     gpuCount: '1-10',
     message: '',
+    _gotcha: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -89,7 +90,8 @@ export default function PricingPage() {
           gpuCount: formState.gpuCount,
           message: formState.message,
           _subject: `New Pricing Inquiry - ${formState.company}`,
-          _replyto: formState.email
+          _replyto: formState.email,
+          _gotcha: formState._gotcha,
         })
       });
       
@@ -103,6 +105,7 @@ export default function PricingPage() {
           nodeCount: '10-50',
           gpuCount: '1-10',
           message: '',
+          _gotcha: '',
         });
         setSubmitStatus('success');
       } else {
@@ -173,6 +176,16 @@ export default function PricingPage() {
               )}
               
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Honeypot field — hidden from real users, bots may fill it */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  value={formState._gotcha}
+                  onChange={handleInputChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+                />
                 {/* Hidden field for FormSubmit configuration */}
                 <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
                 <input type="hidden" name="_captcha" value="true" />
