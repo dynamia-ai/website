@@ -1,8 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { isCompanyEmail } from '@/utils/validation';
+import {
+  isCompanyEmail,
+  isValidCompany,
+  isValidEmailFormat,
+  isValidName,
+  isValidPhoneOrWechat,
+} from '@/utils/validation';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 
 interface VideoGateModalProps {
@@ -12,11 +19,13 @@ interface VideoGateModalProps {
 
 export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalProps) {
   const { t } = useTranslation();
+  const pathname = usePathname();
+  const isZhPage = pathname?.startsWith('/zh');
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     company: '',
-    jobTitle: '',
+    phone: '',
     message: '',
     _gotcha: '',
   });
@@ -32,28 +41,68 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
     e.preventDefault();
     setSubmitStatus('idle');
 
-    if (!isCompanyEmail(formState.email)) {
+    if (isZhPage && !formState.phone.trim()) {
+      alert(t('freeTrial.form.phoneRequired'));
+      return;
+    }
+
+    if (!isZhPage && !formState.email.trim()) {
+      alert(t('freeTrial.form.emailRequired'));
+      return;
+    }
+
+    if (formState.email.trim() && !isCompanyEmail(formState.email)) {
       alert(t('common.useCompanyEmail'));
+      return;
+    }
+
+    if (!isValidName(formState.name)) {
+      alert(t('freeTrial.form.invalidName'));
+      return;
+    }
+
+    if (!isValidCompany(formState.company)) {
+      alert(t('freeTrial.form.invalidCompany'));
+      return;
+    }
+
+    if (formState.email.trim() && !isValidEmailFormat(formState.email)) {
+      alert(t('freeTrial.form.invalidEmail'));
+      return;
+    }
+
+    if (isZhPage && !isValidPhoneOrWechat(formState.phone)) {
+      alert(t('videos.gate.invalidPhoneOrWechat'));
       return;
     }
 
     setIsSubmitting(true);
 
     try {
+      const payload: Record<string, string> = {
+        '📹 来源': '官网视频页面 (Website Video Gate)',
+        name: formState.name,
+        company: formState.company,
+        locale: isZhPage ? 'zh' : 'en',
+        _subject: `[官网视频] Video Access Request - ${formState.company}`,
+        _gotcha: formState._gotcha,
+      };
+
+      if (formState.email.trim()) {
+        payload.email = formState.email.trim();
+        payload._replyto = formState.email.trim();
+      }
+      if (formState.phone.trim()) {
+        payload.phone = formState.phone.trim();
+      }
+      if (formState.message.trim()) {
+        payload.message = formState.message.trim();
+      }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          '📹 来源': '官网视频页面 (Website Video Gate)',
-          name: formState.name,
-          email: formState.email,
-          company: formState.company,
-          jobTitle: formState.jobTitle,
-          message: formState.message,
-          _subject: `[官网视频] Video Access Request - ${formState.company}`,
-          _replyto: formState.email,
-          _gotcha: formState._gotcha,
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
@@ -127,7 +176,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
           />
           <div>
             <label htmlFor="gate-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('freeTrial.form.name')}
+              {t('freeTrial.form.name')} <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -140,22 +189,8 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
             />
           </div>
           <div>
-            <label htmlFor="gate-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('freeTrial.form.email')}
-            </label>
-            <input
-              type="email"
-              id="gate-email"
-              name="email"
-              value={formState.email}
-              onChange={handleInputChange}
-              required
-              className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
-            />
-          </div>
-          <div>
             <label htmlFor="gate-company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('freeTrial.form.company')}
+              {t('freeTrial.form.company')} <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -167,20 +202,52 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
               className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
             />
           </div>
-          <div>
-            <label htmlFor="gate-jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('freeTrial.form.jobTitle')}
-            </label>
-            <input
-              type="text"
-              id="gate-jobTitle"
-              name="jobTitle"
-              value={formState.jobTitle}
-              onChange={handleInputChange}
-              required
-              className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
-            />
-          </div>
+          {isZhPage ? (
+            <div>
+              <label htmlFor="gate-phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                {t('freeTrial.form.phoneWechat')} <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="gate-phone"
+                name="phone"
+                value={formState.phone}
+                onChange={handleInputChange}
+                required
+                className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
+              />
+            </div>
+          ) : (
+            <div>
+              <label htmlFor="gate-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                {t('freeTrial.form.email')} <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="gate-email"
+                name="email"
+                value={formState.email}
+                onChange={handleInputChange}
+                required
+                className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
+              />
+            </div>
+          )}
+          {isZhPage && (
+            <div>
+              <label htmlFor="gate-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                {t('freeTrial.form.email')}
+              </label>
+              <input
+                type="email"
+                id="gate-email"
+                name="email"
+                value={formState.email}
+                onChange={handleInputChange}
+                className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
+              />
+            </div>
+          )}
           <div>
             <label htmlFor="gate-message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               {t('freeTrial.form.message')}
