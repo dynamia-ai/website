@@ -71,6 +71,7 @@ export default function VideosPage() {
             {videos.map((video, index) => (
               <motion.div
                 key={video.id}
+                className="h-full"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -78,7 +79,7 @@ export default function VideosPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div
-                  className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-md transition-shadow cursor-pointer group"
+                  className="h-full flex flex-col bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-md transition-shadow cursor-pointer group"
                   onClick={() => handlePlay(video)}
                 >
                   {/* Thumbnail */}
@@ -113,14 +114,14 @@ export default function VideosPage() {
                     )}
                   </div>
                   {/* Info */}
-                  <div className="p-5">
+                  <div className="flex flex-1 flex-col p-5">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                       {t(video.titleKey)}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
                       {t(video.descriptionKey)}
                     </p>
-                    <div className="mt-3 flex flex-wrap gap-2">
+                    <div className="mt-auto flex flex-wrap gap-2 pt-3">
                       {video.tags.map(tag => (
                         <span
                           key={tag}
