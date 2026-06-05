@@ -600,6 +600,7 @@
       "jobTitle": "Job Title",
       "message": "What would you like to learn or discuss?",
       "intent": "What do you need?",
+      "intentSelfTrial": "Self-serve trial",
       "intentDemo": "Schedule a personalized demo",
       "intentSales": "Talk to sales (pricing / partnership)",
       "submitting": "Processing...",
