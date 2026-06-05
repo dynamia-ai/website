@@ -36,8 +36,6 @@ const CookieConsentManager: React.FC = () => {
     const existingConsent = readCookieConsent();
     setMounted(true);
 
-    if (currentLocale === 'zh') return;
-
     if (existingConsent) {
       setPreferences({
         necessary: true,
