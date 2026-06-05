@@ -8,7 +8,7 @@ if (source.includes('isZh ||')) {
   failures.push('Analytics consent must not be auto-granted from the /zh route.');
 }
 
-if (!source.includes('analyticsEnabled')) {
+if (!source.includes('analyticsEnabled &&')) {
   failures.push('Google Analytics scripts must be gated by explicit analytics consent state.');
 }
 
@@ -21,7 +21,7 @@ if (!source.includes('clearGoogleAnalyticsCookies()') || !source.includes("name.
 }
 
 const configIndex = source.indexOf("gtag('config'");
-const consentGateIndex = source.indexOf('analyticsEnabled');
+const consentGateIndex = source.indexOf('analyticsEnabled &&');
 
 if (configIndex !== -1 && (consentGateIndex === -1 || configIndex < consentGateIndex)) {
   failures.push("gtag('config') must only run after analytics consent is enabled.");

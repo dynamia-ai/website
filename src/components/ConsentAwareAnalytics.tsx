@@ -46,8 +46,12 @@ function clearGoogleAnalyticsCookies() {
   if (typeof document === 'undefined') return;
 
   const hostParts = window.location.hostname.split('.');
-  const parentDomain = hostParts.length > 2 ? hostParts.slice(-2).join('.') : window.location.hostname;
-  const domains = [undefined, window.location.hostname, `.${window.location.hostname}`, parentDomain, `.${parentDomain}`];
+  const domains: Array<string | undefined> = [undefined];
+
+  for (let index = 0; index < hostParts.length; index += 1) {
+    const domain = hostParts.slice(index).join('.');
+    domains.push(domain, `.${domain}`);
+  }
 
   document.cookie
     .split(';')
@@ -106,7 +110,7 @@ const ConsentAwareAnalytics: React.FC = () => {
               window.dataLayer = window.dataLayer || [];
               function gtag(){window.dataLayer.push(arguments);}
               window.gtag = gtag;
-              gtag('consent', 'update', ${gtagConsentJson});
+              gtag('consent', 'default', ${gtagConsentJson});
               gtag('js', new Date());
               gtag('config', '${GA_MEASUREMENT_ID}');
             `}
