@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -13,26 +13,45 @@ import {
 
 const GA_MEASUREMENT_ID = 'G-HHZL7ECT9C';
 
-const ConsentAwareAnalytics: React.FC = () => {
-  const [consent, setConsent] = useState<CookieConsentRecord | null>(null);
+function updateGtagConsent(consent: CookieConsentRecord | null, isZh: boolean) {
+  if (typeof window === 'undefined') return;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const w = window as any;
+  w.dataLayer = w.dataLayer || [];
+  function gtag(...args: unknown[]) { w.dataLayer.push(args); }
+
+  const analyticsGranted = isZh || (consent?.analytics ?? false);
+
+  gtag('consent', 'update', {
+    'analytics_storage': analyticsGranted ? 'granted' : 'denied',
+    'ad_storage': (consent?.marketing ?? false) ? 'granted' : 'denied',
+    'functionality_storage': (consent?.functional ?? false) ? 'granted' : 'denied',
+    'personalization_storage': (consent?.functional ?? false) ? 'granted' : 'denied',
+  });
+}
+
+const ConsentAwareAnalytics: React.FC = () => {
   useEffect(() => {
-    setConsent(readCookieConsent());
+    const isZh = window.location.pathname.startsWith('/zh');
+    const consent = readCookieConsent();
+
+    // Immediately update consent from stored preferences or locale
+    updateGtagConsent(consent, isZh);
 
     const handleConsentUpdated = (event: Event) => {
       const customEvent = event as CustomEvent<CookieConsentRecord>;
-      setConsent(customEvent.detail);
+      const isZhNow = window.location.pathname.startsWith('/zh');
+      updateGtagConsent(customEvent.detail, isZhNow);
     };
 
     window.addEventListener(COOKIE_CONSENT_EVENT, handleConsentUpdated);
-
     return () => {
       window.removeEventListener(COOKIE_CONSENT_EVENT, handleConsentUpdated);
     };
   }, []);
 
-  if (!consent?.analytics) return null;
-
+  // GA scripts ALWAYS render — consent mode controls data collection
   return (
     <>
       <Script

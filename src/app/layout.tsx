@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+// @ts-expect-error - global CSS is handled by Next.js app router.
 import "./globals.css";
 import I18nProvider from "../components/I18nProvider";
 import { ThemeProvider } from "../components/ThemeProvider";
@@ -120,6 +121,23 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Dynamia AI" />
+
+        {/* Google Consent Mode v2 — must run BEFORE gtag.js loads */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'functionality_storage': 'denied',
+                'personalization_storage': 'denied',
+                'wait_for_update': 500
+              });
+            `
+          }}
+        />
 
         {/* Structured Data for Organization */}
         <script
