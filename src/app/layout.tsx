@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-// @ts-expect-error - global CSS is handled by Next.js app router.
+
 import "./globals.css";
 import I18nProvider from "../components/I18nProvider";
 import { ThemeProvider } from "../components/ThemeProvider";
