@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 interface MetricEntry {
@@ -306,7 +306,7 @@ const download = (filename: string, content: string, mime: string) => {
 };
 
 export default function HamiMetricsExplorer() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const fileRef = useRef<HTMLInputElement | null>(null);
   const mergeFileRef = useRef<HTMLInputElement | null>(null);
   const [raw, setRaw] = useState('');

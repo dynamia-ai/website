@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faLinkedin, faRedditAlien, faWhatsapp, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 
@@ -11,7 +11,7 @@ interface BlogShareSectionProps {
 }
 
 export default function BlogShareSection({ title, url }: BlogShareSectionProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [fullUrl, setFullUrl] = useState<string>('');
 
   useEffect(() => {

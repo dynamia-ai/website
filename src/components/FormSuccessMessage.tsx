@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface FormSuccessMessageProps {
   translationKey: string;
@@ -12,7 +12,8 @@ interface FormSuccessMessageProps {
  * A component to display form success messages with proper translations
  */
 export default function FormSuccessMessage({ translationKey, isError = false }: FormSuccessMessageProps) {
-  const { t, i18n } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
   
   // Use fallback messages in case translations fail
   const fallbackMessages = {
@@ -34,7 +35,7 @@ export default function FormSuccessMessage({ translationKey, isError = false }: 
   
   // If translation failed, use fallback
   const messageToShow = translationFailed 
-    ? (fallbackMessages[translationKey as keyof typeof fallbackMessages]?.[i18n.language as 'en' | 'zh'] || translationKey)
+    ? (fallbackMessages[translationKey as keyof typeof fallbackMessages]?.[locale as 'en' | 'zh'] || translationKey)
     : translatedText;
     
   return (

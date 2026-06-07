@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 // 是否启用搜索功能 - 当前禁用
 const SEARCH_ENABLED = false;
 
 const Search: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
 

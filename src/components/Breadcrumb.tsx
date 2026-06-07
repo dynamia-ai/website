@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/24/outline';
-import StructuredData from './StructuredData';
+import { JsonLd, breadcrumbSchema } from './StructuredData';
 
 interface BreadcrumbItem {
   label: string;
@@ -15,31 +15,17 @@ interface BreadcrumbProps {
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' }) => {
-  const { t } = useTranslation();
-
-  // Generate structured data for breadcrumbs
-  const breadcrumbStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": t('navigation.home'),
-        "item": "https://dynamia.ai/"
-      },
-      ...items.map((item, index) => ({
-        "@type": "ListItem",
-        "position": index + 2,
-        "name": item.label,
-        "item": item.href ? `https://dynamia.ai${item.href}` : undefined
-      }))
-    ]
-  };
+  const t = useTranslations();
 
   return (
     <>
-      <StructuredData data={breadcrumbStructuredData} />
+      <JsonLd data={breadcrumbSchema([
+        { name: t('navigation.home'), url: '/' },
+        ...items.map((item) => ({
+          name: item.label,
+          url: item.href || '/',
+        }))
+      ])} />
       <nav 
         aria-label="Breadcrumb" 
         className={`flex ${className}`} 

@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 const fadeIn = {
@@ -12,7 +12,7 @@ const fadeIn = {
 };
 
 const CaseSnowCorp: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <MainLayout>
@@ -65,7 +65,7 @@ const CaseSnowCorp: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(function () {
-              const stats = t('cases.snowCorp.stats', { returnObjects: true });
+              const stats = t.raw('cases.snowCorp.stats');
               return Array.isArray(stats)
                 ? stats
                 : [
@@ -111,7 +111,7 @@ const CaseSnowCorp: React.FC = () => {
               </p>
               <div className="space-y-4">
                 {(function () {
-                  const keyPoints = t('cases.snowCorp.overview.keyPoints', { returnObjects: true });
+                  const keyPoints = t.raw('cases.snowCorp.overview.keyPoints');
                   return Array.isArray(keyPoints)
                     ? keyPoints
                     : [
@@ -174,7 +174,7 @@ const CaseSnowCorp: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function () {
-              const challenges = t('cases.snowCorp.challenge.points', { returnObjects: true });
+              const challenges = t.raw('cases.snowCorp.challenge.points');
               return Array.isArray(challenges)
                 ? challenges
                 : [
@@ -249,7 +249,7 @@ const CaseSnowCorp: React.FC = () => {
             <p className="text-gray-700 dark:text-gray-300 mb-6">{t('cases.snowCorp.solution.hamiSharing.description')}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {(function () {
-                const features = t('cases.snowCorp.solution.hamiSharing.features', { returnObjects: true });
+                const features = t.raw('cases.snowCorp.solution.hamiSharing.features');
                 return Array.isArray(features)
                   ? features
                   : ['Native kube-scheduler integration', 'Autoscaling ecosystem compatible', '2x fewer GPUs for train+inference'];
@@ -283,7 +283,7 @@ const CaseSnowCorp: React.FC = () => {
             <p className="text-gray-700 dark:text-gray-300 mb-6">{t('cases.snowCorp.solution.kedaAutoscaling.description')}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {(function () {
-                const features = t('cases.snowCorp.solution.kedaAutoscaling.features', { returnObjects: true });
+                const features = t.raw('cases.snowCorp.solution.kedaAutoscaling.features');
                 return Array.isArray(features)
                   ? features
                   : ['Custom Metric Server for KEDA', 'Proactive scaling before saturation', 'Smart scale-in with cooldown'];
@@ -317,7 +317,7 @@ const CaseSnowCorp: React.FC = () => {
             <p className="text-gray-700 dark:text-gray-300 mb-6">{t('cases.snowCorp.solution.cloudBursting.description')}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {(function () {
-                const features = t('cases.snowCorp.solution.cloudBursting.features', { returnObjects: true });
+                const features = t.raw('cases.snowCorp.solution.cloudBursting.features');
                 return Array.isArray(features)
                   ? features
                   : ['Unified GitOps pipeline', 'CSP nodes consume from central queue', 'Zero service interruption'];
@@ -352,7 +352,7 @@ const CaseSnowCorp: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {(function () {
-              const resultItems = t('cases.snowCorp.results.items', { returnObjects: true });
+              const resultItems = t.raw('cases.snowCorp.results.items');
               return Array.isArray(resultItems)
                 ? resultItems
                 : [

@@ -143,7 +143,6 @@ const GROUPS: FeatureGroup[] = [
       { feature: { en: 'NVIDIA (full lineup)', zh: 'NVIDIA 全系列' }, oss: true, commercial: true, enterprise: true },
       { feature: { en: 'AMD MI series (incl. MI300X)', zh: 'AMD MI 系列（含 MI300X）' }, oss: false, commercial: true, enterprise: true },
       { feature: { en: 'Ascend (910B / 910C)', zh: '昇腾（910B / 910C）' }, oss: false, commercial: true, enterprise: true },
-      { feature: { en: 'T-Head PPU', zh: '平头哥 PPU' }, oss: false, commercial: true, enterprise: true },
       { feature: { en: 'MetaX (MXC500)', zh: '沐曦（MXC500）' }, oss: false, commercial: true, enterprise: true },
       { feature: { en: 'Kunlunxin (P800)', zh: '昆仑芯（P800）' }, oss: false, commercial: true, enterprise: true },
       { feature: { en: 'Hygon DCU (K100)', zh: '海光 DCU（K100）' }, oss: false, commercial: true, enterprise: true },

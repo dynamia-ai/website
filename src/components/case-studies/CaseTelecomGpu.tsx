@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 // 动画配置
@@ -13,7 +13,7 @@ const fadeIn = {
 };
 
 const CaseTelecomGpu: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <MainLayout>
@@ -58,7 +58,7 @@ const CaseTelecomGpu: React.FC = () => {
               </p>
               <div className="space-y-4">
                 {(function() {
-                  const keyPoints = t('cases.telecomGpu.overview.keyPoints', { returnObjects: true });
+                  const keyPoints = t.raw('cases.telecomGpu.overview.keyPoints');
                   return Array.isArray(keyPoints) 
                     ? keyPoints
                     : ['大规模GPU资源池', '多租户隔离', '高性能与低延迟'];
@@ -118,7 +118,7 @@ const CaseTelecomGpu: React.FC = () => {
               </h3>
               <ul className="space-y-4 text-gray-600 dark:text-gray-300">
                 {(function() {
-                  const challenges = t('cases.telecomGpu.challenge.points', { returnObjects: true });
+                  const challenges = t.raw('cases.telecomGpu.challenge.points');
                   return Array.isArray(challenges) 
                     ? challenges
                     : ['GPU资源分配不均衡', '虚拟化开销影响性能', '缺乏多租户隔离机制'];
@@ -145,7 +145,7 @@ const CaseTelecomGpu: React.FC = () => {
               </h3>
               <ul className="space-y-4 text-gray-600 dark:text-gray-300">
                 {(function() {
-                  const solutions = t('cases.telecomGpu.solution.points', { returnObjects: true });
+                  const solutions = t.raw('cases.telecomGpu.solution.points');
                   return Array.isArray(solutions) 
                     ? solutions
                     : ['实现GPU资源动态分配', '使用直通技术降低开销', '提供强隔离性的多租户环境'];
@@ -218,7 +218,7 @@ const CaseTelecomGpu: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* 成果卡片 */}
             {(function() {
-              const resultItems = t('cases.telecomGpu.results.items', { returnObjects: true });
+              const resultItems = t.raw('cases.telecomGpu.results.items');
               return Array.isArray(resultItems) 
                 ? resultItems
                 : [

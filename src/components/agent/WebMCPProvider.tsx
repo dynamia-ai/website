@@ -85,7 +85,6 @@ const WebMCPProvider: React.FC = () => {
               },
               body: JSON.stringify({
                 _subject: 'Agent Contact Request',
-                _gotcha: '',
                 ...input,
               }),
             });

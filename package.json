@@ -9,7 +9,6 @@
     "start": "next start",
     "lint": "next lint",
     "algolia:index": "node scripts/create-algolia-index.js",
-    "validate:analytics": "node scripts/validate-analytics-consent.mjs",
     "validate:enterprise": "node scripts/validate-enterprise.mjs",
     "postbuild": "next-sitemap"
   },

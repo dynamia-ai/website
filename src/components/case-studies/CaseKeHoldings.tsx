@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 // Animation configurations
@@ -13,7 +13,7 @@ const fadeIn = {
 };
 
 const CaseKeHoldings: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <MainLayout>
@@ -66,7 +66,7 @@ const CaseKeHoldings: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(function() {
-              const stats = t('cases.keHoldings.stats', { returnObjects: true });
+              const stats = t.raw('cases.keHoldings.stats');
               return Array.isArray(stats)
                 ? stats
                 : [
@@ -112,7 +112,7 @@ const CaseKeHoldings: React.FC = () => {
               </p>
               <div className="space-y-4">
                 {(function() {
-                  const keyPoints = t('cases.keHoldings.overview.keyPoints', { returnObjects: true });
+                  const keyPoints = t.raw('cases.keHoldings.overview.keyPoints');
                   return Array.isArray(keyPoints)
                     ? keyPoints
                     : ['中国领先的房产交易服务平台', '集中化机器学习平台', '跨业务单元的 AI 基础设施', '大规模 GPU 集群需求'];
@@ -170,7 +170,7 @@ const CaseKeHoldings: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
-              const challenges = t('cases.keHoldings.challenge.points', { returnObjects: true });
+              const challenges = t.raw('cases.keHoldings.challenge.points');
               return Array.isArray(challenges)
                 ? challenges
                 : [
@@ -230,7 +230,7 @@ const CaseKeHoldings: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
-              const features = t('cases.keHoldings.solution.features', { returnObjects: true });
+              const features = t.raw('cases.keHoldings.solution.features');
               return Array.isArray(features)
                 ? features
                 : [
@@ -287,7 +287,7 @@ const CaseKeHoldings: React.FC = () => {
                 <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">{t('cases.keHoldings.solution.architecture.gpuCluster.description')}</p>
                 <div className="space-y-2">
                   {(function() {
-                    const gpuItems = t('cases.keHoldings.solution.architecture.gpuCluster.items', { returnObjects: true });
+                    const gpuItems = t.raw('cases.keHoldings.solution.architecture.gpuCluster.items');
                     return Array.isArray(gpuItems)
                       ? gpuItems
                       : ['Native NVIDIA device plugin', 'High-performance GPUs (H200, H100)', 'Dedicated for LLM training', 'Full GPU resource allocation'];
@@ -311,7 +311,7 @@ const CaseKeHoldings: React.FC = () => {
                 <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">{t('cases.keHoldings.solution.architecture.vgpuCluster.description')}</p>
                 <div className="space-y-2">
                   {(function() {
-                    const vgpuItems = t('cases.keHoldings.solution.architecture.vgpuCluster.items', { returnObjects: true });
+                    const vgpuItems = t.raw('cases.keHoldings.solution.architecture.vgpuCluster.items');
                     return Array.isArray(vgpuItems)
                       ? vgpuItems
                       : ['HAMi GPU memory virtualization', 'GPUs (H20, V100, A100, 4090)', 'Fine-grained allocation (1-2GB)', 'Small model inference'];
@@ -351,7 +351,7 @@ const CaseKeHoldings: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {(function() {
-              const resultItems = t('cases.keHoldings.results.items', { returnObjects: true });
+              const resultItems = t.raw('cases.keHoldings.results.items');
               return Array.isArray(resultItems)
                 ? resultItems
                 : [
@@ -402,7 +402,7 @@ const CaseKeHoldings: React.FC = () => {
 
           <div className="space-y-6">
             {(function() {
-              const points = t('cases.keHoldings.hamiIntegration.points', { returnObjects: true });
+              const points = t.raw('cases.keHoldings.hamiIntegration.points');
               return Array.isArray(points)
                 ? points
                 : [
@@ -456,7 +456,7 @@ const CaseKeHoldings: React.FC = () => {
 
           <div className="space-y-6 max-w-4xl mx-auto">
             {(function() {
-              const plans = t('cases.keHoldings.futurePlans.plans', { returnObjects: true });
+              const plans = t.raw('cases.keHoldings.futurePlans.plans');
               return Array.isArray(plans)
                 ? plans
                 : [
