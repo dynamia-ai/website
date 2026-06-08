@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { isCompanyEmail } from '@/utils/validation';
+import { companyEmailSchema } from '@/utils/validation';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 
 interface VideoGateModalProps {
@@ -31,8 +31,9 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
     e.preventDefault();
     setSubmitStatus('idle');
 
-    if (!isCompanyEmail(formState.email)) {
-      alert(t('common.useCompanyEmail'));
+    const emailResult = companyEmailSchema.safeParse(formState.email);
+    if (!emailResult.success) {
+      alert(t(emailResult.error.errors[0].message));
       return;
     }
 

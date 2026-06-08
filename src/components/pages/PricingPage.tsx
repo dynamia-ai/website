@@ -9,7 +9,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/solid';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
-import { isCompanyEmail } from '@/utils/validation';
+import { companyEmailSchema } from '@/utils/validation';
 
 // 动画配置
 const fadeIn = {
@@ -48,13 +48,13 @@ export default function PricingPage() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
     
-    // 验证是否为公司邮箱
-    if (!isCompanyEmail(formState.email)) {
-      alert(t('common.useCompanyEmail'));
+    const emailResult = companyEmailSchema.safeParse(formState.email);
+    if (!emailResult.success) {
+      alert(t(emailResult.error.errors[0].message));
       setIsSubmitting(false);
       return;
     }
-    
+
     try {
       // Prepare email content
       const formData = new FormData();

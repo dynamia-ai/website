@@ -675,7 +675,17 @@
       "submitting": "Wird verarbeitet...",
       "submitButton": "Testversion beantragen",
       "submitSuccess": "Vielen Dank! Ihre Anfrage wurde uebermittelt.",
-      "submitError": "Fehler beim Senden. Bitte versuchen Sie es erneut."
+      "submitError": "Fehler beim Senden. Bitte versuchen Sie es erneut.",
+      "fields": {
+        "email": {
+          "required": true,
+          "label": "Arbeits-E-Mail"
+        },
+        "phone": {
+          "required": false,
+          "label": "Telefonnummer"
+        }
+      }
     },
     "disclaimer": "Nach Ablauf der Testversion koennen Sie upgraden oder kuendigen. Keine Kreditkarte erforderlich."
   },
@@ -1099,7 +1109,9 @@
       "title": "Bereit fuer Ihre eigene Erfolgsgeschichte?",
       "description": "Sprechen Sie mit uns ueber HAMi.",
       "button": "Testversion beantragen"
-    }
+    },
+    "telLabel": "Tel",
+    "truncationLength": 160
   },
   "cases": {
     "telecomGpu": {
@@ -2203,7 +2215,8 @@
       "readCase": "Fallstudie lesen",
       "contactEyebrow": "Vertrieb kontaktieren",
       "contactPhone": "Telefon",
-      "contactEmail": "E-Mail"
+      "contactEmail": "E-Mail",
+      "truncationLength": 140
     },
     "gate": {
       "title": "Enterprise-Downloads freischalten",

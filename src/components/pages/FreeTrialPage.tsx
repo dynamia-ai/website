@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
-import { isCompanyEmail, isValidName, isValidCompany, isValidPhone, isValidEmailFormat } from '@/utils/validation';
+import { createFreeTrialSchema } from '@/utils/validation';
 
 export default function FreeTrial() {
   const t = useTranslations();
-  const locale = useLocale();
-  const isZhPage = locale === 'zh';
+  const fields = t.raw('freeTrial.form.fields');
+  const schema = createFreeTrialSchema(fields);
   const [formState, setFormState] = useState({
     intent: 'selfTrial',
     name: '',
@@ -39,48 +39,13 @@ export default function FreeTrial() {
   // 处理表单提交
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formState.acceptTerms) {
-      alert(t('freeTrial.form.termsRequired'));
-      return;
-    }
-    
-    if (isZhPage && !formState.phone.trim()) {
-      alert(t('freeTrial.form.phoneRequired'));
+
+    const result = schema.safeParse(formState);
+    if (!result.success) {
+      alert(t(result.error.errors[0].message));
       return;
     }
 
-    if (!isZhPage && !formState.email.trim()) {
-      alert(t('freeTrial.form.emailRequired'));
-      return;
-    }
-
-    // 中文页邮箱选填，英文页邮箱必填；填写后校验公司邮箱
-    if (formState.email.trim() && !isCompanyEmail(formState.email)) {
-      alert(t('common.useCompanyEmail'));
-      return;
-    }
-
-    if (!isValidName(formState.name)) {
-      alert(t('freeTrial.form.invalidName'));
-      return;
-    }
-
-    if (!isValidCompany(formState.company)) {
-      alert(t('freeTrial.form.invalidCompany'));
-      return;
-    }
-
-    if (formState.email.trim() && !isValidEmailFormat(formState.email)) {
-      alert(t('freeTrial.form.invalidEmail'));
-      return;
-    }
-
-    if (formState.phone.trim() && !isValidPhone(formState.phone, !!isZhPage)) {
-      alert(t('freeTrial.form.invalidPhone'));
-      return;
-    }
-    
     setIsSubmitting(true);
     setSubmitStatus('idle');
     
@@ -229,15 +194,15 @@ export default function FreeTrial() {
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {t('freeTrial.form.email')} {!isZhPage && <span className="text-red-500">*</span>}
+                  {fields.email.label} {fields.email.required && <span className="text-red-500">*</span>}
                 </label>
-                <input 
-                  type="email" 
-                  id="email" 
+                <input
+                  type="email"
+                  id="email"
                   name="email"
                   value={formState.email}
                   onChange={handleInputChange}
-                  required={!isZhPage}
+                  required={fields.email.required}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary" 
                 />
               </div>
@@ -257,15 +222,15 @@ export default function FreeTrial() {
               </div>
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {isZhPage ? t('freeTrial.form.phoneWechat') : t('freeTrial.form.phone')} {isZhPage && <span className="text-red-500">*</span>}
+                  {fields.phone.label} {fields.phone.required && <span className="text-red-500">*</span>}
                 </label>
-                <input 
-                  type="tel" 
-                  id="phone" 
+                <input
+                  type="tel"
+                  id="phone"
                   name="phone"
                   value={formState.phone}
                   onChange={handleInputChange}
-                  required={isZhPage}
+                  required={fields.phone.required}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary" 
                 />
               </div>

@@ -675,7 +675,17 @@
       "submitting": "Processing...",
       "submitButton": "Apply for Trial",
       "submitSuccess": "Thank you! Your request has been submitted. Our team will contact you shortly with next steps.",
-      "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai."
+      "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai.",
+      "fields": {
+        "email": {
+          "required": true,
+          "label": "Work Email"
+        },
+        "phone": {
+          "required": false,
+          "label": "Phone Number"
+        }
+      }
     },
     "disclaimer": "After your trial ends, you can choose to upgrade to a paid plan or cancel your account. No credit card required."
   },
@@ -1099,7 +1109,9 @@
       "title": "Ready to build your own success story?",
       "description": "Talk with our team about how HAMi can improve utilization, stability, and cost efficiency in your GPU infrastructure.",
       "button": "Apply for Trial"
-    }
+    },
+    "telLabel": "Tel",
+    "truncationLength": 160
   },
   "cases": {
     "telecomGpu": {
@@ -2204,7 +2216,8 @@
       "readCase": "Read Case Study",
       "contactEyebrow": "Talk to Sales",
       "contactPhone": "Phone",
-      "contactEmail": "Email"
+      "contactEmail": "Email",
+      "truncationLength": 140
     },
     "gate": {
       "title": "Unlock Enterprise Downloads",

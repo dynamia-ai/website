@@ -696,7 +696,17 @@
       "submitting": "处理中...",
       "submitButton": "提交申请",
       "submitSuccess": "谢谢！您的请求已提交。我们的团队将在 24 小时内与您联系。",
-      "submitError": "提交请求时发生错误。请重试或直接通过 info@dynamia.ai 与我们联系。"
+      "submitError": "提交请求时发生错误。请重试或直接通过 info@dynamia.ai 与我们联系。",
+      "fields": {
+        "email": {
+          "required": false,
+          "label": "邮箱"
+        },
+        "phone": {
+          "required": true,
+          "label": "电话/微信号"
+        }
+      }
     },
     "disclaimer": "试用结束后，您可以选择升级到付费计划或取消账户。无需信用卡。"
   },
@@ -1162,7 +1172,9 @@
       "title": "准备好打造你的成功案例了吗？",
       "description": "与我们交流，看看 HAMi 如何提升 GPU 利用率、稳定性与成本效率。",
       "button": "申请试用"
-    }
+    },
+    "telLabel": "通信",
+    "truncationLength": 72
   },
   "cases": {
     "telecomGpu": {
@@ -2196,7 +2208,8 @@
       "readCase": "阅读案例",
       "contactEyebrow": "联系销售",
       "contactPhone": "电话",
-      "contactEmail": "邮箱"
+      "contactEmail": "邮箱",
+      "truncationLength": 72
     },
     "gate": {
       "title": "解锁企业版下载",

@@ -148,7 +148,7 @@ export default function TrustBlock() {
                 {t(item.titleKey)}
               </h4>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3 flex-1">
-                {shortenDescription(String(t(item.descKey)), locale)}
+                {shortenDescription(String(t(item.descKey)), Number(t('enterprise.trust.truncationLength')) || 140)}
               </p>
               <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 dark:text-gray-100 transition-colors group-hover:text-[var(--primary)]">
                 {t('enterprise.trust.readCase')}

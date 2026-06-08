@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { isCompanyEmail } from '@/utils/validation';
+import { companyEmailSchema } from '@/utils/validation';
 import { attributionToPayload } from '@/utils/utm';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import ConsentLabel from '@/components/enterprise/ConsentLabel';
@@ -49,8 +49,9 @@ export default function DownloadGateModal({
     e.preventDefault();
     setSubmitStatus('idle');
 
-    if (!isCompanyEmail(formState.email)) {
-      alert(t('common.useCompanyEmail'));
+    const emailResult = companyEmailSchema.safeParse(formState.email);
+    if (!emailResult.success) {
+      alert(t(emailResult.error.errors[0].message));
       return;
     }
     if (!consent) {
