@@ -61,7 +61,9 @@ export default function FreeTrial() {
       });
       
       const intentLabel =
-        formState.intent === 'demo'
+        formState.intent === 'selfTrial'
+          ? 'Self-Serve Trial'
+          : formState.intent === 'demo'
           ? 'Demo'
           : formState.intent === 'sales'
           ? 'Sales'
