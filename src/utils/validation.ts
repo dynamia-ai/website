@@ -1,55 +1,76 @@
-/**
- * Validates if an email is a company email (not a common personal email)
- */
-export function isCompanyEmail(email: string): boolean {
-  // 常见个人邮箱域名列表
-  const personalDomains = [
-    'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 
-    'qq.com', '163.com', '126.com', 'foxmail.com', 
-    'sina.com', 'sohu.com', '139.com', 'yeah.net',
-    'icloud.com', 'me.com', 'protonmail.com', 'live.com',
-    'mail.com', 'yandex.com', 'aol.com', 'inbox.com',
-    'zoho.com', 'gmx.com', 'msn.com'
-  ];
-  
-  // 获取邮箱的域名部分
+import { z } from 'zod';
+
+const personalDomains = [
+  'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com',
+  'qq.com', '163.com', '126.com', 'foxmail.com',
+  'sina.com', 'sohu.com', '139.com', 'yeah.net',
+  'icloud.com', 'me.com', 'protonmail.com', 'live.com',
+  'mail.com', 'yandex.com', 'aol.com', 'inbox.com',
+  'zoho.com', 'gmx.com', 'msn.com',
+];
+
+function isCompanyDomain(email: string): boolean {
   const parts = email.split('@');
   if (parts.length !== 2) return false;
-  
-  const domain = parts[1].toLowerCase();
-  
-  // 检查是否在个人邮箱列表中
-  return !personalDomains.includes(domain);
+  return !personalDomains.includes(parts[1].toLowerCase());
 }
 
-const SPECIAL_CHARS = /[<>{}[\]|\\]/;
+const nameSchema = z.string().trim().min(1).max(50).regex(
+  /^[^<>{}[\]|\\]*$/,
+  'freeTrial.form.invalidName',
+);
 
-export function isValidName(name: string): boolean {
-  const trimmed = name.trim();
-  return trimmed.length >= 1 && trimmed.length <= 50 && !SPECIAL_CHARS.test(trimmed);
+const companySchema = z.string().trim().min(1).max(100).regex(
+  /^[^<>{}[\]|\\]*$/,
+  'freeTrial.form.invalidCompany',
+);
+
+const emailFormatSchema = z.string().trim().min(1, 'freeTrial.form.emailRequired').email('freeTrial.form.invalidEmail');
+
+/** Standalone company email validator for gate/pricing forms. */
+export const companyEmailSchema = emailFormatSchema.refine(
+  isCompanyDomain,
+  'common.useCompanyEmail',
+);
+
+function createEmailSchema(isRequired: boolean) {
+  if (isRequired) return companyEmailSchema;
+  return z.string().optional().pipe(
+    z.literal('').or(companyEmailSchema),
+  );
 }
 
-export function isValidCompany(company: string): boolean {
-  const trimmed = company.trim();
-  return trimmed.length >= 1 && trimmed.length <= 100 && !SPECIAL_CHARS.test(trimmed);
-}
-
-export function isValidPhone(phone: string, isZh: boolean): boolean {
-  const trimmed = phone.trim();
-  if (!trimmed) return false;
-  if (isZh) {
-    return /^1[3-9]\d{9}$/.test(trimmed);
+function createPhoneSchema(isRequired: boolean) {
+  if (isRequired) {
+    return z.string().trim().min(1, 'freeTrial.form.invalidPhone').regex(
+      /^1[3-9]\d{9}$/,
+      'freeTrial.form.invalidPhone',
+    );
   }
-  return /^\+?[\d\s\-()]{7,20}$/.test(trimmed);
+  return z.string().optional().refine(
+    (v) => !v || /^\+?[\d\s\-()]{7,20}$/.test(v),
+    'freeTrial.form.invalidPhone',
+  );
 }
 
-export function isValidPhoneOrWechat(value: string): boolean {
-  const trimmed = value.trim();
-  if (!trimmed) return false;
-  if (/^1[3-9]\d{9}$/.test(trimmed)) return true;
-  return /^[a-zA-Z][a-zA-Z0-9_-]{5,19}$/.test(trimmed);
+/**
+ * Returns a Zod schema for the free trial form. Field requirements
+ * come from the dictionary's `freeTrial.form.fields` config.
+ */
+export function createFreeTrialSchema(fields: {
+  email: { required: boolean };
+  phone: { required: boolean };
+}) {
+  return z.object({
+    intent: z.string(),
+    name: nameSchema,
+    email: createEmailSchema(fields.email.required),
+    company: companySchema,
+    phone: createPhoneSchema(fields.phone.required),
+    useCase: z.string().optional(),
+    acceptTerms: z.literal(true, {
+      errorMap: () => ({ message: 'freeTrial.form.termsRequired' }),
+    }),
+    _gotcha: z.string().optional(),
+  });
 }
-
-export function isValidEmailFormat(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-} 

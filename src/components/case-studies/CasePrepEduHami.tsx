@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 // Animation configurations
@@ -13,7 +13,7 @@ const fadeIn = {
 };
 
 const CasePrepEduHami: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <MainLayout>
@@ -77,7 +77,7 @@ const CasePrepEduHami: React.FC = () => {
               </p>
               <div className="space-y-4">
                 {(function() {
-                  const keyPoints = t('cases.prepEduHami.overview.keyPoints', { returnObjects: true });
+                  const keyPoints = t.raw('cases.prepEduHami.overview.keyPoints');
                   return Array.isArray(keyPoints) 
                     ? keyPoints
                     : ['A leading provider of AI-driven cross-border test-prep services', 'Dedicated to implementing personalized AI-based learning scenarios and optimizing learning experiences', 'Committed to addressing infrastructure scaling challenges in AI teaching environments', 'Promotes open-source technologies in hands-on education and research environments'];
@@ -135,7 +135,7 @@ const CasePrepEduHami: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
-              const challenges = t('cases.prepEduHami.challenge.points', { returnObjects: true });
+              const challenges = t.raw('cases.prepEduHami.challenge.points');
               return Array.isArray(challenges) 
                 ? challenges
                 : ['Low GPU Utilization: Allocating GPUs exclusively as full cards prevented inference workloads from making effective use of available resources. Average utilization often remained as low as 10–20%, leaving both compute capacity and memory significantly underused.', 'Frequent Resource Conflicts: Without proper isolation and scheduling mechanisms, competing workloads frequently triggered memory contention, pushing GPU memory usage to 90–95%. This led to application crashes, interrupted inference processes, and ultimately impacted overall service stability.', 'Challenges in Heterogeneous Scheduling: In mixed-GPU environments combining RTX 4070 and 4090 models, different projects often required specific GPU types. Lacking a unified allocation and selection mechanism, resource dispatching became complex and error-prone.', 'High Compatibility Barriers: Any new solution needed to remain fully compatible with existing components such as RKE2, GPU Operator, and containerd. Non-transparent or intrusive approaches risked increasing operational overhead or disrupting existing production workflows.'];
@@ -189,7 +189,7 @@ const CasePrepEduHami: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
-              const innovations = t('cases.prepEduHami.solution.innovations', { returnObjects: true });
+              const innovations = t.raw('cases.prepEduHami.solution.innovations');
               return Array.isArray(innovations) 
                 ? innovations
                 : [
@@ -247,7 +247,7 @@ const CasePrepEduHami: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {(function() {
-              const resultItems = t('cases.prepEduHami.results.items', { returnObjects: true });
+              const resultItems = t.raw('cases.prepEduHami.results.items');
               return Array.isArray(resultItems) 
                 ? resultItems
                 : [
@@ -295,7 +295,7 @@ const CasePrepEduHami: React.FC = () => {
 
           <div className="space-y-6">
             {(function() {
-              const points = t('cases.prepEduHami.hamiIntegration.points', { returnObjects: true });
+              const points = t.raw('cases.prepEduHami.hamiIntegration.points');
               return Array.isArray(points) 
                 ? points
                 : ['By integrating HAMi\'s device virtualization, fine-grained vGPU partitioning, heterogeneous scheduling, and built-in observability, PREP EDU is able to unify and efficiently share multiple GPU models—without any modifications to existing applications.', 'By adopting HAMi\'s transparent virtualization, annotation-based scheduling, and UUID-level binding, PREP EDU achieves consistent scheduling across RTX 4070 and 4090 GPUs, allowing tasks to detect GPU types, allocate resources on demand, and run multiple instances concurrently. HAMi\'s seamless compatibility with GPU Operator, RKE2, and containerd also ensures that new nodes automatically join the unified resource pool.', 'By validating HAMi in real production workflows—including Docker-based self-hosting, automated node onboarding, and joint optimization with GPU Operator—PREP EDU extends HAMi\'s applicability and demonstrates its flexibility and engineering maturity at scale.'];

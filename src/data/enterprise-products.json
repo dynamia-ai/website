@@ -40,8 +40,8 @@
             "zh": "多厂商 GPU 适配"
           },
           "desc": {
-            "en": "NVIDIA, Ascend, T-Head PPU, MLU, Iluvatar, Hygon DCU and more.",
-            "zh": "支持英伟达、昇腾、平头哥 PPU、寒武纪、天数智芯、海光 DCU 等主流加速卡。"
+            "en": "NVIDIA, Ascend, MLU, Iluvatar, Hygon DCU and more.",
+            "zh": "支持英伟达、昇腾、寒武纪、天数智芯、海光 DCU 等主流加速卡。"
           }
         },
         {
@@ -299,7 +299,7 @@
       "compatibility": {
         "kubernetes": [">= 1.24"],
         "os": ["RHEL 8/9", "Ubuntu 22.04", "Kylin V10", "openEuler 22.03"],
-        "gpu": ["NVIDIA", "Ascend", "T-Head PPU", "Hygon DCU", "Cambricon MLU", "Iluvatar"]
+        "gpu": ["NVIDIA", "Ascend", "Hygon DCU", "Cambricon MLU", "Iluvatar"]
       },
       "releases": [
         {

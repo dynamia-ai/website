@@ -1,19 +1,18 @@
 'use client';
 
 import React, { useId, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   ArchiveBoxIcon,
   CloudIcon,
   DocumentTextIcon,
 } from '@heroicons/react/24/outline';
-import type { Artifact, DeliveryMode, Locale, Release } from '@/types/enterprise';
-import { filterArtifactsByDelivery, pickI18n } from '@/lib/enterprise';
+import type { Artifact, DeliveryMode, Release } from '@/types/enterprise';
+import { filterArtifactsByDelivery } from '@/lib/enterprise';
 import ArtifactList from '@/components/enterprise/ArtifactList';
 
 interface DownloadDeliveryTabsProps {
   release: Release;
-  locale: Locale;
   unlocked: boolean;
   offlineComingSoon: boolean;
   onDownload: (artifact: Artifact, resolvedUrl: string) => void;
@@ -58,7 +57,7 @@ function ReleaseMeta({
   release: Release;
   className?: string;
 }) {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <div
@@ -76,17 +75,16 @@ function ReleaseMeta({
 
 function InstallGuideCta({
   artifact,
-  locale,
   description,
   onDownload,
 }: {
   artifact: Artifact;
-  locale: Locale;
   description: string;
   onDownload: (artifact: Artifact, resolvedUrl: string) => void;
 }) {
-  const { t } = useTranslation();
-  const label = pickI18n(artifact.label, locale);
+  const t = useTranslations();
+  const locale = useLocale();
+  const label = artifact.label[locale] ?? artifact.label.en;
 
   return (
     <div className="rounded-lg bg-gray-50 dark:bg-gray-800/40 ring-1 ring-inset ring-gray-200/80 dark:ring-gray-700/80">
@@ -122,14 +120,9 @@ function isOnlineInstallGuideOnly(artifacts: Artifact[]): boolean {
   );
 }
 
-export default function DownloadDeliveryTabs({
-  release,
-  locale,
-  unlocked,
-  offlineComingSoon,
-  onDownload,
-}: DownloadDeliveryTabsProps) {
-  const { t } = useTranslation();
+export default function DownloadDeliveryTabs({ release, unlocked, offlineComingSoon, onDownload }: DownloadDeliveryTabsProps) {
+  const t = useTranslations();
+  const locale = useLocale();
   const tablistId = useId();
   const [delivery, setDelivery] = useState<DeliveryMode>('online');
 
@@ -191,7 +184,6 @@ export default function DownloadDeliveryTabs({
             onlineGuideOnly ? (
               <InstallGuideCta
                 artifact={onlineArtifacts[0]}
-                locale={locale}
                 description={t('enterprise.detail.deliveryOnlineDesc')}
                 onDownload={onDownload}
               />
@@ -202,8 +194,7 @@ export default function DownloadDeliveryTabs({
                 </p>
                 <ArtifactList
                   artifacts={onlineArtifacts}
-                  locale={locale}
-                  unlocked={unlocked}
+                    unlocked={unlocked}
                   delivery="online"
                   rowLayout="compact"
                   onDownload={onDownload}
@@ -228,35 +219,20 @@ export default function DownloadDeliveryTabs({
               {t('enterprise.detail.offlineComingSoonDesc')}
             </p>
             <p className="mx-auto mt-4 max-w-md text-sm text-gray-600 dark:text-gray-400">
-              {locale === 'zh' ? (
-                <>
-                  如需提前获取离线包，请{' '}
-                  <a
-                    href="mailto:info@dynamia.ai"
-                    className="font-medium text-primary hover:underline"
-                  >
-                    联系销售
-                  </a>{' '}
-                  或致电 400-026-7800
-                </>
-              ) : (
-                <>
-                  Need bundles early?{' '}
-                  <a
-                    href="mailto:info@dynamia.ai"
-                    className="font-medium text-primary hover:underline"
-                  >
-                    Contact sales
-                  </a>
-                  .
-                </>
-              )}
+              {t('enterprise.downloadContactNeedBundles')}{' '}
+              <a
+                href="mailto:info@dynamia.ai"
+                className="font-medium text-primary hover:underline"
+              >
+                {t('enterprise.downloadContactSales')}
+              </a>
+              {locale === 'zh' && <> {t('enterprise.downloadContactPhone')}</>}
+              {locale !== 'zh' && '.'}
             </p>
           </div>
         ) : offlineArtifacts.length > 0 ? (
           <ArtifactList
             artifacts={offlineArtifacts}
-            locale={locale}
             unlocked={unlocked}
             delivery="offline"
             onDownload={onDownload}

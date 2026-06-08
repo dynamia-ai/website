@@ -3,23 +3,17 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import type { EnterpriseProduct, Locale } from '@/types/enterprise';
-import { pickI18n, getLatestRelease } from '@/lib/enterprise';
+import type { EnterpriseProduct } from '@/types/enterprise';
+import { getLatestRelease } from '@/lib/enterprise';
+import { localizedPath } from '@/utils/i18n';
 
 interface ProductCardProps {
   product: EnterpriseProduct;
-  locale: Locale;
   /** Optional override; otherwise computed from latest release */
   latestVersion?: string;
 }
-
-const STATUS_LABEL: Record<string, { en: string; zh: string }> = {
-  ga: { en: 'Generally Available', zh: '正式版' },
-  beta: { en: 'Beta', zh: 'Beta' },
-  eol: { en: 'End of Life', zh: '已停止维护' },
-};
 
 const STATUS_DOT: Record<string, string> = {
   ga: 'bg-emerald-500',
@@ -56,13 +50,16 @@ const EYEBROW_I18N_KEY: Partial<Record<string, string>> = {
   'hami-ai-platform': 'enterprise.list.cardEyebrowHamiAiPlatform',
 };
 
-export default function ProductCard({ product, locale }: ProductCardProps) {
-  const { t } = useTranslation();
+export default function ProductCard({ product }: ProductCardProps) {
+  const locale = useLocale();
+  const t = useTranslations();
+  const et = useTranslations('enterprise');
   const latest = getLatestRelease(product);
-  const href = locale === 'zh' ? `/zh/products/${product.id}` : `/products/${product.id}`;
-  const productName = pickI18n(product.name, locale);
+  const href = localizedPath(`/products/${product.id}`, locale);
+  const pd = et.raw('productsData') as any;
+  const productName = pd[product.id]?.name ?? product.name.en;
   const visual = PRODUCT_VISUAL[product.id] ?? { kind: 'mark' };
-  const statusInfo = STATUS_LABEL[product.status] ?? STATUS_LABEL.ga;
+  const statusLabel = et(`status.${product.status}` as any) || et('status.ga');
   const artifactCount = latest
     ? latest.artifacts.filter((a) => a.type !== 'install-doc').length
     : 0;
@@ -121,7 +118,7 @@ export default function ProductCard({ product, locale }: ProductCardProps) {
                 <span
                   className={`inline-block w-1.5 h-1.5 rounded-full shrink-0 ${STATUS_DOT[product.status] ?? STATUS_DOT.ga}`}
                 />
-                <span>{statusInfo[locale]}</span>
+                <span>{statusLabel}</span>
               </div>
             </div>
           </div>
@@ -129,7 +126,7 @@ export default function ProductCard({ product, locale }: ProductCardProps) {
 
         {/* Tagline */}
         <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2 mb-4">
-          {pickI18n(product.tagline, locale)}
+          {pd[product.id]?.tagline ?? product.tagline.en}
         </p>
 
         {/* Tags */}

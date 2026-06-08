@@ -3,9 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useLocale, useTranslations } from 'next-intl';
+import { localizedPath } from '@/utils/i18n';
 import MainLayout from '@/components/layout/MainLayout';
 
 interface CaseStudyCard {
@@ -21,11 +21,10 @@ const fadeIn = {
 };
 
 const CaseStudiesList: React.FC = () => {
-  const { t } = useTranslation();
-  const pathname = usePathname();
-  const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
+  const t = useTranslations();
+  const locale = useLocale();
   const shortenDescription = (text: string) => {
-    const maxChars = currentLocale === 'zh' ? 72 : 160;
+    const maxChars = (t.raw('caseStudiesPage.truncationLength') as number) || 160;
     if (text.length <= maxChars) return text;
     return `${text.slice(0, maxChars).trimEnd()}...`;
   };
@@ -93,7 +92,7 @@ const CaseStudiesList: React.FC = () => {
     // },
   ];
 
-  const basePath = currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies';
+  const basePath = localizedPath('/case-studies', locale);
 
   return (
     <MainLayout>
@@ -159,7 +158,7 @@ const CaseStudiesList: React.FC = () => {
                     </div>
                   ) : (
                     <div className="w-12 h-12 rounded-lg bg-primary-light flex items-center justify-center text-primary font-semibold">
-                      {currentLocale === 'zh' ? '通信' : 'Tel'}
+                      {t('caseStudiesPage.telLabel')}
                     </div>
                   )}
                 </div>
@@ -193,7 +192,7 @@ const CaseStudiesList: React.FC = () => {
               {t('caseStudiesPage.cta.description')}
             </p>
             <Link
-              href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
+              href={localizedPath('/apply-trial', locale)}
               className="inline-flex items-center px-6 py-3 rounded-md bg-primary text-white font-medium hover:bg-primary-dark transition-colors"
             >
               {t('caseStudiesPage.cta.button')}

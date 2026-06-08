@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   ArrowLeftIcon,
   BookOpenIcon,
@@ -10,26 +10,16 @@ import {
   ChatBubbleLeftRightIcon,
   CalendarDaysIcon,
 } from '@heroicons/react/24/outline';
-import type { EnterpriseProduct, Locale, Release } from '@/types/enterprise';
-import { pickI18n, hasLocalInstallDoc } from '@/lib/enterprise';
+import type { EnterpriseProduct, Release } from '@/types/enterprise';
+import { hasLocalInstallDoc } from '@/lib/enterprise';
+import { localizedPath } from '@/utils/i18n';
 
-interface ProductHeroProps {
-  product: EnterpriseProduct;
-  latest: Release | undefined;
-  locale: Locale;
-  onJumpDownload?: () => void;
-}
+interface ProductHeroProps { product: EnterpriseProduct; latest: Release | undefined; onJumpDownload?: () => void; }
 
 const STATUS_DOT: Record<string, string> = {
   ga: 'bg-emerald-500',
   beta: 'bg-amber-500',
   eol: 'bg-gray-400',
-};
-
-const STATUS_LABEL: Record<string, { en: string; zh: string }> = {
-  ga: { en: 'Generally Available', zh: '正式版' },
-  beta: { en: 'Beta', zh: 'Beta' },
-  eol: { en: 'End of Life', zh: '已停止维护' },
 };
 
 const TAG_EN_MAP: Record<string, string> = {
@@ -45,15 +35,16 @@ const ACTION_SHADOW_CLASS = 'shadow-sm hover:shadow-md transition-all';
 
 const SECONDARY_ACTION_CLASS = `inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-200 ${ACTION_SHADOW_CLASS}`;
 
-export default function ProductHero({ product, latest, locale, onJumpDownload }: ProductHeroProps) {
-  const { t } = useTranslation();
-  const backHref = locale === 'zh' ? '/zh/products' : '/products';
-  const productName = pickI18n(product.name, locale);
-  const statusInfo = STATUS_LABEL[product.status] ?? STATUS_LABEL.ga;
+export default function ProductHero({ product, latest, onJumpDownload }: ProductHeroProps) {
+  const t = useTranslations();
+  const locale = useLocale();
+  const et = useTranslations('enterprise');
+  const backHref = localizedPath('/products', locale);
+  const pd = (et.raw('productsData') as any)[product.id];
+  const productName = pd?.name ?? product.name.en;
+  const statusLabel = et(`status.${product.status}` as any) || et('status.ga');
   const showInstallGuide = hasLocalInstallDoc(product);
-  const installHref = locale === 'zh'
-    ? `/zh/products/${product.id}/install`
-    : `/products/${product.id}/install`;
+  const installHref = localizedPath(`/products/${product.id}/install`, locale);
 
   return (
     <section className="relative overflow-hidden border-b border-gray-200 dark:border-gray-800">
@@ -80,7 +71,7 @@ export default function ProductHero({ product, latest, locale, onJumpDownload }:
             <div className="flex items-center gap-3 flex-wrap mb-2">
               <span className="inline-flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-400">
                 <span className={`inline-block w-1.5 h-1.5 rounded-full ${STATUS_DOT[product.status] ?? STATUS_DOT.ga}`} />
-                {statusInfo[locale]}
+                {statusLabel}
               </span>
               {latest && (
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 tabular-nums">
@@ -98,7 +89,7 @@ export default function ProductHero({ product, latest, locale, onJumpDownload }:
               {productName}
             </h1>
             <p className="mt-2 text-lg text-gray-600 dark:text-gray-300 max-w-3xl">
-              {pickI18n(product.tagline, locale)}
+              {pd?.tagline ?? product.tagline.en}
             </p>
 
             {product.tags && product.tags.length > 0 && (
@@ -132,7 +123,7 @@ export default function ProductHero({ product, latest, locale, onJumpDownload }:
             </Link>
           )}
           <Link
-            href={locale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
+            href={localizedPath('/apply-trial', locale)}
             className={SECONDARY_ACTION_CLASS}
           >
             <ChatBubbleLeftRightIcon className="h-4 w-4" />

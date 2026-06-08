@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { isCompanyEmail } from '@/utils/validation';
+import { useTranslations } from 'next-intl';
+import { companyEmailSchema } from '@/utils/validation';
 import { attributionToPayload } from '@/utils/utm';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
+import ConsentLabel from '@/components/enterprise/ConsentLabel';
 
 interface PendingDownloadContext {
   productId: string;
@@ -25,14 +26,13 @@ export default function DownloadGateModal({
   onSuccess,
   onClose,
 }: DownloadGateModalProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     company: '',
     jobTitle: '',
     message: '',
-    _gotcha: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -49,8 +49,9 @@ export default function DownloadGateModal({
     e.preventDefault();
     setSubmitStatus('idle');
 
-    if (!isCompanyEmail(formState.email)) {
-      alert(t('common.useCompanyEmail'));
+    const emailResult = companyEmailSchema.safeParse(formState.email);
+    if (!emailResult.success) {
+      alert(t(emailResult.error.errors[0].message));
       return;
     }
     if (!consent) {
@@ -77,16 +78,10 @@ export default function DownloadGateModal({
           ...attributionToPayload(),
           _subject: `[企业版下载登记] ${context?.productName ?? ''} ${context?.version ?? ''} - ${formState.company}`,
           _replyto: formState.email,
-          _gotcha: formState._gotcha,
         }),
       });
 
       if (response.ok) {
-        const result = await response.json();
-        if (result.honeypot) {
-          setSubmitStatus('error');
-          return;
-        }
         document.cookie = 'download_unlocked=1; max-age=2592000; path=/';
         setSubmitStatus('success');
         setTimeout(() => onSuccess(), 800);
@@ -166,16 +161,6 @@ export default function DownloadGateModal({
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Honeypot field — hidden from real users, bots may fill it */}
-          <input
-            type="text"
-            name="_gotcha"
-            value={formState._gotcha}
-            onChange={handleInputChange}
-            tabIndex={-1}
-            autoComplete="off"
-            style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
-          />
           <div>
             <label
               htmlFor="dl-gate-name"
@@ -260,16 +245,7 @@ export default function DownloadGateModal({
               className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
             />
           </div>
-          <label className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400 leading-snug cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={consent}
-              onChange={(e) => setConsent(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary"
-              required
-            />
-            <span dangerouslySetInnerHTML={{ __html: t('enterprise.gate.consentLabel') }} />
-          </label>
+          <ConsentLabel checked={consent} onChange={setConsent} />
 
           <button
             type="submit"

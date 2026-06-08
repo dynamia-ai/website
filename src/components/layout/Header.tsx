@@ -2,8 +2,10 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { Disclosure } from '@headlessui/react';
 import {
   Bars3Icon,
@@ -13,8 +15,8 @@ import {
 } from '@heroicons/react/24/outline';
 import HamiIcon from '@/components/HamiIcon';
 import ExternalLinkIcon from '@/components/ExternalLinkIcon';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { useTheme } from '@/components/ThemeProvider';
+import { ModeToggle } from '@/components/ModeToggle';
+import { useTheme } from 'next-themes';
 // 暂时注释 Search 组件导入
 // import Search from '@/components/Search';
 
@@ -28,62 +30,20 @@ type SubmenuItem = {
 }
 
 const Header: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // 确定当前语言
-  const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
+  const locale = useLocale();
+
+  const localizedPath = (path: string) =>
+    locale === routing.defaultLocale ? path : `/${locale}${path}`;
 
   // 确保组件已挂载，避免水合错误
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // 切换语言
-  const changeLanguage = (newLocale: string) => {
-    // 获取当前路径和语言
-    const currentPath = pathname || '/';
-    
-    if (newLocale === currentLocale) return;
-    
-    // 设置 Cookie，持久化语言选择
-    if (typeof document !== 'undefined') {
-      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`; // 一年有效期
-    }
-    
-    let newPath;
-    if (newLocale === 'en') {
-      // 从 /zh/... 切换到 /...（英文为默认语言，使用根路径而不是/en）
-      if (currentPath === '/zh') {
-        newPath = '/';
-      } else if (currentPath.startsWith('/zh/')) {
-        newPath = currentPath.replace(/^\/zh\//, '/');
-      } else {
-        newPath = currentPath.replace(/^\/zh/, '');
-      }
-    } else {
-      // 从 /... 切换到 /zh/...
-      if (currentPath === '/') {
-        newPath = '/zh';
-      } else if (currentPath.startsWith('/')) {
-        newPath = `/zh${currentPath}`;
-      } else {
-        newPath = `/zh/${currentPath}`;
-      }
-    }
-    
-    // 使用 window.location 直接跳转，绕过 Next.js 的客户端路由
-    if (newPath !== currentPath && typeof window !== 'undefined') {
-      // 构建完整的 URL
-      const baseUrl = window.location.origin;
-      const fullUrl = `${baseUrl}${newPath}`;
-      
-      // 直接修改地址
-      window.location.href = fullUrl;
-    }
-  };
 
   const normalizePath = (path: string) => path.replace(/\/+$/, '') || '/';
   const isCurrentPath = (href: string) => normalizePath(pathname || '/') === normalizePath(href);
@@ -91,11 +51,11 @@ const Header: React.FC = () => {
   // 导航链接
   const navigation = [
     { name: t('navigation.products'), href: '#', hasSubmenu: true, submenuType: 'products' },
-    { name: t('navigation.caseStudies'), href: currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies' },
+    { name: t('navigation.caseStudies'), href: localizedPath('/case-studies') },
+    { name: t('navigation.pricing'), href: localizedPath('/pricing') },
+    { name: t('navigation.company'), href: localizedPath('/company') },
     { name: t('navigation.resources'), href: '#', hasSubmenu: true, submenuType: 'resources' },
     { name: t('navigation.community'), href: '#', hasSubmenu: true, submenuType: 'hami' },
-    { name: t('navigation.pricing'), href: currentLocale === 'zh' ? '/zh/pricing' : '/pricing' },
-    { name: t('navigation.company'), href: currentLocale === 'zh' ? '/zh/company' : '/company' },
   ];
 
   // Products 子菜单
@@ -103,21 +63,21 @@ const Header: React.FC = () => {
     {
       name: t('navigation.productsOverview'),
       description: t('navigation.productsOverviewDesc'),
-      href: currentLocale === 'zh' ? '/zh/products' : '/products',
+      href: localizedPath('/products'),
       external: false,
       iconName: 'infoCircle',
     },
     {
       name: t('navigation.hamiEnterprise'),
       description: t('navigation.hamiEnterpriseDesc'),
-      href: currentLocale === 'zh' ? '/zh/products/hami-enterprise' : '/products/hami-enterprise',
+      href: localizedPath('/products/hami-enterprise'),
       external: false,
       iconName: 'folder',
     },
     {
       name: t('navigation.hamiAiPlatform'),
       description: t('navigation.hamiAiPlatformDesc'),
-      href: currentLocale === 'zh' ? '/zh/products/hami-ai-platform' : '/products/hami-ai-platform',
+      href: localizedPath('/products/hami-ai-platform'),
       external: false,
       iconName: 'globe',
     },
@@ -128,7 +88,7 @@ const Header: React.FC = () => {
     { 
       name: t('navigation.whatIsHami'), 
       description: t('navigation.whatIsHamiDesc'),
-      href: currentLocale === 'zh' ? '/zh/what-is-hami' : '/what-is-hami', 
+      href: localizedPath('/what-is-hami'),
       external: false,
       iconName: 'infoCircle'
     },
@@ -167,21 +127,21 @@ const Header: React.FC = () => {
     { 
       name: t('navigation.resourcesBlog'), 
       description: t('navigation.resourcesBlogDesc'),
-      href: currentLocale === 'zh' ? '/zh/blog' : '/blog', 
+      href: localizedPath('/blog'),
       external: false,
       iconName: 'blog'
     },
     {
       name: t('navigation.resourcesTools'),
       description: t('navigation.resourcesToolsDesc'),
-      href: currentLocale === 'zh' ? '/zh/tools' : '/tools',
+      href: localizedPath('/tools'),
       external: false,
       iconName: 'folder'
     },
     {
       name: t('navigation.resourcesVideos'),
       description: t('navigation.resourcesVideosDesc'),
-      href: currentLocale === 'zh' ? '/zh/videos' : '/videos',
+      href: localizedPath('/videos'),
       external: false,
       iconName: 'document'
     },
@@ -199,14 +159,14 @@ const Header: React.FC = () => {
     {
       name: t('navigation.caseSfTechnology'),
       description: t('navigation.caseSfTechnologyDesc'),
-      href: currentLocale === 'zh' ? '/zh/case-studies/sf-technology' : '/case-studies/sf-technology',
+      href: localizedPath('/case-studies/sf-technology'),
       external: false,
       iconName: 'document'
     },
     {
       name: t('navigation.casePrepEdu'),
       description: t('navigation.casePrepEduDesc'),
-      href: currentLocale === 'zh' ? '/zh/case-studies/prep-edu' : '/case-studies/prep-edu',
+      href: localizedPath('/case-studies/prep-edu'),
       external: false,
       iconName: 'document'
     },
@@ -214,7 +174,7 @@ const Header: React.FC = () => {
     // { 
     //   name: t('navigation.caseTelecom'), 
     //   description: t('navigation.caseTelecomDesc'),
-    //   href: currentLocale === 'zh' ? '/zh/case-studies/telecom' : '/case-studies/telecom', 
+    //   href: localizedPath('/case-studies/telecom'),
     //   external: false,
     //   iconName: 'document'
     // },
@@ -353,36 +313,9 @@ const Header: React.FC = () => {
     };
   }, [hamiMenuRef, resourcesMenuRef, solutionsMenuRef, productsMenuRef]);
 
-  // 如果组件未挂载，返回一个占位符避免水合错误
-  if (!mounted) {
-    return (
-      <div className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <div className="w-40 h-10 bg-gray-200 animate-pulse rounded"></div>
-              </div>
-            </div>
-            <div className="hidden sm:flex sm:items-center sm:space-x-4">
-              <div className="w-20 h-8 bg-gray-200 animate-pulse rounded"></div>
-              <div className="w-24 h-8 bg-gray-200 animate-pulse rounded"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const desktopMenuTopClass = 'top-16';
-  const logoSrc = currentLocale === 'zh'
-    ? resolvedTheme === 'dark'
-      ? '/dynamia-logo-zh-white.svg'
-      : '/dynamia-logo-zh.svg'
-    : resolvedTheme === 'dark'
-      ? '/dynamia-logo-white.svg'
-      : '/dynamia-logo.svg';
-  const logoClassName = currentLocale === 'zh'
+  const logoSrc = (resolvedTheme === 'dark' && mounted) ? t('navigation.logoDark') : t('navigation.logo');
+  const logoClassName = locale === 'zh'
     ? 'block w-32 h-8 -ml-3 lg:w-36 lg:h-9 lg:-ml-4 xl:w-40 xl:h-10 xl:-ml-5 shrink-0'
     : 'block w-32 h-8 lg:w-36 lg:h-9 xl:w-40 xl:h-10 shrink-0';
 
@@ -394,8 +327,7 @@ const Header: React.FC = () => {
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <Link href={currentLocale === 'zh' ? '/zh' : '/'} className="flex items-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <Link href={localizedPath('/')} className="flex items-center">
                     <img
                       src={logoSrc}
                       alt="Dynamia AI Logo"
@@ -576,7 +508,7 @@ const Header: React.FC = () => {
                         key={item.href}
                         href={item.href}
                         className={`inline-flex items-center whitespace-nowrap h-full px-1 pt-1 border-b-2 text-sm xl:text-base font-medium ${
-                          pathname === item.href || (pathname === '/' && item.href === '/') || (pathname === '/zh' && item.href === '/zh')
+                          pathname === item.href || (pathname === '/' && item.href === '/')
                             ? 'border-primary text-gray-900 dark:text-gray-100'
                             : 'border-transparent text-gray-500 dark:text-gray-400 hover:border-gray-300 dark:hover:border-primary/60 hover:text-gray-700 dark:hover:text-gray-100'
                         }`}
@@ -591,7 +523,7 @@ const Header: React.FC = () => {
                 {/* 暂时隐藏搜索栏 */}
                 {/* <Search /> */}
 
-                {currentLocale === 'zh' && (
+                {locale === 'zh' && (
                   <a
                     href="tel:4000267800"
                     className="inline-flex items-center px-1.5 xl:px-2 py-2 text-xs xl:text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white whitespace-nowrap"
@@ -602,49 +534,16 @@ const Header: React.FC = () => {
                 )}
 
                 <Link
-                  href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
+                  href={localizedPath('/apply-trial')}
                   className="inline-flex items-center px-2 xl:px-3 py-1 xl:py-2 border border-transparent text-xs xl:text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark whitespace-nowrap"
                 >
                   {t('navigation.freeTrial')}
                 </Link>
 
                 {/* Dark Mode Toggle */}
-                <ThemeToggle />
+                <ModeToggle />
 
-                <div className="relative group">
-                  <button
-                    className="inline-flex items-center px-1.5 xl:px-2 py-2 text-xs xl:text-sm font-medium cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 whitespace-nowrap"
-                  >
-                    {currentLocale === 'zh' ? '简体中文' : 'English'}
-                    <svg className="h-3.5 w-3.5 ml-1" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                    </svg>
-                  </button>
-                  <div className="absolute right-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                    <div className="bg-white dark:bg-gray-900 rounded-md shadow-lg ring-1 ring-black/5 dark:ring-white/10 py-1 min-w-[140px]">
-                      <button
-                        onClick={() => changeLanguage('en')}
-                        className={`block w-full text-left px-4 py-2 text-sm ${
-                          currentLocale === 'en'
-                            ? 'text-primary font-medium bg-primary/5'
-                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                        }`}
-                      >
-                        English
-                      </button>
-                      <button
-                        onClick={() => changeLanguage('zh')}
-                        className={`block w-full text-left px-4 py-2 text-sm ${
-                          currentLocale === 'zh'
-                            ? 'text-primary font-medium bg-primary/5'
-                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                        }`}
-                      >
-                        简体中文
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <LanguageSwitcher />
               </div>
               <div className="-mr-2 flex items-center lg:hidden">
                 <Disclosure.Button
@@ -779,36 +678,14 @@ const Header: React.FC = () => {
                 </div>
               </button>
 
-              <div className="px-2 py-3 border-t border-gray-200 dark:border-gray-700">
-                <div className="px-4 py-2 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">
-                  {currentLocale === 'zh' ? '语言' : 'Language'}
-                </div>
-                <button
-                  onClick={() => changeLanguage('en')}
-                  className={`w-full flex items-center px-4 py-2.5 text-base font-medium rounded-lg transition-colors touch-manipulation ${
-                    currentLocale === 'en'
-                      ? 'text-primary bg-primary/5'
-                      : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  English
-                </button>
-                <button
-                  onClick={() => changeLanguage('zh')}
-                  className={`w-full flex items-center px-4 py-2.5 text-base font-medium rounded-lg transition-colors touch-manipulation ${
-                    currentLocale === 'zh'
-                      ? 'text-primary bg-primary/5'
-                      : 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  简体中文
-                </button>
+              <div className="px-2 py-3 border-t border-gray-200 dark:border-gray-700 flex justify-center">
+                <LanguageSwitcher />
               </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="px-4 py-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
-              {currentLocale === 'zh' && (
+              {locale === 'zh' && (
                 <a
                   href="tel:4000267800"
                   className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors touch-manipulation"
@@ -818,7 +695,7 @@ const Header: React.FC = () => {
                 </a>
               )}
               <Link
-                href={currentLocale === 'zh' ? '/zh/apply-trial' : '/apply-trial'}
+                href={localizedPath('/apply-trial')}
                 className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors shadow-sm touch-manipulation"
               >
                 {t('navigation.freeTrial')}

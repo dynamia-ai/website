@@ -1,11 +1,10 @@
-export type Locale = 'en' | 'zh';
-
 /** Product download section: online (OCI/Helm) vs offline bundles */
 export type DeliveryMode = 'online' | 'offline';
 
 export interface I18nText {
   en: string;
   zh: string;
+  [locale: string]: string | undefined;
 }
 
 export type ArtifactType =

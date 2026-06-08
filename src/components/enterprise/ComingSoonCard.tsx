@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 
 export default function ComingSoonCard() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   return (
     <div className="flex flex-col h-full rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-transparent p-7">
       <div className="text-xs font-medium uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">

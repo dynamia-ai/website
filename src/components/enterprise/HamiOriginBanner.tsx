@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { useTranslations, useLocale } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -10,80 +11,6 @@ import {
   ShieldCheckIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
-import type { Locale } from '@/types/enterprise';
-
-interface HamiOriginBannerProps {
-  locale: Locale;
-}
-
-const COPY = {
-  en: {
-    eyebrow: 'Same DNA',
-    title: 'HAMi & Dynamia',
-    subtitle:
-      'HAMi is the CNCF Sandbox project for heterogeneous AI computing virtualization. Founded and core-maintained by the dynamia.ai team. Our enterprise editions ship the same upstream code — hardened, supported, SLA-backed.',
-    pillars: [
-      { title: 'CNCF Sandbox', desc: 'Open governance · vendor-neutral foundation' },
-      { title: 'Created by Dynamia', desc: 'HAMi maintainers are the dynamia.ai team' },
-      { title: '100% upstream', desc: 'No fork drift · no lock-in' },
-      { title: 'OEM-grade SLA', desc: '24/7 support · long-term release lines' },
-    ],
-    relation: {
-      connector1: 'Founded & maintained',
-      connector2: 'OEM delivery · SLA',
-      team: {
-        title: 'Dynamia AI',
-        titleSub: 'dynamia.ai',
-        desc: 'Founder and core maintainer of HAMi, delivering enterprise editions as the OEM.',
-      },
-      opensource: {
-        title: 'HAMi',
-        desc: 'Heterogeneous AI computing virtualization middleware · open source, community-driven.',
-      },
-      commercial: {
-        title: 'Enterprise Editions',
-        desc: 'Commercial distribution based on HAMi, with support and services from Dynamia AI.',
-      },
-    },
-    ctaPrimary: 'HAMi website',
-    ctaCommunity: 'Community',
-    ctaGithub: 'GitHub',
-    ctaDiscord: 'Discord',
-  },
-  zh: {
-    eyebrow: '同根同源',
-    title: 'HAMi 与密瓜智能',
-    subtitle:
-      'HAMi 是 CNCF Sandbox 异构 AI 计算虚拟化项目，由密瓜智能创始团队发起并担任核心 Maintainer。我们的企业版与开源同源同代码，加固、运维、SLA 一站式由原厂提供。',
-    pillars: [
-      { title: 'CNCF Sandbox 项目', desc: '开放治理 · 厂商中立基金会背书' },
-      { title: '由密瓜智能发起', desc: 'HAMi 的核心 Maintainer 即密瓜工程团队' },
-      { title: '上游 100% 兼容', desc: '同源同 API · 无 fork 漂移、无锁定' },
-      { title: '原厂级 SLA', desc: '7×24 支持 · 长期版本来自源头' },
-    ],
-    relation: {
-      connector1: '发起并维护',
-      connector2: '原厂交付 · SLA',
-      team: {
-        title: '密瓜智能',
-        titleSub: 'Dynamia.AI',
-        desc: 'HAMi 项目的发起者与持续维护方，并以原厂身份交付企业版',
-      },
-      opensource: {
-        title: 'HAMi',
-        desc: '异构 AI 计算虚拟化中间件 · 开源项目，社区驱动',
-      },
-      commercial: {
-        title: '企业版产品',
-        desc: '基于 HAMi 的商业发行版，由密瓜智能提供保障与服务',
-      },
-    },
-    ctaPrimary: 'HAMi 官网',
-    ctaCommunity: '社区',
-    ctaGithub: 'GitHub',
-    ctaDiscord: 'Discord',
-  },
-} as const;
 
 const COMMUNITY_LINKS = [
   {
@@ -176,8 +103,10 @@ function CommunityLinkIcon({ type }: { type: (typeof COMMUNITY_LINKS)[number]['i
   return <UserGroupIcon className={communityIconClass} aria-hidden />;
 }
 
-export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
-  const c = COPY[locale] ?? COPY.en;
+export default function HamiOriginBanner() {
+  const t = useTranslations('enterprise');
+  const locale = useLocale();
+  const c = t.raw('origin');
 
   return (
     <section className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
@@ -293,7 +222,7 @@ export default function HamiOriginBanner({ locale }: HamiOriginBannerProps) {
 
         {/* Bottom — key pillars */}
         <div className="mt-10 pt-8 border-t border-gray-100 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {c.pillars.map((p, i) => (
+          {c.pillars.map((p: { title: string; desc: string }, i: number) => (
             <div
               key={i}
               className="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/60 dark:bg-gray-950/50 p-4"

@@ -13,6 +13,7 @@ import { cache } from 'react';
 import { BlogPost, BlogPostMeta, BlogPostsResult, TocItem } from '@/types/blog';
 import rehypeImageCaptions from './rehype-image-captions';
 
+
 const CONTENT_PATH = path.join(process.cwd(), 'src/content/blog');
 const PUBLIC_PATH = path.join(process.cwd(), 'public');
 
@@ -56,19 +57,19 @@ export function getBlogPostSlugs(): string[] {
   if (!fs.existsSync(CONTENT_PATH)) {
     return [];
   }
-  
+
   const slugs = fs.readdirSync(CONTENT_PATH, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name);
-  
+
   return slugs;
 }
 
 // Get blog post by slug and language
-export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPost | null {
+export function getBlogPost(slug: string, language = 'en'): BlogPost | null {
   try {
     const fullPath = path.join(CONTENT_PATH, slug, `${language}.md`);
-    
+
     if (!fs.existsSync(fullPath)) {
       return null;
     }
@@ -97,7 +98,7 @@ export function getBlogPost(slug: string, language: 'en' | 'zh' = 'en'): BlogPos
 }
 
 // 仅获取博客文章元数据（不读取完整内容，优化列表页性能）
-function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMeta | null {
+function getBlogPostMeta(slug: string, language = 'en'): BlogPostMeta | null {
   try {
     const fullPath = path.join(CONTENT_PATH, slug, `${language}.md`);
 
@@ -137,21 +138,21 @@ function getBlogPostMeta(slug: string, language: 'en' | 'zh' = 'en'): BlogPostMe
 }
 
 // 获取所有博客文章元数据和标签（使用缓存优化性能）
-export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostsResult => {
+export const getAllBlogPosts = cache((language = 'en'): BlogPostsResult => {
   const slugs = getBlogPostSlugs();
   const posts: BlogPostMeta[] = [];
   const tags = new Set<string>();
   const categories = new Set<string>();
-  
+
   // 需要隐藏的文章 slug 列表
   const hiddenSlugs = ['hello-world'];
-  
+
   for (const slug of slugs) {
     // 跳过需要隐藏的文章
     if (hiddenSlugs.includes(slug)) {
       continue;
     }
-    
+
     const post = getBlogPostMeta(slug, language);
     if (post) {
       posts.push(post);
@@ -161,12 +162,12 @@ export const getAllBlogPosts = cache((language: 'en' | 'zh' = 'en'): BlogPostsRe
       categories.add(post.category);
     }
   }
-  
+
   // Sort by date (newest first)
   const sortedPosts = posts.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
-  
+
   return {
     posts: sortedPosts,
     tags: Array.from(tags).sort(),
@@ -253,7 +254,7 @@ function extractTocFromAST(ast: any): TocItem[] {
 // Convert markdown to HTML and extract TOC
 export async function markdownToHtml(
   markdown: string,
-  language: 'en' | 'zh' = 'en'
+  figureLabel = 'Figure {n}'
 ): Promise<{ html: string; toc: TocItem[] }> {
   // 先解析为 AST 以提取目录
   const ast = await unified()
@@ -273,7 +274,7 @@ export async function markdownToHtml(
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw) // Parse raw HTML in markdown
     .use(rehypeHighlight) // Syntax highlighting
-    .use(rehypeImageCaptions, { language }) // Add image captions with numbering
+    .use(rehypeImageCaptions, { figureLabel })
     .use(rehypeStringify)
     .process(markdown);
 
@@ -288,7 +289,7 @@ export async function markdownToHtml(
         `<h${tocItem.level}([^>]*)>([\\s\\S]*?)</h${tocItem.level}>`,
         'gi'
       );
-      
+
       let found = false;
       html = html.replace(regex, (match, attrs, content) => {
         // 如果已经有 ID 或已经找到匹配项，跳过
@@ -299,10 +300,10 @@ export async function markdownToHtml(
         // 清理内容中的 HTML 标签，用于匹配
         const cleanContent = content.replace(/<[^>]*>/g, '').trim();
         const cleanText = tocItem.text.trim();
-        
+
         // 如果内容匹配（完全匹配或包含主要部分），添加 ID
-        if (cleanContent === cleanText || 
-            (cleanText.length > 10 && cleanContent.includes(cleanText.substring(0, Math.min(20, cleanText.length))))) {
+        if (cleanContent === cleanText ||
+          (cleanText.length > 10 && cleanContent.includes(cleanText.substring(0, Math.min(20, cleanText.length))))) {
           found = true;
           return `<h${tocItem.level}${attrs} id="${tocItem.id}">${content}</h${tocItem.level}>`;
         }
@@ -381,38 +382,29 @@ export async function attachmentMarkdownToHtml(
 }
 
 // Get posts by tag
-export function getBlogPostsByTag(tag: string, language: 'en' | 'zh' = 'en'): BlogPostMeta[] {
+export function getBlogPostsByTag(tag: string, language = 'en'): BlogPostMeta[] {
   const { posts } = getAllBlogPosts(language);
-  return posts.filter(post => 
-    post.tags.some(postTag => 
+  return posts.filter(post =>
+    post.tags.some(postTag =>
       postTag.toLowerCase() === tag.toLowerCase()
     )
   );
 }
 
 // Get posts by category
-export function getBlogPostsByCategory(category: string, language: 'en' | 'zh' = 'en'): BlogPostMeta[] {
+export function getBlogPostsByCategory(category: string, language = 'en'): BlogPostMeta[] {
   const { posts } = getAllBlogPosts(language);
-  return posts.filter(post => 
+  return posts.filter(post =>
     post.category.toLowerCase() === category.toLowerCase()
   );
 }
 
 // Format date for display
-export function formatDate(dateString: string, language: 'en' | 'zh' = 'en'): string {
+export function formatDate(dateString: string, locale = 'en'): string {
   const date = new Date(dateString);
-  
-  if (language === 'zh') {
-    return date.toLocaleDateString('zh-CN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }
-  
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString(locale, {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
-} 
+}

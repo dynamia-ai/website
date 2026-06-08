@@ -17,7 +17,7 @@ export interface BlogPost {
   category: string; // 博客分类
   coverImage?: string;
   coverTitle?: string; // 自定义封面标题，如果不设置则使用 title
-  language: 'en' | 'zh';
+  language: string;
   content: string;
   toc?: TocItem[]; // 目录数据（服务器端生成）
 }
@@ -34,7 +34,7 @@ export interface BlogPostMeta {
   category: string; // 博客分类
   coverImage?: string;
   coverTitle?: string; // 自定义封面标题，如果不设置则使用 title
-  language: 'en' | 'zh';
+  language: string;
 }
 
 // Blog posts result with tags

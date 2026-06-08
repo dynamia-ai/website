@@ -3,13 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import type { Locale } from '@/types/enterprise';
-
-interface TrustBlockProps {
-  locale: Locale;
-}
+import { localizedPath, shortenDescription } from '@/utils/i18n';
 
 const COMPANIES = [
   { name: 'Company 8', logo: '/logos/company8.svg' },
@@ -49,15 +45,10 @@ const CASE_LINKS = [
   },
 ] as const;
 
-function shortenDescription(text: string, locale: Locale): string {
-  const maxChars = locale === 'zh' ? 72 : 140;
-  if (text.length <= maxChars) return text;
-  return `${text.slice(0, maxChars).trimEnd()}…`;
-}
-
-export default function TrustBlock({ locale }: TrustBlockProps) {
-  const { t } = useTranslation();
-  const caseRoot = locale === 'zh' ? '/zh/case-studies' : '/case-studies';
+export default function TrustBlock() {
+  const t = useTranslations();
+  const locale = useLocale();
+  const caseRoot = localizedPath('/case-studies', locale);
 
   return (
     <div className="space-y-12">
@@ -157,7 +148,7 @@ export default function TrustBlock({ locale }: TrustBlockProps) {
                 {t(item.titleKey)}
               </h4>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3 flex-1">
-                {shortenDescription(String(t(item.descKey)), locale)}
+                {shortenDescription(String(t(item.descKey)), (t.raw('enterprise.trust.truncationLength') as number) || 140)}
               </p>
               <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 dark:text-gray-100 transition-colors group-hover:text-[var(--primary)]">
                 {t('enterprise.trust.readCase')}

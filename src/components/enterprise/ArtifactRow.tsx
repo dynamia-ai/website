@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   ArchiveBoxIcon,
   ArrowDownTrayIcon,
@@ -12,14 +12,10 @@ import {
   CheckIcon,
   GlobeAltIcon,
 } from '@heroicons/react/24/outline';
-import type { Artifact, ArtifactType, DeliveryMode, Locale, Mirror } from '@/types/enterprise';
-import { pickI18n } from '@/lib/enterprise';
+import type { Artifact, ArtifactType, DeliveryMode, Mirror } from '@/types/enterprise';
 import CopyableCommand from './CopyableCommand';
 
-interface ArtifactRowProps {
-  artifact: Artifact;
-  locale: Locale;
-  unlocked: boolean;
+interface ArtifactRowProps { artifact: Artifact; unlocked: boolean;
   delivery?: DeliveryMode;
   layout?: 'card' | 'compact';
   onDownload: (artifact: Artifact, resolvedUrl: string) => void;
@@ -45,22 +41,21 @@ const CONTENT_LABEL_KEY: Record<ArtifactType, string> = {
 
 const MIRROR_PREF_KEY = 'enterprise.mirror.region';
 
-function detectDefaultRegion(mirrors: Mirror[], locale: Locale): string {
+function detectDefaultRegion(mirrors: Mirror[], locale: string): string {
   const cn = mirrors.find((m) => m.region === 'cn');
   const global = mirrors.find((m) => m.region === 'global');
   if (locale === 'zh' && cn) return cn.region;
   return (global ?? mirrors[0]).region;
 }
 
-export default function ArtifactRow({
-  artifact,
-  locale,
-  unlocked,
+export default function ArtifactRow({ artifact, unlocked,
   delivery,
   layout = 'card',
   onDownload,
 }: ArtifactRowProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
+  const et = useTranslations('enterprise');
   const [shaCopied, setShaCopied] = useState(false);
   const mirrors = useMemo(() => artifact.mirrors ?? [], [artifact.mirrors]);
   const hasMirrors = mirrors.length > 1;
@@ -82,7 +77,7 @@ export default function ArtifactRow({
   }, [hasMirrors, mirrors]);
 
   const Icon = TYPE_ICON[artifact.type] ?? CubeIcon;
-  const label = pickI18n(artifact.label, locale);
+  const label = artifact.label[locale] ?? artifact.label.en;
   const isDoc = artifact.type === 'install-doc' || artifact.type === 'release-notes';
   const showInstallCommand =
     Boolean(artifact.installCommand) &&
@@ -162,7 +157,7 @@ export default function ArtifactRow({
             )}
             {artifact.sha256 === 'TBD' && (
               <span className="mt-2 inline-flex items-center gap-1 text-[11px] px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 border border-amber-200/70 dark:border-amber-700/40">
-                {locale === 'zh' ? '校验和待发布' : 'Checksum pending'}
+                {et('checksumPending')}
               </span>
             )}
           </div>
@@ -182,7 +177,7 @@ export default function ArtifactRow({
               >
                 {mirrors.map((m) => (
                   <option key={m.region} value={m.region}>
-                    {pickI18n(m.label, locale)}
+                    {m.label[locale] ?? m.label.en}
                   </option>
                 ))}
               </select>

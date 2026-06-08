@@ -12,7 +12,6 @@ export interface InstallDocFrontmatter {
   productId: string;
   version?: string;
   lastUpdated?: string;
-  language?: 'en' | 'zh';
   description?: string;
 }
 
@@ -27,10 +26,10 @@ export interface InstallDoc {
  * Resolve the markdown source for a given product + locale.
  * Lookup order:
  *   1. `<productId>.<locale>.md`  — locale-specific (preferred)
- *   2. `<productId>.zh.md`        — zh fallback (we wrote zh first)
+ *   2. `<productId>.zh.md`        — zh fallback (docs were authored in zh first)
  *   3. `<productId>.md`           — legacy single-language file
  */
-function resolveDocPath(productId: string, locale: 'en' | 'zh'): string | null {
+function resolveDocPath(productId: string, locale: string): string | null {
   const candidates = [
     path.join(DOCS_PATH, `${productId}.${locale}.md`),
     path.join(DOCS_PATH, `${productId}.zh.md`),
@@ -43,15 +42,14 @@ function resolveDocPath(productId: string, locale: 'en' | 'zh'): string | null {
 }
 
 export const getInstallDoc = cache(
-  async (productId: string, locale: 'en' | 'zh' = 'zh'): Promise<InstallDoc | null> => {
+  async (productId: string, locale = 'en'): Promise<InstallDoc | null> => {
     const filePath = resolveDocPath(productId, locale);
     if (!filePath) return null;
 
     const raw = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(raw);
     const fm = data as Partial<InstallDocFrontmatter>;
-    const language = fm.language === 'en' ? 'en' : 'zh';
-    const { html, toc } = await markdownToHtml(content, language);
+    const { html, toc } = await markdownToHtml(content, locale);
 
     return {
       frontmatter: {
@@ -59,7 +57,6 @@ export const getInstallDoc = cache(
         productId: fm.productId ?? productId,
         version: fm.version,
         lastUpdated: fm.lastUpdated,
-        language,
         description: fm.description,
       },
       html,
@@ -78,8 +75,7 @@ export function getInstallDocSlugs(): string[] {
   for (const f of fs.readdirSync(DOCS_PATH)) {
     if (!f.endsWith('.md')) continue;
     const base = f.replace(/\.md$/, '');
-    // strip optional .en / .zh locale suffix
-    const slug = base.replace(/\.(en|zh)$/, '');
+    const slug = base.replace(/\.[a-z]{2}$/, '');
     set.add(slug);
   }
   return Array.from(set);
@@ -87,5 +83,5 @@ export function getInstallDocSlugs(): string[] {
 
 /** True iff a doc (any locale) exists for the slug. Used by ProductHero gating. */
 export function installDocExists(productId: string): boolean {
-  return resolveDocPath(productId, 'zh') !== null || resolveDocPath(productId, 'en') !== null;
+  return getInstallDocSlugs().includes(productId);
 }

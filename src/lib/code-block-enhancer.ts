@@ -15,7 +15,7 @@ export interface EnhanceOptions {
    */
   container?: HTMLElement | null;
   containerSelector?: string;
-  locale: 'en' | 'zh';
+  labels: { copy: string; copied: string; failed: string; aria: string };
 }
 
 type CopyState = 'idle' | 'copied' | 'failed';
@@ -58,7 +58,7 @@ function detectLang(codeEl: HTMLElement): string {
 export function enhanceCodeBlocks({
   container: providedContainer,
   containerSelector,
-  locale,
+  labels,
 }: EnhanceOptions): () => void {
   if (typeof document === 'undefined') return () => {};
   const container =
@@ -66,10 +66,7 @@ export function enhanceCodeBlocks({
     (containerSelector ? document.querySelector(containerSelector) : null);
   if (!container) return () => {};
 
-  const copyLabel = locale === 'zh' ? '复制' : 'Copy';
-  const copiedLabel = locale === 'zh' ? '已复制' : 'Copied';
-  const failedLabel = locale === 'zh' ? '复制失败' : 'Copy failed';
-  const ariaLabel = locale === 'zh' ? '复制代码块' : 'Copy code snippet';
+  const { copy: copyLabel, copied: copiedLabel, failed: failedLabel, aria: ariaLabel } = labels;
 
   const setButtonLabel = (btn: HTMLButtonElement, label: string) => {
     const textSpan = btn.querySelector<HTMLSpanElement>('.code-copy-text');

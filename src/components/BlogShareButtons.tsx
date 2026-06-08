@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 interface BlogShareButtonsProps {
@@ -10,7 +10,7 @@ interface BlogShareButtonsProps {
 }
 
 export default function BlogShareButtons({ title, url }: BlogShareButtonsProps) {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [fullUrl, setFullUrl] = useState<string>('');
 
   // 在客户端获取完整的URL

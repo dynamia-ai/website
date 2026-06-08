@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 
 // Animation configurations
@@ -13,7 +13,7 @@ const fadeIn = {
 };
 
 const CaseSfTechnologyEffectiveGpu: React.FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <MainLayout>
@@ -81,7 +81,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
               </p>
               <div className="space-y-4">
                 {(function() {
-                  const keyPoints = t('cases.sfTechnologyEffectiveGpu.overview.keyPoints', { returnObjects: true });
+                  const keyPoints = t.raw('cases.sfTechnologyEffectiveGpu.overview.keyPoints');
                   return Array.isArray(keyPoints) 
                     ? keyPoints
                     : ['领先的物流科技服务提供商', '广泛的 AI 和机器学习应用', '大规模 GPU 基础设施需求', '专注于成本优化和效率提升'];
@@ -139,7 +139,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
-              const challenges = t('cases.sfTechnologyEffectiveGpu.challenge.points', { returnObjects: true });
+              const challenges = t.raw('cases.sfTechnologyEffectiveGpu.challenge.points');
               return Array.isArray(challenges) 
                 ? challenges
                 : ['资源利用率低', '调度粒度粗', '异构适配困难', '影响 ROI'];
@@ -193,7 +193,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 dark:[&>*]:bg-gray-800 dark:[&>*]:border-gray-700">
             {(function() {
-              const innovations = t('cases.sfTechnologyEffectiveGpu.solution.innovations', { returnObjects: true });
+              const innovations = t.raw('cases.sfTechnologyEffectiveGpu.solution.innovations');
               return Array.isArray(innovations) 
                 ? innovations
                 : [
@@ -250,7 +250,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {(function() {
-              const resultItems = t('cases.sfTechnologyEffectiveGpu.results.items', { returnObjects: true });
+              const resultItems = t.raw('cases.sfTechnologyEffectiveGpu.results.items');
               return Array.isArray(resultItems) 
                 ? resultItems
                 : [
@@ -298,7 +298,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
 
           <div className="space-y-6">
             {(function() {
-              const points = t('cases.sfTechnologyEffectiveGpu.hamiIntegration.points', { returnObjects: true });
+              const points = t.raw('cases.sfTechnologyEffectiveGpu.hamiIntegration.points');
               return Array.isArray(points) 
                 ? points
                 : ['深度集成了 HAMi 核心能力', '构建了统一的抽象驱动框架', '采用了兼容 HAMi 生态的设计'];
@@ -347,7 +347,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
 
           <div className="space-y-6">
             {(function() {
-              const points = t('cases.sfTechnologyEffectiveGpu.validation.points', { returnObjects: true });
+              const points = t.raw('cases.sfTechnologyEffectiveGpu.validation.points');
               return Array.isArray(points) 
                 ? points
                 : ['证明 HAMi 关键能力', 'CNCF Sandbox 项目实践'];

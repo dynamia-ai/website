@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import type { Video } from '@/data/videos';
 
 interface VideoPlayerProps {
@@ -10,8 +10,9 @@ interface VideoPlayerProps {
 }
 
 export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
-  const { t, i18n } = useTranslation();
-  const isEn = i18n.language === 'en';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isEn = locale === 'en';
   const videoUrl = (isEn && video.videoUrlEn) ? video.videoUrlEn : video.videoUrl;
   const videoType = (isEn && video.videoTypeEn) ? video.videoTypeEn : video.videoType;
 

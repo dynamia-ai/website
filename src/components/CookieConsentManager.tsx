@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
+import { useLocale, useTranslations } from 'next-intl';
 import { Cog6ToothIcon, ShieldCheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { localizedPath } from '@/utils/i18n';
 
 import {
   COOKIE_PREFERENCES_EVENT,
@@ -22,15 +22,14 @@ const configurableCategories: Array<Exclude<keyof CookieConsentPreferences, 'nec
 ];
 
 const CookieConsentManager: React.FC = () => {
-  const { t } = useTranslation();
-  const pathname = usePathname();
+  const t = useTranslations();
+  const locale = useLocale();
   const [mounted, setMounted] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
   const [preferences, setPreferences] = useState<CookieConsentPreferences>(DEFAULT_COOKIE_CONSENT);
 
-  const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
-  const cookiePolicyHref = currentLocale === 'zh' ? '/zh/cookies-policy' : '/cookies-policy';
+  const cookiePolicyHref = localizedPath('/cookies-policy', locale);
 
   useEffect(() => {
     const existingConsent = readCookieConsent();
@@ -47,7 +46,7 @@ const CookieConsentManager: React.FC = () => {
     }
 
     setShowBanner(true);
-  }, [currentLocale]);
+  }, [locale]);
 
   useEffect(() => {
     const handleOpenPreferences = () => {

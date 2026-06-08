@@ -1,0 +1,2696 @@
+{
+  "Metadata": {
+    "title": "Dynamia AI - Einheitliche Heterogene Datenverarbeitung",
+    "description": "Beschleunigen Sie KI-, HPC- und Edge-Workloads nahtlos. GPU-Virtualisierung und Ressourcenverwaltungsplattform fuer Unternehmen von Dynamia AI.",
+    "keywords": "dynamia ai, GPU-Virtualisierung, KI-Infrastruktur, HAMi, GPU-Sharing, Enterprise-Computing",
+    "template": "%s | Dynamia AI",
+    "siteName": "Dynamia AI",
+    "ogLocale": "de_DE",
+    "ogDescription": "Beschleunigen Sie KI-, HPC- und Edge-Workloads nahtlos. GPU-Virtualisierungsplattform fuer Unternehmen.",
+    "twitterDescription": "Beschleunigen Sie KI-, HPC- und Edge-Workloads nahtlos. GPU-Virtualisierungsplattform fuer Unternehmen.",
+    "creator": "Dynamia AI",
+    "orgName": "Dynamia AI",
+    "orgAlternateName": "Dynamia Intelligence",
+    "orgDescription": "Enterprise-grade heterogeneous computing platform for AI, HPC, and Edge workloads. (Dynamia AI) provides GPU virtualization and resource management solutions.",
+    "orgUrl": "https://dynamia.ai"
+  },
+  "Seo": {
+    "home": {
+      "title": "Dynamia AI - Einheitliche Heterogene Datenverarbeitung",
+      "description": "Beschleunigen Sie KI-, HPC- und Edge-Workloads nahtlos. GPU-Virtualisierung und Ressourcenverwaltungsplattform fuer Unternehmen von Dynamia AI.",
+      "keywords": "dynamia ai, heterogene datenverarbeitung, GPU-Virtualisierung, KI-Infrastruktur, HAMi, GPU-Sharing, Enterprise-Computing"
+    },
+    "products": {
+      "title": "Dynamia AI Produkte - Enterprise Heterogene Computing-Plattform",
+      "description": "Entdecken Sie Dynamia AI - eine heterogene Computing-Plattform fuer Unternehmen auf Basis der HAMi-Technologie. GPU-Sharing, Auto-Skalierung und einheitliche Verwaltung fuer KI-Workloads.",
+      "keywords": "dynamia ai produkte, heterogene datenverarbeitung, GPU-Virtualisierung, KI-Infrastruktur, Enterprise-Computing, HAMi"
+    },
+    "pricing": {
+      "title": "Preise - Dynamia AI | Flexible Computing-Loesungen",
+      "description": "Flexible Preise fuer die heterogene Computing-Plattform von Dynamia AI. Massgeschneiderte Plaene basierend auf Ihrer Cluster-Groesse mit professionellem Support und kontinuierlichen Updates.",
+      "keywords": "dynamia ai preise, heterogene datenverarbeitung kosten, GPU-Virtualisierung preise, Enterprise KI-Infrastruktur"
+    },
+    "company": {
+      "title": "Ueber Dynamia AI - Fuehrend in heterogener Computing-Innovation",
+      "description": "Erfahren Sie mehr ueber Dynamia AI, die Entwickler von HAMi - der am schnellsten wachsenden Open-Source-Middleware fuer heterogene KI-Computing-Virtualisierung.",
+      "keywords": "dynamia ai unternehmen, ueber dynamia ai, heterogene computing-innovation, HAMi entwickler"
+    },
+    "solutions": {
+      "title": "Loesungen - Dynamia AI | KI, HPC & Edge Computing",
+      "description": "Powerful computing solutions for AI/ML, HPC, and Edge Computing challenges. Optimize your infrastructure with Dynamia AI's heterogeneous computing platform.",
+      "keywords": "KI-Loesungen, HPC-Loesungen, Edge Computing, heterogene computing-loesungen, dynamia ai"
+    },
+    "resources": {
+      "title": "Ressourcen - Dynamia AI | Dokumentation, Blog & Whitepapers",
+      "description": "Erkunden Sie technische Dokumentation, Blog-Artikel und Whitepapers, um mehr ueber Dynamia AI und Best Practices fuer heterogenes Computing zu erfahren.",
+      "keywords": "dynamia ai dokumentation, heterogene computing-ressourcen, KI-Infrastruktur leitfaeden, HAMi tutorials"
+    },
+    "whatIsHami": {
+      "title": "Was ist HAMi? | Heterogene KI-Computing-Virtualisierung",
+      "description": "Learn about HAMi - leading open-source heterogeneous AI computing virtualization middleware by Dynamia AI. CNCF Sandbox project powering GPU sharing and resource management.",
+      "keywords": "HAMi, heterogene KI-datenverarbeitung, GPU-Virtualisierung, CNCF sandbox, Open-Source KI-Infrastruktur"
+    },
+    "faq": {
+      "title": "FAQ - Haeufig gestellte Fragen | Dynamia AI",
+      "description": "Finden Sie Antworten auf haeufig gestellte Fragen zu Dynamia AI, HAMi, GPU-Virtualisierung, Preisen und technischem Support.",
+      "keywords": "dynamia ai faq, HAMi fragen, GPU-Virtualisierung FAQ, heterogene computing fragen"
+    }
+  },
+  "navigation": {
+    "home": "Startseite",
+    "hami": "HAMi",
+    "whatIsHami": "Was ist HAMi",
+    "whatIsHamiDesc": "Erfahren Sie mehr ueber die Kernfunktionen und den Wert des HAMi Open-Source-Projekts",
+    "hamiWebsite": "HAMi Website",
+    "hamiWebsiteDesc": "Besuchen Sie die offizielle HAMi-Website fuer detaillierte Informationen",
+    "hamiGithub": "GitHub",
+    "hamiGithubDesc": "Sehen Sie sich den Quellcode an und tragen Sie zur HAMi Open-Source-Kollaboration bei",
+    "community": "Community",
+    "communityDesc": "Treten Sie der HAMi-Community bei, um Erfahrungen auszutauschen und Hilfe zu erhalten",
+    "joinCommunity": "Community beitreten",
+    "joinCommunityDesc": "Treten Sie der HAMi-Community bei, um Erfahrungen auszutauschen und Hilfe zu erhalten",
+    "products": "Produkte",
+    "productsOverview": "Produktuebersicht",
+    "productsOverviewDesc": "Entdecken Sie die heterogene Computing-Plattform von Dynamia AI und das Open-Source-Projekt HAMi",
+    "hamiEnterprise": "HAMi Enterprise",
+    "hamiEnterpriseDesc": "GPU-Virtualisierung fuer Unternehmen auf Basis des CNCF Sandbox-Projekts",
+    "hamiAiPlatform": "HAMi AI Platform",
+    "hamiAiPlatformDesc": "Full-Stack-Kontrollebene fuer heterogene Compute-Cluster",
+    "enterpriseDownloads": "Enterprise-Downloads",
+    "enterpriseDownloadsDesc": "Durchsuchen Sie Enterprise-Varianten und laden Sie Offline-Image-Bundles, Helm-Charts und Installationsanleitungen herunter",
+    "caseStudies": "Kunden",
+    "solutions": "Loesungen",
+    "pricing": "Preise",
+    "resources": "Ressourcen",
+    "resourcesDoc": "Dokumentation",
+    "resourcesDocDesc": "Greifen Sie auf umfassende Leitfaeden und Referenzmaterialien fuer HAMi zu",
+    "resourcesBlog": "Blog",
+    "resourcesBlogDesc": "Lesen Sie die neuesten Nachrichten, Tutorials und Updates ueber HAMi",
+    "resourcesTools": "Tools",
+    "resourcesToolsDesc": "Praktische Tools fuer Betrieb und Fehlerbehebung",
+    "resourcesVideos": "Videos",
+    "resourcesVideosDesc": "Sehen Sie sich Produktdemos und Einfuehrungen an",
+    "adopters": "Anwender",
+    "adoptersDesc": "Sehen Sie, wer HAMi in Produktionsumgebungen einsetzt",
+    "company": "Unternehmen",
+    "freeTrial": "Testversion",
+    "requestDemo": "Demo",
+    "logo": "/dynamia-logo.svg",
+    "logoDark": "/dynamia-logo-white.svg",
+    "openMenu": "Menue oeffnen",
+    "eventBannerLabel": "KubeCon + CloudNativeCon Europe:",
+    "eventBannerMessage": "HAMi-Stand am Project Pavilion P-13B. Treffen Sie das Dynamia-Team am 24. Maerz (15:10-19:00) und 26. Maerz (12:30-14:00).",
+    "eventBannerDetails": "Details",
+    "eventBannerDetailsAria": "KubeCon Europe Detailseite oeffnen",
+    "eventBannerClose": "Benachrichtigungsleiste schliessen",
+    "caseTelecom": "Telekommunikationsanbieter-Fallstudie",
+    "caseTelecomDesc": "Erfahren Sie, wie ein Telekommunikationsanbieter HAMi fuer GPU-Virtualisierung nutzt",
+    "caseKeHoldings": "Ke Holdings Fallstudie",
+    "caseKeHoldingsDesc": "Entdecken Sie, wie Ke Holdings ML-Infrastruktur mit GPU-Virtualisierung unter Kubernetes und HAMi skaliert",
+    "caseDaoCloud": "DaoCloud Fallstudie",
+    "caseDaoCloudDesc": "Entdecken Sie, wie DaoCloud flexible GPU-Clouds mit HAMi auf D.run und DCE aufbaut",
+    "caseSfTechnology": "SF Technology Fallstudie",
+    "caseSfTechnologyDesc": "Entdecken Sie, wie SF Technology EffectiveGPU auf Basis von HAMi entwickelt hat",
+    "casePrepEdu": "PREP EDU Fallstudie",
+    "casePrepEduDesc": "Explore how PREP EDU achieves intelligent scheduling of Heterogeneous GPUs based on HAMi to boost resource utilization and O&M efficiency"
+  },
+  "home": {
+    "hero": {
+      "title": "Open Source, Beschleunigen Sie KI-Workflows mit GPU-Sharing und dynamischer Orchestrierung",
+      "subtitle": "Dynamisches GPU-Sharing, -Planung und -Orchestrierung — hoeherer Durchsatz, nahtlose Autoskalierung, maximale Auslastung.",
+      "chineseSlogan": "Einheitliches heterogenes Computing fuer Ressourceneffizienz"
+    },
+    "socialProof": {
+      "title": "Trusted by leading AI labs and enterprises worldwide"
+    },
+    "keyAdvantages": {
+      "title": "Warum wir?",
+      "advantages": {
+        "0": {
+          "title": "High-Performance Scheduling",
+          "description": "Optimize resource allocation with intelligent workload scheduling"
+        },
+        "1": {
+          "title": "Multi-Cluster Orchestration",
+          "description": "Seamlessly manage resources across multiple clusters and environments"
+        },
+        "2": {
+          "title": "GPU Acceleration Management",
+          "description": "Maximize the use of specialized hardware for AI, ML, and HPC workloads"
+        },
+        "3": {
+          "title": "Cost Optimization & Autoscaling",
+          "description": "Automatically scale resources up or down based on workload demands"
+        }
+      },
+      "tabs": {
+        "0": {
+          "title": "Hetero multi-cluster",
+          "subtitle": "Unified AI Infrastructure Management",
+          "description": "Dynamia.ai bietet einen zentralisierten Ansatz zur Verwaltung der KI-Infrastruktur."
+        },
+        "1": {
+          "title": "GPU Sharing",
+          "subtitle": "Maximize GPU Utilization, Minimize Costs, and Drive AI Efficiency",
+          "description": "Dynamia.ai dynamically consolidates and orchestrates GPU resources. By eliminating waste, maximizing resource utilization, enterprises achieve superior ROI, reduced operational costs, and faster scaling of AI initiatives."
+        },
+        "2": {
+          "title": "GPU Oversubscription",
+          "subtitle": "Alignment of GPU and host memory to expand the available resource pool",
+          "description": "Dynamia.ai unterstuetzt die nahtlose Vereinheitlichung von GPU- und Host-Speicher."
+        },
+        "3": {
+          "title": "Seamlessly Auto Scale",
+          "subtitle": "Seamlessly Accelerate AI From V1 to V1 Plus",
+          "description": "Dynamia.ai unterstuetzt GPU-On-Demand-Autoskalierung, nahtlose automatische Skalierung fuer KI-Workloads ohne Neustarts bei GPU-Verbrauchsspitzen."
+        },
+        "4": {
+          "title": "Centralized Observability",
+          "subtitle": "Complete AI Infrastructure Insights",
+          "description": "Zentrale Observability vereint Ressourcen aus Cloud-, On-Premises- und Hybrid-Umgebungen fuer umsetzbare Erkenntnisse, richtlinienbasierte Governance und feingranulares Ressourcenmanagement."
+        },
+        "5": {
+          "title": "Advanced AI Scheduling",
+          "subtitle": "Scenario-Aware Scheduling Strategies",
+          "description": "Erweiterte KI-Planung unterstuetzt NUMA-aware-, Binpack- und Spread-Strategien zur Reduzierung des Kommunikationsaufwands, Minimierung der Fragmentierung und Optimierung der Workload-Leistung."
+        }
+      }
+    },
+    "poweredByHami": {
+      "title": "Bereitgestellt von HAMi",
+      "description": "Leading, open source, heterogeneous AI computing virtualization middleware",
+      "learnMore": "Mehr erfahren",
+      "stats": {
+        "contributors": "500+",
+        "forks": "400+",
+        "stars": "3,1K",
+        "commits": "1200+",
+        "dockerPulls": "100K+"
+      }
+    },
+    "joinCommunity": {
+      "title": "Join our community",
+      "bilibili": {
+        "title": "Follow us on Bilibili",
+        "action": "Folgen"
+      },
+      "slack": {
+        "title": "Auf Slack sprechen",
+        "action": "Beitreten"
+      },
+      "discord": {
+        "title": "Auf Discord chatten",
+        "action": "Beitreten"
+      },
+      "twitter": {
+        "title": "Follow us on X",
+        "action": "Folgen"
+      },
+      "reddit": {
+        "title": "Auf Reddit diskutieren",
+        "action": "Beitreten"
+      },
+      "wechat": {
+        "title": "WeChat",
+        "action": "QR-Code scannen"
+      }
+    },
+    "ecosystem": {
+      "title": "Oekosystem-Integration",
+      "subtitle": "GPU virtualization and scheduling integration powered by HAMi",
+      "viewDetails": "View details"
+    },
+    "testimonials": {
+      "title": "Was unsere Kunden sagen",
+      "items": {
+        "0": {
+          "quote": "Dynamia AI has dramatically improved our computational efficiency, allowing us to scale our AI research faster than ever before.",
+          "author": "Dr. Jane Smith",
+          "position": "CTO",
+          "company": "AI Research Institute"
+        },
+        "1": {
+          "quote": "The seamless integration across our heterogeneous computing environment has reduced deployment time by 60%.",
+          "author": "Michael Johnson",
+          "position": "VP of Engineering",
+          "company": "TechCorp Global"
+        }
+      }
+    },
+    "cta": {
+      "title": "Bereit, Ihre Computing-Infrastruktur zu transformieren?",
+      "freeTrialButton": "Testversion beantragen",
+      "viewPricing": "Preise anzeigen"
+    },
+    "trustedBy": {
+      "title": "Vertraut von Branchenfuehrern",
+      "description": "Leading organizations across various industries rely on Dynamia.ai to manage their heterogeneous computing resources efficiently."
+    }
+  },
+  "products": {
+    "hamiAiPlatform": {
+      "title": "HAMi AI Platform",
+      "subtitle": "Heterogene Computing-Virtualisierungsplattform fuer Unternehmen",
+      "description": "Dynamia AI bietet eine einheitliche Plattform zur Verwaltung heterogener Computing-Ressourcen.",
+      "overviewTitle": "Produktuebersicht",
+      "overviewDescription": "Dynamia AI is a unified management platform designed for enterprise-grade heterogeneous computing environments. It seamlessly integrates various computing resources including CPU, GPU, NPU, DCU, and dedicated accelerators to optimize workload distribution and resource utilization.",
+      "platformPreview": "Dynamia AI UI",
+      "coreFeaturesTitle": "Kernfunktionen",
+      "ctaTitle": "Ready to get started with Dynamia AI?",
+      "features": {
+        "0": "Intelligente Workload-Planung",
+        "1": "Real-time resource monitoring",
+        "2": "Automatic scaling and optimization",
+        "3": "Cross-platform compatibility",
+        "4": "Enterprise-grade security"
+      },
+      "viewPricing": "Preise anzeigen",
+      "readyToStart": "Ready to Transform Your Computing Infrastructure?",
+      "ctaDescription": "Experience how Dynamia AI can optimize your computing resources. Get started today with a trial or request a custom pricing quote.",
+      "overview": {
+        "title": "Enterprise-Ready Heterogeneous Computing Solution",
+        "description": "Dynamia AI builds on the powerful foundation of HAMi open-source technology, adding enterprise-grade features, security, and support for mission-critical environments.",
+        "highlights": {
+          "0": "Built on HAMi open-source core",
+          "1": "Enhanced enterprise features",
+          "2": "Professioneller technischer Support",
+          "3": "Continuous updates and maintenance"
+        }
+      },
+      "featureComparison": {
+        "title": "Funktionsvergleich",
+        "subTitle": "HAMi vs Dynamia AI Funktionsvergleich",
+        "categoryHeader": "",
+        "featureHeader": "",
+        "openSource": "HAMi",
+        "enterprise": "Dynamia AI",
+        "categories": {
+          "0": {
+            "name": "Architecture Support",
+            "features": {
+              "0": {
+                "name": "x86",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "1": {
+                "name": "ARM",
+                "hamiStatus": true,
+                "platformStatus": true
+              }
+            }
+          },
+          "1": {
+            "name": "Betriebssysteme",
+            "features": {
+              "0": {
+                "name": "Linux",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "1": {
+                "name": "WSL",
+                "hamiStatus": false,
+                "platformStatus": true
+              }
+            }
+          },
+          "2": {
+            "name": "Scale",
+            "features": {
+              "0": {
+                "name": "Knoten",
+                "hamiStatus": "1 - 20 nodes",
+                "platformStatus": "20 - 1000 nodes"
+              },
+              "1": {
+                "name": "GPUs",
+                "hamiStatus": "1 - 160 GPUs",
+                "platformStatus": "100 - 8000 GPUs"
+              }
+            }
+          },
+          "3": {
+            "name": "Core Capabilities",
+            "features": {
+              "0": {
+                "name": "GPU Memory share",
+                "hamiStatus": "✅",
+                "platformStatus": true
+              },
+              "1": {
+                "name": "QOS GPU Memory share",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "2": {
+                "name": "GPU Core share",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "3": {
+                "name": "QOS GPU Core share",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "4": {
+                "name": "GPU Memory oversubscribe",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "5": {
+                "name": "Computing Core oversubscribe",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "6": {
+                "name": "Dynamic Adjustment",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "7": {
+                "name": "Auto Scaling",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "8": {
+                "name": "Task Priority",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "9": {
+                "name": "Fault Isolation",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "10": {
+                "name": "Task Idle Time Statistics",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "11": {
+                "name": "Memory Analysis",
+                "hamiStatus": false,
+                "platformStatus": true
+              }
+            }
+          },
+          "4": {
+            "name": "Scheduling Capabilities",
+            "features": {
+              "0": {
+                "name": "Node-level Binpack, Spread Scheduling",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "1": {
+                "name": "GPU-level Binpack, Spread Scheduling",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "2": {
+                "name": "Nvidia MIG",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "3": {
+                "name": "Nvidia MIG Dynamic Virtualization",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "4": {
+                "name": "Nvidia NUMA Affinity Scheduling",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "5": {
+                "name": "Nvidia Network Topology Affinity Scheduling",
+                "hamiStatus": false,
+                "platformStatus": true
+              }
+            }
+          },
+          "5": {
+            "name": "Heterogeneous Capabilities",
+            "features": {
+              "0": {
+                "name": "Cambricon MLU",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "1": {
+                "name": "Hygon DCU",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "2": {
+                "name": "Ascend 310 Series",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "3": {
+                "name": "Ascend 910 Series",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "4": {
+                "name": "Moore Threads GPU",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "5": {
+                "name": "Iluvatar GPU",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "6": {
+                "name": "Enflame GPU",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "7": {
+                "name": "Metax GPU",
+                "hamiStatus": true,
+                "platformStatus": true
+              }
+            }
+          },
+          "6": {
+            "name": "Monitoring Capabilities",
+            "features": {
+              "0": {
+                "name": "GPU Allocation of AI Workloads",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "1": {
+                "name": "Node Binding AI workloads",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "2": {
+                "name": "AI workloads usage",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "3": {
+                "name": "GPU Fault Metrics",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "4": {
+                "name": "GPU Fault Alerts",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "5": {
+                "name": "GPU Fault Self-recovery",
+                "hamiStatus": false,
+                "platformStatus": true
+              }
+            }
+          },
+          "7": {
+            "name": "AI Multi-cluster Management",
+            "features": {
+              "0": {
+                "name": "AI Cluster Lifecycle Management",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "1": {
+                "name": "AI Multi-cluster Unified Management View",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "2": {
+                "name": "AI Multi-cluster Unified Monitoring and Operations View",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "3": {
+                "name": "Multi-cluster Workbench UI",
+                "hamiStatus": false,
+                "platformStatus": true
+              }
+            }
+          },
+          "8": {
+            "name": "Operations Capabilities",
+            "features": {
+              "0": {
+                "name": "GPU Stack LCM",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "1": {
+                "name": "GUI",
+                "hamiStatus": true,
+                "platformStatus": true
+              },
+              "2": {
+                "name": "OpenAPI",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "3": {
+                "name": "Metering and Billing",
+                "hamiStatus": false,
+                "platformStatus": true
+              }
+            }
+          },
+          "9": {
+            "name": "Sicherheit",
+            "features": {
+              "0": {
+                "name": "KataContainer",
+                "hamiStatus": false,
+                "platformStatus": true
+              },
+              "1": {
+                "name": "Security Policy",
+                "hamiStatus": false,
+                "platformStatus": true
+              }
+            }
+          },
+          "10": {
+            "name": "Support",
+            "features": {
+              "0": {
+                "name": "Support",
+                "hamiStatus": "✅ Community-Support: GitHub, Slack-Kanal",
+                "platformStatus": "✅ Professioneller Team-Support"
+              }
+            }
+          }
+        }
+      },
+      "technicalArchitecture": "Technische Architektur",
+      "architectureDescription": "Dynamia AI provides a comprehensive infrastructure for managing heterogeneous computing resources efficiently.",
+      "architectureDiagram": "Architekturdiagramm",
+      "commercialFeatures": {
+        "title": "Enterprise Features",
+        "subtitle": "Dynamia AI builds on HAMi's core capabilities to deliver enterprise-grade enhancements optimized for production environments.",
+        "list": {
+          "0": {
+            "title": "Hetero multi-cluster",
+            "description": "Dynamia.ai bietet einen zentralisierten Ansatz zur Verwaltung der KI-Infrastruktur."
+          },
+          "1": {
+            "title": "GPU Sharing",
+            "description": "Dynamia.ai dynamically consolidates and orchestrates GPU resources. By eliminating waste, maximizing resource utilization, enterprises achieve superior ROI, reduced operational costs, and faster scaling of AI initiatives."
+          },
+          "2": {
+            "title": "GPU Oversubscription",
+            "description": "Dynamia.ai unterstuetzt die nahtlose Vereinheitlichung von GPU- und Host-Speicher."
+          },
+          "3": {
+            "title": "Seamlessly Auto Scale",
+            "description": "GPU-On-Demand-Autoskalierung fuer KI-Workloads ohne Neustarts."
+          },
+          "4": {
+            "title": "Centralized Observability for Complete AI insight",
+            "description": "Its centralized observability unifies resources from cloud, on-premises, and hybrid environments, empowering enterprises with actionable insights, policy-driven governance, and fine-grained resource management for efficient and scalable AI operations. "
+          },
+          "5": {
+            "title": "Advanced AI Scheduling",
+            "description": "Advanced AI Scheduling for different scenarios including numa-aware, binpack, spread. Reduce data communication cost, minimize fragments, optimize task performance."
+          }
+        }
+      }
+    }
+  },
+  "solutions": {
+    "title": "Loesungen",
+    "subtitle": "Leistungsstarke Computing-Loesungen",
+    "categories": {
+      "0": {
+        "title": "KI/ML",
+        "description": "Optimieren Sie Ihre ML-Infrastruktur",
+        "learnMore": "Mehr erfahren"
+      },
+      "1": {
+        "title": "HPC",
+        "description": "Skalieren Sie Ihre HPC-Workloads effizient",
+        "learnMore": "Mehr erfahren"
+      },
+      "2": {
+        "title": "Edge Computing",
+        "description": "Erweitern Sie Ihre Rechenkapazitaeten bis zum Edge",
+        "learnMore": "Mehr erfahren"
+      }
+    },
+    "customSolutions": {
+      "title": "Massgeschneiderte Loesungen",
+      "description": "We understand that every organization has unique needs. Our expert team can customize Dynamia AI solutions for your specific challenges.",
+      "contactButton": "Contact our solution experts"
+    },
+    "successStories": {
+      "title": "Erfolgsgeschichten",
+      "subtitle": "Learn how our solutions have helped customers address complex computing challenges",
+      "viewAllButton": "View all stories"
+    },
+    "readyForChallenge": "Ready to address your computing challenges?"
+  },
+  "freeTrial": {
+    "title": "Apply for a Trial",
+    "subtitle": "Starten Sie Ihre Testversion mit Dynamia",
+    "form": {
+      "name": "Name",
+      "email": "Arbeits-E-Mail",
+      "company": "Firmenname",
+      "phone": "Telefonnummer",
+      "useCase": "How do you plan to use Dynamia AI?",
+      "terms": "Ich stimme den AGB und der Datenschutzerklaerung zu",
+      "termsRequired": "Sie muessen den Bedingungen zustimmen.",
+      "emailRequired": "Arbeits-E-Mail ist erforderlich.",
+      "invalidName": "Bitte geben Sie einen gueltigen Namen ein.",
+      "invalidCompany": "Bitte geben Sie einen gueltigen Firmennamen ein.",
+      "invalidEmail": "Bitte geben Sie eine gueltige E-Mail-Adresse ein.",
+      "invalidPhone": "Bitte geben Sie eine gueltige Telefonnummer ein.",
+      "jobTitle": "Position",
+      "message": "Was moechten Sie erfahren?",
+      "intent": "Was benoetigen Sie?",
+      "intentSelfTrial": "Selbsttest (Lizenz & Zugang)",
+      "intentDemo": "Personalisierte Demo vereinbaren",
+      "intentSales": "Vertrieb kontaktieren (Preise / Partnerschaft)",
+      "submitting": "Wird verarbeitet...",
+      "submitButton": "Testversion beantragen",
+      "submitSuccess": "Vielen Dank! Ihre Anfrage wurde uebermittelt.",
+      "submitError": "Fehler beim Senden. Bitte versuchen Sie es erneut.",
+      "fields": {
+        "email": {
+          "required": true,
+          "label": "Arbeits-E-Mail"
+        },
+        "phone": {
+          "required": false,
+          "label": "Telefonnummer"
+        }
+      }
+    },
+    "disclaimer": "Nach Ablauf der Testversion koennen Sie upgraden oder kuendigen. Keine Kreditkarte erforderlich."
+  },
+  "resources": {
+    "title": "Ressourcen",
+    "subtitle": "Erkunden Sie technische Dokumentation, Blog-Artikel und Whitepapers.",
+    "viewMore": "View more",
+    "documentation": {
+      "title": "Dokumentation",
+      "description": "Technische Leitfaeden, API-Referenzen und Best Practices"
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Einblicke, Tutorials und Neuigkeiten von unserem Team",
+      "tableOfContents": "Auf dieser Seite",
+      "aiShare": {
+        "exploreTitle": "Mit KI erkunden",
+        "exploreSubtitle": "Use AI tools to gain deeper understanding",
+        "shareTitle": "Artikel teilen",
+        "shareAt": "Share at:",
+        "tipLabel": "Tipp",
+        "tip": "AI will help you summarize key points and analyze technical details.",
+        "aiPrompt": "Besuchen Sie diese URL: {{url}}",
+        "aiTools": {
+          "chatgpt": {
+            "name": "ChatGPT",
+            "desc": "Smart Summary"
+          },
+          "perplexity": {
+            "name": "Perplexity",
+            "desc": "Deep Analysis"
+          },
+          "claude": {
+            "name": "Claude",
+            "desc": "Professional Insights"
+          },
+          "gemini": {
+            "name": "Google AI",
+            "desc": "Quick Insights"
+          },
+          "grok": {
+            "name": "Grok",
+            "desc": "X AI Analyse"
+          },
+          "deepseek": {
+            "name": "DeepSeek",
+            "desc": "Deep Analysis"
+          }
+        }
+      }
+    },
+    "whitepapers": {
+      "title": "Whitepapers",
+      "description": "Tiefgehende Analysen und Forschungsberichte"
+    },
+    "latestResources": {
+      "title": "Neueste Ressourcen",
+      "articles": {
+        "0": {
+          "title": "Dynamia AI v2.0: Neue Funktionen",
+          "category": "Blog",
+          "date": "2025-01-15",
+          "excerpt": "Erfahren Sie mehr ueber die neuesten Updates.",
+          "link": "/resources/blog/Dynamia AI-v2-release"
+        },
+        "1": {
+          "title": "Heterogenes Computing im KI-Training",
+          "category": "Whitepaper",
+          "date": "2024-12-10",
+          "excerpt": "Optimieren Sie die Ressourcenzuweisung fuer KI-Training.",
+          "link": "/resources/whitepapers/heterogeneous-computing-ai-training"
+        },
+        "2": {
+          "title": "Dynamia AI API-Referenz",
+          "category": "Dokumentation",
+          "date": "2024-11-28",
+          "excerpt": "Umfassende API-Dokumentation fuer Entwickler.",
+          "link": "/resources/documentation/api-reference"
+        },
+        "3": {
+          "title": "Fallstudie: 40% Kostenersparnis mit Dynamia AI",
+          "category": "Blog",
+          "date": "2024-11-15",
+          "excerpt": "Erfahren Sie, wie TechCorp Kosten gesenkt hat.",
+          "link": "/resources/blog/techcorp-case-study"
+        }
+      },
+      "newsletterTitle": "Subscribe to Our Technical Newsletter",
+      "newsletterDescription": "Receive regular updates on product improvements, technical articles, and industry insights delivered directly to your inbox.",
+      "emailPlaceholder": "Ihre E-Mail-Adresse",
+      "subscribeButton": "Abonnieren"
+    }
+  },
+  "tools": {
+    "title": "Tools",
+    "subtitle": "Useful tools for day-to-day operations and analysis",
+    "openTool": "Open tool",
+    "hamiMetricsExplorer": {
+      "title": "HAMi Metriken-Explorer",
+      "description": "Upload Prometheus metrics and inspect GPU inventory, utilization, and merge/export results."
+    },
+    "hamiMetricsExplorerPage": {
+      "subtitle": "HAMi-Metriken parsen und Inventar-JSON exportieren.",
+      "uploadTitle": "Prometheus-Metrikdatei ablegen oder zum Durchsuchen klicken",
+      "uploadDesc": "Unterstuetzt HAMi / HAMi AI Platform Metriken-Format",
+      "exportButton": "JSON exportieren",
+      "mergeButton": "Mit alten Daten zusammenfuehren",
+      "analysisTitle": "Analyse",
+      "inventoryTitle": "GPU inventory",
+      "indexHeader": "No.",
+      "nodesTitle": "Knoten",
+      "poolsUnit": "pools",
+      "nodesUnit": "nodes",
+      "activeShort": "aktiv",
+      "idle": "inaktiv",
+      "memShort": "Mem",
+      "coreShort": "Core",
+      "quotaTitle": "Kontingente",
+      "buildInfoLabel": "Build info",
+      "exportTitle": "Export GPU inventory",
+      "copyButton": "Kopieren",
+      "downloadButton": "Herunterladen",
+      "copied": "Kopiert!",
+      "mergeTitle": "Merge inventory",
+      "mergeResultTitle": "Merge result",
+      "chooseJsonFile": "Choose .json file",
+      "runMerge": "Run merge",
+      "backButton": "Zurueck",
+      "errors": {
+        "mergeEmpty": "Bitte zuerst altes JSON einfuegen.",
+        "invalidJson": "Ungueltiges JSON"
+      }
+    }
+  },
+  "company": {
+    "about": {
+      "title": "Who we are",
+      "description": "We are pioneering the future of heterogeneous computing to help organizations maximize their computational resources",
+      "whoWeAre": {
+        "title": "Who we are",
+        "paragraph1": "Dynamia.ai is the creator and maintainer of HAMi, which is the world's fastest-growing and most widely adopted open-source, heterogeneous AI computing virtualization middleware, scales AI workloads seamlessly across hybrid and multi-cloud environments.",
+        "paragraph2": "Dynamia.ai offers an enterprise platform for AI workloads and GPU orchestration, unlocking the full potential of AI infrastructure.  This allows enterprises to effortlessly tackle the challenges of AI infrastructure utilization and hybrid complexity.",
+        "paragraph3": ""
+      },
+      "mission": {
+        "title": "Unsere Mission",
+        "description1": "At dynamia ai, we are committed to helping organizations maximize the value of their computing resources through innovative heterogeneous computing solutions. We believe that by intelligently managing and optimizing computing resources, we can accelerate scientific discovery, drive technological innovation, and create value for customers across industries worldwide.",
+        "description2": "Our flagship product, Dynamia AI, is a unified heterogeneous computing platform designed to handle today's most complex computational challenges. Whether for AI training, high-performance computing, or edge computing, Dynamia AI delivers unparalleled resource efficiency and performance optimization."
+      },
+      "vision": {
+        "title": "Unternehmensvision",
+        "points": {
+          "0": "Aufbau der weltweit fuehrenden heterogenen Computing-Management-Plattform",
+          "1": "Foerderung der effizienten Nutzung von Rechenressourcen",
+          "2": "Befaehigung von Organisationen zur Innovation durch optimierte Computing-Infrastruktur"
+        }
+      }
+    },
+    "team": {
+      "title": "Leadership",
+      "members": {
+        "0": {
+          "name": "Xiao Zhang",
+          "position": "CEO & Gruender & HAMi Maintainer",
+          "image": "CEO"
+        },
+        "1": {
+          "name": "Mengxuan Li",
+          "position": "Chief Architect & Co-Gruender & HAMi Maintainer",
+          "image": "CTO"
+        },
+        "2": {
+          "name": "Yu Yin",
+          "position": "Product Leader & HAMi Maintainer",
+          "image": "COO"
+        },
+        "3": {
+          "name": "Wen Chen",
+          "position": "Tech Leader",
+          "image": "CPO"
+        },
+        "4": {
+          "name": "Jimmy Song",
+          "position": "VP of Open Source Ecosystem",
+          "image": "jimmy"
+        },
+        "5": {
+          "name": "Reza Jelveh",
+          "position": "Head of Global Market & Solution Engineer",
+          "image": "reza"
+        }
+      }
+    },
+    "careers": {
+      "title": "Karriere",
+      "description": "Join our team of innovators and shape the future of computing",
+      "jobs": {
+        "0": {
+          "title": "Senior Software Engineer",
+          "location": "Beijing",
+          "type": "Vollzeit"
+        },
+        "1": {
+          "title": "Machine Learning Engineer",
+          "location": "Shanghai",
+          "type": "Vollzeit"
+        },
+        "2": {
+          "title": "Product Manager",
+          "location": "Remote",
+          "type": "Vollzeit"
+        },
+        "3": {
+          "title": "Solutions Architect",
+          "location": "Shenzhen",
+          "type": "Vollzeit"
+        }
+      },
+      "viewJobsButton": "View all positions",
+      "applyButton": "Bewerben"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Nehmen Sie Kontakt mit unserem Team auf",
+      "address": "123 Tech Avenue, San Francisco, CA 94105",
+      "email": "info@dynamia.ai",
+      "phone": "+1 (555) 123-4567",
+      "formTitle": "Send a Message",
+      "nameLabel": "Ihr Name",
+      "emailLabel": "Ihre E-Mail",
+      "messageLabel": "Nachricht",
+      "submitting": "Wird gesendet...",
+      "submitButton": "Senden",
+      "submitSuccess": "Thank you for your message! We will get back to you as soon as possible.",
+      "submitError": "An error occurred while sending your message. Please try again or email us directly at info@dynamia.ai.",
+      "social": {
+        "email": {
+          "title": "E-Mail",
+          "action": "Send Email"
+        },
+        "slack": {
+          "title": "Slack",
+          "action": "Karriere"
+        },
+        "linkedin": {
+          "title": "LinkedIn",
+          "action": "Folgen"
+        },
+        "twitter": {
+          "title": "X (Twitter)",
+          "action": "Folgen"
+        }
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 DYNAMIA INTELLIGENCE PTE. LTD ",
+    "privacyPolicy": "Datenschutzerklaerung",
+    "cookiesPolicy": "Cookie-Richtlinie",
+    "cookieSettings": "Cookie-Einstellungen",
+    "termsOfService": "Nutzungsbedingungen",
+    "company": "Unternehmen",
+    "aboutUs": "About us",
+    "contactUs": "Kontakt",
+    "platformTitle": "Dynamia AI Plattform",
+    "getDemo": "Demo erhalten",
+    "pricing": "Preise",
+    "poweredByHami": "Bereitgestellt von HAMi",
+    "companyDescription": "Dynamia leitet das CNCF-Projekt HAMi — GPU-Virtualisierung und -Planung.",
+    "companyIntro": "GPU-Virtualisierung und -Planung fuer Unternehmen, aufgebaut auf dem CNCF-Projekt HAMi.",
+    "about": "Ueber",
+    "aboutCompany": "Unternehmensuebersicht",
+    "news": "Neuigkeiten",
+    "partners": "Partner",
+    "joinUs": "Karriere",
+    "resources": "Ressourcen",
+    "documentation": "Dokumentation",
+    "blog": "Blog",
+    "caseStudies": "Kunden",
+    "community": "Community",
+    "github": "GitHub",
+    "slack": "Slack (#hami-dev)",
+    "discord": "Discord",
+    "wechat": "WeChat",
+    "contactSection": "Kontakt",
+    "emailUs": "E-Mail an uns",
+    "email": "info@dynamia.ai",
+    "socialMedia": "Folgen"
+  },
+  "cookieConsent": {
+    "bannerTitle": "Wir verwenden Cookies",
+    "bannerDescription": "We use necessary cookies to keep the site working. With your consent, we also use analytics cookies to understand site usage and improve our services. Marketing and functional cookies stay off unless you enable them.",
+    "cookiePolicy": "Read our Cookies Policy",
+    "accept": "Accept all",
+    "reject": "Reject all",
+    "manage": "Manage preferences",
+    "save": "Save preferences",
+    "close": "Close cookie preferences",
+    "alwaysOn": "Immer aktiv",
+    "preferencesTitle": "Cookie preferences",
+    "preferencesDescription": "Choose which optional cookie categories Dynamia AI may use. Necessary cookies are required for the site and cannot be disabled here.",
+    "categories": {
+      "necessary": {
+        "title": "Necessary cookies",
+        "description": "Required for core site behavior such as security, language routing, video access state, and storing your consent choice."
+      },
+      "analytics": {
+        "title": "Analytics cookies",
+        "description": "Help us measure traffic and page performance through services such as Google Analytics and Vercel Analytics."
+      },
+      "marketing": {
+        "title": "Marketing cookies",
+        "description": "May be used for campaign measurement, advertising, or remarketing. These are disabled unless you opt in."
+      },
+      "functional": {
+        "title": "Functional cookies",
+        "description": "Remember optional preferences that improve the experience beyond what is strictly required."
+      }
+    }
+  },
+  "locales": {
+    "en": "English",
+    "zh": "中文",
+    "de": "Deutsch"
+  },
+  "search": {
+    "placeholder": "Suchen...",
+    "noResults": "Keine Ergebnisse gefunden"
+  },
+  "hamiPage": {
+    "title": "Was ist",
+    "subtitle": "An open-source, heterogeneous AI computing virtualization middleware, scales AI workloads seamlessly across hybrid and multi-cloud environments.",
+    "introduction": "HAMi is the only open-source project dedicated to GPU resource sharing. It maximizing GPU efficiency by flexible, reliable, and elastic GPU share, integrating seamlessly into hybrid AI infrastructure. Adopted by 60+ OS vendors, cloud providers, and industry leaders, it has enabled breakthroughs in finance, logistics, autonomous driving, robotics, and biotech.",
+    "creator": "HAMi was created by dynamia.ai and is a Cloud Native Computing Foundation (CNCF) sandbox project.",
+    "solutionTitle": "One-Stop Heterogeneous AI Computing Management Solution",
+    "solutionDesc": "HAMi is a one-stop middleware that enables the sharing of various AI devices while ensuring resource isolation between different tasks. By improving the utilization of heterogeneous computing devices, HAMi provides a unified reuse interface to meet the needs of different device types.",
+    "features": {
+      "0": {
+        "title": "Kubernetes Native API Compatibility",
+        "description": "One of HAMi's standout features is its compatibility with Kubernetes native APIs. This means users can upgrade to HAMi without modifying existing configurations, allowing for a seamless transition while maintaining Kubernetes default behaviors."
+      },
+      "1": {
+        "title": "Open and Neutral",
+        "description": "HAMi is a collaborative initiative involving stakeholders from various domains, including internet services, finance, manufacturing, and cloud service providers. The goal is to establish open governance under the Cloud Native Computing Foundation (CNCF), ensuring HAMi remains neutral and accessible to all users."
+      },
+      "2": {
+        "title": "Avoid Vendor Lock-in",
+        "description": "With HAMi, users can integrate with mainstream cloud service providers without being tied to proprietary vendor orchestrations. This flexibility allows organizations to choose their preferred cloud solution while leveraging HAMi's capabilities."
+      },
+      "3": {
+        "title": "Resource Isolation",
+        "description": "HAMi provides robust resource isolation within containers. Each task running in a container is confined to its allocated resource boundaries, preventing any task from exceeding its quota. This strict isolation enhances security and stability in the computing environment."
+      },
+      "4": {
+        "title": "Support for Multiple Heterogeneous Computing Devices",
+        "description": "HAMi excels in supporting various heterogeneous computing devices. Whether it's GPUs, MLUs, or NPUs from different manufacturers, HAMi facilitates device sharing and maximizes resource efficiency across different hardware platforms."
+      },
+      "5": {
+        "title": "Unified Management",
+        "description": "To simplify operations, HAMi offers a unified monitoring system, along with configurable scheduling policies such as binpacking and spreading. This comprehensive management approach streamlines the governance of resources and enhances overall system performance."
+      }
+    },
+    "ctaTitle": "Ready to start using HAMi?",
+    "ctaDesc": "Treten Sie unserer Community bei.",
+    "githubButton": "GitHub-Repository",
+    "websiteButton": "Website besuchen"
+  },
+  "pricing": {
+    "title": "Preise",
+    "headline": "Flexible Preise fuer Ihre Computing-Anforderungen",
+    "description": "Flexible Preise, zugeschnitten auf Ihre Cluster-Groesse. Kontaktieren Sie uns fuer ein Angebot.",
+    "compareCTA": {
+      "eyebrow": "Editionen & Downloads",
+      "title": "Editionen vergleichen und Downloads erhalten",
+      "desc": "Vergleichen Sie HAMi und HAMi AI Platform — laden Sie Offline-Bundles und Helm-Charts herunter.",
+      "button": "Enterprise-Varianten anzeigen"
+    },
+    "benefits": {
+      "0": "Massgeschneiderte Preisplaene",
+      "1": "Flexible Skalierung basierend auf Ihrer Cluster-Groesse",
+      "2": "Professioneller technischer Support",
+      "3": "Kontinuierliche Funktionsupdates und Upgrades"
+    },
+    "form": {
+      "title": "Preisinformationen anfordern",
+      "name": "Name",
+      "email": "E-Mail",
+      "company": "Unternehmen",
+      "jobTitle": "Position",
+      "nodeCount": "Anzahl der Knoten",
+      "gpuCount": "Anzahl der GPUs",
+      "message": "Nachricht (Optional)",
+      "submitButton": "Preise anfordern",
+      "submitting": "Wird uebermittelt...",
+      "submitSuccess": "Thank you! Your request has been submitted. Our team will contact you shortly with pricing information.",
+      "submitError": "Fehler beim Senden. Bitte versuchen Sie es erneut.",
+      "nodeCountOptions": {
+        "small": "Weniger als 10",
+        "medium": "10-50",
+        "large": "50-200",
+        "enterprise": "Mehr als 200"
+      },
+      "gpuCountOptions": {
+        "small": "1-10",
+        "medium": "10-50",
+        "large": "50-200",
+        "enterprise": "Mehr als 200"
+      }
+    },
+    "trustedBy": {
+      "title": "Vertraut von Branchenfuehrern",
+      "description": "Leading organizations across various industries rely on Dynamia AI to manage their heterogeneous computing resources efficiently."
+    }
+  },
+  "caseStudiesPage": {
+    "title": "Fallstudien",
+    "subtitle": "Sehen Sie, wie Teams KI-Workloads mit HAMi skalieren.",
+    "h1Prefix": "Fallstudie | ",
+    "cardButton": "Fallstudie lesen",
+    "cta": {
+      "title": "Bereit fuer Ihre eigene Erfolgsgeschichte?",
+      "description": "Sprechen Sie mit uns ueber HAMi.",
+      "button": "Testversion beantragen"
+    },
+    "telLabel": "Tel",
+    "truncationLength": 160
+  },
+  "cases": {
+    "telecomGpu": {
+      "title": "Telekommunikationsanbieter GPU-Virtualisierungs-Fallstudie",
+      "subtitle": "Wie ein fuehrender Telekommunikationsanbieter HAMi fuer GPU-Virtualisierung und heterogene Geraeteverwaltung nutzt",
+      "overview": {
+        "title": "Client Overview",
+        "description": "A major telecommunications provider in Asia faced increasing demands for AI/ML capabilities in their network operations, customer service systems, and value-added services. With over 200 million subscribers and operations across multiple regions, the company needed an efficient way to manage their growing GPU infrastructure.",
+        "keyPoints": {
+          "0": "Gross angelegter GPU-Ressourcenpool",
+          "1": "Multi-Mandanten-Isolierung",
+          "2": "Hohe Leistung mit niedriger Latenz"
+        }
+      },
+      "challenge": {
+        "title": "Herausforderungen & Loesungen",
+        "subtitle": "Schluesselherausforderungen",
+        "points": {
+          "0": "Geringe GPU-Ressourcenauslastung (unter 30%)",
+          "1": "Verwaltungskomplexitaet mit isolierten Clustern",
+          "2": "Schwankende Workload-Anforderungen",
+          "3": "Hohe Hardware-Anschaffungskosten"
+        }
+      },
+      "solution": {
+        "subtitle": "HAMi-Loesung",
+        "points": {
+          "0": "Feingranulares GPU-Sharing und Virtualisierung",
+          "1": "Einheitliche Cluster-Verwaltungsoberflaeche",
+          "2": "Intelligente Workload-Planung",
+          "3": "Hardware-beschleunigte Isolierung"
+        }
+      },
+      "architecture": {
+        "title": "Implementierungsarchitektur",
+        "description": "The HAMi solution provided a comprehensive virtualization layer that enabled unified management of heterogeneous GPU resources, with optimized scheduling and resource allocation."
+      },
+      "results": {
+        "title": "Ergebnisse & Vorteile",
+        "items": {
+          "0": {
+            "title": "Ressourcenauslastung",
+            "value": "80%",
+            "description": "Signifikante Steigerung der GPU-Auslastung"
+          },
+          "1": {
+            "title": "Kostensenkung",
+            "value": "40%",
+            "description": "Rueckgang der Hardware- und Betriebskosten"
+          },
+          "2": {
+            "title": "Reaktionszeit",
+            "value": "90%",
+            "description": "Verbesserung der Service-Bereitstellung und Reaktionszeit"
+          }
+        }
+      },
+      "cta": {
+        "title": "Transformieren Sie Ihre GPU-Infrastruktur",
+        "description": "Discover how HAMi can help your organization achieve similar results with efficient GPU virtualization and heterogeneous computing management.",
+        "button": "Kontakt"
+      }
+    },
+    "sfTechnologyEffectiveGpu": {
+      "title": "SF Technology Partners with HAMi to Enhance AI Efficiency and Significantly Reduce Costs with EffectiveGPU",
+      "subtitle": "Discover how SF Technology built EffectiveGPU based on the open-source HAMi framework, deeply integrating heterogeneous computing virtualization and efficient scheduling capabilities to achieve production deployment in key scenarios like AI large model inference and voice recognition, significantly improving GPU utilization and realizing cost reduction and efficiency enhancement while promoting HAMi open-source ecosystem development.",
+      "overview": {
+        "title": "Unternehmensuebersicht",
+        "description": "SF Technology is the technology arm of SF Express, one of China's leading logistics companies. As a technology-driven enterprise, SF Technology focuses on developing innovative solutions for logistics, AI, and cloud computing services.",
+        "keyPoints": {
+          "0": "Fuehrender Logistiktechnologie-Anbieter",
+          "1": "Umfangreiche KI- und Machine-Learning-Anwendungen",
+          "2": "Gross angelegte GPU-Infrastruktur-Anforderungen",
+          "3": "Fokus auf Kostenoptimierung und Effizienz"
+        }
+      },
+      "challenge": {
+        "title": "Traditional GPU Management Challenges",
+        "subtitle": "Core Pain Points",
+        "description": "Traditional GPU usage patterns (such as whole-card exclusive allocation) led to GPUs being underutilized in inference and other light-load scenarios, resulting in serious resource waste.",
+        "points": {
+          "0": "Low Resource Utilization: GPU average utilization remained below 30% for extended periods, with particularly pronounced idle computing power and memory issues in inference and testing scenarios.",
+          "1": "Coarse Scheduling Granularity: Lack of fine-grained resource partitioning and sharing capabilities, making it difficult to achieve multi-task concurrency and resource reuse.",
+          "2": "Heterogeneous Adaptation Difficulties: Mixed deployment of GPUs, NPUs, domestic AI chips and other multi-type devices posed ecosystem fragmentation and management complexity challenges for scheduling systems.",
+          "3": "Impact on ROI: These issues directly affected the deployment flexibility of AI services and the return on investment (ROI) of computing infrastructure."
+        }
+      },
+      "solution": {
+        "title": "Breaking Through with EffectiveGPU Technology Practice",
+        "subtitle": "Innovation Based on HAMi",
+        "description": "Facing these challenges, SF Technology's team launched the EffectiveGPU technology solution based on the open-source heterogeneous computing scheduling framework HAMi, combined with their own business scenario requirements.",
+        "objective": "The goal is to build an efficient, flexible, and unified GPU resource pooling and scheduling management system to solve problems of low resource utilization and management complexity.",
+        "innovations": {
+          "0": {
+            "title": "GPU-Pooling und Virtualisierung",
+            "description": "Integrated scattered GPU resources into a unified resource pool, enabling on-demand resource allocation through virtualization technology. This capability is based on and extends HAMi's virtualization foundation."
+          },
+          "1": {
+            "title": "Feingranulare Ressourcenpartitionierung",
+            "description": "Supports precise partitioning by core utilization (computing power) and memory capacity, allowing a single GPU card to serve multiple applications with different requirements simultaneously, breaking the limitation of whole-card exclusive allocation. This benefits from HAMi's flexible partitioning mechanism."
+          },
+          "2": {
+            "title": "Elastische Ressourcenueberbuchung",
+            "description": "Introduced dual-dimension overcommitment technology for memory and computing power (up to 200% memory overcommitment ratio), combined with priority scheduling to further exploit GPU potential while ensuring QoS for high-priority tasks."
+          },
+          "3": {
+            "title": "Einheitliche Verwaltung und Planung",
+            "description": "Provides unified scheduling interfaces, abstracting and shielding underlying hardware differences, supporting unified management and efficient scheduling of heterogeneous resources including domestic GPUs. This aligns with HAMi's vision of building a unified abstraction driver framework."
+          }
+        }
+      },
+      "results": {
+        "title": "Significant Results: Substantial Improvement in Resource Utilization and Cost Reduction",
+        "description": "The solution has completed multi-scenario deployment on SF Technology's AI platform, achieving remarkable results.",
+        "items": {
+          "0": {
+            "title": "Inferenzdienste fuer grosse Modelle",
+            "value": "28 GPUs → 65 Dienste",
+            "description": "65 Dienste mit 28 GPU-Karten bereitgestellt, 37 Karten eingespart"
+          },
+          "1": {
+            "title": "Test-Service-Cluster",
+            "value": "6 GPUs → 19 Dienste",
+            "description": "19 Dienste mit 6 Test-GPUs bereitgestellt, 13 Karten eingespart"
+          },
+          "2": {
+            "title": "Spracherkennungsdienste",
+            "value": "Echtzeit garantiert",
+            "description": "Echtzeitleistung fuer kritische Aufgaben durch Prioritaetsplanung und Ressourcenueberbuchung"
+          },
+          "3": {
+            "title": "Anpassung inlaendischer Rechenhardware",
+            "value": "Multi-Vendor-Unterstuetzung",
+            "description": "Successfully adapted Ascend, Kunlun and other domestic AI chips with complete scheduling support, with compatibility partially benefiting from HAMi's heterogeneous compatibility design"
+          },
+          "4": {
+            "title": "Leistungseinfluss",
+            "value": "Nur 0,5% Verschlechterung",
+            "description": "Minimale Leistungsverschlechterung von nur 0,5% nach Hinzufuegen der Pooling-Schicht"
+          }
+        }
+      },
+      "hamiIntegration": {
+        "title": "Tiefe Integration mit dem HAMi-Oekosystem, Aufbau effizienter Computing-Infrastruktur",
+        "description": "Der erfolgreiche Einsatz der EffectiveGPU-Technologie ist untrennbar mit der tiefen Integration in das Open-Source-Framework HAMi verbunden.",
+        "points": {
+          "0": "Die technische Architektur von EffectiveGPU integriert die Kernfaehigkeiten von HAMi in den Bereichen heterogene Computing-Virtualisierung und effiziente Planung.",
+          "1": "Insbesondere bei der Verwaltung und Planung inlaendischer GPUs wurden durch die Integration des HAMi-Oekosystems einheitliche Abstraktionstreiber-Frameworks entwickelt.",
+          "2": "Die EffectiveGPU-Loesung verwendet HAMi-oekosystemkompatible Designs bei Virtualisierungsschnittstellen und Planungsschnittstellen."
+        }
+      },
+      "validation": {
+        "title": "Validierung des HAMi-Werts, Foerderung der Reife heterogener Computing-Planung",
+        "description": "Der erfolgreiche EffectiveGPU-Einsatz von SF Technology ist eine weitere ueberzeugende Validierung der technischen Konzepte von HAMi.",
+        "points": {
+          "0": "Beweist, dass die Schluesselfaehigkeiten von HAMi die tatsaechlichen Anforderungen grosser Unternehmen vollstaendig unterstuetzen koennen.",
+          "1": "Als CNCF Sandbox & CNAI Landscape-Projekt hat diese Praxis wertvolle Erfahrungen fuer HAMi gesammelt."
+        }
+      },
+      "quote": {
+        "text": "Durch die enge Zusammenarbeit mit der HAMi-Open-Source-Community hat EffectiveGPU uns geholfen, die GPU-Ressourceneffizienz erheblich zu verbessern.",
+        "author": "SF Technology AI Platform Lead",
+        "position": "AI Platform Lead, SF Technology"
+      },
+      "conclusion": {
+        "title": "Zukunftsausblick",
+        "description": "SF Technology hat die Kernprobleme des GPU-Ressourcenmanagements durch die EffectiveGPU-Loesung auf Basis von HAMi effektiv geloest."
+      },
+      "companyCard": {
+        "name": "SF Technology",
+        "description": "Fuehrender Logistiktechnologie-Anbieter in China"
+      },
+      "cta": {
+        "exploreHami": "HAMi erkunden",
+        "contactUs": "Kontakt"
+      }
+    },
+    "prepEduHami": {
+      "title": "PREP EDU × HAMi | Intelligent Heterogeneous GPU Scheduling for Enhanced AI Service Efficiency",
+      "subtitle": "PREP EDU deployed the HAMi framework to add fine-grained vGPU sharing and GPU aware scheduling to its production Kubernetes (RKE2) clusters. This addressed concrete problems: GPU utilization below 20%, frequent out-of-memory crashes from shared cards, and the operational overhead of manually scheduling workloads across mixed GPU hardware. The result was a measurable increase in inference task density and platform stability.",
+      "overview": {
+        "title": "Unternehmensuebersicht",
+        "description": "PREP EDU is one of Southeast Asia’s fastest-growing edtech companies. It offers AI-powered language learning and test preparation services across Southeast Asia and relies on stable, large-scale, low-latency inference, making the efficiency of its underlying GPU infrastructure a primary cost and performance driver.",
+        "keyPoints": {
+          "0": "Ein fuehrender Anbieter KI-gestuetzter grenzueberschreitender Pruefungsvorbereitungsdienste",
+          "1": "Engagiert in der Umsetzung personalisierter KI-basierter Lernszenarien",
+          "2": "Verpflichtet zur Bewaeltigung von Infrastruktur-Skalierungsherausforderungen in KI-Lehrumgebungen",
+          "3": "Foerdert Open-Source-Technologien in praktischen Bildungs- und Forschungsumgebungen"
+        }
+      },
+      "challenge": {
+        "title": "Rising Complexity in Heterogeneous GPU Scheduling",
+        "description": "As PREP EDU’s large-scale AI inference workloads expanded, traditional GPU usage models could no longer support the rapidly growing service demands. In a mixed-GPU environment (RTX 4070 / RTX 4090), resource waste, unbalanced scheduling, and compatibility issues became critical.",
+        "points": {
+          "0": "Low GPU Utilization: Allocating GPUs exclusively as full cards prevented inference workloads from making effective use of available resources. Average utilization often remained as low as 10–20%, leaving both compute capacity and memory significantly underused.",
+          "1": "Frequent Resource Conflicts: Without proper isolation and scheduling mechanisms, competing workloads frequently triggered memory contention, pushing GPU memory usage to 90–95%. This led to application crashes, interrupted inference processes, and ultimately impacted overall service stability.",
+          "2": "Challenges in Heterogeneous Scheduling: In mixed-GPU environments combining RTX 4070 and 4090 models, different projects often required specific GPU types. Lacking a unified allocation and selection mechanism, resource dispatching became complex and error-prone.",
+          "3": "High Compatibility Barriers: Any new solution needed to remain fully compatible with existing components such as RKE2, GPU Operator, and containerd. Non-transparent or intrusive approaches risked increasing operational overhead or disrupting existing production workflows."
+        }
+      },
+      "solution": {
+        "title": "Solution: Implementing Efficient GPU Orchestration with HAMi",
+        "description": "To address long-standing issues such as heterogeneous scheduling complexity, low GPU utilization, and insufficient resource isolation, PREP EDU adopted HAMi to build a lightweight and non-intrusive GPU virtualization and orchestration solution within its existing RKE2 + GPU Operator + multi-model NVIDIA GPU environment. ",
+        "objective": "Through this integration, PREP EDU significantly reduced resource waste and conflict frequency while ensuring the platform can scale smoothly with growing AI inference workloads.",
+        "innovations": {
+          "0": {
+            "title": "Virtualisierung & GPU-Partitionierung",
+            "description": "Workloads received resource limits based on NLP token lengths and service needs, enabling precise vGPU allocation."
+          },
+          "1": {
+            "title": "Heterogene GPU-Verwaltung",
+            "description": "With HAMi, workloads can be scheduled by GPU type (e.g., run specific services only on RTX 4070 or 4090), using annotations to ensure compatibility and performance."
+          },
+          "2": {
+            "title": "Nahtlose Anwendungsintegration",
+            "description": "Transparent device virtualization allows GPU sharing and isolation without modifying existing applications."
+          },
+          "3": {
+            "title": "GPU-spezifische Zuweisung",
+            "description": "Tasks can be allocated by GPU UUID, enabling multiple processes to run on a single 24GB RTX 4090 in a controlled manner."
+          },
+          "4": {
+            "title": "Vollstaendige Kompatibilitaet",
+            "description": "HAMi and NVIDIA GPU Operator coexist smoothly, both running on containerd. Combined with Prometheus monitoring, the system integrates seamlessly with RKE2 and containerd."
+          }
+        }
+      },
+      "results": {
+        "title": "Results: Major Increases in  GPU Utilization &  Inference Stability",
+        "description": "The solution has been fully validated in PREP EDU’s production-scale inference platform. After adopting HAMi, PREP EDU successfully decoupled and automatically organized its GPU resources:",
+        "items": {
+          "0": {
+            "title": "Produktionseinsatz",
+            "value": "1+ Jahr",
+            "description": "Ueber 1 Jahr stabiler Produktionseinsatz"
+          },
+          "1": {
+            "title": "GPU-Infrastrukturoptimierung",
+            "value": "90%",
+            "description": "90% der GPU-Infrastruktur durch HAMi optimiert"
+          },
+          "2": {
+            "title": "Reduzierung von Betriebsproblemen",
+            "value": "50%",
+            "description": "50% weniger GPU-bezogene Betriebsvorfaelle"
+          }
+        }
+      },
+      "hamiIntegration": {
+        "title": "Tiefe Integration mit dem HAMi-Oekosystem fuer eine leistungsstarke Inferenz-Grundlage",
+        "description": "Die Fortschritte von PREP EDU bei GPU-Virtualisierung und intelligenter Planung basieren auf der tiefen Integration mit dem HAMi-Oekosystem.",
+        "points": {
+          "0": "Durch die Integration von HAMis Geraetevirtualisierung und feingranularer vGPU-Partitionierung kann PREP EDU mehrere GPU-Modelle einheitlich und effizient gemeinsam nutzen.",
+          "1": "Durch HAMis transparente Virtualisierung und annotationsbasierte Planung erreicht PREP EDU konsistente Planung ueber RTX 4070 und 4090 GPUs hinweg.",
+          "2": "Durch die Validierung von HAMi in realen Produktionsablaeufen erweitert PREP EDU die Anwendbarkeit von HAMi."
+        }
+      },
+      "conclusion": {
+        "title": "Zukunftsausblick",
+        "description": "Durch den Einsatz von HAMi-basierter GPU-Virtualisierung hat PREP EDU die Kernherausforderungen der Verwaltung heterogener GPUs geloest."
+      },
+      "companyCard": {
+        "name": "PREP EDU",
+        "description": "Fast-growing EdTech company in Southeast Asia"
+      },
+      "cta": {
+        "exploreHami": "HAMi erkunden",
+        "contactUs": "Kontakt"
+      }
+    },
+    "keHoldings": {
+      "title": "Ke Holdings Scales ML Infrastructure with GPU Virtualization using Kubernetes and HAMi",
+      "subtitle": "Discover how Ke Holdings built AIStudio based on HAMi and Kubernetes, achieving nearly 3x GPU utilization improvement (13% → 37%) while supporting 10,000+ pods and 10M+ daily requests across hybrid cloud environments.",
+      "stats": {
+        "0": {
+          "value": "3x",
+          "label": "GPU-Auslastungsverbesserung"
+        },
+        "1": {
+          "value": "10.000+",
+          "label": "Pods gleichzeitig"
+        },
+        "2": {
+          "value": "10M+",
+          "label": "taegliche Anfragen"
+        }
+      },
+      "overview": {
+        "title": "Unternehmensuebersicht",
+        "description": "Ke Holdings Inc. is an integrated online and offline platform for housing transactions and related services based in China. The centralized infrastructure team operates a shared machine learning platform used across all business units, providing end-to-end compute services for model development, training, and large-scale inference.",
+        "keyPoints": {
+          "0": "Fuehrende Immobilientransaktionsplattform in China",
+          "1": "Zentralisierte ML-Plattform fuer alle Geschaeftsbereiche",
+          "2": "End-to-End-Computing-Dienste fuer KI-Workloads",
+          "3": "Massive GPU-Infrastruktur ueber Hybrid-Clouds"
+        }
+      },
+      "challenge": {
+        "title": "Challenges in Scaling ML Infrastructure",
+        "description": "As machine learning initiatives scaled, the infrastructure team faced significant challenges in GPU resource management across a complex hybrid-cloud environment.",
+        "points": {
+          "0": {
+            "title": "Skalierung und Komplexitaet",
+            "description": "5 clusters across public and private clouds, thousands of GPU cards including diverse models (H200, H20, V100, 4090, H100, A100)"
+          },
+          "1": {
+            "title": "Hybrid-Cloud-Umgebung",
+            "description": "Managing GPU resources across public cloud (Volcano Engine, Tencent Cloud, Ali Cloud) and private cloud with ~1,000 NVIDIA GPUs"
+          },
+          "2": {
+            "title": "Vielfaeltige Workload-Anforderungen",
+            "description": "Large-scale model training requiring full GPU access vs. small model inference needing minimal GPU memory (1-2GB)"
+          },
+          "3": {
+            "title": "Geringe GPU-Auslastung",
+            "description": "Nur 13% anfaengliche Auslastung aufgrund von Multi-Cloud-Komplexitaet"
+          }
+        }
+      },
+      "solution": {
+        "title": "AIStudio Platform Built on Kubernetes and HAMi",
+        "description": "Using CNCF projects HAMi and Kubernetes as foundation, Ke Holdings designed and implemented AIStudio, a smart computing platform serving as the basis for the organization's machine learning infrastructure.",
+        "platform": "Leveraging Kubernetes and HAMi for GPU virtualization, AIStudio provides a unified platform bridging upper-layer SaaS services with underlying compute resources.",
+        "features": {
+          "0": {
+            "title": "Multi-Szenario-Unterstuetzung",
+            "description": "Gleichzeitige Unterstuetzung von Inferenz, A/B-Tests und Training auf derselben Infrastruktur"
+          },
+          "1": {
+            "title": "Fortschrittliche Optimierung",
+            "description": "Acceleration capabilities for inference frameworks, datasets, images, checkpoints, and models with fault tolerance"
+          },
+          "2": {
+            "title": "Multi-Framework-Unterstuetzung",
+            "description": "PyTorch, DeepSpeed, Megatron, VLLM, RLHF, SGLang"
+          },
+          "3": {
+            "title": "KI-Asset-Management",
+            "description": "Centralized management of resource pools, model repositories, image repositories, queues, CubeFS volumes, and monitoring"
+          }
+        },
+        "architecture": {
+          "title": "Dual-Cluster-Architektur fuer verschiedene Workloads",
+          "gpuCluster": {
+            "title": "GPU-Cluster",
+            "description": "Verwaltet durch das native NVIDIA Device Plugin fuer Trainings-Workloads:",
+            "items": {
+              "0": "Natives NVIDIA Device Plugin",
+              "1": "Hochleistungs-GPUs (H200, H100)",
+              "2": "Speziell fuer LLM-Training",
+              "3": "Vollstaendige GPU-Ressourcenzuweisung"
+            }
+          },
+          "vgpuCluster": {
+            "title": "vGPU-Cluster",
+            "description": "Verwaltet durch HAMi fuer GPU-Speichervirtualisierung:",
+            "items": {
+              "0": "HAMi GPU-Speichervirtualisierung",
+              "1": "GPUs (H20, V100, A100, 4090)",
+              "2": "Feingranulare Zuweisung (1-2 GB)",
+              "3": "Small-Model-Inferenz"
+            }
+          }
+        }
+      },
+      "results": {
+        "title": "Significant Results: 3x GPU Utilization Improvement",
+        "description": "By leveraging open-source technologies including HAMi and Kubernetes, AIStudio has achieved remarkable results at massive scale.",
+        "items": {
+          "0": {
+            "title": "GPU-Auslastung",
+            "value": "13% → 37%",
+            "description": "Fast 3x Verbesserung"
+          },
+          "1": {
+            "title": "Plattform-Skalierung",
+            "value": "10.000+ Pods",
+            "description": "Gleichzeitig laufend"
+          },
+          "2": {
+            "title": "Taegliche Anfragen",
+            "value": "10M+",
+            "description": "Pro Tag verarbeitet"
+          },
+          "3": {
+            "title": "Cluster-Abdeckung",
+            "value": "5 Cluster",
+            "description": "Oeffentliche und private Cloud"
+          },
+          "4": {
+            "title": "Null Ausfallzeit",
+            "value": "100%",
+            "description": "Waehrend Umstellung und Betrieb"
+          },
+          "5": {
+            "title": "Workload-Typen",
+            "value": "Einheitlich",
+            "description": "Training und Inferenz auf derselben Plattform"
+          }
+        }
+      },
+      "hamiIntegration": {
+        "title": "HAMi Enables GPU Multiplexing and Heterogeneous Scheduling",
+        "description": "The successful integration of HAMi demonstrates how open-source technologies enable organizations to achieve remarkable infrastructure efficiency.",
+        "points": {
+          "0": "Kubernetes serves as the foundation for stable operations with robust scheduling and management capabilities",
+          "1": "HAMi enables GPU multiplexing and heterogeneous scheduling optimization, increasing cluster GPU utilization by nearly 3x",
+          "2": "Dual-Cluster-Ansatz trennt Workloads basierend auf Ressourcenanforderungen",
+          "3": "Seamless integration between public and private cloud environments enables unified platform management"
+        }
+      },
+      "futurePlans": {
+        "title": "Future Innovation Plans",
+        "description": "Ke Holdings' infrastructure team continues to innovate and expand their platform on top of HAMi and Kubernetes.",
+        "plans": {
+          "0": "Adopting heterogeneous devices: Plans to incorporate Huawei Ascend and other non-NVIDIA accelerators",
+          "1": "Cloud expansion: Integration with Alibaba Cloud to complement existing Volcano Engine and Tencent Cloud deployments",
+          "2": "Advanced scheduling policies: Network topology-awareness, card type specification, and UUID-based allocation"
+        }
+      },
+      "companyCard": {
+        "name": "Ke Holdings",
+        "description": "Fuehrende Immobilientransaktionsplattform in China"
+      },
+      "cta": {
+        "exploreHami": "HAMi erkunden",
+        "contactUs": "Kontakt"
+      },
+      "conclusion": {
+        "title": "Open-Source Success Story",
+        "description": "Ke Holdings has successfully demonstrated how leveraging HAMi and Kubernetes can dramatically improve GPU utilization while supporting massive-scale AI workloads. The AIStudio platform serves as a model for organizations seeking to optimize their machine learning infrastructure."
+      }
+    },
+    "daoCloud": {
+      "title": "Building Flexible GPU Clouds with HAMi at DaoCloud",
+      "subtitle": "Discover how DaoCloud operates two major cloud native platforms for AI workloads—D.run Compute Cloud and DaoCloud Enterprise—using HAMi to achieve >80% GPU utilization across 10,000+ GPUs spanning 10+ data centers.",
+      "stats": {
+        "0": {
+          "value": "10.000+",
+          "label": "GPUs ueber Plattformen"
+        },
+        "1": {
+          "value": ">80%",
+          "label": "durchschnittliche GPU-Auslastung"
+        },
+        "2": {
+          "value": "20-30%",
+          "label": "Senkung der Betriebskosten"
+        }
+      },
+      "overview": {
+        "title": "Unternehmensuebersicht",
+        "description": "DaoCloud operates two major cloud native platforms for AI workloads. D.run Compute Cloud is a public GPU cloud serving individual developers and small teams, while DaoCloud Enterprise (DCE) is a private Kubernetes platform for enterprise customers running both training and inference.",
+        "keyPoints": {
+          "0": "Zwei grosse Cloud-native Plattformen",
+          "1": "D.run Compute Cloud fuer oeffentliche GPU-Cloud",
+          "2": "DaoCloud Enterprise (DCE) fuer private K8s",
+          "3": "10+ Rechenzentren in China und Hongkong"
+        }
+      },
+      "challenge": {
+        "title": "Challenges in GPU Resource Management",
+        "description": "As GPU demand grew rapidly across both platforms, several challenges emerged that required a flexible GPU virtualization solution.",
+        "points": {
+          "0": {
+            "title": "Ganzkarten-Zuweisung",
+            "description": "Many inference and lightweight workloads used only a fraction of GPU resources, leaving significant portions of compute and memory underutilized and limiting how DaoCloud could package GPU SKUs."
+          },
+          "1": {
+            "title": "Heterogene Hardware",
+            "description": "DaoCloud needed to support mainstream NVIDIA GPUs while also integrating domestic accelerators from multiple vendors. Proprietary vGPU solutions increased licensing costs."
+          },
+          "2": {
+            "title": "Multi-Mandanten-Governance",
+            "description": "On DCE, enterprise customers wanted shared GPU pools with department-level quotas, queue-based resource allocation, and clear isolation across teams."
+          },
+          "3": {
+            "title": "Cloud-Native-Ausrichtung",
+            "description": "DaoCloud's core strategy revolves around Kubernetes and open-source technologies. Any GPU sharing solution had to stay fully cloud native, vendor-agnostic, and compatible with existing CNCF tooling."
+          }
+        }
+      },
+      "solution": {
+        "title": "HAMi as the Unified GPU Layer",
+        "description": "DaoCloud adopted HAMi, a CNCF Sandbox project, for heterogeneous AI computing virtualization, as the unified GPU layer across both D.run and DCE. HAMi provides device virtualization, vGPU partitioning, and scheduling for heterogeneous accelerators in Kubernetes clusters.",
+        "drun": {
+          "title": "D.run Compute Cloud: vGPU-SKUs fuer oeffentliche GPU-Nutzer",
+          "description": "Auf D.run integrierte DaoCloud HAMi in jeden regionalen Kubernetes-Cluster.",
+          "features": {
+            "0": {
+              "title": "vGPU-Slicing",
+              "description": "Physische GPUs werden in mehrere vGPU-Slices partitioniert. Leichtgewichtige Inferenzjobs koennen auf Teil-GPUs ausgefuehrt werden."
+            },
+            "1": {
+              "title": "SKU-basierter Marktplatz",
+              "description": "vGPU-Slices werden als standardisierte SKUs in einem zentralen Marktplatz angeboten."
+            },
+            "2": {
+              "title": "Multi-Region-Bereitstellung",
+              "description": "HAMi betreibt 7 aktive D.run-Regionen in Festlandchina und Hongkong."
+            },
+            "3": {
+              "title": "Unterstuetzung inlaendischer Beschleuniger",
+              "description": "DaoCloud erweiterte HAMi um die Unterstuetzung inlaendischer GPU-Hersteller."
+            }
+          }
+        },
+        "dce": {
+          "title": "DaoCloud Enterprise (DCE): Gemeinsamer GPU-Pool fuer Unternehmen",
+          "description": "Auf DCE baute DaoCloud einen zentralisierten GPU-Ressourcenpool mit HAMi auf.",
+          "features": {
+            "0": {
+              "title": "Einheitlicher GPU-Pool",
+              "description": "Enterprise-Nutzer stellen GPUs in einen zentralen Pool ein und nutzen diesen."
+            },
+            "1": {
+              "title": "Kontingente & RBAC",
+              "description": "HAMis vGPU-Ressourcen sind in die bestehenden Kontingent- und RBAC-Systeme von DaoCloud integriert."
+            },
+            "2": {
+              "title": "Vereinfachte Nutzung",
+              "description": "Algorithmeningenieure fordern GPU-Ressourcen ueber die Plattform an."
+            }
+          }
+        }
+      },
+      "opensource": {
+        "title": "Gemeinsame Entwicklung von HAMi mit der Community",
+        "description": "DaoCloud ist einer der fruehesten und aktivsten Mitwirkenden von HAMi.",
+        "points": {
+          "0": "Lieferte Erkenntnisse aus realen D.run- und DCE-Einsaetzen an die Community zurueck",
+          "1": "Arbeitete upstream an der Verbesserung von GPU-UEberbuchungsmechanismen",
+          "2": "Half bei der Pflege von Dokumentation zur Unterstuetzung der Produktionsakzeptanz"
+        }
+      },
+      "results": {
+        "title": "Significant Results: Cost Reduction and Improved Efficiency",
+        "description": "By integrating HAMi, DaoCloud consolidated previously fragmented GPU resources into a more unified, efficient, and scalable GPU layer across both public and private clouds.",
+        "items": {
+          "0": {
+            "title": "GPU-Auslastung",
+            "value": ">80%",
+            "description": "Durchschnittliche Auslastung pro Karte nach HAMi-Bereitstellung"
+          },
+          "1": {
+            "title": "Kostensenkung",
+            "value": "20-30%",
+            "description": "Reduzierung GPU-bezogener Betriebskosten"
+          },
+          "2": {
+            "title": "Einheitliche Abstraktion",
+            "value": "Einheitliche Schicht",
+            "description": "Ueber NVIDIA und inlaendische GPUs"
+          },
+          "3": {
+            "title": "Bereitstellungsumfang",
+            "value": "10.000+ GPUs",
+            "description": "Ueber 10+ Rechenzentren"
+          },
+          "4": {
+            "title": "Multi-Region",
+            "value": "7 Regionen",
+            "description": "Aktive D.run-Regionen in China"
+          },
+          "5": {
+            "title": "Offene Zusammenarbeit",
+            "value": "Aktiv",
+            "description": "Liefert Verbesserungen upstream"
+          }
+        }
+      },
+      "quote": {
+        "text": "HAMi is more than compatible with DaoCloud's business, it's something we've built together. As one of HAMi's earliest contributors, we've witnessed its evolution from inception to maturity. HAMi now runs across both D.run and DCE, and our real-world improvements continuously flow back to the community. HAMi and DaoCloud share the same open-source DNA, and we'll continue contributing to HAMi to bring true vGPU technology to the world.",
+        "author": "Captain, AI/LLM Infra Product Lead, DaoCloud"
+      },
+      "companyCard": {
+        "name": "DaoCloud",
+        "description": "Cloud-native Plattformanbieter fuer KI-Workloads"
+      },
+      "cta": {
+        "exploreHami": "HAMi erkunden",
+        "contactUs": "Kontakt"
+      },
+      "conclusion": {
+        "title": "Open-Source Partnership Success",
+        "description": "DaoCloud has successfully integrated HAMi across both its public and private GPU cloud platforms, achieving dramatic improvements in utilization and cost efficiency while contributing back to the open-source community."
+      }
+    },
+    "nio": {
+      "title": "NIO Improves GPU Utilization for Autonomous Driving Workloads with HAMi",
+      "subtitle": "Discover how NIO adopted a hybrid GPU sharing strategy using HAMi to achieve 10× GPU utilization improvement in CI pipelines and 30% reduction in GPU hours for simulation workloads across 600 GPUs supporting autonomous driving AI infrastructure.",
+      "stats": {
+        "0": {
+          "value": "600",
+          "label": "GPUs auf ~80 Knoten"
+        },
+        "1": {
+          "value": "10x",
+          "label": "GPU-Auslastungsverbesserung in CI"
+        },
+        "2": {
+          "value": "30%",
+          "label": "Reduzierung der GPU-Stunden fuer Simulation"
+        }
+      },
+      "overview": {
+        "title": "Unternehmensuebersicht",
+        "description": "NIO operates large-scale cloud infrastructure to support autonomous driving workloads, including model training, simulation, CI/testing, and online inference. The team focuses on GPU performance optimization and participates in GPU and compute resource planning decisions for their comprehensive autonomous driving platform.",
+        "keyPoints": {
+          "0": "Gross angelegter GPU-Cluster: 600 GPUs auf ~80 Knoten",
+          "1": "Vielfaeltige autonome Fahrworkloads: Training, Simulation, CI/Test, Inferenz",
+          "2": "Fokus auf GPU-Leistungsoptimierung und Ressourcenplanung",
+          "3": "Hybride GPU-Sharing-Strategie fuer verschiedene Workload-Typen"
+        }
+      },
+      "challenge": {
+        "title": "Challenge: Low GPU Utilization Across Diverse Workloads",
+        "description": "NIO's large-scale cloud infrastructure supports diverse autonomous driving workloads. This diversity led to persistent efficiency challenges due to workload-resource mismatch, with several specific pain points.",
+        "points": {
+          "0": {
+            "title": "CI- und Testaufgaben",
+            "description": "Most execution time for CI tasks spent on CPU-intensive operations (compilation, file fetching, preprocessing). GPUs used intermittently with only 5–10% average utilization under full-GPU allocation."
+          },
+          "1": {
+            "title": "Simulations-Workloads",
+            "description": "Simulation pipelines process video streams, radar data, and inference validation. Individual tasks have relatively low compute requirements, making them suitable for concurrent execution on shared GPUs."
+          },
+          "2": {
+            "title": "Online-Inferenz",
+            "description": "Many inference services require only ¼ or ½ of a GPU. Allocating an entire GPU is both inefficient and costly for these small workloads."
+          },
+          "3": {
+            "title": "Begrenzter GPU-Cluster",
+            "description": "The GPU cluster size is limited, with part of capacity sourced from public cloud providers with time-based billing. Low GPU utilization wastes GPU hours and increases operational costs."
+          }
+        }
+      },
+      "solution": {
+        "title": "Hybride GPU-Sharing-Strategie mit HAMi",
+        "description": "NIO adopted a hybrid GPU sharing strategy, selecting different GPU allocation mechanisms based on workload characteristics rather than enforcing a single approach. HAMi extends Kubernetes with fine-grained GPU sharing capabilities through scheduler extensions and device plugin integration.",
+        "approaches": {
+          "title": "Evaluated Approaches",
+          "items": {
+            "0": {
+              "title": "NVIDIA MIG",
+              "description": "Provides strong isolation but supports only predefined partition sizes, making it difficult to match finer-grained requirements (e.g., 1/6 or 1/8 of a GPU)."
+            },
+            "1": {
+              "title": "Time-Slicing",
+              "description": "Allows workloads to compete freely for GPU resources with minimal overhead. However, it lacks strict limits on memory and compute usage, making it unsuitable for certain production workloads."
+            },
+            "2": {
+              "title": "HAMi (CNCF Sandbox)",
+              "description": "Supports fine-grained control over both GPU memory and compute allocation, enabling proportional allocation based on actual workload requirements with minimal overhead."
+            }
+          }
+        },
+        "productionStrategy": {
+          "title": "Production Strategy: Combining Multiple Approaches",
+          "description": "Rather than replacing existing mechanisms, NIO combined them for optimal efficiency across different workload types.",
+          "items": {
+            "0": "MIG: Verwendet fuer Algorithmenentwicklung und Umgebungen mit strenger Isolierung",
+            "1": "HAMi: Verwendet fuer CI-Aufgaben und ausgewaehlte Inferenz- und Simulations-Workloads",
+            "2": "Time-Slicing: Verwendet fuer Workloads, die Ressourcenkonflikte tolerieren koennen"
+          }
+        },
+        "implementation": {
+          "title": "Implementation Details",
+          "scale": "HAMi deployed on approximately 50–70 active nodes with 400–560 GPUs",
+          "resourceDesign": {
+            "title": "Resource Allocation Design",
+            "description": "For simulation workloads, NIO treated GPU memory (VRAM) as the primary constraint since insufficient compute capacity can be mitigated through scheduling delay, but memory exhaustion immediately triggers OOM failure.",
+            "insight": "Finer partitioning is not always better. For certain simulation workloads, allocating approximately 1/6 of a GPU provided optimal efficiency. Smaller fractions (such as 1/8) introduced additional scheduling and virtualization overhead, reducing overall throughput."
+          }
+        }
+      },
+      "results": {
+        "title": "Impact: Dramatic Efficiency Gains",
+        "description": "The hybrid GPU sharing strategy delivered measurable improvements across multiple workload types, increasing overall system throughput while directly reducing GPU costs.",
+        "items": {
+          "0": {
+            "title": "CI-Workload-Auslastung",
+            "value": "5% → 30-50%",
+            "description": "By partitioning GPUs into ¼ or smaller fractions, effective GPU utilization in CI pipelines increased by approximately 4×"
+          },
+          "1": {
+            "title": "Simulations-GPU-Stunden",
+            "value": "-30%",
+            "description": "Feingranulares GPU-Sharing reduzierte die GPU-Stunden um ca. 30%"
+          },
+          "2": {
+            "title": "Simulations-Aufgabendauer",
+            "value": "3 Tage → 2 Tage",
+            "description": "End-to-End-Simulationsaufgaben von ca. 3 auf ca. 2 Tage reduziert"
+          },
+          "3": {
+            "title": "Bereitstellungsumfang",
+            "value": "400-560 GPUs",
+            "description": "Ueber 50-70 Knoten mit HAMi"
+          },
+          "4": {
+            "title": "Gesamtinfrastruktur",
+            "value": "600 GPUs",
+            "description": "Ueber ~80 Knoten fuer autonome Fahrworkloads"
+          },
+          "5": {
+            "title": "Strategie",
+            "value": "Hybrid",
+            "description": "HAMi + MIG + Time-Slicing fuer optimale Ergebnisse"
+          }
+        }
+      },
+      "lessonsLearned": {
+        "title": "Erkenntnisse",
+        "description": "NIO's deployment of HAMi provided valuable insights for organizations implementing GPU virtualization at scale.",
+        "points": {
+          "0": {
+            "title": "GPU-Partitionierungsoptimierung",
+            "description": "GPU partitioning is not 'the finer, the better.' Each workload has an optimal partition size. Over-fragmentation can reduce efficiency."
+          },
+          "1": {
+            "title": "Leistungsvalidierung",
+            "description": "Version upgrades require performance validation. New GPU virtualization components may introduce performance regressions. NIO adopted a phased upgrade strategy, validating performance benchmarks before allowing different HAMi components to run at different versions."
+          },
+          "2": {
+            "title": "Produktionssicherheit",
+            "description": "Operational changes must ensure production safety. For online inference workloads, device plugin upgrades follow a blue–green deployment–like process: traffic is migrated first, new Pods are deployed, and old instances are gradually decommissioned."
+          },
+          "3": {
+            "title": "Toolchain-Kompatibilitaet",
+            "description": "Toolchain compatibility is critical. Certain compiler or library features (such as pointer or address analysis) may conflict with GPU interception mechanisms. Careful trade-offs between functionality and stability are required."
+          }
+        }
+      },
+      "quote": {
+        "text": "NIO's deployment of HAMi demonstrates how fine-grained GPU sharing can significantly improve infrastructure efficiency for autonomous driving workloads. By combining HAMi with Kubernetes and existing GPU allocation mechanisms such as MIG and time-slicing, NIO increased GPU utilization, reduced overall GPU hours, and improved workload throughput without compromising stability.",
+        "author": "NIO Infrastructure Team"
+      },
+      "companyCard": {
+        "name": "NIO",
+        "description": "Leading electric vehicle company with autonomous driving AI platform"
+      },
+      "cta": {
+        "exploreHami": "HAMi erkunden",
+        "contactUs": "Kontakt"
+      },
+      "conclusion": {
+        "title": "Hybrid Strategy Success",
+        "description": "NIO's hybrid resource management strategy enables the company to support diverse AI workloads—from CI pipelines to simulation and inference—more efficiently within the same Kubernetes environment. This approach demonstrates how combining HAMi with other GPU allocation mechanisms can deliver optimal results for different workload types."
+      }
+    },
+    "snowCorp": {
+      "title": "SNOW Corp Scales GenAI for 200M Users with HAMi GPU Sharing and KEDA Autoscaling",
+      "subtitle": "Discover how SNOW Corp orchestrates 1,000+ GPUs to handle 700% viral traffic spikes, achieving 91% MTTR reduction, 85% fewer surge errors, and USD 17.4M in estimated cost savings using HAMi and KEDA on Kubernetes.",
+      "stats": {
+        "0": {
+          "value": "1.000+",
+          "label": "A100 GPUs orchestriert"
+        },
+        "1": {
+          "value": "200M+",
+          "label": "globale Nutzer in 3 Apps"
+        },
+        "2": {
+          "value": "700%",
+          "label": "virale Traffic-Spitzen bewae ltigt"
+        }
+      },
+      "overview": {
+        "title": "Unternehmensuebersicht",
+        "description": "SNOW Corp., a subsidiary of NAVER from South Korea, operates a fleet of 1,000+ A100 GPUs serving GenAI features for 200M+ global users across three top-ranked apps (SNOW, EPIK, B612). The infrastructure serves 1,200+ AI workflows and 400+ models, handling extreme traffic volatility from viral AI trends.",
+        "keyPoints": {
+          "0": "Tochter von NAVER, Suedkoreas fuehrende Tech-Plattform",
+          "1": "Drei Top-GenAI-Apps: SNOW, EPIK, B612",
+          "2": "1.200+ KI-Workflows und 400+ Modelle in Produktion",
+          "3": "Multi-Region On-Premise Kubernetes-Plattform"
+        }
+      },
+      "challenge": {
+        "title": "Challenge: GPU Scheduling at Extreme Scale",
+        "description": "Kubernetes' native GPU scheduling treats GPUs as atomic resources — a pod either gets a full GPU or nothing. This model broke down under SNOW's heterogeneous workload demands and unpredictable viral traffic spikes.",
+        "points": {
+          "0": {
+            "title": "Heterogene Workload-Anforderungen",
+            "description": "Training pipelines, inference services, and batch processing have vastly different GPU utilization profiles. A training job might consume 80% of GPU compute but only 20% of memory, while inference has the opposite profile."
+          },
+          "1": {
+            "title": "Traffic-Unvorhersehbarkeit",
+            "description": "Viral AI trends and heterogeneous inference workflows created 700% traffic spikes. Without GPU-level observability, scaling decisions were either manual or based on crude CPU/memory metrics that don't reflect GPU saturation."
+          },
+          "2": {
+            "title": "Planungsblindheit",
+            "description": "Before Kubernetes adoption, 2-3 containers in the same pod competed for GPU resources with no coordination. Manual GPU provisioning based on load predictions led to ~2x over-provisioning."
+          },
+          "3": {
+            "title": "Kostenexplosion",
+            "description": "To handle peak loads, SNOW had to over-provision by approximately 2x — one GPU for training, one for inference — when one could theoretically suffice."
+          }
+        }
+      },
+      "solution": {
+        "title": "Solution: CNCF-Powered GPU Orchestration Stack",
+        "description": "SNOW migrated to a multi-region on-premise Kubernetes platform with the CNCF ecosystem underpinning the entire stack: Cilium for CNI, Helm for GitOps-based deployment, Traefik for ingress, Prometheus/Loki/Grafana for observability, HAMi for GPU sharing, and KEDA for autoscaling.",
+        "hamiSharing": {
+          "title": "GPU Sharing with HAMi",
+          "description": "Kubernetes' default scheduler enforces strict GPU isolation, which blocked migration of SNOW's sequential Train-to-Inference pipelines — where a trainer and inference engine must share a single GPU. HAMi resolves this by virtualizing GPU resources (vGPU), enabling multiple containers within the same pod to share a single GPU concurrently.",
+          "features": {
+            "0": "Integriert sich nativ mit kube-scheduler ohne Anwendungscode-Aenderungen",
+            "1": "Vollstaendig kompatibel mit dem breiteren Autoskalierungs-Oekosystem",
+            "2": "Ermoeglicht 2x weniger GPUs fuer Training + Inferenz"
+          }
+        },
+        "kedaAutoscaling": {
+          "title": "Proactive GPU Orchestration with KEDA",
+          "description": "Standard metrics (CPU/RAM, DCGM utilization) proved unreliable for SNOW's heterogeneous workloads. KEDA's built-in RabbitMQ scaler functioned as a lagging indicator — given a ~60-second model warm-up time, scaling triggered after a queue backlog formed was consistently too late.",
+          "features": {
+            "0": "Custom Metric Server (Python/FastAPI) stellt Consumer-Saettigungsmetrik fuer KEDA bereit",
+            "1": "Proactive scaling: when active_ratio exceeds threshold (e.g., 0.7), KEDA provisions new GPU pods before worker pool saturates",
+            "2": "Intelligentes Scale-In: laengere Stabilisierungsfenster verhindern vorzeitige Freigabe"
+          }
+        },
+        "cloudBursting": {
+          "title": "Hybrid Cloud Bursting for Viral Spikes",
+          "description": "When viral trends like the 'Ghibli Filter' tripled traffic within 3 hours, SNOW expanded dynamically into CSP regions using a unified GitOps pipeline that deployed identical Helm charts across all clusters.",
+          "features": {
+            "0": "Einheitliche GitOps-Pipeline mit identischen Helm-Charts ueber alle Cluster",
+            "1": "CSP-Workerknoten konsumierten Aufgaben direkt aus zentraler RabbitMQ-Warteschlange",
+            "2": "Nahtlose Multi-Cluster-Skalierung ohne Dienstunterbrechung"
+          }
+        }
+      },
+      "results": {
+        "title": "Impact and Results",
+        "description": "SNOW's cloud-native transformation demonstrates how combining Kubernetes with the broader CNCF ecosystem can overcome fundamental limitations in GPU scheduling and observability at extreme scale.",
+        "items": {
+          "0": {
+            "title": "MTTR-Verbesserung",
+            "value": "91%",
+            "description": "Von ~2 Std. auf ~10 Min. reduziert"
+          },
+          "1": {
+            "title": "Reduzierung von Spitzenfehlern",
+            "value": "85%",
+            "description": "GPU-spitzenbezogene Benutzerfehler waehrend Spitzenverkehr"
+          },
+          "2": {
+            "title": "Kosteneinsparungen",
+            "value": "17,4M USD",
+            "description": "Geschaetzte Einsparungen vs. On-Demand Cloud GPU-Bereitstellung"
+          },
+          "3": {
+            "title": "GPU-Nutzungszeit",
+            "value": "-55%",
+            "description": "Durchschnittliche GPU-Nutzungszeit durch proaktive Autoskalierung reduziert"
+          },
+          "4": {
+            "title": "GPU-Bedarf",
+            "value": "2x Weniger",
+            "description": "GPUs fuer Training + Inferenz durch HAMi-Sharing benoetigt"
+          },
+          "5": {
+            "title": "Betriebseinsparungen",
+            "value": "10,8 Personenmonate",
+            "description": "Manuelle Skalierung eliminiert, metrikgesteuerte Automatisierung eingefuehrt"
+          }
+        }
+      },
+      "cncfNote": {
+        "title": "CNCF Case Study",
+        "description": "This case study was originally published by the Cloud Native Computing Foundation (CNCF) as part of its end-user case study program. It demonstrates SNOW Corp.'s success with HAMi, a CNCF Sandbox project, within the broader CNCF ecosystem.",
+        "link": "https://www.cncf.io/case-studies/snow-corp/"
+      },
+      "quote": {
+        "text": "SNOW's cloud-native transformation demonstrates how combining Kubernetes with the broader CNCF ecosystem can overcome fundamental limitations in GPU scheduling and observability at extreme scale. By introducing HAMi for GPU sharing and augmenting KEDA with proactive, custom metrics, SNOW shifted from reactive, manual operations to predictive, automated orchestration.",
+        "author": "SNOW Corp. Infrastructure Team",
+        "position": "Infrastructure Team, SNOW Corp."
+      },
+      "companyCard": {
+        "name": "SNOW Corp.",
+        "description": "NAVER subsidiary serving 200M+ GenAI users globally"
+      },
+      "cta": {
+        "exploreHami": "HAMi erkunden",
+        "contactUs": "Kontakt"
+      },
+      "conclusion": {
+        "title": "A Replicable Blueprint for Large-Scale GenAI",
+        "description": "SNOW's approach highlights a replicable blueprint for running large-scale GenAI workloads — where intelligent resource utilization, autoscaling precision, and deep observability are critical to turning infrastructure challenges into competitive advantage."
+      }
+    }
+  },
+  "privacyPolicy": {
+    "title": "Datenschutzerklaerung",
+    "lastUpdated": "Last Updated: March 03, 2025",
+    "intro": "DYNAMIA INTELLIGENCE PTE. LTD. (referred to as \"us\", \"we\", or \"our\" hereinafter) is the operator of the website https://dynamia.ai/ (the \"Site\"). This page details our policies regarding the collection, utilization, and disclosure of Personal Information we obtain from users of the Site.",
+    "consent": "We utilize your Personal Information solely for the purposes of providing and enhancing the Site. By using the Site, you consent to the collection and use of information in line with this policy.",
+    "sections": {
+      "0": {
+        "title": "Datenerfassung und -nutzung",
+        "content": "When using our Site, we may request that you supply certain personally identifiable information that can be employed to contact or identify you. Personally identifiable information may encompass, but is not restricted to, your name and email address."
+      },
+      "1": {
+        "title": "Protokolldaten",
+        "content": "Similar to numerous site operators, we gather information that your browser transmits each time you visit our Site (referred to as \"Log Data\"). This Log Data may include details such as your computer's Internet Protocol (IP) address, browser type, browser version, the pages of our Site you visit, the time and date of your visit, the duration spent on those pages, and other relevant statistics. Additionally, we may employ third - party services like Google Analytics to collect, monitor, and analyze this data."
+      },
+      "2": {
+        "title": "Kommunikation",
+        "content": "We may utilize your email address to send you newsletters, marketing or promotional materials, and other information that aids you in better understanding and using our products and services. You can always unsubscribe from such communications by clicking the unsubscribe link within the email or by updating your preferences on the Site."
+      },
+      "3": {
+        "title": "Cookies",
+        "content": "Cookies are small data files that may contain an anonymous unique identifier. They are sent from a website to your browser and stored on your computer's hard drive. Like many sites, we use \"cookies\" to collect information. You can configure your browser to reject all cookies or to alert you when a cookie is being sent. However, if you choose not to accept cookies, you may encounter difficulties accessing and using some parts of our Site."
+      },
+      "4": {
+        "title": "Sicherheit",
+        "content": "The security of your Personal Information is of great importance to us. Nevertheless, it's crucial to note that no method of transmission over the Internet or electronic storage is completely secure. Although we endeavor to use commercially reasonable means to safeguard your Personal Information, we cannot ensure its absolute security."
+      },
+      "5": {
+        "title": "Aenderungen dieser Datenschutzerklaerung",
+        "content": "This Privacy Policy became effective on March 03, 2025, and will remain in force, except for any future changes to its provisions. Such changes will take effect immediately upon being posted on this page. We reserve the right to update or modify our Privacy Policy at any time. You are advised to review this Privacy Policy periodically. Continuing to use the Service after we post any modifications to the Privacy Policy on this page will signify your recognition of the changes and your consent to comply with and be bound by the revised Privacy Policy. If we make any significant changes to this Privacy Policy, we will notify you either via the email address you provided us or by placing a conspicuous notice on our website."
+      },
+      "6": {
+        "title": "Kontakt",
+        "content": "Bei Fragen kontaktieren Sie uns unter info@dynamia.ai."
+      }
+    }
+  },
+  "cookiesPolicy": {
+    "title": "Cookie-Richtlinie",
+    "lastUpdated": "Last Updated: May 07, 2026",
+    "intro": "This Cookies Policy explains how DYNAMIA INTELLIGENCE PTE. LTD. uses cookies and similar technologies on https://dynamia.ai/.\n\nWe use necessary cookies to operate the Site. Optional categories, including analytics, marketing, and functional cookies, are disabled by default and are used only after you provide consent through our cookie banner or preferences panel.\n\nYou can change your choices at any time by opening Cookie Settings in the footer.",
+    "sections": {
+      "0": {
+        "title": "Was sind Cookies?",
+        "content": "Cookies are small text files consisting solely of letters and numbers. A web server places them on your computer or mobile device when you visit a webpage. Cookies can enhance the user - friendliness of our Services, for instance, by remembering your language preferences and settings. For more details about cookies, visit www.allaboutcookies.org.\n\nCookies are extensively used to make websites function efficiently. They allow you to navigate between pages smoothly, remember your preferences, and make your interaction with the Services more seamless and efficient. Cookies also help ensure that the online advertisements you see are relevant to you and your interests."
+      },
+      "1": {
+        "title": "Cookie-Kategorien",
+        "content": "Necessary: required for core site behavior such as language routing, remembering your cookie consent choice, and maintaining limited access state for gated video content.\n\nAnalytics: used only with consent to understand traffic and performance through Google Analytics, Vercel Analytics, and Vercel Speed Insights.\n\nMarketing: reserved for campaign measurement, advertising, or remarketing. We do not enable marketing cookies unless you opt in.\n\nFunctional: reserved for optional experience preferences beyond what is strictly required. We do not enable functional cookies unless you opt in."
+      },
+      "2": {
+        "title": "Aktuelle Cookies und Technologien",
+        "content": "dynamia_cookie_consent: a first-party necessary cookie that stores your consent record, including version, timestamp, and enabled categories. It is retained for up to 180 days.\n\nNEXT_LOCALE: a first-party necessary cookie used to remember language preference. It is retained for up to one year.\n\nvideo_unlocked: a first-party necessary cookie used to remember that video content has been unlocked on this browser. It is retained for up to 30 days.\n\nGoogle Analytics (_ga and related cookies): third-party analytics cookies used only after analytics consent. Retention is controlled by Google Analytics settings.\n\nVercel Analytics and Speed Insights: analytics and performance measurement technologies used only after analytics consent. Retention is controlled by Vercel."
+      },
+      "3": {
+        "title": "Ihre Wahlmoeglichkeiten",
+        "content": "You can accept all optional categories, reject all optional categories, or manage individual categories through our cookie banner. You can change your decision later by selecting Cookie Settings in the footer.\n\nYou may also restrict or block cookies through your browser settings. Blocking necessary cookies may affect site behavior."
+      },
+      "4": {
+        "title": "Einwilligungsaufzeichnungen",
+        "content": "When you save your choice, we store a consent record in your browser. The record includes the policy version, timestamp, and whether analytics, marketing, and functional categories are enabled. Necessary cookies remain enabled because they are required for the Site to operate."
+      },
+      "5": {
+        "title": "Aenderungen unserer Cookie-Richtlinie",
+        "content": "We may update our Cookie Policy from time to time. Changes to our Cookie Policy will be updated on this page. We encourage users to frequently check this page for any changes. The date of the last update to our Cookie Policy is indicated at the top of the policy."
+      },
+      "6": {
+        "title": "Kontakt",
+        "content": "Bei Fragen zu Cookies: info@dynamia.ai."
+      }
+    }
+  },
+  "videos": {
+    "pageTitle": "Produktvideos",
+    "pageSubtitle": "Built by the creators of HAMi — the CNCF sandbox project for heterogeneous GPU sharing and scheduling. See how Dynamia turns open-source innovation into enterprise-grade GPU orchestration.",
+    "locked": "Gesperrt",
+    "gate": {
+      "title": "Watch Product Videos",
+      "subtitle": "Fill in your details to unlock",
+      "submit": "Videos freischalten",
+      "success": "Danke! Wird freigeschaltet...",
+      "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder senden Sie eine E-Mail an info@dynamia.ai."
+    },
+    "player": {
+      "close": "Schliessen"
+    },
+    "items": {
+      "productOverview": {
+        "title": "Produktuebersicht",
+        "description": "GPU sharing, scheduling & orchestration — a quick platform walkthrough."
+      },
+      "hamiIntro": {
+        "title": "Was ist HAMi",
+        "description": "Open-source heterogeneous GPU virtualization middleware, by Dynamia's founders."
+      },
+      "gpuOversell": {
+        "title": "GPU Oversubscription in Practice",
+        "description": "Enterprise-grade GPU oversubscription — real-world demo of resource optimization."
+      }
+    }
+  },
+  "enterprise": {
+    "list": {
+      "title": "Dynamia Produktuebersicht",
+      "subtitle": "Compare HAMi Enterprise and HAMi AI Platform, then choose the right path for production-grade heterogeneous compute.",
+      "noRelease": "Noch keine Releases",
+      "viewDetail": "Details anzeigen",
+      "downloadCta": "Herunterladen",
+      "artifactCount": "{count} Download-Artefakte",
+      "metaVersion": "Version",
+      "metaReleased": "Veroeffentlicht",
+      "metaArtifacts": "Artefakte",
+      "heroBadge": "Produkte · Produktionsbereit",
+      "heroApplyTrial": "Testversion beantragen",
+      "statEditions": "Produkte",
+      "statGA": "GA-Produkte",
+      "statReleases": "Releases",
+      "statArtifacts": "Artefakte",
+      "matrixTitle": "Produktpalette",
+      "matrixDesc": "Waehlen Sie ein Produkt fuer Einfuehrung, Downloads und Kompatibilitaetsmatrix.",
+      "cardEyebrowHamiEnterprise": "GPU-Virtualisierung",
+      "cardEyebrowHamiAiPlatform": "Heterogene Compute-Plattform",
+      "matrixCount": "{count} Produkte verfuegbar",
+      "helpTitle": "Hilfe bei der Produktauswahl?",
+      "helpDesc": "Groessenbestimmung, Evaluierungslizenzen, Air-Gap-Support — sprechen Sie mit unserem Team.",
+      "applyTrial": "Testversion beantragen",
+      "viewPricing": "Preise anzeigen",
+      "comingSoonBadge": "Demnächst",
+      "comingSoonTitle": "Weitere Produkte in Kürze",
+      "comingSoonDesc": "Wir bereiten weitere beschleunigerspezifische Produkte vor. Kontaktieren Sie den Vertrieb fuer fruehen Zugang.",
+      "comingSoonHint": "Quartals-Roadmap"
+    },
+    "detail": {
+      "backToList": "Zurück zur Übersicht",
+      "latest": "Neueste",
+      "latestLabel": "Neueste",
+      "openDocs": "Dokumentation",
+      "downloadLatest": "Neueste herunterladen",
+      "openInstallGuide": "Installationsanleitung",
+      "aboutTitle": "Über dieses Produkt",
+      "downloadTitle": "Downloads",
+      "versionLabel": "Version",
+      "releasedAt": "Veroeffentlicht",
+      "releaseNotes": "Release Notes",
+      "upgradeGuide": "Upgrade-Anleitung",
+      "noRelease": "Kein Release fuer diese Version verfuegbar.",
+      "compatTitle": "Kompatibilitaetsmatrix",
+      "contactTitle": "Enterprise-Support benoetigt?",
+      "contactDesc": "Erhalten Sie ein massgeschneidertes Angebot, Bereitstellungsunterstuetzung und 24/7 SLA.",
+      "contactCta": "Vertrieb kontaktieren",
+      "casesTitle": "Kundenbereitstellungen",
+      "casesDesc": "Echte Architekturen, Produktionsbereitstellungen.",
+      "casesCta": "Fallstudien durchsuchen",
+      "channelStable": "Stabil",
+      "channelBeta": "Beta",
+      "channelRc": "RC",
+      "channelEol": "EOL",
+      "eolWarning": "End-of-Life — keine Sicherheitsupdates. Verwenden Sie die neueste stabile Version in der Produktion.",
+      "betaWarning": "Beta — nur zur Evaluierung. Nicht fuer die Produktion.",
+      "downloadComingSoonBadge": "Demnächst",
+      "downloadComingSoonTitle": "Downloads in Kuerze",
+      "downloadComingSoonDesc": "Versions-Downloads, Bereitstellungs-Workflow und Download-Pfade werden noch vorbereitet. Dieser Abschnitt wird aktualisiert, sobald sie fertig sind.",
+      "deliveryTabsLabel": "Bereitstellungsmodus",
+      "deliveryTabOnline": "Online-Installation",
+      "deliveryTabOffline": "Offline-Installation",
+      "deliveryTabSoon": "Bald",
+      "deliveryOnlineDesc": "Online-Installationsschritte, OCI/Helm-Befehle und Verifizierung finden Sie in der Installationsanleitung.",
+      "deliveryOfflineDesc": "Air-Gap-Bundles und Image-Tarballs fuer isolierte Netzwerke und Produktionsuebergabe.",
+      "onlineInstallTitle": "Empfohlen: OCI-Installation",
+      "onlineInstallDesc": "Fuehren Sie diesen Befehl aus, wenn Ihr Cluster die OCI-Registry erreichen kann.",
+      "offlineComingSoonTitle": "Offline-Pakete in Vorbereitung",
+      "offlineComingSoonDesc": "All-in-One Air-Gap-Bundles und Image-Archive werden verpackt und verifiziert. Downloads und SHA256-Pruefsummen erscheinen hier, sobald sie bereit sind."
+    },
+    "artifact": {
+      "download": "Herunterladen",
+      "view": "View",
+      "unlockToDownload": "Zum Herunterladen freischalten",
+      "installCommand": "Installationsbefehl",
+      "mirrorLabel": "Download-Spiegel",
+      "groupBundles": "All-in-One Air-Gap-Bundle",
+      "groupBundlesDesc": "Einzelner Tarball mit Images + Helm-Chart + Installationsskripten + Dokumentation — fuer vollstaendig isolierte Netzwerke.",
+      "recommendedBadge": "Empfohlen",
+      "bundleContents": "Enthaelt:",
+      "contentBundle": "All-in-One",
+      "contentImage": "Container-Images",
+      "contentChart": "Helm-Chart",
+      "contentDocs": "Installationsdokumente",
+      "contentReleaseNotes": "Release Notes",
+      "contentChecksum": "Pruefsumme",
+      "groupImages": "Container-Images",
+      "groupImagesDesc": "Offline-Image-Bundles fuer Air-Gap-Umgebungen.",
+      "groupCharts": "Helm-Charts",
+      "groupChartsDesc": "Installation via OCI online, oder laden Sie ein Chart-Tarball herunter.",
+      "groupChartsDescOnline": "Laden Sie das Chart-Archiv herunter, wenn OCI nicht verfuegbar ist.",
+      "groupChartsDescOffline": "Chart-Paket fuer Offline- oder private Helm-Installationen.",
+      "groupChartsOptional": "Chart-Archiv (optional)",
+      "groupDocs": "Dokumentation",
+      "groupDocsDesc": "Installationsanleitungen und Release Notes."
+    },
+    "installDoc": {
+      "back": "Zurueck zum Produkt",
+      "label": "Installationsanleitung",
+      "lastUpdated": "Zuletzt aktualisiert",
+      "tocTitle": "Auf dieser Seite"
+    },
+    "trust": {
+      "deployedBy": "Im Produktionseinsatz bei",
+      "caseTitle": "Praxiseinsaetze",
+      "caseDesc": "Fuehrende Unternehmen, die in grossem Umfang mit heterogenen Beschleunigern arbeiten.",
+      "viewAllCases": "Alle Fallstudien",
+      "readCase": "Fallstudie lesen",
+      "contactEyebrow": "Vertrieb kontaktieren",
+      "contactPhone": "Telefon",
+      "contactEmail": "E-Mail",
+      "truncationLength": 140
+    },
+    "gate": {
+      "title": "Enterprise-Downloads freischalten",
+      "subtitle": "Mit Ihren Daten freischalten — 30-Tage-Zugang.",
+      "submit": "Downloads freischalten",
+      "success": "Danke! Wird freigeschaltet...",
+      "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder senden Sie eine E-Mail an info@dynamia.ai.",
+      "consentLabel": "Ich stimme der <link>Datenschutzerklaerung</link> zu und willige in die Verarbeitung meiner Daten fuer die Vertriebsnachverfolgung ein (DSGVO Artikel 6).",
+      "consentRequired": "Bitte akzeptieren Sie die Datenschutzerklaerung, um fortzufahren."
+    },
+    "hamiEnterprisePage": {
+      "heroBadge": "Enterprise Edition",
+      "heroTitle": "HAMi Enterprise",
+      "heroSubtitle": "Produktionsreife GPU-Virtualisierung auf Basis des CNCF Sandbox-Projekts — steigern Sie die GPU-Auslastung von 40% auf ueber 70%",
+      "overviewTitle": "Fuer die Produktion entwickelt",
+      "overviewDescription": "HAMi Enterprise ist die GPU-lizenzbasierte Enterprise-Variante von HAMi.",
+      "highlightsTitle": "Enterprise-Highlights",
+      "compatTitle": "Kompatibilitaet",
+      "compatKubernetes": "Kubernetes",
+      "compatOs": "Betriebssysteme",
+      "compatGpu": "GPU-Treiber",
+      "ctaTitle": "Bereit zum Start?",
+      "ctaDescription": "Kontaktieren Sie unser Team fuer Enterprise-Lizenzen, Bereitstellungsunterstuetzung und 24/7 Support.",
+      "viewDownloads": "Herunterladen",
+      "applyTrial": "Testversion beantragen"
+    },
+    "status": {
+      "ga": "Allgemein verfügbar",
+      "beta": "Beta",
+      "eol": "End of Life"
+    },
+    "compatLabels": {
+      "kubernetes": "Kubernetes",
+      "os": "Betriebssysteme",
+      "gpu": "GPU-Treiber"
+    },
+    "checksumPending": "Pruefsumme ausstehend",
+    "copyCommand": "Kopieren",
+    "copiedCommand": "Kopiert",
+    "downloadContactNeedBundles": "Benoetigen Sie Bundles frueher?",
+    "downloadContactSales": "Vertrieb kontaktieren",
+    "downloadContactPhone": "oder rufen Sie 400-026-7800 an",
+    "origin": {
+      "eyebrow": "Gleiche DNA",
+      "title": "HAMi & Dynamia",
+      "subtitle": "HAMi ist das CNCF Sandbox-Projekt fuer heterogene KI-Computing-Virtualisierung. Gegruendet und betreut vom dynamia.ai-Team. Unsere Enterprise-Varianten liefern denselben Upstream-Code — gehaertet, unterstuetzt, mit SLA.",
+      "pillars": [
+        {
+          "title": "CNCF Sandbox",
+          "desc": "Offene Governance · herstellerneutrale Stiftung"
+        },
+        {
+          "title": "Von Dynamia entwickelt",
+          "desc": "HAMi-Maintainer sind das dynamia.ai-Team"
+        },
+        {
+          "title": "100% Upstream",
+          "desc": "Kein Fork-Drift · keine Bindung"
+        },
+        {
+          "title": "OEM-SLA",
+          "desc": "24/7 Support · Langzeit-Release-Linien"
+        }
+      ],
+      "relation": {
+        "connector1": "Gegruendet & betreut",
+        "connector2": "OEM-Bereitstellung · SLA",
+        "team": {
+          "title": "Dynamia AI",
+          "titleSub": "dynamia.ai",
+          "desc": "Gruender und Kern-Maintainer von HAMi, liefert Enterprise-Varianten als OEM."
+        },
+        "opensource": {
+          "title": "HAMi",
+          "desc": "Heterogene KI-Computing-Virtualisierungs-Middleware · Open Source, Community-getrieben."
+        },
+        "commercial": {
+          "title": "Enterprise-Varianten",
+          "desc": "Kommerzielle Distribution auf Basis von HAMi, mit Support und Services von Dynamia AI."
+        }
+      },
+      "ctaPrimary": "HAMi-Website",
+      "ctaCommunity": "Community",
+      "ctaGithub": "GitHub",
+      "ctaDiscord": "Discord"
+    },
+    "scope": {
+      "title": "Welches Produkt ist das Richtige fuer Sie?",
+      "subtitle": "Drei Produktlinien — Open-Source HAMi, HAMi Enterprise und HAMi AI Platform.",
+      "decisionTitle": "In 30 Sekunden waehlen",
+      "totalsLabel": "Abgedeckte Funktionen",
+      "totalsHint": "Haken = wird in dieser Edition unterstuetzt",
+      "recommendPrefix": "→ ",
+      "decisionRows": [
+        {
+          "scenario": "Ich moechte GPU-Sharing selbst ausprobieren",
+          "choice": "Open-Source HAMi"
+        },
+        {
+          "scenario": "Ich brauche eine unterstuetzte, gehaertete GPU-Virtualisierungsschicht",
+          "choice": "HAMi Enterprise"
+        },
+        {
+          "scenario": "Ich brauche auch Multi-Cluster-GUI, Kontingente und Observability",
+          "choice": "HAMi AI Platform"
+        },
+        {
+          "scenario": "Ich moechte eine Plattform fuer mehrere interne Teams verwalten",
+          "choice": "HAMi AI Platform"
+        }
+      ],
+      "columns": {
+        "feature": "Funktion",
+        "oss": "Open-Source HAMi",
+        "ossSub": "",
+        "commercial": "HAMi Enterprise",
+        "commercialSub": "",
+        "enterprise": "HAMi AI Platform",
+        "enterpriseSub": ""
+      },
+      "cta": {
+        "ossLabel": "Open-Source HAMi",
+        "ossLink": "GitHub",
+        "ossHref": "https://github.com/Project-HAMi/HAMi",
+        "commercialLabel": "HAMi Enterprise",
+        "commercialLink": "Herunterladen",
+        "enterpriseLabel": "HAMi AI Platform",
+        "enterpriseLink": "Herunterladen"
+      },
+      "groups": [
+        {
+          "id": "gpu-core",
+          "title": "GPU-Virtualisierungskern",
+          "desc": "Open-Source HAMi-Basis — erweitert in kommerziellen Editionen.",
+          "rows": [
+            {
+              "feature": "GPU-Speicher-Sharing"
+            },
+            {
+              "feature": "GPU-Kern-Sharing"
+            },
+            {
+              "feature": "Speicher-Hartisolierung"
+            },
+            {
+              "feature": "Kern-Hartisolierung"
+            },
+            {
+              "feature": "Speicher- & Kern-UEberbuchung"
+            },
+            {
+              "feature": "High-Perf-Modus (kein Virtualisierungs-Overhead)"
+            },
+            {
+              "feature": "HAMi Turbo-Modus"
+            },
+            {
+              "feature": "Auto-Skalierung ohne Neustart"
+            },
+            {
+              "feature": "Aufgabenprioritaet & Praeemption"
+            },
+            {
+              "feature": "Leerlaufanalyse & Speicherprofilierung"
+            },
+            {
+              "feature": "Optimierte Scheduler-Engine (parallel)"
+            },
+            {
+              "feature": "Binpack / Spread-Strategien"
+            },
+            {
+              "feature": "NVIDIA topologiebewusste Affinitaet"
+            },
+            {
+              "feature": "Volcano-Tiefenintegration (Praeemption / vGPU)"
+            }
+          ]
+        },
+        {
+          "id": "gpu-vendors",
+          "title": "Heterogene GPU-Herstellerunterstuetzung",
+          "desc": "Breite Herstellerabdeckung von NVIDIA bis zu fuehrenden inlaendischen Beschleunigern und AMD.",
+          "rows": [
+            {
+              "feature": "NVIDIA (volle Produktpalette)"
+            },
+            {
+              "feature": "AMD MI Serie (inkl. MI300X)"
+            },
+            {
+              "feature": "Ascend (910B / 910C)"
+            },
+            {
+              "feature": "MetaX (MXC500)"
+            },
+            {
+              "feature": "Kunlunxin (P800)"
+            },
+            {
+              "feature": "Hygon DCU (K100)"
+            },
+            {
+              "feature": "Iluvatar (BI)"
+            },
+            {
+              "feature": "Cambricon (MLU370)"
+            },
+            {
+              "feature": "Enflame (SG2042)"
+            },
+            {
+              "feature": "Moore Threads (MTT S3000)"
+            }
+          ]
+        },
+        {
+          "id": "multi-cluster",
+          "title": "Multi-Cluster-Kontrollebene",
+          "desc": "Nur Enterprise — schluesselfertige UI, Observability, Lebenszyklusmanagement.",
+          "rows": [
+            {
+              "feature": "Multi-Cluster-Observability (Cluster / App / GPU)"
+            },
+            {
+              "feature": "GPU-Hardwareueberwachung"
+            },
+            {
+              "feature": "Umfangreiche Alarmrichtlinien"
+            },
+            {
+              "feature": "Schluesselfertige GUI (Multi-Cluster-Dashboard, Kontingente, Workload)"
+            },
+            {
+              "feature": "Visueller Binpack/Spread-Strategie-Editor"
+            },
+            {
+              "feature": "Globale Zeitspannen-Suche & Filter"
+            },
+            {
+              "feature": "Multi-Cluster-Lebenszyklusmanagement (LCM)"
+            }
+          ]
+        },
+        {
+          "id": "enterprise-ops",
+          "title": "Enterprise-Betrieb",
+          "desc": "Nur Enterprise — Mandanten, Sicherheit, Abrechnung, OpenAPI, SLA.",
+          "rows": [
+            {
+              "feature": "Enterprise-Mandantenkontingente"
+            },
+            {
+              "feature": "Netzwerksicherheitsrichtlinien"
+            },
+            {
+              "feature": "Mandanten-Sicherheitsisolierung"
+            },
+            {
+              "feature": "Messung & Abrechnung"
+            },
+            {
+              "feature": "OpenAPI & Automatisierung"
+            },
+            {
+              "feature": "SLA-gestuetzter Support (24/7)"
+            },
+            {
+              "feature": "Air-Gap / Offline-Bereitstellung"
+            }
+          ]
+        }
+      ]
+    },
+    "productsData": {
+      "hami-enterprise": {
+        "name": "HAMi Enterprise",
+        "tagline": "GPU-Virtualisierung fuer Unternehmen auf Basis des CNCF Sandbox-Projekts — steigern Sie die GPU-Auslastung von 40% auf ueber 70%",
+        "description": "HAMi Enterprise ist die GPU-lizenzbasierte Enterprise-Variante von HAMi, entwickelt fuer Teams, die gehaertete, unterstuetzte GPU-Virtualisierung mit Enterprise-Zuverlaessigkeit benoetigen.",
+        "highlights": [
+          {
+            "title": "Enterprise SLA",
+            "desc": "24/7 Support, Hotfix-Bereitstellung und Langzeitversionswartung."
+          },
+          {
+            "title": "Multi-Vendor GPU",
+            "desc": "NVIDIA, Ascend, MLU, Iluvatar, Hygon DCU und mehr."
+          },
+          {
+            "title": "Gehaertete Sicherheit",
+            "desc": "Signierte Images, CVE-Patching-Pipeline und Audit-Protokolle."
+          }
+        ]
+      },
+      "hami-ai-platform": {
+        "name": "HAMi AI Platform",
+        "tagline": "Full-Stack-Kontrollebene fuer heterogene Compute-Cluster",
+        "description": "HAMi AI Platform ist die Full-Stack-Kontrollebene fuer heterogene Compute-Cluster. Sie buendelt HAMi Enterprise mit Multi-Cluster-GUI, End-to-End-Observability, Enterprise-Mandantenkontingenten, Abrechnung, OpenAPI und SLA-Support.",
+        "highlights": [
+          {
+            "title": "Multi-Cluster-Foederation",
+            "desc": "Ressourcen ueber Rechenzentren und Clouds hinweg mit einer einzigen Kontrollebene poolen."
+          },
+          {
+            "title": "Mandantenfaehige Kontingente",
+            "desc": "Hierarchische Kontingente, faire Planung und Abrechnungsberichte."
+          },
+          {
+            "title": "Echtzeit-Observability",
+            "desc": "GPU/NPU-Auslastung, Warteschlangenlatenz, SLO-Dashboards."
+          }
+        ]
+      }
+    },
+    "codeLabels": {
+      "copy": "Kopieren",
+      "copied": "Kopiert",
+      "failed": "Kopieren fehlgeschlagen",
+      "aria": "Code-Ausschnitt kopieren"
+    },
+    "productIntro": {
+      "hami-enterprise": {
+        "eyebrow": "Produkteinfuehrung",
+        "title": "Produktionsreife GPU-Virtualisierung fuer Teams, die bereits Kubernetes betreiben.",
+        "body": "HAMi Enterprise verpackt die Open-Source-HAMi-Basis in eine gehaertete kommerzielle Distribution fuer echte Produktionscluster. Der Fokus liegt auf GPU-Sharing mit hoher Dichte, Multi-Vendor-Beschleuniger-Unterstuetzung, Sicherheitswartung, Hotfix-Bereitstellung und Enterprise-Support.",
+        "scenarioTitle": "Ideal geeignet",
+        "scenarios": [
+          "Sie betreiben bereits Kubernetes oder ein PaaS und benoetigen eine unterstuetzte HAMi-Distribution.",
+          "Sie benoetigen hoehere GPU-Auslastung, kontrolliertes vGPU-Sharing und Produktionsstabilitaet.",
+          "Sie moechten Enterprise-Support, Langzeitwartung und Air-Gap-Bereitstellungspakete."
+        ],
+        "capabilitiesTitle": "Kernfunktionen",
+        "capabilities": [
+          {
+            "title": "Feingranulares GPU-Sharing",
+            "desc": "GPU-Kern- und Speicheranteile zuweisen, um die Auslastung bei Trainings-, Inferenz- und Entwickler-Workloads zu verbessern."
+          },
+          {
+            "title": "Gehaertete Produktionsbereitstellung",
+            "desc": "Signierte Images, CVE-Response, Release-Pakete, Upgrade-Anleitungen und Bereitstellungsunterstuetzung fuer Enterprise-Umgebungen."
+          },
+          {
+            "title": "Multi-Vendor-Beschleuniger-Unterstuetzung",
+            "desc": "Betreiben Sie heterogene GPU- und Beschleuniger-Flotten ueber eine einheitliche Planungs- und Virtualisierungsschicht."
+          }
+        ]
+      },
+      "hami-ai-platform": {
+        "eyebrow": "Produkteinfuehrung",
+        "title": "Eine Full-Stack-Kontrollebene fuer heterogenes Computing mit integriertem HAMi Enterprise.",
+        "body": "HAMi AI Platform ist die Plattform-Edition fuer Organisationen, die mehr als eine Virtualisierungsschicht benoetigen. Sie enthaelt HAMi Enterprise und bietet eine Multi-Cluster-GUI, einheitliche Observability, Mandantenkontingente, Abrechnung, OpenAPI und operative Workflows.",
+        "scenarioTitle": "Ideal geeignet",
+        "scenarios": [
+          "Sie benoetigen eine visuelle Plattform fuer heterogene Computing-Operationen ueber mehrere Cluster hinweg.",
+          "Sie benoetigen Mandantenkontingente, Abrechnung und Ressourcen-Governance fuer mehrere Teams.",
+          "Sie benoetigen Cluster-, Anwendungs- und GPU-Observability in einer Kontrollebene."
+        ],
+        "capabilitiesTitle": "Plattform-Faehigkeiten",
+        "capabilities": [
+          {
+            "title": "Multi-Cluster-Ressourcenkontrolle",
+            "desc": "Ressourcen ueber Cluster, Rechenzentren und Cloud-Umgebungen hinweg poolen und planen."
+          },
+          {
+            "title": "Observability und Governance",
+            "desc": "GPU/NPU-Auslastung, Warteschlangen, Mandanten, Anwendungen und SLOs mit Plattform-Transparenz verfolgen."
+          },
+          {
+            "title": "Mandantenkontingente und OpenAPI",
+            "desc": "Kontingente, Abrechnung, Automatisierung und Integrations-Workflows fuer Plattform-Teams bereitstellen."
+          }
+        ]
+      }
+    }
+  },
+  "common": {
+    "readMore": "Weiterlesen",
+    "viewAll": "Alle anzeigen",
+    "useCompanyEmail": "Please use a company email to submit the form.",
+    "submitting": "Wird uebermittelt..."
+  },
+  "blogUI": {
+    "titleTemplate": "{title} | Dynamia AI Blog",
+    "figureLabel": "Figure '{n}'",
+    "all": "Alle",
+    "previous": "Zurueck",
+    "next": "Weiter",
+    "noPosts": "Noch keine Beitraege",
+    "noPostsDesc": "We're working on our first blog posts. Stay tuned!",
+    "subscribe": "Subscribe to our blog",
+    "subscribeDesc": "Get the latest technical articles, tutorials, and HAMi community updates.",
+    "emailPlaceholder": "Ihre E-Mail-Adresse",
+    "subscribeButton": "Abonnieren",
+    "redirecting": "Weiterleitung...",
+    "notFound": "Beitrag nicht gefunden",
+    "notFoundDesc": "Der gesuchte Beitrag existiert nicht oder wurde verschoben.",
+    "backToBlog": "Zurueck zum Blog",
+    "blog": "Blog",
+    "copyCode": "Kopieren",
+    "copied": "Kopiert",
+    "copyFailed": "Kopieren fehlgeschlagen",
+    "copyAria": "Code-Ausschnitt kopieren",
+    "categories": {
+      "Product Release": "Produktversion",
+      "Technical Deep Dive": "Technischer Deep Dive",
+      "Customer Success Story": "Customer Stories",
+      "Case Study": "Fallstudie",
+      "Integration & Ecosystem": "Integration",
+      "Company News": "Unternehmensnachrichten",
+      "Events": "Veranstaltungen",
+      "Community & Events": "Community",
+      "Open Source": "Open Source",
+      "Partnership": "Partnerschaft",
+      "Year in Review": "Jahresrueckblick"
+    }
+  },
+  "Site": {
+    "name": "Dynamia AI",
+    "alternateName": "MiGua Intelligence",
+    "tagline": "Einheitliches Heterogenes Computing",
+    "description": "Beschleunigen Sie KI-, HPC- und Edge-Workloads nahtlos. GPU-Virtualisierung und Ressourcenverwaltungsplattform fuer Unternehmen von Dynamia AI.",
+    "keywords": "dynamia ai, heterogene datenverarbeitung, GPU-Virtualisierung, KI-Infrastruktur, HAMi, GPU-Sharing, Enterprise-Computing",
+    "logo": "/dynamia-logo.svg",
+    "logoDark": "/dynamia-logo-white.svg",
+    "ogImage": "/LOGO-small.svg",
+    "url": "https://dynamia.ai"
+  },
+  "attachments": {
+    "notFound": "Anhang nicht gefunden"
+  },
+  "faq": {
+    "title": "Haeufig gestellte Fragen",
+    "subtitle": "Finden Sie Antworten auf haeufige Fragen zu Dynamia AI und unserer heterogenen Computing-Plattform.",
+    "questions": [
+      {
+        "question": "Was ist Dynamia AI?",
+        "answer": "Dynamia AI ist eine heterogene Computing-Plattform fuer Unternehmen, die auf HAMi-Technologie basiert. Sie bietet GPU-Sharing, Auto-Scaling und einheitliches Management fuer KI-Workloads."
+      },
+      {
+        "question": "Was ist HAMi?",
+        "answer": "HAMi (Heterogeneous AI Computing Middleware) ist ein Open-Source-Projekt und CNCF Sandbox-Projekt, das GPU-Virtualisierung und Ressourcenverwaltung bietet. Es ist die Kerntechnologie hinter Dynamia AI."
+      },
+      {
+        "question": "Wie funktioniert GPU-Sharing?",
+        "answer": "Dynamia AI konsolidiert und orchestriert GPU-Ressourcen dynamisch, sodass mehrere Workloads GPU-Speicher und Rechenleistung effizient teilen koennen."
+      },
+      {
+        "question": "Welche Workloads unterstuetzt Dynamia AI?",
+        "answer": "Dynamia AI unterstuetzt KI/ML-Training und -Inferenz, High-Performance Computing (HPC), Edge Computing und verschiedene andere rechenintensive Workloads."
+      },
+      {
+        "question": "Ist Dynamia AI mit Kubernetes kompatibel?",
+        "answer": "Ja, Dynamia AI ist fuer Kubernetes-Umgebungen entwickelt und laesst sich nahtlos in bestehende Kubernetes-Cluster integrieren."
+      },
+      {
+        "question": "Wie werden die Preise bestimmt?",
+        "answer": "Dynamia AI bietet flexible Preise basierend auf Cluster-Groesse, Knotenanzahl und GPU-Anzahl. Wir bieten massgeschneiderte Plaene, die mit Ihrer Infrastruktur skalieren."
+      },
+      {
+        "question": "Welcher Support ist enthalten?",
+        "answer": "Enterprise-Kunden erhalten professionellen technischen Support, einschliesslich Einrichtungshilfe, Fehlerbehebung, Best-Practice-Beratung und kontinuierliche Updates."
+      },
+      {
+        "question": "Kann ich Dynamia AI vor dem Kauf testen?",
+        "answer": "Ja, wir bieten kostenlose Testversionen fuer qualifizierte Organisationen an. Sie koennen ueber unsere Website eine Testversion beantragen."
+      }
+    ],
+    "ctaTitle": "Noch Fragen?",
+    "ctaDescription": "Unser Team ist hier, um zu helfen. Kontaktieren Sie uns fuer weitere Informationen oder um eine Demo zu vereinbaren.",
+    "ctaPrimary": "Testversion beantragen",
+    "ctaSecondary": "Support kontaktieren"
+  }
+}
