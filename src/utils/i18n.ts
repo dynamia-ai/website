@@ -1,8 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
+import { SITE_URL } from "@/config/app-config";
 
-const DOMAIN = "https://dynamia.ai";
+const DOMAIN = SITE_URL;
 
 type SeoPage = "home" | "products" | "pricing" | "company" | "solutions" | "resources" | "whatIsHami" | "faq";
 

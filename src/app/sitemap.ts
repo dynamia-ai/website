@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "@/config/app-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://dynamia.ai";
+  const baseUrl = SITE_URL;
 
   return [
     {

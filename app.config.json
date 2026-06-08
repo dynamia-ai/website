@@ -9,5 +9,20 @@
       "SI", "ES", "SE", "NO", "IS", "LI",
       "GB", "CN", "BR", "CA", "KR", "JP"
     ]
+  },
+  "site": {
+    "url": "https://dynamia.ai",
+    "foundingYear": 2023
+  },
+  "contact": {
+    "email": "info@dynamia.ai",
+    "noreplyEmail": "noreply@dynamia.ai",
+    "phone": {
+      "raw": "4000267800",
+      "display": "400-026-7800"
+    }
+  },
+  "analytics": {
+    "ga4MeasurementId": "G-HHZL7ECT9C"
   }
 }

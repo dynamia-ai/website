@@ -1,4 +1,6 @@
-export const SITE_ORIGIN = 'https://dynamia.ai';
+import { SITE_URL } from '@/config/app-config';
+
+export const SITE_ORIGIN = SITE_URL;
 
 export const AGENT_LINK_HEADERS = [
   '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',

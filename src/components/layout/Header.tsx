@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
+import { CONTACT_PHONE_RAW, CONTACT_PHONE_DISPLAY } from '@/config/app-config';
 import { usePathname } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -525,11 +526,11 @@ const Header: React.FC = () => {
 
                 {locale === 'zh' && (
                   <a
-                    href="tel:4000267800"
+                    href={`tel:${CONTACT_PHONE_RAW}`}
                     className="inline-flex items-center px-1.5 xl:px-2 py-2 text-xs xl:text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white whitespace-nowrap"
                   >
                     <PhoneIcon className="h-4 w-4 mr-1.5 flex-shrink-0" />
-                    400-026-7800
+                    {CONTACT_PHONE_DISPLAY}
                   </a>
                 )}
 
@@ -687,11 +688,11 @@ const Header: React.FC = () => {
             <div className="px-4 py-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
               {locale === 'zh' && (
                 <a
-                  href="tel:4000267800"
+                  href={`tel:${CONTACT_PHONE_RAW}`}
                   className="flex items-center justify-center w-full px-6 py-3.5 text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors touch-manipulation"
                 >
                   <PhoneIcon className="h-5 w-5 mr-2 flex-shrink-0" />
-                  400-026-7800
+                  {CONTACT_PHONE_DISPLAY}
                 </a>
               )}
               <Link

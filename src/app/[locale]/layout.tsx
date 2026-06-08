@@ -11,6 +11,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { jsonLdScriptProps } from "react-schemaorg";
 import type { Organization, WebSite, WithContext } from "schema-dts";
+import { SITE_URL, FOUNDING_YEAR, CONTACT_EMAIL } from "@/config/app-config";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -25,7 +26,7 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const DOMAIN = "https://dynamia.ai";
+const DOMAIN = SITE_URL;
 
 export default async function RootLayout({
   children,
@@ -87,11 +88,11 @@ export default async function RootLayout({
             url: t("orgUrl"),
             logo: `${DOMAIN}/LOGO-small.svg`,
             description: t("orgDescription"),
-            foundingDate: "2023",
+            foundingDate: String(FOUNDING_YEAR),
             sameAs: ["https://github.com/Project-HAMi/HAMi"],
             contactPoint: {
               "@type": "ContactPoint",
-              email: "info@dynamia.ai",
+              email: CONTACT_EMAIL,
               contactType: "customer service",
             },
             address: {
@@ -153,7 +154,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
-    metadataBase: new URL("https://dynamia.ai"),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t("title"),
       template: t("template"),
@@ -173,7 +174,7 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: t("ogLocale"),
-      url: "https://dynamia.ai",
+      url: SITE_URL,
       title: t("title"),
       description: t("ogDescription"),
       siteName: t("siteName"),

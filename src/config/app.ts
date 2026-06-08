@@ -7,8 +7,31 @@ interface CookieConsentConfig {
   requiredCountries: string[];
 }
 
+interface SiteConfig {
+  url: string;
+  foundingYear: number;
+}
+
+interface PhoneConfig {
+  raw: string;
+  display: string;
+}
+
+interface ContactConfig {
+  email: string;
+  noreplyEmail: string;
+  phone: PhoneConfig;
+}
+
+interface AnalyticsConfig {
+  ga4MeasurementId: string;
+}
+
 export interface AppConfig {
   cookieConsent: CookieConsentConfig;
+  site: SiteConfig;
+  contact: ContactConfig;
+  analytics: AnalyticsConfig;
 }
 
 let _config: AppConfig | null = null;

@@ -10,8 +10,7 @@ import {
   CookieConsentRecord,
   readCookieConsent,
 } from '@/lib/cookieConsent';
-
-const GA_MEASUREMENT_ID = 'G-HHZL7ECT9C';
+import { GA4_MEASUREMENT_ID } from '@/config/app-config';
 
 type GtagConsentValue = 'granted' | 'denied';
 
@@ -102,7 +101,7 @@ const ConsentAwareAnalytics: React.FC = () => {
         <>
           <Script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
             strategy="afterInteractive"
           />
           <Script id="google-analytics" strategy="afterInteractive">
@@ -112,7 +111,7 @@ const ConsentAwareAnalytics: React.FC = () => {
               window.gtag = gtag;
               gtag('consent', 'default', ${gtagConsentJson});
               gtag('js', new Date());
-              gtag('config', '${GA_MEASUREMENT_ID}');
+              gtag('config', '${GA4_MEASUREMENT_ID}');
             `}
           </Script>
           <SpeedInsights />

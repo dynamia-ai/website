@@ -1,5 +1,6 @@
 import { jsonLdScriptProps } from "react-schemaorg";
 import { getSiteConfig, type Locale } from "@/config/site";
+import { SITE_URL, FOUNDING_YEAR, CONTACT_EMAIL } from "@/config/app-config";
 import type {
   Organization,
   SoftwareApplication,
@@ -24,11 +25,11 @@ export function organizationSchema(locale: Locale = "en"): WithContext<Organizat
     url: cfg.url,
     logo: `${cfg.url}${cfg.ogImage}`,
     description: cfg.description,
-    foundingDate: "2023",
+    foundingDate: String(FOUNDING_YEAR),
     sameAs: ["https://github.com/Project-HAMi/HAMi"],
     contactPoint: {
       "@type": "ContactPoint",
-      email: "info@dynamia.ai",
+      email: CONTACT_EMAIL,
       contactType: "customer service",
     },
     address: {
@@ -53,19 +54,19 @@ export function productSchema(): WithContext<SoftwareApplication> {
       price: "Contact for Pricing",
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
-      url: "https://dynamia.ai/pricing",
+      url: `${SITE_URL}/pricing`,
     },
     author: {
       "@type": "Organization",
       name: "Dynamia AI",
-      url: "https://dynamia.ai",
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
       name: "Dynamia AI",
       logo: {
         "@type": "ImageObject",
-        url: "https://dynamia.ai/LOGO-small.svg",
+        url: `${SITE_URL}/LOGO-small.svg`,
       },
     },
     aggregateRating: {
@@ -87,7 +88,7 @@ export function productSchema(): WithContext<SoftwareApplication> {
     ],
     keywords:
       "GPU virtualization, heterogeneous computing, AI infrastructure, HAMi, Kubernetes, GPU sharing",
-    url: "https://dynamia.ai/products",
+    url: `${SITE_URL}/products`,
   };
 }
 
@@ -159,7 +160,7 @@ export function breadcrumbSchema(
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `https://dynamia.ai${item.url}`,
+      item: `${SITE_URL}${item.url}`,
     })),
   };
 }
