@@ -1,16 +1,15 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import { isCompanyEmail, isValidName, isValidCompany, isValidPhone, isValidEmailFormat } from '@/utils/validation';
 
 export default function FreeTrial() {
   const t = useTranslations();
-  const pathname = usePathname();
-  const isZhPage = pathname?.startsWith('/zh');
+  const locale = useLocale();
+  const isZhPage = locale === 'zh';
   const [formState, setFormState] = useState({
     intent: 'selfTrial',
     name: '',

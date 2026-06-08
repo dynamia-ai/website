@@ -15,8 +15,7 @@ const fadeIn = {
 
 export default function Solutions() {
   const t = useTranslations();
-  const pathname = usePathname();
-  const currentLocale = pathname?.startsWith('/zh') ? 'zh' : 'en';
+  const locale = useLocale();
   
   const categoriesData = t.raw('solutions.categories');
   const categories = Array.isArray(categoriesData)
@@ -104,7 +103,7 @@ export default function Solutions() {
                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{t('solutions.successStories.title')}</h3>
                 <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-6">{t('solutions.successStories.subtitle')}</p>
                 <Link
-                  href={currentLocale === 'zh' ? '/zh/case-studies' : '/case-studies'}
+                  href={localizedPath('/case-studies', locale)}
                   className="text-primary hover:text-primary-dark font-medium"
                 >
                   {t('solutions.successStories.viewAllButton')} &rarr;
