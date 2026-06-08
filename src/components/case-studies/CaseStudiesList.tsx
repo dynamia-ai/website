@@ -24,7 +24,7 @@ const CaseStudiesList: React.FC = () => {
   const t = useTranslations();
   const locale = useLocale();
   const shortenDescription = (text: string) => {
-    const maxChars = Number(t('caseStudiesPage.truncationLength')) || 160;
+    const maxChars = (t.raw('caseStudiesPage.truncationLength') as number) || 160;
     if (text.length <= maxChars) return text;
     return `${text.slice(0, maxChars).trimEnd()}...`;
   };
