@@ -2685,5 +2685,18 @@
     "ctaDescription": "我们的团队随时为您提供帮助。联系我们获取更多信息或预约演示。",
     "ctaPrimary": "申请试用",
     "ctaSecondary": "联系支持"
+  },
+  "contactEmail": {
+    "locale": "语言 / Locale",
+    "intent": "需求类型",
+    "name": "姓名",
+    "company": "公司",
+    "email": "邮箱",
+    "phone": "电话/微信",
+    "useCase": "使用场景",
+    "footer": "此邮件由 dynamia.ai 官网表单自动发送",
+    "intentSelfTrial": "自助试用",
+    "intentDemo": "申请演示",
+    "intentSales": "商务咨询"
   }
 }
