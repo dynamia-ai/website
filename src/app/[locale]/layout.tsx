@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
+import Script from "next/script";
 import { localizedUrl, localizedAlternates } from "@/utils/i18n";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
@@ -63,6 +64,17 @@ export default async function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Dynamia AI" />
+        <Script id="google-consent-mode" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'wait_for_update': 500
+          });`}
+        </Script>
         <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.svg" />
         <link rel="manifest" href="/manifest.json" />

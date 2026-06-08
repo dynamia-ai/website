@@ -18,7 +18,8 @@ export default function FreeTrial() {
     company: '',
     phone: '',
     useCase: '',
-    acceptTerms: false
+    acceptTerms: false,
+    _gotcha: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -127,7 +128,8 @@ export default function FreeTrial() {
           phone: formState.phone,
           useCase: formState.useCase,
           _subject: `${intentLabel} Application - ${formState.company}`,
-          _replyto: formState.email
+          _replyto: formState.email,
+          _gotcha: formState._gotcha,
         })
       });
       
@@ -140,7 +142,8 @@ export default function FreeTrial() {
           company: '',
           phone: '',
           useCase: '',
-          acceptTerms: false
+          acceptTerms: false,
+          _gotcha: '',
         });
         setSubmitStatus('success');
       } else {
@@ -301,6 +304,15 @@ export default function FreeTrial() {
                   {isSubmitting ? t('freeTrial.form.submitting') : t('freeTrial.form.submitButton')}
                 </button>
               </div>
+              <input
+                type="text"
+                name="_gotcha"
+                value={formState._gotcha}
+                onChange={handleInputChange}
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
             </form>
           </div>
 

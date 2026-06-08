@@ -2071,7 +2071,8 @@
       "subtitle": "Fill in your details to unlock",
       "submit": "Unlock Videos",
       "success": "Thanks! Unlocking now...",
-      "error": "Something went wrong. Please retry or email info@dynamia.ai."
+      "error": "Something went wrong. Please retry or email info@dynamia.ai.",
+      "invalidPhoneOrWechat": "Please enter a valid phone number or WeChat ID."
     },
     "player": {
       "close": "Close"

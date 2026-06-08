@@ -2063,7 +2063,8 @@
       "subtitle": "填写信息即可解锁全部视频内容",
       "submit": "解锁视频",
       "success": "感谢提交！正在解锁视频...",
-      "error": "提交失败，请重试或联系 info@dynamia.ai。"
+      "error": "提交失败，请重试或联系 info@dynamia.ai。",
+      "invalidPhoneOrWechat": "请输入有效的电话号码或微信号。"
     },
     "player": {
       "close": "关闭"
