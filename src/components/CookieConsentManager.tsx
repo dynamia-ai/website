@@ -45,6 +45,14 @@ const CookieConsentManager: React.FC = () => {
       return;
     }
 
+    // Auto-grant for countries that don't require consent
+    if (document.cookie.includes('consent-required=false')) {
+      const prefs: CookieConsentPreferences = { necessary: true, analytics: true, marketing: false, functional: false };
+      writeCookieConsent(createCookieConsentRecord(prefs));
+      setPreferences(prefs);
+      return;
+    }
+
     setShowBanner(true);
   }, [locale]);
 
