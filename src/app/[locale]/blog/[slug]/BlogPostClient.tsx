@@ -29,8 +29,8 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState({ src: '', alt: '' });
 
-  const postMap: Record<string, typeof enPost> = { en: enPost, zh: zhPost, de: enPost };
-  const post = postMap[locale];
+  const postMap: Record<string, typeof enPost> = { en: enPost, zh: zhPost };
+  const post = postMap[locale] ?? enPost;
   const blogListPath = `${urlPrefix}/blog`;
   const getBlogPostPath = (slug: string) => `${urlPrefix}/blog/${slug}`;
   

@@ -4,7 +4,7 @@ import { routing } from "@/i18n/routing";
 
 const DOMAIN = "https://dynamia.ai";
 
-type SeoPage = "home" | "products" | "pricing" | "company" | "solutions" | "resources" | "whatIsHami";
+type SeoPage = "home" | "products" | "pricing" | "company" | "solutions" | "resources" | "whatIsHami" | "faq";
 
 export function localizedUrl(path: string, locale: string): string {
   const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;

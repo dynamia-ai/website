@@ -49,6 +49,11 @@
       "title": "What is HAMi? | Heterogeneous AI Computing Virtualization",
       "description": "Learn about HAMi - leading open-source heterogeneous AI computing virtualization middleware by Dynamia AI. CNCF Sandbox project powering GPU sharing and resource management.",
       "keywords": "HAMi, heterogeneous AI computing, GPU virtualization, CNCF sandbox, open source AI infrastructure"
+    },
+    "faq": {
+      "title": "FAQ - Frequently Asked Questions | Dynamia AI",
+      "description": "Find answers to frequently asked questions about Dynamia AI, HAMi, GPU virtualization, pricing, and technical support. Learn more about our heterogeneous computing platform.",
+      "keywords": "dynamia ai faq, HAMi questions, GPU virtualization FAQ, heterogeneous computing questions"
     }
   },
   "navigation": {
@@ -251,7 +256,6 @@
       "overviewDescription": "Dynamia AI is a unified management platform designed for enterprise-grade heterogeneous computing environments. It seamlessly integrates various computing resources including CPU, GPU, NPU, DCU, and dedicated accelerators to optimize workload distribution and resource utilization.",
       "platformPreview": "Dynamia AI UI",
       "coreFeaturesTitle": "Core Features",
-      "featureDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "ctaTitle": "Ready to get started with Dynamia AI?",
       "features": [
         "Intelligent workload scheduling",
@@ -2648,5 +2652,47 @@
   },
   "attachments": {
     "notFound": "Attachment Not Found"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about Dynamia AI and our heterogeneous computing platform.",
+    "questions": [
+      {
+        "question": "What is Dynamia AI?",
+        "answer": "Dynamia AI is an enterprise-grade heterogeneous computing platform built on HAMi technology. It provides GPU sharing, auto-scaling, and unified management for AI workloads, enabling organizations to maximize their computing resource utilization."
+      },
+      {
+        "question": "What is HAMi?",
+        "answer": "HAMi (Heterogeneous AI Computing Middleware) is an open-source project and CNCF Sandbox project that provides GPU virtualization and resource management capabilities. It is the core technology behind Dynamia AI's enterprise platform."
+      },
+      {
+        "question": "How does GPU sharing work?",
+        "answer": "Dynamia AI dynamically consolidates and orchestrates GPU resources, allowing multiple workloads to share GPU memory and compute resources efficiently. This eliminates waste, maximizes resource utilization, and reduces operational costs."
+      },
+      {
+        "question": "What types of workloads does Dynamia AI support?",
+        "answer": "Dynamia AI supports AI/ML training and inference, high-performance computing (HPC), edge computing, and various other computational workloads that require GPU acceleration."
+      },
+      {
+        "question": "Is Dynamia AI compatible with Kubernetes?",
+        "answer": "Yes, Dynamia AI is built for Kubernetes environments and integrates seamlessly with existing Kubernetes clusters. It provides enhanced scheduling and resource management capabilities on top of Kubernetes."
+      },
+      {
+        "question": "How is pricing determined?",
+        "answer": "Dynamia AI offers flexible pricing based on your cluster size, number of nodes, and GPU count. We provide customized pricing plans that scale with your infrastructure needs. Contact us for a detailed quote."
+      },
+      {
+        "question": "What support is included?",
+        "answer": "Enterprise customers receive professional technical support, including setup assistance, troubleshooting, best practices guidance, and continuous updates and maintenance."
+      },
+      {
+        "question": "Can I try Dynamia AI before purchasing?",
+        "answer": "Yes, we offer free trials for qualified organizations. You can apply for a trial through our website to evaluate Dynamia AI in your environment before making a commitment."
+      }
+    ],
+    "ctaTitle": "Still have questions?",
+    "ctaDescription": "Our team is here to help. Contact us for more information or to schedule a demo.",
+    "ctaPrimary": "Apply for Trial",
+    "ctaSecondary": "Contact Support"
   }
 }

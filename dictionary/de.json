@@ -49,6 +49,11 @@
       "title": "Was ist HAMi? | Heterogene KI-Computing-Virtualisierung",
       "description": "Learn about HAMi - leading open-source heterogeneous AI computing virtualization middleware by Dynamia AI. CNCF Sandbox project powering GPU sharing and resource management.",
       "keywords": "HAMi, heterogene KI-datenverarbeitung, GPU-Virtualisierung, CNCF sandbox, Open-Source KI-Infrastruktur"
+    },
+    "faq": {
+      "title": "FAQ - Haeufig gestellte Fragen | Dynamia AI",
+      "description": "Finden Sie Antworten auf haeufig gestellte Fragen zu Dynamia AI, HAMi, GPU-Virtualisierung, Preisen und technischem Support.",
+      "keywords": "dynamia ai faq, HAMi fragen, GPU-Virtualisierung FAQ, heterogene computing fragen"
     }
   },
   "navigation": {
@@ -251,7 +256,6 @@
       "overviewDescription": "Dynamia AI is a unified management platform designed for enterprise-grade heterogeneous computing environments. It seamlessly integrates various computing resources including CPU, GPU, NPU, DCU, and dedicated accelerators to optimize workload distribution and resource utilization.",
       "platformPreview": "Dynamia AI UI",
       "coreFeaturesTitle": "Kernfunktionen",
-      "featureDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "ctaTitle": "Ready to get started with Dynamia AI?",
       "features": {
         "0": "Intelligente Workload-Planung",
@@ -2646,5 +2650,47 @@
   },
   "attachments": {
     "notFound": "Anhang nicht gefunden"
+  },
+  "faq": {
+    "title": "Haeufig gestellte Fragen",
+    "subtitle": "Finden Sie Antworten auf haeufige Fragen zu Dynamia AI und unserer heterogenen Computing-Plattform.",
+    "questions": [
+      {
+        "question": "Was ist Dynamia AI?",
+        "answer": "Dynamia AI ist eine heterogene Computing-Plattform fuer Unternehmen, die auf HAMi-Technologie basiert. Sie bietet GPU-Sharing, Auto-Scaling und einheitliches Management fuer KI-Workloads."
+      },
+      {
+        "question": "Was ist HAMi?",
+        "answer": "HAMi (Heterogeneous AI Computing Middleware) ist ein Open-Source-Projekt und CNCF Sandbox-Projekt, das GPU-Virtualisierung und Ressourcenverwaltung bietet. Es ist die Kerntechnologie hinter Dynamia AI."
+      },
+      {
+        "question": "Wie funktioniert GPU-Sharing?",
+        "answer": "Dynamia AI konsolidiert und orchestriert GPU-Ressourcen dynamisch, sodass mehrere Workloads GPU-Speicher und Rechenleistung effizient teilen koennen."
+      },
+      {
+        "question": "Welche Workloads unterstuetzt Dynamia AI?",
+        "answer": "Dynamia AI unterstuetzt KI/ML-Training und -Inferenz, High-Performance Computing (HPC), Edge Computing und verschiedene andere rechenintensive Workloads."
+      },
+      {
+        "question": "Ist Dynamia AI mit Kubernetes kompatibel?",
+        "answer": "Ja, Dynamia AI ist fuer Kubernetes-Umgebungen entwickelt und laesst sich nahtlos in bestehende Kubernetes-Cluster integrieren."
+      },
+      {
+        "question": "Wie werden die Preise bestimmt?",
+        "answer": "Dynamia AI bietet flexible Preise basierend auf Cluster-Groesse, Knotenanzahl und GPU-Anzahl. Wir bieten massgeschneiderte Plaene, die mit Ihrer Infrastruktur skalieren."
+      },
+      {
+        "question": "Welcher Support ist enthalten?",
+        "answer": "Enterprise-Kunden erhalten professionellen technischen Support, einschliesslich Einrichtungshilfe, Fehlerbehebung, Best-Practice-Beratung und kontinuierliche Updates."
+      },
+      {
+        "question": "Kann ich Dynamia AI vor dem Kauf testen?",
+        "answer": "Ja, wir bieten kostenlose Testversionen fuer qualifizierte Organisationen an. Sie koennen ueber unsere Website eine Testversion beantragen."
+      }
+    ],
+    "ctaTitle": "Noch Fragen?",
+    "ctaDescription": "Unser Team ist hier, um zu helfen. Kontaktieren Sie uns fuer weitere Informationen oder um eine Demo zu vereinbaren.",
+    "ctaPrimary": "Testversion beantragen",
+    "ctaSecondary": "Support kontaktieren"
   }
 }

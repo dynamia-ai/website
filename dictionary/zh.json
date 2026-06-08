@@ -49,6 +49,11 @@
       "title": "什么是 HAMi？| 异构 AI 计算虚拟化",
       "description": "了解 HAMi - 由密瓜智能创建的领先开源异构 AI 计算虚拟化中间件。CNCF Sandbox 项目，支持 GPU 共享和资源管理。",
       "keywords": "HAMi, 密瓜智能，异构 AI 计算，GPU 虚拟化，CNCF sandbox，开源 AI 基础设施"
+    },
+    "faq": {
+      "title": "常见问题 - 密瓜智能 | 异构计算平台",
+      "description": "查找关于密瓜智能、HAMi、GPU 虚拟化、定价和技术支持的常见问题解答。了解更多关于我们异构计算平台的信息。",
+      "keywords": "密瓜智能 常见问题, HAMi 问题, GPU 虚拟化 FAQ, 异构计算问题"
     }
   },
   "navigation": {
@@ -251,7 +256,6 @@
       "overviewDescription": "Dynamia AI 是一个专为企业级异构计算环境设计的统一管理平台。它能够无缝整合各种计算资源，包括 CPU、GPU、NPU、DCU 和专用加速器，以优化工作负载分配和资源利用率。",
       "platformPreview": "Dynamia AI UI",
       "coreFeaturesTitle": "核心功能",
-      "featureDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "ctaTitle": "准备好开始使用 Dynamia AI 了吗？",
       "features": [
         "智能工作负载调度",
@@ -2639,5 +2643,47 @@
   },
   "attachments": {
     "notFound": "附件未找到"
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "查找关于密瓜智能和我们的异构计算平台的常见问题解答。",
+    "questions": [
+      {
+        "question": "什么是密瓜智能？",
+        "answer": "密瓜智能（Dynamia AI）是一个基于 HAMi 技术构建的企业级异构计算平台。它提供 GPU 共享、自动扩展和 AI 工作负载的统一管理，帮助组织最大化计算资源利用率。"
+      },
+      {
+        "question": "什么是 HAMi？",
+        "answer": "HAMi（异构 AI 计算中间件）是一个开源项目，也是 CNCF Sandbox 项目，提供 GPU 虚拟化和资源管理能力。它是密瓜智能企业平台的核心技术。"
+      },
+      {
+        "question": "GPU 共享如何工作？",
+        "answer": "密瓜智能动态整合和编排 GPU 资源，允许多个工作负载高效共享 GPU 内存和计算资源。这消除了浪费，最大化资源利用率，并降低运营成本。"
+      },
+      {
+        "question": "密瓜智能支持哪些类型的工作负载？",
+        "answer": "密瓜智能支持 AI/ML 训练和推理、高性能计算（HPC）、边缘计算以及其他需要 GPU 加速的各种计算工作负载。"
+      },
+      {
+        "question": "密瓜智能是否与 Kubernetes 兼容？",
+        "answer": "是的，密瓜智能专为 Kubernetes 环境构建，可与现有 Kubernetes 集群无缝集成。它在 Kubernetes 之上提供增强的调度和资源管理能力。"
+      },
+      {
+        "question": "定价如何确定？",
+        "answer": "密瓜智能提供基于集群规模、节点数量和 GPU 数量的灵活定价。我们提供随基础设施需求扩展的定制化定价方案。联系我们获取详细报价。"
+      },
+      {
+        "question": "包含哪些支持服务？",
+        "answer": "企业客户可获得专业技术支持，包括安装协助、故障排除、最佳实践指导以及持续更新和维护。"
+      },
+      {
+        "question": "购买前可以试用密瓜智能吗？",
+        "answer": "是的，我们为符合条件的组织提供免费试用。您可以通过我们的网站申请试用，在您的环境中评估密瓜智能后再做决定。"
+      }
+    ],
+    "ctaTitle": "还有其他问题？",
+    "ctaDescription": "我们的团队随时为您提供帮助。联系我们获取更多信息或预约演示。",
+    "ctaPrimary": "申请试用",
+    "ctaSecondary": "联系支持"
   }
 }
