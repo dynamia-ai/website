@@ -1,16 +1,8 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
-
-const INTENT_LABELS: Record<string, string> = {
-  selfTrial: '自助试用',
-  demo: '申请演示',
-  sales: '商务咨询',
-};
-
-const LOCALE_LABELS: Record<string, string> = {
-  en: 'English',
-  zh: '中文',
-};
+import { getTranslations } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
+import { getSiteConfig } from '@/config/site';
 
 /* ─── Rate Limiting ─── */
 interface RateLimitRecord {
@@ -87,18 +79,29 @@ function escapeHtml(unsafe: unknown): string {
 }
 
 /* ─── Email builder ─── */
-function buildHtmlEmail(data: Record<string, string>, subject: string): string {
-  const intentLabel = INTENT_LABELS[data.intent] || data.intent || '—';
+async function buildHtmlEmail(data: Record<string, string>, subject: string): Promise<string> {
+  const locale = data.locale && (routing.locales as readonly string[]).includes(data.locale)
+    ? data.locale
+    : 'en';
+  const t = await getTranslations({ locale, namespace: 'contactEmail' });
+
+  const intentLabels: Record<string, string> = {
+    selfTrial: t('intentSelfTrial'),
+    demo: t('intentDemo'),
+    sales: t('intentSales'),
+  };
+  const intentLabel = intentLabels[data.intent] || data.intent || '—';
+
   const fields: { label: string; value: string }[] = [
     ...(data.locale
-      ? [{ label: '语言 / Locale', value: LOCALE_LABELS[data.locale] || data.locale }]
+      ? [{ label: t('locale'), value: getSiteConfig(data.locale as any)?.name || data.locale }]
       : []),
-    { label: '需求类型', value: intentLabel },
-    { label: '姓名', value: data.name },
-    { label: '公司', value: data.company },
-    { label: '邮箱', value: data.email || '—' },
-    { label: '电话/微信', value: data.phone || '—' },
-    { label: '使用场景', value: data.useCase || '—' },
+    { label: t('intent'), value: intentLabel },
+    { label: t('name'), value: data.name },
+    { label: t('company'), value: data.company },
+    { label: t('email'), value: data.email || '—' },
+    { label: t('phone'), value: data.phone || '—' },
+    { label: t('useCase'), value: data.useCase || '—' },
   ];
 
   const rows = fields
@@ -119,7 +122,7 @@ function buildHtmlEmail(data: Record<string, string>, subject: string): string {
       <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;overflow:hidden;">
         ${rows}
       </table>
-      <p style="margin-top:16px;font-size:12px;color:#9ca3af;">此邮件由 dynamia.ai 官网表单自动发送</p>
+      <p style="margin-top:16px;font-size:12px;color:#9ca3af;">${escapeHtml(t('footer'))}</p>
     </div>`;
 }
 
@@ -207,12 +210,12 @@ export async function POST(request: Request) {
     if (body.email !== undefined) formData.email = email;
     if (typeof body.locale === 'string') {
       const locale = sanitizeString(body.locale, 10);
-      if (locale === 'en' || locale === 'zh') {
+      if ((routing.locales as readonly string[]).includes(locale)) {
         formData.locale = locale;
       }
     }
 
-    const html = buildHtmlEmail(formData, subject);
+    const html = await buildHtmlEmail(formData, subject);
 
     /* 7. Send email */
     const resend = new Resend(process.env.RESEND_API_KEY);

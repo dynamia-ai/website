@@ -2692,5 +2692,18 @@
     "ctaDescription": "Unser Team ist hier, um zu helfen. Kontaktieren Sie uns fuer weitere Informationen oder um eine Demo zu vereinbaren.",
     "ctaPrimary": "Testversion beantragen",
     "ctaSecondary": "Support kontaktieren"
+  },
+  "contactEmail": {
+    "locale": "Sprache / Locale",
+    "intent": "Anfragetyp",
+    "name": "Name",
+    "company": "Unternehmen",
+    "email": "E-Mail",
+    "phone": "Telefon / WeChat",
+    "useCase": "Anwendungsfall",
+    "footer": "Diese E-Mail wurde automatisch vom dynamia.ai-Website-Formular gesendet",
+    "intentSelfTrial": "Selbsttest",
+    "intentDemo": "Demo",
+    "intentSales": "Vertrieb"
   }
 }

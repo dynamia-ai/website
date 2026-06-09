@@ -2694,5 +2694,18 @@
     "ctaDescription": "Our team is here to help. Contact us for more information or to schedule a demo.",
     "ctaPrimary": "Apply for Trial",
     "ctaSecondary": "Contact Support"
+  },
+  "contactEmail": {
+    "locale": "Language / Locale",
+    "intent": "Intent",
+    "name": "Name",
+    "company": "Company",
+    "email": "Email",
+    "phone": "Phone / WeChat",
+    "useCase": "Use Case",
+    "footer": "This email was automatically sent by the dynamia.ai website form",
+    "intentSelfTrial": "Self-serve Trial",
+    "intentDemo": "Demo",
+    "intentSales": "Sales"
   }
 }
