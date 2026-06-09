@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
 import { type NextRequest } from "next/server";
 import { routing } from "./i18n/routing";
+import { GEO_COOKIE_MAX_AGE } from "@/config/cookie-consent";
 import { getCountry, CONSENT_REQUIRED_COUNTRIES } from "@/utils/geo";
 
 const intlMiddleware = createMiddleware(routing);
@@ -14,7 +15,7 @@ export default function middleware(request: NextRequest) {
     const requiresConsent = !country || CONSENT_REQUIRED_COUNTRIES.has(country);
     response.cookies.set("consent-required", String(requiresConsent), {
       path: "/",
-      maxAge: 86400,
+      maxAge: GEO_COOKIE_MAX_AGE,
     });
   }
 
