@@ -3,9 +3,7 @@ import { NextResponse } from 'next/server';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { getSiteConfig } from '@/config/site';
-import { NOREPLY_EMAIL } from '@/config/app-config';
-
-const SALES_EMAIL = 'sales@dynamia.ai';
+import { NOREPLY_EMAIL, SALES_EMAIL } from '@/config/app-config';
 
 /* ─── Rate Limiting ─── */
 interface RateLimitRecord {

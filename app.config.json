@@ -16,6 +16,7 @@
   },
   "contact": {
     "email": "info@dynamia.ai",
+    "salesEmail": "sales@dynamia.ai",
     "noreplyEmail": "noreply@dynamia.ai",
     "phone": {
       "raw": "4000267800",
