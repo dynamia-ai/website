@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { getSiteConfig } from '@/config/site';
+import { NOREPLY_EMAIL, CONTACT_EMAIL } from '@/config/app-config';
 
 /* ─── Rate Limiting ─── */
 interface RateLimitRecord {
@@ -220,8 +221,8 @@ export async function POST(request: Request) {
     /* 7. Send email */
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
-      from: 'Dynamia AI <noreply@dynamia.ai>',
-      to: 'info@dynamia.ai',
+      from: `Dynamia AI <${NOREPLY_EMAIL}>`,
+      to: CONTACT_EMAIL,
       replyTo,
       subject,
       html,

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { HomeIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useEffect } from 'react';
+import { SITE_URL } from '@/config/app-config';
 import { JsonLd } from '@/components/StructuredData';
 import type { WebPage, WithContext } from 'schema-dts';
 
@@ -96,11 +97,11 @@ export default function NotFound() {
         "@type": "WebPage",
         name: "404 - Page Not Found",
         description: "The requested page could not be found on Dynamia AI website",
-        url: "https://dynamia.ai/404",
+        url: `${SITE_URL}/404`,
         isPartOf: {
           "@type": "WebSite",
           name: "Dynamia AI",
-          url: "https://dynamia.ai"
+          url: SITE_URL
         }
       } as WithContext<WebPage>} />
     </div>

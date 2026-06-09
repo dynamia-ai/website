@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CONTACT_EMAIL, CONTACT_PHONE_RAW, CONTACT_PHONE_DISPLAY } from '@/config/app-config';
 import { useTranslations, useLocale } from 'next-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faXTwitter, faZhihu, faGithub, faSlack, faDiscord } from '@fortawesome/free-brands-svg-icons';
@@ -151,7 +152,7 @@ const Footer: React.FC = () => {
                 <div className="space-y-4">
                   <div>
                     <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">{t('footer.emailUs')}</p>
-                    <a href="mailto:info@dynamia.ai" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
                       <FontAwesomeIcon icon={faEnvelope as any} className="h-4 w-4 opacity-70" />
                       {t('footer.email')}
                     </a>
@@ -161,9 +162,9 @@ const Footer: React.FC = () => {
                   {currentLocale === 'zh' && (
                     <div>
                       <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">服务热线</p>
-                      <a href="tel:4000267800" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
+                      <a href={`tel:${CONTACT_PHONE_RAW}`} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
                         <FontAwesomeIcon icon={faPhone as any} className="h-4 w-4 opacity-70" />
-                        400-026-7800
+                        {CONTACT_PHONE_DISPLAY}
                       </a>
                     </div>
                   )}

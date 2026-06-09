@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CONTACT_EMAIL, CONTACT_PHONE_RAW, CONTACT_PHONE_DISPLAY } from '@/config/app-config';
 import { useTranslations, useLocale } from 'next-intl';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { localizedPath, shortenDescription } from '@/utils/i18n';
@@ -83,23 +84,23 @@ export default function TrustBlock() {
         <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm">
           {locale === 'zh' && (
             <a
-              href="tel:4000267800"
+              href={`tel:${CONTACT_PHONE_RAW}`}
               className="inline-flex items-center gap-2 text-gray-900 dark:text-gray-100 hover:text-primary transition-colors"
             >
               <span className="text-gray-400 dark:text-gray-500">
                 {t('enterprise.trust.contactPhone')}
               </span>
-              <span className="font-semibold tabular-nums">400-026-7800</span>
+              <span className="font-semibold tabular-nums">{CONTACT_PHONE_DISPLAY}</span>
             </a>
           )}
           <a
-            href="mailto:info@dynamia.ai"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="inline-flex items-center gap-2 text-gray-900 dark:text-gray-100 hover:text-primary transition-colors"
           >
             <span className="text-gray-400 dark:text-gray-500">
               {t('enterprise.trust.contactEmail')}
             </span>
-            <span className="font-semibold">info@dynamia.ai</span>
+            <span className="font-semibold">{CONTACT_EMAIL}</span>
           </a>
         </div>
       </div>

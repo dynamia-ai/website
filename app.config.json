@@ -1,0 +1,28 @@
+{
+  "cookieConsent": {
+    "geoCookieMaxAge": 86400,
+    "consentMaxAge": 15552000,
+    "configurableCategories": ["analytics", "marketing", "functional"],
+    "requiredCountries": [
+      "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR",
+      "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK",
+      "SI", "ES", "SE", "NO", "IS", "LI",
+      "GB", "CN", "BR", "CA", "KR", "JP"
+    ]
+  },
+  "site": {
+    "url": "https://dynamia.ai",
+    "foundingYear": 2023
+  },
+  "contact": {
+    "email": "info@dynamia.ai",
+    "noreplyEmail": "noreply@dynamia.ai",
+    "phone": {
+      "raw": "4000267800",
+      "display": "400-026-7800"
+    }
+  },
+  "analytics": {
+    "ga4MeasurementId": "G-HHZL7ECT9C"
+  }
+}

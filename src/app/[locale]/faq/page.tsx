@@ -1,6 +1,7 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { localizedPath, generatePageMetadata } from "@/utils/i18n";
 import { faqSchema, JsonLd } from "@/components/StructuredData";
+import { CONTACT_EMAIL } from "@/config/app-config";
 
 export async function generateMetadata({
   params,
@@ -70,7 +71,7 @@ export default async function FAQ({
               {t("ctaPrimary")}
             </a>
             <a
-              href="mailto:info@dynamia.ai"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
             >
               {t("ctaSecondary")}
