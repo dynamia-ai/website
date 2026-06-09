@@ -10,11 +10,12 @@ export default function middleware(request: NextRequest) {
 
   if (!request.cookies.get("consent-required")) {
     const country = getCountry(request.headers);
-    response.cookies.set(
-      "consent-required",
-      CONSENT_REQUIRED_COUNTRIES.has(country) ? "true" : "false",
-      { path: "/", maxAge: 86400 },
-    );
+    // Fail closed: unknown country → show consent banner
+    const requiresConsent = !country || CONSENT_REQUIRED_COUNTRIES.has(country);
+    response.cookies.set("consent-required", String(requiresConsent), {
+      path: "/",
+      maxAge: 86400,
+    });
   }
 
   return response;

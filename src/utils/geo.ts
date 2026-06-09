@@ -15,8 +15,9 @@ const GEO_HEADERS = [
 export function getCountry(headers: Headers): string {
   for (const name of GEO_HEADERS) {
     const value = headers.get(name);
-    if (value && /^[A-Z]{2}$/.test(value.trim())) {
-      return value.trim();
+    const normalized = value?.trim().toUpperCase();
+    if (normalized && /^[A-Z]{2}$/.test(normalized)) {
+      return normalized;
     }
   }
   return '';
