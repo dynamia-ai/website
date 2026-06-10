@@ -14,7 +14,7 @@ tags:
   - 蔚来
   - 自动驾驶
   - 客户案例
-category: 客户案例
+category: Customer Success Story
 coverImage: /images/blog/nio-hami-gpu-sharing/resource-management-chart.png
 language: zh
 linktitle: 蔚来 HAMi GPU 共享案例

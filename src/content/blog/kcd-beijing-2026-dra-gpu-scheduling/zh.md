@@ -14,7 +14,7 @@ tags:
   - GPU 调度
   - Kubernetes
   - AI 基础设施
-category: 技术深度
+category: Technical Deep Dive
 language: zh
 coverImage: /images/blog/kubecon-eu-2026-hami-recap/keynote-stage.jpg
 ---
