@@ -14,7 +14,7 @@ tags:
   - Kubernetes
   - 大规模集群
   - 故障排查
-category: Technical
+category: Technical Deep Dive
 coverImage: /images/blog/hami-vgpu-scheduling-fix-large-cluster/resource-view.png
 language: zh
 linktitle: 千卡集群 vGPU 调度修复

@@ -16,7 +16,7 @@ tags:
   - Kubernetes
   - Large-Scale Cluster
   - Troubleshooting
-category: Technical
+category: Technical Deep Dive
 coverImage: /images/blog/hami-vgpu-scheduling-fix-large-cluster/resource-view.png
 language: en
 linktitle: vGPU Scheduling Fix for Large Clusters

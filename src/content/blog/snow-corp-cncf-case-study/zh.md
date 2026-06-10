@@ -17,7 +17,7 @@ tags:
   - NAVER
   - 案例研究
   - GenAI
-category: 案例研究
+category: Case Study
 coverImage: /images/blog/snow-corp-cncf-case-study/snowcorp.jpg
 language: zh
 linktitle: SNOW Corp HAMi 使用案例研究
