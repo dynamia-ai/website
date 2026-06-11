@@ -4,10 +4,56 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { TocItem } from '@/types/blog';
 
 const DEFAULT_OFFSET = 120;
+const SCROLL_DEBOUNCE_MS = 100;
+
+function pickActiveHeading(toc: TocItem[], offset: number): string | null {
+  const viewportHeight = window.innerHeight;
+  let bestId: string | null = null;
+  let bestDistance = Infinity;
+  let bestLevel = Infinity;
+
+  const consider = (item: TocItem, distance: number) => {
+    const isCloser =
+      distance < bestDistance ||
+      (distance === bestDistance && item.level < bestLevel);
+    if (isCloser) {
+      bestDistance = distance;
+      bestLevel = item.level;
+      bestId = item.id;
+    }
+  };
+
+  // Pass 1: visible headings at or below the offset line
+  for (const item of toc) {
+    const el = document.getElementById(item.id);
+    if (!el) continue;
+    const rect = el.getBoundingClientRect();
+    const visible = rect.top < viewportHeight && rect.bottom > offset;
+    if (!visible) continue;
+
+    const delta = rect.top - offset;
+    if (delta < 0) continue;
+    consider(item, delta);
+  }
+
+  // Pass 2: closest visible heading to the offset line
+  if (!bestId) {
+    for (const item of toc) {
+      const el = document.getElementById(item.id);
+      if (!el) continue;
+      const rect = el.getBoundingClientRect();
+      if (rect.top < viewportHeight && rect.bottom > offset) {
+        consider(item, Math.abs(rect.top - offset));
+      }
+    }
+  }
+
+  return bestId;
+}
 
 /**
- * Track which heading is currently active while scrolling.
- * Uses "last heading above the offset line" — reliable for long sections.
+ * Track the active TOC heading while scrolling.
+ * Two-pass visibility pick (same model as blog TableOfContents) with debounce.
  */
 export function useActiveHeading(toc: TocItem[], offset = DEFAULT_OFFSET) {
   const [activeId, setActiveId] = useState<string | null>(toc[0]?.id ?? null);
@@ -16,39 +62,29 @@ export function useActiveHeading(toc: TocItem[], offset = DEFAULT_OFFSET) {
   const updateActiveHeading = useCallback(() => {
     if (isScrollingRef.current || toc.length === 0) return;
 
-    let currentId = toc[0].id;
-
-    for (const item of toc) {
-      const el = document.getElementById(item.id);
-      if (!el) continue;
-      if (el.getBoundingClientRect().top <= offset + 4) {
-        currentId = item.id;
-      }
+    const nextId = pickActiveHeading(toc, offset);
+    if (nextId) {
+      setActiveId((prev) => (prev === nextId ? prev : nextId));
     }
-
-    setActiveId((prev) => (prev === currentId ? prev : currentId));
   }, [toc, offset]);
 
   useEffect(() => {
     if (toc.length === 0) return;
 
-    let rafId = 0;
-    const handleScroll = () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        rafId = 0;
-        updateActiveHeading();
-      });
+    let debounceId = 0;
+    const scheduleUpdate = () => {
+      window.clearTimeout(debounceId);
+      debounceId = window.setTimeout(updateActiveHeading, SCROLL_DEBOUNCE_MS);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll, { passive: true });
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
     updateActiveHeading();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+      window.clearTimeout(debounceId);
     };
   }, [toc, updateActiveHeading]);
 
@@ -63,10 +99,23 @@ export function useActiveHeading(toc: TocItem[], offset = DEFAULT_OFFSET) {
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
 
-      window.setTimeout(() => {
+      let finished = false;
+      const finishScroll = () => {
+        if (finished) return;
+        finished = true;
         isScrollingRef.current = false;
         updateActiveHeading();
-      }, 800);
+      };
+
+      const fallbackId = window.setTimeout(finishScroll, 800);
+      window.addEventListener(
+        'scrollend',
+        () => {
+          window.clearTimeout(fallbackId);
+          finishScroll();
+        },
+        { once: true },
+      );
     },
     [offset, updateActiveHeading],
   );

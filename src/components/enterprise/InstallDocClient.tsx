@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import {
@@ -10,7 +10,7 @@ import {
   ListBulletIcon,
 } from '@heroicons/react/24/outline';
 import MainLayout from '@/components/layout/MainLayout';
-import { enhanceCodeBlocks } from '@/lib/code-block-enhancer';
+import { useDocContentEnhancements } from '@/hooks/useDocContentEnhancements';
 import { useActiveHeading } from '@/hooks/useActiveHeading';
 import { localizedPath } from '@/utils/i18n';
 import type { TocItem } from '@/types/blog';
@@ -27,19 +27,7 @@ export default function InstallDocClient({ productId, title, version, lastUpdate
 
   const contentRef = useRef<HTMLDivElement | null>(null);
   const { activeId, scrollToHeading } = useActiveHeading(toc);
-
-  useEffect(() => {
-    const cleanup = enhanceCodeBlocks({
-      container: contentRef.current,
-      labels: {
-        copy: t('codeLabels.copy'),
-        copied: t('codeLabels.copied'),
-        failed: t('codeLabels.failed'),
-        aria: t('codeLabels.aria'),
-      },
-    });
-    return cleanup;
-  }, [html, t]);
+  useDocContentEnhancements(contentRef, html);
 
   return (
     <MainLayout>
