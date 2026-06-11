@@ -28,5 +28,5 @@ export const CONSENT_REQUIRED_COUNTRIES = new Set(appConfig.cookieConsent.requir
 
 /** Returns true when the lead should route to the China sales team. */
 export function isChinaLead(country: string, locale: string): boolean {
-  return country === 'CN' || locale === 'zh';
+  return country === 'CN' || locale.startsWith('zh');
 }
