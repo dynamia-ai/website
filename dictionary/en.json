@@ -2697,9 +2697,11 @@
   },
   "contactEmail": {
     "locale": "Language / Locale",
+    "country": "Country",
     "intent": "Intent",
     "name": "Name",
     "company": "Company",
+    "companyDomain": "Company Domain",
     "email": "Email",
     "phone": "Phone / WeChat",
     "useCase": "Use Case",

@@ -2688,9 +2688,11 @@
   },
   "contactEmail": {
     "locale": "语言 / Locale",
+    "country": "国家/地区",
     "intent": "需求类型",
     "name": "姓名",
     "company": "公司",
+    "companyDomain": "公司域名",
     "email": "邮箱",
     "phone": "电话/微信",
     "useCase": "使用场景",
