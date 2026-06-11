@@ -239,7 +239,7 @@ export async function POST(request: Request) {
 
     /* Route to appropriate sales team */
     const recipient = isChinaLead(country, formData.locale ?? '')
-      ? SALESCN_EMAIL
+      ? (SALESCN_EMAIL || SALES_EMAIL)
       : SALES_EMAIL;
 
     const html = await buildHtmlEmail(formData, subject);
