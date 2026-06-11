@@ -5,7 +5,7 @@ date: '2026-03-03'
 excerpt: >-
   密瓜智能与 OpenCSG 宣布达成战略合作，共同构建面向企业级 AI 工作负载的算力原生底座。
   通过将 HAMi 的异构 GPU 虚拟化与调度能力原生集成到 CSGHub，双方将推动模型平台从"模型托管"走向"算力原生"。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - HAMi
   - OpenCSG

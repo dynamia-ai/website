@@ -4,7 +4,7 @@ date: '2026-04-25'
 excerpt: >-
   4 月 25 日，HAMi 社区在深圳成功举办第三场线下 Meetup。来自 CNCF、顺丰科技、招商银行、燧原科技、深信服、博维智慧科技及密瓜智能的七位技术专家，围绕
   AI 基础设施云原生演进、GPU 算力池化、异构调度、DRA 技术展望等前沿话题展开深度分享。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - HAMi
   - Meetup

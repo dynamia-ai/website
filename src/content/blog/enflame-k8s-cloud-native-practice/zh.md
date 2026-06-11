@@ -3,7 +3,7 @@ title: "国产 GPU 如何丝滑融入 K8s？燧原科技的全栈云原生实践
 date: '2026-05-09'
 excerpt: >-
   燧原科技马达深度拆解国产 GPU 在 Kubernetes 生态中的云原生集成方案——从 GPU Operator 全生命周期管理、CDI 标准设备注入，到基于 CNCF 四层栈的 Inference Gateway 推理网关架构，覆盖设备发现、资源调度、容器接入、可观测性和推理优化的完整链路。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - HAMi
   - Meetup

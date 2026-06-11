@@ -4,7 +4,7 @@ date: '2026-04-30'
 excerpt: >-
   顺丰科技陈俊超分享了从物理机到多云混合架构的完整演进历程，深度解析基于
   HAMi 的 GPU 池化、显存超分与混部调度落地实践。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - HAMi
   - Meetup

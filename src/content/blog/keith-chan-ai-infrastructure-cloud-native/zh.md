@@ -5,7 +5,7 @@ excerpt: >-
   本文为 HAMi 社区 Meetup 深圳站回顾系列第一篇，CNCF 亚太区副总裁 Keith
   Chan 从全球视角解读 AI 基础设施的云原生演进趋势，并预告 9 月 KubeCon 上海站的
   AI 议题盛况。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - CNCF
   - KubeCon

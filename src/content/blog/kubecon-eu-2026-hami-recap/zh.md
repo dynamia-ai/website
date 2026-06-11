@@ -6,7 +6,7 @@ excerpt: >-
   KubeCon EU 2026 已经落下帷幕，云原生正在从"应用运行平台"快速演进为 AI 基础设施的运行底座。
   作为 HAMi 项目的发起者和核心推动者，密瓜智能从 Maintainer Summit、Lightning Talk、Project Pavilion，
   到最后登上 KubeCon 主论坛 Keynote Demo，完成了一次具有标志性意义的集中亮相。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - KubeCon
   - HAMi

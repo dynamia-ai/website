@@ -4,7 +4,7 @@ date: '2026-03-09'
 excerpt: >-
   贝壳通过实施基于 Kubernetes 和 HAMi 的 AIStudio 智能计算平台，在多云环境中实现
   GPU 利用率近 3 倍提升（13% → 37%）。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - 贝壳
   - HAMi

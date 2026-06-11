@@ -4,7 +4,7 @@ date: '2026-04-29'
 excerpt: >-
   HAMi Maintainer 李孟轩在深圳 Meetup 上首次公开 v2.9 版本核心特性，深度解析 DRA
   技术演进路径，并展望异构算力统一管理的社区愿景。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - HAMi
   - Meetup

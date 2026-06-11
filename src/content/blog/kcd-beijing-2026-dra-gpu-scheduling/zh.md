@@ -6,7 +6,7 @@ excerpt: >-
   KCD Beijing 2026 上，HAMi 社区核心贡献者分享了从 Device Plugin 到 DRA 的 GPU 调度范式升级。
   本文回顾了这次技术分享的核心内容，包括 DRA 的能力与挑战、HAMi-DRA 通过 Webhook 自动化
   降低用户迁移成本的关键设计，以及性能与可观测性方面的实践成果。
-author: Dynamia
+author: "密瓜智能"
 tags:
   - KCD
   - HAMi

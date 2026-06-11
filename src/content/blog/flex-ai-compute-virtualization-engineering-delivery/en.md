@@ -14,7 +14,7 @@ excerpt: >-
   Flex:ai's current verifiable delivery boundaries from an engineering
   perspective, and discusses the common engineering gaps as compute
   virtualization projects move from 'working' to 'dependable infrastructure'.
-author: Dynamia
+author: "Jimmy Song"
 tags:
   - compute virtualization
   - 'Flex:ai'
