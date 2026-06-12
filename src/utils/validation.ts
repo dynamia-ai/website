@@ -25,6 +25,11 @@ const companySchema = z.string().trim().min(1).max(100).regex(
   'freeTrial.form.invalidCompany',
 );
 
+const jobTitleSchema = z.string().trim().min(1, 'pricing.form.jobTitleRequired').max(100).regex(
+  /^[^<>{}[\]|\\]*$/,
+  'pricing.form.invalidJobTitle',
+);
+
 const emailFormatSchema = z.string().trim().min(1, 'freeTrial.form.emailRequired').email('freeTrial.form.invalidEmail');
 
 /** Standalone company email validator for gate/pricing forms. */
@@ -40,16 +45,29 @@ function createEmailSchema(isRequired: boolean) {
   );
 }
 
-function createPhoneSchema(isRequired: boolean) {
+const CN_MOBILE = /^1[3-9]\d{9}$/;
+const WECHAT_OR_ID = /^[\w.\-+()@\s\u4e00-\u9fa5]{2,50}$/u;
+const SAFE_OPTIONAL_CONTACT = /^[^<>{}[\]|\\]*$/;
+
+function isValidCnContact(value: string): boolean {
+  const v = value.trim();
+  return CN_MOBILE.test(v) || WECHAT_OR_ID.test(v);
+}
+
+/** Phone / WeChat contact field — required (zh) validates CN mobile or WeChat ID; optional skips format checks. */
+function createContactSchema(
+  isRequired: boolean,
+  messages: { required: string; invalid: string },
+) {
   if (isRequired) {
-    return z.string().trim().min(1, 'freeTrial.form.invalidPhone').regex(
-      /^1[3-9]\d{9}$/,
-      'freeTrial.form.invalidPhone',
+    return z.string().trim().min(1, messages.required).refine(
+      isValidCnContact,
+      messages.invalid,
     );
   }
   return z.string().optional().refine(
-    (v) => !v || /^\+?[\d\s\-()]{7,20}$/.test(v),
-    'freeTrial.form.invalidPhone',
+    (v) => !v || (v.trim().length <= 50 && SAFE_OPTIONAL_CONTACT.test(v.trim())),
+    messages.invalid,
   );
 }
 
@@ -66,11 +84,36 @@ export function createFreeTrialSchema(fields: {
     name: nameSchema,
     email: createEmailSchema(fields.email.required),
     company: companySchema,
-    phone: createPhoneSchema(fields.phone.required),
+    phone: createContactSchema(fields.phone.required, {
+      required: 'freeTrial.form.phoneRequired',
+      invalid: 'freeTrial.form.invalidPhoneOrWechat',
+    }),
     useCase: z.string().optional(),
     acceptTerms: z.literal(true, {
       errorMap: () => ({ message: 'freeTrial.form.termsRequired' }),
     }),
     _gotcha: z.string().optional(),
+  });
+}
+
+/**
+ * Returns a Zod schema for the pricing form. Field requirements
+ * come from the dictionary's `pricing.form.fields` config.
+ */
+export function createPricingSchema(fields: {
+  email: { required: boolean };
+  phone: { required: boolean };
+}) {
+  return z.object({
+    name: nameSchema,
+    email: createEmailSchema(fields.email.required),
+    company: companySchema,
+    jobTitle: jobTitleSchema,
+    phone: createContactSchema(fields.phone.required, {
+      required: 'pricing.form.phoneRequired',
+      invalid: 'pricing.form.invalidPhoneOrWechat',
+    }),
+    gpuCount: z.string().min(1),
+    message: z.string().optional(),
   });
 }

@@ -666,10 +666,11 @@
       "terms": "Ich stimme den AGB und der Datenschutzerklaerung zu",
       "termsRequired": "Sie muessen den Bedingungen zustimmen.",
       "emailRequired": "Arbeits-E-Mail ist erforderlich.",
+      "phoneRequired": "Telefon / WeChat ist erforderlich.",
       "invalidName": "Bitte geben Sie einen gueltigen Namen ein.",
       "invalidCompany": "Bitte geben Sie einen gueltigen Firmennamen ein.",
       "invalidEmail": "Bitte geben Sie eine gueltige E-Mail-Adresse ein.",
-      "invalidPhone": "Bitte geben Sie eine gueltige Telefonnummer ein.",
+      "invalidPhoneOrWechat": "Bitte geben Sie eine gueltige Telefonnummer oder WeChat-ID ein.",
       "jobTitle": "Position",
       "message": "Was moechten Sie erfahren?",
       "intent": "Was benoetigen Sie?",
@@ -1076,21 +1077,27 @@
     "form": {
       "title": "Preisinformationen anfordern",
       "name": "Name",
-      "email": "E-Mail",
       "company": "Unternehmen",
       "jobTitle": "Position",
-      "nodeCount": "Anzahl der Knoten",
       "gpuCount": "Anzahl der GPUs",
       "message": "Nachricht (Optional)",
       "submitButton": "Preise anfordern",
       "submitting": "Wird uebermittelt...",
       "submitSuccess": "Thank you! Your request has been submitted. Our team will contact you shortly with pricing information.",
       "submitError": "Fehler beim Senden. Bitte versuchen Sie es erneut.",
-      "nodeCountOptions": {
-        "small": "Weniger als 10",
-        "medium": "10-50",
-        "large": "50-200",
-        "enterprise": "Mehr als 200"
+      "phoneRequired": "Telefon / WeChat ist erforderlich.",
+      "invalidPhoneOrWechat": "Bitte geben Sie eine gueltige Telefonnummer oder WeChat-ID ein.",
+      "jobTitleRequired": "Position ist erforderlich.",
+      "invalidJobTitle": "Bitte geben Sie eine gueltige Position ein (1-100 Zeichen, keine Sonderzeichen).",
+      "fields": {
+        "email": {
+          "required": true,
+          "label": "E-Mail"
+        },
+        "phone": {
+          "required": false,
+          "label": "Telefon / WeChat"
+        }
       },
       "gpuCountOptions": {
         "small": "1-10",
