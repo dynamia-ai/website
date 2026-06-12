@@ -2694,7 +2694,6 @@
     "ctaSecondary": "Support kontaktieren"
   },
   "contactEmail": {
-    "locale": "Sprache / Locale",
     "country": "Land",
     "intent": "Anfragetyp",
     "name": "Name",

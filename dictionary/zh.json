@@ -2687,8 +2687,7 @@
     "ctaSecondary": "联系支持"
   },
   "contactEmail": {
-    "locale": "语言 / Locale",
-    "country": "国家/地区",
+    "country": "国家",
     "intent": "需求类型",
     "name": "姓名",
     "company": "公司",

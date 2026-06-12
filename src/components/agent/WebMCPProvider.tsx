@@ -135,7 +135,7 @@ const WebMCPProvider: React.FC = () => {
         cleanup();
       }
     };
-  }, []);
+  }, [locale]);
 
   return null;
 };

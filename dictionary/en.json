@@ -2696,7 +2696,6 @@
     "ctaSecondary": "Contact Support"
   },
   "contactEmail": {
-    "locale": "Language / Locale",
     "country": "Country",
     "intent": "Intent",
     "name": "Name",

@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
-import { getSiteConfig } from '@/config/site';
+
 import { NOREPLY_EMAIL, SALES_EMAIL, SALESCN_EMAIL } from '@/config/app-config';
 import { getCountry, isChinaLead } from '@/utils/geo';
 
@@ -95,9 +95,6 @@ async function buildHtmlEmail(data: Record<string, string>, subject: string): Pr
   const intentLabel = intentLabels[data.intent] || data.intent || '—';
 
   const fields: { label: string; value: string }[] = [
-    ...(data.locale
-      ? [{ label: t('locale'), value: getSiteConfig(data.locale as any)?.name || data.locale }]
-      : []),
     ...(data.country
       ? [{ label: t('country'), value: data.country }]
       : []),
