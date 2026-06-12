@@ -2708,5 +2708,16 @@
     "intentSelfTrial": "Selbsttest",
     "intentDemo": "Demo",
     "intentSales": "Vertrieb"
+  },
+  "downloadTelemetry": {
+    "source": "📥 Quelle",
+    "productId": "Produkt-ID",
+    "version": "Version",
+    "mediaType": "Medientyp",
+    "arch": "Architektur",
+    "filename": "Dateiname",
+    "imageUrl": "Image-URL",
+    "language": "Sprache",
+    "subjectPrefix": "[Download]"
   }
 }

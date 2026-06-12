@@ -2701,5 +2701,16 @@
     "intentSelfTrial": "自助试用",
     "intentDemo": "申请演示",
     "intentSales": "商务咨询"
+  },
+  "downloadTelemetry": {
+    "source": "📥 来源",
+    "productId": "产品ID",
+    "version": "版本",
+    "mediaType": "介质类型",
+    "arch": "架构",
+    "filename": "文件名",
+    "imageUrl": "镜像URL",
+    "language": "语言",
+    "subjectPrefix": "[下载行为]"
   }
 }
