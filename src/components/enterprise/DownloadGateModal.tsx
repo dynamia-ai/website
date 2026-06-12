@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { companyEmailSchema } from '@/utils/validation';
 import { attributionToPayload } from '@/utils/utm';
+import { submitContact } from '@/utils/contact';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import ConsentLabel from '@/components/enterprise/ConsentLabel';
 
@@ -27,6 +28,7 @@ export default function DownloadGateModal({
   onClose,
 }: DownloadGateModalProps) {
   const t = useTranslations();
+  const locale = useLocale();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -62,26 +64,23 @@ export default function DownloadGateModal({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          '📦 来源': '官网企业版下载页 (Enterprise Download Gate)',
-          '产品': context?.productName ?? '',
-          '版本': context?.version ?? '',
-          '下载介质': context?.artifactLabel ?? '',
-          name: formState.name,
-          email: formState.email,
-          company: formState.company,
-          jobTitle: formState.jobTitle,
-          message: formState.message,
-          ...attributionToPayload(),
-          _subject: `[企业版下载登记] ${context?.productName ?? ''} ${context?.version ?? ''} - ${formState.company}`,
-          _replyto: formState.email,
-        }),
+      const { success } = await submitContact({
+        locale,
+        '📦 来源': '官网企业版下载页 (Enterprise Download Gate)',
+        '产品': context?.productName ?? '',
+        '版本': context?.version ?? '',
+        '下载介质': context?.artifactLabel ?? '',
+        name: formState.name,
+        email: formState.email,
+        company: formState.company,
+        jobTitle: formState.jobTitle,
+        message: formState.message,
+        ...attributionToPayload(),
+        _subject: `[企业版下载登记] ${context?.productName ?? ''} ${context?.version ?? ''} - ${formState.company}`,
+        _replyto: formState.email,
       });
 
-      if (response.ok) {
+      if (success) {
         document.cookie = 'download_unlocked=1; max-age=2592000; path=/';
         setSubmitStatus('success');
         setTimeout(() => onSuccess(), 800);

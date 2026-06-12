@@ -2687,16 +2687,29 @@
     "ctaSecondary": "联系支持"
   },
   "contactEmail": {
-    "locale": "语言 / Locale",
+    "country": "国家",
     "intent": "需求类型",
     "name": "姓名",
     "company": "公司",
+    "companyDomain": "公司域名",
     "email": "邮箱",
     "phone": "电话/微信",
+    "requestType": "请求类型",
     "useCase": "使用场景",
     "footer": "此邮件由 dynamia.ai 官网表单自动发送",
     "intentSelfTrial": "自助试用",
     "intentDemo": "申请演示",
     "intentSales": "商务咨询"
+  },
+  "downloadTelemetry": {
+    "source": "📥 来源",
+    "productId": "产品ID",
+    "version": "版本",
+    "mediaType": "介质类型",
+    "arch": "架构",
+    "filename": "文件名",
+    "imageUrl": "镜像URL",
+    "language": "语言",
+    "subjectPrefix": "[下载行为]"
   }
 }

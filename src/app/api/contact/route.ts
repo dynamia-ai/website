@@ -2,8 +2,9 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
-import { getSiteConfig } from '@/config/site';
-import { NOREPLY_EMAIL, SALES_EMAIL } from '@/config/app-config';
+
+import { NOREPLY_EMAIL, SALES_EMAIL, SALESCN_EMAIL } from '@/config/app-config';
+import { getCountry, isChinaLead } from '@/utils/geo';
 
 /* ─── Rate Limiting ─── */
 interface RateLimitRecord {
@@ -94,12 +95,18 @@ async function buildHtmlEmail(data: Record<string, string>, subject: string): Pr
   const intentLabel = intentLabels[data.intent] || data.intent || '—';
 
   const fields: { label: string; value: string }[] = [
-    ...(data.locale
-      ? [{ label: t('locale'), value: getSiteConfig(data.locale as any)?.name || data.locale }]
+    ...(data.country
+      ? [{ label: t('country'), value: data.country }]
+      : []),
+    ...(data.requestType
+      ? [{ label: t('requestType'), value: data.requestType }]
       : []),
     { label: t('intent'), value: intentLabel },
     { label: t('name'), value: data.name },
     { label: t('company'), value: data.company },
+    ...(data.companyDomain
+      ? [{ label: t('companyDomain'), value: data.companyDomain }]
+      : []),
     { label: t('email'), value: data.email || '—' },
     { label: t('phone'), value: data.phone || '—' },
     { label: t('useCase'), value: data.useCase || '—' },
@@ -168,7 +175,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, honeypot: true }, { status: 200 });
     }
 
-    const { _subject, _replyto, ...formDataRaw } = body;
+    const { _subject, _replyto, _type, ...formDataRaw } = body;
 
     /* 5. Field validation */
     const name = typeof body.name === 'string' ? sanitizeString(body.name, 100) : '';
@@ -216,13 +223,36 @@ export async function POST(request: Request) {
       }
     }
 
+    /* Geo country detection */
+    const country = getCountry(request.headers);
+    if (country) {
+      formData.country = country;
+    }
+
+    if (typeof _type === 'string' && _type.trim()) {
+      formData.requestType = sanitizeString(_type, 100);
+    }
+
+    /* Extract company domain from email */
+    if (email && isValidEmail(email)) {
+      const domain = email.split('@')[1]?.toLowerCase();
+      if (domain) {
+        formData.companyDomain = domain;
+      }
+    }
+
+    /* Route to appropriate sales team */
+    const recipient = isChinaLead(country, formData.locale ?? '')
+      ? (SALESCN_EMAIL || SALES_EMAIL)
+      : SALES_EMAIL;
+
     const html = await buildHtmlEmail(formData, subject);
 
     /* 7. Send email */
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
       from: `Dynamia AI <${NOREPLY_EMAIL}>`,
-      to: SALES_EMAIL,
+      to: recipient,
       replyTo,
       subject,
       html,

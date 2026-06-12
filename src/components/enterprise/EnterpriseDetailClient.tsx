@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { notFound, useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
+import { submitContact } from '@/utils/contact';
 import { motion } from 'framer-motion';
 import {
   ChartBarIcon,
@@ -39,6 +40,7 @@ interface EnterpriseDetailClientProps { productId: string; }
 
 export default function EnterpriseDetailClient({ productId }: EnterpriseDetailClientProps) {
   const t = useTranslations('enterprise');
+  const dt = useTranslations('downloadTelemetry');
   const locale = useLocale();
   const router = useRouter();
 
@@ -74,7 +76,19 @@ export default function EnterpriseDetailClient({ productId }: EnterpriseDetailCl
       router.push(docUrl);
       return;
     }
-    void fireDownloadAnalytics(artifact, product!.id, downloadVersion, locale, resolvedUrl);
+    void submitContact({
+      [dt('source')]: 'Enterprise Download Telemetry',
+      [dt('productId')]: product!.id,
+      [dt('version')]: downloadVersion,
+      [dt('mediaType')]: artifact.type,
+      [dt('arch')]: artifact.arch ?? 'n/a',
+      [dt('filename')]: artifact.filename ?? '',
+      [dt('imageUrl')]: resolvedUrl,
+      locale,
+      [dt('language')]: locale,
+      ...attributionToPayload(),
+      _subject: `${dt('subjectPrefix')} ${product!.id} ${downloadVersion} ${artifact.type}`,
+    }).catch(() => { /* analytics best-effort */ });
     window.location.href = resolvedUrl;
   };
 
@@ -334,31 +348,4 @@ export default function EnterpriseDetailClient({ productId }: EnterpriseDetailCl
   );
 }
 
-async function fireDownloadAnalytics(
-  artifact: Artifact,
-  productId: string,
-  version: string,
-  locale: string,
-  resolvedUrl: string,
-) {
-  try {
-    await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        '📥 来源': '官网企业版下载行为埋点 (Enterprise Download Telemetry)',
-        '产品ID': productId,
-        '版本': version,
-        '介质类型': artifact.type,
-        '架构': artifact.arch ?? 'n/a',
-        '文件名': artifact.filename ?? '',
-        '镜像URL': resolvedUrl,
-        '语言': locale,
-        ...attributionToPayload(),
-        _subject: `[下载行为] ${productId} ${version} ${artifact.type}`,
-      }),
-    });
-  } catch {
-    /* analytics best-effort */
-  }
-}
+

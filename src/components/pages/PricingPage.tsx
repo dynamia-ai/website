@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import ConsentLabel from '@/components/enterprise/ConsentLabel';
 // import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/solid';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import { companyEmailSchema } from '@/utils/validation';
+import { submitContact } from '@/utils/contact';
 
 // 动画配置
 const fadeIn = {
@@ -21,6 +22,7 @@ const fadeIn = {
 
 export default function PricingPage() {
   const t = useTranslations();
+  const locale = useLocale();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -75,26 +77,20 @@ export default function PricingPage() {
       formData.append('_captcha', 'true');
       formData.append('_template', 'box');
       
-      // Send to API route using Resend
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formState.name,
-          email: formState.email,
-          company: formState.company,
-          jobTitle: formState.jobTitle,
-          nodeCount: formState.nodeCount,
-          gpuCount: formState.gpuCount,
-          message: formState.message,
-          _subject: `New Pricing Inquiry - ${formState.company}`,
-          _replyto: formState.email
-        })
+      const { success } = await submitContact({
+        locale,
+        name: formState.name,
+        email: formState.email,
+        company: formState.company,
+        jobTitle: formState.jobTitle,
+        nodeCount: formState.nodeCount,
+        gpuCount: formState.gpuCount,
+        message: formState.message,
+        _subject: `New Pricing Inquiry - ${formState.company}`,
+        _replyto: formState.email,
       });
-      
-      if (response.ok) {
+
+      if (success) {
         // Reset form
         setFormState({
           name: '',
@@ -107,7 +103,7 @@ export default function PricingPage() {
         });
         setSubmitStatus('success');
       } else {
-        console.error('Form submission failed:', await response.text());
+        console.error('Form submission failed');
         setSubmitStatus('error');
       }
     } catch (error) {

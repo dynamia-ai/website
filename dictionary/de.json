@@ -2694,16 +2694,29 @@
     "ctaSecondary": "Support kontaktieren"
   },
   "contactEmail": {
-    "locale": "Sprache / Locale",
+    "country": "Land",
     "intent": "Anfragetyp",
     "name": "Name",
     "company": "Unternehmen",
+    "companyDomain": "Unternehmensdomain",
     "email": "E-Mail",
     "phone": "Telefon / WeChat",
+    "requestType": "Anfrageart",
     "useCase": "Anwendungsfall",
     "footer": "Diese E-Mail wurde automatisch vom dynamia.ai-Website-Formular gesendet",
     "intentSelfTrial": "Selbsttest",
     "intentDemo": "Demo",
     "intentSales": "Vertrieb"
+  },
+  "downloadTelemetry": {
+    "source": "📥 Quelle",
+    "productId": "Produkt-ID",
+    "version": "Version",
+    "mediaType": "Medientyp",
+    "arch": "Architektur",
+    "filename": "Dateiname",
+    "imageUrl": "Image-URL",
+    "language": "Sprache",
+    "subjectPrefix": "[Download]"
   }
 }

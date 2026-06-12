@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { companyEmailSchema } from '@/utils/validation';
+import { submitContact } from '@/utils/contact';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 
 interface VideoGateModalProps {
@@ -12,6 +13,7 @@ interface VideoGateModalProps {
 
 export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalProps) {
   const t = useTranslations();
+  const locale = useLocale();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -40,22 +42,19 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          '📹 来源': '官网视频页面 (Website Video Gate)',
-          name: formState.name,
-          email: formState.email,
-          company: formState.company,
-          jobTitle: formState.jobTitle,
-          message: formState.message,
-          _subject: `[官网视频] Video Access Request - ${formState.company}`,
-          _replyto: formState.email,
-        }),
+      const { success } = await submitContact({
+        locale,
+        '📹 来源': '官网视频页面 (Website Video Gate)',
+        name: formState.name,
+        email: formState.email,
+        company: formState.company,
+        jobTitle: formState.jobTitle,
+        message: formState.message,
+        _subject: `[官网视频] Video Access Request - ${formState.company}`,
+        _replyto: formState.email,
       });
 
-      if (response.ok) {
+      if (success) {
         document.cookie = 'video_unlocked=1; max-age=2592000; path=/';
         setSubmitStatus('success');
         setTimeout(() => onSuccess(), 800);

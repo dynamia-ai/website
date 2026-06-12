@@ -2696,16 +2696,29 @@
     "ctaSecondary": "Contact Support"
   },
   "contactEmail": {
-    "locale": "Language / Locale",
+    "country": "Country",
     "intent": "Intent",
     "name": "Name",
     "company": "Company",
+    "companyDomain": "Company Domain",
     "email": "Email",
     "phone": "Phone / WeChat",
+    "requestType": "Request type",
     "useCase": "Use Case",
     "footer": "This email was automatically sent by the dynamia.ai website form",
     "intentSelfTrial": "Self-serve Trial",
     "intentDemo": "Demo",
     "intentSales": "Sales"
+  },
+  "downloadTelemetry": {
+    "source": "📥 Source",
+    "productId": "Product ID",
+    "version": "Version",
+    "mediaType": "Media type",
+    "arch": "Architecture",
+    "filename": "Filename",
+    "imageUrl": "Image URL",
+    "language": "Language",
+    "subjectPrefix": "[Download]"
   }
 }
