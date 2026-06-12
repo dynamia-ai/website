@@ -681,7 +681,6 @@
       "name": "姓名",
       "email": "工作邮箱",
       "company": "公司名称",
-      "phoneWechat": "电话号码/微信",
       "useCase": "您计划如何使用密瓜智能企业级异构计算虚拟化平台？",
       "terms": "我同意密瓜智能的服务条款和隐私政策",
       "termsRequired": "您必须同意条款和条件才能继续。",
@@ -690,7 +689,7 @@
       "invalidName": "请输入有效的姓名（1-50 个字符，不含特殊符号）。",
       "invalidCompany": "请输入有效的公司名称（1-100 个字符，不含特殊符号）。",
       "invalidEmail": "请输入有效的邮箱地址。",
-      "invalidPhone": "请输入有效的手机号码（11 位数字）。",
+      "invalidPhoneOrWechat": "请输入有效的电话号码或微信号。",
       "jobTitle": "职位",
       "message": "您希望了解或讨论的内容？",
       "intent": "您本次的需求？",
@@ -1139,21 +1138,27 @@
     "form": {
       "title": "获取定价信息",
       "name": "姓名",
-      "email": "邮箱",
       "company": "公司",
       "jobTitle": "职位",
-      "nodeCount": "节点数量",
       "gpuCount": "GPU 数量",
       "message": "留言（可选）",
       "submitButton": "获取定价",
       "submitting": "提交中...",
       "submitSuccess": "感谢您的提交！我们的团队将很快与您联系，提供定价信息。",
       "submitError": "提交请求时发生错误。请重试或直接联系我们：info@dynamia.ai。",
-      "nodeCountOptions": {
-        "small": "少于 10 个",
-        "medium": "10-50 个",
-        "large": "50-200 个",
-        "enterprise": "超过 200 个"
+      "phoneRequired": "电话/微信为必填项。",
+      "invalidPhoneOrWechat": "请输入有效的电话号码或微信号。",
+      "jobTitleRequired": "职位为必填项。",
+      "invalidJobTitle": "请输入有效的职位（1-100 个字符，不含特殊符号）。",
+      "fields": {
+        "email": {
+          "required": false,
+          "label": "邮箱"
+        },
+        "phone": {
+          "required": true,
+          "label": "电话/微信"
+        }
       },
       "gpuCountOptions": {
         "small": "1-10 个",

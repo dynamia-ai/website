@@ -1,15 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import ConsentLabel from '@/components/enterprise/ConsentLabel';
-// import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/solid';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
-import { companyEmailSchema } from '@/utils/validation';
+import { createPricingSchema } from '@/utils/validation';
 import { submitContact } from '@/utils/contact';
 
 // 动画配置
@@ -18,24 +17,23 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 }
 };
 
-
-
 export default function PricingPage() {
   const t = useTranslations();
   const locale = useLocale();
+  const fields = t.raw('pricing.form.fields');
+  const schema = createPricingSchema(fields);
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     company: '',
     jobTitle: '',
-    nodeCount: '10-50',
+    phone: '',
     gpuCount: '1-10',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  // 处理表单字段变化
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormState(prevState => ({
@@ -44,60 +42,39 @@ export default function PricingPage() {
     }));
   };
 
-  // 处理表单提交
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    
-    const emailResult = companyEmailSchema.safeParse(formState.email);
-    if (!emailResult.success) {
-      alert(t(emailResult.error.errors[0].message));
-      setIsSubmitting(false);
+
+    const result = schema.safeParse(formState);
+    if (!result.success) {
+      alert(t(result.error.errors[0].message));
       return;
     }
 
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
     try {
-      // Prepare email content
-      const formData = new FormData();
-      
-      // Add all form fields to FormData
-      Object.entries(formState).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      
-      // Add email subject
-      formData.append('_subject', `New Pricing Inquiry - ${formState.company}`);
-      
-      // Specify the target email
-      formData.append('_replyto', formState.email);
-      
-      // Add hidden fields for FormSubmit configuration
-      formData.append('_next', typeof window !== 'undefined' ? window.location.href : '');
-      formData.append('_captcha', 'true');
-      formData.append('_template', 'box');
-      
       const { success } = await submitContact({
         locale,
         name: formState.name,
         email: formState.email,
         company: formState.company,
         jobTitle: formState.jobTitle,
-        nodeCount: formState.nodeCount,
+        phone: formState.phone,
         gpuCount: formState.gpuCount,
         message: formState.message,
         _subject: `New Pricing Inquiry - ${formState.company}`,
-        _replyto: formState.email,
+        ...(formState.email ? { _replyto: formState.email } : {}),
       });
 
       if (success) {
-        // Reset form
         setFormState({
           name: '',
           email: '',
           company: '',
           jobTitle: '',
-          nodeCount: '10-50',
+          phone: '',
           gpuCount: '1-10',
           message: '',
         });
@@ -170,88 +147,44 @@ export default function PricingPage() {
               )}
               
               <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Hidden field for FormSubmit configuration */}
-                <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
-                <input type="hidden" name="_captcha" value="true" />
-                <input type="hidden" name="_template" value="box" />
-                
-                {/* 节点数量和GPU数量放在同一行 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="nodeCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.nodeCount')}
-                    </label>
-                    <select
-                      id="nodeCount"
-                      name="nodeCount"
-                      value={formState.nodeCount}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                    >
-                      <option value="<10">{t('pricing.form.nodeCountOptions.small')}</option>
-                      <option value="10-50">{t('pricing.form.nodeCountOptions.medium')}</option>
-                      <option value="50-200">{t('pricing.form.nodeCountOptions.large')}</option>
-                      <option value=">200">{t('pricing.form.nodeCountOptions.enterprise')}</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="gpuCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.gpuCount')}
-                    </label>
-                    <select
-                      id="gpuCount"
-                      name="gpuCount"
-                      value={formState.gpuCount}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                    >
-                      <option value="1-10">{t('pricing.form.gpuCountOptions.small')}</option>
-                      <option value="10-50">{t('pricing.form.gpuCountOptions.medium')}</option>
-                      <option value="50-200">{t('pricing.form.gpuCountOptions.large')}</option>
-                      <option value=">200">{t('pricing.form.gpuCountOptions.enterprise')}</option>
-                    </select>
-                  </div>
+                <div>
+                  <label htmlFor="gpuCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {t('pricing.form.gpuCount')} <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="gpuCount"
+                    name="gpuCount"
+                    value={formState.gpuCount}
+                    onChange={handleInputChange}
+                    required
+                    className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                  >
+                    <option value="1-10">{t('pricing.form.gpuCountOptions.small')}</option>
+                    <option value="10-50">{t('pricing.form.gpuCountOptions.medium')}</option>
+                    <option value="50-200">{t('pricing.form.gpuCountOptions.large')}</option>
+                    <option value=">200">{t('pricing.form.gpuCountOptions.enterprise')}</option>
+                  </select>
                 </div>
-                
-                {/* 姓名和电子邮箱放在同一行 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.name')}
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.email')}
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                    />
-                  </div>
+
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {t('pricing.form.name')} <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formState.name}
+                    onChange={handleInputChange}
+                    required
+                    className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                  />
                 </div>
-                
-                {/* 公司名称和职位放在同一行 */}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.company')}
+                      {t('pricing.form.company')} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -265,7 +198,7 @@ export default function PricingPage() {
                   </div>
                   <div>
                     <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.jobTitle')}
+                      {t('pricing.form.jobTitle')} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -278,7 +211,38 @@ export default function PricingPage() {
                     />
                   </div>
                 </div>
-                
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {fields.email.label} {fields.email.required && <span className="text-red-500">*</span>}
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formState.email}
+                      onChange={handleInputChange}
+                      required={fields.email.required}
+                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {fields.phone.label} {fields.phone.required && <span className="text-red-500">*</span>}
+                    </label>
+                    <input
+                      type="text"
+                      id="phone"
+                      name="phone"
+                      value={formState.phone}
+                      onChange={handleInputChange}
+                      required={fields.phone.required}
+                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                     {t('pricing.form.message')}
@@ -348,4 +312,4 @@ export default function PricingPage() {
 
     </MainLayout>
   );
-} 
+}

@@ -666,10 +666,11 @@
       "terms": "I agree to Dynamia's Terms of Service and Privacy Policy",
       "termsRequired": "You must agree to the terms and conditions to proceed.",
       "emailRequired": "Work email is required.",
+      "phoneRequired": "Phone / WeChat is required.",
       "invalidName": "Please enter a valid name (1-50 characters, no special characters).",
       "invalidCompany": "Please enter a valid company name (1-100 characters, no special characters).",
       "invalidEmail": "Please enter a valid email address.",
-      "invalidPhone": "Please enter a valid phone number.",
+      "invalidPhoneOrWechat": "Please enter a valid phone number or WeChat ID.",
       "jobTitle": "Job Title",
       "message": "What would you like to learn or discuss?",
       "intent": "What do you need?",
@@ -1076,21 +1077,27 @@
     "form": {
       "title": "Request Pricing Information",
       "name": "Name",
-      "email": "Email",
       "company": "Company",
       "jobTitle": "Job Title",
-      "nodeCount": "Number of Nodes",
       "gpuCount": "Number of GPUs",
       "message": "Message (Optional)",
       "submitButton": "Request Pricing",
       "submitting": "Submitting...",
       "submitSuccess": "Thank you! Your request has been submitted. Our team will contact you shortly with pricing information.",
       "submitError": "An error occurred while submitting your request. Please try again or contact us directly at info@dynamia.ai.",
-      "nodeCountOptions": {
-        "small": "Less than 10",
-        "medium": "10-50",
-        "large": "50-200",
-        "enterprise": "More than 200"
+      "phoneRequired": "Phone / WeChat is required.",
+      "invalidPhoneOrWechat": "Please enter a valid phone number or WeChat ID.",
+      "jobTitleRequired": "Job title is required.",
+      "invalidJobTitle": "Please enter a valid job title (1-100 characters, no special characters).",
+      "fields": {
+        "email": {
+          "required": true,
+          "label": "Email"
+        },
+        "phone": {
+          "required": false,
+          "label": "Phone / WeChat"
+        }
       },
       "gpuCountOptions": {
         "small": "1-10",
