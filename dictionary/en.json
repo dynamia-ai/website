@@ -2704,6 +2704,7 @@
     "companyDomain": "Company Domain",
     "email": "Email",
     "phone": "Phone / WeChat",
+    "requestType": "Request type",
     "useCase": "Use Case",
     "footer": "This email was automatically sent by the dynamia.ai website form",
     "intentSelfTrial": "Self-serve Trial",

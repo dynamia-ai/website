@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import { createFreeTrialSchema } from '@/utils/validation';
+import { submitContact } from '@/utils/contact';
 
 export default function FreeTrial() {
   const t = useTranslations();
+  const locale = useLocale();
   const fields = t.raw('freeTrial.form.fields');
   const schema = createFreeTrialSchema(fields);
   const [formState, setFormState] = useState({
@@ -80,26 +82,20 @@ export default function FreeTrial() {
       formData.append('_captcha', 'true');
       formData.append('_template', 'box');
 
-      // Send to API route using Resend
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          intent: formState.intent,
-          name: formState.name,
-          email: formState.email,
-          company: formState.company,
-          phone: formState.phone,
-          useCase: formState.useCase,
-          _subject: `${intentLabel} Application - ${formState.company}`,
-          _replyto: formState.email,
-          _gotcha: formState._gotcha,
-        })
+      const { success } = await submitContact({
+        locale,
+        intent: formState.intent,
+        name: formState.name,
+        email: formState.email,
+        company: formState.company,
+        phone: formState.phone,
+        useCase: formState.useCase,
+        _subject: `${intentLabel} Application - ${formState.company}`,
+        _replyto: formState.email,
+        _gotcha: formState._gotcha,
       });
-      
-      if (response.ok) {
+
+      if (success) {
         // Reset form
         setFormState({
           intent: 'selfTrial',
@@ -113,7 +109,7 @@ export default function FreeTrial() {
         });
         setSubmitStatus('success');
       } else {
-        console.error('Form submission failed:', await response.text());
+        console.error('Form submission failed');
         setSubmitStatus('error');
       }
     } catch (error) {

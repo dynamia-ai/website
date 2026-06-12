@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useLocale } from 'next-intl';
+import { submitContact } from '@/utils/contact';
 
 interface WebMCPTool<Input = unknown> {
   name: string;
@@ -49,6 +51,8 @@ function isSiteResourceInput(input: unknown): input is SiteResourceInput {
 }
 
 const WebMCPProvider: React.FC = () => {
+  const locale = useLocale();
+
   useEffect(() => {
     const modelContext = (navigator as WebMCPNavigator).modelContext;
     if (!modelContext?.provideContext) return;
@@ -78,26 +82,20 @@ const WebMCPProvider: React.FC = () => {
               };
             }
 
-            const response = await fetch('/api/contact', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                _subject: 'Agent Contact Request',
-                _gotcha: '',
-                ...input,
-              }),
+            const result = await submitContact({
+              locale,
+              _subject: 'Agent Contact Request',
+              _gotcha: '',
+              ...input,
             });
 
-            if (!response.ok) {
+            if (!result.success) {
               return {
                 success: false,
-                status: response.status,
               };
             }
 
-            return response.json();
+            return result;
           },
         },
         {

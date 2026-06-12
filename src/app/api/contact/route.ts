@@ -101,6 +101,9 @@ async function buildHtmlEmail(data: Record<string, string>, subject: string): Pr
     ...(data.country
       ? [{ label: t('country'), value: data.country }]
       : []),
+    ...(data.requestType
+      ? [{ label: t('requestType'), value: data.requestType }]
+      : []),
     { label: t('intent'), value: intentLabel },
     { label: t('name'), value: data.name },
     { label: t('company'), value: data.company },
@@ -175,7 +178,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, honeypot: true }, { status: 200 });
     }
 
-    const { _subject, _replyto, ...formDataRaw } = body;
+    const { _subject, _replyto, _type, ...formDataRaw } = body;
 
     /* 5. Field validation */
     const name = typeof body.name === 'string' ? sanitizeString(body.name, 100) : '';
@@ -227,6 +230,10 @@ export async function POST(request: Request) {
     const country = getCountry(request.headers);
     if (country) {
       formData.country = country;
+    }
+
+    if (typeof _type === 'string' && _type.trim()) {
+      formData.requestType = sanitizeString(_type, 100);
     }
 
     /* Extract company domain from email */

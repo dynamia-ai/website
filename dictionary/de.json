@@ -2702,6 +2702,7 @@
     "companyDomain": "Unternehmensdomain",
     "email": "E-Mail",
     "phone": "Telefon / WeChat",
+    "requestType": "Anfrageart",
     "useCase": "Anwendungsfall",
     "footer": "Diese E-Mail wurde automatisch vom dynamia.ai-Website-Formular gesendet",
     "intentSelfTrial": "Selbsttest",

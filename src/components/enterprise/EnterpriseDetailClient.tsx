@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { notFound, useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
+import { submitContact } from '@/utils/contact';
 import { motion } from 'framer-motion';
 import {
   ChartBarIcon,
@@ -334,6 +335,24 @@ export default function EnterpriseDetailClient({ productId }: EnterpriseDetailCl
   );
 }
 
+const DOWNLOAD_TELEMETRY_LABELS = {
+  source: { en: '📥 Source', zh: '📥 来源', de: '📥 Quelle' },
+  productId: { en: 'Product ID', zh: '产品ID', de: 'Produkt-ID' },
+  version: { en: 'Version', zh: '版本', de: 'Version' },
+  mediaType: { en: 'Media type', zh: '介质类型', de: 'Medientyp' },
+  arch: { en: 'Architecture', zh: '架构', de: 'Architektur' },
+  filename: { en: 'Filename', zh: '文件名', de: 'Dateiname' },
+  imageUrl: { en: 'Image URL', zh: '镜像URL', de: 'Image-URL' },
+  language: { en: 'Language', zh: '语言', de: 'Sprache' },
+} as const;
+
+function label(key: keyof typeof DOWNLOAD_TELEMETRY_LABELS, locale: string): string {
+  const localeKey = (locale in DOWNLOAD_TELEMETRY_LABELS[key]
+    ? locale
+    : 'en') as keyof (typeof DOWNLOAD_TELEMETRY_LABELS)[typeof key];
+  return DOWNLOAD_TELEMETRY_LABELS[key][localeKey];
+}
+
 async function fireDownloadAnalytics(
   artifact: Artifact,
   productId: string,
@@ -342,21 +361,18 @@ async function fireDownloadAnalytics(
   resolvedUrl: string,
 ) {
   try {
-    await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        '📥 来源': '官网企业版下载行为埋点 (Enterprise Download Telemetry)',
-        '产品ID': productId,
-        '版本': version,
-        '介质类型': artifact.type,
-        '架构': artifact.arch ?? 'n/a',
-        '文件名': artifact.filename ?? '',
-        '镜像URL': resolvedUrl,
-        '语言': locale,
-        ...attributionToPayload(),
-        _subject: `[下载行为] ${productId} ${version} ${artifact.type}`,
-      }),
+    await submitContact({
+      [label('source', locale)]: 'Enterprise Download Telemetry',
+      [label('productId', locale)]: productId,
+      [label('version', locale)]: version,
+      [label('mediaType', locale)]: artifact.type,
+      [label('arch', locale)]: artifact.arch ?? 'n/a',
+      [label('filename', locale)]: artifact.filename ?? '',
+      [label('imageUrl', locale)]: resolvedUrl,
+      locale,
+      [label('language', locale)]: locale,
+      ...attributionToPayload(),
+      _subject: `[Download] ${productId} ${version} ${artifact.type}`,
     });
   } catch {
     /* analytics best-effort */
