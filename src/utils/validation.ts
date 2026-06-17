@@ -96,6 +96,23 @@ export function createFreeTrialSchema(fields: {
   });
 }
 
+export function createGateSchema(fields: {
+  email: { required: boolean };
+  phone: { required: boolean };
+}) {
+  return z.object({
+    name: nameSchema,
+    email: createEmailSchema(fields.email.required),
+    company: companySchema,
+    jobTitle: jobTitleSchema,
+    phone: createContactSchema(fields.phone.required, {
+      required: 'freeTrial.form.phoneRequired',
+      invalid: 'freeTrial.form.invalidPhoneOrWechat',
+    }),
+    message: z.string().optional(),
+  });
+}
+
 /**
  * Returns a Zod schema for the pricing form. Field requirements
  * come from the dictionary's `pricing.form.fields` config.

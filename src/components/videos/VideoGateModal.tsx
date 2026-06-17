@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { companyEmailSchema } from '@/utils/validation';
+import { createGateSchema } from '@/utils/validation';
 import { submitContact } from '@/utils/contact';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 
@@ -14,15 +14,29 @@ interface VideoGateModalProps {
 export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalProps) {
   const t = useTranslations();
   const locale = useLocale();
+  const fields = t.raw('freeTrial.form.fields') as {
+    email: { required: boolean; label: string };
+    phone: { required: boolean; label: string };
+  };
+  const schema = createGateSchema(fields);
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     company: '',
+    phone: '',
     jobTitle: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -33,25 +47,27 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
     e.preventDefault();
     setSubmitStatus('idle');
 
-    const emailResult = companyEmailSchema.safeParse(formState.email);
-    if (!emailResult.success) {
-      alert(t(emailResult.error.errors[0].message));
+    const result = schema.safeParse(formState);
+    if (!result.success) {
+      alert(t(result.error.errors[0].message));
       return;
     }
 
+    const data = result.data;
     setIsSubmitting(true);
 
     try {
       const { success } = await submitContact({
         locale,
         '📹 来源': '官网视频页面 (Website Video Gate)',
-        name: formState.name,
-        email: formState.email,
-        company: formState.company,
-        jobTitle: formState.jobTitle,
-        message: formState.message,
-        _subject: `[官网视频] Video Access Request - ${formState.company}`,
-        _replyto: formState.email,
+        name: data.name,
+        email: data.email ?? '',
+        company: data.company,
+        phone: data.phone ?? '',
+        jobTitle: data.jobTitle,
+        message: data.message ?? '',
+        _subject: `[官网视频] Video Access Request - ${data.company}`,
+        ...(data.email ? { _replyto: data.email } : {}),
       });
 
       if (success) {
@@ -69,9 +85,12 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-black/60 backdrop-blur-sm p-4"
+      onClick={onClose}
+    >
       <div
-        className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl max-w-md w-full mx-4 p-8 relative max-h-[90vh] overflow-y-auto"
+        className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl w-full md:w-[40%] p-8 relative max-h-[90vh] overflow-y-auto overscroll-contain"
         onClick={e => e.stopPropagation()}
       >
         <button
@@ -110,7 +129,7 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="gate-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('freeTrial.form.name')}
+              {t('freeTrial.form.name')} <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -124,7 +143,8 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
           </div>
           <div>
             <label htmlFor="gate-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('freeTrial.form.email')}
+              {fields.email.label}{' '}
+              {fields.email.required && <span className="text-red-500">*</span>}
             </label>
             <input
               type="email"
@@ -132,13 +152,13 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
               name="email"
               value={formState.email}
               onChange={handleInputChange}
-              required
+              required={fields.email.required}
               className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
             />
           </div>
           <div>
             <label htmlFor="gate-company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('freeTrial.form.company')}
+              {t('freeTrial.form.company')} <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -151,8 +171,23 @@ export default function VideoGateModal({ onSuccess, onClose }: VideoGateModalPro
             />
           </div>
           <div>
+            <label htmlFor="gate-phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              {fields.phone.label}{' '}
+              {fields.phone.required && <span className="text-red-500">*</span>}
+            </label>
+            <input
+              type="tel"
+              id="gate-phone"
+              name="phone"
+              value={formState.phone}
+              onChange={handleInputChange}
+              required={fields.phone.required}
+              className="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-primary focus:border-primary"
+            />
+          </div>
+          <div>
             <label htmlFor="gate-jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('freeTrial.form.jobTitle')}
+              {t('freeTrial.form.jobTitle')} <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
