@@ -2447,7 +2447,7 @@
         {
           "id": "multi-cluster",
           "title": "Multi-Cluster-Kontrollebene",
-          "desc": "Nur Enterprise — schluesselfertige UI, Observability, Lebenszyklusmanagement.",
+          "desc": "Nur Plattform — schluesselfertige UI, Observability, Lebenszyklusmanagement.",
           "rows": [
             {
               "feature": "Multi-Cluster-Observability (Cluster / App / GPU)"
@@ -2465,9 +2465,6 @@
               "feature": "Visueller Binpack/Spread-Strategie-Editor"
             },
             {
-              "feature": "Globale Zeitspannen-Suche & Filter"
-            },
-            {
               "feature": "Multi-Cluster-Lebenszyklusmanagement (LCM)"
             }
           ]
@@ -2475,7 +2472,7 @@
         {
           "id": "enterprise-ops",
           "title": "Enterprise-Betrieb",
-          "desc": "Nur Enterprise — Mandanten, Sicherheit, Abrechnung, OpenAPI, SLA.",
+          "desc": "Nur Plattform — Mandanten, Sicherheit, Abrechnung, OpenAPI, SLA.",
           "rows": [
             {
               "feature": "Enterprise-Mandantenkontingente"

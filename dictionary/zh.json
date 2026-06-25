@@ -2438,7 +2438,7 @@
         {
           "id": "multi-cluster",
           "title": "多集群控制面",
-          "desc": "仅企业版 —— 一站式 UI、可观测、生命周期管理",
+          "desc": "仅平台版 —— 一站式 UI、可观测、生命周期管理",
           "rows": [
             {
               "feature": "多集群一站式可观测（集群 / 应用 / GPU）"
@@ -2456,9 +2456,6 @@
               "feature": "可视化 Binpack / Spread 策略"
             },
             {
-              "feature": "全局时间检索 / 表格筛选"
-            },
-            {
               "feature": "完备多集群生命周期管理（LCM）"
             }
           ]
@@ -2466,7 +2463,7 @@
         {
           "id": "enterprise-ops",
           "title": "企业运营",
-          "desc": "仅企业版 —— 租户 / 安全 / 计费 / OpenAPI / SLA",
+          "desc": "仅平台版 —— 租户 / 安全 / 计费 / OpenAPI / SLA",
           "rows": [
             {
               "feature": "企业级租户配额"
@@ -2514,7 +2511,7 @@
         ]
       },
       "hami-ai-platform": {
-        "name": "HAMi AI Platform",
+        "name": "HAMi 平台版",
         "tagline": "异构算力集群全栈管控平台",
         "description": "HAMi 平台版是面向异构算力集群的全栈控制面。在 HAMi 企业版基础上叠加多集群一站式 GUI、集群/应用/GPU 三维度可观测、企业级租户配额、计量计费、OpenAPI 与 SLA 支持，面向公有云应用市场、中小腰部客户与 KA 客户。",
         "highlights": [

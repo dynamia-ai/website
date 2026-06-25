@@ -2496,7 +2496,7 @@
         {
           "id": "multi-cluster",
           "title": "Multi-cluster Control Plane",
-          "desc": "Enterprise-only — turn-key UI, observability, lifecycle management.",
+          "desc": "Platform-only — turn-key UI, observability, lifecycle management.",
           "rows": [
             {
               "feature": "Multi-cluster observability (cluster / app / GPU)"
@@ -2514,9 +2514,6 @@
               "feature": "Visual Binpack / Spread strategy editor"
             },
             {
-              "feature": "Global time-range search & filters"
-            },
-            {
               "feature": "Multi-cluster lifecycle management (LCM)"
             }
           ]
@@ -2524,7 +2521,7 @@
         {
           "id": "enterprise-ops",
           "title": "Enterprise Operations",
-          "desc": "Enterprise-only — tenant, security, billing, OpenAPI, SLA.",
+          "desc": "Platform-only — tenant, security, billing, OpenAPI, SLA.",
           "rows": [
             {
               "feature": "Enterprise-grade tenant quota"
