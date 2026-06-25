@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { localizedPath } from '@/utils/i18n';
@@ -39,18 +39,17 @@ const GROUP_META: GroupMeta[] = [
   ]},
   { id: 'gpu-vendors', Icon: ServerStackIcon, rows: [
     { oss: true, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
+    { oss: true, commercial: true, enterprise: true },
   ]},
   { id: 'multi-cluster', Icon: ChartBarIcon, rows: [
-    { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
@@ -71,6 +70,122 @@ const GROUP_META: GroupMeta[] = [
 
 const MATRIX_GRID =
   'grid grid-cols-[minmax(11rem,1fr)_minmax(7rem,9rem)_minmax(7.5rem,9.5rem)_minmax(7.5rem,9.5rem)]';
+
+const NAV_HEIGHT = 64;
+
+interface PinMetrics {
+  left: number;
+  width: number;
+  height: number;
+}
+
+function usePinnedMatrixHeader() {
+  const matrixRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [pinned, setPinned] = useState(false);
+  const [metrics, setMetrics] = useState<PinMetrics | null>(null);
+
+  const update = useCallback(() => {
+    const matrix = matrixRef.current;
+    const header = headerRef.current;
+    if (!matrix || !header) return;
+
+    const matrixRect = matrix.getBoundingClientRect();
+    const height = header.offsetHeight;
+    const shouldPin =
+      matrixRect.top <= NAV_HEIGHT && matrixRect.bottom > NAV_HEIGHT + height;
+
+    setPinned(shouldPin);
+    setMetrics(
+      shouldPin
+        ? { left: matrixRect.left, width: matrixRect.width, height }
+        : null,
+    );
+  }, []);
+
+  useEffect(() => {
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+
+    const observer = new ResizeObserver(update);
+    if (matrixRef.current) observer.observe(matrixRef.current);
+    if (headerRef.current) observer.observe(headerRef.current);
+
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+      observer.disconnect();
+    };
+  }, [update]);
+
+  return { matrixRef, headerRef, pinned, metrics };
+}
+
+interface MatrixHeaderProps {
+  headerRef: React.RefObject<HTMLDivElement | null>;
+  pinned: boolean;
+  metrics: PinMetrics | null;
+  columns: {
+    feature: string;
+    oss: string;
+    ossSub?: string;
+    commercial: string;
+    commercialSub?: string;
+    enterprise: string;
+    enterpriseSub?: string;
+  };
+}
+
+function MatrixHeaderRow({ headerRef, pinned, metrics, columns }: MatrixHeaderProps) {
+  return (
+    <div
+      ref={headerRef}
+      className={`${MATRIX_GRID} bg-gray-50 dark:bg-gray-800 ${
+        pinned
+          ? 'fixed z-30 box-border border-x border-b border-gray-200 dark:border-gray-800 shadow-md'
+          : 'border-b border-gray-200 dark:border-gray-700 shadow-[inset_0_-1px_0_0_#e5e7eb] dark:shadow-[inset_0_-1px_0_0_#374151]'
+      }`}
+      style={
+        pinned && metrics
+          ? { top: NAV_HEIGHT, left: metrics.left, width: metrics.width }
+          : undefined
+      }
+    >
+      <div className="px-5 py-5 text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800">
+        {columns.feature}
+      </div>
+      <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+        <div className="text-sm font-bold text-gray-900 dark:text-gray-100 leading-tight">
+          {columns.oss}
+        </div>
+        {columns.ossSub ? (
+          <div className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 leading-snug">
+            {columns.ossSub}
+          </div>
+        ) : null}
+      </div>
+      <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+        <div className="text-sm font-bold text-gray-900 dark:text-gray-100 leading-tight">
+          {columns.commercial}
+        </div>
+        {columns.commercialSub ? (
+          <div className="mt-1 text-[11px] text-primary/80 dark:text-primary/70 leading-snug">
+            {columns.commercialSub}
+          </div>
+        ) : null}
+      </div>
+      <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700 bg-primary/[0.08] dark:bg-primary/15">
+        <div className="text-sm font-bold text-primary leading-tight">{columns.enterprise}</div>
+        {columns.enterpriseSub ? (
+          <div className="mt-1 text-[11px] text-primary/80 dark:text-primary/70 leading-snug">
+            {columns.enterpriseSub}
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
 
 interface ScopeCtaCardProps {
   href: string;
@@ -118,6 +233,7 @@ export default function ProductScope() {
   const scopeGroups = t.raw('scope.groups');
   const hamiHref = localizedPath('/products/hami-enterprise', locale);
   const entHref = localizedPath('/products/hami-ai-platform', locale);
+  const { matrixRef, headerRef, pinned, metrics } = usePinnedMatrixHeader();
 
   const totals = {
     oss: GROUP_META.reduce((s, g) => s + g.rows.filter((r) => r.oss).length, 0),
@@ -180,121 +296,98 @@ export default function ProductScope() {
         </div>
       </div>
 
-      {/* Comparison matrix · 3 columns */}
-      <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden shadow-sm">
-        <div className="overflow-x-auto">
-          <div className="min-w-[44rem]">
-        {/* Header row */}
-        <div
-          className={`${MATRIX_GRID} border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50`}
-        >
-          <div className="px-5 py-5 text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-            {c.columns.feature}
-          </div>
-          <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700">
-            <div className="text-sm font-bold text-gray-900 dark:text-gray-100 leading-tight">
-              {c.columns.oss}
-            </div>
-            {c.columns.ossSub ? (
-              <div className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 leading-snug">
-                {c.columns.ossSub}
-              </div>
-            ) : null}
-          </div>
-          <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700">
-            <div className="text-sm font-bold text-gray-900 dark:text-gray-100 leading-tight">
-              {c.columns.commercial}
-            </div>
-            {c.columns.commercialSub ? (
-              <div className="mt-1 text-[11px] text-primary/80 dark:text-primary/70 leading-snug">
-                {c.columns.commercialSub}
-              </div>
-            ) : null}
-          </div>
-          <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700 bg-primary/5 dark:bg-primary/10">
-            <div className="text-sm font-bold text-primary leading-tight">{c.columns.enterprise}</div>
-            {c.columns.enterpriseSub ? (
-              <div className="mt-1 text-[11px] text-primary/80 dark:text-primary/70 leading-snug">
-                {c.columns.enterpriseSub}
-              </div>
-            ) : null}
-          </div>
-        </div>
-
-        {/* Group rows */}
-        {GROUP_META.map((g, gIdx) => {
-          const Icon = g.Icon;
-          const dg = scopeGroups[gIdx];
-          return (
-            <div key={g.id} className="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
-              <div
-                className={`${MATRIX_GRID} bg-gray-50/60 dark:bg-gray-800/40 border-t border-gray-200 dark:border-gray-700`}
-              >
-                <div className="px-5 py-4 flex items-center gap-2.5">
-                  <Icon className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
-                  <div className="min-w-0">
-                    <div className="text-base font-semibold text-gray-900 dark:text-gray-100">
-                      {dg.title}
-                    </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 leading-snug mt-0.5">
-                      {dg.desc}
-                    </div>
-                  </div>
-                </div>
-                <div className="border-l border-gray-200 dark:border-gray-700" />
-                <div className="border-l border-gray-200 dark:border-gray-700" />
-                <div className="border-l border-gray-200 dark:border-gray-700 bg-primary/5 dark:bg-primary/10" />
-              </div>
-
-              {g.rows.map((row, idx) => (
+      {/* Comparison matrix */}
+      <div
+        ref={matrixRef}
+        className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden shadow-sm"
+      >
+        <div className="min-w-[44rem]">
+          {pinned && metrics ? (
+            <div
+              aria-hidden
+              style={{ height: metrics.height }}
+              className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700"
+            />
+          ) : null}
+          <MatrixHeaderRow
+            headerRef={headerRef}
+            pinned={pinned}
+            metrics={metrics}
+            columns={c.columns}
+          />
+          {/* Group rows */}
+          {GROUP_META.map((g, gIdx) => {
+            const Icon = g.Icon;
+            const dg = scopeGroups[gIdx];
+            return (
+              <div key={g.id} className="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
                 <div
-                  key={idx}
-                  className={`${MATRIX_GRID} hover:bg-gray-50/60 dark:hover:bg-gray-800/30 transition-colors`}
+                  className={`${MATRIX_GRID} bg-gray-50/60 dark:bg-gray-800/40 border-t border-gray-200 dark:border-gray-700`}
                 >
-                  <div className="px-5 py-3.5 text-[15px] text-gray-700 dark:text-gray-300 flex items-center leading-snug">
-                    {dg.rows[idx].feature}
+                  <div className="px-5 py-4 flex items-center gap-2.5">
+                    <Icon className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
+                    <div className="min-w-0">
+                      <div className="text-base font-semibold text-gray-900 dark:text-gray-100">
+                        {dg.title}
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 leading-snug mt-0.5">
+                        {dg.desc}
+                      </div>
+                    </div>
                   </div>
-                  {renderCell(row.oss)}
-                  {renderCell(row.commercial)}
-                  {renderCell(
-                    row.enterprise,
-                    'primary',
-                    'bg-primary/[0.04] dark:bg-primary/[0.07]',
-                  )}
+                  <div className="border-l border-gray-200 dark:border-gray-700" />
+                  <div className="border-l border-gray-200 dark:border-gray-700" />
+                  <div className="border-l border-gray-200 dark:border-gray-700 bg-primary/5 dark:bg-primary/10" />
                 </div>
-              ))}
-            </div>
-          );
-        })}
 
-        {/* Footer summary */}
-        <div
-          className={`${MATRIX_GRID} bg-gray-50 dark:bg-gray-800/50 border-t-2 border-gray-200 dark:border-gray-700`}
-        >
-          <div className="px-5 py-4">
-            <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
-              {c.totalsLabel}
+                {g.rows.map((row, idx) => (
+                  <div
+                    key={idx}
+                    className={`${MATRIX_GRID} hover:bg-gray-50/60 dark:hover:bg-gray-800/30 transition-colors`}
+                  >
+                    <div className="px-5 py-3.5 text-[15px] text-gray-700 dark:text-gray-300 flex items-center leading-snug">
+                      {dg.rows[idx].feature}
+                    </div>
+                    {renderCell(row.oss)}
+                    {renderCell(row.commercial)}
+                    {renderCell(
+                      row.enterprise,
+                      'primary',
+                      'bg-primary/[0.04] dark:bg-primary/[0.07]',
+                    )}
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+
+          {/* Footer summary */}
+          <div
+            className={`${MATRIX_GRID} bg-gray-50 dark:bg-gray-800/50 border-t-2 border-gray-200 dark:border-gray-700`}
+          >
+            <div className="px-5 py-4">
+              <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
+                {c.totalsLabel}
+              </div>
+              <p className="mt-1 text-[11px] text-gray-400 dark:text-gray-500 leading-snug max-w-[14rem]">
+                {c.totalsHint}
+              </p>
             </div>
-            <p className="mt-1 text-[11px] text-gray-400 dark:text-gray-500 leading-snug max-w-[14rem]">
-              {c.totalsHint}
-            </p>
-          </div>
-          <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700">
-            <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 tabular-nums">
-              {totals.oss}
+            <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700">
+              <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 tabular-nums">
+                {totals.oss}
+              </div>
             </div>
-          </div>
-          <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700">
-            <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 tabular-nums">
-              {totals.commercial}
+            <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700">
+              <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 tabular-nums">
+                {totals.commercial}
+              </div>
             </div>
-          </div>
-          <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700 bg-primary/5 dark:bg-primary/10">
-            <div className="text-lg font-semibold text-primary tabular-nums">
-              {totals.enterprise}
+            <div className="px-3 py-4 text-center border-l border-gray-200 dark:border-gray-700 bg-primary/5 dark:bg-primary/10">
+              <div className="text-lg font-semibold text-primary tabular-nums">
+                {totals.enterprise}
+              </div>
             </div>
-          </div>
-        </div>
           </div>
         </div>
       </div>

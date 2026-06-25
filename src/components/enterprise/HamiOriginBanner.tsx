@@ -63,7 +63,7 @@ function FlowStepCard({ highlight = false, icon, title, titleSub, desc }: FlowSt
     <div
       className={`flex items-start gap-3 rounded-lg border px-3 py-2.5 ${
         highlight
-          ? 'border-primary/35 bg-primary/[0.05] dark:bg-primary/[0.08]'
+          ? 'border-2 border-primary bg-primary/[0.05] dark:bg-primary/[0.08]'
           : 'border-gray-200/90 dark:border-gray-700/80 bg-white dark:bg-gray-900'
       }`}
     >
