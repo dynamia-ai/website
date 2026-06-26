@@ -38,7 +38,7 @@ const GROUP_META: GroupMeta[] = [
   ]},
   { id: 'gpu-vendors', Icon: ServerStackIcon, rows: [
     { oss: true, commercial: true, enterprise: true },
-    { oss: true, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
     { oss: true, commercial: true, enterprise: true },
     { oss: true, commercial: true, enterprise: true },
     { oss: true, commercial: true, enterprise: true },
@@ -60,7 +60,6 @@ const GROUP_META: GroupMeta[] = [
   { id: 'enterprise-ops', Icon: BuildingOffice2Icon, rows: [
     { oss: false, commercial: false, enterprise: true },
     // { oss: false, commercial: false, enterprise: true }, // 网络安全策略 — temporarily hidden
-    // { oss: false, commercial: false, enterprise: true }, // 租户级安全隔离策略 — temporarily hidden
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },

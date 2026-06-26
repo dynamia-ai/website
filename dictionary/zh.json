@@ -2404,34 +2404,34 @@
               "feature": "NVIDIA 全系列"
             },
             {
-              "feature": "AMD MI 系列（含 MI300X）"
+              "feature": "AMD"
             },
             {
-              "feature": "昇腾全系列"
+              "feature": "昇腾 全系列"
             },
             {
-              "feature": "沐曦（MXC500）"
+              "feature": "沐曦"
             },
             {
-              "feature": "昆仑芯（P800）"
+              "feature": "昆仑芯"
             },
             {
-              "feature": "海光 DCU（K100）"
+              "feature": "海光"
             },
             {
-              "feature": "天数智芯（BI）"
+              "feature": "天数智芯 全系列"
             },
             {
-              "feature": "寒武纪（MLU370）"
+              "feature": "寒武纪"
             },
             {
-              "feature": "燧原（S60）"
+              "feature": "燧原"
             },
             {
-              "feature": "摩尔线程（MTT S4000）"
+              "feature": "摩尔线程"
             },
             {
-              "feature": "平头哥 PPU"
+              "feature": "平头哥 全系列"
             }
           ]
         },
@@ -2467,6 +2467,9 @@
           "rows": [
             {
               "feature": "企业级租户配额"
+            },
+            {
+              "feature": "租户级安全隔离策略"
             },
             {
               "feature": "计量、计费"
