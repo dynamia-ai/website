@@ -2462,34 +2462,34 @@
               "feature": "NVIDIA (full lineup)"
             },
             {
-              "feature": "AMD MI series (incl. MI300X)"
+              "feature": "AMD"
             },
             {
               "feature": "Ascend (full lineup)"
             },
             {
-              "feature": "MetaX (MXC500)"
+              "feature": "MetaX"
             },
             {
-              "feature": "Kunlunxin (P800)"
+              "feature": "Kunlunxin"
             },
             {
-              "feature": "Hygon DCU (K100)"
+              "feature": "Hygon"
             },
             {
-              "feature": "Iluvatar (BI)"
+              "feature": "Iluvatar (full lineup)"
             },
             {
-              "feature": "Cambricon (MLU370)"
+              "feature": "Cambricon"
             },
             {
-              "feature": "Enflame (S60)"
+              "feature": "Enflame"
             },
             {
-              "feature": "Moore Threads (MTT S4000)"
+              "feature": "Moore Threads"
             },
             {
-              "feature": "Alibaba T-Head PPU"
+              "feature": "Alibaba T-Head (full lineup)"
             }
           ]
         },
@@ -2525,6 +2525,9 @@
           "rows": [
             {
               "feature": "Enterprise-grade tenant quota"
+            },
+            {
+              "feature": "Tenant-level security isolation"
             },
             {
               "feature": "Metering & billing"

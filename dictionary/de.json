@@ -2413,34 +2413,34 @@
               "feature": "NVIDIA (volle Produktpalette)"
             },
             {
-              "feature": "AMD MI Serie (inkl. MI300X)"
+              "feature": "AMD"
             },
             {
               "feature": "Ascend (volle Produktpalette)"
             },
             {
-              "feature": "MetaX (MXC500)"
+              "feature": "MetaX"
             },
             {
-              "feature": "Kunlunxin (P800)"
+              "feature": "Kunlunxin"
             },
             {
-              "feature": "Hygon DCU (K100)"
+              "feature": "Hygon"
             },
             {
-              "feature": "Iluvatar (BI)"
+              "feature": "Iluvatar (volle Produktpalette)"
             },
             {
-              "feature": "Cambricon (MLU370)"
+              "feature": "Cambricon"
             },
             {
-              "feature": "Enflame (S60)"
+              "feature": "Enflame"
             },
             {
-              "feature": "Moore Threads (MTT S4000)"
+              "feature": "Moore Threads"
             },
             {
-              "feature": "Alibaba T-Head PPU"
+              "feature": "Alibaba T-Head (volle Produktpalette)"
             }
           ]
         },
@@ -2476,6 +2476,9 @@
           "rows": [
             {
               "feature": "Enterprise-Mandantenkontingente"
+            },
+            {
+              "feature": "Mandanten-Sicherheitsisolierung"
             },
             {
               "feature": "Messung & Abrechnung"
