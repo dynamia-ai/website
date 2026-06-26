@@ -425,7 +425,7 @@
               },
               "5": {
                 "name": "Nvidia Network Topology Affinity Scheduling",
-                "hamiStatus": false,
+                "hamiStatus": true,
                 "platformStatus": true
               }
             }
@@ -2379,9 +2379,6 @@
               "feature": "Speicher- & Kern-UEberbuchung"
             },
             {
-              "feature": "High-Perf-Modus (kein Virtualisierungs-Overhead)"
-            },
-            {
               "feature": "HAMi Turbo-Modus"
             },
             {
@@ -2410,7 +2407,7 @@
         {
           "id": "gpu-vendors",
           "title": "Heterogene GPU-Herstellerunterstuetzung",
-          "desc": "Breite Herstellerabdeckung von NVIDIA bis zu fuehrenden inlaendischen Beschleunigern und AMD.",
+          "desc": "NVIDIA, AMD und 9 inlaendische Beschleuniger-Hersteller.",
           "rows": [
             {
               "feature": "NVIDIA (volle Produktpalette)"
@@ -2419,7 +2416,7 @@
               "feature": "AMD MI Serie (inkl. MI300X)"
             },
             {
-              "feature": "Ascend (910B / 910C)"
+              "feature": "Ascend (volle Produktpalette)"
             },
             {
               "feature": "MetaX (MXC500)"
@@ -2437,10 +2434,13 @@
               "feature": "Cambricon (MLU370)"
             },
             {
-              "feature": "Enflame (SG2042)"
+              "feature": "Enflame (S60)"
             },
             {
-              "feature": "Moore Threads (MTT S3000)"
+              "feature": "Moore Threads (MTT S4000)"
+            },
+            {
+              "feature": "Alibaba T-Head PPU"
             }
           ]
         },
@@ -2476,12 +2476,6 @@
           "rows": [
             {
               "feature": "Enterprise-Mandantenkontingente"
-            },
-            {
-              "feature": "Netzwerksicherheitsrichtlinien"
-            },
-            {
-              "feature": "Mandanten-Sicherheitsisolierung"
             },
             {
               "feature": "Messung & Abrechnung"

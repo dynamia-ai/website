@@ -425,7 +425,7 @@
               },
               {
                 "name": "Nvidia Network Topology Affinity Scheduling",
-                "hamiStatus": false,
+                "hamiStatus": true,
                 "platformStatus": true
               }
             ]
@@ -2428,9 +2428,6 @@
               "feature": "Memory & compute oversubscription"
             },
             {
-              "feature": "High-perf mode (no virtualization overhead)"
-            },
-            {
               "feature": "HAMi Turbo mode"
             },
             {
@@ -2459,7 +2456,7 @@
         {
           "id": "gpu-vendors",
           "title": "Heterogeneous GPU Vendor Support",
-          "desc": "Broad vendor coverage from NVIDIA to leading domestic accelerators and AMD.",
+          "desc": "NVIDIA, AMD, and 9 domestic accelerator vendors.",
           "rows": [
             {
               "feature": "NVIDIA (full lineup)"
@@ -2468,7 +2465,7 @@
               "feature": "AMD MI series (incl. MI300X)"
             },
             {
-              "feature": "Ascend (910B / 910C)"
+              "feature": "Ascend (full lineup)"
             },
             {
               "feature": "MetaX (MXC500)"
@@ -2486,10 +2483,13 @@
               "feature": "Cambricon (MLU370)"
             },
             {
-              "feature": "Enflame (SG2042)"
+              "feature": "Enflame (S60)"
             },
             {
-              "feature": "Moore Threads (MTT S3000)"
+              "feature": "Moore Threads (MTT S4000)"
+            },
+            {
+              "feature": "Alibaba T-Head PPU"
             }
           ]
         },
@@ -2525,12 +2525,6 @@
           "rows": [
             {
               "feature": "Enterprise-grade tenant quota"
-            },
-            {
-              "feature": "Network security policies"
-            },
-            {
-              "feature": "Tenant-level security isolation"
             },
             {
               "feature": "Metering & billing"
