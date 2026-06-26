@@ -412,7 +412,7 @@
               },
               {
                 "name": "Nvidia 网络拓扑 亲和调度",
-                "hamiStatus": false,
+                "hamiStatus": true,
                 "platformStatus": true
               }
             ]
@@ -2370,9 +2370,6 @@
               "feature": "显存、算力超卖"
             },
             {
-              "feature": "高性能模式（虚拟化无性能损失）"
-            },
-            {
               "feature": "HAMi Turbo 模式"
             },
             {
@@ -2401,7 +2398,7 @@
         {
           "id": "gpu-vendors",
           "title": "异构 GPU 厂商支持",
-          "desc": "NVIDIA + 国产 8 家 + AMD",
+          "desc": "NVIDIA + AMD + 国产 9 家",
           "rows": [
             {
               "feature": "NVIDIA 全系列"
@@ -2410,7 +2407,7 @@
               "feature": "AMD MI 系列（含 MI300X）"
             },
             {
-              "feature": "昇腾（910B / 910C）"
+              "feature": "昇腾全系列"
             },
             {
               "feature": "沐曦（MXC500）"
@@ -2428,10 +2425,13 @@
               "feature": "寒武纪（MLU370）"
             },
             {
-              "feature": "燧原（SG2042）"
+              "feature": "燧原（S60）"
             },
             {
-              "feature": "摩尔线程（MTT S3000）"
+              "feature": "摩尔线程（MTT S4000）"
+            },
+            {
+              "feature": "平头哥 PPU"
             }
           ]
         },
@@ -2467,12 +2467,6 @@
           "rows": [
             {
               "feature": "企业级租户配额"
-            },
-            {
-              "feature": "网络安全策略"
-            },
-            {
-              "feature": "租户级安全隔离策略"
             },
             {
               "feature": "计量、计费"
