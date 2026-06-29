@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import MainLayout from '@/components/layout/MainLayout';
@@ -46,6 +46,9 @@ export default function Home() {
   const FEATURE_PROGRESS_TICK_MS = 50;
 
   const t = useTranslations();
+  const locale = useLocale();
+  // 合合信息 (IntSig) 在中英文站点使用不同 logo
+  const intsigLogo = locale === 'zh' ? '/logos/intsig-zh.png' : '/logos/intsig-en.png';
   const [activeTab, setActiveTab] = useState(0);
   const [featureProgress, setFeatureProgress] = useState(0);
   const [playedFeatureTabs, setPlayedFeatureTabs] = useState<number[]>([]);
@@ -368,6 +371,7 @@ export default function Home() {
                 { name: 'Company 7', logo: '/logos/company7.png' },
                 { name: 'Company 9', logo: '/logos/company9.svg' },
                 { name: 'OpenCSG', logo: '/logos/opencsg.svg' },
+                { name: 'IntSig', logo: intsigLogo },
               ];
               return companies.map((company, index) => (
                 <motion.div
