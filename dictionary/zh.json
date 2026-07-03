@@ -264,321 +264,6 @@
         "跨平台兼容性",
         "企业级安全"
       ],
-      "featureComparison": {
-        "title": "特性对比",
-        "subTitle": "HAMi 和 密瓜智能 功能对比",
-        "categoryHeader": "",
-        "featureHeader": "",
-        "openSource": "HAMi",
-        "enterprise": "密瓜智能",
-        "categories": [
-          {
-            "name": "架构支持",
-            "features": [
-              {
-                "name": "x86",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "ARM",
-                "hamiStatus": true,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "操作系统",
-            "features": [
-              {
-                "name": "Linux",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "WSL",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "规模",
-            "features": [
-              {
-                "name": "节点数",
-                "hamiStatus": "1 - 20 nodes",
-                "platformStatus": "20 - 1000 nodes"
-              },
-              {
-                "name": "GPU 数量",
-                "hamiStatus": "1 - 160 GPUs",
-                "platformStatus": "100 - 8000 GPUs"
-              }
-            ]
-          },
-          {
-            "name": "核心能力",
-            "features": [
-              {
-                "name": "显存共享",
-                "hamiStatus": "✅",
-                "platformStatus": true
-              },
-              {
-                "name": "显存共享强隔离",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "算力共享",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "算力共享强隔离",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "显存超卖",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "算力超卖",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "动态调整",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "自动扩缩容",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "任务优先级",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "故障隔离",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "统计任务空闲时间",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "显存分析",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "调度能力",
-            "features": [
-              {
-                "name": "节点级别 Binpack、Spread 调度",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "GPU 级别 Binpack、Spread 调度",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "Nvidia MIG",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "Nvidia MIG 动态虚拟化",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "Nvidia NUMA 亲和调度",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "Nvidia 网络拓扑 亲和调度",
-                "hamiStatus": true,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "异构能力",
-            "features": [
-              {
-                "name": "寒武纪 MLU",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "海光 DCU",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "昇腾 310 系列",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "昇腾 910 系列",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "摩尔线程",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "天数智芯",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "燧原",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "沐曦",
-                "hamiStatus": true,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "监控能力",
-            "features": [
-              {
-                "name": "AI 工作负载 GPU 分配情况",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "AI 工作负载节点绑定管理",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "AI 工作负载真实使用量",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "GPU 故障指标",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "GPU 故障告警",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "GPU 故障自恢复",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "AI 多集群管理",
-            "features": [
-              {
-                "name": "AI 算力集群生命周期管理 (创建、扩容、更新、卸载)",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "AI 多集群 统一管理视角",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "AI 多集群 统一监控、运维视角",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "多集群 工作台 UI",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "运维能力",
-            "features": [
-              {
-                "name": "GPU 软件栈全生命周期管理",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "GUI",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              {
-                "name": "OpenAPI",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "计量计费",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "安全性",
-            "features": [
-              {
-                "name": "KataContainer",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "安全策略",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              {
-                "name": "可信安全、算力脱敏",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            ]
-          },
-          {
-            "name": "技术支持",
-            "features": [
-              {
-                "name": "Support",
-                "hamiStatus": "✅ 社区支持：GitHub、社区用户群",
-                "platformStatus": "✅ 专业团队支持"
-              }
-            ]
-          }
-        ]
-      },
       "technicalArchitecture": "技术架构",
       "architectureDiagram": "架构图",
       "readyToStart": "准备好转变您的计算基础设施了吗？",
@@ -2457,25 +2142,31 @@
             },
             {
               "feature": "完备多集群生命周期管理（LCM）"
+            },
+            {
+              "feature": "一键部署体验模型"
             }
           ]
         },
         {
           "id": "enterprise-ops",
           "title": "企业运营",
-          "desc": "仅平台版 —— 租户 / 安全 / 计费 / OpenAPI / SLA",
+          "desc": "License、多租户、计费、OpenAPI、SLA",
           "rows": [
             {
-              "feature": "企业级租户配额"
-            },
-            {
-              "feature": "租户级安全隔离策略"
+              "feature": "企业级多租户管理"
             },
             {
               "feature": "计量、计费"
             },
             {
               "feature": "OpenAPI / 开放能力"
+            },
+            {
+              "feature": "License 可视化管理"
+            },
+            {
+              "feature": "OEM 白标品牌配置"
             },
             {
               "feature": "SLA 保障（7×24 交付 SLA）"

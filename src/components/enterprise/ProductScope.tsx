@@ -56,14 +56,16 @@ const GROUP_META: GroupMeta[] = [
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: false, enterprise: true },
   ]},
   { id: 'enterprise-ops', Icon: BuildingOffice2Icon, rows: [
     { oss: false, commercial: false, enterprise: true },
-    // { oss: false, commercial: false, enterprise: true }, // 网络安全策略 — temporarily hidden
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
     { oss: false, commercial: false, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
+    { oss: false, commercial: true, enterprise: true },
   ]},
 ];
 
