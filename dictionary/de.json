@@ -277,316 +277,6 @@
           "3": "Continuous updates and maintenance"
         }
       },
-      "featureComparison": {
-        "title": "Funktionsvergleich",
-        "subTitle": "HAMi vs Dynamia AI Funktionsvergleich",
-        "categoryHeader": "",
-        "featureHeader": "",
-        "openSource": "HAMi",
-        "enterprise": "Dynamia AI",
-        "categories": {
-          "0": {
-            "name": "Architecture Support",
-            "features": {
-              "0": {
-                "name": "x86",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "1": {
-                "name": "ARM",
-                "hamiStatus": true,
-                "platformStatus": true
-              }
-            }
-          },
-          "1": {
-            "name": "Betriebssysteme",
-            "features": {
-              "0": {
-                "name": "Linux",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "1": {
-                "name": "WSL",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            }
-          },
-          "2": {
-            "name": "Scale",
-            "features": {
-              "0": {
-                "name": "Knoten",
-                "hamiStatus": "1 - 20 nodes",
-                "platformStatus": "20 - 1000 nodes"
-              },
-              "1": {
-                "name": "GPUs",
-                "hamiStatus": "1 - 160 GPUs",
-                "platformStatus": "100 - 8000 GPUs"
-              }
-            }
-          },
-          "3": {
-            "name": "Core Capabilities",
-            "features": {
-              "0": {
-                "name": "GPU Memory share",
-                "hamiStatus": "✅",
-                "platformStatus": true
-              },
-              "1": {
-                "name": "QOS GPU Memory share",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "2": {
-                "name": "GPU Core share",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "3": {
-                "name": "QOS GPU Core share",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "4": {
-                "name": "GPU Memory oversubscribe",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "5": {
-                "name": "Computing Core oversubscribe",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "6": {
-                "name": "Dynamic Adjustment",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "7": {
-                "name": "Auto Scaling",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "8": {
-                "name": "Task Priority",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "9": {
-                "name": "Fault Isolation",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "10": {
-                "name": "Task Idle Time Statistics",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "11": {
-                "name": "Memory Analysis",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            }
-          },
-          "4": {
-            "name": "Scheduling Capabilities",
-            "features": {
-              "0": {
-                "name": "Node-level Binpack, Spread Scheduling",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "1": {
-                "name": "GPU-level Binpack, Spread Scheduling",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "2": {
-                "name": "Nvidia MIG",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "3": {
-                "name": "Nvidia MIG Dynamic Virtualization",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "4": {
-                "name": "Nvidia NUMA Affinity Scheduling",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "5": {
-                "name": "Nvidia Network Topology Affinity Scheduling",
-                "hamiStatus": true,
-                "platformStatus": true
-              }
-            }
-          },
-          "5": {
-            "name": "Heterogeneous Capabilities",
-            "features": {
-              "0": {
-                "name": "Cambricon MLU",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "1": {
-                "name": "Hygon DCU",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "2": {
-                "name": "Ascend 310 Series",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "3": {
-                "name": "Ascend 910 Series",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "4": {
-                "name": "Moore Threads GPU",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "5": {
-                "name": "Iluvatar GPU",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "6": {
-                "name": "Enflame GPU",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "7": {
-                "name": "Metax GPU",
-                "hamiStatus": true,
-                "platformStatus": true
-              }
-            }
-          },
-          "6": {
-            "name": "Monitoring Capabilities",
-            "features": {
-              "0": {
-                "name": "GPU Allocation of AI Workloads",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "1": {
-                "name": "Node Binding AI workloads",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "2": {
-                "name": "AI workloads usage",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "3": {
-                "name": "GPU Fault Metrics",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "4": {
-                "name": "GPU Fault Alerts",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "5": {
-                "name": "GPU Fault Self-recovery",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            }
-          },
-          "7": {
-            "name": "AI Multi-cluster Management",
-            "features": {
-              "0": {
-                "name": "AI Cluster Lifecycle Management",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "1": {
-                "name": "AI Multi-cluster Unified Management View",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "2": {
-                "name": "AI Multi-cluster Unified Monitoring and Operations View",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "3": {
-                "name": "Multi-cluster Workbench UI",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            }
-          },
-          "8": {
-            "name": "Operations Capabilities",
-            "features": {
-              "0": {
-                "name": "GPU Stack LCM",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "1": {
-                "name": "GUI",
-                "hamiStatus": true,
-                "platformStatus": true
-              },
-              "2": {
-                "name": "OpenAPI",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "3": {
-                "name": "Metering and Billing",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            }
-          },
-          "9": {
-            "name": "Sicherheit",
-            "features": {
-              "0": {
-                "name": "KataContainer",
-                "hamiStatus": false,
-                "platformStatus": true
-              },
-              "1": {
-                "name": "Security Policy",
-                "hamiStatus": false,
-                "platformStatus": true
-              }
-            }
-          },
-          "10": {
-            "name": "Support",
-            "features": {
-              "0": {
-                "name": "Support",
-                "hamiStatus": "✅ Community-Support: GitHub, Slack-Kanal",
-                "platformStatus": "✅ Professioneller Team-Support"
-              }
-            }
-          }
-        }
-      },
       "technicalArchitecture": "Technische Architektur",
       "architectureDescription": "Dynamia AI provides a comprehensive infrastructure for managing heterogeneous computing resources efficiently.",
       "architectureDiagram": "Architekturdiagramm",
@@ -2466,25 +2156,31 @@
             },
             {
               "feature": "Multi-Cluster-Lebenszyklusmanagement (LCM)"
+            },
+            {
+              "feature": "Ein-Klick-Bereitstellung von Erlebnismodellen"
             }
           ]
         },
         {
           "id": "enterprise-ops",
           "title": "Enterprise-Betrieb",
-          "desc": "Nur Plattform — Mandanten, Sicherheit, Abrechnung, OpenAPI, SLA.",
+          "desc": "License, Multi-Mandant, Abrechnung, OpenAPI, SLA.",
           "rows": [
             {
-              "feature": "Enterprise-Mandantenkontingente"
-            },
-            {
-              "feature": "Mandanten-Sicherheitsisolierung"
+              "feature": "Enterprise-Multi-Mandanten-Verwaltung"
             },
             {
               "feature": "Messung & Abrechnung"
             },
             {
               "feature": "OpenAPI & Automatisierung"
+            },
+            {
+              "feature": "Visuelle License-Verwaltung"
+            },
+            {
+              "feature": "OEM-White-Label-Branding"
             },
             {
               "feature": "SLA-gestuetzter Support (24/7)"
