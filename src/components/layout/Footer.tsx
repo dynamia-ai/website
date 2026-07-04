@@ -219,13 +219,13 @@ const Footer: React.FC = () => {
                 <div className="rounded-lg border border-gray-200 bg-white/80 px-3 py-2 dark:border-gray-700 dark:bg-white/95">
                   <img
                     src="/images/cncf.svg"
-                    alt="CNCF Sandbox"
+                    alt="CNCF Incubating"
                     width={120}
                     height={48}
                     className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity dark:brightness-95"
                   />
                 </div>
-                <span className="text-xs text-gray-400 dark:text-gray-500">HAMi is a CNCF Sandbox Project</span>
+                <span className="text-xs text-gray-400 dark:text-gray-500">HAMi is a CNCF Incubating Project</span>
               </div>
               <div className="flex flex-col items-center gap-1">
                 <div className="rounded-lg border border-gray-200 bg-white/80 px-3 py-2 dark:border-gray-700 dark:bg-white/95">

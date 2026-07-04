@@ -7,8 +7,8 @@
         "zh": "HAMi 企业版"
       },
       "tagline": {
-        "en": "Enterprise edition of HAMi — production-grade GPU virtualization built on the CNCF Sandbox project",
-        "zh": "HAMi 企业版 —— 在开源 HAMi（CNCF Sandbox 项目）之上提供企业级 GPU 虚拟化能力"
+        "en": "Enterprise edition of HAMi — production-grade GPU virtualization built on the CNCF Incubating project",
+        "zh": "HAMi 企业版 —— 在开源 HAMi（CNCF Incubating 项目）之上提供企业级 GPU 虚拟化能力"
       },
       "description": {
         "en": "HAMi Enterprise is the GPU-license-based enterprise edition of HAMi, focused on lifting GPU utilization from the open-source 40% to 70%+. It targets vertical-internet teams and channel partners that already operate a PaaS and need a hardened, supported HAMi.",

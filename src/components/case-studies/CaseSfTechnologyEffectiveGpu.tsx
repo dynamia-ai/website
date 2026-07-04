@@ -350,7 +350,7 @@ const CaseSfTechnologyEffectiveGpu: React.FC = () => {
               const points = t.raw('cases.sfTechnologyEffectiveGpu.validation.points');
               return Array.isArray(points) 
                 ? points
-                : ['证明 HAMi 关键能力', 'CNCF Sandbox 项目实践'];
+                : ['证明 HAMi 关键能力', 'CNCF Incubating 项目实践'];
             }()).map((point: string, index: number) => (
               <motion.div
                 key={index}

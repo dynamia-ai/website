@@ -250,7 +250,7 @@ const CaseNio: React.FC = () => {
                   : [
                       { title: 'NVIDIA MIG', description: 'Strong isolation but predefined partition sizes' },
                       { title: 'Time-Slicing', description: 'Minimal overhead but lacks strict limits' },
-                      { title: 'HAMi (CNCF Sandbox)', description: 'Fine-grained control over memory and compute' }
+                      { title: 'HAMi (CNCF Incubating)', description: 'Fine-grained control over memory and compute' }
                     ];
               }()).map((approach: any, index: number) => (
                 <motion.div

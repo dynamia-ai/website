@@ -180,12 +180,12 @@ export default function HamiPage() {
               >
                 <img
                   src="/images/cncf.svg"
-                  alt="CNCF Sandbox Project"
+                  alt="CNCF Incubating Project"
                   width={250}
                   height={150}
                   className="rounded-lg shadow-sm object-contain bg-white dark:bg-white/95 border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md"
                 />
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">HAMi is a CNCF Sandbox Project</p>
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">HAMi is a CNCF Incubating Project</p>
               </a>
             </motion.div>
             <motion.div

@@ -47,8 +47,8 @@
     },
     "whatIsHami": {
       "title": "什么是 HAMi？| 异构 AI 计算虚拟化",
-      "description": "了解 HAMi - 由密瓜智能创建的领先开源异构 AI 计算虚拟化中间件。CNCF Sandbox 项目，支持 GPU 共享和资源管理。",
-      "keywords": "HAMi, 密瓜智能，异构 AI 计算，GPU 虚拟化，CNCF sandbox，开源 AI 基础设施"
+      "description": "了解 HAMi - 由密瓜智能创建的领先开源异构 AI 计算虚拟化中间件。CNCF Incubating 项目，支持 GPU 共享和资源管理。",
+      "keywords": "HAMi, 密瓜智能，异构 AI 计算，GPU 虚拟化，CNCF incubating，开源 AI 基础设施"
     },
     "faq": {
       "title": "常见问题 - 密瓜智能 | 异构计算平台",
@@ -73,7 +73,7 @@
     "productsOverview": "产品概览",
     "productsOverviewDesc": "了解密瓜智能异构算力平台与开源 HAMi 项目",
     "hamiEnterprise": "HAMi 企业版",
-    "hamiEnterpriseDesc": "基于 CNCF Sandbox 项目构建的企业级 GPU 虚拟化方案",
+    "hamiEnterpriseDesc": "基于 CNCF Incubating 项目构建的企业级 GPU 虚拟化方案",
     "hamiAiPlatform": "HAMi 平台版",
     "hamiAiPlatformDesc": "异构算力集群全栈管控平台",
     "enterpriseDownloads": "企业版下载",
@@ -535,7 +535,7 @@
       "description": "我们在异构计算领域开拓创新，帮助组织最大化利用其计算资源",
       "whoWeAre": {
         "title": "公司简介",
-        "paragraph1": "密瓜智能，CNCF sandbox HAMi 项目的作者与维护者。HAMi 作为全球增长最快、最受欢迎的开源 AI 原生异构 虚拟化中间件项目。通过灵活、可靠、按需、弹性的 GPU 虚拟化来提升资源利用率，可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。\n",
+        "paragraph1": "密瓜智能，CNCF incubating HAMi 项目的作者与维护者。HAMi 作为全球增长最快、最受欢迎的开源 AI 原生异构 虚拟化中间件项目。通过灵活、可靠、按需、弹性的 GPU 虚拟化来提升资源利用率，可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。\n",
         "paragraph2": "HAMi 自开源以来受到广泛欢迎，用户遍布全球，超过 100+ 用户使用 HAMi 构建自己的 AI 基础设施，用于最大化提高 GPU 利用率。\n",
         "paragraph3": "密瓜智能提供统一的 AI 应用编排与 GPU 调度的企业级平台，最大化的释放 GPU 的所有潜力，提升通用 GPU 利用率，实现异构 算力集群、算力芯片的统一、高效的调度。"
       },
@@ -800,7 +800,7 @@
     "title": "什么是",
     "subtitle": "开源，异构虚拟化共享中间件，轻量化、无侵入部署在任意云环境",
     "introduction": "HAMi，唯一专注多云异构 GPU 共享的开源项目，通过灵活、可靠、按需、弹性的 GPU 共享来提升利用率，插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境，支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。截至目前，HAMi 已经被超过 60+ 操作系统厂商、算力云厂商以及垂直行业客户所采纳，成功地在金融、物流、智驾、机器人、生物科技等行业中实现了从 0 到 1 的落地。",
-    "creator": "HAMi 由密瓜智能团队创作并维护，目前是 CNCF Sandbox 与 CNAI Landscape 项目。",
+    "creator": "HAMi 由密瓜智能团队创作并维护，目前是 CNCF Incubating 与 CNAI Landscape 项目。",
     "githubButton": "GitHub 仓库",
     "websiteButton": "访问官网"
   },
@@ -1025,7 +1025,7 @@
         "description": "顺丰科技 EffectiveGPU 的成功落地，是对 HAMi 技术理念和工程价值的再一次有力验证。",
         "points": [
           "证明 HAMi 在灵活可靠虚拟化、高效调度、统一管理和可观测性等关键能力，完全有能力支撑大型企业在复杂生产环境中的实际需求。",
-          "HAMi 作为 CNCF Sandbox & CNAI landscape 项目，此次实践为其进一步推动行业标准化建设与场景落地积累了宝贵经验。"
+          "HAMi 作为 CNCF Incubating & CNAI landscape 项目，此次实践为其进一步推动行业标准化建设与场景落地积累了宝贵经验。"
         ]
       },
       "quote": {
@@ -1353,7 +1353,7 @@
       },
       "solution": {
         "title": "HAMi 作为统一 GPU 层",
-        "description": " DaoCloud 采用了 CNCF Sandbox 项目 HAMi 进行异构 AI 计算虚拟化，作为跨 D.run 和 DCE 的统一 GPU 层。HAMi 为 Kubernetes 集群中的异构加速器提供设备虚拟化、vGPU 分区和调度。",
+        "description": " DaoCloud 采用了 CNCF Incubating 项目 HAMi 进行异构 AI 计算虚拟化，作为跨 D.run 和 DCE 的统一 GPU 层。HAMi 为 Kubernetes 集群中的异构加速器提供设备虚拟化、vGPU 分区和调度。",
         "drun": {
           "title": "D.run 算力云：面向公共 GPU 用户的 vGPU SKU",
           "description": "在 D.run 上，DaoCloud 将 HAMi 集成到每个区域 Kubernetes 集群中，以实现细粒度 GPU 共享和更高利用率。",
@@ -1521,7 +1521,7 @@
               "description": "允许工作负载以最小开销自由竞争 GPU 资源。但它缺乏对内存和计算使用的严格限制，不适合某些生产工作负载。"
             },
             {
-              "title": "HAMi（CNCF Sandbox 项目）",
+              "title": "HAMi（CNCF Incubating 项目）",
               "description": "支持对 GPU 内存和计算分配进行细粒度控制，实现基于实际工作负载需求的比例分配，开销最小。"
             }
           ]
@@ -1738,7 +1738,7 @@
       },
       "cncfNote": {
         "title": "CNCF 案例研究",
-        "description": "本案例研究最初由云原生计算基金会（CNCF）作为最终用户案例研究计划的一部分发布，展示了 SNOW Corp. 在更广泛的 CNCF 生态中成功使用 CNCF Sandbox 项目 HAMi 的实践。",
+        "description": "本案例研究最初由云原生计算基金会（CNCF）作为最终用户案例研究计划的一部分发布，展示了 SNOW Corp. 在更广泛的 CNCF 生态中成功使用 CNCF Incubating 项目 HAMi 的实践。",
         "link": "https://www.cncf.io/case-studies/snow-corp/"
       },
       "quote": {
@@ -1762,7 +1762,7 @@
   },
   "videos": {
     "pageTitle": "产品视频",
-    "pageSubtitle": "由 HAMi 发起团队打造 —— HAMi 是 CNCF Sandbox 异构 GPU 共享调度项目。了解密瓜智能如何将开源创新转化为企业级 GPU 编排方案。",
+    "pageSubtitle": "由 HAMi 发起团队打造 —— HAMi 是 CNCF Incubating 异构 GPU 共享调度项目。了解密瓜智能如何将开源创新转化为企业级 GPU 编排方案。",
     "locked": "需解锁",
     "gate": {
       "title": "观看产品视频",
@@ -1917,7 +1917,7 @@
     "hamiEnterprisePage": {
       "heroBadge": "企业版",
       "heroTitle": "HAMi 企业版",
-      "heroSubtitle": "基于 CNCF Sandbox 项目构建的企业级 GPU 虚拟化方案，将 GPU 利用率从 40% 提升至 70%+",
+      "heroSubtitle": "基于 CNCF Incubating 项目构建的企业级 GPU 虚拟化方案，将 GPU 利用率从 40% 提升至 70%+",
       "overviewTitle": "为生产环境而生",
       "overviewDescription": "HAMi 企业版基于 GPU License 授权，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴，提供生产级加固与企业级支持。",
       "highlightsTitle": "企业级特性",
@@ -1949,10 +1949,10 @@
     "origin": {
       "eyebrow": "同根同源",
       "title": "HAMi 与密瓜智能",
-      "subtitle": "HAMi 是 CNCF Sandbox 异构 AI 计算虚拟化项目，由密瓜智能创始团队发起并担任核心 Maintainer。我们的企业版与开源同源同代码，加固、运维、SLA 一站式由原厂提供。",
+      "subtitle": "HAMi 是 CNCF Incubating 异构 AI 计算虚拟化项目，由密瓜智能创始团队发起并担任核心 Maintainer。我们的企业版与开源同源同代码，加固、运维、SLA 一站式由原厂提供。",
       "pillars": [
         {
-          "title": "CNCF Sandbox 项目",
+          "title": "CNCF Incubating 项目",
           "desc": "开放治理 · 厂商中立基金会背书"
         },
         {
@@ -2181,7 +2181,7 @@
     "productsData": {
       "hami-enterprise": {
         "name": "HAMi 企业版",
-        "tagline": "HAMi 企业版 —— 在开源 HAMi（CNCF Sandbox 项目）之上提供企业级 GPU 虚拟化能力",
+        "tagline": "HAMi 企业版 —— 在开源 HAMi（CNCF Incubating 项目）之上提供企业级 GPU 虚拟化能力",
         "description": "HAMi 企业版基于 GPU License 授权，把 GPU 利用率从社区版 40% 提升到 70%+，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴/代理商，提供生产级加固与企业级支持。",
         "highlights": [
           {
@@ -2344,7 +2344,7 @@
       },
       {
         "question": "什么是 HAMi？",
-        "answer": "HAMi（异构 AI 计算中间件）是一个开源项目，也是 CNCF Sandbox 项目，提供 GPU 虚拟化和资源管理能力。它是密瓜智能企业平台的核心技术。"
+        "answer": "HAMi（异构 AI 计算中间件）是一个开源项目，也是 CNCF Incubating 项目，提供 GPU 虚拟化和资源管理能力。它是密瓜智能企业平台的核心技术。"
       },
       {
         "question": "GPU 共享如何工作？",

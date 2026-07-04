@@ -47,8 +47,8 @@
     },
     "whatIsHami": {
       "title": "Was ist HAMi? | Heterogene KI-Computing-Virtualisierung",
-      "description": "Learn about HAMi - leading open-source heterogeneous AI computing virtualization middleware by Dynamia AI. CNCF Sandbox project powering GPU sharing and resource management.",
-      "keywords": "HAMi, heterogene KI-datenverarbeitung, GPU-Virtualisierung, CNCF sandbox, Open-Source KI-Infrastruktur"
+      "description": "Learn about HAMi - leading open-source heterogeneous AI computing virtualization middleware by Dynamia AI. CNCF Incubating project powering GPU sharing and resource management.",
+      "keywords": "HAMi, heterogene KI-datenverarbeitung, GPU-Virtualisierung, CNCF incubating, Open-Source KI-Infrastruktur"
     },
     "faq": {
       "title": "FAQ - Haeufig gestellte Fragen | Dynamia AI",
@@ -73,7 +73,7 @@
     "productsOverview": "Produktuebersicht",
     "productsOverviewDesc": "Entdecken Sie die heterogene Computing-Plattform von Dynamia AI und das Open-Source-Projekt HAMi",
     "hamiEnterprise": "HAMi Enterprise",
-    "hamiEnterpriseDesc": "GPU-Virtualisierung fuer Unternehmen auf Basis des CNCF Sandbox-Projekts",
+    "hamiEnterpriseDesc": "GPU-Virtualisierung fuer Unternehmen auf Basis des CNCF Incubating-Projekts",
     "hamiAiPlatform": "HAMi AI Platform",
     "hamiAiPlatformDesc": "Full-Stack-Kontrollebene fuer heterogene Compute-Cluster",
     "enterpriseDownloads": "Enterprise-Downloads",
@@ -714,7 +714,7 @@
     "title": "Was ist",
     "subtitle": "An open-source, heterogeneous AI computing virtualization middleware, scales AI workloads seamlessly across hybrid and multi-cloud environments.",
     "introduction": "HAMi is the only open-source project dedicated to GPU resource sharing. It maximizing GPU efficiency by flexible, reliable, and elastic GPU share, integrating seamlessly into hybrid AI infrastructure. Adopted by 60+ OS vendors, cloud providers, and industry leaders, it has enabled breakthroughs in finance, logistics, autonomous driving, robotics, and biotech.",
-    "creator": "HAMi was created by dynamia.ai and is a Cloud Native Computing Foundation (CNCF) sandbox project.",
+    "creator": "HAMi was created by dynamia.ai and is a Cloud Native Computing Foundation (CNCF) incubating project.",
     "solutionTitle": "One-Stop Heterogeneous AI Computing Management Solution",
     "solutionDesc": "HAMi is a one-stop middleware that enables the sharing of various AI devices while ensuring resource isolation between different tasks. By improving the utilization of heterogeneous computing devices, HAMi provides a unified reuse interface to meet the needs of different device types.",
     "features": {
@@ -969,7 +969,7 @@
         "description": "Der erfolgreiche EffectiveGPU-Einsatz von SF Technology ist eine weitere ueberzeugende Validierung der technischen Konzepte von HAMi.",
         "points": {
           "0": "Beweist, dass die Schluesselfaehigkeiten von HAMi die tatsaechlichen Anforderungen grosser Unternehmen vollstaendig unterstuetzen koennen.",
-          "1": "Als CNCF Sandbox & CNAI Landscape-Projekt hat diese Praxis wertvolle Erfahrungen fuer HAMi gesammelt."
+          "1": "Als CNCF Incubating & CNAI Landscape-Projekt hat diese Praxis wertvolle Erfahrungen fuer HAMi gesammelt."
         }
       },
       "quote": {
@@ -1297,7 +1297,7 @@
       },
       "solution": {
         "title": "HAMi as the Unified GPU Layer",
-        "description": "DaoCloud adopted HAMi, a CNCF Sandbox project, for heterogeneous AI computing virtualization, as the unified GPU layer across both D.run and DCE. HAMi provides device virtualization, vGPU partitioning, and scheduling for heterogeneous accelerators in Kubernetes clusters.",
+        "description": "DaoCloud adopted HAMi, a CNCF Incubating project, for heterogeneous AI computing virtualization, as the unified GPU layer across both D.run and DCE. HAMi provides device virtualization, vGPU partitioning, and scheduling for heterogeneous accelerators in Kubernetes clusters.",
         "drun": {
           "title": "D.run Compute Cloud: vGPU-SKUs fuer oeffentliche GPU-Nutzer",
           "description": "Auf D.run integrierte DaoCloud HAMi in jeden regionalen Kubernetes-Cluster.",
@@ -1465,7 +1465,7 @@
               "description": "Allows workloads to compete freely for GPU resources with minimal overhead. However, it lacks strict limits on memory and compute usage, making it unsuitable for certain production workloads."
             },
             "2": {
-              "title": "HAMi (CNCF Sandbox)",
+              "title": "HAMi (CNCF Incubating)",
               "description": "Supports fine-grained control over both GPU memory and compute allocation, enabling proportional allocation based on actual workload requirements with minimal overhead."
             }
           }
@@ -1682,7 +1682,7 @@
       },
       "cncfNote": {
         "title": "CNCF Case Study",
-        "description": "This case study was originally published by the Cloud Native Computing Foundation (CNCF) as part of its end-user case study program. It demonstrates SNOW Corp.'s success with HAMi, a CNCF Sandbox project, within the broader CNCF ecosystem.",
+        "description": "This case study was originally published by the Cloud Native Computing Foundation (CNCF) as part of its end-user case study program. It demonstrates SNOW Corp.'s success with HAMi, a CNCF Incubating project, within the broader CNCF ecosystem.",
         "link": "https://www.cncf.io/case-studies/snow-corp/"
       },
       "quote": {
@@ -1777,7 +1777,7 @@
   },
   "videos": {
     "pageTitle": "Produktvideos",
-    "pageSubtitle": "Built by the creators of HAMi — the CNCF sandbox project for heterogeneous GPU sharing and scheduling. See how Dynamia turns open-source innovation into enterprise-grade GPU orchestration.",
+    "pageSubtitle": "Built by the creators of HAMi — the CNCF incubating project for heterogeneous GPU sharing and scheduling. See how Dynamia turns open-source innovation into enterprise-grade GPU orchestration.",
     "locked": "Gesperrt",
     "gate": {
       "title": "Watch Product Videos",
@@ -1931,7 +1931,7 @@
     "hamiEnterprisePage": {
       "heroBadge": "Enterprise Edition",
       "heroTitle": "HAMi Enterprise",
-      "heroSubtitle": "Produktionsreife GPU-Virtualisierung auf Basis des CNCF Sandbox-Projekts — steigern Sie die GPU-Auslastung von 40% auf ueber 70%",
+      "heroSubtitle": "Produktionsreife GPU-Virtualisierung auf Basis des CNCF Incubating-Projekts — steigern Sie die GPU-Auslastung von 40% auf ueber 70%",
       "overviewTitle": "Fuer die Produktion entwickelt",
       "overviewDescription": "HAMi Enterprise ist die GPU-lizenzbasierte Enterprise-Variante von HAMi.",
       "highlightsTitle": "Enterprise-Highlights",
@@ -1963,10 +1963,10 @@
     "origin": {
       "eyebrow": "Gleiche DNA",
       "title": "HAMi & Dynamia",
-      "subtitle": "HAMi ist das CNCF Sandbox-Projekt fuer heterogene KI-Computing-Virtualisierung. Gegruendet und betreut vom dynamia.ai-Team. Unsere Enterprise-Varianten liefern denselben Upstream-Code — gehaertet, unterstuetzt, mit SLA.",
+      "subtitle": "HAMi ist das CNCF Incubating-Projekt fuer heterogene KI-Computing-Virtualisierung. Gegruendet und betreut vom dynamia.ai-Team. Unsere Enterprise-Varianten liefern denselben Upstream-Code — gehaertet, unterstuetzt, mit SLA.",
       "pillars": [
         {
-          "title": "CNCF Sandbox",
+          "title": "CNCF Incubating",
           "desc": "Offene Governance · herstellerneutrale Stiftung"
         },
         {
@@ -2195,7 +2195,7 @@
     "productsData": {
       "hami-enterprise": {
         "name": "HAMi Enterprise",
-        "tagline": "GPU-Virtualisierung fuer Unternehmen auf Basis des CNCF Sandbox-Projekts — steigern Sie die GPU-Auslastung von 40% auf ueber 70%",
+        "tagline": "GPU-Virtualisierung fuer Unternehmen auf Basis des CNCF Incubating-Projekts — steigern Sie die GPU-Auslastung von 40% auf ueber 70%",
         "description": "HAMi Enterprise ist die GPU-lizenzbasierte Enterprise-Variante von HAMi, entwickelt fuer Teams, die gehaertete, unterstuetzte GPU-Virtualisierung mit Enterprise-Zuverlaessigkeit benoetigen.",
         "highlights": [
           {
@@ -2358,7 +2358,7 @@
       },
       {
         "question": "Was ist HAMi?",
-        "answer": "HAMi (Heterogeneous AI Computing Middleware) ist ein Open-Source-Projekt und CNCF Sandbox-Projekt, das GPU-Virtualisierung und Ressourcenverwaltung bietet. Es ist die Kerntechnologie hinter Dynamia AI."
+        "answer": "HAMi (Heterogeneous AI Computing Middleware) ist ein Open-Source-Projekt und CNCF Incubating-Projekt, das GPU-Virtualisierung und Ressourcenverwaltung bietet. Es ist die Kerntechnologie hinter Dynamia AI."
       },
       {
         "question": "Wie funktioniert GPU-Sharing?",

@@ -540,14 +540,14 @@ export default function Home() {
                   <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-white/95 px-4 py-3 shadow-sm">
                     <img
                       src="/images/cncf.svg"
-                      alt="CNCF Sandbox Project"
+                      alt="CNCF Incubating Project"
                       width={300}
                       height={57}
                       className="object-contain"
                       style={{ maxHeight: '120px', maxWidth: '100%' }}
                     />
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">HAMi is a CNCF Sandbox Project</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">HAMi is a CNCF Incubating Project</p>
                 </div>
               </div>
             </motion.div>
