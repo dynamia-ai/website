@@ -1702,6 +1702,141 @@
         "title": "A Replicable Blueprint for Large-Scale GenAI",
         "description": "SNOW's approach highlights a replicable blueprint for running large-scale GenAI workloads — where intelligent resource utilization, autoscaling precision, and deep observability are critical to turning infrastructure challenges into competitive advantage."
       }
+    },
+    "chinaMerchantsBank": {
+      "title": "China Merchants Bank verbessert AI-Compute-Scheduling auf Kubernetes mit HAMi",
+      "subtitle": "Erfahren Sie, wie die China Merchants Bank eine einheitliche AI-Compute-Scheduling-Plattform auf Kubernetes und HAMi aufbaute, Beschleuniger mehrerer Anbieter (Kunlunxin, Ascend, NVIDIA, PPU, Moore Threads, MetaX) bündelt, topologiebewusstes Scheduling und feinkörniges Sharing ermöglicht, 100% Hardware-Pool-Auslastung erreicht und maschinenübergreifendes Scheduling um 30% senkt.",
+      "stats": [
+        {
+          "value": "100%",
+          "label": "Hardware-Pool-Auslastung"
+        },
+        {
+          "value": "30%",
+          "label": "Rückgang maschinenübergreifendes Scheduling"
+        },
+        {
+          "value": "1 GB / 1%",
+          "label": "feinste Speicher-/Rechenpartitionierung"
+        }
+      ],
+      "overview": {
+        "title": "Unternehmensübersicht",
+        "description": "Die China Merchants Bank ist eine der führenden Geschäftsbanken Chinas und investiert stark in Cloud-native-, AI- und digitale Infrastruktur. Da AI in immer mehr Finanzenwendungsfällen zum Kern wird, muss die Bank eine breite Palette an Trainings-, Inferenz- und internen AI-Workloads betreiben, was die zugrunde liegende Compute-Plattform erheblich belastet.",
+        "keyPoints": [
+          "Eine der führenden Geschäftsbanken Chinas",
+          "Starke Investitionen in Cloud-native-, AI- und digitale Infrastruktur",
+          "Beschleuniger mehrerer Anbieter: Kunlunxin, Ascend, NVIDIA, PPU, Moore Threads, MetaX",
+          "Einheitliche AI-Compute-Plattform auf Kubernetes und HAMi"
+        ]
+      },
+      "challenge": {
+        "title": "Herausforderungen: Vorhandene Ressourcen effizient zusammenbringen",
+        "description": "Training großer Modelle, Inferenzdienste und AI-Anwendungen wachsen schnell. Der eigentliche Engpass ist nicht fehlende Rechenleistung, sondern vorhandene Ressourcen effizient zusammenarbeiten zu lassen. Eine AI-Plattform in dieser Größenordnung reduziert sich auf drei Probleme.",
+        "points": [
+          {
+            "title": "Fragmentiertes Ressourcenmanagement",
+            "description": "Verschiedene AI-Beschleuniger-Anbieter liefern eigene Software-Stacks und Verwaltungstools, was zu isolierten Ressourcenpools, inkonsistenten Scheduling-Richtlinien und steigendem Betriebsaufwand führt."
+          },
+          {
+            "title": "Trainings-Hardware nicht voll ausgelastet",
+            "description": "Einige Trainingsknoten nutzen Multi-Chip-Hochgeschwindigkeitsverbindungen, bei denen die Task-Platzierung sehr empfindlich auf die physische Chip-Topologie reagiert. Ein Scheduler, der diese Topologie nicht versteht, platziert Tasks auf den falschen Chips, was die Leistung beeinträchtigt oder fehlschlägt."
+          },
+          {
+            "title": "Verschwendete Kapazität bei kleinen Tasks",
+            "description": "Viele Inferenz-, Fine-Tuning- und Test-Jobs benötigen keine ganze Beschleunigerkarte, aber der konventionelle Ansatz vergibt Karten vollständig und lässt viel Kapazität ungenutzt."
+          }
+        ]
+      },
+      "solution": {
+        "title": "Lösung: Eine einheitliche AI-Compute-Scheduling-Plattform",
+        "description": "Die China Merchants Bank baute ihre einheitliche AI-Compute-Plattform auf Kubernetes und HAMi auf und iterierte dann über Ressourcen-Onboarding, Shared-Scheduling und Trainingseffizienz.",
+        "unifiedResources": {
+          "title": "Einheitliches heterogenes Ressourcenmanagement",
+          "description": "HAMi bündelt viele verschiedene Arten von Beschleunigerkarten (Kunlunxin, mehrere Ascend-Modelle, NVIDIA-GPUs, PPUs, Moore Threads, MetaX und andere) in einem einheitlichen Kubernetes-Ressourcenpool. Ohne HAMi würde jede Hardwarelieferung typischerweise einen eigenen Kubernetes-Cluster erfordern, potenziell mehr als acht separate Cluster. Mit HAMi werden diese heterogenen Geräte über ein einziges Scheduling-Framework und einen konsistenten Satz Plattformrichtlinien verwaltet, während App-Teams Standard-Kubernetes-Workflows nutzen.",
+          "features": [
+            "Ein Kubernetes-Pool für Karten vieler Anbieter",
+            "Standard-k8s-Workflows für App-Teams",
+            "Anbieter-spezifische Best Practices und Beispiel-Workloads"
+          ]
+        },
+        "topologyScheduling": {
+          "title": "Topologiebewusstes Scheduling für die Supernode-Architektur",
+          "description": "Einige Trainingsknoten nutzen eine Supernode-(Dual-Chip-Modul)-Architektur. Der Standard-Kubernetes-Scheduler versteht dieses Layout nicht, daher erweiterte die Bank HAMis Device Plugin und Scheduler, um physische Module zu erkennen und gepaarte Zuweisung zu erzwingen. Der Scheduler hält Karten nun innerhalb desselben Moduls, und die Hardware-Pool-Auslastung erreichte 100%. In einem ResNet50-Inferenz-Benchmark hob feinkörnige Compute-Partitionierung den Einzelkartendurchsatz von 64.6 auf 94.8 images/s, mit einer Gesamtsteigerung von bis zu 46.7%.",
+          "features": [
+            "Gepaarte Zuweisung für Supernode-Module",
+            "Platzierung auf kürzestem Kommunikationspfad",
+            "100% Hardware-Pool-Auslastung"
+          ]
+        },
+        "fineGrainedSharing": {
+          "title": "Feinkörniges Sharing durch vNPU-Core-Software-Partitionierung",
+          "description": "Inferenz-, Kleinmodell-Fine-Tuning- und F&E-Test-Jobs benötigen oft keine ganze Karte. Die Bank nutzte HAMis VMPO-Core-Komponente für User-Space-Compute-Partitionierung mit einem Token-Bucket für Compute-Kontingente und User-Space-Speicherverwaltung. Die Partitionierung reicht bis zu 1 GB Speicher / 1% Compute, was im Bankwesen viel bedeutet, da Risiko- und Kundenservice-Modelle klein sind und keine ganze Karte benötigen.",
+          "features": [
+            "Token-Bucket-Compute-Kontingente",
+            "User-Space-Speicherverwaltung",
+            "1 GB Speicher / 1% Compute-Partitionierung"
+          ]
+        }
+      },
+      "results": {
+        "title": "Wichtige Ergebnisse",
+        "description": "Diese Änderungen ermöglichen der Bank, wachsende AI-Workloads zu bewältigen, ohne ständig neue Hardware zu kaufen.",
+        "items": [
+          {
+            "title": "Hardware-Pool-Auslastung",
+            "value": "100%",
+            "description": "Die Hardware-Pool-Auslastung erreichte nach topologiebewusster gepaarter Zuweisung 100%."
+          },
+          {
+            "title": "Maschinenübergreifendes Scheduling",
+            "value": "-30%",
+            "description": "Die Wahrscheinlichkeit maschinenübergreifenden Schedulings sank um 30% und beseitigte einen großen Engpass beim verteilten Training."
+          },
+          {
+            "title": "Partitionsgranularität",
+            "value": "1 GB / 1%",
+            "description": "Feinste Partitionierung bis zu 1 GB Speicher / 1% Compute, pro Task kombinierbar."
+          },
+          {
+            "title": "Einzelkartendurchsatz",
+            "value": "+46.7%",
+            "description": "Feinkörnige Compute-Partitionierung steigerte den ResNet50-Einzelkartendurchsatz um bis zu 46.7%."
+          },
+          {
+            "title": "Cross-Modul-Abstürze",
+            "value": "Beseitigt",
+            "description": "Gepaarte Zuweisung verhinderte Treiberabstürze durch ungerade, modulübergreifende Platzierung."
+          },
+          {
+            "title": "Plattformarchitektur",
+            "value": "Einheitlich",
+            "description": "Eine einheitliche heterogene AI-Compute-Scheduling-Plattform auf Kubernetes."
+          }
+        ]
+      },
+      "cncfNote": {
+        "title": "CNCF Fallstudie",
+        "description": "Dieser Fall wurde als CNCF-Fallstudie veröffentlicht.",
+        "link": "https://www.cncf.io/case-studies/china-merchants-bank/"
+      },
+      "quote": {
+        "text": "Mit HAMi bauten wir auf Kubernetes eine einheitliche heterogene AI-Compute-Scheduling-Plattform und erzielten erhebliche Verbesserungen bei Ressourcenauslastung, Trainingseffizienz und Plattformstabilität.",
+        "author": "AI-Compute-Plattform-Team der China Merchants Bank",
+        "position": "AI-Compute-Plattform-Team, China Merchants Bank"
+      },
+      "companyCard": {
+        "name": "China Merchants Bank",
+        "description": "Eine der führenden Geschäftsbanken Chinas, die Trainings-, Inferenz- und interne AI-Workloads im großen Maßstab auf einer Multi-Anbieter-Beschleuniger-Plattform betreibt."
+      },
+      "cta": {
+        "exploreHami": "HAMi entdecken",
+        "contactUs": "Kontakt aufnehmen"
+      },
+      "conclusion": {
+        "title": "Software ist der wahre Wettbewerbsvorteil in der AI-Infrastruktur",
+        "description": "Die Geschichte der China Merchants Bank zeigt, dass der wahre Wettbewerbsvorteil in der AI-Infrastruktur nicht darin besteht, mehr Hardware zu kaufen, sondern mit Software wie HAMi mehr Wert aus vorhandener Hardware zu schöpfen. Kubernetes wird zur Kontrollebene für Enterprise-AI-Infrastruktur."
+      }
     }
   },
   "privacyPolicy": {

@@ -1702,6 +1702,141 @@
         "title": "A Replicable Blueprint for Large-Scale GenAI",
         "description": "SNOW's approach highlights a replicable blueprint for running large-scale GenAI workloads — where intelligent resource utilization, autoscaling precision, and deep observability are critical to turning infrastructure challenges into competitive advantage."
       }
+    },
+    "chinaMerchantsBank": {
+      "title": "China Merchants Bank Improves AI Compute Scheduling on Kubernetes with HAMi",
+      "subtitle": "Discover how China Merchants Bank built a unified AI compute scheduling platform on Kubernetes and HAMi, pooling multi-vendor accelerators (Kunlunxin, Ascend, NVIDIA, PPU, Moore Threads, MetaX), enabling topology-aware scheduling and fine-grained sharing, reaching 100% hardware pool utilization and cutting cross-machine scheduling by 30%.",
+      "stats": [
+        {
+          "value": "100%",
+          "label": "hardware pool utilization"
+        },
+        {
+          "value": "30%",
+          "label": "drop in cross-machine scheduling"
+        },
+        {
+          "value": "1 GB / 1%",
+          "label": "finest memory / compute partitioning"
+        }
+      ],
+      "overview": {
+        "title": "Company Overview",
+        "description": "China Merchants Bank is one of China's leading commercial banks, investing heavily in cloud-native, AI, and digital infrastructure. As AI has become central to more financial use cases, the bank needs to run a wide range of training, inference, and internal AI workloads, which puts real pressure on the underlying computing platform.",
+        "keyPoints": [
+          "One of China's leading commercial banks",
+          "Heavy investment in cloud-native, AI, and digital infrastructure",
+          "Multi-vendor accelerators: Kunlunxin, Ascend, NVIDIA, PPU, Moore Threads, MetaX",
+          "Unified AI compute platform built on Kubernetes and HAMi"
+        ]
+      },
+      "challenge": {
+        "title": "Challenges: Getting Existing Resources to Work Together",
+        "description": "Large model training, inference services, and AI applications are growing fast. The real bottleneck isn't a lack of compute, it's getting existing resources to work together efficiently. Building an enterprise AI platform at this scale came down to three problems.",
+        "points": [
+          {
+            "title": "Fragmented Resource Management",
+            "description": "Different AI accelerator vendors ship their own software stacks and management tools, resulting in siloed resource pools, inconsistent scheduling policies, and growing operational overhead."
+          },
+          {
+            "title": "Training Hardware Not Fully Utilized",
+            "description": "Some training nodes use multi-chip high-speed interconnects, where task placement is very sensitive to physical chip topology. A scheduler that doesn't understand that topology puts tasks on the wrong chips, hurting performance or failing outright."
+          },
+          {
+            "title": "Wasted Capacity on Small Tasks",
+            "description": "Lots of inference, fine-tuning, and test jobs don't need a whole accelerator card, but the conventional approach allocates cards in full, leaving a lot of capacity idle."
+          }
+        ]
+      },
+      "solution": {
+        "title": "Solution: A Unified AI Compute Scheduling Platform",
+        "description": "China Merchants Bank built its unified AI compute platform on Kubernetes and HAMi, then iterated on resource onboarding, shared scheduling, and training efficiency.",
+        "unifiedResources": {
+          "title": "Unified Heterogeneous Resource Management",
+          "description": "HAMi pools many different types of accelerator cards (Kunlunxin, multiple Ascend models, NVIDIA GPUs, PPUs, Moore Threads, MetaX, and others) into one unified Kubernetes resource pool. Without HAMi, each hardware delivery would typically come with its own independent Kubernetes cluster, potentially requiring more than eight separate clusters. With HAMi, these heterogeneous devices are managed through a single scheduling framework and a consistent set of platform policies, while application teams keep using standard Kubernetes workflows.",
+          "features": [
+            "One Kubernetes pool for many vendor cards",
+            "Standard k8s workflows for application teams",
+            "Vendor best practices and example workloads"
+          ]
+        },
+        "topologyScheduling": {
+          "title": "Topology-Aware Scheduling for the Supernode Architecture",
+          "description": "Some training nodes use a supernode (dual-chip module) architecture. The default Kubernetes scheduler doesn't understand this layout, so the bank enhanced HAMi's Device Plugin and scheduler to recognize physical modules and enforce paired allocation. The scheduler now keeps cards within the same module, and hardware pool utilization went to 100%. In a ResNet50 inference benchmark, fine-grained compute partitioning lifted single-card throughput from 64.6 to 94.8 images/s, with overall throughput improving by up to 46.7%.",
+          "features": [
+            "Supernode module paired allocation",
+            "Shortest communication path placement",
+            "100% hardware pool utilization"
+          ]
+        },
+        "fineGrainedSharing": {
+          "title": "Fine-Grained Sharing with vNPU-Core Software Partitioning",
+          "description": "Inference, small model fine-tuning, and R&D test jobs often don't need a full card. The bank used HAMi's VMPO Core component to do user-space compute partitioning, using a token bucket for compute quotas and user-space memory management. Partitioning goes as fine as 1 GB memory / 1% compute, which matters a lot in banking where risk control and customer service models are small and don't need a full card.",
+          "features": [
+            "Token bucket compute quotas",
+            "User-space memory management",
+            "1 GB memory / 1% compute partitioning"
+          ]
+        }
+      },
+      "results": {
+        "title": "Key Results",
+        "description": "These changes let the bank handle growing AI workloads without constantly buying more hardware.",
+        "items": [
+          {
+            "title": "Hardware Pool Utilization",
+            "value": "100%",
+            "description": "Hardware pool utilization reached 100% after topology-aware paired allocation."
+          },
+          {
+            "title": "Cross-Machine Scheduling",
+            "value": "-30%",
+            "description": "Cross-machine scheduling probability dropped 30%, cutting a major distributed-training bottleneck."
+          },
+          {
+            "title": "Partition Granularity",
+            "value": "1 GB / 1%",
+            "description": "Finest partitioning down to 1 GB memory / 1% compute, mixed and matched per task."
+          },
+          {
+            "title": "Single-Card Throughput",
+            "value": "+46.7%",
+            "description": "ResNet50 single-card throughput improved up to 46.7% via fine-grained compute partitioning."
+          },
+          {
+            "title": "Cross-Module Driver Crashes",
+            "value": "Eliminated",
+            "description": "Paired allocation removed driver crashes from odd-card cross-module placement."
+          },
+          {
+            "title": "Platform Architecture",
+            "value": "Unified",
+            "description": "A single heterogeneous AI compute scheduling platform on Kubernetes."
+          }
+        ]
+      },
+      "cncfNote": {
+        "title": "CNCF Case Study",
+        "description": "This case is published as a CNCF case study.",
+        "link": "https://www.cncf.io/case-studies/china-merchants-bank/"
+      },
+      "quote": {
+        "text": "Through HAMi, we built a unified heterogeneous AI compute scheduling platform on Kubernetes, achieving significant improvements in resource utilization, training efficiency, and platform stability.",
+        "author": "China Merchants Bank AI Compute Platform Team",
+        "position": "AI Compute Platform Team, China Merchants Bank"
+      },
+      "companyCard": {
+        "name": "China Merchants Bank",
+        "description": "One of China's leading commercial banks, running training, inference, and internal AI workloads at scale on a multi-vendor accelerator platform."
+      },
+      "cta": {
+        "exploreHami": "Explore HAMi",
+        "contactUs": "Contact Us"
+      },
+      "conclusion": {
+        "title": "Software Is the Real Competitive Edge in AI Infrastructure",
+        "description": "China Merchants Bank's story shows that the real competitive edge in AI infrastructure isn't buying more hardware, it's using software like HAMi to get more value out of the hardware you already have. Kubernetes is becoming the control plane for enterprise AI infrastructure."
+      }
     }
   },
   "privacyPolicy": {

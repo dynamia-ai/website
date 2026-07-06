@@ -9,6 +9,7 @@ import CaseNio from '@/components/case-studies/CaseNio';
 import CaseSnowCorp from '@/components/case-studies/CaseSnowCorp';
 import CaseDaoCloud from '@/components/case-studies/CaseDaoCloud';
 import CaseTelecomGpu from '@/components/case-studies/CaseTelecomGpu';
+import CaseChinaMerchantsBank from '@/components/case-studies/CaseChinaMerchantsBank';
 
 const CASE_STUDIES = {
   'sf-technology': {
@@ -30,6 +31,10 @@ const CASE_STUDIES = {
   'snow-corp': {
     component: CaseSnowCorp,
     i18nKey: 'snowCorp',
+  },
+  'china-merchants-bank': {
+    component: CaseChinaMerchantsBank,
+    i18nKey: 'chinaMerchantsBank',
   },
   daocloud: {
     component: CaseDaoCloud,

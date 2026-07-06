@@ -84,6 +84,15 @@ const CaseStudiesList: React.FC = () => {
         { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
+    {
+      slug: 'china-merchants-bank',
+      titleKey: 'cases.chinaMerchantsBank.title',
+      subtitleKey: 'cases.chinaMerchantsBank.subtitle',
+      logos: [
+        { src: '/images/case-studies/icons/cmb.png', alt: 'China Merchants Bank Logo', width: 44, height: 44 },
+        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
+      ],
+    },
     // Temporarily hidden from list
     // {
     //   slug: 'telecom',

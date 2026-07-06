@@ -53,7 +53,7 @@
     "faq": {
       "title": "常见问题 - 密瓜智能 | 异构计算平台",
       "description": "查找关于密瓜智能、HAMi、GPU 虚拟化、定价和技术支持的常见问题解答。了解更多关于我们异构计算平台的信息。",
-      "keywords": "密瓜智能 常见问题, HAMi 问题, GPU 虚拟化 FAQ, 异构计算问题"
+      "keywords": "密瓜智能 常见问题，HAMi 问题，GPU 虚拟化 FAQ, 异构计算问题"
     }
   },
   "navigation": {
@@ -1758,6 +1758,141 @@
         "title": "大规模 GenAI 的可复制蓝图",
         "description": "SNOW 的方法为运行大规模 GenAI 工作负载提供了一个可复制的蓝图——智能资源利用、精确的自动伸缩和深度可观测性是将基础设施挑战转化为竞争优势的关键。"
       }
+    },
+    "chinaMerchantsBank": {
+      "title": "招商银行基于 HAMi 在 Kubernetes 上优化 AI 算力调度",
+      "subtitle": "探索招商银行如何基于 Kubernetes 和 HAMi 构建统一 AI 算力调度平台，纳管多厂商加速卡（昆仑芯、昇腾、NVIDIA、PPU、摩尔线程、MetaX），实现拓扑感知调度与细粒度共享，硬件资源池利用率达到 100%，跨机调度下降 30%。",
+      "stats": [
+        {
+          "value": "100%",
+          "label": "硬件资源池利用率"
+        },
+        {
+          "value": "30%",
+          "label": "跨机调度下降"
+        },
+        {
+          "value": "1 GB / 1%",
+          "label": "最细显存 / 算力切分"
+        }
+      ],
+      "overview": {
+        "title": "公司概述",
+        "description": "招商银行是中国领先的商业银行之一，在云原生、AI 和数字基础设施上投入巨大。随着 AI 在越来越多金融场景中成为核心能力，该行需要运行种类繁多的训练、推理和内部 AI 工作负载，对底层算力平台构成了实实在在的压力。",
+        "keyPoints": [
+          "中国领先的商业银行之一",
+          "在云原生、AI 和数字基础设施上投入巨大",
+          "多厂商加速卡：昆仑芯、昇腾、NVIDIA、PPU、摩尔线程、MetaX",
+          "基于 Kubernetes 和 HAMi 搭建统一 AI 算力平台"
+        ]
+      },
+      "challenge": {
+        "title": "挑战：让既有资源高效协同",
+        "description": "大模型训练、推理服务和各类 AI 应用正在快速扩张。真正的瓶颈并不在于算力不足，而在于如何让既有资源高效协同。在企业级规模上搭建 AI 平台，归根结底是三个问题。",
+        "points": [
+          {
+            "title": "资源管理碎片化",
+            "description": "不同 AI 加速器厂商各自交付自己的软件栈和管理工具，结果是资源池相互割裂，调度策略彼此不一致，运维开销持续攀升。"
+          },
+          {
+            "title": "训练硬件未充分利用",
+            "description": "部分训练节点采用多芯片高速互联，任务放置对芯片的物理拓扑极为敏感。不理解这套拓扑的调度器会把任务放到错误的芯片上，轻则性能受损，重则直接失败。"
+          },
+          {
+            "title": "小任务的容量浪费",
+            "description": "大量推理、微调和测试任务并不需要整张加速卡，但传统做法按整卡分配，留下大量闲置容量。"
+          }
+        ]
+      },
+      "solution": {
+        "title": "解决方案：统一 AI 算力调度平台",
+        "description": "招商银行在 Kubernetes 和 HAMi 上搭建了统一 AI 算力平台，随后在资源纳管、共享调度和训练效率上持续迭代。",
+        "unifiedResources": {
+          "title": "统一异构资源管理",
+          "description": "HAMi 把多种不同类型的加速卡（昆仑芯、多款昇腾型号、NVIDIA GPU、PPU、摩尔线程、MetaX 等）汇入一个统一的 Kubernetes 资源池。如果没有 HAMi，每交付一批硬件通常都会伴随一个独立的 Kubernetes 集群，可能要维护八个以上彼此独立的集群。借助 HAMi，这些异构设备通过单一调度框架和一致的平台策略来管理，应用团队继续沿用标准 Kubernetes 工作流。",
+          "features": [
+            "一个 Kubernetes 池纳管多家厂商",
+            "应用团队沿用标准 Kubernetes 工作流",
+            "厂商最佳实践与示例工作负载"
+          ]
+        },
+        "topologyScheduling": {
+          "title": "适配超算节点架构的拓扑感知调度",
+          "description": "部分训练节点采用超算节点（双芯片模组）架构。Kubernetes 默认调度器不理解这种布局，于是该行增强了 HAMi 的 Device Plugin 和调度器，使其识别物理模组并强制成对分配。调度器把卡保持在同一模组内，硬件资源池利用率达到 100%。在 ResNet50 推理基准中，细粒度算力分区把单卡吞吐量从 64.6 提升到 94.8 images/s，整体吞吐量最高提升 46.7%。",
+          "features": [
+            "超算节点模组成对分配",
+            "按最短通信路径放置",
+            "硬件资源池利用率 100%"
+          ]
+        },
+        "fineGrainedSharing": {
+          "title": "基于 vNPU-Core 软件分区的细粒度共享",
+          "description": "推理、小模型微调和研发测试任务通常不需要整张卡。该行使用 HAMi 的 VMPO Core 组件做用户态算力分区，用令牌桶控制算力配额，用用户态管理显存。分区粒度最细可达 1 GB 显存 / 1% 算力，在银行业意义非凡：风控模型和客服模型体量很小，并不需要整张卡。",
+          "features": [
+            "令牌桶控制算力配额",
+            "用户态显存管理",
+            "1 GB 显存 / 1% 算力切分"
+          ]
+        }
+      },
+      "results": {
+        "title": "关键成果",
+        "description": "这些改动让该行能够应对不断增长的 AI 工作负载，而不必持续采购更多硬件。",
+        "items": [
+          {
+            "title": "硬件资源池利用率",
+            "value": "100%",
+            "description": "拓扑感知的成对分配让硬件资源池利用率达到 100%。"
+          },
+          {
+            "title": "跨机调度",
+            "value": "-30%",
+            "description": "跨机调度概率下降 30%，消除了分布式训练的一大瓶颈。"
+          },
+          {
+            "title": "分区粒度",
+            "value": "1 GB / 1%",
+            "description": "最细切分到 1 GB 显存 / 1% 算力，可按任务自由组合。"
+          },
+          {
+            "title": "单卡吞吐量",
+            "value": "+46.7%",
+            "description": "细粒度算力分区让 ResNet50 单卡吞吐量最高提升 46.7%。"
+          },
+          {
+            "title": "跨模组驱动崩溃",
+            "value": "消除",
+            "description": "成对分配消除了奇数卡跨模组放置导致的驱动崩溃。"
+          },
+          {
+            "title": "平台架构",
+            "value": "统一",
+            "description": "在 Kubernetes 上构建单一异构 AI 算力调度平台。"
+          }
+        ]
+      },
+      "cncfNote": {
+        "title": "CNCF 案例研究",
+        "description": "本案例已作为 CNCF 案例研究发布。",
+        "link": "https://www.cncf.io/case-studies/china-merchants-bank/"
+      },
+      "quote": {
+        "text": "通过 HAMi，我们在 Kubernetes 上搭建了统一的异构 AI 算力调度平台，在资源利用率、训练效率和平台稳定性上取得了显著提升。",
+        "author": "招商银行 AI 算力平台团队",
+        "position": "招商银行 AI 算力平台团队"
+      },
+      "companyCard": {
+        "name": "招商银行",
+        "description": "中国领先的商业银行之一，在多厂商加速卡平台上大规模运行训练、推理和内部 AI 工作负载。"
+      },
+      "cta": {
+        "exploreHami": "了解 HAMi",
+        "contactUs": "联系我们"
+      },
+      "conclusion": {
+        "title": "软件才是 AI 基础设施真正的竞争优势",
+        "description": "招商银行的故事说明，AI 基础设施真正的竞争优势并不在于买更多硬件，而在于用 HAMi 这样的软件把既有硬件的价值榨取出来。Kubernetes 正在成为企业 AI 基础设施的控制面。"
+      }
     }
   },
   "videos": {
@@ -2325,7 +2460,7 @@
     "alternateName": "Dynamia AI",
     "tagline": "统一异构计算平台",
     "description": "密瓜智能无缝加速 AI、HPC 和边缘计算工作负载。企业级 GPU 虚拟化和资源管理平台，基于 CNCF 开源项目 HAMi 构建。",
-    "keywords": "密瓜智能, 异构计算, GPU 虚拟化, GPU 共享, AI 基础设施, HAMi, 企业计算",
+    "keywords": "密瓜智能，异构计算，GPU 虚拟化，GPU 共享，AI 基础设施，HAMi, 企业计算",
     "logo": "/dynamia-logo-zh.svg",
     "logoDark": "/dynamia-logo-zh-white.svg",
     "ogImage": "/LOGO-small.svg",
@@ -2393,12 +2528,12 @@
   },
   "downloadTelemetry": {
     "source": "📥 来源",
-    "productId": "产品ID",
+    "productId": "产品 ID",
     "version": "版本",
     "mediaType": "介质类型",
     "arch": "架构",
     "filename": "文件名",
-    "imageUrl": "镜像URL",
+    "imageUrl": "镜像 URL",
     "language": "语言",
     "subjectPrefix": "[下载行为]"
   }
