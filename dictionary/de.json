@@ -710,7 +710,8 @@
   "locales": {
     "en": "English",
     "zh": "中文",
-    "de": "Deutsch"
+    "de": "Deutsch",
+    "switchLanguage": "Sprache wechseln"
   },
   "search": {
     "placeholder": "Suchen...",
