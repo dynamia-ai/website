@@ -7,14 +7,7 @@ import { CONTACT_EMAIL, CONTACT_PHONE_RAW, CONTACT_PHONE_DISPLAY } from '@/confi
 import { useTranslations, useLocale } from 'next-intl';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { localizedPath, shortenDescription } from '@/utils/i18n';
-
-const COMPANIES = [
-  { name: 'Company 8', logo: '/logos/company8.svg' },
-  { name: 'Company 6', logo: '/logos/company6.png' },
-  { name: 'Company 7', logo: '/logos/company7.png' },
-  { name: 'Company 9', logo: '/logos/company9.svg' },
-  { name: 'OpenCSG', logo: '/logos/opencsg.svg' },
-];
+import DeployedCompaniesGrid from '@/components/DeployedCompaniesGrid';
 
 const CASE_LINKS = [
   {
@@ -57,23 +50,8 @@ export default function TrustBlock() {
         <h2 className="text-center text-base font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
           {t('enterprise.trust.deployedBy')}
         </h2>
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
-          {COMPANIES.map((c) => (
-            <div
-              key={c.name}
-              className="flex items-center justify-center h-16 bg-white dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800 shadow-sm p-3"
-            >
-              <div className="w-full h-full rounded-md flex items-center justify-center dark:bg-white/95 dark:px-3 dark:py-2">
-                <Image
-                  src={c.logo}
-                  alt={c.name}
-                  width={200}
-                  height={40}
-                  className="object-contain max-h-10 w-auto"
-                />
-              </div>
-            </div>
-          ))}
+        <div className="mt-6">
+          <DeployedCompaniesGrid variant="enterprise" />
         </div>
       </div>
 
