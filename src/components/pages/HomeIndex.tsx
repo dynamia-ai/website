@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import MainLayout from '@/components/layout/MainLayout';
+import DeployedCompaniesGrid from '@/components/DeployedCompaniesGrid';
 import GitHubStars from '@/components/GitHubStars';
 import WebMCPProvider from '@/components/agent/WebMCPProvider';
 import { localizedPath } from '@/utils/i18n';
@@ -49,7 +50,6 @@ export default function Home() {
   const t = useTranslations();
   const locale = useLocale();
   // 合合信息 (IntSig) 在中英文站点使用不同 logo
-  const intsigLogo = locale === 'zh' ? '/logos/intsig-zh.png' : '/logos/intsig-en.png';
   const [activeTab, setActiveTab] = useState(0);
   const [featureProgress, setFeatureProgress] = useState(0);
   const [playedFeatureTabs, setPlayedFeatureTabs] = useState<number[]>([]);
@@ -427,44 +427,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
-            {(() => {
-              const companies = [
-                // { name: 'Company 1', logo: '/logos/company1.svg' },
-                // { name: 'Company 2', logo: '/logos/company2.png' },
-                // { name: 'Company 3', logo: '/logos/company3.svg' },
-                // { name: 'Company 4', logo: '/logos/company4.svg' },
-                // { name: 'Company 5', logo: '/logos/company5.svg' },
-                { name: 'Company 8', logo: '/logos/company8.svg' },
-                { name: 'Company 6', logo: '/logos/company6.png' },
-                { name: 'Company 7', logo: '/logos/company7.png' },
-                { name: 'Company 9', logo: '/logos/company9.svg' },
-                { name: 'OpenCSG', logo: '/logos/opencsg.svg' },
-                { name: 'IntSig', logo: intsigLogo },
-              ];
-              return companies.map((company, index) => (
-                <motion.div
-                  key={index}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeIn}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-center justify-center h-16 md:h-20 bg-white dark:bg-gray-900 rounded-lg shadow-sm p-3 md:p-4"
-                >
-                  <div className="w-full h-full rounded-md flex items-center justify-center dark:bg-white/95 dark:px-3 dark:py-2 dark:shadow-sm">
-                    <Image
-                      src={company.logo}
-                      alt={company.name}
-                      width={200}
-                      height={40}
-                      className="object-contain max-h-12 md:max-h-14 w-auto"
-                    />
-                  </div>
-                </motion.div>
-              ));
-            })()}
-          </div>
+          <DeployedCompaniesGrid variant="home" />
         </div>
       </section>
 

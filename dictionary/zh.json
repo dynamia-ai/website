@@ -725,8 +725,7 @@
   "locales": {
     "en": "English",
     "zh": "中文",
-    "de": "Deutsch",
-    "switchLanguage": "切换语言"
+    "de": "Deutsch"
   },
   "search": {
     "placeholder": "搜索...",

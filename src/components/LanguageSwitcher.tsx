@@ -31,7 +31,6 @@ export default function LanguageSwitcher() {
         <Button
           variant="ghost"
           size="sm"
-          aria-label={t("switchLanguage")}
           className="h-9 gap-1 px-2 focus-visible:border-transparent focus-visible:ring-0"
         >
           <svg className="size-4 shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
