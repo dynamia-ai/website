@@ -6,8 +6,8 @@ import { Metadata } from "next";
 import Script from "next/script";
 import { localizedUrl, localizedAlternates } from "@/utils/i18n";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import ConsentAwareAnalytics from "@/components/ConsentAwareAnalytics";
+import CookieConsentManager from "@/components/CookieConsentManager";
 import { Geist, Geist_Mono } from "next/font/google";
 import { jsonLdScriptProps } from "react-schemaorg";
 import type { Organization, WebSite, WithContext } from "schema-dts";
@@ -49,7 +49,6 @@ export default async function RootLayout({
       <head>
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-        <link rel="preconnect" href="https://vitals.vercel-analytics.com" />
         <link
           rel="preload"
           href="/LOGO-small.svg"
@@ -132,10 +131,12 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {children}
+            <CookieConsentManager />
+            <ConsentAwareAnalytics />
+          </NextIntlClientProvider>
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

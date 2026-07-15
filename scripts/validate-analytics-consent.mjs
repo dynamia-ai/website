@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 
 const source = readFileSync('src/components/ConsentAwareAnalytics.tsx', 'utf8');
+const layoutSource = readFileSync('src/app/[locale]/layout.tsx', 'utf8');
 
 const failures = [];
 
@@ -10,6 +11,18 @@ if (source.includes('isZh ||')) {
 
 if (!source.includes('analyticsEnabled &&')) {
   failures.push('Google Analytics scripts must be gated by explicit analytics consent state.');
+}
+
+if (!layoutSource.includes('<CookieConsentManager />')) {
+  failures.push('The locale layout must mount CookieConsentManager so regional defaults are persisted.');
+}
+
+if (!layoutSource.includes('<ConsentAwareAnalytics />')) {
+  failures.push('The locale layout must mount ConsentAwareAnalytics so Google Analytics can load.');
+}
+
+if (layoutSource.includes('<Analytics />') || layoutSource.includes('<SpeedInsights />')) {
+  failures.push('Analytics providers must not bypass ConsentAwareAnalytics in the locale layout.');
 }
 
 if (!source.includes('window.dataLayer.push(arguments)')) {
