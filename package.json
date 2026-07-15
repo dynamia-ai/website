@@ -7,9 +7,10 @@
     "build": "next build",
     "build-legacy": "NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && npm run validate:analytics",
     "algolia:index": "node scripts/create-algolia-index.js",
     "validate:enterprise": "node scripts/validate-enterprise.mjs",
+    "validate:analytics": "node scripts/validate-analytics-consent.mjs",
     "postbuild": "next-sitemap"
   },
   "dependencies": {
