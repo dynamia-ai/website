@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
+import { localizedPath } from '@/utils/i18n';
 
 interface ToolItem {
   id: string;
@@ -20,10 +21,18 @@ const TOOLS: ToolItem[] = [
     titleKey: 'hamiMetricsExplorer.title',
     descriptionKey: 'hamiMetricsExplorer.description',
   },
+  {
+    id: 'hami-roi-calculator',
+    href: '/tools/hami-roi-calculator',
+    iconSrc: '/icons/calculator.svg',
+    titleKey: 'hamiRoiCalculator.title',
+    descriptionKey: 'hamiRoiCalculator.description',
+  },
 ];
 
 export default function ToolsPage() {
   const t = useTranslations('tools');
+  const locale = useLocale();
 
   return (
     <MainLayout>
@@ -40,9 +49,9 @@ export default function ToolsPage() {
 
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {TOOLS.map((tool) => (
-              <a
+              <Link
                 key={tool.id}
-                href={tool.href}
+                href={localizedPath(tool.href, locale)}
                 className="bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200"
               >
                 <div className="flex items-center mb-4">
@@ -81,7 +90,7 @@ export default function ToolsPage() {
                   </svg>
                   <span className="pointer-events-none absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-200 group-hover/cta:w-full" />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

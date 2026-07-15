@@ -498,6 +498,215 @@
     "title": "工具列表",
     "subtitle": "用于日常运维和分析的实用工具",
     "openTool": "打开工具",
+    "backToList": "返回工具列表",
+    "hamiRoiCalculator": {
+      "title": "HAMi GPU 资产 ROI 计算器",
+      "description": "对比无 HAMi、HAMi 开源版与企业版的 GPU 资产利用率、五年 TCO、节约金额和投资回报。"
+    },
+    "hamiRoiCalculatorPage": {
+      "title": "HAMi GPU 资产 ROI 计算器",
+      "subtitle": "对比同一笔 GPU 投入在无 HAMi、HAMi 开源版与 HAMi 企业版下的有效资产价值，并可调整市场价格与机房参数。",
+      "exportPdf": "导出 PDF",
+      "presetsLabel": "快速套用场景：",
+      "printSummary": {
+        "title": "测算参数",
+        "model": "GPU 型号",
+        "count": "卡数量",
+        "price": "单卡价格",
+        "current": "当前利用率",
+        "oss": "开源版预期",
+        "enterprise": "企业版预期"
+      },
+      "inputs": {
+        "modelTitle": "选择 GPU 厂商与型号",
+        "count": "GPU 卡数量",
+        "countUnit": "张",
+        "price": "单卡价格（可微调）",
+        "currentUtilization": "当前 GPU 平均利用率（无共享方案）",
+        "ossUtilization": "HAMi 开源版预期利用率（上限 40%）",
+        "enterpriseUtilization": "HAMi 企业版预期利用率（上限 80%）"
+      },
+      "advanced": {
+        "title": "TCO 高级参数（服务器、功耗与电费）",
+        "perServer": "每台服务器 GPU 数",
+        "serverPrice": "整机底座价（不含 GPU）",
+        "networkRatio": "网络/存储占比（硬件百分比）",
+        "tdp": "单卡功耗 TDP（W）",
+        "loadFactor": "平均负载系数（TDP 百分比）",
+        "pue": "机房 PUE（自建）",
+        "electricityPrice": "每 kWh 电价",
+        "serverPower": "服务器底座功耗（W）",
+        "note": "自建机房口径：电费 =（GPU 功耗 × 负载系数 + 底座功耗）× PUE × 8,760 小时 × 电价。托管或租用 IDC 场景请另行计入机柜费。"
+      },
+      "tco": {
+        "title": "5 年 TCO 总投入",
+        "tag": "自建机房口径",
+        "breakdown": "GPU {gpu} + 服务器 {server}（{serverCount} 台）+ 网络存储 {network} + 5 年电费 {electricity}"
+      },
+      "plans": {
+        "none": {
+          "title": "无 HAMi",
+          "subtitle": "整卡独占 · 现状",
+          "specs": { "utilization": "实际利用率", "sharing": "无共享能力" },
+          "features": ["一卡一任务，资源大量闲置", "显存与算力无法共享", "扩容只能靠继续买卡"]
+        },
+        "oss": {
+          "title": "HAMi 开源版",
+          "subtitle": "CNCF Incubating · 免费",
+          "scaleValue": "200 卡",
+          "exceeded": "当前已超出",
+          "limitNote": "大规模场景调度能力受限",
+          "limitNoteOver": "当前 {count} 卡已超出开源版承载上限",
+          "specs": { "utilization": "利用率上限", "scale": "GPU 规模上限" },
+          "features": ["vGPU 切分 · 显存算力隔离", "适合 ≤200 卡的中小规模", "社区支持，无 SLA 保障"]
+        },
+        "enterprise": {
+          "title": "HAMi 企业版",
+          "subtitle": "密瓜智能 · 商业支持",
+          "scaleValue": "无上限",
+          "specs": { "utilization": "利用率上限", "scale": "GPU 规模 · 万卡级" },
+          "features": ["显存超配 UMI · 弹性扩缩", "多集群统一管理 · 企业级 SLA", "7×24 专家支持 · 信创适配"]
+        }
+      },
+      "comparison": {
+        "title": "三种方案 · 等效产能对比",
+        "subtitle": "同样的硬件投入，不同方案下真正被启用的资产价值",
+        "recommended": "推荐方案",
+        "recommendedShort": "推荐",
+        "ossCap": "开源版能力上限 40%",
+        "entCap": "企业版能力上限 80%",
+        "ossWarn": "仅覆盖前 200 卡",
+        "noneCaption": "整卡独占 · 资产沉睡",
+        "ossCaption": "预期提升至 {util}%",
+        "ossCaptionOver": "前 200 卡提升至 {util}%",
+        "ossCaptionRest": "其余 {count} 卡仍按 {baseline}% 沉睡",
+        "entCaption": "预期提升至 {util}% · 规模无上限",
+        "effectiveOutput": "等效产能"
+      },
+      "savings": {
+        "title": "利用率提升的直接经济效益",
+        "subtitle": "同样的业务负载，利用率从 {utilization}% 提升后，等效少占用的资源（GPU + 服务器 + 风火水电）：",
+        "utilTag": "@ 等效 {utilization}%",
+        "released": "等效释放 {gpus} 张卡 · {servers} 台服务器",
+        "gpu": "GPU 采购",
+        "server": "服务器整机",
+        "network": "网络 / 存储",
+        "electricity": "5 年电费",
+        "electricityTag": "逐年持续",
+        "total": "等效节约合计",
+        "roiLine": "≈ 企业版软件投入（{cost}）的 {roi} 倍",
+        "note": "等效节约为同等业务负载下的资源占用对比，实际可表现为：延缓新采购、退役老旧卡、释放算力给新业务、降低对外租用规模。电费节约按自建机房口径（功耗 × 负载系数 × PUE × 电价）估算，逐年持续发生。"
+      },
+      "hero": {
+        "eyebrow": "HAMi 企业版为你创造的价值",
+        "releasedValue": "相比无 HAMi，释放的沉睡资产价值",
+        "vsOss": "就算和免费开源版比：多投入 {cost}，额外释放 {extraValue}，净增 {netGain}（{roi} 倍）",
+        "avoidedPurchase": "避免采购视角：同等产能若不用 HAMi，需再购 +{count} 张卡（含服务器与 5 年电费，新增投入约 {tco}）—— 企业版让现有集群直接达成",
+        "cost": "企业版软件投入（估算）",
+        "roi": "投入产出比",
+        "payback": "投资回收期",
+        "months": "{value} 个月",
+        "times": "倍"
+      },
+      "notes": {
+        "title": "查看测算口径",
+        "ossTitle": "开源版边界：",
+        "oss": "测算采用 40% 利用率上限，并假设最多完整覆盖 200 张 GPU；超出 200 卡的部分按基线利用率测算。",
+        "enterpriseTitle": "企业版口径：",
+        "enterprise": "测算采用最高 80% 利用率，并包含大规模调度、多集群管理与企业级支持能力。实际提升取决于工作负载结构和运营成熟度。",
+        "tcoTitle": "TCO 口径：",
+        "tco": "五年期 GPU、服务器底座、网络存储与电费，不含运维人力、机房土建、残值和托管机柜费。企业版投入按 GPU 硬件金额的 2.5% 估算，实际价格以项目报价为准。"
+      },
+      "config": {
+        "currencySymbol": "¥",
+        "moneyScale": "eastAsian",
+        "moneyUnits": { "tenThousand": "万", "hundredMillion": "亿", "thousand": "", "million": "", "billion": "" },
+        "defaultVendorId": "nvidia",
+        "electricityPrice": 0.7,
+        "serverPrices": {
+          "flagship": 350000,
+          "main": 250000,
+          "inference": 120000
+        },
+        "presets": [
+          { "id": "small", "label": "中小团队 · 100 卡", "count": 100, "vendorId": "metax", "cardId": "C500", "currentUtilization": 22, "ossUtilization": 38, "enterpriseUtilization": 72 },
+          { "id": "mid", "label": "大型央企 · 1,000 卡", "count": 1000, "vendorId": "nvidia", "cardId": "A100-80G", "currentUtilization": 25, "ossUtilization": 35, "enterpriseUtilization": 70 },
+          { "id": "large", "label": "头部金融 · 3,200 卡", "count": 3200, "vendorId": "nvidia", "cardId": "H20", "currentUtilization": 22, "ossUtilization": 33, "enterpriseUtilization": 68 },
+          { "id": "xinchuang", "label": "信创混部 · 2,000 卡", "count": 2000, "vendorId": "ascend", "cardId": "A910B", "currentUtilization": 20, "ossUtilization": 32, "enterpriseUtilization": 65 }
+        ]
+      },
+      "catalog": [
+        {
+          "id": "nvidia", "name": "NVIDIA", "color": "#76B900",
+          "cards": [
+            { "id": "A800", "name": "A800", "price": 65000, "tdp": 400, "serverTier": "main" },
+            { "id": "A100-40G", "name": "A100 40G", "price": 73500, "tdp": 400, "serverTier": "main" },
+            { "id": "A100-80G", "name": "A100 80G", "price": 145000, "tdp": 400, "serverTier": "main" },
+            { "id": "H800", "name": "H800", "price": 230000, "tdp": 700, "serverTier": "flagship" },
+            { "id": "H100", "name": "H100", "price": 270000, "tdp": 700, "serverTier": "flagship" },
+            { "id": "H20", "name": "H20 141GB", "price": 120000, "tdp": 400, "serverTier": "main" },
+            { "id": "H200", "name": "H200", "price": 175000, "tdp": 700, "serverTier": "flagship" },
+            { "id": "L20", "name": "L20", "price": 17000, "tdp": 275, "serverTier": "inference" },
+            { "id": "L40", "name": "L40", "price": 32000, "tdp": 300, "serverTier": "inference" },
+            { "id": "L40S", "name": "L40S", "price": 48000, "tdp": 350, "serverTier": "inference" },
+            { "id": "RTX-A6000", "name": "RTX A6000", "price": 32000, "tdp": 300, "serverTier": "inference" },
+            { "id": "RTX-4090", "name": "RTX 4090", "price": 13000, "tdp": 450, "serverTier": "inference" },
+            { "id": "RTX-3080", "name": "RTX 3080", "price": 4000, "tdp": 320, "serverTier": "inference" }
+          ]
+        },
+        { "id": "ascend", "name": "华为昇腾", "color": "#CF0A2C", "cards": [
+          { "id": "A910B", "name": "昇腾 910B", "price": 90000, "tdp": 400, "serverTier": "main" },
+          { "id": "A910C", "name": "昇腾 910C", "price": 165000, "tdp": 750, "serverTier": "flagship" },
+          { "id": "A310P", "name": "昇腾 310P", "price": 18000, "tdp": 150, "serverTier": "inference" }
+        ] },
+        { "id": "hygon", "name": "海光", "color": "#B5121B", "cards": [
+          { "id": "BW100", "name": "海光 BW100", "price": 100000, "tdp": 400, "serverTier": "main" },
+          { "id": "K100", "name": "DCU K100", "price": 40000, "tdp": 300, "serverTier": "main" },
+          { "id": "Z100", "name": "DCU Z100", "price": 50000, "tdp": 280, "serverTier": "inference" }
+        ] },
+        { "id": "cambricon", "name": "寒武纪", "color": "#F7941E", "cards": [
+          { "id": "MLU590", "name": "思元 590", "price": 65000, "tdp": 350, "serverTier": "main" },
+          { "id": "MLU370", "name": "思元 370", "price": 60000, "tdp": 250, "serverTier": "inference" }
+        ] },
+        { "id": "metax", "name": "沐曦", "color": "#00A0E9", "cards": [
+          { "id": "C500", "name": "曦云 C500", "price": 90000, "tdp": 350, "serverTier": "main" },
+          { "id": "C550", "name": "曦云 C550", "price": 110000, "tdp": 450, "serverTier": "main" },
+          { "id": "N260", "name": "曦思 N260", "price": 70000, "tdp": 200, "serverTier": "inference" },
+          { "id": "N100", "name": "曦思 N100", "price": 50000, "tdp": 150, "serverTier": "inference" }
+        ] },
+        { "id": "kunlunxin", "name": "昆仑芯", "color": "#0066B3", "cards": [
+          { "id": "P800", "name": "昆仑芯 P800", "price": 90000, "tdp": 400, "serverTier": "main" },
+          { "id": "P200", "name": "昆仑芯 P200", "price": 40000, "tdp": 150, "serverTier": "inference" }
+        ] },
+        { "id": "enflame", "name": "燧原", "color": "#00457C", "cards": [
+          { "id": "S60", "name": "云燧 S60", "price": 50000, "tdp": 300, "serverTier": "inference" },
+          { "id": "i20", "name": "云燧 i20", "price": 80000, "tdp": 300, "serverTier": "main" }
+        ] },
+        { "id": "iluvatar", "name": "天数智芯", "color": "#1D4E9C", "cards": [
+          { "id": "BI-V100", "name": "天垓 BI-V100", "price": 70000, "tdp": 250, "serverTier": "main" },
+          { "id": "BI-V150", "name": "天垓 BI-V150", "price": 85000, "tdp": 300, "serverTier": "main" },
+          { "id": "MR", "name": "智铠 MR", "price": 30000, "tdp": 150, "serverTier": "inference" }
+        ] },
+        { "id": "moore", "name": "摩尔线程", "color": "#D7282F", "cards": [
+          { "id": "S4000", "name": "MTT S4000", "price": 65000, "tdp": 350, "serverTier": "main" },
+          { "id": "S5000", "name": "MTT S5000", "price": 80000, "tdp": 450, "serverTier": "main" },
+          { "id": "S3000", "name": "MTT S3000", "price": 10000, "tdp": 250, "serverTier": "inference" }
+        ] },
+        { "id": "biren", "name": "壁仞", "color": "#7B2D8E", "cards": [
+          { "id": "BR100", "name": "BR100", "price": 100000, "tdp": 550, "serverTier": "flagship" },
+          { "id": "BR104", "name": "BR104", "price": 60000, "tdp": 300, "serverTier": "main" }
+        ] },
+        { "id": "pingtouge", "name": "平头哥", "color": "#FF6A00", "cards": [
+          { "id": "ZHENWU-M890", "name": "真武 M890", "price": 180000, "tdp": 700, "serverTier": "flagship" },
+          { "id": "ZHENWU-810E", "name": "真武 810E", "price": 120000, "tdp": 500, "serverTier": "main" },
+          { "id": "HANGUANG-800", "name": "含光 800", "price": 50000, "tdp": 150, "serverTier": "inference" }
+        ] },
+        { "id": "amd", "name": "AMD", "color": "#ED1C24", "cards": [
+          { "id": "MI300X", "name": "MI300X", "price": 140000, "tdp": 750, "serverTier": "flagship" },
+          { "id": "MI250X", "name": "MI250X", "price": 90000, "tdp": 500, "serverTier": "main" }
+        ] }
+      ]
+    },
     "hamiMetricsExplorer": {
       "title": "HAMi 指标分析工具",
       "description": "上传 Prometheus 指标文件，快速查看 GPU 清单、利用率并支持合并和导出。"
@@ -511,13 +720,20 @@
       "analysisTitle": "分析",
       "inventoryTitle": "GPU 清单",
       "indexHeader": "序号",
+      "nodeHeader": "节点",
+      "typeHeader": "型号",
+      "uuidHeader": "UUID",
       "nodesTitle": "节点",
       "poolsUnit": "池",
       "nodesUnit": "节点",
+      "gpusUnit": "GPU",
       "activeShort": "活跃",
       "idle": "空闲",
       "memShort": "显存",
       "coreShort": "核心",
+      "numa0": "NUMA 0",
+      "numa1": "NUMA 1",
+      "qpiUpi": "QPI/UPI",
       "quotaTitle": "配额",
       "buildInfoLabel": "构建信息",
       "exportTitle": "导出 GPU 清单",
@@ -529,6 +745,45 @@
       "chooseJsonFile": "选择 .json 文件",
       "runMerge": "执行合并",
       "backButton": "返回",
+      "mergeStatsCurrent": "当前",
+      "mergeStatsOld": "旧数据",
+      "mergeStatsDuplicates": "已去重",
+      "mergeStatsMerged": "合并总计",
+      "summary": {
+        "nodes": "节点",
+        "nodesSub": "{count} 个池",
+        "gpus": "GPU",
+        "gpusSub": "{count} 种型号",
+        "gpuTypes": "GPU 型号",
+        "memory": "显存",
+        "memorySub": "{pct}% 已用",
+        "activePods": "活跃 Pod",
+        "activePodsSub": "占用 {count} 张 GPU",
+        "idleGpus": "空闲 GPU",
+        "idleGpusSub": "无分配"
+      },
+      "analysis": {
+        "idleTitle": "{count} 张空闲 GPU",
+        "idleDesc": "建议合并工作负载或缩容。",
+        "nearCapacityTitle": "{count} 张 GPU 接近满载",
+        "nearCapacityDesc": "存在 OOM 风险。",
+        "nearCapacityTag": ">80%",
+        "typesTitle": "{count} 种 GPU 型号",
+        "heterogeneous": "异构",
+        "sharingTitle": "{count} 张 GPU 在共享",
+        "sharingDesc": "HAMi 已生效。",
+        "vgpuTag": "vGPU",
+        "clusterTitle": "集群负载 {pct}%",
+        "clusterDesc": "建议规划扩容。",
+        "clusterTag": "高负载",
+        "crossNumaTitle": "跨 NUMA",
+        "crossNumaDesc": "S0:{b0}/{s0} S1:{b1}/{s1}",
+        "licenseTitle": "许可证",
+        "licenseTag": "{days} 天",
+        "licenseTagPlus": "{days} 天+",
+        "licenseRenew": "请尽快续期。",
+        "licenseOk": "正常。"
+      },
       "errors": {
         "mergeEmpty": "请先粘贴旧 JSON。",
         "invalidJson": "JSON 无效"
