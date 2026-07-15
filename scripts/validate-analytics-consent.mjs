@@ -13,15 +13,15 @@ if (!source.includes('analyticsEnabled &&')) {
   failures.push('Google Analytics scripts must be gated by explicit analytics consent state.');
 }
 
-if (!layoutSource.includes('<CookieConsentManager />')) {
+if (!/<\s*CookieConsentManager\b/.test(layoutSource)) {
   failures.push('The locale layout must mount CookieConsentManager so regional defaults are persisted.');
 }
 
-if (!layoutSource.includes('<ConsentAwareAnalytics />')) {
+if (!/<\s*ConsentAwareAnalytics\b/.test(layoutSource)) {
   failures.push('The locale layout must mount ConsentAwareAnalytics so Google Analytics can load.');
 }
 
-if (layoutSource.includes('<Analytics />') || layoutSource.includes('<SpeedInsights />')) {
+if (/<\s*Analytics\b/.test(layoutSource) || /<\s*SpeedInsights\b/.test(layoutSource)) {
   failures.push('Analytics providers must not bypass ConsentAwareAnalytics in the locale layout.');
 }
 
