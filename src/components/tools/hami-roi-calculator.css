@@ -1,0 +1,1262 @@
+/* HAMi ROI calculator — HTML structure, site brand colors */
+.hami-roi {
+  --hr-green: var(--primary);
+  --hr-green-dark: var(--primary-active);
+  --hr-green-darker: var(--primary-active);
+  --hr-green-light: var(--primary-subtle);
+  --hr-amber: #ba7517;
+  --hr-amber-dark: #854f0b;
+  --hr-amber-light: #faeeda;
+  --hr-gray-dark: var(--text-secondary);
+  --hr-bg: var(--surface-primary);
+  --hr-bg-sec: var(--background-secondary);
+  --hr-bg-ter: var(--background-tertiary);
+  --hr-text: var(--text-primary);
+  --hr-text-sec: var(--text-secondary);
+  --hr-text-ter: var(--text-tertiary);
+  --hr-border: var(--border-default);
+  --hr-radius-md: 8px;
+  --hr-radius-lg: 12px;
+  --hr-radius-xl: 18px;
+  --hr-navy: var(--primary);
+
+  background: var(--background-secondary);
+  color: var(--hr-text);
+  padding: 3rem 1rem; /* py-12 px-4 */
+  line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+  .hami-roi {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hami-roi {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.light .hami-roi {
+  --hr-green-darker: #558000;
+  --hr-amber-dark: #854f0b;
+  --hr-amber-light: #faeeda;
+}
+
+.dark .hami-roi {
+  --hr-green-dark: var(--primary);
+  --hr-green-darker: var(--primary-hover);
+  --hr-amber-dark: #e0a050;
+  --hr-amber-light: rgba(186, 117, 23, 0.2);
+}
+
+.hami-roi-wrap {
+  max-width: 64rem; /* max-w-5xl — better density for calculator */
+  margin: 0 auto;
+}
+
+.hami-roi .header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.hami-roi .preset-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hami-roi .preset-spacer {
+  flex: 1;
+  min-width: 8px;
+}
+
+.hami-roi .preset-label {
+  font-size: 0.78rem;
+  color: var(--hr-text-ter);
+  line-height: 1;
+}
+
+.hami-roi .preset {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 0.78rem;
+  line-height: 1;
+  background: var(--hr-bg);
+  border: 1px solid var(--hr-border);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--hr-text-sec);
+  transition: all 0.15s;
+  font-family: inherit;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.hami-roi .preset:hover {
+  background: var(--hr-bg-sec);
+  color: var(--hr-text);
+  border-color: #b8b7af;
+}
+
+.hami-roi .preset.active {
+  background: var(--hr-green-light);
+  color: var(--hr-green-dark);
+  border-color: var(--hr-green);
+  font-weight: 500;
+}
+
+.hami-roi .print-summary {
+  display: none;
+  background: var(--hr-bg-sec);
+  border-radius: var(--hr-radius-lg);
+  padding: 16px 22px;
+  margin-bottom: 20px;
+}
+
+.hami-roi .print-summary-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hami-roi .print-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 20px;
+  font-size: 13.5px;
+}
+
+.hami-roi .section-title {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--hr-text);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hami-roi .input-card {
+  background: var(--hr-bg);
+  border: 0.5px solid var(--hr-border);
+  border-radius: var(--hr-radius-lg);
+  padding: 18px 22px;
+  margin-bottom: 24px;
+}
+
+.hami-roi .vendor-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.hami-roi .vendor-tab {
+  padding: 5px 11px;
+  font-size: 13px;
+  background: transparent;
+  border: 0.5px solid var(--hr-border);
+  border-radius: 999px;
+  color: var(--hr-text-sec);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.hami-roi .vendor-tab.active {
+  background: var(--hr-green-light);
+  color: var(--hr-green-dark);
+  border-color: var(--hr-green);
+  font-weight: 500;
+}
+
+.hami-roi .vendor-tab:hover:not(.active) {
+  background: var(--hr-bg-ter);
+}
+
+.hami-roi .vendor-tab .vdot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: 1px;
+}
+
+.hami-roi .card-select {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  padding: 10px;
+  background: var(--hr-bg);
+  border-radius: var(--hr-radius-md);
+  border: 0.5px solid var(--hr-border);
+  min-height: 50px;
+}
+
+.hami-roi .card-pill {
+  padding: 6px 11px;
+  font-size: 13px;
+  background: transparent;
+  border: 0.5px solid var(--hr-border);
+  border-radius: var(--hr-radius-md);
+  color: var(--hr-text-sec);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hami-roi .card-pill.active {
+  background: var(--hr-green-light);
+  color: var(--hr-green-dark);
+  border-color: var(--hr-green);
+  font-weight: 500;
+}
+
+.hami-roi .card-pill:hover:not(.active) {
+  background: var(--hr-bg-sec);
+}
+
+.hami-roi .card-pill .pprice {
+  font-size: 12px;
+  color: var(--hr-text-ter);
+}
+
+.hami-roi .card-pill.active .pprice {
+  color: var(--hr-green-dark);
+  opacity: 0.8;
+}
+
+.hami-roi .input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
+  margin-top: 8px;
+}
+
+.hami-roi .input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hami-roi .input-field.span-2 {
+  grid-column: 1 / -1;
+}
+
+.hami-roi .input-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13.5px;
+  color: var(--hr-text-sec);
+}
+
+.hami-roi .input-val {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--hr-text);
+}
+
+.hami-roi .input-val.amber {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .input-val.green {
+  color: var(--hr-green-dark);
+}
+
+.hami-roi input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--hr-border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.hami-roi input[type='range']:focus-visible {
+  outline: 2px solid var(--hr-green);
+  outline-offset: 4px;
+}
+
+.hami-roi input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--hr-text);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hami-roi input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--hr-text);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.hami-roi .adv-params {
+  margin-top: 16px;
+  border-top: 0.5px dashed var(--hr-border);
+  padding-top: 12px;
+}
+
+.hami-roi .adv-params summary {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--hr-text-sec);
+  cursor: pointer;
+  user-select: none;
+}
+
+.hami-roi .adv-params summary:hover {
+  color: var(--hr-text);
+}
+
+.hami-roi .adv-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px 16px;
+  margin-top: 14px;
+}
+
+.hami-roi .adv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hami-roi .adv-field label {
+  font-size: 12px;
+  color: var(--hr-text-sec);
+  line-height: 1.3;
+}
+
+.hami-roi .adv-field input {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 6px 8px;
+  border: 0.5px solid var(--hr-border);
+  border-radius: 6px;
+  background: var(--hr-bg);
+  color: var(--hr-text);
+  width: 100%;
+}
+
+.hami-roi .adv-field input:focus {
+  outline: none;
+  border-color: var(--hr-green);
+}
+
+.hami-roi .adv-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--hr-text-ter);
+  line-height: 1.5;
+}
+
+.hami-roi .invest-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--hr-bg);
+  border: 0.5px solid var(--hr-border);
+  border-left: 4px solid var(--hr-navy);
+  border-radius: var(--hr-radius-lg);
+  padding: 16px 22px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hami-roi .invest-bar-label {
+  font-size: 13.5px;
+  color: var(--hr-text-sec);
+}
+
+.hami-roi .tco-tag {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--hr-amber-dark);
+  background: var(--hr-amber-light);
+  border: 0.5px solid rgba(186, 117, 23, 0.35);
+  border-radius: 999px;
+  padding: 1px 8px;
+  margin-left: 6px;
+  vertical-align: 1px;
+}
+
+.hami-roi .invest-bar-formula {
+  font-size: 12.5px;
+  color: var(--hr-text-ter);
+  margin-top: 2px;
+}
+
+.hami-roi .invest-bar-num {
+  font-size: 34px;
+  font-weight: 500;
+  color: var(--hr-navy);
+  letter-spacing: -0.6px;
+  line-height: 1.1;
+}
+
+.hami-roi .contrast-section {
+  background: linear-gradient(180deg, var(--hr-bg) 0%, var(--hr-bg-sec) 100%);
+  border-radius: var(--hr-radius-xl);
+  padding: 28px 24px 24px;
+  margin-bottom: 24px;
+}
+
+.hami-roi .contrast-title {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.hami-roi .contrast-title-main {
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--hr-text);
+  margin-bottom: 4px;
+}
+
+.hami-roi .contrast-title-sub {
+  font-size: 14px;
+  color: var(--hr-text-sec);
+}
+
+.hami-roi .altitude-chart {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 36px;
+  height: 300px;
+  margin: 28px 0 8px;
+  padding: 0 20px;
+  position: relative;
+}
+
+.hami-roi .cap-lines-layer,
+.hami-roi .cap-labels-layer {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 0;
+  bottom: 118px;
+  pointer-events: none;
+}
+
+.hami-roi .cap-lines-layer {
+  z-index: 1;
+}
+
+.hami-roi .cap-labels-layer {
+  z-index: 3;
+}
+
+.hami-roi .cap-labels-layer .cap-line,
+.hami-roi .cap-labels-layer .cap-line.oss-line,
+.hami-roi .cap-labels-layer .cap-line.ent-line {
+  border: none;
+}
+
+.hami-roi .cap-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1.5px dashed;
+}
+
+.hami-roi .cap-line.oss-line {
+  border-color: rgba(186, 117, 23, 0.55);
+  bottom: 50%;
+}
+
+.hami-roi .cap-line.ent-line {
+  border-color: rgba(118, 185, 0, 0.55);
+  bottom: 100%;
+}
+
+.hami-roi .cap-line-label {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.hami-roi .cap-line.oss-line .cap-line-label {
+  background: rgba(250, 238, 218, 0.97);
+  color: var(--hr-amber-dark);
+  border: 0.5px solid rgba(186, 117, 23, 0.4);
+  bottom: 3px;
+}
+
+.hami-roi .cap-line.ent-line .cap-line-label {
+  background: var(--primary-subtle);
+  color: var(--hr-green-darker);
+  border: 0.5px solid rgba(118, 185, 0, 0.4);
+  bottom: 3px;
+}
+
+.dark .hami-roi .cap-line.oss-line .cap-line-label {
+  background: rgba(60, 45, 20, 0.95);
+  color: #e0a050;
+}
+
+.dark .hami-roi .cap-line.ent-line .cap-line-label {
+  background: color-mix(in srgb, var(--primary) 18%, var(--surface-primary));
+  color: var(--primary-hover);
+}
+
+.hami-roi .altitude-col {
+  flex: 1;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hami-roi .altitude-bar-wrap {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hami-roi .altitude-bar {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  transition: height 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #fff;
+  position: relative;
+  min-height: 36px;
+}
+
+.hami-roi .altitude-bar.none {
+  background: linear-gradient(180deg, #acaba3 0%, #8b8a82 100%);
+  box-shadow: 0 3px 12px rgba(139, 138, 130, 0.2);
+}
+
+.hami-roi .altitude-bar.oss {
+  background: linear-gradient(180deg, #d48a30 0%, #ba7517 100%);
+  box-shadow: 0 4px 16px rgba(186, 117, 23, 0.22);
+}
+
+.hami-roi .altitude-bar.ent {
+  background: linear-gradient(180deg, var(--primary-hover) 0%, var(--primary-active) 100%);
+  box-shadow: 0 6px 24px rgba(118, 185, 0, 0.32);
+}
+
+.hami-roi .ent-badge {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(118, 185, 0, 0.35);
+  z-index: 4;
+}
+
+.hami-roi .oss-cap-warn {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--hr-bg);
+  border: 0.5px solid var(--hr-amber);
+  color: var(--hr-amber-dark);
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  z-index: 4;
+}
+
+.hami-roi .altitude-cap {
+  text-align: center;
+  margin-top: 14px;
+  padding: 0 4px;
+  height: 104px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.hami-roi .altitude-cap-title {
+  font-size: 14.5px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.hami-roi .altitude-cap-title.none {
+  color: var(--hr-gray-dark);
+}
+
+.hami-roi .altitude-cap-title.oss {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .altitude-cap-title.ent {
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .altitude-cap-num {
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+
+.hami-roi .altitude-cap-num.none {
+  color: var(--hr-gray-dark);
+}
+
+.hami-roi .altitude-cap-num.oss {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .altitude-cap-num.ent {
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .altitude-cap-sub {
+  font-size: 12.5px;
+  color: var(--hr-text-ter);
+  line-height: 1.5;
+}
+
+.hami-roi .altitude-cap-sub .warn {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto auto auto 1fr;
+  column-gap: 12px;
+  row-gap: 0;
+  margin-bottom: 24px;
+}
+
+.hami-roi .plan-card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 6;
+  background: var(--hr-bg);
+  border: 1.5px solid var(--hr-border);
+  border-radius: var(--hr-radius-lg);
+  padding: 18px 18px 16px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.hami-roi .plan-card.ent {
+  border-color: var(--hr-green);
+  background: var(--primary-subtle);
+  box-shadow: 0 6px 24px rgba(118, 185, 0, 0.14);
+}
+
+.hami-roi .plan-tag {
+  position: absolute;
+  top: -10px;
+  right: 14px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.hami-roi .plan-name {
+  font-size: 15.5px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.hami-roi .plan-name.none {
+  color: var(--hr-gray-dark);
+}
+
+.hami-roi .plan-name.oss {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .plan-name.ent {
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .plan-sub {
+  font-size: 12.5px;
+  color: var(--hr-text-ter);
+  margin-bottom: 12px;
+  min-height: 1.5em;
+}
+
+.hami-roi .plan-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+  align-items: stretch;
+}
+
+.hami-roi .spec-box {
+  background: var(--hr-bg-sec);
+  border-radius: var(--hr-radius-md);
+  padding: 14px 10px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 68px;
+}
+
+.hami-roi .plan-card.ent .spec-box {
+  background: rgba(118, 185, 0, 0.1);
+}
+
+.hami-roi .spec-warn-badge {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #a32d2d;
+  background: #fff;
+  border: 0.5px solid rgba(163, 45, 45, 0.35);
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(163, 45, 45, 0.12);
+  z-index: 1;
+}
+
+.hami-roi .spec-val {
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.hami-roi .spec-val.none {
+  color: var(--hr-gray-dark);
+}
+
+.hami-roi .spec-val.oss {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .spec-val.ent {
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .spec-val.danger {
+  color: #a32d2d;
+}
+
+.hami-roi .spec-label {
+  font-size: 12px;
+  color: var(--hr-text-ter);
+  line-height: 1.35;
+}
+
+.hami-roi .plan-num {
+  font-size: 29px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.hami-roi .plan-num.none {
+  color: var(--hr-gray-dark);
+}
+
+.hami-roi .plan-num.oss {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .plan-num.ent {
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .plan-num-label {
+  font-size: 12.5px;
+  color: var(--hr-text-ter);
+  margin-bottom: 12px;
+}
+
+.hami-roi .plan-feats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hami-roi .plan-feats li {
+  font-size: 13px;
+  color: var(--hr-text-sec);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.45;
+}
+
+.hami-roi .plan-feats li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+  background: var(--hr-text-ter);
+}
+
+.hami-roi .plan-card.oss-card .plan-feats li::before {
+  background: var(--hr-amber);
+}
+
+.hami-roi .plan-card.ent .plan-feats li::before {
+  background: var(--hr-green);
+}
+
+.hami-roi .plan-feats li.neg {
+  color: var(--hr-text-ter);
+}
+
+.hami-roi .plan-feats li.neg::before {
+  background: var(--hr-border) !important;
+}
+
+.hami-roi .savings-section {
+  background: var(--hr-bg);
+  border: 0.5px solid var(--hr-border);
+  border-radius: var(--hr-radius-xl);
+  padding: 22px 24px 18px;
+  margin-bottom: 24px;
+}
+
+.hami-roi .savings-title {
+  font-size: 18.5px;
+  font-weight: 500;
+  color: var(--hr-text);
+  margin-bottom: 4px;
+}
+
+.hami-roi .savings-sub {
+  font-size: 14px;
+  color: var(--hr-text-sec);
+  margin-bottom: 16px;
+}
+
+.hami-roi .savings-sub b {
+  color: var(--hr-amber-dark);
+  font-weight: 600;
+}
+
+.hami-roi .savings-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.hami-roi .savings-col {
+  border-radius: var(--hr-radius-lg);
+  padding: 16px 16px 14px;
+  border: 0.5px solid var(--hr-border);
+}
+
+.hami-roi .savings-col.oss {
+  background: var(--hr-bg-sec);
+}
+
+.hami-roi .savings-col.ent {
+  background: var(--primary-subtle);
+  border: 1px solid var(--hr-green);
+}
+
+.hami-roi .sv-col-head {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.hami-roi .savings-col.oss .sv-col-head {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .savings-col.ent .sv-col-head {
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .sv-col-util {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--hr-text-ter);
+  margin-left: 4px;
+}
+
+.hami-roi .sv-cards {
+  font-size: 13px;
+  color: var(--hr-text-sec);
+  margin-bottom: 12px;
+}
+
+.hami-roi .sv-items {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.hami-roi .sv-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13.5px;
+  color: var(--hr-text-sec);
+  padding-bottom: 7px;
+  border-bottom: 0.5px dashed var(--hr-border);
+}
+
+.hami-roi .sv-item b {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--hr-text);
+}
+
+.hami-roi .savings-col.ent .sv-item b {
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .sv-elec-tag {
+  font-size: 11px;
+  color: var(--hr-amber-dark);
+  background: var(--hr-amber-light);
+  border-radius: 999px;
+  padding: 1px 6px;
+  margin-left: 5px;
+}
+
+.hami-roi .sv-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+  color: var(--hr-text-sec);
+  font-weight: 500;
+}
+
+.hami-roi .sv-total b {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.hami-roi .savings-col.oss .sv-total b {
+  color: var(--hr-amber-dark);
+}
+
+.hami-roi .savings-col.ent .sv-total b {
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .sv-roi-line {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 0.5px solid rgba(118, 185, 0, 0.3);
+  font-size: 13px;
+  color: var(--hr-green-darker);
+}
+
+.hami-roi .sv-roi-line b {
+  font-weight: 600;
+}
+
+.hami-roi .savings-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--hr-text-ter);
+  line-height: 1.55;
+}
+
+.hami-roi .value-hero {
+  background: linear-gradient(135deg, var(--primary-active) 0%, var(--primary) 50%, var(--primary-hover) 100%);
+  border-radius: var(--hr-radius-xl);
+  padding: 30px 32px 26px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(118, 185, 0, 0.28);
+}
+
+.hami-roi .value-hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hami-roi .value-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -80px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hami-roi .value-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 0.5px solid rgba(255, 255, 255, 0.32);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #ffffff;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.hami-roi .value-hero-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffd66b;
+}
+
+.hami-roi .value-hero-label {
+  font-size: 15.5px;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.hami-roi .value-hero-amount {
+  font-size: 60px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hami-roi .value-hero-vs {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+  line-height: 1.55;
+}
+
+.hami-roi .value-hero-vs b {
+  font-weight: 500;
+  color: #fff;
+}
+
+.hami-roi .value-hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.22);
+  position: relative;
+  z-index: 1;
+}
+
+.hami-roi .value-hero-meta-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 4px;
+}
+
+.hami-roi .value-hero-meta-value {
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.hami-roi .value-hero-meta-value .small {
+  font-size: 15.5px;
+  font-weight: 400;
+  margin-left: 4px;
+  opacity: 0.8;
+}
+
+.hami-roi .foot-note {
+  font-size: 12.5px;
+  color: var(--hr-text-ter);
+  line-height: 1.7;
+  margin-top: 24px;
+}
+
+.hami-roi .foot-note b {
+  color: var(--hr-text-sec);
+  font-weight: 500;
+}
+
+.hami-roi .foot-note summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--hr-text-sec);
+}
+
+@media (max-width: 720px) {
+  .hami-roi {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .hami-roi .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hami-roi .input-field.span-2 {
+    grid-column: auto;
+  }
+
+  .hami-roi .adv-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hami-roi .plans-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .hami-roi .plan-card {
+    display: block;
+    grid-row: auto;
+  }
+
+  .hami-roi .savings-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .hami-roi .altitude-chart {
+    gap: 14px;
+    height: 240px;
+    padding: 0 6px;
+  }
+
+  .hami-roi .altitude-cap-num {
+    font-size: 21px;
+  }
+
+  .hami-roi .value-hero-amount {
+    font-size: 44px;
+  }
+
+  .hami-roi .value-hero-meta {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hami-roi .cap-line-label {
+    display: none;
+  }
+}
+
+@media print {
+  .hami-roi {
+    padding: 0;
+    background: #fff;
+  }
+
+  .hami-roi .preset-row,
+  .hami-roi .input-card {
+    display: none !important;
+  }
+
+  .hami-roi .print-summary {
+    display: block !important;
+  }
+
+  .hami-roi * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .hami-roi .contrast-section,
+  .hami-roi .plans-grid,
+  .hami-roi .value-hero,
+  .hami-roi .invest-bar,
+  .hami-roi .plan-card,
+  .hami-roi .savings-section,
+  .hami-roi .savings-col {
+    break-inside: avoid;
+  }
+
+  .hami-roi .value-hero {
+    box-shadow: none;
+  }
+
+  .hami-roi .altitude-chart {
+    height: 250px;
+  }
+}

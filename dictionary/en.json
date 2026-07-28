@@ -484,6 +484,169 @@
     "title": "Tools",
     "subtitle": "Useful tools for day-to-day operations and analysis",
     "openTool": "Open tool",
+    "backToList": "Back to tools",
+    "hamiRoiCalculator": {
+      "title": "HAMi GPU Asset ROI Calculator",
+      "description": "Compare GPU asset utilization, five-year TCO, savings and ROI across no HAMi, HAMi OSS and HAMi Enterprise."
+    },
+    "hamiRoiCalculatorPage": {
+      "title": "HAMi GPU Asset ROI Calculator",
+      "subtitle": "Compare the effective value of the same GPU investment under no HAMi, HAMi OSS and HAMi Enterprise, with adjustable market and data-center assumptions.",
+      "exportPdf": "Export PDF",
+      "presetsLabel": "Quick scenarios:",
+      "printSummary": {
+        "title": "Calculation parameters",
+        "model": "GPU model",
+        "count": "GPU count",
+        "price": "Unit price",
+        "current": "Current utilization",
+        "oss": "OSS target",
+        "enterprise": "Enterprise target"
+      },
+      "inputs": {
+        "modelTitle": "Select GPU vendor and model",
+        "count": "Number of GPUs",
+        "countUnit": "GPUs",
+        "price": "Unit price (adjustable)",
+        "currentUtilization": "Current average utilization (no sharing)",
+        "ossUtilization": "HAMi OSS expected utilization (40% cap)",
+        "enterpriseUtilization": "HAMi Enterprise expected utilization (80% cap)"
+      },
+      "advanced": {
+        "title": "Advanced TCO parameters (servers, power and electricity)",
+        "perServer": "GPUs per server",
+        "serverPrice": "Server base price (excluding GPUs)",
+        "networkRatio": "Network/storage (% of hardware)",
+        "tdp": "GPU TDP (W)",
+        "loadFactor": "Average load factor (% of TDP)",
+        "pue": "Facility PUE (on-premises)",
+        "electricityPrice": "Electricity price per kWh",
+        "serverPower": "Server base power (W)",
+        "note": "On-premises model: electricity = (GPU power × load factor + server base power) × PUE × 8,760 hours × electricity price. Use rack fees separately for colocation or rented IDC capacity."
+      },
+      "tco": {
+        "title": "5-Year TCO",
+        "tag": "On-premises DC",
+        "breakdown": "GPU {gpu} + Servers {server} ({serverCount}) + Network/Storage {network} + 5y Power {electricity}"
+      },
+      "plans": {
+        "none": {
+          "title": "No HAMi",
+          "subtitle": "Dedicated GPUs · status quo",
+          "specs": { "utilization": "Actual utilization", "sharing": "No sharing" },
+          "features": ["One job per GPU, massive idle", "No memory/compute sharing", "Scaling means buying more"]
+        },
+        "oss": {
+          "title": "HAMi OSS",
+          "subtitle": "CNCF Incubating · Free",
+          "scaleValue": "200",
+          "exceeded": "Exceeded",
+          "limitNote": "Limited scheduling at large scale",
+          "limitNoteOver": "{count} GPUs exceed the OSS capacity cap",
+          "specs": { "utilization": "Utilization cap", "scale": "GPU scale cap" },
+          "features": ["vGPU slicing · memory/compute isolation", "Best for fleets ≤ 200 GPUs", "Community support, no SLA"]
+        },
+        "enterprise": {
+          "title": "HAMi Enterprise",
+          "subtitle": "Dynamia AI · Commercial support",
+          "scaleValue": "Unlimited",
+          "specs": { "utilization": "Utilization cap", "scale": "GPU scale · 10k+" },
+          "features": ["Memory oversubscription (UMI) · elastic scaling", "Multi-cluster management · enterprise SLA", "24×7 expert support"]
+        }
+      },
+      "comparison": {
+        "title": "Three Options · Effective Output",
+        "subtitle": "Same hardware spend — how much asset value each option actually activates",
+        "recommended": "Recommended",
+        "recommendedShort": "Best",
+        "ossCap": "OSS cap 40%",
+        "entCap": "Enterprise cap 80%",
+        "ossWarn": "Covers first 200 GPUs only",
+        "noneCaption": "Dedicated GPUs · assets dormant",
+        "ossCaption": "Expected to {util}%",
+        "ossCaptionOver": "First 200 GPUs to {util}%",
+        "ossCaptionRest": "Other {count} GPUs stay at {baseline}%",
+        "entCaption": "Expected to {util}% · Unlimited scale",
+        "effectiveOutput": "Effective output"
+      },
+      "savings": {
+        "title": "Direct Savings from Higher Utilization",
+        "subtitle": "Same workload — resources no longer needed after utilization rises from {utilization}% (GPU + servers + power & cooling):",
+        "utilTag": "@ eff. {utilization}%",
+        "released": "Frees {gpus} GPUs · {servers} servers",
+        "gpu": "GPU purchase",
+        "server": "Servers",
+        "network": "Network / Storage",
+        "electricity": "5-yr electricity",
+        "electricityTag": "recurring",
+        "total": "Total equivalent savings",
+        "roiLine": "≈ {roi}× the Enterprise software cost ({cost})",
+        "note": "Equivalent savings compare resource footprints at the same workload. Realized as: deferred purchases, retiring older GPUs, freeing capacity for new workloads, or reducing rented capacity. Electricity savings recur annually (on-prem DC scope)."
+      },
+      "hero": {
+        "eyebrow": "Value created by HAMi Enterprise",
+        "releasedValue": "Dormant asset value unlocked vs. no HAMi",
+        "vsOss": "Even vs. free OSS: extra cost {cost}, extra value {extraValue}, net gain {netGain} ({roi}×)",
+        "avoidedPurchase": "Avoided purchase: same output without HAMi would require +{count} more GPUs (incl. servers & 5-yr power, ≈ {tco}) — Enterprise delivers it on your existing fleet",
+        "cost": "Enterprise software cost (est.)",
+        "roi": "Return on investment",
+        "payback": "Payback period",
+        "months": "{value} months",
+        "times": "×"
+      },
+      "notes": {
+        "title": "Calculation assumptions",
+        "ossTitle": "OSS boundary:",
+        "oss": "The model assumes a 40% utilization ceiling and full coverage for up to 200 GPUs. Capacity beyond 200 GPUs remains at baseline utilization.",
+        "enterpriseTitle": "Enterprise model:",
+        "enterprise": "The model assumes up to 80% utilization with large-scale scheduling, multi-cluster management and enterprise support. Actual improvement depends on workload mix and operational maturity.",
+        "tcoTitle": "TCO scope:",
+        "tco": "Five years of GPU, server base, network/storage and electricity costs. It excludes staffing, facility construction, residual value and colocation rack fees. Enterprise cost is estimated at 2.5% of GPU hardware investment; actual pricing varies by deployment."
+      },
+      "config": {
+        "currencySymbol": "$",
+        "moneyScale": "western",
+        "moneyUnits": { "tenThousand": "", "hundredMillion": "", "thousand": "K", "million": "M", "billion": "B" },
+        "defaultVendorId": "nvidia",
+        "electricityPrice": 0.1,
+        "serverPrices": {
+          "flagship": 48000,
+          "main": 34000,
+          "inference": 16000
+        },
+        "presets": [
+          { "id": "small", "label": "Small team · 100 GPUs", "count": 100, "vendorId": "nvidia", "cardId": "L40S", "currentUtilization": 22, "ossUtilization": 38, "enterpriseUtilization": 72 },
+          { "id": "mid", "label": "Enterprise · 1,000 GPUs", "count": 1000, "vendorId": "nvidia", "cardId": "H100", "currentUtilization": 25, "ossUtilization": 35, "enterpriseUtilization": 70 },
+          { "id": "large", "label": "Hyperscale · 3,200 GPUs", "count": 3200, "vendorId": "nvidia", "cardId": "H200", "currentUtilization": 22, "ossUtilization": 33, "enterpriseUtilization": 68 }
+        ]
+      },
+      "catalog": [
+        {
+          "id": "nvidia",
+          "name": "NVIDIA",
+          "color": "#76B900",
+          "cards": [
+            { "id": "A100-80G", "name": "A100 80G", "price": 16000, "tdp": 400, "serverTier": "main" },
+            { "id": "H100", "name": "H100", "price": 27000, "tdp": 700, "serverTier": "flagship" },
+            { "id": "H200", "name": "H200", "price": 32000, "tdp": 700, "serverTier": "flagship" },
+            { "id": "B200", "name": "B200", "price": 38000, "tdp": 1000, "serverTier": "flagship" },
+            { "id": "L40S", "name": "L40S", "price": 7500, "tdp": 350, "serverTier": "inference" },
+            { "id": "L4", "name": "L4", "price": 2500, "tdp": 72, "serverTier": "inference" },
+            { "id": "RTX-4090", "name": "RTX 4090", "price": 1800, "tdp": 450, "serverTier": "inference" }
+          ]
+        },
+        {
+          "id": "amd",
+          "name": "AMD",
+          "color": "#ED1C24",
+          "cards": [
+            { "id": "MI300X", "name": "MI300X", "price": 14000, "tdp": 750, "serverTier": "flagship" },
+            { "id": "MI325X", "name": "MI325X", "price": 18000, "tdp": 1000, "serverTier": "flagship" },
+            { "id": "MI250X", "name": "MI250X", "price": 8000, "tdp": 500, "serverTier": "main" }
+          ]
+        }
+      ]
+    },
     "hamiMetricsExplorer": {
       "title": "HAMi Metrics Explorer",
       "description": "Upload Prometheus metrics and inspect GPU inventory, utilization, and merge/export results."
@@ -497,13 +660,20 @@
       "analysisTitle": "Analysis",
       "inventoryTitle": "GPU inventory",
       "indexHeader": "No.",
+      "nodeHeader": "Node",
+      "typeHeader": "Type",
+      "uuidHeader": "UUID",
       "nodesTitle": "Nodes",
       "poolsUnit": "pools",
       "nodesUnit": "nodes",
+      "gpusUnit": "GPUs",
       "activeShort": "active",
       "idle": "idle",
       "memShort": "Mem",
       "coreShort": "Core",
+      "numa0": "NUMA 0",
+      "numa1": "NUMA 1",
+      "qpiUpi": "QPI/UPI",
       "quotaTitle": "Quotas",
       "buildInfoLabel": "Build info",
       "exportTitle": "Export GPU inventory",
@@ -515,6 +685,45 @@
       "chooseJsonFile": "Choose .json file",
       "runMerge": "Run merge",
       "backButton": "Back",
+      "mergeStatsCurrent": "Current",
+      "mergeStatsOld": "Old",
+      "mergeStatsDuplicates": "Duplicates removed",
+      "mergeStatsMerged": "Merged total",
+      "summary": {
+        "nodes": "Nodes",
+        "nodesSub": "{count} pools",
+        "gpus": "GPUs",
+        "gpusSub": "{count} types",
+        "gpuTypes": "GPU types",
+        "memory": "Memory",
+        "memorySub": "{pct}% used",
+        "activePods": "Active pods",
+        "activePodsSub": "on {count} GPUs",
+        "idleGpus": "Idle GPUs",
+        "idleGpusSub": "no allocation"
+      },
+      "analysis": {
+        "idleTitle": "{count} idle GPUs",
+        "idleDesc": "Consolidate workloads or scale down.",
+        "nearCapacityTitle": "{count} GPUs near capacity",
+        "nearCapacityDesc": "OOM risk.",
+        "nearCapacityTag": ">80%",
+        "typesTitle": "{count} GPU types",
+        "heterogeneous": "heterogeneous",
+        "sharingTitle": "{count} GPUs sharing",
+        "sharingDesc": "HAMi active.",
+        "vgpuTag": "vGPU",
+        "clusterTitle": "Cluster {pct}%",
+        "clusterDesc": "Plan expansion.",
+        "clusterTag": "high",
+        "crossNumaTitle": "Cross-NUMA",
+        "crossNumaDesc": "S0:{b0}/{s0} S1:{b1}/{s1}",
+        "licenseTitle": "License",
+        "licenseTag": "{days}d",
+        "licenseTagPlus": "{days}d+",
+        "licenseRenew": "Renew.",
+        "licenseOk": "OK."
+      },
       "errors": {
         "mergeEmpty": "Please paste old JSON first.",
         "invalidJson": "Invalid JSON"

@@ -1,8 +1,11 @@
 'use client';
 
-import React, { useMemo, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { useLocale, useTranslations } from 'next-intl';
 import MainLayout from '@/components/layout/MainLayout';
+import { localizedPath } from '@/utils/i18n';
 
 interface MetricEntry {
   n: string;
@@ -307,6 +310,9 @@ const download = (filename: string, content: string, mime: string) => {
 
 export default function HamiMetricsExplorer() {
   const t = useTranslations();
+  const toolsT = useTranslations('tools');
+  const pageT = useTranslations('tools.hamiMetricsExplorerPage');
+  const locale = useLocale();
   const fileRef = useRef<HTMLInputElement | null>(null);
   const mergeFileRef = useRef<HTMLInputElement | null>(null);
   const [raw, setRaw] = useState('');
@@ -417,8 +423,8 @@ export default function HamiMetricsExplorer() {
     if (idle.length) {
       const p = Math.round((idle.length / result.gpus.length) * 100);
       rows.push({
-        title: `${idle.length} idle GPUs`,
-        desc: 'Consolidate workloads or scale down.',
+        title: pageT('analysis.idleTitle', { count: idle.length }),
+        desc: pageT('analysis.idleDesc'),
         level: p > 50 ? 'warn' : 'info',
         tagText: `${p}%`,
         tagTone: p > 50 ? 'warn' : 'info',
@@ -427,39 +433,39 @@ export default function HamiMetricsExplorer() {
     const hi = result.gpus.filter((x) => x.memLimit > 0 && x.memAlloc / x.memLimit > 0.8);
     if (hi.length) {
       rows.push({
-        title: `${hi.length} GPUs near capacity`,
-        desc: 'OOM risk.',
+        title: pageT('analysis.nearCapacityTitle', { count: hi.length }),
+        desc: pageT('analysis.nearCapacityDesc'),
         level: 'danger',
-        tagText: '>80%',
+        tagText: pageT('analysis.nearCapacityTag'),
         tagTone: 'danger',
       });
     }
     if (result.typeEntries.length > 1) {
       rows.push({
-        title: `${result.typeEntries.length} GPU types`,
-        desc: result.typeEntries.slice(0, 5).map(([t, c]) => `${c}× ${t}`).join(', '),
+        title: pageT('analysis.typesTitle', { count: result.typeEntries.length }),
+        desc: result.typeEntries.slice(0, 5).map(([typeName, c]) => `${c}× ${typeName}`).join(', '),
         level: 'info',
-        tagText: 'heterogeneous',
+        tagText: pageT('analysis.heterogeneous'),
         tagTone: 'info',
       });
     }
     const shared = result.gpus.filter((x) => x.shared > 0);
     if (shared.length) {
       rows.push({
-        title: `${shared.length} GPUs sharing`,
-        desc: 'HAMi active.',
+        title: pageT('analysis.sharingTitle', { count: shared.length }),
+        desc: pageT('analysis.sharingDesc'),
         level: 'good',
-        tagText: 'vGPU',
+        tagText: pageT('analysis.vgpuTag'),
         tagTone: 'good',
       });
     }
     const clusterPct = result.totalMem > 0 ? result.usedMem / result.totalMem : 0;
     if (clusterPct > 0.7) {
       rows.push({
-        title: `Cluster ${Math.round(clusterPct * 100)}%`,
-        desc: 'Plan expansion.',
+        title: pageT('analysis.clusterTitle', { pct: Math.round(clusterPct * 100) }),
+        desc: pageT('analysis.clusterDesc'),
         level: 'danger',
-        tagText: 'high',
+        tagText: pageT('analysis.clusterTag'),
         tagTone: 'danger',
       });
     }
@@ -473,9 +479,9 @@ export default function HamiMetricsExplorer() {
         const b1 = s1.filter((x) => x.memAlloc > 0).length;
         if (b0 > 0 && b1 > 0 && (s0.length - b0 > 0 || s1.length - b1 > 0)) {
           rows.push({
-            title: 'Cross-NUMA',
+            title: pageT('analysis.crossNumaTitle'),
             codeText: n.name.split('-').slice(-2).join('-'),
-            desc: `S0:${b0}/${s0.length} S1:${b1}/${s1.length}`,
+            desc: pageT('analysis.crossNumaDesc', { b0, s0: s0.length, b1, s1: s1.length }),
             level: 'info',
           });
         }
@@ -484,15 +490,17 @@ export default function HamiMetricsExplorer() {
     if (license.length) {
       const days = Math.round(Math.min(...license.map((l) => l.v)) / 86400);
       rows.push({
-        title: 'License',
-        tagText: days < 30 ? `${days}d` : `${days}d+`,
+        title: pageT('analysis.licenseTitle'),
+        tagText: days < 30
+          ? pageT('analysis.licenseTag', { days })
+          : pageT('analysis.licenseTagPlus', { days }),
         tagTone: days < 30 ? 'danger' : 'good',
-        desc: days < 30 ? 'Renew.' : 'OK.',
+        desc: days < 30 ? pageT('analysis.licenseRenew') : pageT('analysis.licenseOk'),
         level: days < 30 ? 'danger' : 'good',
       });
     }
     return rows;
-  }, [result]);
+  }, [pageT, result]);
 
   const exportGpuCount = useMemo(() => {
     if (!result) return 0;
@@ -512,33 +520,68 @@ export default function HamiMetricsExplorer() {
     const activeGpuCount = result.gpus.filter((x) => x.pods.length > 0).length;
 
     return [
-      { label: 'Nodes', value: `${result.nodes.length}`, sub: `${result.poolCount} pools`, color: '#4f8df7' },
-      { label: 'GPUs', value: `${result.gpus.length}`, sub: `${result.typeEntries.length} types`, color: '#2dd4a8' },
-      { label: 'GPU types', value: `${result.typeEntries.length}`, sub: typeHint || '-', color: '#f5b731' },
-      { label: 'Memory', value: `${formatBytes(result.usedMem)}/${formatBytes(result.totalMem)}`, sub: `${memPct}% used`, color: memPct > 70 ? '#f06565' : memPct > 40 ? '#f5b731' : '#2dd4a8' },
-      { label: 'Active pods', value: `${result.totalPods}`, sub: `on ${activeGpuCount} GPUs`, color: '#a78bfa' },
-      { label: 'Idle GPUs', value: `${result.idleGpuCount}`, sub: 'no allocation', color: '#5a6f94' },
+      {
+        label: pageT('summary.nodes'),
+        value: `${result.nodes.length}`,
+        sub: pageT('summary.nodesSub', { count: result.poolCount }),
+        color: '#4f8df7',
+      },
+      {
+        label: pageT('summary.gpus'),
+        value: `${result.gpus.length}`,
+        sub: pageT('summary.gpusSub', { count: result.typeEntries.length }),
+        color: '#2dd4a8',
+      },
+      {
+        label: pageT('summary.gpuTypes'),
+        value: `${result.typeEntries.length}`,
+        sub: typeHint || '-',
+        color: '#f5b731',
+      },
+      {
+        label: pageT('summary.memory'),
+        value: `${formatBytes(result.usedMem)}/${formatBytes(result.totalMem)}`,
+        sub: pageT('summary.memorySub', { pct: memPct }),
+        color: memPct > 70 ? '#f06565' : memPct > 40 ? '#f5b731' : '#2dd4a8',
+      },
+      {
+        label: pageT('summary.activePods'),
+        value: `${result.totalPods}`,
+        sub: pageT('summary.activePodsSub', { count: activeGpuCount }),
+        color: '#a78bfa',
+      },
+      {
+        label: pageT('summary.idleGpus'),
+        value: `${result.idleGpuCount}`,
+        sub: pageT('summary.idleGpusSub'),
+        color: '#5a6f94',
+      },
     ];
-  }, [result]);
+  }, [pageT, result]);
 
   const poolsUnitText = t('tools.hamiMetricsExplorerPage.poolsUnit');
   const nodesUnitText = t('tools.hamiMetricsExplorerPage.nodesUnit');
 
   return (
     <MainLayout>
-      <div className="bg-[#f8fafc] py-12 text-gray-900 min-h-screen">
+      <div className="bg-[#f8fafc] py-12 text-gray-900 min-h-screen dark:bg-gray-900 dark:text-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">{t('tools.hamiMetricsExplorer.title')}</h1>
-              <p className="mt-1.5 text-sm text-gray-500">{t('tools.hamiMetricsExplorerPage.subtitle')}</p>
-            </div>
+          <div>
+            <Link
+              href={localizedPath('/tools', locale)}
+              className="mb-4 inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+            >
+              <ArrowLeftIcon className="h-4 w-4" />
+              {toolsT('backToList')}
+            </Link>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('tools.hamiMetricsExplorer.title')}</h1>
+            <p className="mt-1.5 text-sm text-gray-500 dark:text-gray-400">{t('tools.hamiMetricsExplorerPage.subtitle')}</p>
           </div>
 
           <div
             role="button"
             tabIndex={0}
-            className={`rounded-xl border-2 border-dashed p-10 text-center transition ${dragging ? 'border-primary bg-primary-light' : 'border-gray-300 bg-white'}`}
+            className={`rounded-xl border-2 border-dashed p-10 text-center transition ${dragging ? 'border-primary bg-primary-light dark:bg-primary/10' : 'border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950'}`}
             onClick={openFile}
             onKeyDown={(e) => e.key === 'Enter' && openFile()}
             onDragOver={(e) => {
@@ -553,8 +596,8 @@ export default function HamiMetricsExplorer() {
               if (file) void onLoadFile(file);
             }}
           >
-            <p className="font-medium text-gray-900">{fileName || t('tools.hamiMetricsExplorerPage.uploadTitle')}</p>
-            <p className="text-xs mt-1 text-gray-500">{t('tools.hamiMetricsExplorerPage.uploadDesc')}</p>
+            <p className="font-medium text-gray-900 dark:text-gray-100">{fileName || t('tools.hamiMetricsExplorerPage.uploadTitle')}</p>
+            <p className="text-xs mt-1 text-gray-500 dark:text-gray-400">{t('tools.hamiMetricsExplorerPage.uploadDesc')}</p>
             <input
               ref={fileRef}
               type="file"
@@ -570,8 +613,8 @@ export default function HamiMetricsExplorer() {
             <>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
                 {summaryCards.map((card) => (
-                  <div key={card.label} className="rounded-[10px] border border-gray-200 bg-white px-4 py-3">
-                    <div className="mb-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#5a6f94]">{card.label}</div>
+                  <div key={card.label} className="rounded-[10px] border border-gray-200 bg-white px-4 py-3 dark:border-gray-800 dark:bg-gray-950">
+                    <div className="mb-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#5a6f94] dark:text-gray-400">{card.label}</div>
                     <div className="group relative">
                       <div
                         className="truncate font-mono text-[20px] leading-[1.15] font-bold"
@@ -580,18 +623,18 @@ export default function HamiMetricsExplorer() {
                       >
                         {card.value}
                       </div>
-                      <div className="pointer-events-none absolute left-0 top-full z-20 mt-1 hidden max-w-[280px] rounded-md border border-gray-200 bg-white px-2 py-1 text-xs text-gray-700 shadow-md group-hover:block">
+                      <div className="pointer-events-none absolute left-0 top-full z-20 mt-1 hidden max-w-[280px] rounded-md border border-gray-200 bg-white px-2 py-1 text-xs text-gray-700 shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 group-hover:block">
                         {card.value}
                       </div>
                     </div>
-                    <div className="mt-1 text-[11px] text-[#5a6f94]">{card.sub}</div>
+                    <div className="mt-1 text-[11px] text-[#5a6f94] dark:text-gray-400">{card.sub}</div>
                   </div>
                 ))}
               </div>
 
               <div className="flex flex-wrap gap-2">
                 {result.typeEntries.map(([type, count], i) => (
-                  <span key={type} className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-700">
+                  <span key={type} className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300">
                     <span className="h-2 w-2 rounded-full" style={{ background: TYPE_COLORS[i % TYPE_COLORS.length] }} />
                     <span className="font-semibold">{count}x</span> {type}
                   </span>
@@ -613,7 +656,7 @@ export default function HamiMetricsExplorer() {
                 </button>
                 <button
                   type="button"
-                  className="inline-flex cursor-pointer items-center gap-[7px] rounded-[8px] border border-amber-500 bg-white px-[18px] py-[9px] text-[0.78rem] font-semibold text-amber-600 transition-all duration-200 hover:-translate-y-[1px] hover:bg-amber-50"
+                  className="inline-flex cursor-pointer items-center gap-[7px] rounded-[8px] border border-amber-500 bg-white px-[18px] py-[9px] text-[0.78rem] font-semibold text-amber-600 transition-all duration-200 hover:-translate-y-[1px] hover:bg-amber-50 dark:bg-gray-950 dark:text-amber-400 dark:hover:bg-amber-950/30"
                   onClick={() => setShowMerge(true)}
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-[14px] w-[14px]">
@@ -624,7 +667,7 @@ export default function HamiMetricsExplorer() {
               </div>
 
               <section className="mb-6">
-                <h2 className="mb-2.5 flex items-center gap-[7px] text-[0.9rem] font-bold tracking-[-0.01em] text-gray-900">
+                <h2 className="mb-2.5 flex items-center gap-[7px] text-[0.9rem] font-bold tracking-[-0.01em] text-gray-900 dark:text-gray-100">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-primary">
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                   </svg>
@@ -634,18 +677,18 @@ export default function HamiMetricsExplorer() {
                   {analysis.map((item, index) => (
                     <div
                       key={`${item.title}-${item.desc}-${index}`}
-                      className="rounded-[10px] border border-gray-200 bg-white px-[14px] py-[10px] transition-colors duration-200 hover:border-gray-300"
+                      className="rounded-[10px] border border-gray-200 bg-white px-[14px] py-[10px] transition-colors duration-200 hover:border-gray-300 dark:border-gray-800 dark:bg-gray-950 dark:hover:border-gray-600"
                     >
                     <div className="flex items-start gap-3">
                       <div
                         className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] ${
                           item.level === 'danger'
-                            ? 'bg-red-50 text-red-600'
+                            ? 'bg-red-50 text-red-600 dark:bg-red-950/40 dark:text-red-400'
                             : item.level === 'warn'
-                              ? 'bg-amber-50 text-amber-600'
+                              ? 'bg-amber-50 text-amber-600 dark:bg-amber-950/40 dark:text-amber-400'
                               : item.level === 'good'
-                                ? 'bg-green-50 text-green-600'
-                                : 'bg-blue-50 text-blue-600'
+                                ? 'bg-green-50 text-green-600 dark:bg-green-950/40 dark:text-green-400'
+                                : 'bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400'
                         }`}
                       >
                         {item.level === 'danger' ? (
@@ -674,26 +717,26 @@ export default function HamiMetricsExplorer() {
                         )}
                       </div>
                       <div>
-                        <div className="mb-0.5 text-[0.78rem] font-semibold text-gray-900">
+                        <div className="mb-0.5 text-[0.78rem] font-semibold text-gray-900 dark:text-gray-100">
                           <span>{item.title}</span>
-                          {item.codeText ? <code className="ml-1 rounded bg-gray-100 px-1 text-[0.64rem] text-gray-700">{item.codeText}</code> : null}
+                          {item.codeText ? <code className="ml-1 rounded bg-gray-100 px-1 text-[0.64rem] text-gray-700 dark:bg-gray-800 dark:text-gray-300">{item.codeText}</code> : null}
                           {item.tagText ? (
                             <span
                               className={`ml-1 align-middle rounded-[3px] px-[5px] py-[2px] text-[0.56rem] font-semibold ${
                                 item.tagTone === 'danger'
-                                  ? 'bg-red-100 text-red-700'
+                                  ? 'bg-red-100 text-red-700 dark:bg-red-950/50 dark:text-red-300'
                                   : item.tagTone === 'warn'
-                                    ? 'bg-amber-100 text-amber-700'
+                                    ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300'
                                     : item.tagTone === 'good'
-                                      ? 'bg-green-100 text-green-700'
-                                      : 'bg-blue-100 text-blue-700'
+                                      ? 'bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-300'
+                                      : 'bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-300'
                               }`}
                             >
                               {item.tagText}
                             </span>
                           ) : null}
                         </div>
-                        <div className="text-[0.7rem] leading-[1.5] text-gray-500">{item.desc}</div>
+                        <div className="text-[0.7rem] leading-[1.5] text-gray-500 dark:text-gray-400">{item.desc}</div>
                       </div>
                     </div>
                     </div>
@@ -702,23 +745,23 @@ export default function HamiMetricsExplorer() {
               </section>
 
               <section className="space-y-2">
-                <h2 className="flex items-center gap-2 text-lg font-semibold">
+                <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-primary">
                     <path d="M14 3v4a1 1 0 001 1h4" />
                     <path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" />
                   </svg>
                   <span>{t('tools.hamiMetricsExplorerPage.inventoryTitle')} ({result.gpus.length})</span>
                 </h2>
-                <div className="max-h-[320px] overflow-y-auto overflow-x-auto rounded-lg border border-gray-200 bg-white">
+                <div className="max-h-[320px] overflow-y-auto overflow-x-auto rounded-lg border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
                   <table className="w-full min-w-[900px] text-sm">
-                    <thead className="bg-gray-50 text-xs text-gray-700">
+                    <thead className="bg-gray-50 text-xs text-gray-700 dark:bg-gray-900 dark:text-gray-300">
                       <tr>
-                        <th className="sticky top-0 z-20 w-14 bg-gray-50 text-left p-2 font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb]">{t('tools.hamiMetricsExplorerPage.indexHeader')}</th>
-                        <th className="sticky top-0 z-20 w-[170px] bg-gray-50 p-2 text-left font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb]">Node</th>
-                        <th className="sticky top-0 z-20 w-[240px] bg-gray-50 p-2 text-left font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb]">Type</th>
-                        <th className="sticky top-0 z-20 w-[280px] bg-gray-50 p-2 text-left font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb]">UUID</th>
-                        <th className="sticky top-0 z-20 w-24 bg-gray-50 p-2 text-right font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb]">Mem</th>
-                        <th className="sticky top-0 z-20 w-24 bg-gray-50 p-2 text-right font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb]">Core</th>
+                        <th className="sticky top-0 z-20 w-14 bg-gray-50 text-left p-2 font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb] dark:bg-gray-900 dark:shadow-[inset_0_-1px_0_0_#1f2937]">{t('tools.hamiMetricsExplorerPage.indexHeader')}</th>
+                        <th className="sticky top-0 z-20 w-[170px] bg-gray-50 p-2 text-left font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb] dark:bg-gray-900 dark:shadow-[inset_0_-1px_0_0_#1f2937]">{t('tools.hamiMetricsExplorerPage.nodeHeader')}</th>
+                        <th className="sticky top-0 z-20 w-[240px] bg-gray-50 p-2 text-left font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb] dark:bg-gray-900 dark:shadow-[inset_0_-1px_0_0_#1f2937]">{t('tools.hamiMetricsExplorerPage.typeHeader')}</th>
+                        <th className="sticky top-0 z-20 w-[280px] bg-gray-50 p-2 text-left font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb] dark:bg-gray-900 dark:shadow-[inset_0_-1px_0_0_#1f2937]">{t('tools.hamiMetricsExplorerPage.uuidHeader')}</th>
+                        <th className="sticky top-0 z-20 w-24 bg-gray-50 p-2 text-right font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb] dark:bg-gray-900 dark:shadow-[inset_0_-1px_0_0_#1f2937]">{t('tools.hamiMetricsExplorerPage.memShort')}</th>
+                        <th className="sticky top-0 z-20 w-24 bg-gray-50 p-2 text-right font-semibold shadow-[inset_0_-1px_0_0_#e5e7eb] dark:bg-gray-900 dark:shadow-[inset_0_-1px_0_0_#1f2937]">{t('tools.hamiMetricsExplorerPage.coreShort')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -727,10 +770,10 @@ export default function HamiMetricsExplorer() {
                         return (
                           <tr
                             key={`${gpu.uuid}-${index}`}
-                            className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-primary-light`}
+                            className={`${index % 2 === 0 ? 'bg-white dark:bg-gray-950' : 'bg-gray-50 dark:bg-gray-900'} hover:bg-primary-light dark:hover:bg-primary/10`}
                           >
-                            <td className="w-14 p-2 text-gray-400">{index + 1}</td>
-                            <td className="w-[170px] p-2 font-mono text-xs text-gray-700">{gpu.node}</td>
+                            <td className="w-14 p-2 text-gray-400 dark:text-gray-500">{index + 1}</td>
+                            <td className="w-[170px] p-2 font-mono text-xs text-gray-700 dark:text-gray-300">{gpu.node}</td>
                             <td className="w-[240px] p-2">
                               <span
                                 className="inline-block max-w-[220px] truncate rounded px-1.5 py-0.5 text-[11px] font-semibold align-middle"
@@ -743,9 +786,9 @@ export default function HamiMetricsExplorer() {
                                 {gpu.type}
                               </span>
                             </td>
-                            <td className="w-[280px] p-2 font-mono text-xs text-gray-500">{gpu.uuid}</td>
-                            <td className="w-24 whitespace-nowrap p-2 text-right tabular-nums">{mp}%</td>
-                            <td className="w-24 whitespace-nowrap p-2 text-right tabular-nums">{Math.round(gpu.coreAlloc)}%</td>
+                            <td className="w-[280px] p-2 font-mono text-xs text-gray-500 dark:text-gray-400">{gpu.uuid}</td>
+                            <td className="w-24 whitespace-nowrap p-2 text-right tabular-nums text-gray-900 dark:text-gray-100">{mp}%</td>
+                            <td className="w-24 whitespace-nowrap p-2 text-right tabular-nums text-gray-900 dark:text-gray-100">{Math.round(gpu.coreAlloc)}%</td>
                           </tr>
                         );
                       })}
@@ -755,7 +798,7 @@ export default function HamiMetricsExplorer() {
               </section>
 
               <section className="space-y-2">
-                <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+                <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-primary">
                     <rect x="2" y="2" width="20" height="20" rx="3" />
                     <rect x="6" y="6" width="12" height="12" rx="2" />
@@ -774,13 +817,13 @@ export default function HamiMetricsExplorer() {
                     return (
                       <div key={pool} className="rounded-[10px]">
                         <details open className="group rounded-[10px]">
-                          <summary className="flex cursor-pointer list-none items-center gap-2 rounded-t-[10px] border border-gray-200 bg-white px-3 py-2 transition-colors hover:bg-gray-50 [&::-webkit-details-marker]:hidden">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 shrink-0 text-gray-400 transition-transform group-open:rotate-0 group-not-open:-rotate-90">
+                          <summary className="flex cursor-pointer list-none items-center gap-2 rounded-t-[10px] border border-gray-200 bg-white px-3 py-2 transition-colors hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-900 [&::-webkit-details-marker]:hidden">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 shrink-0 text-gray-400 dark:text-gray-500 transition-transform group-open:rotate-0 group-not-open:-rotate-90">
                               <polyline points="6 9 12 15 18 9" />
                             </svg>
-                            <span className="flex-1 text-[0.82rem] font-semibold text-gray-900">{pool}</span>
+                            <span className="flex-1 text-[0.82rem] font-semibold text-gray-900 dark:text-gray-100">{pool}</span>
                             <span className="rounded-full bg-primary-light px-2 py-0.5 text-[0.65rem] font-semibold text-primary">{nodes.length} {nodesUnitText}</span>
-                            <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[0.65rem] font-semibold text-gray-600">{poolGpuCount} GPUs</span>
+                            <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[0.65rem] font-semibold text-gray-600 dark:bg-gray-800 dark:text-gray-300">{poolGpuCount} {t('tools.hamiMetricsExplorerPage.gpusUnit')}</span>
                             <span
                               className="rounded-full px-2 py-0.5 text-[0.65rem] font-semibold"
                               style={{ backgroundColor: `${typeColor}22`, color: typeColor }}
@@ -788,7 +831,7 @@ export default function HamiMetricsExplorer() {
                               {firstType}
                             </span>
                           </summary>
-                          <div className="space-y-1 rounded-b-[10px] border border-t-0 border-gray-200 bg-gray-50 p-2">
+                          <div className="space-y-1 rounded-b-[10px] border border-t-0 border-gray-200 bg-gray-50 p-2 dark:border-gray-800 dark:bg-gray-900">
                             {nodes.map((node) => {
                               const activeCount = node.gpus.filter((gpu) => gpu.memAlloc > 0 || gpu.coreAlloc > 0).length;
                               const nodeDotClass = activeCount === 0 ? 'bg-gray-400' : activeCount < node.gpus.length ? 'bg-amber-500' : 'bg-primary';
@@ -803,91 +846,91 @@ export default function HamiMetricsExplorer() {
                                 const memBarClass = memPercent > 80 ? 'bg-red-500' : memPercent > 50 ? 'bg-amber-500' : memPercent > 0 ? 'bg-primary' : 'bg-gray-300';
                                 const coreBarClass = corePercent > 80 ? 'bg-red-500' : corePercent > 50 ? 'bg-amber-500' : corePercent > 0 ? 'bg-primary' : 'bg-gray-300';
                                 return (
-                                  <div key={gpu.uuid} className="relative overflow-visible rounded-lg border border-gray-200 border-l-[3px] bg-white p-2" style={{ borderLeftColor: levelColor }}>
+                                  <div key={gpu.uuid} className="relative overflow-visible rounded-lg border border-gray-200 border-l-[3px] bg-white p-2 dark:border-gray-800 dark:bg-gray-950" style={{ borderLeftColor: levelColor }}>
                                     <div className="mb-1 flex items-center gap-1.5">
                                       <div className="group/tt relative min-w-0 flex-1">
-                                        <div className="truncate text-[0.72rem] font-semibold text-gray-900">{gpu.type}</div>
-                                        <div className="pointer-events-none absolute bottom-full left-0 z-40 mb-1 hidden max-w-[260px] rounded-md border border-gray-200 bg-white px-2 py-1 text-[11px] text-gray-700 shadow-md group-hover/tt:block">
+                                        <div className="truncate text-[0.72rem] font-semibold text-gray-900 dark:text-gray-100">{gpu.type}</div>
+                                        <div className="pointer-events-none absolute bottom-full left-0 z-40 mb-1 hidden max-w-[260px] rounded-md border border-gray-200 bg-white px-2 py-1 text-[11px] text-gray-700 shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 group-hover/tt:block">
                                           {gpu.type}
                                         </div>
                                       </div>
-                                      <span className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[0.62rem] text-gray-500">#{gpu.idx}</span>
+                                      <span className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[0.62rem] text-gray-500 dark:bg-gray-800 dark:text-gray-400">#{gpu.idx}</span>
                                     </div>
                                     <div className="group/tt relative mb-1">
-                                      <div className="truncate font-mono text-[0.58rem] text-gray-500">{gpu.uuid.slice(4, 24)}...</div>
-                                      <div className="pointer-events-none absolute bottom-full left-0 z-40 mb-1 hidden max-w-[320px] rounded-md border border-gray-200 bg-white px-2 py-1 font-mono text-[11px] text-gray-700 shadow-md group-hover/tt:block">
+                                      <div className="truncate font-mono text-[0.58rem] text-gray-500 dark:text-gray-400">{gpu.uuid.slice(4, 24)}...</div>
+                                      <div className="pointer-events-none absolute bottom-full left-0 z-40 mb-1 hidden max-w-[320px] rounded-md border border-gray-200 bg-white px-2 py-1 font-mono text-[11px] text-gray-700 shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 group-hover/tt:block">
                                         {gpu.uuid}
                                       </div>
                                     </div>
                                     <div className="mb-1 flex items-center gap-1.5">
-                                      <span className="w-7 shrink-0 text-[0.58rem] font-medium text-gray-500">{t('tools.hamiMetricsExplorerPage.memShort')}</span>
-                                      <div className="h-1.5 flex-1 overflow-hidden rounded bg-gray-100">
+                                      <span className="w-7 shrink-0 text-[0.58rem] font-medium text-gray-500 dark:text-gray-400">{t('tools.hamiMetricsExplorerPage.memShort')}</span>
+                                      <div className="h-1.5 flex-1 overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
                                         <div className={`h-full rounded ${memBarClass}`} style={{ width: `${Math.min(memPercent, 100)}%` }} />
                                       </div>
-                                      <span className="w-9 shrink-0 text-right font-mono text-[0.58rem] text-gray-600">{memPercent}%</span>
+                                      <span className="w-9 shrink-0 text-right font-mono text-[0.58rem] text-gray-600 dark:text-gray-400">{memPercent}%</span>
                                     </div>
                                     <div className="mb-1 flex items-center gap-1.5">
-                                      <span className="w-7 shrink-0 text-[0.58rem] font-medium text-gray-500">{t('tools.hamiMetricsExplorerPage.coreShort')}</span>
-                                      <div className="h-1.5 flex-1 overflow-hidden rounded bg-gray-100">
+                                      <span className="w-7 shrink-0 text-[0.58rem] font-medium text-gray-500 dark:text-gray-400">{t('tools.hamiMetricsExplorerPage.coreShort')}</span>
+                                      <div className="h-1.5 flex-1 overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
                                         <div className={`h-full rounded ${coreBarClass}`} style={{ width: `${Math.min(corePercent, 100)}%` }} />
                                       </div>
-                                      <span className="w-9 shrink-0 text-right font-mono text-[0.58rem] text-gray-600">{corePercent}%</span>
+                                      <span className="w-9 shrink-0 text-right font-mono text-[0.58rem] text-gray-600 dark:text-gray-400">{corePercent}%</span>
                                     </div>
                                     {gpu.pods.length ? (
-                                      <div className="mt-1 border-t border-gray-200 pt-1">
+                                      <div className="mt-1 border-t border-gray-200 pt-1 dark:border-gray-800">
                                         {gpu.pods.map((pod) => (
                                           <div key={`${gpu.uuid}-${pod.ns}-${pod.name}`} className="flex items-center gap-1 text-[0.6rem]">
                                             <span className="h-1 w-1 shrink-0 rounded-full bg-primary" />
                                             <span className="group/tt relative min-w-0 flex-1">
-                                              <span className="block truncate font-mono text-gray-600">{pod.name}</span>
-                                              <span className="pointer-events-none absolute bottom-full left-0 z-40 mb-1 hidden max-w-[260px] rounded-md border border-gray-200 bg-white px-2 py-1 font-mono text-[11px] text-gray-700 shadow-md group-hover/tt:block">
+                                              <span className="block truncate font-mono text-gray-600 dark:text-gray-300 dark:text-gray-400">{pod.name}</span>
+                                              <span className="pointer-events-none absolute bottom-full left-0 z-40 mb-1 hidden max-w-[260px] rounded-md border border-gray-200 bg-white px-2 py-1 font-mono text-[11px] text-gray-700 shadow-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 group-hover/tt:block">
                                                 {pod.name}
                                               </span>
                                             </span>
-                                            <span className="shrink-0 rounded bg-gray-100 px-1 text-[0.56rem] text-gray-500">{pod.ns}</span>
-                                            <span className="shrink-0 font-mono text-[0.56rem] text-gray-500">{Math.round(pod.cores)}%/{formatBytes(pod.mem)}</span>
+                                            <span className="shrink-0 rounded bg-gray-100 px-1 text-[0.56rem] text-gray-500 dark:bg-gray-800 dark:text-gray-400">{pod.ns}</span>
+                                            <span className="shrink-0 font-mono text-[0.56rem] text-gray-500 dark:text-gray-400">{Math.round(pod.cores)}%/{formatBytes(pod.mem)}</span>
                                           </div>
                                         ))}
                                       </div>
                                     ) : (
-                                      <div className="mt-1 text-[0.6rem] italic text-gray-400">{t('tools.hamiMetricsExplorerPage.idle')}</div>
+                                      <div className="mt-1 text-[0.6rem] italic text-gray-400 dark:text-gray-500">{t('tools.hamiMetricsExplorerPage.idle')}</div>
                                     )}
                                   </div>
                                 );
                               };
                               return (
-                                <details key={node.name} className="group/node overflow-visible rounded-[10px] border border-gray-200 bg-white">
-                                  <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 transition-colors hover:bg-gray-50 [&::-webkit-details-marker]:hidden">
+                                <details key={node.name} className="group/node overflow-visible rounded-[10px] border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
+                                  <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900 [&::-webkit-details-marker]:hidden">
                                     <span className={`h-2 w-2 shrink-0 rounded-full ${nodeDotClass}`} />
-                                    <span className="flex-1 truncate font-mono text-[0.72rem] text-gray-700" title={node.name}>{node.name}</span>
-                                    <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[0.62rem] font-semibold text-gray-600">{node.gpus.length}G</span>
-                                    <span className={`rounded-full px-2 py-0.5 text-[0.6rem] font-semibold ${activeCount > 0 ? 'bg-primary-light text-primary' : 'bg-gray-100 text-gray-500'}`}>
+                                    <span className="flex-1 truncate font-mono text-[0.72rem] text-gray-700 dark:text-gray-300" title={node.name}>{node.name}</span>
+                                    <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[0.62rem] font-semibold text-gray-600 dark:bg-gray-800 dark:text-gray-300">{node.gpus.length}G</span>
+                                    <span className={`rounded-full px-2 py-0.5 text-[0.6rem] font-semibold ${activeCount > 0 ? 'bg-primary-light text-primary' : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400'}`}>
                                       {activeCount} {t('tools.hamiMetricsExplorerPage.activeShort')}
                                     </span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 shrink-0 text-gray-400 transition-transform group-open/node:rotate-0 group-not-open/node:-rotate-90">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 shrink-0 text-gray-400 dark:text-gray-500 transition-transform group-open/node:rotate-0 group-not-open/node:-rotate-90">
                                       <polyline points="6 9 12 15 18 9" />
                                     </svg>
                                   </summary>
-                                  <div className="space-y-2 border-t border-gray-200 p-2">
+                                  <div className="space-y-2 border-t border-gray-200 p-2 dark:border-gray-800">
                                     {hasNuma ? (
                                       <>
                                         <div className="flex items-center gap-2 px-1">
-                                          <div className="h-px flex-1 bg-gray-200" />
-                                          <span className="text-[0.58rem] font-semibold text-gray-400">NUMA 0</span>
-                                          <div className="h-px flex-1 bg-gray-200" />
+                                          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+                                          <span className="text-[0.58rem] font-semibold text-gray-400 dark:text-gray-500">{t('tools.hamiMetricsExplorerPage.numa0')}</span>
+                                          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
                                         </div>
                                         <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                                           {node.gpus.slice(0, splitAt).map(renderGpuCard)}
                                         </div>
                                         <div className="flex items-center gap-2 px-1">
-                                          <div className="h-px flex-1 bg-gray-200" />
-                                          <span className="font-mono text-[0.58rem] text-amber-500">QPI/UPI</span>
-                                          <div className="h-px flex-1 bg-gray-200" />
+                                          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+                                          <span className="font-mono text-[0.58rem] text-amber-500">{t('tools.hamiMetricsExplorerPage.qpiUpi')}</span>
+                                          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
                                         </div>
                                         <div className="flex items-center gap-2 px-1">
-                                          <div className="h-px flex-1 bg-gray-200" />
-                                          <span className="text-[0.58rem] font-semibold text-gray-400">NUMA 1</span>
-                                          <div className="h-px flex-1 bg-gray-200" />
+                                          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
+                                          <span className="text-[0.58rem] font-semibold text-gray-400 dark:text-gray-500">{t('tools.hamiMetricsExplorerPage.numa1')}</span>
+                                          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-700" />
                                         </div>
                                         <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                                           {node.gpus.slice(splitAt).map(renderGpuCard)}
@@ -912,7 +955,7 @@ export default function HamiMetricsExplorer() {
 
               {Object.keys(result.quotas).length > 0 ? (
                 <section className="space-y-2">
-                  <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+                  <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-primary">
                       <path d="M12 2v20M2 12h20M7 7l5 5M7 17l5-5" />
                     </svg>
@@ -920,12 +963,12 @@ export default function HamiMetricsExplorer() {
                   </h2>
                   <div className="grid grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-2">
                     {Object.entries(result.quotas).map(([ns, items]) => (
-                      <div key={ns} className="rounded-[10px] border border-gray-200 bg-white px-[10px] py-2">
-                        <div className="mb-1 font-mono text-[0.72rem] font-semibold text-gray-900">{ns}</div>
+                      <div key={ns} className="rounded-[10px] border border-gray-200 bg-white px-[10px] py-2 dark:border-gray-800 dark:bg-gray-950">
+                        <div className="mb-1 font-mono text-[0.72rem] font-semibold text-gray-900 dark:text-gray-100">{ns}</div>
                         {items.map((item) => (
-                          <div key={`${ns}-${item.n}`} className="flex items-center justify-between py-[2px] text-[0.66rem] text-gray-500">
+                          <div key={`${ns}-${item.n}`} className="flex items-center justify-between py-[2px] text-[0.66rem] text-gray-500 dark:text-gray-400">
                             <span>{item.n}</span>
-                            <span className="font-mono text-gray-600">{item.u}/{item.l || '∞'}</span>
+                            <span className="font-mono text-gray-600 dark:text-gray-300">{item.u}/{item.l || '∞'}</span>
                           </div>
                         ))}
                       </div>
@@ -935,7 +978,7 @@ export default function HamiMetricsExplorer() {
               ) : null}
 
               {result.buildInfo ? (
-                <section className="text-xs text-gray-500 flex flex-wrap gap-3">
+                <section className="text-xs text-gray-500 flex flex-wrap gap-3 dark:text-gray-400">
                   <span>{t('tools.hamiMetricsExplorerPage.buildInfoLabel')}:</span>
                   <span className="font-mono">HAMi {result.buildInfo.version}</span>
                   <span className="font-mono">{result.buildInfo.build_date}</span>
@@ -950,13 +993,13 @@ export default function HamiMetricsExplorer() {
 
       {showExport && result ? (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm p-4 flex items-center justify-center" onClick={() => setShowExport(false)}>
-          <div className="w-full max-w-3xl max-h-[85vh] bg-white rounded-xl border border-gray-200 flex flex-col" onClick={(e) => e.stopPropagation()}>
-            <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+          <div className="w-full max-w-3xl max-h-[85vh] bg-white rounded-xl border border-gray-200 flex flex-col dark:border-gray-800 dark:bg-gray-950 dark:text-gray-100" onClick={(e) => e.stopPropagation()}>
+            <div className="p-4 border-b border-gray-200 flex justify-between items-center dark:border-gray-800">
               <h3 className="font-semibold">{t('tools.hamiMetricsExplorerPage.exportTitle')}</h3>
               <button type="button" className="cursor-pointer" onClick={() => setShowExport(false)}>x</button>
             </div>
-            <pre className="p-4 overflow-auto text-xs flex-1">{JSON.stringify(result.exportData, null, 2)}</pre>
-            <div className="p-4 border-t border-gray-200 flex gap-2">
+            <pre className="p-4 overflow-auto text-xs flex-1 text-gray-800 dark:text-gray-200">{JSON.stringify(result.exportData, null, 2)}</pre>
+            <div className="p-4 border-t border-gray-200 flex gap-2 dark:border-gray-800">
               <button
                 type="button"
                 className="cursor-pointer rounded-md bg-primary px-3 py-1.5 text-sm text-white"
@@ -970,7 +1013,7 @@ export default function HamiMetricsExplorer() {
               </button>
               <button
                 type="button"
-                className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700"
+                className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-900"
                 onClick={() => download('gpu_inventory.json', JSON.stringify(result.exportData, null, 2), 'application/json')}
               >
                 {t('tools.hamiMetricsExplorerPage.downloadButton')}
@@ -983,8 +1026,8 @@ export default function HamiMetricsExplorer() {
 
       {showMerge ? (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm p-4 flex items-center justify-center" onClick={() => setShowMerge(false)}>
-          <div className="w-full max-w-4xl max-h-[88vh] bg-white rounded-xl border border-gray-200 flex flex-col" onClick={(e) => e.stopPropagation()}>
-            <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+          <div className="w-full max-w-4xl max-h-[88vh] bg-white rounded-xl border border-gray-200 flex flex-col dark:border-gray-800 dark:bg-gray-950 dark:text-gray-100" onClick={(e) => e.stopPropagation()}>
+            <div className="p-4 border-b border-gray-200 flex justify-between items-center dark:border-gray-800">
               <h3 className="font-semibold">{mergeOutput ? t('tools.hamiMetricsExplorerPage.mergeResultTitle') : t('tools.hamiMetricsExplorerPage.mergeTitle')}</h3>
               <button type="button" className="cursor-pointer" onClick={() => setShowMerge(false)}>x</button>
             </div>
@@ -994,7 +1037,7 @@ export default function HamiMetricsExplorer() {
                   <textarea
                     value={mergeInput}
                     onChange={(e) => setMergeInput(e.target.value)}
-                    className="w-full min-h-[200px] rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs text-gray-900"
+                    className="w-full min-h-[200px] rounded-lg border border-gray-300 bg-gray-50 p-3 font-mono text-xs text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
                     placeholder='{ "kube-system-uuid": "...", "nodes": [] }'
                   />
                   <div className="text-center">
@@ -1009,7 +1052,7 @@ export default function HamiMetricsExplorer() {
                         setMergeInput(await file.text());
                       }}
                     />
-                    <button type="button" className="cursor-pointer rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700" onClick={() => mergeFileRef.current?.click()}>
+                    <button type="button" className="cursor-pointer rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-300" onClick={() => mergeFileRef.current?.click()}>
                       {t('tools.hamiMetricsExplorerPage.chooseJsonFile')}
                     </button>
                   </div>
@@ -1019,14 +1062,14 @@ export default function HamiMetricsExplorer() {
                   </button>
                 </>
               ) : (
-                <pre className="text-xs font-mono whitespace-pre-wrap">{mergeOutput}</pre>
+                <pre className="text-xs font-mono whitespace-pre-wrap text-gray-800 dark:text-gray-200">{mergeOutput}</pre>
               )}
             </div>
             {mergeOutput ? (
-              <div className="p-4 border-t border-gray-200 flex gap-2">
+              <div className="p-4 border-t border-gray-200 flex gap-2 dark:border-gray-800">
                 <button
                   type="button"
-                  className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700"
+                  className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-900"
                   onClick={() => {
                     setMergeOutput('');
                     setMergeStats(null);
@@ -1045,18 +1088,18 @@ export default function HamiMetricsExplorer() {
                 >
                   {t('tools.hamiMetricsExplorerPage.copyButton')}
                 </button>
-                <button type="button" className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700" onClick={() => download('merged_inventory.json', mergeOutput, 'application/json')}>
+                <button type="button" className="cursor-pointer rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-900" onClick={() => download('merged_inventory.json', mergeOutput, 'application/json')}>
                   {t('tools.hamiMetricsExplorerPage.downloadButton')}
                 </button>
                 {copyMergeOk ? <span className="text-sm text-primary self-center">{t('tools.hamiMetricsExplorerPage.copied')}</span> : null}
               </div>
             ) : null}
             {mergeOutput && mergeStats ? (
-              <div className="px-4 pb-4 grid grid-cols-2 gap-2 text-xs text-gray-600">
-                <div className="rounded border border-gray-200 p-2 bg-gray-50">Current: <span className="font-mono text-gray-900">{mergeStats.currTotal}</span></div>
-                <div className="rounded border border-gray-200 p-2 bg-gray-50">Old: <span className="font-mono text-gray-900">{mergeStats.oldTotal}</span></div>
-                <div className="rounded border border-gray-200 p-2 bg-gray-50">Duplicates removed: <span className="font-mono text-gray-900">{mergeStats.duplicateCount}</span></div>
-                <div className="rounded border border-gray-200 p-2 bg-gray-50">Merged total: <span className="font-mono text-gray-900">{mergeStats.finalTotal}</span></div>
+              <div className="px-4 pb-4 grid grid-cols-2 gap-2 text-xs text-gray-600 dark:text-gray-400">
+                <div className="rounded border border-gray-200 p-2 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">{t('tools.hamiMetricsExplorerPage.mergeStatsCurrent')}: <span className="font-mono text-gray-900 dark:text-gray-100">{mergeStats.currTotal}</span></div>
+                <div className="rounded border border-gray-200 p-2 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">{t('tools.hamiMetricsExplorerPage.mergeStatsOld')}: <span className="font-mono text-gray-900 dark:text-gray-100">{mergeStats.oldTotal}</span></div>
+                <div className="rounded border border-gray-200 p-2 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">{t('tools.hamiMetricsExplorerPage.mergeStatsDuplicates')}: <span className="font-mono text-gray-900 dark:text-gray-100">{mergeStats.duplicateCount}</span></div>
+                <div className="rounded border border-gray-200 p-2 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">{t('tools.hamiMetricsExplorerPage.mergeStatsMerged')}: <span className="font-mono text-gray-900 dark:text-gray-100">{mergeStats.finalTotal}</span></div>
               </div>
             ) : null}
           </div>
