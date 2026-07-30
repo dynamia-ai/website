@@ -793,12 +793,12 @@
   "company": {
     "about": {
       "title": "公司简介",
-      "description": "我们在异构计算领域开拓创新，帮助组织最大化利用其计算资源",
+      "description": "AI 基础设施的开源内核——让异构算力因开源而好用。",
       "whoWeAre": {
         "title": "公司简介",
-        "paragraph1": "密瓜智能，CNCF incubating HAMi 项目的作者与维护者。HAMi 作为全球增长最快、最受欢迎的开源 AI 原生异构 虚拟化中间件项目。通过灵活、可靠、按需、弹性的 GPU 虚拟化来提升资源利用率，可以插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境中，可支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。\n",
-        "paragraph2": "HAMi 自开源以来受到广泛欢迎，用户遍布全球，超过 100+ 用户使用 HAMi 构建自己的 AI 基础设施，用于最大化提高 GPU 利用率。\n",
-        "paragraph3": "密瓜智能提供统一的 AI 应用编排与 GPU 调度的企业级平台，最大化的释放 GPU 的所有潜力，提升通用 GPU 利用率，实现异构 算力集群、算力芯片的统一、高效的调度。"
+        "paragraph1": "上海密瓜智能科技有限公司（简称密瓜智能，Dynamia）于 2025 年 1 月 23 日成立，法定代表人为张潇，注册资本为 205 万元人民币。公司主营异构算力虚拟化、调度和统一管理相关技术研发，为企业提供基于 Kubernetes 的 GPU 资源共享、异构算力调度、AI 工作负载管理及相关技术服务。",
+        "paragraph2": "2025 年 3 月，公司完成超 500 万元人民币种子轮融资，投资方包括 DaoCloud 道客、奇绩创坛及其他种子投资人；2026 年 1 月，公司完成数千万元人民币天使轮融资，由复星创富领投，拙朴投资、种子投资人及产业方跟投。",
+        "paragraph3": "公司由创始人兼 CEO 张潇、联合创始人兼 CTO 李孟轩领衔。两人均为开源项目 HAMi 的发起人及维护者，核心团队成员具有云计算、云原生和异构算力领域从业经历。"
       },
       "mission": {
         "title": "我们的使命",
@@ -812,19 +812,96 @@
           "推动计算资源的高效利用，减少能源浪费",
           "通过优化计算基础设施，赋能组织实现创新"
         ]
-      }
+      },
+      "tagline": "AI 基础设施的开源内核",
+      "missionLine": "让异构算力因开源而好用。"
+    },
+    "milestones": {
+      "title": "发展历程",
+      "subtitle": "从公司成立到 HAMi 晋升 CNCF Incubating——密瓜智能与 HAMi 的成长之路。",
+      "items": [
+        {
+          "date": "2025 年 1 月",
+          "title": "公司成立",
+          "description": "上海密瓜智能科技有限公司成立，张潇担任法定代表人。"
+        },
+        {
+          "date": "2025 年 3 月",
+          "title": "种子轮融资",
+          "description": "公司完成超 500 万元人民币种子轮融资，投资方包括 DaoCloud 道客、奇绩创坛及其他种子投资人。"
+        },
+        {
+          "date": "2026 年 1 月",
+          "title": "天使轮融资",
+          "description": "公司完成数千万元人民币天使轮融资，由复星创富领投，拙朴投资、种子投资人及产业方跟投。"
+        },
+        {
+          "date": "2026 年 1 月",
+          "title": "百度智能云兼容互认",
+          "description": "密瓜智能 HAMi 与百度智能云百舸异构计算平台完成兼容适配和阶段性产品互认。"
+        },
+        {
+          "date": "2026 年 3 月",
+          "title": "OpenCSG 战略合作",
+          "description": "密瓜智能与 OpenCSG 达成战略合作，共同推进面向企业级 AI 工作负载的异构算力调度底座建设。"
+        },
+        {
+          "date": "2026 年 5 月",
+          "title": "加入 ITL 联盟",
+          "description": "经华泰证券与德邦基金联合推荐，公司成为智能投研技术联盟（ITL）成员机构。"
+        },
+        {
+          "date": "2026 年 7 月",
+          "title": "HAMi 晋升 CNCF Incubating",
+          "description": "公司创始团队参与发起并持续维护的开源项目 HAMi 晋升为 CNCF Incubating 项目。"
+        }
+      ]
+    },
+    "business": {
+      "title": "公司业务",
+      "subtitle": "从虚拟化与统一调度，到企业级平台、生态适配和持续技术服务，密瓜智能为异构算力集群提供完整的能力支撑。",
+      "items": [
+        {
+          "title": "异构算力虚拟化与调度技术研发",
+          "description": "公司围绕 GPU、NPU 等异构加速设备开展虚拟化、资源共享和调度技术研发，面向 Kubernetes 环境提供细粒度算力分配、资源隔离和统一调度能力。"
+        },
+        {
+          "title": "企业级异构计算平台",
+          "description": "公司提供基于 HAMi 技术构建的企业级异构计算平台，覆盖 GPU 共享、AI 工作负载统一管理、异构算力集群调度、租户资源治理和可观测等场景。"
+        },
+        {
+          "title": "开源社区与生态适配",
+          "description": "公司持续参与 HAMi 上游研发和开源社区建设，并与 GPU 厂商、云平台及 AI 软件生态开展兼容适配，包括与百度智能云百舸完成产品兼容互认，以及与 OpenCSG 推进异构算力调度能力集成。"
+        },
+        {
+          "title": "部署交付与技术服务",
+          "description": "公司面向企业客户提供安装部署、故障排查、最佳实践指导、版本更新和持续维护等技术服务，支持 AI/ML 训练与推理、高性能计算及其他 GPU 加速工作负载。"
+        }
+      ]
+    },
+    "scale": {
+      "title": "公司规模",
+      "body": "截至 2026 年 7 月，公开工商资料显示，公司注册资本为 205 万元人民币。公司官网公开的核心团队成员包括张潇、李孟轩、宋净超。企业分公司数量、总资产及员工总数未在权威公开资料中披露。"
+    },
+    "culture": {
+      "title": "企业文化",
+      "goalLabel": "企业目标",
+      "goalValue": "让异构算力因开源而好用。",
+      "positioningLabel": "企业定位",
+      "positioningValue": "AI 基础设施的开源内核。",
+      "valueStatement": "开源是密瓜智能的技术底色。创始团队长期参与 Kubernetes 与 CNCF 生态，并持续推动 HAMi 从社区协作走向企业级生产实践。"
     },
     "team": {
       "title": "核心团队",
       "members": [
         {
           "name": "张潇",
-          "position": "CEO & 创始人 & HAMi 核心维护者",
+          "position": "创始人兼 CEO · HAMi Maintainer",
           "image": "CEO"
         },
         {
           "name": "李孟轩",
-          "position": "首席架构师 & 联合创始人 & HAMi 项目创始人",
+          "position": "联合创始人兼 CTO · HAMi Maintainer",
           "image": "CTO"
         },
         {
@@ -843,6 +920,53 @@
           "image": "jimmy"
         }
       ]
+    },
+    "leadership": {
+      "title": "创始团队",
+      "overviewLabel": "概述",
+      "experienceLabel": "人物经历",
+      "activitiesLabel": "技术与开源活动",
+      "mainWorkLabel": "主要工作",
+      "bios": [
+        {
+          "name": "张潇",
+          "role": "创始人兼 CEO · HAMi Maintainer",
+          "overview": "开源软件开发者、科技创业者，密瓜智能（Dynamia）创始人兼 CEO，HAMi 早期版本共同开源者、项目 Maintainer。曾任 DaoCloud 容器团队负责人，长期参与 Kubernetes 及 CNCF 生态相关开源项目。",
+          "experience": [
+            "曾任云原生企业 DaoCloud 容器团队负责人。",
+            "2021 年 7 月 12 日，与李孟轩首次开源 HAMi 的早期版本。当时张潇任职于 DaoCloud，李孟轩任职于第四范式，两人围绕同一开源项目开展协作。",
+            "此后与李孟轩共同创立密瓜智能，围绕异构 GPU 资源共享、虚拟化和统一调度方向推进 HAMi 的开源发展及相关技术的工程化落地。",
+            "2026 年 7 月 2 日，HAMi 晋升为 CNCF Incubating 项目。CNCF 官方资料显示，HAMi 的 Maintainer 来自密瓜智能、NVIDIA 等企业及独立开发者。"
+          ],
+          "activities": [
+            "张潇是 HAMi 项目 Maintainer，HAMi 项目治理文件显示其当前所属机构为密瓜智能。HAMi 是面向 Kubernetes 的开源云原生 GPU 虚拟化中间件，为 GPU、NPU、DCU、MLU 等异构加速器提供资源切分、工作负载隔离和调度能力。",
+            "2026 年 3 月，以密瓜智能 CEO、HAMi Maintainer 身份参加在荷兰阿姆斯特丹举行的 KubeCon + CloudNativeCon Europe 2026，并在 Cloud Native AI 相关论坛进行题为《K8s Issue #52757: Sharing GPUs Among Multiple Containers》的技术分享。",
+            "该分享围绕 Kubernetes 社区长期讨论的多容器共享 GPU 问题，介绍 AI 推理、批处理、在线服务和多租户场景下的 GPU 细粒度共享需求及相关技术的实现路径。"
+          ],
+          "mainWork": "张潇主要围绕云原生基础设施、异构算力虚拟化与调度、开源社区建设等方向开展工作，并参与推进 HAMi 开源生态及密瓜智能相关产品和技术服务的发展。"
+        },
+        {
+          "name": "李孟轩",
+          "role": "联合创始人兼 CTO · HAMi Maintainer",
+          "overview": "李孟轩，毕业于清华大学计算机系，云原生及异构算力虚拟化领域专家，密瓜智能联合创始人兼 CTO，CNCF 毕业项目 Volcano Reviewer，HAMi 早期版本共同开源者及项目 Maintainer。曾任第四范式异构算力技术负责人，长期参与 Kubernetes 及 CNCF 生态相关开源项目。",
+          "experience": [
+            "曾任第四范式异构算力技术负责人。",
+            "2021 年 7 月 12 日，与张潇首次开源 HAMi 的早期版本。",
+            "此后与张潇共同创立密瓜智能，持续参与 HAMi 的技术研发、项目维护和开源生态建设。",
+            "2026 年 7 月 2 日，HAMi 晋升为 CNCF Incubating 项目，CNCF 官方资料将李孟轩列为 HAMi Maintainer。"
+          ],
+          "activities": [
+            "2026 年 3 月，以密瓜智能联合创始人兼 CTO、HAMi Maintainer 身份参加 KubeCon + CloudNativeCon Europe 2026。在大会前举行的 Maintainer Summit 上，围绕 AI Workloads 分享 HAMi 在 AI 工作负载和 GPU 资源管理方面的实践，并参与 HAMi 与 CNCF、Red Hat、vLLM 社区成员围绕 GPU Sharing 等议题的技术交流。",
+            "在 KubeCon Europe 2026 技术分享环节，以《Dynamic, Smart, Stable GPU-Sharing Middleware in Kubernetes》为题，介绍 HAMi 的 GPU 虚拟化、GPU 共享与调度机制、稳定性设计及生产可用性实践。",
+            "在大会主论坛 Keynote 环节，与 Reza Jelveh 共同完成 HAMi 现场演示，展示基于 Kubernetes 的多工作负载 GPU 调度场景；演示以 YOLO 推理服务和 Qwen3-8B 大模型推理任务为例，呈现多个 Pod 按需共享 GPU 算力和显存资源的运行方式。",
+            "2026 年 4 月 25 日，在第三届 HAMi Meetup 深圳站介绍 HAMi v2.9 版本的核心特性、DRA 生态及异构算力统一管理相关规划。",
+            "2026 年 7 月 16 日，在 vLLM Meetup 进行技术分享，介绍 vLLM 推理集群从单机部署、Kubernetes 工作负载、Prefill 与 Decode 分离到结合 GPU 虚拟化进行资源优化的演进路径。"
+          ],
+          "mainWork": "李孟轩主要围绕异构算力虚拟化与调度、Kubernetes GPU 资源管理、大模型推理集群优化等方向开展技术研发，并参与 HAMi 的项目维护及社区技术交流。"
+        }
+      ],
+      "expandLabel": "展开详情",
+      "collapseLabel": "收起"
     },
     "careers": {
       "title": "职业发展",
