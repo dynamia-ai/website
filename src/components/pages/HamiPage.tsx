@@ -9,6 +9,9 @@ import MainLayout from '@/components/layout/MainLayout';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faCodeBranch, faCodeCommit, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faDocker } from '@fortawesome/free-brands-svg-icons';
+import { useGitHubRepoStats, formatCompactCount } from '@/hooks/useGitHubRepoStats';
+
+const HAMI_REPO = 'Project-HAMi/HAMi';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -20,6 +23,13 @@ export default function HamiPage() {
   const home = useTranslations('home');
   const locale = useLocale();
   const isZh = locale === 'zh';
+  const hamiRepoStats = useGitHubRepoStats(HAMI_REPO);
+  const hamiStarsLabel = hamiRepoStats
+    ? formatCompactCount(hamiRepoStats.stars)
+    : '—';
+  const hamiForksLabel = hamiRepoStats
+    ? formatCompactCount(hamiRepoStats.forks)
+    : '—';
 
   return (
     <MainLayout>
@@ -100,7 +110,7 @@ export default function HamiPage() {
                   <div className="mb-4 md:mb-0 text-center px-4">
                     <div className="flex items-center justify-center">
                       <FontAwesomeIcon icon={faCodeBranch} className="h-5 w-5 text-[#76b900] mr-1" />
-                      <span className="text-2xl font-bold text-[#76b900]">{home('poweredByHami.stats.forks')}</span>
+                      <span className="text-2xl font-bold text-[#76b900]">{hamiForksLabel}</span>
                     </div>
                     <span className="text-gray-600 dark:text-gray-300">[ Forks ]</span>
                   </div>
@@ -108,7 +118,7 @@ export default function HamiPage() {
                   <div className="mb-4 md:mb-0 text-center px-4">
                     <div className="flex items-center justify-center">
                       <FontAwesomeIcon icon={faStar} className="h-5 w-5 text-[#76b900] mr-1" />
-                      <span className="text-2xl font-bold text-[#76b900]">{home('poweredByHami.stats.stars')}</span>
+                      <span className="text-2xl font-bold text-[#76b900]">{hamiStarsLabel}</span>
                     </div>
                     <span className="text-gray-600 dark:text-gray-300">[ Stars ]</span>
                   </div>

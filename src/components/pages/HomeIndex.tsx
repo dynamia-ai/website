@@ -8,6 +8,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import DeployedCompaniesGrid from '@/components/DeployedCompaniesGrid';
 import GitHubStars from '@/components/GitHubStars';
 import WebMCPProvider from '@/components/agent/WebMCPProvider';
+import { useGitHubRepoStats, formatCompactCount } from '@/hooks/useGitHubRepoStats';
 import { localizedPath } from '@/utils/i18n';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,6 +20,8 @@ import {
   faStar
 } from '@fortawesome/free-solid-svg-icons';
 import { faDocker } from '@fortawesome/free-brands-svg-icons';
+
+const HAMI_REPO = 'Project-HAMi/HAMi';
 
 // 动画变体
 const fadeIn = {
@@ -49,6 +52,13 @@ export default function Home() {
 
   const t = useTranslations();
   const locale = useLocale();
+  const hamiRepoStats = useGitHubRepoStats(HAMI_REPO);
+  const hamiStarsLabel = hamiRepoStats
+    ? formatCompactCount(hamiRepoStats.stars)
+    : '—';
+  const hamiForksLabel = hamiRepoStats
+    ? formatCompactCount(hamiRepoStats.forks)
+    : '—';
   // 合合信息 (IntSig) 在中英文站点使用不同 logo
   const [activeTab, setActiveTab] = useState(0);
   const [featureProgress, setFeatureProgress] = useState(0);
@@ -247,7 +257,8 @@ export default function Home() {
                 </Link>
                 <div className="w-full sm:w-auto">
                   <GitHubStars
-                    repo="Project-HAMi/HAMi"
+                    repo={HAMI_REPO}
+                    stars={hamiRepoStats?.stars ?? null}
                     size="large"
                   />
                 </div>
@@ -624,7 +635,7 @@ export default function Home() {
                   <div className="text-center px-2">
                     <div className="flex items-center justify-center">
                       <FontAwesomeIcon icon={faCodeBranch} className="h-4 w-4 text-[#76b900] mr-1" />
-                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.forks')}</span>
+                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{hamiForksLabel}</span>
                     </div>
                     <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Forks ]</span>
                   </div>
@@ -632,7 +643,7 @@ export default function Home() {
                   <div className="text-center px-2">
                     <div className="flex items-center justify-center">
                       <FontAwesomeIcon icon={faStar} className="h-4 w-4 text-[#76b900] mr-1" />
-                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{t('home.poweredByHami.stats.stars')}</span>
+                      <span className="text-xl md:text-2xl font-bold text-[#76b900]">{hamiStarsLabel}</span>
                     </div>
                     <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300">[ Stars ]</span>
                   </div>
