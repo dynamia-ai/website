@@ -35,6 +35,22 @@
       "description": "Learn about Dynamia AI, creators of HAMi - the world's fastest-growing open-source heterogeneous AI computing virtualization middleware.",
       "keywords": "dynamia ai company, about dynamia ai, heterogeneous computing innovation, HAMi creators"
     },
+    "blog": {
+      "title": "Blog - Dynamia AI | GPU Virtualization & HAMi",
+      "description": "Read technical guides, research, and case studies about GPU virtualization, GPU sharing, HAMi, and heterogeneous computing for AI infrastructure.",
+      "keywords": "dynamia ai blog, GPU virtualization, GPU sharing, heterogeneous computing, HAMi, AI infrastructure"
+    },
+    "caseStudies": {
+      "title": "Case Studies - Dynamia AI | GPU Virtualization & Heterogeneous Computing",
+      "description": "See how teams scale AI, HPC, and inference workloads with HAMi and heterogeneous GPU scheduling while improving GPU utilization.",
+      "keywords": "dynamia ai case studies, GPU virtualization, heterogeneous computing, HAMi customers, GPU utilization, AI infrastructure"
+    },
+    "tools": {
+      "title": "Tools - Dynamia AI | HAMi Metrics & ROI Analysis",
+      "description": "Explore free HAMi tools for GPU metrics analysis and GPU asset ROI estimation to plan GPU virtualization and AI infrastructure investments.",
+      "keywords": "dynamia ai tools, HAMi, GPU virtualization, GPU sharing, ROI calculator, AI infrastructure"
+    },
+
     "solutions": {
       "title": "Solutions - Dynamia AI | AI, HPC & Edge Computing",
       "description": "Powerful computing solutions for AI/ML, HPC, and Edge Computing challenges. Optimize your infrastructure with Dynamia AI's heterogeneous computing platform.",
@@ -1020,6 +1036,7 @@
     "title": "Case Studies",
     "subtitle": "See how teams scale AI, HPC, and inference workloads with HAMi and heterogeneous GPU scheduling.",
     "h1Prefix": "Case Study | ",
+    "notFound": "Case Study Not Found",
     "cardButton": "Read case study",
     "cta": {
       "title": "Ready to build your own success story?",

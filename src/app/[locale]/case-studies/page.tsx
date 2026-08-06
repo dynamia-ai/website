@@ -1,7 +1,13 @@
 import { use } from "react";
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { localizedUrl, localizedAlternates } from "@/utils/i18n";
+import {
+  generatePageMetadata,
+  localizedAlternates,
+  localizedUrl,
+} from "@/utils/i18n";
+import { routing } from "@/i18n/routing";
+import { CASE_STUDY_LOCALES } from "@/lib/seo-routes";
 import CaseStudiesList from "@/components/case-studies/CaseStudiesList";
 
 export default function CaseStudiesPage({
@@ -21,25 +27,31 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "caseStudiesPage" });
-
-  const title = t("title");
-  const description = t("subtitle");
-  const path = "/case-studies";
+  const metadata = await generatePageMetadata(
+    locale,
+    "caseStudies",
+    "/case-studies"
+  );
+  const hasLocalizedContent = CASE_STUDY_LOCALES.includes(
+    locale as (typeof CASE_STUDY_LOCALES)[number]
+  );
+  const canonicalLocale = hasLocalizedContent
+    ? locale
+    : routing.defaultLocale;
+  const canonicalUrl = localizedUrl("/case-studies", canonicalLocale);
 
   return {
-    title,
-    description,
+    ...metadata,
+    robots: hasLocalizedContent
+      ? undefined
+      : { index: false, follow: true },
     openGraph: {
-      title: `${title} | Dynamia AI`,
-      description,
-      url: localizedUrl(path, locale),
-      siteName: "Dynamia AI",
-      type: "website",
+      ...metadata.openGraph,
+      url: canonicalUrl,
     },
     alternates: {
-      canonical: localizedUrl(path, locale),
-      languages: localizedAlternates(path),
+      canonical: canonicalUrl,
+      languages: localizedAlternates("/case-studies", CASE_STUDY_LOCALES),
     },
   };
 }

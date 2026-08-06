@@ -35,6 +35,22 @@
       "description": "了解密瓜智能 - HAMi 的创建者，全球增长最快的开源异构 AI 计算虚拟化中间件。",
       "keywords": "密瓜智能公司，关于密瓜智能，异构计算创新，HAMi 创建者"
     },
+    "blog": {
+      "title": "博客 - 密瓜智能 | GPU 虚拟化与 HAMi",
+      "description": "阅读 GPU 虚拟化、GPU 共享、HAMi 与异构计算相关的技术指南、研究与客户实践，助力 AI 基础设施落地。",
+      "keywords": "密瓜智能博客，GPU 虚拟化，GPU 共享，异构计算，HAMi，AI 基础设施"
+    },
+    "caseStudies": {
+      "title": "客户案例 - 密瓜智能 | GPU 虚拟化与异构计算",
+      "description": "了解企业如何借助 HAMi 与异构 GPU 调度提升 GPU 利用率，并规模化建设 AI、HPC 与推理工作负载。",
+      "keywords": "密瓜智能案例，GPU 虚拟化，异构计算，HAMi 客户，GPU 利用率，AI 基础设施"
+    },
+    "tools": {
+      "title": "工具 - 密瓜智能 | HAMi 指标与 ROI 分析",
+      "description": "使用免费的 HAMi 指标分析与 GPU 资产 ROI 估算工具，规划 GPU 虚拟化与 AI 基础设施投入。",
+      "keywords": "密瓜智能工具，HAMi，GPU 虚拟化，GPU 共享，ROI 计算器，AI 基础设施"
+    },
+
     "solutions": {
       "title": "解决方案 - 密瓜智能 | AI, HPC 与边缘计算",
       "description": "为 AI/ML、HPC 和边缘计算挑战提供强大的计算解决方案。使用密瓜智能的异构计算平台优化您的基础设施。",
@@ -1246,6 +1262,7 @@
     "title": "案例研究",
     "subtitle": "了解团队如何借助 HAMi 与异构 GPU 调度扩展 AI、HPC 与推理工作负载。",
     "h1Prefix": "客户案例｜",
+    "notFound": "案例未找到",
     "cardButton": "查看案例",
     "cta": {
       "title": "准备好打造你的成功案例了吗？",

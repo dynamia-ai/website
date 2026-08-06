@@ -27,13 +27,11 @@ export interface InstallDoc {
  * Lookup order:
  *   1. `<productId>.<locale>.md`  — locale-specific (preferred)
  *   2. `<productId>.zh.md`        — zh fallback (docs were authored in zh first)
- *   3. `<productId>.md`           — legacy single-language file
  */
 function resolveDocPath(productId: string, locale: string): string | null {
   const candidates = [
     path.join(DOCS_PATH, `${productId}.${locale}.md`),
     path.join(DOCS_PATH, `${productId}.zh.md`),
-    path.join(DOCS_PATH, `${productId}.md`),
   ];
   for (const p of candidates) {
     if (fs.existsSync(p)) return p;
@@ -72,13 +70,33 @@ export const getInstallDoc = cache(
 export function getInstallDocSlugs(): string[] {
   if (!fs.existsSync(DOCS_PATH)) return [];
   const set = new Set<string>();
-  for (const f of fs.readdirSync(DOCS_PATH)) {
-    if (!f.endsWith('.md')) continue;
-    const base = f.replace(/\.md$/, '');
-    const slug = base.replace(/\.[a-z]{2}$/, '');
-    set.add(slug);
+  for (const file of fs.readdirSync(DOCS_PATH)) {
+    const match = file.match(/^(.+)\.[a-z]{2}\.md$/);
+    if (match) set.add(match[1]);
   }
   return Array.from(set);
+}
+
+export function getInstallDocLocales(productId: string): string[] {
+  if (!fs.existsSync(DOCS_PATH)) return [];
+  const prefix = `${productId}.`;
+
+  return fs.readdirSync(DOCS_PATH)
+    .filter((file) => file.startsWith(prefix) && /\.[a-z]{2}\.md$/.test(file))
+    .map((file) => file.slice(prefix.length, -3))
+    .sort();
+}
+
+export function resolveInstallDocLocale(
+  productId: string,
+  locale: string,
+  defaultLocale = 'en',
+): string | null {
+  const availableLocales = getInstallDocLocales(productId);
+  if (availableLocales.length === 0) return null;
+  if (availableLocales.includes(locale)) return locale;
+  if (availableLocales.includes(defaultLocale)) return defaultLocale;
+  return availableLocales[0] ?? null;
 }
 
 /** True iff a doc (any locale) exists for the slug. Used by ProductHero gating. */

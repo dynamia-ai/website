@@ -2,7 +2,14 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import InstallDocClient from '@/components/enterprise/InstallDocClient';
-import { getInstallDoc, getInstallDocSlugs } from '@/lib/enterprise-docs';
+import {
+  getInstallDoc,
+  getInstallDocLocales,
+  getInstallDocSlugs,
+  resolveInstallDocLocale,
+} from '@/lib/enterprise-docs';
+import { localizedAlternates, localizedUrl } from '@/utils/i18n';
+import { routing } from '@/i18n/routing';
 
 interface PageProps {
   params: Promise<{ locale: string; productId: string }>;
@@ -14,20 +21,44 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, productId } = await params;
-  const docLocale = locale === 'zh' ? 'zh' : 'en';
+  const availableLocales = getInstallDocLocales(productId);
+  const docLocale = resolveInstallDocLocale(
+    productId,
+    locale,
+    routing.defaultLocale,
+  );
+  if (!docLocale) return { title: 'Install Guide Not Found' };
+
   const doc = await getInstallDoc(productId, docLocale);
   if (!doc) return { title: 'Install Guide Not Found' };
 
+  const path = `/products/${productId}/install`;
+  const title = `${doc.frontmatter.title} | Dynamia AI`;
+
   return {
-    title: `${doc.frontmatter.title} | Dynamia AI`,
+    title: { absolute: title },
     description: doc.frontmatter.description,
+    robots: availableLocales.includes(locale)
+      ? undefined
+      : { index: false, follow: true },
+    alternates: {
+      canonical: localizedUrl(path, docLocale),
+      languages: localizedAlternates(path, availableLocales),
+    },
   };
 }
 
 export default async function InstallDocPage({ params }: PageProps) {
   const { locale, productId } = await params;
   setRequestLocale(locale);
-  const docLocale = locale === 'zh' ? 'zh' : 'en';
+
+  const docLocale = resolveInstallDocLocale(
+    productId,
+    locale,
+    routing.defaultLocale,
+  );
+  if (!docLocale) notFound();
+
   const doc = await getInstallDoc(productId, docLocale);
   if (!doc) notFound();
 

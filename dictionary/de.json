@@ -35,6 +35,22 @@
       "description": "Erfahren Sie mehr ueber Dynamia AI, die Entwickler von HAMi - der am schnellsten wachsenden Open-Source-Middleware fuer heterogene KI-Computing-Virtualisierung.",
       "keywords": "dynamia ai unternehmen, ueber dynamia ai, heterogene computing-innovation, HAMi entwickler"
     },
+    "blog": {
+      "title": "Blog - Dynamia AI | GPU-Virtualisierung & HAMi",
+      "description": "Technische Leitfaeden, Forschung und Fallstudien zu GPU-Virtualisierung, GPU-Sharing, HAMi und heterogenem Computing fuer KI-Infrastruktur.",
+      "keywords": "dynamia ai blog, GPU-Virtualisierung, GPU-Sharing, heterogene datenverarbeitung, HAMi, KI-Infrastruktur"
+    },
+    "caseStudies": {
+      "title": "Fallstudien - Dynamia AI | GPU-Virtualisierung & heterogenes Computing",
+      "description": "Erfahren Sie, wie Teams mit HAMi und heterogener GPU-Planung AI-, HPC- und Inference-Workloads skalieren und die GPU-Auslastung steigern.",
+      "keywords": "dynamia ai fallstudien, GPU-Virtualisierung, heterogene datenverarbeitung, HAMi Kunden, GPU-Auslastung, KI-Infrastruktur"
+    },
+    "tools": {
+      "title": "Tools - Dynamia AI | HAMi-Metriken & ROI-Analyse",
+      "description": "Entdecken Sie kostenlose HAMi-Tools fuer GPU-Metriken und GPU-Asset-ROI-Schaetzung zur Planung von GPU-Virtualisierung und KI-Infrastruktur.",
+      "keywords": "dynamia ai tools, HAMi, GPU-Virtualisierung, GPU-Sharing, ROI Rechner, KI-Infrastruktur"
+    },
+
     "solutions": {
       "title": "Loesungen - Dynamia AI | KI, HPC & Edge Computing",
       "description": "Powerful computing solutions for AI/ML, HPC, and Edge Computing challenges. Optimize your infrastructure with Dynamia AI's heterogeneous computing platform.",
@@ -1012,6 +1028,7 @@
     "title": "Fallstudien",
     "subtitle": "Sehen Sie, wie Teams KI-Workloads mit HAMi skalieren.",
     "h1Prefix": "Fallstudie | ",
+    "notFound": "Fallstudie nicht gefunden",
     "cardButton": "Fallstudie lesen",
     "cta": {
       "title": "Bereit fuer Ihre eigene Erfolgsgeschichte?",

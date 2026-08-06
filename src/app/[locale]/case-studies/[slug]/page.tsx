@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { localizedUrl, localizedAlternates } from '@/utils/i18n';
+import { routing } from '@/i18n/routing';
 import CaseSfTechnologyEffectiveGpu from '@/components/case-studies/CaseSfTechnologyEffectiveGpu';
 import CasePrepEduHami from '@/components/case-studies/CasePrepEduHami';
 import CaseKeHoldings from '@/components/case-studies/CaseKeHoldings';
@@ -10,6 +11,7 @@ import CaseSnowCorp from '@/components/case-studies/CaseSnowCorp';
 import CaseDaoCloud from '@/components/case-studies/CaseDaoCloud';
 import CaseTelecomGpu from '@/components/case-studies/CaseTelecomGpu';
 import CaseChinaMerchantsBank from '@/components/case-studies/CaseChinaMerchantsBank';
+import { CASE_STUDY_LOCALES } from '@/lib/seo-routes';
 
 const CASE_STUDIES = {
   'sf-technology': {
@@ -24,7 +26,7 @@ const CASE_STUDIES = {
     component: CaseKeHoldings,
     i18nKey: 'keHoldings',
   },
-  'nio': {
+  nio: {
     component: CaseNio,
     i18nKey: 'nio',
   },
@@ -58,27 +60,39 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
+  const tPage = await getTranslations({ locale, namespace: 'caseStudiesPage' });
+  const mt = await getTranslations({ locale, namespace: 'Metadata' });
   const config = CASE_STUDIES[slug as keyof typeof CASE_STUDIES];
-  if (!config) return { title: 'Case Study Not Found' };
+  if (!config) return { title: tPage('notFound') };
 
   const t = await getTranslations({ locale, namespace: 'cases' });
-  const title = t(`${config.i18nKey}.title`);
+  const title = `${tPage('h1Prefix')}${t(`${config.i18nKey}.title`)}`;
   const description = t(`${config.i18nKey}.subtitle`);
   const path = `/case-studies/${slug}`;
+  const hasLocalizedContent = CASE_STUDY_LOCALES.some(
+    (availableLocale) => availableLocale === locale
+  );
+  const canonicalLocale = hasLocalizedContent
+    ? locale
+    : routing.defaultLocale;
+  const canonicalUrl = localizedUrl(path, canonicalLocale);
 
   return {
-    title: `Case Study | ${title}`,
+    title: { absolute: title },
     description,
     openGraph: {
-      title: `Case Study | ${title}`,
+      title,
       description,
-      url: localizedUrl(path, locale),
-      siteName: 'Dynamia AI',
+      url: canonicalUrl,
+      siteName: mt('siteName'),
       type: 'article',
     },
+    robots: hasLocalizedContent
+      ? undefined
+      : { index: false, follow: true },
     alternates: {
-      canonical: localizedUrl(path, locale),
-      languages: localizedAlternates(path),
+      canonical: canonicalUrl,
+      languages: localizedAlternates(path, CASE_STUDY_LOCALES),
     },
   };
 }
