@@ -36,19 +36,19 @@
       "keywords": "密瓜智能公司，关于密瓜智能，异构计算创新，HAMi 创建者"
     },
     "blog": {
-      "title": "GPU 虚拟化与 Kubernetes 调度博客 | 密瓜智能",
-      "description": "阅读 GPU 虚拟化、Kubernetes GPU 调度、HAMi 和生产级 AI 基础设施相关的技术指南、研究与客户实践。",
-      "keywords": "GPU 虚拟化博客，Kubernetes GPU 调度，AI 基础设施，HAMi 教程，GPU 共享，异构计算"
+      "title": "博客 - 密瓜智能 | GPU 虚拟化与 HAMi",
+      "description": "阅读 GPU 虚拟化、GPU 共享、HAMi 与异构计算相关的技术指南、研究与客户实践，助力 AI 基础设施落地。",
+      "keywords": "密瓜智能博客，GPU 虚拟化，GPU 共享，异构计算，HAMi，AI 基础设施"
     },
     "caseStudies": {
-      "title": "GPU 虚拟化与 Kubernetes 客户案例 | 密瓜智能",
-      "description": "了解企业如何利用 HAMi GPU 虚拟化和 Kubernetes GPU 调度提升 GPU 利用率，并规模化建设 AI 基础设施。",
-      "keywords": "GPU 虚拟化案例，Kubernetes GPU 调度案例，AI 基础设施，HAMi 客户，GPU 利用率"
+      "title": "客户案例 - 密瓜智能 | GPU 虚拟化与异构计算",
+      "description": "了解企业如何借助 HAMi 与异构 GPU 调度提升 GPU 利用率，并规模化建设 AI、HPC 与推理工作负载。",
+      "keywords": "密瓜智能案例，GPU 虚拟化，异构计算，HAMi 客户，GPU 利用率，AI 基础设施"
     },
     "tools": {
-      "title": "Kubernetes GPU 虚拟化工具 | 密瓜智能",
-      "description": "使用免费的 HAMi 指标分析与 ROI 估算工具，规划 Kubernetes GPU 虚拟化与 AI 基础设施投入。",
-      "keywords": "HAMi 工具, GPU 虚拟化工具, Kubernetes GPU 指标, GPU ROI 计算器, AI 基础设施工具"
+      "title": "工具 - 密瓜智能 | HAMi 指标与 ROI 分析",
+      "description": "使用免费的 HAMi 指标分析与 GPU 资产 ROI 估算工具，规划 GPU 虚拟化与 AI 基础设施投入。",
+      "keywords": "密瓜智能工具，HAMi，GPU 虚拟化，GPU 共享，ROI 计算器，AI 基础设施"
     },
 
     "solutions": {
@@ -1262,6 +1262,7 @@
     "title": "案例研究",
     "subtitle": "了解团队如何借助 HAMi 与异构 GPU 调度扩展 AI、HPC 与推理工作负载。",
     "h1Prefix": "客户案例｜",
+    "notFound": "案例未找到",
     "cardButton": "查看案例",
     "cta": {
       "title": "准备好打造你的成功案例了吗？",

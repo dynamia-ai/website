@@ -36,19 +36,19 @@
       "keywords": "dynamia ai company, about dynamia ai, heterogeneous computing innovation, HAMi creators"
     },
     "blog": {
-      "title": "GPU Virtualization & Kubernetes Scheduling Blog | Dynamia AI",
-      "description": "Read technical guides, research, and case studies about GPU virtualization, Kubernetes GPU scheduling, HAMi, and production AI infrastructure.",
-      "keywords": "GPU virtualization blog, Kubernetes GPU scheduling, AI infrastructure, HAMi tutorials, GPU sharing, heterogeneous computing"
+      "title": "Blog - Dynamia AI | GPU Virtualization & HAMi",
+      "description": "Read technical guides, research, and case studies about GPU virtualization, GPU sharing, HAMi, and heterogeneous computing for AI infrastructure.",
+      "keywords": "dynamia ai blog, GPU virtualization, GPU sharing, heterogeneous computing, HAMi, AI infrastructure"
     },
     "caseStudies": {
-      "title": "GPU Virtualization & Kubernetes Case Studies | Dynamia AI",
-      "description": "See how enterprises improve GPU utilization and scale AI infrastructure with HAMi GPU virtualization and Kubernetes GPU scheduling.",
-      "keywords": "GPU virtualization case studies, Kubernetes GPU scheduling case studies, AI infrastructure, HAMi customers, GPU utilization"
+      "title": "Case Studies - Dynamia AI | GPU Virtualization & Heterogeneous Computing",
+      "description": "See how teams scale AI, HPC, and inference workloads with HAMi and heterogeneous GPU scheduling while improving GPU utilization.",
+      "keywords": "dynamia ai case studies, GPU virtualization, heterogeneous computing, HAMi customers, GPU utilization, AI infrastructure"
     },
     "tools": {
-      "title": "GPU Virtualization Tools for Kubernetes | Dynamia AI",
-      "description": "Explore free HAMi tools for GPU metrics analysis and ROI estimation to plan Kubernetes GPU virtualization and AI infrastructure investments.",
-      "keywords": "HAMi tools, GPU virtualization tools, Kubernetes GPU metrics, GPU ROI calculator, AI infrastructure tools"
+      "title": "Tools - Dynamia AI | HAMi Metrics & ROI Analysis",
+      "description": "Explore free HAMi tools for GPU metrics analysis and GPU asset ROI estimation to plan GPU virtualization and AI infrastructure investments.",
+      "keywords": "dynamia ai tools, HAMi, GPU virtualization, GPU sharing, ROI calculator, AI infrastructure"
     },
 
     "solutions": {
@@ -1036,6 +1036,7 @@
     "title": "Case Studies",
     "subtitle": "See how teams scale AI, HPC, and inference workloads with HAMi and heterogeneous GPU scheduling.",
     "h1Prefix": "Case Study | ",
+    "notFound": "Case Study Not Found",
     "cardButton": "Read case study",
     "cta": {
       "title": "Ready to build your own success story?",

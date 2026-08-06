@@ -49,6 +49,10 @@ export async function generateMetadata({
 
   const socialImage = getPostSocialImage(post);
   const title = t("titleTemplate", { title: post.title });
+  const canonicalUrl = localizedUrl(
+    `/blog/${slug}`,
+    canonicalLocale ?? routing.defaultLocale
+  );
 
   return {
     title: { absolute: title },
@@ -57,6 +61,7 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: canonicalUrl,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
@@ -74,7 +79,7 @@ export async function generateMetadata({
       ? undefined
       : { index: false, follow: true },
     alternates: {
-      canonical: localizedUrl(`/blog/${slug}`, canonicalLocale ?? routing.defaultLocale),
+      canonical: canonicalUrl,
       languages: localizedAlternates(`/blog/${slug}`, availableLocales),
     },
   };

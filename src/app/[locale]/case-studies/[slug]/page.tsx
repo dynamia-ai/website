@@ -60,11 +60,13 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
+  const tPage = await getTranslations({ locale, namespace: 'caseStudiesPage' });
+  const mt = await getTranslations({ locale, namespace: 'Metadata' });
   const config = CASE_STUDIES[slug as keyof typeof CASE_STUDIES];
-  if (!config) return { title: 'Case Study Not Found' };
+  if (!config) return { title: tPage('notFound') };
 
   const t = await getTranslations({ locale, namespace: 'cases' });
-  const title = `Case Study | ${t(`${config.i18nKey}.title`)}`;
+  const title = `${tPage('h1Prefix')}${t(`${config.i18nKey}.title`)}`;
   const description = t(`${config.i18nKey}.subtitle`);
   const path = `/case-studies/${slug}`;
   const hasLocalizedContent = CASE_STUDY_LOCALES.some(
@@ -82,7 +84,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       url: canonicalUrl,
-      siteName: 'Dynamia AI',
+      siteName: mt('siteName'),
       type: 'article',
     },
     robots: hasLocalizedContent

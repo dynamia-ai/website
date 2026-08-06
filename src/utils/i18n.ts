@@ -46,9 +46,15 @@ export function localizedAlternates(
   path: string,
   locales: readonly string[] = routing.locales
 ): Record<string, string> {
+  const xDefaultLocale = locales.includes(routing.defaultLocale)
+    ? routing.defaultLocale
+    : locales[0];
+
   return {
     ...Object.fromEntries(locales.map((loc) => [loc, localizedUrl(path, loc)])),
-    "x-default": localizedUrl(path, routing.defaultLocale),
+    ...(xDefaultLocale
+      ? { "x-default": localizedUrl(path, xDefaultLocale) }
+      : {}),
   };
 }
 

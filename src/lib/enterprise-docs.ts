@@ -87,6 +87,18 @@ export function getInstallDocLocales(productId: string): string[] {
     .sort();
 }
 
+export function resolveInstallDocLocale(
+  productId: string,
+  locale: string,
+  defaultLocale = 'en',
+): string | null {
+  const availableLocales = getInstallDocLocales(productId);
+  if (availableLocales.length === 0) return null;
+  if (availableLocales.includes(locale)) return locale;
+  if (availableLocales.includes(defaultLocale)) return defaultLocale;
+  return availableLocales[0] ?? null;
+}
+
 /** True iff a doc (any locale) exists for the slug. Used by ProductHero gating. */
 export function installDocExists(productId: string): boolean {
   return getInstallDocSlugs().includes(productId);

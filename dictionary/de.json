@@ -36,19 +36,19 @@
       "keywords": "dynamia ai unternehmen, ueber dynamia ai, heterogene computing-innovation, HAMi entwickler"
     },
     "blog": {
-      "title": "Blog zu GPU-Virtualisierung & Kubernetes Scheduling | Dynamia AI",
-      "description": "Technische Leitfaeden, Forschung und Fallstudien zu GPU-Virtualisierung, Kubernetes GPU-Scheduling, HAMi und produktiver KI-Infrastruktur.",
-      "keywords": "GPU-Virtualisierung Blog, Kubernetes GPU-Scheduling, KI-Infrastruktur, HAMi Tutorials, GPU-Sharing, heterogenes Computing"
+      "title": "Blog - Dynamia AI | GPU-Virtualisierung & HAMi",
+      "description": "Technische Leitfaeden, Forschung und Fallstudien zu GPU-Virtualisierung, GPU-Sharing, HAMi und heterogenem Computing fuer KI-Infrastruktur.",
+      "keywords": "dynamia ai blog, GPU-Virtualisierung, GPU-Sharing, heterogene datenverarbeitung, HAMi, KI-Infrastruktur"
     },
     "caseStudies": {
-      "title": "Fallstudien zu GPU-Virtualisierung & Kubernetes | Dynamia AI",
-      "description": "Erfahren Sie, wie Unternehmen mit HAMi GPU-Virtualisierung und Kubernetes GPU-Scheduling die GPU-Auslastung und KI-Infrastruktur skalieren.",
-      "keywords": "GPU-Virtualisierung Fallstudien, Kubernetes GPU-Scheduling Fallstudien, KI-Infrastruktur, HAMi Kunden, GPU-Auslastung"
+      "title": "Fallstudien - Dynamia AI | GPU-Virtualisierung & heterogenes Computing",
+      "description": "Erfahren Sie, wie Teams mit HAMi und heterogener GPU-Planung AI-, HPC- und Inference-Workloads skalieren und die GPU-Auslastung steigern.",
+      "keywords": "dynamia ai fallstudien, GPU-Virtualisierung, heterogene datenverarbeitung, HAMi Kunden, GPU-Auslastung, KI-Infrastruktur"
     },
     "tools": {
-      "title": "GPU-Virtualisierungs-Tools fuer Kubernetes | Dynamia AI",
-      "description": "Entdecken Sie kostenlose HAMi-Tools fuer GPU-Metriken und ROI-Schaetzung zur Planung von Kubernetes GPU-Virtualisierung und KI-Infrastruktur.",
-      "keywords": "HAMi Tools, GPU-Virtualisierung Tools, Kubernetes GPU-Metriken, GPU ROI Rechner, KI-Infrastruktur Tools"
+      "title": "Tools - Dynamia AI | HAMi-Metriken & ROI-Analyse",
+      "description": "Entdecken Sie kostenlose HAMi-Tools fuer GPU-Metriken und GPU-Asset-ROI-Schaetzung zur Planung von GPU-Virtualisierung und KI-Infrastruktur.",
+      "keywords": "dynamia ai tools, HAMi, GPU-Virtualisierung, GPU-Sharing, ROI Rechner, KI-Infrastruktur"
     },
 
     "solutions": {
@@ -1028,6 +1028,7 @@
     "title": "Fallstudien",
     "subtitle": "Sehen Sie, wie Teams KI-Workloads mit HAMi skalieren.",
     "h1Prefix": "Fallstudie | ",
+    "notFound": "Fallstudie nicht gefunden",
     "cardButton": "Fallstudie lesen",
     "cta": {
       "title": "Bereit fuer Ihre eigene Erfolgsgeschichte?",
