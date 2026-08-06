@@ -38,7 +38,7 @@ const GROUP_META: GroupMeta[] = [
   ]},
   { id: 'gpu-vendors', Icon: ServerStackIcon, rows: [
     { oss: true, commercial: true, enterprise: true },
-    { oss: false, commercial: true, enterprise: false },
+    { oss: false, commercial: true, enterprise: true },
     { oss: true, commercial: true, enterprise: true },
     { oss: true, commercial: true, enterprise: true },
     { oss: true, commercial: true, enterprise: false },
