@@ -1,7 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { generatePageMetadata } from "@/utils/i18n";
-import SEOHead from "@/components/SEOHead";
 
 export async function generateMetadata({
   params,
@@ -21,10 +20,5 @@ export default async function PricingLayout({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return (
-    <>
-      <SEOHead page="pricing" path="/pricing" />
-      {children}
-    </>
-  );
+  return children;
 }

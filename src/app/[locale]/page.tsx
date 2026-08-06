@@ -1,7 +1,16 @@
 import { use } from "react";
 import { setRequestLocale } from "next-intl/server";
 import HomeIndex from "@/components/pages/HomeIndex";
-import SEOHead from "@/components/SEOHead";
+import { generatePageMetadata } from "@/utils/i18n";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return generatePageMetadata(locale, "home", "/");
+}
 
 export default function HomePage({
   params,
@@ -11,10 +20,5 @@ export default function HomePage({
   const { locale } = use(params);
   setRequestLocale(locale);
 
-  return (
-    <>
-      <SEOHead page="home" path="/" />
-      <HomeIndex />
-    </>
-  );
+  return <HomeIndex />;
 }

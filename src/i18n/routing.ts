@@ -5,4 +5,6 @@ export const routing = defineRouting({
   defaultLocale: "en",
   localeDetection: true,
   localePrefix: "as-needed",
+  // Disable middleware hreflang; pages/sitemap own it.
+  alternateLinks: false,
 });

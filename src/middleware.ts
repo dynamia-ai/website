@@ -23,5 +23,12 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
+  matcher: [
+    "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
+    // Blog slugs may contain dots (excluded by the rule above).
+    "/blog/:path*",
+    "/en/blog/:path*",
+    "/zh/blog/:path*",
+    "/de/blog/:path*",
+  ],
 };

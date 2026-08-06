@@ -4,7 +4,6 @@ import { routing } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import Script from "next/script";
-import { localizedUrl, localizedAlternates } from "@/utils/i18n";
 import { ThemeProvider } from "@/components/theme-provider";
 import ConsentAwareAnalytics from "@/components/ConsentAwareAnalytics";
 import CookieConsentManager from "@/components/CookieConsentManager";
@@ -94,10 +93,6 @@ export default async function RootLayout({
               email: CONTACT_EMAIL,
               contactType: "customer service",
             },
-            address: {
-              "@type": "PostalAddress",
-              addressCountry: "Global",
-            },
           })}
         />
         <script
@@ -113,10 +108,6 @@ export default async function RootLayout({
               "@type": "Organization",
               name: t("orgName"),
               alternateName: t("orgAlternateName"),
-            },
-            potentialAction: {
-              "@type": "SearchAction",
-              target: `${DOMAIN}/search?q={search_term_string}`,
             },
           })}
         />
@@ -199,10 +190,6 @@ export async function generateMetadata({
         "max-image-preview": "large",
         "max-snippet": -1,
       },
-    },
-    alternates: {
-      canonical: localizedUrl("/", locale),
-      languages: localizedAlternates("/"),
     },
   };
 }

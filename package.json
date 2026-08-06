@@ -10,8 +10,7 @@
     "lint": "next lint && npm run validate:analytics",
     "algolia:index": "node scripts/create-algolia-index.js",
     "validate:enterprise": "node scripts/validate-enterprise.mjs",
-    "validate:analytics": "node scripts/validate-analytics-consent.mjs",
-    "postbuild": "next-sitemap"
+    "validate:analytics": "node scripts/validate-analytics-consent.mjs"
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.18.1",
@@ -72,7 +71,6 @@
     "@types/react-dom": "19.0.4",
     "eslint": "^9.39.1",
     "eslint-config-next": "15.2.3",
-    "next-sitemap": "^4.2.3",
     "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3"
   },

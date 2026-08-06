@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import EnterpriseDetailClient from '@/components/enterprise/EnterpriseDetailClient';
 import { getProductById, getProductIds, getLatestRelease } from '@/lib/enterprise';
+import { localizedUrl, pageAlternates } from '@/utils/i18n';
 
 interface PageProps {
   params: Promise<{ locale: string; productId: string }>;
@@ -22,16 +23,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const name = pd?.name ?? product.name.en;
   const tagline = pd?.tagline ?? product.tagline.en;
   const versionLabel = latest ? ` ${latest.version}` : '';
+  const title = `${name}${versionLabel} | Dynamia AI`;
+  const path = `/products/${productId}`;
+  const pageUrl = localizedUrl(path, locale);
 
   return {
-    title: `${name}${versionLabel} | Dynamia AI`,
+    title: { absolute: title },
     description: tagline,
     keywords: (product.tags ?? []).concat([name, 'product', 'download']).join(', '),
     openGraph: {
       title: `${name}${versionLabel}`,
       description: tagline,
+      url: pageUrl,
       type: 'website',
     },
+    alternates: pageAlternates(path, locale),
   };
 }
 

@@ -32,10 +32,6 @@ export function organizationSchema(locale: Locale = "en"): WithContext<Organizat
       email: CONTACT_EMAIL,
       contactType: "customer service",
     },
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "Global",
-    },
   };
 }
 
@@ -48,14 +44,6 @@ export function productSchema(): WithContext<SoftwareApplication> {
     operatingSystem: "Linux, Kubernetes",
     description:
       "Enterprise-grade heterogeneous computing platform built on HAMi technology. Provides GPU sharing, auto-scaling, and unified management for AI, HPC, and Edge workloads.",
-    offers: {
-      "@type": "Offer",
-      name: "Enterprise License",
-      price: "Contact for Pricing",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-      url: `${SITE_URL}/pricing`,
-    },
     author: {
       "@type": "Organization",
       name: "Dynamia AI",
@@ -68,13 +56,6 @@ export function productSchema(): WithContext<SoftwareApplication> {
         "@type": "ImageObject",
         url: `${SITE_URL}/LOGO-small.svg`,
       },
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "50",
-      bestRating: "5",
-      worstRating: "1",
     },
     featureList: [
       "GPU Sharing and Virtualization",

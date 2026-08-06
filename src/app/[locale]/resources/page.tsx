@@ -1,6 +1,7 @@
 import { use } from "react";
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import ResourcesPage from "@/components/pages/ResourcesPage";
+import { generatePageMetadata } from "@/utils/i18n";
 
 export default function Resources({
   params,
@@ -18,9 +19,5 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "resources" });
-  return {
-    title: t("title"),
-    description: t("subtitle"),
-  };
+  return generatePageMetadata(locale, "resources", "/resources");
 }

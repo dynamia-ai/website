@@ -5,15 +5,36 @@ import { SITE_URL } from "@/config/app-config";
 
 const DOMAIN = SITE_URL;
 
-type SeoPage = "home" | "products" | "pricing" | "company" | "solutions" | "resources" | "whatIsHami" | "faq";
+type SeoPage =
+  | "home"
+  | "products"
+  | "pricing"
+  | "company"
+  | "blog"
+  | "caseStudies"
+  | "solutions"
+  | "resources"
+  | "tools"
+  | "whatIsHami"
+  | "faq";
+
+function normalizePath(path: string): string {
+  if (!path || path === "/") return "";
+  const withLeadingSlash = path.startsWith("/") ? path : `/${path}`;
+  return withLeadingSlash.replace(/\/+$/, "");
+}
 
 export function localizedUrl(path: string, locale: string): string {
   const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
-  return `${DOMAIN}${prefix}${path}`;
+  const normalizedPath = normalizePath(path);
+  if (!prefix && !normalizedPath) return `${DOMAIN}/`;
+  return `${DOMAIN}${prefix}${normalizedPath}`;
 }
 
 export function localizedPath(path: string, locale: string): string {
-  return locale === routing.defaultLocale ? path : `/${locale}${path}`;
+  const normalizedPath = normalizePath(path);
+  if (locale === routing.defaultLocale) return normalizedPath || "/";
+  return `/${locale}${normalizedPath}`;
 }
 
 export function shortenDescription(text: string, maxChars: number): string {
@@ -21,10 +42,25 @@ export function shortenDescription(text: string, maxChars: number): string {
   return `${text.slice(0, maxChars).trimEnd()}…`;
 }
 
-export function localizedAlternates(path: string): Record<string, string> {
-  return Object.fromEntries(
-    routing.locales.map((loc) => [loc, localizedUrl(path, loc)])
-  );
+export function localizedAlternates(
+  path: string,
+  locales: readonly string[] = routing.locales
+): Record<string, string> {
+  return {
+    ...Object.fromEntries(locales.map((loc) => [loc, localizedUrl(path, loc)])),
+    "x-default": localizedUrl(path, routing.defaultLocale),
+  };
+}
+
+export function pageAlternates(
+  path: string,
+  locale: string,
+  locales: readonly string[] = routing.locales
+): Metadata["alternates"] {
+  return {
+    canonical: localizedUrl(path, locale),
+    languages: localizedAlternates(path, locales),
+  };
 }
 
 export async function generatePageMetadata(
@@ -41,7 +77,7 @@ export async function generatePageMetadata(
   const url = localizedUrl(path, locale);
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords,
     openGraph: {
@@ -56,13 +92,10 @@ export async function generatePageMetadata(
     twitter: {
       card: "summary_large_image",
       title,
-      description: mt("twitterDescription"),
+      description,
       images: [`${DOMAIN}/LOGO-small.svg`],
     },
-    alternates: {
-      canonical: url,
-      languages: localizedAlternates(path),
-    },
+    alternates: pageAlternates(path, locale),
     robots: {
       index: true,
       follow: true,

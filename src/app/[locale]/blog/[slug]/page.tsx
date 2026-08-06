@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { localizedUrl, localizedAlternates } from "@/utils/i18n";
+import { routing } from "@/i18n/routing";
 import {
   getBlogPost,
   getBlogPostSlugs,
@@ -28,8 +29,19 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "blogUI" });
+  const seo = await getTranslations({ locale, namespace: "Seo.blog" });
 
-  const post = getBlogPost(slug, locale);
+  const availableLocales = routing.locales.filter((candidate) =>
+    Boolean(getBlogPost(slug, candidate))
+  );
+  const hasRequestedLocale = availableLocales.some((candidate) => candidate === locale);
+  const canonicalLocale = hasRequestedLocale
+    ? locale
+    : availableLocales.includes(routing.defaultLocale)
+      ? routing.defaultLocale
+      : availableLocales[0];
+  const post = getBlogPost(slug, locale) ??
+    (canonicalLocale ? getBlogPost(slug, canonicalLocale) : null);
 
   if (!post) {
     return { title: t("notFound") };
@@ -39,9 +51,9 @@ export async function generateMetadata({
   const title = t("titleTemplate", { title: post.title });
 
   return {
-    title,
+    title: { absolute: title },
     description: post.excerpt,
-    keywords: post.tags.join(", "),
+    keywords: [...post.tags, seo("keywords")].join(", "),
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -58,9 +70,12 @@ export async function generateMetadata({
       description: post.excerpt,
       images: socialImage ? [socialImage] : undefined,
     },
+    robots: hasRequestedLocale
+      ? undefined
+      : { index: false, follow: true },
     alternates: {
-      canonical: localizedUrl(`/blog/${slug}`, locale),
-      languages: localizedAlternates(`/blog/${slug}`),
+      canonical: localizedUrl(`/blog/${slug}`, canonicalLocale ?? routing.defaultLocale),
+      languages: localizedAlternates(`/blog/${slug}`, availableLocales),
     },
   };
 }

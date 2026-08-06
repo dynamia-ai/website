@@ -35,6 +35,22 @@
       "description": "Erfahren Sie mehr ueber Dynamia AI, die Entwickler von HAMi - der am schnellsten wachsenden Open-Source-Middleware fuer heterogene KI-Computing-Virtualisierung.",
       "keywords": "dynamia ai unternehmen, ueber dynamia ai, heterogene computing-innovation, HAMi entwickler"
     },
+    "blog": {
+      "title": "Blog zu GPU-Virtualisierung & Kubernetes Scheduling | Dynamia AI",
+      "description": "Technische Leitfaeden, Forschung und Fallstudien zu GPU-Virtualisierung, Kubernetes GPU-Scheduling, HAMi und produktiver KI-Infrastruktur.",
+      "keywords": "GPU-Virtualisierung Blog, Kubernetes GPU-Scheduling, KI-Infrastruktur, HAMi Tutorials, GPU-Sharing, heterogenes Computing"
+    },
+    "caseStudies": {
+      "title": "Fallstudien zu GPU-Virtualisierung & Kubernetes | Dynamia AI",
+      "description": "Erfahren Sie, wie Unternehmen mit HAMi GPU-Virtualisierung und Kubernetes GPU-Scheduling die GPU-Auslastung und KI-Infrastruktur skalieren.",
+      "keywords": "GPU-Virtualisierung Fallstudien, Kubernetes GPU-Scheduling Fallstudien, KI-Infrastruktur, HAMi Kunden, GPU-Auslastung"
+    },
+    "tools": {
+      "title": "GPU-Virtualisierungs-Tools fuer Kubernetes | Dynamia AI",
+      "description": "Entdecken Sie kostenlose HAMi-Tools fuer GPU-Metriken und ROI-Schaetzung zur Planung von Kubernetes GPU-Virtualisierung und KI-Infrastruktur.",
+      "keywords": "HAMi Tools, GPU-Virtualisierung Tools, Kubernetes GPU-Metriken, GPU ROI Rechner, KI-Infrastruktur Tools"
+    },
+
     "solutions": {
       "title": "Loesungen - Dynamia AI | KI, HPC & Edge Computing",
       "description": "Powerful computing solutions for AI/ML, HPC, and Edge Computing challenges. Optimize your infrastructure with Dynamia AI's heterogeneous computing platform.",

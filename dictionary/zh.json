@@ -35,6 +35,22 @@
       "description": "了解密瓜智能 - HAMi 的创建者，全球增长最快的开源异构 AI 计算虚拟化中间件。",
       "keywords": "密瓜智能公司，关于密瓜智能，异构计算创新，HAMi 创建者"
     },
+    "blog": {
+      "title": "GPU 虚拟化与 Kubernetes 调度博客 | 密瓜智能",
+      "description": "阅读 GPU 虚拟化、Kubernetes GPU 调度、HAMi 和生产级 AI 基础设施相关的技术指南、研究与客户实践。",
+      "keywords": "GPU 虚拟化博客，Kubernetes GPU 调度，AI 基础设施，HAMi 教程，GPU 共享，异构计算"
+    },
+    "caseStudies": {
+      "title": "GPU 虚拟化与 Kubernetes 客户案例 | 密瓜智能",
+      "description": "了解企业如何利用 HAMi GPU 虚拟化和 Kubernetes GPU 调度提升 GPU 利用率，并规模化建设 AI 基础设施。",
+      "keywords": "GPU 虚拟化案例，Kubernetes GPU 调度案例，AI 基础设施，HAMi 客户，GPU 利用率"
+    },
+    "tools": {
+      "title": "Kubernetes GPU 虚拟化工具 | 密瓜智能",
+      "description": "使用免费的 HAMi 指标分析与 ROI 估算工具，规划 Kubernetes GPU 虚拟化与 AI 基础设施投入。",
+      "keywords": "HAMi 工具, GPU 虚拟化工具, Kubernetes GPU 指标, GPU ROI 计算器, AI 基础设施工具"
+    },
+
     "solutions": {
       "title": "解决方案 - 密瓜智能 | AI, HPC 与边缘计算",
       "description": "为 AI/ML、HPC 和边缘计算挑战提供强大的计算解决方案。使用密瓜智能的异构计算平台优化您的基础设施。",
