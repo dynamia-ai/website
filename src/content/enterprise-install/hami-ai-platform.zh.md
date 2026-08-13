@@ -59,11 +59,13 @@ helm install --wait --generate-name \
   -n gpu-operator --create-namespace \
   nvidia/gpu-operator \
   --set devicePlugin.enabled=false \
-  --set dcgmExporter.serviceMonitor.enabled=true \
+  --set dcgmExporter.serviceMonitor.enabled=false \
   --set cdi.enabled=false \
   --set cdi.default=false \
   --version=v25.10.1
 ```
+
+**部署 HAMi AI Platform 时，保持 `dcgmExporter.serviceMonitor.enabled=false`，由平台创建 NVIDIA DCGM Exporter 的 ServiceMonitor。仅部署 HAMi Enterprise、不部署 HAMi AI Platform 时，将该参数设置为 `true`。**
 
 #### 示例 values 文件
 
@@ -71,91 +73,90 @@ helm install --wait --generate-name \
 
 ```yaml
 driver:
-  repository: your-registry/nvidia
+  repository: your-private-registry/nvidia
   image: driver
-  # 580.105.08 is the original version in the chart
-  version: "570.148.08"
-  imagePullSecrets: [ "private-registry" ]
+  version: "580.105.08"
+  imagePullSecrets: [ "your-private-registry-secret" ]
   manager:
     image: k8s-driver-manager
-    repository: your-registry/nvidia/cloud-native
+    repository: your-private-registry/nvidia/cloud-native
     version: v0.9.1
 
 toolkit:
-  repository: your-registry/nvidia/k8s
+  repository: your-private-registry/nvidia/k8s
   image: container-toolkit
   version: v1.18.1
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
 
 devicePlugin:
   enabled: false
-  repository: your-registry/nvidia
+  repository: your-private-registry/nvidia
   image: k8s-device-plugin
   version: v0.18.1
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
 
 dcgmExporter:
-  repository: your-registry/nvidia/k8s
+  repository: your-private-registry/nvidia/k8s
   image: dcgm-exporter
   version: 4.4.2-4.7.0-distroless
   serviceMonitor:
-    enabled: true
+    enabled: false
 
 gfd:
-  repository: your-registry/nvidia
+  repository: your-private-registry/nvidia
   image: k8s-device-plugin
   version: v0.18.1
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
 
 migManager:
-  repository: your-registry/nvidia/cloud-native
+  repository: your-private-registry/nvidia/cloud-native
   image: k8s-mig-manager
   version: v0.13.1
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
 
 vgpuDeviceManager:
-  repository: your-registry/nvidia/cloud-native
+  repository: your-private-registry/nvidia/cloud-native
   image: vgpu-device-manager
   version: v0.4.1
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
 
 vfioManager:
-  repository: your-registry/nvidia
+  repository: your-private-registry/nvidia
   image: cuda
   version: 13.0.1-base-ubi9
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
   driverManager:
     image: k8s-driver-manager
-    repository: your-registry/nvidia/cloud-native
+    repository: your-private-registry/nvidia/cloud-native
     version: v0.9.1
 
 sandboxDevicePlugin:
-  repository: your-registry/nvidia
+  repository: your-private-registry/nvidia
   image: kubevirt-gpu-device-plugin
   version: v1.4.0
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
 
 validator:
-  repository: your-registry/nvidia
+  repository: your-private-registry/nvidia
   image: gpu-operator
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
 
 node-feature-discovery:
   image:
     # source: registry.k8s.io/nfd/node-feature-discovery:v0.18.2
-    repository: your-registry/nfd/node-feature-discovery
+    repository: your-private-registry/nfd/node-feature-discovery
     tag: v0.18.2
     pullPolicy: IfNotPresent
   imagePullSecrets:
-    - name: private-registry
+    - name: your-private-registry-secret
 
 operator:
-  repository: your-registry/nvidia
+  repository: your-private-registry/nvidia
   image: gpu-operator
-  imagePullSecrets: [ "private-registry" ]
+  imagePullSecrets: [ "your-private-registry-secret" ]
   initContainer:
     image: cuda
-    repository: your-registry/nvidia
+    repository: your-private-registry/nvidia
     version: 13.0.1-base-ubi9
 
 cdi:
@@ -183,9 +184,9 @@ helm install prometheus \
 
 ```yaml
 global:
-  imageRegistry: your-registry
+  imageRegistry: your-private-registry
   imagePullSecrets:
-    - name: private-registry
+    - name: your-private-registry-secret
 
 alertmanager:
   enabled: false
@@ -206,46 +207,28 @@ helm install hami \
 
 #### 示例 values 文件
 
-以下配置展示 HAMi Enterprise 的核心镜像和组件开关。部署前请按交付版本核对镜像地址与标签。
+以下配置通过 `global.imageRegistry` 和 `global.imagePullSecrets` 统一设置镜像仓库和拉取 Secret。请先将 Chart 所需镜像同步到私有仓库，并保持 Chart 默认的 repository 路径。
 
 ```yaml
 nameOverride: "hami"
 fullnameOverride: "hami"
 
 global:
+  imageRegistry: your-private-registry
+  imagePullSecrets:
+    - your-private-registry-secret
   imageTag: "v2.9.0-r3"
 
 scheduler:
   enabled: true
   leaderElect: false
-  extender:
-    image:
-      registry: dynamia-ai-registry.cn-hangzhou.cr.aliyuncs.com/public
-      repository: dynamia-ai/hami-enterprise
-      tag: v2.9.0-r3
   service:
     type: ClusterIP
-  patch:
-    imageNew:
-      registry: dynamia-ai-registry.cn-hangzhou.cr.aliyuncs.com/public
-      repository: liangjw/kube-webhook-certgen
-      tag: v1.1.1
 
 devicePlugin:
   enabled: true
-  image:
-    registry: dynamia-ai-registry.cn-hangzhou.cr.aliyuncs.com/public
-    repository: dynamia-ai/hami-enterprise
-    tag: v2.9.0-r3
-    pullPolicy: Always
   service:
     type: ClusterIP
-  monitor:
-    image:
-      registry: dynamia-ai-registry.cn-hangzhou.cr.aliyuncs.com/public
-      repository: dynamia-ai/hami-enterprise
-      tag: v2.9.0-r3
-      pullPolicy: Always
 ```
 
 完整配置项见 [HAMi Helm Chart Values Reference](https://public.hami.run/hami-enterprise-chart.md)。
@@ -315,46 +298,27 @@ helm install kantaloupe \
 
 ##### 示例 values 文件
 
-以下配置用于说明主要组件和 Gateway 配置。生产部署前，必须替换示例域名、证书名称、镜像标签和 JWT 配置。
+以下配置通过 `global.imageRegistry` 和 `global.imagePullSecrets` 统一设置镜像仓库和拉取 Secret。请先将 Chart 所需镜像同步到私有仓库，并保持 Chart 默认的 repository 路径。生产部署前，还必须替换示例域名、证书名称和 JWT 配置。
 
 ```yaml
+fullnameOverride: kantaloupe
+
+global:
+  imageRegistry: your-private-registry
+  imagePullSecrets:
+    - your-private-registry-secret
+
 apiserver:
-  image:
-    pullPolicy: Always
-    repository: public/dynamia-ai/kantaloupe-apiserver
-    tag: latest
   leaderElection:
     enabled: false
   logLevel: 5
-  meteringGRPCAddress: hami-metering-api.hami-metering:9090
 
 auth:
   enabled: true
   jwtSecret: dev-secret
-  image:
-    pullPolicy: Always
-    repository: public/dynamia-ai/kantaloupe-db-migrate
-    tag: latest
 
 cloudtty:
-  cloudshell:
-    image:
-      pullPolicy: IfNotPresent
-      repository: public/cloudtty/cloudshell
-      tag: v0.8.9
   enabled: true
-  image:
-    pullPolicy: IfNotPresent
-    repository: public/cloudtty/cloudshell-operator
-    tag: v0.8.9
-
-controllerManager:
-  image:
-    pullPolicy: Always
-    repository: public/dynamia-ai/kantaloupe-controller-manager
-    tag: latest
-
-fullnameOverride: kantaloupe
 
 gateway:
   enabled: true
@@ -371,8 +335,7 @@ gateway:
   envoy:
     proxy:
       image:
-        pullPolicy: IfNotPresent
-        repository: artifacts/envoyproxy/envoy
+        repository: envoyproxy/envoy
         tag: distroless-v1.36.3
     service:
       ports:
@@ -393,26 +356,8 @@ gateway:
           name: dashboard-hami-run-tls
         redirectFromHttp: true
 
-global:
-  imageRegistry: dynamia-ai-registry.cn-hangzhou.cr.aliyuncs.com
-
-hook:
-  image:
-    repository: public/cloudtty/cloudshell
-    tag: v0.8.9
-
 mpu:
   enabled: false
-  image:
-    pullPolicy: IfNotPresent
-    repository: public/dynamia-ai/mpu
-    tag: dev-ubuntu24.04
-
-ui:
-  image:
-    pullPolicy: Always
-    repository: public/dynamia-ai/kantaloupe-ui
-    tag: main
 ```
 
 平台的服务暴露、平台管理员、认证与监控配置见 [kantaloupe Helm Chart Values Reference](https://public.hami.run/kantaloupe-chart.md)。
