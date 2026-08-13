@@ -197,6 +197,10 @@ kubectl -n kantaloupe-system get svc
 
 ### 获取许可证信息
 
+申请许可证前，任选以下一种方法获取授权申请信息。两种方法作用相同，无需重复执行。
+
+#### 方法一：运行收集脚本
+
 在所有已选组件启动后执行。运行环境需要 `kubectl` 和 `jq`。
 
 ```bash
@@ -206,9 +210,18 @@ bash collect-hami-license-info.sh
 
 将脚本输出的 JSON 发送给密瓜智能售前或技术支持以申请许可证。
 
-### 激活 HAMi Enterprise
+#### 方法二：通过 HAMi AI Platform 获取（可选）
 
-收到 License 文件后，将其保存到可以访问目标集群的运维机器，并创建 License Secret：
+仅在已安装 HAMi AI Platform 时使用。
+
+1. 使用平台管理员账号登录 HAMi AI Platform。
+2. 进入「License 与系统信息」。
+3. 按页面提示获取授权申请信息。
+4. 将授权申请信息发送给密瓜智能销售或技术支持人员。
+
+### 导入并验证许可证
+
+通过任一方法申请并收到 License 文件后，将其保存到可以访问目标集群的运维机器，并创建 License Secret：
 
 ```bash
 kubectl create secret generic hami-license \
@@ -230,14 +243,6 @@ kubectl get events --field-selector involvedObject.name=hami-license -n hami-sys
 ```bash
 kubectl get nodes -o custom-columns='NODE:.metadata.name,LICENSE:.metadata.annotations.hami\.io/nvidia-license'
 ```
-
-### 激活 HAMi AI Platform（可选）
-
-1. 使用平台管理员账号登录 HAMi AI Platform。
-2. 进入「License 与系统信息」。
-3. 按页面提示获取授权申请信息。
-4. 将授权申请信息发送给密瓜智能销售或技术支持人员。
-5. 按交付指引完成激活。
 
 ## 常见问题
 
