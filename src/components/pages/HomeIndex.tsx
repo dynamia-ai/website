@@ -9,7 +9,6 @@ import DeployedCompaniesGrid from '@/components/DeployedCompaniesGrid';
 import GitHubStars from '@/components/GitHubStars';
 import WebMCPProvider from '@/components/agent/WebMCPProvider';
 import { useGitHubRepoStats, formatCompactCount } from '@/hooks/useGitHubRepoStats';
-import { localizedPath } from '@/utils/i18n';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -290,7 +289,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HAMi CNCF Incubating 公告 Banner */}
+      {/* HAMi Community Meetup Shanghai 活动 Banner */}
       <section className="px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
         <motion.div
           initial="hidden"
@@ -300,7 +299,9 @@ export default function Home() {
           className="max-w-7xl mx-auto"
         >
           <Link
-            href={localizedPath('/blog/hami-cncf-incubating', locale)}
+            href="https://www.huodongxing.com/event/2874911381700"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group block relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#76b900] via-[#5fa800] to-[#368cc7] shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             {/* 装饰性光晕 */}
