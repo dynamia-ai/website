@@ -252,5 +252,3 @@ The "last mile" of GPU sharing is now genuinely open.
   - KAI Scheduler: <https://github.com/kai-scheduler/KAI-Scheduler>
 
 Author: Jimmy Song (Dynamia AI).
-
-[![HAMi Community Meetup Shanghai, September 6, 2026](/images/blog/kai-scheduler-hami-gpu-memory-hard-isolation/meetup-shanghai-banner.webp)](https://www.huodongxing.com/event/2874911381700)
