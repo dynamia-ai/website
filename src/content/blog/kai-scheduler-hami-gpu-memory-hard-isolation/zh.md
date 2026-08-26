@@ -234,6 +234,8 @@ GPU 共享的“最后一公里”，现在真的通了。
 
 ## 系列阅读
 
+- 本系列下一篇：[《HAMi 2.10 解读（二）：一张昇腾卡切给两个 Pod——Volcano + HAMi-core vNPU 软切分实测》](/blog/volcano-ascend-vnpu-soft-slicing/)
+- 本系列第三篇：[《HAMi 2.10 解读（三）：既要独占、又要装箱、还要 NUMA 亲和——调度策略可以组合了》](/blog/hami-composable-scheduler-policies/)
 - [《HAMi 2.10 发布解读：Flexible MIG、AMD vGPU 与调度生态全面升级》](/blog/hami-v210-deep-dive/)
 - 上篇：[《「Dynamia 密瓜智能」主导 HAMi-core 接入 KAI Scheduler，补齐 GPU 共享生产级硬隔离》](/blog/hami-core-adopted-by-kai-scheduler/)
 - 复现实测：[《实验 12：在 GKE 上验证 KAI Scheduler 与 HAMi 显存隔离》](https://project-hami.io/zh/tutorials/labs/kai-scheduler-hami-gke)

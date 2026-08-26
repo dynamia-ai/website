@@ -237,6 +237,8 @@ The "last mile" of GPU sharing is now genuinely open.
 
 ## Continue Reading
 
+- Next in the series: [HAMi 2.10 Deep Dive (Part 2): One Ascend Card, Two Pods — Testing Volcano + HAMi-core vNPU Soft Slicing](/blog/volcano-ascend-vnpu-soft-slicing/)
+- Part 3: [HAMi 2.10 Deep Dive (Part 3): Exclusive, Binpacked, and NUMA-Aligned — Scheduling Policies Are Now Composable](/blog/hami-composable-scheduler-policies/)
 - [HAMi 2.10 Deep Dive: Flexible MIG, AMD vGPU, and a Full Scheduling Ecosystem Upgrade](/blog/hami-v210-deep-dive/)
 - Previous: [Dynamia Leads HAMi-core Integration into KAI Scheduler, Closing the Hard Isolation Gap for Production-Grade GPU Sharing](/blog/hami-core-adopted-by-kai-scheduler/)
 - Reproduce the test: [Lab 12: Verifying KAI Scheduler and HAMi Memory Isolation on GKE](https://project-hami.io/zh/tutorials/labs/kai-scheduler-hami-gke)
