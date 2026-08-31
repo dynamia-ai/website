@@ -2448,6 +2448,9 @@
             },
             {
               "feature": "Volcano-Tiefenintegration (Praeemption / vGPU)"
+            },
+            {
+              "feature": "GPU-Ressourcenpools"
             }
           ]
         },
