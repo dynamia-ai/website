@@ -2505,6 +2505,9 @@
             },
             {
               "feature": "Volcano deep integration (preemption / vGPU joint)"
+            },
+            {
+              "feature": "GPU resource pools"
             }
           ]
         },

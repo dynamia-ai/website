@@ -2612,6 +2612,9 @@
             },
             {
               "feature": "Volcano 深度集成（抢占 / vGPU 联合调度）"
+            },
+            {
+              "feature": "GPU 资源池"
             }
           ]
         },
