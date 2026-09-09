@@ -10,10 +10,15 @@ import CaseNio from '@/components/case-studies/CaseNio';
 import CaseSnowCorp from '@/components/case-studies/CaseSnowCorp';
 import CaseDaoCloud from '@/components/case-studies/CaseDaoCloud';
 import CaseTelecomGpu from '@/components/case-studies/CaseTelecomGpu';
+import CaseCetcCloud from '@/components/case-studies/CaseCetcCloud';
 import CaseChinaMerchantsBank from '@/components/case-studies/CaseChinaMerchantsBank';
 import { CASE_STUDY_LOCALES } from '@/lib/seo-routes';
 
 const CASE_STUDIES = {
+  'cetc-cloud': {
+    component: CaseCetcCloud,
+    i18nKey: 'cetcCloud',
+  },
   'sf-technology': {
     component: CaseSfTechnologyEffectiveGpu,
     i18nKey: 'sfTechnologyEffectiveGpu',

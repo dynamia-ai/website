@@ -1045,6 +1045,193 @@
     "truncationLength": 160
   },
   "cases": {
+    "cetcCloud": {
+    "title": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
+    "subtitle": "CETC Cloud (Beijing) Technology runs text generation, embedding, and rerank production models alongside Kubernetes dev environments on a single 8-GPU portable device, raising concurrent dev Pod capacity from 2 to 30.",
+    "sourceLabel": "This case is adapted from the official CNCF Case Study:",
+    "sourceLink": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
+    "stats": [
+      {
+        "value": "15×",
+        "label": "dev Pod capacity gain (2 → 30)"
+      },
+      {
+        "value": "87.5%",
+        "label": "per-card VRAM reclaimed (56 GB freed)"
+      },
+      {
+        "value": "80%",
+        "label": "per-card compute kept schedulable"
+      }
+    ],
+    "overview": {
+      "title": "Customer Overview",
+      "description": "CETC Cloud (Beijing) Technology needed to bring its intelligent knowledge base to project sites, running text generation, embedding, rerank, knowledge processing, and R&D debugging workloads together on a single set of portable devices equipped with heterogeneous GPUs. The team adopted Kubernetes and HAMi to turn these limited GPUs, previously bound long-term to individual services, into resources that production models and Kubernetes dev environments can request, share, and schedule on demand.",
+      "keyPoints": [
+        "Portable intelligent knowledge base appliance that runs independently on site",
+        "Knowledge base production pipeline and Kubernetes dev environments coexist on one 8-GPU heterogeneous device",
+        "Built on Kubernetes-native resource declarations plus HAMi device sharing and unified scheduling"
+      ]
+    },
+    "companyCard": {
+      "name": "CETC Cloud (Beijing) Technology Co., Ltd.",
+      "description": "The cloud and intelligent computing brand of CETC, responsible for product development and engineering delivery of the portable intelligent knowledge base — on-site local operation, knowledge processing, model serving, and dev environments."
+    },
+    "info": {
+      "title": "Case Information",
+      "rows": [
+        {
+          "label": "User",
+          "value": "CETC Cloud technical team"
+        },
+        {
+          "label": "Business scenario",
+          "value": "An intelligent knowledge base appliance carried to project sites and run independently"
+        },
+        {
+          "label": "Deployment environment",
+          "value": "Kubernetes and on-premises heterogeneous GPUs"
+        },
+        {
+          "label": "Projects used",
+          "value": "Kubernetes, HAMi"
+        },
+        {
+          "label": "Core challenges",
+          "value": "Multi-model coordination, shared production and development"
+        }
+      ]
+    },
+    "challenge": {
+      "title": "Challenge: One Device, Two GPU Usage Paths",
+      "description": "Online Q&A depends on text generation, vector retrieval, and rerank; incoming documents must go through parsing, chunking, vectorization, knowledge extraction, and index building; and R&D engineers debug models, validate dependencies, and run experiments inside Kubernetes dev Pods/containers. These workloads use GPUs in very different ways — yet they must coexist on the same portable device.",
+      "points": [
+        {
+          "title": "Very different workload profiles",
+          "description": "Text generation must stay online with a high VRAM baseline and latency sensitivity; embedding creates periodic peaks during bulk import; rerank does short but frequent compute; knowledge processing and index rebuilds are batch jobs that must be isolated from online services; dev Pods are periodic and interactive."
+        },
+        {
+          "title": "Whole-card binding exhausts devices fast",
+          "description": "If each service or dev environment keeps a whole card bound long-term, the limited devices are quickly exhausted logically, and the remaining capacity cannot be reused by other workloads."
+        },
+        {
+          "title": "Over-partitioning introduces new risks",
+          "description": "Pursuing only the finest possible partitioning amplifies VRAM shortages, scheduling jitter, and fault propagation."
+        },
+        {
+          "title": "A need for differentiated resource policies",
+          "description": "The team needed each workload type to describe its own needs, then let the platform complete resource placement based on device state and service tier."
+        }
+      ]
+    },
+    "solution": {
+      "title": "Solution: A Common Resource Contract on HAMi",
+      "description": "The value of HAMi is not merely representing one physical card as multiple resource shares. More importantly, it establishes a common resource contract: workloads declare the device resources they need, scheduling selects based on available device state, multiple Pods share one heterogeneous GPU within their own resource boundaries, and Pods, containers, devices, and scheduling results can be correlated back together.",
+      "resourceContract": {
+        "title": "Kubernetes-Native Resource Contract",
+        "description": "Keep the Kubernetes application delivery model while letting the platform understand whether heterogeneous GPU devices can satisfy workload requests, and letting dev environments suited to sharing reuse the same physical GPU.",
+        "features": [
+          "Model services and dev Pods declare device resources themselves — no more long-term manual card binding",
+          "Scheduling selects based on available device state, not just GPU presence on a node",
+          "Pods, containers, devices, and scheduling results are traceably linked for capacity observation and config correction"
+        ]
+      },
+      "workloadStrategy": {
+        "title": "Differentiated Provisioning by Workload Profile",
+        "description": "The team built resource profiles around model loading, peak usage, concurrency, latency, and long-running behavior, then translated validated requirements into Kubernetes resource requests with different policies per workload type.",
+        "features": [
+          "Stable boundaries for the online path: text generation, online retrieval, and rerank get stable resources first",
+          "Periodic tasks queue off-peak: vectorization, knowledge extraction, and index rebuilding run when online load is low",
+          "Configuration corrected by real load: granularity comes from baseline validation and runtime observation, not a preset ratio"
+        ]
+      },
+      "devSharing": {
+        "title": "Dev Environments Share a Single Heterogeneous GPU",
+        "description": "Multiple Kubernetes dev Pods/containers reuse one heterogeneous GPU through HAMi virtualization instead of each holding a device exclusively; VRAM quotas are requested per task by users rather than set to one fixed platform value.",
+        "features": [
+          "Multiple dev Pods share one heterogeneous GPU, each with its own resource boundary",
+          "Reuses the same resource declarations and scheduling as production services",
+          "Validated with 30 dev Pods running concurrently on the same device"
+        ]
+      }
+    },
+    "results": {
+      "title": "Results",
+      "description": "On the same portable device equipped with 8 heterogeneous GPUs, the team compared resource capacity before and after introducing HAMi on a consistent basis:",
+      "items": [
+        {
+          "title": "Dev Pod Capacity",
+          "value": "2 → 30",
+          "description": "Concurrent dev Pods on the same device rose from 2 to 30 — 15× the original"
+        },
+        {
+          "title": "VRAM Reclaimed",
+          "value": "87.5%",
+          "description": "Embedding went from a whole 64 GB GPU to an 8 GB allocation, freeing 56 GB for reuse"
+        },
+        {
+          "title": "Compute Reclaimed",
+          "value": "80%",
+          "description": "Embedding was allocated 20% of GPU compute; the remaining 80% stays schedulable"
+        },
+        {
+          "title": "Performance Impact",
+          "value": "< 5%",
+          "description": "Token throughput stayed within 5% of whole-card use; load time and P95 latency essentially unchanged"
+        }
+      ],
+      "table": {
+        "title": "Embedding Model: Single-Card Resource Comparison",
+        "description": "Same model image, request set, and concurrency — whole-card exclusive use vs. HAMi partitioning on the same card:",
+        "metricLabel": "Metric",
+        "withoutLabel": "Without HAMi",
+        "withLabel": "With HAMi",
+        "rows": [
+          {
+            "metric": "VRAM allocation",
+            "without": "Exclusively occupies the whole 64 GB GPU",
+            "with": "8 GB allocated on demand"
+          },
+          {
+            "metric": "VRAM reusable by other tasks",
+            "without": "0 GB",
+            "with": "56 GB — 87.5% of the whole card"
+          },
+          {
+            "metric": "Compute allocation",
+            "without": "Whole card exclusively",
+            "with": "20% allocated, remaining 80% schedulable"
+          },
+          {
+            "metric": "Token throughput (tokens/s)",
+            "without": "Baseline",
+            "with": "Within 5% of whole-card use"
+          },
+          {
+            "metric": "Model load time / P95 latency",
+            "without": "Baseline",
+            "with": "Essentially identical to whole-card use"
+          }
+        ]
+      }
+    },
+    "lessons": {
+      "title": "Lessons & Next Steps",
+      "points": [
+        "Heterogeneous GPU sharing should start from workload profiles, not a preset uniform partitioning ratio — production models, batch tasks, and dev environments differ in latency, VRAM, throughput, and isolation requirements, so their resource policies should differ too.",
+        "R&D environments are a major consumer of shared GPUs. Running dev workloads as Kubernetes Pods/containers reuses the same resource declarations and scheduling as production services, while avoiding each dev environment holding a device exclusively long-term.",
+        "Next, CETC Cloud will keep refining capacity and health views for production and R&D workloads, and add reproducible experimental data across different models, networks, and calling patterns."
+      ]
+    },
+    "conclusion": {
+      "title": "Get More from Limited Heterogeneous Compute",
+      "description": "From whole-card exclusivity to on-demand sharing, CETC Cloud used Kubernetes and HAMi to serve a knowledge base production pipeline and 30 concurrent dev environments on a single portable device — with essentially no loss of production performance. The same resource contract applies to any team that needs production and R&D to coexist on limited heterogeneous compute."
+    },
+    "cta": {
+      "exploreHami": "Explore the HAMi Open Source Project",
+      "contactUs": "Contact Us"
+    }
+  },
     "telecomGpu": {
       "title": "Telecom Provider GPU Virtualization Case Study",
       "subtitle": "How a leading telecom provider leverages HAMi for GPU virtualization and heterogeneous device management",

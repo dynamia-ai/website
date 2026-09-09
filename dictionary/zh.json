@@ -1271,6 +1271,193 @@
     "truncationLength": 72
   },
   "cases": {
+    "cetcCloud": {
+    "title": "电科云基于 HAMi 构建异构 GPU 共享资源底座，支撑便携式智能知识库",
+    "subtitle": "电科云（北京）科技在一台配备 8 张异构 GPU 的便携式设备上，同时运行文本生成、Embedding、Rerank 等生产模型与 Kubernetes 研发环境，将研发 Pod 并发容量从 2 个提升至 30 个。",
+    "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
+    "sourceLink": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
+    "stats": [
+      {
+        "value": "15×",
+        "label": "研发 Pod 并发容量提升（2 → 30）"
+      },
+      {
+        "value": "87.5%",
+        "label": "单卡显存回收（释放 56 GB）"
+      },
+      {
+        "value": "80%",
+        "label": "单卡算力回收，保持可调度"
+      }
+    ],
+    "overview": {
+      "title": "客户概览",
+      "description": "电科云（北京）科技需要将智能知识库带到项目现场独立运行，在配备异构 GPU 的同一批便携式设备上，同时承载文本生成、Embedding、Rerank、知识处理与研发调试等负载。团队采用 Kubernetes 与 HAMi，把此前长期绑定在单一服务上的异构 GPU，转变为生产模型与 Kubernetes 研发环境可以按需申请、共享与调度的资源，构成便携式智能知识库的异构算力共享底座。",
+      "keyPoints": [
+        "便携式智能知识库一体机，可携带至项目现场独立运行",
+        "知识库生产流水线与 Kubernetes 研发环境共存于同一台 8 卡异构 GPU 设备",
+        "以 Kubernetes 原生资源声明 + HAMi 设备共享与统一调度为底座"
+      ]
+    },
+    "companyCard": {
+      "name": "电科云（北京）科技有限公司",
+      "description": "中国电科旗下云与智能计算品牌，负责便携式智能知识库的产品研发与工程交付，围绕现场本地运行、知识处理、模型服务与研发环境构建产品能力。"
+    },
+    "info": {
+      "title": "案例信息",
+      "rows": [
+        {
+          "label": "用户",
+          "value": "电科云技术团队"
+        },
+        {
+          "label": "业务场景",
+          "value": "可携带至项目现场、独立运行的智能知识库一体机"
+        },
+        {
+          "label": "部署环境",
+          "value": "Kubernetes 与本地化异构 GPU"
+        },
+        {
+          "label": "使用项目",
+          "value": "Kubernetes、HAMi"
+        },
+        {
+          "label": "核心挑战",
+          "value": "多模型协同、生产与研发共享算力"
+        }
+      ]
+    },
+    "challenge": {
+      "title": "挑战：一台设备，两种 GPU 使用路径",
+      "description": "知识库的在线问答依赖文本生成、向量检索与 Rerank；数据入库要经过解析、切分、向量化、知识抽取与索引构建；研发工程师还需要在 Kubernetes 研发 Pod/容器中调试模型、验证依赖、跑实验。这些负载的 GPU 使用方式截然不同，而它们必须共存于同一台便携设备。",
+      "points": [
+        {
+          "title": "负载特征差异大",
+          "description": "文本生成须长期在线、显存基线高、延迟敏感；Embedding 在批量导入时形成周期性峰值；Rerank 单次计算短但调用频繁；知识处理与索引重建是必须与在线服务隔离的批任务；研发 Pod 周期性、交互式使用。"
+        },
+        {
+          "title": "整卡独占快速耗尽资源",
+          "description": "如果每个服务或研发环境继续长期绑定一整张卡，有限的设备很快被逻辑耗尽，剩余算力无法被其他负载复用。"
+        },
+        {
+          "title": "过细切分引入新问题",
+          "description": "如果只追求尽可能细的切分，又会放大显存不足、调度抖动与故障传播的风险。"
+        },
+        {
+          "title": "需要差异化资源策略",
+          "description": "团队需要让每类负载自行描述资源需求，再由平台基于设备状态与服务等级完成资源放置。"
+        }
+      ]
+    },
+    "solution": {
+      "title": "解决方案：基于 HAMi 的通用资源契约",
+      "description": "HAMi 的价值不只是把一张物理卡切分成多份资源份额，更重要的是建立了一套通用资源契约：负载自行声明所需设备资源，调度基于设备可用状态进行选择，多 Pod 可在各自资源边界内共享同一张异构 GPU，且 Pod、容器、设备与调度结果可相互关联追溯。",
+      "resourceContract": {
+        "title": "Kubernetes 原生资源契约",
+        "description": "保留 Kubernetes 应用交付模式，让平台进一步理解异构 GPU 设备能否满足负载请求，让适合共享的研发环境复用同一张物理 GPU。",
+        "features": [
+          "模型服务与研发 Pod 自行声明设备资源，不再依赖长期人工绑卡",
+          "调度不只判断节点上是否存在 GPU，而是基于设备可用状态选择",
+          "Pod、容器、设备与调度结果可关联追溯，支撑容量观察与配置纠偏"
+        ]
+      },
+      "workloadStrategy": {
+        "title": "按负载画像差异化配给",
+        "description": "团队围绕模型加载、峰值用量、并发、延迟与长期运行行为建立资源画像，再将验证过的需求翻译为 Kubernetes 资源请求，不同负载遵循不同策略。",
+        "features": [
+          "在线路径稳定边界：文本生成、在线检索与 Rerank 优先获得稳定资源",
+          "周期任务错峰执行：向量化、知识抽取与索引重建在低负载时段排队运行",
+          "配置按真实负载纠偏：切分颗粒度来自基线验证与运行时观测，而非预设统一比例"
+        ]
+      },
+      "devSharing": {
+        "title": "研发环境共享单张异构 GPU",
+        "description": "多个 Kubernetes 研发 Pod/容器通过 HAMi 虚拟化复用同一张异构 GPU，而非各自长期独占设备，显存配额由用户按任务需求申请，平台不设统一固定值。",
+        "features": [
+          "多个研发 Pod 共享单张异构 GPU，各有独立资源边界",
+          "复用与生产服务一致的资源声明和调度方式",
+          "实测同机并发运行 30 个研发 Pod"
+        ]
+      }
+    },
+    "results": {
+      "title": "实施成果",
+      "description": "在同一台配备 8 张异构 GPU 的便携式设备上，团队以一致口径对比了引入 HAMi 前后的资源容量：",
+      "items": [
+        {
+          "title": "研发 Pod 并发容量",
+          "value": "2 → 30",
+          "description": "同一台设备的研发 Pod 并发数从 2 个提升至 30 个，达到原来的 15 倍"
+        },
+        {
+          "title": "显存回收",
+          "value": "87.5%",
+          "description": "Embedding 从独占整张 64 GB GPU 改为 8 GB 配额，释放 56 GB 可复用显存"
+        },
+        {
+          "title": "算力回收",
+          "value": "80%",
+          "description": "Embedding 仅分配 20% GPU 算力，其余 80% 保持可调度"
+        },
+        {
+          "title": "性能影响",
+          "value": "< 5%",
+          "description": "Token 吞吐与独占整卡相比变化在 5% 以内，加载时间与 P95 延迟基本持平"
+        }
+      ],
+      "table": {
+        "title": "Embedding 模型单卡资源对比",
+        "description": "同一镜像、同一请求集与并发配置下，独占整卡与 HAMi 切分的同卡同模型对比：",
+        "metricLabel": "对比项",
+        "withoutLabel": "未使用 HAMi",
+        "withLabel": "使用 HAMi",
+        "rows": [
+          {
+            "metric": "显存分配",
+            "without": "独占整张 64 GB GPU",
+            "with": "按需分配 8 GB"
+          },
+          {
+            "metric": "其他任务可复用显存",
+            "without": "0 GB",
+            "with": "56 GB（整卡的 87.5%）"
+          },
+          {
+            "metric": "算力分配",
+            "without": "独占整卡",
+            "with": "分配 20%，其余 80% 可调度"
+          },
+          {
+            "metric": "Token 吞吐（tokens/s）",
+            "without": "基线",
+            "with": "与独占整卡相差 5% 以内"
+          },
+          {
+            "metric": "模型加载时间 / P95 延迟",
+            "without": "基线",
+            "with": "与独占整卡基本一致"
+          }
+        ]
+      }
+    },
+    "lessons": {
+      "title": "经验与下一步",
+      "points": [
+        "异构 GPU 共享应从负载画像出发，而不是预设统一的切分比例——生产模型、批处理任务与研发环境对延迟、显存、吞吐与隔离的要求各不相同，资源策略也应不同。",
+        "研发环境是共享 GPU 的重要消费方。研发负载以 Kubernetes Pod/容器方式运行，可复用与生产服务一致的资源声明和调度方式，同时避免每个研发环境长期独占设备。",
+        "下一阶段，电科云将持续完善生产与研发负载的容量与健康视图，并补充不同模型、不同网络与调用模式下可复现的实验数据。"
+      ]
+    },
+    "conclusion": {
+      "title": "让有限的异构算力承载更多业务",
+      "description": "从整卡独占到按需共享，电科云用 Kubernetes 与 HAMi 在一台便携设备上同时支撑了知识库生产流水线与 30 个并发的研发环境，且生产性能基本无损。同样的资源契约，也适用于任何需要在有限异构算力上共存生产与研发的团队。"
+    },
+    "cta": {
+      "exploreHami": "了解 HAMi 开源项目",
+      "contactUs": "联系我们"
+    }
+  },
     "telecomGpu": {
       "title": "电信运营商 GPU 虚拟化案例研究",
       "subtitle": "某领先电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",

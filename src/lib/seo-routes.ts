@@ -17,6 +17,7 @@ export const STATIC_INDEXABLE_PATHS = [
 ] as const;
 
 export const CASE_STUDY_SLUGS = [
+  "cetc-cloud",
   "sf-technology",
   "prep-edu",
   "ke-holdings",

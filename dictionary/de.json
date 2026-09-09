@@ -1037,6 +1037,193 @@
     "truncationLength": 160
   },
   "cases": {
+    "cetcCloud": {
+    "title": "CETC Cloud baut mit HAMi eine gemeinsame Ressourcenbasis für heterogene GPUs für eine portable Wissensdatenbank",
+    "subtitle": "CETC Cloud (Beijing) Technology betreibt Produktionsmodelle für Textgenerierung, Embedding und Rerank zusammen mit Kubernetes-Entwicklungsumgebungen auf einem einzigen portablen Gerät mit 8 heterogenen GPUs – die Kapazität steigt von 2 auf 30 gleichzeitige Dev-Pods.",
+    "sourceLabel": "Dieser Fall basiert auf der offiziellen CNCF Case Study:",
+    "sourceLink": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
+    "stats": [
+      {
+        "value": "15×",
+        "label": "Dev-Pod-Kapazität (2 → 30)"
+      },
+      {
+        "value": "87,5 %",
+        "label": "VRAM je Karte freigegeben (56 GB)"
+      },
+      {
+        "value": "80 %",
+        "label": "Rechenleistung je Karte schedulierbar"
+      }
+    ],
+    "overview": {
+      "title": "Kundenübersicht",
+      "description": "CETC Cloud (Beijing) Technology musste seine intelligente Wissensdatenbank zu Projektstandorten bringen – mit Textgenerierung, Embedding, Rerank, Wissensverarbeitung und Entwicklungsaufgaben auf einem Satz portabler Geräte mit heterogenen GPUs. Mit Kubernetes und HAMi wurden diese GPUs, bisher langfristig an einzelne Dienste gebunden, zu Ressourcen, die Produktionsmodelle und Entwicklungsumgebungen bedarfsgesteuert anfordern, teilen und schedulen können.",
+      "keyPoints": [
+        "Portable Appliance für intelligente Wissensdatenbank, eigenständig vor Ort betreibbar",
+        "Produktionspipeline und Entwicklungsumgebungen auf einem 8-GPU-Gerät",
+        "Kubernetes-native Ressourcendeklaration plus HAMi-GPU-Sharing und einheitliches Scheduling"
+      ]
+    },
+    "companyCard": {
+      "name": "CETC Cloud (Beijing) Technology Co., Ltd.",
+      "description": "Cloud- und Intelligent-Computing-Marke der CETC – verantwortlich für Produktentwicklung und Engineering der portablen Wissensdatenbank: lokaler Betrieb vor Ort, Wissensverarbeitung, Modell-Serving und Entwicklungsumgebungen."
+    },
+    "info": {
+      "title": "Fallinformationen",
+      "rows": [
+        {
+          "label": "Anwender",
+          "value": "Technikteam von CETC Cloud"
+        },
+        {
+          "label": "Business-Szenario",
+          "value": "Intelligente Wissensdatenbank-Appliance für den Einsatz vor Ort"
+        },
+        {
+          "label": "Umgebung",
+          "value": "Kubernetes und lokale heterogene GPUs"
+        },
+        {
+          "label": "Verwendete Projekte",
+          "value": "Kubernetes, HAMi"
+        },
+        {
+          "label": "Kernherausforderungen",
+          "value": "Multi-Model-Koordination, gemeinsame Nutzung von Produktion und Entwicklung"
+        }
+      ]
+    },
+    "challenge": {
+      "title": "Herausforderung: Ein Gerät, zwei GPU-Nutzungspfade",
+      "description": "Online-Fragen und -Antworten erfordern Textgenerierung, Vektorrecherche und Rerank; Dokumente durchlaufen Parsing, Chunking, Vektorisierung und Indexaufbau; Entwickler debuggen Modelle in Kubernetes-Dev-Pods. Diese Workloads nutzen GPUs sehr unterschiedlich – und müssen auf demselben portablen Gerät koexistieren.",
+      "points": [
+        {
+          "title": "Sehr unterschiedliche Workload-Profile",
+          "description": "Textgenerierung dauerhaft online mit hoher VRAM-Baseline; Embedding mit periodischen Spitzen beim Massenimport; Rerank kurz, aber häufig; Wissensverarbeitung und Index-Neuaufbau als isolierte Batch-Jobs; Dev-Pods periodisch und interaktiv."
+        },
+        {
+          "title": "Exklusive Kartenbindung erschöpft Geräte schnell",
+          "description": "Bleibt jeder Dienst oder jede Entwicklungsumgebung langfristig an eine ganze Karte gebunden, sind die begrenzten Geräte rasch logisch erschöpft – Restkapazität ist nicht wiederverwendbar."
+        },
+        {
+          "title": "Übertrieben feine Partitionierung schafft neue Risiken",
+          "description": "Nur die feinste Partitionierung anzustreben verstärkt VRAM-Knappheit, Scheduling-Jitter und Fehlerausbreitung."
+        },
+        {
+          "title": "Differenzierte Ressourcenstrategien nötig",
+          "description": "Jeder Workload-Typ sollte seinen Bedarf selbst beschreiben; die Plattform platziert Ressourcen anhand von Gerätestatus und Serviceklasse."
+        }
+      ]
+    },
+    "solution": {
+      "title": "Lösung: Ein gemeinsamer Ressourcenvertrag mit HAMi",
+      "description": "Der Wert von HAMi liegt nicht nur im Aufteilen einer physischen Karte in mehrere Anteile. Wichtiger ist der gemeinsame Ressourcenvertrag: Workloads deklarieren ihren Bedarf, das Scheduling wählt anhand des Gerätestatus, mehrere Pods teilen sich eine heterogene GPU innerhalb eigener Grenzen – und Pods, Container, Geräte und Scheduling-Ergebnisse sind nachvollziehbar verknüpft.",
+      "resourceContract": {
+        "title": "Kubernetes-nativer Ressourcenvertrag",
+        "description": "Das Kubernetes-Liefermodell bleibt erhalten, während die Plattform versteht, ob heterogene GPUs die Anforderungen erfüllen können – und geeignete Entwicklungsumgebungen dieselbe physische GPU wiederverwenden.",
+        "features": [
+          "Modell-Dienste und Dev-Pods deklarieren Ressourcen selbst – kein langfristiges Karten-Binding mehr",
+          "Scheduling anhand des Gerätestatus, nicht nur GPU-Präsenz auf dem Knoten",
+          "Pods, Container, Geräte und Scheduling nachvollziehbar verknüpft – Basis für Kapazitätsbeobachtung und Korrektur"
+        ]
+      },
+      "workloadStrategy": {
+        "title": "Differenzierte Bereitstellung nach Workload-Profil",
+        "description": "Das Team erstellte Ressourcenprofile anhand von Modellladung, Spitzennutzung, Nebenläufigkeit und Latenz und übersetzte die validierten Anforderungen in Kubernetes-Ressourcenanforderungen – mit je nach Workload-Typ unterschiedlichen Strategien.",
+        "features": [
+          "Stabile Grenzen für den Online-Pfad: Textgenerierung, Online-Retrieval und Rerank zuerst",
+          "Periodische Aufgaben außerhalb der Spitzen: Vektorisierung, Wissensextraktion und Index-Neuaufbau bei geringer Last",
+          "Korrektur anhand realer Last: Granularität aus Baseline und Laufzeitbeobachtung, nicht aus voreingestellter Quote"
+        ]
+      },
+      "devSharing": {
+        "title": "Dev-Umgebungen teilen eine heterogene GPU",
+        "description": "Mehrere Kubernetes-Dev-Pods nutzen eine heterogene GPU per HAMi-Virtualisierung, statt jede Umgebung exklusiv zu belegen; VRAM-Quoten werden aufgabenbezogen angefragt, nicht platformseitig fixiert.",
+        "features": [
+          "Mehrere Dev-Pods teilen eine GPU – jeweils mit eigenen Ressourcengrenzen",
+          "Dieselben Ressourcendeklarationen und Scheduling-Verfahren wie in der Produktion",
+          "Validiert mit 30 gleichzeitigen Dev-Pods auf demselben Gerät"
+        ]
+      }
+    },
+    "results": {
+      "title": "Ergebnisse",
+      "description": "Auf demselben portablen Gerät mit 8 heterogenen GPUs verglich das Team die Ressourcenkapazität vor und nach HAMi unter einheitlichen Bedingungen:",
+      "items": [
+        {
+          "title": "Dev-Pod-Kapazität",
+          "value": "2 → 30",
+          "description": "Gleichzeitige Dev-Pods auf demselben Gerät stiegen von 2 auf 30 – das 15-Fache"
+        },
+        {
+          "title": "VRAM freigegeben",
+          "value": "87,5 %",
+          "description": "Embedding wechselte von einer vollen 64-GB-GPU zu einer 8-GB-Zuweisung – 56 GB wiederverwendbar"
+        },
+        {
+          "title": "Rechenleistung freigegeben",
+          "value": "80 %",
+          "description": "Embedding erhielt 20 % der GPU-Rechenleistung; die restlichen 80 % bleiben schedulierbar"
+        },
+        {
+          "title": "Leistungseinfluss",
+          "value": "< 5 %",
+          "description": "Token-Durchsatz innerhalb von 5 % der exklusiven Nutzung; Ladezeit und P95-Latenz praktisch unverändert"
+        }
+      ],
+      "table": {
+        "title": "Embedding-Modell: Vergleich je Karte",
+        "description": "Gleiches Image, gleiche Anfragen und Nebenläufigkeit – exklusive Nutzung vs. HAMi-Partitionierung:",
+        "metricLabel": "Metrik",
+        "withoutLabel": "Ohne HAMi",
+        "withLabel": "Mit HAMi",
+        "rows": [
+          {
+            "metric": "VRAM-Zuweisung",
+            "without": "Exklusiv die gesamte 64-GB-GPU",
+            "with": "Bedarfsgerecht 8 GB"
+          },
+          {
+            "metric": "Für andere Aufgaben nutzbares VRAM",
+            "without": "0 GB",
+            "with": "56 GB – 87,5 % der Karte"
+          },
+          {
+            "metric": "Rechenleistung",
+            "without": "Karte exklusiv",
+            "with": "20 % zugewiesen, 80 % schedulierbar"
+          },
+          {
+            "metric": "Token-Durchsatz (Tokens/s)",
+            "without": "Baseline",
+            "with": "Innerhalb von 5 % der exklusiven Nutzung"
+          },
+          {
+            "metric": "Ladezeit / P95-Latenz",
+            "without": "Baseline",
+            "with": "Praktisch identisch mit exklusiver Nutzung"
+          }
+        ]
+      }
+    },
+    "lessons": {
+      "title": "Erkenntnisse & nächste Schritte",
+      "points": [
+        "Heterogenes GPU-Sharing sollte von Workload-Profilen ausgehen, nicht von einer einheitlichen Quote – Produktionsmodelle, Batch-Jobs und Dev-Umgebungen unterscheiden sich in Latenz, VRAM, Durchsatz und Isolation.",
+        "Entwicklungsumgebungen sind ein wichtiger Nutzer geteilter GPUs: Dev-Workloads als Kubernetes-Pods betreiben bedeutet dieselben Ressourcendeklarationen und Scheduling-Verfahren wie in der Produktion – ohne exklusive Langzeitbelegung.",
+        "Als Nächstes verfeinert CETC Cloud die Kapazitäts- und Integritätsansichten für Produktions- und Entwicklungs-Workloads und ergänzt reproduzierbare Experimentaldaten für verschiedene Modelle, Netzwerke und Aufrufmuster."
+      ]
+    },
+    "conclusion": {
+      "title": "Mehr aus begrenzter heterogener Rechenleistung holen",
+      "description": "Von exklusiver Nutzung zu bedarfsgesteuertem Sharing: CETC Cloud dient mit Kubernetes und HAMi auf einem einzigen portablen Gerät eine Produktionspipeline und 30 gleichzeitige Dev-Umgebungen – ohne nennenswerte Leistungseinbußen. Derselbe Ressourcenvertrag gilt für jedes Team, bei dem Produktion und Entwicklung auf begrenzter heterogener Rechenleistung koexistieren müssen."
+    },
+    "cta": {
+      "exploreHami": "HAMi Open-Source-Projekt entdecken",
+      "contactUs": "Kontakt aufnehmen"
+    }
+  },
     "telecomGpu": {
       "title": "Telekommunikationsanbieter GPU-Virtualisierungs-Fallstudie",
       "subtitle": "Wie ein fuehrender Telekommunikationsanbieter HAMi fuer GPU-Virtualisierung und heterogene Geraeteverwaltung nutzt",
