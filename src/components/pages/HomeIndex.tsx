@@ -19,6 +19,7 @@ import {
   faStar
 } from '@fortawesome/free-solid-svg-icons';
 import { faDocker } from '@fortawesome/free-brands-svg-icons';
+import { EVENT_BANNER_ENABLED, EVENT_BANNER_URL } from '@/config/app-config';
 
 const HAMI_REPO = 'Project-HAMi/HAMi';
 
@@ -289,75 +290,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HAMi Community Meetup Shanghai 活动 Banner */}
-      <section className="px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ duration: 0.5 }}
-          className="max-w-7xl mx-auto"
-        >
-          <Link
-            href="https://www.huodongxing.com/event/2874911381700"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#76b900] via-[#5fa800] to-[#368cc7] shadow-lg hover:shadow-xl transition-shadow duration-300"
+      {/* HAMi Community Meetup Shanghai 活动 Banner，开关在 app.config.json 的 eventBanner.enabled */}
+      {EVENT_BANNER_ENABLED && (
+        <section className="px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+            className="max-w-7xl mx-auto"
           >
-            {/* 装饰性光晕 */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
-              <div className="absolute -top-24 -right-24 w-72 h-72 bg-white rounded-full blur-3xl" />
-              <div className="absolute -bottom-32 -left-16 w-80 h-80 bg-white rounded-full blur-3xl" />
-            </div>
+            <Link
+              href={EVENT_BANNER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#76b900] via-[#5fa800] to-[#368cc7] shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
+              {/* 装饰性光晕 */}
+              <div className="absolute inset-0 opacity-20 pointer-events-none">
+                <div className="absolute -top-24 -right-24 w-72 h-72 bg-white rounded-full blur-3xl" />
+                <div className="absolute -bottom-32 -left-16 w-80 h-80 bg-white rounded-full blur-3xl" />
+              </div>
 
-            <div className="relative px-5 py-5 sm:px-8 sm:py-6 flex items-center gap-4 sm:gap-6">
-              {/* 密瓜智能 + HAMi Logo */}
-              <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-lg shadow-sm flex items-center justify-center p-1.5">
-                  <Image
-                    src={locale === 'zh' ? '/dynamia-logo-zh.svg' : '/dynamia-logo.svg'}
-                    alt={locale === 'zh' ? '密瓜智能' : 'Dynamia AI'}
-                    width={52}
-                    height={52}
-                    className="w-full h-auto"
-                  />
+              <div className="relative px-5 py-5 sm:px-8 sm:py-6 flex items-center gap-4 sm:gap-6">
+                {/* 密瓜智能 + HAMi Logo */}
+                <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-lg shadow-sm flex items-center justify-center p-1.5">
+                    <Image
+                      src={locale === 'zh' ? '/dynamia-logo-zh.svg' : '/dynamia-logo.svg'}
+                      alt={locale === 'zh' ? '密瓜智能' : 'Dynamia AI'}
+                      width={52}
+                      height={52}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="text-white text-xl sm:text-2xl font-light opacity-70">+</div>
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-lg shadow-sm flex items-center justify-center p-1.5">
+                    <Image
+                      src="/hami.svg"
+                      alt="HAMi"
+                      width={52}
+                      height={52}
+                      className="w-full h-auto"
+                    />
+                  </div>
                 </div>
-                <div className="text-white text-xl sm:text-2xl font-light opacity-70">+</div>
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-lg shadow-sm flex items-center justify-center p-1.5">
-                  <Image
-                    src="/hami.svg"
-                    alt="HAMi"
-                    width={52}
-                    height={52}
-                    className="w-full h-auto"
-                  />
+
+                {/* 文案 */}
+                <div className="flex-1 min-w-0">
+                  <span className="inline-block px-2.5 py-0.5 mb-1.5 text-xs font-semibold tracking-wide text-[#76b900] bg-white/90 rounded-full">
+                    {t('home.cncfBanner.badge')}
+                  </span>
+                  <h2 className="text-base sm:text-xl md:text-2xl font-bold text-white leading-snug">
+                    {t('home.cncfBanner.headline')}
+                  </h2>
+                  <p className="hidden sm:block mt-1 text-sm md:text-base text-white/85">
+                    {t('home.cncfBanner.subline')}
+                  </p>
+                </div>
+
+                {/* 箭头 CTA */}
+                <div className="hidden sm:flex items-center gap-2 text-white font-medium flex-shrink-0">
+                  <span className="text-sm">{t('home.cncfBanner.cta')}</span>
+                  <span className="w-8 h-8 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-colors">
+                    <ArrowIcon />
+                  </span>
                 </div>
               </div>
-
-              {/* 文案 */}
-              <div className="flex-1 min-w-0">
-                <span className="inline-block px-2.5 py-0.5 mb-1.5 text-xs font-semibold tracking-wide text-[#76b900] bg-white/90 rounded-full">
-                  {t('home.cncfBanner.badge')}
-                </span>
-                <h2 className="text-base sm:text-xl md:text-2xl font-bold text-white leading-snug">
-                  {t('home.cncfBanner.headline')}
-                </h2>
-                <p className="hidden sm:block mt-1 text-sm md:text-base text-white/85">
-                  {t('home.cncfBanner.subline')}
-                </p>
-              </div>
-
-              {/* 箭头 CTA */}
-              <div className="hidden sm:flex items-center gap-2 text-white font-medium flex-shrink-0">
-                <span className="text-sm">{t('home.cncfBanner.cta')}</span>
-                <span className="w-8 h-8 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-colors">
-                  <ArrowIcon />
-                </span>
-              </div>
-            </div>
-          </Link>
-        </motion.div>
-      </section>
+            </Link>
+          </motion.div>
+        </section>
+      )}
 
       {/* 社会证明部分
       <section className="py-12 bg-white dark:bg-gray-900 border-t border-b border-gray-100 dark:border-gray-800 overflow-hidden">

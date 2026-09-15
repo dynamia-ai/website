@@ -9,5 +9,7 @@ export const NOREPLY_EMAIL = appConfig.contact.noreplyEmail;
 export const CONTACT_PHONE_RAW = appConfig.contact.phone.raw;
 export const CONTACT_PHONE_DISPLAY = appConfig.contact.phone.display;
 export const GA4_MEASUREMENT_ID = appConfig.analytics.ga4MeasurementId;
+export const EVENT_BANNER_ENABLED = appConfig.eventBanner.enabled;
+export const EVENT_BANNER_URL = appConfig.eventBanner.url;
 
 export default appConfig;
