@@ -14,7 +14,13 @@ for (const slug of fs.readdirSync(root, { withFileTypes: true })) {
     for (const field of ["title", "excerpt"]) {
       if (typeof data[field] !== "string" || !data[field].trim()) failures.push(`${name}: missing ${field}`);
     }
-    if (!data.date || !Number.isFinite(Date.parse(data.date))) failures.push(`${name}: invalid date`);
+    const dateMatch = typeof data.date === "string" && /^(\d{4})-(\d{2})-(\d{2})$/.exec(data.date);
+    const parsedDate = dateMatch ? new Date(data.date) : null;
+    const validDate = parsedDate &&
+      parsedDate.getUTCFullYear() === Number(dateMatch[1]) &&
+      parsedDate.getUTCMonth() + 1 === Number(dateMatch[2]) &&
+      parsedDate.getUTCDate() === Number(dateMatch[3]);
+    if (!validDate) failures.push(`${name}: invalid date`);
     count++;
   }
 }

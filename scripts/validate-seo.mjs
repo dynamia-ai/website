@@ -32,7 +32,7 @@ for (const prefix of ['', '/zh']) {
   check(tags(second, 'a').some((t) => t.href === `${prefix}/blog`), 'Previous link must return to the canonical first page');
   for (const value of ['1', '0', '-1', 'NaN', '2oops', '99999']) {
     const { response } = await get(`${prefix}/blog?page=${value}`);
-    check(response.status === 308, `Invalid/redundant page ${value} must redirect`);
+    check(response.status === 307, `Invalid/redundant page ${value} must redirect`);
     const target = new URL(response.headers.get('location'), base);
     check(target.pathname === `${prefix}/blog`, 'Page normalization must preserve locale');
   }

@@ -14,7 +14,11 @@ export interface ResourceArticle {
   link: string;
 }
 
-export default function ResourcesPage({ articles }: { articles: ResourceArticle[] }) {
+interface ResourcesPageProps {
+  articles: ResourceArticle[];
+}
+
+export default function ResourcesPage({ articles }: ResourcesPageProps) {
   const locale = useLocale();
   const nav = useTranslations("navigation");
   const blog = useTranslations("blogUI");

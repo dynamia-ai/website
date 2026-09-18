@@ -17,8 +17,12 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 },
 };
 
+interface BlogCardProps {
+  post: BlogPostMeta;
+}
+
 // Blog card component
-const BlogCard = ({ post }: { post: BlogPostMeta }) => {
+const BlogCard = ({ post }: BlogCardProps) => {
   const locale = useLocale();
   const bt = useTranslations();
   const blogPath = localizedPath(`/blog/${post.slug}`, locale);

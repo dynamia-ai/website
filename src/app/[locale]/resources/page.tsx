@@ -5,11 +5,11 @@ import { getAllBlogPosts } from "@/lib/blog-server";
 import { BLOG_LOCALES } from "@/lib/seo-routes";
 import { routing } from "@/i18n/routing";
 
-export default async function Resources({
-  params,
-}: {
+interface PageProps {
   params: Promise<{ locale: string }>;
-}) {
+}
+
+export default async function Resources({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const contentLocale = BLOG_LOCALES.some((candidate) => candidate === locale) ? locale : routing.defaultLocale;
@@ -23,11 +23,7 @@ export default async function Resources({
   return <ResourcesPage articles={articles} />;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export async function generateMetadata({ params }: PageProps) {
   const { locale } = await params;
   return generatePageMetadata(locale, "resources", "/resources");
 }

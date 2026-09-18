@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { permanentRedirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { getAllBlogPosts } from "@/lib/blog-server";
 import { generatePageMetadata, localizedAlternates, localizedPath, localizedUrl } from "@/utils/i18n";
 import { routing } from "@/i18n/routing";
@@ -53,7 +53,7 @@ export default async function BlogPage(props: PageProps) {
   const normalizedPage = page > 1 ? String(page) : undefined;
   if ((query.page !== undefined && query.page !== normalizedPage) ||
       (query.category !== undefined && query.category !== category)) {
-    permanentRedirect(localizedPath(blogListingPath(page, category), locale));
+    redirect(localizedPath(blogListingPath(page, category), locale));
   }
 
   return (
