@@ -3,7 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { localizedPath } from '@/utils/i18n';
 import MainLayout from '@/components/layout/MainLayout';
 
 // 动画配置
@@ -14,6 +15,7 @@ const fadeIn = {
 
 const CaseTelecomGpu: React.FC = () => {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <MainLayout>
@@ -275,7 +277,7 @@ const CaseTelecomGpu: React.FC = () => {
               {t('cases.telecomGpu.cta.description')}
             </p>
             <a
-              href="/contact"
+              href={localizedPath('/apply-trial', locale)}
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark"
             >
               {t('cases.telecomGpu.cta.button')}

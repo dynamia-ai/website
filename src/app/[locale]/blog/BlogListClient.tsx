@@ -7,11 +7,9 @@ import MainLayout from '@/components/layout/MainLayout';
 import { BlogPostMeta } from '@/types/blog';
 import DynamicBlogCover from '@/components/DynamicBlogCover';
 import { formatDate } from '@/lib/blog-client';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { routing } from '@/i18n/routing';
-
-const POSTS_PER_PAGE = 9;
+import { useRouter } from 'next/navigation';
+import { localizedPath } from '@/utils/i18n';
+import { blogListingPath } from '@/lib/blog-pagination';
 
 // Animation variants
 const fadeIn = {
@@ -19,11 +17,15 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 },
 };
 
+interface BlogCardProps {
+  post: BlogPostMeta;
+}
+
 // Blog card component
-const BlogCard = ({ post, locale }: { post: BlogPostMeta; locale: string }) => {
+const BlogCard = ({ post }: BlogCardProps) => {
+  const locale = useLocale();
   const bt = useTranslations();
-  const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
-  const blogPath = `${prefix}/blog/${post.slug}`;
+  const blogPath = localizedPath(`/blog/${post.slug}`, locale);
   const displayCategory = bt(`blogUI.categories.${post.category}`) || post.category;
 
   return (
@@ -72,56 +74,22 @@ const BlogCard = ({ post, locale }: { post: BlogPostMeta; locale: string }) => {
 };
 
 interface BlogListClientProps {
-  enPosts: BlogPostMeta[];
-  zhPosts: BlogPostMeta[];
-  enTags?: string[];
-  zhTags?: string[];
-  categories?: string[]; // 分类列表
-  selectedTag?: string;
+  posts: BlogPostMeta[];
+  currentPage: number;
+  totalPages: number;
+  totalPosts: number;
+  categories: { name: string; count: number }[];
+  selectedCategory: string;
 }
 
-export default function BlogListClient(
-  { enPosts, zhPosts, categories = [], ..._unusedProps }: BlogListClientProps
-) {
-  void _unusedProps;
+export default function BlogListClient({
+  posts: currentPosts, currentPage, totalPages, totalPosts, categories, selectedCategory,
+}: BlogListClientProps) {
   const t = useTranslations();
   const locale = useLocale();
-  const searchParams = useSearchParams();
-
-  // Get posts for current language
-  const allPosts = locale === 'zh' ? zhPosts : enPosts;
-
-  // Category filter state
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-
-  // Filter posts by category
-  const posts = selectedCategory === 'All' 
-    ? allPosts 
-    : allPosts.filter(post => post.category === selectedCategory);
-
-  // Pagination state
-  const [currentPage, setCurrentPage] = useState(1);
-
-  // Sync page with URL query param
-  useEffect(() => {
-    const pageParam = searchParams.get('page');
-    const pageFromUrl = pageParam ? parseInt(pageParam, 10) : 1;
-    const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-    const validPage = Math.max(1, Math.min(pageFromUrl, totalPages || 1));
-    setCurrentPage(validPage);
-  }, [searchParams, posts.length]);
-
-  // Calculate pagination
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const endIndex = startIndex + POSTS_PER_PAGE;
-  const currentPosts = posts.slice(startIndex, endIndex);
-
-  // Handle page change
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const router = useRouter();
+  const pageHref = (page: number) => localizedPath(blogListingPath(page, selectedCategory), locale);
+  const selectCategory = (category: string) => router.push(localizedPath(blogListingPath(1, category), locale));
 
   return (
     <MainLayout>
@@ -155,27 +123,24 @@ export default function BlogListClient(
               <div className="flex flex-wrap justify-center gap-3">
                 <button
                   onClick={() => {
-                    setSelectedCategory('All');
-                    setCurrentPage(1);
+                    selectCategory('');
                   }}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    selectedCategory === 'All'
+                    selectedCategory === ''
                       ? 'bg-primary text-white shadow-md'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200'
                   }`}
                 >
-                  {t('blogUI.all')} ({allPosts.length})
+                  {t('blogUI.all')} ({totalPosts})
                 </button>
-                {categories.map((category) => {
-                  const count = allPosts.filter(post => post.category === category).length;
+                {categories.map(({ name: category, count }) => {
                   const displayName = t(`blogUI.categories.${category}`) || category;
                   
                   return (
                     <button
                       key={category}
                       onClick={() => {
-                        setSelectedCategory(category);
-                        setCurrentPage(1);
+                        selectCategory(category);
                       }}
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                         selectedCategory === category
@@ -192,12 +157,11 @@ export default function BlogListClient(
           )}
 
           {/* Blog posts grid */}
-          {posts.length > 0 ? (
+          {currentPosts.length > 0 ? (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {currentPosts.map((post) => (
                 <BlogCard
-                  locale={locale}
                   key={post.slug}
                   post={post}
                 />
@@ -208,10 +172,9 @@ export default function BlogListClient(
               {totalPages > 1 && (
                 <div className="mt-12 flex justify-center items-center gap-2">
                   <Link
-                    href={currentPage > 1 ? `?page=${currentPage - 1}` : '#'}
+                    href={pageHref(Math.max(1, currentPage - 1))}
                     onClick={(e) => {
                       if (currentPage <= 1) e.preventDefault();
-                      else handlePageChange(currentPage - 1);
                     }}
                     className={`px-4 py-2 rounded-md border ${
                       currentPage > 1
@@ -248,8 +211,8 @@ export default function BlogListClient(
                       return (
                         <Link
                           key={page}
-                          href={`?page=${page}`}
-                          onClick={() => handlePageChange(page)}
+                          href={pageHref(page)}
+                          aria-current={page === currentPage ? "page" : undefined}
                           className={`px-4 py-2 rounded-md border ${
                             page === currentPage
                               ? 'bg-primary text-white border-primary'
@@ -263,10 +226,9 @@ export default function BlogListClient(
                   </div>
 
                   <Link
-                    href={currentPage < totalPages ? `?page=${currentPage + 1}` : '#'}
+                    href={pageHref(Math.min(totalPages, currentPage + 1))}
                     onClick={(e) => {
                       if (currentPage >= totalPages) e.preventDefault();
-                      else handlePageChange(currentPage + 1);
                     }}
                     className={`px-4 py-2 rounded-md border ${
                       currentPage < totalPages

@@ -88,3 +88,17 @@ This project follows specific coding standards. See [AGENTS.md](./AGENTS.md) for
 - TypeScript best practices
 - Styling guidelines
 - i18n usage rules
+
+
+## SEO regression checks
+
+`npm run build` validates blog frontmatter before compiling. With the production
+server running, run `npm run validate:seo` (defaults to `http://localhost:3100`;
+override with `SEO_TEST_URL`). The checks verify server-rendered pagination,
+canonical/hreflang, localized Article data, historical redirects without loops,
+resource links, and real 404 responses. `npm run validate:blog` runs the content
+metadata check independently.
+
+Case-only historical blog redirects live in `src/lib/legacy-blog-redirects.ts`
+and run before locale middleware. Do not move those mappings to `next.config.ts`,
+whose redirects match case-insensitively and can loop on the destination.

@@ -186,7 +186,7 @@ export default function Company() {
         position: t('company.team.members.4.position'),
         image: "/images/leadership/jimmy.png",
         github: "https://github.com/rootsongjc",
-        linkedin: "linkedin.com/in/jimmysongio"
+        linkedin: "https://www.linkedin.com/in/jimmysongio/"
       }
     ];
 
@@ -277,7 +277,8 @@ export default function Company() {
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md"
-                quality={100}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                quality={75}
                 priority
               />
             </div>

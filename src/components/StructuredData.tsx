@@ -106,10 +106,10 @@ export function articleSchema(props: {
       },
     },
     keywords: props.keywords?.join(", "),
-    url: `${cfg.url}${props.url}`,
+    url: new URL(props.url, cfg.url).href,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${cfg.url}${props.url}`,
+      "@id": new URL(props.url, cfg.url).href,
     },
   };
 }

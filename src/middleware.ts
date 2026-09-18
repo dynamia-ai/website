@@ -1,5 +1,6 @@
 import createMiddleware from "next-intl/middleware";
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
+import { legacyBlogDestination } from "@/lib/legacy-blog-redirects";
 import { routing } from "./i18n/routing";
 import { GEO_COOKIE_MAX_AGE } from "@/config/cookie-consent";
 import { getCountry, CONSENT_REQUIRED_COUNTRIES } from "@/utils/geo";
@@ -7,6 +8,13 @@ import { getCountry, CONSENT_REQUIRED_COUNTRIES } from "@/utils/geo";
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
+  const legacyDestination = legacyBlogDestination(request.nextUrl.pathname);
+  if (legacyDestination) {
+    const destination = request.nextUrl.clone();
+    destination.pathname = legacyDestination;
+    return NextResponse.redirect(destination, 308);
+  }
+
   const response = intlMiddleware(request);
 
   if (!request.cookies.get("consent-required")) {

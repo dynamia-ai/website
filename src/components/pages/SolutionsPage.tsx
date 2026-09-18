@@ -18,25 +18,7 @@ export default function Solutions() {
   const locale = useLocale();
   
   const categoriesData = t.raw('solutions.categories');
-  const categories = Array.isArray(categoriesData)
-    ? categoriesData
-    : [
-        {
-          title: "人工智能/机器学习",
-          description: "优化您的机器学习基础设施，加速训练和推理",
-          learnMore: "了解更多"
-        },
-        {
-          title: "高性能计算",
-          description: "高效扩展您的高性能计算工作负载",
-          learnMore: "了解更多"
-        },
-        {
-          title: "边缘计算",
-          description: "通过优化的资源分配将您的计算能力扩展到边缘",
-          learnMore: "了解更多"
-        }
-      ];
+  const categories: { title: string; description: string }[] = Object.values(categoriesData);
 
   return (
     <MainLayout>
@@ -71,14 +53,7 @@ export default function Solutions() {
                   <div className="px-4 py-5 sm:p-6">
                     <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">{category.title}</h3>
                     <p className="mt-2 text-base text-gray-500 dark:text-gray-400 dark:text-gray-500">{category.description}</p>
-                    <div className="mt-4">
-                      <Link
-                        href={`/solutions/${category.title.toLowerCase().replace(/\//g, '-')}`}
-                        className="text-primary hover:text-primary-dark font-medium"
-                      >
-                        {category.learnMore} &rarr;
-                      </Link>
-                    </div>
+
                   </div>
                 </motion.div>
               ))}
@@ -93,7 +68,7 @@ export default function Solutions() {
                   {t('solutions.customSolutions.description')}
                 </p>
                 <Link
-                  href="/contact"
+                  href={localizedPath('/apply-trial', locale)}
                   className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark"
                 >
                   {t('solutions.customSolutions.contactButton')}
@@ -118,13 +93,13 @@ export default function Solutions() {
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/apply-trial"
+                href={localizedPath('/apply-trial', locale)}
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
               >
                 {t('navigation.freeTrial')}
               </Link>
               <Link
-                href="/apply-trial"
+                href={localizedPath('/apply-trial', locale)}
                 className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
               >
                 {t('navigation.freeTrial')}
