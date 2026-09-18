@@ -10,6 +10,10 @@ metadata:
 
 在 `dynamia-ai/website` 中执行。日常操作说明见 [市场 SOP](../../../docs/marketing/blog-sop.md)；首次配置及飞书读取见 [Lark CLI 接入](references/lark-cli.md)。先读仓库 `AGENTS.md`。使用现有 Markdown 内容机制，不创建页面组件或后台。
 
+## Agent 接入
+
+本流程不依赖特定 Agent 品牌或调用语法。执行环境必须能读写仓库、运行本地 CLI/Git、读取飞书文档，并通过浏览器或人工复核完成预览。支持 Skill 发现的工具可加载本目录；其他工具直接读取本 SKILL.md，再按步骤读取相对路径参考。不能运行命令的纯聊天工具无法独立执行。云端 Agent 必须在自己的执行环境完成依赖配置与本人授权，不能假设可复用本机登录态。`agents/openai.yaml` 仅是可选客户端展示元数据，执行流程不依赖它。
+
 ## 编辑边界
 
 - 一次只处理一篇文章。允许修改 `src/content/blog/<slug>/{zh,en}.md` 与 `public/images/blog/<slug>/` 内 PNG/JPEG/WebP/GIF。当前博客只支持中文和英文；德文需求转维护者。只编辑用户指定语言，不自动翻译或覆盖其他语言。

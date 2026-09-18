@@ -25,6 +25,10 @@ Skill 约束正常操作：取最新原文、一个 slug、只改文章及配图
 
 校验脚本与 CI 检查真正输出：单篇改动范围、删除/重命名/软链接、字段、日期、Markdown AST 中原始 HTML/不安全链接、图片路径与文件签名、大小预算。代码块内示例可以包含 HTML。此检查不验证事实、版权或视觉质量，也不替代生产运行时 HTML 安全治理。历史文章不批量迁移；本次触及的文章按新规范验证。
 
+## Agent 适配
+
+以 SKILL.md 与相对路径参考为唯一流程来源；按实际使用工具选择自动发现或显式读取，不为每个品牌复制一份规则。`agents/openai.yaml` 可由不识别它的客户端忽略。先验证所选 Agent 能在其执行环境读取仓库、调用 Lark CLI、完成 Git 操作和预览；尚未在其他 Agent 上实跑，不能把通用文档改写等同于全客户端兼容性认证。
+
 ## 验收清单
 
 - 用一篇可公开的测试文档和真实封面完成读取 → 下载 → Markdown → 本地检查 → 预览 → draft PR；不合并测试文章。
@@ -37,7 +41,7 @@ Skill 约束正常操作：取最新原文、一个 slug、只改文章及配图
 
 依赖安装使用仓库 lockfile；不要在发稿 PR 里更新依赖。如果现有 lint/build 自身失败，记录日志交维护者单独修复，不能为发文章删规则。网站路径、frontmatter、语言或封面组件改动时，同时更新 Skill、模板与校验器。
 
-参考：[官方 Lark CLI](https://github.com/larksuite/cli)、[Codex Skills](https://learn.chatgpt.com/docs/build-skills)。
+参考：[官方 Lark CLI](https://github.com/larksuite/cli)。
 
 ## 本次交付验证
 
