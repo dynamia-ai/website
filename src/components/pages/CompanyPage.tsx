@@ -186,7 +186,7 @@ export default function Company() {
         position: t('company.team.members.4.position'),
         image: "/images/leadership/jimmy.png",
         github: "https://github.com/rootsongjc",
-        linkedin: "linkedin.com/in/jimmysongio"
+        linkedin: "https://www.linkedin.com/in/jimmysongio/"
       }
     ];
 
