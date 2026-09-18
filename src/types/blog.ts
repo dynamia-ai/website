@@ -16,6 +16,7 @@ export interface BlogPost {
   tags: string[];
   category: string; // 博客分类
   coverImage?: string;
+  coverDisplay?: 'image' | 'text';
   coverTitle?: string; // 自定义封面标题，如果不设置则使用 title
   language: string;
   content: string;
@@ -33,6 +34,7 @@ export interface BlogPostMeta {
   tags: string[];
   category: string; // 博客分类
   coverImage?: string;
+  coverDisplay?: 'image' | 'text';
   coverTitle?: string; // 自定义封面标题，如果不设置则使用 title
   language: string;
 }
@@ -42,4 +44,4 @@ export interface BlogPostsResult {
   posts: BlogPostMeta[];
   tags: string[];
   categories: string[]; // 博客分类列表
-} 
+}

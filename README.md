@@ -88,3 +88,13 @@ This project follows specific coding standards. See [AGENTS.md](./AGENTS.md) for
 - TypeScript best practices
 - Styling guidelines
 - i18n usage rules
+
+## Marketing blog workflow
+
+Marketing editors can write in Feishu and use the repository's
+[website-blog-from-feishu skill](.agents/skills/website-blog-from-feishu/SKILL.md)
+to prepare a content-only draft PR.
+
+- [市场同事操作指南](docs/marketing/blog-sop.md)
+- [飞书投稿模板](docs/marketing/feishu-blog-template.md)
+- [维护者启用与验收](docs/marketing/maintainer-setup.md)

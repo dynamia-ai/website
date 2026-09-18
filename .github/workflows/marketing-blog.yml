@@ -1,0 +1,29 @@
+name: marketing-blog
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Test the content validator
+        run: node --test scripts/validate-marketing-blog.test.mjs
+      - name: Enforce content scope and format
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node scripts/validate-marketing-blog.mjs --base "$BASE_SHA" --if-content
+      - name: Lint and analytics checks
+        run: npm run lint
+      - name: Build website
+        run: npm run build
