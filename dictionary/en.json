@@ -57,8 +57,8 @@
       "keywords": "AI solutions, HPC solutions, edge computing, heterogeneous computing solutions, dynamia ai"
     },
     "resources": {
-      "title": "Resources - Dynamia AI | Documentation, Blog & Whitepapers",
-      "description": "Explore technical documentation, blog articles, and whitepapers to learn more about Dynamia AI and heterogeneous computing best practices.",
+      "title": "Resources - Dynamia AI | Documentation, Blog & Tools",
+      "description": "Explore technical documentation, blog articles, and tools to learn more about Dynamia AI and heterogeneous computing best practices.",
       "keywords": "dynamia ai documentation, heterogeneous computing resources, AI infrastructure guides, HAMi tutorials"
     },
     "whatIsHami": {
@@ -406,7 +406,7 @@
   },
   "resources": {
     "title": "Resources",
-    "subtitle": "Explore our technical documentation, blog articles, and whitepapers to learn more about Dynamia AI",
+    "subtitle": "Explore our technical documentation, blog articles, and tools to learn more about Dynamia AI",
     "viewMore": "View more",
     "documentation": {
       "title": "Documentation",

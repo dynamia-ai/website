@@ -96,23 +96,20 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const [enT, zhT] = await Promise.all([
-    getTranslations({ locale: "en", namespace: "blogUI" }),
-    getTranslations({ locale: "zh", namespace: "blogUI" }),
-  ]);
-
-  const enResult = enPost ? await markdownToHtml(enPost.content, enT("figureLabel")) : null;
-  const zhResult = zhPost ? await markdownToHtml(zhPost.content, zhT("figureLabel")) : null;
-
-  const primaryPost = enPost || zhPost;
+  const primaryPost = getBlogPost(slug, locale) ?? enPost ?? zhPost;
+  if (!primaryPost) notFound();
+  const articleLocale = getBlogPost(slug, locale) ? locale : enPost ? "en" : "zh";
+  const t = await getTranslations({ locale: articleLocale, namespace: "blogUI" });
+  const result = await markdownToHtml(primaryPost.content, t("figureLabel"));
   const articleJsonLd = primaryPost
     ? articleSchema({
         title: primaryPost.title,
         description: primaryPost.excerpt,
         publishDate: primaryPost.date,
-        url: `/blog/${slug}`,
+        url: localizedUrl(`/blog/${slug}`, articleLocale),
+        locale: articleLocale as (typeof routing.locales)[number],
         author: primaryPost.author,
-        image: primaryPost.coverImage,
+        image: getPostSocialImage(primaryPost),
         keywords: primaryPost.tags,
       })
     : null;
@@ -120,18 +117,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       {articleJsonLd && <JsonLd data={articleJsonLd} />}
-      <BlogPostClient
-        enPost={
-          enPost && enResult
-            ? { ...enPost, content: enResult.html, toc: enResult.toc }
-            : null
-        }
-        zhPost={
-          zhPost && zhResult
-            ? { ...zhPost, content: zhResult.html, toc: zhResult.toc }
-            : null
-        }
-      />
+      <BlogPostClient post={{ ...primaryPost, content: result.html, toc: result.toc }} />
     </>
   );
 }

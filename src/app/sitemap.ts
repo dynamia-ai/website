@@ -28,30 +28,25 @@ function entriesForPath(
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const generatedAt = new Date();
   const staticEntries = STATIC_INDEXABLE_PATHS.flatMap((path) =>
     entriesForPath(path, routing.locales, {
-      lastModified: generatedAt,
       changeFrequency: path === "/" ? "weekly" : "monthly",
       priority: path === "/" ? 1 : 0.7,
     })
   );
 
   const blogIndexEntries = entriesForPath("/blog", BLOG_LOCALES, {
-    lastModified: generatedAt,
     changeFrequency: "daily",
     priority: 0.8,
   });
 
   const caseStudyIndexEntries = entriesForPath("/case-studies", CASE_STUDY_LOCALES, {
-    lastModified: generatedAt,
     changeFrequency: "monthly",
     priority: 0.7,
   });
 
   const productEntries = getProductIds().flatMap((productId) =>
     entriesForPath(`/products/${productId}`, routing.locales, {
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.8,
     })
@@ -60,7 +55,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const installEntries = getInstallDocSlugs().flatMap((productId) => {
     const locales = getInstallDocLocales(productId);
     return entriesForPath(`/products/${productId}/install`, locales, {
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.6,
     });
@@ -68,7 +62,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const caseStudyEntries = CASE_STUDY_SLUGS.flatMap((slug) =>
     entriesForPath(`/case-studies/${slug}`, CASE_STUDY_LOCALES, {
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.7,
     })

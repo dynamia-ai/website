@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...['', '/en', '/zh', '/de'].flatMap((prefix) => {
+        const targetPrefix = prefix === '/en' ? '' : prefix;
+        return [
+          { source: `${prefix}/resources/blog`, destination: `${targetPrefix}/blog`, permanent: true },
+          { source: `${prefix}/resources/documentation`, destination: 'https://project-hami.io/docs/', permanent: true },
+          { source: `${prefix}/contact`, destination: `${targetPrefix}/apply-trial`, permanent: true },
+        ];
+      }),
       { source: '/request-demo', destination: '/apply-trial', permanent: true },
       { source: '/zh/request-demo', destination: '/zh/apply-trial', permanent: true },
       { source: '/blog/case-prep-edu-hami', destination: '/case-studies/prep-edu', permanent: true },

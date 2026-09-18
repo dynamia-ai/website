@@ -1,8 +1,8 @@
 ---
 title: >-
-linktitle: Prep Education × HAMi
   【PREP EDU | HAMi Project Team】Southeast Asia's Potential AI Education Unicorn
   Builds an Efficient GPU Inference Platform with HAMi
+linktitle: Prep Education × HAMi
 coverTitle: 'PREP EDU × HAMi: Scaling AI Workloads in Southeast Asia'
 date: '2025-08-08'
 excerpt: >-

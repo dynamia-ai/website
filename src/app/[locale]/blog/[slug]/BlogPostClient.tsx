@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import MainLayout from '@/components/layout/MainLayout';
 import { formatDate } from '@/lib/blog-client';
 import { BlogPost } from '@/types/blog';
@@ -12,35 +11,23 @@ import TableOfContents from '@/components/TableOfContents';
 import ImageLightbox from '@/components/ImageLightbox';
 import Breadcrumb from '@/components/Breadcrumb';
 import BlogShareSection from '@/components/BlogAIShareSection';
-import { routing } from '@/i18n/routing';
+import { localizedPath } from '@/utils/i18n';
 
 interface BlogPostClientProps {
-  enPost: (BlogPost & { content: string }) | null;
-  zhPost: (BlogPost & { content: string }) | null;
+  post: BlogPost;
 }
 
-export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) {
+export default function BlogPostClient({ post }: BlogPostClientProps) {
   const locale = useLocale();
   const t = useTranslations();
-  const router = useRouter();
-  const urlPrefix = locale === routing.defaultLocale ? '' : `/${locale}`;
 
   // Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState({ src: '', alt: '' });
 
-  const postMap: Record<string, typeof enPost> = { en: enPost, zh: zhPost };
-  const post = postMap[locale] ?? enPost;
-  const blogListPath = `${urlPrefix}/blog`;
-  const getBlogPostPath = (slug: string) => `${urlPrefix}/blog/${slug}`;
-  
-  // 如果当前语言的博客不存在，但另一个语言的博客存在，重定向到博客列表页
-  useEffect(() => {
-    if (!post && (enPost || zhPost)) {
-      router.replace(blogListPath);
-    }
-  }, [locale, post, enPost, zhPost, router, blogListPath]);
-  
+  const blogListPath = localizedPath('/blog', locale);
+  const getBlogPostPath = (slug: string) => localizedPath(`/blog/${slug}`, locale);
+
   const displayPost = post;
 
   useEffect(() => {
@@ -248,23 +235,6 @@ export default function BlogPostClient({ enPost, zhPost }: BlogPostClientProps) 
       container.removeEventListener('click', handleImageClick);
     };
   }, [displayPost]);
-
-  // 如果当前语言的博客不存在，但另一个语言的博客存在，显示加载状态（正在重定向）
-  // 只有在两个语言的博客都不存在时，才显示 "Post Not Found"
-  if (!post && (enPost || zhPost)) {
-    return (
-      <MainLayout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-r-2 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-gray-600 dark:text-gray-300">
-              {t('blogUI.redirecting')}
-            </p>
-          </div>
-        </div>
-      </MainLayout>
-    );
-  }
 
   if (!displayPost) {
     return (

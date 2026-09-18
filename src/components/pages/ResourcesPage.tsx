@@ -1,11 +1,12 @@
 "use client";
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { localizedPath } from '@/utils/i18n';
 import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
 
-interface ResourceArticle {
+export interface ResourceArticle {
   title: string;
   category: string;
   date: string;
@@ -13,7 +14,10 @@ interface ResourceArticle {
   link: string;
 }
 
-export default function ResourcesPage() {
+export default function ResourcesPage({ articles }: { articles: ResourceArticle[] }) {
+  const locale = useLocale();
+  const nav = useTranslations("navigation");
+  const blog = useTranslations("blogUI");
   const t = useTranslations('resources');
 
   const ResourceCard = ({ title, description, link, icon }: { title: string; description: string; link: string; icon: string }) => (
@@ -36,19 +40,6 @@ export default function ResourcesPage() {
     </div>
   );
 
-  const articlesFromTranslation = t.raw('latestResources.articles');
-  const articles: ResourceArticle[] = Array.isArray(articlesFromTranslation)
-    ? articlesFromTranslation
-    : [
-        {
-          title: "Dynamia AI v2.0 Release: New Features and Improvements",
-          category: "Blog",
-          date: "2025-01-15",
-          excerpt: "Learn about the important updates and performance enhancements in the latest version of Dynamia AI.",
-          link: "/resources/blog/dynamia-ai-v2-release"
-        }
-      ];
-
   return (
     <MainLayout>
       <div className="py-16 bg-white dark:bg-gray-900">
@@ -67,19 +58,19 @@ export default function ResourcesPage() {
               <ResourceCard
                 title={t('documentation.title')}
                 description={t('documentation.description')}
-                link="/resources/documentation"
+                link="https://project-hami.io/docs/"
                 icon="📚"
               />
               <ResourceCard
                 title={t('blog.title')}
                 description={t('blog.description')}
-                link="/resources/blog"
+                link={localizedPath("/blog", locale)}
                 icon="✏️"
               />
               <ResourceCard
-                title={t('whitepapers.title')}
-                description={t('whitepapers.description')}
-                link="/resources/whitepapers"
+                title={nav('resourcesTools')}
+                description={nav('resourcesToolsDesc')}
+                link={localizedPath('/tools', locale)}
                 icon="📄"
               />
             </div>
@@ -95,7 +86,7 @@ export default function ResourcesPage() {
                   <div key={index} className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-medium text-primary-dark bg-primary-lighter px-2 py-1 rounded">
-                        {article.category}
+                        {blog(`categories.${article.category}`)}
                       </span>
                       <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{article.date}</span>
                     </div>
