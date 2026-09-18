@@ -1,0 +1,4 @@
+interface:
+  display_name: "飞书稿件转官网博客"
+  short_description: "读取飞书最新稿件，处理封面与正文，检查并提交官网博客待审核 PR"
+  default_prompt: "使用 $website-blog-from-feishu 将这篇飞书文档的最新版本转换成官网博客，生成预览与待审核 PR。"
