@@ -1038,6 +1038,7 @@
   },
   "cases": {
     "cetcCloud": {
+    "cardTitle": "CETC Cloud: GPU-Basis für portable Wissensdatenbank",
     "title": "CETC Cloud baut mit HAMi eine gemeinsame Ressourcenbasis für heterogene GPUs für eine portable Wissensdatenbank",
     "subtitle": "CETC Cloud (Beijing) Technology betreibt Produktionsmodelle für Textgenerierung, Embedding und Rerank zusammen mit Kubernetes-Entwicklungsumgebungen auf einem einzigen portablen Gerät mit 8 heterogenen GPUs – die Kapazität steigt von 2 auf 30 gleichzeitige Dev-Pods.",
     "sourceLabel": "Dieser Fall basiert auf der offiziellen CNCF Case Study:",
@@ -1225,6 +1226,7 @@
     }
   },
     "sangfor": {
+    "cardTitle": "Sangfor: Enterprise-KI-Compute-Plattform",
     "title": "Sangfor baut eine Enterprise-KI-Compute-Plattform auf Kubernetes, Volcano und HAMi",
     "subtitle": "Sangfor, ein führender chinesischer Anbieter für Cloud Computing und Cybersicherheit, betreibt AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten auf einer gemeinsamen GPU-Plattform – GPU-Auslastung um mehr als 3× gesteigert, 8+ Modelle pro GPU und externe Modellaufrufkosten von 400K auf 200K RMB pro Monat halbiert.",
     "sourceLabel": "Diese Fallstudie basiert auf der offiziellen CNCF Case Study:",
@@ -1422,6 +1424,7 @@
     }
   },
     "telecomGpu": {
+      "cardTitle": "Telekommunikationsanbieter GPU-Virtualisierung",
       "title": "Telekommunikationsanbieter GPU-Virtualisierungs-Fallstudie",
       "subtitle": "Wie ein fuehrender Telekommunikationsanbieter HAMi fuer GPU-Virtualisierung und heterogene Geraeteverwaltung nutzt",
       "overview": {
@@ -1483,6 +1486,7 @@
       }
     },
     "sfTechnologyEffectiveGpu": {
+      "cardTitle": "SF Technology: Higher AI Efficiency, Lower Cost",
       "title": "SF Technology Partners with HAMi to Enhance AI Efficiency and Significantly Reduce Costs with EffectiveGPU",
       "subtitle": "Discover how SF Technology built EffectiveGPU based on the open-source HAMi framework, deeply integrating heterogeneous computing virtualization and efficient scheduling capabilities to achieve production deployment in key scenarios like AI large model inference and voice recognition, significantly improving GPU utilization and realizing cost reduction and efficiency enhancement while promoting HAMi open-source ecosystem development.",
       "overview": {
@@ -1597,6 +1601,7 @@
       }
     },
     "prepEduHami": {
+      "cardTitle": "PREP EDU × HAMi: Intelligent GPU Scheduling",
       "title": "PREP EDU × HAMi | Intelligent Heterogeneous GPU Scheduling for Enhanced AI Service Efficiency",
       "subtitle": "PREP EDU deployed the HAMi framework to add fine-grained vGPU sharing and GPU aware scheduling to its production Kubernetes (RKE2) clusters. This addressed concrete problems: GPU utilization below 20%, frequent out-of-memory crashes from shared cards, and the operational overhead of manually scheduling workloads across mixed GPU hardware. The result was a measurable increase in inference task density and platform stability.",
       "overview": {
@@ -1690,6 +1695,7 @@
       }
     },
     "keHoldings": {
+      "cardTitle": "Ke Holdings: ML-Infrastruktur-GPU-Virtualisierung",
       "title": "Ke Holdings Scales ML Infrastructure with GPU Virtualization using Kubernetes and HAMi",
       "subtitle": "Discover how Ke Holdings built AIStudio based on HAMi and Kubernetes, achieving nearly 3x GPU utilization improvement (13% → 37%) while supporting 10,000+ pods and 10M+ daily requests across hybrid cloud environments.",
       "stats": {
@@ -1853,6 +1859,7 @@
       }
     },
     "daoCloud": {
+      "cardTitle": "DaoCloud: Flexible GPU Cloud with 80%+ Utilization",
       "title": "Building Flexible GPU Clouds with HAMi at DaoCloud",
       "subtitle": "Discover how DaoCloud operates two major cloud native platforms for AI workloads—D.run Compute Cloud and DaoCloud Enterprise—using HAMi to achieve >80% GPU utilization across 10,000+ GPUs spanning 10+ data centers.",
       "stats": {
@@ -2008,6 +2015,7 @@
       }
     },
     "nio": {
+      "cardTitle": "NIO: Better GPU Utilization for Autonomous Driving",
       "title": "NIO Improves GPU Utilization for Autonomous Driving Workloads with HAMi",
       "subtitle": "Discover how NIO adopted a hybrid GPU sharing strategy using HAMi to achieve 10× GPU utilization improvement in CI pipelines and 30% reduction in GPU hours for simulation workloads across 600 GPUs supporting autonomous driving AI infrastructure.",
       "stats": {
@@ -2171,6 +2179,7 @@
       }
     },
     "snowCorp": {
+      "cardTitle": "SNOW Corp: GenAI for 200M Users",
       "title": "SNOW Corp Scales GenAI for 200M Users with HAMi GPU Sharing and KEDA Autoscaling",
       "subtitle": "Discover how SNOW Corp orchestrates 1,000+ GPUs to handle 700% viral traffic spikes, achieving 91% MTTR reduction, 85% fewer surge errors, and USD 17.4M in estimated cost savings using HAMi and KEDA on Kubernetes.",
       "stats": {
@@ -2310,6 +2319,7 @@
       }
     },
     "chinaMerchantsBank": {
+      "cardTitle": "China Merchants Bank: AI-Compute-Scheduling",
       "title": "China Merchants Bank verbessert AI-Compute-Scheduling auf Kubernetes mit HAMi",
       "subtitle": "Erfahren Sie, wie die China Merchants Bank eine einheitliche AI-Compute-Scheduling-Plattform auf Kubernetes und HAMi aufbaute, Beschleuniger mehrerer Anbieter (Kunlunxin, Ascend, NVIDIA, PPU, Moore Threads, MetaX) bündelt, topologiebewusstes Scheduling und feinkörniges Sharing ermöglicht, 100% Hardware-Pool-Auslastung erreicht und maschinenübergreifendes Scheduling um 30% senkt.",
       "stats": [

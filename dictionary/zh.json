@@ -1272,6 +1272,7 @@
   },
   "cases": {
     "cetcCloud": {
+    "cardTitle": "电科云：便携式知识库 GPU 共享底座",
     "title": "电科云基于 HAMi 构建异构 GPU 共享资源底座，支撑便携式智能知识库",
     "subtitle": "电科云（北京）科技在一台配备 8 张异构 GPU 的便携式设备上，同时运行文本生成、Embedding、Rerank 等生产模型与 Kubernetes 研发环境，将研发 Pod 并发容量从 2 个提升至 30 个。",
     "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
@@ -1459,6 +1460,7 @@
     }
   },
     "sangfor": {
+    "cardTitle": "深信服：企业级 AI 算力平台",
     "title": "深信服基于 Kubernetes、Volcano 与 HAMi 构建企业级 AI 算力平台",
     "subtitle": "深信服是中国领先的企业级云计算与网络安全厂商。面对 AI 应用的快速增长，深信服为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服与销售 Agent 等场景——GPU 利用率提升 3 倍以上，单卡承载 8 个以上模型，外部模型调用成本从每月 40 万元降至 20 万元。",
     "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
@@ -1656,6 +1658,7 @@
     }
   },
     "telecomGpu": {
+      "cardTitle": "电信运营商 GPU 虚拟化",
       "title": "电信运营商 GPU 虚拟化案例研究",
       "subtitle": "某领先电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",
       "overview": {
@@ -1717,6 +1720,7 @@
       }
     },
     "sfTechnologyEffectiveGpu": {
+      "cardTitle": "顺丰科技：提效降本的 GPU 共享实践",
       "title": "顺丰科技 × HAMi | 提升 AI 效率并大幅削减成本",
       "subtitle": "探索顺丰科技如何基于开源 HAMi 框架，通过其 EffectiveGPU 技术实践，深度整合异构算力虚拟化与高效调度能力，在 AI 大模型推理、语音识别等关键场景实现生产落地，显著提升 GPU 利用率，实现降本增效，并推动 HAMi 开源生态发展。",
       "overview": {
@@ -1831,6 +1835,7 @@
       }
     },
     "prepEduHami": {
+      "cardTitle": "PREP EDU × HAMi：异构 GPU 智能调度",
       "title": "PREP EDU × HAMi｜异构 GPU 智能调度，全面提升 AI 服务效率",
       "subtitle": "探索 PREP EDU 基于 HAMi，在 Kubernetes（RKE2）生产环境实现异构 GPU 虚拟化与智能调度，解决了多型号显卡利用率低、显存冲突、资源隔离不足等痛点。HAMi 的 vGPU 精细化分配、GPU 类型感知调度、透明设备虚拟化与 Prometheus 监控体系，帮助 PREP EDU 在大规模 AI 推理场景中显著提升资源利用率与运维效率。",
       "overview": {
@@ -1924,6 +1929,7 @@
       }
     },
     "keHoldings": {
+      "cardTitle": "贝壳：机器学习基础设施 GPU 虚拟化",
       "title": "贝壳基于 HAMi 与 Kubernetes 实现机器学习基础设施 GPU 虚拟化，利用率提升近 3 倍",
       "subtitle": "探索贝壳如何基于 HAMi 和 Kubernetes 打造 AIStudio 平台，实现 GPU 利用率从 13% 提升至 37%（近 3 倍提升），同时支持 10,000+ Pod 并发运行和日均 1,000 万 + 请求处理，涵盖混合云环境。",
       "stats": [
@@ -2087,6 +2093,7 @@
       }
     },
     "daoCloud": {
+      "cardTitle": "DaoCloud：灵活 GPU 云，利用率超 80%",
       "title": " DaoCloud 基于 HAMi 构建灵活 GPU 云，利用率超 80%",
       "subtitle": "探索 DaoCloud 如何运营两大云原生 AI 工作负载平台——D.run 算力云和 DaoCloud 企业版（DCE），使用 HAMi 在跨 10+ 数据中心的 10,000+ GPU 上实现 >80% 的 GPU 利用率。",
       "stats": [
@@ -2242,6 +2249,7 @@
       }
     },
     "nio": {
+      "cardTitle": "蔚来：自动驾驶负载 GPU 利用率优化",
       "title": "蔚来汽车 × HAMi | 提升自动驾驶工作负载 GPU 利用率",
       "subtitle": "探索蔚来汽车如何采用混合 GPU 共享策略，利用 HAMi 实现 CI 流水线 GPU 利用率提升 10 倍、模拟工作负载 GPU 小时数减少 30%，在 600 张 GPU 规模的自动驾驶 AI 基础设施中实现显著效率提升。",
       "stats": [
@@ -2405,6 +2413,7 @@
       }
     },
     "snowCorp": {
+      "cardTitle": "SNOW Corp：支撑 2 亿用户的 GenAI",
       "title": "SNOW Corp 基于 HAMi GPU 共享与 KEDA 自动伸缩，支撑 2 亿用户 GenAI 服务",
       "subtitle": "探索 SNOW Corp 如何编排 1,000+ 张 GPU 应对 700% 病毒式流量峰值，实现 MTTR 缩短 91%、峰值流量错误减少 85%、预估节省成本 1,740 万美元，基于 Kubernetes 上的 HAMi 和 KEDA。",
       "stats": [
@@ -2544,6 +2553,7 @@
       }
     },
     "chinaMerchantsBank": {
+      "cardTitle": "招商银行：AI 算力调度优化",
       "title": "招商银行基于 HAMi 在 Kubernetes 上优化 AI 算力调度",
       "subtitle": "探索招商银行如何基于 Kubernetes 和 HAMi 构建统一 AI 算力调度平台，纳管多厂商加速卡（昆仑芯、昇腾、NVIDIA、PPU、摩尔线程、MetaX），实现拓扑感知调度与细粒度共享，硬件资源池利用率达到 100%，跨机调度下降 30%。",
       "stats": [

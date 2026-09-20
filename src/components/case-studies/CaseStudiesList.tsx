@@ -11,6 +11,8 @@ import MainLayout from '@/components/layout/MainLayout';
 interface CaseStudyCard {
   slug: string;
   titleKey: string;
+  // Short title for the card; the full title stays in titleKey for tooltips/SEO.
+  cardTitleKey: string;
   subtitleKey: string;
   logos?: Array<{ src: string; alt: string; width: number; height: number }>;
 }
@@ -33,88 +35,89 @@ const CaseStudiesList: React.FC = () => {
     {
       slug: 'sangfor',
       titleKey: 'cases.sangfor.title',
+      cardTitleKey: 'cases.sangfor.cardTitle',
       subtitleKey: 'cases.sangfor.subtitle',
       logos: [
         { src: '/images/case-studies/icons/sangfor.png', alt: 'Sangfor Logo', width: 44, height: 37 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     {
       slug: 'cetc-cloud',
       titleKey: 'cases.cetcCloud.title',
+      cardTitleKey: 'cases.cetcCloud.cardTitle',
       subtitleKey: 'cases.cetcCloud.subtitle',
       logos: [
         { src: '/images/case-studies/icons/cetc-cloud.png', alt: 'CETC Cloud Logo', width: 48, height: 27 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     {
       slug: 'ke-holdings',
       titleKey: 'cases.keHoldings.title',
+      cardTitleKey: 'cases.keHoldings.cardTitle',
       subtitleKey: 'cases.keHoldings.subtitle',
       logos: [
         { src: '/images/case-studies/icons/beike.png', alt: 'Ke Holdings Logo', width: 40, height: 40 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     {
       slug: 'daocloud',
       titleKey: 'cases.daoCloud.title',
+      cardTitleKey: 'cases.daoCloud.cardTitle',
       subtitleKey: 'cases.daoCloud.subtitle',
       logos: [
         { src: '/images/case-studies/icons/daocloud.svg', alt: 'DaoCloud Logo', width: 40, height: 40 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     {
       slug: 'sf-technology',
       titleKey: 'cases.sfTechnologyEffectiveGpu.title',
+      cardTitleKey: 'cases.sfTechnologyEffectiveGpu.cardTitle',
       subtitleKey: 'cases.sfTechnologyEffectiveGpu.subtitle',
       logos: [
         { src: '/images/case-studies/icons/sf-tech.svg', alt: 'SF Tech Logo', width: 40, height: 40 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     {
       slug: 'prep-edu',
       titleKey: 'cases.prepEduHami.title',
+      cardTitleKey: 'cases.prepEduHami.cardTitle',
       subtitleKey: 'cases.prepEduHami.subtitle',
       logos: [
         { src: '/images/case-studies/icons/prep-logo.svg', alt: 'PREP EDU Logo', width: 44, height: 44 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     {
       slug: 'nio',
       titleKey: 'cases.nio.title',
+      cardTitleKey: 'cases.nio.cardTitle',
       subtitleKey: 'cases.nio.subtitle',
       logos: [
         { src: '/images/case-studies/icons/nio.svg', alt: 'NIO Logo', width: 40, height: 40 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     {
       slug: 'snow-corp',
       titleKey: 'cases.snowCorp.title',
+      cardTitleKey: 'cases.snowCorp.cardTitle',
       subtitleKey: 'cases.snowCorp.subtitle',
       logos: [
         { src: '/images/case-studies/icons/snow-corp.jpg', alt: 'SNOW Corp Logo', width: 40, height: 40 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     {
       slug: 'china-merchants-bank',
       titleKey: 'cases.chinaMerchantsBank.title',
+      cardTitleKey: 'cases.chinaMerchantsBank.cardTitle',
       subtitleKey: 'cases.chinaMerchantsBank.subtitle',
       logos: [
         { src: '/images/case-studies/icons/cmb.png', alt: 'China Merchants Bank Logo', width: 44, height: 44 },
-        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
       ],
     },
     // Temporarily hidden from list
     // {
     //   slug: 'telecom',
     //   titleKey: 'cases.telecomGpu.title',
+    //   cardTitleKey: 'cases.telecomGpu.cardTitle',
     //   subtitleKey: 'cases.telecomGpu.subtitle',
     // },
   ];
@@ -155,9 +158,9 @@ const CaseStudiesList: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col p-6"
               >
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-3">
                   {item.logos ? (
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 flex-shrink-0">
                       {item.logos.map((logo) => {
                         // Raster logos need a clearer badge container than SVG logos.
                         // Otherwise the rounded rectangle looks visually "missing".
@@ -184,14 +187,17 @@ const CaseStudiesList: React.FC = () => {
                       })}
                     </div>
                   ) : (
-                    <div className="w-12 h-12 rounded-lg bg-primary-light flex items-center justify-center text-primary font-semibold">
+                    <div className="w-12 h-12 rounded-lg bg-primary-light flex items-center justify-center text-primary font-semibold flex-shrink-0">
                       {t('caseStudiesPage.telLabel')}
                     </div>
                   )}
+                  <h2
+                    className="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug line-clamp-2 min-h-[44px]"
+                    title={t(item.titleKey)}
+                  >
+                    {t(item.cardTitleKey)}
+                  </h2>
                 </div>
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                  {t(item.titleKey)}
-                </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-200 leading-relaxed mb-6 line-clamp-2 h-[45px] overflow-hidden">
                   {shortenDescription(String(t(item.subtitleKey)))}
                 </p>
