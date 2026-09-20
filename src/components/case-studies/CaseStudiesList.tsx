@@ -31,6 +31,15 @@ const CaseStudiesList: React.FC = () => {
 
   const cases: CaseStudyCard[] = [
     {
+      slug: 'sangfor',
+      titleKey: 'cases.sangfor.title',
+      subtitleKey: 'cases.sangfor.subtitle',
+      logos: [
+        { src: '/images/case-studies/icons/sangfor.png', alt: 'Sangfor Logo', width: 44, height: 37 },
+        { src: '/hami.svg', alt: 'HAMi Logo', width: 36, height: 36 },
+      ],
+    },
+    {
       slug: 'cetc-cloud',
       titleKey: 'cases.cetcCloud.title',
       subtitleKey: 'cases.cetcCloud.subtitle',

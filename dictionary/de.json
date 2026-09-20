@@ -1224,6 +1224,203 @@
       "contactUs": "Kontakt aufnehmen"
     }
   },
+    "sangfor": {
+    "title": "Sangfor baut eine Enterprise-KI-Compute-Plattform auf Kubernetes, Volcano und HAMi",
+    "subtitle": "Sangfor, ein führender chinesischer Anbieter für Cloud Computing und Cybersicherheit, betreibt AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten auf einer gemeinsamen GPU-Plattform – GPU-Auslastung um mehr als 3× gesteigert, 8+ Modelle pro GPU und externe Modellaufrufkosten von 400K auf 200K RMB pro Monat halbiert.",
+    "sourceLabel": "Diese Fallstudie basiert auf der offiziellen CNCF Case Study:",
+    "sourceLink": "How Sangfor Built an Enterprise AI Compute Platform with Kubernetes, Volcano, and HAMi",
+    "stats": [
+      {
+        "value": "3×+",
+        "label": "Steigerung der GPU-Auslastung"
+      },
+      {
+        "value": "8×+",
+        "label": "Modellinstanzen pro GPU (1 → 8+)"
+      },
+      {
+        "value": "50%",
+        "label": "Reduktion externer Modellaufrufkosten (400K → 200K RMB/Monat)"
+      }
+    ],
+    "overview": {
+      "title": "Kundenüberblick",
+      "description": "Sangfor ist ein führender chinesischer Anbieter für Enterprise-Cloud-Computing und Cybersicherheit. Angesichts des raschen Wachstums von KI-Anwendungen baut Sangfor eine einheitliche KI-Compute-Plattform für interne R&D-Teams und Enterprise-Kunden – für Szenarien wie AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten. Die Plattform kombiniert ein AI Computing Gateway für Routing, Governance und Sicherheit mit einer gemeinsamen GPU-Basis aus Kubernetes, Volcano und HAMi – Kubernetes wird zur einheitlichen Ressourcen-Kontrollebene für KI.",
+      "keyPoints": [
+        "Einheitliche KI-Compute-Plattform für interne R&D-Teams und Enterprise-Kunden",
+        "Szenarien u. a. AI Coding, digitale Mitarbeiter, intelligenter Kundenservice und Vertriebs-Agenten",
+        "AI Computing Gateway für Routing und Governance auf einer Basis aus Kubernetes + Volcano + HAMi"
+      ]
+    },
+    "companyCard": {
+      "name": "Sangfor Technologies",
+      "description": "Ein führender chinesischer Anbieter für Enterprise-Cloud-Computing und Cybersicherheit. Das Cloud-AI-Team baut die einheitliche KI-Compute-Plattform, die den Alltag von über 2000 R&D-Engineers und Enterprise-Kunden trägt."
+    },
+    "info": {
+      "title": "Fallstudien-Informationen",
+      "rows": [
+        {
+          "label": "Anwender",
+          "value": "Sangfor Cloud-AI-Team"
+        },
+        {
+          "label": "Business-Szenario",
+          "value": "Enterprise-KI-Compute-Plattform für AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten"
+        },
+        {
+          "label": "Deployment-Umgebung",
+          "value": "Kubernetes mit heterogenen GPUs wie NVIDIA und Ascend"
+        },
+        {
+          "label": "Verwendete Projekte",
+          "value": "Kubernetes, Volcano, HAMi"
+        },
+        {
+          "label": "Zentrale Herausforderungen",
+          "value": "GPU-Auslastung, Ressourcenisolation im Multi-Tenant-Betrieb, Scheduler-Effizienz"
+        }
+      ]
+    },
+    "challenge": {
+      "title": "Herausforderung: GPU-Auslastung, Isolation und Scheduling im großen Maßstab",
+      "description": "Mit wachsender Plattform wurden GPU-Auslastung, Ressourcenisolation und Scheduler-Effizienz zu den Engpässen – bei einer Plattform, die zahlreiche KI-Workloads und Teams gleichzeitig bedient.",
+      "points": [
+        {
+          "title": "Zu wenig genutzte GPUs",
+          "description": "Im traditionellen Modell belegt ein Inferenz-Dienst eine gesamte GPU exklusiv. Viele Workloads nutzen nur einen Bruchteil von Speicher und Rechenleistung, halten aber eine ganze GPU belegt – schwere Ressourcen-Fragmentierung. GPUs wurden schneller ausgebaut, als das Geschäft selbst wuchs."
+        },
+        {
+          "title": "Komplexe Ressourcen-Governance im Multi-Tenant-Betrieb",
+          "description": "Die Plattform bedient gleichzeitig AI Coding, digitale Mitarbeiter, intelligenten Kundenservice, Vertriebs-Agenten und Enterprise-Wissensassistenten. Deren GPU-Bedarf unterscheidet sich stark – manche brauchen dauerhaft Speicher, andere zeigen Peak-Valley-Muster. Einheitliches Pooling und faire Allokation wurden kritisch."
+        },
+        {
+          "title": "Koexistenz von Inferenz- und Batch-Workloads",
+          "description": "Die Plattform betreibt gleichzeitig Online-Inferenz, Batch-Inferenz, verteiltes Training und Agent-Workflows – das native Kubernetes-GPU-Scheduling deckt diese komplexen KI-Workloads nicht ab."
+        }
+      ]
+    },
+    "solution": {
+      "title": "Lösung: Kubernetes + Volcano + HAMi",
+      "description": "Kubernetes liefert die einheitliche Kontrollebene für die KI-Plattform, doch das native GPU-Scheduling vergibt Ressourcen nur als ganze GPUs – das genügt weder für Inferenz, Multi-Tenancy noch heterogene GPU-Umgebungen. Sangfor führte Volcano für fortgeschrittenes Job-Scheduling und HAMi für GPU-Virtualisierung ein und baute damit eine produktionsreife Shared-GPU-Plattform.",
+      "quote": {
+        "text": "HAMis Kubernetes-native Integration bedeutet null Migrationsaufwand. Die transparente Geräte-Virtualisierung lässt Workloads ohne jede Anpassung laufen.",
+        "author": "Jia Haojie, Chief Architect of Cloud AI bei Sangfor"
+      },
+      "hamiSharing": {
+        "title": "HAMi: vGPU-Sharing und Isolation",
+        "description": "Sangfor wählte HAMi wegen des feingranularen GPU-Sharings mit starker Isolation, der einheitlichen Abstraktion über heterogene GPU-Generationen und der Position als eines der aktivsten Open-Source-vGPU-Projekte im Kubernetes-Umfeld. Beim vGPU-Slicing belegt ein großes Modell den Löwenanteil einer Karte (z. B. 70%), die restlichen Slices hosten mehrere kleine Modelle und nutzen Rechenleistung, die sonst brachläge.",
+        "features": [
+          "GPU-Sharing: Speichergranularität bis 256 MB und Rechenleistung bis 1 % – mehrere Pods teilen sich eine GPU mit starker Isolation",
+          "Heterogene GPU-Unterstützung: einheitliche Ressourcen-Abstraktion für ein konsistentes Scheduling-Erlebnis über GPU-Generationen hinweg",
+          "Open-Source-Ökosystem: kontinuierliche Integration mit Volcano-Queues und vLLM"
+        ]
+      },
+      "scheduling": {
+        "title": "Volcano + HAMi: koordiniertes Scheduling",
+        "description": "GPU-Sharing allein genügt für den Produktivbetrieb nicht. Volcano kombiniert mit HAMi ermöglicht das einheitliche Management von Geräteressourcen und Job-Scheduling: Volcano entscheidet, wann und wo ein Workload läuft – HAMi entscheidet, wie GPU-Ressourcen geteilt und zugeteilt werden.",
+        "points": [
+          {
+            "title": "Gerätestatus-Pflege",
+            "description": "GPU-Health-Monitoring, automatische Fehlerisolierung und automatische Ressourcenfreigabe."
+          },
+          {
+            "title": "Governance von Ressourcendeklarationen",
+            "description": "Ressourcenfelder werden automatisch ergänzt, Quoten einheitlich berechnet und ungültige Requests früh abgelehnt."
+          },
+          {
+            "title": "Scheduling-Transaktionsisolierung",
+            "description": "Entkoppelt Ressourcen-Probeberechnung von der tatsächlichen Belegung und gewährleistet Statuskonsistenz."
+          },
+          {
+            "title": "Gang- und LWS-Support",
+            "description": "Volcano orchestriert den Job, HAMi teilt die GPUs zu – die gesamte Gruppe wird zusammen geplant."
+          }
+        ]
+      }
+    },
+    "results": {
+      "title": "Ergebnisse",
+      "description": "Mit HAMi-vGPU-Slicing und koordiniertem Volcano-Scheduling beseitigte die Plattform Ressourcen-Fragmentierung, senkte die Modellaufrufkosten und blieb unter Last stabil – bei gleichzeitiger Unterstützung eines 2000+ R&D-Teams.",
+      "items": [
+        {
+          "title": "GPU-Auslastung",
+          "value": "3×+",
+          "description": "Der gemeinsame GPU-Pool eliminiert Fragmentierung – mehr Workloads auf derselben Hardware"
+        },
+        {
+          "title": "Modelldichte pro GPU",
+          "value": "8×+",
+          "description": "Workloads, die zuvor 3 GPUs brauchten, passen nun auf 1–2"
+        },
+        {
+          "title": "Externe Aufrufkosten",
+          "value": "-50%",
+          "description": "400K → 200K RMB pro Monat durch intelligentes Routing zwischen Modellen"
+        },
+        {
+          "title": "Fehlerbehebung",
+          "value": "<10 Min.",
+          "description": "Zuvor ca. 1 Stunde; Erfolgsquote über 95 % bei 3× Peak-Traffic"
+        }
+      ],
+      "table": {
+        "title": "Vorher vs. Nachher",
+        "description": "Wichtige Plattform-Metriken vor und nach der Shared-GPU-Plattform.",
+        "metricLabel": "Metrik",
+        "beforeLabel": "Vorher",
+        "afterLabel": "Nachher",
+        "rows": [
+          {
+            "metric": "GPU-Auslastung",
+            "before": "Basiswert",
+            "after": "um mehr als 3× gesteigert"
+          },
+          {
+            "metric": "Modelle pro GPU",
+            "before": "1",
+            "after": "8+"
+          },
+          {
+            "metric": "Externe Modellaufrufkosten",
+            "before": "400K RMB/Monat",
+            "after": "200K RMB/Monat"
+          },
+          {
+            "metric": "Wiederherstellung nach Modellfehlern",
+            "before": "ca. 1 Stunde",
+            "after": "unter 10 Minuten"
+          },
+          {
+            "metric": "Erfolgsquote bei 3× Peak-Traffic",
+            "before": "instabil",
+            "after": "95 %+"
+          },
+          {
+            "metric": "Unterstützte R&D-Teamgröße",
+            "before": "begrenzt",
+            "after": "2000+ Engineers"
+          }
+        ]
+      }
+    },
+    "lessons": {
+      "title": "Erkenntnisse",
+      "points": [
+        "GPU-Sharing schlägt GPU-Zukauf: Die meisten Inferenz-Workloads können eine ganze GPU nicht auslasten – Sharing bietet höheres ROI und schnellere Amortisierung als zusätzliche Hardware.",
+        "Scheduling von der Ressourcen-Virtualisierung entkoppeln: HAMi übernimmt die Ressourcen-Abstraktion, Volcano die Scheduling-Politik – jede Schicht evolves unabhängig.",
+        "Kubernetes wird zur Ressourcen-Kontrollebene für KI: Der Cloud-Native-Weg liefert Enterprise-GPU-Management ohne neues Management-Paradigma.",
+        "Ausblick: Sangfor arbeitet mit der HAMi-Community am DRA-Ökosystem, erweitert die Unterstützung heterogener GPUs wie Ascend über HAMis einheitliche Abstraktion und gibt produktionsreife Scheduling-Policies an die Volcano- und HAMi-Communities zurück."
+      ]
+    },
+    "conclusion": {
+      "title": "Kubernetes zur einheitlichen Ressourcen-Kontrollebene für KI machen",
+      "description": "Sangfors Praxis zeigt einen Weg für KI-Infrastruktur im Unternehmen: Modellnutzung im Gateway gouvernieren, GPUs auf der Virtualisierungsebene teilen, Jobs mit Volcano schedulen – alles auf Kubernetes. Das Ergebnis ist eine Compute-Plattform, in der jede GPU für ein 2000+-Engineer-Team ihren vollen Wert entfaltet."
+    },
+    "cta": {
+      "exploreHami": "HAMi Open-Source-Projekt entdecken",
+      "contactUs": "Kontakt aufnehmen"
+    }
+  },
     "telecomGpu": {
       "title": "Telekommunikationsanbieter GPU-Virtualisierungs-Fallstudie",
       "subtitle": "Wie ein fuehrender Telekommunikationsanbieter HAMi fuer GPU-Virtualisierung und heterogene Geraeteverwaltung nutzt",

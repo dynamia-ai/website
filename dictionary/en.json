@@ -1232,6 +1232,203 @@
       "contactUs": "Contact Us"
     }
   },
+    "sangfor": {
+    "title": "Sangfor Builds an Enterprise AI Compute Platform on Kubernetes, Volcano, and HAMi",
+    "subtitle": "Sangfor, a leading enterprise cloud computing and cybersecurity vendor in China, runs AI coding, digital employees, intelligent customer service, and sales Agents on a shared GPU platform — raising GPU utilization more than 3×, packing 8+ models per GPU, and cutting external model invocation costs from ¥400K to ¥200K per month.",
+    "sourceLabel": "This case is adapted from the official CNCF Case Study:",
+    "sourceLink": "How Sangfor Built an Enterprise AI Compute Platform with Kubernetes, Volcano, and HAMi",
+    "stats": [
+      {
+        "value": "3×+",
+        "label": "GPU utilization improvement"
+      },
+      {
+        "value": "8×+",
+        "label": "model instances per GPU (1 → 8+)"
+      },
+      {
+        "value": "50%",
+        "label": "external model invocation cost cut (¥400K → ¥200K/month)"
+      }
+    ],
+    "overview": {
+      "title": "Customer Overview",
+      "description": "Sangfor is a leading enterprise cloud computing and cybersecurity vendor in China. With the rapid growth of AI applications, Sangfor is building a unified AI compute platform for its internal R&D teams and enterprise customers, supporting scenarios such as AI coding, digital employees, intelligent customer service, and sales Agents. The platform pairs an AI Computing Gateway — handling routing, governance, and security — with a shared GPU foundation built on Kubernetes, Volcano, and HAMi, turning Kubernetes into a unified AI resource control plane.",
+      "keyPoints": [
+        "Unified AI compute platform for internal R&D teams and enterprise customers",
+        "Scenarios include AI coding, digital employees, intelligent customer service, and sales Agents",
+        "AI Computing Gateway for routing and governance on top of a Kubernetes + Volcano + HAMi compute foundation"
+      ]
+    },
+    "companyCard": {
+      "name": "Sangfor Technologies",
+      "description": "A leading enterprise cloud computing and cybersecurity vendor in China. Its Cloud AI team builds the unified AI compute platform that serves the daily work of 2000+ R&D engineers and enterprise customers."
+    },
+    "info": {
+      "title": "Case Information",
+      "rows": [
+        {
+          "label": "User",
+          "value": "Sangfor Cloud AI team"
+        },
+        {
+          "label": "Business scenario",
+          "value": "Enterprise AI compute platform for AI coding, digital employees, intelligent customer service, and sales Agents"
+        },
+        {
+          "label": "Deployment environment",
+          "value": "Kubernetes with heterogeneous GPUs such as NVIDIA and Ascend"
+        },
+        {
+          "label": "Projects used",
+          "value": "Kubernetes, Volcano, HAMi"
+        },
+        {
+          "label": "Core challenges",
+          "value": "GPU utilization, multi-tenant resource isolation, scheduling efficiency"
+        }
+      ]
+    },
+    "challenge": {
+      "title": "Challenge: GPU Utilization, Isolation, and Scheduling at Scale",
+      "description": "As the platform continued to scale, GPU utilization, resource isolation, and scheduling efficiency became the key bottlenecks for a platform serving many AI workloads and teams at once.",
+      "points": [
+        {
+          "title": "Underutilized GPUs",
+          "description": "Under the traditional model, an inference service exclusively occupies an entire GPU. Many workloads use only a fraction of the memory and compute yet hold a full GPU, causing severe resource fragmentation — GPUs were being scaled out faster than the business itself was growing."
+        },
+        {
+          "title": "Complex multi-tenant resource governance",
+          "description": "The platform simultaneously serves AI coding, digital employees, intelligent customer service, sales Agents, and enterprise knowledge assistants. Their GPU demands differ — some require long-resident memory while others show peak-and-valley patterns — making unified resource pooling and fair allocation critical."
+        },
+        {
+          "title": "Inference and batch workloads coexist",
+          "description": "The platform concurrently runs online inference, batch inference, distributed training, and Agent workflows, but native Kubernetes GPU scheduling cannot meet the needs of these complex AI workloads."
+        }
+      ]
+    },
+    "solution": {
+      "title": "Solution: Kubernetes + Volcano + HAMi",
+      "description": "Kubernetes provides a unified control plane for the AI platform, but native GPU scheduling allocates resources in whole-GPU units, which cannot serve inference, multi-tenancy, and heterogeneous GPU environments. Sangfor introduced Volcano for advanced job scheduling and HAMi for GPU resource virtualization, building a production-grade shared GPU platform.",
+      "quote": {
+        "text": "HAMi’s Kubernetes-native integration means zero migration cost. Transparent device virtualization lets workloads run without any modification.",
+        "author": "Jia Haojie, Chief Architect of Cloud AI at Sangfor"
+      },
+      "hamiSharing": {
+        "title": "HAMi: vGPU Sharing and Isolation",
+        "description": "Sangfor chose HAMi for its fine-grained GPU sharing under strong isolation, its unified abstraction across heterogeneous GPU generations, and its position as one of the most active open-source vGPU projects in the Kubernetes space. With vGPU slicing, a large model takes the lion’s share of a card (for example 70%) while the remaining slices host multiple small models, soaking up compute that would otherwise sit idle.",
+        "features": [
+          "GPU sharing: memory granularity down to 256MB and compute down to 1%, with multiple Pods sharing a single GPU under strong isolation",
+          "Heterogeneous GPU support: a unified resource abstraction that keeps the scheduling experience consistent across GPU generations",
+          "Open-source ecosystem: continuously integrated with Volcano queues and vLLM"
+        ]
+      },
+      "scheduling": {
+        "title": "Volcano + HAMi: Coordinated Scheduling",
+        "description": "GPU sharing alone is not enough for production. Volcano combined with HAMi enables unified management of device resources and job scheduling: Volcano decides when and where a workload runs, while HAMi decides how GPU resources are shared and allocated.",
+        "points": [
+          {
+            "title": "Device state maintenance",
+            "description": "GPU health monitoring, automatic fault isolation, and automatic resource reclamation."
+          },
+          {
+            "title": "Resource declaration governance",
+            "description": "Automatically fills in resource fields, computes quotas uniformly, and rejects invalid requests early."
+          },
+          {
+            "title": "Scheduling transaction isolation",
+            "description": "Decouples resource trial computation from actual occupancy, ensuring state consistency."
+          },
+          {
+            "title": "Gang and LWS support",
+            "description": "Volcano orchestrates the job while HAMi allocates GPUs, scheduling the whole group together."
+          }
+        ]
+      }
+    },
+    "results": {
+      "title": "Results",
+      "description": "With HAMi vGPU slicing and Volcano coordinated scheduling, the platform eliminated resource fragmentation, cut model invocation costs, and stayed stable under stress — while supporting a 2000+ R&D team.",
+      "items": [
+        {
+          "title": "GPU Utilization",
+          "value": "3×+",
+          "description": "Shared GPU pool eliminates fragmentation; more workloads run on the same hardware"
+        },
+        {
+          "title": "Per-GPU Model Density",
+          "value": "8×+",
+          "description": "Workloads that previously needed 3 GPUs now fit on 1–2"
+        },
+        {
+          "title": "External Invocation Cost",
+          "value": "-50%",
+          "description": "¥400K → ¥200K per month via smart routing between models"
+        },
+        {
+          "title": "Failure Recovery",
+          "value": "<10 min",
+          "description": "Down from ~1 hour; 95%+ success rate under 3× peak traffic"
+        }
+      ],
+      "table": {
+        "title": "Before vs. After",
+        "description": "Key platform metrics before and after the shared GPU platform.",
+        "metricLabel": "Metric",
+        "beforeLabel": "Before",
+        "afterLabel": "After",
+        "rows": [
+          {
+            "metric": "GPU utilization",
+            "before": "Baseline",
+            "after": "Up more than 3×"
+          },
+          {
+            "metric": "Models per GPU",
+            "before": "1",
+            "after": "8+"
+          },
+          {
+            "metric": "External model invocation cost",
+            "before": "¥400K/month",
+            "after": "¥200K/month"
+          },
+          {
+            "metric": "Model failure recovery time",
+            "before": "~1 hour",
+            "after": "<10 minutes"
+          },
+          {
+            "metric": "3× peak traffic success rate",
+            "before": "Unstable",
+            "after": "95%+"
+          },
+          {
+            "metric": "R&D team size supported",
+            "before": "Limited",
+            "after": "2000+ engineers"
+          }
+        ]
+      }
+    },
+    "lessons": {
+      "title": "Lessons Learned",
+      "points": [
+        "GPU sharing matters more than adding GPUs: most inference workloads cannot fully use an entire GPU, and the ROI of sharing is higher and pays back faster than buying more hardware.",
+        "Decouple scheduling from resource virtualization: HAMi handles resource abstraction, Volcano handles scheduling policy — once decoupled, each layer can evolve independently.",
+        "Kubernetes is becoming the AI resource control plane: the cloud-native path delivers enterprise-grade GPU management without introducing a new management paradigm.",
+        "Looking ahead, Sangfor will work with the HAMi community on the DRA ecosystem, extend heterogeneous GPU support such as Ascend through HAMi’s unified abstraction, and contribute production-grade scheduling policies back to the Volcano and HAMi communities."
+      ]
+    },
+    "conclusion": {
+      "title": "Turning Kubernetes into a Unified AI Resource Control Plane",
+      "description": "Sangfor’s practice shows a path for enterprise AI infrastructure: govern model usage at the gateway, share GPUs at the virtualization layer, and schedule jobs with Volcano — all on Kubernetes. The result is a compute platform where every GPU runs at full value for a 2000+ engineer team."
+    },
+    "cta": {
+      "exploreHami": "Explore the HAMi Open-Source Project",
+      "contactUs": "Contact Us"
+    }
+  },
     "telecomGpu": {
       "title": "Telecom Provider GPU Virtualization Case Study",
       "subtitle": "How a leading telecom provider leverages HAMi for GPU virtualization and heterogeneous device management",

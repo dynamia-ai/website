@@ -1458,6 +1458,203 @@
       "contactUs": "联系我们"
     }
   },
+    "sangfor": {
+    "title": "深信服基于 Kubernetes、Volcano 与 HAMi 构建企业级 AI 算力平台",
+    "subtitle": "深信服是中国领先的企业级云计算与网络安全厂商。面对 AI 应用的快速增长，深信服为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服与销售 Agent 等场景——GPU 利用率提升 3 倍以上，单卡承载 8 个以上模型，外部模型调用成本从每月 40 万元降至 20 万元。",
+    "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
+    "sourceLink": "How Sangfor Built an Enterprise AI Compute Platform with Kubernetes, Volcano, and HAMi",
+    "stats": [
+      {
+        "value": "3×+",
+        "label": "GPU 利用率提升"
+      },
+      {
+        "value": "8×+",
+        "label": "单卡模型承载量（1 → 8+）"
+      },
+      {
+        "value": "50%",
+        "label": "外部模型调用成本下降（40 万 → 20 万/月）"
+      }
+    ],
+    "overview": {
+      "title": "客户概览",
+      "description": "深信服是中国领先的企业级云计算与网络安全厂商。随着 AI 应用快速增长，深信服正在为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服、销售 Agent 等场景。平台以 AI 算力网关承载路由、治理与安全检查，底层以 Kubernetes、Volcano 与 HAMi 构建共享 GPU 底座，让 Kubernetes 成为统一的 AI 资源控制面。",
+      "keyPoints": [
+        "面向内部研发团队与企业客户的统一 AI 算力平台",
+        "覆盖 AI Coding、数字员工、智能客服、销售 Agent 等生产场景",
+        "AI 算力网关负责路由与治理，Kubernetes + Volcano + HAMi 构建算力底座"
+      ]
+    },
+    "companyCard": {
+      "name": "深信服科技",
+      "description": "中国领先的企业级云计算与网络安全厂商。其云 AI 团队构建的统一 AI 算力平台，支撑 2000+ 研发工程师的日常使用并服务企业客户。"
+    },
+    "info": {
+      "title": "案例信息",
+      "rows": [
+        {
+          "label": "用户",
+          "value": "深信服云 AI 团队"
+        },
+        {
+          "label": "业务场景",
+          "value": "支撑 AI Coding、数字员工、智能客服、销售 Agent 的企业级 AI 算力平台"
+        },
+        {
+          "label": "部署环境",
+          "value": "Kubernetes 与 NVIDIA、昇腾等异构 GPU"
+        },
+        {
+          "label": "使用项目",
+          "value": "Kubernetes、Volcano、HAMi"
+        },
+        {
+          "label": "核心挑战",
+          "value": "GPU 利用率、多租户资源隔离、调度效率"
+        }
+      ]
+    },
+    "challenge": {
+      "title": "挑战：规模化下的 GPU 利用率、隔离与调度",
+      "description": "平台持续扩张的过程中，GPU 利用率、资源隔离与调度效率成为关键瓶颈——平台需要同时服务大量 AI 负载与研发团队。",
+      "points": [
+        {
+          "title": "GPU 利用率不足",
+          "description": "传统模式下，推理服务独占整张 GPU。大量负载只用其中一小部分显存与算力却占住整卡，造成严重的资源碎片化——GPU 扩容速度甚至超过了业务本身的增长速度。"
+        },
+        {
+          "title": "多租户环境下的资源治理复杂",
+          "description": "平台同时承载 AI Coding、数字员工、智能客服、销售 Agent 与企业知识助手等负载，GPU 需求差异巨大——有的需要长驻显存，有的呈现明显的峰谷特征——统一资源池管理与公平分配成为关键问题。"
+        },
+        {
+          "title": "推理与批处理负载共存",
+          "description": "平台同时运行在线推理、批量推理、分布式训练与 Agent 工作流，原生 Kubernetes GPU 调度无法满足这些复杂 AI 负载的需求。"
+        }
+      ]
+    },
+    "solution": {
+      "title": "解决方案：Kubernetes + Volcano + HAMi",
+      "description": "Kubernetes 为 AI 平台提供了统一的控制面，但原生 GPU 调度只能以整卡为单位分配资源，难以满足推理服务、多租户与异构 GPU 环境的需求。深信服引入 Volcano 解决高级调度问题，引入 HAMi 解决 GPU 资源虚拟化问题，构建生产级共享 GPU 平台。",
+      "quote": {
+        "text": "HAMi 的 Kubernetes 原生集成意味着零迁移成本，透明的设备虚拟化让负载无需任何改造即可运行。",
+        "author": "深信服云 AI 总架构师 贾毫杰"
+      },
+      "hamiSharing": {
+        "title": "HAMi：vGPU 共享与隔离",
+        "description": "深信服选择 HAMi 的核心原因：细粒度 GPU 共享与强隔离、跨多代异构 GPU 的统一资源抽象，以及 Kubernetes 领域最活跃的开源 vGPU 生态之一。通过 vGPU 切分，大模型占据单卡大部分资源（例如 70%），剩余切片承载多个小模型，吸收原本闲置的算力。",
+        "features": [
+          "GPU 共享：显存粒度低至 256MB、算力粒度低至 1%，多个 Pod 在强隔离下共享同一张 GPU",
+          "异构 GPU 支持：统一资源抽象，跨多代 GPU 保持一致的调度体验",
+          "开源生态：Kubernetes 领域最活跃的开源 vGPU 项目之一，持续与 Volcano 队列和 vLLM 集成"
+        ]
+      },
+      "scheduling": {
+        "title": "Volcano + HAMi：协同调度",
+        "description": "仅靠 GPU 共享不足以支撑生产环境。Volcano 与 HAMi 结合，实现设备资源与作业调度的统一管理：Volcano 决定负载何时、在哪里运行，HAMi 决定 GPU 资源如何共享与分配。",
+        "points": [
+          {
+            "title": "设备状态维护",
+            "description": "GPU 健康监测、故障自动隔离、资源自动回收。"
+          },
+          {
+            "title": "资源声明治理",
+            "description": "自动补全资源字段、统一配额计算、提前拒绝无效请求。"
+          },
+          {
+            "title": "调度事务隔离",
+            "description": "将资源试算与实际占用解耦，确保状态一致性。"
+          },
+          {
+            "title": "Gang 与 LWS 支持",
+            "description": "Volcano 编排作业、HAMi 分配 GPU，整组任务一同调度。"
+          }
+        ]
+      }
+    },
+    "results": {
+      "title": "落地成效",
+      "description": "借助 HAMi vGPU 切分与 Volcano 协同调度，平台消除了资源碎片化、显著降低模型调用成本并在压力下保持稳定——同时支撑 2000+ 研发团队的日常使用。",
+      "items": [
+        {
+          "title": "GPU 利用率",
+          "value": "3×+",
+          "description": "共享 GPU 池消除碎片化，同样硬件承载更多负载"
+        },
+        {
+          "title": "单卡模型密度",
+          "value": "8×+",
+          "description": "原本需要 3 张卡的负载现在 1–2 张即可承载"
+        },
+        {
+          "title": "外部调用成本",
+          "value": "-50%",
+          "description": "智能路由让月调用成本从 40 万元降至 20 万元"
+        },
+        {
+          "title": "故障恢复",
+          "value": "<10 分钟",
+          "description": "从约 1 小时大幅缩短；3 倍峰值流量下成功率保持 95%+"
+        }
+      ],
+      "table": {
+        "title": "改造前后对比",
+        "description": "共享 GPU 平台建设前后的关键指标对比。",
+        "metricLabel": "指标",
+        "beforeLabel": "改造前",
+        "afterLabel": "改造后",
+        "rows": [
+          {
+            "metric": "GPU 利用率",
+            "before": "基线",
+            "after": "提升 3 倍以上"
+          },
+          {
+            "metric": "单卡模型数",
+            "before": "1",
+            "after": "8+"
+          },
+          {
+            "metric": "外部模型调用成本",
+            "before": "40 万元/月",
+            "after": "20 万元/月"
+          },
+          {
+            "metric": "模型故障恢复时间",
+            "before": "约 1 小时",
+            "after": "10 分钟以内"
+          },
+          {
+            "metric": "3 倍峰值流量成功率",
+            "before": "不稳定",
+            "after": "95%+"
+          },
+          {
+            "metric": "支撑研发团队规模",
+            "before": "有限",
+            "after": "2000+ 工程师"
+          }
+        ]
+      }
+    },
+    "lessons": {
+      "title": "经验总结",
+      "points": [
+        "GPU 共享比加卡更重要：大多数推理负载无法用满整张 GPU，优先做 GPU 共享——ROI 更高、见效更快。",
+        "调度与资源虚拟化解耦：HAMi 负责资源抽象，Volcano 负责调度策略，解耦之后两层各自独立演进。",
+        "Kubernetes 正在成为 AI 资源控制面：AI 基础设施沿云原生路径演进，无需引入新的管理范式即可获得企业级 GPU 管理能力。",
+        "展望未来，深信服将持续与 HAMi 社区合作：参与 HAMi DRA 生态、通过统一抽象扩展昇腾等异构 GPU 支持，并将生产级调度策略回馈 Volcano 与 HAMi 社区。"
+      ]
+    },
+    "conclusion": {
+      "title": "让 Kubernetes 成为统一的 AI 资源控制面",
+      "description": "深信服的实践给出了企业 AI 基础设施的一条路径：在网关层治理模型使用，在虚拟化层共享 GPU，用 Volcano 完成作业调度——全部构建在 Kubernetes 之上，让每一张 GPU 为 2000+ 工程师的团队发挥全部价值。"
+    },
+    "cta": {
+      "exploreHami": "了解 HAMi 开源项目",
+      "contactUs": "联系我们"
+    }
+  },
     "telecomGpu": {
       "title": "电信运营商 GPU 虚拟化案例研究",
       "subtitle": "某领先电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",
