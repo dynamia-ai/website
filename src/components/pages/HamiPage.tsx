@@ -37,14 +37,8 @@ export default function HamiPage() {
       <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-5 gap-12 items-center">
-            {/* Left Content */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col gap-6 md:col-span-3"
-            >
+            {/* Keep above-the-fold content visible before client hydration. */}
+            <div className="flex flex-col gap-6 md:col-span-3">
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
                 <span className={isZh ? "text-1xl md:text-5xl" : "text-3xl md:text-5xl"}>
                   {t('title')}
@@ -62,15 +56,9 @@ export default function HamiPage() {
                   {t('creator')}
                 </p>
               </div>
-            </motion.div>
+            </div>
             {/* Right HAMi Logo */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex justify-center md:col-span-2"
-            >
+            <div className="flex justify-center md:col-span-2">
               <div className="w-full max-w-xs bg-white dark:bg-gray-900 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-800">
                 <Image
                   src="/hami.svg"
@@ -81,7 +69,7 @@ export default function HamiPage() {
                   priority
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
