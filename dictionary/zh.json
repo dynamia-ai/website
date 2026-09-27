@@ -88,9 +88,9 @@
     "products": "产品",
     "productsOverview": "产品概览",
     "productsOverviewDesc": "了解密瓜智能异构算力平台与开源 HAMi 项目",
-    "hamiEnterprise": "HAMi 企业版",
+    "hamiEnterprise": "Dynamia Enterprise for HAMi",
     "hamiEnterpriseDesc": "基于 CNCF Incubating 项目构建的企业级 GPU 虚拟化方案",
-    "hamiAiPlatform": "HAMi 平台版",
+    "hamiAiPlatform": "Dynamia AI Platform for HAMi",
     "hamiAiPlatformDesc": "异构算力集群全栈管控平台",
     "enterpriseDownloads": "企业版下载",
     "enterpriseDownloadsDesc": "查看企业版矩阵，下载镜像离线包、Helm Chart 与安装指南",
@@ -269,7 +269,7 @@
   },
   "products": {
     "hamiAiPlatform": {
-      "title": "HAMi 平台版",
+      "title": "Dynamia AI Platform for HAMi",
       "subtitle": "企业级异构计算虚拟化平台",
       "description": "密瓜智能 提供了一个统一平台，用于管理异构计算资源，优化性能并降低成本。",
       "overviewTitle": "产品概述",
@@ -519,7 +519,7 @@
     },
     "hamiRoiCalculatorPage": {
       "title": "HAMi GPU 资产 ROI 计算器",
-      "subtitle": "对比同一笔 GPU 投入在无 HAMi、HAMi 开源版与 HAMi 企业版下的有效资产价值，并可调整市场价格与机房参数。",
+      "subtitle": "对比同一笔 GPU 投入在无 HAMi、HAMi 开源版与 Dynamia Enterprise for HAMi 下的有效资产价值，并可调整市场价格与机房参数。",
       "exportPdf": "导出 PDF",
       "presetsLabel": "快速套用场景：",
       "printSummary": {
@@ -538,7 +538,7 @@
         "price": "单卡价格（可微调）",
         "currentUtilization": "当前 GPU 平均利用率（无共享方案）",
         "ossUtilization": "HAMi 开源版预期利用率（上限 40%）",
-        "enterpriseUtilization": "HAMi 企业版预期利用率（上限 80%）"
+        "enterpriseUtilization": "Dynamia Enterprise for HAMi 预期利用率（上限 80%）"
       },
       "advanced": {
         "title": "TCO 高级参数（服务器、功耗与电费）",
@@ -575,7 +575,7 @@
           "features": ["vGPU 切分 · 显存算力隔离", "适合 ≤200 卡的中小规模", "社区支持，无 SLA 保障"]
         },
         "enterprise": {
-          "title": "HAMi 企业版",
+          "title": "Dynamia Enterprise for HAMi",
           "subtitle": "密瓜智能 · 商业支持",
           "scaleValue": "无上限",
           "specs": { "utilization": "利用率上限", "scale": "GPU 规模 · 万卡级" },
@@ -612,7 +612,7 @@
         "note": "等效节约为同等业务负载下的资源占用对比，实际可表现为：延缓新采购、退役老旧卡、释放算力给新业务、降低对外租用规模。电费节约按自建机房口径（功耗 × 负载系数 × PUE × 电价）估算，逐年持续发生。"
       },
       "hero": {
-        "eyebrow": "HAMi 企业版为你创造的价值",
+        "eyebrow": "Dynamia Enterprise for HAMi 为你创造的价值",
         "releasedValue": "相比无 HAMi，释放的沉睡资产价值",
         "vsOss": "就算和免费开源版比：多投入 {cost}，额外释放 {extraValue}，净增 {netGain}（{roi} 倍）",
         "avoidedPurchase": "避免采购视角：同等产能若不用 HAMi，需再购 +{count} 张卡（含服务器与 5 年电费，新增投入约 {tco}）—— 企业版让现有集群直接达成",
@@ -2722,7 +2722,7 @@
   "enterprise": {
     "list": {
       "title": "密瓜智能产品概览",
-      "subtitle": "对比 HAMi 企业版与 HAMi 平台版，为生产级异构算力选择合适路径。",
+      "subtitle": "对比 Dynamia Enterprise for HAMi 与 Dynamia AI Platform for HAMi，为生产级异构算力选择合适路径。",
       "noRelease": "暂无版本",
       "viewDetail": "查看详情",
       "downloadCta": "下载",
@@ -2845,10 +2845,10 @@
     },
     "hamiEnterprisePage": {
       "heroBadge": "企业版",
-      "heroTitle": "HAMi 企业版",
+      "heroTitle": "Dynamia Enterprise for HAMi",
       "heroSubtitle": "基于 CNCF Incubating 项目构建的企业级 GPU 虚拟化方案，将 GPU 利用率从 40% 提升至 70%+",
       "overviewTitle": "为生产环境而生",
-      "overviewDescription": "HAMi 企业版基于 GPU License 授权，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴，提供生产级加固与企业级支持。",
+      "overviewDescription": "Dynamia Enterprise for HAMi 基于 GPU License 授权，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴，提供生产级加固与企业级支持。",
       "highlightsTitle": "企业级特性",
       "compatTitle": "兼容性",
       "compatKubernetes": "Kubernetes",
@@ -2921,7 +2921,7 @@
     },
     "scope": {
       "title": "如何选择产品",
-      "subtitle": "三条产品线 —— 开源 HAMi、HAMi 企业版、HAMi 平台版。",
+      "subtitle": "三条产品线 —— 开源 HAMi、Dynamia Enterprise for HAMi、Dynamia AI Platform for HAMi。",
       "decisionTitle": "30 秒选型",
       "totalsLabel": "能力覆盖",
       "totalsHint": "勾选表示该版本支持",
@@ -2933,33 +2933,33 @@
         },
         {
           "scenario": "我需要可被支持、加固的 GPU 虚拟化层",
-          "choice": "HAMi 企业版"
+          "choice": "Dynamia Enterprise for HAMi"
         },
         {
           "scenario": "我还需要多集群 GUI、配额和可观测",
-          "choice": "HAMi 平台版"
+          "choice": "Dynamia AI Platform for HAMi"
         },
         {
           "scenario": "我想为多个内部团队管理平台",
-          "choice": "HAMi 平台版"
+          "choice": "Dynamia AI Platform for HAMi"
         }
       ],
       "columns": {
         "feature": "能力",
         "oss": "开源 HAMi",
         "ossSub": "",
-        "commercial": "HAMi 企业版",
+        "commercial": "Dynamia Enterprise for HAMi",
         "commercialSub": "",
-        "enterprise": "HAMi 平台版",
+        "enterprise": "Dynamia AI Platform for HAMi",
         "enterpriseSub": ""
       },
       "cta": {
         "ossLabel": "开源 HAMi",
         "ossLink": "GitHub",
         "ossHref": "https://github.com/Project-HAMi/HAMi",
-        "commercialLabel": "HAMi 企业版",
+        "commercialLabel": "Dynamia Enterprise for HAMi",
         "commercialLink": "下载",
-        "enterpriseLabel": "HAMi 平台版",
+        "enterpriseLabel": "Dynamia AI Platform for HAMi",
         "enterpriseLink": "下载"
       },
       "groups": [
@@ -3112,9 +3112,9 @@
     },
     "productsData": {
       "hami-enterprise": {
-        "name": "HAMi 企业版",
-        "tagline": "HAMi 企业版 —— 在开源 HAMi（CNCF Incubating 项目）之上提供企业级 GPU 虚拟化能力",
-        "description": "HAMi 企业版基于 GPU License 授权，把 GPU 利用率从社区版 40% 提升到 70%+，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴/代理商，提供生产级加固与企业级支持。",
+        "name": "Dynamia Enterprise for HAMi",
+        "tagline": "Dynamia Enterprise for HAMi —— 在开源 HAMi（CNCF Incubating 项目）之上提供企业级 GPU 虚拟化能力",
+        "description": "Dynamia Enterprise for HAMi 基于 GPU License 授权，把 GPU 利用率从社区版 40% 提升到 70%+，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴/代理商，提供生产级加固与企业级支持。",
         "highlights": [
           {
             "title": "企业级 SLA",
@@ -3131,9 +3131,9 @@
         ]
       },
       "hami-ai-platform": {
-        "name": "HAMi 平台版",
+        "name": "Dynamia AI Platform for HAMi",
         "tagline": "异构算力集群全栈管控平台",
-        "description": "HAMi 平台版是面向异构算力集群的全栈控制面。在 HAMi 企业版基础上叠加多集群一站式 GUI、集群/应用/GPU 三维度可观测、企业级租户配额、计量计费、OpenAPI 与 SLA 支持，面向公有云应用市场、中小腰部客户与 KA 客户。",
+        "description": "Dynamia AI Platform for HAMi 是面向异构算力集群的全栈控制面。在 Dynamia Enterprise for HAMi 基础上叠加多集群一站式 GUI、集群/应用/GPU 三维度可观测、企业级租户配额、计量计费、OpenAPI 与 SLA 支持，面向公有云应用市场、中小腰部客户与 KA 客户。",
         "highlights": [
           {
             "title": "多集群联邦",
@@ -3160,7 +3160,7 @@
       "hami-enterprise": {
         "eyebrow": "产品介绍",
         "title": "面向已有 Kubernetes/PaaS 团队的生产级 GPU 虚拟化产品。",
-        "body": "HAMi 企业版将开源 HAMi 的核心能力打包为经过生产加固的商业发行版，重点解决 GPU 细粒度共享、多厂商加速卡适配、安全维护、热修复交付和企业级支持问题，并可集成到客户已有的 PaaS 或内部开发者平台中。",
+        "body": "Dynamia Enterprise for HAMi 将开源 HAMi 的核心能力打包为经过生产加固的商业发行版，重点解决 GPU 细粒度共享、多厂商加速卡适配、安全维护、热修复交付和企业级支持问题，并可集成到客户已有的 PaaS 或内部开发者平台中。",
         "scenarioTitle": "适用场景",
         "scenarios": [
           "已经有 Kubernetes 或 PaaS，需要可被企业支持的 HAMi 发行版。",
@@ -3185,8 +3185,8 @@
       },
       "hami-ai-platform": {
         "eyebrow": "产品介绍",
-        "title": "内置 HAMi 企业版能力的异构算力全栈控制面。",
-        "body": "HAMi 平台版面向不只需要虚拟化组件、还需要完整平台能力的组织。它包含 HAMi 企业版，并叠加多集群 GUI、统一可观测、租户配额、计量计费、OpenAPI 与运维工作流，服务于集群管理员、平台团队和 AI 应用负责人。",
+        "title": "内置 Dynamia Enterprise for HAMi 能力的异构算力全栈控制面。",
+        "body": "Dynamia AI Platform for HAMi 面向不只需要虚拟化组件、还需要完整平台能力的组织。它包含 Dynamia Enterprise for HAMi，并叠加多集群 GUI、统一可观测、租户配额、计量计费、OpenAPI 与运维工作流，服务于集群管理员、平台团队和 AI 应用负责人。",
         "scenarioTitle": "适用场景",
         "scenarios": [
           "需要通过可视化平台统一管理多个异构算力集群。",

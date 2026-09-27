@@ -88,9 +88,9 @@
     "products": "Produkte",
     "productsOverview": "Produktuebersicht",
     "productsOverviewDesc": "Entdecken Sie die heterogene Computing-Plattform von Dynamia AI und das Open-Source-Projekt HAMi",
-    "hamiEnterprise": "HAMi Enterprise",
+    "hamiEnterprise": "Dynamia Enterprise for HAMi",
     "hamiEnterpriseDesc": "GPU-Virtualisierung fuer Unternehmen auf Basis des CNCF Incubating-Projekts",
-    "hamiAiPlatform": "HAMi AI Platform",
+    "hamiAiPlatform": "Dynamia AI Platform for HAMi",
     "hamiAiPlatformDesc": "Full-Stack-Kontrollebene fuer heterogene Compute-Cluster",
     "enterpriseDownloads": "Enterprise-Downloads",
     "enterpriseDownloadsDesc": "Durchsuchen Sie Enterprise-Varianten und laden Sie Offline-Image-Bundles, Helm-Charts und Installationsanleitungen herunter",
@@ -269,7 +269,7 @@
   },
   "products": {
     "hamiAiPlatform": {
-      "title": "HAMi AI Platform",
+      "title": "Dynamia AI Platform for HAMi",
       "subtitle": "Heterogene Computing-Virtualisierungsplattform fuer Unternehmen",
       "description": "Dynamia AI bietet eine einheitliche Plattform zur Verwaltung heterogener Computing-Ressourcen.",
       "overviewTitle": "Produktuebersicht",
@@ -501,11 +501,11 @@
     "backToList": "Zurueck zu den Tools",
     "hamiRoiCalculator": {
       "title": "HAMi GPU-Asset-ROI-Rechner",
-      "description": "Vergleichen Sie GPU-Auslastung, fuenfjaehrigen TCO, Einsparungen und ROI ohne HAMi, mit HAMi OSS und HAMi Enterprise."
+      "description": "Vergleichen Sie GPU-Auslastung, fuenfjaehrigen TCO, Einsparungen und ROI ohne HAMi, mit HAMi OSS und Dynamia Enterprise for HAMi."
     },
     "hamiRoiCalculatorPage": {
       "title": "HAMi GPU-Asset-ROI-Rechner",
-      "subtitle": "Vergleichen Sie den effektiven Wert derselben GPU-Investition ohne HAMi, mit HAMi OSS und HAMi Enterprise — mit anpassbaren Markt- und Rechenzentrumsannahmen.",
+      "subtitle": "Vergleichen Sie den effektiven Wert derselben GPU-Investition ohne HAMi, mit HAMi OSS und Dynamia Enterprise for HAMi — mit anpassbaren Markt- und Rechenzentrumsannahmen.",
       "exportPdf": "PDF exportieren",
       "presetsLabel": "Schnellszenarien:",
       "printSummary": {
@@ -561,7 +561,7 @@
           "features": ["vGPU-Slicing · Speicher-/Compute-Isolation", "Am besten fuer Flotten ≤ 200 GPUs", "Community-Support, kein SLA"]
         },
         "enterprise": {
-          "title": "HAMi Enterprise",
+          "title": "Dynamia Enterprise for HAMi",
           "subtitle": "Dynamia AI · Kommerzieller Support",
           "scaleValue": "Unbegrenzt",
           "specs": { "utilization": "Auslastungsgrenze", "scale": "GPU-Skala · 10k+" },
@@ -598,7 +598,7 @@
         "note": "Aequivalente Einsparungen vergleichen den Ressourcenbedarf bei gleicher Last. Realisiert als spaetere Beschaffung, Stilllegung alter GPUs, Kapazitaet fuer neue Workloads oder weniger Mietbedarf. Stromeinsparungen fallen jaehrlich an."
       },
       "hero": {
-        "eyebrow": "Von HAMi Enterprise geschaffener Wert",
+        "eyebrow": "Von Dynamia Enterprise for HAMi geschaffener Wert",
         "releasedValue": "Freigesetzter Anlagenwert gegenueber ohne HAMi",
         "vsOss": "Selbst vs. kostenlosem OSS: Mehrkosten {cost}, Mehrwert {extraValue}, Nettogewinn {netGain} ({roi}×)",
         "avoidedPurchase": "Vermeideter Kauf: ohne HAMi waeren +{count} GPUs noetig (inkl. Server & 5-Jahres-Strom, ≈ {tco}) — Enterprise liefert das auf der bestehenden Flotte",
@@ -976,7 +976,7 @@
     "compareCTA": {
       "eyebrow": "Editionen & Downloads",
       "title": "Editionen vergleichen und Downloads erhalten",
-      "desc": "Vergleichen Sie HAMi und HAMi AI Platform — laden Sie Offline-Bundles und Helm-Charts herunter.",
+      "desc": "Vergleichen Sie HAMi und Dynamia AI Platform for HAMi — laden Sie Offline-Bundles und Helm-Charts herunter.",
       "button": "Enterprise-Varianten anzeigen"
     },
     "benefits": {
@@ -2558,7 +2558,7 @@
   "enterprise": {
     "list": {
       "title": "Dynamia Produktuebersicht",
-      "subtitle": "Compare HAMi Enterprise and HAMi AI Platform, then choose the right path for production-grade heterogeneous compute.",
+      "subtitle": "Compare Dynamia Enterprise for HAMi and Dynamia AI Platform for HAMi, then choose the right path for production-grade heterogeneous compute.",
       "noRelease": "Noch keine Releases",
       "viewDetail": "Details anzeigen",
       "downloadCta": "Herunterladen",
@@ -2681,10 +2681,10 @@
     },
     "hamiEnterprisePage": {
       "heroBadge": "Enterprise Edition",
-      "heroTitle": "HAMi Enterprise",
+      "heroTitle": "Dynamia Enterprise for HAMi",
       "heroSubtitle": "Produktionsreife GPU-Virtualisierung auf Basis des CNCF Incubating-Projekts — steigern Sie die GPU-Auslastung von 40% auf ueber 70%",
       "overviewTitle": "Fuer die Produktion entwickelt",
-      "overviewDescription": "HAMi Enterprise ist die GPU-lizenzbasierte Enterprise-Variante von HAMi.",
+      "overviewDescription": "Dynamia Enterprise for HAMi ist die GPU-lizenzbasierte Enterprise-Variante von HAMi.",
       "highlightsTitle": "Enterprise-Highlights",
       "compatTitle": "Kompatibilitaet",
       "compatKubernetes": "Kubernetes",
@@ -2757,7 +2757,7 @@
     },
     "scope": {
       "title": "Welches Produkt ist das Richtige fuer Sie?",
-      "subtitle": "Drei Produktlinien — Open-Source HAMi, HAMi Enterprise und HAMi AI Platform.",
+      "subtitle": "Drei Produktlinien — Open-Source HAMi, Dynamia Enterprise for HAMi und Dynamia AI Platform for HAMi.",
       "decisionTitle": "In 30 Sekunden waehlen",
       "totalsLabel": "Abgedeckte Funktionen",
       "totalsHint": "Haken = wird in dieser Edition unterstuetzt",
@@ -2769,33 +2769,33 @@
         },
         {
           "scenario": "Ich brauche eine unterstuetzte, gehaertete GPU-Virtualisierungsschicht",
-          "choice": "HAMi Enterprise"
+          "choice": "Dynamia Enterprise for HAMi"
         },
         {
           "scenario": "Ich brauche auch Multi-Cluster-GUI, Kontingente und Observability",
-          "choice": "HAMi AI Platform"
+          "choice": "Dynamia AI Platform for HAMi"
         },
         {
           "scenario": "Ich moechte eine Plattform fuer mehrere interne Teams verwalten",
-          "choice": "HAMi AI Platform"
+          "choice": "Dynamia AI Platform for HAMi"
         }
       ],
       "columns": {
         "feature": "Funktion",
         "oss": "Open-Source HAMi",
         "ossSub": "",
-        "commercial": "HAMi Enterprise",
+        "commercial": "Dynamia Enterprise for HAMi",
         "commercialSub": "",
-        "enterprise": "HAMi AI Platform",
+        "enterprise": "Dynamia AI Platform for HAMi",
         "enterpriseSub": ""
       },
       "cta": {
         "ossLabel": "Open-Source HAMi",
         "ossLink": "GitHub",
         "ossHref": "https://github.com/Project-HAMi/HAMi",
-        "commercialLabel": "HAMi Enterprise",
+        "commercialLabel": "Dynamia Enterprise for HAMi",
         "commercialLink": "Herunterladen",
-        "enterpriseLabel": "HAMi AI Platform",
+        "enterpriseLabel": "Dynamia AI Platform for HAMi",
         "enterpriseLink": "Herunterladen"
       },
       "groups": [
@@ -2948,9 +2948,9 @@
     },
     "productsData": {
       "hami-enterprise": {
-        "name": "HAMi Enterprise",
+        "name": "Dynamia Enterprise for HAMi",
         "tagline": "GPU-Virtualisierung fuer Unternehmen auf Basis des CNCF Incubating-Projekts — steigern Sie die GPU-Auslastung von 40% auf ueber 70%",
-        "description": "HAMi Enterprise ist die GPU-lizenzbasierte Enterprise-Variante von HAMi, entwickelt fuer Teams, die gehaertete, unterstuetzte GPU-Virtualisierung mit Enterprise-Zuverlaessigkeit benoetigen.",
+        "description": "Dynamia Enterprise for HAMi ist die GPU-lizenzbasierte Enterprise-Variante von HAMi, entwickelt fuer Teams, die gehaertete, unterstuetzte GPU-Virtualisierung mit Enterprise-Zuverlaessigkeit benoetigen.",
         "highlights": [
           {
             "title": "Enterprise SLA",
@@ -2967,9 +2967,9 @@
         ]
       },
       "hami-ai-platform": {
-        "name": "HAMi AI Platform",
+        "name": "Dynamia AI Platform for HAMi",
         "tagline": "Full-Stack-Kontrollebene fuer heterogene Compute-Cluster",
-        "description": "HAMi AI Platform ist die Full-Stack-Kontrollebene fuer heterogene Compute-Cluster. Sie buendelt HAMi Enterprise mit Multi-Cluster-GUI, End-to-End-Observability, Enterprise-Mandantenkontingenten, Abrechnung, OpenAPI und SLA-Support.",
+        "description": "Dynamia AI Platform for HAMi ist die Full-Stack-Kontrollebene fuer heterogene Compute-Cluster. Sie buendelt Dynamia Enterprise for HAMi mit Multi-Cluster-GUI, End-to-End-Observability, Enterprise-Mandantenkontingenten, Abrechnung, OpenAPI und SLA-Support.",
         "highlights": [
           {
             "title": "Multi-Cluster-Foederation",
@@ -2996,7 +2996,7 @@
       "hami-enterprise": {
         "eyebrow": "Produkteinfuehrung",
         "title": "Produktionsreife GPU-Virtualisierung fuer Teams, die bereits Kubernetes betreiben.",
-        "body": "HAMi Enterprise verpackt die Open-Source-HAMi-Basis in eine gehaertete kommerzielle Distribution fuer echte Produktionscluster. Der Fokus liegt auf GPU-Sharing mit hoher Dichte, Multi-Vendor-Beschleuniger-Unterstuetzung, Sicherheitswartung, Hotfix-Bereitstellung und Enterprise-Support.",
+        "body": "Dynamia Enterprise for HAMi verpackt die Open-Source-HAMi-Basis in eine gehaertete kommerzielle Distribution fuer echte Produktionscluster. Der Fokus liegt auf GPU-Sharing mit hoher Dichte, Multi-Vendor-Beschleuniger-Unterstuetzung, Sicherheitswartung, Hotfix-Bereitstellung und Enterprise-Support.",
         "scenarioTitle": "Ideal geeignet",
         "scenarios": [
           "Sie betreiben bereits Kubernetes oder ein PaaS und benoetigen eine unterstuetzte HAMi-Distribution.",
@@ -3021,8 +3021,8 @@
       },
       "hami-ai-platform": {
         "eyebrow": "Produkteinfuehrung",
-        "title": "Eine Full-Stack-Kontrollebene fuer heterogenes Computing mit integriertem HAMi Enterprise.",
-        "body": "HAMi AI Platform ist die Plattform-Edition fuer Organisationen, die mehr als eine Virtualisierungsschicht benoetigen. Sie enthaelt HAMi Enterprise und bietet eine Multi-Cluster-GUI, einheitliche Observability, Mandantenkontingente, Abrechnung, OpenAPI und operative Workflows.",
+        "title": "Eine Full-Stack-Kontrollebene fuer heterogenes Computing mit integriertem Dynamia Enterprise for HAMi.",
+        "body": "Dynamia AI Platform for HAMi ist die Plattform-Edition fuer Organisationen, die mehr als eine Virtualisierungsschicht benoetigen. Sie enthaelt Dynamia Enterprise for HAMi und bietet eine Multi-Cluster-GUI, einheitliche Observability, Mandantenkontingente, Abrechnung, OpenAPI und operative Workflows.",
         "scenarioTitle": "Ideal geeignet",
         "scenarios": [
           "Sie benoetigen eine visuelle Plattform fuer heterogene Computing-Operationen ueber mehrere Cluster hinweg.",
