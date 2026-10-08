@@ -87,6 +87,7 @@ export function getBlogPost(slug: string, language = 'en'): BlogPost | null {
       tags: data.tags || [],
       category: data.category || 'Uncategorized', // 博客分类
       coverImage: data.coverImage,
+      coverDisplay: data.coverDisplay,
       coverTitle: data.coverTitle, // 自定义封面标题
       language: data.language || language,
       content,
@@ -128,6 +129,7 @@ function getBlogPostMeta(slug: string, language = 'en'): BlogPostMeta | null {
       tags: data.tags || [],
       category: data.category || 'Uncategorized', // 博客分类
       coverImage: data.coverImage,
+      coverDisplay: data.coverDisplay,
       coverTitle: data.coverTitle,
       language: data.language || language,
     };

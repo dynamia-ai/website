@@ -1,19 +1,40 @@
 'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
+
 interface DynamicBlogCoverProps {
   title: string;
+  imageSrc?: string;
   className?: string;
   variant?: 'list' | 'detail';
 }
 
 /**
- * 博客封面组件 - 使用 CSS 绘制科技感背景，避免依赖静态封面图。
+ * 博客封面：按需显示上传图片，未设置或加载失败时使用文字封面。
  */
 export default function DynamicBlogCover({
   title,
+  imageSrc,
   className = '',
   variant = 'list',
 }: DynamicBlogCoverProps) {
+  const [failedImage, setFailedImage] = useState<string>();
+
+  if (imageSrc && failedImage !== imageSrc) {
+    return (
+      <div className={`relative w-full h-full ${className} overflow-hidden`}>
+        <Image
+          src={imageSrc}
+          alt={title}
+          fill
+          sizes={variant === 'detail' ? '(max-width: 768px) 100vw, 960px' : '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'}
+          className="object-cover"
+          onError={() => setFailedImage(imageSrc)}
+        />
+      </div>
+    );
+  }
 
   const titleLines = title.includes('\n')
     ? title.split('\n').map(line => line.trim()).filter(line => line.length > 0)

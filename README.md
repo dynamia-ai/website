@@ -89,6 +89,20 @@ This project follows specific coding standards. See [AGENTS.md](./AGENTS.md) for
 - Styling guidelines
 - i18n usage rules
 
+## Marketing blog workflow
+
+Company marketing editors create new blogs from the official company Feishu
+template, or provide an existing article URL and describe a small edit in chat,
+including new images.
+The [website-blog-from-feishu skill](.agents/skills/website-blog-from-feishu/SKILL.md)
+prepares a content-only preview and draft PR with either workflow. Initial setup
+includes official Lark CLI, the employee's authorized company Feishu access, and
+verification of the internal template and article library. Setup also checks that
+the workflow is enabled on the default branch; creating a PR does not publish the article.
+
+- [市场同事操作指南](docs/marketing/blog-sop.md)
+- [飞书投稿模板](docs/marketing/feishu-blog-template.md)
+- [维护者启用与验收](docs/marketing/maintainer-setup.md)
 
 ## SEO regression checks
 
