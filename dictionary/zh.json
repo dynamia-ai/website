@@ -2709,10 +2709,6 @@
         "title": "密瓜智能产品概览",
         "description": "全面了解密瓜智能平台的异构 GPU 共享、调度与编排能力。"
       },
-      "hamiIntro": {
-        "title": "HAMi 介绍",
-        "description": "了解由密瓜智能创始团队创建的开源异构 AI 计算虚拟化中间件 HAMi。"
-      },
       "gpuOversell": {
         "title": "GPU 超卖企业级特性实战",
         "description": "企业级 GPU 超卖能力演示 — 资源优化实战。"

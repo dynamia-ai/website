@@ -2554,10 +2554,6 @@
         "title": "Product Overview",
         "description": "GPU sharing, scheduling & orchestration — a quick platform walkthrough."
       },
-      "hamiIntro": {
-        "title": "What is HAMi",
-        "description": "Open-source heterogeneous GPU virtualization middleware, by Dynamia's founders."
-      },
       "gpuOversell": {
         "title": "GPU Oversubscription in Practice",
         "description": "Enterprise-grade GPU oversubscription — real-world demo of resource optimization."

@@ -10,7 +10,7 @@ interface VideoPlayerProps {
 }
 
 export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
-  const t = useTranslations();
+  const t = useTranslations('videos');
   const locale = useLocale();
   const isEn = locale === 'en';
   const videoUrl = (isEn && video.videoUrlEn) ? video.videoUrlEn : video.videoUrl;
@@ -25,12 +25,12 @@ export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
         <button
           onClick={onClose}
           className="absolute -top-10 right-0 text-white/80 hover:text-white text-sm flex items-center gap-1"
-          aria-label={t('videos.player.close')}
+          aria-label={t('player.close')}
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
-          {t('videos.player.close')}
+          {t('player.close')}
         </button>
 
         <div className="rounded-xl overflow-hidden shadow-2xl bg-black">
