@@ -50,7 +50,6 @@
       "description": "使用免费的 HAMi 指标分析与 GPU 资产 ROI 估算工具，规划 GPU 虚拟化与 AI 基础设施投入。",
       "keywords": "密瓜智能工具，HAMi，GPU 虚拟化，GPU 共享，ROI 计算器，AI 基础设施"
     },
-
     "solutions": {
       "title": "解决方案 - 密瓜智能 | AI, HPC 与边缘计算",
       "description": "为 AI/ML、HPC 和边缘计算挑战提供强大的计算解决方案。使用密瓜智能的异构计算平台优化您的基础设施。",
@@ -561,8 +560,15 @@
         "none": {
           "title": "无 HAMi",
           "subtitle": "整卡独占 · 现状",
-          "specs": { "utilization": "实际利用率", "sharing": "无共享能力" },
-          "features": ["一卡一任务，资源大量闲置", "显存与算力无法共享", "扩容只能靠继续买卡"]
+          "specs": {
+            "utilization": "实际利用率",
+            "sharing": "无共享能力"
+          },
+          "features": [
+            "一卡一任务，资源大量闲置",
+            "显存与算力无法共享",
+            "扩容只能靠继续买卡"
+          ]
         },
         "oss": {
           "title": "HAMi 开源版",
@@ -571,15 +577,29 @@
           "exceeded": "当前已超出",
           "limitNote": "大规模场景调度能力受限",
           "limitNoteOver": "当前 {count} 卡已超出开源版承载上限",
-          "specs": { "utilization": "利用率上限", "scale": "GPU 规模上限" },
-          "features": ["vGPU 切分 · 显存算力隔离", "适合 ≤200 卡的中小规模", "社区支持，无 SLA 保障"]
+          "specs": {
+            "utilization": "利用率上限",
+            "scale": "GPU 规模上限"
+          },
+          "features": [
+            "vGPU 切分 · 显存算力隔离",
+            "适合 ≤200 卡的中小规模",
+            "社区支持，无 SLA 保障"
+          ]
         },
         "enterprise": {
           "title": "Dynamia Enterprise for HAMi",
           "subtitle": "密瓜智能 · 商业支持",
           "scaleValue": "无上限",
-          "specs": { "utilization": "利用率上限", "scale": "GPU 规模 · 万卡级" },
-          "features": ["显存超配 UMI · 弹性扩缩", "多集群统一管理 · 企业级 SLA", "7×24 专家支持 · 信创适配"]
+          "specs": {
+            "utilization": "利用率上限",
+            "scale": "GPU 规模 · 万卡级"
+          },
+          "features": [
+            "显存超配 UMI · 弹性扩缩",
+            "多集群统一管理 · 企业级 SLA",
+            "7×24 专家支持 · 信创适配"
+          ]
         }
       },
       "comparison": {
@@ -634,7 +654,13 @@
       "config": {
         "currencySymbol": "¥",
         "moneyScale": "eastAsian",
-        "moneyUnits": { "tenThousand": "万", "hundredMillion": "亿", "thousand": "", "million": "", "billion": "" },
+        "moneyUnits": {
+          "tenThousand": "万",
+          "hundredMillion": "亿",
+          "thousand": "",
+          "million": "",
+          "billion": ""
+        },
         "defaultVendorId": "nvidia",
         "electricityPrice": 0.7,
         "serverPrices": {
@@ -643,82 +669,427 @@
           "inference": 120000
         },
         "presets": [
-          { "id": "small", "label": "中小团队 · 100 卡", "count": 100, "vendorId": "metax", "cardId": "C500", "currentUtilization": 22, "ossUtilization": 38, "enterpriseUtilization": 72 },
-          { "id": "mid", "label": "大型央企 · 1,000 卡", "count": 1000, "vendorId": "nvidia", "cardId": "A100-80G", "currentUtilization": 25, "ossUtilization": 35, "enterpriseUtilization": 70 },
-          { "id": "large", "label": "头部金融 · 3,200 卡", "count": 3200, "vendorId": "nvidia", "cardId": "H20", "currentUtilization": 22, "ossUtilization": 33, "enterpriseUtilization": 68 },
-          { "id": "xinchuang", "label": "信创混部 · 2,000 卡", "count": 2000, "vendorId": "ascend", "cardId": "A910B", "currentUtilization": 20, "ossUtilization": 32, "enterpriseUtilization": 65 }
+          {
+            "id": "small",
+            "label": "中小团队 · 100 卡",
+            "count": 100,
+            "vendorId": "metax",
+            "cardId": "C500",
+            "currentUtilization": 22,
+            "ossUtilization": 38,
+            "enterpriseUtilization": 72
+          },
+          {
+            "id": "mid",
+            "label": "大型央企 · 1,000 卡",
+            "count": 1000,
+            "vendorId": "nvidia",
+            "cardId": "A100-80G",
+            "currentUtilization": 25,
+            "ossUtilization": 35,
+            "enterpriseUtilization": 70
+          },
+          {
+            "id": "large",
+            "label": "头部金融 · 3,200 卡",
+            "count": 3200,
+            "vendorId": "nvidia",
+            "cardId": "H20",
+            "currentUtilization": 22,
+            "ossUtilization": 33,
+            "enterpriseUtilization": 68
+          },
+          {
+            "id": "xinchuang",
+            "label": "信创混部 · 2,000 卡",
+            "count": 2000,
+            "vendorId": "ascend",
+            "cardId": "A910B",
+            "currentUtilization": 20,
+            "ossUtilization": 32,
+            "enterpriseUtilization": 65
+          }
         ]
       },
       "catalog": [
         {
-          "id": "nvidia", "name": "NVIDIA", "color": "#76B900",
+          "id": "nvidia",
+          "name": "NVIDIA",
+          "color": "#76B900",
           "cards": [
-            { "id": "A800", "name": "A800", "price": 65000, "tdp": 400, "serverTier": "main" },
-            { "id": "A100-40G", "name": "A100 40G", "price": 73500, "tdp": 400, "serverTier": "main" },
-            { "id": "A100-80G", "name": "A100 80G", "price": 145000, "tdp": 400, "serverTier": "main" },
-            { "id": "H800", "name": "H800", "price": 230000, "tdp": 700, "serverTier": "flagship" },
-            { "id": "H100", "name": "H100", "price": 270000, "tdp": 700, "serverTier": "flagship" },
-            { "id": "H20", "name": "H20 141GB", "price": 120000, "tdp": 400, "serverTier": "main" },
-            { "id": "H200", "name": "H200", "price": 175000, "tdp": 700, "serverTier": "flagship" },
-            { "id": "L20", "name": "L20", "price": 17000, "tdp": 275, "serverTier": "inference" },
-            { "id": "L40", "name": "L40", "price": 32000, "tdp": 300, "serverTier": "inference" },
-            { "id": "L40S", "name": "L40S", "price": 48000, "tdp": 350, "serverTier": "inference" },
-            { "id": "RTX-A6000", "name": "RTX A6000", "price": 32000, "tdp": 300, "serverTier": "inference" },
-            { "id": "RTX-4090", "name": "RTX 4090", "price": 13000, "tdp": 450, "serverTier": "inference" },
-            { "id": "RTX-3080", "name": "RTX 3080", "price": 4000, "tdp": 320, "serverTier": "inference" }
+            {
+              "id": "A800",
+              "name": "A800",
+              "price": 65000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "A100-40G",
+              "name": "A100 40G",
+              "price": 73500,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "A100-80G",
+              "name": "A100 80G",
+              "price": 145000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "H800",
+              "name": "H800",
+              "price": 230000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "H100",
+              "name": "H100",
+              "price": 270000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "H20",
+              "name": "H20 141GB",
+              "price": 120000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "H200",
+              "name": "H200",
+              "price": 175000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "L20",
+              "name": "L20",
+              "price": 17000,
+              "tdp": 275,
+              "serverTier": "inference"
+            },
+            {
+              "id": "L40",
+              "name": "L40",
+              "price": 32000,
+              "tdp": 300,
+              "serverTier": "inference"
+            },
+            {
+              "id": "L40S",
+              "name": "L40S",
+              "price": 48000,
+              "tdp": 350,
+              "serverTier": "inference"
+            },
+            {
+              "id": "RTX-A6000",
+              "name": "RTX A6000",
+              "price": 32000,
+              "tdp": 300,
+              "serverTier": "inference"
+            },
+            {
+              "id": "RTX-4090",
+              "name": "RTX 4090",
+              "price": 13000,
+              "tdp": 450,
+              "serverTier": "inference"
+            },
+            {
+              "id": "RTX-3080",
+              "name": "RTX 3080",
+              "price": 4000,
+              "tdp": 320,
+              "serverTier": "inference"
+            }
           ]
         },
-        { "id": "ascend", "name": "华为昇腾", "color": "#CF0A2C", "cards": [
-          { "id": "A910B", "name": "昇腾 910B", "price": 90000, "tdp": 400, "serverTier": "main" },
-          { "id": "A910C", "name": "昇腾 910C", "price": 165000, "tdp": 750, "serverTier": "flagship" },
-          { "id": "A310P", "name": "昇腾 310P", "price": 18000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "hygon", "name": "海光", "color": "#B5121B", "cards": [
-          { "id": "BW100", "name": "海光 BW100", "price": 100000, "tdp": 400, "serverTier": "main" },
-          { "id": "K100", "name": "DCU K100", "price": 40000, "tdp": 300, "serverTier": "main" },
-          { "id": "Z100", "name": "DCU Z100", "price": 50000, "tdp": 280, "serverTier": "inference" }
-        ] },
-        { "id": "cambricon", "name": "寒武纪", "color": "#F7941E", "cards": [
-          { "id": "MLU590", "name": "思元 590", "price": 65000, "tdp": 350, "serverTier": "main" },
-          { "id": "MLU370", "name": "思元 370", "price": 60000, "tdp": 250, "serverTier": "inference" }
-        ] },
-        { "id": "metax", "name": "沐曦", "color": "#00A0E9", "cards": [
-          { "id": "C500", "name": "曦云 C500", "price": 90000, "tdp": 350, "serverTier": "main" },
-          { "id": "C550", "name": "曦云 C550", "price": 110000, "tdp": 450, "serverTier": "main" },
-          { "id": "N260", "name": "曦思 N260", "price": 70000, "tdp": 200, "serverTier": "inference" },
-          { "id": "N100", "name": "曦思 N100", "price": 50000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "kunlunxin", "name": "昆仑芯", "color": "#0066B3", "cards": [
-          { "id": "P800", "name": "昆仑芯 P800", "price": 90000, "tdp": 400, "serverTier": "main" },
-          { "id": "P200", "name": "昆仑芯 P200", "price": 40000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "enflame", "name": "燧原", "color": "#00457C", "cards": [
-          { "id": "S60", "name": "云燧 S60", "price": 50000, "tdp": 300, "serverTier": "inference" },
-          { "id": "i20", "name": "云燧 i20", "price": 80000, "tdp": 300, "serverTier": "main" }
-        ] },
-        { "id": "iluvatar", "name": "天数智芯", "color": "#1D4E9C", "cards": [
-          { "id": "BI-V100", "name": "天垓 BI-V100", "price": 70000, "tdp": 250, "serverTier": "main" },
-          { "id": "BI-V150", "name": "天垓 BI-V150", "price": 85000, "tdp": 300, "serverTier": "main" },
-          { "id": "MR", "name": "智铠 MR", "price": 30000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "moore", "name": "摩尔线程", "color": "#D7282F", "cards": [
-          { "id": "S4000", "name": "MTT S4000", "price": 65000, "tdp": 350, "serverTier": "main" },
-          { "id": "S5000", "name": "MTT S5000", "price": 80000, "tdp": 450, "serverTier": "main" },
-          { "id": "S3000", "name": "MTT S3000", "price": 10000, "tdp": 250, "serverTier": "inference" }
-        ] },
-        { "id": "biren", "name": "壁仞", "color": "#7B2D8E", "cards": [
-          { "id": "BR100", "name": "BR100", "price": 100000, "tdp": 550, "serverTier": "flagship" },
-          { "id": "BR104", "name": "BR104", "price": 60000, "tdp": 300, "serverTier": "main" }
-        ] },
-        { "id": "pingtouge", "name": "平头哥", "color": "#FF6A00", "cards": [
-          { "id": "ZHENWU-M890", "name": "真武 M890", "price": 180000, "tdp": 700, "serverTier": "flagship" },
-          { "id": "ZHENWU-810E", "name": "真武 810E", "price": 120000, "tdp": 500, "serverTier": "main" },
-          { "id": "HANGUANG-800", "name": "含光 800", "price": 50000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "amd", "name": "AMD", "color": "#ED1C24", "cards": [
-          { "id": "MI300X", "name": "MI300X", "price": 140000, "tdp": 750, "serverTier": "flagship" },
-          { "id": "MI250X", "name": "MI250X", "price": 90000, "tdp": 500, "serverTier": "main" }
-        ] }
+        {
+          "id": "ascend",
+          "name": "华为昇腾",
+          "color": "#CF0A2C",
+          "cards": [
+            {
+              "id": "A910B",
+              "name": "昇腾 910B",
+              "price": 90000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "A910C",
+              "name": "昇腾 910C",
+              "price": 165000,
+              "tdp": 750,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "A310P",
+              "name": "昇腾 310P",
+              "price": 18000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "hygon",
+          "name": "海光",
+          "color": "#B5121B",
+          "cards": [
+            {
+              "id": "BW100",
+              "name": "海光 BW100",
+              "price": 100000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "K100",
+              "name": "DCU K100",
+              "price": 40000,
+              "tdp": 300,
+              "serverTier": "main"
+            },
+            {
+              "id": "Z100",
+              "name": "DCU Z100",
+              "price": 50000,
+              "tdp": 280,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "cambricon",
+          "name": "寒武纪",
+          "color": "#F7941E",
+          "cards": [
+            {
+              "id": "MLU590",
+              "name": "思元 590",
+              "price": 65000,
+              "tdp": 350,
+              "serverTier": "main"
+            },
+            {
+              "id": "MLU370",
+              "name": "思元 370",
+              "price": 60000,
+              "tdp": 250,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "metax",
+          "name": "沐曦",
+          "color": "#00A0E9",
+          "cards": [
+            {
+              "id": "C500",
+              "name": "曦云 C500",
+              "price": 90000,
+              "tdp": 350,
+              "serverTier": "main"
+            },
+            {
+              "id": "C550",
+              "name": "曦云 C550",
+              "price": 110000,
+              "tdp": 450,
+              "serverTier": "main"
+            },
+            {
+              "id": "N260",
+              "name": "曦思 N260",
+              "price": 70000,
+              "tdp": 200,
+              "serverTier": "inference"
+            },
+            {
+              "id": "N100",
+              "name": "曦思 N100",
+              "price": 50000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "kunlunxin",
+          "name": "昆仑芯",
+          "color": "#0066B3",
+          "cards": [
+            {
+              "id": "P800",
+              "name": "昆仑芯 P800",
+              "price": 90000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "P200",
+              "name": "昆仑芯 P200",
+              "price": 40000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "enflame",
+          "name": "燧原",
+          "color": "#00457C",
+          "cards": [
+            {
+              "id": "S60",
+              "name": "云燧 S60",
+              "price": 50000,
+              "tdp": 300,
+              "serverTier": "inference"
+            },
+            {
+              "id": "i20",
+              "name": "云燧 i20",
+              "price": 80000,
+              "tdp": 300,
+              "serverTier": "main"
+            }
+          ]
+        },
+        {
+          "id": "iluvatar",
+          "name": "天数智芯",
+          "color": "#1D4E9C",
+          "cards": [
+            {
+              "id": "BI-V100",
+              "name": "天垓 BI-V100",
+              "price": 70000,
+              "tdp": 250,
+              "serverTier": "main"
+            },
+            {
+              "id": "BI-V150",
+              "name": "天垓 BI-V150",
+              "price": 85000,
+              "tdp": 300,
+              "serverTier": "main"
+            },
+            {
+              "id": "MR",
+              "name": "智铠 MR",
+              "price": 30000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "moore",
+          "name": "摩尔线程",
+          "color": "#D7282F",
+          "cards": [
+            {
+              "id": "S4000",
+              "name": "MTT S4000",
+              "price": 65000,
+              "tdp": 350,
+              "serverTier": "main"
+            },
+            {
+              "id": "S5000",
+              "name": "MTT S5000",
+              "price": 80000,
+              "tdp": 450,
+              "serverTier": "main"
+            },
+            {
+              "id": "S3000",
+              "name": "MTT S3000",
+              "price": 10000,
+              "tdp": 250,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "biren",
+          "name": "壁仞",
+          "color": "#7B2D8E",
+          "cards": [
+            {
+              "id": "BR100",
+              "name": "BR100",
+              "price": 100000,
+              "tdp": 550,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "BR104",
+              "name": "BR104",
+              "price": 60000,
+              "tdp": 300,
+              "serverTier": "main"
+            }
+          ]
+        },
+        {
+          "id": "pingtouge",
+          "name": "平头哥",
+          "color": "#FF6A00",
+          "cards": [
+            {
+              "id": "ZHENWU-M890",
+              "name": "真武 M890",
+              "price": 180000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "ZHENWU-810E",
+              "name": "真武 810E",
+              "price": 120000,
+              "tdp": 500,
+              "serverTier": "main"
+            },
+            {
+              "id": "HANGUANG-800",
+              "name": "含光 800",
+              "price": 50000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "amd",
+          "name": "AMD",
+          "color": "#ED1C24",
+          "cards": [
+            {
+              "id": "MI300X",
+              "name": "MI300X",
+              "price": 140000,
+              "tdp": 750,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "MI250X",
+              "name": "MI250X",
+              "price": 90000,
+              "tdp": 500,
+              "serverTier": "main"
+            }
+          ]
+        }
       ]
     },
     "hamiMetricsExplorer": {
@@ -1272,391 +1643,391 @@
   },
   "cases": {
     "cetcCloud": {
-    "cardTitle": "电科云：便携式知识库 GPU 共享底座",
-    "title": "电科云基于 HAMi 构建异构 GPU 共享资源底座，支撑便携式智能知识库",
-    "subtitle": "电科云（北京）科技在一台配备 8 张异构 GPU 的便携式设备上，同时运行文本生成、Embedding、Rerank 等生产模型与 Kubernetes 研发环境，将研发 Pod 并发容量从 2 个提升至 30 个。",
-    "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
-    "sourceLink": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
-    "stats": [
-      {
-        "value": "15×",
-        "label": "研发 Pod 并发容量提升（2 → 30）"
-      },
-      {
-        "value": "87.5%",
-        "label": "单卡显存回收（释放 56 GB）"
-      },
-      {
-        "value": "80%",
-        "label": "单卡算力回收，保持可调度"
-      }
-    ],
-    "overview": {
-      "title": "客户概览",
-      "description": "电科云（北京）科技需要将智能知识库带到项目现场独立运行，在配备异构 GPU 的同一批便携式设备上，同时承载文本生成、Embedding、Rerank、知识处理与研发调试等负载。团队采用 Kubernetes 与 HAMi，把此前长期绑定在单一服务上的异构 GPU，转变为生产模型与 Kubernetes 研发环境可以按需申请、共享与调度的资源，构成便携式智能知识库的异构算力共享底座。",
-      "keyPoints": [
-        "便携式智能知识库一体机，可携带至项目现场独立运行",
-        "知识库生产流水线与 Kubernetes 研发环境共存于同一台 8 卡异构 GPU 设备",
-        "以 Kubernetes 原生资源声明 + HAMi 设备共享与统一调度为底座"
-      ]
-    },
-    "companyCard": {
-      "name": "电科云（北京）科技有限公司",
-      "description": "中国电科旗下云与智能计算品牌，负责便携式智能知识库的产品研发与工程交付，围绕现场本地运行、知识处理、模型服务与研发环境构建产品能力。"
-    },
-    "info": {
-      "title": "案例信息",
-      "rows": [
+      "cardTitle": "电科云：便携式知识库 GPU 共享底座",
+      "title": "电科云基于 HAMi 构建异构 GPU 共享资源底座，支撑便携式智能知识库",
+      "subtitle": "电科云（北京）科技在一台配备 8 张异构 GPU 的便携式设备上，同时运行文本生成、Embedding、Rerank 等生产模型与 Kubernetes 研发环境，将研发 Pod 并发容量从 2 个提升至 30 个。",
+      "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
+      "sourceLink": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
+      "stats": [
         {
-          "label": "用户",
-          "value": "电科云技术团队"
+          "value": "15×",
+          "label": "研发 Pod 并发容量提升（2 → 30）"
         },
         {
-          "label": "业务场景",
-          "value": "可携带至项目现场、独立运行的智能知识库一体机"
-        },
-        {
-          "label": "部署环境",
-          "value": "Kubernetes 与本地化异构 GPU"
-        },
-        {
-          "label": "使用项目",
-          "value": "Kubernetes、HAMi"
-        },
-        {
-          "label": "核心挑战",
-          "value": "多模型协同、生产与研发共享算力"
-        }
-      ]
-    },
-    "challenge": {
-      "title": "挑战：一台设备，两种 GPU 使用路径",
-      "description": "知识库的在线问答依赖文本生成、向量检索与 Rerank；数据入库要经过解析、切分、向量化、知识抽取与索引构建；研发工程师还需要在 Kubernetes 研发 Pod/容器中调试模型、验证依赖、跑实验。这些负载的 GPU 使用方式截然不同，而它们必须共存于同一台便携设备。",
-      "points": [
-        {
-          "title": "负载特征差异大",
-          "description": "文本生成须长期在线、显存基线高、延迟敏感；Embedding 在批量导入时形成周期性峰值；Rerank 单次计算短但调用频繁；知识处理与索引重建是必须与在线服务隔离的批任务；研发 Pod 周期性、交互式使用。"
-        },
-        {
-          "title": "整卡独占快速耗尽资源",
-          "description": "如果每个服务或研发环境继续长期绑定一整张卡，有限的设备很快被逻辑耗尽，剩余算力无法被其他负载复用。"
-        },
-        {
-          "title": "过细切分引入新问题",
-          "description": "如果只追求尽可能细的切分，又会放大显存不足、调度抖动与故障传播的风险。"
-        },
-        {
-          "title": "需要差异化资源策略",
-          "description": "团队需要让每类负载自行描述资源需求，再由平台基于设备状态与服务等级完成资源放置。"
-        }
-      ]
-    },
-    "solution": {
-      "title": "解决方案：基于 HAMi 的通用资源契约",
-      "description": "HAMi 的价值不只是把一张物理卡切分成多份资源份额，更重要的是建立了一套通用资源契约：负载自行声明所需设备资源，调度基于设备可用状态进行选择，多 Pod 可在各自资源边界内共享同一张异构 GPU，且 Pod、容器、设备与调度结果可相互关联追溯。",
-      "resourceContract": {
-        "title": "Kubernetes 原生资源契约",
-        "description": "保留 Kubernetes 应用交付模式，让平台进一步理解异构 GPU 设备能否满足负载请求，让适合共享的研发环境复用同一张物理 GPU。",
-        "features": [
-          "模型服务与研发 Pod 自行声明设备资源，不再依赖长期人工绑卡",
-          "调度不只判断节点上是否存在 GPU，而是基于设备可用状态选择",
-          "Pod、容器、设备与调度结果可关联追溯，支撑容量观察与配置纠偏"
-        ]
-      },
-      "workloadStrategy": {
-        "title": "按负载画像差异化配给",
-        "description": "团队围绕模型加载、峰值用量、并发、延迟与长期运行行为建立资源画像，再将验证过的需求翻译为 Kubernetes 资源请求，不同负载遵循不同策略。",
-        "features": [
-          "在线路径稳定边界：文本生成、在线检索与 Rerank 优先获得稳定资源",
-          "周期任务错峰执行：向量化、知识抽取与索引重建在低负载时段排队运行",
-          "配置按真实负载纠偏：切分颗粒度来自基线验证与运行时观测，而非预设统一比例"
-        ]
-      },
-      "devSharing": {
-        "title": "研发环境共享单张异构 GPU",
-        "description": "多个 Kubernetes 研发 Pod/容器通过 HAMi 虚拟化复用同一张异构 GPU，而非各自长期独占设备，显存配额由用户按任务需求申请，平台不设统一固定值。",
-        "features": [
-          "多个研发 Pod 共享单张异构 GPU，各有独立资源边界",
-          "复用与生产服务一致的资源声明和调度方式",
-          "实测同机并发运行 30 个研发 Pod"
-        ]
-      }
-    },
-    "results": {
-      "title": "实施成果",
-      "description": "在同一台配备 8 张异构 GPU 的便携式设备上，团队以一致口径对比了引入 HAMi 前后的资源容量：",
-      "items": [
-        {
-          "title": "研发 Pod 并发容量",
-          "value": "2 → 30",
-          "description": "同一台设备的研发 Pod 并发数从 2 个提升至 30 个，达到原来的 15 倍"
-        },
-        {
-          "title": "显存回收",
           "value": "87.5%",
-          "description": "Embedding 从独占整张 64 GB GPU 改为 8 GB 配额，释放 56 GB 可复用显存"
+          "label": "单卡显存回收（释放 56 GB）"
         },
         {
-          "title": "算力回收",
           "value": "80%",
-          "description": "Embedding 仅分配 20% GPU 算力，其余 80% 保持可调度"
-        },
-        {
-          "title": "性能影响",
-          "value": "< 5%",
-          "description": "Token 吞吐与独占整卡相比变化在 5% 以内，加载时间与 P95 延迟基本持平"
+          "label": "单卡算力回收，保持可调度"
         }
       ],
-      "table": {
-        "title": "Embedding 模型单卡资源对比",
-        "description": "同一镜像、同一请求集与并发配置下，独占整卡与 HAMi 切分的同卡同模型对比：",
-        "metricLabel": "对比项",
-        "withoutLabel": "未使用 HAMi",
-        "withLabel": "使用 HAMi",
+      "overview": {
+        "title": "客户概览",
+        "description": "电科云（北京）科技需要将智能知识库带到项目现场独立运行，在配备异构 GPU 的同一批便携式设备上，同时承载文本生成、Embedding、Rerank、知识处理与研发调试等负载。团队采用 Kubernetes 与 HAMi，把此前长期绑定在单一服务上的异构 GPU，转变为生产模型与 Kubernetes 研发环境可以按需申请、共享与调度的资源，构成便携式智能知识库的异构算力共享底座。",
+        "keyPoints": [
+          "便携式智能知识库一体机，可携带至项目现场独立运行",
+          "知识库生产流水线与 Kubernetes 研发环境共存于同一台 8 卡异构 GPU 设备",
+          "以 Kubernetes 原生资源声明 + HAMi 设备共享与统一调度为底座"
+        ]
+      },
+      "companyCard": {
+        "name": "电科云（北京）科技有限公司",
+        "description": "中国电科旗下云与智能计算品牌，负责便携式智能知识库的产品研发与工程交付，围绕现场本地运行、知识处理、模型服务与研发环境构建产品能力。"
+      },
+      "info": {
+        "title": "案例信息",
         "rows": [
           {
-            "metric": "显存分配",
-            "without": "独占整张 64 GB GPU",
-            "with": "按需分配 8 GB"
+            "label": "用户",
+            "value": "电科云技术团队"
           },
           {
-            "metric": "其他任务可复用显存",
-            "without": "0 GB",
-            "with": "56 GB（整卡的 87.5%）"
+            "label": "业务场景",
+            "value": "可携带至项目现场、独立运行的智能知识库一体机"
           },
           {
-            "metric": "算力分配",
-            "without": "独占整卡",
-            "with": "分配 20%，其余 80% 可调度"
+            "label": "部署环境",
+            "value": "Kubernetes 与本地化异构 GPU"
           },
           {
-            "metric": "Token 吞吐（tokens/s）",
-            "without": "基线",
-            "with": "与独占整卡相差 5% 以内"
+            "label": "使用项目",
+            "value": "Kubernetes、HAMi"
           },
           {
-            "metric": "模型加载时间 / P95 延迟",
-            "without": "基线",
-            "with": "与独占整卡基本一致"
+            "label": "核心挑战",
+            "value": "多模型协同、生产与研发共享算力"
           }
         ]
-      }
-    },
-    "lessons": {
-      "title": "经验与下一步",
-      "points": [
-        "异构 GPU 共享应从负载画像出发，而不是预设统一的切分比例——生产模型、批处理任务与研发环境对延迟、显存、吞吐与隔离的要求各不相同，资源策略也应不同。",
-        "研发环境是共享 GPU 的重要消费方。研发负载以 Kubernetes Pod/容器方式运行，可复用与生产服务一致的资源声明和调度方式，同时避免每个研发环境长期独占设备。",
-        "下一阶段，电科云将持续完善生产与研发负载的容量与健康视图，并补充不同模型、不同网络与调用模式下可复现的实验数据。"
-      ]
-    },
-    "conclusion": {
-      "title": "让有限的异构算力承载更多业务",
-      "description": "从整卡独占到按需共享，电科云用 Kubernetes 与 HAMi 在一台便携设备上同时支撑了知识库生产流水线与 30 个并发的研发环境，且生产性能基本无损。同样的资源契约，也适用于任何需要在有限异构算力上共存生产与研发的团队。"
-    },
-    "cta": {
-      "exploreHami": "了解 HAMi 开源项目",
-      "contactUs": "联系我们"
-    }
-  },
-    "sangfor": {
-    "cardTitle": "深信服：企业级 AI 算力平台",
-    "title": "深信服基于 Kubernetes、Volcano 与 HAMi 构建企业级 AI 算力平台",
-    "subtitle": "深信服是中国领先的企业级云计算与网络安全厂商。面对 AI 应用的快速增长，深信服为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服与销售 Agent 等场景——GPU 利用率提升 3 倍以上，单卡承载 8 个以上模型，外部模型调用成本从每月 40 万元降至 20 万元。",
-    "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
-    "sourceLink": "How Sangfor Built an Enterprise AI Compute Platform with Kubernetes, Volcano, and HAMi",
-    "stats": [
-      {
-        "value": "3×+",
-        "label": "GPU 利用率提升"
       },
-      {
-        "value": "8×+",
-        "label": "单卡模型承载量（1 → 8+）"
-      },
-      {
-        "value": "50%",
-        "label": "外部模型调用成本下降（40 万 → 20 万/月）"
-      }
-    ],
-    "overview": {
-      "title": "客户概览",
-      "description": "深信服是中国领先的企业级云计算与网络安全厂商。随着 AI 应用快速增长，深信服正在为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服、销售 Agent 等场景。平台以 AI 算力网关承载路由、治理与安全检查，底层以 Kubernetes、Volcano 与 HAMi 构建共享 GPU 底座，让 Kubernetes 成为统一的 AI 资源控制面。",
-      "keyPoints": [
-        "面向内部研发团队与企业客户的统一 AI 算力平台",
-        "覆盖 AI Coding、数字员工、智能客服、销售 Agent 等生产场景",
-        "AI 算力网关负责路由与治理，Kubernetes + Volcano + HAMi 构建算力底座"
-      ]
-    },
-    "companyCard": {
-      "name": "深信服科技",
-      "description": "中国领先的企业级云计算与网络安全厂商。其云 AI 团队构建的统一 AI 算力平台，支撑 2000+ 研发工程师的日常使用并服务企业客户。"
-    },
-    "info": {
-      "title": "案例信息",
-      "rows": [
-        {
-          "label": "用户",
-          "value": "深信服云 AI 团队"
-        },
-        {
-          "label": "业务场景",
-          "value": "支撑 AI Coding、数字员工、智能客服、销售 Agent 的企业级 AI 算力平台"
-        },
-        {
-          "label": "部署环境",
-          "value": "Kubernetes 与 NVIDIA、昇腾等异构 GPU"
-        },
-        {
-          "label": "使用项目",
-          "value": "Kubernetes、Volcano、HAMi"
-        },
-        {
-          "label": "核心挑战",
-          "value": "GPU 利用率、多租户资源隔离、调度效率"
-        }
-      ]
-    },
-    "challenge": {
-      "title": "挑战：规模化下的 GPU 利用率、隔离与调度",
-      "description": "平台持续扩张的过程中，GPU 利用率、资源隔离与调度效率成为关键瓶颈——平台需要同时服务大量 AI 负载与研发团队。",
-      "points": [
-        {
-          "title": "GPU 利用率不足",
-          "description": "传统模式下，推理服务独占整张 GPU。大量负载只用其中一小部分显存与算力却占住整卡，造成严重的资源碎片化——GPU 扩容速度甚至超过了业务本身的增长速度。"
-        },
-        {
-          "title": "多租户环境下的资源治理复杂",
-          "description": "平台同时承载 AI Coding、数字员工、智能客服、销售 Agent 与企业知识助手等负载，GPU 需求差异巨大——有的需要长驻显存，有的呈现明显的峰谷特征——统一资源池管理与公平分配成为关键问题。"
-        },
-        {
-          "title": "推理与批处理负载共存",
-          "description": "平台同时运行在线推理、批量推理、分布式训练与 Agent 工作流，原生 Kubernetes GPU 调度无法满足这些复杂 AI 负载的需求。"
-        }
-      ]
-    },
-    "solution": {
-      "title": "解决方案：Kubernetes + Volcano + HAMi",
-      "description": "Kubernetes 为 AI 平台提供了统一的控制面，但原生 GPU 调度只能以整卡为单位分配资源，难以满足推理服务、多租户与异构 GPU 环境的需求。深信服引入 Volcano 解决高级调度问题，引入 HAMi 解决 GPU 资源虚拟化问题，构建生产级共享 GPU 平台。",
-      "quote": {
-        "text": "HAMi 的 Kubernetes 原生集成意味着零迁移成本，透明的设备虚拟化让负载无需任何改造即可运行。",
-        "author": "深信服云 AI 总架构师 贾毫杰"
-      },
-      "hamiSharing": {
-        "title": "HAMi：vGPU 共享与隔离",
-        "description": "深信服选择 HAMi 的核心原因：细粒度 GPU 共享与强隔离、跨多代异构 GPU 的统一资源抽象，以及 Kubernetes 领域最活跃的开源 vGPU 生态之一。通过 vGPU 切分，大模型占据单卡大部分资源（例如 70%），剩余切片承载多个小模型，吸收原本闲置的算力。",
-        "features": [
-          "GPU 共享：显存粒度低至 256MB、算力粒度低至 1%，多个 Pod 在强隔离下共享同一张 GPU",
-          "异构 GPU 支持：统一资源抽象，跨多代 GPU 保持一致的调度体验",
-          "开源生态：Kubernetes 领域最活跃的开源 vGPU 项目之一，持续与 Volcano 队列和 vLLM 集成"
-        ]
-      },
-      "scheduling": {
-        "title": "Volcano + HAMi：协同调度",
-        "description": "仅靠 GPU 共享不足以支撑生产环境。Volcano 与 HAMi 结合，实现设备资源与作业调度的统一管理：Volcano 决定负载何时、在哪里运行，HAMi 决定 GPU 资源如何共享与分配。",
+      "challenge": {
+        "title": "挑战：一台设备，两种 GPU 使用路径",
+        "description": "知识库的在线问答依赖文本生成、向量检索与 Rerank；数据入库要经过解析、切分、向量化、知识抽取与索引构建；研发工程师还需要在 Kubernetes 研发 Pod/容器中调试模型、验证依赖、跑实验。这些负载的 GPU 使用方式截然不同，而它们必须共存于同一台便携设备。",
         "points": [
           {
-            "title": "设备状态维护",
-            "description": "GPU 健康监测、故障自动隔离、资源自动回收。"
+            "title": "负载特征差异大",
+            "description": "文本生成须长期在线、显存基线高、延迟敏感；Embedding 在批量导入时形成周期性峰值；Rerank 单次计算短但调用频繁；知识处理与索引重建是必须与在线服务隔离的批任务；研发 Pod 周期性、交互式使用。"
           },
           {
-            "title": "资源声明治理",
-            "description": "自动补全资源字段、统一配额计算、提前拒绝无效请求。"
+            "title": "整卡独占快速耗尽资源",
+            "description": "如果每个服务或研发环境继续长期绑定一整张卡，有限的设备很快被逻辑耗尽，剩余算力无法被其他负载复用。"
           },
           {
-            "title": "调度事务隔离",
-            "description": "将资源试算与实际占用解耦，确保状态一致性。"
+            "title": "过细切分引入新问题",
+            "description": "如果只追求尽可能细的切分，又会放大显存不足、调度抖动与故障传播的风险。"
           },
           {
-            "title": "Gang 与 LWS 支持",
-            "description": "Volcano 编排作业、HAMi 分配 GPU，整组任务一同调度。"
+            "title": "需要差异化资源策略",
+            "description": "团队需要让每类负载自行描述资源需求，再由平台基于设备状态与服务等级完成资源放置。"
           }
         ]
+      },
+      "solution": {
+        "title": "解决方案：基于 HAMi 的通用资源契约",
+        "description": "HAMi 的价值不只是把一张物理卡切分成多份资源份额，更重要的是建立了一套通用资源契约：负载自行声明所需设备资源，调度基于设备可用状态进行选择，多 Pod 可在各自资源边界内共享同一张异构 GPU，且 Pod、容器、设备与调度结果可相互关联追溯。",
+        "resourceContract": {
+          "title": "Kubernetes 原生资源契约",
+          "description": "保留 Kubernetes 应用交付模式，让平台进一步理解异构 GPU 设备能否满足负载请求，让适合共享的研发环境复用同一张物理 GPU。",
+          "features": [
+            "模型服务与研发 Pod 自行声明设备资源，不再依赖长期人工绑卡",
+            "调度不只判断节点上是否存在 GPU，而是基于设备可用状态选择",
+            "Pod、容器、设备与调度结果可关联追溯，支撑容量观察与配置纠偏"
+          ]
+        },
+        "workloadStrategy": {
+          "title": "按负载画像差异化配给",
+          "description": "团队围绕模型加载、峰值用量、并发、延迟与长期运行行为建立资源画像，再将验证过的需求翻译为 Kubernetes 资源请求，不同负载遵循不同策略。",
+          "features": [
+            "在线路径稳定边界：文本生成、在线检索与 Rerank 优先获得稳定资源",
+            "周期任务错峰执行：向量化、知识抽取与索引重建在低负载时段排队运行",
+            "配置按真实负载纠偏：切分颗粒度来自基线验证与运行时观测，而非预设统一比例"
+          ]
+        },
+        "devSharing": {
+          "title": "研发环境共享单张异构 GPU",
+          "description": "多个 Kubernetes 研发 Pod/容器通过 HAMi 虚拟化复用同一张异构 GPU，而非各自长期独占设备，显存配额由用户按任务需求申请，平台不设统一固定值。",
+          "features": [
+            "多个研发 Pod 共享单张异构 GPU，各有独立资源边界",
+            "复用与生产服务一致的资源声明和调度方式",
+            "实测同机并发运行 30 个研发 Pod"
+          ]
+        }
+      },
+      "results": {
+        "title": "实施成果",
+        "description": "在同一台配备 8 张异构 GPU 的便携式设备上，团队以一致口径对比了引入 HAMi 前后的资源容量：",
+        "items": [
+          {
+            "title": "研发 Pod 并发容量",
+            "value": "2 → 30",
+            "description": "同一台设备的研发 Pod 并发数从 2 个提升至 30 个，达到原来的 15 倍"
+          },
+          {
+            "title": "显存回收",
+            "value": "87.5%",
+            "description": "Embedding 从独占整张 64 GB GPU 改为 8 GB 配额，释放 56 GB 可复用显存"
+          },
+          {
+            "title": "算力回收",
+            "value": "80%",
+            "description": "Embedding 仅分配 20% GPU 算力，其余 80% 保持可调度"
+          },
+          {
+            "title": "性能影响",
+            "value": "< 5%",
+            "description": "Token 吞吐与独占整卡相比变化在 5% 以内，加载时间与 P95 延迟基本持平"
+          }
+        ],
+        "table": {
+          "title": "Embedding 模型单卡资源对比",
+          "description": "同一镜像、同一请求集与并发配置下，独占整卡与 HAMi 切分的同卡同模型对比：",
+          "metricLabel": "对比项",
+          "withoutLabel": "未使用 HAMi",
+          "withLabel": "使用 HAMi",
+          "rows": [
+            {
+              "metric": "显存分配",
+              "without": "独占整张 64 GB GPU",
+              "with": "按需分配 8 GB"
+            },
+            {
+              "metric": "其他任务可复用显存",
+              "without": "0 GB",
+              "with": "56 GB（整卡的 87.5%）"
+            },
+            {
+              "metric": "算力分配",
+              "without": "独占整卡",
+              "with": "分配 20%，其余 80% 可调度"
+            },
+            {
+              "metric": "Token 吞吐（tokens/s）",
+              "without": "基线",
+              "with": "与独占整卡相差 5% 以内"
+            },
+            {
+              "metric": "模型加载时间 / P95 延迟",
+              "without": "基线",
+              "with": "与独占整卡基本一致"
+            }
+          ]
+        }
+      },
+      "lessons": {
+        "title": "经验与下一步",
+        "points": [
+          "异构 GPU 共享应从负载画像出发，而不是预设统一的切分比例——生产模型、批处理任务与研发环境对延迟、显存、吞吐与隔离的要求各不相同，资源策略也应不同。",
+          "研发环境是共享 GPU 的重要消费方。研发负载以 Kubernetes Pod/容器方式运行，可复用与生产服务一致的资源声明和调度方式，同时避免每个研发环境长期独占设备。",
+          "下一阶段，电科云将持续完善生产与研发负载的容量与健康视图，并补充不同模型、不同网络与调用模式下可复现的实验数据。"
+        ]
+      },
+      "conclusion": {
+        "title": "让有限的异构算力承载更多业务",
+        "description": "从整卡独占到按需共享，电科云用 Kubernetes 与 HAMi 在一台便携设备上同时支撑了知识库生产流水线与 30 个并发的研发环境，且生产性能基本无损。同样的资源契约，也适用于任何需要在有限异构算力上共存生产与研发的团队。"
+      },
+      "cta": {
+        "exploreHami": "了解 HAMi 开源项目",
+        "contactUs": "联系我们"
       }
     },
-    "results": {
-      "title": "落地成效",
-      "description": "借助 HAMi vGPU 切分与 Volcano 协同调度，平台消除了资源碎片化、显著降低模型调用成本并在压力下保持稳定——同时支撑 2000+ 研发团队的日常使用。",
-      "items": [
+    "sangfor": {
+      "cardTitle": "深信服：企业级 AI 算力平台",
+      "title": "深信服基于 Kubernetes、Volcano 与 HAMi 构建企业级 AI 算力平台",
+      "subtitle": "深信服是中国领先的企业级云计算与网络安全厂商。面对 AI 应用的快速增长，深信服为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服与销售 Agent 等场景——GPU 利用率提升 3 倍以上，单卡承载 8 个以上模型，外部模型调用成本从每月 40 万元降至 20 万元。",
+      "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
+      "sourceLink": "How Sangfor Built an Enterprise AI Compute Platform with Kubernetes, Volcano, and HAMi",
+      "stats": [
         {
-          "title": "GPU 利用率",
           "value": "3×+",
-          "description": "共享 GPU 池消除碎片化，同样硬件承载更多负载"
+          "label": "GPU 利用率提升"
         },
         {
-          "title": "单卡模型密度",
           "value": "8×+",
-          "description": "原本需要 3 张卡的负载现在 1–2 张即可承载"
+          "label": "单卡模型承载量（1 → 8+）"
         },
         {
-          "title": "外部调用成本",
-          "value": "-50%",
-          "description": "智能路由让月调用成本从 40 万元降至 20 万元"
-        },
-        {
-          "title": "故障恢复",
-          "value": "<10 分钟",
-          "description": "从约 1 小时大幅缩短；3 倍峰值流量下成功率保持 95%+"
+          "value": "50%",
+          "label": "外部模型调用成本下降（40 万 → 20 万/月）"
         }
       ],
-      "table": {
-        "title": "改造前后对比",
-        "description": "共享 GPU 平台建设前后的关键指标对比。",
-        "metricLabel": "指标",
-        "beforeLabel": "改造前",
-        "afterLabel": "改造后",
+      "overview": {
+        "title": "客户概览",
+        "description": "深信服是中国领先的企业级云计算与网络安全厂商。随着 AI 应用快速增长，深信服正在为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服、销售 Agent 等场景。平台以 AI 算力网关承载路由、治理与安全检查，底层以 Kubernetes、Volcano 与 HAMi 构建共享 GPU 底座，让 Kubernetes 成为统一的 AI 资源控制面。",
+        "keyPoints": [
+          "面向内部研发团队与企业客户的统一 AI 算力平台",
+          "覆盖 AI Coding、数字员工、智能客服、销售 Agent 等生产场景",
+          "AI 算力网关负责路由与治理，Kubernetes + Volcano + HAMi 构建算力底座"
+        ]
+      },
+      "companyCard": {
+        "name": "深信服科技",
+        "description": "中国领先的企业级云计算与网络安全厂商。其云 AI 团队构建的统一 AI 算力平台，支撑 2000+ 研发工程师的日常使用并服务企业客户。"
+      },
+      "info": {
+        "title": "案例信息",
         "rows": [
           {
-            "metric": "GPU 利用率",
-            "before": "基线",
-            "after": "提升 3 倍以上"
+            "label": "用户",
+            "value": "深信服云 AI 团队"
           },
           {
-            "metric": "单卡模型数",
-            "before": "1",
-            "after": "8+"
+            "label": "业务场景",
+            "value": "支撑 AI Coding、数字员工、智能客服、销售 Agent 的企业级 AI 算力平台"
           },
           {
-            "metric": "外部模型调用成本",
-            "before": "40 万元/月",
-            "after": "20 万元/月"
+            "label": "部署环境",
+            "value": "Kubernetes 与 NVIDIA、昇腾等异构 GPU"
           },
           {
-            "metric": "模型故障恢复时间",
-            "before": "约 1 小时",
-            "after": "10 分钟以内"
+            "label": "使用项目",
+            "value": "Kubernetes、Volcano、HAMi"
           },
           {
-            "metric": "3 倍峰值流量成功率",
-            "before": "不稳定",
-            "after": "95%+"
-          },
-          {
-            "metric": "支撑研发团队规模",
-            "before": "有限",
-            "after": "2000+ 工程师"
+            "label": "核心挑战",
+            "value": "GPU 利用率、多租户资源隔离、调度效率"
           }
         ]
+      },
+      "challenge": {
+        "title": "挑战：规模化下的 GPU 利用率、隔离与调度",
+        "description": "平台持续扩张的过程中，GPU 利用率、资源隔离与调度效率成为关键瓶颈——平台需要同时服务大量 AI 负载与研发团队。",
+        "points": [
+          {
+            "title": "GPU 利用率不足",
+            "description": "传统模式下，推理服务独占整张 GPU。大量负载只用其中一小部分显存与算力却占住整卡，造成严重的资源碎片化——GPU 扩容速度甚至超过了业务本身的增长速度。"
+          },
+          {
+            "title": "多租户环境下的资源治理复杂",
+            "description": "平台同时承载 AI Coding、数字员工、智能客服、销售 Agent 与企业知识助手等负载，GPU 需求差异巨大——有的需要长驻显存，有的呈现明显的峰谷特征——统一资源池管理与公平分配成为关键问题。"
+          },
+          {
+            "title": "推理与批处理负载共存",
+            "description": "平台同时运行在线推理、批量推理、分布式训练与 Agent 工作流，原生 Kubernetes GPU 调度无法满足这些复杂 AI 负载的需求。"
+          }
+        ]
+      },
+      "solution": {
+        "title": "解决方案：Kubernetes + Volcano + HAMi",
+        "description": "Kubernetes 为 AI 平台提供了统一的控制面，但原生 GPU 调度只能以整卡为单位分配资源，难以满足推理服务、多租户与异构 GPU 环境的需求。深信服引入 Volcano 解决高级调度问题，引入 HAMi 解决 GPU 资源虚拟化问题，构建生产级共享 GPU 平台。",
+        "quote": {
+          "text": "HAMi 的 Kubernetes 原生集成意味着零迁移成本，透明的设备虚拟化让负载无需任何改造即可运行。",
+          "author": "深信服云 AI 总架构师 贾毫杰"
+        },
+        "hamiSharing": {
+          "title": "HAMi：vGPU 共享与隔离",
+          "description": "深信服选择 HAMi 的核心原因：细粒度 GPU 共享与强隔离、跨多代异构 GPU 的统一资源抽象，以及 Kubernetes 领域最活跃的开源 vGPU 生态之一。通过 vGPU 切分，大模型占据单卡大部分资源（例如 70%），剩余切片承载多个小模型，吸收原本闲置的算力。",
+          "features": [
+            "GPU 共享：显存粒度低至 256MB、算力粒度低至 1%，多个 Pod 在强隔离下共享同一张 GPU",
+            "异构 GPU 支持：统一资源抽象，跨多代 GPU 保持一致的调度体验",
+            "开源生态：Kubernetes 领域最活跃的开源 vGPU 项目之一，持续与 Volcano 队列和 vLLM 集成"
+          ]
+        },
+        "scheduling": {
+          "title": "Volcano + HAMi：协同调度",
+          "description": "仅靠 GPU 共享不足以支撑生产环境。Volcano 与 HAMi 结合，实现设备资源与作业调度的统一管理：Volcano 决定负载何时、在哪里运行，HAMi 决定 GPU 资源如何共享与分配。",
+          "points": [
+            {
+              "title": "设备状态维护",
+              "description": "GPU 健康监测、故障自动隔离、资源自动回收。"
+            },
+            {
+              "title": "资源声明治理",
+              "description": "自动补全资源字段、统一配额计算、提前拒绝无效请求。"
+            },
+            {
+              "title": "调度事务隔离",
+              "description": "将资源试算与实际占用解耦，确保状态一致性。"
+            },
+            {
+              "title": "Gang 与 LWS 支持",
+              "description": "Volcano 编排作业、HAMi 分配 GPU，整组任务一同调度。"
+            }
+          ]
+        }
+      },
+      "results": {
+        "title": "落地成效",
+        "description": "借助 HAMi vGPU 切分与 Volcano 协同调度，平台消除了资源碎片化、显著降低模型调用成本并在压力下保持稳定——同时支撑 2000+ 研发团队的日常使用。",
+        "items": [
+          {
+            "title": "GPU 利用率",
+            "value": "3×+",
+            "description": "共享 GPU 池消除碎片化，同样硬件承载更多负载"
+          },
+          {
+            "title": "单卡模型密度",
+            "value": "8×+",
+            "description": "原本需要 3 张卡的负载现在 1–2 张即可承载"
+          },
+          {
+            "title": "外部调用成本",
+            "value": "-50%",
+            "description": "智能路由让月调用成本从 40 万元降至 20 万元"
+          },
+          {
+            "title": "故障恢复",
+            "value": "<10 分钟",
+            "description": "从约 1 小时大幅缩短；3 倍峰值流量下成功率保持 95%+"
+          }
+        ],
+        "table": {
+          "title": "改造前后对比",
+          "description": "共享 GPU 平台建设前后的关键指标对比。",
+          "metricLabel": "指标",
+          "beforeLabel": "改造前",
+          "afterLabel": "改造后",
+          "rows": [
+            {
+              "metric": "GPU 利用率",
+              "before": "基线",
+              "after": "提升 3 倍以上"
+            },
+            {
+              "metric": "单卡模型数",
+              "before": "1",
+              "after": "8+"
+            },
+            {
+              "metric": "外部模型调用成本",
+              "before": "40 万元/月",
+              "after": "20 万元/月"
+            },
+            {
+              "metric": "模型故障恢复时间",
+              "before": "约 1 小时",
+              "after": "10 分钟以内"
+            },
+            {
+              "metric": "3 倍峰值流量成功率",
+              "before": "不稳定",
+              "after": "95%+"
+            },
+            {
+              "metric": "支撑研发团队规模",
+              "before": "有限",
+              "after": "2000+ 工程师"
+            }
+          ]
+        }
+      },
+      "lessons": {
+        "title": "经验总结",
+        "points": [
+          "GPU 共享比加卡更重要：大多数推理负载无法用满整张 GPU，优先做 GPU 共享——ROI 更高、见效更快。",
+          "调度与资源虚拟化解耦：HAMi 负责资源抽象，Volcano 负责调度策略，解耦之后两层各自独立演进。",
+          "Kubernetes 正在成为 AI 资源控制面：AI 基础设施沿云原生路径演进，无需引入新的管理范式即可获得企业级 GPU 管理能力。",
+          "展望未来，深信服将持续与 HAMi 社区合作：参与 HAMi DRA 生态、通过统一抽象扩展昇腾等异构 GPU 支持，并将生产级调度策略回馈 Volcano 与 HAMi 社区。"
+        ]
+      },
+      "conclusion": {
+        "title": "让 Kubernetes 成为统一的 AI 资源控制面",
+        "description": "深信服的实践给出了企业 AI 基础设施的一条路径：在网关层治理模型使用，在虚拟化层共享 GPU，用 Volcano 完成作业调度——全部构建在 Kubernetes 之上，让每一张 GPU 为 2000+ 工程师的团队发挥全部价值。"
+      },
+      "cta": {
+        "exploreHami": "了解 HAMi 开源项目",
+        "contactUs": "联系我们"
       }
     },
-    "lessons": {
-      "title": "经验总结",
-      "points": [
-        "GPU 共享比加卡更重要：大多数推理负载无法用满整张 GPU，优先做 GPU 共享——ROI 更高、见效更快。",
-        "调度与资源虚拟化解耦：HAMi 负责资源抽象，Volcano 负责调度策略，解耦之后两层各自独立演进。",
-        "Kubernetes 正在成为 AI 资源控制面：AI 基础设施沿云原生路径演进，无需引入新的管理范式即可获得企业级 GPU 管理能力。",
-        "展望未来，深信服将持续与 HAMi 社区合作：参与 HAMi DRA 生态、通过统一抽象扩展昇腾等异构 GPU 支持，并将生产级调度策略回馈 Volcano 与 HAMi 社区。"
-      ]
-    },
-    "conclusion": {
-      "title": "让 Kubernetes 成为统一的 AI 资源控制面",
-      "description": "深信服的实践给出了企业 AI 基础设施的一条路径：在网关层治理模型使用，在虚拟化层共享 GPU，用 Volcano 完成作业调度——全部构建在 Kubernetes 之上，让每一张 GPU 为 2000+ 工程师的团队发挥全部价值。"
-    },
-    "cta": {
-      "exploreHami": "了解 HAMi 开源项目",
-      "contactUs": "联系我们"
-    }
-  },
     "telecomGpu": {
       "cardTitle": "电信运营商 GPU 虚拟化",
       "title": "电信运营商 GPU 虚拟化案例研究",
@@ -3329,5 +3700,15 @@
     "imageUrl": "镜像 URL",
     "language": "语言",
     "subjectPrefix": "[下载行为]"
+  },
+  "redesignDownloads": {
+    "eyebrow": "下载与安装",
+    "description": "获取安装指南，了解当前版本与交付方式。",
+    "back": "← 返回产品介绍",
+    "title": "安装指南与版本资源",
+    "products": {
+      "hami-enterprise": "HAMi Enterprise",
+      "hami-ai-platform": "HAMi AI Platform"
+    }
   }
 }

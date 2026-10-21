@@ -1,0 +1,332 @@
+<article class="blog-detail"><div class="article-hero"><div class="article-shell"><nav class="breadcrumb" aria-label="__COPY_s94507771d70c8a__"><a href="#/">__COPY_se04d24c52b3d28__</a><span>__COPY_s8a5edab2826324__</span><a href="#/blog">__COPY_s8c6bc099534a02__</a><span>__COPY_s8a5edab2826324__</span><span>__COPY_sa6def530e16ea3__</span></nav><div class="article-kicker"><span class="tag">__COPY_sa6def530e16ea3__</span><time datetime="2025-07-23">__COPY_s3e24118d793258__</time></div><h1>__COPY_s0aa38adf4cf3ea__</h1><div class="article-author-row"><div class="blog-card-author"><span class="author-initial" aria-hidden="true">__COPY_s1d77d81c9559a8__</span><div class="blog-author-info"><span class="blog-author-name">__COPY_s234f1b97e70059__</span><span class="blog-author-title">__COPY_s2377f51f9506f9__</span></div></div><div class="article-share"><button type="button" data-copy-article="https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia" aria-label="__COPY_s6263062b315cfd__"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"></rect><path d="M16 8V3H3v13h5"></path></svg>__COPY_s6263062b315cfd__</button><span class="article-share-status" role="status" aria-live="polite"></span></div></div><div class="article-cover"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/dynamia-logo.svg" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_sa6def530e16ea3__</span></div><div class="cover-title-block"><strong>__COPY_s4f2177ddc05f11__</strong><span class="cover-subtitle">__COPY_s1234548704e8f9__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div></div><p class="article-deck">__COPY_sf0d60838bb8d5a__</p></div></div><div class="article-reading"><div class="article-shell"><div class="article-reading-grid"><div><details class="article-toc-mobile"><summary>__COPY_s43024af28cba3d__</summary><nav aria-label="__COPY_sb648a68085bab9__"><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-0" data-article-section="article-section-0"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_s0d16d5b5e73530__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-1" data-article-section="article-section-1"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_s3104ff6c9e183f__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-2" data-article-section="article-section-2"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_sf56bc66b9c9059__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-8" data-article-section="article-section-8"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_s0680c54e8222a4__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-10" data-article-section="article-section-10"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_s2b2ee2186ecf73__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-14" data-article-section="article-section-14"><span aria-hidden="true">__COPY_saacd834b5cdc64__</span>__COPY_s0b2bbfa31a17be__</a></nav></details><div class="article-prose"><p>__COPY_s2a6ddd8965fc9d__</p>
+<p>__COPY_s8e015c2d156855__<a href="https://dynamia.ai/zh/blog/open-source-vgpu-hami-fine-grained-partitioning" target="_blank" rel="noopener">__COPY_sb5edb17b85ad04__</a>__COPY_s4dec67e1b34591__<a href="https://dynamia.ai/zh/blog/open-source-vgpu-hami-core-memory-test" target="_blank" rel="noopener">__COPY_sc574a789c914f7__</a>__COPY_sebefcf9f2ac4ec__</p>
+<p>__COPY_sb8c1f5e8bdee5f__</p>
+<ol>
+<li>
+<p><strong>__COPY_s15fc69a0922970__</strong>__COPY_seae7f052aacaf0__</p>
+</li>
+<li>
+<p><strong>__COPY_se406d71d31bbc9__</strong>__COPY_s91869f8a6896b0__</p>
+</li>
+<li>
+<p><strong>__COPY_sf09750f2e06ebc__</strong>__COPY_s34ddd983bd50b3__</p>
+</li>
+</ol>
+<p>__COPY_se54ccc7fa81b9d__</p>
+<hr>
+<h2 id="article-section-0">__COPY_sc500a3201b9542__</h2>
+<p>__COPY_s2d21b50eb5fc7d__<strong>__COPY_sdb3d8cf56d40fc__</strong></p>
+<p>__COPY_s679d229bbc4f24__<em><strong>__COPY_s4a4a959f66860e__</strong></em>__COPY_sc32597b2e8c319__<em><strong>__COPY_s0890f456684a70__</strong></em>__COPY_s36deecf40282db__<em><strong>__COPY_s07fe1ab727bdeb__</strong></em>__COPY_scf0d51ff51aef6__</p>
+<hr>
+<h2 id="article-section-1">__COPY_sc6a9c27e08544f__</h2>
+<blockquote>
+<p>__COPY_sd4dd17d7d1137e__</p>
+</blockquote>
+<p>__COPY_s162531c2f2ec5c__</p>
+<ul>
+<li>
+<p>__COPY_s8e9b28809f9909__<a href="https://github.com/Project-HAMi/HAMi/tree/master/cmd/device-plugin/nvidia" target="_blank" rel="noopener"><code>__COPY_s176d2a4374811b__</code></a></p>
+</li>
+<li>
+<p>__COPY_sc8e09b47a22c3c__<a href="https://github.com/Project-HAMi/HAMi/tree/master/pkg/device-plugin/nvidiadevice" target="_blank" rel="noopener"><code>__COPY_s747ff31b13f649__</code></a></p>
+</li>
+</ul>
+<blockquote>
+<p>__COPY_sf7b458fe3ff3bd__</p>
+</blockquote>
+<p>__COPY_se8532c42dbc74f__</p>
+<ul>
+<li>
+<p>__COPY_s7c1de9a5f62f1c__</p>
+</li>
+<li>
+<p>__COPY_s1c9b402bf9dc5b__</p>
+</li>
+<li>
+<p>__COPY_s308ac8b929aa8b__</p>
+</li>
+</ul>
+<p>__COPY_sb6c09668a8ec31__<a href="https://github.com/Project-HAMi/HAMi/tree/master/cmd/device-plugin/nvidia" target="_blank" rel="noopener"><code>__COPY_s8858100ce5b755__</code></a>__COPY_s5a6c2aeebdf41a__<em><strong>__COPY_s7363368b940840__</strong></em>__COPY_sf45b4b49023f05__</p>
+<pre><code><span><span>__COPY_sf63827270b1643__</span> <span>__COPY_s0d6e4079e36703__</span><span>__COPY_s2e38e77b22c314__</span></span>__COPY_s30563a6c7cbf2e__<span>__COPY_sc86872dc97dd35__</span>__COPY_s1fac88cb2b66e0__<span>__COPY_s473287f8298dba__</span>__COPY_se278f6600c6ec1__<span>__COPY_sc01f338dcb14d3__</span>__COPY_s9938970cc2adba__<span>__COPY_sce1e238a8d5389__</span>__COPY_s57d4d33ae35612__<span><span>__COPY_sf63827270b1643__</span><span>__COPY_sab6f1974b992bc__</span></span> <span>__COPY_sca00fccfb40898__</span>__COPY_se29573037c26ba__<span>__COPY_s7187f0675eb382__</span>__COPY_s1249cde5e7728b__<span>__COPY_s5a33e24dde8f0d__</span>__COPY_sdad6afc1c6e70c__<span>__COPY_s76090901849026__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s96ed656ada769a__</span>__COPY_s69fc24eca63baa__<span>__COPY_sf5765026785e59__</span>__COPY_sa95f60a311af4d__<span>__COPY_sb5bea41b6c623f__</span>__COPY_sc173d3f9155adc__<span>__COPY_s9f6a9b5b67b571__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s799bf4986f4305__</span>__COPY_s701781eef098ab__<span>__COPY_sdc14c94f3eddea__</span>__COPY_sa95f60a311af4d__<span>__COPY_sdf7e940f72aa93__</span>__COPY_sc173d3f9155adc__<span>__COPY_s4f523344e9311f__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s84857e2164e6cf__</span>__COPY_s69fc24eca63baa__<span>__COPY_se17f1ff69b0dff__</span>__COPY_sa95f60a311af4d__<span>__COPY_sfcbcf165908dd1__</span>__COPY_sc173d3f9155adc__<span>__COPY_s9b97118a6afc39__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s5e291c3002e02e__</span>__COPY_sf131ad50228fa0__<span>__COPY_se206a8b643ff47__</span>__COPY_s9381371b9b544b__<span>__COPY_s473287f8298dba__</span>__COPY_sbfd552ea06101c__<span>__COPY_s60272136fcc39d__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s6715227572dc82__</span>__COPY_s701781eef098ab__<span>__COPY_saac27496a5729e__</span>__COPY_s1287e489c0a389__<span>__COPY_sf27fc26564d640__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s688213a724525f__</span>__COPY_s69fc24eca63baa__<span>__COPY_s2507ed087e286e__</span>__COPY_sc173d3f9155adc__<span>__COPY_sfbd5206acb5750__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s390b841cac9ab1__</span>__COPY_s69fc24eca63baa__<span>__COPY_s37cf0f332b32c7__</span>__COPY_sc173d3f9155adc__<span>__COPY_s408794ec5d285c__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s9f3dee3fed2d32__</span>__COPY_sce87446c498776__<span>__COPY_s6f5c7a010ddb67__</span>__COPY_s955888d8daeb49__<span>__COPY_s0f412291eced37__</span>__COPY_s4f8a14b0e533f3__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_sefab5218439546__</span>__COPY_s701781eef098ab__<span>__COPY_scd8313cd67a343__</span>__COPY_s123a6f9a95810b__<span>__COPY_s93649b7bf48ea6__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s10404da376f7de__</span>__COPY_s701781eef098ab__<span>__COPY_s2b82c585df0302__</span>__COPY_sa008ad9bfee19c__<span>__COPY_s481a57195a4d12__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s522d5bf2534444__</span>__COPY_s701781eef098ab__<span>__COPY_sead744435fb6f9__</span>__COPY_s94ac6eeff6c138__<span>__COPY_s9935e12c98ac7c__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s10d583e7562601__</span>__COPY_sd9f901a39560f0__<span>__COPY_sae524b54d9b5ac__</span>__COPY_s78cb57788840ff__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_sbec72f69663222__<span>__COPY_s6b86b273ff34fc__</span>__COPY_s3a224881e355a2__<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_s46bc72a844f14a__</span><span>__COPY_s2e38e77b22c314__</span></span>__COPY_s75f0b3e2e33a8f__<span>__COPY_sad42b65a13d58f__</span>__COPY_s6a7b8dbf13999c__<span>__COPY_s598ab8217e3190__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s52ee01193b2925__</span>__COPY_sf4e93342e7cbf5__<span>__COPY_s0f7faacacf5c6f__</span>__COPY_sa95f60a311af4d__<span>__COPY_sd4735e3a265e16__</span>__COPY_sc173d3f9155adc__<span>__COPY_s6e5ec7c2bc811e__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s51f6f8929b9bf6__</span>__COPY_s90701dd34cd5cd__<span>__COPY_s9562bb88d39ac4__</span>__COPY_sa95f60a311af4d__<span>__COPY_sd0ff5974b6aa52__</span>__COPY_sc173d3f9155adc__<span>__COPY_sbf69909f04b5f7__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_sdcc4db1d74463c__</span>__COPY_s90701dd34cd5cd__<span>__COPY_sa50e64b3e2c5a0__</span>__COPY_sa95f60a311af4d__<span>__COPY_sd0ff5974b6aa52__</span>__COPY_sc173d3f9155adc__<span>__COPY_s03fe54c93f63a3__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_se59f2980025a76__</span>__COPY_s69fc24eca63baa__<span>__COPY_s0bc51bef505455__</span>__COPY_sa95f60a311af4d__<span>__COPY_sfcbcf165908dd1__</span>__COPY_sc173d3f9155adc__<span>__COPY_s6585c684f22e9f__</span>__COPY_s3e88b863131cea__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s153777771782a5__</span>__COPY_sf3c235d2c62b01__<span>__COPY_s5262bd309a50de__</span>__COPY_s85ca9696d37bcb__<span>__COPY_s084c3ef0aa4fbe__</span>__COPY_s4dfb173f63716f__<span>__COPY_s07201368f78de3__</span>__COPY_s89e2fa6e2d340c__<span>__COPY_s7187f0675eb382__</span>__COPY_sbb4fd8119bd4d6__</code></pre>
+<p>__COPY_s828723e4cd6155__</p>
+<ul>
+<li>
+<p>__COPY_s5e3e34519dd04d__</p>
+</li>
+<li>
+<p>__COPY_s430d9ffa363e84__</p>
+</li>
+</ul>
+<p>__COPY_sec6a381f131167__</p>
+<pre><code>__COPY_seac5c1338dbf1b__<span>__COPY_s0f7faacacf5c6f__</span>__COPY_s1955ef580ad039__<span>__COPY_sd4735e3a265e16__</span>__COPY_se0c58832b2b66f__<span>__COPY_s6e5ec7c2bc811e__</span>__COPY_s7bf2687c2aaa82__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s51f6f8929b9bf6__</span>__COPY_se92fd5e75314d5__<span>__COPY_s9562bb88d39ac4__</span>__COPY_s1955ef580ad039__<span>__COPY_sd0ff5974b6aa52__</span>__COPY_se0c58832b2b66f__<span>__COPY_sbf69909f04b5f7__</span>__COPY_s7bf2687c2aaa82__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_sdcc4db1d74463c__</span>__COPY_se92fd5e75314d5__<span>__COPY_sa50e64b3e2c5a0__</span>__COPY_s1955ef580ad039__<span>__COPY_sd0ff5974b6aa52__</span>__COPY_se0c58832b2b66f__<span>__COPY_s03fe54c93f63a3__</span>__COPY_s7bf2687c2aaa82__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_se59f2980025a76__</span>__COPY_s374c706575e17c__<span>__COPY_s0bc51bef505455__</span>__COPY_s1955ef580ad039__<span>__COPY_sfcbcf165908dd1__</span>__COPY_se0c58832b2b66f__<span>__COPY_s6585c684f22e9f__</span>__COPY_s7bf2687c2aaa82__<span>__COPY_s473287f8298dba__</span>__COPY_s021fb596db81e6__<span>__COPY_s153777771782a5__</span>__COPY_s9ac8f2f2cc07f5__<span>__COPY_s5262bd309a50de__</span>__COPY_s067e22719539b0__<span>__COPY_s084c3ef0aa4fbe__</span>__COPY_s0d894177117a41__<span>__COPY_s07201368f78de3__</span>__COPY_s0ffaf67bf97e4d__</code></pre>
+<ul>
+<li>
+<p>__COPY_s8a48e91bb369d5__<br>__COPY_sbb8924f4e25071__</p>
+</li>
+<li>
+<p>__COPY_sb6e88005ceef75__</p>
+</li>
+<li>
+<p>__COPY_se1f2ba12e54ccb__</p>
+</li>
+<li>
+<p>__COPY_s94fb92ea6ad91a__<a href="https://nvidia.com/gpu" target="_blank" rel="noopener">__COPY_sc49b27b6e3178c__</a>__COPY_se937eef0270752__</p>
+</li>
+</ul>
+<hr>
+<h2 id="article-section-2">__COPY_s44631b1aad29c1__</h2>
+<p>__COPY_sf39f55ea27b655__</p>
+<pre><code><span>__COPY_s3e89ea240d4407__</span>
+
+<span>__COPY_s93d3abe744ac86__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sbf9264d15bd101__</span></span>__COPY_se11976510d1655__<span>__COPY_sca00fccfb40898__</span>__COPY_sd3b4990a252842__<span>__COPY_sef2d127de37b94__</span>__COPY_s27c827262fae9a__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_se29573037c26ba__<span>__COPY_s7187f0675eb382__</span>__COPY_sfee7d25143486d__<span>__COPY_s8f106893acee44__</span>__COPY_s01623328214ea2__<span>__COPY_s473287f8298dba__</span>__COPY_s004bccc613cf3a__<span>__COPY_sfcbcf165908dd1__</span>__COPY_sf2bf45f9422336__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_se29573037c26ba__<span>__COPY_s7187f0675eb382__</span>__COPY_sfee7d25143486d__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s804f89fc0ec98c__</code></pre>
+<p>__COPY_s7d0f0a803c177b__</p>
+<ul>
+<li>
+<p><strong>__COPY_s4817c9e35f37a1__</strong>__COPY_sb33132f3cd6f5f__<br>__COPY_s77dbd38b93f51d__</p>
+</li>
+<li>
+<p><strong>__COPY_sdd167905de0def__</strong>__COPY_s3faae7d5127c64__</p>
+</li>
+<li>
+<p><strong>__COPY_s3df9726c68ba76__</strong>__COPY_s6d1585bc8bffa4__<br>__COPY_s8a94c50e89d3a1__</p>
+</li>
+</ul>
+<p>__COPY_s9d1fc12a96824f__<strong>__COPY_sdac884b33ed13a__</strong>__COPY_s17463afa6acad2__<strong>__COPY_sc9cdfa018fb7f6__</strong>__COPY_seb0d5884569b39__</p>
+<ul>
+<li>
+<p>__COPY_s26a4df386a1358__</p>
+</li>
+<li>
+<p>__COPY_s36f959aa9c1607__</p>
+</li>
+</ul>
+<h3 id="article-section-3">__COPY_s91dd75fb735d4a__</h3>
+<p>__COPY_s8ddd4d07ccf8b0__</p>
+<blockquote>
+<p>__COPY_sd8e8a53a2d2c02__</p>
+</blockquote>
+<p><strong>__COPY_sdc37d53abf7baa__</strong>__COPY_s81c274e4b1bf9f__</p>
+<pre><code><span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sbf9264d15bd101__</span></span>__COPY_sb59cd07a16fbd4__<span>__COPY_s5356b937079ed0__</span>__COPY_s383b7b2e174ebe__<span>__COPY_sef2d127de37b94__</span>__COPY_s62a16d2ee93b38__<span>__COPY_s624b60c58c9d8b__</span>
+ <span>__COPY_s10c22bcf4c768b__</span>__COPY_s651b8e3a22c3bf__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s6dee621c20a710__<span>__COPY_s0dbe1434bf0e36__</span>__COPY_s07e5c408ff5577__<span>__COPY_s1a76e448fb0825__</span>__COPY_s19d719c254eabc__<span>__COPY_s7dd530c4d36da4__</span>__COPY_sbe01f65738d60f__<span>__COPY_s5c1a38d20c42a5__</span>__COPY_s6d112031d85b4c__</code></pre>
+<h3 id="article-section-4">__COPY_sc1b22b5fe4cf56__</h3>
+<p>__COPY_s78118c7aedbea7__</p>
+<pre><code><span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sbf9264d15bd101__</span></span>__COPY_s73c3d725d90520__<span>__COPY_sd05aa2a15fb3c4__</span>__COPY_sc2ea1338dcc1e4__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s0a07f659461970__<span>__COPY_s71fa9faaa6f884__</span>__COPY_s573750ec264e52__<span>__COPY_s5feceb66ffc86f__</span>
+ <span>__COPY_s10c22bcf4c768b__</span>__COPY_sc2e18f12c0c2b3__<span>__COPY_s71fa9faaa6f884__</span>__COPY_sa2a0eafb502804__<span>__COPY_s935f68319d4f22__</span>__COPY_s49bcaaf3fc646f__<span>__COPY_s616618cd4973f4__</span>__COPY_sb141e2ec292751__<span>__COPY_s6644b3f421e010__</span>__COPY_s5d9a67fb494809__<span>__COPY_s79631cb1b7b63b__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s67347a12891c00__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s08f81a8e33174c__<span>__COPY_s935f68319d4f22__</span>__COPY_sd62f7595f3b6b1__<span>__COPY_s6da88c34ba124c__</span>__COPY_sb18b9a95de052d__<span>__COPY_s7dd530c4d36da4__</span>__COPY_s0d19a6f0f06a97__<span>__COPY_s479c6527619737__</span>__COPY_s5d9a67fb494809__<span>__COPY_s79631cb1b7b63b__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sb4681ae4a442e9__<span>__COPY_s935f68319d4f22__</span>__COPY_s83d361c9be0d5b__<span>__COPY_s869aa11c5655d3__</span>__COPY_s5d9a67fb494809__<span>__COPY_s79631cb1b7b63b__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sfc5bdf20d0af7d__<span>__COPY_s935f68319d4f22__</span>__COPY_s83d361c9be0d5b__<span>__COPY_scead1b01a90c82__</span>__COPY_s5d9a67fb494809__<span>__COPY_s79631cb1b7b63b__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s8476b919ed2f28__<span>__COPY_s05c31294577520__</span>__COPY_s041d1db7244bcc__<span>__COPY_se39eef82f61b21__</span>__COPY_s005e1574a2b5c8__<span>__COPY_se39eef82f61b21__</span>__COPY_s07a465ed719ba2__<span>__COPY_s935f68319d4f22__</span>__COPY_sba43473eaf5dae__<span>__COPY_s6b86b273ff34fc__</span>__COPY_s5d55414936c045__<span>__COPY_s05c31294577520__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s6bd2a66c4467bc__</span>__COPY_s047397da813f62__<span>__COPY_sd195ac8c9f0404__</span>__COPY_s99c8c82944349e__<span>__COPY_s1c232c59772e66__</span>__COPY_s0cc714e416088b__<span>__COPY_sb5bea41b6c623f__</span>
+  <span>__COPY_s10c22bcf4c768b__</span>__COPY_s4741c54dac6603__<span>__COPY_s2269c0be009b61__</span>__COPY_s0e730fd3926500__<span>__COPY_s935f68319d4f22__</span>__COPY_sd513f234cf67c0__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sc45780d13d856f__<span>__COPY_s935f68319d4f22__</span>__COPY_s3382df67f7081a__<span>__COPY_s72172bf2e4ccc3__</span>__COPY_s7b59119967dd61__<span>__COPY_sb5bea41b6c623f__</span>__COPY_s7eae06705554bf__<span>__COPY_s7dd530c4d36da4__</span>__COPY_s023e824db860b8__<span>__COPY_sfcbcf165908dd1__</span>__COPY_s724ac7b9dc52fa__<span>__COPY_s14ebe56a5008e7__</span>__COPY_sf49c465a6b18db__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s18668d0c500790__<span>__COPY_s26c0872a704c83__</span>__COPY_s0a07f659461970__<span>__COPY_s5b5641728da1cd__</span>__COPY_s0d5ee6ed884338__<span>__COPY_sae524b54d9b5ac__</span>__COPY_sa8b231b7fe19c4__<span>__COPY_s05c31294577520__</span>__COPY_sf5bab59384332d__<span>__COPY_s05c31294577520__</span>__COPY_s525080054ea648__<span>__COPY_sad57366865126e__</span>__COPY_s0f548354c1c565__<span>__COPY_s34539efcf307da__</span>__COPY_s0a07f659461970__<span>__COPY_se53e5dd4053ad4__</span>__COPY_sc0fc255a19708e__<span>__COPY_s3a950a92d10d94__</span>__COPY_sfa937dc1eb844b__<span>__COPY_s7187f0675eb382__</span>__COPY_s92a949ed2c6ec5__</code></pre>
+<p>__COPY_sa4696ab75c6157__</p>
+<pre><code><span>__COPY_s77668b59446d2d__</span>__COPY_s7c3b06a11b79e8__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sffc15ff2f7099a__<span>__COPY_s935f68319d4f22__</span>__COPY_s80c45c3ac8c87f__<span>__COPY_s6da88c34ba124c__</span>__COPY_s0c5c1302bdde19__<span>__COPY_scbadab7393eb8c__</span>__COPY_s72fef4c150ae62__<span>__COPY_s05c31294577520__</span>__COPY_s041d1db7244bcc__<span>__COPY_se39eef82f61b21__</span>__COPY_s005e1574a2b5c8__<span>__COPY_se39eef82f61b21__</span>__COPY_sfafba0527c3953__<span>__COPY_s935f68319d4f22__</span>__COPY_sba43473eaf5dae__<span>__COPY_s6b86b273ff34fc__</span>__COPY_s718ab15646db0a__<span>__COPY_s05c31294577520__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s6bd2a66c4467bc__</span>__COPY_s815e8ce372cfc6__<span>__COPY_sb8daecd2765745__</span>__COPY_se1bea702555fac__<span>__COPY_sae524b54d9b5ac__</span>__COPY_scf82a31a91171f__<span>__COPY_s05c31294577520__</span>__COPY_s565ba7f4616a32__<span>__COPY_s05c31294577520__</span>__COPY_s525080054ea648__<span>__COPY_sad57366865126e__</span>__COPY_s56fceb9908764e__<span>__COPY_s34539efcf307da__</span>__COPY_s0a07f659461970__<span>__COPY_se53e5dd4053ad4__</span>__COPY_s0662a6ef447166__</code></pre>
+<h3 id="article-section-5">__COPY_s17ec27c8c91ea6__</h3>
+<p>__COPY_sb1ab18f76a5b3a__</p>
+<pre><code>__COPY_s2c77d69065ae31__<span>__COPY_s1f05f5269cf9b2__</span>__COPY_sc411f98cfb25c7__<span>__COPY_s288ab899fa7bde__</span>__COPY_s3f27cb5cd11b47__<span>__COPY_sa7be5f1280e625__</span>__COPY_s4dd2254abb124e__</code></pre>
+<p>__COPY_s48451cbdb17e2c__</p>
+<h3 id="article-section-6">__COPY_s8a2cc0673b1c42__</h3>
+<p>__COPY_s4f98aead9c0b76__</p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s3bfc269594ef64__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_se93372533f323b__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_s72ab0e6632de39__</span>
+    <span>__COPY_sbceafd418ac4bc__</span> <span>__COPY_s67b4156efa85ca__</span> <span>__COPY_s19b100ab7725c6__</span><span>__COPY_se51212c2c92c72__</span>
+    <span>__COPY_s23912cc4bec13a__</span> <span>__COPY_s1dc7bedb7bf9f3__</span>
+</code></pre>
+<p>__COPY_sf2d7e01a3b41e6__</p>
+<pre><code>__COPY_sea49523d744c40__<span>__COPY_s7a7a0870277cde__</span>__COPY_se12bad3564a7ed__<span>__COPY_s22b4b191c2992a__</span>__COPY_sca978112ca1bbd__<span>__COPY_s78db38aec7f414__</span><span>__COPY_sd5c534fde62beb__</span>__COPY_see6bb87b200acb__<span>__COPY_s163f9d874bf45b__</span>__COPY_sc05efdd8baceda__<span>__COPY_s4a44dc15364204__</span>__COPY_sd03502c43d74a3__<span>__COPY_saa11d62a2e627c__</span>__COPY_sd03502c43d74a3__<span>__COPY_sad57366865126e__</span>__COPY_s32080a3606f3c0__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sd03502c43d74a3__<span>__COPY_sb5bea41b6c623f__</span>__COPY_sb4ae224e8a6756__<span>__COPY_s1bad6b8cf97131__</span>__COPY_s5d77d3a55a9cdb__<span>__COPY_sbdeda256563c30__</span><span>__COPY_sdf497d19349b65__</span><span>__COPY_s2ee881da095c64__</span>__COPY_se70af24cd04aac__<span>__COPY_s4a44dc15364204__</span>__COPY_sd03502c43d74a3__<span>__COPY_saa11d62a2e627c__</span>__COPY_sd03502c43d74a3__<span>__COPY_sad57366865126e__</span>__COPY_s32080a3606f3c0__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sd03502c43d74a3__<span>__COPY_sb5bea41b6c623f__</span>__COPY_sf3743a0a18e53d__</code></pre>
+<p>__COPY_s0a04c43549e90c__</p>
+<ul>
+<li>
+<p>__COPY_se66973e12ceeda__</p>
+</li>
+<li>
+<p>__COPY_s70986c8a7f545d__</p>
+</li>
+<li>
+<p>__COPY_s603ee2859d08d1__</p>
+</li>
+<li>
+<p>__COPY_sc525c18484cce4__</p>
+</li>
+<li>
+<p>__COPY_s4924474a4daed5__</p>
+</li>
+<li>
+<p>__COPY_s8be505986021f8__</p>
+</li>
+<li>
+<p>__COPY_saaf0748dc2e070__</p>
+</li>
+</ul>
+<blockquote>
+<p>__COPY_sa3327d6d60d087__</p>
+</blockquote>
+<h3 id="article-section-7">__COPY_s9d589ca0f3ade5__</h3>
+<p>__COPY_s24d5b3f5d1c909__</p>
+<ul>
+<li>
+<p>__COPY_s3669010fd7fabb__</p>
+</li>
+<li>
+<p>__COPY_sc8b67c729f97bb__</p>
+</li>
+</ul>
+<h2 id="article-section-8">__COPY_s5bd943b37ad1f4__</h2>
+<p>__COPY_sf6fe5b8e395a1f__</p>
+<p>__COPY_sc546add3540e2b__</p>
+<p>__COPY_sec6ae1bfaef11e__</p>
+<pre><code><span>__COPY_s5655fee70600a1__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sbf9264d15bd101__</span></span>__COPY_s0c69e5b60e4d10__<span>__COPY_sca00fccfb40898__</span>__COPY_s1036c2abe5df72__<span>__COPY_s10c22bcf4c768b__</span>__COPY_se29573037c26ba__<span>__COPY_sb1a36d25d9633e__</span>__COPY_se29573037c26ba__<span>__COPY_sbbfcd4160a1e86__</span>__COPY_s3703c6e61b81e6__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>
+  <span>__COPY_sbbfcd4160a1e86__</span>__COPY_sa5512ceb2748e7__<span>__COPY_sca452a77832211__<span>__COPY_s53147bf2b2c0d9__</span>__COPY_s354db8d02b7800__</span>__COPY_sd406a5aa5d70ed__<span>__COPY_s4fa46439eb0152__</span>__COPY_se26d5a7842d751__</code></pre>
+<p>__COPY_s2e307f374467f6__<strong>__COPY_s56e690aed26f0f__</strong>__COPY_s7366e2345ed7fe__</p>
+<pre><code><span>__COPY_sb0b43cf57df0df__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_s72b3a7877d71d5__</span></span>__COPY_s981dbd649a70bc__<span><span>__COPY_sf63827270b1643__</span><span>__COPY_s32ebb1abcc1c60__<span>__COPY_s6da88c34ba124c__</span>__COPY_s150e5d67bcc7d3__</span></span> <span>__COPY_sca00fccfb40898__</span>__COPY_sdaac4fe11107ed__<span>__COPY_sca00fccfb40898__</span>__COPY_sa6077789a0062e__<span>__COPY_s935f68319d4f22__</span>__COPY_s90784cedb1544a__<span>__COPY_s7187f0675eb382__</span>__COPY_s452199c6d6daef__<span>__COPY_s23f05e9fa6e3b8__</span>__COPY_s54d5f82566e199__<span>__COPY_s10c22bcf4c768b__</span>__COPY_sd0bb3491fd367d__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sd7a801634d2d5a__<span>__COPY_s935f68319d4f22__</span>__COPY_sbb188e36bf9849__<span>__COPY_s7187f0675eb382__</span>__COPY_s452199c6d6daef__<span>__COPY_s7f93509d84b278__</span>__COPY_s5a3ffc19a66c09__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s5dc13be20915e0__<span>__COPY_s7187f0675eb382__</span>__COPY_s452199c6d6daef__<span>__COPY_s8be7837bff25d5__</span>__COPY_sdd788a5faffee6__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s5dc13be20915e0__<span>__COPY_s7187f0675eb382__</span>__COPY_s452199c6d6daef__<span>__COPY_s6842b462ace1ac__</span>__COPY_s0f9f7f3e293706__<span>__COPY_s935f68319d4f22__</span>__COPY_sae5c88434f039d__<span>__COPY_se256ee8e7aff69__</span>__COPY_s03ecaa77c9b665__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s5dc13be20915e0__<span>__COPY_s7187f0675eb382__</span>__COPY_s452199c6d6daef__<span>__COPY_s03011898a2a250__</span>__COPY_s4294f1f01ea798__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s0fc5d8ec7d53a9__<span>__COPY_s4e4cd0ba86c8d8__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sb6927a8f8291e3__</span></span>__COPY_s09408e1865b6e9__<span>__COPY_sca00fccfb40898__</span>__COPY_s93d17791838f6b__<span>__COPY_sd05aa2a15fb3c4__</span>__COPY_s96549bb5727497__<span><span>__COPY_sf63827270b1643__</span><span>__COPY_sf22dcff5653638__<span>__COPY_s6da88c34ba124c__</span>__COPY_s4735ea9f09e082__</span></span> <span>__COPY_sca00fccfb40898__</span>__COPY_sba81b855011ffa__<span>__COPY_s935f68319d4f22__</span>__COPY_sbb188e36bf9849__<span>__COPY_s7187f0675eb382__</span>__COPY_s452199c6d6daef__<span>__COPY_s6be96c3fe6845d__</span>__COPY_s322f2324f684ee__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s5dc13be20915e0__<span>__COPY_s7187f0675eb382__</span>__COPY_s452199c6d6daef__<span>__COPY_sad5b4ab850699d__</span>__COPY_s0f9f7f3e293706__<span>__COPY_s935f68319d4f22__</span>__COPY_s21a15b10ddc303__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s7540e0b9a80144__<span>__COPY_s10c22bcf4c768b__</span>__COPY_saa1ead24b120e0__<span>__COPY_s2269c0be009b61__</span>__COPY_sdd262090b98980__<span>__COPY_s935f68319d4f22__</span>__COPY_sb136f495cf95e2__<span>__COPY_s7187f0675eb382__</span>__COPY_s5cb121df665c6d__<span>__COPY_s7187f0675eb382__</span>__COPY_s452199c6d6daef__<span>__COPY_sf41c707a93894b__</span>__COPY_s1be43eddd9dc63__<span>__COPY_s7187f0675eb382__</span>__COPY_s82e6250d2fc428__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s804f89fc0ec98c__</code></pre>
+<p>__COPY_s86ebf20e8f09f2__</p>
+<p>__COPY_s299cf67e017de3__</p>
+<pre><code><span>__COPY_sf1dc107d79c514__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_se3058e670944c7__</span></span>__COPY_s9bde32882f8da7__<span>__COPY_sc86872dc97dd35__</span>__COPY_s4b7c1d419d39b1__<span>__COPY_s935f68319d4f22__</span>__COPY_s87f4db709d4ea0__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s9b0210b8829c24__<span>__COPY_sdae35647f04aca__</span>__COPY_se9797afa21b8fc__<span>__COPY_s10c22bcf4c768b__</span>__COPY_s377c281c58ab30__<span>__COPY_s2269c0be009b61__</span>__COPY_sc10e8288eafd50__<span>__COPY_s10c22bcf4c768b__</span>__COPY_sd0bb3491fd367d__<span>__COPY_sc3f2029bb0eab1__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s5a2e3fab45f1d7__<span>__COPY_s34539efcf307da__</span>__COPY_s919deaf263a1ef__<span>__COPY_sae524b54d9b5ac__</span>__COPY_sced7a03da452a8__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s127b500db75deb__<span>__COPY_s7dd530c4d36da4__</span>__COPY_se29573037c26ba__<span>__COPY_s10c22bcf4c768b__</span>__COPY_s7432913a34cb97__<span>__COPY_s2269c0be009b61__</span>__COPY_seb63982e2ad8fa__<span>__COPY_sae524b54d9b5ac__</span>__COPY_s13f2d046271213__<span>__COPY_s7187f0675eb382__</span>__COPY_sea12d4584fdf40__</code></pre>
+<p>__COPY_sa4696ab75c6157__</p>
+<pre><code><span>__COPY_s10c22bcf4c768b__</span>__COPY_s377c281c58ab30__<span>__COPY_s2269c0be009b61__</span>__COPY_sc852b3e576ce61__<span>__COPY_s10c22bcf4c768b__</span>__COPY_sd0bb3491fd367d__<span>__COPY_sc3f2029bb0eab1__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s9abde89c5e39f3__<span>__COPY_s34539efcf307da__</span>__COPY_s9e2ca747e34ce6__<span>__COPY_sae524b54d9b5ac__</span>__COPY_s336c03572171e3__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s143d70a46e13a4__</code></pre>
+<h3 id="article-section-9">__COPY_s9d589ca0f3ade5__</h3>
+<p>__COPY_s29456066ebf366__</p>
+<p>__COPY_s27803a520c5699__</p>
+<h2 id="article-section-10">__COPY_s433b550ca42f02__</h2>
+<p>__COPY_s3645962731edcb__</p>
+<ul>
+<li>
+<p><strong>__COPY_s2226de8ed8219e__</strong>__COPY_s92763dbbede588__</p>
+</li>
+<li>
+<p><strong>__COPY_sc45a838fbcdf3f__</strong>__COPY_s516e2a78007058__</p>
+</li>
+</ul>
+<p>__COPY_scc5f8dab1b9378__</p>
+<p>__COPY_se7b618425d66c4__</p>
+<h3 id="article-section-11">__COPY_s21a76c623c7089__</h3>
+<p>__COPY_sfbefc1844b8573__</p>
+<pre><code><span>__COPY_scca724e00e6fb1__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sbf9264d15bd101__</span></span>__COPY_s388d1dd0f70455__<span>__COPY_sca00fccfb40898__</span>__COPY_sac7d2436860ef7__<span>__COPY_sb1ac6b5313d1f0__</span>__COPY_s0a07f659461970__<span>__COPY_s8869ad22943e91__</span>__COPY_s27748fb787afff__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s68996fd1348b46__<span>__COPY_s7187f0675eb382__</span>__COPY_sb99933894e519f__<span>__COPY_sef2d127de37b94__</span>__COPY_sf83414ad6864e7__<span>__COPY_sa1186cc077fcda__</span>__COPY_s95b7cf5a54853d__<span>__COPY_s10c22bcf4c768b__</span>__COPY_s58d3ce0b9175ed__<span>__COPY_s2269c0be009b61__</span>__COPY_sf612f588467fbd__<span>__COPY_s83d81c3b5862c6__</span>
+  <span>__COPY_sde0f42d6f924bf__</span>
+  <span>__COPY_s935f68319d4f22__</span>__COPY_sa81eb91f457686__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s9b0210b8829c24__<span>__COPY_sdae35647f04aca__</span>__COPY_s940056de235bad__<span>__COPY_s935f68319d4f22__</span>__COPY_s69321854b22a71__<span>__COPY_s935f68319d4f22__</span> <span>__COPY_s71fa9faaa6f884__</span>__COPY_s256b1518cda84c__<span>__COPY_s6b86b273ff34fc__</span>__COPY_s4fe94c0b5a69b0__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s72d0b452822823__<span>__COPY_s740a9a4e63aa8e__</span>__COPY_sa477a67f9e9321__<span>__COPY_s71fa9faaa6f884__</span>__COPY_seb977f85e91913__<span>__COPY_s10c22bcf4c768b__</span>__COPY_scd19de06e3fd31__<span>__COPY_s2269c0be009b61__</span>__COPY_s3cf3afc28ebd85__<span>__COPY_s935f68319d4f22__</span>__COPY_sa2de32a40ca2fb__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s72d0b452822823__<span>__COPY_s3cef475efb8d5e__</span>__COPY_s520ef786fbadbb__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_sc45780d13d856f__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s72d0b452822823__<span>__COPY_s87731a1184feec__</span>__COPY_s72f47a07b32d52__<span>__COPY_sae524b54d9b5ac__</span>__COPY_se09b8c3133952d__<span>__COPY_s7dd530c4d36da4__</span>__COPY_s259b7593e75398__<span>__COPY_sc42e7ed199d297__</span>__COPY_s1f8bfff3835ff7__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_sdb728668609010__<span>__COPY_s7187f0675eb382__</span>__COPY_sa25851f0aed8af__<span>__COPY_s935f68319d4f22__</span> <span>__COPY_s71fa9faaa6f884__</span>__COPY_s540e536ea0cf7a__<span>__COPY_s71fa9faaa6f884__</span>__COPY_sd7a80165ace2fd__<span>__COPY_s7187f0675eb382__</span>__COPY_sdacffcd6ec0b56__<span>__COPY_sad9e40c77f870e__</span>__COPY_s39f077d366ffb2__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_sc45780d13d856f__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s72d0b452822823__<span>__COPY_s87731a1184feec__</span>__COPY_sef4ff8b014d1de__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_sdb728668609010__<span>__COPY_s7187f0675eb382__</span>__COPY_s6cf50c20c266a4__<span>__COPY_s10c22bcf4c768b__</span>__COPY_s496b5fc2afa764__<span>__COPY_s2269c0be009b61__</span>__COPY_sf27393ac29ebbb__<span>__COPY_s0e676e0c153f4f__</span>__COPY_sea51e56a8fdee7__<span>__COPY_s5ea96feed3ba49__</span>__COPY_s44833622907ff2__<span>__COPY_sfab2506bee87da__</span>__COPY_s21522663ff29e8__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s34f34a64f8b9c6__<span>__COPY_s8b0e3d6addfb20__</span>__COPY_s6b56ab1af3d1b2__<span>__COPY_s458576385892d9__</span>__COPY_s0602bad34e0d80__<span>__COPY_s935f68319d4f22__</span>__COPY_s09cd05af5b3ed3__<span>__COPY_s6b86b273ff34fc__</span>__COPY_sb967c7fcee3624__<span>__COPY_s2986be5ebd5e77__</span>__COPY_s72e3216ff62d57__<span>__COPY_s18d10c7d2b4b04__</span>__COPY_s7420f88cb3b2d2__<span>__COPY_s935f68319d4f22__</span>__COPY_s725cb33f19568a__<span>__COPY_sc33216a8daf0ff__</span>__COPY_s3e025b76a163c2__<span>__COPY_se660945345833b__</span>__COPY_sb58c5febeeb8c8__<span>__COPY_s3333eee73a8cf3__</span>__COPY_s4324e4f8c46e36__<span>__COPY_s3333eee73a8cf3__</span>__COPY_s522ff1249b4497__<span>__COPY_sa277b613c4be11__</span>__COPY_s0a07f659461970__<span>__COPY_s3333eee73a8cf3__</span>__COPY_s2f76507f0210d0__<span>__COPY_sa277b613c4be11__</span>__COPY_s0a07f659461970__<span>__COPY_s3333eee73a8cf3__</span>__COPY_s6109823cb28c45__<span>__COPY_sae524b54d9b5ac__</span>__COPY_sd3dd7e0694cc64__<span>__COPY_s62f15834bf1d5c__</span>__COPY_s449d66c4d0adab__<span>__COPY_s4b5e52dda69d60__</span>__COPY_s149aa10629d8c3__<span>__COPY_sb5bea41b6c623f__</span>__COPY_sb2866943adcb9f__<span>__COPY_s520490f1f625be__</span>__COPY_s66205e5aaad86b__<span>__COPY_sfcbcf165908dd1__</span>__COPY_s72e44a4cef2307__<span>__COPY_sa277b613c4be11__</span>__COPY_s681ec92adc4874__<span>__COPY_sa277b613c4be11__</span>__COPY_s149aa10629d8c3__<span>__COPY_sfcbcf165908dd1__</span>__COPY_s64662f0b529a72__<span>__COPY_sfcbcf165908dd1__</span>
+   <span>__COPY_s10c22bcf4c768b__</span>__COPY_s4741c54dac6603__<span>__COPY_s2269c0be009b61__</span>__COPY_s9a36ff4747c586__<span>__COPY_s935f68319d4f22__</span>__COPY_sbdd8092dc8957a__<span>__COPY_sd48a272691ca04__</span>__COPY_sd9a4aa0aa4d69b__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s97097f91e8e8bf__<span>__COPY_s935f68319d4f22__</span>__COPY_s7b7a20c8a9992f__<span>__COPY_se256ee8e7aff69__</span>__COPY_s39735342bdaa51__<span>__COPY_sb5bea41b6c623f__</span>
+     <span>__COPY_s14ebe56a5008e7__</span>__COPY_scd7948b5a6c2a1__<span>__COPY_s935f68319d4f22__</span>__COPY_sf841ac7d9e4538__<span>__COPY_sae524b54d9b5ac__</span>__COPY_sdd6686f74cd18e__<span>__COPY_sfdbb7f1224011b__</span>__COPY_sd4631695c6239b__<span>__COPY_sa40da2a1ae752d__</span>__COPY_s149aa10629d8c3__<span>__COPY_sb5bea41b6c623f__</span>__COPY_s8acc976c8c5f73__<span>__COPY_sef5962b901d437__</span>__COPY_s3e65d3bef52703__<span>__COPY_s935f68319d4f22__</span>__COPY_s34aec15e5626a5__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s066a2199083eaf__<span>__COPY_sae524b54d9b5ac__</span>__COPY_s419f17cb1f7040__<span>__COPY_s7ec183d8f6203f__</span>__COPY_s325f59e24a4cc2__<span>__COPY_sef5962b901d437__</span>__COPY_s10a3d3d7b295d9__<span>__COPY_sb5bea41b6c623f__</span>__COPY_s968fca6bdbd304__<span>__COPY_s3243bf09950f45__</span>__COPY_s325f59e24a4cc2__<span>__COPY_s65752c85c89990__</span>__COPY_s10a3d3d7b295d9__<span>__COPY_sb5bea41b6c623f__</span>__COPY_s0a6c197892bb28__<span>__COPY_sae524b54d9b5ac__</span>__COPY_s73267c1a62894e__<span>__COPY_s2043acf882ea65__</span>__COPY_se1a6d85edad4a2__<span>__COPY_s7187f0675eb382__</span>__COPY_se220dd0d24ab38__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s804f89fc0ec98c__</code></pre>
+<p>__COPY_s0703af8d1d120f__</p>
+<p>__COPY_s3bea06d2f9538f__</p>
+<pre><code><span>__COPY_s10c22bcf4c768b__</span>__COPY_s496b5fc2afa764__<span>__COPY_s2269c0be009b61__</span>__COPY_sf27393ac29ebbb__<span>__COPY_s0e676e0c153f4f__</span>__COPY_sea51e56a8fdee7__<span>__COPY_s5ea96feed3ba49__</span>__COPY_sbd5e49a01282f4__<span>__COPY_sfa002b20e49193__</span>__COPY_s804f89fc0ec98c__</code></pre>
+<p>__COPY_s650348d4161f80__</p>
+<pre><code>__COPY_se00622f2b100ba__<span>__COPY_sfab2506bee87da__</span>__COPY_s21522663ff29e8__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sb6a633fdc91308__</code></pre>
+<p>__COPY_sddafd714982ff2__</p>
+<pre><code>__COPY_se00622f2b100ba__<span>__COPY_s8b0e3d6addfb20__</span>__COPY_s6b56ab1af3d1b2__<span>__COPY_s458576385892d9__</span>__COPY_sc4b1cc304e6c52__</code></pre>
+<p>__COPY_saebd8d862ef978__</p>
+<pre><code><span>__COPY_s935f68319d4f22__</span>__COPY_s09cd05af5b3ed3__<span>__COPY_s6b86b273ff34fc__</span>__COPY_s22af2c3cf96976__<span>__COPY_s2986be5ebd5e77__</span>__COPY_s72e3216ff62d57__<span>__COPY_s18d10c7d2b4b04__</span>__COPY_s804f89fc0ec98c__</code></pre>
+<p>__COPY_s8dd3bda52dd610__</p>
+<pre><code><span>__COPY_s935f68319d4f22__</span>__COPY_s96bb60f8b02f06__<span>__COPY_sc33216a8daf0ff__</span>__COPY_s804f89fc0ec98c__</code></pre>
+<p>__COPY_sf3a5e35bf9acfe__</p>
+<blockquote>
+<p>__COPY_sdecc5851f8941b__</p>
+</blockquote>
+<pre><code><span>__COPY_sb32fe6e3faabde__</span>__COPY_sec9d722166f452__<span>__COPY_se660945345833b__</span>__COPY_s065407da009864__<span>__COPY_s3333eee73a8cf3__</span>__COPY_s91c22639d778d9__<span>__COPY_s3333eee73a8cf3__</span>__COPY_sf7fbda09535b1f__<span>__COPY_sa277b613c4be11__</span>__COPY_s0a07f659461970__<span>__COPY_s3333eee73a8cf3__</span>__COPY_sb0944cb0cdc278__<span>__COPY_sa277b613c4be11__</span>__COPY_s0a07f659461970__<span>__COPY_s3333eee73a8cf3__</span>__COPY_sd037c2421c4949__<span>__COPY_sae524b54d9b5ac__</span>__COPY_s17e92a9c7ab679__<span>__COPY_s318f4886bc74b8__</span>__COPY_sd9247d8ce65678__<span>__COPY_s62f15834bf1d5c__</span>__COPY_s3e768919f80642__<span>__COPY_s4b5e52dda69d60__</span>__COPY_s6e98cc93e30dd8__<span>__COPY_sb5bea41b6c623f__</span>__COPY_s341bcaa5324647__<span>__COPY_s9439ed89200297__</span>__COPY_sd9247d8ce65678__<span>__COPY_s520490f1f625be__</span>__COPY_s680a7e5df9532d__<span>__COPY_sfcbcf165908dd1__</span>__COPY_s341bcaa5324647__<span>__COPY_sfeea0ed8091b29__</span>__COPY_s286b43c2aad19d__<span>__COPY_sa277b613c4be11__</span>__COPY_s3ca9dc150ecc70__<span>__COPY_sa277b613c4be11__</span>__COPY_s6e98cc93e30dd8__<span>__COPY_sfcbcf165908dd1__</span>__COPY_s809dfc3cc8585d__</code></pre>
+<p>__COPY_s71353eaecf5039__</p>
+<pre><code>__COPY_s07159a706f6edd__<span>__COPY_sfcbcf165908dd1__</span>
+<span>__COPY_s10c22bcf4c768b__</span>__COPY_s4741c54dac6603__<span>__COPY_s2269c0be009b61__</span>__COPY_s112bc76f73344a__<span>__COPY_s935f68319d4f22__</span>__COPY_sbdd8092dc8957a__<span>__COPY_sd48a272691ca04__</span>__COPY_sd9a4aa0aa4d69b__<span>__COPY_s5feceb66ffc86f__</span>__COPY_se29573037c26ba__<span>__COPY_s0b2a95cadd5433__</span>__COPY_sb639296ad8e582__<span>__COPY_s935f68319d4f22__</span>__COPY_s21eba6850ab97c__<span>__COPY_se256ee8e7aff69__</span>__COPY_s7540e0b9a80144__<span>__COPY_s2de651faa7a609__</span>__COPY_s7a10b5b4cab9fe__<span>__COPY_sb5bea41b6c623f__</span>
+  <span>__COPY_s14ebe56a5008e7__</span>__COPY_s52eb740a98d434__<span>__COPY_s935f68319d4f22__</span>__COPY_se9d0908dbd6bb3__<span>__COPY_sae524b54d9b5ac__</span>__COPY_s9c9919c9c89f26__<span>__COPY_sfdbb7f1224011b__</span>__COPY_se3fda06d20c261__<span>__COPY_sa40da2a1ae752d__</span>__COPY_sc1db2b9d189ff7__<span>__COPY_sb5bea41b6c623f__</span>__COPY_s996794b987addc__</code></pre>
+<p>__COPY_s845a3af4c68924__</p>
+<h3 id="article-section-12">__COPY_s0890f456684a70__</h3>
+<pre><code><span>__COPY_sab6387bee1e8d3__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sbf9264d15bd101__</span></span>__COPY_s797f892710d921__<span>__COPY_s473287f8298dba__</span>__COPY_s8928efb70f8a85__<span>__COPY_sca00fccfb40898__</span>__COPY_s334284c4a1d7d2__<span>__COPY_s935f68319d4f22__</span>__COPY_sa12f6fa7b5ccdc__<span>__COPY_s5da3a4c7f11794__</span>__COPY_se29573037c26ba__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s72d0b452822823__<span>__COPY_se8ee027d02cbe2__</span>__COPY_s5a44a0b0b49c3c__<span>__COPY_s935f68319d4f22__</span>__COPY_sc26140ddcfbac3__<span>__COPY_s935f68319d4f22__</span>__COPY_s668e72db1630e6__<span>__COPY_seaa062bc19f023__</span>__COPY_s72e3216ff62d57__<span>__COPY_s6e30bc5c153556__</span>__COPY_s25dd8a4977dd2d__<span>__COPY_s935f68319d4f22__</span>__COPY_s17829a226cb69a__<span>__COPY_sed04d175a4cf6a__</span>__COPY_s72e3216ff62d57__<span>__COPY_s6e30bc5c153556__</span>__COPY_sf7323b63250ef0__<span>__COPY_s7187f0675eb382__</span>__COPY_s1940f67d7b683d__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s804f89fc0ec98c__</code></pre>
+<p>__COPY_s81164d8b34d71e__</p>
+<pre><code>__COPY_s1ac7f678150d68__</code></pre>
+<p>__COPY_s6f1b4953641cc7__</p>
+<pre><code><span>__COPY_s6ef3e2eb4ace3f__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sbfca7656397f38__</span><span>__COPY_s41c8193720c19d__<span>__COPY_sb760f44fa5965c__</span>__COPY_sba5ec51d07a4ac__</span></span>__COPY_s9f0ce1abd3b4ca__<span>__COPY_s7187f0675eb382__</span>__COPY_s9e3544d777e4c5__<span>__COPY_sca6bb84c4cba42__</span>__COPY_sf153b4ce3b697d__<span>__COPY_se1991893cd6fec__</span>__COPY_sbdf6e83f94a285__<span>__COPY_scd4b9ce1ef1f2c__</span>__COPY_sf29ffe07fd0ea0__<span>__COPY_s2c614930170e6e__</span>__COPY_s9dcca0721b4f88__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s164af503046bef__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s306fa526a57a07__<span>__COPY_s5da3a4c7f11794__</span>__COPY_sb270ccca3ca143__</code></pre>
+<p>__COPY_s2683cad48a14dc__<strong>__COPY_sfc755a2d111696__</strong></p>
+<p>__COPY_sf3887e258788ab__</p>
+<blockquote>
+<p>__COPY_saff5071ce8bade__</p>
+</blockquote>
+<h3 id="article-section-13">__COPY_s9d589ca0f3ade5__</h3>
+<p>__COPY_sf30fcc8d60a292__</p>
+<ul>
+<li>
+<p>__COPY_sab334222dceca7__</p>
+</li>
+<li>
+<p>__COPY_s3cbafcc43b7f5b__</p>
+</li>
+</ul>
+<h2 id="article-section-14">__COPY_s26ab2455eb3a99__</h2>
+<p>__COPY_s347c9f9ac2926c__</p>
+<ul>
+<li>
+<p>__COPY_s1aa873f6cc5ca0__</p>
+</li>
+<li>
+<p>__COPY_sff837e4d024301__</p>
+</li>
+<li>
+<p>__COPY_sb8e42ab51a3514__</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>__COPY_s545413f2ce85b5__</p>
+</li>
+<li>
+<p>__COPY_sc91049f483e867__</p>
+</li>
+<li>
+<p>__COPY_sc881df3ecade3d__</p>
+</li>
+</ol>
+<p><strong>__COPY_s2fd7118a8d329d__</strong></p>
+<p>__COPY_sdbbceca541e8fc__</p>
+<p>__COPY_sd273c392bad41c__<strong>__COPY_s260df77c523ee9__</strong></p>
+<p>__COPY_s5cde1c273ba4fe__</p>
+<ol>
+<li>
+<p>__COPY_s57ea3a1f5349e1__</p>
+</li>
+<li>
+<p>__COPY_s252c82aa7f73c7__</p>
+</li>
+<li>
+<p>__COPY_s13769682952b38__<br>__COPY_s451dbf458c5441__</p>
+</li>
+</ol>
+<hr>
+<h2 id="article-section-15">__COPY_s0ff7238de51c9c__</h2>
+<h3 id="article-section-16">__COPY_s409e88e22abe43__</h3>
+<p>__COPY_s5ea081d136ada8__</p>
+<p><strong>__COPY_saa791b0af1b0a6__</strong></p>
+<p>__COPY_se70f5f0d57bbea__</p>
+<pre><code><span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s5ed993b6681caa__</span>
+  <span>__COPY_s03a5afeabc5c88__</span> <span>__COPY_s5ef5ef0364b693__</span>
+<span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s3af475bc89e5a0__</span>
+  <span>__COPY_s03a5afeabc5c88__</span> <span>__COPY_s0885fcf5b23ee3__</span>
+<span>__COPY_sa08a30338e824c__</span> <span>__COPY_sc0bb238099b3e1__</span><span>__COPY_s679067521b59b2__</span><span>__COPY_s070954f8ef978d__</span><span>__COPY_s6b19b9af6174e6__</span>
+<span>__COPY_s233a1a18e8c241__</span> <span>__COPY_s0181198b55cf97__</span>
+<span>__COPY_sc44ff6c3591ead__</span>
+  <span>__COPY_sb7e91413085d3c__</span>
+    <span>__COPY_s6de1593664cd72__</span>
+      <span>__COPY_s8ff7327fcdf50a__</span>
+      <span>__COPY_s3973e022e93220__</span> <span>__COPY_s77bafa9e3a8a09__</span>
+      <span>__COPY_s3973e022e93220__</span> <span>__COPY_s0c3603e13e24a4__</span>
+      <span>__COPY_s3973e022e93220__</span> <span>__COPY_se44b4bd707c540__</span> <span>__COPY_s0e6503c1ece40e__</span> <span>__COPY_sca08662c61b9a1__</span> <span>__COPY_s8f31f2ec7644a4__</span>
+<span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_se7b4724fc342f6__</span>
+<span>__COPY_scab2be2b3a2ed1__</span>__COPY_sf8e88ae184bb14__<span>__COPY_s1dbe86986027b7__</span>
+  <span>__COPY_sd2e92b405d1b9c__</span> <span>__COPY_sfcbcf165908dd1__</span>
+  <span>__COPY_scfb30922e3c6f6__</span>
+    <span>__COPY_s274fdf3ffbd776__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_s51a9138f42e498__</span>
+    <span>__COPY_scf5449a231324f__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_sb5c7aed7cd2a30__</span>
+<span>__COPY_s4399c37ea71171__</span> <span>__COPY_sb4233eab819d8a__</span>
+<span>__COPY_sd5b3ecbbcb9e5e__</span> <span>__COPY_s50009ce1da4d15__</span>
+<span>__COPY_sfcd8c64a8f749e__</span>
+<span>__COPY_s3973e022e93220__</span> <span>__COPY_sd02af9864596e9__</span> <span>__COPY_s5db238443f5304__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_se7b4724fc342f6__</span>
+<span>__COPY_s3973e022e93220__</span> <span>__COPY_sd02af9864596e9__</span> <span>__COPY_scc988d82909e92__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s76b5a357391276__</span>
+</code></pre>
+<p>__COPY_sda3a026fc15d03__<strong>__COPY_sd26f8424edb4b1__</strong>__COPY_s2bbff308c046cc__</p>
+<hr>
+<p><em>__COPY_sa5c8d93f14f927__<a href="https://github.com/Project-HAMi/HAMi" target="_blank" rel="noopener">__COPY_sd913c50e96d153__</a>__COPY_s9dfcbcf949fd66__<a href="https://cloud-native.slack.com/archives/C07T10BU4R2" target="_blank" rel="noopener">__COPY_s95fbd931c91351__</a>__COPY_seb0d5884569b39__</em></p>
+<hr></div><div class="article-end"><div><strong>__COPY_sb1020f39199b87__</strong><p>__COPY_se5b544c298d359__</p></div><a class="textlink" href="https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia" target="_blank" rel="noopener">__COPY_s3fb2cb64dbe12c__</a><a class="textlink" href="#/blog">__COPY_s18e04c3ffa2763__</a></div></div><aside class="article-toc" aria-label="__COPY_sb648a68085bab9__"><strong>__COPY_sc6ea3ff4811369__</strong><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-0" data-article-section="article-section-0"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_s0d16d5b5e73530__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-1" data-article-section="article-section-1"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_s3104ff6c9e183f__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-2" data-article-section="article-section-2"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_sf56bc66b9c9059__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-8" data-article-section="article-section-8"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_s0680c54e8222a4__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-10" data-article-section="article-section-10"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_s2b2ee2186ecf73__</a><a href="#/blog/open-source-vgpu-hami-device-plugin-nvidia?section=article-section-14" data-article-section="article-section-14"><span aria-hidden="true">__COPY_saacd834b5cdc64__</span>__COPY_s0b2bbfa31a17be__</a></aside></div></div></div></article><section class="article-related"><div class="wrap"><div class="intro"><div><div class="eyebrow">__COPY_scadf9eb6ac5351__</div><h2>__COPY_s39cd3d32608ec6__</h2></div><a class="textlink" href="#/blog">__COPY_sd05489f448012e__<span class="arrow">__COPY_s161660030aa6c9__</span></a></div><div class="grid3"><a class="blog-card" href="#/blog/hami-vgpu-scheduling-fix-large-cluster"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/dynamia-logo.svg" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_sa6def530e16ea3__</span></div><div class="cover-title-block"><strong>__COPY_s5603a255abb48d__</strong><span class="cover-subtitle">__COPY_s1234548704e8f9__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_sa6def530e16ea3__</span><time datetime="2026-06-01">__COPY_s9222f2233b725a__</time></div><h2>__COPY_s893f2dc51ed02a__</h2><span class="read-more">__COPY_s74c3740c891c8c__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/hami-dra-quickstart"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/dynamia-logo.svg" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_sa6def530e16ea3__</span></div><div class="cover-title-block"><strong>__COPY_sf199f1e7a3b43c__</strong><span class="cover-subtitle">__COPY_s1234548704e8f9__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_sa6def530e16ea3__</span><time datetime="2026-05-22">__COPY_sa3366d2f25e775__</time></div><h2>__COPY_sffd4739677745c__</h2><span class="read-more">__COPY_s74c3740c891c8c__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/kcd-beijing-2026-dra-gpu-scheduling"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/dynamia-logo.svg" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_sa6def530e16ea3__</span></div><div class="cover-title-block"><strong>__COPY_se21bd3ec470bf6__</strong><span class="cover-subtitle">__COPY_s1234548704e8f9__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_sa6def530e16ea3__</span><time datetime="2026-03-23">__COPY_sa00218f2f7e1a1__</time></div><h2>__COPY_s690607e1cb923e__</h2><span class="read-more">__COPY_s74c3740c891c8c__<span>__COPY_s161660030aa6c9__</span></span></div></a></div></div></section>

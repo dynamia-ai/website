@@ -21,6 +21,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
-    messages: await loadMessages(locale, routing.defaultLocale),
+    messages: {...await loadMessages(locale, routing.defaultLocale),redesignShell:(await import(`../../dictionary/redesign/native-shell/${locale}.json`)).default},
   };
 });

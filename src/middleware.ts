@@ -16,6 +16,14 @@ export default function middleware(request: NextRequest) {
   }
 
   const response = intlMiddleware(request);
+  // Keep local locale redirects on the browser's current loopback origin.
+  const location=response.headers.get('location');
+  if(location) {
+    const destination=new URL(location,request.url);
+    if(['localhost','127.0.0.1'].includes(destination.hostname)) {
+      response.headers.set('location',destination.pathname+destination.search+destination.hash);
+    }
+  }
 
   if (!request.cookies.get("consent-required")) {
     const country = getCountry(request.headers);
