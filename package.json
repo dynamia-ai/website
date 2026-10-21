@@ -13,7 +13,8 @@
     "validate:analytics": "node scripts/validate-analytics-consent.mjs",
     "validate:blog": "node scripts/validate-blog-metadata.mjs",
     "validate:seo": "node scripts/validate-seo.mjs",
-    "redesign:pages": "node scripts/redesign/build-pages.mjs"
+    "redesign:pages": "node scripts/redesign/build-pages.mjs",
+    "prebuild": "node scripts/generate-public-assets.mjs"
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.18.1",
