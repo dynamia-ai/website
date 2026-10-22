@@ -958,3 +958,14 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 .redesign-site[data-locale=en],.redesign-site[data-locale=de]{font-family:'Open Sans',Arial,sans-serif}
 .redesign-site[data-locale=en] h1,.redesign-site[data-locale=de] h1{font-family:'Ubuntu','Open Sans',sans-serif;font-weight:700;letter-spacing:-.025em}
 .redesign-site[data-locale=en] h2,.redesign-site[data-locale=en] h3,.redesign-site[data-locale=de] h2,.redesign-site[data-locale=de] h3{font-family:'Ubuntu','Open Sans',sans-serif;font-weight:500;letter-spacing:-.02em}
+
+/* Align visible scheduler marks, accounting for whitespace in the original assets. */
+.ecosystem-logo-grid.scheduler-logo-grid .brand-tile{position:relative;height:116px;padding:0}
+.ecosystem-logo-grid.scheduler-logo-grid .brand-tile img{margin:0;position:absolute;left:calc(50% + var(--mark-x,0px));top:calc(43px + var(--mark-y,0px));width:var(--mark-width);height:auto;max-width:none;max-height:none;object-fit:contain;transform:translate(-50%,-50%)}
+.scheduler-logo-grid [data-brand=kubernetes]{--mark-width:71.1px;--mark-x:-.2px;--mark-y:-.5px}
+.scheduler-logo-grid [data-brand=volcano]{--mark-width:159.6px;--mark-x:.85px;--mark-y:1.2px}
+.scheduler-logo-grid [data-brand=kueue]{--mark-width:170.5px;--mark-x:4.56px;--mark-y:-3.16px}
+.scheduler-logo-grid [data-brand=koordinator]{--mark-width:162.28px;--mark-y:-.13px}
+.scheduler-logo-grid [data-brand=kai]{--mark-width:175.25px;--mark-x:.35px;--mark-y:-3px}
+.ecosystem-logo-grid.scheduler-logo-grid .ecosystem-link-caption{bottom:13px;line-height:18px}
+@media(max-width:480px){.ecosystem-logo-grid.scheduler-logo-grid .brand-tile img{width:calc(var(--mark-width)*.82)}}
