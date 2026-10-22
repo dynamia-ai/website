@@ -3300,17 +3300,13 @@
   "gpuCatalog": {
     "eyebrow": "GPU-KOMPATIBILITÄT",
     "title": "Kompatibilität heterogener GPUs",
-    "description": "Modelle, Ressourcen-Sharing und Bereitstellungsanforderungen – mit Schwerpunkt auf chinesischen Beschleunigerherstellern.",
-    "domestic": "Chinesische Beschleuniger",
+    "description": "Entdecken Sie unterstützte Beschleuniger von NVIDIA, AMD, AWS und chinesischen Herstellern – mit Serien, Sharing-Funktionen und Bereitstellungsanforderungen.",
+    "domestic": "Unterstützte GPUs und KI-Beschleuniger",
     "search": "Hersteller oder Modell suchen",
     "empty": "Kein passendes Modell gefunden. Kontaktieren Sie uns zur Prüfung.",
     "model": "Referenzmodelle",
     "capability": "Funktionen und Bereitstellungsanforderungen",
     "source": "Integrationsanleitung lesen",
-    "pending": "Weitere Integrationsmöglichkeiten",
-    "pendingText": "Für 平头哥 T-Head PPU und weitere Beschleuniger informieren wir Sie gerne über den Integrationsstand und verfügbare Optionen.",
-    "globalTitle": "Weitere Beschleuniger",
-    "globalText": "英伟达 NVIDIA: Die öffentliche Matrix nennt Speicher- und Rechen-Sharing. 超威 AMD Instinct / ROCm: Sharing ist öffentlich dokumentiert; Enterprise-Bereitstellung erfordert weiterhin Modell- und Versionsprüfung. 亚马逊 AWS Inferentia / Trainium: Rechenzuweisung wird unterstützt; Speicherpartitionierung ist nicht aufgeführt.",
     "boundary": "Die passende Compute-Lösung finden",
     "boundaryText": "Erzählen Sie uns von Ihren GPU-Modellen, Ihrer Cluster-Umgebung und Ihren Workloads. Gemeinsam finden wir die passende Lösung für Ressourcen-Sharing, Scheduling und Verwaltung.",
     "contact": "Kontakt aufnehmen",
@@ -3319,6 +3315,24 @@
     "name": "Hersteller",
     "all": "Alle Hersteller",
     "devices": [
+      {
+        "name": "英伟达 NVIDIA",
+        "url": "https://project-hami.io/docs/installation/prerequisites",
+        "models": "Gängige Rechenzentrums- und Consumer-GPUs",
+        "detail": "Unterstützt Speicher- und Rechen-Sharing, Isolation, Multi-GPU-Virtualisierung sowie Binpack-/Spread-Scheduling. Erforderlich sind zu GPU und CUDA passende Treiber, NVIDIA Container Toolkit und das HAMi-Geräte-Plugin. Das native Geräte-Plugin des GPU Operators muss deaktiviert sein."
+      },
+      {
+        "name": "超威 AMD",
+        "url": "https://project-hami.io/docs/userguide/amd-device/enable-amd-gpu-sharing",
+        "models": "Instinct-Serie",
+        "detail": "Unterstützt GPU-Sharing für mehrere Aufgaben, Speicherzuweisung in MiB und anteilige Compute-Unit-Zuweisung (CU). Erforderlich sind AMD-Treiber, ROCm und das HAMi-AMD-Geräte-Plugin. Workload-Images benötigen glibc 2.34 oder neuer; das native Geräte-Plugin des AMD GPU Operators muss deaktiviert sein."
+      },
+      {
+        "name": "亚马逊 AWS",
+        "url": "https://project-hami.io/docs/userguide/awsneuron-device/enable-awsneuron-managing",
+        "models": "Inferentia-/Trainium-Serie (Neuron-Ökosystem)",
+        "detail": "Unterstützt NeuronCore-basierte Ressourcenzuweisung, Geräte-Sharing und topologiebewusstes Multi-Geräte-Scheduling für Training und Inferenz. Bereitstellung auf Inf-/Trn-EC2-Instanzen mit Neuron-Treibern und Laufzeitumgebung, Neuron Device Plugin und HAMi."
+      },
       {
         "name": "华为昇腾 Huawei Ascend",
         "models": "910B / 910B3 / 910C / 310P",
@@ -3378,6 +3392,12 @@
         "models": "Biren166M",
         "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
         "detail": "In der öffentlichen Matrix als planbar geführt, ohne Speicher- oder Rechenpartitionierung. Modell, Plugin und Lieferumfang für die Zielumgebung bestätigen."
+      },
+      {
+        "name": "平头哥 T-Head",
+        "url": "https://docs.dynamia.ai",
+        "models": "Zhenwu-Serie",
+        "detail": "Unterstützt feingranulare Speicher- und Rechenisolation innerhalb einer einheitlichen Ressourcenverwaltung. Integration über das Dynamia-PPU-Geräte-Plugin mit Zhenwu-Treibern, Laufzeitumgebung und Dynamia-Produktkomponenten."
       }
     ]
   },

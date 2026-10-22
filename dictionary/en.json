@@ -3302,17 +3302,13 @@
   "gpuCatalog": {
     "eyebrow": "GPU COMPATIBILITY",
     "title": "Heterogeneous GPU compatibility",
-    "description": "Explore supported accelerator models, resource-sharing capabilities and deployment requirements, with a focus on Chinese vendors.",
-    "domestic": "Chinese accelerator ecosystem",
+    "description": "Explore supported NVIDIA, AMD, AWS and Chinese accelerators, including device families, resource-sharing capabilities and deployment requirements.",
+    "domestic": "Supported GPUs and AI accelerators",
     "search": "Search vendor or model",
     "empty": "No matching model. Contact our team to confirm compatibility.",
     "model": "Reference models",
     "capability": "Capabilities and deployment requirements",
     "source": "Read integration guide",
-    "pending": "More compatibility options",
-    "pendingText": "For 平头哥 T-Head PPU and other accelerators, contact us to explore integration progress and available options.",
-    "globalTitle": "Other accelerators",
-    "globalText": "英伟达 NVIDIA: the public matrix lists memory and compute sharing. 超威 AMD Instinct / ROCm: public documentation lists sharing; enterprise delivery still requires model and version validation. 亚马逊 AWS Inferentia / Trainium: compute allocation is supported; memory partitioning is not listed.",
     "boundary": "Find the right compute solution",
     "boundaryText": "Tell us about your GPU models, cluster environment and workloads. Together, we can find the right approach to resource sharing, scheduling and management.",
     "contact": "Contact us",
@@ -3321,6 +3317,24 @@
     "name": "Vendor",
     "all": "All vendors",
     "devices": [
+      {
+        "name": "英伟达 NVIDIA",
+        "url": "https://project-hami.io/docs/installation/prerequisites",
+        "models": "Mainstream data-center and consumer GPUs",
+        "detail": "Supports memory and compute sharing, isolation, multi-GPU virtualization and Binpack / Spread scheduling. Requires drivers compatible with the GPU and CUDA, NVIDIA Container Toolkit and the HAMi device plugin. Disable GPU Operator’s native device plugin when using it."
+      },
+      {
+        "name": "超威 AMD",
+        "url": "https://project-hami.io/docs/userguide/amd-device/enable-amd-gpu-sharing",
+        "models": "Instinct series",
+        "detail": "Supports concurrent GPU sharing, memory allocation in MiB and proportional compute-unit (CU) allocation. Requires AMD drivers, ROCm and the HAMi AMD device plugin. Shared workloads need glibc 2.34 or later; disable AMD GPU Operator’s native device plugin."
+      },
+      {
+        "name": "亚马逊 AWS",
+        "url": "https://project-hami.io/docs/userguide/awsneuron-device/enable-awsneuron-managing",
+        "models": "Inferentia / Trainium series (Neuron ecosystem)",
+        "detail": "Supports NeuronCore-based resource allocation, device sharing and topology-aware multi-device scheduling for training and inference. Deploy on Inf / Trn EC2 instances with Neuron drivers and runtime, Neuron Device Plugin and HAMi."
+      },
       {
         "name": "华为昇腾 Huawei Ascend",
         "models": "910B / 910B3 / 910C / 310P",
@@ -3380,6 +3394,12 @@
         "models": "Biren166M",
         "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
         "detail": "Listed as schedulable in the public matrix, without memory or compute partitioning. Confirm the model, plugin and delivery scope for the target environment."
+      },
+      {
+        "name": "平头哥 T-Head",
+        "url": "https://docs.dynamia.ai",
+        "models": "Zhenwu series",
+        "detail": "Supports fine-grained memory and compute isolation within unified compute management. Integrates through the Dynamia PPU device plugin with Zhenwu drivers, runtime and Dynamia product components."
       }
     ]
   },

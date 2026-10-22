@@ -3714,17 +3714,13 @@
   "gpuCatalog": {
     "eyebrow": "GPU COMPATIBILITY",
     "title": "异构 GPU 适配目录",
-    "description": "从设备型号到资源共享，了解国产异构加速器的适配范围与部署条件。",
-    "domestic": "国产异构加速器",
+    "description": "覆盖 NVIDIA、AMD、AWS 及国产异构加速器，了解支持系列、资源共享能力与部署条件。",
+    "domestic": "GPU 与 AI 加速器支持",
     "search": "搜索厂商或型号",
     "empty": "没有找到对应型号，请联系团队确认。",
     "model": "参考型号",
     "capability": "能力与部署条件",
     "source": "查看适配文档",
-    "pending": "更多适配需求",
-    "pendingText": "如需平头哥 T-Head PPU 及其他加速器适配，请联系我们了解适配进展与可用方案。",
-    "globalTitle": "其他加速器",
-    "globalText": "英伟达 NVIDIA：公开矩阵支持显存与算力共享。超威 AMD Instinct / ROCm：公开文档已列出共享能力，企业交付仍需核对具体型号和版本。亚马逊 AWS Inferentia / Trainium：支持算力分配，公开矩阵未列出显存切分。",
     "boundary": "找到适合你的算力方案",
     "boundaryText": "告诉我们你的 GPU 型号、集群环境与应用场景，一起找到合适的资源共享、调度与管理方案。",
     "contact": "联系我们",
@@ -3733,6 +3729,24 @@
     "name": "厂商",
     "all": "全部厂商",
     "devices": [
+      {
+        "name": "英伟达 NVIDIA",
+        "url": "https://project-hami.io/docs/installation/prerequisites",
+        "models": "主流数据中心及消费级 GPU",
+        "detail": "支持显存与算力共享、隔离、多卡虚拟化，以及 Binpack / Spread 调度。部署需要匹配 GPU 型号与 CUDA 的驱动、NVIDIA Container Toolkit 和 HAMi 设备插件；使用 GPU Operator 时关闭其原生设备插件。"
+      },
+      {
+        "name": "超威 AMD",
+        "url": "https://project-hami.io/docs/userguide/amd-device/enable-amd-gpu-sharing",
+        "models": "Instinct 系列",
+        "detail": "支持多任务共享 GPU、按 MiB 分配显存及按比例分配计算单元（CU）。部署需要 AMD 驱动、ROCm 和 HAMi AMD 设备插件；共享任务镜像需 glibc 2.34 或更高版本，并关闭 AMD GPU Operator 原生设备插件。"
+      },
+      {
+        "name": "亚马逊 AWS",
+        "url": "https://project-hami.io/docs/userguide/awsneuron-device/enable-awsneuron-managing",
+        "models": "Inferentia / Trainium 系列（Neuron 生态）",
+        "detail": "支持按 NeuronCore 分配资源、设备共享及多设备拓扑感知调度，覆盖训练与推理场景。部署在 Inf / Trn 型 EC2 实例上，配置 Neuron 驱动与运行环境、Neuron Device Plugin 和 HAMi。"
+      },
       {
         "name": "华为昇腾 Huawei Ascend",
         "models": "910B / 910B3 / 910C / 310P",
@@ -3792,6 +3806,12 @@
         "models": "Biren166M",
         "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
         "detail": "公开矩阵列为可调度设备，未列出显存或算力切分能力。型号、插件与交付能力需按环境确认。"
+      },
+      {
+        "name": "平头哥 T-Head",
+        "url": "https://docs.dynamia.ai",
+        "models": "真武系列",
+        "detail": "支持显存与算力的细粒度隔离，并纳入统一算力管理。通过 Dynamia PPU 设备插件接入，配套部署真武系列驱动、运行环境和密瓜产品组件。"
       }
     ]
   },
