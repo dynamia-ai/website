@@ -996,7 +996,6 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 .gpu-catalog .page-hero p{max-width:880px}
 .catalog-source{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;color:var(--muted);font-size:13px}
 .catalog-source a{color:var(--green-dark)}
-.catalog-scope{border-left:3px solid var(--green);padding:16px 24px;background:var(--light);line-height:1.9;margin-bottom:44px;max-width:1100px}
 .catalog-heading{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:28px;flex-wrap:wrap}
 .catalog-heading h2{font-size:28px;margin:0}
 .catalog-heading input{border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink);padding:12px 18px;min-width:300px;max-width:100%}

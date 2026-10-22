@@ -3303,20 +3303,18 @@
     "eyebrow": "GPU COMPATIBILITY",
     "title": "Heterogeneous GPU compatibility",
     "description": "Explore supported accelerator models, resource-sharing capabilities and deployment requirements, with a focus on Chinese vendors.",
-    "scope": "Based on HAMi v2.10.0 public documentation and cross-checked against product compatibility material. Open-source support does not guarantee every model or enterprise feature. Validate hardware, drivers, software versions and workloads for production deployment.",
-    "date": "Sources checked: 22 October 2026",
     "domestic": "Chinese accelerator ecosystem",
     "search": "Search vendor or model",
     "empty": "No matching model. Contact our team to confirm compatibility.",
     "model": "Reference models",
     "capability": "Capabilities and deployment requirements",
     "source": "Read integration guide",
-    "pending": "Requires confirmation",
-    "pendingText": "T-Head PPU is not listed in the public matrix used here; Teco is marked as under validation. Neither is presented as production-supported here. Contact our team to confirm models and deployment conditions.",
+    "pending": "More compatibility options",
+    "pendingText": "For 平头哥 T-Head PPU and other accelerators, contact us to explore integration progress and available options.",
     "globalTitle": "Other accelerators",
-    "globalText": "NVIDIA: the public matrix lists memory and compute sharing. AMD Instinct / ROCm: public documentation lists sharing; enterprise delivery still requires model and version validation. AWS Inferentia / Trainium: compute allocation is supported; memory partitioning is not listed.",
-    "boundary": "Confirm your environment",
-    "boundaryText": "Share your GPU models and count, driver version, Kubernetes version and workloads. Our team will confirm the scope of whole-device scheduling, memory sharing, compute isolation and enterprise enhancements.",
+    "globalText": "英伟达 NVIDIA: the public matrix lists memory and compute sharing. 超威 AMD Instinct / ROCm: public documentation lists sharing; enterprise delivery still requires model and version validation. 亚马逊 AWS Inferentia / Trainium: compute allocation is supported; memory partitioning is not listed.",
+    "boundary": "Find the right compute solution",
+    "boundaryText": "Tell us about your GPU models, cluster environment and workloads. Together, we can find the right approach to resource sharing, scheduling and management.",
     "contact": "Contact us",
     "matrix": "Official HAMi support matrix",
     "docs": "Dynamia product documentation",
@@ -3324,61 +3322,61 @@
     "all": "All vendors",
     "devices": [
       {
-        "name": "Ascend",
+        "name": "华为昇腾 Huawei Ascend",
         "models": "910B / 910B3 / 910C / 310P",
         "url": "https://project-hami.io/docs/userguide/ascend-device/enable-ascend-sharing",
         "detail": "Template-based hardware partitioning or software sharing. Memory and compute capabilities depend on the mode; software sharing requires compatible ARM hardware, drivers and the HAMi scheduler."
       },
       {
-        "name": "Hygon",
+        "name": "海光 Hygon",
         "models": "DCU · Z100",
         "url": "https://project-hami.io/docs/userguide/hygon-device/enable-hygon-dcu-sharing",
         "detail": "Memory and compute sharing; memory isolation is model-dependent. Requires the vendor device plugin and compatible DTK/drivers. Check the single-container vDCU limit."
       },
       {
-        "name": "Cambricon",
+        "name": "寒武纪 Cambricon",
         "models": "MLU370 / MLU590",
         "url": "https://project-hami.io/docs/userguide/cambricon-device/enable-cambricon-mlu-sharing",
         "detail": "Memory and compute sharing. The MLU370 guide requires Dynamic SMLU and matching drivers/CNToolkit; verify the applicable versions for other models."
       },
       {
-        "name": "MetaX",
+        "name": "沐曦 MetaX",
         "models": "MXC500",
         "url": "https://project-hami.io/docs/userguide/metax-device/metax-sgpu/enable-metax-gpu-sharing",
         "detail": "Memory and compute sharing via sGPU. Enable vendor virtualization and install the device plugin for the specific model."
       },
       {
-        "name": "Iluvatar CoreX",
+        "name": "天数智芯 Iluvatar CoreX",
         "models": "BI-V100 / BI-V150 / MR-V50 / MR-V100",
         "url": "https://project-hami.io/docs/userguide/iluvatar-device/enable-iluvatar-gpu-sharing",
         "detail": "Memory and compute sharing; the guide specifies 256 MiB memory and 1% compute granularity. Requires GPU Manager and compatible drivers; verify device limits per container."
       },
       {
-        "name": "Moore Threads",
+        "name": "摩尔线程 Moore Threads",
         "models": "MTT S4000",
         "url": "https://project-hami.io/docs/userguide/mthreads-device/enable-mthreads-gpu-sharing",
         "detail": "Memory and compute sharing. Partition granularity and isolation depend on the vendor driver and deployment guide."
       },
       {
-        "name": "Kunlunxin",
+        "name": "昆仑芯 Kunlunxin",
         "models": "P800",
         "url": "https://project-hami.io/docs/userguide/kunlunxin-device/enable-kunlunxin-vxpu",
         "detail": "Whole-device scheduling and a VXPU path. Memory sharing does not imply independent compute partitioning. Whole-device scheduling is topology-aware; select the deployment mode explicitly."
       },
       {
-        "name": "Enflame",
+        "name": "燧原 Enflame",
         "models": "S60",
         "url": "https://project-hami.io/docs/userguide/enflame-device/enable-enflame-gcu-sharing",
         "detail": "Memory and compute sharing. Allocate resources using supported vGCU/device-plugin configurations; verify driver and device mode."
       },
       {
-        "name": "Vastai",
+        "name": "瀚博 Vastai",
         "models": "VA16",
         "url": "https://project-hami.io/docs/userguide/vastai/enable-vastai-sharing",
         "detail": "Listed as schedulable in the public matrix, without memory or compute partitioning. Plan for whole-device allocation and confirm any sharing requirements separately."
       },
       {
-        "name": "Biren",
+        "name": "壁仞 Biren",
         "models": "Biren166M",
         "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
         "detail": "Listed as schedulable in the public matrix, without memory or compute partitioning. Confirm the model, plugin and delivery scope for the target environment."
