@@ -1099,7 +1099,7 @@
     "hamiMetricsExplorerPage": {
       "subtitle": "解析 HAMi 指标，查看 GPU 分配状态并导出清单 JSON。",
       "uploadTitle": "拖拽 Prometheus 指标文件到这里，或点击选择文件",
-      "uploadDesc": "支持 HAMi / HAMi AI Platform 指标格式",
+      "uploadDesc": "支持 HAMi / Dynamia HAMi 平台版 指标格式",
       "exportButton": "导出 JSON",
       "mergeButton": "与旧数据合并",
       "analysisTitle": "分析",
@@ -3707,8 +3707,101 @@
     "back": "← 返回产品介绍",
     "title": "安装指南与版本资源",
     "products": {
-      "hami-enterprise": "HAMi Enterprise",
-      "hami-ai-platform": "HAMi AI Platform"
+      "hami-enterprise": "Dynamia HAMi 企业版",
+      "hami-ai-platform": "Dynamia HAMi 平台版"
     }
+  },
+  "gpuCatalog": {
+    "eyebrow": "GPU COMPATIBILITY",
+    "title": "异构 GPU 适配目录",
+    "description": "从设备型号到资源共享，了解国产异构加速器的适配范围与部署条件。",
+    "scope": "本页依据 HAMi v2.10.0 公开文档整理，并交叉核验产品适配资料。开源支持不代表所有型号或所有企业级功能均可交付；最终支持范围须结合设备、驱动、软件版本与应用场景验证。",
+    "date": "资料核验：2026.10.22",
+    "domestic": "国产异构加速器",
+    "search": "搜索厂商或型号",
+    "empty": "没有找到对应型号，请联系团队确认。",
+    "model": "参考型号",
+    "capability": "能力与部署条件",
+    "source": "查看适配文档",
+    "pending": "需进一步确认",
+    "pendingText": "平头哥 PPU 尚未列入本页依据的公开支持矩阵；Teco 在公开矩阵中标为验证中。两者均不在此承诺生产支持，具体型号与交付条件请联系团队确认。",
+    "globalTitle": "其他加速器",
+    "globalText": "NVIDIA：公开矩阵支持显存与算力共享。AMD Instinct / ROCm：公开文档已列出共享能力，企业交付仍需核对具体型号和版本。AWS Inferentia / Trainium：支持算力分配，公开矩阵未列出显存切分。",
+    "boundary": "如何确认你的环境",
+    "boundaryText": "提供 GPU 型号与数量、驱动版本、Kubernetes 版本及应用场景。团队将确认整卡调度、显存共享、算力隔离和企业级增强能力的适用范围。",
+    "contact": "联系我们",
+    "matrix": "HAMi 官方支持矩阵",
+    "docs": "密瓜产品文档",
+    "name": "厂商",
+    "all": "全部厂商",
+    "devices": [
+      {
+        "name": "华为昇腾 Ascend",
+        "models": "910B / 910B3 / 910C / 310P",
+        "url": "https://project-hami.io/docs/userguide/ascend-device/enable-ascend-sharing",
+        "detail": "按模板硬切分或软切分；显存与算力能力依模式而定。软切分需核对 ARM、驱动版本及 HAMi 调度器要求。"
+      },
+      {
+        "name": "海光 Hygon",
+        "models": "DCU · Z100",
+        "url": "https://project-hami.io/docs/userguide/hygon-device/enable-hygon-dcu-sharing",
+        "detail": "支持显存与算力共享；显存隔离适用部分型号。使用厂商设备插件，并核对 DTK、驱动及单容器 vDCU 限制。"
+      },
+      {
+        "name": "寒武纪 Cambricon",
+        "models": "MLU370 / MLU590",
+        "url": "https://project-hami.io/docs/userguide/cambricon-device/enable-cambricon-mlu-sharing",
+        "detail": "支持显存与算力共享。MLU370 指南要求 Dynamic SMLU 插件及匹配的驱动、CNToolkit；其他型号需核对对应版本。"
+      },
+      {
+        "name": "沐曦 MetaX",
+        "models": "MXC500",
+        "url": "https://project-hami.io/docs/userguide/metax-device/metax-sgpu/enable-metax-gpu-sharing",
+        "detail": "通过 sGPU 提供显存与算力共享。需按对应型号启用厂商虚拟化能力并部署设备插件。"
+      },
+      {
+        "name": "天数智芯 Iluvatar CoreX",
+        "models": "BI-V100 / BI-V150 / MR-V50 / MR-V100",
+        "url": "https://project-hami.io/docs/userguide/iluvatar-device/enable-iluvatar-gpu-sharing",
+        "detail": "支持显存与算力共享；指南给出 256 MiB 显存和 1% 算力粒度。需 GPU Manager 及匹配驱动，核对单容器设备限制。"
+      },
+      {
+        "name": "摩尔线程 Moore Threads",
+        "models": "MTT S4000",
+        "url": "https://project-hami.io/docs/userguide/mthreads-device/enable-mthreads-gpu-sharing",
+        "detail": "支持显存与算力共享。具体切分粒度和隔离方式以厂商驱动及对应部署指南为准。"
+      },
+      {
+        "name": "昆仑芯 Kunlunxin",
+        "models": "P800",
+        "url": "https://project-hami.io/docs/userguide/kunlunxin-device/enable-kunlunxin-vxpu",
+        "detail": "提供整卡调度及 VXPU 路径；显存共享不等同于独立算力切分。整卡路径支持拓扑感知，部署时需明确选用的模式。"
+      },
+      {
+        "name": "燧原 Enflame",
+        "models": "S60",
+        "url": "https://project-hami.io/docs/userguide/enflame-device/enable-enflame-gcu-sharing",
+        "detail": "支持显存与算力共享。按 vGCU 及设备插件支持的配置分配资源，核对驱动和设备模式。"
+      },
+      {
+        "name": "瀚博 Vastai",
+        "models": "VA16",
+        "url": "https://project-hami.io/docs/userguide/vastai/enable-vastai-sharing",
+        "detail": "公开矩阵列为可调度设备，未列出显存或算力切分能力。按整卡资源规划，具体共享能力需另行确认。"
+      },
+      {
+        "name": "壁仞 Biren",
+        "models": "Biren166M",
+        "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
+        "detail": "公开矩阵列为可调度设备，未列出显存或算力切分能力。型号、插件与交付能力需按环境确认。"
+      }
+    ]
+  },
+  "imageViewer": {
+    "title": "查看图片",
+    "close": "关闭",
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "reset": "适应窗口"
   }
 }

@@ -2,6 +2,7 @@
 
 import {useEffect, useRef, useState, memo, forwardRef} from 'react';
 import {createPortal} from 'react-dom';
+import ArticleImageViewer from './ArticleImageViewer';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import {makeLocalizer} from '../../public/redesign/localization.js';
 import type {LocaleCatalog} from '../../public/redesign/localization.js';
@@ -225,7 +226,7 @@ export default function RedesignClient({html, route, basePath, articleId, copy, 
       <ShellMarkup html={before} />
       <main id="app" className="native-content">{children}</main>
       <ShellMarkup html={after} />
-    </div>{languageSlot && createPortal(<LanguageSwitcher/>,languageSlot)}</>;
+    </div><ArticleImageViewer/>{languageSlot && createPortal(<LanguageSwitcher/>,languageSlot)}</>;
   }
-  return <><StaticMarkup ref={root} html={html} locale={locale} />{languageSlot && createPortal(<LanguageSwitcher/>,languageSlot)}</>;
+  return <><StaticMarkup ref={root} html={html} locale={locale} /><ArticleImageViewer/>{languageSlot && createPortal(<LanguageSwitcher/>,languageSlot)}</>;
 }

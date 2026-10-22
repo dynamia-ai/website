@@ -781,7 +781,7 @@
     "hamiMetricsExplorerPage": {
       "subtitle": "HAMi-Metriken parsen und Inventar-JSON exportieren.",
       "uploadTitle": "Prometheus-Metrikdatei ablegen oder zum Durchsuchen klicken",
-      "uploadDesc": "Unterstuetzt HAMi / HAMi AI Platform Metriken-Format",
+      "uploadDesc": "Unterstuetzt HAMi / Dynamia AI Platform for HAMi Metriken-Format",
       "exportButton": "JSON exportieren",
       "mergeButton": "Mit alten Daten zusammenfuehren",
       "analysisTitle": "Analyse",
@@ -3293,8 +3293,101 @@
     "back": "← Zurück zum Produkt",
     "title": "Installationsanleitungen und Versionen",
     "products": {
-      "hami-enterprise": "HAMi Enterprise",
-      "hami-ai-platform": "HAMi AI Platform"
+      "hami-enterprise": "Dynamia Enterprise for HAMi",
+      "hami-ai-platform": "Dynamia AI Platform for HAMi"
     }
+  },
+  "gpuCatalog": {
+    "eyebrow": "GPU-KOMPATIBILITÄT",
+    "title": "Kompatibilität heterogener GPUs",
+    "description": "Modelle, Ressourcen-Sharing und Bereitstellungsanforderungen – mit Schwerpunkt auf chinesischen Beschleunigerherstellern.",
+    "scope": "Auf Basis der öffentlichen HAMi-v2.10.0-Dokumentation und mit Produktunterlagen abgeglichen. Open-Source-Unterstützung garantiert nicht jedes Modell oder jede Enterprise-Funktion. Hardware, Treiber, Softwareversionen und Workloads müssen für den Produktivbetrieb geprüft werden.",
+    "date": "Quellen geprüft: 22. Oktober 2026",
+    "domestic": "Chinesische Beschleuniger",
+    "search": "Hersteller oder Modell suchen",
+    "empty": "Kein passendes Modell gefunden. Kontaktieren Sie uns zur Prüfung.",
+    "model": "Referenzmodelle",
+    "capability": "Funktionen und Bereitstellungsanforderungen",
+    "source": "Integrationsanleitung lesen",
+    "pending": "Weitere Prüfung erforderlich",
+    "pendingText": "T-Head PPU ist in der hier verwendeten öffentlichen Matrix nicht aufgeführt; Teco ist als in Prüfung gekennzeichnet. Für beide wird hier keine Produktionsunterstützung zugesagt. Modelle und Einsatzbedingungen bitte mit unserem Team abstimmen.",
+    "globalTitle": "Weitere Beschleuniger",
+    "globalText": "NVIDIA: Die öffentliche Matrix nennt Speicher- und Rechen-Sharing. AMD Instinct / ROCm: Sharing ist öffentlich dokumentiert; Enterprise-Bereitstellung erfordert weiterhin Modell- und Versionsprüfung. AWS Inferentia / Trainium: Rechenzuweisung wird unterstützt; Speicherpartitionierung ist nicht aufgeführt.",
+    "boundary": "Ihre Umgebung prüfen",
+    "boundaryText": "Nennen Sie GPU-Modelle und Anzahl, Treiber- und Kubernetes-Version sowie Workloads. Unser Team prüft Ganzgeräte-Scheduling, Speicher-Sharing, Rechenisolation und Enterprise-Erweiterungen.",
+    "contact": "Kontakt aufnehmen",
+    "matrix": "Offizielle HAMi-Kompatibilitätsmatrix",
+    "docs": "Dynamia-Produktdokumentation",
+    "name": "Hersteller",
+    "all": "Alle Hersteller",
+    "devices": [
+      {
+        "name": "Ascend",
+        "models": "910B / 910B3 / 910C / 310P",
+        "url": "https://project-hami.io/docs/userguide/ascend-device/enable-ascend-sharing",
+        "detail": "Hardware-Partitionierung nach Vorlagen oder Software-Sharing. Speicher- und Rechenfunktionen hängen vom Modus ab; Software-Sharing erfordert passende ARM-Hardware, Treiber und den HAMi-Scheduler."
+      },
+      {
+        "name": "Hygon",
+        "models": "DCU · Z100",
+        "url": "https://project-hami.io/docs/userguide/hygon-device/enable-hygon-dcu-sharing",
+        "detail": "Speicher- und Rechen-Sharing; Speicherisolation ist modellabhängig. Hersteller-Plugin und passende DTK-/Treiberversionen sind erforderlich. vDCU-Limit pro Container beachten."
+      },
+      {
+        "name": "Cambricon",
+        "models": "MLU370 / MLU590",
+        "url": "https://project-hami.io/docs/userguide/cambricon-device/enable-cambricon-mlu-sharing",
+        "detail": "Speicher- und Rechen-Sharing. Für MLU370 sind Dynamic SMLU und passende Treiber/CNToolkit erforderlich; Versionen für andere Modelle gesondert prüfen."
+      },
+      {
+        "name": "MetaX",
+        "models": "MXC500",
+        "url": "https://project-hami.io/docs/userguide/metax-device/metax-sgpu/enable-metax-gpu-sharing",
+        "detail": "Speicher- und Rechen-Sharing über sGPU. Herstellervirtualisierung aktivieren und das zum Modell passende Geräte-Plugin installieren."
+      },
+      {
+        "name": "Iluvatar CoreX",
+        "models": "BI-V100 / BI-V150 / MR-V50 / MR-V100",
+        "url": "https://project-hami.io/docs/userguide/iluvatar-device/enable-iluvatar-gpu-sharing",
+        "detail": "Speicher- und Rechen-Sharing mit 256 MiB Speicher- und 1 % Rechengranularität laut Anleitung. GPU Manager und passende Treiber nötig; Gerätelimits pro Container prüfen."
+      },
+      {
+        "name": "Moore Threads",
+        "models": "MTT S4000",
+        "url": "https://project-hami.io/docs/userguide/mthreads-device/enable-mthreads-gpu-sharing",
+        "detail": "Speicher- und Rechen-Sharing. Granularität und Isolation richten sich nach Herstellertreiber und Bereitstellungsanleitung."
+      },
+      {
+        "name": "Kunlunxin",
+        "models": "P800",
+        "url": "https://project-hami.io/docs/userguide/kunlunxin-device/enable-kunlunxin-vxpu",
+        "detail": "Ganzgeräte-Scheduling und VXPU-Pfad. Speicher-Sharing bedeutet keine unabhängige Rechenpartitionierung. Ganzgeräte-Scheduling berücksichtigt die Topologie; Bereitstellungsmodus gezielt wählen."
+      },
+      {
+        "name": "Enflame",
+        "models": "S60",
+        "url": "https://project-hami.io/docs/userguide/enflame-device/enable-enflame-gcu-sharing",
+        "detail": "Speicher- und Rechen-Sharing. Ressourcen gemäß unterstützter vGCU-/Geräte-Plugin-Konfiguration zuweisen; Treiber und Gerätemodus prüfen."
+      },
+      {
+        "name": "Vastai",
+        "models": "VA16",
+        "url": "https://project-hami.io/docs/userguide/vastai/enable-vastai-sharing",
+        "detail": "In der öffentlichen Matrix als planbar geführt, ohne Speicher- oder Rechenpartitionierung. Ganzgeräte-Zuweisung planen und Sharing-Anforderungen separat bestätigen."
+      },
+      {
+        "name": "Biren",
+        "models": "Biren166M",
+        "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
+        "detail": "In der öffentlichen Matrix als planbar geführt, ohne Speicher- oder Rechenpartitionierung. Modell, Plugin und Lieferumfang für die Zielumgebung bestätigen."
+      }
+    ]
+  },
+  "imageViewer": {
+    "title": "Bildansicht",
+    "close": "Schließen",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern",
+    "reset": "An Fenster anpassen"
   }
 }
