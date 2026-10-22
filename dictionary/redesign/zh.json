@@ -1272,5 +1272,9 @@
   "about.interview.note": "点击视频窗口，前往微信视频号观看。",
   "about.interview.alt": "密瓜智能与 InfoQ 创始人专访封面",
   "catalog.link": "查看完整适配目录",
-  "docs.link": "产品文档"
+  "docs.link": "产品文档",
+  "home.hero.title": "让已有 GPU，",
+  "home.hero.emphasis": "承载更多 AI 业务",
+  "home.hero.positioning": "The Open Kernel for AI Infrastructure",
+  "home.hero.description": "专注 GPU 虚拟化与异构算力管理，通过 GPU 共享、隔离和调度，让企业现有算力得到更高效的使用。基于 HAMi 开源技术，为已有 AI 平台提供可集成的资源管理能力，也为企业提供统一的 GPU 管理平台。"
 }

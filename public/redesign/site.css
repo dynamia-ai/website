@@ -1019,3 +1019,7 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 :root[data-theme=dark] .footer-certifications .footer-certification-mark{fill:#fff;color:#fff}
 :root[data-theme=dark] .footer-qr{border:0;padding:0;background:transparent}
 @media(max-width:700px){.footer-certifications .footer-certification-mark{height:60px;padding:8px}}
+
+.home-hero .hero-positioning{font-size:clamp(19px,1.65vw,25px);font-weight:500;line-height:1.5;color:var(--ink);margin:20px 0 0}
+.home-hero .hero-description{font-size:clamp(15px,1.15vw,18px);line-height:1.85;margin-top:20px}
+:root[data-theme=dark] .footer-qr-label{color:var(--ink)}
