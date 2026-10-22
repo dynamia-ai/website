@@ -1023,3 +1023,44 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 .home-hero .hero-positioning{font-size:clamp(19px,1.65vw,25px);font-weight:500;line-height:1.5;color:var(--ink);margin:20px 0 0}
 .home-hero .hero-description{font-size:clamp(15px,1.15vw,18px);line-height:1.85;margin-top:20px}
 :root[data-theme=dark] .footer-qr-label{color:var(--ink)}
+
+/* Homepage hierarchy: signature, outcome headline, grouped positioning and copy. */
+.home-hero .hero-signature{display:block;padding:0;border:0;border-radius:0;background:none;font-size:14px;line-height:1.5;letter-spacing:.025em;font-weight:500;margin-bottom:24px;color:var(--green-dark)}
+.home-hero .hero-signature:before{display:none}
+.home-hero .hero-message-support{margin-top:25px;padding-left:19px;border-left:2px solid #dce8c8;max-width:590px}
+.home-hero .hero-message-support .hero-positioning{font-size:clamp(17px,1.35vw,20px);font-weight:600;line-height:1.4;margin:0;color:var(--ink);letter-spacing:-.015em}
+.home-hero .hero-message-support .hero-description{font-size:15px;line-height:1.85;margin:12px 0 0;max-width:560px;color:var(--muted)}
+:root[data-theme=dark] .home-hero .hero-signature{background:none;border:0;color:#b4d96d}
+:root[data-theme=dark] .home-hero .hero-message-support{border-color:#35472b}
+@media(max-width:700px){.home-hero .hero-signature{font-size:11px;margin-bottom:22px}.home-hero .hero-message-support{padding-left:15px;margin-top:22px}.home-hero .hero-message-support .hero-description{font-size:14px}}
+.redesign-site .home-hero .hero-grid .actions{gap:12px;margin-top:24px;align-items:center}
+.redesign-site .home-hero .hero-grid .actions :is(.btn,.star-proof){min-height:46px;padding:10px 16px;font-size:13px;line-height:24px;gap:9px;border-radius:6px}
+.redesign-site .home-hero .hero-grid .actions .star-proof b{font-size:16px;line-height:24px}
+
+/* Size and center vendor artwork by visible bounds, without clipping its wordmark. */
+.ecosystem-logo-grid.vendor-logo-grid .brand-tile{position:relative;overflow:hidden;padding:0;height:112px}
+.ecosystem-logo-grid.vendor-logo-grid .brand-tile img{position:absolute!important;left:50%!important;top:50%!important;margin:0!important;width:min(calc(78% / var(--vendor-fill)),var(--vendor-max-width))!important;height:auto!important;max-width:none!important;max-height:none!important;object-fit:contain;clip-path:none!important;transform:translate(var(--vendor-x),var(--vendor-y))!important}
+.vendor-logo-grid [data-brand="nvidia"]{--vendor-fill:0.672013;--vendor-max-width:108.964px;--vendor-x:-50.3042%;--vendor-y:-48.7000%}
+.vendor-logo-grid [data-brand="amd"]{--vendor-fill:0.823516;--vendor-max-width:311.294px;--vendor-x:-50.0116%;--vendor-y:-50.8406%}
+.vendor-logo-grid [data-brand="aws"]{--vendor-fill:0.926230;--vendor-max-width:97.557px;--vendor-x:-48.7705%;--vendor-y:-50.5352%}
+.vendor-logo-grid [data-brand="ascend"]{--vendor-fill:0.961988;--vendor-max-width:175.677px;--vendor-x:-50.1096%;--vendor-y:-58.3185%}
+.vendor-logo-grid [data-brand="hygon"]{--vendor-fill:0.791472;--vendor-max-width:341.137px;--vendor-x:-50.8178%;--vendor-y:-51.1737%}
+.vendor-logo-grid [data-brand="cambricon"]{--vendor-fill:0.563000;--vendor-max-width:279.310px;--vendor-x:-49.9833%;--vendor-y:-49.9500%}
+.vendor-logo-grid [data-brand="metax"]{--vendor-fill:0.848214;--vendor-max-width:261.921px;--vendor-x:-46.7938%;--vendor-y:-40.7480%}
+.vendor-logo-grid [data-brand="iluvatar"]{--vendor-fill:1.000000;--vendor-max-width:210.600px;--vendor-x:-50.0000%;--vendor-y:-50.0000%}
+.vendor-logo-grid [data-brand="moore"]{--vendor-fill:1.000000;--vendor-max-width:175.663px;--vendor-x:-50.0000%;--vendor-y:-50.0000%}
+.vendor-logo-grid [data-brand="kunlunxin"]{--vendor-fill:0.754580;--vendor-max-width:186.896px;--vendor-x:-44.7137%;--vendor-y:-59.2347%}
+.vendor-logo-grid [data-brand="enflame"]{--vendor-fill:0.580146;--vendor-max-width:206.034px;--vendor-x:-49.9859%;--vendor-y:-43.7000%}
+.vendor-logo-grid [data-brand="biren"]{--vendor-fill:0.389075;--vendor-max-width:138.000px;--vendor-x:-50.6410%;--vendor-y:-50.8000%}
+.vendor-logo-grid [data-brand="vastai"]{--vendor-fill:0.983881;--vendor-max-width:173.224px;--vendor-x:-49.8711%;--vendor-y:-49.9483%}
+.vendor-logo-grid [data-brand="t-head"]{--vendor-fill:0.911022;--vendor-max-width:222.694px;--vendor-x:-51.0822%;--vendor-y:-51.4267%}
+:root .redesign-site:not([data-locale="zh"]) .home-hero .hero-signature{display:none}
+
+/* Overseas combined brand signature, using the original vector artwork. */
+.redesign-site:not([data-locale="zh"]) .header-inner .brand{width:195px;flex-basis:195px}
+.redesign-site:not([data-locale="zh"]) .header-inner .brand img{width:195px;height:auto;max-height:52px;object-fit:contain}
+:root[data-theme="dark"] .redesign-site:not([data-locale="zh"]) .header-inner .brand{background:#fff;border-radius:4px;padding:6px}
+@media(max-width:550px){.redesign-site:not([data-locale="zh"]) .header-inner .brand{width:150px;flex-basis:150px}.redesign-site:not([data-locale="zh"]) .header-inner .brand img{width:150px!important;max-width:100%}}
+/* Rounded brand-like lettering for the Chinese hero signature. */
+.redesign-site[data-locale="zh"] .home-hero .hero-signature{font-family:"Arial Rounded MT Bold","Ubuntu",sans-serif;font-size:17px;font-weight:700;letter-spacing:.015em;line-height:1.5}
+@media(max-width:550px){.redesign-site[data-locale="zh"] .home-hero .hero-signature{font-size:14px}}

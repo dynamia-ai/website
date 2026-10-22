@@ -149,7 +149,7 @@
   "sf855a52017839f": "密瓜智能用户案例集.html",
   "s3afbb8304398bf": "[data-download-status]",
   "sf0f8b0a3610ea6": "已生成下载文件：密瓜智能用户案例集.html",
-  "s28c8807088f7a9": "/redesign/assets/904cdac52f9135a04e30.jpg",
+  "s28c8807088f7a9": "/redesign/assets/iluvatar-official.png",
   "s71b92166f7a839": "/redesign/assets/498422afaaf2753aa9ec.png",
   "s35af7b939d866b": "/redesign/assets/83a80088931f919ecd6e.png",
   "s4298ca81cc1130": "/redesign/assets/299f066b5f20703e1f89.png",
@@ -1276,5 +1276,5 @@
   "home.hero.title": "让已有 GPU，",
   "home.hero.emphasis": "承载更多 AI 业务",
   "home.hero.positioning": "The Open Kernel for AI Infrastructure",
-  "home.hero.description": "专注 GPU 虚拟化与异构算力管理，通过 GPU 共享、隔离和调度，让企业现有算力得到更高效的使用。基于 HAMi 开源技术，为已有 AI 平台提供可集成的资源管理能力，也为企业提供统一的 GPU 管理平台。"
+  "home.hero.description": "专注 GPU 虚拟化与异构算力管理的 AI 基础设施企业。通过共享、隔离与调度，让不同类型的 GPU 在现有 AI 平台中得到更高效的使用。"
 }
