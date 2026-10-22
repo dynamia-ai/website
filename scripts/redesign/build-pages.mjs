@@ -49,6 +49,11 @@ const catalogPath=`dictionary/redesign/locales/${locale}.json`;
 if(locale!=='zh'&&!fs.existsSync(catalogPath))continue;
 const catalog=locale==='zh'?undefined:JSON.parse(fs.readFileSync(catalogPath,'utf8'));
 if(catalog) {
+  const {navigation}=JSON.parse(fs.readFileSync(`dictionary/${locale}.json`,'utf8'));
+  catalog.assets={...catalog.assets,
+    '/redesign/assets/cf10a2fcc13438169897.svg':navigation.logo,
+    '/redesign/assets/931baba8fa5e14fe2655.svg':navigation.logoDark};
+  fs.writeFileSync(catalogPath,JSON.stringify(catalog));
   fs.mkdirSync('public/redesign/locales',{recursive:true});
   fs.copyFileSync(catalogPath,`public/redesign/locales/${locale}.json`);
 }

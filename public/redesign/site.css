@@ -1064,3 +1064,12 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 /* Rounded brand-like lettering for the Chinese hero signature. */
 .redesign-site[data-locale="zh"] .home-hero .hero-signature{font-family:"Arial Rounded MT Bold","Ubuntu",sans-serif;font-size:17px;font-weight:700;letter-spacing:.015em;line-height:1.5}
 @media(max-width:550px){.redesign-site[data-locale="zh"] .home-hero .hero-signature{font-size:14px}}
+
+/* Use the same prominent Chinese header brand across every route. */
+.redesign-site[data-locale="zh"] .header-inner .brand{width:190px;flex-basis:190px}
+.redesign-site[data-locale="zh"] .header-inner .brand img{width:190px;height:54px;max-width:none;object-fit:contain}
+.redesign-site[data-locale="zh"] .header-inner .brand-light{transform:translateX(-9.764px)}
+.redesign-site[data-locale="zh"] .header-inner .brand-dark{transform:translateX(-10.229px)}
+@media(max-width:1150px) and (min-width:901px){.redesign-site[data-locale="zh"] .header-inner{gap:24px}.redesign-site[data-locale="zh"] .desktop-nav{gap:20px}.redesign-site[data-locale="zh"] .header-actions{gap:12px}}
+@media(max-width:700px){.redesign-site[data-locale="zh"] .header-inner .brand{width:160px;flex-basis:160px}.redesign-site[data-locale="zh"] .header-inner .brand img{width:160px!important;height:46px}.redesign-site[data-locale="zh"] .header-inner .brand-light{transform:translateX(-8.222px)}.redesign-site[data-locale="zh"] .header-inner .brand-dark{transform:translateX(-8.614px)}}
+@media(max-width:370px){.redesign-site[data-locale="zh"] .header-inner .brand{width:145px;flex-basis:145px}.redesign-site[data-locale="zh"] .header-inner .brand img{width:145px!important;height:42px}.redesign-site[data-locale="zh"] .header-inner .brand-light{transform:translateX(-7.451px)}.redesign-site[data-locale="zh"] .header-inner .brand-dark{transform:translateX(-7.806px)}}
