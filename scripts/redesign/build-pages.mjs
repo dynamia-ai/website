@@ -48,6 +48,10 @@ activeLocale=locale;
 const catalogPath=`dictionary/redesign/locales/${locale}.json`;
 if(locale!=='zh'&&!fs.existsSync(catalogPath))continue;
 const catalog=locale==='zh'?undefined:JSON.parse(fs.readFileSync(catalogPath,'utf8'));
+if(catalog) {
+  fs.mkdirSync('public/redesign/locales',{recursive:true});
+  fs.copyFileSync(catalogPath,`public/redesign/locales/${locale}.json`);
+}
 fs.mkdirSync(`${pageRoot}${suffix()}`,{recursive:true});
 fs.mkdirSync(`dictionary/redesign/pages${suffix()}`,{recursive:true});
 for(const route of routes) {
