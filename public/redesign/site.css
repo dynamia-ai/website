@@ -1077,3 +1077,49 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 /* Demo actions size to their label after removing decorative arrows. */
 .redesign-site .btn[data-contact]{width:auto;min-width:0;gap:0;justify-content:center;white-space:nowrap}
 .redesign-site .header-actions .btn[data-contact]{padding-inline:20px}
+
+/* Recruitment: concrete role summaries with readable, expandable job descriptions. */
+.job-opening{margin:0 0 16px;border:1px solid var(--line);border-radius:9px;background:var(--white,#fff);overflow:hidden}
+.job-opening:last-child{border:1px solid var(--line)}
+.job-opening summary{display:grid;grid-template-columns:36px minmax(220px,1fr) minmax(160px,250px) 135px;gap:24px;padding:28px 30px;align-items:center}
+.job-opening summary .job-index{display:block;font-size:13px;font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
+.job-opening summary .job-overview small{font-size:11px;color:var(--green-dark);letter-spacing:.08em;margin:0 0 8px}
+.job-opening summary h3{font-size:24px;line-height:1.35;margin:0}
+.job-opening summary .job-overview p{font-size:12px;line-height:1.7;color:var(--muted);margin:10px 0 0}
+.job-opening summary .job-experience{display:block;font-size:12px;line-height:1.9;color:var(--muted)}
+.job-opening summary .job-toggle{display:flex;justify-content:flex-end;gap:14px;color:var(--green-dark);font-size:12px;white-space:nowrap}
+.job-opening summary .job-toggle b{display:block;font-size:26px;line-height:1;transition:transform .2s}
+.job-opening summary:focus-visible{outline:2px solid var(--green-dark);outline-offset:-4px}
+.job-opening[open]{background:#f8faf6}
+.job-opening[open] summary{border-bottom:1px solid var(--line)}
+.job-opening .job-detail{max-width:none;padding:32px 36px 34px 90px}
+.job-content-columns{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.job-content-group h4{font-size:16px;font-weight:600;color:var(--ink);margin:0 0 18px}
+.job-content-group ul{padding:0 0 0 18px;margin:0;list-style:disc}
+.job-content-group li{padding-left:4px;margin:0 0 13px;font-size:14px;line-height:1.95;color:var(--muted);overflow-wrap:anywhere}
+.job-content-group li::marker{color:var(--green-dark);font-size:10px}
+.job-detail>.job-content-group{border-top:1px solid var(--line);padding-top:26px;margin-top:22px}
+:root[data-theme="dark"] .job-opening{background:#161a15}
+:root[data-theme="dark"] .job-opening[open]{background:#1c2119}
+:root[data-theme="dark"] .job-opening summary :is(small,.job-toggle){color:#b4d96d}
+.redesign-site:not([data-locale="zh"]) #menu-company .nav-card-menu{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1050px){.job-opening summary{grid-template-columns:28px minmax(200px,1fr) 180px 28px;gap:18px;padding:25px 24px}.job-toggle>span{display:none}.job-opening .job-detail{padding:28px 28px 28px 70px}.job-content-columns{gap:30px}}
+@media(max-width:700px){.jobs-head{margin-bottom:25px}.job-opening summary{grid-template-columns:22px minmax(0,1fr) 24px;gap:12px;padding:23px 18px}.job-opening summary .job-index{align-self:start;padding-top:3px}.job-opening summary .job-overview{grid-column:2}.job-opening summary h3{font-size:22px}.job-opening summary .job-toggle{grid-column:3;grid-row:1;align-self:start;padding-top:7px}.job-opening summary .job-experience{grid-column:2;grid-row:2;font-size:11px;margin-top:0}.job-opening summary .job-overview p{font-size:11px}.job-opening .job-detail{padding:25px 22px 21px}.job-content-columns{grid-template-columns:1fr;gap:22px}.job-content-group h4{font-size:15px;margin-bottom:14px}.job-content-group li{font-size:13px;line-height:1.9}.redesign-site:not([data-locale="zh"]) #menu-company .nav-card-menu{grid-template-columns:1fr}}
+.career-application{margin-bottom:54px;padding-bottom:36px;border-bottom:1px solid var(--line)}
+.career-application-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:28px}
+.career-application-heading h2{font-size:27px;line-height:1.4}.career-application-heading p{font-size:13px;color:var(--muted)}
+.career-application-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;list-style:none;margin:0;padding:0}
+.career-application-steps li{display:flex;gap:16px;align-items:flex-start}
+.application-step-number{font-size:12px;color:var(--green-dark);font-weight:600;line-height:25px;font-variant-numeric:tabular-nums}
+.career-application-steps h3{font-size:16px;margin:0 0 10px;line-height:1.5}
+.career-application-steps p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}
+.career-application-email{display:flex;align-items:center;gap:18px;margin-top:25px;font-size:13px}.career-application-email span{color:var(--muted)}
+.career-application-email a{color:var(--green-dark);font-weight:600}
+.job-apply-bar{display:flex;align-items:center;justify-content:space-between;gap:30px;padding-top:25px;margin-top:25px;border-top:1px solid var(--line)}
+.job-apply-bar strong{font-size:14px;color:var(--ink);font-weight:600;line-height:1.7}
+.job-apply-bar p{font-size:12px;color:var(--muted);line-height:1.8;margin:8px 0 0}
+.job-apply-button{white-space:nowrap;flex-shrink:0;min-height:44px;padding:10px 24px;font-size:14px;line-height:24px}
+.job-detail .job-apply-fallback{font-size:12px;line-height:1.8;color:var(--muted);margin:16px 0 0}
+.job-apply-fallback a{color:var(--green-dark);text-decoration:underline;text-underline-offset:3px}
+:root[data-theme="dark"] :is(.application-step-number,.career-application-email a,.job-apply-fallback a){color:#b4d96d}
+@media(max-width:700px){.career-application{margin-bottom:35px;padding-bottom:28px}.career-application-heading{display:block;margin-bottom:23px}.career-application-heading h2{font-size:24px}.career-application-heading p{font-size:12px;margin-top:10px}.career-application-steps{grid-template-columns:1fr;gap:20px}.career-application-steps li{gap:14px}.career-application-steps h3{font-size:15px;margin-bottom:5px}.career-application-steps p{font-size:12px}.career-application-email{align-items:flex-start;flex-direction:column;gap:7px;font-size:12px;margin-top:22px}.job-apply-bar{flex-direction:column;align-items:stretch;gap:20px}.job-apply-button{width:100%;justify-content:center}.job-detail .job-apply-fallback{font-size:11px}}

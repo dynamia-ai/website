@@ -1,4 +1,4 @@
-/* Text-only localization: DOM structure, route keys and filter values stay stable. */
+/* Localize content and apply locale-specific navigation visibility. */
 export function makeLocalizer(catalog, document) {
   const messages = new Map(catalog?.translations || []);
   const translate = value => {
@@ -14,6 +14,7 @@ export function makeLocalizer(catalog, document) {
     if (!catalog) return html;
     const template = document.createElement('template');
     template.innerHTML=html;
+    for (const link of template.content.querySelectorAll('a[href="#/careers"]')) link.remove();
     function walk(node) {
       if(node.nodeType===3) node.textContent=translate(node.textContent);
       if(node.nodeType===1) {

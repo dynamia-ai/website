@@ -60,6 +60,11 @@ if(catalog) {
 fs.mkdirSync(`${pageRoot}${suffix()}`,{recursive:true});
 fs.mkdirSync(`dictionary/redesign/pages${suffix()}`,{recursive:true});
 for(const route of routes) {
+  if(locale!=='zh'&&route==='/careers') {
+    fs.rmSync(`${pageRoot}/${locale}/careers.html`,{force:true});
+    fs.rmSync(`dictionary/redesign/pages/${locale}/careers.json`,{force:true});
+    continue;
+  }
   const dom=new JSDOM(`<!doctype html><html><body>${shell}</body></html>`,{url:'http://localhost/#'+route,pretendToBeVisual:true});
   const w=dom.window;
   w.HTMLDialogElement.prototype.close=function(){this.removeAttribute('open')};

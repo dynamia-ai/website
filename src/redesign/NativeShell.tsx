@@ -11,7 +11,8 @@ export default function NativeShell({children}:{children:ReactNode}) {
   const locale=useLocale();
   const t=useTranslations('redesignShell');
   const nav=useTranslations('navigation');
-  const html=shell.html.replace(/__COPY_(s[a-f0-9]+)__/g,(_all,key:string)=>String(t.raw(key)).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')).replaceAll('/redesign/assets/cf10a2fcc13438169897.svg',nav('logo')).replaceAll('/redesign/assets/931baba8fa5e14fe2655.svg',nav('logoDark'));
+  const source=locale==='zh'?shell.html:shell.html.replace(/<a\b[^>]*href="#\/careers"[^>]*>[\s\S]*?<\/a>/g,'');
+  const html=source.replace(/__COPY_(s[a-f0-9]+)__/g,(_all,key:string)=>String(t.raw(key)).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')).replaceAll('/redesign/assets/cf10a2fcc13438169897.svg',nav('logo')).replaceAll('/redesign/assets/931baba8fa5e14fe2655.svg',nav('logoDark'));
   const basePath=localizedPath('/',locale);
   return <>
     <link rel="stylesheet" href="/redesign/site.css" precedence="redesign"/>
