@@ -651,13 +651,15 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 .brand-signature .brand-cycle{position:relative;isolation:isolate;background:transparent!important;border:0;border-radius:0;padding:0}
 .brand-cycle-frame{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:18px;animation:signature-first 3.6s ease-in-out infinite}
 .brand-cycle-frame img{object-fit:contain;height:66%;width:auto;max-width:70%;background:transparent;border:0;border-radius:0;padding:0}
-.brand-cycle-hami{animation-name:signature-second}
-.brand-cycle-hami>span{font-size:clamp(21px,3vw,32px);font-weight:600;color:var(--navy);white-space:nowrap}
-.brand-cycle-hami img{max-width:49%;height:62%}
+.brand-cycle-hami{animation-name:signature-second;gap:8px}
+.brand-cycle-hami>.brand-cycle-label{font-size:clamp(21px,3vw,32px);font-weight:600;color:var(--navy);white-space:nowrap}
+/* Trim the original logo's transparent margins in layout, preserving its artwork. */
+.brand-cycle-hami .brand-cycle-logo{position:relative;display:block;height:49.6%;aspect-ratio:2.75;flex-shrink:0;overflow:hidden}
+.brand-cycle-hami .brand-cycle-logo img{position:absolute;left:-13.6364%;top:-12.5%;width:133.523%;height:125%;max-width:none;object-fit:contain}
 .brand-cycle .cycle-dark{display:none}
 :root[data-theme="dark"] .brand-cycle .cycle-light{display:none}
 :root[data-theme="dark"] .brand-cycle .cycle-dark{display:block}
-:root[data-theme="dark"] .brand-cycle-hami>span{color:#edf0ea}
+:root[data-theme="dark"] .brand-cycle-hami>.brand-cycle-label{color:#edf0ea}
 @keyframes signature-first{0%,36%,100%{opacity:1;transform:translateY(0)}46%,86%{opacity:0;transform:translateY(-4px)}}
 @keyframes signature-second{0%,36%,100%{opacity:0;transform:translateY(4px)}46%,86%{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.logo-viewport .logo-track{animation:none}.brand-cycle-frame{animation:none}.brand-cycle-hami{display:none}}
