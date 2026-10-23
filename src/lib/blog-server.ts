@@ -12,17 +12,18 @@ import rehypeStringify from 'rehype-stringify';
 import { cache } from 'react';
 import { BlogPost, BlogPostMeta, BlogPostsResult, TocItem } from '@/types/blog';
 import rehypeImageCaptions from './rehype-image-captions';
+import publicAssets from '@/content/public-assets.json';
 
 
 const CONTENT_PATH = path.join(process.cwd(), 'src/content/blog');
-const PUBLIC_PATH = path.join(process.cwd(), 'public');
+const publicAssetPaths = new Set<string>(publicAssets);
 
 function doesPublicImageExist(imagePath: string): boolean {
   if (!imagePath.startsWith('/')) {
     return false;
   }
 
-  return fs.existsSync(path.join(PUBLIC_PATH, imagePath));
+  return publicAssetPaths.has(imagePath);
 }
 
 /** Wrap markdown tables so borders are not clipped by `.blog-content { overflow-x: hidden }`. */

@@ -4,7 +4,7 @@ export const routing = defineRouting({
   locales: ["en", "zh", "de"],
   defaultLocale: "en",
   localeDetection: true,
-  localePrefix: "as-needed",
+  localePrefix: "always",
   // Disable middleware hreflang; pages/sitemap own it.
   alternateLinks: false,
 });

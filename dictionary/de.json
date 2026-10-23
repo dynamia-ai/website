@@ -50,7 +50,6 @@
       "description": "Entdecken Sie kostenlose HAMi-Tools fuer GPU-Metriken und GPU-Asset-ROI-Schaetzung zur Planung von GPU-Virtualisierung und KI-Infrastruktur.",
       "keywords": "dynamia ai tools, HAMi, GPU-Virtualisierung, GPU-Sharing, ROI Rechner, KI-Infrastruktur"
     },
-
     "solutions": {
       "title": "Loesungen - Dynamia AI | KI, HPC & Edge Computing",
       "description": "Powerful computing solutions for AI/ML, HPC, and Edge Computing challenges. Optimize your infrastructure with Dynamia AI's heterogeneous computing platform.",
@@ -111,8 +110,8 @@
     "company": "Unternehmen",
     "freeTrial": "Testversion",
     "requestDemo": "Demo",
-    "logo": "/dynamia-logo.svg",
-    "logoDark": "/dynamia-logo-white.svg",
+    "logo": "/redesign/assets/dynamia-creators.png",
+    "logoDark": "/redesign/assets/dynamia-creators.png",
     "openMenu": "Menue oeffnen",
     "eventBannerLabel": "KubeCon + CloudNativeCon Europe:",
     "eventBannerMessage": "HAMi-Stand am Project Pavilion P-13B. Treffen Sie das Dynamia-Team am 24. Maerz (15:10-19:00) und 26. Maerz (12:30-14:00).",
@@ -547,8 +546,15 @@
         "none": {
           "title": "Ohne HAMi",
           "subtitle": "Dedizierte GPUs · Status quo",
-          "specs": { "utilization": "Tatsaechliche Auslastung", "sharing": "Kein Sharing" },
-          "features": ["Eine Aufgabe pro GPU, viel Leerlauf", "Kein Speicher-/Compute-Sharing", "Skalierung heisst mehr kaufen"]
+          "specs": {
+            "utilization": "Tatsaechliche Auslastung",
+            "sharing": "Kein Sharing"
+          },
+          "features": [
+            "Eine Aufgabe pro GPU, viel Leerlauf",
+            "Kein Speicher-/Compute-Sharing",
+            "Skalierung heisst mehr kaufen"
+          ]
         },
         "oss": {
           "title": "HAMi OSS",
@@ -557,15 +563,29 @@
           "exceeded": "Ueberschritten",
           "limitNote": "Begrenzte Planung im grossen Massstab",
           "limitNoteOver": "{count} GPUs ueberschreiten die OSS-Kapazitaetsgrenze",
-          "specs": { "utilization": "Auslastungsgrenze", "scale": "GPU-Skalengrenze" },
-          "features": ["vGPU-Slicing · Speicher-/Compute-Isolation", "Am besten fuer Flotten ≤ 200 GPUs", "Community-Support, kein SLA"]
+          "specs": {
+            "utilization": "Auslastungsgrenze",
+            "scale": "GPU-Skalengrenze"
+          },
+          "features": [
+            "vGPU-Slicing · Speicher-/Compute-Isolation",
+            "Am besten fuer Flotten ≤ 200 GPUs",
+            "Community-Support, kein SLA"
+          ]
         },
         "enterprise": {
           "title": "Dynamia Enterprise for HAMi",
           "subtitle": "Dynamia AI · Kommerzieller Support",
           "scaleValue": "Unbegrenzt",
-          "specs": { "utilization": "Auslastungsgrenze", "scale": "GPU-Skala · 10k+" },
-          "features": ["Speicherueberbuchung (UMI) · elastische Skalierung", "Multi-Cluster-Verwaltung · Enterprise-SLA", "24×7-Expertensupport"]
+          "specs": {
+            "utilization": "Auslastungsgrenze",
+            "scale": "GPU-Skala · 10k+"
+          },
+          "features": [
+            "Speicherueberbuchung (UMI) · elastische Skalierung",
+            "Multi-Cluster-Verwaltung · Enterprise-SLA",
+            "24×7-Expertensupport"
+          ]
         }
       },
       "comparison": {
@@ -620,35 +640,136 @@
       "config": {
         "currencySymbol": "$",
         "moneyScale": "western",
-        "moneyUnits": { "tenThousand": "", "hundredMillion": "", "thousand": "K", "million": "M", "billion": "B" },
+        "moneyUnits": {
+          "tenThousand": "",
+          "hundredMillion": "",
+          "thousand": "K",
+          "million": "M",
+          "billion": "B"
+        },
         "defaultVendorId": "nvidia",
         "electricityPrice": 0.1,
-        "serverPrices": { "flagship": 48000, "main": 34000, "inference": 16000 },
+        "serverPrices": {
+          "flagship": 48000,
+          "main": 34000,
+          "inference": 16000
+        },
         "presets": [
-          { "id": "small", "label": "Kleines Team · 100 GPUs", "count": 100, "vendorId": "nvidia", "cardId": "L40S", "currentUtilization": 22, "ossUtilization": 38, "enterpriseUtilization": 72 },
-          { "id": "mid", "label": "Enterprise · 1.000 GPUs", "count": 1000, "vendorId": "nvidia", "cardId": "H100", "currentUtilization": 25, "ossUtilization": 35, "enterpriseUtilization": 70 },
-          { "id": "large", "label": "Hyperscale · 3.200 GPUs", "count": 3200, "vendorId": "nvidia", "cardId": "H200", "currentUtilization": 22, "ossUtilization": 33, "enterpriseUtilization": 68 }
+          {
+            "id": "small",
+            "label": "Kleines Team · 100 GPUs",
+            "count": 100,
+            "vendorId": "nvidia",
+            "cardId": "L40S",
+            "currentUtilization": 22,
+            "ossUtilization": 38,
+            "enterpriseUtilization": 72
+          },
+          {
+            "id": "mid",
+            "label": "Enterprise · 1.000 GPUs",
+            "count": 1000,
+            "vendorId": "nvidia",
+            "cardId": "H100",
+            "currentUtilization": 25,
+            "ossUtilization": 35,
+            "enterpriseUtilization": 70
+          },
+          {
+            "id": "large",
+            "label": "Hyperscale · 3.200 GPUs",
+            "count": 3200,
+            "vendorId": "nvidia",
+            "cardId": "H200",
+            "currentUtilization": 22,
+            "ossUtilization": 33,
+            "enterpriseUtilization": 68
+          }
         ]
       },
       "catalog": [
         {
-          "id": "nvidia", "name": "NVIDIA", "color": "#76B900",
+          "id": "nvidia",
+          "name": "NVIDIA",
+          "color": "#76B900",
           "cards": [
-            { "id": "A100-80G", "name": "A100 80G", "price": 16000, "tdp": 400, "serverTier": "main" },
-            { "id": "H100", "name": "H100", "price": 27000, "tdp": 700, "serverTier": "flagship" },
-            { "id": "H200", "name": "H200", "price": 32000, "tdp": 700, "serverTier": "flagship" },
-            { "id": "B200", "name": "B200", "price": 38000, "tdp": 1000, "serverTier": "flagship" },
-            { "id": "L40S", "name": "L40S", "price": 7500, "tdp": 350, "serverTier": "inference" },
-            { "id": "L4", "name": "L4", "price": 2500, "tdp": 72, "serverTier": "inference" },
-            { "id": "RTX-4090", "name": "RTX 4090", "price": 1800, "tdp": 450, "serverTier": "inference" }
+            {
+              "id": "A100-80G",
+              "name": "A100 80G",
+              "price": 16000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "H100",
+              "name": "H100",
+              "price": 27000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "H200",
+              "name": "H200",
+              "price": 32000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "B200",
+              "name": "B200",
+              "price": 38000,
+              "tdp": 1000,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "L40S",
+              "name": "L40S",
+              "price": 7500,
+              "tdp": 350,
+              "serverTier": "inference"
+            },
+            {
+              "id": "L4",
+              "name": "L4",
+              "price": 2500,
+              "tdp": 72,
+              "serverTier": "inference"
+            },
+            {
+              "id": "RTX-4090",
+              "name": "RTX 4090",
+              "price": 1800,
+              "tdp": 450,
+              "serverTier": "inference"
+            }
           ]
         },
         {
-          "id": "amd", "name": "AMD", "color": "#ED1C24",
+          "id": "amd",
+          "name": "AMD",
+          "color": "#ED1C24",
           "cards": [
-            { "id": "MI300X", "name": "MI300X", "price": 14000, "tdp": 750, "serverTier": "flagship" },
-            { "id": "MI325X", "name": "MI325X", "price": 18000, "tdp": 1000, "serverTier": "flagship" },
-            { "id": "MI250X", "name": "MI250X", "price": 8000, "tdp": 500, "serverTier": "main" }
+            {
+              "id": "MI300X",
+              "name": "MI300X",
+              "price": 14000,
+              "tdp": 750,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "MI325X",
+              "name": "MI325X",
+              "price": 18000,
+              "tdp": 1000,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "MI250X",
+              "name": "MI250X",
+              "price": 8000,
+              "tdp": 500,
+              "serverTier": "main"
+            }
           ]
         }
       ]
@@ -660,7 +781,7 @@
     "hamiMetricsExplorerPage": {
       "subtitle": "HAMi-Metriken parsen und Inventar-JSON exportieren.",
       "uploadTitle": "Prometheus-Metrikdatei ablegen oder zum Durchsuchen klicken",
-      "uploadDesc": "Unterstuetzt HAMi / HAMi AI Platform Metriken-Format",
+      "uploadDesc": "Unterstuetzt HAMi / Dynamia AI Platform for HAMi Metriken-Format",
       "exportButton": "JSON exportieren",
       "mergeButton": "Mit alten Daten zusammenfuehren",
       "analysisTitle": "Analyse",
@@ -1038,391 +1159,391 @@
   },
   "cases": {
     "cetcCloud": {
-    "cardTitle": "CETC Cloud: GPU-Basis für portable Wissensdatenbank",
-    "title": "CETC Cloud baut mit HAMi eine gemeinsame Ressourcenbasis für heterogene GPUs für eine portable Wissensdatenbank",
-    "subtitle": "CETC Cloud (Beijing) Technology betreibt Produktionsmodelle für Textgenerierung, Embedding und Rerank zusammen mit Kubernetes-Entwicklungsumgebungen auf einem einzigen portablen Gerät mit 8 heterogenen GPUs – die Kapazität steigt von 2 auf 30 gleichzeitige Dev-Pods.",
-    "sourceLabel": "Dieser Fall basiert auf der offiziellen CNCF Case Study:",
-    "sourceLink": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
-    "stats": [
-      {
-        "value": "15×",
-        "label": "Dev-Pod-Kapazität (2 → 30)"
-      },
-      {
-        "value": "87,5 %",
-        "label": "VRAM je Karte freigegeben (56 GB)"
-      },
-      {
-        "value": "80 %",
-        "label": "Rechenleistung je Karte schedulierbar"
-      }
-    ],
-    "overview": {
-      "title": "Kundenübersicht",
-      "description": "CETC Cloud (Beijing) Technology musste seine intelligente Wissensdatenbank zu Projektstandorten bringen – mit Textgenerierung, Embedding, Rerank, Wissensverarbeitung und Entwicklungsaufgaben auf einem Satz portabler Geräte mit heterogenen GPUs. Mit Kubernetes und HAMi wurden diese GPUs, bisher langfristig an einzelne Dienste gebunden, zu Ressourcen, die Produktionsmodelle und Entwicklungsumgebungen bedarfsgesteuert anfordern, teilen und schedulen können.",
-      "keyPoints": [
-        "Portable Appliance für intelligente Wissensdatenbank, eigenständig vor Ort betreibbar",
-        "Produktionspipeline und Entwicklungsumgebungen auf einem 8-GPU-Gerät",
-        "Kubernetes-native Ressourcendeklaration plus HAMi-GPU-Sharing und einheitliches Scheduling"
-      ]
-    },
-    "companyCard": {
-      "name": "CETC Cloud (Beijing) Technology Co., Ltd.",
-      "description": "Cloud- und Intelligent-Computing-Marke der CETC – verantwortlich für Produktentwicklung und Engineering der portablen Wissensdatenbank: lokaler Betrieb vor Ort, Wissensverarbeitung, Modell-Serving und Entwicklungsumgebungen."
-    },
-    "info": {
-      "title": "Fallinformationen",
-      "rows": [
+      "cardTitle": "CETC Cloud: GPU-Basis für portable Wissensdatenbank",
+      "title": "CETC Cloud baut mit HAMi eine gemeinsame Ressourcenbasis für heterogene GPUs für eine portable Wissensdatenbank",
+      "subtitle": "CETC Cloud (Beijing) Technology betreibt Produktionsmodelle für Textgenerierung, Embedding und Rerank zusammen mit Kubernetes-Entwicklungsumgebungen auf einem einzigen portablen Gerät mit 8 heterogenen GPUs – die Kapazität steigt von 2 auf 30 gleichzeitige Dev-Pods.",
+      "sourceLabel": "Dieser Fall basiert auf der offiziellen CNCF Case Study:",
+      "sourceLink": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
+      "stats": [
         {
-          "label": "Anwender",
-          "value": "Technikteam von CETC Cloud"
+          "value": "15×",
+          "label": "Dev-Pod-Kapazität (2 → 30)"
         },
         {
-          "label": "Business-Szenario",
-          "value": "Intelligente Wissensdatenbank-Appliance für den Einsatz vor Ort"
-        },
-        {
-          "label": "Umgebung",
-          "value": "Kubernetes und lokale heterogene GPUs"
-        },
-        {
-          "label": "Verwendete Projekte",
-          "value": "Kubernetes, HAMi"
-        },
-        {
-          "label": "Kernherausforderungen",
-          "value": "Multi-Model-Koordination, gemeinsame Nutzung von Produktion und Entwicklung"
-        }
-      ]
-    },
-    "challenge": {
-      "title": "Herausforderung: Ein Gerät, zwei GPU-Nutzungspfade",
-      "description": "Online-Fragen und -Antworten erfordern Textgenerierung, Vektorrecherche und Rerank; Dokumente durchlaufen Parsing, Chunking, Vektorisierung und Indexaufbau; Entwickler debuggen Modelle in Kubernetes-Dev-Pods. Diese Workloads nutzen GPUs sehr unterschiedlich – und müssen auf demselben portablen Gerät koexistieren.",
-      "points": [
-        {
-          "title": "Sehr unterschiedliche Workload-Profile",
-          "description": "Textgenerierung dauerhaft online mit hoher VRAM-Baseline; Embedding mit periodischen Spitzen beim Massenimport; Rerank kurz, aber häufig; Wissensverarbeitung und Index-Neuaufbau als isolierte Batch-Jobs; Dev-Pods periodisch und interaktiv."
-        },
-        {
-          "title": "Exklusive Kartenbindung erschöpft Geräte schnell",
-          "description": "Bleibt jeder Dienst oder jede Entwicklungsumgebung langfristig an eine ganze Karte gebunden, sind die begrenzten Geräte rasch logisch erschöpft – Restkapazität ist nicht wiederverwendbar."
-        },
-        {
-          "title": "Übertrieben feine Partitionierung schafft neue Risiken",
-          "description": "Nur die feinste Partitionierung anzustreben verstärkt VRAM-Knappheit, Scheduling-Jitter und Fehlerausbreitung."
-        },
-        {
-          "title": "Differenzierte Ressourcenstrategien nötig",
-          "description": "Jeder Workload-Typ sollte seinen Bedarf selbst beschreiben; die Plattform platziert Ressourcen anhand von Gerätestatus und Serviceklasse."
-        }
-      ]
-    },
-    "solution": {
-      "title": "Lösung: Ein gemeinsamer Ressourcenvertrag mit HAMi",
-      "description": "Der Wert von HAMi liegt nicht nur im Aufteilen einer physischen Karte in mehrere Anteile. Wichtiger ist der gemeinsame Ressourcenvertrag: Workloads deklarieren ihren Bedarf, das Scheduling wählt anhand des Gerätestatus, mehrere Pods teilen sich eine heterogene GPU innerhalb eigener Grenzen – und Pods, Container, Geräte und Scheduling-Ergebnisse sind nachvollziehbar verknüpft.",
-      "resourceContract": {
-        "title": "Kubernetes-nativer Ressourcenvertrag",
-        "description": "Das Kubernetes-Liefermodell bleibt erhalten, während die Plattform versteht, ob heterogene GPUs die Anforderungen erfüllen können – und geeignete Entwicklungsumgebungen dieselbe physische GPU wiederverwenden.",
-        "features": [
-          "Modell-Dienste und Dev-Pods deklarieren Ressourcen selbst – kein langfristiges Karten-Binding mehr",
-          "Scheduling anhand des Gerätestatus, nicht nur GPU-Präsenz auf dem Knoten",
-          "Pods, Container, Geräte und Scheduling nachvollziehbar verknüpft – Basis für Kapazitätsbeobachtung und Korrektur"
-        ]
-      },
-      "workloadStrategy": {
-        "title": "Differenzierte Bereitstellung nach Workload-Profil",
-        "description": "Das Team erstellte Ressourcenprofile anhand von Modellladung, Spitzennutzung, Nebenläufigkeit und Latenz und übersetzte die validierten Anforderungen in Kubernetes-Ressourcenanforderungen – mit je nach Workload-Typ unterschiedlichen Strategien.",
-        "features": [
-          "Stabile Grenzen für den Online-Pfad: Textgenerierung, Online-Retrieval und Rerank zuerst",
-          "Periodische Aufgaben außerhalb der Spitzen: Vektorisierung, Wissensextraktion und Index-Neuaufbau bei geringer Last",
-          "Korrektur anhand realer Last: Granularität aus Baseline und Laufzeitbeobachtung, nicht aus voreingestellter Quote"
-        ]
-      },
-      "devSharing": {
-        "title": "Dev-Umgebungen teilen eine heterogene GPU",
-        "description": "Mehrere Kubernetes-Dev-Pods nutzen eine heterogene GPU per HAMi-Virtualisierung, statt jede Umgebung exklusiv zu belegen; VRAM-Quoten werden aufgabenbezogen angefragt, nicht platformseitig fixiert.",
-        "features": [
-          "Mehrere Dev-Pods teilen eine GPU – jeweils mit eigenen Ressourcengrenzen",
-          "Dieselben Ressourcendeklarationen und Scheduling-Verfahren wie in der Produktion",
-          "Validiert mit 30 gleichzeitigen Dev-Pods auf demselben Gerät"
-        ]
-      }
-    },
-    "results": {
-      "title": "Ergebnisse",
-      "description": "Auf demselben portablen Gerät mit 8 heterogenen GPUs verglich das Team die Ressourcenkapazität vor und nach HAMi unter einheitlichen Bedingungen:",
-      "items": [
-        {
-          "title": "Dev-Pod-Kapazität",
-          "value": "2 → 30",
-          "description": "Gleichzeitige Dev-Pods auf demselben Gerät stiegen von 2 auf 30 – das 15-Fache"
-        },
-        {
-          "title": "VRAM freigegeben",
           "value": "87,5 %",
-          "description": "Embedding wechselte von einer vollen 64-GB-GPU zu einer 8-GB-Zuweisung – 56 GB wiederverwendbar"
+          "label": "VRAM je Karte freigegeben (56 GB)"
         },
         {
-          "title": "Rechenleistung freigegeben",
           "value": "80 %",
-          "description": "Embedding erhielt 20 % der GPU-Rechenleistung; die restlichen 80 % bleiben schedulierbar"
-        },
-        {
-          "title": "Leistungseinfluss",
-          "value": "< 5 %",
-          "description": "Token-Durchsatz innerhalb von 5 % der exklusiven Nutzung; Ladezeit und P95-Latenz praktisch unverändert"
+          "label": "Rechenleistung je Karte schedulierbar"
         }
       ],
-      "table": {
-        "title": "Embedding-Modell: Vergleich je Karte",
-        "description": "Gleiches Image, gleiche Anfragen und Nebenläufigkeit – exklusive Nutzung vs. HAMi-Partitionierung:",
-        "metricLabel": "Metrik",
-        "withoutLabel": "Ohne HAMi",
-        "withLabel": "Mit HAMi",
+      "overview": {
+        "title": "Kundenübersicht",
+        "description": "CETC Cloud (Beijing) Technology musste seine intelligente Wissensdatenbank zu Projektstandorten bringen – mit Textgenerierung, Embedding, Rerank, Wissensverarbeitung und Entwicklungsaufgaben auf einem Satz portabler Geräte mit heterogenen GPUs. Mit Kubernetes und HAMi wurden diese GPUs, bisher langfristig an einzelne Dienste gebunden, zu Ressourcen, die Produktionsmodelle und Entwicklungsumgebungen bedarfsgesteuert anfordern, teilen und schedulen können.",
+        "keyPoints": [
+          "Portable Appliance für intelligente Wissensdatenbank, eigenständig vor Ort betreibbar",
+          "Produktionspipeline und Entwicklungsumgebungen auf einem 8-GPU-Gerät",
+          "Kubernetes-native Ressourcendeklaration plus HAMi-GPU-Sharing und einheitliches Scheduling"
+        ]
+      },
+      "companyCard": {
+        "name": "CETC Cloud (Beijing) Technology Co., Ltd.",
+        "description": "Cloud- und Intelligent-Computing-Marke der CETC – verantwortlich für Produktentwicklung und Engineering der portablen Wissensdatenbank: lokaler Betrieb vor Ort, Wissensverarbeitung, Modell-Serving und Entwicklungsumgebungen."
+      },
+      "info": {
+        "title": "Fallinformationen",
         "rows": [
           {
-            "metric": "VRAM-Zuweisung",
-            "without": "Exklusiv die gesamte 64-GB-GPU",
-            "with": "Bedarfsgerecht 8 GB"
+            "label": "Anwender",
+            "value": "Technikteam von CETC Cloud"
           },
           {
-            "metric": "Für andere Aufgaben nutzbares VRAM",
-            "without": "0 GB",
-            "with": "56 GB – 87,5 % der Karte"
+            "label": "Business-Szenario",
+            "value": "Intelligente Wissensdatenbank-Appliance für den Einsatz vor Ort"
           },
           {
-            "metric": "Rechenleistung",
-            "without": "Karte exklusiv",
-            "with": "20 % zugewiesen, 80 % schedulierbar"
+            "label": "Umgebung",
+            "value": "Kubernetes und lokale heterogene GPUs"
           },
           {
-            "metric": "Token-Durchsatz (Tokens/s)",
-            "without": "Baseline",
-            "with": "Innerhalb von 5 % der exklusiven Nutzung"
+            "label": "Verwendete Projekte",
+            "value": "Kubernetes, HAMi"
           },
           {
-            "metric": "Ladezeit / P95-Latenz",
-            "without": "Baseline",
-            "with": "Praktisch identisch mit exklusiver Nutzung"
+            "label": "Kernherausforderungen",
+            "value": "Multi-Model-Koordination, gemeinsame Nutzung von Produktion und Entwicklung"
           }
         ]
-      }
-    },
-    "lessons": {
-      "title": "Erkenntnisse & nächste Schritte",
-      "points": [
-        "Heterogenes GPU-Sharing sollte von Workload-Profilen ausgehen, nicht von einer einheitlichen Quote – Produktionsmodelle, Batch-Jobs und Dev-Umgebungen unterscheiden sich in Latenz, VRAM, Durchsatz und Isolation.",
-        "Entwicklungsumgebungen sind ein wichtiger Nutzer geteilter GPUs: Dev-Workloads als Kubernetes-Pods betreiben bedeutet dieselben Ressourcendeklarationen und Scheduling-Verfahren wie in der Produktion – ohne exklusive Langzeitbelegung.",
-        "Als Nächstes verfeinert CETC Cloud die Kapazitäts- und Integritätsansichten für Produktions- und Entwicklungs-Workloads und ergänzt reproduzierbare Experimentaldaten für verschiedene Modelle, Netzwerke und Aufrufmuster."
-      ]
-    },
-    "conclusion": {
-      "title": "Mehr aus begrenzter heterogener Rechenleistung holen",
-      "description": "Von exklusiver Nutzung zu bedarfsgesteuertem Sharing: CETC Cloud dient mit Kubernetes und HAMi auf einem einzigen portablen Gerät eine Produktionspipeline und 30 gleichzeitige Dev-Umgebungen – ohne nennenswerte Leistungseinbußen. Derselbe Ressourcenvertrag gilt für jedes Team, bei dem Produktion und Entwicklung auf begrenzter heterogener Rechenleistung koexistieren müssen."
-    },
-    "cta": {
-      "exploreHami": "HAMi Open-Source-Projekt entdecken",
-      "contactUs": "Kontakt aufnehmen"
-    }
-  },
-    "sangfor": {
-    "cardTitle": "Sangfor: Enterprise-KI-Compute-Plattform",
-    "title": "Sangfor baut eine Enterprise-KI-Compute-Plattform auf Kubernetes, Volcano und HAMi",
-    "subtitle": "Sangfor, ein führender chinesischer Anbieter für Cloud Computing und Cybersicherheit, betreibt AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten auf einer gemeinsamen GPU-Plattform – GPU-Auslastung um mehr als 3× gesteigert, 8+ Modelle pro GPU und externe Modellaufrufkosten von 400K auf 200K RMB pro Monat halbiert.",
-    "sourceLabel": "Diese Fallstudie basiert auf der offiziellen CNCF Case Study:",
-    "sourceLink": "How Sangfor Built an Enterprise AI Compute Platform with Kubernetes, Volcano, and HAMi",
-    "stats": [
-      {
-        "value": "3×+",
-        "label": "Steigerung der GPU-Auslastung"
       },
-      {
-        "value": "8×+",
-        "label": "Modellinstanzen pro GPU (1 → 8+)"
-      },
-      {
-        "value": "50%",
-        "label": "Reduktion externer Modellaufrufkosten (400K → 200K RMB/Monat)"
-      }
-    ],
-    "overview": {
-      "title": "Kundenüberblick",
-      "description": "Sangfor ist ein führender chinesischer Anbieter für Enterprise-Cloud-Computing und Cybersicherheit. Angesichts des raschen Wachstums von KI-Anwendungen baut Sangfor eine einheitliche KI-Compute-Plattform für interne R&D-Teams und Enterprise-Kunden – für Szenarien wie AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten. Die Plattform kombiniert ein AI Computing Gateway für Routing, Governance und Sicherheit mit einer gemeinsamen GPU-Basis aus Kubernetes, Volcano und HAMi – Kubernetes wird zur einheitlichen Ressourcen-Kontrollebene für KI.",
-      "keyPoints": [
-        "Einheitliche KI-Compute-Plattform für interne R&D-Teams und Enterprise-Kunden",
-        "Szenarien u. a. AI Coding, digitale Mitarbeiter, intelligenter Kundenservice und Vertriebs-Agenten",
-        "AI Computing Gateway für Routing und Governance auf einer Basis aus Kubernetes + Volcano + HAMi"
-      ]
-    },
-    "companyCard": {
-      "name": "Sangfor Technologies",
-      "description": "Ein führender chinesischer Anbieter für Enterprise-Cloud-Computing und Cybersicherheit. Das Cloud-AI-Team baut die einheitliche KI-Compute-Plattform, die den Alltag von über 2000 R&D-Engineers und Enterprise-Kunden trägt."
-    },
-    "info": {
-      "title": "Fallstudien-Informationen",
-      "rows": [
-        {
-          "label": "Anwender",
-          "value": "Sangfor Cloud-AI-Team"
-        },
-        {
-          "label": "Business-Szenario",
-          "value": "Enterprise-KI-Compute-Plattform für AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten"
-        },
-        {
-          "label": "Deployment-Umgebung",
-          "value": "Kubernetes mit heterogenen GPUs wie NVIDIA und Ascend"
-        },
-        {
-          "label": "Verwendete Projekte",
-          "value": "Kubernetes, Volcano, HAMi"
-        },
-        {
-          "label": "Zentrale Herausforderungen",
-          "value": "GPU-Auslastung, Ressourcenisolation im Multi-Tenant-Betrieb, Scheduler-Effizienz"
-        }
-      ]
-    },
-    "challenge": {
-      "title": "Herausforderung: GPU-Auslastung, Isolation und Scheduling im großen Maßstab",
-      "description": "Mit wachsender Plattform wurden GPU-Auslastung, Ressourcenisolation und Scheduler-Effizienz zu den Engpässen – bei einer Plattform, die zahlreiche KI-Workloads und Teams gleichzeitig bedient.",
-      "points": [
-        {
-          "title": "Zu wenig genutzte GPUs",
-          "description": "Im traditionellen Modell belegt ein Inferenz-Dienst eine gesamte GPU exklusiv. Viele Workloads nutzen nur einen Bruchteil von Speicher und Rechenleistung, halten aber eine ganze GPU belegt – schwere Ressourcen-Fragmentierung. GPUs wurden schneller ausgebaut, als das Geschäft selbst wuchs."
-        },
-        {
-          "title": "Komplexe Ressourcen-Governance im Multi-Tenant-Betrieb",
-          "description": "Die Plattform bedient gleichzeitig AI Coding, digitale Mitarbeiter, intelligenten Kundenservice, Vertriebs-Agenten und Enterprise-Wissensassistenten. Deren GPU-Bedarf unterscheidet sich stark – manche brauchen dauerhaft Speicher, andere zeigen Peak-Valley-Muster. Einheitliches Pooling und faire Allokation wurden kritisch."
-        },
-        {
-          "title": "Koexistenz von Inferenz- und Batch-Workloads",
-          "description": "Die Plattform betreibt gleichzeitig Online-Inferenz, Batch-Inferenz, verteiltes Training und Agent-Workflows – das native Kubernetes-GPU-Scheduling deckt diese komplexen KI-Workloads nicht ab."
-        }
-      ]
-    },
-    "solution": {
-      "title": "Lösung: Kubernetes + Volcano + HAMi",
-      "description": "Kubernetes liefert die einheitliche Kontrollebene für die KI-Plattform, doch das native GPU-Scheduling vergibt Ressourcen nur als ganze GPUs – das genügt weder für Inferenz, Multi-Tenancy noch heterogene GPU-Umgebungen. Sangfor führte Volcano für fortgeschrittenes Job-Scheduling und HAMi für GPU-Virtualisierung ein und baute damit eine produktionsreife Shared-GPU-Plattform.",
-      "quote": {
-        "text": "HAMis Kubernetes-native Integration bedeutet null Migrationsaufwand. Die transparente Geräte-Virtualisierung lässt Workloads ohne jede Anpassung laufen.",
-        "author": "Jia Haojie, Chief Architect of Cloud AI bei Sangfor"
-      },
-      "hamiSharing": {
-        "title": "HAMi: vGPU-Sharing und Isolation",
-        "description": "Sangfor wählte HAMi wegen des feingranularen GPU-Sharings mit starker Isolation, der einheitlichen Abstraktion über heterogene GPU-Generationen und der Position als eines der aktivsten Open-Source-vGPU-Projekte im Kubernetes-Umfeld. Beim vGPU-Slicing belegt ein großes Modell den Löwenanteil einer Karte (z. B. 70%), die restlichen Slices hosten mehrere kleine Modelle und nutzen Rechenleistung, die sonst brachläge.",
-        "features": [
-          "GPU-Sharing: Speichergranularität bis 256 MB und Rechenleistung bis 1 % – mehrere Pods teilen sich eine GPU mit starker Isolation",
-          "Heterogene GPU-Unterstützung: einheitliche Ressourcen-Abstraktion für ein konsistentes Scheduling-Erlebnis über GPU-Generationen hinweg",
-          "Open-Source-Ökosystem: kontinuierliche Integration mit Volcano-Queues und vLLM"
-        ]
-      },
-      "scheduling": {
-        "title": "Volcano + HAMi: koordiniertes Scheduling",
-        "description": "GPU-Sharing allein genügt für den Produktivbetrieb nicht. Volcano kombiniert mit HAMi ermöglicht das einheitliche Management von Geräteressourcen und Job-Scheduling: Volcano entscheidet, wann und wo ein Workload läuft – HAMi entscheidet, wie GPU-Ressourcen geteilt und zugeteilt werden.",
+      "challenge": {
+        "title": "Herausforderung: Ein Gerät, zwei GPU-Nutzungspfade",
+        "description": "Online-Fragen und -Antworten erfordern Textgenerierung, Vektorrecherche und Rerank; Dokumente durchlaufen Parsing, Chunking, Vektorisierung und Indexaufbau; Entwickler debuggen Modelle in Kubernetes-Dev-Pods. Diese Workloads nutzen GPUs sehr unterschiedlich – und müssen auf demselben portablen Gerät koexistieren.",
         "points": [
           {
-            "title": "Gerätestatus-Pflege",
-            "description": "GPU-Health-Monitoring, automatische Fehlerisolierung und automatische Ressourcenfreigabe."
+            "title": "Sehr unterschiedliche Workload-Profile",
+            "description": "Textgenerierung dauerhaft online mit hoher VRAM-Baseline; Embedding mit periodischen Spitzen beim Massenimport; Rerank kurz, aber häufig; Wissensverarbeitung und Index-Neuaufbau als isolierte Batch-Jobs; Dev-Pods periodisch und interaktiv."
           },
           {
-            "title": "Governance von Ressourcendeklarationen",
-            "description": "Ressourcenfelder werden automatisch ergänzt, Quoten einheitlich berechnet und ungültige Requests früh abgelehnt."
+            "title": "Exklusive Kartenbindung erschöpft Geräte schnell",
+            "description": "Bleibt jeder Dienst oder jede Entwicklungsumgebung langfristig an eine ganze Karte gebunden, sind die begrenzten Geräte rasch logisch erschöpft – Restkapazität ist nicht wiederverwendbar."
           },
           {
-            "title": "Scheduling-Transaktionsisolierung",
-            "description": "Entkoppelt Ressourcen-Probeberechnung von der tatsächlichen Belegung und gewährleistet Statuskonsistenz."
+            "title": "Übertrieben feine Partitionierung schafft neue Risiken",
+            "description": "Nur die feinste Partitionierung anzustreben verstärkt VRAM-Knappheit, Scheduling-Jitter und Fehlerausbreitung."
           },
           {
-            "title": "Gang- und LWS-Support",
-            "description": "Volcano orchestriert den Job, HAMi teilt die GPUs zu – die gesamte Gruppe wird zusammen geplant."
+            "title": "Differenzierte Ressourcenstrategien nötig",
+            "description": "Jeder Workload-Typ sollte seinen Bedarf selbst beschreiben; die Plattform platziert Ressourcen anhand von Gerätestatus und Serviceklasse."
           }
         ]
+      },
+      "solution": {
+        "title": "Lösung: Ein gemeinsamer Ressourcenvertrag mit HAMi",
+        "description": "Der Wert von HAMi liegt nicht nur im Aufteilen einer physischen Karte in mehrere Anteile. Wichtiger ist der gemeinsame Ressourcenvertrag: Workloads deklarieren ihren Bedarf, das Scheduling wählt anhand des Gerätestatus, mehrere Pods teilen sich eine heterogene GPU innerhalb eigener Grenzen – und Pods, Container, Geräte und Scheduling-Ergebnisse sind nachvollziehbar verknüpft.",
+        "resourceContract": {
+          "title": "Kubernetes-nativer Ressourcenvertrag",
+          "description": "Das Kubernetes-Liefermodell bleibt erhalten, während die Plattform versteht, ob heterogene GPUs die Anforderungen erfüllen können – und geeignete Entwicklungsumgebungen dieselbe physische GPU wiederverwenden.",
+          "features": [
+            "Modell-Dienste und Dev-Pods deklarieren Ressourcen selbst – kein langfristiges Karten-Binding mehr",
+            "Scheduling anhand des Gerätestatus, nicht nur GPU-Präsenz auf dem Knoten",
+            "Pods, Container, Geräte und Scheduling nachvollziehbar verknüpft – Basis für Kapazitätsbeobachtung und Korrektur"
+          ]
+        },
+        "workloadStrategy": {
+          "title": "Differenzierte Bereitstellung nach Workload-Profil",
+          "description": "Das Team erstellte Ressourcenprofile anhand von Modellladung, Spitzennutzung, Nebenläufigkeit und Latenz und übersetzte die validierten Anforderungen in Kubernetes-Ressourcenanforderungen – mit je nach Workload-Typ unterschiedlichen Strategien.",
+          "features": [
+            "Stabile Grenzen für den Online-Pfad: Textgenerierung, Online-Retrieval und Rerank zuerst",
+            "Periodische Aufgaben außerhalb der Spitzen: Vektorisierung, Wissensextraktion und Index-Neuaufbau bei geringer Last",
+            "Korrektur anhand realer Last: Granularität aus Baseline und Laufzeitbeobachtung, nicht aus voreingestellter Quote"
+          ]
+        },
+        "devSharing": {
+          "title": "Dev-Umgebungen teilen eine heterogene GPU",
+          "description": "Mehrere Kubernetes-Dev-Pods nutzen eine heterogene GPU per HAMi-Virtualisierung, statt jede Umgebung exklusiv zu belegen; VRAM-Quoten werden aufgabenbezogen angefragt, nicht platformseitig fixiert.",
+          "features": [
+            "Mehrere Dev-Pods teilen eine GPU – jeweils mit eigenen Ressourcengrenzen",
+            "Dieselben Ressourcendeklarationen und Scheduling-Verfahren wie in der Produktion",
+            "Validiert mit 30 gleichzeitigen Dev-Pods auf demselben Gerät"
+          ]
+        }
+      },
+      "results": {
+        "title": "Ergebnisse",
+        "description": "Auf demselben portablen Gerät mit 8 heterogenen GPUs verglich das Team die Ressourcenkapazität vor und nach HAMi unter einheitlichen Bedingungen:",
+        "items": [
+          {
+            "title": "Dev-Pod-Kapazität",
+            "value": "2 → 30",
+            "description": "Gleichzeitige Dev-Pods auf demselben Gerät stiegen von 2 auf 30 – das 15-Fache"
+          },
+          {
+            "title": "VRAM freigegeben",
+            "value": "87,5 %",
+            "description": "Embedding wechselte von einer vollen 64-GB-GPU zu einer 8-GB-Zuweisung – 56 GB wiederverwendbar"
+          },
+          {
+            "title": "Rechenleistung freigegeben",
+            "value": "80 %",
+            "description": "Embedding erhielt 20 % der GPU-Rechenleistung; die restlichen 80 % bleiben schedulierbar"
+          },
+          {
+            "title": "Leistungseinfluss",
+            "value": "< 5 %",
+            "description": "Token-Durchsatz innerhalb von 5 % der exklusiven Nutzung; Ladezeit und P95-Latenz praktisch unverändert"
+          }
+        ],
+        "table": {
+          "title": "Embedding-Modell: Vergleich je Karte",
+          "description": "Gleiches Image, gleiche Anfragen und Nebenläufigkeit – exklusive Nutzung vs. HAMi-Partitionierung:",
+          "metricLabel": "Metrik",
+          "withoutLabel": "Ohne HAMi",
+          "withLabel": "Mit HAMi",
+          "rows": [
+            {
+              "metric": "VRAM-Zuweisung",
+              "without": "Exklusiv die gesamte 64-GB-GPU",
+              "with": "Bedarfsgerecht 8 GB"
+            },
+            {
+              "metric": "Für andere Aufgaben nutzbares VRAM",
+              "without": "0 GB",
+              "with": "56 GB – 87,5 % der Karte"
+            },
+            {
+              "metric": "Rechenleistung",
+              "without": "Karte exklusiv",
+              "with": "20 % zugewiesen, 80 % schedulierbar"
+            },
+            {
+              "metric": "Token-Durchsatz (Tokens/s)",
+              "without": "Baseline",
+              "with": "Innerhalb von 5 % der exklusiven Nutzung"
+            },
+            {
+              "metric": "Ladezeit / P95-Latenz",
+              "without": "Baseline",
+              "with": "Praktisch identisch mit exklusiver Nutzung"
+            }
+          ]
+        }
+      },
+      "lessons": {
+        "title": "Erkenntnisse & nächste Schritte",
+        "points": [
+          "Heterogenes GPU-Sharing sollte von Workload-Profilen ausgehen, nicht von einer einheitlichen Quote – Produktionsmodelle, Batch-Jobs und Dev-Umgebungen unterscheiden sich in Latenz, VRAM, Durchsatz und Isolation.",
+          "Entwicklungsumgebungen sind ein wichtiger Nutzer geteilter GPUs: Dev-Workloads als Kubernetes-Pods betreiben bedeutet dieselben Ressourcendeklarationen und Scheduling-Verfahren wie in der Produktion – ohne exklusive Langzeitbelegung.",
+          "Als Nächstes verfeinert CETC Cloud die Kapazitäts- und Integritätsansichten für Produktions- und Entwicklungs-Workloads und ergänzt reproduzierbare Experimentaldaten für verschiedene Modelle, Netzwerke und Aufrufmuster."
+        ]
+      },
+      "conclusion": {
+        "title": "Mehr aus begrenzter heterogener Rechenleistung holen",
+        "description": "Von exklusiver Nutzung zu bedarfsgesteuertem Sharing: CETC Cloud dient mit Kubernetes und HAMi auf einem einzigen portablen Gerät eine Produktionspipeline und 30 gleichzeitige Dev-Umgebungen – ohne nennenswerte Leistungseinbußen. Derselbe Ressourcenvertrag gilt für jedes Team, bei dem Produktion und Entwicklung auf begrenzter heterogener Rechenleistung koexistieren müssen."
+      },
+      "cta": {
+        "exploreHami": "HAMi Open-Source-Projekt entdecken",
+        "contactUs": "Kontakt aufnehmen"
       }
     },
-    "results": {
-      "title": "Ergebnisse",
-      "description": "Mit HAMi-vGPU-Slicing und koordiniertem Volcano-Scheduling beseitigte die Plattform Ressourcen-Fragmentierung, senkte die Modellaufrufkosten und blieb unter Last stabil – bei gleichzeitiger Unterstützung eines 2000+ R&D-Teams.",
-      "items": [
+    "sangfor": {
+      "cardTitle": "Sangfor: Enterprise-KI-Compute-Plattform",
+      "title": "Sangfor baut eine Enterprise-KI-Compute-Plattform auf Kubernetes, Volcano und HAMi",
+      "subtitle": "Sangfor, ein führender chinesischer Anbieter für Cloud Computing und Cybersicherheit, betreibt AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten auf einer gemeinsamen GPU-Plattform – GPU-Auslastung um mehr als 3× gesteigert, 8+ Modelle pro GPU und externe Modellaufrufkosten von 400K auf 200K RMB pro Monat halbiert.",
+      "sourceLabel": "Diese Fallstudie basiert auf der offiziellen CNCF Case Study:",
+      "sourceLink": "How Sangfor Built an Enterprise AI Compute Platform with Kubernetes, Volcano, and HAMi",
+      "stats": [
         {
-          "title": "GPU-Auslastung",
           "value": "3×+",
-          "description": "Der gemeinsame GPU-Pool eliminiert Fragmentierung – mehr Workloads auf derselben Hardware"
+          "label": "Steigerung der GPU-Auslastung"
         },
         {
-          "title": "Modelldichte pro GPU",
           "value": "8×+",
-          "description": "Workloads, die zuvor 3 GPUs brauchten, passen nun auf 1–2"
+          "label": "Modellinstanzen pro GPU (1 → 8+)"
         },
         {
-          "title": "Externe Aufrufkosten",
-          "value": "-50%",
-          "description": "400K → 200K RMB pro Monat durch intelligentes Routing zwischen Modellen"
-        },
-        {
-          "title": "Fehlerbehebung",
-          "value": "<10 Min.",
-          "description": "Zuvor ca. 1 Stunde; Erfolgsquote über 95 % bei 3× Peak-Traffic"
+          "value": "50%",
+          "label": "Reduktion externer Modellaufrufkosten (400K → 200K RMB/Monat)"
         }
       ],
-      "table": {
-        "title": "Vorher vs. Nachher",
-        "description": "Wichtige Plattform-Metriken vor und nach der Shared-GPU-Plattform.",
-        "metricLabel": "Metrik",
-        "beforeLabel": "Vorher",
-        "afterLabel": "Nachher",
+      "overview": {
+        "title": "Kundenüberblick",
+        "description": "Sangfor ist ein führender chinesischer Anbieter für Enterprise-Cloud-Computing und Cybersicherheit. Angesichts des raschen Wachstums von KI-Anwendungen baut Sangfor eine einheitliche KI-Compute-Plattform für interne R&D-Teams und Enterprise-Kunden – für Szenarien wie AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten. Die Plattform kombiniert ein AI Computing Gateway für Routing, Governance und Sicherheit mit einer gemeinsamen GPU-Basis aus Kubernetes, Volcano und HAMi – Kubernetes wird zur einheitlichen Ressourcen-Kontrollebene für KI.",
+        "keyPoints": [
+          "Einheitliche KI-Compute-Plattform für interne R&D-Teams und Enterprise-Kunden",
+          "Szenarien u. a. AI Coding, digitale Mitarbeiter, intelligenter Kundenservice und Vertriebs-Agenten",
+          "AI Computing Gateway für Routing und Governance auf einer Basis aus Kubernetes + Volcano + HAMi"
+        ]
+      },
+      "companyCard": {
+        "name": "Sangfor Technologies",
+        "description": "Ein führender chinesischer Anbieter für Enterprise-Cloud-Computing und Cybersicherheit. Das Cloud-AI-Team baut die einheitliche KI-Compute-Plattform, die den Alltag von über 2000 R&D-Engineers und Enterprise-Kunden trägt."
+      },
+      "info": {
+        "title": "Fallstudien-Informationen",
         "rows": [
           {
-            "metric": "GPU-Auslastung",
-            "before": "Basiswert",
-            "after": "um mehr als 3× gesteigert"
+            "label": "Anwender",
+            "value": "Sangfor Cloud-AI-Team"
           },
           {
-            "metric": "Modelle pro GPU",
-            "before": "1",
-            "after": "8+"
+            "label": "Business-Szenario",
+            "value": "Enterprise-KI-Compute-Plattform für AI Coding, digitale Mitarbeiter, intelligenten Kundenservice und Vertriebs-Agenten"
           },
           {
-            "metric": "Externe Modellaufrufkosten",
-            "before": "400K RMB/Monat",
-            "after": "200K RMB/Monat"
+            "label": "Deployment-Umgebung",
+            "value": "Kubernetes mit heterogenen GPUs wie NVIDIA und Ascend"
           },
           {
-            "metric": "Wiederherstellung nach Modellfehlern",
-            "before": "ca. 1 Stunde",
-            "after": "unter 10 Minuten"
+            "label": "Verwendete Projekte",
+            "value": "Kubernetes, Volcano, HAMi"
           },
           {
-            "metric": "Erfolgsquote bei 3× Peak-Traffic",
-            "before": "instabil",
-            "after": "95 %+"
-          },
-          {
-            "metric": "Unterstützte R&D-Teamgröße",
-            "before": "begrenzt",
-            "after": "2000+ Engineers"
+            "label": "Zentrale Herausforderungen",
+            "value": "GPU-Auslastung, Ressourcenisolation im Multi-Tenant-Betrieb, Scheduler-Effizienz"
           }
         ]
+      },
+      "challenge": {
+        "title": "Herausforderung: GPU-Auslastung, Isolation und Scheduling im großen Maßstab",
+        "description": "Mit wachsender Plattform wurden GPU-Auslastung, Ressourcenisolation und Scheduler-Effizienz zu den Engpässen – bei einer Plattform, die zahlreiche KI-Workloads und Teams gleichzeitig bedient.",
+        "points": [
+          {
+            "title": "Zu wenig genutzte GPUs",
+            "description": "Im traditionellen Modell belegt ein Inferenz-Dienst eine gesamte GPU exklusiv. Viele Workloads nutzen nur einen Bruchteil von Speicher und Rechenleistung, halten aber eine ganze GPU belegt – schwere Ressourcen-Fragmentierung. GPUs wurden schneller ausgebaut, als das Geschäft selbst wuchs."
+          },
+          {
+            "title": "Komplexe Ressourcen-Governance im Multi-Tenant-Betrieb",
+            "description": "Die Plattform bedient gleichzeitig AI Coding, digitale Mitarbeiter, intelligenten Kundenservice, Vertriebs-Agenten und Enterprise-Wissensassistenten. Deren GPU-Bedarf unterscheidet sich stark – manche brauchen dauerhaft Speicher, andere zeigen Peak-Valley-Muster. Einheitliches Pooling und faire Allokation wurden kritisch."
+          },
+          {
+            "title": "Koexistenz von Inferenz- und Batch-Workloads",
+            "description": "Die Plattform betreibt gleichzeitig Online-Inferenz, Batch-Inferenz, verteiltes Training und Agent-Workflows – das native Kubernetes-GPU-Scheduling deckt diese komplexen KI-Workloads nicht ab."
+          }
+        ]
+      },
+      "solution": {
+        "title": "Lösung: Kubernetes + Volcano + HAMi",
+        "description": "Kubernetes liefert die einheitliche Kontrollebene für die KI-Plattform, doch das native GPU-Scheduling vergibt Ressourcen nur als ganze GPUs – das genügt weder für Inferenz, Multi-Tenancy noch heterogene GPU-Umgebungen. Sangfor führte Volcano für fortgeschrittenes Job-Scheduling und HAMi für GPU-Virtualisierung ein und baute damit eine produktionsreife Shared-GPU-Plattform.",
+        "quote": {
+          "text": "HAMis Kubernetes-native Integration bedeutet null Migrationsaufwand. Die transparente Geräte-Virtualisierung lässt Workloads ohne jede Anpassung laufen.",
+          "author": "Jia Haojie, Chief Architect of Cloud AI bei Sangfor"
+        },
+        "hamiSharing": {
+          "title": "HAMi: vGPU-Sharing und Isolation",
+          "description": "Sangfor wählte HAMi wegen des feingranularen GPU-Sharings mit starker Isolation, der einheitlichen Abstraktion über heterogene GPU-Generationen und der Position als eines der aktivsten Open-Source-vGPU-Projekte im Kubernetes-Umfeld. Beim vGPU-Slicing belegt ein großes Modell den Löwenanteil einer Karte (z. B. 70%), die restlichen Slices hosten mehrere kleine Modelle und nutzen Rechenleistung, die sonst brachläge.",
+          "features": [
+            "GPU-Sharing: Speichergranularität bis 256 MB und Rechenleistung bis 1 % – mehrere Pods teilen sich eine GPU mit starker Isolation",
+            "Heterogene GPU-Unterstützung: einheitliche Ressourcen-Abstraktion für ein konsistentes Scheduling-Erlebnis über GPU-Generationen hinweg",
+            "Open-Source-Ökosystem: kontinuierliche Integration mit Volcano-Queues und vLLM"
+          ]
+        },
+        "scheduling": {
+          "title": "Volcano + HAMi: koordiniertes Scheduling",
+          "description": "GPU-Sharing allein genügt für den Produktivbetrieb nicht. Volcano kombiniert mit HAMi ermöglicht das einheitliche Management von Geräteressourcen und Job-Scheduling: Volcano entscheidet, wann und wo ein Workload läuft – HAMi entscheidet, wie GPU-Ressourcen geteilt und zugeteilt werden.",
+          "points": [
+            {
+              "title": "Gerätestatus-Pflege",
+              "description": "GPU-Health-Monitoring, automatische Fehlerisolierung und automatische Ressourcenfreigabe."
+            },
+            {
+              "title": "Governance von Ressourcendeklarationen",
+              "description": "Ressourcenfelder werden automatisch ergänzt, Quoten einheitlich berechnet und ungültige Requests früh abgelehnt."
+            },
+            {
+              "title": "Scheduling-Transaktionsisolierung",
+              "description": "Entkoppelt Ressourcen-Probeberechnung von der tatsächlichen Belegung und gewährleistet Statuskonsistenz."
+            },
+            {
+              "title": "Gang- und LWS-Support",
+              "description": "Volcano orchestriert den Job, HAMi teilt die GPUs zu – die gesamte Gruppe wird zusammen geplant."
+            }
+          ]
+        }
+      },
+      "results": {
+        "title": "Ergebnisse",
+        "description": "Mit HAMi-vGPU-Slicing und koordiniertem Volcano-Scheduling beseitigte die Plattform Ressourcen-Fragmentierung, senkte die Modellaufrufkosten und blieb unter Last stabil – bei gleichzeitiger Unterstützung eines 2000+ R&D-Teams.",
+        "items": [
+          {
+            "title": "GPU-Auslastung",
+            "value": "3×+",
+            "description": "Der gemeinsame GPU-Pool eliminiert Fragmentierung – mehr Workloads auf derselben Hardware"
+          },
+          {
+            "title": "Modelldichte pro GPU",
+            "value": "8×+",
+            "description": "Workloads, die zuvor 3 GPUs brauchten, passen nun auf 1–2"
+          },
+          {
+            "title": "Externe Aufrufkosten",
+            "value": "-50%",
+            "description": "400K → 200K RMB pro Monat durch intelligentes Routing zwischen Modellen"
+          },
+          {
+            "title": "Fehlerbehebung",
+            "value": "<10 Min.",
+            "description": "Zuvor ca. 1 Stunde; Erfolgsquote über 95 % bei 3× Peak-Traffic"
+          }
+        ],
+        "table": {
+          "title": "Vorher vs. Nachher",
+          "description": "Wichtige Plattform-Metriken vor und nach der Shared-GPU-Plattform.",
+          "metricLabel": "Metrik",
+          "beforeLabel": "Vorher",
+          "afterLabel": "Nachher",
+          "rows": [
+            {
+              "metric": "GPU-Auslastung",
+              "before": "Basiswert",
+              "after": "um mehr als 3× gesteigert"
+            },
+            {
+              "metric": "Modelle pro GPU",
+              "before": "1",
+              "after": "8+"
+            },
+            {
+              "metric": "Externe Modellaufrufkosten",
+              "before": "400K RMB/Monat",
+              "after": "200K RMB/Monat"
+            },
+            {
+              "metric": "Wiederherstellung nach Modellfehlern",
+              "before": "ca. 1 Stunde",
+              "after": "unter 10 Minuten"
+            },
+            {
+              "metric": "Erfolgsquote bei 3× Peak-Traffic",
+              "before": "instabil",
+              "after": "95 %+"
+            },
+            {
+              "metric": "Unterstützte R&D-Teamgröße",
+              "before": "begrenzt",
+              "after": "2000+ Engineers"
+            }
+          ]
+        }
+      },
+      "lessons": {
+        "title": "Erkenntnisse",
+        "points": [
+          "GPU-Sharing schlägt GPU-Zukauf: Die meisten Inferenz-Workloads können eine ganze GPU nicht auslasten – Sharing bietet höheres ROI und schnellere Amortisierung als zusätzliche Hardware.",
+          "Scheduling von der Ressourcen-Virtualisierung entkoppeln: HAMi übernimmt die Ressourcen-Abstraktion, Volcano die Scheduling-Politik – jede Schicht evolves unabhängig.",
+          "Kubernetes wird zur Ressourcen-Kontrollebene für KI: Der Cloud-Native-Weg liefert Enterprise-GPU-Management ohne neues Management-Paradigma.",
+          "Ausblick: Sangfor arbeitet mit der HAMi-Community am DRA-Ökosystem, erweitert die Unterstützung heterogener GPUs wie Ascend über HAMis einheitliche Abstraktion und gibt produktionsreife Scheduling-Policies an die Volcano- und HAMi-Communities zurück."
+        ]
+      },
+      "conclusion": {
+        "title": "Kubernetes zur einheitlichen Ressourcen-Kontrollebene für KI machen",
+        "description": "Sangfors Praxis zeigt einen Weg für KI-Infrastruktur im Unternehmen: Modellnutzung im Gateway gouvernieren, GPUs auf der Virtualisierungsebene teilen, Jobs mit Volcano schedulen – alles auf Kubernetes. Das Ergebnis ist eine Compute-Plattform, in der jede GPU für ein 2000+-Engineer-Team ihren vollen Wert entfaltet."
+      },
+      "cta": {
+        "exploreHami": "HAMi Open-Source-Projekt entdecken",
+        "contactUs": "Kontakt aufnehmen"
       }
     },
-    "lessons": {
-      "title": "Erkenntnisse",
-      "points": [
-        "GPU-Sharing schlägt GPU-Zukauf: Die meisten Inferenz-Workloads können eine ganze GPU nicht auslasten – Sharing bietet höheres ROI und schnellere Amortisierung als zusätzliche Hardware.",
-        "Scheduling von der Ressourcen-Virtualisierung entkoppeln: HAMi übernimmt die Ressourcen-Abstraktion, Volcano die Scheduling-Politik – jede Schicht evolves unabhängig.",
-        "Kubernetes wird zur Ressourcen-Kontrollebene für KI: Der Cloud-Native-Weg liefert Enterprise-GPU-Management ohne neues Management-Paradigma.",
-        "Ausblick: Sangfor arbeitet mit der HAMi-Community am DRA-Ökosystem, erweitert die Unterstützung heterogener GPUs wie Ascend über HAMis einheitliche Abstraktion und gibt produktionsreife Scheduling-Policies an die Volcano- und HAMi-Communities zurück."
-      ]
-    },
-    "conclusion": {
-      "title": "Kubernetes zur einheitlichen Ressourcen-Kontrollebene für KI machen",
-      "description": "Sangfors Praxis zeigt einen Weg für KI-Infrastruktur im Unternehmen: Modellnutzung im Gateway gouvernieren, GPUs auf der Virtualisierungsebene teilen, Jobs mit Volcano schedulen – alles auf Kubernetes. Das Ergebnis ist eine Compute-Plattform, in der jede GPU für ein 2000+-Engineer-Team ihren vollen Wert entfaltet."
-    },
-    "cta": {
-      "exploreHami": "HAMi Open-Source-Projekt entdecken",
-      "contactUs": "Kontakt aufnehmen"
-    }
-  },
     "telecomGpu": {
       "cardTitle": "Telekommunikationsanbieter GPU-Virtualisierung",
       "title": "Telekommunikationsanbieter GPU-Virtualisierungs-Fallstudie",
@@ -3165,5 +3286,126 @@
     "imageUrl": "Image-URL",
     "language": "Sprache",
     "subjectPrefix": "[Download]"
+  },
+  "redesignDownloads": {
+    "eyebrow": "DOWNLOADS & INSTALLATION",
+    "description": "Installationsanleitungen, Versionsinformationen und Bereitstellungsoptionen.",
+    "back": "← Zurück zum Produkt",
+    "title": "Installationsanleitungen und Versionen",
+    "products": {
+      "hami-enterprise": "Dynamia Enterprise for HAMi",
+      "hami-ai-platform": "Dynamia AI Platform for HAMi"
+    }
+  },
+  "gpuCatalog": {
+    "eyebrow": "GPU-KOMPATIBILITÄT",
+    "title": "Kompatibilität heterogener GPUs",
+    "description": "Entdecken Sie unterstützte Beschleuniger von NVIDIA, AMD, AWS und chinesischen Herstellern – mit Serien, Sharing-Funktionen und Bereitstellungsanforderungen.",
+    "domestic": "Unterstützte GPUs und KI-Beschleuniger",
+    "search": "Hersteller oder Modell suchen",
+    "empty": "Kein passendes Modell gefunden. Kontaktieren Sie uns zur Prüfung.",
+    "model": "Referenzmodelle",
+    "capability": "Funktionen und Bereitstellungsanforderungen",
+    "source": "Integrationsanleitung lesen",
+    "boundary": "Die passende Compute-Lösung finden",
+    "boundaryText": "Erzählen Sie uns von Ihren GPU-Modellen, Ihrer Cluster-Umgebung und Ihren Workloads. Gemeinsam finden wir die passende Lösung für Ressourcen-Sharing, Scheduling und Verwaltung.",
+    "contact": "Kontakt aufnehmen",
+    "matrix": "Offizielle HAMi-Kompatibilitätsmatrix",
+    "docs": "Dynamia-Produktdokumentation",
+    "name": "Hersteller",
+    "all": "Alle Hersteller",
+    "devices": [
+      {
+        "name": "英伟达 NVIDIA",
+        "url": "https://project-hami.io/docs/installation/prerequisites",
+        "models": "Gängige Rechenzentrums- und Consumer-GPUs",
+        "detail": "Unterstützt Speicher- und Rechen-Sharing, Isolation, Multi-GPU-Virtualisierung sowie Binpack-/Spread-Scheduling. Erforderlich sind zu GPU und CUDA passende Treiber, NVIDIA Container Toolkit und das HAMi-Geräte-Plugin. Das native Geräte-Plugin des GPU Operators muss deaktiviert sein."
+      },
+      {
+        "name": "超威 AMD",
+        "url": "https://project-hami.io/docs/userguide/amd-device/enable-amd-gpu-sharing",
+        "models": "Instinct-Serie",
+        "detail": "Unterstützt GPU-Sharing für mehrere Aufgaben, Speicherzuweisung in MiB und anteilige Compute-Unit-Zuweisung (CU). Erforderlich sind AMD-Treiber, ROCm und das HAMi-AMD-Geräte-Plugin. Workload-Images benötigen glibc 2.34 oder neuer; das native Geräte-Plugin des AMD GPU Operators muss deaktiviert sein."
+      },
+      {
+        "name": "亚马逊 AWS",
+        "url": "https://project-hami.io/docs/userguide/awsneuron-device/enable-awsneuron-managing",
+        "models": "Inferentia-/Trainium-Serie (Neuron-Ökosystem)",
+        "detail": "Unterstützt NeuronCore-basierte Ressourcenzuweisung, Geräte-Sharing und topologiebewusstes Multi-Geräte-Scheduling für Training und Inferenz. Bereitstellung auf Inf-/Trn-EC2-Instanzen mit Neuron-Treibern und Laufzeitumgebung, Neuron Device Plugin und HAMi."
+      },
+      {
+        "name": "华为昇腾 Huawei Ascend",
+        "models": "910B / 910B3 / 910C / 310P",
+        "url": "https://project-hami.io/docs/userguide/ascend-device/enable-ascend-sharing",
+        "detail": "Hardware-Partitionierung nach Vorlagen oder Software-Sharing. Speicher- und Rechenfunktionen hängen vom Modus ab; Software-Sharing erfordert passende ARM-Hardware, Treiber und den HAMi-Scheduler."
+      },
+      {
+        "name": "海光 Hygon",
+        "models": "DCU · Z100",
+        "url": "https://project-hami.io/docs/userguide/hygon-device/enable-hygon-dcu-sharing",
+        "detail": "Speicher- und Rechen-Sharing; Speicherisolation ist modellabhängig. Hersteller-Plugin und passende DTK-/Treiberversionen sind erforderlich. vDCU-Limit pro Container beachten."
+      },
+      {
+        "name": "寒武纪 Cambricon",
+        "models": "MLU370 / MLU590",
+        "url": "https://project-hami.io/docs/userguide/cambricon-device/enable-cambricon-mlu-sharing",
+        "detail": "Speicher- und Rechen-Sharing. Für MLU370 sind Dynamic SMLU und passende Treiber/CNToolkit erforderlich; Versionen für andere Modelle gesondert prüfen."
+      },
+      {
+        "name": "沐曦 MetaX",
+        "models": "MXC500",
+        "url": "https://project-hami.io/docs/userguide/metax-device/metax-sgpu/enable-metax-gpu-sharing",
+        "detail": "Speicher- und Rechen-Sharing über sGPU. Herstellervirtualisierung aktivieren und das zum Modell passende Geräte-Plugin installieren."
+      },
+      {
+        "name": "天数智芯 Iluvatar CoreX",
+        "models": "BI-V100 / BI-V150 / MR-V50 / MR-V100",
+        "url": "https://project-hami.io/docs/userguide/iluvatar-device/enable-iluvatar-gpu-sharing",
+        "detail": "Speicher- und Rechen-Sharing mit 256 MiB Speicher- und 1 % Rechengranularität laut Anleitung. GPU Manager und passende Treiber nötig; Gerätelimits pro Container prüfen."
+      },
+      {
+        "name": "摩尔线程 Moore Threads",
+        "models": "MTT S4000",
+        "url": "https://project-hami.io/docs/userguide/mthreads-device/enable-mthreads-gpu-sharing",
+        "detail": "Speicher- und Rechen-Sharing. Granularität und Isolation richten sich nach Herstellertreiber und Bereitstellungsanleitung."
+      },
+      {
+        "name": "昆仑芯 Kunlunxin",
+        "models": "P800",
+        "url": "https://project-hami.io/docs/userguide/kunlunxin-device/enable-kunlunxin-vxpu",
+        "detail": "Ganzgeräte-Scheduling und VXPU-Pfad. Speicher-Sharing bedeutet keine unabhängige Rechenpartitionierung. Ganzgeräte-Scheduling berücksichtigt die Topologie; Bereitstellungsmodus gezielt wählen."
+      },
+      {
+        "name": "燧原 Enflame",
+        "models": "S60",
+        "url": "https://project-hami.io/docs/userguide/enflame-device/enable-enflame-gcu-sharing",
+        "detail": "Speicher- und Rechen-Sharing. Ressourcen gemäß unterstützter vGCU-/Geräte-Plugin-Konfiguration zuweisen; Treiber und Gerätemodus prüfen."
+      },
+      {
+        "name": "瀚博 Vastai",
+        "models": "VA16",
+        "url": "https://project-hami.io/docs/userguide/vastai/enable-vastai-sharing",
+        "detail": "In der öffentlichen Matrix als planbar geführt, ohne Speicher- oder Rechenpartitionierung. Ganzgeräte-Zuweisung planen und Sharing-Anforderungen separat bestätigen."
+      },
+      {
+        "name": "壁仞 Biren",
+        "models": "Biren166M",
+        "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
+        "detail": "In der öffentlichen Matrix als planbar geführt, ohne Speicher- oder Rechenpartitionierung. Modell, Plugin und Lieferumfang für die Zielumgebung bestätigen."
+      },
+      {
+        "name": "平头哥 T-Head",
+        "url": "https://docs.dynamia.ai",
+        "models": "Zhenwu-Serie",
+        "detail": "Unterstützt feingranulare Speicher- und Rechenisolation innerhalb einer einheitlichen Ressourcenverwaltung. Integration über das Dynamia-PPU-Geräte-Plugin mit Zhenwu-Treibern, Laufzeitumgebung und Dynamia-Produktkomponenten."
+      }
+    ]
+  },
+  "imageViewer": {
+    "title": "Bildansicht",
+    "close": "Schließen",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern",
+    "reset": "An Fenster anpassen"
   }
 }

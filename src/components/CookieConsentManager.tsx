@@ -32,6 +32,11 @@ const CookieConsentManager: React.FC = () => {
   const cookiePolicyHref = localizedPath('/cookies-policy', locale);
 
   useEffect(() => {
+    // The local visual preview runs without analytics or tracking cookies.
+    if (['localhost','127.0.0.1','[::1]'].includes(window.location.hostname)) {
+      setMounted(true);
+      return;
+    }
     const existingConsent = readCookieConsent();
     setMounted(true);
 

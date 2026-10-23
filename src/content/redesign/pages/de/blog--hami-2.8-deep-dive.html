@@ -1,0 +1,688 @@
+<article class="blog-detail"><div class="article-hero"><div class="article-shell"><nav class="breadcrumb" aria-label="__COPY_s94507771d70c8a__"><a href="#/">__COPY_se04d24c52b3d28__</a><span>__COPY_s8a5edab2826324__</span><a href="#/blog">__COPY_s8c6bc099534a02__</a><span>__COPY_s8a5edab2826324__</span><span>__COPY_sed902d245f0694__</span></nav><div class="article-kicker"><span class="tag">__COPY_sed902d245f0694__</span><time datetime="2026-02-04">__COPY_s03cb025b505a61__</time></div><h1>__COPY_sbd60b74be82008__</h1><div class="article-author-row"><div class="blog-card-author"><span class="author-initial" aria-hidden="true">__COPY_s1d77d81c9559a8__</span><div class="blog-author-info"><span class="blog-author-name">__COPY_s234f1b97e70059__</span><span class="blog-author-title">__COPY_s2377f51f9506f9__</span></div></div><div class="article-share"><button type="button" data-copy-article="https://dynamia.ai/zh/blog/hami-2.8-deep-dive" aria-label="__COPY_s6263062b315cfd__"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"></rect><path d="M16 8V3H3v13h5"></path></svg>__COPY_s6263062b315cfd__</button><span class="article-share-status" role="status" aria-live="polite"></span></div></div><div class="article-cover"><div class="content-cover editorial-cover" data-category="版本发布"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/dynamia-creators.png" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_sed902d245f0694__</span></div><div class="cover-title-block"><strong>__COPY_sa599196b08347e__</strong><span class="cover-subtitle">__COPY_sf7025373dec2cb__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div></div><p class="article-deck">__COPY_s3f6922a5e28042__</p></div></div><div class="article-reading"><div class="article-shell"><div class="article-reading-grid"><div><details class="article-toc-mobile"><summary>__COPY_s6da7a69c5f8fd5__</summary><nav aria-label="__COPY_sb648a68085bab9__"><a href="#/blog/hami-2.8-deep-dive?section=article-section-0" data-article-section="article-section-0"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_sf8b9b1bf4a7525__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-3" data-article-section="article-section-3"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_sa8f9a660e96eee__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-10" data-article-section="article-section-10"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_s41822b9f829c86__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-14" data-article-section="article-section-14"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_s64b3c603e09824__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-17" data-article-section="article-section-17"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_s06d9ade05ad6cf__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-23" data-article-section="article-section-23"><span aria-hidden="true">__COPY_saacd834b5cdc64__</span>__COPY_s4702faee777043__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-28" data-article-section="article-section-28"><span aria-hidden="true">__COPY_s19b100ab7725c6__</span>__COPY_s7bf2c36f416291__</a></nav></details><div class="article-prose"><blockquote>
+<p><strong>__COPY_s468fa04b76b314__</strong></p>
+<p>__COPY_s807bb49b84a1c2__<em>__COPY_se7abf8001552f5__</em>__COPY_s78310f85eebfbc__<strong>__COPY_s44cb005ee2e65d__</strong>__COPY_s23cc156deffba9__<strong>__COPY_s7828f9bcfdcbca__</strong>__COPY_s3e208742a6b12a__</p>
+<p><strong>__COPY_s44cb005ee2e65d__</strong>__COPY_s1bd1cfe7839f7c__<br>
+<strong>__COPY_s7828f9bcfdcbca__</strong>__COPY_s2aad93efd6608f__</p>
+<p>__COPY_s8977c40c80da27__<strong>__COPY_s59ade4f0a8ff09__</strong>__COPY_seb0d5884569b39__</p>
+</blockquote>
+<h2 id="article-section-0">__COPY_s4fbe41977dd639__</h2>
+<p>__COPY_s25fe1f6a4892c9__<strong>__COPY_s0aa12419323301__</strong>__COPY_sc3059849ef9344__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/keyword-cloud.png" alt="__COPY_sff1094cc67f352__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s6314afac9230a6__</figcaption></figure><p></p>
+<p>__COPY_s007c139811c744__</p>
+<h3 id="article-section-1">__COPY_s5d5fa377dd59b5__</h3>
+<ul>
+<li>
+<p><strong>__COPY_s1f031867888fea__</strong>__COPY_s6496b434d9380f__<strong>__COPY_scbe675b4ef4b64__</strong>__COPY_sc910a5c7ae89ba__<a href="https://github.com/Project-HAMi/HAMi-DRA" target="_blank" rel="noopener">__COPY_sd2649a2459eab4__</a>__COPY_sadc9fce7c3ad54__<strong>__COPY_s54bf02fea757e0__</strong>__COPY_s9e2812aa92d2f3__</p>
+</li>
+<li>
+<p><strong>__COPY_sfb0b66c90f07bb__</strong>__COPY_s503a2c3a8214c5__</p>
+</li>
+<li>
+<p><strong>__COPY_s7e4ad0ed5ae257__</strong>__COPY_sf5ded6b742d359__<strong>__COPY_s514f0c2f83a3ec__</strong>__COPY_s200204a2aad59b__<strong>__COPY_s7634b1f7b077d5__</strong>__COPY_s58559a6070408f__</p>
+</li>
+<li>
+<p><strong>__COPY_s4bd83ebe94370b__</strong>__COPY_s099216e42189ea__</p>
+</li>
+</ul>
+<h2 id="article-section-2">__COPY_s01568b1c20b19b__</h2>
+<p>__COPY_se192d0f2795556__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/ecosystem-overview.png" alt="__COPY_s01568b1c20b19b__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s32236f396f8dc9__</figcaption></figure><p></p>
+<h2 id="article-section-3">__COPY_sa08d81e3f763e6__</h2>
+<h3 id="article-section-4">__COPY_scc276351ce39c5__</h3>
+<p>__COPY_s6a6378338573d3__<strong>__COPY_s8dcded6268c2f9__</strong>__COPY_s9bd5a2771aaec0__</p>
+<h4>__COPY_sae4d091fc1729b__</h4>
+<p>__COPY_se5dc9362a9450f__</p>
+<ol>
+<li>
+<p><strong>__COPY_sada135d6535f06__</strong>__COPY_sfaffb9dfde7db0__<code>__COPY_s782a62a9779f75__</code>__COPY_s6053ab53ca3bfc__</p>
+</li>
+<li>
+<p><strong>__COPY_s14bb97ca03fc2c__</strong>__COPY_sa21c2bf1da08bc__</p>
+</li>
+<li>
+<p><strong>__COPY_sfa578bf88d6790__</strong>__COPY_s9e5108b2276ee5__</p>
+</li>
+</ol>
+<p>__COPY_s4226b7d6e3b282__<strong>__COPY_sa092cdd290bfdd__</strong>__COPY_s23cc156deffba9__<strong>__COPY_s71fd745921ed90__</strong>__COPY_s1967669e87b906__</p>
+<h4>__COPY_sbbad293715d167__</h4>
+<p>__COPY_s8401e1fef3ac90__<strong>__COPY_s7396f464280ed1__</strong>__COPY_s23133a86a0e782__</p>
+<p>__COPY_sfe8dd94c921dc6__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/dra-request-flow.png" alt="__COPY_s230d43f927054a__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s082e227d743d74__</figcaption></figure><p></p>
+<h4>__COPY_sf4d54d1e694236__</h4>
+<ol>
+<li>
+<p><strong>__COPY_sf1797859bf18aa__</strong>__COPY_sbc432244ac3b73__<code>__COPY_sb81425dbf37c07__</code>__COPY_sc4a40ea8fe3562__<code>__COPY_sc86f96f4bd0864__</code>__COPY_sc4a40ea8fe3562__<code>__COPY_se5adbf66dcc9dd__</code>__COPY_s4439ccd3b72008__</p>
+</li>
+<li>
+<p><strong>__COPY_s00e249a2830115__</strong>__COPY_se78772fadcd760__</p>
+</li>
+<li>
+<p><strong>__COPY_sdfaf8a1588333d__</strong>__COPY_sd4e8cefef9572d__</p>
+</li>
+<li>
+<p><strong>__COPY_s791014a236ad68__</strong>__COPY_s79b894fae6cdd6__</p>
+</li>
+</ol>
+<h4>__COPY_s7eddbfa047dc79__</h4>
+<p><strong>__COPY_se42053d6fc3ff7__</strong></p>
+<ul>
+<li>
+<p>__COPY_sc465c93d2d500d__</p>
+</li>
+<li>
+<p>__COPY_sd7fac55e485211__</p>
+</li>
+<li>
+<p>__COPY_s2c3d95f17d2e54__</p>
+</li>
+<li>
+<p>__COPY_s85d146c243f7cd__</p>
+</li>
+</ul>
+<p><strong>__COPY_sed82d54c8d939d__</strong></p>
+<pre><code><span>__COPY_sf73ab603c8a8c7__</span>__COPY_s681190d877a1b7__<span>__COPY_sbd642f704cc8d2__</span>__COPY_s002c21a531cdee__<span>__COPY_s6ee0eb490ff832__</span>__COPY_s9586bfb3dd514f__<span>__COPY_sfcbcf165908dd1__</span>
+</code></pre>
+<p><strong>__COPY_s633aa5a791e329__</strong></p>
+<p>__COPY_s6c61f37afcacb2__<code>__COPY_sd4462c846648e1__</code>__COPY_sf114611cd61000__</p>
+<pre><code><span>__COPY_s0053bf82ffc6d8__</span> <span>__COPY_s084c3ef0aa4fbe__</span>
+<span>__COPY_s511b99d44d3501__</span> <span>__COPY_s674a3bdae919e4__</span>
+<span>__COPY_sac018cc6a8637e__</span> <span>__COPY_sba9cb5248a4dd5__</span>
+</code></pre>
+<p><strong>__COPY_s9d74241310049d__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s3bfc269594ef64__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s0a6bb8b01de101__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_se4b8a5d0df974d__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_s04968f51ee0482__</span>
+  <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s5c1c3a57fcad47__</span>
+    <span>__COPY_sa08a30338e824c__</span> <span>__COPY_se4eeceec13c49a__</span>
+    <span>__COPY_s8ff7327fcdf50a__</span>__COPY_sc4ebc7684be8c9__<span>__COPY_s2f5c5cd27b10c5__</span>__COPY_sb5f395e26661ee__<span>__COPY_scab2be2b3a2ed1__</span>
+      <span>__COPY_s2629ac0e8d90da__</span>
+        <span>__COPY_seeaf4b13d57e7a__</span> <span>__COPY_sd4735e3a265e16__</span>
+        <span>__COPY_s0b49f0a0adc075__</span> <span>__COPY_s8b926d75599a61__</span>
+        <span>__COPY_s2aa1b4a0dfba79__</span> <span>__COPY_s48449a14a4ff7d__</span>
+</code></pre>
+<p>__COPY_s67ed9655991fa7__</p>
+<p><strong>__COPY_s5b3062a0463719__</strong></p>
+<pre><code>__COPY_sab730239f29a7d__</code></pre>
+<p><strong>__COPY_saf0ba2d2610c1a__</strong></p>
+<pre><code><span>__COPY_s5800f68801eb37__</span>
+  <span>__COPY_s51401585123a58__</span> <span>__COPY_sb5bea41b6c623f__</span>
+  <span>__COPY_s3897150c49c1ce__</span>
+    <span>__COPY_sf7cf39ee72f473__</span> <span>__COPY_s2a4730517ac262__</span>
+    <span>__COPY_s13e5d682f3b54c__</span>
+      <span>__COPY_s540f5e28602a59__</span> <span>__COPY_sf7871fd7d4f0f5__</span>
+</code></pre>
+<pre><code><span>__COPY_s69ec6ab1e56f9e__</span>__COPY_scda2eac36294e7__</code></pre>
+<h4>__COPY_s9443a07f0670d7__</h4>
+<blockquote>
+<p><strong>__COPY_s61faa9854469f9__</strong>__COPY_sc35c709f3ecbea__</p>
+</blockquote>
+<h3 id="article-section-5">__COPY_s92369059ed720b__</h3>
+<p>__COPY_s9c014d6da38de4__<strong>__COPY_s02fa93afb1e18b__</strong>__COPY_s7f7c2d228a1db6__</p>
+<p>__COPY_sc5a5f6db753f69__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/leader-election-architecture.png" alt="__COPY_sa0e58a781e670e__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_sc110e87d78db00__</figcaption></figure><p></p>
+<p><strong>__COPY_s0429448fdd8d83__</strong></p>
+<ol>
+<li>
+<p><strong>__COPY_s7eb55390c91d5f__</strong>__COPY_s7e97d13ca121da__</p>
+</li>
+<li>
+<p><strong>__COPY_sf9682c3651274b__</strong>__COPY_s9ac0b53159a9e0__</p>
+</li>
+<li>
+<p><strong>__COPY_s07df6ce70e3b4d__</strong>__COPY_s81cd4ee24d4871__</p>
+</li>
+</ol>
+<p><strong>__COPY_s762109b885b09f__</strong></p>
+<p>__COPY_sdfc2bb35af984d__<code>__COPY_s8377b3e3740a3f__</code>__COPY_sf59393f200790b__</p>
+<pre><code><span>__COPY_sa98799c8ffb947__</span>
+  <span>__COPY_s01c14c7ea215a8__</span> <span>__COPY_s4e07408562bedb__</span>  <span>__COPY_saba81daf473536__</span>
+  <span>__COPY_s9ede2713b7ce89__</span>
+    <span>__COPY_s51401585123a58__</span> <span>__COPY_sb5bea41b6c623f__</span>
+    <span>__COPY_s6bbd77450a32db__</span> <span>__COPY_s21b5f52ded33ab__</span>
+    <span>__COPY_s90ef0d787b916b__</span> <span>__COPY_s7819f63beefe24__</span>
+    <span>__COPY_sc74157b831b6b0__</span> <span>__COPY_s3896078db33d5c__</span>
+</code></pre>
+<h3 id="article-section-6">__COPY_sbdca0a9666b91d__</h3>
+<p>__COPY_s751cd763d82125__<strong>__COPY_scd50e769e37195__</strong>__COPY_s4acce765417cfe__<a href="https://github.com/cncf-tags" target="_blank" rel="noopener">__COPY_s532bac0b3e0f5d__</a>__COPY_sa78de432650e92__</p>
+<p><strong>__COPY_sec23d1de91a755__</strong></p>
+<p><strong>__COPY_s1e6a2386987b72__</strong></p>
+<p>__COPY_s6c61f37afcacb2__<code>__COPY_s8377b3e3740a3f__</code>__COPY_sf114611cd61000__</p>
+<pre><code><span>__COPY_sc14c181310ce50__</span>
+  <span>__COPY_sb5697cc848fb73__</span> <span>__COPY_sed3469c1f4c5dd__</span>  <span>__COPY_s6fa0bcf1727d25__</span>
+</code></pre>
+<p><strong>__COPY_s1e3b1779ed8be8__</strong></p>
+<pre><code><span>__COPY_sb157d7ffa4b902__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_s04968f51ee0482__</span>
+  <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s5c1c3a57fcad47__</span>
+    <span>__COPY_sa08a30338e824c__</span> <span>__COPY_se4eeceec13c49a__</span>
+    <span>__COPY_scab2be2b3a2ed1__</span>
+      <span>__COPY_s2629ac0e8d90da__</span>
+        <span>__COPY_seeaf4b13d57e7a__</span> <span>__COPY_s6b86b273ff34fc__</span>
+    <span>__COPY_s1d1eadacd60e0a__</span>
+</code></pre>
+<h3 id="article-section-7">__COPY_s1c814fe2bcf42e__</h3>
+<p>__COPY_s83a302383f3f68__<strong>__COPY_s38a6d2d5447db9__</strong>__COPY_s31d8f4129e6f14__</p>
+<p><strong>__COPY_sd95cb03f7a3359__</strong></p>
+<ol>
+<li>
+<p><strong>__COPY_s9966b215c168f4__</strong>__COPY_s7ce7d1397ae872__</p>
+</li>
+<li>
+<p><strong>__COPY_s06586a371e37b9__</strong>__COPY_s2c39954c7a6208__</p>
+</li>
+<li>
+<p><strong>__COPY_s018bb1df686ad9__</strong>__COPY_sb6c511a03e9fe7__</p>
+</li>
+</ol>
+<p><strong>__COPY_s9128b8680c0427__</strong></p>
+<ul>
+<li>
+<p>__COPY_s85b71c270d9292__</p>
+</li>
+<li>
+<p>__COPY_s984b2af95fc975__</p>
+</li>
+<li>
+<p>__COPY_s836272ac9b412b__</p>
+</li>
+</ul>
+<h3 id="article-section-8">__COPY_se8513584e220f7__</h3>
+<p>__COPY_s69a1fa27c0ed61__<a href="https://github.com/Project-HAMi/mock-device-plugin" target="_blank" rel="noopener"><strong>__COPY_sa86f658aeac828__</strong></a>__COPY_s4adbf86eb38119__</p>
+<p>__COPY_s5a0025e3282c7d__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/mock-device-plugin-workflow.png" alt="__COPY_sce5239c8179d22__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s7a2ee44e01fc99__</figcaption></figure><p></p>
+<p><strong>__COPY_s0df02c7537529f__</strong></p>
+<ol>
+<li>
+<p><strong>__COPY_sae2c6f68bde59e__</strong>__COPY_s6ee4f6f6642095__<code>__COPY_s5738c737d65145__</code>__COPY_s23cc156deffba9__<code>__COPY_sddedcf5117d352__</code>__COPY_sd972a45cdd3882__</p>
+</li>
+<li>
+<p><strong>__COPY_sb6b68e052e9c67__</strong>__COPY_sf114611cd61000__</p>
+<ul>
+<li>
+<p>__COPY_s51073dd743c2d7__<code>__COPY_sc86f96f4bd0864__</code>__COPY_sc4a40ea8fe3562__<code>__COPY_s52f03bddb60943__</code>__COPY_sc4a40ea8fe3562__<code>__COPY_se5adbf66dcc9dd__</code></p>
+</li>
+<li>
+<p>__COPY_sbb2ea7c31007d7__<code>__COPY_sdf807c79be66c8__</code></p>
+</li>
+<li>
+<p>__COPY_sfe8aed488db05d__<code>__COPY_sdc3c2598e608c7__</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>__COPY_s4c9869dc88ff43__</strong>__COPY_sbae422b29d576d__</p>
+</li>
+</ol>
+<p><strong>__COPY_sfc996653946b49__</strong></p>
+<pre><code><span>__COPY_sc59342d21438c7__</span>__COPY_s2c7889adc67e18__<span>__COPY_s48636e8e4a74c2__</span>__COPY_s52c983adc1f749__<span>__COPY_se683be86ca1ed4__</span>__COPY_s4a0976ee535be4__</code></pre>
+<p><strong>__COPY_s91db0a9e7d8291__</strong></p>
+<pre><code><span>__COPY_sace7b35ab98757__</span>
+  <span>__COPY_sb656fafe9c0938__</span>                    <span>__COPY_s579628966408e3__</span>
+  <span>__COPY_seeaf4b13d57e7a__</span>            <span>__COPY_sf5ca38f748a1d6__</span>
+  <span>__COPY_s2aa1b4a0dfba79__</span>       <span>__COPY_s27badc983df178__</span>
+  <span>__COPY_s0b49f0a0adc075__</span>         <span>__COPY_s0f255ec16482c3__</span>
+  <span>__COPY_s241a84b22cbf94__</span> <span>__COPY_s27badc983df178__</span>
+  <span>__COPY_s2f977542169544__</span>                      <span>__COPY_s9bdb2af6799204__</span>
+</code></pre>
+<p><strong>__COPY_s0bb28ae2a8a8ab__</strong></p>
+<ul>
+<li>__COPY_s35453b1beb85bb__<code>__COPY_s0b21e4e79e05f2__</code>__COPY_sb8b1ed5292ca08__<code>__COPY_s45b6238b55061d__</code>__COPY_sc620286a853f51__</li>
+</ul>
+<h3 id="article-section-9">__COPY_s6e333393f74a87__</h3>
+<p>__COPY_s37e943fb7a3016__</p>
+<p><strong>__COPY_s3ca370319ad64b__</strong></p>
+<ul>
+<li>
+<p><code>__COPY_s78aa90e1d0b4fa__</code>__COPY_s6344b348bdb2be__</p>
+</li>
+<li>
+<p>__COPY_s7c95e8c7baa1d0__</p>
+</li>
+</ul>
+<p><strong>__COPY_s53f07debd343c0__</strong></p>
+<ul>
+<li>
+<p><code>__COPY_sf9fccd35248fa8__</code>__COPY_s8cf965d2bb44de__<code>__COPY_secfe79fbf32bf8__</code>__COPY_s23cc156deffba9__<code>__COPY_s375e3078b44206__</code>__COPY_se6b3128f459d48__</p>
+</li>
+<li>
+<p><code>__COPY_s63a84204cc75b1__</code>__COPY_s8cf965d2bb44de__<code>__COPY_secfe79fbf32bf8__</code>__COPY_se6b3128f459d48__</p>
+</li>
+<li>
+<p><code>__COPY_s19c26034a75e07__</code>__COPY_s8cf965d2bb44de__<code>__COPY_s375e3078b44206__</code>__COPY_se6b3128f459d48__</p>
+</li>
+</ul>
+<p><strong>__COPY_sdf0ba36f275177__</strong></p>
+<pre><code>__COPY_sfe37cbdeb31358__</code></pre>
+<p><strong>__COPY_sfdea66fcbb03c5__</strong></p>
+<pre><code>__COPY_s1333f2d5689a6d__</code></pre>
+<h2 id="article-section-10">__COPY_s13436639fd7ed7__</h2>
+<p>__COPY_s31127e5e895c51__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/heterogeneous-gpu-ecosystem.png" alt="__COPY_s830447634094d9__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_sc65926bd57fc94__</figcaption></figure><p></p>
+<h3 id="article-section-11">__COPY_s83a293cbda289c__</h3>
+<p>__COPY_sacd555911162bb__</p>
+<p><strong>__COPY_s9f077b45cc3c68__</strong></p>
+<ul>
+<li>
+<p><a href="https://github.com/Project-HAMi/HAMi/pull/1547" target="_blank" rel="noopener">__COPY_s52ee0de105bcd3__</a>__COPY_s64a60bc6b3868b__</p>
+</li>
+<li>
+<p><a href="https://github.com/Project-HAMi/HAMi/pull/1399" target="_blank" rel="noopener">__COPY_sa8298c0f3c0292__</a>__COPY_sd9764b7685bf0e__</p>
+</li>
+</ul>
+<p><strong>__COPY_saa2e5e39d24a12__</strong></p>
+<ol>
+<li>
+<p><strong>__COPY_s5ed611d73dc3e7__</strong>__COPY_sf826f6a199d193__<a href="https://github.com/Project-HAMi/HAMi/pull/1569" target="_blank" rel="noopener">__COPY_sd80ad0604692a0__</a>__COPY_sf2e44c6c9545f0__</p>
+</li>
+<li>
+<p><strong>__COPY_s1939b2e200ca47__</strong>__COPY_s1199e7d904690a__<a href="https://github.com/Project-HAMi/HAMi/pull/1444" target="_blank" rel="noopener">__COPY_s659f4de7a411e1__</a>__COPY_sf2e44c6c9545f0__</p>
+</li>
+<li>
+<p><strong>__COPY_secd0a08e0566b1__</strong>__COPY_s3346f57e082eeb__<a href="https://github.com/Project-HAMi/HAMi/pull/1362" target="_blank" rel="noopener">__COPY_s80f9a598a9a8b2__</a>__COPY_sf2e44c6c9545f0__</p>
+</li>
+</ol>
+<p><strong>__COPY_s4cafbd92b40d36__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s3bfc269594ef64__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s0a6bb8b01de101__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s7c9a9b2b223867__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_s04968f51ee0482__</span>
+  <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s5c1c3a57fcad47__</span>
+    <span>__COPY_sa08a30338e824c__</span> <span>__COPY_s922ea3b82b62c9__</span>
+    <span>__COPY_scab2be2b3a2ed1__</span>
+      <span>__COPY_s2629ac0e8d90da__</span>
+        <span>__COPY_s420bf704a113d2__</span> <span>__COPY_s6b86b273ff34fc__</span>
+        <span>__COPY_sf95bac19a352bd__</span> <span>__COPY_s8b926d75599a61__</span>
+</code></pre>
+<h3 id="article-section-12">__COPY_s8c9793b31131b0__</h3>
+<p>__COPY_s5f8aba9d58afa1__</p>
+<p><strong>__COPY_s9f077b45cc3c68__</strong></p>
+<ul>
+<li>
+<p><a href="https://github.com/Project-HAMi/HAMi/pull/1436" target="_blank" rel="noopener">__COPY_sf56d3535870c48__</a>__COPY_sa00f3047107fbe__</p>
+</li>
+<li>
+<p><a href="https://github.com/Project-HAMi/HAMi/pull/1444" target="_blank" rel="noopener">__COPY_s659f4de7a411e1__</a>__COPY_s1c5c9568ae3d41__</p>
+</li>
+</ul>
+<p><strong>__COPY_sfc71e6808135be__</strong></p>
+<ol>
+<li>
+<p><strong>__COPY_s75f44c72106802__</strong>__COPY_sa21d89f08d42c4__</p>
+</li>
+<li>
+<p><strong>__COPY_s84a63c35358721__</strong>__COPY_s1b02440e3cf26a__</p>
+</li>
+<li>
+<p><strong>__COPY_s6f85cf39911c13__</strong>__COPY_sc9b1bf47bde1e1__</p>
+</li>
+<li>
+<p><strong>__COPY_s531373b168a4f8__</strong>__COPY_s4709ca555c7f3e__</p>
+</li>
+</ol>
+<p><strong>__COPY_s6bcbdaa6102bae__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s3bfc269594ef64__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s0a6bb8b01de101__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_sa589c336a55a88__</span>
+  <span>__COPY_s72ab0e6632de39__</span>
+    <span>__COPY_s7da52b153b1eb7__</span> <span>__COPY_s730918799d0bf0__</span>  <span>__COPY_s9e80531553c08d__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_s04968f51ee0482__</span>
+  <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s5c1c3a57fcad47__</span>
+    <span>__COPY_sa08a30338e824c__</span> <span>__COPY_s998cb2c851e49b__</span>
+    <span>__COPY_scab2be2b3a2ed1__</span>
+      <span>__COPY_s2629ac0e8d90da__</span>
+        <span>__COPY_sb5565d808b8945__</span> <span>__COPY_s6b86b273ff34fc__</span>
+        <span>__COPY_s39cce1479e7081__</span> <span>__COPY_s39fa9ec190eee7__</span>      <span>__COPY_s58e29090ec6f4d__</span>
+        <span>__COPY_s4c9a781307b4ef__</span> <span>__COPY_s4b227777d4dd1f__</span>     <span>__COPY_sbab5fef8456826__</span>
+</code></pre>
+<h3 id="article-section-13">__COPY_sa8eefecb58bcf2__</h3>
+<p>__COPY_sc3d74fde9b80e9__<a href="https://github.com/Project-HAMi/ascend-device-plugin" target="_blank" rel="noopener">__COPY_s66061250e3a722__</a>__COPY_s940ae5511551e3__<strong>__COPY_s5f6cfa91a83c45__</strong>__COPY_s8897cdddd0ff14__</p>
+<p><strong>__COPY_sed440f8a841115__</strong></p>
+<ol>
+<li>
+<p><strong>__COPY_sdf103392ec862a__</strong>__COPY_safe6a1ed95e889__</p>
+</li>
+<li>
+<p><strong>__COPY_sfa16631b9153f6__</strong>__COPY_sc954ef3c89c0e4__</p>
+</li>
+<li>
+<p><strong>__COPY_se7e0b20f447b74__</strong>__COPY_s9e6664d33312e9__</p>
+</li>
+</ol>
+<p><strong>__COPY_s27ed9ba3c498b7__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s3bfc269594ef64__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s0a6bb8b01de101__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_sf1bdd5f37f915d__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_s04968f51ee0482__</span>
+  <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s563927d0502565__</span>
+    <span>__COPY_sa08a30338e824c__</span> <span>__COPY_sd513ef3316ef60__</span>
+    <span>__COPY_scab2be2b3a2ed1__</span>
+      <span>__COPY_s2629ac0e8d90da__</span>
+        <span>__COPY_s63f774bdd774a7__</span> <span>__COPY_s6b86b273ff34fc__</span>
+        <span>__COPY_s04d263c34b2ab6__</span> <span>__COPY_s864a936a353241__</span>
+</code></pre>
+<h2 id="article-section-14">__COPY_s91af8e79f00695__</h2>
+<p>__COPY_s6c001cf2401b74__</p>
+<h3 id="article-section-15">__COPY_s316f967c77055d__</h3>
+<p>__COPY_sa40f0c10ea70e5__</p>
+<p>__COPY_s1e3f8d93bfc897__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/kueue-hami-integration.png" alt="__COPY_s6f8326cf7964ce__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s5291d10416bb10__</figcaption></figure><p></p>
+<p><strong>__COPY_s07e81ba852392a__</strong></p>
+<p><strong>__COPY_scfd98a536cedb9__</strong></p>
+<pre><code>__COPY_s8268abd70c2f1a__</code></pre>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s52bbe6a1ee1657__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_sb332c3492d5eb1__</span>
+<span>__COPY_sad3392b7a161ae__</span>
+  <span>__COPY_s4e704079887be5__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_se1d80b214d7a89__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_s058595d42bc109__</span>
+</code></pre>
+<p><strong>__COPY_se09f6ba0779007__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s52bbe6a1ee1657__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_sb332c3492d5eb1__</span>
+<span>__COPY_sad3392b7a161ae__</span>
+  <span>__COPY_s4e704079887be5__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_se1d80b214d7a89__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_s058595d42bc109__</span>
+<span>__COPY_scab2be2b3a2ed1__</span>
+  <span>__COPY_sf372f1cb201efb__</span>
+  <span>__COPY_s3973e022e93220__</span> <span>__COPY_s6336a21beff745__</span> <span>__COPY_se5adbf66dcc9dd__</span>
+    <span>__COPY_s4d6e6491559580__</span> <span>__COPY_s95e154398a4bc0__</span>
+    <span>__COPY_sa4bed9f8d9f462__</span> <span>__COPY_sb81425dbf37c07__</span>
+    <span>__COPY_s4bb46ad789dceb__</span>
+      <span>__COPY_sc1813b599bb72b__</span> <span>__COPY_s391552c099c101__</span>
+  <span>__COPY_s3973e022e93220__</span> <span>__COPY_s6336a21beff745__</span> <span>__COPY_sc86f96f4bd0864__</span>
+    <span>__COPY_s4d6e6491559580__</span> <span>__COPY_s95e154398a4bc0__</span>
+    <span>__COPY_sa4bed9f8d9f462__</span> <span>__COPY_sb81425dbf37c07__</span>
+    <span>__COPY_s4bb46ad789dceb__</span>
+      <span>__COPY_s70d1a84f2b3252__</span> <span>__COPY_s391552c099c101__</span>
+</code></pre>
+<p><strong>__COPY_sf7621616a9cfeb__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_sd2064d2caf1595__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_sa6c3442a0608cf__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s385e8ef585dce8__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_sb2c559321f9055__</span>
+    <span>__COPY_s9346b1757d8da8__</span> <span>__COPY_s990c23868b9658__</span>
+</code></pre>
+<p><strong>__COPY_sa286a8ff31dad9__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_sd2064d2caf1595__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s9b4c3ffc09d9f5__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s46fea0c5e20cf8__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_sac9160a6c36b90__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_s656f7864e44963__</span>__COPY_sc4ebc7684be8c9__<span>__COPY_s084c3ef0aa4fbe__</span>__COPY_s0a07f659461970__<span>__COPY_se69a03fe0d24ef__</span>__COPY_s0a07f659461970__<span>__COPY_s8541770a2cc74a__</span>__COPY_s30348c92376d56__<span>__COPY_sab4802ff901261__</span>
+        <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s385e8ef585dce8__</span>
+          <span>__COPY_scab2be2b3a2ed1__</span>
+            <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s084c3ef0aa4fbe__</span>
+              <span>__COPY_sdd87af48b462f1__</span> <span>__COPY_s48449a14a4ff7d__</span>
+            <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_se69a03fe0d24ef__</span>
+              <span>__COPY_sdd87af48b462f1__</span> <span>__COPY_s27badc983df178__</span>
+            <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s8541770a2cc74a__</span>
+              <span>__COPY_sdd87af48b462f1__</span> <span>__COPY_s205e7b780de08f__</span>
+</code></pre>
+<p><strong>__COPY_s418c4772387063__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_sd2064d2caf1595__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s2a4d24565e468b__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_sffbb17b02a82c7__</span>
+  <span>__COPY_sdecf94c04e0427__</span> <span>__COPY_s37a8eec1ce1968__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_s661dd4cf14c915__</span> <span>__COPY_s46fea0c5e20cf8__</span>
+</code></pre>
+<p><strong>__COPY_s2689711feae0fe__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s024614bbf9753e__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s870a8ffd98f4f2__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s214f0dffdc7c99__</span>
+  <span>__COPY_sfa1e8330316fdd__</span>
+    <span>__COPY_s0c4237f14c86fc__</span> <span>__COPY_s5136a6b8079683__</span>
+    <span>__COPY_s1bad394699a277__</span> <span>__COPY_sffbb17b02a82c7__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_sfdd85a2b2ca13d__</span> <span>__COPY_sd4735e3a265e16__</span>
+  <span>__COPY_s8432e015d02340__</span>
+    <span>__COPY_s839a5cac8a68c4__</span>
+      <span>__COPY_s0c4237f14c86fc__</span> <span>__COPY_s5136a6b8079683__</span>
+  <span>__COPY_sa58565b2f1aa8e__</span>
+    <span>__COPY_s8c8c42289a1387__</span>
+      <span>__COPY_sfa1e8330316fdd__</span>
+        <span>__COPY_s0c4237f14c86fc__</span> <span>__COPY_s5136a6b8079683__</span>
+    <span>__COPY_s36184fa5172f39__</span>
+      <span>__COPY_s04968f51ee0482__</span>
+        <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_sa13f96933e6d12__</span>
+          <span>__COPY_sa08a30338e824c__</span> <span>__COPY_se4eeceec13c49a__</span>
+          <span>__COPY_s8ff7327fcdf50a__</span>__COPY_sc4ebc7684be8c9__<span>__COPY_s0bb2388cc80f97__</span>__COPY_s0a07f659461970__<span>__COPY_s016ae398a67dbf__</span>__COPY_s25f995a1846097__<span>__COPY_scab2be2b3a2ed1__</span>
+            <span>__COPY_s2629ac0e8d90da__</span>
+              <span>__COPY_seeaf4b13d57e7a__</span> <span>__COPY_s6b86b273ff34fc__</span>
+              <span>__COPY_s2aa1b4a0dfba79__</span> <span>__COPY_s1a6562590ef19d__</span>
+              <span>__COPY_s0b49f0a0adc075__</span> <span>__COPY_se39eef82f61b21__</span>
+</code></pre>
+<p><strong>__COPY_s13f7bb42aeed42__</strong></p>
+<p>__COPY_sf3ddcaf4d05b69__</p>
+<ul>
+<li>
+<p><code>__COPY_sb81425dbf37c07__</code>__COPY_s20dd86b388675a__<code>__COPY_se5adbf66dcc9dd__</code>__COPY_s592f6fd0750e87__<code>__COPY_sa4bd6c5b4ebdb1__</code></p>
+</li>
+<li>
+<p><code>__COPY_sb81425dbf37c07__</code>__COPY_s20dd86b388675a__<code>__COPY_sc86f96f4bd0864__</code>__COPY_s592f6fd0750e87__<code>__COPY_sb2cf3231f7413a__</code></p>
+</li>
+</ul>
+<p>__COPY_s87fa5e73ad6429__</p>
+<ul>
+<li>
+<p>__COPY_sa34a60d25752a6__<code>__COPY_s62e2e8e8ca6013__</code>__COPY_sc4a40ea8fe3562__<code>__COPY_se98ccfc2102a4a__</code>__COPY_sc4a40ea8fe3562__<code>__COPY_sa59900159fd42a__</code></p>
+</li>
+<li>
+<p>__COPY_s9c7d763b1df590__<code>__COPY_s04974f75e8e62f__</code>__COPY_sa78c751a1c3eb1__<code>__COPY_s196da32b34b47b__</code>__COPY_s48a9d32bcc0351__</p>
+</li>
+</ul>
+<h3 id="article-section-16">__COPY_s72fe7a15ad2623__</h3>
+<p>__COPY_sd0ab6ab217ef03__</p>
+<p><strong>__COPY_saccdc3617c33b1__</strong></p>
+<ol>
+<li>
+<p><strong>__COPY_sab51c3cc8bf602__</strong>__COPY_sdb47176ef5f7e5__<a href="https://github.com/Project-HAMi/HAMi/issues/1461" target="_blank" rel="noopener">__COPY_s325fce272e0bcc__</a>__COPY_sf2e44c6c9545f0__</p>
+</li>
+<li>
+<p><strong>__COPY_sd43692a6f58db4__</strong>__COPY_sdcbc68ae9adcba__<a href="https://github.com/Project-HAMi/HAMi/issues/1381" target="_blank" rel="noopener">__COPY_se3e5c11207e8dc__</a>__COPY_sf2e44c6c9545f0__</p>
+</li>
+</ol>
+<p><strong>__COPY_s050a3d24b1f095__</strong></p>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s3bfc269594ef64__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s0a6bb8b01de101__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s2491934e7b4f9e__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_s04968f51ee0482__</span>
+  <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_sec8207a3dde607__</span>
+    <span>__COPY_sa08a30338e824c__</span> <span>__COPY_s0f572998791e3a__</span>
+    <span>__COPY_s8ff7327fcdf50a__</span>__COPY_sc4ebc7684be8c9__<span>__COPY_sf119ddca611246__</span>__COPY_s0a07f659461970__<span>__COPY_sf9cb5b4cc5c002__</span>__COPY_s0a07f659461970__<span>__COPY_sd035a3eae05d97__</span>__COPY_s0a07f659461970__<span>__COPY_se071b69456326a__</span>__COPY_sb5f395e26661ee__<span>__COPY_scab2be2b3a2ed1__</span>
+      <span>__COPY_s2629ac0e8d90da__</span>
+        <span>__COPY_seeaf4b13d57e7a__</span> <span>__COPY_sd4735e3a265e16__</span>
+        <span>__COPY_s2aa1b4a0dfba79__</span> <span>__COPY_s48449a14a4ff7d__</span>
+        <span>__COPY_s0b49f0a0adc075__</span> <span>__COPY_sca902d4a8acbde__</span>
+    <span>__COPY_s8db700617f1959__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s79f23af44c5087__</span>
+      <span>__COPY_s03a5afeabc5c88__</span> <span>__COPY_s22d999cebaf7ea__</span>
+</code></pre>
+<h2 id="article-section-17">__COPY_sb92bc74d3f37d3__</h2>
+<p>__COPY_s972a039b18440f__</p>
+<p><strong>__COPY_sa216964530372f__</strong></p>
+<ol>
+<li>
+<p><strong>__COPY_s753833dcea4dca__</strong>__COPY_sda047c04c9b5e2__<a href="https://github.com/Project-HAMi/HAMi/pull/1518" target="_blank" rel="noopener">__COPY_s484031edd5ecb4__</a>__COPY_sf2e44c6c9545f0__</p>
+<ul>
+<li>__COPY_se3e3989d958684__</li>
+</ul>
+</li>
+<li>
+<p><strong>__COPY_sc00a4a3c81c017__</strong></p>
+<ul>
+<li>__COPY_s76d3400934183a__<a href="https://github.com/Project-HAMi/HAMi/pull/1452" target="_blank" rel="noopener">__COPY_s24d22c0959c363__</a>__COPY_s0a07f659461970__<a href="https://github.com/Project-HAMi/HAMi/pull/1476" target="_blank" rel="noopener">__COPY_s35b5bba55646f8__</a>__COPY_sf2e44c6c9545f0__</li>
+</ul>
+</li>
+<li>
+<p><strong>__COPY_s774def9311b9da__</strong>__COPY_sda047c04c9b5e2__<a href="https://github.com/Project-HAMi/HAMi/pull/1400" target="_blank" rel="noopener">__COPY_s8f5d3f3f378fb2__</a>__COPY_sf2e44c6c9545f0__</p>
+<ul>
+<li>__COPY_s27d4592965a1e5__</li>
+</ul>
+</li>
+<li>
+<p><strong>__COPY_sa71025e6b5ee3f__</strong>__COPY_sda047c04c9b5e2__<a href="https://github.com/Project-HAMi/HAMi/pull/1456" target="_blank" rel="noopener">__COPY_sae7a3d4eb03f01__</a>__COPY_sf2e44c6c9545f0__</p>
+<ul>
+<li>__COPY_s9ec970e0545518__</li>
+</ul>
+</li>
+<li>
+<p><strong>__COPY_scf9c502b645495__</strong>__COPY_sda047c04c9b5e2__<a href="https://github.com/Project-HAMi/HAMi/pull/1478" target="_blank" rel="noopener">__COPY_s8429101ba4afc4__</a>__COPY_sf2e44c6c9545f0__</p>
+<ul>
+<li>__COPY_seab0e028b8403f__</li>
+</ul>
+</li>
+<li>
+<p><strong>__COPY_sc2f8e4bfcb21d6__</strong></p>
+<ul>
+<li>
+<p>__COPY_s7651f57e1cbe75__<a href="https://github.com/Project-HAMi/HAMi/pull/1569" target="_blank" rel="noopener">__COPY_sd80ad0604692a0__</a>__COPY_sf2e44c6c9545f0__</p>
+</li>
+<li>
+<p>__COPY_s71ad0ae162950c__</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>__COPY_s1939b2e200ca47__</strong>__COPY_sda047c04c9b5e2__<a href="https://github.com/Project-HAMi/HAMi/pull/1444" target="_blank" rel="noopener">__COPY_s659f4de7a411e1__</a>__COPY_sf2e44c6c9545f0__</p>
+<ul>
+<li>__COPY_sd66902c863bbfd__</li>
+</ul>
+</li>
+</ol>
+<h2 id="article-section-18">__COPY_s67d22668060e02__</h2>
+<h3 id="article-section-19">__COPY_s72ad23a59620a0__<a href="https://github.com/Project-HAMi/HAMi/pull/1499" target="_blank" rel="noopener">__COPY_s264e9e1eae2ebf__</a>__COPY_sf2e44c6c9545f0__</h3>
+<p>__COPY_sa6630151a200df__</p>
+<h3 id="article-section-20">__COPY_s5a03c5195c9bfe__</h3>
+<p>__COPY_sb867e377ee4b23__</p>
+<h3 id="article-section-21">__COPY_s7a354cf68cb67e__</h3>
+<p>__COPY_s876e3f1c91c6e9__<strong>__COPY_sd5b1dbe4ad3c2b__</strong>__COPY_s3396dd986a1046__</p>
+<p><strong>__COPY_s1e6a2386987b72__</strong></p>
+<pre><code><span>__COPY_sa98799c8ffb947__</span>
+  <span>__COPY_s6fb0a11efebdf0__</span> <span>__COPY_sb5bea41b6c623f__</span>
+  <span>__COPY_s2281c4f8f2a812__</span> <span>__COPY_s20dd71177e28ef__</span>
+</code></pre>
+<h3 id="article-section-22">__COPY_s128826910049f8__</h3>
+<p>__COPY_sc2e621db99432c__</p>
+<h2 id="article-section-23">__COPY_se399fab2c45518__</h2>
+<p>__COPY_s1c2ce451934c3f__</p>
+<h3 id="article-section-24">__COPY_sae48241f35e259__</h3>
+<p><strong>__COPY_s7653e86ec54f7a__</strong>__COPY_s6943e6f234a456__</p>
+<p><a href="https://www.cncf.io/case-studies/daocloud/" target="_blank" rel="noopener">__COPY_s72f3e7e684ddf2__</a></p>
+<p>__COPY_sc8fdd5df7102f3__</p>
+<h3 id="article-section-25">__COPY_s26cd9a5e044982__</h3>
+<p>__COPY_sc3d74fde9b80e9__<strong>__COPY_sd4f8b700f6d38f__</strong>__COPY_s21e5d5127dce47__</p>
+<h4>__COPY_s25e43b9079c8ed__</h4>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/meetup-shanghai.png" alt="__COPY_s43e4b972ab47fc__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_sd12aa34d9defaf__</figcaption></figure><p></p>
+<p><strong>__COPY_s91e1f3ff65df78__</strong>__COPY_s4798585ac4d501__</p>
+<p>__COPY_s08d967d534db91__</p>
+<p><strong>__COPY_sae5e3d6c2752ee__</strong>__COPY_s1124a6542b241c__</p>
+<h4>__COPY_s7f28ca4a568f3b__</h4>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/meetup-beijing.png" alt="__COPY_s6b120094e26862__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_sfac45e0b9bf618__</figcaption></figure><p></p>
+<p><strong>__COPY_s91e1f3ff65df78__</strong>__COPY_sb556ff4f5de474__</p>
+<p>__COPY_s9f1dcc6764021f__</p>
+<p><strong>__COPY_sae5e3d6c2752ee__</strong>__COPY_s1628c99dcfc487__<strong>__COPY_s0f1870570b35f5__</strong>__COPY_sd53bd6c1b1195e__</p>
+<p><strong>__COPY_s28019f4e64376c__</strong>__COPY_sf114611cd61000__</p>
+<ul>
+<li>
+<p>__COPY_s7d9a7eb50739b1__<a href="https://project-hami.io/zh/blog/hami-meetup-shanghai-2025" target="_blank" rel="noopener">__COPY_safaedb7e2cd327__</a></p>
+</li>
+<li>
+<p>__COPY_sea496cba9b3673__<a href="https://project-hami.io/zh/blog/hami-meetup-beijing-2025" target="_blank" rel="noopener">__COPY_sde6b64dfda8299__</a></p>
+</li>
+</ul>
+<h3 id="article-section-26">__COPY_s8a8a581b5e8270__</h3>
+<p>__COPY_s4cad5164fff0a7__</p>
+<ul>
+<li>
+<p><a href="https://github.com/archlitchi" target="_blank" rel="noopener"><strong>__COPY_sc3e9fc51a6349b__</strong></a>__COPY_sccf327d524a8f0__</p>
+</li>
+<li>
+<p><a href="https://github.com/luohua13" target="_blank" rel="noopener"><strong>__COPY_s5061a5ed17239c__</strong></a>__COPY_s854c065782c982__</p>
+</li>
+<li>
+<p><a href="https://github.com/Shouren" target="_blank" rel="noopener"><strong>__COPY_se2c6bdd1527ebb__</strong></a>__COPY_s26008801009f9c__</p>
+</li>
+<li>
+<p><a href="https://github.com/FouoF" target="_blank" rel="noopener"><strong>__COPY_s28b4681e457e81__</strong></a>__COPY_s785cf721487eae__</p>
+</li>
+<li>
+<p><a href="https://github.com/Kyrie336" target="_blank" rel="noopener"><strong>__COPY_s340db2d66ce0e5__</strong></a>__COPY_scdd966eaa509e2__</p>
+</li>
+<li>
+<p><a href="https://github.com/litaixun" target="_blank" rel="noopener"><strong>__COPY_s55de54073f1819__</strong></a>__COPY_saf29ed103573dc__</p>
+</li>
+<li>
+<p><a href="https://github.com/DSFans2014" target="_blank" rel="noopener"><strong>__COPY_sa8f47417fc51a0__</strong></a>__COPY_s15e39422b760b2__</p>
+</li>
+</ul>
+<p>__COPY_s104d65bbfbfbf7__</p>
+<h3 id="article-section-27">__COPY_s5bd35b7784acdc__</h3>
+<p>__COPY_s20f2b4d60ed00d__</p>
+<ul>
+<li>
+<p><a href="https://github.com/Shouren" target="_blank" rel="noopener"><strong>__COPY_se2c6bdd1527ebb__</strong></a>__COPY_sbd49c0acef5328__<strong>__COPY_s57a69bb394dcc5__</strong>__COPY_s94eef96403fab1__<a href="https://github.com/Project-HAMi/community/issues/33" target="_blank" rel="noopener">__COPY_s6e934e21abc130__</a>__COPY_s3135d4446f68e2__</p>
+</li>
+<li>
+<p><a href="https://github.com/FouoF" target="_blank" rel="noopener"><strong>__COPY_s28b4681e457e81__</strong></a>__COPY_se162197effd389__<strong>__COPY_s3ebb5648c8bcb2__</strong>__COPY_s94eef96403fab1__<a href="https://github.com/Project-HAMi/community/issues/31" target="_blank" rel="noopener">__COPY_s3f29f3b06d2987__</a>__COPY_s58acb553e5e891__</p>
+</li>
+<li>
+<p><a href="https://github.com/DSFans2014" target="_blank" rel="noopener"><strong>__COPY_sa8f47417fc51a0__</strong></a>__COPY_sf6664591c0de8a__<strong>__COPY_sd29f46772c4aaa__</strong>__COPY_s94eef96403fab1__<a href="https://github.com/Project-HAMi/community/issues/29" target="_blank" rel="noopener">__COPY_sc16194b85e08c2__</a>__COPY_s05cc7f83aa8696__</p>
+</li>
+<li>
+<p><a href="https://github.com/Shenhan11" target="_blank" rel="noopener"><strong>__COPY_safb896cfee3cbb__</strong></a>__COPY_s5ed2cbb0dc770e__<strong>__COPY_sd29f46772c4aaa__</strong>__COPY_s94eef96403fab1__<a href="https://github.com/Project-HAMi/community/issues/30" target="_blank" rel="noopener">__COPY_s23ebe469c5b1e6__</a>__COPY_s5ca400bc6f67ac__</p>
+</li>
+</ul>
+<p>__COPY_s104d65bbfbfbf7__</p>
+<h2 id="article-section-28">__COPY_s6f722e9d82e49b__</h2>
+<p>__COPY_sf8413ae6498865__</p>
+<p><strong>__COPY_sa8f9a660e96eee__</strong></p>
+<ul>
+<li>
+<p><strong>__COPY_sd726982cfebc06__</strong>__COPY_s5d8e0e6aae3f74__</p>
+</li>
+<li>
+<p><strong>__COPY_sa3ad5f30896841__</strong>__COPY_saea13519ba40ff__</p>
+</li>
+<li>
+<p><strong>__COPY_sd9abb8167a8954__</strong>__COPY_s89b01d27dbafb8__</p>
+</li>
+</ul>
+<p><strong>__COPY_s74055f23f19637__</strong></p>
+<ul>
+<li>
+<p><strong>__COPY_sf0d6e4dab33172__</strong>__COPY_sd6d1539926fcdc__</p>
+</li>
+<li>
+<p><strong>__COPY_sfc00b1fb2e8b46__</strong>__COPY_s1cfbdfe9574c71__</p>
+</li>
+</ul>
+<p>__COPY_s7cc8d1d8ce9f1b__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-2.8-deep-dive/roadmap-v2.8-to-v2.9.png" alt="__COPY_s2578acf76bdb05__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s96e0dd82ff8262__</figcaption></figure><p></p>
+<p>__COPY_s7392349794681a__</p>
+<p>__COPY_sfee394d88af412__<strong>__COPY_s62b84d6cb70df8__</strong>__COPY_sf9e98dfc5afb1c__</p>
+<h2 id="article-section-29">__COPY_s50148c86e73a7d__</h2>
+<p><strong>__COPY_sa18d3a5efd7497__</strong></p>
+<pre><code>__COPY_s1c76dd031a2c4b__</code></pre>
+<p><strong>__COPY_s6e4d82f446e378__</strong></p>
+<p><a href="https://github.com/Project-HAMi/HAMi/releases/tag/v2.8.0" target="_blank" rel="noopener">__COPY_s6c1c5f143aba47__</a></p>
+<p><strong>__COPY_s3155821b28ae72__</strong></p>
+<p><a href="https://project-hami.io/docs/" target="_blank" rel="noopener">__COPY_se34454115d594f__</a></p></div><div class="article-end"><div><strong>__COPY_sb1020f39199b87__</strong><p>__COPY_se5b544c298d359__</p></div><a class="textlink" href="https://dynamia.ai/zh/blog/hami-2.8-deep-dive" target="_blank" rel="noopener">__COPY_s3fb2cb64dbe12c__</a><a class="textlink" href="#/blog">__COPY_s18e04c3ffa2763__</a></div></div><aside class="article-toc" aria-label="__COPY_sb648a68085bab9__"><strong>__COPY_sc6ea3ff4811369__</strong><a href="#/blog/hami-2.8-deep-dive?section=article-section-0" data-article-section="article-section-0"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_sf8b9b1bf4a7525__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-3" data-article-section="article-section-3"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_sa8f9a660e96eee__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-10" data-article-section="article-section-10"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_s41822b9f829c86__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-14" data-article-section="article-section-14"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_s64b3c603e09824__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-17" data-article-section="article-section-17"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_s06d9ade05ad6cf__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-23" data-article-section="article-section-23"><span aria-hidden="true">__COPY_saacd834b5cdc64__</span>__COPY_s4702faee777043__</a><a href="#/blog/hami-2.8-deep-dive?section=article-section-28" data-article-section="article-section-28"><span aria-hidden="true">__COPY_s19b100ab7725c6__</span>__COPY_s7bf2c36f416291__</a></aside></div></div></div></article><section class="article-related"><div class="wrap"><div class="intro"><div><div class="eyebrow">__COPY_scadf9eb6ac5351__</div><h2>__COPY_s39cd3d32608ec6__</h2></div><a class="textlink" href="#/blog">__COPY_sd05489f448012e__<span class="arrow">__COPY_s161660030aa6c9__</span></a></div><div class="grid3"><a class="blog-card" href="#/blog/hami-v210-deep-dive"><div class="content-cover editorial-cover" data-category="版本发布"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/dynamia-creators.png" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_sed902d245f0694__</span></div><div class="cover-title-block"><strong>__COPY_s28769ee9669504__</strong><span class="cover-subtitle">__COPY_sf7025373dec2cb__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_sed902d245f0694__</span><time datetime="2026-08-21">__COPY_sd7b8ab7dc0f86b__</time></div><h2>__COPY_sd856b9b36f10bd__</h2><span class="read-more">__COPY_s74c3740c891c8c__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/hami-v29-deep-dive"><div class="content-cover editorial-cover" data-category="版本发布"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/dynamia-creators.png" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_sed902d245f0694__</span></div><div class="cover-title-block"><strong>__COPY_sf47e3ad6d7e0ad__</strong><span class="cover-subtitle">__COPY_sf7025373dec2cb__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_sed902d245f0694__</span><time datetime="2026-05-11">__COPY_sbbfa7a6e519720__</time></div><h2>__COPY_s404e31ac5ea07e__</h2><span class="read-more">__COPY_s74c3740c891c8c__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/hami-v2.7.0"><div class="content-cover editorial-cover" data-category="版本发布"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/dynamia-creators.png" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_sed902d245f0694__</span></div><div class="cover-title-block"><strong>__COPY_s4020fad8baa53b__</strong><span class="cover-subtitle">__COPY_sf7025373dec2cb__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_sed902d245f0694__</span><time datetime="2025-10-09">__COPY_sa92ef76314eee7__</time></div><h2>__COPY_sbda8a32da6f0d5__</h2><span class="read-more">__COPY_s74c3740c891c8c__<span>__COPY_s161660030aa6c9__</span></span></div></a></div></div></section>

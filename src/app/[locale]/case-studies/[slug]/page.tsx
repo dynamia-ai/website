@@ -1,3 +1,4 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -68,7 +69,7 @@ export function generateStaticParams() {
   return SLUGS.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+async function legacyMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const tPage = await getTranslations({ locale, namespace: 'caseStudiesPage' });
   const mt = await getTranslations({ locale, namespace: 'Metadata' });
@@ -107,7 +108,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function CaseStudyPage({ params }: PageProps) {
+async function CaseStudyPage({ params }: PageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
@@ -116,4 +117,18 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   const CaseComponent = config.component;
   return <CaseComponent />;
+}
+
+export default async function MigratedPage(props: Parameters<typeof CaseStudyPage>[0]) {
+  const resolved = await props.params;
+  const route = `/cases/${resolved.slug === "ke-holdings" ? "ke-holdings-inc" : resolved.slug}`;
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <CaseStudyPage {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = `/cases/${resolved.slug === "ke-holdings" ? "ke-holdings-inc" : resolved.slug}`;
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }

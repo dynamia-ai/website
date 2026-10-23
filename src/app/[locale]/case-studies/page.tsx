@@ -1,3 +1,4 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { use } from "react";
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
@@ -10,7 +11,7 @@ import { routing } from "@/i18n/routing";
 import { CASE_STUDY_LOCALES } from "@/lib/seo-routes";
 import CaseStudiesList from "@/components/case-studies/CaseStudiesList";
 
-export default function CaseStudiesPage({
+function CaseStudiesPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -21,7 +22,7 @@ export default function CaseStudiesPage({
   return <CaseStudiesList />;
 }
 
-export async function generateMetadata({
+async function legacyMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -54,4 +55,18 @@ export async function generateMetadata({
       languages: localizedAlternates("/case-studies", CASE_STUDY_LOCALES),
     },
   };
+}
+
+export default async function MigratedPage(props: Parameters<typeof CaseStudiesPage>[0]) {
+  const resolved = await props.params;
+  const route = `/cases`;
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <CaseStudiesPage {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = `/cases`;
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }

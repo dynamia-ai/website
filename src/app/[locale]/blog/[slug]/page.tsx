@@ -1,3 +1,4 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
@@ -24,7 +25,7 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
+async function legacyMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -85,7 +86,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
+async function BlogPostPage({ params }: PageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
@@ -120,4 +121,18 @@ export default async function BlogPostPage({ params }: PageProps) {
       <BlogPostClient post={{ ...primaryPost, content: result.html, toc: result.toc }} />
     </>
   );
+}
+
+export default async function MigratedPage(props: Parameters<typeof BlogPostPage>[0]) {
+  const resolved = await props.params;
+  const route = `/blog/${resolved.slug}`;
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <BlogPostPage {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = `/blog/${resolved.slug}`;
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }

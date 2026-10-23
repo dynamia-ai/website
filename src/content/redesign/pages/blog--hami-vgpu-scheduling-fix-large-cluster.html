@@ -1,0 +1,154 @@
+<article class="blog-detail"><div class="article-hero"><div class="article-shell"><nav class="breadcrumb" aria-label="__COPY_s6770d01e7d15fe__"><a href="#/">__COPY_s203c08e0d44ac3__</a><span>__COPY_s8a5edab2826324__</span><a href="#/blog">__COPY_s7855e5e9727ea5__</a><span>__COPY_s8a5edab2826324__</span><span>__COPY_se2d4efa59baa78__</span></nav><div class="article-kicker"><span class="tag">__COPY_se2d4efa59baa78__</span><time datetime="2026-06-01">__COPY_s9222f2233b725a__</time></div><h1>__COPY_sdd605f6f73d75e__</h1><div class="article-author-row"><div class="blog-card-author"><span class="author-initial" aria-hidden="true">__COPY_sd64652be29abc2__</span><div class="blog-author-info"><span class="blog-author-name">__COPY_s402672b0db7278__</span><span class="blog-author-title">__COPY_s7d4146ca082798__</span></div></div><div class="article-share"><button type="button" data-copy-article="https://dynamia.ai/zh/blog/hami-vgpu-scheduling-fix-large-cluster" aria-label="__COPY_s2e312abf3b5bec__"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"></rect><path d="M16 8V3H3v13h5"></path></svg>__COPY_s2e312abf3b5bec__</button><span class="article-share-status" role="status" aria-live="polite"></span></div></div><div class="article-cover"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="__COPY_sc6e4b855eea2d7__"><span class="cover-category">__COPY_se2d4efa59baa78__</span></div><div class="cover-title-block"><strong>__COPY_s24fec467886a9f__</strong><span class="cover-subtitle">__COPY_s537a018b54b536__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div></div><p class="article-deck">__COPY_s3ec00f19c03112__</p></div></div><div class="article-reading"><div class="article-shell"><div class="article-reading-grid"><div><details class="article-toc-mobile"><summary>__COPY_s475569a6cc1e32__</summary><nav aria-label="__COPY_s3b2d0794ee6f67__"><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-0" data-article-section="article-section-0"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_s4050c076bc304e__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-1" data-article-section="article-section-1"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_sd4d0879f6de940__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-5" data-article-section="article-section-5"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_s09a5e42ee4c302__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-6" data-article-section="article-section-6"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_s411e477f710cb9__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-9" data-article-section="article-section-9"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_sc43f6fba95afeb__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-16" data-article-section="article-section-16"><span aria-hidden="true">__COPY_saacd834b5cdc64__</span>__COPY_s04830193b408ee__</a></nav></details><div class="article-prose"><p>__COPY_sbc1b12ef583c5b__<strong>__COPY_s402672b0db7278__</strong>__COPY_sd2d40459269a85__</p>
+<h2 id="article-section-0">__COPY_s6a11331de90034__</h2>
+<p>__COPY_s295260bfd0f73d__<strong>__COPY_sda6206332a818c__</strong>__COPY_sfdf8864fc614f8__</p>
+<h2 id="article-section-1">__COPY_sccc0fbab1a2ec3__</h2>
+<h3 id="article-section-2">__COPY_s546ad5ec1bb132__</h3>
+<p>__COPY_s19a71cacdc6ea4__</p>
+<ul>
+<li><code>__COPY_sb6e7d86d9a963a__</code>__COPY_sd82c3ea589382e__</li>
+<li><code>__COPY_s69a0b82b64ac11__</code>__COPY_s07e97e0a6f9099__</li>
+</ul>
+<p><strong>__COPY_s2964402802e6b5__</strong></p>
+<pre><code>__COPY_s0efb1746cb2ebe__</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><table><thead><tr><th>__COPY_s49ecd0e342d6d2__</th><th>__COPY_s8e5c1c8ce04b74__</th></tr></thead><tbody><tr><td><code>__COPY_sa2a4e8b06cb068__</code></td><td>__COPY_s1141355afa71fe__</td></tr><tr><td><code>__COPY_s4a44dc15364204__</code></td><td>__COPY_s140d23f2e347ad__</td></tr><tr><td><code>__COPY_sd196d59bf4f8f8__</code></td><td>__COPY_sa81a8278bc9468__</td></tr><tr><td><code>__COPY_sf280af91daf222__</code></td><td>__COPY_sb28294ee24887d__</td></tr><tr><td><code>__COPY_sb5bea41b6c623f__</code></td><td>__COPY_s8c2544cd6b9c6f__</td></tr><tr><td><code>__COPY_s0114fed7998934__</code></td><td>__COPY_s778cf99ef2bed8__</td></tr></tbody></table></div>
+<h3 id="article-section-3">__COPY_sebc81ccf76980d__</h3>
+<p>__COPY_s49664c94686927__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-vgpu-scheduling-fix-large-cluster/resource-view.png" alt="__COPY_sebc81ccf76980d__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_sbdf660865b08d5__</figcaption></figure><p></p>
+<h3 id="article-section-4">__COPY_scb7ca83d90e626__</h3>
+<p>__COPY_s85f6e6f380df36__</p>
+<ol>
+<li><strong>__COPY_sc6383466995006__</strong>__COPY_s117f5e7c6739e0__<code>__COPY_sb526bc25520b4c__</code>__COPY_sd727b203dc9d4f__</li>
+<li><strong>__COPY_s95dcb9230c60bf__</strong>__COPY_s6d82c9074124a1__</li>
+</ol>
+<p><strong>__COPY_s7178a38496ae60__</strong></p>
+<ul>
+<li>__COPY_s6ceff4babdcfdb__<code>__COPY_s52ccb203d3e231__</code>__COPY_sa60fe018d9a27c__<code>__COPY_sc74a144d82beeb__</code></li>
+<li>__COPY_s6ceff4babdcfdb__<code>__COPY_sc74a144d82beeb__</code>__COPY_se721c0f8f4fe9d__</li>
+<li>__COPY_s6ceff4babdcfdb__<code>__COPY_sc74a144d82beeb__</code>__COPY_s75bc7ac5d5ab99__<code>__COPY_se76b7a9774bc68__</code></li>
+<li>__COPY_s6ceff4babdcfdb__<code>__COPY_se76b7a9774bc68__</code>__COPY_s85ea4baa557e67__</li>
+</ul>
+<p><strong>__COPY_s21ffbfdbf07d04__</strong></p>
+<pre><code><span>__COPY_s935f68319d4f22__</span>__COPY_s92b5672ad2fbad__<span>__COPY_sceb742a0f489f9__</span>__COPY_sbafc6c96defbc1__<span>__COPY_sb17e235e3e3802__</span>__COPY_sfb1556d78d9d13__<span>__COPY_s080390646b2497__</span>__COPY_sc8d2eb540aa387__<span>__COPY_s6b86b273ff34fc__</span>__COPY_s36c4e7c8fd9cac__<span>__COPY_s935f68319d4f22__</span>__COPY_s7c8d990a5387fb__<span>__COPY_s39fa9ec190eee7__</span>__COPY_sd593de09aba210__<span>__COPY_s413e4ec47b4e7f__</span>__COPY_sa6dc26b0624113__<span>__COPY_sd05aa2a15fb3c4__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s60be9861750fac__</span>__COPY_s245843abef9e72__<span>__COPY_s473287f8298dba__</span>__COPY_scfae0d4248f714__<span>__COPY_s473287f8298dba__</span>__COPY_s7310f561ae03a3__<span>__COPY_sdd993d5c2cf765__</span>__COPY_seda7cfceef8631__<span>__COPY_sb17e235e3e3802__</span>__COPY_se85b9cb6ecf0e5__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_sc93a3d6ada7475__<span>__COPY_s7dd530c4d36da4__</span> <span>__COPY_s935f68319d4f22__</span>__COPY_s92b5672ad2fbad__<span>__COPY_sa9a33bf98ae228__</span>__COPY_s3c50a97a62667b__<span>__COPY_s7187f0675eb382__</span> <span>__COPY_s5da3a4c7f11794__</span>__COPY_s0155aea8d890cf__<span>__COPY_s7dd530c4d36da4__</span>__COPY_s96a25682d08205__<span>__COPY_sd05aa2a15fb3c4__</span>__COPY_s32ebb1abcc1c60__<span>__COPY_s60be9861750fac__</span>__COPY_s245843abef9e72__<span>__COPY_s473287f8298dba__</span>__COPY_scfae0d4248f714__<span>__COPY_s473287f8298dba__</span>__COPY_s35da14476093dc__<span>__COPY_s17dae62ba8a4ce__</span>__COPY_seda7cfceef8631__<span>__COPY_sb17e235e3e3802__</span>__COPY_s5b0c04d1f77df2__</code></pre>
+<p><strong>__COPY_s49723ba66bc54a__</strong>__COPY_se880d7e5d4f4a7__<strong>__COPY_s11bf055f2523b8__</strong>__COPY_seb0d5884569b39__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-vgpu-scheduling-fix-large-cluster/handshake-frequency.png" alt="__COPY_s7bde1b7b1a05e9__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s213d115a75b0bb__</figcaption></figure><p></p>
+<h2 id="article-section-5">__COPY_s252406dc88ede0__</h2>
+<p>__COPY_s2a0dfe07e596a1__</p>
+<ol>
+<li><strong>__COPY_s33e7a0c41a32c5__</strong>__COPY_sef5586b345d9c7__<strong>__COPY_s5f388221398cd5__</strong></li>
+<li><strong>__COPY_s264aae19907e07__</strong>__COPY_s53c450e3b6e5ba__<strong>__COPY_s04c099054f64bb__</strong></li>
+<li><strong>__COPY_sfa47702c8b979b__</strong>__COPY_s08dc5081a4fac7__</li>
+<li><strong>__COPY_se24349df97169c__</strong>__COPY_sa795aee8aba5a9__<strong>__COPY_se2905fc8b1009a__</strong></li>
+</ol>
+<p><strong>__COPY_sf830e829717d54__</strong></p>
+<ul>
+<li>__COPY_s07b7d118bec586__<strong>__COPY_s6547eddf7bc0a4__</strong>__COPY_s868d6b89432eb6__</li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-vgpu-scheduling-fix-large-cluster/scheduling-period-52s.png" alt="__COPY_s9f5c8904c6d9e7__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s0bbb3735d7dde3__</figcaption></figure><p></p>
+<ul>
+<li>__COPY_sbe34c44209ffbf__<strong>__COPY_s35d4842eb35945__</strong>__COPY_s4ea38fd74bf4d9__</li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-vgpu-scheduling-fix-large-cluster/patch-delay-260.png" alt="__COPY_sc8fb4723015521__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s652061d8103748__</figcaption></figure><p></p>
+<ul>
+<li>__COPY_s78af182306063a__</li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-vgpu-scheduling-fix-large-cluster/view-timeout.png" alt="__COPY_sb884597c1ec738__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_sedc997b08dd814__</figcaption></figure><p></p>
+<ul>
+<li>__COPY_s0bfe9ad2abe8bd__<strong>__COPY_s60db4d9a29f8b6__</strong></li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-vgpu-scheduling-fix-large-cluster/50s-before-task.png" alt="__COPY_sb81f8596be05c7__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s2ad83d41944694__</figcaption></figure><p></p>
+<h2 id="article-section-6">__COPY_s19b4f568d8b3ed__</h2>
+<h3 id="article-section-7">__COPY_s46321499a93fdd__</h3>
+<p>__COPY_s1579c075926fee__<code>__COPY_sb6e7d86d9a963a__</code>__COPY_s20d247753c4cb9__</p>
+<h3 id="article-section-8">__COPY_sab5a168ccfb3de__</h3>
+<p><strong>__COPY_s7d0280f8622759__</strong></p>
+<ul>
+<li>__COPY_s339ea2eeb525e2__</li>
+</ul>
+<p><strong>__COPY_s65f10d7440cee3__</strong></p>
+<ul>
+<li>__COPY_sd763c8f36471b6__<code>__COPY_s5738c737d65145__</code>__COPY_s8c65cdbfa29b65__</li>
+</ul>
+<p><strong>__COPY_s3cebf5e9235fbb__</strong></p>
+<ul>
+<li>__COPY_sdfe7197dbf0156__</li>
+</ul>
+<p><strong>__COPY_sfbd1e4715ff483__</strong></p>
+<ul>
+<li>__COPY_s7e33e800e729c0__</li>
+</ul>
+<p>__COPY_s741567d9446190__</p>
+<h2 id="article-section-9">__COPY_s6cfe48e65fdae3__</h2>
+<h3 id="article-section-10">__COPY_sa0c127ab9e1db0__</h3>
+<p>__COPY_s4f5222ac72cffe__</p>
+<pre><code>__COPY_s2a44e1ddc0bb30__</code></pre>
+<h3 id="article-section-11">__COPY_sd7dc55e1802fbb__</h3>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-vgpu-scheduling-fix-large-cluster/dp-pod-stuck.png" alt="__COPY_sf6d587d5712c14__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_sd298ec685e6407__</figcaption></figure><p></p>
+<p><strong>__COPY_sc43f6fba95afeb__</strong>__COPY_s5bfb5a8afb8c1e__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-vgpu-scheduling-fix-large-cluster/dp-restart-result.png" alt="__COPY_s1f97b7ad6c4fbf__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s8b8079c257982a__</figcaption></figure><p></p>
+<h3 id="article-section-12">__COPY_s5c61e130683bcd__</h3>
+<p><strong>__COPY_scaec1bd4723fa1__</strong>__COPY_se464d43b8c9cd4__</p>
+<p><strong>__COPY_sc43f6fba95afeb__</strong>__COPY_s4a3ccba4622e6a__</p>
+<h3 id="article-section-13">__COPY_s5e6046b23a8420__</h3>
+<p><strong>__COPY_s9aa814143bd786__</strong></p>
+<ul>
+<li>__COPY_s5d590e074b7960__</li>
+<li>__COPY_s47a1406b7561d1__</li>
+</ul>
+<p><strong>__COPY_s34599e70de962f__</strong></p>
+<ul>
+<li>__COPY_s800d19929a3cae__</li>
+<li>__COPY_s7f4fd88cb3745c__</li>
+</ul>
+<p><strong>__COPY_s66f84fb47b7b4f__</strong></p>
+<ul>
+<li>__COPY_s6e0118d72d2912__</li>
+<li>__COPY_s3bc6552ce00a56__</li>
+</ul>
+<p><strong>__COPY_sc43f6fba95afeb__</strong>__COPY_s401316ceebef8f__</p>
+<h3 id="article-section-14">__COPY_s4860370970dd1e__</h3>
+<p><strong>__COPY_scaec1bd4723fa1__</strong>__COPY_s6e35daad5bd7e9__</p>
+<p><strong>__COPY_sc43f6fba95afeb__</strong>__COPY_sa493140cec6cb1__</p>
+<h3 id="article-section-15">__COPY_sbb70b9777954a1__</h3>
+<p><strong>__COPY_scaec1bd4723fa1__</strong>__COPY_sf114611cd61000__</p>
+<ol>
+<li>__COPY_sfddb0affdda791__</li>
+<li>__COPY_sa8c03ae58145f9__</li>
+<li>__COPY_sf6a1dac15c3ae3__</li>
+<li>__COPY_s6ef90a8debc714__</li>
+</ol>
+<p><strong>__COPY_sc43f6fba95afeb__</strong>__COPY_s0a661822fc692f__</p>
+<h2 id="article-section-16">__COPY_s04830193b408ee__</h2>
+<p>__COPY_s088bd4848d7cc8__</p></div><div class="article-end"><div><strong>__COPY_s2bebe26c9fc5d2__</strong><p>__COPY_sc2f794ad7de9a9__</p></div><a class="textlink" href="https://dynamia.ai/zh/blog/hami-vgpu-scheduling-fix-large-cluster" target="_blank" rel="noopener">__COPY_s28a9b82be369f5__</a><a class="textlink" href="#/blog">__COPY_sd0e1d306fe7cf8__</a></div></div><aside class="article-toc" aria-label="__COPY_s3b2d0794ee6f67__"><strong>__COPY_s421185c97f13fb__</strong><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-0" data-article-section="article-section-0"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_s4050c076bc304e__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-1" data-article-section="article-section-1"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_sd4d0879f6de940__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-5" data-article-section="article-section-5"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_s09a5e42ee4c302__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-6" data-article-section="article-section-6"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_s411e477f710cb9__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-9" data-article-section="article-section-9"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_sc43f6fba95afeb__</a><a href="#/blog/hami-vgpu-scheduling-fix-large-cluster?section=article-section-16" data-article-section="article-section-16"><span aria-hidden="true">__COPY_saacd834b5cdc64__</span>__COPY_s04830193b408ee__</a></aside></div></div></div></article><section class="article-related"><div class="wrap"><div class="intro"><div><div class="eyebrow">__COPY_scadf9eb6ac5351__</div><h2>__COPY_s4ec2a77b1ae3ba__</h2></div><a class="textlink" href="#/blog">__COPY_s1ab08ebf532419__<span class="arrow">__COPY_s161660030aa6c9__</span></a></div><div class="grid3"><a class="blog-card" href="#/blog/hami-dra-quickstart"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="__COPY_sc6e4b855eea2d7__"><span class="cover-category">__COPY_se2d4efa59baa78__</span></div><div class="cover-title-block"><strong>__COPY_saa7fd00290057e__</strong><span class="cover-subtitle">__COPY_s537a018b54b536__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_se2d4efa59baa78__</span><time datetime="2026-05-22">__COPY_sa3366d2f25e775__</time></div><h2>__COPY_s1afc95974cc093__</h2><span class="read-more">__COPY_s380cbe6da507af__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/kcd-beijing-2026-dra-gpu-scheduling"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="__COPY_sc6e4b855eea2d7__"><span class="cover-category">__COPY_se2d4efa59baa78__</span></div><div class="cover-title-block"><strong>__COPY_s9d16527d1f8377__</strong><span class="cover-subtitle">__COPY_s537a018b54b536__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_se2d4efa59baa78__</span><time datetime="2026-03-23">__COPY_sa00218f2f7e1a1__</time></div><h2>__COPY_s6722572c52fae8__</h2><span class="read-more">__COPY_s380cbe6da507af__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/flex-ai-compute-virtualization-engineering-delivery"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="__COPY_sc6e4b855eea2d7__"><span class="cover-category">__COPY_se2d4efa59baa78__</span></div><div class="cover-title-block"><strong>__COPY_s170667934b4df8__</strong><span class="cover-subtitle">__COPY_s537a018b54b536__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_se2d4efa59baa78__</span><time datetime="2026-01-19">__COPY_s2dbdd1493a3f44__</time></div><h2>__COPY_s40a6459fbea852__</h2><div class="blog-card-author" aria-label="__COPY_s29847860fbcac3__"><img class="blog-author-avatar" src="/redesign/assets/ba0663d2e9e2f4484a78.png" alt="__COPY_s61fca22430aa22__" loading="lazy"><div class="blog-author-info"><span class="blog-author-name">__COPY_s8bd95e9c9c246d__<small>__COPY_se773bb071fa791__</small></span><span class="blog-author-title">__COPY_se7dc0652383065__</span><span class="blog-author-community">__COPY_s5c56a40ebbf570__</span></div></div><span class="read-more">__COPY_s380cbe6da507af__<span>__COPY_s161660030aa6c9__</span></span></div></a></div></div></section>

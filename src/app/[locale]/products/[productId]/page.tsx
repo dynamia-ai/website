@@ -1,3 +1,4 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -13,7 +14,7 @@ export function generateStaticParams() {
   return getProductIds().map((productId) => ({ productId }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+async function legacyMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, productId } = await params;
   const product = getProductById(productId);
   if (!product) return { title: 'Product Not Found' };
@@ -41,9 +42,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function ProductDetailPage({ params }: PageProps) {
+async function ProductDetailPage({ params }: PageProps) {
   const { locale, productId } = await params;
   setRequestLocale(locale);
   if (!getProductById(productId)) notFound();
   return <EnterpriseDetailClient productId={productId} />;
+}
+
+export default async function MigratedPage(props: Parameters<typeof ProductDetailPage>[0]) {
+  const resolved = await props.params;
+  const route = resolved.productId === 'hami-enterprise' ? '/enterprise' : resolved.productId === 'hami-ai-platform' ? '/platform' : '';
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <ProductDetailPage {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = resolved.productId === 'hami-enterprise' ? '/enterprise' : resolved.productId === 'hami-ai-platform' ? '/platform' : '';
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }

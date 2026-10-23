@@ -77,6 +77,7 @@ const ConsentAwareAnalytics: React.FC = () => {
   const gtagConsentJson = JSON.stringify(getGtagConsentUpdate(consent));
 
   useEffect(() => {
+    if (['localhost','127.0.0.1','[::1]'].includes(window.location.hostname)) return;
     const applyConsent = (nextConsent: CookieConsentRecord | null) => {
       setConsent(nextConsent);
       updateLoadedGtagConsent(nextConsent);

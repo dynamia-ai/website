@@ -1,24 +1,24 @@
 ---
-title: "HAMi AI Platform: Installation and Onboarding Guide"
+title: "Dynamia AI Platform for HAMi: Installation and Onboarding Guide"
 productId: "hami-ai-platform"
 version: "v2.9.0"
 lastUpdated: "2026-05-20"
 language: "en"
-description: "Deploy HAMi AI Platform on Kubernetes, including component dependencies, HAMi activation, and verification steps."
+description: "Deploy Dynamia AI Platform for HAMi on Kubernetes, including component dependencies, HAMi activation, and verification steps."
 ---
 
-> This guide is for SREs and platform engineers. It walks through deploying **HAMi AI Platform** to a Kubernetes cluster and integrating with HAMi, Prometheus, NVIDIA GPU Operator, Gateway API, and other foundational components.
+> This guide is for SREs and platform engineers. It walks through deploying **Dynamia AI Platform for HAMi** to a Kubernetes cluster and integrating with HAMi, Prometheus, NVIDIA GPU Operator, Gateway API, and other foundational components.
 >
 > ⚠️ **Installation ≠ Activation**
 >
-> After completing the Helm installation in this section, HAMi AI Platform components will be running. However, **HAMi Enterprise's underlying GPU virtualization and scheduling features require a license activation to work properly**.
+> After completing the Helm installation in this section, Dynamia AI Platform for HAMi components will be running. However, **Dynamia Enterprise for HAMi's underlying GPU virtualization and scheduling features require a license activation to work properly**.
 > The installation itself does not depend on a license, so you can complete the deployment first, then apply for and import the license in the subsequent steps.
 >
 > In short: **Install the software first, then obtain the license; vGPU partitioning and scheduling will not work without activation, and verification will fail.**
 
 ## Architecture & Positioning
 
-HAMi AI Platform (Dynamia Intelligent Heterogeneous Compute Scheduling and Virtualization System) is an application platform deployed on top of Kubernetes clusters, providing unified scheduling, tenant quota, monitoring visualization, and developer workspaces for heterogeneous compute. Key characteristics:
+Dynamia AI Platform for HAMi (Dynamia Intelligent Heterogeneous Compute Scheduling and Virtualization System) is an application platform deployed on top of Kubernetes clusters, providing unified scheduling, tenant quota, monitoring visualization, and developer workspaces for heterogeneous compute. Key characteristics:
 
 - **Federated control plane**: connects to the Dynamia cloud HAMi enterprise platform control plane; one tenant manages multiple clusters
 - **Unified management interface**: built-in admin, monitoring, and user consoles
@@ -42,9 +42,9 @@ Run the checks below on **each Kubernetes cluster you plan to onboard**:
 
 > Critical constraint: HAMi ships its own device-plugin and **conflicts with the NVIDIA GPU Operator's built-in device-plugin**. If GPU Operator is installed, you must disable its device-plugin via `--set devicePlugin.enabled=false`.
 
-## Install HAMi Enterprise
+## Install Dynamia Enterprise for HAMi
 
-HAMi AI Platform depends on HAMi Enterprise as the underlying GPU virtualization and scheduling layer. Complete HAMi Enterprise deployment and activation first.
+Dynamia AI Platform for HAMi depends on Dynamia Enterprise for HAMi as the underlying GPU virtualization and scheduling layer. Complete Dynamia Enterprise for HAMi deployment and activation first.
 
 > Two installation paths — choose based on your scenario:
 >
@@ -134,7 +134,7 @@ helm install kantaloupe \
 
 `hami-ai-platform(kantaloupe)` requires configuration for "feature flags", "service exposure", "monitoring metrics collection", etc. It has high configuration flexibility, please configure as needed.
 
-`hami-ai-platform(kantaloupe)` common chart customization options are listed below. For the complete values reference, see: [HAMi AI Platform Helm Values Reference](/attachments/kantaloupe-helm-values).
+`hami-ai-platform(kantaloupe)` common chart customization options are listed below. For the complete values reference, see: [Dynamia AI Platform for HAMi Helm Values Reference](/attachments/kantaloupe-helm-values).
 
 | Parameter | Description | Default |
 |---|---|---|
@@ -150,7 +150,7 @@ helm install kantaloupe \
 | `auth.existingAuthSecret` | Name of an existing Secret containing `jwt-secret` and `bootstrap-admin-password` (recommended for production) | `""` |
 | `monitoring.enabled` | Whether to create monitoring resources such as ServiceMonitor and PrometheusRule | `true` |
 | `monitoring.namespace` | Namespace where monitoring resources (ServiceMonitor, etc.) are created | `monitoring` |
-| `hamiNamespace` | Namespace where HAMi Enterprise is installed | `hami-system` |
+| `hamiNamespace` | Namespace where Dynamia Enterprise for HAMi is installed | `hami-system` |
 | `controllerManager.replicaCount` | controller-manager replica count | `1` |
 | `installCRDs` | Whether to create/update CRD resources during installation | `true` |
 | `fullnameOverride` | Override prefix for all resource names | `kantaloupe` |
@@ -316,7 +316,7 @@ kubectl logs hami-smoke
 
 Expected: `nvidia-smi` shows GPU information with memory capped at 2000 MiB.
 
-### HAMi AI Platform Verification
+### Dynamia AI Platform for HAMi Verification
 
 ```bash
 # 1. Pod status
@@ -326,7 +326,7 @@ kubectl -n kantaloupe-system get pods
 kubectl -n kantaloupe-system get svc
 ```
 
-After the HAMi AI Platform service is exposed, open the site and confirm that both frontend and backend are working properly.
+After the Dynamia AI Platform for HAMi service is exposed, open the site and confirm that both frontend and backend are working properly.
 
 #### Create a Workload
 
@@ -341,7 +341,7 @@ After creation, confirm that all of the following checks pass:
 
    ![Workload list](/images/enterprise-install/hami-ai-platform/workload-list-en.png)
 
-3. **Application details**: basic info, resource overview, GPU Memory Allocation (see [HAMi Enterprise](/products/hami-enterprise) for verification), and monitoring data are correct; GPU and node drill-down pages show correct resource overview and monitoring data
+3. **Application details**: basic info, resource overview, GPU Memory Allocation (see [Dynamia Enterprise for HAMi](/products/hami-enterprise) for verification), and monitoring data are correct; GPU and node drill-down pages show correct resource overview and monitoring data
 
    ![Application details](/images/enterprise-install/hami-ai-platform/workload-detail-en.png)![Application details](/images/enterprise-install/hami-ai-platform/workload-detail-en-2.png)
 
@@ -354,7 +354,7 @@ After creation, confirm that all of the following checks pass:
 | device-plugin pod `CrashLoopBackOff`    | Conflict with NVIDIA's default device-plugin                 | Disable GPU Operator's devicePlugin (`--set devicePlugin.enabled=false`) |
 | Prometheus missing HAMi metrics         | serviceMonitorNamespaceSelector doesn't match ServiceMonitor label | Align `prometheus/prometheus-kube-prometheus-prometheus` `.spec.serviceMonitorSelector` with hami-enterprise serviceMonitor labels |
 | `nvidia-smi` errors                     | GPU driver not ready                                         | Check driver pod status in `gpu-operator` namespace          |
-| HAMi AI Platform pod `ImagePullBackOff` | Wrong image registry in values.yaml                          | Check `image.registry` / `image.repository` configuration    |
+| Dynamia AI Platform for HAMi pod `ImagePullBackOff` | Wrong image registry in values.yaml                          | Check `image.registry` / `image.repository` configuration    |
 
 ## Get Support
 
@@ -362,4 +362,4 @@ After creation, confirm that all of the following checks pass:
 - Sales / Support: 400-026-7800
 - Customers under commercial contract: please use your dedicated support channel for issues
 
-> **Enterprise SLA**: Both HAMi Enterprise and HAMi AI Platform come with 24/7 support, hotfix response, and long-term release maintenance.
+> **Enterprise SLA**: Both Dynamia Enterprise for HAMi and Dynamia AI Platform for HAMi come with 24/7 support, hotfix response, and long-term release maintenance.
