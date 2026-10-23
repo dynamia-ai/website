@@ -22,7 +22,9 @@ export function makeLocalizer(catalog, document) {
         for(const attr of ['alt','title','placeholder','aria-label']) if(node.hasAttribute(attr))node.setAttribute(attr,translate(node.getAttribute(attr)));
         if(node.tagName==='IMG') {
           const src=node.getAttribute('src');
-          const replacement=catalog.assets?.[src];
+          const replacement=node.closest('.brand-cycle-dynamia')
+            ? catalog.animationAssets?.[src] || catalog.assets?.[src]
+            : catalog.assets?.[src];
           if(replacement)node.setAttribute('src',replacement);
         }
       }
