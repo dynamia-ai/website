@@ -1078,48 +1078,41 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 .redesign-site .btn[data-contact]{width:auto;min-width:0;gap:0;justify-content:center;white-space:nowrap}
 .redesign-site .header-actions .btn[data-contact]{padding-inline:20px}
 
-/* Recruitment: concrete role summaries with readable, expandable job descriptions. */
-.job-opening{margin:0 0 16px;border:1px solid var(--line);border-radius:9px;background:var(--white,#fff);overflow:hidden}
-.job-opening:last-child{border:1px solid var(--line)}
-.job-opening summary{display:grid;grid-template-columns:36px minmax(220px,1fr) minmax(160px,250px) 135px;gap:24px;padding:28px 30px;align-items:center}
-.job-opening summary .job-index{display:block;font-size:13px;font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
-.job-opening summary .job-overview small{font-size:11px;color:var(--green-dark);letter-spacing:.08em;margin:0 0 8px}
-.job-opening summary h3{font-size:24px;line-height:1.35;margin:0}
-.job-opening summary .job-overview p{font-size:12px;line-height:1.7;color:var(--muted);margin:10px 0 0}
-.job-opening summary .job-experience{display:block;font-size:12px;line-height:1.9;color:var(--muted)}
-.job-opening summary .job-toggle{display:flex;justify-content:flex-end;gap:14px;color:var(--green-dark);font-size:12px;white-space:nowrap}
-.job-opening summary .job-toggle b{display:block;font-size:26px;line-height:1;transition:transform .2s}
-.job-opening summary:focus-visible{outline:2px solid var(--green-dark);outline-offset:-4px}
-.job-opening[open]{background:#f8faf6}
-.job-opening[open] summary{border-bottom:1px solid var(--line)}
-.job-opening .job-detail{max-width:none;padding:32px 36px 34px 90px}
-.job-content-columns{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.job-content-group h4{font-size:16px;font-weight:600;color:var(--ink);margin:0 0 18px}
-.job-content-group ul{padding:0 0 0 18px;margin:0;list-style:disc}
-.job-content-group li{padding-left:4px;margin:0 0 13px;font-size:14px;line-height:1.95;color:var(--muted);overflow-wrap:anywhere}
-.job-content-group li::marker{color:var(--green-dark);font-size:10px}
-.job-detail>.job-content-group{border-top:1px solid var(--line);padding-top:26px;margin-top:22px}
-:root[data-theme="dark"] .job-opening{background:#161a15}
-:root[data-theme="dark"] .job-opening[open]{background:#1c2119}
-:root[data-theme="dark"] .job-opening summary :is(small,.job-toggle){color:#b4d96d}
+/* Careers: a focused introduction, filterable role cards and direct email applications. */
+.career-intro{text-align:center;padding:88px 0 48px;background:linear-gradient(180deg,#f5f8f1 0%,#fff 100%)}
+.career-intro .wrap{max-width:1120px}.career-page-label{display:inline-block;color:var(--green-dark);font-size:12px;line-height:1.6;letter-spacing:.07em;margin-bottom:20px}
+.career-intro h1{font-size:clamp(34px,4vw,50px);line-height:1.3;letter-spacing:-.025em;font-weight:600;margin:0}
+.career-intro p{max-width:770px;margin:23px auto 0;font-size:16px;line-height:1.9;color:var(--muted)}
+.career-openings{padding:10px 0 86px}.career-openings>.wrap{max-width:1280px}
+.career-openings-heading{text-align:center;max-width:700px;margin:0 auto}.career-openings-heading h2{font-size:31px;line-height:1.4;margin:0}.career-openings-heading p{font-size:15px;line-height:1.9;color:var(--muted);margin:16px 0 0}
+.career-filters{display:flex;justify-content:center;gap:5px;width:fit-content;max-width:100%;padding:5px;margin:30px auto 32px;border-radius:6px;background:#f0f3ed}
+.career-filters button{font-size:14px;font-weight:500;border:0;cursor:pointer;background:transparent;color:var(--muted);padding:11px 28px;border-radius:4px;line-height:1.5;white-space:nowrap}
+.career-filters button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 5px #12362212}
+.career-filters button:focus-visible,.career-details-link:focus-visible{outline:2px solid var(--green-dark);outline-offset:3px}
+.career-role-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+.career-role-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;padding:28px;background:#fff;min-height:345px;transition:border-color .2s,box-shadow .2s}
+.career-role-card[hidden]{display:none}.career-role-card:hover{border-color:#b5cb9c;box-shadow:0 6px 20px #18301106}
+.career-role-heading{padding-bottom:20px;border-bottom:1px solid var(--line)}.career-role-heading>span{font-size:11px;color:var(--green-dark);letter-spacing:.06em}
+.career-role-heading h3{font-size:24px;line-height:1.4;font-weight:600;margin:10px 0 11px}.career-role-heading p{font-size:12px;line-height:1.8;color:var(--muted);min-height:44px;margin:0}
+.career-role-description{font-size:14px;line-height:1.9;color:var(--muted);margin:20px 0 26px}
+.career-card-actions{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:auto}
+.career-card-actions .btn,.career-contact>.btn,.career-dialog-footer .btn{font-size:13px;line-height:22px;min-height:42px;padding:10px 20px;white-space:nowrap}
+.career-details-link{font-size:13px;font-weight:500;color:var(--green-dark);border:0;background:none;cursor:pointer;padding:10px 0;white-space:nowrap}
+.career-contact{padding:50px 56px;background:#f4f7f0;margin-top:52px;border-radius:8px}
+.career-contact h2{font-size:29px;line-height:1.5;margin:0 0 16px}.career-contact p{font-size:15px;line-height:1.9;color:var(--muted);margin:0 0 9px}.career-contact-email{font-size:15px;color:var(--green-dark);font-weight:500}.career-contact>.btn{display:inline-flex;margin-top:24px}
+.career-job-dialog{width:min(860px,calc(100% - 36px));max-height:calc(100dvh - 64px);padding:0;overflow:hidden;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:10px;box-shadow:0 25px 90px #0a182540}
+.career-job-dialog[open]{display:flex;flex-direction:column}.career-job-dialog::backdrop{background:#0e192b80;backdrop-filter:blur(3px)}
+.career-dialog-heading{position:relative;padding:28px 70px 24px 34px;border-bottom:1px solid var(--line);flex-shrink:0}.career-dialog-heading>span{color:var(--green-dark);font-size:12px}.career-dialog-heading h2{font-size:28px;line-height:1.5;margin:7px 0}.career-dialog-heading p{font-size:12px;line-height:1.8;margin:0;color:var(--muted)}
+.career-dialog-close{position:absolute;top:22px;right:22px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:var(--muted);background:transparent;border-radius:5px;width:34px;height:34px;font-size:23px;cursor:pointer}
+.career-dialog-body{padding:28px 34px;overflow-y:auto;min-height:0;overscroll-behavior:contain}
+.career-detail-group+.career-detail-group{margin-top:27px}.career-detail-group h3{font-size:17px;font-weight:600;margin:0 0 15px}.career-detail-group ul{padding:0 0 0 19px;margin:0;list-style:disc}.career-detail-group li{font-size:14px;line-height:1.95;color:var(--muted);padding-left:3px;margin:0 0 12px;overflow-wrap:anywhere}.career-detail-group li::marker{color:var(--green-dark)}
+.career-dialog-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:18px 34px;flex-shrink:0}.career-dialog-footer>a:not(.btn){font-size:13px;color:var(--muted)}
 .redesign-site:not([data-locale="zh"]) #menu-company .nav-card-menu{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media(max-width:1050px){.job-opening summary{grid-template-columns:28px minmax(200px,1fr) 180px 28px;gap:18px;padding:25px 24px}.job-toggle>span{display:none}.job-opening .job-detail{padding:28px 28px 28px 70px}.job-content-columns{gap:30px}}
-@media(max-width:700px){.jobs-head{margin-bottom:25px}.job-opening summary{grid-template-columns:22px minmax(0,1fr) 24px;gap:12px;padding:23px 18px}.job-opening summary .job-index{align-self:start;padding-top:3px}.job-opening summary .job-overview{grid-column:2}.job-opening summary h3{font-size:22px}.job-opening summary .job-toggle{grid-column:3;grid-row:1;align-self:start;padding-top:7px}.job-opening summary .job-experience{grid-column:2;grid-row:2;font-size:11px;margin-top:0}.job-opening summary .job-overview p{font-size:11px}.job-opening .job-detail{padding:25px 22px 21px}.job-content-columns{grid-template-columns:1fr;gap:22px}.job-content-group h4{font-size:15px;margin-bottom:14px}.job-content-group li{font-size:13px;line-height:1.9}.redesign-site:not([data-locale="zh"]) #menu-company .nav-card-menu{grid-template-columns:1fr}}
-.career-application{margin-bottom:54px;padding-bottom:36px;border-bottom:1px solid var(--line)}
-.career-application-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:28px}
-.career-application-heading h2{font-size:27px;line-height:1.4}.career-application-heading p{font-size:13px;color:var(--muted)}
-.career-application-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;list-style:none;margin:0;padding:0}
-.career-application-steps li{display:flex;gap:16px;align-items:flex-start}
-.application-step-number{font-size:12px;color:var(--green-dark);font-weight:600;line-height:25px;font-variant-numeric:tabular-nums}
-.career-application-steps h3{font-size:16px;margin:0 0 10px;line-height:1.5}
-.career-application-steps p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}
-.career-application-email{display:flex;align-items:center;gap:18px;margin-top:25px;font-size:13px}.career-application-email span{color:var(--muted)}
-.career-application-email a{color:var(--green-dark);font-weight:600}
-.job-apply-bar{display:flex;align-items:center;justify-content:space-between;gap:30px;padding-top:25px;margin-top:25px;border-top:1px solid var(--line)}
-.job-apply-bar strong{font-size:14px;color:var(--ink);font-weight:600;line-height:1.7}
-.job-apply-bar p{font-size:12px;color:var(--muted);line-height:1.8;margin:8px 0 0}
-.job-apply-button{white-space:nowrap;flex-shrink:0;min-height:44px;padding:10px 24px;font-size:14px;line-height:24px}
-.job-detail .job-apply-fallback{font-size:12px;line-height:1.8;color:var(--muted);margin:16px 0 0}
-.job-apply-fallback a{color:var(--green-dark);text-decoration:underline;text-underline-offset:3px}
-:root[data-theme="dark"] :is(.application-step-number,.career-application-email a,.job-apply-fallback a){color:#b4d96d}
-@media(max-width:700px){.career-application{margin-bottom:35px;padding-bottom:28px}.career-application-heading{display:block;margin-bottom:23px}.career-application-heading h2{font-size:24px}.career-application-heading p{font-size:12px;margin-top:10px}.career-application-steps{grid-template-columns:1fr;gap:20px}.career-application-steps li{gap:14px}.career-application-steps h3{font-size:15px;margin-bottom:5px}.career-application-steps p{font-size:12px}.career-application-email{align-items:flex-start;flex-direction:column;gap:7px;font-size:12px;margin-top:22px}.job-apply-bar{flex-direction:column;align-items:stretch;gap:20px}.job-apply-button{width:100%;justify-content:center}.job-detail .job-apply-fallback{font-size:11px}}
+:root[data-theme=dark] .career-intro{background:linear-gradient(180deg,#192017,#151515)}
+:root[data-theme=dark] :is(.career-role-card,.career-job-dialog){background:#1b1f19}
+:root[data-theme=dark] :is(.career-contact,.career-filters){background:#20271c}
+:root[data-theme=dark] .career-filters button[aria-pressed=true]{background:#34402a;color:#eff5e8;box-shadow:none}
+:root[data-theme=dark] :is(.career-page-label,.career-role-heading>span,.career-details-link,.career-contact-email,.career-dialog-heading>span){color:#b4d96d}
+:root[data-theme=dark] .career-role-card:hover{border-color:#647c47}
+@media(max-width:1000px){.career-role-grid{gap:18px}.career-role-card{padding:23px}.career-role-heading h3{font-size:22px}.career-card-actions{gap:10px}.career-card-actions .btn{padding:9px 15px}}
+@media(max-width:760px){.career-intro{padding:52px 0 37px}.career-intro h1{font-size:34px;line-height:1.4}.career-intro p{font-size:14px;margin-top:18px}.career-page-label{font-size:11px;margin-bottom:16px}.career-openings{padding:10px 0 55px}.career-openings-heading h2{font-size:27px}.career-openings-heading p{font-size:13px;margin-top:12px}.career-filters{margin:25px auto}.career-filters button{font-size:13px;padding:10px 19px}.career-role-grid{grid-template-columns:1fr;gap:18px}.career-role-card{padding:26px;min-height:0}.career-role-heading h3{font-size:23px}.career-role-heading p{min-height:0}.career-role-description{font-size:13px;margin-bottom:24px}.career-contact{padding:30px 26px;margin-top:30px}.career-contact h2{font-size:23px}.career-contact p,.career-contact-email{font-size:13px}.career-dialog-heading{padding:24px 64px 21px 24px}.career-dialog-heading h2{font-size:25px}.career-dialog-close{right:16px;top:18px}.career-dialog-body{padding:24px}.career-detail-group li{font-size:13px}.career-dialog-footer{padding:16px 24px;gap:14px}.career-dialog-footer>a:not(.btn){font-size:12px}.career-job-dialog{max-height:calc(100dvh - 36px)}.redesign-site:not([data-locale="zh"]) #menu-company .nav-card-menu{grid-template-columns:1fr}}
