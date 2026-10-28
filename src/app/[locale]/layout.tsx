@@ -44,8 +44,9 @@ export default async function RootLayout({
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale === "zh" ? "zh-CN" : locale} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{__html:"try{var t=localStorage.getItem('dynamia-demo-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}catch(e){}"}} />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
         <link
@@ -121,6 +122,7 @@ export default async function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="dynamia-demo-theme"
         >
           <NextIntlClientProvider>
             {children}

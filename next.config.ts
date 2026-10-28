@@ -2,6 +2,10 @@ import { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: process.cwd(),
+  outputFileTracingIncludes: {
+    '/*': ['./src/content/redesign/**/*', './dictionary/redesign/**/*'],
+  },
   images: {
     remotePatterns: [
       {
@@ -14,7 +18,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       ...['', '/en', '/zh', '/de'].flatMap((prefix) => {
-        const targetPrefix = prefix === '/en' ? '' : prefix;
+        const targetPrefix = prefix;
         return [
           { source: `${prefix}/resources/blog`, destination: `${targetPrefix}/blog`, permanent: true },
           { source: `${prefix}/resources/documentation`, destination: 'https://project-hami.io/docs/', permanent: true },

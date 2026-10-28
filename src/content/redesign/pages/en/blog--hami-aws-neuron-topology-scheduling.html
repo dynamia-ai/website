@@ -1,0 +1,120 @@
+<article class="blog-detail"><div class="article-hero"><div class="article-shell"><nav class="breadcrumb" aria-label="__COPY_s13c6b70be42993__"><a href="#/">__COPY_s3a78695388b38b__</a><span>__COPY_s8a5edab2826324__</span><a href="#/blog">__COPY_s8c6bc099534a02__</a><span>__COPY_s8a5edab2826324__</span><span>__COPY_s85184272ec44bd__</span></nav><div class="article-kicker"><span class="tag">__COPY_s85184272ec44bd__</span><time datetime="2025-11-11">__COPY_s4d0468acafb9d3__</time></div><h1>__COPY_sc336b689eeea32__</h1><div class="article-author-row"><div class="blog-card-author"><span class="author-initial" aria-hidden="true">__COPY_s5bf79a6c396636__</span><div class="blog-author-info"><span class="blog-author-name">__COPY_s234f1b97e70059__</span><span class="blog-author-title">__COPY_sd27e8a1e813513__</span></div></div><div class="article-share"><button type="button" data-copy-article="https://dynamia.ai/zh/blog/hami-aws-neuron-topology-scheduling" aria-label="__COPY_sff66f1956b6ac7__"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"></rect><path d="M16 8V3H3v13h5"></path></svg>__COPY_sff66f1956b6ac7__</button><span class="article-share-status" role="status" aria-live="polite"></span></div></div><div class="article-cover"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/dynamia-creators.png" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_s85184272ec44bd__</span></div><div class="cover-title-block"><strong>__COPY_s921d2a388483ad__</strong><span class="cover-subtitle">__COPY_s434e7cd81fe199__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div></div><p class="article-deck">__COPY_se2513d970753e2__</p></div></div><div class="article-reading"><div class="article-shell"><div class="article-reading-grid"><div><details class="article-toc-mobile"><summary>__COPY_sca5bfa7775f7cb__</summary><nav aria-label="__COPY_sbae1aff66c2fff__"><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-0" data-article-section="article-section-0"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_s3152e8ca94a5eb__</a><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-1" data-article-section="article-section-1"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_s014f8890b62a8c__</a><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-2" data-article-section="article-section-2"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_sc51620e1d9edad__</a><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-3" data-article-section="article-section-3"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_sbcdfd3a700b162__</a><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-4" data-article-section="article-section-4"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_sb54896181583c3__</a></nav></details><div class="article-prose"><p>__COPY_s8b1751b2a412e8__<strong>__COPY_s80d7c8e63e3690__</strong>__COPY_se3ee915a8e8c7a__<strong>__COPY_s58b52bbb56860a__</strong>__COPY_s8e78d4e0800016__<strong>__COPY_s63833455806e66__</strong>__COPY_sa791c6ebe19f6c__<strong>__COPY_s1885a5beb692b8__</strong>__COPY_s2f978bc8fec90b__</p>
+<p>__COPY_s52d9d38e081881__</p>
+<p><strong>__COPY_s4b4c706a63b2b9__</strong>__COPY_s18c80b94456caf__<strong>__COPY_s1bcb820cb3f57e__</strong>__COPY_sd746e47129b236__</p>
+<p>__COPY_sae6042950e90d0__<strong>__COPY_sbeecc9b5b3933d__</strong>__COPY_sc17ef7e27742f1__<strong>__COPY_sdeabe7c4b2e0d6__</strong>__COPY_s1fe63e576a0f6d__<strong>__COPY_s1e6c435f44424d__</strong>__COPY_sa847f681fe96d4__<strong>__COPY_sc0c1e61cc47c54__</strong>__COPY_seb0d5884569b39__</p>
+<p>__COPY_sf484589e6b1381__</p>
+<h3 id="article-section-0">__COPY_sd455912a24f2ef__</h3>
+<ol>
+<li><strong>__COPY_s71ef64589640c2__</strong>__COPY_s69d5dc6fc2bc28__<strong>__COPY_s5ad2ad8619d10e__<code>__COPY_s7445c491b2d279__</code>__COPY_sf2e44c6c9545f0__</strong>__COPY_se3ee915a8e8c7a__<strong>__COPY_sa0e841c61accaa__<code>__COPY_sa6831780a9e397__</code>__COPY_sf2e44c6c9545f0__</strong>__COPY_saf2c976b198b35__</li>
+<li><strong>__COPY_s7c58f739e42074__</strong>__COPY_s321986ec032425__</li>
+<li><strong>__COPY_s2d7c95d145d034__</strong>__COPY_s2b92c89cedcc19__</li>
+</ol>
+<h3 id="article-section-1">__COPY_s50f29b2ec2339b__</h3>
+<p>__COPY_s2fd1a8bbfdb862__<strong>__COPY_sc56a38afcf2ff6__</strong>__COPY_s3670d5bd0d1075__</p>
+<p>__COPY_s939036233d46bf__</p>
+<ol>
+<li><strong>__COPY_sa482db253b5f55__</strong>__COPY_s90b9856f51901d__<strong>__COPY_s06c8d2210c1256__</strong>__COPY_seb0d5884569b39__</li>
+<li><strong>__COPY_s660b8a69e09ef3__</strong>__COPY_s14e38779843b38__<code>__COPY_s5feceb66ffc86f__</code>__COPY_sfbdc281c59b0e8__<strong>__COPY_sf579d72a8df359__</strong>__COPY_s764602af96e58c__<code>__COPY_s16a3682fccad27__</code>__COPY_s099c3b2a659986__</li>
+<li><strong>__COPY_s15b1b68cbd71e1__</strong>__COPY_s1e7b6554e7be7e__<code>__COPY_s8ce86a6ae65d36__</code>__COPY_sae5d9242959f15__<strong>__COPY_s7dc1a78625724e__<code>__COPY_s8ce86a6ae65d36__</code>__COPY_s5f99cd3f0dbcc8__</strong>__COPY_s34d569de1e9d3c__</li>
+</ol>
+<h3 id="article-section-2">__COPY_s896dbc147f55b1__</h3>
+<p>__COPY_sbbbd45cadf9eba__</p>
+<h4><strong>__COPY_s52dd35bf5a2fd9__</strong></h4>
+<p>__COPY_s3db4e0e56bc085__</p>
+<ul>
+<li><strong>__COPY_sa482db253b5f55__</strong>__COPY_s0ac3aebf30aa05__<code>__COPY_s1aca80e8b55c80__</code>__COPY_s440937cc0bb549__<code>__COPY_sf5de04aeaa57af__</code>__COPY_s06ecc6fa9c82b3__<code>__COPY_s6b982d3b382f80__</code>__COPY_sc6ed02b1ee7b43__</li>
+<li><strong>__COPY_s660b8a69e09ef3__</strong>__COPY_sc6af6097dabecb__<code>__COPY_sf7b63004b870cd__</code>__COPY_s4d244df8ede423__</li>
+</ul>
+<pre><code><span>__COPY_s29042455f4b247__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_s5960a57aced2a3__</span></span>__COPY_se1400dd155675b__<span>__COPY_sca00fccfb40898__</span>__COPY_sde78d4c4774685__<span>__COPY_s75a1c081ff5ff3__</span>__COPY_s62ef8e2227d6cc__<span>__COPY_s75a1c081ff5ff3__</span>__COPY_s75149ca4f75531__<span>__COPY_s60be9861750fac__</span>__COPY_s245843abef9e72__<span>__COPY_s473287f8298dba__</span>__COPY_s36dc7811a9dca8__<span>__COPY_s6e39d46ef7cd8e__</span>__COPY_s30c1f6489ac5d2__<span>__COPY_s074e5a91616bdc__</span>__COPY_sdb5b4635221aef__<span>__COPY_s0c55359083498e__</span>
+        <span>__COPY_s10c22bcf4c768b__</span> <span>__COPY_sbc2229666b9600__</span>__COPY_s798b4001d4cd8f__<span>__COPY_sae524b54d9b5ac__</span>__COPY_s9df0a3fcece27f__<span>__COPY_sc3f2029bb0eab1__</span>__COPY_s081ec7849f4738__<span>__COPY_sd730f53bee3856__</span>__COPY_s934e93eb867fed__<span>__COPY_s0933fb66729688__</span>__COPY_se69134df947fce__<span>__COPY_s0933fb66729688__</span>__COPY_s81a490a44c5393__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s0a07f659461970__<span>__COPY_s4c03ac3a4cd4fc__</span>__COPY_s20ab5665edd897__<span>__COPY_sb5bea41b6c623f__</span>__COPY_sa3f3ead98fedca__<span>__COPY_s7187f0675eb382__</span>__COPY_sc3ecb98eb2f5af__<span>__COPY_s5da3a4c7f11794__</span>__COPY_s804f89fc0ec98c__</code></pre>
+<h4><strong>__COPY_s6ea6f35a4cb64b__</strong></h4>
+<p>__COPY_s5876404df02ba7__<code>__COPY_s9f872ed43d00d8__</code>__COPY_s6e501a279d7b20__<code>__COPY_sc0f17e54f54143__</code>__COPY_sa6609918b04e2d__</p>
+<h5><strong>__COPY_s1fbbd51f707a7f__</strong></h5>
+<p><code>__COPY_sf5d793985b2a5f__</code>__COPY_se3ee915a8e8c7a__<code>__COPY_se4ec8f00dcccb5__</code>__COPY_s377b97182a60a5__<strong>__COPY_s220d73e3d8aba8__</strong>__COPY_sf40f3075adbaae__<strong>__COPY_s95084f355e6aa9__</strong>__COPY_sdb293f115857bf__<strong>__COPY_s04f13cecbc5059__</strong>__COPY_sa9cc42b4ecbcc9__</p>
+<p>__COPY_sd38f037d93413a__<code>__COPY_sc0f17e54f54143__</code>__COPY_s135957d6a33f91__<code>__COPY_se99270c4fa9f6e__</code>__COPY_sc7c9c107992d4c__<code>__COPY_sc10beb3be5f0b8__</code>__COPY_s69b2931c51eff9__<code>__COPY_sf4d0f1daf4c7f5__</code>__COPY_sa90c61002239a7__</p>
+<p>__COPY_s6778b27b9be760__<code>__COPY_s923682bea6d517__</code>__COPY_s009d2823dcc95f__<code>__COPY_s011ab7251ca876__</code>__COPY_sc8f4ebd30a5108__<code>__COPY_s63cbaf561c188d__</code>__COPY_s61f92de58566ac__<code>__COPY_sc10beb3be5f0b8__</code>__COPY_sd6cd9e2afb4d76__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-aws-neuron-topology/inferentia-ring-topology.png" alt="__COPY_s172587c93385ae__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s6cbbd60f73908c__</figcaption></figure><p></p>
+<h5><strong>__COPY_saa1456643c475c__</strong></h5>
+<p>__COPY_sae6042950e90d0__<code>__COPY_sa524ee84027ca9__</code>__COPY_s000c3b80adb792__<strong>__COPY_s79105ac6a51053__</strong>__COPY_sb2a22e39402c95__<strong>__COPY_sdd28818e5800bd__</strong>__COPY_s729f9a2d259928__</p>
+<p>__COPY_se6f7b6969a1143__<code>__COPY_sc0f17e54f54143__</code>__COPY_s718118af0e60cc__<code>__COPY_s78b49fb2cc2d2e__</code>__COPY_sf52f1a51345db2__</p>
+<p>__COPY_s4e83c08636aedb__<code>__COPY_sc10beb3be5f0b8__</code>__COPY_s6f2b86cd9738cf__<code>__COPY_sa524ee84027ca9__</code>__COPY_s98f761dac71220__<code>__COPY_sc10beb3be5f0b8__</code>__COPY_s8ffc2ec359a2ae__<code>__COPY_sf2f991d74dfbb2__</code>__COPY_sad9464da161a8d__<code>__COPY_s0ebea980ae66bc__</code>__COPY_sad9464da161a8d__<code>__COPY_s7d0ceec09c87c1__</code>__COPY_s009d2823dcc95f__<code>__COPY_sca619b4b14328f__</code>__COPY_s508f563c805d2b__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-aws-neuron-topology/trainium-torus-4cards.png" alt="__COPY_s8bab0b767756e4__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s7e16cd453d06b3__</figcaption></figure><p></p>
+<p>__COPY_sdb7fb72bcf24db__<code>__COPY_s29101ebf1ead68__</code>__COPY_s009d2823dcc95f__<code>__COPY_s29a6d8d4cf1cb1__</code>__COPY_s8b4ce3b4b9d832__</p>
+<p></p><figure><img src="https://dynamia.ai/images/blog/hami-aws-neuron-topology/trainium-torus-8cards.png" alt="__COPY_s43581c35265699__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s8a57565e162178__</figcaption></figure><p></p>
+<p><strong>__COPY_sc51620e1d9edad__</strong></p>
+<pre><code><span>__COPY_s29042455f4b247__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sc0f17e54f54143__</span><span>__COPY_sc6878da8069416__<span>__COPY_s6da88c34ba124c__</span>__COPY_sba5ec51d07a4ac__</span></span>__COPY_s982e9cfa4f3532__<span>__COPY_s6da88c34ba124c__</span>__COPY_s8ad1d08da24a29__<span>__COPY_s75a1c081ff5ff3__</span>
+        <span>__COPY_sd13d3b5646fe28__</span>
+        <span>__COPY_s935f68319d4f22__</span>__COPY_s9e0e94d7f79e38__<span>__COPY_s5feceb66ffc86f__</span>__COPY_sb04fd3e58123d2__<span>__COPY_s473287f8298dba__</span>__COPY_saabf38b3be73af__<span>__COPY_saa046c3b3cc982__</span>
+        <span>__COPY_s935f68319d4f22__</span>__COPY_scdde5248131d04__<span>__COPY_s7bf38eea04927d__</span>__COPY_sb516382dc60d74__<span>__COPY_s2d707d15b05ed1__</span>__COPY_s01c74ac79882e5__<span>__COPY_s75a1c081ff5ff3__</span>
+                <span>__COPY_s0d7a83377fad63__</span>__COPY_scd385b648b1eed__<span>__COPY_s935f68319d4f22__</span> <span>__COPY_s71fa9faaa6f884__</span>__COPY_s527f0c2ead2e20__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s9da1e2c162efe1__<span>__COPY_s7187f0675eb382__</span>__COPY_s50a74c0bc53c54__<span>__COPY_s75a1c081ff5ff3__</span>__COPY_s1da3336dc259ab__<span>__COPY_s6c5e7973dea746__</span>
+        <span>__COPY_s78b49fb2cc2d2e__</span>__COPY_s65a0c3c357e875__<span>__COPY_sbbfcd4160a1e86__</span> <span>__COPY_s6b86b273ff34fc__</span>__COPY_s0a07f659461970__<span>__COPY_s4b227777d4dd1f__</span>__COPY_s0a07f659461970__<span>__COPY_s2c624232cdd221__</span>__COPY_s0a07f659461970__<span>__COPY_sb17ef6d19c7a5b__</span>__COPY_s532b72c178a7ce__<span>__COPY_s75a1c081ff5ff3__</span>
+                        <span>__COPY_s78be1b84ddf34d__</span>__COPY_sa4177502a4adfc__<span>__COPY_s935f68319d4f22__</span> <span>__COPY_s71fa9faaa6f884__</span>__COPY_s527f0c2ead2e20__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s9da1e2c162efe1__<span>__COPY_s7187f0675eb382__</span>__COPY_s390dc9d25ea1ff__<span>__COPY_s75a1c081ff5ff3__</span>__COPY_s5ebefb0e699eb5__<span>__COPY_s7187f0675eb382__</span>__COPY_s982e9cfa4f3532__<span>__COPY_s6da88c34ba124c__</span>__COPY_s3d8e6a3f3561a8__<span>__COPY_sddcb61ecc720a6__</span>__COPY_s0fc5d8ec7d53a9__<span>__COPY_sbbcce303cd37af__</span>
+<span><span>__COPY_sf63827270b1643__</span> <span>__COPY_sc10beb3be5f0b8__</span><span>__COPY_s1be07869b6ad2c__<span>__COPY_s6da88c34ba124c__</span>__COPY_sd5e1804a274959__<span>__COPY_s6da88c34ba124c__</span>__COPY_sba5ec51d07a4ac__</span></span>__COPY_s982e9cfa4f3532__<span>__COPY_s6da88c34ba124c__</span>__COPY_s8ad1d08da24a29__<span>__COPY_s75a1c081ff5ff3__</span>
+        <span>__COPY_s10c22bcf4c768b__</span>__COPY_sbd7d524ee260da__<span>__COPY_s64d493702a9731__</span>
+                <span>__COPY_s935f68319d4f22__</span>__COPY_s1e18f62ea930dd__<span>__COPY_s5feceb66ffc86f__</span>__COPY_s53004e8db496ad__<span>__COPY_s7187f0675eb382__</span>__COPY_s982e9cfa4f3532__<span>__COPY_s6da88c34ba124c__</span>__COPY_sc9a2d1babf1ae8__<span>__COPY_s75a1c081ff5ff3__</span>__COPY_s1da3336dc259ab__<span>__COPY_s7187f0675eb382__</span>__COPY_sea12d4584fdf40__</code></pre>
+<h4><strong>__COPY_s80d4e688d4410f__</strong></h4>
+<p>__COPY_se6a97a7656681c__<code>__COPY_s3aafb42512fdbf__</code>__COPY_s009d2823dcc95f__<code>__COPY_sd41050f4143ad3__</code>__COPY_s431e0532d2e7a2__</p>
+<ul>
+<li>
+<p><strong>__COPY_sc768736eb3f425__<code>__COPY_s7445c491b2d279__</code>__COPY_sf2e44c6c9545f0__</strong>__COPY_sb097253ce332f8__<code>__COPY_s8ce86a6ae65d36__</code>__COPY_s5f393e22a02e49__<code>__COPY_s8ce86a6ae65d36__</code>__COPY_s568fdfae03551e__</p>
+</li>
+<li>
+<p><strong>__COPY_s0bfa31e65f7cda__<code>__COPY_sa6831780a9e397__</code>__COPY_sf2e44c6c9545f0__</strong>__COPY_s4695fe67586912__<strong>__COPY_s8b27e377c1ba4a__</strong>__COPY_sf8bd16d08f42f3__</p>
+<ul>
+<li><strong>__COPY_sa98bc9c7b872fa__</strong>__COPY_se9f1c4b1ec1c12__<strong>__COPY_s6b86b273ff34fc__</strong>__COPY_s8ab3056d888d84__<strong>__COPY_s6b86b273ff34fc__</strong>__COPY_s30c873f0812144__</li>
+<li><strong>__COPY_s4e93b2b6ea876d__</strong>__COPY_se9f1c4b1ec1c12__<strong>__COPY_s6b86b273ff34fc__</strong>__COPY_s8ab3056d888d84__<strong>__COPY_sd4735e3a265e16__</strong>__COPY_s30c873f0812144__</li>
+<li><strong>__COPY_s7806cf44cbb0e8__</strong>__COPY_se9f1c4b1ec1c12__<strong><code>__COPY_s1506383f75b164__</code></strong>__COPY_sd8e63d6086b741__<strong>__COPY_s7b429a20ed3ca6__</strong>__COPY_sda53217f724a83__<strong>__COPY_sd4735e3a265e16__</strong>__COPY_sfa4c054f150cbd__</li>
+</ul>
+</li>
+</ul>
+<p>__COPY_s7f399638fac25d__<code>__COPY_s1506383f75b164__</code>__COPY_s7baa9100d5570d__<strong>__COPY_se1b5252f141ab4__</strong>__COPY_sa80cb0faa926ff__</p>
+<p>__COPY_sd4f61916e21282__</p>
+<h3 id="article-section-3">__COPY_se44d727d8d819c__</h3>
+<h4><strong>__COPY_s9d3e785b9d53aa__</strong></h4>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s3bfc269594ef64__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s0a6bb8b01de101__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_sf06d5a91fc3563__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_sf12446304ee7d0__</span> <span>__COPY_s6300ef800bb884__</span>
+  <span>__COPY_s04968f51ee0482__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_sdb277aae75d777__</span>
+      <span>__COPY_s8ff7327fcdf50a__</span>__COPY_sc4ebc7684be8c9__<span>__COPY_s0bb2388cc80f97__</span>__COPY_sd03502c43d74a3__<span>__COPY_s016ae398a67dbf__</span>__COPY_s30348c92376d56__<span>__COPY_sa08a30338e824c__</span> <span>__COPY_s84a1b36b60ae77__</span>
+      <span>__COPY_scab2be2b3a2ed1__</span>
+        <span>__COPY_s2629ac0e8d90da__</span>
+          <span>__COPY_sc59593d408456a__</span> <span>__COPY_s2bf175f9655e7b__</span>
+          <span>__COPY_sb656fafe9c0938__</span> <span>__COPY_sf904575e8902a7__</span>
+          <span>__COPY_s5d0d4d007c7638__</span>
+          <span>__COPY_se5f5830d8a7d63__</span> <span>__COPY_s4b227777d4dd1f__</span>
+</code></pre>
+<h4><strong>__COPY_sd24fced60fd146__</strong></h4>
+<pre><code><span>__COPY_s111d0e0c3c7afe__</span> <span>__COPY_s3bfc269594ef64__</span>
+<span>__COPY_s08863725c9d14a__</span> <span>__COPY_s0a6bb8b01de101__</span>
+<span>__COPY_s8c8c42289a1387__</span>
+  <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_s6464d9fc9b85c3__</span>
+<span>__COPY_s36184fa5172f39__</span>
+  <span>__COPY_sf12446304ee7d0__</span> <span>__COPY_s6300ef800bb884__</span>
+  <span>__COPY_s04968f51ee0482__</span>
+    <span>__COPY_s3973e022e93220__</span> <span>__COPY_sd0d6d503f5acae__</span> <span>__COPY_sdb277aae75d777__</span>
+      <span>__COPY_s8ff7327fcdf50a__</span>__COPY_sc4ebc7684be8c9__<span>__COPY_s0bb2388cc80f97__</span>__COPY_sd03502c43d74a3__<span>__COPY_s016ae398a67dbf__</span>__COPY_s30348c92376d56__<span>__COPY_sa08a30338e824c__</span> <span>__COPY_s84a1b36b60ae77__</span>
+      <span>__COPY_scab2be2b3a2ed1__</span>
+        <span>__COPY_s2629ac0e8d90da__</span>
+          <span>__COPY_sc59593d408456a__</span> <span>__COPY_s2bf175f9655e7b__</span>
+          <span>__COPY_sb656fafe9c0938__</span> <span>__COPY_sf904575e8902a7__</span>
+          <span>__COPY_s0396da53c83254__</span>
+          <span>__COPY_s2c37c059878b97__</span> <span>__COPY_s6b86b273ff34fc__</span>
+</code></pre>
+<h3 id="article-section-4">__COPY_see64740dda73d0__</h3>
+<p>__COPY_s865f1f2bba0797__<strong>__COPY_s903a5eade966a2__</strong>__COPY_s106eca1a531be6__</p>
+<hr>
+<h3 id="article-section-5">__COPY_s69824d3b0e70ca__</h3>
+<ul>
+<li><strong>__COPY_s44a185b94f96de__</strong><br>
+<a href="https://github.com/Project-HAMi/HAMi/releases/tag/v2.7.0" target="_blank" rel="noopener">__COPY_s236cc39071eba3__</a></li>
+<li><strong>__COPY_s112dbcdc4de7b8__</strong><br>
+<a href="https://project-hami.io/docs/userguide/AWSNeuron-device/enable-awsneuron-managing" target="_blank" rel="noopener">__COPY_s25407f9d455985__</a></li>
+<li><strong>__COPY_s28d7c836e71739__</strong><br>
+<a href="https://github.com/Project-HAMi/HAMi/pull/1238" target="_blank" rel="noopener">__COPY_s57845204a1a49c__</a></li>
+</ul></div><div class="article-end"><div><strong>__COPY_s4a4c9f8539fe37__</strong><p>__COPY_s127a3f305968c1__</p></div><a class="textlink" href="https://dynamia.ai/zh/blog/hami-aws-neuron-topology-scheduling" target="_blank" rel="noopener">__COPY_sc8d5d3cfd50120__</a><a class="textlink" href="#/blog">__COPY_sc8cb9e574dbc33__</a></div></div><aside class="article-toc" aria-label="__COPY_sbae1aff66c2fff__"><strong>__COPY_sb5658fc8edda24__</strong><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-0" data-article-section="article-section-0"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_s3152e8ca94a5eb__</a><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-1" data-article-section="article-section-1"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_s014f8890b62a8c__</a><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-2" data-article-section="article-section-2"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_sc51620e1d9edad__</a><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-3" data-article-section="article-section-3"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_sbcdfd3a700b162__</a><a href="#/blog/hami-aws-neuron-topology-scheduling?section=article-section-4" data-article-section="article-section-4"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_sb54896181583c3__</a></aside></div></div></div></article><section class="article-related"><div class="wrap"><div class="intro"><div><div class="eyebrow">__COPY_scadf9eb6ac5351__</div><h2>__COPY_s66e7853ca34f81__</h2></div><a class="textlink" href="#/blog">__COPY_s387bff93c3bbd7__<span class="arrow">__COPY_s161660030aa6c9__</span></a></div><div class="grid3"><a class="blog-card" href="#/blog/hami-vgpu-scheduling-fix-large-cluster"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/dynamia-creators.png" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_s85184272ec44bd__</span></div><div class="cover-title-block"><strong>__COPY_s5140938e4d1547__</strong><span class="cover-subtitle">__COPY_s434e7cd81fe199__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_s85184272ec44bd__</span><time datetime="2026-06-01">__COPY_s9222f2233b725a__</time></div><h2>__COPY_s348866700f42d4__</h2><span class="read-more">__COPY_sb6853124898908__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/hami-dra-quickstart"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/dynamia-creators.png" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_s85184272ec44bd__</span></div><div class="cover-title-block"><strong>__COPY_s802f332d4f3568__</strong><span class="cover-subtitle">__COPY_s434e7cd81fe199__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_s85184272ec44bd__</span><time datetime="2026-05-22">__COPY_sa3366d2f25e775__</time></div><h2>__COPY_s843f234ca9ed81__</h2><span class="read-more">__COPY_sb6853124898908__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/kcd-beijing-2026-dra-gpu-scheduling"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/dynamia-creators.png" alt="__COPY_s234f1b97e70059__"><span class="cover-category">__COPY_s85184272ec44bd__</span></div><div class="cover-title-block"><strong>__COPY_s893ad567662632__</strong><span class="cover-subtitle">__COPY_s434e7cd81fe199__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_s85184272ec44bd__</span><time datetime="2026-03-23">__COPY_sa00218f2f7e1a1__</time></div><h2>__COPY_s3e74e2b5973e05__</h2><span class="read-more">__COPY_sb6853124898908__<span>__COPY_s161660030aa6c9__</span></span></div></a></div></div></section>

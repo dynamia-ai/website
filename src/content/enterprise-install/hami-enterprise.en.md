@@ -1,24 +1,24 @@
 ---
-title: "HAMi Enterprise: Installation Guide"
+title: "Dynamia Enterprise for HAMi: Installation Guide"
 productId: "hami-enterprise"
 version: "v2.9.0"
 lastUpdated: "2026-05-20"
 language: "en"
-description: "Deploy HAMi Enterprise on Kubernetes with GPU node onboarding, monitoring integration, and license activation."
+description: "Deploy Dynamia Enterprise for HAMi on Kubernetes with GPU node onboarding, monitoring integration, and license activation."
 ---
 
-> This guide is for SREs and platform engineers. It walks through deploying **HAMi Enterprise** to a Kubernetes cluster, enabling GPU nodes, integrating monitoring, and verifying functionality.
+> This guide is for SREs and platform engineers. It walks through deploying **Dynamia Enterprise for HAMi** to a Kubernetes cluster, enabling GPU nodes, integrating monitoring, and verifying functionality.
 >
 > ⚠️ **Installation ≠ Activation**
 >
-> After completing the Helm installation in this section, HAMi Enterprise core components will be running. However, **GPU virtualization and scheduling features require a license activation to work properly**.
+> After completing the Helm installation in this section, Dynamia Enterprise for HAMi core components will be running. However, **GPU virtualization and scheduling features require a license activation to work properly**.
 > The installation itself does not depend on a license, so you can complete the deployment first, then apply for and import the license in the subsequent steps.
 >
 > In short: **Install the software first, then obtain the license; vGPU partitioning and scheduling will not work without activation, and verification will fail.**
 
 ## Architecture & Positioning
 
-HAMi Enterprise is the enterprise edition of the open-source HAMi project. It contains:
+Dynamia Enterprise for HAMi is the enterprise edition of the open-source HAMi project. It contains:
 
 - **Enhanced Device Plugin**: replaces NVIDIA's default device-plugin with vGPU partitioning + memory oversubscription
 - **Scheduler Extensions**: GPU topology-aware scheduling
@@ -40,7 +40,7 @@ HAMi Enterprise is the enterprise edition of the open-source HAMi project. It co
 
 > Critical constraint: HAMi ships its own device-plugin and **conflicts with the NVIDIA GPU Operator's built-in device-plugin**. If GPU Operator is installed, you must disable its device-plugin via `--set devicePlugin.enabled=false`.
 
-## Install HAMi Enterprise
+## Install Dynamia Enterprise for HAMi
 
 > Two installation paths — choose based on your scenario:
 >

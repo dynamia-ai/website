@@ -1,3 +1,4 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
@@ -6,7 +7,7 @@ import { localizedUrl, pageAlternates } from "@/utils/i18n";
 
 const PATH = "/company";
 
-export default function Company({
+function Company({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -16,7 +17,7 @@ export default function Company({
   return <CompanyPage />;
 }
 
-export async function generateMetadata({
+async function legacyMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -38,4 +39,18 @@ export async function generateMetadata({
     },
     alternates: pageAlternates(PATH, locale),
   };
+}
+
+export default async function MigratedPage(props: Parameters<typeof Company>[0]) {
+  const resolved = await props.params;
+  const route = `/about`;
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <Company {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = `/about`;
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }

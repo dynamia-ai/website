@@ -1,0 +1,552 @@
+{
+  "/": {
+    "name": "home",
+    "title": "让已有 GPU，承载更多 AI 业务"
+  },
+  "/products": {
+    "name": "products",
+    "title": "密瓜智能产品概览"
+  },
+  "/enterprise": {
+    "name": "enterprise",
+    "title": "为现有平台，释放企业级 GPU 管理能力"
+  },
+  "/platform": {
+    "name": "platform",
+    "title": "把集群、团队与算力运营连接在一个平台"
+  },
+  "/pricing": {
+    "name": "pricing",
+    "title": "灵活的计算需求定价方案"
+  },
+  "/cases": {
+    "name": "cases",
+    "title": "在真实环境中理解技术的价值"
+  },
+  "/get-practices": {
+    "name": "get-practices",
+    "title": "从别人的实践找到你的下一步"
+  },
+  "/resources": {
+    "name": "resources",
+    "title": "了解技术，走进实践"
+  },
+  "/videos": {
+    "name": "videos",
+    "title": "视频"
+  },
+  "/tools": {
+    "name": "tools",
+    "title": "让评估与运维更有依据"
+  },
+  "/contact-sales": {
+    "name": "contact-sales",
+    "title": "从你的场景出发看见算力的新可能"
+  },
+  "/compatibility": {
+    "name": "compatibility",
+    "title": "先看你的环境再确认可用能力"
+  },
+  "/community": {
+    "name": "community",
+    "title": "在开源中共建让算力更好用"
+  },
+  "/about": {
+    "name": "about",
+    "title": "AI 基础设施的开源内核"
+  },
+  "/careers": {
+    "name": "careers",
+    "title": "与我们一起，开启职业新篇章"
+  },
+  "/events": {
+    "name": "events",
+    "title": "活动与直播"
+  },
+  "/blog": {
+    "name": "blog",
+    "title": "博客"
+  },
+  "/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation": {
+    "name": "blog--hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation",
+    "title": "HAMi Meetup 上海站深度解读（一）：CNCF × PyTorch 的云原生 AI 基座里，HAMi 解决哪一层问题？",
+    "articleId": 0
+  },
+  "/blog/hami-meetup-shanghai-2026-community-panel": {
+    "name": "blog--hami-meetup-shanghai-2026-community-panel",
+    "title": "HAMi Meetup 上海站深度解读（七）：从使用者到共建者，企业为什么需要一个可持续的 HAMi 社区？",
+    "articleId": 1
+  },
+  "/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu": {
+    "name": "blog--hami-meetup-shanghai-2026-hami-2-10-remote-gpu",
+    "title": "HAMi Meetup 上海站深度解读（二）：GPU 共享之后，HAMi 如何进一步做好隔离、调度与观测？",
+    "articleId": 2
+  },
+  "/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference": {
+    "name": "blog--hami-meetup-shanghai-2026-iluvatar-gpu-inference",
+    "title": "HAMi Meetup 上海站深度解读（四）：GPU 性能如何变成推理服务能力？从天数智芯实践看平台分工",
+    "articleId": 3
+  },
+  "/blog/hami-meetup-shanghai-2026-llm-d-inference-plane": {
+    "name": "blog--hami-meetup-shanghai-2026-llm-d-inference-plane",
+    "title": "HAMi Meetup 上海站深度解读（三）：推理控制与 GPU 资源管理如何分工？llm-d 与 HAMi 的协同方向",
+    "articleId": 4
+  },
+  "/blog/hami-meetup-shanghai-2026-ucloud-ai-platform": {
+    "name": "blog--hami-meetup-shanghai-2026-ucloud-ai-platform",
+    "title": "HAMi Meetup 上海站深度解读（六）：UCloud 如何把 HAMi 共享能力接入可用的开发环境？",
+    "articleId": 5
+  },
+  "/blog/hami-meetup-shanghai-2026-volcano-hami-core": {
+    "name": "blog--hami-meetup-shanghai-2026-volcano-hami-core",
+    "title": "HAMi Meetup 上海站深度解读（五）：科大讯飞如何用 Volcano + HAMi-core 管好多业务 GPU 共享？",
+    "articleId": 6
+  },
+  "/blog/cetc-cloud-cncf-case-study": {
+    "name": "blog--cetc-cloud-cncf-case-study",
+    "title": "电科云基于 HAMi 构建便携式知识库的国产 GPU 共享资源底座",
+    "articleId": 7
+  },
+  "/blog/sangfor-cncf-case-study": {
+    "name": "blog--sangfor-cncf-case-study",
+    "title": "单卡跑 8 个模型、月省 20 万：深信服如何用 K8s + Volcano + HAMi 榨干每一张 GPU",
+    "articleId": 8
+  },
+  "/blog/dynamia-metax-llm-d-integration": {
+    "name": "blog--dynamia-metax-llm-d-integration",
+    "title": "密瓜智能携手沐曦率先完成 llm-d 适配，国产 GPU 首次进入 CNCF 分布式推理生态",
+    "articleId": 9
+  },
+  "/blog/hami-incubating-community-night": {
+    "name": "blog--hami-incubating-community-night",
+    "title": "每一份贡献，都让 HAMi 向前｜HAMi Incubating Community Night 回顾",
+    "articleId": 10
+  },
+  "/blog/hami-meetup-shanghai-2026": {
+    "name": "blog--hami-meetup-shanghai-2026",
+    "title": "不卷算力，卷效率｜HAMi Meetup 上海站回顾：从异构算力管理到 AI 生产实践",
+    "articleId": 11
+  },
+  "/blog/hami-composable-scheduler-policies": {
+    "name": "blog--hami-composable-scheduler-policies",
+    "title": "HAMi 2.10 解读（三）| 既要独占、又要装箱、还要 NUMA 亲和：调度策略可以组合了",
+    "articleId": 12
+  },
+  "/blog/volcano-ascend-vnpu-soft-slicing": {
+    "name": "blog--volcano-ascend-vnpu-soft-slicing",
+    "title": "HAMi 2.10 解读（二）| 一张昇腾卡切给两个 Pod：Volcano + HAMi-core vNPU 软切分实测",
+    "articleId": 13
+  },
+  "/blog/kai-scheduler-hami-gpu-memory-hard-isolation": {
+    "name": "blog--kai-scheduler-hami-gpu-memory-hard-isolation",
+    "title": "HAMi 2.10 解读（一）| 实测 KAI Scheduler + HAMi GPU 显存硬隔离：谁也别想多占 1 MiB",
+    "articleId": 14
+  },
+  "/blog/hami-v210-deep-dive": {
+    "name": "blog--hami-v210-deep-dive",
+    "title": "HAMi 2.10 发布解读：Flexible MIG、AMD vGPU 与调度生态全面升级",
+    "articleId": 15
+  },
+  "/blog/hami-vnpu-cmb-meetup-hangzhou-recap": {
+    "name": "blog--hami-vnpu-cmb-meetup-hangzhou-recap",
+    "title": "让 NPU 更易共享：HAMi vNPU 技术演进与招商银行落地实践",
+    "articleId": 16
+  },
+  "/blog/dynamia-ai-compute-efficiency": {
+    "name": "blog--dynamia-ai-compute-efficiency",
+    "title": "HAMi 晋升 CNCF Incubating：密瓜智能站上 AI 算力效率的关键赛道",
+    "articleId": 17
+  },
+  "/blog/dynamia-cncf-pytorch-china-tour": {
+    "name": "blog--dynamia-cncf-pytorch-china-tour",
+    "title": "密瓜智能（Dynamia）牵头组织 CNCF、PyTorch 基金会代表走访中国 AI 算力企业",
+    "articleId": 18
+  },
+  "/blog/cmb-cncf-case-study": {
+    "name": "blog--cmb-cncf-case-study",
+    "title": "招商银行基于 HAMi 在 Kubernetes 上优化 AI 算力调度",
+    "articleId": 19
+  },
+  "/blog/hami-cncf-incubating": {
+    "name": "blog--hami-cncf-incubating",
+    "title": "HAMi 晋升 CNCF 孵化项目：与全球开发者共建 AI 时代的异构算力基础设施",
+    "articleId": 20
+  },
+  "/blog/hami-complete-introduction": {
+    "name": "blog--hami-complete-introduction",
+    "title": "迈向全球开源基础设施：CNCF Incubating 项目 HAMi 完整介绍",
+    "articleId": 21
+  },
+  "/blog/hami-core-adopted-by-kai-scheduler": {
+    "name": "blog--hami-core-adopted-by-kai-scheduler",
+    "title": "「Dynamia 密瓜智能」主导 HAMi-core 接入 KAI Scheduler，补齐 GPU 共享生产级硬隔离",
+    "articleId": 22
+  },
+  "/blog/hami-at-kubecon-india-2026": {
+    "name": "blog--hami-at-kubecon-india-2026",
+    "title": "HAMi 亮相 KubeCon India 2026：从阿姆斯特丹到孟买，GPU 共享的全球化推进",
+    "articleId": 23
+  },
+  "/blog/hami-vgpu-scheduling-fix-large-cluster": {
+    "name": "blog--hami-vgpu-scheduling-fix-large-cluster",
+    "title": "千卡集群升级后 Hami vGPU 调度失败解决方案",
+    "articleId": 24
+  },
+  "/blog/hami-dra-quickstart": {
+    "name": "blog--hami-dra-quickstart",
+    "title": "HAMi 正式接入 Kubernetes DRA：下一代 GPU 资源模型实践指南",
+    "articleId": 25
+  },
+  "/blog/boardware-hami-gpu-virtualization": {
+    "name": "blog--boardware-hami-gpu-virtualization",
+    "title": "告别 GPU 独占时代：用 HAMi 实现训练推理一体化——博维智慧 GPU 虚拟化实战",
+    "articleId": 26
+  },
+  "/blog/sangfor-ai-computing-gateway": {
+    "name": "blog--sangfor-ai-computing-gateway",
+    "title": "2000 人研发团队月省 20 万算力费：深信服 AI 算力网关与 vGPU 生产级调度实录",
+    "articleId": 27
+  },
+  "/blog/hami-2.9-webinar-recap": {
+    "name": "blog--hami-2.9-webinar-recap",
+    "title": "直播回顾 | HAMi 2.9 昇腾软切分与 DRA 实战详解，附完整 QA",
+    "articleId": 28
+  },
+  "/blog/hami-v29-deep-dive": {
+    "name": "blog--hami-v29-deep-dive",
+    "title": "HAMi v2.9.0 深度解读：昇腾用户态切分、DRA 生产就绪与调度生态扩展",
+    "articleId": 29
+  },
+  "/blog/enflame-k8s-cloud-native-practice": {
+    "name": "blog--enflame-k8s-cloud-native-practice",
+    "title": "国产 GPU 如何丝滑融入 K8s？燧原科技的全栈云原生实践",
+    "articleId": 30
+  },
+  "/blog/dynamia-joins-itl": {
+    "name": "blog--dynamia-joins-itl",
+    "title": "获华泰证券、德邦基金联合推荐，密瓜智能正式加入智能投研技术联盟（ITL）",
+    "articleId": 31
+  },
+  "/blog/snow-corp-cncf-case-study": {
+    "name": "blog--snow-corp-cncf-case-study",
+    "title": "支撑 2 亿用户 GenAI 服务：SNOW Corp 基于 HAMi 和 KEDA 编排 1,000+ 张 GPU",
+    "articleId": 32
+  },
+  "/blog/cmb-hami-heterogeneous-computing": {
+    "name": "blog--cmb-hami-heterogeneous-computing",
+    "title": "招商银行基于 HAMi 构建异构算力底座：GPU 入池率 100%，跨机调度降低 30%",
+    "articleId": 33
+  },
+  "/blog/hami-sf-tech-gpu-pooling-chenjunchao": {
+    "name": "blog--hami-sf-tech-gpu-pooling-chenjunchao",
+    "title": "让 GPU 像水电一样用：HAMi 驱动顺丰科技算力池化实战",
+    "articleId": 34
+  },
+  "/blog/hami-v29-dra-ecosystem-limengxuan": {
+    "name": "blog--hami-v29-dra-ecosystem-limengxuan",
+    "title": "DRA 还不够：HAMi v2.9 为什么要做生态联盟？",
+    "articleId": 35
+  },
+  "/blog/hami-meetup-shenzhen-recap": {
+    "name": "blog--hami-meetup-shenzhen-recap",
+    "title": "HAMi 社区 Meetup 深圳站圆满落幕：七位专家共话 AI 算力云原生未来",
+    "articleId": 36
+  },
+  "/blog/keith-chan-ai-infrastructure-cloud-native": {
+    "name": "blog--keith-chan-ai-infrastructure-cloud-native",
+    "title": "CNCF 视角下的 AI 基础设施：从\"堆算力\"到\"用算力\"",
+    "articleId": 37
+  },
+  "/blog/nio-hami-gpu-sharing": {
+    "name": "blog--nio-hami-gpu-sharing",
+    "title": "蔚来基于 HAMi 提升自动驾驶工作负载 GPU 利用率",
+    "articleId": 38
+  },
+  "/blog/dynamia-copu-2026-04-14": {
+    "name": "blog--dynamia-copu-2026-04-14",
+    "title": "密瓜智能受邀参加 COPU 例会：AI Agent 加速落地，算力基础设施迎来关键机遇",
+    "articleId": 39
+  },
+  "/blog/kubecon-eu-2026-hami-recap": {
+    "name": "blog--kubecon-eu-2026-hami-recap",
+    "title": "密瓜智能亮相 KubeCon EU 2026：从展台、演讲到主论坛 Demo，HAMi 进入 AI 基础设施核心视野",
+    "articleId": 40
+  },
+  "/blog/kcd-beijing-2026-dra-gpu-scheduling": {
+    "name": "blog--kcd-beijing-2026-dra-gpu-scheduling",
+    "title": "从 Device Plugin 到 DRA：GPU 调度范式升级与 HAMi-DRA 实践",
+    "articleId": 41
+  },
+  "/blog/dynamia-and-hami-at-kubecon-eu-2026": {
+    "name": "blog--dynamia-and-hami-at-kubecon-eu-2026",
+    "title": "密瓜智能将携 HAMi 社区亮相 KubeCon Europe 2026：重塑 Kubernetes 上的 GPU 使用方式",
+    "articleId": 42
+  },
+  "/blog/hami-website-redesign-retrospective": {
+    "name": "blog--hami-website-redesign-retrospective",
+    "title": "HAMi 官网与文档全面重构：不只是改版，而是一次系统升级",
+    "articleId": 43
+  },
+  "/blog/ke-holdings-ml-infrastructure-scaling": {
+    "name": "blog--ke-holdings-ml-infrastructure-scaling",
+    "title": "贝壳：基于 GPU 虚拟化扩展机器学习基础设施",
+    "articleId": 44
+  },
+  "/blog/opencsg-dynamia-partnership": {
+    "name": "blog--opencsg-dynamia-partnership",
+    "title": "密瓜智能 x OpenCSG 战略合作：从\"模型托管\"走向\"算力原生\"，共建企业级异构算力调度底座",
+    "articleId": 45
+  },
+  "/blog/hami-2025-recap": {
+    "name": "blog--hami-2025-recap",
+    "title": "2025 年 HAMi 年度回顾 | 从 GPU 调度器到云原生 AI 基础设施的中流砥柱",
+    "articleId": 46
+  },
+  "/blog/hami-2.8-deep-dive": {
+    "name": "blog--hami-2.8-deep-dive",
+    "title": "HAMi v2.8 重磅发布详解：标准化与生态完整性的双重演进",
+    "articleId": 47
+  },
+  "/blog/baidu-hami-compatibility": {
+    "name": "blog--baidu-hami-compatibility",
+    "title": "密瓜智能 HAMi 与百度智能云百舸完成兼容互认，共建国产 AI 算力底座",
+    "articleId": 48
+  },
+  "/blog/hami-kunlunxin-p800-compatibility": {
+    "name": "blog--hami-kunlunxin-p800-compatibility",
+    "title": "密瓜智能 HAMi x 昆仑芯 P800 完成兼容互认",
+    "articleId": 49
+  },
+  "/blog/flex-ai-compute-virtualization-engineering-delivery": {
+    "name": "blog--flex-ai-compute-virtualization-engineering-delivery",
+    "title": "面向算力虚拟化的开源探索：如何看待 Flex:ai，以及为什么工程交付如此重要",
+    "articleId": 50
+  },
+  "/blog/daocloud-hami-gpu-platform": {
+    "name": "blog--daocloud-hami-gpu-platform",
+    "title": "DaoCloud：用 HAMi 构建更灵活的 GPU 云平台",
+    "articleId": 51
+  },
+  "/blog/dynamia-qingcheng-partnership": {
+    "name": "blog--dynamia-qingcheng-partnership",
+    "title": "密瓜智能 × 清程极智：为企业级大模型应用提供\"调度 + 基建\"一体化解决方案",
+    "articleId": 52
+  },
+  "/blog/jimmy-song-joins-dynamia": {
+    "name": "blog--jimmy-song-joins-dynamia",
+    "title": "密瓜重磅！CNCF 大使宋净超（Jimmy Song）加入密瓜智能",
+    "articleId": 53
+  },
+  "/blog/dynamia-angel-funding": {
+    "name": "blog--dynamia-angel-funding",
+    "title": "密瓜智能获数千万元天使轮融资：植根开源基因，驱动异构算力效率跃升",
+    "articleId": 54
+  },
+  "/blog/hami-meetup-beijing-recap": {
+    "name": "blog--hami-meetup-beijing-recap",
+    "title": "不卷算力卷效率｜HAMi Meetup 北京站活动全回顾",
+    "articleId": 55
+  },
+  "/blog/hami-meetup-shanghai": {
+    "name": "blog--hami-meetup-shanghai",
+    "title": "不卷算力卷效率｜HAMi Meetup 上海站技术笔记全回顾！",
+    "articleId": 56
+  },
+  "/blog/hami-aws-neuron-topology-scheduling": {
+    "name": "blog--hami-aws-neuron-topology-scheduling",
+    "title": "基于 HAMi 实现亚马逊云科技 Trainium 与 Inferentia 核心级共享与策略性拓扑调度",
+    "articleId": 57
+  },
+  "/blog/hami-xinference-vgpu-integration": {
+    "name": "blog--hami-xinference-vgpu-integration",
+    "title": "Xinference × HAMi | 原生支持 GPU 共享，让 AI 模型服务降本增效",
+    "articleId": 58
+  },
+  "/blog/hami-extended-resourcequota": {
+    "name": "blog--hami-extended-resourcequota",
+    "title": "【原理解析】HAMi 扩展 ResourceQuota | 精准的 GPU 资源配额管理实现详解",
+    "articleId": 59
+  },
+  "/blog/hami-device-abstraction-enflame-gcu": {
+    "name": "blog--hami-device-abstraction-enflame-gcu",
+    "title": "【架构解析】HAMi 设备抽象层：以燧原 GCU 为例看异构算力快速集成",
+    "articleId": 60
+  },
+  "/blog/hami-nvidia-topology-aware-scheduling": {
+    "name": "blog--hami-nvidia-topology-aware-scheduling",
+    "title": "【原理解析】HAMi × NVIDIA | GPU 拓扑感知调度实现详解",
+    "articleId": 61
+  },
+  "/blog/hami-metax": {
+    "name": "blog--hami-metax",
+    "title": "【原理解析】HAMi × 沐曦 MetaX | sGPU 共享、三档 QoS、拓扑智能调度与 WebUI 全面适配",
+    "articleId": 62
+  },
+  "/blog/hami-v2.7.0": {
+    "name": "blog--hami-v2.7.0",
+    "title": "HAMi v2.7.0 重磅发布 | 异构芯片全面拓展，调度更稳、生态更强",
+    "articleId": 63
+  },
+  "/blog/dynamia-ai-aws-installation": {
+    "name": "blog--dynamia-ai-aws-installation",
+    "title": "在 AWS 上使用 EKS 部署 Dynamia AI 平台",
+    "articleId": 64
+  },
+  "/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami": {
+    "name": "blog--device-aware-gpu-binpack-spread-on-k8s-with-hami",
+    "title": "Kubernetes GPU 调度：一个 2x2 的实践模型 (节点 × GPU 的紧凑与分散策略)",
+    "articleId": 65
+  },
+  "/blog/aws": {
+    "name": "blog--aws",
+    "title": "在 AWS 上虚拟化任意 GPU：HAMi 实现自由显存隔离",
+    "articleId": 66
+  },
+  "/blog/vllm": {
+    "name": "blog--vllm",
+    "title": "「全球共建：vLLM 社区原生支持 HAMi，推理效率飞跃」— 来自西班牙开发者的贡献",
+    "articleId": 67
+  },
+  "/blog/a-leading-autonomous-driving-company": {
+    "name": "blog--a-leading-autonomous-driving-company",
+    "title": "【密瓜智能 | 用户案例】某头部智驾公司通过 HAMi 实现 GPU 精细化管理与资源利用最大化",
+    "articleId": 68
+  },
+  "/blog/prep-edu-hami": {
+    "name": "blog--prep-edu-hami",
+    "title": "【PREP EDU | 密瓜智能】东南亚 AI 教育潜力独角兽，用 HAMi 构建高效 GPU 推理平台",
+    "articleId": 69
+  },
+  "/blog/demystifying-the-reservation-pod": {
+    "name": "blog--demystifying-the-reservation-pod",
+    "title": "【Run:ai KAI-Scheduler 深度解析】补充篇：解密 Reservation Pod 如何获知 GPU 分配细节",
+    "articleId": 70
+  },
+  "/blog/run-ai-kai-scheduler-vs-hami": {
+    "name": "blog--run-ai-kai-scheduler-vs-hami",
+    "title": "Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望",
+    "articleId": 71
+  },
+  "/blog/hami-koordinator-v1.6": {
+    "name": "blog--hami-koordinator-v1.6",
+    "title": "开源协同共进，Koordinator v1.6 发布：携手 HAMi 社区打造 AI/ML 异构资源调度新篇章",
+    "articleId": 72
+  },
+  "/blog/is-vgpu-a-false-promise": {
+    "name": "blog--is-vgpu-a-false-promise",
+    "title": "vGPU 是伪命题？NVIDIA 官方为什么不自己出细粒度共享呢？",
+    "articleId": 73
+  },
+  "/blog/open-source-vgpu-hami-k8s-vdcu": {
+    "name": "blog--open-source-vgpu-hami-k8s-vdcu",
+    "title": "HAMi 异构设备虚拟化之海光 DCU 实战：K8s 下的 vDCU 资源调度与纳管",
+    "articleId": 74
+  },
+  "/blog/open-source-vgpu-hami-uuid": {
+    "name": "blog--open-source-vgpu-hami-uuid",
+    "title": "精准而优雅：HAMi 调度特性之按 GPU 类型和 UUID 调度",
+    "articleId": 75
+  },
+  "/blog/hami-v.2.5.0-released": {
+    "name": "blog--hami-v.2.5.0-released",
+    "title": "HAMi v2.5.0 Released 新特性一览",
+    "articleId": 76
+  },
+  "/blog/open-source-vgpu-hami-core-libvgpu-so-vcuda": {
+    "name": "blog--open-source-vgpu-hami-core-libvgpu-so-vcuda",
+    "title": "HAMi vGPU 原理分析 Part5：HAMi-core(libvgpu.so) vCUDA 工作原理分析",
+    "articleId": 77
+  },
+  "/blog/open-source-vgpu-spread-binpack": {
+    "name": "blog--open-source-vgpu-spread-binpack",
+    "title": "HAMi vGPU 原理分析 Part4：Spread&Binpack 高级调度策略实现",
+    "articleId": 78
+  },
+  "/blog/open-source-vgpu-hami-scheduler": {
+    "name": "blog--open-source-vgpu-hami-scheduler",
+    "title": "HAMi vGPU 原理分析 Part3：hami- scheduler 工作流程分析",
+    "articleId": 79
+  },
+  "/blog/open-source-vgpu-hami-webhook": {
+    "name": "blog--open-source-vgpu-hami-webhook",
+    "title": "HAMi vGPU 原理分析 Part2：hami-webhook 原理分析",
+    "articleId": 80
+  },
+  "/blog/open-source-vgpu-hami-device-plugin-nvidia": {
+    "name": "blog--open-source-vgpu-hami-device-plugin-nvidia",
+    "title": "HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现",
+    "articleId": 81
+  },
+  "/blog/open-source-vgpu-hami-core-memory-test": {
+    "name": "blog--open-source-vgpu-hami-core-memory-test",
+    "title": "HAMi vGPU 方案：Core & Memory 隔离测试",
+    "articleId": 82
+  },
+  "/blog/open-source-vgpu-hami-fine-grained-partitioning": {
+    "name": "blog--open-source-vgpu-hami-fine-grained-partitioning",
+    "title": "HAMi vGPU 方案：实现细粒度 GPU 切分",
+    "articleId": 83
+  },
+  "/blog/kubecon-china-2025-hami-spotlight": {
+    "name": "blog--kubecon-china-2025-hami-spotlight",
+    "title": "从顺丰科技到 AWS | 密瓜智能 HAMi 项目在 KubeCon China 广受行业巨头关注",
+    "articleId": 84
+  },
+  "/blog/faq": {
+    "name": "blog--faq",
+    "title": "HAMI 入门必知：新手必读的 9 个关键问题",
+    "articleId": 85
+  },
+  "/cases/zhuoyu-technology": {
+    "name": "cases--zhuoyu-technology",
+    "title": "卓驭科技如何借助 Koordinator 将 Kubernetes 上的 GPU 分配率提升至 95% 以上"
+  },
+  "/cases/sangfor": {
+    "name": "cases--sangfor",
+    "title": "深信服如何基于 Kubernetes、Volcano 与 HAMi 构建企业 AI 算力平台"
+  },
+  "/cases/cetc-cloud": {
+    "name": "cases--cetc-cloud",
+    "title": "电科云以 HAMi 为便携式知识库构建异构 GPU 共享资源底座"
+  },
+  "/cases/china-merchants-bank-2": {
+    "name": "cases--china-merchants-bank-2",
+    "title": "一个异构算力池，两类负载：招商银行在 Kubernetes 上统一训练与推理"
+  },
+  "/cases/china-merchants-bank": {
+    "name": "cases--china-merchants-bank",
+    "title": "招商银行借助 HAMi 改善 Kubernetes 上的 AI 算力调度"
+  },
+  "/cases/snow-corp": {
+    "name": "cases--snow-corp",
+    "title": "服务 2 亿用户的 GenAI：SNOW 如何编排千张 GPU 应对 700% 流量峰值"
+  },
+  "/cases/nio": {
+    "name": "cases--nio",
+    "title": "蔚来借助 HAMi 提升自动驾驶负载的 GPU 利用率"
+  },
+  "/cases/ke-holdings-inc": {
+    "name": "cases--ke-holdings-inc",
+    "title": "使用 Kubernetes 与 HAMi 的 GPU 虚拟化，扩展机器学习基础设施"
+  },
+  "/cases/daocloud": {
+    "name": "cases--daocloud",
+    "title": "DaoCloud 使用 HAMi 构建灵活的 GPU 云"
+  },
+  "/cases/sf-technology": {
+    "name": "cases--sf-technology",
+    "title": "EffectiveGPU：顺丰科技基于 HAMi 的异构 AI 虚拟化池化方案"
+  },
+  "/cases/prep-edu": {
+    "name": "cases--prep-edu",
+    "title": "PREP EDU 为 AI 推理实现高效 GPU 编排"
+  },
+  "/videos/product-overview": {
+    "name": "videos--product-overview",
+    "title": "密瓜智能产品概览"
+  },
+  "/videos/gpu-oversell": {
+    "name": "videos--gpu-oversell",
+    "title": "GPU 超卖企业级特性实战"
+  }
+}

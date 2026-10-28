@@ -1,4 +1,5 @@
 export const STATIC_INDEXABLE_PATHS = [
+  "/gpu-compatibility",
   "/",
   "/apply-trial",
   "/company",

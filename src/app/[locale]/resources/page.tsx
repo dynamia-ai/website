@@ -1,3 +1,4 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { setRequestLocale } from "next-intl/server";
 import ResourcesPage from "@/components/pages/ResourcesPage";
 import { generatePageMetadata, localizedPath } from "@/utils/i18n";
@@ -9,7 +10,7 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-export default async function Resources({ params }: PageProps) {
+async function Resources({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const contentLocale = BLOG_LOCALES.some((candidate) => candidate === locale) ? locale : routing.defaultLocale;
@@ -23,7 +24,21 @@ export default async function Resources({ params }: PageProps) {
   return <ResourcesPage articles={articles} />;
 }
 
-export async function generateMetadata({ params }: PageProps) {
+async function legacyMetadata({ params }: PageProps) {
   const { locale } = await params;
   return generatePageMetadata(locale, "resources", "/resources");
+}
+
+export default async function MigratedPage(props: Parameters<typeof Resources>[0]) {
+  const resolved = await props.params;
+  const route = `/resources`;
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <Resources {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = `/resources`;
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }
