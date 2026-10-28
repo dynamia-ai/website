@@ -407,7 +407,7 @@
       "submitError": "提交请求时发生错误。请重试或直接通过 info@dynamia.ai 与我们联系。",
       "fields": {
         "email": {
-          "required": false,
+          "required": true,
           "label": "邮箱"
         },
         "phone": {
@@ -1236,7 +1236,7 @@
       "invalidJobTitle": "请输入有效的职位（1-100 个字符，不含特殊符号）。",
       "fields": {
         "email": {
-          "required": false,
+          "required": true,
           "label": "邮箱"
         },
         "phone": {
