@@ -113,6 +113,15 @@ canonical/hreflang, localized Article data, historical redirects without loops,
 resource links, and real 404 responses. `npm run validate:blog` runs the content
 metadata check independently.
 
+Next config generates `src/generated/public-asset-paths.json` before compilation.
+Blog share images use this path-only manifest so server functions do not bundle
+the contents of `public/`. The file is ignored by Git and refreshed automatically
+when assets are added or removed during the default webpack development server.
+Restart a Turbopack dev server after changing assets. `npm run test:blog-assets`
+checks cover/first-image fallbacks; `npm run build` also rejects blog function
+traces that include public assets. Do not exclude `src/content/blog`, which is
+still read by the server.
+
 Case-only historical blog redirects live in `src/lib/legacy-blog-redirects.ts`
 and run before locale middleware. Do not move those mappings to `next.config.ts`,
 whose redirects match case-insensitively and can loop on the destination.

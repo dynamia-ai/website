@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run validate:blog && next build",
-    "build-legacy": "NODE_OPTIONS='--max-old-space-size=4096' next build",
+    "build": "npm run validate:blog && next build && npm run validate:blog-bundle",
+    "build-legacy": "NODE_OPTIONS='--max-old-space-size=4096' next build && npm run validate:blog-bundle",
     "start": "next start",
     "lint": "next lint && npm run validate:analytics",
     "algolia:index": "node scripts/create-algolia-index.js",
     "validate:enterprise": "node scripts/validate-enterprise.mjs",
     "validate:analytics": "node scripts/validate-analytics-consent.mjs",
     "validate:blog": "node scripts/validate-blog-metadata.mjs",
+    "test:blog-assets": "node --experimental-strip-types --test scripts/public-assets.test.mjs",
+    "validate:blog-bundle": "node scripts/validate-blog-function-traces.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
