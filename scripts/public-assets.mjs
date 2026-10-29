@@ -1,5 +1,6 @@
-import { mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, renameSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 export function collectPublicAssetPaths(publicDirectory) {
   const paths = [];
@@ -36,6 +37,9 @@ export class PublicAssetManifestPlugin {
   }
 
   apply(compiler) {
+    // Updating this imported JSON can schedule one additional incremental compile.
+    // Keeping identical contents untouched prevents a rebuild loop; watchRun alone
+    // cannot avoid that extra pass because the watcher has already started.
     compiler.hooks.beforeCompile.tap('PublicAssetManifest', () => {
       writePublicAssetManifest(this.root);
     });
@@ -43,4 +47,8 @@ export class PublicAssetManifestPlugin {
       compilation.contextDependencies.add(path.join(this.root, 'public'));
     });
   }
+}
+
+if (process.argv[1] && existsSync(process.argv[1]) && pathToFileURL(realpathSync(process.argv[1])).href === import.meta.url) {
+  writePublicAssetManifest(fileURLToPath(new URL('../', import.meta.url)));
 }

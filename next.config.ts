@@ -4,8 +4,10 @@ import createNextIntlPlugin from "next-intl/plugin";
 import { PublicAssetManifestPlugin, writePublicAssetManifest } from "./scripts/public-assets.mjs";
 
 const nextConfig: NextConfig = {
-  webpack(config, { dev }) {
-    if (dev) config.plugins.push(new PublicAssetManifestPlugin(process.cwd()));
+  webpack(config, { dev, isServer, nextRuntime }) {
+    if (dev && isServer && nextRuntime === 'nodejs') {
+      config.plugins.push(new PublicAssetManifestPlugin(__dirname));
+    }
     return config;
   },
   images: {
@@ -55,7 +57,7 @@ const withNextIntl = createNextIntlPlugin();
 export default function config(phase: string) {
   // Generate on clean builds/dev/lint, never write to a production server's filesystem.
   if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
-    writePublicAssetManifest(process.cwd());
+    writePublicAssetManifest(__dirname);
   }
   return withNextIntl(nextConfig);
 }
