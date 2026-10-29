@@ -19,6 +19,10 @@ jobs:
       - run: npm ci --ignore-scripts
       - name: Test the content validator
         run: node --test scripts/validate-marketing-blog.test.mjs
+      - name: Test blog images, asset manifest and function traces
+        run: npm run test:blog-assets
+      - name: Typecheck from a clean checkout
+        run: npm run typecheck
       - name: Enforce content scope and format
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}

@@ -1,7 +1,15 @@
 import { NextConfig } from "next";
+import { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } from "next/constants";
 import createNextIntlPlugin from "next-intl/plugin";
+import { PublicAssetManifestPlugin, writePublicAssetManifest } from "./scripts/public-assets.mjs";
 
 const nextConfig: NextConfig = {
+  webpack(config, { dev, isServer, nextRuntime }) {
+    if (dev && isServer && nextRuntime === 'nodejs') {
+      config.plugins.push(new PublicAssetManifestPlugin(__dirname));
+    }
+    return config;
+  },
   images: {
     remotePatterns: [
       {
@@ -46,4 +54,10 @@ const nextConfig: NextConfig = {
 };
 
 const withNextIntl = createNextIntlPlugin();
-export default withNextIntl(nextConfig);
+export default function config(phase: string) {
+  // Generate on clean builds/dev/lint, never write to a production server's filesystem.
+  if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
+    writePublicAssetManifest(__dirname);
+  }
+  return withNextIntl(nextConfig);
+}
