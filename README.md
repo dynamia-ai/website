@@ -16,7 +16,7 @@ Official website for Dynamia AI, built with Next.js 15.
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 22 (22.6 or newer within 22.x; `.nvmrc` matches CI)
 - npm, yarn, pnpm, or bun
 
 ### Installation
@@ -24,7 +24,12 @@ Official website for Dynamia AI, built with Next.js 15.
 ```bash
 # Install dependencies
 npm install
+# Initialize the ignored asset manifest for editor type checking
+npm run generate:public-assets
 ```
+
+Run Next.js commands from the repository root. If using nvm, run `nvm install`
+and `nvm use` to select the version in `.nvmrc`.
 
 ### Development Server
 
@@ -49,6 +54,8 @@ npm start                # Start production server
 
 # Code Quality
 npm run lint             # Run ESLint
+npm run typecheck        # Generate the asset manifest, then check TypeScript
+npm run test:blog-assets  # Test image selection, the manifest and function traces
 
 # Search
 npm run algolia:index    # Generate Algolia search index
@@ -112,6 +119,23 @@ override with `SEO_TEST_URL`). The checks verify server-rendered pagination,
 canonical/hreflang, localized Article data, historical redirects without loops,
 resource links, and real 404 responses. `npm run validate:blog` runs the content
 metadata check independently.
+
+Next config generates `src/generated/public-asset-paths.json` before compilation.
+Blog share images use this path-only manifest so server functions do not bundle
+the contents of `public/`. The file is ignored by Git and refreshed automatically
+when assets are added or removed during the default webpack development server.
+Only the Node.js server compiler watches the asset directory. A manifest change
+can trigger one additional incremental compilation; unchanged contents are not
+rewritten. Restart a Turbopack dev server after changing assets.
+
+For a fresh checkout, `npm run generate:public-assets` initializes the manifest
+without starting Next.js. `npm run typecheck` does this automatically; raw
+`npx tsc --noEmit` and editor checks require the manifest to exist first.
+`npm run test:blog-assets` checks image selection and build safeguards.
+`npm run build` checks every `.next/server/**/*.nft.json` for public assets and
+fails if the required blog traces are missing. Do not exclude `src/content/blog`,
+which is still read by the server. The manifest uses the project directory, but
+this does not add support for invoking the whole Next.js build from another cwd.
 
 Case-only historical blog redirects live in `src/lib/legacy-blog-redirects.ts`
 and run before locale middleware. Do not move those mappings to `next.config.ts`,
