@@ -812,7 +812,7 @@ const translateText=context.translateText||((value)=>value);
       {name:uiCopy('heroUserCloudpilot'),logo:'/logos/company9.svg'},
       {name:uiCopy('heroUserOpencsg'),logo:'/logos/opencsg.svg'},
       {name:uiCopy('heroUserIntsig'),logo:'/logos/intsig-zh.png'},
-      ...['snow-corp','china-merchants-bank-2','ke-holdings-inc','nio'].map(caseBySlug)
+      ...['snow-corp','china-merchants-bank-2','ke-holdings-inc','nio'].map(slug=>{const user=caseBySlug(slug);return slug==='nio'?{...user,logo:'/redesign/assets/nio-user.jpeg'}:user;})
     ].filter(Boolean);
     const marks = users.map(c => {
       const image = '<img src="'+c.logo+'" alt="'+safe(c.name)+'" loading="eager">';
