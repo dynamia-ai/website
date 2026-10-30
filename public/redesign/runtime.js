@@ -318,24 +318,14 @@ const translateText=context.translateText||((value)=>value);
     "bio": uiCopy("s8deb4e903dce0a"),
     "details": []
   }, {
-    "id": uiCopy("se02caee1ec7932"),
-    "name": uiCopy("sae3ef8bdc5a7b2"),
-    "role": uiCopy("s7d74cece59f902"),
-    "tag": uiCopy("s22275470df8105"),
-    "image": uiCopy("scb03dac47efe2a"),
-    "github": uiCopy("s43a009004a1b44"),
+    "id": uiCopy("team.reza.id"),
+    "name": uiCopy("team.reza.name"),
+    "role": uiCopy("team.reza.role"),
+    "tag": uiCopy("team.reza.tag"),
+    "image": uiCopy("team.reza.image"),
+    "github": "",
     "linkedin": "",
-    "bio": uiCopy("s9c76a1df158f28"),
-    "details": []
-  }, {
-    "id": uiCopy("sef90d9c1ec76b1"),
-    "name": uiCopy("s7d39d18b36e7a0"),
-    "role": uiCopy("s4b10d0afed8103"),
-    "tag": uiCopy("s58b062e969f7ee"),
-    "image": uiCopy("sbe45af679f3676"),
-    "github": uiCopy("s696b9b674a4449"),
-    "linkedin": "",
-    "bio": uiCopy("sfbb49cf6196cf0"),
+    "bio": uiCopy("team.reza.bio"),
     "details": []
   }];
   function teamSocial(member) {

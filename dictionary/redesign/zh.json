@@ -1353,5 +1353,11 @@
   "careers.contact.title": "暂时没有找到合适的岗位？",
   "careers.contact.description": "欢迎与我们分享你的简历与经历，一起探索未来的工作机会。",
   "careers.contact.button": "联系我们",
-  "careers.contact.subject": "人才自荐 - 姓名"
+  "careers.contact.subject": "人才自荐 - 姓名",
+  "team.reza.id": "reza",
+  "team.reza.name": "Reza Jelveh",
+  "team.reza.role": "市场拓展与解决方案工程师",
+  "team.reza.tag": "GTM & Solution Engineer",
+  "team.reza.image": "/redesign/assets/reza-jelveh.jpg",
+  "team.reza.bio": "密瓜智能（Dynamia）市场拓展与解决方案工程师（GTM & Solution Engineer）。"
 }

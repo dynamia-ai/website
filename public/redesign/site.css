@@ -1118,3 +1118,31 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 :root[data-theme=dark] .career-role-card:hover{border-color:#647c47}
 @media(max-width:1000px){.career-role-grid{gap:18px}.career-role-card{padding:23px}.career-role-heading h3{font-size:22px}.career-card-actions{gap:10px}.career-card-actions .btn{padding:9px 15px}}
 @media(max-width:760px){.career-intro{padding:52px 0 37px}.career-intro h1{font-size:34px;line-height:1.4}.career-intro p{font-size:14px;margin-top:18px}.career-page-label{font-size:11px;margin-bottom:16px}.career-openings{padding:10px 0 55px}.career-openings-heading h2{font-size:27px}.career-openings-heading p{font-size:13px;margin-top:12px}.career-filters{margin:25px auto}.career-filters button{font-size:13px;padding:10px 19px}.career-role-grid{grid-template-columns:1fr;gap:18px}.career-role-card{padding:26px;min-height:0}.career-role-heading h3{font-size:23px}.career-role-heading p{min-height:0}.career-role-description{font-size:13px;margin-bottom:24px}.career-contact{padding:30px 26px;margin-top:30px}.career-contact h2{font-size:23px}.career-contact p,.career-contact-email{font-size:13px}.career-dialog-heading{padding:24px 64px 21px 24px}.career-dialog-heading h2{font-size:25px}.career-dialog-close{right:16px;top:18px}.career-dialog-body{padding:24px}.career-detail-group li{font-size:13px}.career-dialog-footer{padding:16px 24px;gap:14px}.career-dialog-footer>a:not(.btn){font-size:12px}.career-job-dialog{max-height:calc(100dvh - 36px)}.redesign-site:not([data-locale="zh"]) #menu-company .nav-card-menu{grid-template-columns:1fr}}
+/* Compact blog proportions for Chinese and English resource listings. */
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .editorial-hero>.wrap,
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-layout{max-width:1200px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-layout{grid-template-columns:240px minmax(0,1fr);gap:64px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid{gap:28px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card{border-radius:9px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .content-cover{aspect-ratio:2.5/1}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card-body{padding:20px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card h2{font-size:18px;line-height:1.5;-webkit-line-clamp:3}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card p{font-size:12px;line-height:1.8;margin-top:11px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .article-meta{font-size:10px;gap:10px;margin-bottom:12px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .content-cover.editorial-cover[data-category] .text-cover{padding:14px 18px;gap:7px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .editorial-cover .cover-topline .cover-mark{width:68px;height:24px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .content-cover.editorial-cover[data-category] .text-cover strong{font-size:17px;line-height:1.35;max-width:94%;-webkit-line-clamp:2}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .editorial-cover .cover-category{font-size:8px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .editorial-cover :is(.cover-subtitle,small){display:none}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card-author{margin-top:15px;padding-top:13px;gap:9px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-author-avatar{width:32px;height:32px;flex-basis:32px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-author-info{gap:2px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-author-name{font-size:12px}
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid :is(.blog-author-title,.blog-author-community){font-size:10px;line-height:1.5}
+/* Reduce each carousel artwork by ten percent while retaining the established centering. */
+.redesign-site:is([data-locale="zh"],[data-locale="en"]) .hero-user-mark img{width:calc(var(--logo-render-width,146px) * var(--logo-size) * .9)}
+.redesign-site[data-locale="zh"] .team-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.member-photo[data-person="reza"] img,.team-dialog-photo img[data-person="reza"]{object-position:59% center}
+@media(max-width:1100px){.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-layout{grid-template-columns:180px minmax(0,1fr);gap:32px}.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid{gap:20px}.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card-body{padding:17px}.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card h2{font-size:17px}}
+@media(max-width:760px){.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-layout{display:block}.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid{gap:18px}.redesign-site[data-locale="zh"] .team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid{grid-template-columns:1fr}.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .content-cover{aspect-ratio:2.35/1}.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card-body{padding:19px}.redesign-site:is([data-locale="zh"],[data-locale="en"]) .blog-grid .blog-card h2{font-size:18px}}
