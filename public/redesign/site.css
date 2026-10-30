@@ -1152,7 +1152,12 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 .hero-user-mark:has(img[src="/redesign/assets/83f5bec99abccb7f8843.jpg"]){width:100px;flex-basis:100px}
 @media(max-width:1100px){.hero-user-mark:has(img[src="/redesign/assets/83f5bec99abccb7f8843.jpg"]){width:94px;flex-basis:94px}}
 @media(max-width:600px){.hero-user-mark:has(img[src="/redesign/assets/83f5bec99abccb7f8843.jpg"]){width:80px;flex-basis:80px}}
-/* Reduce team portraits by fifteen percent, keeping each member's text aligned. */
-.redesign-site[data-locale="zh"] .team-grid{width:85%;margin-inline:auto;column-gap:18.7px}
+/* Keep the reduced portrait dimensions within a shared About-page content column. */
+.redesign-site[data-locale="zh"] .team-grid{width:100%;margin-inline:0;column-gap:18.7px}
 @media(max-width:1050px){.redesign-site[data-locale="zh"] .team-grid{column-gap:20.4px}}
 @media(max-width:760px){.redesign-site[data-locale="zh"] .team-grid{column-gap:17px}}
+
+/* Align section headings, interview frame, team cards and the content below. */
+.redesign-site[data-locale="zh"] :is(.company-hero,.company-interview,.team-section,.company-history,#company-contact)>.wrap{width:calc((min(100%,1440px) - 2 * clamp(24px,4vw,64px)) * .85);max-width:none;padding-inline:0}
+.redesign-site[data-locale="zh"] .company-interview .interview-window{max-height:480px}
+@media(max-width:800px){.redesign-site[data-locale="zh"] :is(.company-hero,.company-interview,.team-section,.company-history,#company-contact)>.wrap{width:calc((100% - 44px) * .85)}}
