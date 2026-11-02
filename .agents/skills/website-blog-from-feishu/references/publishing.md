@@ -27,7 +27,7 @@
 1. **授权**：明确“发布 / 上线 / 合并”或“检查通过直接发布”即可，由当前使用者决定；已有授权不重复索要。仅预览不创建 PR；仅改稿或提交审核则停在 PR 和审核说明。尚无发布授权时只需请运营决定是否发布，不要求转交固定维护者。
 2. **最终版本**：获取最新 main 和 PR HEAD，确认目标仓库及 base 是 `dynamia-ai/website:main`。main 已前进时先同步到内容分支，不强推；无法确定内容取舍的冲突请相关人确认。重新审核最终 diff，并对最终版本完成内容校验、lint、build 与受影响预览。保存 base/head SHA，不能沿用旧 HEAD 的成功结果。有等待或再改稿时复核飞书 revision；若用户明确以当前 PR 快照为发布稿，不重新导入源稿。有新增实质改动超出原授权时再请运营确认。
 3. **远端检查**：核对最终 HEAD 对应的最新检查与运行记录，`marketing-blog` 工作流的 `validate` 和当前仓库 PR 的 Vercel 构建都必须成功，即使它们尚未设为 required。其他实际 required checks 和审核要求也必须满足；pending/失败/取消/缺失不能当作通过，记录缺失时先查触发与运行状态。不要只看 `gh pr checks --required`，因为仓库可能还没设置 required。可选机器人 review 的 skipped 不代表人工批准，也不单独阻止发布。托管预览的登录墙不是构建失败，本地视觉检查即可，无需为了查看预览另行登录。
-4. **合并**：无未解决问题、有权限且满足规则后，将 draft PR 标为 Ready，再执行 Squash merge。以已审核 HEAD 约束操作（例如 `gh pr merge <PR> --repo dynamia-ai/website --squash --match-head-commit <HEAD_SHA>`，或 API 的 expected head 参数）。不使用 `--admin`，不为省事关闭检查，不开启无人复核后续变更的自动合并。HEAD 变化就重新读取和复核。PR 中可保留多个修改提交，不为压成一个反复 rebase/force-push；合并时压成一个即可。
+4. **合并**：无未解决问题、有权限且满足规则后，将 draft PR 标为 Ready，再执行 Squash merge。执行前再次核对 main 与已验证的 base SHA；若等待检查期间 main 又有更新，回到最终版本步骤同步并检查。以已审核 HEAD 约束操作（例如 `gh pr merge <PR> --repo dynamia-ai/website --squash --match-head-commit <HEAD_SHA>`，或 API 的 expected head 参数）。不使用 `--admin`，不为省事关闭检查，不开启无人复核后续变更的自动合并。HEAD 变化就重新读取和复核。PR 中可保留多个修改提交，不为压成一个反复 rebase/force-push；合并时压成一个即可。
 5. **回读**：确认 PR 确已 merged，记录合并 SHA；若仅进入 merge queue，仍是待合并。只报告已核实的状态，不把命令已提交写成合并成功。
 
 ## 正式上线核验
