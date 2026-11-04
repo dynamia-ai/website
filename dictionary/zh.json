@@ -1103,7 +1103,7 @@
       },
       "analytics": {
         "title": "分析 Cookie",
-        "description": "帮助我们通过 Google Analytics 和 Vercel Analytics 等服务衡量流量和页面性能。"
+        "description": "帮助我们通过 Google Analytics、百度统计和 Vercel Analytics 等服务衡量流量和页面性能。"
       },
       "marketing": {
         "title": "营销 Cookie",
@@ -1171,11 +1171,11 @@
       },
       {
         "title": "我们使用的 Cookie 类别",
-        "content": "必要 Cookie：用于网站核心功能，例如语言路由、记住您的 Cookie 同意选择，以及保存视频内容的有限访问状态。\n\n分析 Cookie：仅在您同意后使用，用于通过 Google Analytics、Vercel Analytics 和 Vercel Speed Insights 了解流量与性能。\n\n营销 Cookie：预留用于营销活动衡量、广告或再营销。除非您主动同意，否则不会启用。\n\n功能 Cookie：预留用于严格必要功能之外的可选体验偏好。除非您主动同意，否则不会启用。"
+        "content": "必要 Cookie：用于网站核心功能，例如语言路由、记住您的 Cookie 同意选择，以及保存视频内容的有限访问状态。\n\n分析 Cookie：仅在您同意后使用，用于通过 Google Analytics、百度统计、Vercel Analytics 和 Vercel Speed Insights 了解流量与性能。\n\n营销 Cookie：预留用于营销活动衡量、广告或再营销。除非您主动同意，否则不会启用。\n\n功能 Cookie：预留用于严格必要功能之外的可选体验偏好。除非您主动同意，否则不会启用。"
       },
       {
         "title": "当前使用的 Cookie 和类似技术",
-        "content": "dynamia_cookie_consent：第一方必要 Cookie，用于保存您的同意记录，包括政策版本、时间戳和已启用类别。最长保存 180 天。\n\nNEXT_LOCALE：第一方必要 Cookie，用于记住语言偏好。最长保存一年。\n\nvideo_unlocked：第一方必要 Cookie，用于记住当前浏览器已解锁视频内容。最长保存 30 天。\n\nGoogle Analytics（_ga 及相关 Cookie）：第三方分析 Cookie，仅在您同意分析 Cookie 后使用。保存期限由 Google Analytics 设置控制。\n\nVercel Analytics 和 Speed Insights：分析与性能衡量技术，仅在您同意分析 Cookie 后使用。保存期限由 Vercel 控制。"
+        "content": "dynamia_cookie_consent：第一方必要 Cookie，用于保存您的同意记录，包括政策版本、时间戳和已启用类别。最长保存 180 天。\n\nNEXT_LOCALE：第一方必要 Cookie，用于记住语言偏好。最长保存一年。\n\nvideo_unlocked：第一方必要 Cookie，用于记住当前浏览器已解锁视频内容。最长保存 30 天。\n\nGoogle Analytics（_ga 及相关 Cookie）：第三方分析 Cookie，仅在您同意分析 Cookie 后使用。保存期限由 Google Analytics 设置控制。\n\n百度统计（Hm_ 及相关 Cookie）：用于分析访问来源与页面访问，仅在您同意分析 Cookie 后使用。数据由百度处理，保存期限由百度统计设置控制。\n\nVercel Analytics 和 Speed Insights：分析与性能衡量技术，仅在您同意分析 Cookie 后使用。保存期限由 Vercel 控制。"
       },
       {
         "title": "关于 Cookie 的选择",

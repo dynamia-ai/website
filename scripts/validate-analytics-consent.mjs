@@ -2,8 +2,20 @@ import { readFileSync } from 'node:fs';
 
 const source = readFileSync('src/components/ConsentAwareAnalytics.tsx', 'utf8');
 const layoutSource = readFileSync('src/app/[locale]/layout.tsx', 'utf8');
+const baiduSource = readFileSync('src/components/BaiduAnalytics.tsx', 'utf8');
 
 const failures = [];
+
+if (!source.includes('<BaiduAnalytics enabled={analyticsEnabled} />')) {
+  failures.push('Baidu Analytics must use the same analytics consent gate.');
+}
+if (!baiduSource.includes('if (!enabled)') || !baiduSource.includes('window.location.reload()')) {
+  failures.push('Baidu Analytics must stop collection when consent is withdrawn.');
+}
+if (!baiduSource.includes("['_setAutoPageview', false]") ||
+    !baiduSource.includes("['_trackPageview', pathname]")) {
+  failures.push('Baidu Analytics must cover client navigation without duplicate automatic pageviews.');
+}
 
 if (source.includes('isZh ||')) {
   failures.push('Analytics consent must not be auto-granted from the /zh route.');

@@ -918,7 +918,7 @@
       },
       "analytics": {
         "title": "Analytics cookies",
-        "description": "Help us measure traffic and page performance through services such as Google Analytics and Vercel Analytics."
+        "description": "Help us measure traffic and page performance through services such as Google Analytics, Baidu Analytics, and Vercel Analytics."
       },
       "marketing": {
         "title": "Marketing cookies",
@@ -2510,11 +2510,11 @@
       },
       {
         "title": "Cookie categories we use",
-        "content": "Necessary: required for core site behavior such as language routing, remembering your cookie consent choice, and maintaining limited access state for gated video content.\n\nAnalytics: used only with consent to understand traffic and performance through Google Analytics, Vercel Analytics, and Vercel Speed Insights.\n\nMarketing: reserved for campaign measurement, advertising, or remarketing. We do not enable marketing cookies unless you opt in.\n\nFunctional: reserved for optional experience preferences beyond what is strictly required. We do not enable functional cookies unless you opt in."
+        "content": "Necessary: required for core site behavior such as language routing, remembering your cookie consent choice, and maintaining limited access state for gated video content.\n\nAnalytics: used only with consent to understand traffic and performance through Google Analytics, Baidu Analytics, Vercel Analytics, and Vercel Speed Insights.\n\nMarketing: reserved for campaign measurement, advertising, or remarketing. We do not enable marketing cookies unless you opt in.\n\nFunctional: reserved for optional experience preferences beyond what is strictly required. We do not enable functional cookies unless you opt in."
       },
       {
         "title": "Current cookies and similar technologies",
-        "content": "dynamia_cookie_consent: a first-party necessary cookie that stores your consent record, including version, timestamp, and enabled categories. It is retained for up to 180 days.\n\nNEXT_LOCALE: a first-party necessary cookie used to remember language preference. It is retained for up to one year.\n\nvideo_unlocked: a first-party necessary cookie used to remember that video content has been unlocked on this browser. It is retained for up to 30 days.\n\nGoogle Analytics (_ga and related cookies): third-party analytics cookies used only after analytics consent. Retention is controlled by Google Analytics settings.\n\nVercel Analytics and Speed Insights: analytics and performance measurement technologies used only after analytics consent. Retention is controlled by Vercel."
+        "content": "dynamia_cookie_consent: a first-party necessary cookie that stores your consent record, including version, timestamp, and enabled categories. It is retained for up to 180 days.\n\nNEXT_LOCALE: a first-party necessary cookie used to remember language preference. It is retained for up to one year.\n\nvideo_unlocked: a first-party necessary cookie used to remember that video content has been unlocked on this browser. It is retained for up to 30 days.\n\nGoogle Analytics (_ga and related cookies): third-party analytics cookies used only after analytics consent. Retention is controlled by Google Analytics settings.\n\nBaidu Analytics (Hm_ and related cookies): used to measure traffic sources and page visits only after analytics consent. Data is processed by Baidu; retention is controlled by Baidu Analytics settings.\n\nVercel Analytics and Speed Insights: analytics and performance measurement technologies used only after analytics consent. Retention is controlled by Vercel."
       },
       {
         "title": "Your choices regarding cookies",
