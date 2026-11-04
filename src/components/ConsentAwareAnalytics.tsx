@@ -11,6 +11,7 @@ import {
   readCookieConsent,
 } from '@/lib/cookieConsent';
 import { GA4_MEASUREMENT_ID } from '@/config/app-config';
+import BaiduAnalytics from '@/components/BaiduAnalytics';
 
 type GtagConsentValue = 'granted' | 'denied';
 
@@ -97,6 +98,7 @@ const ConsentAwareAnalytics: React.FC = () => {
 
   return (
     <>
+      <BaiduAnalytics enabled={analyticsEnabled} />
       {analyticsEnabled && (
         <>
           <Script
