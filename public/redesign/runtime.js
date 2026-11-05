@@ -296,7 +296,7 @@ const translateText=context.translateText||((value)=>value);
     "github": uiCopy("sdc0a7827939b4e"),
     "linkedin": uiCopy("s9f964ff7744a10"),
     "bio": uiCopy("s7902490440ea7b"),
-    "details": [[uiCopy("s493be52c8a39b5"), uiCopy("sd7e168b8309656")], [uiCopy("sa6a81243233e92"), uiCopy("s7d94af8ccf49c1")]]
+    "details": [[uiCopy("team.communityIdentity"), uiCopy("se6ac154f384ade")], [uiCopy("s493be52c8a39b5"), uiCopy("sd7e168b8309656")], [uiCopy("sa6a81243233e92"), uiCopy("s7d94af8ccf49c1")]]
   }, {
     "id": uiCopy("s4692a3334b4419"),
     "name": uiCopy("s32c7ee76104b25"),
@@ -306,17 +306,17 @@ const translateText=context.translateText||((value)=>value);
     "github": uiCopy("s97fd1d966ef1b2"),
     "linkedin": uiCopy("sc5581067bbeba4"),
     "bio": uiCopy("s1c94aa006e4ea1"),
-    "details": [[uiCopy("s493be52c8a39b5"), uiCopy("s06ece297b8b0ea")], [uiCopy("sa6a81243233e92"), uiCopy("s7e39081d97a790")]]
+    "details": [[uiCopy("team.communityIdentity"), uiCopy("se6ac154f384ade")], [uiCopy("s493be52c8a39b5"), uiCopy("s06ece297b8b0ea")], [uiCopy("sa6a81243233e92"), uiCopy("s7e39081d97a790")]]
   }, {
     "id": uiCopy("s930a68a51a2db9"),
     "name": uiCopy("s61fca22430aa22"),
     "role": uiCopy("s85c59e66d9490e"),
-    "tag": uiCopy("s5ef1d8f4ee187e"),
+    "tag": uiCopy("team.jimmy.communityRole"),
     "image": uiCopy("s2d1afa580740ab"),
     "github": uiCopy("sb70717aa7ba333"),
     "linkedin": uiCopy("s3810a0ce5f152e"),
-    "bio": uiCopy("s8deb4e903dce0a"),
-    "details": []
+    "bio": uiCopy("team.jimmy.profile.bio"),
+    "details": [[uiCopy("team.communityIdentity"), uiCopy("team.jimmy.communityRole")], [uiCopy("team.jimmy.profile.background.title"), uiCopy("team.jimmy.profile.background.body")], [uiCopy("team.jimmy.profile.ecosystem.title"), uiCopy("team.jimmy.profile.ecosystem.body")], [uiCopy("team.jimmy.profile.sharing.title"), uiCopy("team.jimmy.profile.sharing.body")]]
   }, {
     "id": uiCopy("team.reza.id"),
     "name": uiCopy("team.reza.name"),
@@ -325,15 +325,15 @@ const translateText=context.translateText||((value)=>value);
     "image": uiCopy("team.reza.image"),
     "github": "",
     "linkedin": "",
-    "bio": uiCopy("team.reza.bio"),
-    "details": []
+    "bio": uiCopy("team.reza.profile.bio"),
+    "details": [[uiCopy("team.communityIdentity"), uiCopy("team.reza.tag")], [uiCopy("team.reza.profile.focus.title"), uiCopy("team.reza.profile.focus.body")], [uiCopy("team.reza.profile.experience.title"), uiCopy("team.reza.profile.experience.body")], [uiCopy("team.reza.profile.sharing.title"), uiCopy("team.reza.profile.sharing.body")]]
   }];
   function teamSocial(member) {
     if (!member.github && !member.linkedin) return '';
-    return `<div class="social-links"><a class="social-link" href="${member.github}" target="_blank" rel="noopener" aria-label="${member.name}的 GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.96c.85 0 1.7.11 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.61c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>${member.linkedin ? `<a class="social-link" href="${member.linkedin}" target="_blank" rel="noopener" aria-label="${member.name}的 LinkedIn">${uiCopy("s582967534d0f90")}</a>` : ''}</div>`;
+    return `<div class="social-links"><a class="social-link" href="${member.github}" target="_blank" rel="noopener" aria-label="${translateText(member.name)} · GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.96c.85 0 1.7.11 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.61c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>${member.linkedin ? `<a class="social-link" href="${member.linkedin}" target="_blank" rel="noopener" aria-label="${translateText(member.name)} · LinkedIn">${uiCopy("s582967534d0f90")}</a>` : ''}</div>`;
   }
   function teamCards() {
-    return `<div class="team-grid">${TEAM_MEMBERS.map((m, i) => `<article class="member-card"><button class="member-open" data-member="${i}" aria-label="查看${m.name}的介绍"><div class="member-photo" data-person="${m.id}"><img src="${m.image}" alt="${m.name}" loading="eager"><span class="member-more" aria-hidden="true">${uiCopy("sca29edb4680a64")}</span></div><div class="member-name"><h3>${m.name}</h3></div><p class="member-role">${m.role}</p><p class="member-tag">${m.tag}</p></button><div class="member-bottom"><button class="member-bio-link" data-member="${i}">${uiCopy("s85faee1dd1c732")}<span class="arrow">${uiCopy("s161660030aa6c9")}</span></button>${teamSocial(m)}</div></article>`).join('')}</div>`;
+    return `<div class="team-grid">${TEAM_MEMBERS.map((m, i) => `<article class="member-card"><button class="member-open" data-member="${i}" aria-label="${translateText(uiCopy("s85faee1dd1c732"))} · ${translateText(m.name)}"><div class="member-photo" data-person="${m.id}"><img src="${m.image}" alt="${m.name}" loading="eager"><span class="member-more" aria-hidden="true">${uiCopy("sca29edb4680a64")}</span></div><div class="member-name"><h3>${m.name}</h3></div><p class="member-role">${m.role}</p><p class="member-tag">${m.tag}</p></button><div class="member-bottom"><button class="member-bio-link" data-member="${i}">${uiCopy("s85faee1dd1c732")}<span class="arrow">${uiCopy("s161660030aa6c9")}</span></button>${teamSocial(m)}</div></article>`).join('')}</div>`;
   }
   const MILESTONES = [['2025.01', uiCopy("s9320fe615f2eff"), uiCopy("s695be6920c46a8")], ['2025.03', uiCopy("s6e879649a68ab9"), uiCopy("sf536b4b6b9eee2")], ['2026.01', uiCopy("s13db6e582ecc3a"), uiCopy("s4774f6e915c429")], ['2026.01', uiCopy("sc62d53d5dcce77"), uiCopy("s80b4cecd744dd1")], ['2026.03', uiCopy("s1baad2355319ba"), uiCopy("s99af3a0da0138f")], ['2026.05', uiCopy("s1bf2a6d097ac81"), uiCopy("s04154451360019")], ['2026.07', uiCopy("s2449bd335ef61f"), uiCopy("sf3edbf15342cab")]];
   function companyInterview() {
@@ -347,7 +347,7 @@ const translateText=context.translateText||((value)=>value);
     activeMember = (index + TEAM_MEMBERS.length) % TEAM_MEMBERS.length;
     const m = TEAM_MEMBERS[activeMember];
     const dlg = document.querySelector(uiCopy("sca2868d0ca39dd"));
-    dlg.innerHTML = normalizeHTML(`<button class="team-dialog-close" aria-label="关闭团队成员介绍" data-close-member>${uiCopy("s8db71ed28b0f2f")}</button><div class="team-dialog-grid"><div class="team-dialog-photo"><img data-person="${m.id}" src="${m.image}" alt="${m.name}">${teamSocial(m)}</div><div class="team-dialog-info"><div class="eyebrow">${uiCopy("s63a0bb73931833")}</div><h2 id="member-dialog-title">${m.name}</h2><div class="team-dialog-role">${m.role}</div><div class="team-dialog-tag"><span class="tag">${m.tag}</span></div><p class="team-dialog-bio">${m.bio}</p><div class="team-dialog-details">${m.details.map(([h, p]) => `<h3>${h}</h3><p>${p}</p>`).join('')}</div><div class="team-dialog-nav"><span>${String(activeMember + 1).padStart(2, '0')}${uiCopy("s005e1574a2b5c8")}${String(TEAM_MEMBERS.length).padStart(2, '0')}</span><div><button data-member-step="-1" aria-label="上一位成员">${uiCopy("s774f1d6b2910de")}</button><button data-member-step="1" aria-label="下一位成员">${uiCopy("s161660030aa6c9")}</button></div></div></div></div>`);
+    dlg.innerHTML = normalizeHTML(`<button class="team-dialog-close" aria-label="关闭团队成员介绍" data-close-member>${uiCopy("s8db71ed28b0f2f")}</button><div class="team-dialog-grid"><div class="team-dialog-photo"><img data-person="${m.id}" src="${m.image}" alt="${m.name}">${teamSocial(m)}</div><div class="team-dialog-info"><div class="eyebrow">${uiCopy("s63a0bb73931833")}</div><h2 id="member-dialog-title">${m.name}</h2><div class="team-dialog-role">${m.role}</div>${m.bio ? `<p class="team-dialog-bio">${m.bio}</p>` : ''}<div class="team-dialog-details">${m.details.map(([h, p]) => `<h3>${h}</h3><p>${p}</p>`).join('')}</div><div class="team-dialog-nav"><span>${String(activeMember + 1).padStart(2, '0')}${uiCopy("s005e1574a2b5c8")}${String(TEAM_MEMBERS.length).padStart(2, '0')}</span><div><button data-member-step="-1" aria-label="上一位成员">${uiCopy("s774f1d6b2910de")}</button><button data-member-step="1" aria-label="下一位成员">${uiCopy("s161660030aa6c9")}</button></div></div></div></div>`);
     if (!dlg.open) dlg.showModal();else dlg.querySelector(uiCopy("s09780ad0f448f7")).focus();
     dlg.scrollTop = 0;
   }
@@ -664,7 +664,7 @@ const translateText=context.translateText||((value)=>value);
       panel = document.querySelector(uiCopy("s4cc42838ca2101"));
     if (!panel) return;
     panel.setAttribute(uiCopy("sedde6c5d24e5a6"), uiCopy("s7b999f1e462b49") + i);
-    panel.innerHTML = normalizeHTML(`<div class="why-panel"><div><span class="tag">${uiCopy("s5feceb66ffc86f")}${i + 1}${uiCopy("s005e1574a2b5c8")}${x[0]}</span><h3>${x[1]}</h3><p>${x[2]}</p><p class="why-scope">${x[3]}</p></div><div class="why-visual why-visual-motion">${whyMotionGraphic(x[4])}<p class="tiny" style="text-align:center;margin-top:12px">${uiCopy("s7493cf792c4b41")}</p></div></div>`);
+    panel.innerHTML = normalizeHTML(`<div class="why-panel"><div><span class="tag"><span>${String(i + 1).padStart(2, '0')} / </span><span>${x[0]}</span></span><h3>${x[1]}</h3><p>${x[2]}</p></div><div class="why-visual why-visual-approved"><iframe src="/redesign/compute-motion/index.html?scene=${i}" title="${x[0]}" scrolling="no" loading="lazy"></iframe></div></div>`);
     document.querySelectorAll(uiCopy("sb7b337edaa1d04")).forEach(b => {
       const active = Number(b.dataset.why) === i;
       b.setAttribute(uiCopy("s7a36887bd59142"), active);

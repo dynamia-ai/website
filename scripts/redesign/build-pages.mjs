@@ -4,6 +4,10 @@ import {JSDOM} from 'jsdom';
 import {mountRedesign} from '../../public/redesign/runtime.js';
 import {makeLocalizer} from '../../public/redesign/localization.js';
 
+// Diagram wording shares the same locale source as the rest of the redesigned site.
+fs.mkdirSync('public/redesign/compute-motion/locales',{recursive:true});
+for(const locale of ['en','de'])fs.copyFileSync(`dictionary/redesign/compute-motion/${locale}.json`,`public/redesign/compute-motion/locales/${locale}.json`);
+
 const data=JSON.parse(fs.readFileSync('src/content/redesign/site.json','utf8'));
 const {ARTICLE_DETAILS,...siteCatalog}=data;
 fs.writeFileSync('public/redesign/site-data.json',JSON.stringify(siteCatalog));

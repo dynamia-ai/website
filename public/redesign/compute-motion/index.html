@@ -1,0 +1,194 @@
+<!doctype html><html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HAMi</title><style>
+:root{--bg:#fff;--ink:#132239;--muted:#748074;--line:#dce4dc;--card:#fff;--soft:#f5f8f1;--green:#77b900;--mint:#23b99b;--strong:#284f27}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif}body.dark{--bg:#141714;--card:#1d231c;--soft:#242f20;--ink:#eff3e9;--muted:#a5b29d;--line:#41513a;--strong:#b4d780}header{max-width:1240px;margin:auto;padding:23px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:20px}header b{font-size:15px}header span{font-size:11px;color:var(--muted);margin-left:12px}.controls{display:flex;gap:9px;flex-wrap:wrap}button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:5px;padding:9px 13px;font-size:12px}button:hover,button[aria-pressed=true]{border-color:var(--green);color:var(--strong);background:var(--soft)}main{max-width:1240px;margin:38px auto;padding:0 28px}.tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.tabs button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:13px 17px;font-size:14px}.tabs button[aria-pressed=true]{border-color:var(--green);background:none;color:var(--strong)}.layout{display:grid;grid-template-columns:1fr;align-items:center;margin:15px auto 0;max-width:1000px}.copy{display:none}.layout.hero{max-width:none;grid-template-columns:.85fr 1.15fr;gap:34px;margin-top:60px}.hero .copy{display:block}.copy small{color:var(--strong);font-size:15px;font-weight:600}.copy h1{font-size:46px;line-height:1.25;margin:22px 0}.copy em{font-style:normal;color:var(--strong)}.copy p{font-size:15px;color:var(--muted);line-height:1.9}.copy a{display:inline-block;background:var(--green);color:white;padding:13px 20px;border-radius:5px;margin-top:18px;font-size:13px}.stage{min-width:0;transition:opacity .16s;position:relative}.stage>svg{width:100%;height:auto;display:block;overflow:visible}.stage svg svg{overflow:hidden}.caption{text-align:center;min-height:44px;font-size:13px;color:var(--muted);margin-top:17px;line-height:1.8}.progress{height:2px;width:180px;background:var(--line);margin:17px auto}.progress i{display:block;height:100%;width:0;background:var(--green);animation:progress 12s linear infinite}.paused *{animation-play-state:paused!important}.paused svg :is(.node,.check,.taskb,.taskc){animation:none!important;opacity:1;transform:none}.paused svg .chart{animation:none!important;stroke-dashoffset:0}footer{text-align:center;font-size:11px;color:var(--muted);padding:20px}svg text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;fill:var(--ink)}svg .muted{fill:var(--muted)}svg .green{fill:var(--strong)}svg .box{fill:var(--card);stroke:var(--line);stroke-width:1.5}svg .soft{fill:var(--soft)}svg .accent{stroke:var(--green);fill:var(--soft);stroke-width:1.8}svg .wire{stroke:var(--line);stroke-width:2;fill:none}svg .flow{stroke:var(--green);stroke-width:2;fill:none;stroke-dasharray:5 10;animation:flow 1.7s linear infinite}svg .node{animation:enter .6s both}svg .st1{animation-delay:.1s}svg .st2{animation-delay:.22s}svg .st3{animation-delay:.34s}svg .pulse{animation:pulse 2s infinite}svg .fillbar{transform-box:fill-box;transform-origin:left center;animation:grow 3.8s ease-in-out infinite alternate}svg .chart{stroke:var(--green);stroke-width:2.5;fill:none;stroke-dasharray:450;stroke-dashoffset:450;animation:chart 3s forwards}svg .move-page{animation:pulse 4s ease-in-out infinite}svg .grow-memory{animation:expand 5s ease-in-out infinite}svg .taskb{animation:taskin 5s .4s both infinite}svg .taskc{animation:taskin 5s .8s both infinite}svg .fan{transform-box:fill-box;transform-origin:center;animation:spin 9s linear infinite}svg .active-request{animation:request 6s infinite}svg .check{animation:enter .5s .6s both}@keyframes enter{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}@keyframes flow{to{stroke-dashoffset:-60}}@keyframes pulse{50%{opacity:.35}}@keyframes grow{from{transform:scaleX(.5)}to{transform:scaleX(1)}}@keyframes chart{to{stroke-dashoffset:0}}@keyframes move{0%,15%,100%{transform:translateY(0);opacity:1}45%,70%{transform:translateY(145px);opacity:.3}}@keyframes expand{0%,20%,100%{width:148px}55%,80%{width:280px}}@keyframes taskin{0%,15%,100%{opacity:.1;transform:translateX(-20px)}35%,85%{opacity:1;transform:translateX(0)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes request{0%,100%{opacity:.5}35%,75%{opacity:1}}@keyframes progress{to{width:100%}}@media(max-width:750px){header{padding:18px;align-items:flex-start}header span{display:block;margin:7px 0 0}main{padding:0 14px;margin-top:18px}.tabs{gap:0}.tabs button{font-size:12px;padding:10px}.layout.hero{grid-template-columns:1fr;margin-top:25px}.copy h1{font-size:34px}.caption{font-size:11px}.controls button{padding:7px;font-size:11px}.layout{margin-top:20px}}@media(prefers-reduced-motion:reduce){svg *{animation:none!important}.progress{display:none}}
+
+.original-art{filter:none}
+.original-appear{animation:original-enter .65s both}.original-fan{animation:original-spin 7s linear infinite}.original-drift{animation:original-drift 2.2s ease-in-out infinite}.original-breathe{animation:original-breathe 3s ease-in-out infinite}
+.paused svg .original-appear{animation:none!important;opacity:1;transform:none}
+@keyframes original-enter{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes original-spin{to{transform:rotate(360deg)}}@keyframes original-drift{50%{transform:translateY(7px)}}@keyframes original-breathe{50%{opacity:.55}}
+.stage{background:transparent}.stage>svg{aspect-ratio:4/3}.layout.hero{grid-template-columns:.85fr 1.15fr}.caption{font-size:12px}
+@media(max-width:750px){.layout.hero{grid-template-columns:1fr}}
+
+.original-fan{animation-duration:3.8s}.original-donut{animation:original-spin 16s linear infinite}
+.original-allocate-b{animation:allocate-b 7s ease-in-out infinite}.original-allocate-c{animation:allocate-c 7s ease-in-out infinite}
+.original-arrow-right{animation:arrow-right 1.7s ease-in-out infinite}.original-confirm{animation:confirm 7s ease-in-out infinite}
+.original-migrate-b{animation:migrate-b 7s ease-in-out infinite}.original-migrate-c{animation:migrate-c 7s ease-in-out infinite}
+.original-request{animation:request-cycle 6s ease-in-out infinite}.original-checking{animation:check-cycle 6s ease-in-out infinite}.original-continued{animation:continue-cycle 6s ease-in-out infinite}
+.paused svg :is(.original-allocate-b,.original-allocate-c,.original-migrate-b,.original-migrate-c){animation:none!important;opacity:1;transform:none}
+@keyframes allocate-b{0%,12%{opacity:0;transform:translate(-230px,-80px)}32%,86%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(0,0)}}
+@keyframes allocate-c{0%,30%{opacity:0;transform:translate(-230px,-95px)}52%,86%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(0,0)}}
+@keyframes arrow-right{50%{transform:translateX(9px)}}@keyframes confirm{0%,40%{opacity:.15}55%,90%{opacity:1}100%{opacity:.15}}
+@keyframes migrate-b{0%,10%{opacity:0;transform:translate(330px,-260px)}18%{opacity:1}45%,88%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(0,0)}}
+@keyframes migrate-c{0%,28%{opacity:0;transform:translate(160px,-260px)}35%{opacity:1}65%,88%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(0,0)}}
+@keyframes request-cycle{0%,12%,100%{opacity:.2}25%,65%{opacity:1}85%{opacity:.5}}
+@keyframes check-cycle{0%,23%,100%{opacity:.2}40%,80%{opacity:1}}
+@keyframes continue-cycle{0%,45%,100%{opacity:.2}62%,90%{opacity:1}}
+
+.data-focus{opacity:0;animation:data-focus 7s ease-in-out infinite both;pointer-events:none}
+.art-highlight{opacity:0;animation:art-highlight 3s ease-in-out infinite both;filter:brightness(1.22) saturate(1.35)}
+@keyframes data-focus{0%,8%,100%{opacity:0}25%,52%{opacity:.17}75%{opacity:0}}
+@keyframes art-highlight{0%,100%{opacity:0}45%,65%{opacity:1}}
+
+.original-attempt-b,.original-attempt-c{animation:attempt-reject 12s ease-in-out infinite}
+.original-blocked-b{transform-origin:343px 597px;animation:blocked-feedback 12s ease-in-out infinite;filter:contrast(1.45)}
+.original-blocked-c{transform-origin:343px 777px;animation:blocked-feedback 12s ease-in-out infinite;filter:contrast(1.45)}
+.original-allocate-b{animation:share-b 12s ease-in-out infinite}.original-allocate-c{animation:share-c 12s ease-in-out infinite}
+.original-confirm{animation:sharing-confirm 12s ease-in-out infinite}
+@keyframes attempt-reject{0%,2%{transform:translateX(0)}5%,7%{transform:translateX(38px)}10%,100%{transform:translateX(0)}}
+@keyframes blocked-feedback{0%,2%{opacity:.65;transform:scale(1)}5%,9%{opacity:1;transform:scale(1.23)}13%,100%{opacity:1;transform:scale(1)}}
+@keyframes share-b{0%,25%{opacity:0;transform:translateX(-150px)}34%,94%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(0)}}
+@keyframes share-c{0%,34%{opacity:0;transform:translateX(-150px)}43%,94%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(0)}}
+@keyframes sharing-confirm{0%,40%{opacity:.2}45%,94%{opacity:1}100%{opacity:.2}}
+.paused svg :is(.original-attempt-b,.original-attempt-c,.original-blocked-b,.original-blocked-c){animation:none!important;transform:none;opacity:1}
+
+/* Native foreground PNG pixels bypass the live colour filter. No resampling or recompression. */
+.stage>svg{shape-rendering:geometricPrecision}.stage image{image-rendering:auto}
+.layout{max-width:min(1000px,calc(var(--source-width,1448px) / var(--preview-dpr,2)))}
+.layout.hero{max-width:none}.layout.hero .stage{max-width:calc(var(--source-width,1448px) / var(--preview-dpr,2));margin-inline:auto}
+.original-migration-down{animation:migration-down 2.2s ease-in-out infinite}.original-migration-up{animation:migration-up 2.2s ease-in-out infinite}
+@keyframes migration-down{50%{transform:translateY(8px)}}@keyframes migration-up{50%{transform:translateY(-8px)}}
+.original-phase-one{animation:phase-one 12s ease-in-out infinite both}.original-phase-two{animation:phase-two 12s ease-in-out infinite both}.original-phase-three{animation:phase-three 12s ease-in-out infinite both}
+.original-phase-arrow-one{animation:phase-arrow-one 12s ease-in-out infinite both}.original-phase-arrow-two{animation:phase-arrow-two 12s ease-in-out infinite both}
+@keyframes phase-one{0%{opacity:0}6%,96%{opacity:1}100%{opacity:0}}@keyframes phase-two{0%,17%{opacity:0}25%,96%{opacity:1}100%{opacity:0}}@keyframes phase-three{0%,35%{opacity:0}44%,96%{opacity:1}100%{opacity:0}}
+@keyframes phase-arrow-one{0%,11%{opacity:0}18%,96%{opacity:1}100%{opacity:0}}@keyframes phase-arrow-two{0%,29%{opacity:0}37%,96%{opacity:1}100%{opacity:0}}
+.paused svg :is(.original-phase-one,.original-phase-two,.original-phase-three,.original-phase-arrow-one,.original-phase-arrow-two){animation:none!important;opacity:1}
+.cluster-entry{animation:cluster-entry .7s ease-out both}
+@keyframes cluster-entry{from{opacity:0}to{opacity:1}}
+.paused svg .cluster-entry{animation:none!important;opacity:1}
+html,body{width:100%;height:100%;margin:0;background:transparent;overflow:hidden}.stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center}.stage>svg{width:100%;height:100%;display:block}</style><body><div class="stage" aria-hidden="true"></div><script src="labels.js"></script><script>let localizedLabels=null;const params=new URLSearchParams(location.search);const lang=(params.get('lang')||parent.document.documentElement.lang||'zh').split('-')[0];const translated=lang==='en'||lang==='de';const files=['clusters','sharing','oversell','elasticity','observability','scheduling'];const dimensions=[[1448,1086],[1448,1086],[1491,1055],[1448,1086],[1448,1086],[1448,1086]];const clean=true;function scene(i){
+ const [W,H]=dimensions[i];
+ const src='assets/'+(translated?'localized/':'')+files[i]+'.png';
+ const baseSrc=i===1?'assets/'+(translated?'localized/':'')+'sharing-empty-card.png':src;
+ const offset=i===2?175:i===3?146:0;
+ const zoom=i===5?1.08:1.12;const vw=W/zoom,vh=H/zoom;const viewport=`${offset+(W-vw)/2} ${(H-vh)/2} ${vw} ${vh}`;
+ const rect=(x,y,w,h,rx=0,fill='white')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}"/>`;
+ let panels='';
+ if(i===0){
+  [[132,149,376,307],[541,149,367,307],[942,149,371,307],[131,737,376,96],[540,737,367,96],[942,737,373,96]].forEach(r=>panels+=rect(...r,28));
+ }
+ if(i===1){
+  panels+=`<path d="M446 324 H665 Q690 324 690 352 V572 L681 594 V746 L690 770 V854 Q690 884 665 884 H447 Q422 884 422 856 V773 L431 747 V597 L422 575 V351 Q422 324 446 324 Z" fill="white"/>`;
+  panels+=`<path d="M975 324 H1199 Q1222 324 1222 352 V574 L1213 596 V748 L1222 773 V855 Q1222 884 1199 884 H976 Q950 884 950 855 V773 L959 747 V597 L950 574 V352 Q950 324 975 324 Z" fill="white"/>`;
+  [[438,507,235,148],[968,507,241,113],[968,628,241,113],[968,747,241,115]].forEach(r=>panels+=rect(...r,22,'black'));
+ }
+ if(i===2){[[424,175,305,246],[752,175,301,246],[1074,175,304,246],[423,507,785,230],[423,803,785,178]].forEach(r=>panels+=rect(...r,25));}
+ if(i===3){
+  [[349,326,330,445],[716,326,269,445],[1017,326,370,445]].forEach(r=>panels+=rect(...r,25));
+  [[365,504,301,81],[731,500,242,88],[1038,504,331,81],[371,671,292,78],[734,670,243,79],[1040,670,335,79]].forEach(r=>panels+=rect(...r,16,'black'));
+ }
+ if(i===4){
+  panels+=rect(195,155,1068,783);
+  panels+=`<path d="M270 165 H667 Q696 165 696 194 V250 H244 V194 Q244 165 270 165Z M499 269 H907 Q937 269 937 298 V352 H471 V298 Q471 269 499 269Z M230 404 H686 Q716 404 716 433 V499 H202 V433 Q202 404 230 404Z" fill="black"/>`;
+  panels+=`<path d="M282 404 L331 357 L401 339 L467 358 L467 404Z M716 463 L740 450 L791 396 L832 468 L899 440 L899 478 L824 478 Q800 478 800 503 V539 H716Z M716 540 L739 530 L791 548 L800 545 V554 L716 589Z" fill="black"/>`;
+ }
+ if(i===5)panels+=rect(90,100,880,760);
+ const channel=(c,n)=>`<feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 ${[0,1,2].map(j=>j===c?1:0).join(' ')} 0 0" result="c${n}"/><feComponentTransfer in="c${n}" result="m${n}"><feFuncA type="linear" slope="42" intercept="${i===5?-32:-36}"/></feComponentTransfer>`;
+ const whitening=`<mask id="white-panels">${panels}</mask><mask id="white-base">${panels}${i===1?rect(965,624,247,242):''}</mask><filter id="white-paper" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">${channel(0,'r')}${channel(1,'g')}${channel(2,'b')}<feComposite in="mr" in2="mg" operator="in" result="rg"/><feComposite in="rg" in2="mb" operator="in" result="rgb"/><feComposite in="rgb" in2="SourceAlpha" operator="in" result="white"/><feComposite in="white" in2="SourceGraphic" operator="over"/></filter>`;
+ const labels=(empty=false)=>{
+  if(!translated||!localizedLabels)return '';
+  const ctx=document.createElement('canvas').getContext('2d');
+  return window.COMPUTE_LABELS[i].filter(d=>!empty||!d.task).map(d=>{
+   const [x,y,w,h]=d.textBox||d.box;
+   const lines=localizedLabels[d.key].split('\n');let size=d.size;
+   do{ctx.font=`700 ${size}px Arial`;if(Math.max(...lines.map(t=>ctx.measureText(t).width))<=w)break;size-=.5}while(size>12);
+   const esc=t=>t.replaceAll('&','&amp;').replaceAll('<','&lt;');
+   return `<g data-label="${d.key}" font-family="Arial,sans-serif" font-weight="700" font-size="${size}" text-anchor="middle" fill="${d.color}">${lines.map((line,j)=>`<text x="${x+w/2}" y="${y+h/2+(j-(lines.length-1)/2)*size*1.12}" dominant-baseline="central" style="fill:${d.color};font-family:Arial,sans-serif">${esc(line)}</text>`).join('')}</g>`;
+  }).join('');
+ };
+ const paint=(url,empty=false)=>`<image href="${url}" width="${W}" height="${H}"/>${panels?`<g mask="url(#${empty?'white-base':'white-panels'})"><image href="${url}" width="${W}" height="${H}" filter="url(#white-paper)"/></g>`:''}${labels(empty)}`;
+ const baseImg=()=>paint(baseSrc,true);
+ document.documentElement.style.setProperty('--source-width',W+'px');
+ const img=()=>paint(src);
+ if(!clean)return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewport}" style="aspect-ratio:${W}/${H}"><image href="${src}" width="${W}" height="${H}"/></svg>`;
+ let defs='',holes='',layers='';
+
+ const region=(id,x,y,w,h,delay=0,kind='appear')=>{
+  const pad=kind.startsWith('phase')?0:3;
+  const radius=0;
+  defs+=`<clipPath id="clip-${id}"><rect x="${x-pad}" y="${y-pad}" width="${w+pad*2}" height="${h+pad*2}" rx="${radius}"/></clipPath>`;
+  holes+=`<rect x="${x-pad}" y="${y-pad}" width="${w+pad*2}" height="${h+pad*2}" fill="black"/>`;
+  layers+=`<g clip-path="url(#clip-${id})" class="original-${kind}" style="animation-delay:${delay}s">${img()}</g>`;
+ };
+
+ const packet=(id,x,y,path,delay=0)=>{
+   defs+=`<clipPath id="packet-${id}"><circle cx="${x}" cy="${y}" r="8"/></clipPath>`;
+   layers+=`<g class="packet"><animateMotion dur="3s" begin="${delay}s" repeatCount="indefinite" path="${path}"/><g clip-path="url(#packet-${id})">${img()}</g></g>`;
+ };
+ const reveal=(id,x,y,w,h,delay=0)=>{
+  holes+=`<rect x="${x-3}" y="${y-3}" width="${w+6}" height="${h+6}" fill="black"/>`;
+  defs+=`<clipPath id="reveal-${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}"><animate attributeName="width" values="${w*.12};${w*.12};${w};${w};${w*.12}" keyTimes="0;.12;.48;.9;1" dur="6s" begin="${delay}s" repeatCount="indefinite"/></rect></clipPath>`;
+  layers+=`<g clip-path="url(#reveal-${id})">${img()}</g>`;
+ };
+ if(i===0){
+  // Fade the complete original artwork together: never leave cropped frame fragments.
+  packet('cloud',318,455,'M0 0 V50 H405 V94',.5);
+  packet('private',723,455,'M0 0 V94',1.1);
+  packet('local',1127,455,'M0 0 V50 H-404 V94',1.7);
+  packet('nvidia',318,733,'M0 0 V-40 H405 V-75',1.1);
+  packet('ascend',1127,733,'M0 0 V-40 H-404 V-75',2);
+ }
+
+ if(i===1){
+  region('queue-b',106,527,200,158,0,'attempt-b');region('queue-c',106,724,200,150,1.3,'attempt-c');
+  const task=(id,x,y,w,h,kind)=>{
+   defs+=`<clipPath id="task-${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="22"/></clipPath>`;
+   layers+=`<g class="original-${kind}"><g clip-path="url(#task-${id})">${img()}</g></g>`;
+  };
+  task('b',968,628,240,112,'allocate-b');task('c',968,747,240,115,'allocate-c');
+  region('share-arrow',709,632,222,96,0,'arrow-right');
+  region('blocked-b',312,565,64,65,0,'blocked-b');region('blocked-c',312,743,64,65,1.3,'blocked-c');
+  region('confirm',1230,274,108,90,0,'confirm');
+  [[555,420],[1086,420]].forEach(([x,y],j)=>{defs+=`<clipPath id="fan-${j}"><circle cx="${x}" cy="${y}" r="${j===2?40:62}"/></clipPath>`;layers+=`<g clip-path="url(#fan-${j})"><g class="original-fan" style="transform-origin:${x}px ${y}px">${img()}</g></g>`;});
+ }
+
+ const focus=(id,x,y,w,h,delay=0,color='#79b900')=>{
+  layers+=`<rect data-safe-zone="${id}" x="${x}" y="${y}" width="${w}" height="${h}" rx="9" fill="${color}" class="data-focus" style="animation-delay:${delay}s"/>`;
+ };
+ const pulseArt=(id,x,y,w,h,delay=0)=>{
+  defs+=`<clipPath id="pulse-${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}"/></clipPath>`;
+  layers+=`<g data-safe-zone="${id}" clip-path="url(#pulse-${id})" class="art-highlight" style="animation-delay:${delay}s">${img()}</g>`;
+ };
+ const meter=(id,x,y,w,h,fill,delay=0)=>{
+  defs+=`<clipPath id="meter-${id}"><rect x="${x}" y="${y}" width="${fill}" height="${h}"><animate attributeName="width" values="0;0;${fill};${fill};0" keyTimes="0;.1;.5;.9;1" dur="7s" begin="${delay}s" repeatCount="indefinite"/></rect></clipPath>`;
+  layers+=`<g data-safe-zone="${id}"><rect x="${x-2}" y="${y-2}" width="${w+4}" height="${h+4}" fill="white"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${h/2}" fill="#d8dfdd"/><g clip-path="url(#meter-${id})">${img()}</g></g>`;
+ };
+ if(i===2){
+  // New transparent oversell artwork has a different native canvas and layout.
+  focus('active-request',469,323,219,47,0);
+  focus('active-pages',477,612,304,75,.7);
+  const arrow=(id,points,kind)=>{
+   defs+=`<clipPath id="${id}"><polygon points="${points}"/></clipPath>`;
+   holes+=`<polygon points="${points}" fill="black"/>`;
+   layers+=`<g clip-path="url(#${id})" class="original-${kind}">${img()}</g>`;
+  };
+  arrow('migration-down','1226,554 1273,554 1273,711 1282,715 1282,733 1252,768 1219,733 1219,715 1226,711','migration-down');
+  arrow('migration-up','1296,554 1332,595 1332,613 1313,613 1313,767 1277,767 1277,613 1262,613 1262,595','migration-up');
+  packet('model-a',578,422,'M0 0 V42 H268 V81',0);
+  packet('model-b',904,422,'M0 0 V42 H-58 V81',.8);
+  packet('model-c',1229,422,'M0 0 V42 H-383 V81',1.6);
+  packet('gpu-to-host',817,740,'M0 0 V60',1);
+  packet('host-to-gpu',817,800,'M0 0 V-60',2.5);
+ }
+ if(i===3){
+  region('phase-one',342,316,350,465,0,'phase-one');
+  region('phase-two',704,316,294,465,0,'phase-two');
+  region('phase-three',1007,316,390,465,0,'phase-three');
+  region('phase-arrow-one',688,543,21,25,0,'phase-arrow-one');
+  region('phase-arrow-two',990,543,22,25,0,'phase-arrow-two');
+ }
+ if(i===4){
+  /* The original complete chart panels, border lines and donut remain untouched. */
+  [[848,621,371,18,55],[848,700,371,20,98],[848,781,371,22,111],[848,865,371,22,303]].forEach((r,j)=>meter('memory-'+j,...r,j*.45));
+ }
+ if(i===5){ /* The complete scheduling artwork is intentionally static. */ }
+ return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewport}" style="aspect-ratio:${W}/${H}" aria-hidden="true"><defs>${whitening}${defs}<mask id="base-mask"><rect width="${W}" height="${H}" fill="white"/>${holes}</mask></defs><g class="original-art ${i===0?'cluster-entry':''}"><g mask="url(#base-mask)">${baseImg()}</g>${layers}</g></svg>`;
+}
+let active=Math.min(5,Math.max(0,Number(params.get('scene'))||0));
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+function render(){document.querySelector('.stage').innerHTML=scene(active);if(reduced.matches)document.querySelector('svg').pauseAnimations()}
+let timer;
+async function init(){if(translated){const response=await fetch('locales/'+lang+'.json');if(!response.ok)throw Error('Diagram translations unavailable');localizedLabels=await response.json()}render();syncPlayback()}
+init();
+function syncPlayback(){clearInterval(timer);const svg=document.querySelector('svg');if(document.hidden||reduced.matches){svg?.pauseAnimations()}else{svg?.unpauseAnimations();if(params.get('cycle')==='1')timer=setInterval(()=>{active=(active+1)%6;render()},12000)}}
+document.addEventListener('visibilitychange',syncPlayback);reduced.addEventListener('change',syncPlayback);
+</script></body></html>

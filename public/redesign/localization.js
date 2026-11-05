@@ -18,7 +18,7 @@ export function makeLocalizer(catalog, document) {
     function walk(node) {
       if(node.nodeType===3) node.textContent=translate(node.textContent);
       if(node.nodeType===1) {
-        if(['SCRIPT','STYLE','CODE','PRE'].includes(node.tagName))return;
+        if(['SCRIPT','STYLE'].includes(node.tagName))return;
         for(const attr of ['alt','title','placeholder','aria-label']) if(node.hasAttribute(attr))node.setAttribute(attr,translate(node.getAttribute(attr)));
         if(node.tagName==='IMG') {
           const src=node.getAttribute('src');

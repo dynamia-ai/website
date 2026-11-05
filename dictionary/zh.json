@@ -2039,7 +2039,8 @@
           "大规模 GPU 资源池",
           "多租户隔离",
           "高性能与低延迟"
-        ]
+        ],
+        "image": "/images/cases/telecom-gpu-overview.svg"
       },
       "challenge": {
         "title": "挑战与解决方案",
@@ -2062,7 +2063,8 @@
       },
       "architecture": {
         "title": "实施架构",
-        "description": "HAMi 解决方案提供了全面的虚拟化层，实现了异构 GPU 资源的统一管理，优化了调度和资源分配。"
+        "description": "HAMi 解决方案提供了全面的虚拟化层，实现了异构 GPU 资源的统一管理，优化了调度和资源分配。",
+        "image": "/images/cases/telecom-gpu-architecture.svg"
       },
       "results": {
         "title": "成果与收益",

@@ -1045,7 +1045,7 @@
   },
   "locales": {
     "en": "English",
-    "zh": "中文",
+    "zh": "Chinesisch",
     "de": "Deutsch"
   },
   "search": {
@@ -1549,13 +1549,14 @@
       "title": "Telekommunikationsanbieter GPU-Virtualisierungs-Fallstudie",
       "subtitle": "Wie ein fuehrender Telekommunikationsanbieter HAMi fuer GPU-Virtualisierung und heterogene Geraeteverwaltung nutzt",
       "overview": {
-        "title": "Client Overview",
-        "description": "A major telecommunications provider in Asia faced increasing demands for AI/ML capabilities in their network operations, customer service systems, and value-added services. With over 200 million subscribers and operations across multiple regions, the company needed an efficient way to manage their growing GPU infrastructure.",
+        "title": "Kundenübersicht",
+        "description": "Ein großer Telekommunikationsanbieter in Asien benötigte zunehmend KI- und ML-Funktionen für Netzbetrieb, Kundenservice und Mehrwertdienste. Mit über 200 Millionen Kunden und Aktivitäten in mehreren Regionen suchte das Unternehmen eine effiziente Verwaltung für seine wachsende GPU-Infrastruktur.",
         "keyPoints": {
           "0": "Gross angelegter GPU-Ressourcenpool",
           "1": "Multi-Mandanten-Isolierung",
           "2": "Hohe Leistung mit niedriger Latenz"
-        }
+        },
+        "image": "/images/cases/telecom-gpu-overview-de.svg"
       },
       "challenge": {
         "title": "Herausforderungen & Loesungen",
@@ -1578,7 +1579,8 @@
       },
       "architecture": {
         "title": "Implementierungsarchitektur",
-        "description": "The HAMi solution provided a comprehensive virtualization layer that enabled unified management of heterogeneous GPU resources, with optimized scheduling and resource allocation."
+        "description": "Die HAMi-Lösung schuf eine umfassende Virtualisierungsschicht zur einheitlichen Verwaltung heterogener GPU-Ressourcen mit optimiertem Scheduling und effizienter Ressourcenzuweisung.",
+        "image": "/images/cases/telecom-gpu-architecture-de.svg"
       },
       "results": {
         "title": "Ergebnisse & Vorteile",
@@ -1602,7 +1604,7 @@
       },
       "cta": {
         "title": "Transformieren Sie Ihre GPU-Infrastruktur",
-        "description": "Discover how HAMi can help your organization achieve similar results with efficient GPU virtualization and heterogeneous computing management.",
+        "description": "Erfahren Sie, wie HAMi Ihr Unternehmen durch effiziente GPU-Virtualisierung und die Verwaltung heterogener Rechenressourcen bei vergleichbaren Ergebnissen unterstützen kann.",
         "button": "Kontakt"
       }
     },
@@ -3316,85 +3318,85 @@
     "all": "Alle Hersteller",
     "devices": [
       {
-        "name": "英伟达 NVIDIA",
+        "name": "NVIDIA",
         "url": "https://project-hami.io/docs/installation/prerequisites",
         "models": "Gängige Rechenzentrums- und Consumer-GPUs",
         "detail": "Unterstützt Speicher- und Rechen-Sharing, Isolation, Multi-GPU-Virtualisierung sowie Binpack-/Spread-Scheduling. Erforderlich sind zu GPU und CUDA passende Treiber, NVIDIA Container Toolkit und das HAMi-Geräte-Plugin. Das native Geräte-Plugin des GPU Operators muss deaktiviert sein."
       },
       {
-        "name": "超威 AMD",
+        "name": "AMD",
         "url": "https://project-hami.io/docs/userguide/amd-device/enable-amd-gpu-sharing",
         "models": "Instinct-Serie",
         "detail": "Unterstützt GPU-Sharing für mehrere Aufgaben, Speicherzuweisung in MiB und anteilige Compute-Unit-Zuweisung (CU). Erforderlich sind AMD-Treiber, ROCm und das HAMi-AMD-Geräte-Plugin. Workload-Images benötigen glibc 2.34 oder neuer; das native Geräte-Plugin des AMD GPU Operators muss deaktiviert sein."
       },
       {
-        "name": "亚马逊 AWS",
+        "name": "AWS",
         "url": "https://project-hami.io/docs/userguide/awsneuron-device/enable-awsneuron-managing",
         "models": "Inferentia-/Trainium-Serie (Neuron-Ökosystem)",
         "detail": "Unterstützt NeuronCore-basierte Ressourcenzuweisung, Geräte-Sharing und topologiebewusstes Multi-Geräte-Scheduling für Training und Inferenz. Bereitstellung auf Inf-/Trn-EC2-Instanzen mit Neuron-Treibern und Laufzeitumgebung, Neuron Device Plugin und HAMi."
       },
       {
-        "name": "华为昇腾 Huawei Ascend",
+        "name": "Huawei Ascend",
         "models": "910B / 910B3 / 910C / 310P",
         "url": "https://project-hami.io/docs/userguide/ascend-device/enable-ascend-sharing",
         "detail": "Hardware-Partitionierung nach Vorlagen oder Software-Sharing. Speicher- und Rechenfunktionen hängen vom Modus ab; Software-Sharing erfordert passende ARM-Hardware, Treiber und den HAMi-Scheduler."
       },
       {
-        "name": "海光 Hygon",
+        "name": "Hygon",
         "models": "DCU · Z100",
         "url": "https://project-hami.io/docs/userguide/hygon-device/enable-hygon-dcu-sharing",
         "detail": "Speicher- und Rechen-Sharing; Speicherisolation ist modellabhängig. Hersteller-Plugin und passende DTK-/Treiberversionen sind erforderlich. vDCU-Limit pro Container beachten."
       },
       {
-        "name": "寒武纪 Cambricon",
+        "name": "Cambricon",
         "models": "MLU370 / MLU590",
         "url": "https://project-hami.io/docs/userguide/cambricon-device/enable-cambricon-mlu-sharing",
         "detail": "Speicher- und Rechen-Sharing. Für MLU370 sind Dynamic SMLU und passende Treiber/CNToolkit erforderlich; Versionen für andere Modelle gesondert prüfen."
       },
       {
-        "name": "沐曦 MetaX",
+        "name": "MetaX",
         "models": "MXC500",
         "url": "https://project-hami.io/docs/userguide/metax-device/metax-sgpu/enable-metax-gpu-sharing",
         "detail": "Speicher- und Rechen-Sharing über sGPU. Herstellervirtualisierung aktivieren und das zum Modell passende Geräte-Plugin installieren."
       },
       {
-        "name": "天数智芯 Iluvatar CoreX",
+        "name": "Iluvatar CoreX",
         "models": "BI-V100 / BI-V150 / MR-V50 / MR-V100",
         "url": "https://project-hami.io/docs/userguide/iluvatar-device/enable-iluvatar-gpu-sharing",
         "detail": "Speicher- und Rechen-Sharing mit 256 MiB Speicher- und 1 % Rechengranularität laut Anleitung. GPU Manager und passende Treiber nötig; Gerätelimits pro Container prüfen."
       },
       {
-        "name": "摩尔线程 Moore Threads",
+        "name": "Moore Threads",
         "models": "MTT S4000",
         "url": "https://project-hami.io/docs/userguide/mthreads-device/enable-mthreads-gpu-sharing",
         "detail": "Speicher- und Rechen-Sharing. Granularität und Isolation richten sich nach Herstellertreiber und Bereitstellungsanleitung."
       },
       {
-        "name": "昆仑芯 Kunlunxin",
+        "name": "Kunlunxin",
         "models": "P800",
         "url": "https://project-hami.io/docs/userguide/kunlunxin-device/enable-kunlunxin-vxpu",
         "detail": "Ganzgeräte-Scheduling und VXPU-Pfad. Speicher-Sharing bedeutet keine unabhängige Rechenpartitionierung. Ganzgeräte-Scheduling berücksichtigt die Topologie; Bereitstellungsmodus gezielt wählen."
       },
       {
-        "name": "燧原 Enflame",
+        "name": "Enflame",
         "models": "S60",
         "url": "https://project-hami.io/docs/userguide/enflame-device/enable-enflame-gcu-sharing",
         "detail": "Speicher- und Rechen-Sharing. Ressourcen gemäß unterstützter vGCU-/Geräte-Plugin-Konfiguration zuweisen; Treiber und Gerätemodus prüfen."
       },
       {
-        "name": "瀚博 Vastai",
+        "name": "Vastai",
         "models": "VA16",
         "url": "https://project-hami.io/docs/userguide/vastai/enable-vastai-sharing",
         "detail": "In der öffentlichen Matrix als planbar geführt, ohne Speicher- oder Rechenpartitionierung. Ganzgeräte-Zuweisung planen und Sharing-Anforderungen separat bestätigen."
       },
       {
-        "name": "壁仞 Biren",
+        "name": "Biren",
         "models": "Biren166M",
         "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
         "detail": "In der öffentlichen Matrix als planbar geführt, ohne Speicher- oder Rechenpartitionierung. Modell, Plugin und Lieferumfang für die Zielumgebung bestätigen."
       },
       {
-        "name": "平头哥 T-Head",
+        "name": "T-Head",
         "url": "https://docs.dynamia.ai",
         "models": "Zhenwu-Serie",
         "detail": "Unterstützt feingranulare Speicher- und Rechenisolation innerhalb einer einheitlichen Ressourcenverwaltung. Integration über das Dynamia-PPU-Geräte-Plugin mit Zhenwu-Treibern, Laufzeitumgebung und Dynamia-Produktkomponenten."
