@@ -1375,5 +1375,20 @@
   "team.reza.profile.experience.title": "工程与管理经历",
   "team.reza.profile.experience.body": "曾为一家《财富》百强企业自动驾驶 AI 平台的高级工程管理团队提供顾问支持，相关工程团队规模超过 100 人。在力拓（Rio Tinto）构建实时传感器数据平台，在受限算力环境下处理每日 1 TB 数据；通过在故障发生前发现数据中心规划问题，节省约 1,000 万欧元成本。",
   "team.reza.profile.sharing.title": "技术分享",
-  "team.reza.profile.sharing.body": "KubeCon 讲者，关注 GPU 资源利用率、AI 基础设施效率与企业级平台落地。"
+  "team.reza.profile.sharing.body": "KubeCon 讲者，关注 GPU 资源利用率、AI 基础设施效率与企业级平台落地。",
+  "careers.department.product": "产品",
+  "careers.product.title": "产品经理（高级 / 专家）・AI 算力基础设施方向",
+  "careers.product.experience": "8 年以上 B 端产品经验 · 至少 3 年独立负责产品线经验",
+  "careers.product.cardDescription": "负责 HAMi 产品路线图、需求分析与版本交付，深入客户现场，将 AI 算力基础设施需求转化为可落地的产品能力。",
+  "careers.product.duties.1": "负责 HAMi 产品域（GPU 共享与隔离 / 智能调度 / 可观测与计费 / 企业版 WebUI / 国产芯片适配等）的路线图规划、需求分析与版本管理，输出 PRD 并对交付结果负责。",
+  "careers.product.duties.2": "深入客户现场，对接客户架构师、SRE、AI 平台负责人及 CTO，开展需求调研、POC 陪跑与客户共创，将客户真实痛点提炼、抽象为结构化产品需求。",
+  "careers.product.duties.3": "与研发工程师共同评审技术方案，在开源社区诉求、商业客户诉求与技术债之间做优先级取舍，推动产品按节奏上线。",
+  "careers.product.duties.4": "设计并跟踪产品核心指标（GPU 利用率、切片密度、隔离稳定性、客户上线周期、付费转化），持续迭代产品体验与商业价值。",
+  "careers.product.duties.5": "输出客户案例与 ROI 测算，配合销售、售前完成重点客户的技术交流与方案落地。",
+  "careers.product.requirements.1": "8 年以上 B 端产品经验，其中至少 3 年独立负责过一条产品线并对结果负责。",
+  "careers.product.requirements.2": "有云原生 / Kubernetes / AI Infra / GPU 算力 / 虚拟化 / 智算平台 / 开发者工具中至少一个方向的产品经历。",
+  "careers.product.requirements.3": "能直接对接技术决策者（架构师、CTO、平台负责人），有大客户 POC、售前陪跑或项目落地经验。",
+  "careers.product.requirements.4": "理解 Kubernetes 核心机制（Scheduler Framework、Device Plugin、Mutating Webhook、容器运行时），了解 GPU 切分、QoS 隔离、训练 / 推理负载差异，能与研发平等讨论技术 trade-off。",
+  "careers.product.requirements.5": "具备扎实的产品基本功：市场分析、竞品拆解、需求优先级判断、版本规划。",
+  "careers.product.requirements.6": "本科及以上学历，计算机相关专业优先；英语可作为工作语言者优先。"
 }

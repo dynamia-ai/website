@@ -453,13 +453,14 @@ const translateText=context.translateText||((value)=>value);
     const jobs=[
       {id:'channel',department:'sales',duties:4,requirements:4},
       {id:'sales',department:'sales',duties:4,requirements:5},
-      {id:'director',department:'engineering',duties:7,requirements:5,bonus:5}
+      {id:'director',department:'engineering',duties:7,requirements:5,bonus:5},
+      {id:'product',department:'product',duties:5,requirements:6}
     ];
     const applyLink=role=>`mailto:${uiCopy('careers.apply.email')}?subject=${encodeURIComponent(uiCopy('careers.apply.mailSubject').replace('{role}',role))}&body=${encodeURIComponent(uiCopy('careers.apply.mailBody').replace('{role}',role))}`;
     const group=(job,type,count)=>`<section class="career-detail-group"><h3>${uiCopy('careers.'+type)}</h3><ul>${Array.from({length:count},(_,j)=>`<li>${uiCopy('careers.'+job.id+'.'+type+'.'+(j+1))}</li>`).join('')}</ul></section>`;
     return `<section class="career-intro"><div class="wrap"><div class="career-page-label">${uiCopy('careers.hero.label')}</div><h1>${uiCopy('careers.hero.title')}</h1><p>${uiCopy('careers.hero.description')}</p></div></section>
     <section class="career-openings"><div class="wrap"><div class="career-openings-heading"><h2>${uiCopy('careers.openings.title')}</h2><p>${uiCopy('careers.openings.description')}</p></div>
-    <div class="career-filters" role="group" aria-label="${uiCopy('careers.filter.label')}">${['all','sales','engineering'].map((category,i)=>`<button type="button" data-career-filter="${category}" aria-pressed="${i===0}">${uiCopy(category==='all'?'careers.filter.all':'careers.department.'+category)}</button>`).join('')}</div>
+    <div class="career-filters" role="group" aria-label="${uiCopy('careers.filter.label')}">${['all','sales','engineering','product'].map((category,i)=>`<button type="button" data-career-filter="${category}" aria-pressed="${i===0}">${uiCopy(category==='all'?'careers.filter.all':'careers.department.'+category)}</button>`).join('')}</div>
     <div class="career-role-grid">${jobs.map(job=>`<article class="career-role-card" data-career-category="${job.department}"><div class="career-role-heading"><span>${uiCopy('careers.department.'+job.department)}</span><h3>${uiCopy('careers.'+job.id+'.title')}</h3><p>${uiCopy('careers.'+job.id+'.experience')}</p></div><p class="career-role-description">${uiCopy('careers.'+job.id+'.cardDescription')}</p><div class="career-card-actions"><a class="btn primary" href="${applyLink(uiCopy('careers.'+job.id+'.title'))}">${uiCopy('careers.apply.now')}</a><button type="button" class="career-details-link" data-career-details="${job.id}" aria-haspopup="dialog" aria-controls="career-dialog-${job.id}">${uiCopy('careers.details.short')}</button></div></article>`).join('')}</div>
     <aside class="career-contact"><div><h2>${uiCopy('careers.contact.title')}</h2><p>${uiCopy('careers.contact.description')}</p><a class="career-contact-email" href="mailto:${uiCopy('careers.apply.email')}">${uiCopy('careers.apply.email')}</a></div><a class="btn primary" href="mailto:${uiCopy('careers.apply.email')}?subject=${encodeURIComponent(uiCopy('careers.contact.subject'))}">${uiCopy('careers.contact.button')}</a></aside>
     </div></section>
