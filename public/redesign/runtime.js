@@ -56,13 +56,13 @@ const translateText=context.translateText||((value)=>value);
     return `<div class="case-more"><div><h2>${uiCopy("s35ce8690a21b31")}</h2><p>${uiCopy("s2c8c52728ddabc")}</p></div><a class="btn primary" href="#/get-practices">${uiCopy("s98692c5ed9acf7")}<span aria-hidden="true">${uiCopy("s161660030aa6c9")}</span></a></div>`;
   }
   function casePage() {
-    return `<section class="case-overview-hero"><div class="wrap"><div class="eyebrow">${uiCopy("s6603e144bd1ede")}</div><h1>${uiCopy("s06350c2213ac51")}<br>${uiCopy("s84f337d935f4de")}</h1><p class="lead">${uiCopy("s2c87e07923285f")}</p></div></section>` + section(`<div class="case-library-meta"><strong>${CASE_LIBRARY.length}${uiCopy("sdca6b58790d96b")}</strong><a href="https://www.cncf.io/case-studies/?_sft_lf-project=hami" target="_blank" rel="noopener">${uiCopy("s3f88c75770817f")}</a></div><div class="case-library" id="case-list">${caseCards()}</div>${practiceCTA()}`);
+    return `<section class="case-overview-hero"><div class="wrap"><div class="eyebrow">${uiCopy("s6603e144bd1ede")}</div><h1>${uiCopy("s06350c2213ac51")}<br>${uiCopy("s84f337d935f4de")}</h1><p class="lead">${uiCopy("s2c87e07923285f")}</p></div></section>` + section(`<div class="case-library-meta"><strong>${CASE_LIBRARY.length}${translateText(uiCopy("sdca6b58790d96b"))}</strong><a href="https://www.cncf.io/case-studies/?_sft_lf-project=hami" target="_blank" rel="noopener">${uiCopy("s3f88c75770817f")}</a></div><div class="case-library" id="case-list">${caseCards()}</div>${practiceCTA()}`);
   }
   function caseToc(c) {
     return c.toc.map((t, i) => `<a href="#/cases/${c.slug}?section=${t.id}" data-article-section="${t.id}"><span>${String(i + 1).padStart(2, '0')}</span>${safe(t.text)}</a>`).join('');
   }
   function caseAttribution(c) {
-    return `<div class="case-source-note"><p>${uiCopy("s457f372b01cb1f")}<a href="${c.source}" target="_blank" rel="noopener">${safe(c.sourceTitle)}${uiCopy("s7d0da37bafe18c")}</a><br>${uiCopy("sb32b8a9b42bcf3")}${c.date}</p><p>${uiCopy("sea5f2a5dc73eed")}</p><p>${uiCopy("s88bb5dad6a039f")}<a href="https://www.linuxfoundation.org/legal/terms" target="_blank" rel="noopener">${uiCopy("s6ec629769487dc")}</a>${uiCopy("sa1835474deff0b")}<a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">${uiCopy("safce5763629229")}</a>${uiCopy("s68706e28bfa89b")}</p>${c.note ? `<p class="fact-note">${uiCopy("sa5d8b670fca37c")}${safe(c.note)}</p>` : ''}</div>`;
+    return `<div class="case-source-note"><p>${uiCopy("s457f372b01cb1f")}<a href="${c.source}" target="_blank" rel="noopener">${safe(c.sourceTitle)}${uiCopy("s7d0da37bafe18c")}</a><br>${translateText(uiCopy("sb32b8a9b42bcf3"))}${c.date}</p><p>${uiCopy("sea5f2a5dc73eed")}</p><p>${uiCopy("s88bb5dad6a039f")}<a href="https://www.linuxfoundation.org/legal/terms" target="_blank" rel="noopener">${uiCopy("s6ec629769487dc")}</a>${uiCopy("sa1835474deff0b")}<a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">${uiCopy("safce5763629229")}</a>${uiCopy("s68706e28bfa89b")}</p>${c.note ? `<p class="fact-note">${uiCopy("sa5d8b670fca37c")}${safe(c.note)}</p>` : ''}</div>`;
   }
   function caseDetailPage(slug) {
     const c = CASE_LIBRARY.find(x => x.slug === slug);
@@ -816,7 +816,7 @@ const translateText=context.translateText||((value)=>value);
       {name:uiCopy('heroUserCloudpilot'),logo:'/logos/company9.svg'},
       {name:uiCopy('heroUserOpencsg'),logo:'/logos/opencsg.svg'},
       {name:uiCopy('heroUserIntsig'),logo:'/logos/intsig-zh.png'},
-      ...['snow-corp','china-merchants-bank-2','ke-holdings-inc','nio'].map(slug=>{const user=caseBySlug(slug);return slug==='nio'?{...user,logo:'/redesign/assets/nio-user.jpeg'}:user;})
+      ...['seres','snow-corp','china-merchants-bank-2','ke-holdings-inc','nio'].map(slug=>{const user=caseBySlug(slug);return slug==='nio'?{...user,logo:'/redesign/assets/nio-user.jpeg'}:user;})
     ].filter(Boolean);
     const marks = users.map(c => {
       const image = '<img src="'+c.logo+'" alt="'+safe(c.name)+'" loading="eager">';

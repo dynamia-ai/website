@@ -497,6 +497,10 @@
     "title": "HAMI 入门必知：新手必读的 9 个关键问题",
     "articleId": 85
   },
+  "/cases/seres": {
+    "name": "cases--seres",
+    "title": "赛力斯如何通过 Kubernetes 与 HAMi 支撑日均百亿 Token 推理"
+  },
   "/cases/zhuoyu-technology": {
     "name": "cases--zhuoyu-technology",
     "title": "卓驭科技如何借助 Koordinator 将 Kubernetes 上的 GPU 分配率提升至 95% 以上"

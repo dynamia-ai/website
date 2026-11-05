@@ -14,6 +14,7 @@ import CaseTelecomGpu from '@/components/case-studies/CaseTelecomGpu';
 import CaseCetcCloud from '@/components/case-studies/CaseCetcCloud';
 import CaseChinaMerchantsBank from '@/components/case-studies/CaseChinaMerchantsBank';
 import CaseSangfor from '@/components/case-studies/CaseSangfor';
+import redesignManifest from '@/content/redesign/manifest.json';
 import { CASE_STUDY_LOCALES } from '@/lib/seo-routes';
 
 const CASE_STUDIES = {
@@ -66,7 +67,10 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return SLUGS.map((slug) => ({ slug }));
+  const redesignedSlugs = Object.keys(redesignManifest)
+    .filter((path) => path.startsWith('/cases/'))
+    .map((path) => path.slice('/cases/'.length));
+  return [...new Set([...SLUGS, ...redesignedSlugs])].map((slug) => ({ slug }));
 }
 
 async function legacyMetadata({ params }: PageProps): Promise<Metadata> {

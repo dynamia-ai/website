@@ -18,6 +18,7 @@ export const STATIC_INDEXABLE_PATHS = [
 ] as const;
 
 export const CASE_STUDY_SLUGS = [
+  'seres',
   "sangfor",
   "cetc-cloud",
   "sf-technology",

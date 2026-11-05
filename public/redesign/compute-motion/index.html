@@ -57,7 +57,7 @@
 .paused svg .cluster-entry{animation:none!important;opacity:1}
 html,body{width:100%;height:100%;margin:0;background:transparent;overflow:hidden}.stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center}.stage>svg{width:100%;height:100%;display:block}</style><body><div class="stage" aria-hidden="true"></div><script src="labels.js"></script><script>let localizedLabels=null;const params=new URLSearchParams(location.search);const lang=(params.get('lang')||parent.document.documentElement.lang||'zh').split('-')[0];const translated=lang==='en'||lang==='de';const files=['clusters','sharing','oversell','elasticity','observability','scheduling'];const dimensions=[[1448,1086],[1448,1086],[1491,1055],[1448,1086],[1448,1086],[1448,1086]];const clean=true;function scene(i){
  const [W,H]=dimensions[i];
- const src='assets/'+(translated?'localized/':'')+files[i]+'.png';
+ const src='assets/'+(translated?'localized/':'')+(i===0?'clusters-logo-base':files[i])+'.png';
  const baseSrc=i===1?'assets/'+(translated?'localized/':'')+'sharing-empty-card.png':src;
  const offset=i===2?175:i===3?146:0;
  const zoom=i===5?1.08:1.12;const vw=W/zoom,vh=H/zoom;const viewport=`${offset+(W-vw)/2} ${(H-vh)/2} ${vw} ${vh}`;
@@ -95,7 +95,7 @@ html,body{width:100%;height:100%;margin:0;background:transparent;overflow:hidden
    return `<g data-label="${d.key}" font-family="Arial,sans-serif" font-weight="700" font-size="${size}" text-anchor="middle" fill="${d.color}">${lines.map((line,j)=>`<text x="${x+w/2}" y="${y+h/2+(j-(lines.length-1)/2)*size*1.12}" dominant-baseline="central" style="fill:${d.color};font-family:Arial,sans-serif">${esc(line)}</text>`).join('')}</g>`;
   }).join('');
  };
- const paint=(url,empty=false)=>`<image href="${url}" width="${W}" height="${H}"/>${panels?`<g mask="url(#${empty?'white-base':'white-panels'})"><image href="${url}" width="${W}" height="${H}" filter="url(#white-paper)"/></g>`:''}${labels(empty)}`;
+ const paint=(url,empty=false)=>`<image href="${url}" width="${W}" height="${H}"/>${panels?`<g mask="url(#${empty?'white-base':'white-panels'})"><image href="${url}" width="${W}" height="${H}" filter="url(#white-paper)"/></g>`:''}${labels(empty)}${i===0?'<image data-hami-logo="hd" href="assets/hami-logo-hd.png" x="453" y="559" width="256" height="87.15"/>':''}`;
  const baseImg=()=>paint(baseSrc,true);
  document.documentElement.style.setProperty('--source-width',W+'px');
  const img=()=>paint(src);
