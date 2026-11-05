@@ -404,6 +404,8 @@ const translateText=context.translateText||((value)=>value);
   function blogPage() {
     return `<section class="editorial-hero"><div class="wrap"><div class="breadcrumb"><a href="#/">${uiCopy("s203c08e0d44ac3")}</a><span>${uiCopy("s8a5edab2826324")}</span><span>${uiCopy("s7855e5e9727ea5")}</span></div><div class="blog-head"><div><h1>${uiCopy("s7855e5e9727ea5")}</h1><p>${uiCopy("sffc363ffad1512")}</p></div></div></div></section><section class="blog-content"><div class="wrap blog-layout"><aside class="blog-sidebar"><div class="category-heading">${uiCopy("sa68dbd81c80f1f")}</div><div class="blog-filterbar" aria-label="文章分类">${BLOG_CATEGORIES.map(c => `<button data-blog-category="${c}" class="${c === blogCategory ? uiCopy("s96879611650f80") : ''}" aria-pressed="${c === blogCategory}">${c}</button>`).join('')}</div></aside><div class="blog-main"><form class="blog-search" role="search" id="blog-search-form"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg><input type="search" id="blog-search-input" aria-label="搜索文章" placeholder="搜索文章、作者或关键词" value="${safe(blogQuery)}"><button type="submit">${uiCopy("s44ce7ae909bbb2")}</button></form><div class="result-line"><span id="blog-result-count" role="status" aria-live="polite"></span><span>${uiCopy("s79b4c5ed54e19c")}</span></div><div class="blog-grid" id="blog-results"></div><div class="pagination" id="blog-pagination" aria-label="文章分页"></div></div></div></section>`;
   }
+  // Restore contributor profile blocks when regular community submissions launch.
+  const SHOW_BLOG_AUTHOR_PROFILES = false;
   const BLOG_AUTHORS = {
     song_jingchao: {
       name: uiCopy("s61fca22430aa22"),
@@ -421,6 +423,7 @@ const translateText=context.translateText||((value)=>value);
     return a ? [a.name, a.englishName, a.title, a.communityRole].join(' ') : '';
   }
   function blogAuthorByline(p) {
+    if (!SHOW_BLOG_AUTHOR_PROFILES) return '';
     const a = blogAuthor(p);
     if (!a) return '';
     const member = TEAM_MEMBERS.find(m => m.id === a.teamId);
