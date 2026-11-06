@@ -318,6 +318,7 @@ const translateText=context.translateText||((value)=>value);
     "28": uiCopy("sdf03fb6fa9ec38"),
     "36": uiCopy("sb0af2e2975c4da"),
     "40": uiCopy("sf5b45ccc2f5b2d"),
+    "42": "/images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png",
     "55": uiCopy("s88b3fc46fe2b64"),
     "56": uiCopy("sc4690271153e01"),
     "23": uiCopy("s972053253863ba")
