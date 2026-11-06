@@ -7,7 +7,7 @@
     "build": "npm run validate:blog && next build && npm run validate:blog-bundle",
     "build-legacy": "NODE_OPTIONS='--max-old-space-size=4096' next build && npm run validate:blog-bundle",
     "start": "next start",
-    "lint": "next lint && npm run validate:analytics",
+    "lint": "eslint src --quiet && npm run validate:analytics",
     "generate:public-assets": "node scripts/public-assets.mjs",
     "typecheck": "npm run generate:public-assets && tsc --noEmit",
     "algolia:index": "node scripts/create-algolia-index.js",
@@ -16,6 +16,7 @@
     "validate:blog": "node scripts/validate-blog-metadata.mjs",
     "test:blog-assets": "node --experimental-strip-types --test scripts/public-assets.test.mjs scripts/validate-blog-function-traces.test.mjs",
     "validate:blog-bundle": "node scripts/validate-blog-function-traces.mjs",
+    "redesign:pages": "node scripts/redesign/build-pages.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {

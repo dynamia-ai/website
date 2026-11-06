@@ -105,6 +105,21 @@ test('infrastructure-only PRs can skip the content gate', () => fixture(({ write
   write('README.md', 'Changed docs'); const result = check('--if-content'); assert.equal(result.status, 0, result.stderr);
   assert.equal(JSON.parse(result.stdout).skipped, true);
 }));
+test('engineering PRs that also touch blog files skip the content gate', () => fixture(({ write, check }) => {
+  write('README.md', 'Redesign docs');
+  write('src/content/blog/existing/zh.md', post + 'Update');
+  write('src/content/blog/other/zh.md', post);
+  write('public/images/blog/shared-asset.svg', '<svg xmlns="http://www.w3.org/2000/svg"></svg>');
+  const result = check('--if-content');
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(JSON.parse(result.stdout).skipped, true);
+  assert.match(JSON.parse(result.stdout).reason, /Non-content/);
+}));
+test('content-only marketing PRs still enforce a single post with --if-content', () => fixture(({ write, check }) => {
+  write('src/content/blog/existing/zh.md', post + 'Update');
+  write('src/content/blog/other/zh.md', post);
+  rejected(check('--if-content'), /exactly one/);
+}));
 
 const sharedImage = '/images/blog/older-post/cover.png';
 const legacyPost = post.replace('title:', `language: zh\ncoverImage: ${sharedImage}\ntitle:`)

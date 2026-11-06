@@ -1,3 +1,4 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
@@ -6,7 +7,7 @@ import { localizedUrl, pageAlternates } from "@/utils/i18n";
 
 const PATH = "/apply-trial";
 
-export default function ApplyTrial({
+function ApplyTrial({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -16,7 +17,7 @@ export default function ApplyTrial({
   return <FreeTrialPage />;
 }
 
-export async function generateMetadata({
+async function legacyMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -38,4 +39,18 @@ export async function generateMetadata({
     },
     alternates: pageAlternates(PATH, locale),
   };
+}
+
+export default async function MigratedPage(props: Parameters<typeof ApplyTrial>[0]) {
+  const resolved = await props.params;
+  const route = `/contact-sales`;
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <ApplyTrial {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = `/contact-sales`;
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }

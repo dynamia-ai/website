@@ -1,9 +1,10 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { use } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { localizedUrl, localizedAlternates } from "@/utils/i18n";
 import VideosPage from "@/components/pages/VideosPage";
 
-export default function Videos({
+function Videos({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -13,7 +14,7 @@ export default function Videos({
   return <VideosPage />;
 }
 
-export async function generateMetadata({
+async function legacyMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -36,4 +37,18 @@ export async function generateMetadata({
       languages: localizedAlternates("/videos"),
     },
   };
+}
+
+export default async function MigratedPage(props: Parameters<typeof Videos>[0]) {
+  const resolved = await props.params;
+  const route = `/videos`;
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <Videos {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = `/videos`;
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }

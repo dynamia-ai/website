@@ -1,3 +1,4 @@
+import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
 import { setRequestLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { getAllBlogPosts } from "@/lib/blog-server";
@@ -25,7 +26,7 @@ async function getListing({ params, searchParams }: PageProps) {
   return { locale, query, contentLocale, hasLocalizedContent, posts, categories, category, filteredPosts, page };
 }
 
-export async function generateMetadata(props: PageProps) {
+async function legacyMetadata(props: PageProps) {
   const { locale, contentLocale, hasLocalizedContent, category, filteredPosts, page } = await getListing(props);
   const metadata = await generatePageMetadata(locale, "blog", "/blog");
   const path = blogListingPath(page, category);
@@ -47,7 +48,7 @@ export async function generateMetadata(props: PageProps) {
   };
 }
 
-export default async function BlogPage(props: PageProps) {
+async function BlogPage(props: PageProps) {
   const { locale, query, posts, categories, category, filteredPosts, page } = await getListing(props);
   setRequestLocale(locale);
   const normalizedPage = page > 1 ? String(page) : undefined;
@@ -66,4 +67,18 @@ export default async function BlogPage(props: PageProps) {
       selectedCategory={category}
     />
   );
+}
+
+export default async function MigratedPage(props: Parameters<typeof BlogPage>[0]) {
+  const resolved = await props.params;
+  const route = `/blog`;
+  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
+  return <BlogPage {...props} />;
+}
+
+export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
+  const resolved = await props.params;
+  const route = `/blog`;
+  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
+  return legacyMetadata(props);
 }

@@ -1,0 +1,148 @@
+<article class="blog-detail"><div class="article-hero"><div class="article-shell"><nav class="breadcrumb" aria-label="__COPY_s6770d01e7d15fe__"><a href="#/">__COPY_s203c08e0d44ac3__</a><span>__COPY_s8a5edab2826324__</span><a href="#/blog">__COPY_s7855e5e9727ea5__</a><span>__COPY_s8a5edab2826324__</span><span>__COPY_se2d4efa59baa78__</span></nav><div class="article-kicker"><span class="tag">__COPY_se2d4efa59baa78__</span><time datetime="2025-09-19">__COPY_seecb4143afa3f4__</time></div><h1>__COPY_seaf4b6bf256cc5__</h1><div class="article-author-row"><div class="blog-card-author"><span class="author-initial" aria-hidden="true">__COPY_s0e3d8855d6491c__</span><div class="blog-author-info"><span class="blog-author-name">__COPY_sc6e4b855eea2d7__</span><span class="blog-author-title">__COPY_sc36f8a800aae26__</span></div></div><div class="article-share"><button type="button" data-copy-article="https://dynamia.ai/zh/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami" aria-label="__COPY_s2e312abf3b5bec__"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"></rect><path d="M16 8V3H3v13h5"></path></svg>__COPY_s2e312abf3b5bec__</button><span class="article-share-status" role="status" aria-live="polite"></span></div></div><div class="article-cover"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="__COPY_sc6e4b855eea2d7__"><span class="cover-category">__COPY_se2d4efa59baa78__</span></div><div class="cover-title-block"><strong>__COPY_sabd16823966d80__</strong><span class="cover-subtitle">__COPY_s537a018b54b536__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div></div><p class="article-deck">__COPY_s1a76a22b694ca3__</p></div></div><div class="article-reading"><div class="article-shell"><div class="article-reading-grid"><div><details class="article-toc-mobile"><summary>__COPY_sff2fbf24e8af48__</summary><nav aria-label="__COPY_s3b2d0794ee6f67__"><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-1" data-article-section="article-section-1"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_s25260c7d42ead5__</a><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-2" data-article-section="article-section-2"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_sde8b466c81df94__</a><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-3" data-article-section="article-section-3"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_s52bf5e7c97a996__</a><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-8" data-article-section="article-section-8"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_s10a5f157494c02__</a><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-9" data-article-section="article-section-9"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_s5b8c9ff8c9520c__</a></nav></details><div class="article-prose"><h2 id="article-section-0">__COPY_seaf4b6bf256cc5__</h2>
+<p>__COPY_sebbde550ab1bd0__<strong>__COPY_sea49523d744c40__</strong>__COPY_s558ada5aafee40__<strong>__COPY_sa770c76885b266__</strong>__COPY_saf62b11675087c__<code>__COPY_s55dd55c9bcfa89__</code>__COPY_s2fd3c722035fd2__<strong>__COPY_s174a4404840647__</strong>__COPY_sbfd9f7dad40854__<strong>__COPY_s18e95b96cb97e4__</strong>__COPY_s17180a91bc4061__<strong>__COPY_sd4dad3c758fcbb__</strong>__COPY_s77d3c3e5480711__<em>__COPY_s9f740217201ae1__</em>__COPY_s5ead3c2d811d57__<strong>__COPY_s2d74382f2e880f__</strong>__COPY_s93111c44819758__<strong>__COPY_se7eced50ee1217__</strong>__COPY_s7a4daa2d7e3909__</p>
+<h3 id="article-section-1">__COPY_s96b861574024f1__</h3>
+<ul>
+<li>
+<p><strong>__COPY_sfa2fd6d2ea2662__</strong></p>
+<ul>
+<li><strong>__COPY_sad1f7a0553deed__</strong>__COPY_s5ced577aed6d51__<code>__COPY_s55dd55c9bcfa89__</code>__COPY_s0a07f659461970__<code>__COPY_s799046a16d4ef6__</code>__COPY_sc65c7d29e16964__<strong>__COPY_sde5c0060f27f33__</strong>__COPY_s5e8179f77e0bec__</li>
+<li><strong>__COPY_sb4487bb7f3a845__</strong>__COPY_s9eadbad5126c48__<strong>__COPY_s5b136f859885c7__</strong>__COPY_secfe23ff7c190a__</li>
+</ul>
+</li>
+<li>
+<p><strong>__COPY_s651bb157047698__</strong></p>
+<ul>
+<li><strong>__COPY_sad1f7a0553deed__</strong>__COPY_s135593cd811688__<strong>__COPY_sa0899e19098198__</strong>__COPY_sb787b18de28375__<strong>__COPY_sfe0188416babb2__</strong>__COPY_sb7457ff3553413__</li>
+<li><strong>__COPY_sb4487bb7f3a845__</strong>__COPY_s058ad27eeb0e3b__<strong>__COPY_s303bddc9c0771e__</strong>__COPY_s25d9c8f6bc19bf__<strong>__COPY_s01199caa4f09fb__</strong>__COPY_seb0d5884569b39__</li>
+</ul>
+</li>
+</ul>
+<p>__COPY_s5b68fcd8d821f5__<em>__COPY_s7bc22bea9e33da__</em>__COPY_se4b345286e5bbc__<strong>__COPY_s1b611c77555145__</strong>__COPY_s9a33aa46799b2e__<code>__COPY_sab4d74994e49e1__</code>__COPY_sc61b389f9326b2__<strong>__COPY_sbf2b48837a9a1a__</strong>__COPY_s1e74cf178358ee__<strong>__COPY_sc2401de4cf1559__</strong>__COPY_s61826185a20118__</p>
+<h3 id="article-section-2">__COPY_s76873760e3866f__</h3>
+<ul>
+<li><strong>__COPY_sa747a0f5636314__</strong>__COPY_s1e602f666e4c35__<strong>__COPY_s59f5f57193131a__</strong>__COPY_s4f5a2ada116617__<code>__COPY_s13805319fa3d0d__</code>__COPY_s9f1385c894cd09__<strong>__COPY_s2eab7827895f5f__</strong>__COPY_s4f5a2ada116617__<code>__COPY_sa092cdd290bfdd__</code>__COPY_sd891e3dd2f1599__<strong>__COPY_s77d1ad731afaf7__</strong>__COPY_s4f5a2ada116617__<code>__COPY_s71fd745921ed90__</code>__COPY_s0df238395d68c6__<strong>__COPY_saae583cf8b8dcd__</strong>__COPY_s09b775f7e58949__<code>__COPY_s71fd745921ed90__</code>__COPY_sdde38361a3673c__<strong>__COPY_sc2401de4cf1559__</strong>__COPY_s7f7da21f9c3640__<code>__COPY_sa7ae6d5779bd96__</code>__COPY_s6843257d837f8d__</li>
+<li><strong>__COPY_s6d07b53f49847b__</strong>__COPY_s4fd8f66c456da8__<strong>__COPY_s6b75f84fed39dc__</strong>__COPY_s14915fb8c9112b__<strong><code>__COPY_s165028afd21686__</code>__COPY_s44c26a31935ee2__</strong>__COPY_s0b05381644be5a__<strong><code>__COPY_sab4d74994e49e1__</code>__COPY_scff363b5ce0dca__</strong>__COPY_seb0d5884569b39__</li>
+</ul>
+<h3 id="article-section-3">__COPY_sf1c506db394c49__</h3>
+<p>__COPY_scc74fdc8551d5d__<strong>__COPY_s072d45c323682a__</strong>__COPY_seb0d5884569b39__</p>
+<h4>__COPY_sa223dbfafc452c__</h4>
+<p>__COPY_s522e963e0843c2__</p>
+<ul>
+<li>__COPY_saca80488058c3d__<code>__COPY_sb36a9c0aca4f3b__</code></li>
+<li>__COPY_se18392172c721d__<a href="https://github.com/dynamia-ai/hami-ecosystem-demo/tree/main/demo/binpack-spread" target="_blank" rel="noopener"><code>__COPY_s6ecdc87b47d750__</code></a>__COPY_s72e1c1a54345fc__<code>__COPY_s870a8ffd98f4f2__</code>__COPY_s2422cbf129a26b__</li>
+</ul>
+<p><strong>__COPY_sb4ca6ca05fb340__<code>__COPY_s295df243c6a339__</code>__COPY_s3cc3afffa93972__</strong></p>
+<pre><code><span>__COPY_sa58565b2f1aa8e__</span>
+  <span>__COPY_s8c8c42289a1387__</span>
+    <span>__COPY_s72ab0e6632de39__</span>
+      <span>__COPY_s530063c507e92f__</span> <span>__COPY_sead7235c9389a5__</span>  <span>__COPY_s167dbeb47cd89c__</span>
+      <span>__COPY_s04a3b54310292b__</span>  <span>__COPY_sead7235c9389a5__</span>  <span>__COPY_s167dbeb47cd89c__</span>
+</code></pre>
+<p><strong>__COPY_sb4ca6ca05fb340__<a href="https://github.com/Project-HAMi/HAMi" target="_blank" rel="noopener">__COPY_s4b4c706a63b2b9__</a>__COPY_sa1512830cb0c9e__</strong></p>
+<pre><code><span>__COPY_scab2be2b3a2ed1__</span>
+  <span>__COPY_s2629ac0e8d90da__</span>
+    <span>__COPY_seeaf4b13d57e7a__</span> <span>__COPY_s6b86b273ff34fc__</span>
+    <span>__COPY_s0b49f0a0adc075__</span> <span>__COPY_s09edd0fd196d5c__</span>  <span>__COPY_s4f67e674045c86__</span>
+</code></pre>
+<p>__COPY_sc0f1c3cbdcfef6__</p>
+<p><strong>__COPY_s8f3f29dcffbecd__</strong></p>
+<pre><code>__COPY_s0d4e971e3793a7__<span>__COPY_sb5d61dc89a35d2__</span>__COPY_s77185bfa63d3f2__<span>__COPY_s21e721c35a5823__</span>__COPY_sd2d74e7af11d9a__</code></pre>
+<p>__COPY_s33acc5e6a26164__<strong>__COPY_sec8161e3158a2a__</strong>__COPY_s2131f563532738__<strong>__COPY_s52ce1ab0959726__</strong>__COPY_s7161a4cc8d7941__</p>
+<hr>
+<h3 id="article-section-4">__COPY_sd095e17469006b__<strong>__COPY_se351cd08c56a78__</strong>__COPY_s7b65503ba35b16__<strong>__COPY_se351cd08c56a78__</strong>__COPY_s3b2e8119b6fcc9__<em>__COPY_sc4cb24bbd2eee2__</em></h3>
+<ul>
+<li><strong>__COPY_s7c448b0e11ef7a__</strong>__COPY_s9086ea1aae9b4b__</li>
+<li><strong>__COPY_sd535ae8c2bfef7__</strong>__COPY_sa8754ea7321a89__<strong>__COPY_sffa2cd50b8ab74__</strong>__COPY_scaf96e9d560ee9__</li>
+<li><strong>__COPY_sfc85865c6b7df9__</strong>__COPY_s64da525b7dc9d5__<strong>__COPY_seb76a33438c238__</strong>__COPY_seb0d5884569b39__</li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/binpack-spread-1.png" alt="__COPY_seddc3a182c328c__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_sc671adfc817e54__</figcaption></figure><p></p>
+<p>__COPY_s50542d086235eb__</p>
+<p><strong>__COPY_sf1d36f85a67da1__</strong></p>
+<pre><code>__COPY_s75e14a447c209a__<span>__COPY_sac9e9154a65a15__</span>__COPY_s22b457c4d4c66e__<span>__COPY_s2abfca9157e939__</span> <span>__COPY_s002ba2afbc8c9b__</span>__COPY_sdb6e3ea5b24396__<span>__COPY_s0ae719051a15f7__</span>__COPY_s4afb7ee60d8cfc__<span>__COPY_s07a8750738828f__</span>__COPY_s48526eed07fe4c__<span>__COPY_s27aed3de47ae22__</span> <span>__COPY_s3316348dbadfb7__</span>__COPY_s4aa5769cef1dc5__<span>__COPY_sac0b52a2ae6ef9__</span>__COPY_saee11cfb4ba6bb__<span>__COPY_s2706c619fe73f0__</span> <span>__COPY_s8a331fdde7032f__<span>__COPY_sb7084a6d96f00a__</span>__COPY_s8a331fdde7032f__</span>__COPY_sbdc1cfff6685cf__<span>__COPY_sa2c183d5a12aea__</span>__COPY_s788f609cb03d63__<span>__COPY_s2abfca9157e939__</span> <span>__COPY_s94811e6a90c3e3__</span> <span>__COPY_s8a331fdde7032f__<span>__COPY_sb7084a6d96f00a__</span>__COPY_s8a331fdde7032f__</span> <span>__COPY_s8a331fdde7032f__<span>__COPY_s167087d1ac1879__</span>__COPY_s8a331fdde7032f__</span> <span>__COPY_s8a331fdde7032f__<span>__COPY_s450d3f0e96e2d5__</span>__COPY_s8a331fdde7032f__</span>__COPY_s44ba9d5d74ba3c__<span>__COPY_sa4c3ed04a95a3d__</span>__COPY_s35c223ec91b80f__<span>__COPY_s27aed3de47ae22__</span>
+</code></pre>
+<p><strong>__COPY_sc4e3a9e94096c4__</strong></p>
+<pre><code>__COPY_s15872b4a595b61__</code></pre>
+<blockquote>
+<p><strong>__COPY_scc23474663bea6__</strong>__COPY_s7a03525b59be27__<strong>__COPY_s407972b16e170b__</strong>__COPY_s34817da4c1acc1__<strong>__COPY_s3095c5f16af6a6__</strong>__COPY_sdc9ecc9e6c2c49__<strong>__COPY_s8a6906bca9a168__</strong>__COPY_s5b92125eabaf2b__</p>
+</blockquote>
+<hr>
+<h3 id="article-section-5">__COPY_s13d96b30572b32__<strong>__COPY_s9d3a0236b4adf6__</strong>__COPY_s7b65503ba35b16__<strong>__COPY_se351cd08c56a78__</strong>__COPY_s3b2e8119b6fcc9__<em>__COPY_s5c917672d896b9__</em></h3>
+<ul>
+<li><strong>__COPY_s7c448b0e11ef7a__</strong>__COPY_s91c63097e3bab8__<strong>__COPY_s9949f0293a8ac3__</strong>__COPY_s4983a02d9ecc42__</li>
+<li><strong>__COPY_sd535ae8c2bfef7__</strong>__COPY_s89b7b58febc1bf__<strong>__COPY_sb422965ac40266__</strong>__COPY_seb0d5884569b39__</li>
+<li><strong>__COPY_sfc85865c6b7df9__</strong>__COPY_s31ef6ca5ac5373__</li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/binpack-spread-2.png" alt="__COPY_s97c5f22a42af35__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s2adc4da81254ab__</figcaption></figure><p></p>
+<p><strong>__COPY_sf1d36f85a67da1__</strong></p>
+<pre><code>__COPY_sbf93f045c89c1b__<span>__COPY_s969984f8a665e5__</span>
+</code></pre>
+<p><strong>__COPY_sc4e3a9e94096c4__</strong></p>
+<pre><code>__COPY_sc69101ee94e18f__</code></pre>
+<blockquote>
+<p><strong>__COPY_scc23474663bea6__</strong>__COPY_sd463bb8ab9ce9e__<strong>__COPY_s96c9333dd9407d__</strong>__COPY_seb30d8d0bc14d3__<strong>__COPY_s49fafb4e773198__</strong>__COPY_sc99bc095b47c17__<strong>__COPY_sc785bd41b0e91e__</strong>__COPY_s80e8c3b4c5c0d8__</p>
+</blockquote>
+<hr>
+<h3 id="article-section-6">__COPY_sd4a44c87d15f4e__<strong>__COPY_se351cd08c56a78__</strong>__COPY_s7b65503ba35b16__<strong>__COPY_s9d3a0236b4adf6__</strong>__COPY_s3b2e8119b6fcc9__<em>__COPY_s4d781df6a0b7a5__</em></h3>
+<ul>
+<li><strong>__COPY_s7c448b0e11ef7a__</strong>__COPY_sa9f9a924e99774__</li>
+<li><strong>__COPY_sd535ae8c2bfef7__</strong>__COPY_s1dc6938f3e99de__<strong>__COPY_s057b98bc88b756__</strong>__COPY_seb0d5884569b39__</li>
+<li><strong>__COPY_sfc85865c6b7df9__</strong>__COPY_s945b49f5906a77__</li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/binpack-spread-3.png" alt="__COPY_s4c0530d9483de5__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s4a58e8ddffc742__</figcaption></figure><p></p>
+<p><strong>__COPY_sf1d36f85a67da1__</strong></p>
+<pre><code>__COPY_s1d1a0d9b0c2e22__<span>__COPY_s1d8b05cd11ac50__</span>
+</code></pre>
+<p><strong>__COPY_sc4e3a9e94096c4__</strong></p>
+<pre><code>__COPY_sfd705469188320__</code></pre>
+<blockquote>
+<p><strong>__COPY_scc23474663bea6__</strong>__COPY_s5e1fbe594526c6__<strong>__COPY_s97662f469a93db__</strong>__COPY_s937701cd93f8a8__<strong>__COPY_s42eb651c3f2949__</strong>__COPY_s80e8c3b4c5c0d8__</p>
+</blockquote>
+<hr>
+<h3 id="article-section-7">__COPY_sa034bbd53a5292__<strong>__COPY_s9d3a0236b4adf6__</strong>__COPY_s7b65503ba35b16__<strong>__COPY_s9d3a0236b4adf6__</strong>__COPY_s3b2e8119b6fcc9__<em>__COPY_s555c020f814c43__</em></h3>
+<ul>
+<li><strong>__COPY_s7c448b0e11ef7a__</strong>__COPY_s1ba303c25444f0__<strong>__COPY_s01199caa4f09fb__</strong>__COPY_sc85a99f7b98a6a__</li>
+<li><strong>__COPY_sd535ae8c2bfef7__</strong>__COPY_s3cd79547eacf26__</li>
+<li><strong>__COPY_sfc85865c6b7df9__</strong>__COPY_s29e77a9509883c__</li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami/binpack-spread-4.png" alt="__COPY_s730f99ed78395b__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s2eb6c3635eefd6__</figcaption></figure><p></p>
+<p><strong>__COPY_sf1d36f85a67da1__</strong></p>
+<pre><code>__COPY_s8b7cf35cdf5f0f__<span>__COPY_s0bef060cdfe0ec__</span>
+</code></pre>
+<p><strong>__COPY_sc4e3a9e94096c4__</strong></p>
+<pre><code>__COPY_sede0bed0a4117c__</code></pre>
+<blockquote>
+<p><strong>__COPY_scc23474663bea6__</strong>__COPY_sd463bb8ab9ce9e__<strong>__COPY_s33110e3a16cdfe__</strong>__COPY_s8ed2c1353691e8__</p>
+</blockquote>
+<hr>
+<h3 id="article-section-8">__COPY_s93d7a7f9a74bdd__</h3>
+<ul>
+<li><strong>__COPY_s4d46667f396614__</strong>__COPY_sa7395ee42e2deb__<em>__COPY_seb0dbefd04596d__</em>__COPY_s5b77181bd64821__<em>__COPY_sb46745c000d8b0__</em>__COPY_s3082d8cde0d76c__<strong>__COPY_saae583cf8b8dcd__</strong>__COPY_sfab9490b6977b5__<strong>__COPY_sc7b99d79445609__<code>__COPY_s13805319fa3d0d__</code></strong>__COPY_s52eef4a049231e__<strong>__COPY_s8cb1f721c82e79__</strong>__COPY_s5939abccc52ead__<strong><code>__COPY_sab4d74994e49e1__</code>__COPY_sa67a594803ef76__</strong>__COPY_sefcfe207dd512e__<strong>__COPY_sc8af04697487fc__</strong>__COPY_s4391a3a70b7632__<strong><code>__COPY_s165028afd21686__</code>__COPY_s44c26a31935ee2__</strong>__COPY_s69a836eaf15944__</li>
+<li><strong>__COPY_s1d9fe453b15e49__</strong>__COPY_s8ed7c0a3213dbc__<strong>__COPY_s30e1d36b225b82__</strong>__COPY_s70c65ce5253d41__<strong>__COPY_s45e2426ef3e1ea__</strong>__COPY_s171bbd99d10934__</li>
+</ul>
+<h3 id="article-section-9">__COPY_s10c54d67a7e6c6__</h3>
+<ul>
+<li><strong>__COPY_s8b3d98ff2820bd__</strong>
+<ul>
+<li><code>__COPY_sb36a9c0aca4f3b__</code></li>
+<li><code>__COPY_s4173f0fd4d1262__</code></li>
+</ul>
+</li>
+<li><strong>__COPY_s1dfcbbfae8da0c__</strong>
+<ul>
+<li><a href="https://medium.com/@nimbus-nimo/virtualizing-any-gpu-on-aws-with-hami-free-memory-isolation-bbd3c598b9fa" target="_blank" rel="noopener">__COPY_s0252b7c16ceaa1__</a>__COPY_s45bf3ad6f9d74a__</li>
+<li><a href="https://medium.com/@nimbus-nimo/a-quick-take-on-k8s-1-34-ga-dra-7-questions-you-probably-have-e981966f06c7" target="_blank" rel="noopener">__COPY_s6c79c0720fbe70__</a>__COPY_s3bc31c9cab2c1b__</li>
+</ul>
+</li>
+<li><strong>__COPY_s9a1e7217ad69f5__</strong>
+<ul>
+<li><a href="https://github.com/kubernetes/kubernetes/pull/130653" target="_blank" rel="noopener">__COPY_s983de682936ceb__<strong>__COPY_sa2e8a627d279b0__</strong></a>__COPY_s0cd3c27aa3d1ff__<code>__COPY_sab4d74994e49e1__</code>__COPY_s5ba682091b04a1__</li>
+<li><a href="https://github.com/kubernetes/enhancements/blob/3ffc27b7413e285d429025a422dd79473d3e9b50/keps/sig-scheduling/5004-dra-extended-resource/README.md" target="_blank" rel="noopener">__COPY_s4c1c918c6c247b__<strong>__COPY_sc2866a4dca8608__</strong></a>__COPY_s759959bd5a9fc4__</li>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/133669" target="_blank" rel="noopener">__COPY_s8fd4ccd8ec5171__<strong>__COPY_s47eac6bd063e7c__</strong></a>__COPY_sf2d8929b83cda6__<code>__COPY_s165028afd21686__</code>__COPY_s68a7a8b9e70bea__</li>
+</ul>
+</li>
+</ul>
+<p></p><figure><img src="https://dynamia.ai/images/blog/PREP-EDU-HAMi/p5.png" alt="__COPY_s38082ec9b7a954__" loading="lazy" referrerpolicy="no-referrer"><figcaption>__COPY_s2efa9a8b9c46fa__</figcaption></figure><p></p>
+<p>__COPY_s4e6100a65c29a0__</p>
+<blockquote>
+<p>__COPY_s3024f0c10482c6__<a href="https://dynamia.ai" target="_blank" rel="noopener">__COPY_s8f266fff85b6ac__</a><br>__COPY_scef56282dd67de__<a href="mailto:info@dynamia.ai" target="_blank" rel="noopener">__COPY_s0b077b5fcc72eb__</a></p>
+</blockquote></div><div class="article-end"><div><strong>__COPY_s2bebe26c9fc5d2__</strong><p>__COPY_sc2f794ad7de9a9__</p></div><a class="textlink" href="https://dynamia.ai/zh/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami" target="_blank" rel="noopener">__COPY_s28a9b82be369f5__</a><a class="textlink" href="#/blog">__COPY_sd0e1d306fe7cf8__</a></div></div><aside class="article-toc" aria-label="__COPY_s3b2d0794ee6f67__"><strong>__COPY_s421185c97f13fb__</strong><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-1" data-article-section="article-section-1"><span aria-hidden="true">__COPY_s938db8c9f82c8c__</span>__COPY_s25260c7d42ead5__</a><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-2" data-article-section="article-section-2"><span aria-hidden="true">__COPY_sa953f09a1b6b67__</span>__COPY_sde8b466c81df94__</a><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-3" data-article-section="article-section-3"><span aria-hidden="true">__COPY_s0b8efa5a3bf104__</span>__COPY_s52bf5e7c97a996__</a><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-8" data-article-section="article-section-8"><span aria-hidden="true">__COPY_s6cd5b6e51936a4__</span>__COPY_s10a5f157494c02__</a><a href="#/blog/device-aware-gpu-binpack-spread-on-k8s-with-hami?section=article-section-9" data-article-section="article-section-9"><span aria-hidden="true">__COPY_sc97550ce8213ef__</span>__COPY_s5b8c9ff8c9520c__</a></aside></div></div></div></article><section class="article-related"><div class="wrap"><div class="intro"><div><div class="eyebrow">__COPY_scadf9eb6ac5351__</div><h2>__COPY_s4ec2a77b1ae3ba__</h2></div><a class="textlink" href="#/blog">__COPY_s1ab08ebf532419__<span class="arrow">__COPY_s161660030aa6c9__</span></a></div><div class="grid3"><a class="blog-card" href="#/blog/hami-vgpu-scheduling-fix-large-cluster"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="__COPY_sc6e4b855eea2d7__"><span class="cover-category">__COPY_se2d4efa59baa78__</span></div><div class="cover-title-block"><strong>__COPY_s24fec467886a9f__</strong><span class="cover-subtitle">__COPY_s537a018b54b536__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_se2d4efa59baa78__</span><time datetime="2026-06-01">__COPY_s9222f2233b725a__</time></div><h2>__COPY_sdd605f6f73d75e__</h2><span class="read-more">__COPY_s380cbe6da507af__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/hami-dra-quickstart"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="__COPY_sc6e4b855eea2d7__"><span class="cover-category">__COPY_se2d4efa59baa78__</span></div><div class="cover-title-block"><strong>__COPY_saa7fd00290057e__</strong><span class="cover-subtitle">__COPY_s537a018b54b536__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_se2d4efa59baa78__</span><time datetime="2026-05-22">__COPY_sa3366d2f25e775__</time></div><h2>__COPY_s1afc95974cc093__</h2><span class="read-more">__COPY_s380cbe6da507af__<span>__COPY_s161660030aa6c9__</span></span></div></a><a class="blog-card" href="#/blog/kcd-beijing-2026-dra-gpu-scheduling"><div class="content-cover editorial-cover" data-category="技术博客"><div class="text-cover"><div class="cover-topline"><img class="cover-mark" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="__COPY_sc6e4b855eea2d7__"><span class="cover-category">__COPY_se2d4efa59baa78__</span></div><div class="cover-title-block"><strong>__COPY_s9d16527d1f8377__</strong><span class="cover-subtitle">__COPY_s537a018b54b536__</span></div><small>__COPY_sec7580fa3d47ab__</small></div></div><div class="blog-card-body"><div class="article-meta"><span>__COPY_se2d4efa59baa78__</span><time datetime="2026-03-23">__COPY_sa00218f2f7e1a1__</time></div><h2>__COPY_s6722572c52fae8__</h2><span class="read-more">__COPY_s380cbe6da507af__<span>__COPY_s161660030aa6c9__</span></span></div></a></div></div></section>
