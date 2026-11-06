@@ -4,6 +4,13 @@ export const dynamic = 'force-dynamic';
 const SOURCE = 'https://hub.docker.com/r/projecthami/hami';
 const TTL = 60_000;
 interface Snapshot {pulls: number; fetchedAt: string; source: string; scope: 'all-time'}
+// Last verified Docker Hub response, retained for cold starts during an outage.
+const fallback: Snapshot = {
+  pulls: 724532,
+  fetchedAt: '2026-10-21T10:48:07Z',
+  source: SOURCE,
+  scope: 'all-time',
+};
 let snapshot: Snapshot | null = null;
 let inflight: Promise<Snapshot> | null = null;
 let retryAfter = 0;
@@ -26,13 +33,13 @@ export async function GET() {
     return NextResponse.json({...snapshot, stale: false}, {headers});
   }
   if (Date.now() < retryAfter) {
-    return NextResponse.json(snapshot ? {...snapshot, stale: true} : {pulls: null, source: SOURCE}, {status: snapshot ? 200 : 503, headers});
+    return NextResponse.json({...(snapshot ?? fallback), stale: true}, {headers});
   }
   try {
     if (!inflight) inflight = latest().finally(() => {inflight = null;});
     return NextResponse.json({...await inflight, stale: false}, {headers});
   } catch {
     retryAfter = Date.now() + TTL;
-    return NextResponse.json(snapshot ? {...snapshot, stale: true} : {pulls: null, source: SOURCE}, {status: snapshot ? 200 : 503, headers});
+    return NextResponse.json({...(snapshot ?? fallback), stale: true}, {headers});
   }
 }
