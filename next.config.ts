@@ -4,6 +4,11 @@ import createNextIntlPlugin from "next-intl/plugin";
 import { PublicAssetManifestPlugin, writePublicAssetManifest } from "./scripts/public-assets.mjs";
 
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: process.cwd(),
+  outputFileTracingIncludes: {
+    '/*': ['./src/content/redesign/**/*', './dictionary/redesign/**/*'],
+    '/api/contact': ['./src/content/mail-attachments/dynamia-customer-case-studies.pdf'],
+  },
   webpack(config, { dev, isServer, nextRuntime }) {
     if (dev && isServer && nextRuntime === 'nodejs') {
       config.plugins.push(new PublicAssetManifestPlugin(__dirname));

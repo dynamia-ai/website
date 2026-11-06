@@ -13,6 +13,12 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 }
 };
 
+interface ResultItem {title: string; value: string; description: string}
+function localizedList<T>(value: unknown): T[] {
+  if (Array.isArray(value)) return value as T[];
+  return value && typeof value === 'object' ? Object.values(value) as T[] : [];
+}
+
 const CaseTelecomGpu: React.FC = () => {
   const t = useTranslations();
   const locale = useLocale();
@@ -59,12 +65,7 @@ const CaseTelecomGpu: React.FC = () => {
                 {t('cases.telecomGpu.overview.description')}
               </p>
               <div className="space-y-4">
-                {(function() {
-                  const keyPoints = t.raw('cases.telecomGpu.overview.keyPoints');
-                  return Array.isArray(keyPoints) 
-                    ? keyPoints
-                    : ['大规模GPU资源池', '多租户隔离', '高性能与低延迟'];
-                }()).map((point: string, index: number) => (
+                {localizedList<string>(t.raw('cases.telecomGpu.overview.keyPoints')).map((point: string, index: number) => (
                   <div key={index} className="flex items-start">
                     <div className="flex-shrink-0">
                       <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,7 +79,7 @@ const CaseTelecomGpu: React.FC = () => {
             </div>
             <div className="flex justify-center">
               <Image
-                src="/images/cases/telecom-gpu-overview.svg"
+                src={t('cases.telecomGpu.overview.image')}
                 alt="Telecom GPU Virtualization"
                 width={540}
                 height={360}
@@ -119,12 +120,7 @@ const CaseTelecomGpu: React.FC = () => {
                 {t('cases.telecomGpu.challenge.subtitle')}
               </h3>
               <ul className="space-y-4 text-gray-600 dark:text-gray-300">
-                {(function() {
-                  const challenges = t.raw('cases.telecomGpu.challenge.points');
-                  return Array.isArray(challenges) 
-                    ? challenges
-                    : ['GPU资源分配不均衡', '虚拟化开销影响性能', '缺乏多租户隔离机制'];
-                }()).map((challenge: string, index: number) => (
+                {localizedList<string>(t.raw('cases.telecomGpu.challenge.points')).map((challenge: string, index: number) => (
                   <li key={index} className="flex items-start">
                     <div className="flex-shrink-0 text-red-500 mr-2">&#8226;</div>
                     <p>{challenge}</p>
@@ -146,12 +142,7 @@ const CaseTelecomGpu: React.FC = () => {
                 {t('cases.telecomGpu.solution.subtitle')}
               </h3>
               <ul className="space-y-4 text-gray-600 dark:text-gray-300">
-                {(function() {
-                  const solutions = t.raw('cases.telecomGpu.solution.points');
-                  return Array.isArray(solutions) 
-                    ? solutions
-                    : ['实现GPU资源动态分配', '使用直通技术降低开销', '提供强隔离性的多租户环境'];
-                }()).map((solution: string, index: number) => (
+                {localizedList<string>(t.raw('cases.telecomGpu.solution.points')).map((solution: string, index: number) => (
                   <li key={index} className="flex items-start">
                     <div className="flex-shrink-0 text-green-500 mr-2">&#8226;</div>
                     <p>{solution}</p>
@@ -191,7 +182,7 @@ const CaseTelecomGpu: React.FC = () => {
             className="flex justify-center"
           >
             <Image
-              src="/images/cases/telecom-gpu-architecture.svg"
+              src={t('cases.telecomGpu.architecture.image')}
               alt="Architecture Diagram"
               width={900}
               height={500}
@@ -219,28 +210,7 @@ const CaseTelecomGpu: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* 成果卡片 */}
-            {(function() {
-              const resultItems = t.raw('cases.telecomGpu.results.items');
-              return Array.isArray(resultItems) 
-                ? resultItems
-                : [
-                    {
-                      title: "资源利用率提升",
-                      value: "80%",
-                      description: "GPU资源利用率显著提高"
-                    },
-                    {
-                      title: "运营成本降低",
-                      value: "40%",
-                      description: "硬件成本与运营开销大幅减少"
-                    },
-                    {
-                      title: "服务响应时间",
-                      value: "90%",
-                      description: "服务部署与响应时间显著缩短"
-                    }
-                  ];
-            }()).map((item: any, index: number) => (
+            {localizedList<ResultItem>(t.raw('cases.telecomGpu.results.items')).map((item: ResultItem, index: number) => (
               <motion.div
                 key={index}
                 initial="hidden"

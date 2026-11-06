@@ -3,16 +3,16 @@
     {
       "id": "hami-enterprise",
       "name": {
-        "en": "HAMi Enterprise",
-        "zh": "HAMi 企业版"
+        "en": "Dynamia Enterprise for HAMi",
+        "zh": "Dynamia HAMi 企业版"
       },
       "tagline": {
         "en": "Enterprise edition of HAMi — production-grade GPU virtualization built on the CNCF Incubating project",
-        "zh": "HAMi 企业版 —— 在开源 HAMi（CNCF Incubating 项目）之上提供企业级 GPU 虚拟化能力"
+        "zh": "Dynamia HAMi 企业版 —— 在开源 HAMi（CNCF Incubating 项目）之上提供企业级 GPU 虚拟化能力"
       },
       "description": {
-        "en": "HAMi Enterprise is the GPU-license-based enterprise edition of HAMi, focused on lifting GPU utilization from the open-source 40% to 70%+. It targets vertical-internet teams and channel partners that already operate a PaaS and need a hardened, supported HAMi.",
-        "zh": "HAMi 企业版基于 GPU License 授权，把 GPU 利用率从社区版 40% 提升到 70%+，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴/代理商，提供生产级加固与企业级支持。"
+        "en": "Dynamia Enterprise for HAMi is the GPU-license-based enterprise edition of HAMi, focused on lifting GPU utilization from the open-source 40% to 70%+. It targets vertical-internet teams and channel partners that already operate a PaaS and need a hardened, supported HAMi.",
+        "zh": "Dynamia HAMi 企业版基于 GPU License 授权，把 GPU 利用率从社区版 40% 提升到 70%+，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴/代理商，提供生产级加固与企业级支持。"
       },
       "logo": "/images/enterprise/hami-enterprise-logo.svg",
       "category": "gpu-virtualization",
@@ -243,16 +243,16 @@
     {
       "id": "hami-ai-platform",
       "name": {
-        "en": "HAMi AI Platform",
-        "zh": "HAMi 平台版"
+        "en": "Dynamia AI Platform for HAMi",
+        "zh": "Dynamia HAMi 平台版"
       },
       "tagline": {
-        "en": "Enterprise heterogeneous compute scheduling & virtualization platform — includes everything in HAMi Enterprise plus GUI, multi-cluster observability, tenant quota and OpenAPI",
-        "zh": "企业级异构算力集群调度、虚拟化平台 —— 包含 HAMi 企业版全部能力，叠加多集群一站式 GUI、可观测、租户配额、计量计费与 OpenAPI"
+        "en": "Enterprise heterogeneous compute scheduling & virtualization platform — includes everything in Dynamia Enterprise for HAMi plus GUI, multi-cluster observability, tenant quota and OpenAPI",
+        "zh": "企业级异构算力集群调度、虚拟化平台 —— 包含 Dynamia HAMi 企业版全部能力，叠加多集群一站式 GUI、可观测、租户配额、计量计费与 OpenAPI"
       },
       "description": {
-        "en": "HAMi AI Platform is the full-stack control plane for heterogeneous compute clusters. It bundles HAMi Enterprise with multi-cluster GUI, end-to-end observability (cluster/app/GPU), enterprise tenant quota, billing, OpenAPI, and SLA support — for public-cloud marketplaces, mid-market and KA customers.",
-        "zh": "HAMi 平台版是面向异构算力集群的全栈控制面。在 HAMi 企业版基础上叠加多集群一站式 GUI、集群/应用/GPU 三维度可观测、企业级租户配额、计量计费、OpenAPI 与 SLA 支持，面向公有云应用市场、中小腰部客户与 KA 客户。"
+        "en": "Dynamia AI Platform for HAMi is the full-stack control plane for heterogeneous compute clusters. It bundles Dynamia Enterprise for HAMi with multi-cluster GUI, end-to-end observability (cluster/app/GPU), enterprise tenant quota, billing, OpenAPI, and SLA support — for public-cloud marketplaces, mid-market and KA customers.",
+        "zh": "Dynamia HAMi 平台版是面向异构算力集群的全栈控制面。在 Dynamia HAMi 企业版基础上叠加多集群一站式 GUI、集群/应用/GPU 三维度可观测、企业级租户配额、计量计费、OpenAPI 与 SLA 支持，面向公有云应用市场、中小腰部客户与 KA 客户。"
       },
       "logo": "/images/enterprise/hami-ai-platform-logo.svg",
       "category": "platform",

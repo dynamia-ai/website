@@ -10,11 +10,12 @@ export interface ContactPayload {
   [key: string]: unknown;
 }
 
-export async function submitContact(payload: ContactPayload): Promise<ContactResult> {
+export async function submitContact(payload: ContactPayload, options?: {keepalive?: boolean}): Promise<ContactResult> {
   const response = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
+    keepalive: options?.keepalive,
   });
 
   if (!response.ok) {

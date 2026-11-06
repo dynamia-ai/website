@@ -25,7 +25,7 @@ function normalizePath(path: string): string {
 }
 
 export function localizedUrl(path: string, locale: string): string {
-  const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+  const prefix = `/${locale}`;
   const normalizedPath = normalizePath(path);
   if (!prefix && !normalizedPath) return `${DOMAIN}/`;
   return `${DOMAIN}${prefix}${normalizedPath}`;
@@ -33,7 +33,6 @@ export function localizedUrl(path: string, locale: string): string {
 
 export function localizedPath(path: string, locale: string): string {
   const normalizedPath = normalizePath(path);
-  if (locale === routing.defaultLocale) return normalizedPath || "/";
   return `/${locale}${normalizedPath}`;
 }
 
