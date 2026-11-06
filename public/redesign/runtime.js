@@ -325,9 +325,7 @@ const translateText=context.translateText||((value)=>value);
   const BLOG_CATEGORIES = [uiCopy("s5c55a67935af8f"), uiCopy("sd4ee9ab2117271"), uiCopy("se2d4efa59baa78"), uiCopy("sf719a03fbcbead"), uiCopy("se69a00b11c6ab0"), uiCopy("sfc25d6381faa1c"), uiCopy("sdfa967ceabbc55")];
   let blogCategory = uiCopy("s5c55a67935af8f"),
     blogQuery = '',
-    blogPageNumber = 1,
-    eventStatus = uiCopy("s5ef5ef0364b693"),
-    eventKind = uiCopy("s5ef5ef0364b693");
+    blogPageNumber = 1;
   const DYNAMIA_LOGO = uiCopy("s2966d89adc31f2");
   function eventEditorialCover(p) {
     const image = CONTENT_IMAGES[p.image],
@@ -375,9 +373,13 @@ const translateText=context.translateText||((value)=>value);
     const member = TEAM_MEMBERS.find(m => m.id === a.teamId);
     return `<div class="blog-card-author" aria-label="文章作者"><img class="blog-author-avatar" src="${member.image}" alt="${safe(a.name)}" loading="lazy"><div class="blog-author-info"><span class="blog-author-name">${safe(a.name)} <small>${safe(a.englishName)}</small></span><span class="blog-author-title">${safe(a.title)}</span><span class="blog-author-community">${safe(a.communityRole)}</span></div></div>`;
   }
+  // Event recaps have their own listing, but their article URLs remain available.
+  const eventPostSlugs = new Set(CONTENT_DATA.events.map(postSlug));
+  const editorialPosts = CONTENT_DATA.posts.filter(post => !eventPostSlugs.has(postSlug(post)));
+
   function renderBlogResults() {
     const q = blogQuery.toLocaleLowerCase().trim();
-    const rows = CONTENT_DATA.posts.filter(p => (blogCategory === uiCopy("s5c55a67935af8f") || p.category === blogCategory) && (!q || ([p.title,p.desc,p.category].map(translateText).join(' ') + ' ' + blogAuthorSearch(p)).toLocaleLowerCase().includes(q)));
+    const rows = editorialPosts.filter(p => (blogCategory === uiCopy("s5c55a67935af8f") || p.category === blogCategory) && (!q || ([p.title,p.desc,p.category].map(translateText).join(' ') + ' ' + blogAuthorSearch(p)).toLocaleLowerCase().includes(q)));
     const pages = Math.max(1, Math.ceil(rows.length / 6));
     blogPageNumber = Math.min(blogPageNumber, pages);
     document.querySelector(uiCopy("sc8829c80049e52")).textContent = (q ? '“' + blogQuery + '” · ' : '') + rows.length + translateText(uiCopy("sdb3e04f445bf9d"));
@@ -386,17 +388,7 @@ const translateText=context.translateText||((value)=>value);
     document.querySelector(uiCopy("sd9d543cbf0c8f3")).innerHTML = normalizeHTML(pages > 1 ? `<button data-blog-page="${blogPageNumber - 1}" ${blogPageNumber === 1 ? uiCopy("s17eb3c0168d0d7") : ''} aria-label="上一页">${uiCopy("s774f1d6b2910de")}</button>${nums.map((n, i) => (i && n - nums[i - 1] > 1 ? `<span>${uiCopy("sb4935894c8ce16")}</span>` : '') + `<button data-blog-page="${n}" class="${n === blogPageNumber ? uiCopy("s96879611650f80") : ''}" ${n === blogPageNumber ? uiCopy("s5850635e9816d0") : ''}>${n}</button>`).join('')}<button data-blog-page="${blogPageNumber + 1}" ${blogPageNumber === pages ? uiCopy("s17eb3c0168d0d7") : ''} aria-label="下一页">${uiCopy("s161660030aa6c9")}</button>` : '');
   }
   function eventsPage() {
-    return `<section class="events-hero"><div class="wrap"><div class="eyebrow">${uiCopy("s514be9676683c9")}</div><h1>${uiCopy("sbf300ed922c2e9")}</h1><p>${uiCopy("s60fcfc49f5d3d2")}<br>${uiCopy("s828a45cbd8d4e2")}</p><div class="event-tabs" aria-label="活动时间筛选">${[[uiCopy("s5ef5ef0364b693"), uiCopy("sf811fe0948eb20")], [uiCopy("sf1398274418635"), uiCopy("s939561e608db1a")], [uiCopy("s84ccdf8a849ffb"), uiCopy("s1950ed9895959a")]].map(([id, t]) => `<button data-event-status="${id}" class="${eventStatus === id ? uiCopy("s96879611650f80") : ''}" aria-pressed="${eventStatus === id}">${t}</button>`).join('')}</div></div></section><section class="event-content"><div class="wrap"><div class="event-toolbar"><label>${uiCopy("sd225a9062672af")}<select id="event-kind" aria-label="活动形式">${[[uiCopy("s5ef5ef0364b693"), uiCopy("sd51419c7314c38")], [uiCopy("s92068ac94ed92e"), uiCopy("s92068ac94ed92e")], [uiCopy("s3afb401d879214"), uiCopy("s3afb401d879214")], [uiCopy("s152ab158b83196"), uiCopy("s152ab158b83196")], [uiCopy("sb09fdd95d4e982"), uiCopy("sb09fdd95d4e982")]].map(([v, t]) => `<option value="${v}" ${v === eventKind ? uiCopy("sd7cbbb688b2e50") : ''}>${t}</option>`).join('')}</select></label></div><div id="event-results"></div><p class="event-note">${uiCopy("s163e1a8bf21b2b")}</p></div></section>`;
-  }
-  function renderEvents() {
-    const today = new Intl.DateTimeFormat(uiCopy("sd9c143e5b3a247"), {
-      timeZone: uiCopy("s95033d34e64e9c"),
-      year: uiCopy("s15f450a59134f3"),
-      month: uiCopy("s9ac002d62ae135"),
-      day: uiCopy("s9ac002d62ae135")
-    }).format(new Date());
-    const rows = CONTENT_DATA.events.filter(e => (eventKind === uiCopy("s5ef5ef0364b693") || e.kind === eventKind) && (eventStatus === uiCopy("s5ef5ef0364b693") || (eventStatus === uiCopy("sf1398274418635") ? e.date >= today : e.date < today)));
-    document.querySelector(uiCopy("s51aa18e3b8825a")).innerHTML = normalizeHTML(rows.length ? rows.map(e => `<article class="event-row"><div><span class="event-kind">${e.kind}</span><h2><a href="${e.url}" target="_blank" rel="noopener">${e.title}</a></h2><div class="event-meta"><span>${e.dateLabel}</span><span>${uiCopy("s6e01f78b9eb414")}${e.location}</span></div></div><div class="event-description"><p>${e.desc}</p><a class="textlink" href="${e.url}" target="_blank" rel="noopener">${e.action} <span>${uiCopy("sca29edb4680a64")}</span></a></div><figure class="event-photo-figure"><a class="event-cover event-photo ${e.id === 28 ? uiCopy("sc6b6dcd63f9c0b") : ''}" href="${e.url}" target="_blank" rel="noopener" aria-label="${safe(e.title)}"><img src="${CONTENT_IMAGES[e.image]}" alt="${safe(e.photoAlt || e.title + uiCopy("sa80e4d2e81db83"))}" loading="lazy" style="--photo-position:${e.photoPosition || uiCopy("sf179a509d32bd9")}"></a>${e.photoCaption ? `<figcaption>${safe(e.photoCaption)}</figcaption>` : ''}</figure></article>`).join('') : `<div class="content-empty"><h3>${eventStatus === uiCopy("sf1398274418635") ? uiCopy("s98720ff7ce320e") : uiCopy("s5d91c79d224637")}</h3><p>${eventStatus === uiCopy("sf1398274418635") ? uiCopy("sca6d4dda91af12") : uiCopy("s71f24c7882cace")}</p><button class="empty-reset" data-reset-events>${uiCopy("s6bfdf32397c95e")}</button></div>`);
+    return `<section class="events-hero"><div class="wrap"><div class="eyebrow">${uiCopy("s514be9676683c9")}</div><h1>${uiCopy("sbf300ed922c2e9")}</h1><p>${uiCopy("s60fcfc49f5d3d2")}<br>${uiCopy("s828a45cbd8d4e2")}</p></div></section><section class="event-content"><div class="wrap"><div id="event-results">${CONTENT_DATA.events.map(e => `<article class="event-row"><div><h2><a href="${e.url}" target="_blank" rel="noopener">${e.title}</a></h2><div class="event-meta"><span>${e.dateLabel}</span><span>${uiCopy("s6e01f78b9eb414")}${e.location}</span></div></div><div class="event-description"><p>${e.desc}</p><a class="textlink" href="${e.url}" target="_blank" rel="noopener">${e.action} <span>${uiCopy("sca29edb4680a64")}</span></a></div><figure class="event-photo-figure"><a class="event-cover event-photo ${e.id === 28 ? uiCopy("sc6b6dcd63f9c0b") : ''}" href="${e.url}" target="_blank" rel="noopener" aria-label="${safe(e.title)}"><img src="${CONTENT_IMAGES[e.image]}" alt="${safe(e.photoAlt || e.title + uiCopy("sa80e4d2e81db83"))}" loading="lazy" style="--photo-position:${e.photoPosition || uiCopy("sf179a509d32bd9")}"></a>${e.photoCaption ? `<figcaption>${safe(e.photoCaption)}</figcaption>` : ''}</figure></article>`).join('')}</div><p class="event-note">${uiCopy("s163e1a8bf21b2b")}</p></div></section>`;
   }
   function careersPage() {
     const jobs=[
@@ -442,12 +434,6 @@ const translateText=context.translateText||((value)=>value);
       renderBlogResults();
     }
   });
-  document.addEventListener(uiCopy("s12ea12eace7d65"), e => {
-    if (e.target.id === uiCopy("sf91cde3a688872")) {
-      eventKind = e.target.value;
-      renderEvents();
-    }
-  });
   document.addEventListener(uiCopy("se5c7ffac26fed6"), e => {
     const b = e.target.closest(uiCopy("sc3e2d78f3ff335"));
     if (!b) return;
@@ -474,20 +460,6 @@ const translateText=context.translateText||((value)=>value);
       blogPageNumber = 1;
       app.innerHTML = normalizeHTML(blogPage());
       renderBlogResults();
-    }
-    if (b.dataset.eventStatus) {
-      eventStatus = b.dataset.eventStatus;
-      document.querySelectorAll(uiCopy("s75e0988af16255")).forEach(x => {
-        x.classList.toggle(uiCopy("s96879611650f80"), x === b);
-        x.setAttribute(uiCopy("scaf57005bfdd09"), x === b);
-      });
-      renderEvents();
-    }
-    if (b.hasAttribute(uiCopy("s74e7554ca9185a"))) {
-      eventStatus = uiCopy("s84ccdf8a849ffb");
-      eventKind = uiCopy("s5ef5ef0364b693");
-      app.innerHTML = normalizeHTML(eventsPage());
-      renderEvents();
     }
   });
   function pricingPage() {
@@ -750,7 +722,7 @@ const translateText=context.translateText||((value)=>value);
     if (!p) return notFound();
     const d = ARTICLE_DETAILS[p.id] || {},
       toc = d.tocCompact || d.toc || [];
-    const related = CONTENT_DATA.posts.filter(x => x.category === p.category && x.id !== p.id).slice(0, 3);
+    const related = editorialPosts.filter(x => x.category === p.category && x.id !== p.id).slice(0, 3);
     return `<article class="blog-detail"><div class="article-hero"><div class="article-shell"><nav class="breadcrumb" aria-label="面包屑"><a href="#/">${uiCopy("s203c08e0d44ac3")}</a><span>${uiCopy("s8a5edab2826324")}</span><a href="#/blog">${uiCopy("s7855e5e9727ea5")}</a><span>${uiCopy("s8a5edab2826324")}</span><span>${safe(p.category)}</span></nav><div class="article-kicker"><span class="tag">${safe(p.category)}</span><time datetime="${p.date}">${p.date.replaceAll('-', '.')}</time></div><h1>${safe(p.title)}</h1><div class="article-author-row">${articleAuthorHeader(p, d)}<div class="article-share"><button type="button" data-copy-article="${safe(p.url)}" aria-label="复制原文链接"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></svg>${uiCopy("s2e312abf3b5bec")}</button><span class="article-share-status" role="status" aria-live="polite"></span></div></div><div class="article-cover">${editorialCover(p)}</div><p class="article-deck">${safe(p.desc)}</p></div></div><div class="article-reading"><div class="article-shell"><div class="article-reading-grid"><div>${toc.length ? `<details class="article-toc-mobile"><summary>${uiCopy("s4c21faca26d12b")}${toc.length}${uiCopy("s23f4f0e21d6130")}</summary><nav aria-label="文章目录">${articleTocLinks(p, toc)}</nav></details>` : ''}<div class="article-prose">${d.body || `<p>${uiCopy("sa71a1207acc979")}</p><p><a href="${safe(p.url)}" target="_blank" rel="noopener">${uiCopy("s3cf078e6b9bbf1")}</a></p>`}</div><div class="article-end"><div><strong>${uiCopy("s2bebe26c9fc5d2")}</strong><p>${uiCopy("sc2f794ad7de9a9")}</p></div><a class="textlink" href="${safe(p.url)}" target="_blank" rel="noopener">${uiCopy("s28a9b82be369f5")}</a><a class="textlink" href="#/blog">${uiCopy("sd0e1d306fe7cf8")}</a></div></div>${toc.length ? `<aside class="article-toc" aria-label="文章目录"><strong>${uiCopy("s421185c97f13fb")}</strong>${articleTocLinks(p, toc)}</aside>` : ''}</div></div></div></article>${related.length ? `<section class="article-related"><div class="wrap">${intro(uiCopy("scadf9eb6ac5351"), uiCopy("s4ec2a77b1ae3ba"), '', link(uiCopy("s91e9c2609a5392"), uiCopy("s1ab08ebf532419")))}<div class="grid3">${related.map(x => `<a class="blog-card" href="#/blog/${postSlug(x)}">${editorialCover(x)}<div class="blog-card-body"><div class="article-meta"><span>${safe(x.category)}</span><time datetime="${x.date}">${x.date.replaceAll('-', '.')}</time></div><h2>${safe(x.title)}</h2>${blogAuthorByline(x)}<span class="read-more">${uiCopy("s380cbe6da507af")}<span>${uiCopy("s161660030aa6c9")}</span></span></div></a>`).join('')}</div></div></section>` : ''}`;
   }
   document.addEventListener(uiCopy("se5c7ffac26fed6"), async e => {
@@ -930,7 +902,6 @@ const translateText=context.translateText||((value)=>value);
       queueCommunityNumbers();
     }
     if (path === uiCopy("s8caafe4386f958")) renderBlogResults();
-    if (path === uiCopy("s417baafa3f2581")) renderEvents();
     document.title = (app.querySelector(uiCopy("s33112ee14ee469"))?.innerText?.replace(/\n/g,' ') || app.querySelector(uiCopy("s33112ee14ee469"))?.textContent || uiCopy("saa388f544acdc3")) + translateText(uiCopy("s1668918850201a"));
     const target = new URLSearchParams(query || '').get(uiCopy("s3fb45623cb3075"));
     requestAnimationFrame(() => {
