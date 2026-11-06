@@ -1173,7 +1173,7 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 .community-project-links{flex-wrap:wrap}
 .community-project-links .btn svg{width:19px;height:19px;flex:none}
 .community-project-links .btn.primary svg{fill:currentColor}
-.community-ecosystem{margin:clamp(32px,4vw,48px) 0 0}
+.community-ecosystem{margin:clamp(40px,5vw,72px) 0 0}
 .community-ecosystem a{display:block;border-radius:8px;overflow:hidden}
 .community-ecosystem img{display:block;width:100%;height:auto}
 :root[data-theme="dark"] .community-ecosystem img{filter:drop-shadow(0 0 1px #f0f5f0)}
