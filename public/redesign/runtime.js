@@ -269,8 +269,8 @@ const translateText=context.translateText||((value)=>value);
     "role": uiCopy("team.reza.role"),
     "tag": uiCopy("team.reza.tag"),
     "image": uiCopy("team.reza.image"),
-    "github": "",
-    "linkedin": "",
+    "github": "https://github.com/fishman",
+    "linkedin": "https://www.linkedin.com/in/rezajelveh/",
     "bio": uiCopy("team.reza.profile.bio"),
     "details": [[uiCopy("team.communityIdentity"), uiCopy("team.reza.tag")], [uiCopy("team.reza.profile.focus.title"), uiCopy("team.reza.profile.focus.body")], [uiCopy("team.reza.profile.experience.title"), uiCopy("team.reza.profile.experience.body")], [uiCopy("team.reza.profile.sharing.title"), uiCopy("team.reza.profile.sharing.body")]]
   }];
@@ -293,7 +293,8 @@ const translateText=context.translateText||((value)=>value);
     activeMember = (index + TEAM_MEMBERS.length) % TEAM_MEMBERS.length;
     const m = TEAM_MEMBERS[activeMember];
     const dlg = document.querySelector(uiCopy("sca2868d0ca39dd"));
-    dlg.innerHTML = normalizeHTML(`<button class="team-dialog-close" aria-label="关闭团队成员介绍" data-close-member>${uiCopy("s8db71ed28b0f2f")}</button><div class="team-dialog-grid"><div class="team-dialog-photo"><img data-person="${m.id}" src="${m.image}" alt="${m.name}">${teamSocial(m)}</div><div class="team-dialog-info"><div class="eyebrow">${uiCopy("s63a0bb73931833")}</div><h2 id="member-dialog-title">${m.name}</h2><div class="team-dialog-role">${m.role}</div>${m.bio ? `<p class="team-dialog-bio">${m.bio}</p>` : ''}<div class="team-dialog-details">${m.details.map(([h, p]) => `<h3>${h}</h3><p>${p}</p>`).join('')}</div><div class="team-dialog-nav"><span>${String(activeMember + 1).padStart(2, '0')}${uiCopy("s005e1574a2b5c8")}${String(TEAM_MEMBERS.length).padStart(2, '0')}</span><div><button data-member-step="-1" aria-label="上一位成员">${uiCopy("s774f1d6b2910de")}</button><button data-member-step="1" aria-label="下一位成员">${uiCopy("s161660030aa6c9")}</button></div></div></div></div>`);
+    const linksBelowBio = m.id === uiCopy("team.reza.id");
+    dlg.innerHTML = normalizeHTML(`<button class="team-dialog-close" aria-label="关闭团队成员介绍" data-close-member>${uiCopy("s8db71ed28b0f2f")}</button><div class="team-dialog-grid"><div class="team-dialog-photo"><img data-person="${m.id}" src="${m.image}" alt="${m.name}">${linksBelowBio ? '' : teamSocial(m)}</div><div class="team-dialog-info"><div class="eyebrow">${uiCopy("s63a0bb73931833")}</div><h2 id="member-dialog-title">${m.name}</h2><div class="team-dialog-role">${m.role}</div>${m.bio ? `<p class="team-dialog-bio">${m.bio}</p>` : ''}<div class="team-dialog-details">${m.details.map(([h, p]) => `<h3>${h}</h3><p>${p}</p>`).join('')}</div>${linksBelowBio ? teamSocial(m) : ''}<div class="team-dialog-nav"><span>${String(activeMember + 1).padStart(2, '0')}${uiCopy("s005e1574a2b5c8")}${String(TEAM_MEMBERS.length).padStart(2, '0')}</span><div><button data-member-step="-1" aria-label="上一位成员">${uiCopy("s774f1d6b2910de")}</button><button data-member-step="1" aria-label="下一位成员">${uiCopy("s161660030aa6c9")}</button></div></div></div></div>`);
     if (!dlg.open) dlg.showModal();else dlg.querySelector(uiCopy("s09780ad0f448f7")).focus();
     dlg.scrollTop = 0;
   }
