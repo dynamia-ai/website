@@ -1170,9 +1170,9 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 
 .hero-user-mark:has(img[src="/redesign/assets/seres-logo.svg"]){--logo-render-width:140px;--logo-offset-x:-50%;--logo-offset-y:-50%}
 
-.community-project-links{flex-wrap:wrap}
-.community-project-links .btn svg{width:19px;height:19px;flex:none}
-.community-project-links .btn.primary svg{fill:currentColor}
+.community-project-links .textlink{gap:6px}
+.community-project-links .textlink svg{width:16px;height:16px;flex:none}
+.community-project-links .textlink:first-child svg{fill:currentColor}
 .community-ecosystem{margin:clamp(40px,5vw,72px) 0 0}
 .community-ecosystem a{display:block;border-radius:8px;overflow:hidden}
 .community-ecosystem img{display:block;width:100%;height:auto}
