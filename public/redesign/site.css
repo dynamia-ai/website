@@ -1176,3 +1176,4 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 .community-ecosystem{margin:24px 0 0}
 .community-ecosystem a{display:block;border-radius:8px;overflow:hidden}
 .community-ecosystem img{display:block;width:100%;height:auto}
+:root[data-theme="dark"] .community-ecosystem img{filter:drop-shadow(0 0 1px #f0f5f0)}
