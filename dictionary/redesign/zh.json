@@ -1402,5 +1402,6 @@
   "practiceEmailIntro": "提交后，客户案例集 PDF 将自动发送到你填写的邮箱。",
   "practiceConsent": "，并同意将所填信息用于发送资料及后续联系。",
   "practiceSend": "发送案例集到我的邮箱",
-  "practiceSent": "客户案例集已发送，请查收邮件及 PDF 附件。"
+  "practiceSent": "客户案例集已发送，请查收邮件及 PDF 附件。",
+  "community.ecosystem.alt": "HAMi 开放生态图：连接 AI 业务、云原生调度生态与异构算力，并提供运行状态观测。"
 }
