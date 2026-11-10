@@ -22,7 +22,8 @@ const outline = (x,y,w,h,seconds) =>
 const art = () => `<image href="${source}" width="1250" height="921"/>`;
 const fan = (x,y,index) => `<defs><clipPath id="fan-${index}">
   <circle cx="${x}" cy="${y}" r="62"/>
-  </clipPath></defs><g clip-path="url(#fan-${index})">
+  </clipPath></defs><circle cx="${x}" cy="${y}" r="63.5" fill="white"/>
+  <g clip-path="url(#fan-${index})">
   <g class="fan" style="transform-origin:${x}px ${y}px">${art()}</g></g>`;
 const bar = (y, width, seconds) => [
   rect(695,y-2,416,22,'white'),
@@ -48,8 +49,8 @@ const motions = {
     cover(797,413,251,118,'white',2.75),
     cover(797,541,251,118,'white',3.25),
     cover(797,669,251,118,'white',3.75),
-    fan(460.5,313.3,0),
-    fan(920.5,313.3,1),
+    fan(460.4,312.8,0),
+    fan(922.3,312.8,1),
     `<circle cx="1101" cy="281" r="73" fill="white" class="cover" ${delay(4.2)}/>`,
   ],
   '01': () => [
