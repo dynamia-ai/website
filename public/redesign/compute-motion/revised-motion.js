@@ -17,8 +17,6 @@ const cover = (x,y,w,h,fill,seconds) =>
 const wipe = (x,y,w,h,fill,seconds,axis = 'wipe') =>
   rect(x,y,w,h,fill,`class="${axis}" ${delay(seconds)}`);
 
-const outline = (x,y,w,h,seconds) =>
-  rect(x,y,w,h,'none',`rx="9" stroke="#76b900" stroke-width="3" class="signal" ${delay(seconds)}`);
 const art = () => `<image href="${source}" width="1250" height="921"/>`;
 const fan = (x,y,index) => `<defs><clipPath id="fan-${index}">
   <circle cx="${x}" cy="${y}" r="62"/>
@@ -103,9 +101,6 @@ const motions = {
     trace('M1105 174 V184 M1082 249 L1129 278', 1.20, '#008a78', 2.5),
     trace('M950 500 H986', 1.75, '#008a78', 2.5),
     trace('M1084 500 H1119', 1.75, '#008a78', 2.5),
-    outline(355,752,85,44,2.35),
-    outline(355,830,45,42,3.85),
-    outline(532,830,44,42,3.85),
   ],
 };
 
