@@ -11,8 +11,14 @@
   .cover { animation:uncover .45s var(--delay) both }
   .wipe { transform-box:fill-box; transform-origin:right; animation:wipe .85s var(--delay) both }
   .rise { transform-box:fill-box; transform-origin:top; animation:wipe-y .75s var(--delay) both }
+  .blocked-task { animation:bump .76s var(--delay) both }
   .fan { animation:spin 3.2s linear infinite }
   .bar-fill { animation:fill-bar .85s var(--delay) ease-out both }
+  @keyframes bump {
+    0%,100% { transform:translateX(0) }
+    34% { transform:translateX(var(--travel)); animation-timing-function:ease-out }
+    66% { transform:translateX(-5px); animation-timing-function:ease-in-out }
+  }
   @keyframes spin { to { transform:rotate(360deg) } }
   @keyframes fill-bar { from { clip-path:inset(0 100% 0 0) } to { clip-path:inset(0) } }
   @keyframes signal { 35% { opacity:.92 } 72% { opacity:.68 } }
@@ -21,7 +27,7 @@
   @keyframes wipe { from { transform:scaleX(1) } to { transform:scaleX(0) } }
   @keyframes wipe-y { from { transform:scaleY(1) } to { transform:scaleY(0) } }
   @media(prefers-reduced-motion:reduce) {
-    .fan,.bar-fill { animation:none }
+    .fan,.bar-fill,.blocked-task { animation:none }
     .signal,.trace,.cover,.wipe,.rise { animation:none; opacity:0 }
   }
 </style>

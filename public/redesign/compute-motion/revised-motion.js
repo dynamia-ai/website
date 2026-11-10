@@ -31,6 +31,17 @@ const bar = (y, width, seconds) => [
   rect(697,y,width,17,'#76b900',`rx="8.5" class="bar-fill" ${delay(seconds)}`),
 ].join('');
 
+// Cut at the task/arrow boundary so the card moves independently of the arrow.
+const blockedTasks = [
+  { y: 438, width: 246, height: 123, start: .12, travel: 19 },
+  { y: 626, width: 248, height: 126, start: 1.02, travel: 21 },
+];
+const movingTask = ({y,width,height,start,travel}, i) => `<defs>
+  <clipPath id="blocked-task-${i}">${rect(0,y,width,height,'white')}</clipPath></defs>
+  <g class="blocked-task" style="--delay:${start}s;--travel:${travel}px">
+    <use href="#sharing-art" clip-path="url(#blocked-task-${i})"/>
+  </g>`;
+
 const motions = {
   '02': () => [
     trace('M236 304 V360 H625 V403', .15),
@@ -43,8 +54,8 @@ const motions = {
     trace('M860 843 H786', 3.15, '#76b900'),
   ],
   '06': () => [
-    ring(265,500,17,.15,'#cf5525'),
-    ring(269,682,17,1.05,'#cf5525'),
+    ring(265,500,17,.17,'#cf5525'),
+    ring(269,682,17,1.07,'#cf5525'),
     trace('M642 534 H722', 2.05),
     cover(797,413,251,118,'white',2.75),
     cover(797,541,251,118,'white',3.25),
@@ -119,14 +130,22 @@ preload.onload = () => {
     [385,265,65,65,.75],
     [449,154,346,621,1.2],[794,265,66,70,2.8],[860,154,354,621,3.25],
   ] : [];
+  const sharing = file === '06';
+  const taskLayers = sharing ? blockedTasks.map(movingTask).join('') : '';
   const animation = (motions[file]?.() || []).join('');
   // Elasticity reveals whole cards and connectors through a mask, keeping their artwork intact.
   const mask = phases.length ? `<defs><mask id="phases" maskUnits="userSpaceOnUse" x="0" y="0" width="1250" height="921">
     ${rect(0,0,1250,921,'white')}
     ${phases.map(([x,y,w,h,t]) => cover(x,y,w,h,'black',t)).join('')}
     </mask></defs>` : '';
+  const sharingLayers = sharing ? `<defs>
+    <g id="sharing-art">${base}</g>
+    <mask id="sharing-base" maskUnits="userSpaceOnUse" x="0" y="0" width="1250" height="921">
+      ${rect(0,0,1250,921,'white')}
+      ${blockedTasks.map(({y,width,height}) => rect(0,y,width,height,'black')).join('')}
+    </mask></defs><use href="#sharing-art" mask="url(#sharing-base)"/>` : '';
   document.body.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 921" aria-hidden="true">
-    ${mask}<g ${mask ? 'mask="url(#phases)"' : ''}>${base}</g>${animation}</svg>`;
+    ${sharing ? sharingLayers : `${mask}<g ${mask ? 'mask="url(#phases)"' : ''}>${base}</g>`}${taskLayers}${animation}</svg>`;
 
   // Reset the timed layers together without repainting the artwork or interrupting the fans.
   setInterval(() => {
