@@ -1,3 +1,4 @@
+const cycleMs = 6500;
 const params = new URLSearchParams(location.search);
 const files = ['02', '06', '01', '04', '03', '05'];
 const file = files[Number(params.get('scene'))] || files[0];
@@ -15,6 +16,19 @@ const cover = (x,y,w,h,fill,seconds) =>
   rect(x,y,w,h,fill,`class="cover" ${delay(seconds)}`);
 const wipe = (x,y,w,h,fill,seconds,axis = 'wipe') =>
   rect(x,y,w,h,fill,`class="${axis}" ${delay(seconds)}`);
+
+const outline = (x,y,w,h,seconds) =>
+  rect(x,y,w,h,'none',`rx="9" stroke="#76b900" stroke-width="3" class="signal" ${delay(seconds)}`);
+const art = () => `<image href="${source}" width="1250" height="921"/>`;
+const fan = (x,y,index) => `<defs><clipPath id="fan-${index}">
+  <circle cx="${x}" cy="${y}" r="62"/>
+  </clipPath></defs><g clip-path="url(#fan-${index})">
+  <g class="fan" style="transform-origin:${x}px ${y}px">${art()}</g></g>`;
+const bar = (y, width, seconds) => [
+  rect(695,y-2,416,22,'white'),
+  rect(697,y,411,17,'#dde9f2','rx="8.5"'),
+  rect(697,y,width,17,'#76b900',`rx="8.5" class="bar-fill" ${delay(seconds)}`),
+].join('');
 
 const motions = {
   '02': () => [
@@ -34,7 +48,9 @@ const motions = {
     cover(797,413,251,118,'white',2.75),
     cover(797,541,251,118,'white',3.25),
     cover(797,669,251,118,'white',3.75),
-    ring(1101,282,81,4.20),
+    fan(460.5,313.3,0),
+    fan(920.5,313.3,1),
+    `<circle cx="1101" cy="281" r="73" fill="white" class="cover" ${delay(4.2)}/>`,
   ],
   '01': () => [
     trace('M257 267 V328 H626 V373', .2),
@@ -55,8 +71,16 @@ const motions = {
     wipe(219,156,224,136,'white',.15,'rise'),
     trace('M696 345 L732 264 L753 311 L794 330 L843 232 L890 284', .7, '#a9e332'),
     trace('M505 488 L641 433', 1.85, '#76b900'),
-    ...[[484,72],[569,129],[655,171],[740,351]].map(([y,w],i) =>
-      wipe(705,y+2,w,12,'#dde9f2',2.5+i*.25)),
+    ...[[483,74],[568,132],[654,173],[739,354]].map(([y,w],i) =>
+      bar(y,w,2.5+i*.25)),
+  ],
+  '05': () => [
+    trace('M526 134 V172 H685 V184', .15),
+    trace('M687 264 V294 H722 V320', .85),
+    trace('M722 395 V437', 1.45),
+    outline(355,752,85,44,2.35),
+    outline(355,830,45,42,3.85),
+    outline(532,830,44,42,3.85),
   ],
 };
 
@@ -79,9 +103,9 @@ function localizedLabels() {
 const source = `assets/revised/${file}.png`;
 const preload = new Image();
 preload.onload = () => {
-  const base = `<image href="${source}" width="1250" height="921"/>${localizedLabels()}`;
+  const base = art() + localizedLabels();
   const phases = file === '04' ? [
-    [34,154,356,621,.05],[385,265,65,65,.75],
+    [385,265,65,65,.75],
     [449,154,346,621,1.2],[794,265,66,70,2.8],[860,154,354,621,3.25],
   ] : [];
   const animation = (motions[file]?.() || []).join('');
@@ -92,5 +116,14 @@ preload.onload = () => {
     </mask></defs>` : '';
   document.body.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 921" aria-hidden="true">
     ${mask}<g ${mask ? 'mask="url(#phases)"' : ''}>${base}</g>${animation}</svg>`;
+
+  // Reset the timed layers together without repainting the artwork or interrupting the fans.
+  setInterval(() => {
+    for (const animation of document.getAnimations()) {
+      if (animation.effect.target.classList.contains('fan')) continue;
+      animation.currentTime = 0;
+      animation.play();
+    }
+  }, cycleMs);
 };
 preload.src = source;
