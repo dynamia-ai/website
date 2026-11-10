@@ -1164,7 +1164,7 @@ html:has(.redesign-site){tab-size:8;text-size-adjust:auto;-webkit-text-size-adju
 
 /* Approved original diagrams for the six capability tabs. */
 .why-visual.why-visual-approved{padding:0;min-width:0;min-height:0;aspect-ratio:4/3;overflow:hidden;background:transparent;border:0;box-shadow:none}
-.why-visual-approved iframe{display:block;width:100%;height:100%;border:0;background:transparent}
+.why-visual-approved iframe{display:block;width:100%;height:100%;border:0;background:transparent;color-scheme:only light}
 
 .article-author-row:has(>.article-share:only-child){justify-content:flex-end}
 
