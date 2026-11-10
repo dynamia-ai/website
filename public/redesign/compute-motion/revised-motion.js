@@ -101,6 +101,9 @@ const motions = {
     trace('M1105 174 V184 M1082 249 L1129 278', 1.20, '#008a78', 2.5),
     trace('M950 500 H986', 1.75, '#008a78', 2.5),
     trace('M1084 500 H1119', 1.75, '#008a78', 2.5),
+    // Keep each highlight inside its original number block.
+    ...[[363,761,2.65],[405,761,2.65],[363,838,4.15],[557,839,4.15]].map(([x,y,t]) =>
+      rect(x,y,27,27,'none',`rx="2" stroke="white" stroke-width="2" class="signal" ${delay(t)}`)),
   ],
 };
 
