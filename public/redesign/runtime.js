@@ -640,7 +640,7 @@ const translateText=context.translateText||((value)=>value);
       panel = document.querySelector(uiCopy("s4cc42838ca2101"));
     if (!panel) return;
     panel.setAttribute(uiCopy("sedde6c5d24e5a6"), uiCopy("s7b999f1e462b49") + i);
-    panel.innerHTML = normalizeHTML(`<div class="why-panel"><div><span class="tag"><span>${String(i + 1).padStart(2, '0')} / </span><span>${x[0]}</span></span><h3>${x[1]}</h3><p>${x[2]}</p></div><div class="why-visual why-visual-approved"><iframe src="/redesign/compute-motion/index.html?scene=${i}" title="${x[0]}" scrolling="no" loading="lazy"></iframe></div></div>`);
+    panel.innerHTML = normalizeHTML(`<div class="why-panel"><div><span class="tag"><span>${String(i + 1).padStart(2, '0')} / </span><span>${x[0]}</span></span><h3>${x[1]}</h3><p>${x[2]}</p></div><div class="why-visual why-visual-approved"><iframe src="/redesign/compute-motion/revised.html?scene=${i}" title="${x[0]}" scrolling="no" loading="lazy"></iframe></div></div>`);
     document.querySelectorAll(uiCopy("sb7b337edaa1d04")).forEach(b => {
       const active = Number(b.dataset.why) === i;
       b.setAttribute(uiCopy("s7a36887bd59142"), active);
