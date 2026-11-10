@@ -8,8 +8,8 @@ document.documentElement.lang = lang;
 const rect = (x,y,w,h,fill,extra = '') =>
   `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" ${extra}/>`;
 const delay = seconds => `style="--delay:${seconds}s"`;
-const trace = (path, seconds, color = '#d1fa6a') =>
-  `<path d="${path}" pathLength="1" class="trace" style="--delay:${seconds}s;stroke:${color}"/>`;
+const trace = (path, seconds, color = '#d1fa6a', width = 5) =>
+  `<path d="${path}" pathLength="1" class="trace" style="--delay:${seconds}s;stroke:${color};stroke-width:${width}"/>`;
 const ring = (x,y,r,seconds,color = '#76b900') =>
   `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="${color}" stroke-width="3" class="signal" ${delay(seconds)}/>`;
 const cover = (x,y,w,h,fill,seconds) =>
@@ -75,9 +75,19 @@ const motions = {
       bar(y,w,2.5+i*.25)),
   ],
   '05': () => [
-    trace('M526 134 V172 H685 V184', .15),
-    trace('M687 264 V294 H722 V320', .85),
-    trace('M722 395 V437', 1.45),
+    trace('M526 134 V172', .05),
+    trace('M526 172 H381 V184', .30),
+    trace('M526 172 H685 V184', .30),
+    trace('M379 264 V295 H200 V319', .95),
+    trace('M379 264 V295 H463 V319', 1.05),
+    trace('M688 264 V295 H726 V319', .95),
+    trace('M688 264 V295 H463 V319', 1.05),
+    ...[198,461,724].map(x => trace(`M${x} 395 V437`, 1.70)),
+    trace('M972 153 V139 H1105 V153', .55, '#008a78', 2.5),
+    trace('M972 174 V184 M949 249 L997 278', 1.20, '#008a78', 2.5),
+    trace('M1105 174 V184 M1082 249 L1129 278', 1.20, '#008a78', 2.5),
+    trace('M950 500 H986', 1.75, '#008a78', 2.5),
+    trace('M1084 500 H1119', 1.75, '#008a78', 2.5),
     outline(355,752,85,44,2.35),
     outline(355,830,45,42,3.85),
     outline(532,830,44,42,3.85),
