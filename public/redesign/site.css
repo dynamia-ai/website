@@ -468,7 +468,7 @@ dialog{border:1px solid var(--line);border-radius:16px;padding:0;max-width:600px
 :root[data-theme="dark"] .star-proof{border:1px solid #343a32;background:#161616}
 :root[data-theme="dark"] .logo-controls button{background:#161616}
 :root[data-theme="dark"] .why-tabs button{background:#161616}
-:root[data-theme="dark"] .why-visual{background:#161616}
+:root[data-theme="dark"] .why-visual:not(.why-visual-approved){background:#161616}
 :root[data-theme="dark"] .flow-cards>div{border:1px solid #43583a;background:#141c11}
 :root[data-theme="dark"] .sales-banner p{color:#b5beb0}
 :root[data-theme="dark"] .sales-banner .eyebrow{color:#a8d677}
