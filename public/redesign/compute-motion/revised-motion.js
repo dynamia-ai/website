@@ -122,16 +122,16 @@ function localizedLabels() {
   if (lang === 'en' || lang === 'de') labels.push(...(window.revisedLabels[file] || []));
   if (!labels.length) return '';
   const context = document.createElement('canvas').getContext('2d');
-  return labels.map(([x,y,w,h,bg,fg,en,de]) => {
+  return labels.map(([x,y,w,h,bg,fg,en,de,weight=700]) => {
     const label = lang === 'de' ? (de ?? en) : en;
     let size = Math.floor(h * .72);
-    context.font = `700 ${size}px Arial`;
+    context.font = `${weight} ${size}px Arial`;
     while (context.measureText(label).width > w - 6 && size > 10) {
       size--;
-      context.font = `700 ${size}px Arial`;
+      context.font = `${weight} ${size}px Arial`;
     }
     const escaped = label.replaceAll('&','&amp;').replaceAll('<','&lt;');
-    return rect(x,y,w,h,bg) + `<text x="${x+w/2}" y="${y+h/2}" dominant-baseline="central" text-anchor="middle" fill="${fg}" font-family="Arial,sans-serif" font-weight="700" font-size="${size}">${escaped}</text>`;
+    return rect(x,y,w,h,bg) + `<text x="${x+w/2}" y="${y+h/2}" dominant-baseline="central" text-anchor="middle" fill="${fg}" font-family="Arial,sans-serif" font-weight="${weight}" font-size="${size}">${escaped}</text>`;
   }).join('');
 }
 

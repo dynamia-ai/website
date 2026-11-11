@@ -53,8 +53,10 @@ window.revisedLabels = {
     [686,377,437,40,white,navy,'vLLM Device Memory'],
     [319,518,132,34,white,navy,'Device'],
     [319,550,132,35,white,navy,'Memory'],
-    [205,767,96,31,white,navy,'Not used'],
-    [554,767,52,31,white,navy,'vLLM'],
+    [205,767,96,31,white,navy,'Not used',null,400],
+    [333,767,105,31,white,navy,'tf-serving',null,400],
+    [467,767,60,31,white,navy,'OCR',null,400],
+    [554,767,70,31,white,navy,'vLLM',null,400],
   ],
   '03': [
     [689,440,413,32,white,navy,'Total: 17.5G','Gesamt: 17.5G'],
