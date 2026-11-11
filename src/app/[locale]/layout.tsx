@@ -46,6 +46,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <meta name="baidu-site-verification" content="codeva-TYFTpvFt6F" />
         <meta name="baidu-site-verification" content="codeva-7ja2WhiNup" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
