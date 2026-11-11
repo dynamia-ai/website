@@ -118,10 +118,12 @@ const motions = {
 };
 
 function localizedLabels() {
-  if (lang !== 'en' && lang !== 'de') return '';
+  const labels = file === '03' ? [...window.revisedLabels.observability] : [];
+  if (lang === 'en' || lang === 'de') labels.push(...(window.revisedLabels[file] || []));
+  if (!labels.length) return '';
   const context = document.createElement('canvas').getContext('2d');
-  return (window.revisedLabels[file] || []).map(([x,y,w,h,bg,fg,en,de]) => {
-    const label = lang === 'de' ? de : en;
+  return labels.map(([x,y,w,h,bg,fg,en,de]) => {
+    const label = lang === 'de' ? (de ?? en) : en;
     let size = Math.floor(h * .72);
     context.font = `700 ${size}px Arial`;
     while (context.measureText(label).width > w - 6 && size > 10) {

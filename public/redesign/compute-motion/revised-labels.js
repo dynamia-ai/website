@@ -49,15 +49,18 @@ window.revisedLabels = {
     [500,636,241,48,navy,white,'Control plane check','Control-Plane-Prüfung'],
     [921,636,225,48,white,navy,'Same process continues','Prozess läuft weiter'],
   ],
+  observability: [
+    [686,377,437,40,white,navy,'vLLM Device Memory'],
+    [319,518,132,34,white,navy,'Device'],
+    [319,550,132,35,white,navy,'Memory'],
+    [205,767,96,31,white,navy,'Not used'],
+    [554,767,52,31,white,navy,'vLLM'],
+  ],
   '03': [
-    [686,377,437,40,white,navy,'vLLM device memory','vLLM-Gerätespeicher'],
     [689,440,413,32,white,navy,'Total: 17.5G','Gesamt: 17.5G'],
     [689,526,413,32,white,navy,'Context size: 500M','Kontextgröße: 500M'],
     [689,611,413,32,white,navy,'Module size: 2G','Modulgröße: 2G'],
     [689,697,413,32,white,navy,'Dynamically allocated: 15G','Dynamisch zugewiesen: 15G'],
-    [319,515,132,34,white,navy,'Device','Geräte-'],
-    [319,550,132,35,white,navy,'memory','speicher'],
-    [204,766,96,32,white,navy,'Unused','Frei'],
   ],
   '05': [
     [911,65,248,43,white,navy,'NVIDIA interconnect','NVIDIA-Verbund'],
