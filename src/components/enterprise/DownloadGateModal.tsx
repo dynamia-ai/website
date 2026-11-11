@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { companyEmailSchema } from '@/utils/validation';
 import { attributionToPayload } from '@/utils/utm';
-import { submitContact } from '@/utils/contact';
+import { submitContact } from '@/lib/site/contact';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import ConsentLabel from '@/components/enterprise/ConsentLabel';
 

@@ -6,7 +6,7 @@ import { PublicAssetManifestPlugin, writePublicAssetManifest } from "./scripts/p
 const nextConfig: NextConfig = {
   outputFileTracingRoot: process.cwd(),
   outputFileTracingIncludes: {
-    '/*': ['./src/content/redesign/**/*', './dictionary/redesign/**/*'],
+    '/*': ['./src/content/site/**/*', './dictionary/**/*'],
     '/api/contact': ['./src/content/mail-attachments/dynamia-customer-case-studies.pdf'],
   },
   webpack(config, { dev, isServer, nextRuntime }) {

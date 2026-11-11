@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import HamiRoiCalculator from '@/components/tools/HamiRoiCalculator';
 import { localizedUrl, pageAlternates } from '@/utils/i18n';
+import MainLayout from '@/components/layout/MainLayout';
 
 const PATH = '/tools/hami-roi-calculator';
 
@@ -13,7 +14,11 @@ export default function HamiRoiCalculatorPage({
 }) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  return <HamiRoiCalculator key={locale} />;
+  return (
+    <MainLayout>
+      <HamiRoiCalculator key={locale} />
+    </MainLayout>
+  );
 }
 
 export async function generateMetadata({

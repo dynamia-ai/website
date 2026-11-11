@@ -20,7 +20,7 @@ linktitle: GPU 调度 Spread 与 Binpack
 
 上篇我们分析了 hami-scheduler 工作流程，知道了 hami-webhook、hami-scheduler 是怎么配合工作的。
 
-[HAMi vGPU 原理分析 Part3：hami-scheduler 工作流程分析](https://dynamia.ai/zh/blog/open-source-vgpu-hami-scheduler)
+[HAMi vGPU 原理分析 Part3：hami-scheduler 工作流程分析](/blog/open-source-vgpu-hami-scheduler)
 
 本文为 HAMi 原理分析的第四篇，分析 hami-scheduler 在调度时是如何选择节点的，即：Spread、Binpack 等高级调度策略是怎么实现的。
 

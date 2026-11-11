@@ -22,7 +22,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026/image8.png
 
 Once a company runs open source software in production, its concerns gradually extend past the code. Will issues get a response? How do new requirements enter the public roadmap? Can the adaptation and tuning a team invests in be maintained together with the community over the long term? These questions directly shape enterprise confidence in adopting open source infrastructure.
 
-This is the seventh and final deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026/) series, covering the community panel "Setting Off Again from Incubating: How Does HAMi Move Toward a More Open, More Sustainable Community?" They are also the questions HAMi must keep answering after entering CNCF Incubating. On stage: **Li Mengxuan**, co-founder and CTO of Dynamia and HAMi Maintainer; **Wang Jifei**, R&D engineer at Dynamia and HAMi Approver; **Hou Yuxi** of Transwarp's AI tool platform R&D; and **James**, R&D engineer at 4Paradigm and HAMi Approver. For enterprise platform teams, the conversation offers a second set of judgment criteria beyond technical selection.
+This is the seventh and final deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026) series, covering the community panel "Setting Off Again from Incubating: How Does HAMi Move Toward a More Open, More Sustainable Community?" They are also the questions HAMi must keep answering after entering CNCF Incubating. On stage: **Li Mengxuan**, co-founder and CTO of Dynamia and HAMi Maintainer; **Wang Jifei**, R&D engineer at Dynamia and HAMi Approver; **Hou Yuxi** of Transwarp's AI tool platform R&D; and **James**, R&D engineer at 4Paradigm and HAMi Approver. For enterprise platform teams, the conversation offers a second set of judgment criteria beyond technical selection.
 
 ## Key Takeaways
 
@@ -80,11 +80,11 @@ Start with a real problem, a discussion, or a doc improvement — and join the H
 
 ## Series
 
-- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026/)
-- [(1) Where Does HAMi Fit in the CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
-- [(2) After GPU Sharing: How HAMi 2.10 Improves Isolation, Scheduling, and Observability](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/)
-- [(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)
-- [(4) Turning GPU Performance into Inference Service Capability: Lessons from Iluvatar](/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/)
-- [(5) How iFLYTEK Manages Multi-Business GPU Sharing with Volcano + HAMi-core](/blog/hami-meetup-shanghai-2026-volcano-hami-core/)
-- [(6) How UCloud Turns HAMi Sharing into Ready-to-Use Development Environments](/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/)
+- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [(1) Where Does HAMi Fit in the CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation)
+- [(2) After GPU Sharing: How HAMi 2.10 Improves Isolation, Scheduling, and Observability](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu)
+- [(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)
+- [(4) Turning GPU Performance into Inference Service Capability: Lessons from Iluvatar](/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference)
+- [(5) How iFLYTEK Manages Multi-Business GPU Sharing with Volcano + HAMi-core](/blog/hami-meetup-shanghai-2026-volcano-hami-core)
+- [(6) How UCloud Turns HAMi Sharing into Ready-to-Use Development Environments](/blog/hami-meetup-shanghai-2026-ucloud-ai-platform)
 - **(7) From User to Co-Builder: Why Enterprises Need a Sustainable HAMi Community** (this post)

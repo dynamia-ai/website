@@ -17,13 +17,13 @@ language: zh
 coverImage: /images/blog/kubecon-eu-2026-hami-recap/keynote-live-demo.jpg
 ---
 
-三个月前，[密瓜智能携 HAMi 社区在 KubeCon EU 2026 上完成了一次标志性亮相](/blog/kubecon-eu-2026-hami-recap/)——从 Maintainer Summit、Lightning Talk、Project Pavilion，到最后登上主论坛 Keynote Demo，HAMi 作为第一个中国原创开源项目站上了 KubeCon 的主舞台。
+三个月前，[密瓜智能携 HAMi 社区在 KubeCon EU 2026 上完成了一次标志性亮相](/blog/kubecon-eu-2026-hami-recap)——从 Maintainer Summit、Lightning Talk、Project Pavilion，到最后登上主论坛 Keynote Demo，HAMi 作为第一个中国原创开源项目站上了 KubeCon 的主舞台。
 
 现在，这股势头正在延续。[HAMi 社区](https://github.com/Project-HAMi/HAMi)即将亮相 **KubeCon + CloudNativeCon India 2026**，6 月 18–19 日，孟买。
 
 ## 为什么 KubeCon India 对 HAMi 意义重大？
 
-在 [KubeCon EU 2026 的回顾](/blog/kubecon-eu-2026-hami-recap/)中，我们提到过一个关键判断：**Kubernetes 正在从"编排应用"走向"编排算力"**。这一趋势并非局限于某个区域市场，而是全球性的。
+在 [KubeCon EU 2026 的回顾](/blog/kubecon-eu-2026-hami-recap)中，我们提到过一个关键判断：**Kubernetes 正在从"编排应用"走向"编排算力"**。这一趋势并非局限于某个区域市场，而是全球性的。
 
 印度是全球开发者数量增长最快的地区之一，也是 Kubernetes 生态的重要力量。在 KubeCon EU 期间，来自印度的社区贡献者 Rudraksh Karpe 和 Shivay Lamba 就已经在 Poster Session 中展示了"Kubernetes as the Universal GPU Control Plane for AI Workloads"的主题，这说明 **GPU 调度与共享的需求正在全球范围内快速增长**。
 
@@ -59,7 +59,7 @@ HAMi 展台由社区贡献者和 CNCF Ambassador 共同值守：
 
 ## 从 KubeCon EU 到 KubeCon India：HAMi 的全球化路径
 
-回顾 [密瓜智能在 KubeCon EU 2026 的参与](/blog/dynamia-and-hami-at-kubecon-eu-2026/)，HAMi 完成了几个关键里程碑：
+回顾 [密瓜智能在 KubeCon EU 2026 的参与](/blog/dynamia-and-hami-at-kubecon-eu-2026)，HAMi 完成了几个关键里程碑：
 
 1. **主论坛 Keynote Demo**：HAMi 成为第一个登上 KubeCon EU 主舞台的中国原创开源项目，展示了 GPU 从"设备"到"可调度资源"的转变
 2. **被纳入 Cloud Native Landscape**：HAMi 作为代表性项目在 Keynote 中被提及，说明其定位正在被更广泛地认可

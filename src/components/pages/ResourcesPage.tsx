@@ -1,134 +1,82 @@
-"use client";
+import {getLocale, getTranslations} from 'next-intl/server';
+import {localizedPath} from '@/utils/i18n';
+import {websitePath} from '@/lib/site/links';
 
-import React from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import { localizedPath } from '@/utils/i18n';
-import Link from 'next/link';
-import MainLayout from '@/components/layout/MainLayout';
-
-export interface ResourceArticle {
-  title: string;
-  category: string;
-  date: string;
-  excerpt: string;
-  link: string;
-}
-
-interface ResourcesPageProps {
-  articles: ResourceArticle[];
-}
-
-export default function ResourcesPage({ articles }: ResourcesPageProps) {
-  const locale = useLocale();
-  const nav = useTranslations("navigation");
-  const blog = useTranslations("blogUI");
-  const t = useTranslations('resources');
-
-  const ResourceCard = ({ title, description, link, icon }: { title: string; description: string; link: string; icon: string }) => (
-    <div className="bg-white dark:bg-gray-900 overflow-hidden shadow rounded-lg transition-all hover:shadow-md">
-      <div className="px-4 py-5 sm:p-6">
-        <div className="flex items-center mb-4">
-          <div className="flex-shrink-0 h-10 w-10 bg-primary-light rounded-full flex items-center justify-center">
-            <span className="text-primary text-xl">{icon}</span>
-          </div>
-          <h3 className="ml-4 text-lg font-medium text-gray-900 dark:text-gray-100">{title}</h3>
-        </div>
-        <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-4">{description}</p>
-        <Link
-          href={link}
-          className="text-primary hover:text-primary-dark font-medium text-sm"
-        >
-          {t('viewMore')} &rarr;
-        </Link>
-      </div>
-    </div>
-  );
-
+export default async function ResourcesPage() {
+  const t = await getTranslations('sitePages.resources');
+  const locale = await getLocale();
   return (
-    <MainLayout>
-      <div className="py-16 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-4xl">
-              {t('title')}
-            </h1>
-            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400 dark:text-gray-500 sm:mt-4">
-              {t('subtitle')}
-            </p>
+    <>
+      <section className="page-hero">
+        <div className="wrap">
+          <div className="breadcrumb">
+            <a href={localizedPath(websitePath("/"), locale)}>{t('crumb.home')}</a>
+            <span>{t('ui.slash')}</span>
+            <span>{t('crumb.current')}</span>
           </div>
-
-          <div className="mt-12">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <ResourceCard
-                title={t('documentation.title')}
-                description={t('documentation.description')}
-                link="https://project-hami.io/docs/"
-                icon="📚"
-              />
-              <ResourceCard
-                title={t('blog.title')}
-                description={t('blog.description')}
-                link={localizedPath("/blog", locale)}
-                icon="✏️"
-              />
-              <ResourceCard
-                title={nav('resourcesTools')}
-                description={nav('resourcesToolsDesc')}
-                link={localizedPath('/tools', locale)}
-                icon="📄"
-              />
-            </div>
-          </div>
-
-          <div className="mt-16">
-            <div className="bg-primary-lighter rounded-lg p-8">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('latestResources.title')}</h2>
-              </div>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                {articles.map((article, index) => (
-                  <div key={index} className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-medium text-primary-dark bg-primary-lighter px-2 py-1 rounded">
-                        {blog(`categories.${article.category}`)}
-                      </span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{article.date}</span>
-                    </div>
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">{article.title}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-4">{article.excerpt}</p>
-                    <Link href={article.link} className="text-primary hover:text-primary-dark font-medium text-sm">
-                      {t('viewMore')} &rarr;
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 bg-gray-100 dark:bg-gray-800 rounded-lg p-8">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-                {t('latestResources.newsletterTitle')}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                {t('latestResources.newsletterDescription')}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <input
-                  type="email"
-                  placeholder={t('latestResources.emailPlaceholder')}
-                  className="px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary w-full sm:w-auto"
-                />
-                <button
-                  className="px-6 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
-                >
-                  {t('latestResources.subscribeButton')}
-                </button>
-              </div>
+          <div className="">
+            <div>
+              <div className="eyebrow">{t('crumb.current')}</div>
+              <h1>{t('hero.title')}</h1>
+              <p className="lead">{t('hero.lead')}</p>
             </div>
           </div>
         </div>
-      </div>
-    </MainLayout>
+      </section>
+      <section className="section ">
+        <div className="wrap">
+          <div className="grid3">
+            <a className="resource-card" href={localizedPath(websitePath("/blog"), locale)}>
+              <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M3 3h6a4 4 0 0 1 3 2 4 4 0 0 1 3-2h6v17h-6a4 4 0 0 0-3 1 4 4 0 0 0-3-1H3z M12 5v16"></path></svg></span>
+              <div>
+                <strong>{t('cards.blog.title')}</strong>
+                <small>{t('cards.blog.body')}</small>
+              </div>
+              <span className="arrow">{t('ui.externalArrow')}</span>
+            </a>
+            <a className="resource-card" href={localizedPath(websitePath("/videos"), locale)}>
+              <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z"></path></svg></span>
+              <div>
+                <strong>{t('cards.videos.title')}</strong>
+                <small>{t('cards.videos.body')}</small>
+              </div>
+              <span className="arrow">{t('ui.externalArrow')}</span>
+            </a>
+            <a className="resource-card" href={localizedPath(websitePath("/tools"), locale)}>
+              <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M3 3v18h18 M7 16v-4 M12 16V7 M17 16v-7"></path></svg></span>
+              <div>
+                <strong>{t('cards.tools.title')}</strong>
+                <small>{t('cards.tools.body')}</small>
+              </div>
+              <span className="arrow">{t('ui.externalArrow')}</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section className="section tinted">
+        <div className="wrap">
+          <div className="intro">
+            <div>
+              <div className="eyebrow">{t('tools.eyebrow')}</div>
+              <h2>{t('tools.title')}</h2>
+            </div>
+          </div>
+          <div className="grid2 tool-cards">
+            <a className="feature-card" href={localizedPath(websitePath('/tools/hami-metrics-explorer'), locale)}>
+              <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M3 3v18h18 M7 16v-4 M12 16V7 M17 16v-7"></path></svg></span>
+              <h3>{t('tools.metrics.title')}</h3>
+              <p>{t('tools.metrics.body')}</p>
+              <span className="textlink">{t('tools.open')}</span>
+            </a>
+            <a className="feature-card" href={localizedPath(websitePath('/tools/hami-roi-calculator'), locale)}>
+              <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M6 6h12v12H6z M9 9h6v6H9z M9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3"></path></svg></span>
+              <h3>{t('tools.roi.title')}</h3>
+              <p>{t('tools.roi.body')}</p>
+              <span className="textlink">{t('tools.open')}</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

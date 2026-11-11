@@ -1,54 +1,19 @@
-import RedesignPage, { hasRedesignPage, redesignMetadata } from '@/redesign/RedesignPage';
-import { use } from "react";
-import { setRequestLocale, getTranslations } from "next-intl/server";
-import { localizedUrl, localizedAlternates } from "@/utils/i18n";
-import HamiPage from "@/components/pages/HamiPage";
+import {setRequestLocale} from 'next-intl/server';
+import CommunityPage from '@/components/pages/CommunityPage';
+import {siteMetadata} from '@/lib/site/metadata';
+import MainLayout from '@/components/layout/MainLayout';
 
-function WhatIsHami({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = use(params);
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  return siteMetadata('/community', locale);
+}
+
+export default async function Page({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
   setRequestLocale(locale);
-  return <HamiPage />;
-}
-
-async function legacyMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "hamiPage" });
-  const meta = await getTranslations({ locale, namespace: "Metadata" });
-  return {
-    title: `${t("title")} HAMi?`,
-    description: t("subtitle"),
-    openGraph: {
-      title: `${t("title")} HAMi?`,
-      description: t("subtitle"),
-      url: localizedUrl("/what-is-hami", locale),
-      siteName: meta("siteName"),
-      type: "website",
-    },
-    alternates: {
-      canonical: localizedUrl("/what-is-hami", locale),
-      languages: localizedAlternates("/what-is-hami"),
-    },
-  };
-}
-
-export default async function MigratedPage(props: Parameters<typeof WhatIsHami>[0]) {
-  const resolved = await props.params;
-  const route = `/community`;
-  if (hasRedesignPage(route)) return <RedesignPage route={route} locale={resolved.locale} />;
-  return <WhatIsHami {...props} />;
-}
-
-export async function generateMetadata(props: Parameters<typeof legacyMetadata>[0]) {
-  const resolved = await props.params;
-  const route = `/community`;
-  if (hasRedesignPage(route)) return redesignMetadata(route,resolved.locale);
-  return legacyMetadata(props);
+  return (
+    <MainLayout>
+      <CommunityPage />
+    </MainLayout>
+  );
 }

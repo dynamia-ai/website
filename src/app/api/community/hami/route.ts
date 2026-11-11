@@ -1,45 +1,121 @@
 import {NextResponse} from 'next/server';
+import {readHamiMetricsCache, rememberHamiMetric} from '@/lib/site/hamiMetricsCache';
 
 export const dynamic = 'force-dynamic';
-const SOURCE = 'https://hub.docker.com/r/projecthami/hami';
-const TTL = 60_000;
-interface Snapshot {pulls: number; fetchedAt: string; source: string; scope: 'all-time'}
-// Last verified Docker Hub response, retained for cold starts during an outage.
-const fallback: Snapshot = {
-  pulls: 724532,
-  fetchedAt: '2026-10-21T10:48:07Z',
-  source: SOURCE,
-  scope: 'all-time',
-};
-let snapshot: Snapshot | null = null;
-let inflight: Promise<Snapshot> | null = null;
-let retryAfter = 0;
 
-async function latest(): Promise<Snapshot> {
+const LFX_ACTIVE_CONTRIBUTORS =
+  'https://insights.linuxfoundation.org/api/widget/contributors/active-contributors?project=hami&granularity=weekly&startDate&endDate&includeCollaborations=false';
+const TTL = 60_000;
+
+interface PullsSnapshot {
+  pulls: number;
+  fetchedAt: string;
+}
+
+interface ContributorsSnapshot {
+  contributors: number;
+  fetchedAt: string;
+}
+
+let pullsSnapshot: PullsSnapshot | null = null;
+let pullsInflight: Promise<PullsSnapshot> | null = null;
+let pullsRetryAfter = 0;
+
+let contributorsSnapshot: ContributorsSnapshot | null = null;
+let contributorsInflight: Promise<ContributorsSnapshot> | null = null;
+let contributorsRetryAfter = 0;
+
+function cachedPulls(): PullsSnapshot {
+  const cache = readHamiMetricsCache();
+  return {pulls: cache.pulls, fetchedAt: cache.fetchedAt};
+}
+
+function cachedContributors(): ContributorsSnapshot {
+  const cache = readHamiMetricsCache();
+  return {contributors: cache.contributors, fetchedAt: cache.fetchedAt};
+}
+
+async function latestPulls(): Promise<PullsSnapshot> {
   const response = await fetch('https://hub.docker.com/v2/repositories/projecthami/hami/', {
-    headers: {Accept: 'application/json'}, cache: 'no-store', signal: AbortSignal.timeout(8000),
+    headers: {Accept: 'application/json'},
+    cache: 'no-store',
+    signal: AbortSignal.timeout(8000),
   });
   if (!response.ok) throw new Error('Docker Hub unavailable');
   const data = await response.json();
-  if (data.namespace !== 'projecthami' || data.name !== 'hami' ||
-      !Number.isSafeInteger(data.pull_count) || data.pull_count < 0) throw new Error('Invalid pull count');
-  snapshot = {pulls: data.pull_count, fetchedAt: new Date().toISOString(), source: SOURCE, scope: 'all-time'};
-  return snapshot;
+  if (
+    data.namespace !== 'projecthami' ||
+    data.name !== 'hami' ||
+    !Number.isSafeInteger(data.pull_count) ||
+    data.pull_count < 0
+  ) {
+    throw new Error('Invalid pull count');
+  }
+  const fetchedAt = new Date().toISOString();
+  rememberHamiMetric('pulls', data.pull_count, fetchedAt);
+  pullsSnapshot = {pulls: data.pull_count, fetchedAt};
+  return pullsSnapshot;
+}
+
+async function latestContributors(): Promise<ContributorsSnapshot> {
+  const response = await fetch(LFX_ACTIVE_CONTRIBUTORS, {
+    headers: {Accept: 'application/json'},
+    cache: 'no-store',
+    signal: AbortSignal.timeout(8000),
+  });
+  if (!response.ok) throw new Error('LFX Insights unavailable');
+  const data = await response.json();
+  const count = data?.summary?.current;
+  if (!Number.isSafeInteger(count) || count < 0) throw new Error('Invalid contributor count');
+  const fetchedAt = new Date().toISOString();
+  rememberHamiMetric('contributors', count, fetchedAt);
+  contributorsSnapshot = {contributors: count, fetchedAt};
+  return contributorsSnapshot;
+}
+
+async function resolvePulls(): Promise<{snapshot: PullsSnapshot; stale: boolean}> {
+  if (pullsSnapshot && Date.now() - Date.parse(pullsSnapshot.fetchedAt) < TTL) {
+    return {snapshot: pullsSnapshot, stale: false};
+  }
+  if (Date.now() < pullsRetryAfter) {
+    return {snapshot: pullsSnapshot ?? cachedPulls(), stale: true};
+  }
+  try {
+    if (!pullsInflight) pullsInflight = latestPulls().finally(() => {pullsInflight = null;});
+    return {snapshot: await pullsInflight, stale: false};
+  } catch {
+    pullsRetryAfter = Date.now() + TTL;
+    return {snapshot: pullsSnapshot ?? cachedPulls(), stale: true};
+  }
+}
+
+async function resolveContributors(): Promise<{snapshot: ContributorsSnapshot; stale: boolean}> {
+  if (contributorsSnapshot && Date.now() - Date.parse(contributorsSnapshot.fetchedAt) < TTL) {
+    return {snapshot: contributorsSnapshot, stale: false};
+  }
+  if (Date.now() < contributorsRetryAfter) {
+    return {snapshot: contributorsSnapshot ?? cachedContributors(), stale: true};
+  }
+  try {
+    if (!contributorsInflight) {
+      contributorsInflight = latestContributors().finally(() => {contributorsInflight = null;});
+    }
+    return {snapshot: await contributorsInflight, stale: false};
+  } catch {
+    contributorsRetryAfter = Date.now() + TTL;
+    return {snapshot: contributorsSnapshot ?? cachedContributors(), stale: true};
+  }
 }
 
 export async function GET() {
   const headers = {'Cache-Control': 'no-store'};
-  if (snapshot && Date.now() - Date.parse(snapshot.fetchedAt) < TTL) {
-    return NextResponse.json({...snapshot, stale: false}, {headers});
-  }
-  if (Date.now() < retryAfter) {
-    return NextResponse.json({...(snapshot ?? fallback), stale: true}, {headers});
-  }
-  try {
-    if (!inflight) inflight = latest().finally(() => {inflight = null;});
-    return NextResponse.json({...await inflight, stale: false}, {headers});
-  } catch {
-    retryAfter = Date.now() + TTL;
-    return NextResponse.json({...(snapshot ?? fallback), stale: true}, {headers});
-  }
+  const [pulls, contributors] = await Promise.all([resolvePulls(), resolveContributors()]);
+  return NextResponse.json(
+    {
+      pulls: pulls.snapshot.pulls,
+      contributors: contributors.snapshot.contributors,
+      stale: pulls.stale || contributors.stale,
+    },
+    {headers},
+  );
 }

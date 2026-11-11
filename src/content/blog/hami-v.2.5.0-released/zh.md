@@ -73,7 +73,7 @@ linktitle: HAMi v2.5.0 发布
 
 之前版本存在一个问题：**重启 hami-device-plugin 会影响 GPU 任务。**
 
-在 [HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia) 文章中分享了 HAMi 是如何实现 GPU 的 core 和 memory 隔离的。
+在 [HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现](/blog/open-source-vgpu-hami-device-plugin-nvidia) 文章中分享了 HAMi 是如何实现 GPU 的 core 和 memory 隔离的。
 
 > 实际是通过 libvgpu.so 拦截 CUDA API 完成的。
 

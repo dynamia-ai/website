@@ -10,6 +10,7 @@ import {
 } from '@/lib/enterprise-docs';
 import { localizedAlternates, localizedUrl } from '@/utils/i18n';
 import { routing } from '@/i18n/routing';
+import MainLayout from '@/components/layout/MainLayout';
 
 interface PageProps {
   params: Promise<{ locale: string; productId: string }>;
@@ -63,14 +64,16 @@ export default async function InstallDocPage({ params }: PageProps) {
   if (!doc) notFound();
 
   return (
-    <InstallDocClient
-      productId={productId}
-      title={doc.frontmatter.title}
-      version={doc.frontmatter.version}
-      lastUpdated={doc.frontmatter.lastUpdated}
-      description={doc.frontmatter.description}
-      html={doc.html}
-      toc={doc.toc}
-    />
+    <MainLayout>
+      <InstallDocClient
+        productId={productId}
+        title={doc.frontmatter.title}
+        version={doc.frontmatter.version}
+        lastUpdated={doc.frontmatter.lastUpdated}
+        description={doc.frontmatter.description}
+        html={doc.html}
+        toc={doc.toc}
+      />
+    </MainLayout>
   );
 }

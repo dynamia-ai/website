@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { Download } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
-import MainLayout from '@/components/layout/MainLayout';
 import { localizedPath } from '@/utils/i18n';
 import './hami-roi-calculator.css';
 
@@ -386,7 +385,7 @@ export default function HamiRoiCalculator() {
   const priceMax = Math.max(320000, Math.max(...activeVendor.cards.map((card) => card.price)));
 
   return (
-    <MainLayout>
+    <>
       <div className="hami-roi">
         <div className="hami-roi-wrap">
           <div className="header-row">
@@ -759,6 +758,6 @@ export default function HamiRoiCalculator() {
           </details>
         </div>
       </div>
-    </MainLayout>
+    </>
   );
 }

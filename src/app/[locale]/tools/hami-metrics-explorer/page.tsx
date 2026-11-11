@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import HamiMetricsExplorer from "@/components/tools/HamiMetricsExplorer";
 import { localizedUrl, pageAlternates } from "@/utils/i18n";
+import MainLayout from '@/components/layout/MainLayout';
 
 const PATH = "/tools/hami-metrics-explorer";
 
@@ -13,7 +14,11 @@ export default function HamiMetricsExplorerPage({
 }) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  return <HamiMetricsExplorer />;
+  return (
+    <MainLayout>
+      <HamiMetricsExplorer />
+    </MainLayout>
+  );
 }
 
 export async function generateMetadata({

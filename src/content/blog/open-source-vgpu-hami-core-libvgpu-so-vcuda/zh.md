@@ -1347,7 +1347,7 @@ int delta(int up_limit, int user_current, int share) {
 
 至此，Core Limit 就分析完了。
 
-这也符合，之前 试[开源 vGPU 方案 HAMi: core\&memory 隔离测](https://dynamia.ai/zh/blog/open-source-vgpu-hami-core-memory-test) 测试的结果，GPU 使用率短期看可能会超过阈值，但是时间拉长来看，平均值始终在阈值附近波动。
+这也符合，之前 试[开源 vGPU 方案 HAMi: core\&memory 隔离测](/blog/open-source-vgpu-hami-core-memory-test) 测试的结果，GPU 使用率短期看可能会超过阈值，但是时间拉长来看，平均值始终在阈值附近波动。
 
 ![vGPU 内存分配与隔离示意图](/images/blog/gpu7/p3.jpg)
 

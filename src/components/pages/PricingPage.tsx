@@ -1,315 +1,116 @@
-'use client';
+import {getLocale, getTranslations} from 'next-intl/server';
+import {localizedPath} from '@/utils/i18n';
+import {websitePath} from '@/lib/site/links';
+import ContactForm from '@/components/layout/ContactForm';
 
-import React, { useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import ConsentLabel from '@/components/enterprise/ConsentLabel';
-import Link from 'next/link';
-import MainLayout from '@/components/layout/MainLayout';
-import { motion } from 'framer-motion';
-import { CheckIcon } from '@heroicons/react/24/solid';
-import FormSuccessMessage from '@/components/FormSuccessMessage';
-import { createPricingSchema } from '@/utils/validation';
-import { submitContact } from '@/utils/contact';
-
-// 动画配置
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
-
-export default function PricingPage() {
-  const t = useTranslations();
-  const locale = useLocale();
-  const fields = t.raw('pricing.form.fields');
-  const schema = createPricingSchema(fields);
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    company: '',
-    jobTitle: '',
-    phone: '',
-    gpuCount: '1-10',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormState(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const result = schema.safeParse(formState);
-    if (!result.success) {
-      alert(t(result.error.errors[0].message));
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const { success } = await submitContact({
-        locale,
-        name: formState.name,
-        email: formState.email,
-        company: formState.company,
-        jobTitle: formState.jobTitle,
-        phone: formState.phone,
-        gpuCount: formState.gpuCount,
-        message: formState.message,
-        _subject: `New Pricing Inquiry - ${formState.company}`,
-        ...(formState.email ? { _replyto: formState.email } : {}),
-      });
-
-      if (success) {
-        setFormState({
-          name: '',
-          email: '',
-          company: '',
-          jobTitle: '',
-          phone: '',
-          gpuCount: '1-10',
-          message: '',
-        });
-        setSubmitStatus('success');
-      } else {
-        console.error('Form submission failed');
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+export default async function PricingPage() {
+  const t = await getTranslations('sitePages.pricing');
+  const locale = await getLocale();
+  const privacyHref = localizedPath(websitePath('/privacy-policy'), locale);
 
   return (
-    <MainLayout>
-      {/* 页面顶部区域 */}
-      <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 py-16 transition-colors duration-300">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl mb-4">
-              {t('pricing.title')}
+    <>
+      <section className="sales-page">
+        <div className="wrap sales-layout">
+          <div className="sales-copy">
+            <div className="eyebrow">{t('hero.eyebrow')}</div>
+            <h1>
+              {t('hero.titleLine1')}
+              <br />
+              {t('hero.titleLine2')}
             </h1>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-            {/* 左侧内容区域 */}
-            <div className="flex flex-col justify-center">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-                {t('pricing.headline')}
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                {t('pricing.description')}
-              </p>
-              <div className="space-y-4">
-                {(function() {
-                  const benefits = t.raw('pricing.benefits');
-                  return Array.isArray(benefits) 
-                    ? benefits 
-                    : ['定制化定价方案', '根据您的集群规模灵活调整', '专业技术支持', '持续的功能更新和升级'];
-                }()).map((benefit: string, index: number) => (
-                  <div key={index} className="flex items-start">
-                    <div className="flex-shrink-0">
-                      <CheckIcon className="h-6 w-6 text-primary" />
-                    </div>
-                    <p className="ml-3 text-base text-gray-600 dark:text-gray-300">{benefit}</p>
-                  </div>
-                ))}
+            <p>{t('hero.lead')}</p>
+            <div className="sales-points">
+              <div className="sales-point">
+                <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="m12 3 10 5-10 5L2 8z M2 12l10 5 10-5 M2 16l10 5 10-5"></path></svg></span>
+                <div><h3>{t('highlights.pricing.title')}</h3></div>
+              </div>
+              <div className="sales-point">
+                <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M6 6h12v12H6z M9 9h6v6H9z M9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3"></path></svg></span>
+                <div><h3>{t('highlights.pricing.body')}</h3></div>
+              </div>
+              <div className="sales-point">
+                <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M19 8v6 M16 11h6 M20 21v-2a4 4 0 0 0-2-3.5"></path></svg></span>
+                <div><h3>{t('highlights.support.title')}</h3></div>
+              </div>
+              <div className="sales-point">
+                <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="m8 6-6 6 6 6 m8-12 6 6-6 6 M14 3l-4 18"></path></svg></span>
+                <div><h3>{t('highlights.support.body')}</h3></div>
               </div>
             </div>
-
-            {/* 右侧联系表单 */}
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t('pricing.form.title')}</h3>
-              
-              {submitStatus === 'success' && (
-                <FormSuccessMessage translationKey="pricing.form.submitSuccess" />
-              )}
-              
-              {submitStatus === 'error' && (
-                <FormSuccessMessage translationKey="pricing.form.submitError" isError={true} />
-              )}
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="gpuCount" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {t('pricing.form.gpuCount')} <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    id="gpuCount"
-                    name="gpuCount"
-                    value={formState.gpuCount}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                  >
-                    <option value="1-10">{t('pricing.form.gpuCountOptions.small')}</option>
-                    <option value="10-50">{t('pricing.form.gpuCountOptions.medium')}</option>
-                    <option value="50-200">{t('pricing.form.gpuCountOptions.large')}</option>
-                    <option value=">200">{t('pricing.form.gpuCountOptions.enterprise')}</option>
+            <a className="textlink" href={localizedPath(websitePath('/products?section=product-matrix'), locale)}>{t('highlights.capabilitiesLink')}</a>
+          </div>
+          <div className="sales-form">
+            <h2>{t('form.title')}</h2>
+            <p>{t('form.requiredHint')}</p>
+            <ContactForm
+              intent="pricing"
+              formId="pricing-form"
+              submitLabel={t('form.submit')}
+              successMessage={t('form.success')}
+              editLabel={t('form.edit')}
+            >
+              <div className="form-grid">
+                <label className="field full">
+                  {t('form.gpus.label')}
+                  <select name="gpu" required defaultValue="">
+                    <option value="">{t('form.gpus.placeholder')}</option>
+                    <option>{t('form.gpus.options.r1to10')}</option>
+                    <option>{t('form.gpus.options.r10to50')}</option>
+                    <option>{t('form.gpus.options.r50to200')}</option>
+                    <option>{t('form.gpus.options.gt200')}</option>
                   </select>
-                </div>
-
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {t('pricing.form.name')} <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formState.name}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.company')} <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formState.company}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {t('pricing.form.jobTitle')} <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="jobTitle"
-                      name="jobTitle"
-                      value={formState.jobTitle}
-                      onChange={handleInputChange}
-                      required
-                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {fields.email.label} {fields.email.required && <span className="text-red-500">*</span>}
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleInputChange}
-                      required={fields.email.required}
-                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {fields.phone.label} {fields.phone.required && <span className="text-red-500">*</span>}
-                    </label>
-                    <input
-                      type="text"
-                      id="phone"
-                      name="phone"
-                      value={formState.phone}
-                      onChange={handleInputChange}
-                      required={fields.phone.required}
-                      className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {t('pricing.form.message')}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={formState.message}
-                    onChange={handleInputChange}
-                    className="mt-1 block w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md shadow-sm py-2 px-3 focus:ring-primary focus:border-primary"
-                  ></textarea>
-                </div>
-                <ConsentLabel />
-                <div>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-gray-900 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
-                  >
-                    {isSubmitting ? t('pricing.form.submitting') : t('pricing.form.submitButton')}
-                  </button>
-                </div>
-              </form>
-            </div>
+                </label>
+                <label className="field">
+                  {t('form.name.label')}
+                  <input name="name" required maxLength={80} autoComplete="name" placeholder={t('form.name.placeholder')} />
+                </label>
+                <label className="field">
+                  {t('form.company.label')}
+                  <input name="company" required maxLength={120} autoComplete="organization" placeholder={t('form.company.placeholder')} />
+                </label>
+                <label className="field">
+                  {t('form.jobTitle.label')}
+                  <input name="role" required maxLength={100} autoComplete="organization-title" placeholder={t('form.jobTitle.placeholder')} />
+                </label>
+                <label className="field">
+                  {t('form.phone.label')}
+                  <input name="phone" required maxLength={80} placeholder={t('form.phone.placeholder')} />
+                </label>
+                <label className="field full">
+                  {t('form.email.label')}
+                  <input type="email" name="email" required maxLength={254} autoComplete="email" placeholder={t('form.email.placeholder')} />
+                </label>
+                <label className="field full">
+                  {t('form.message.label')}
+                  <textarea name="notes" maxLength={2000} placeholder={t('form.message.placeholder')} />
+                </label>
+              </div>
+              <label className="pricing-consent" style={{display: 'flex', alignItems: 'flex-start', gap: '9px', fontSize: '12px', marginTop: '18px'}}>
+                <input type="checkbox" name="consent" required style={{marginTop: '5px', flexShrink: 0}} />
+                <span>
+                  {t('form.consent.before')}
+                  <a href={privacyHref} style={{textDecoration: 'underline'}}>{t('form.consent.privacy')}</a>
+                  {t('form.consent.after')}
+                </span>
+              </label>
+              <div hidden><input name="_gotcha" autoComplete="off" tabIndex={-1} /></div>
+            </ContactForm>
           </div>
         </div>
       </section>
-
-      {/* 跨页引流：选型 + 详细对比 + 下载 */}
-      <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-300">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-8 md:p-10"
-          >
-            <div className="flex items-start justify-between gap-6 flex-wrap">
-              <div className="flex-1 min-w-0 max-w-2xl">
-                <div className="text-xs font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 mb-3">
-                  {t('pricing.compareCTA.eyebrow')}
-                </div>
-                <h2 className="text-2xl md:text-[28px] font-semibold tracking-tight text-gray-900 dark:text-gray-100">
-                  {t('pricing.compareCTA.title')}
-                </h2>
-                <p className="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {t('pricing.compareCTA.desc')}
-                </p>
-              </div>
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-primary text-white text-sm font-semibold hover:bg-primary-dark shadow-sm hover:shadow-md transition-all"
-              >
-                {t('pricing.compareCTA.button')}
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
+      <section className="section ">
+        <div className="wrap">
+          <div className="intro">
+            <div>
+              <div className="eyebrow">{t('cta.eyebrow')}</div>
+              <h2>{t('cta.title')}</h2>
+              <p>{t('cta.body')}</p>
             </div>
-          </motion.div>
+          </div>
+          <a className="btn" href={localizedPath(websitePath('/products'), locale)}>{t('cta.link')}</a>
         </div>
       </section>
-
-
-    </MainLayout>
+    </>
   );
 }
