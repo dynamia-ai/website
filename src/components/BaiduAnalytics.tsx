@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 
-export const BAIDU_SITE_ID = '5e22c8b43514e0490cfea9581bbd4ba0';
+export const BAIDU_SITE_ID = '5d906d6f1be2a5ded78abf0091e45a05';
 const SCRIPT_ID = 'baidu-analytics';
 
 declare global {

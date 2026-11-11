@@ -47,6 +47,7 @@ export default async function RootLayout({
     <html lang={locale === "zh" ? "zh-CN" : locale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{__html:"try{var t=localStorage.getItem('dynamia-demo-theme');document.documentElement.dataset.theme=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}catch(e){}"}} />
+        <meta name="baidu-site-verification" content="codeva-TYFTpvFt6F" />
         <meta name="baidu-site-verification" content="codeva-7ja2WhiNup" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
