@@ -1169,19 +1169,16 @@
         "enterprise": {
           "eyebrow": "GPU-Virtualisierung",
           "name": "Dynamia Enterprise for HAMi",
-          "description": "Für Teams mit bestehendem Kubernetes/PaaS: erweiterte GPU-Virtualisierung, Produktionshärtung und Enterprise-Support auf Basis von Open-Source-HAMi."
-        },
-        "meta": {
-          "version": "Offizielle Version v2.9.0",
-          "published": "Veröffentlicht in 2026-05-20",
-          "downloads": "5 Medien herunterladen"
+          "description": "Für Teams mit bestehendem Kubernetes/PaaS: erweiterte GPU-Virtualisierung, Produktionshärtung und Enterprise-Support auf Basis von Open-Source-HAMi.",
+          "installDocs": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/"
         },
         "viewProduct": "Produkt ansehen →",
         "releases": "Versionen und Downloads ↗",
         "platform": {
           "eyebrow": "Plattform für heterogene Rechenressourcen",
           "name": "Dynamia AI Platform for HAMi",
-          "description": "Ergänzen Sie Dynamia Enterprise for HAMi um eine Multi-Cluster-Oberfläche, Observability, Mandantenkontingente, Verbrauchsmessung, Abrechnung und OpenAPI zur gemeinsamen Verwaltung von Clustern, Ressourcen und Teams."
+          "description": "Ergänzen Sie Dynamia Enterprise for HAMi um eine Multi-Cluster-Oberfläche, Observability, Mandantenkontingente, Verbrauchsmessung, Abrechnung und OpenAPI zur gemeinsamen Verwaltung von Clustern, Ressourcen und Teams.",
+          "installDocs": "https://docs.hami.run/zh/docs/installation/ai-platform-online-deploy/"
         }
       },
       "fit": {
@@ -1214,7 +1211,6 @@
         "groups": {
           "virtualization": {
             "title": "GPU-Virtualisierungskern",
-            "subtitle": "Open-Source HAMi-Basis — erweitert in kommerziellen Editionen.",
             "rows": {
               "gpuMemorySharing": "GPU-Speicher-Sharing",
               "gpuComputeSharing": "GPU-Kern-Sharing",
@@ -1229,12 +1225,11 @@
               "binpackSpread": "Binpack / Spread-Strategien",
               "nvidiaTopology": "NVIDIA topologiebewusste Affinitaet",
               "volcanoIntegration": "Volcano-Tiefenintegration (Praeemption / vGPU)",
-              "gpuResourcePools": "GPU-Ressourcenpools"
+              "gpuResourcePools": "Ressourcenpools für heterogene Geräte"
             }
           },
           "vendors": {
             "title": "Heterogene GPU-Herstellerunterstuetzung",
-            "subtitle": "NVIDIA, AMD und 9 inlaendische Beschleuniger-Hersteller.",
             "rows": {
               "nvidia": "NVIDIA (volle Produktpalette)",
               "amd": "AMD",
@@ -1251,11 +1246,10 @@
           },
           "controlPlane": {
             "title": "Multi-Cluster-Kontrollebene",
-            "subtitle": "Nur Plattform — schluesselfertige UI, Observability, Lebenszyklusmanagement.",
             "rows": {
               "observability": "Multi-Cluster-Observability (Cluster / App / GPU)",
               "gpuMonitoring": "GPU-Hardwareueberwachung",
-              "alertPolicies": "Umfangreiche Alarmrichtlinien",
+              "alertPolicies": "Umfassende Alarmrichtlinien",
               "turnKeyGui": "Schluesselfertige GUI (Multi-Cluster-Dashboard, Kontingente, Workload)",
               "strategyEditor": "Visueller Binpack/Spread-Strategie-Editor",
               "lcm": "Multi-Cluster-Lebenszyklusmanagement (LCM)",
@@ -1264,7 +1258,6 @@
           },
           "operations": {
             "title": "Enterprise-Betrieb",
-            "subtitle": "License, Multi-Mandant, Abrechnung, OpenAPI, SLA.",
             "rows": {
               "multiTenant": "Enterprise-Multi-Mandanten-Verwaltung",
               "metering": "Messung & Abrechnung",

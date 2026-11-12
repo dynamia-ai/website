@@ -1473,19 +1473,16 @@
         "enterprise": {
           "eyebrow": "GPU 虚拟化",
           "name": "Dynamia HAMi 企业版",
-          "description": "面向已有 Kubernetes / PaaS 的团队，在开源 HAMi 基础上提供 GPU 虚拟化增强、生产加固与企业级支持。"
-        },
-        "meta": {
-          "version": "正式版 v2.9.0",
-          "published": "发布于 2026-05-20",
-          "downloads": "5 种下载介质"
+          "description": "面向已有 Kubernetes / PaaS 的团队，在开源 HAMi 基础上提供 GPU 虚拟化增强、生产加固与企业级支持。",
+          "installDocs": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/"
         },
         "viewProduct": "查看产品 →",
         "releases": "版本与下载 ↗",
         "platform": {
           "eyebrow": "异构算力平台",
           "name": "Dynamia HAMi 平台版",
-          "description": "在 Dynamia HAMi 企业版 基础上，提供多集群 GUI、可观测、租户配额、计量计费与 OpenAPI，统一管理集群、资源与团队。"
+          "description": "在 Dynamia HAMi 企业版 基础上，提供多集群 GUI、可观测、租户配额、计量计费与 OpenAPI，统一管理集群、资源与团队。",
+          "installDocs": "https://docs.hami.run/zh/docs/installation/ai-platform-online-deploy/"
         }
       },
       "fit": {
@@ -1518,7 +1515,6 @@
         "groups": {
           "virtualization": {
             "title": "GPU 虚拟化核心",
-            "subtitle": "开源 HAMi 基础能力 —— 商业版强化",
             "rows": {
               "gpuMemorySharing": "显存共享",
               "gpuComputeSharing": "算力共享",
@@ -1533,12 +1529,11 @@
               "binpackSpread": "Binpack / Spread 策略",
               "nvidiaTopology": "NVIDIA 网络拓扑亲和调度",
               "volcanoIntegration": "Volcano 深度集成（抢占 / vGPU 联合调度）",
-              "gpuResourcePools": "GPU 资源池"
+              "gpuResourcePools": "异构设备资源池"
             }
           },
           "vendors": {
             "title": "异构 GPU 厂商支持",
-            "subtitle": "NVIDIA + AMD + 国产 9 家",
             "rows": {
               "nvidia": "NVIDIA 全系列",
               "amd": "AMD",
@@ -1555,11 +1550,10 @@
           },
           "controlPlane": {
             "title": "多集群控制面",
-            "subtitle": "仅平台版 —— 一站式 UI、可观测、生命周期管理",
             "rows": {
               "observability": "多集群一站式可观测（集群 / 应用 / GPU）",
               "gpuMonitoring": "GPU 硬件监控",
-              "alertPolicies": "丰富完备的告警策略",
+              "alertPolicies": "全面完整的告警策略",
               "turnKeyGui": "一站式 GUI（多集群 Dashboard / 资源 / 配额 / 工作负载）",
               "strategyEditor": "可视化 Binpack / Spread 策略",
               "lcm": "完备多集群生命周期管理（LCM）",
@@ -1568,7 +1562,6 @@
           },
           "operations": {
             "title": "企业运营",
-            "subtitle": "License、多租户、计费、OpenAPI、SLA",
             "rows": {
               "multiTenant": "企业级多租户管理",
               "metering": "计量、计费",

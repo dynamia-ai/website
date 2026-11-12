@@ -52,28 +52,18 @@ export default async function ProductsPage() {
               <div className="eyebrow">{t('lineup.enterprise.eyebrow')}</div>
               <h3>{t('lineup.enterprise.name')}</h3>
               <p>{t('lineup.enterprise.description')}</p>
-              <div className="release-meta">
-                <span>{t('lineup.meta.version')}</span>
-                <span>{t('lineup.meta.published')}</span>
-                <span>{t('lineup.meta.downloads')}</span>
-              </div>
               <div className="actions">
                 <a className="btn primary small" href={localizedPath(websitePath("/enterprise"), locale)}>{t('lineup.viewProduct')}</a>
-                <a className="textlink" href={localizedPath(websitePath('/products/hami-enterprise/downloads'), locale)}>{t('lineup.releases')}</a>
+                <a className="textlink" href={t('lineup.enterprise.installDocs')} target="_blank" rel="noopener noreferrer">{t('lineup.releases')}</a>
               </div>
             </article>
             <article className="overview-product">
               <div className="eyebrow">{t('lineup.platform.eyebrow')}</div>
               <h3>{t('lineup.platform.name')}</h3>
               <p>{t('lineup.platform.description')}</p>
-              <div className="release-meta">
-                <span>{t('lineup.meta.version')}</span>
-                <span>{t('lineup.meta.published')}</span>
-                <span>{t('lineup.meta.downloads')}</span>
-              </div>
               <div className="actions">
                 <a className="btn primary small" href={localizedPath(websitePath("/platform"), locale)}>{t('lineup.viewProduct')}</a>
-                <a className="textlink" href={localizedPath(websitePath('/products/hami-ai-platform/downloads'), locale)}>{t('lineup.releases')}</a>
+                <a className="textlink" href={t('lineup.platform.installDocs')} target="_blank" rel="noopener noreferrer">{t('lineup.releases')}</a>
               </div>
             </article>
           </div>
@@ -120,7 +110,6 @@ export default async function ProductsPage() {
                 <tr className="matrix-group">
                   <th colSpan={4} scope="colgroup">
                     {t('matrix.groups.virtualization.title')}
-                    <small>{t('matrix.groups.virtualization.subtitle')}</small>
                   </th>
                 </tr>
                 <tr className="matrix-feature">
@@ -204,7 +193,7 @@ export default async function ProductsPage() {
                 <tr className="matrix-feature">
                   <th scope="row">{t('matrix.groups.virtualization.rows.gpuResourcePools')}</th>
                   <td><span className="matrix-no" aria-label={t('ui.notSupported')}>{t('ui.emDash')}</span></td>
-                  <td><span className="matrix-yes" aria-label={t('ui.supported')}>{t('ui.check')}</span></td>
+                  <td><span className="matrix-no" aria-label={t('ui.notSupported')}>{t('ui.emDash')}</span></td>
                   <td><span className="matrix-yes" aria-label={t('ui.supported')}>{t('ui.check')}</span></td>
                 </tr>
               </tbody>
@@ -212,7 +201,6 @@ export default async function ProductsPage() {
                 <tr className="matrix-group">
                   <th colSpan={4} scope="colgroup">
                     {t('matrix.groups.vendors.title')}
-                    <small>{t('matrix.groups.vendors.subtitle')}</small>
                   </th>
                 </tr>
                 <tr className="matrix-feature">
@@ -223,7 +211,7 @@ export default async function ProductsPage() {
                 </tr>
                 <tr className="matrix-feature">
                   <th scope="row">{t('matrix.groups.vendors.rows.amd')}</th>
-                  <td><span className="matrix-no" aria-label={t('ui.notSupported')}>{t('ui.emDash')}</span></td>
+                  <td><span className="matrix-yes" aria-label={t('ui.supported')}>{t('ui.check')}</span></td>
                   <td><span className="matrix-yes" aria-label={t('ui.supported')}>{t('ui.check')}</span></td>
                   <td><span className="matrix-yes" aria-label={t('ui.supported')}>{t('ui.check')}</span></td>
                 </tr>
@@ -286,7 +274,6 @@ export default async function ProductsPage() {
                 <tr className="matrix-group">
                   <th colSpan={4} scope="colgroup">
                     {t('matrix.groups.controlPlane.title')}
-                    <small>{t('matrix.groups.controlPlane.subtitle')}</small>
                   </th>
                 </tr>
                 <tr className="matrix-feature">
@@ -304,7 +291,7 @@ export default async function ProductsPage() {
                 <tr className="matrix-feature">
                   <th scope="row">{t('matrix.groups.controlPlane.rows.alertPolicies')}</th>
                   <td><span className="matrix-no" aria-label={t('ui.notSupported')}>{t('ui.emDash')}</span></td>
-                  <td><span className="matrix-no" aria-label={t('ui.notSupported')}>{t('ui.emDash')}</span></td>
+                  <td><span className="matrix-yes" aria-label={t('ui.supported')}>{t('ui.check')}</span></td>
                   <td><span className="matrix-yes" aria-label={t('ui.supported')}>{t('ui.check')}</span></td>
                 </tr>
                 <tr className="matrix-feature">
@@ -336,7 +323,6 @@ export default async function ProductsPage() {
                 <tr className="matrix-group">
                   <th colSpan={4} scope="colgroup">
                     {t('matrix.groups.operations.title')}
-                    <small>{t('matrix.groups.operations.subtitle')}</small>
                   </th>
                 </tr>
                 <tr className="matrix-feature">
