@@ -1618,7 +1618,6 @@
         "eyebrow": "Dynamia HAMi 企业版"
       },
       "ui": {
-        "arrow": "→",
         "externalArrow": "↗"
       },
       "architecture": {
@@ -1635,13 +1634,7 @@
         "layerInfra": {
           "title": "Kubernetes 与异构加速设备",
           "hint": "厂商驱动 · 容器运行时 · 设备资源"
-        },
-        "fitLabel": "融入云原生基础设施",
-        "logos": {
-          "kubernetes": "kubernetes",
-          "prometheus": "prometheus"
-        },
-        "cloudLabel": "公有云 / 私有云 / 混合云"
+        }
       },
       "toc": {
         "capabilities": "核心能力",
@@ -1660,6 +1653,12 @@
             "tag": "依设备适配",
             "videoAria": "查看完整功能：细粒度共享与隔离（视频）"
           },
+          "pool": {
+            "title": "资源池",
+            "body": "将不同厂商与型号的加速设备纳入统一资源池，按任务需求进行分配与调度，简化异构环境下的资源组织。",
+            "tag": "企业能力",
+            "videoAria": "查看完整功能：资源池（视频）"
+          },
           "scheduling": {
             "title": "面向 AI 任务的调度",
             "body": "支持节点和设备维度的 Binpack / Spread，结合设备类型、UUID 与拓扑，控制任务放置策略。",
@@ -1667,28 +1666,40 @@
             "videoAria": "查看完整功能：面向 AI 任务的调度（视频）"
           },
           "oversubscription": {
-            "title": "显存超配与动态调整",
-            "body": "利用主机内存承接显存超配需求，并在可用资源范围内自动或手动调整运行中容器的显存额度。",
+            "title": "显存超配",
+            "body": "开启 UMI 后，长时间闲置的显存可换回主机内存，在物理显存之外支撑更多并发任务，适合潮汐型混部。",
             "tag": "NVIDIA · 依型号与版本",
-            "videoAria": "查看完整功能：显存超配与动态调整（视频）"
+            "videoAria": "查看完整功能：显存超配（视频）"
+          },
+          "expansion": {
+            "title": "显存弹性扩容",
+            "body": "按真实显存负载动态调整配额；即将 OOM 时可自动扩大上限，无需重启容器。",
+            "tag": "NVIDIA · 依型号与版本",
+            "videoAria": "查看完整功能：显存弹性扩容（视频）"
           },
           "turbo": {
             "title": "Turbo 高性能模式",
-            "body": "解除算力上限控制，同时保留显存限制与监控，减少算力控制环节的开销。性能表现依业务验证。",
+            "body": "算力请求直达 CUDA Runtime，不做算力劫持；仅保留必要监测，显存限制仍生效，适合低延迟场景。",
             "videoAria": "查看完整功能：Turbo 高性能模式（视频）",
             "tag": "NVIDIA · 依型号与版本"
           },
           "mig": {
-            "title": "动态 MIG 与 NPU 虚拟化",
-            "body": "在支持 MIG 的 NVIDIA 设备上按需求创建实例；对已适配的可虚拟化 NPU 使用对应资源切分机制。",
+            "title": "动态 MIG",
+            "body": "按预定义 MIG 模板动态创建与删除实例，用户只需声明数量与显存，对 MIG 实例名称完全透明。",
+            "tag": "NVIDIA · 依型号与版本",
+            "videoAria": "查看完整功能：动态 MIG（视频）"
+          },
+          "npu": {
+            "title": "动态 NPU",
+            "body": "按预定义 vNPU 模板动态创建与回收实例，用户只需声明数量与显存，无需关心模板名称。",
             "tag": "依硬件能力与适配矩阵",
-            "videoAria": "查看完整功能：动态 MIG 与 NPU 虚拟化（视频）"
+            "videoAria": "查看完整功能：动态 NPU（视频）"
           },
           "priority": {
-            "title": "优先级与企业支持",
-            "body": "让高优先级任务优先使用算力，并围绕部署、适配与运行问题提供商业技术支持。",
-            "tag": "算力优先级：NVIDIA · 依版本",
-            "videoAria": "查看完整功能：优先级与企业支持（视频）"
+            "title": "任务优先级",
+            "body": "高优先级任务占用 GPU 算力时，低优先级任务会被挂起；高优任务结束后再恢复，保障关键业务算力。",
+            "tag": "NVIDIA · 依版本",
+            "videoAria": "查看完整功能：任务优先级（视频）"
           }
         },
         "viewAll": "查看完整功能 "
@@ -1706,24 +1717,27 @@
           "chooseMode": "按设备能力选择共享、独占或硬件切分",
           "validate": "以真实工作负载验证性能和隔离表现"
         },
-        "strategies": {
-          "binpack": {
-            "name": "Binpack",
-            "verb": "集中",
-            "hint": "优先用满"
+        "layers": {
+          "app": {
+            "title": "应用与工作负载层",
+            "meta": "AI 训练 · 模型推理 · 开发任务",
+            "hint": "提出 GPU、算力与显存资源需求"
           },
-          "spread": {
-            "name": "Spread",
-            "verb": "分散",
-            "hint": "均衡分配"
+          "hami": {
+            "title": "HAMi Enterprise",
+            "subtitle": "企业级 GPU 资源管理与调度",
+            "cells": {
+              "schedule": "调度匹配设备",
+              "scheduleHint": "设备选择与资源分配",
+              "runtime": "运行时控制资源",
+              "runtimeHint": "算力与显存控制"
+            }
           },
-          "topology": {
-            "name": "拓扑感知",
-            "verb": "就近",
-            "hint": "匹配通信需求"
+          "infra": {
+            "title": "GPU 基础设施层",
+            "hint": "物理 GPU · 异构加速设备 · 厂商驱动"
           }
-        },
-        "note": "逻辑关系示意 · 非产品控制台截图"
+        }
       },
       "delivery": {
         "eyebrow": "DEPLOY WITH CONFIDENCE",
@@ -1733,17 +1747,21 @@
           "confirm": {
             "num": "01",
             "title": "确认环境与适配",
-            "body": "核对芯片型号、驱动、运行时、Kubernetes 版本与所需能力，形成明确的适配范围。"
+            "body": "核对芯片型号、驱动、运行时及 Kubernetes 版本。"
           },
           "validate": {
             "num": "02",
             "title": "验证代表性负载",
-            "body": "以业务吞吐、时延、稳定性与资源用量共同验收，保留相同条件下的基线。"
+            "body": "以吞吐、时延、稳定性和资源用量共同验收。"
           },
           "deploy": {
             "num": "03",
             "title": "部署与持续支持",
-            "body": "确定组件安装、升级、监控接入和离线交付方式，按约定服务范围提供支持。"
+            "body": "确定安装、升级、监控接入和离线交付方式。",
+            "onlineLabel": "在线安装",
+            "onlineHref": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/",
+            "offlineLabel": "离线安装",
+            "offlineHref": "https://docs.hami.run/zh/docs/installation/enterprise-airgap-deploy/"
           }
         },
         "compatibilityLink": "查看兼容性说明",
@@ -1758,7 +1776,7 @@
           },
           "chipParity": {
             "q": "所有芯片都有相同的企业增强能力吗？",
-            "a": "没有。显存超配、动态显存调整、Turbo 和算力优先级等能力需按 NVIDIA 型号与产品版本确认；动态 MIG 与 NPU 虚拟化也有硬件适用条件。"
+            "a": "没有。显存超配、显存弹性扩容、Turbo 和任务优先级等能力需按 NVIDIA 型号与产品版本确认；动态 MIG 与动态 NPU 也有硬件适用条件。"
           }
         },
         "title": "常见问题"
@@ -1786,14 +1804,13 @@
         "eyebrow": "Dynamia HAMi 平台版"
       },
       "ui": {
-        "arrow": "→",
         "externalArrow": "↗"
       },
       "architecture": {
         "bannerTitle": "Dynamia HAMi 平台版 · 从管理到执行",
         "bannerLabel": "产品结构示意",
         "layerConsole": {
-          "title": "统一管理入口 · Console / OpenAPI",
+          "title": "统一管理入口 · Console",
           "hint": "多集群 · 资源池 · 租户权限 · 配额"
         },
         "layerWorkloads": {
@@ -1807,13 +1824,7 @@
         "layerInfra": {
           "title": "Kubernetes 与异构加速设备",
           "hint": "厂商驱动 · 容器运行时 · 设备资源"
-        },
-        "fitLabel": "融入云原生基础设施",
-        "logos": {
-          "kubernetes": "kubernetes",
-          "prometheus": "prometheus"
-        },
-        "cloudLabel": "公有云 / 私有云 / 混合云"
+        }
       },
       "toc": {
         "capabilities": "核心能力",
@@ -1857,10 +1868,10 @@
             "videoAria": "查看完整功能：可追溯的计量与账单（视频）"
           },
           "console": {
-            "title": "Console 与 OpenAPI",
+            "title": "Console 可视化管理",
             "body": "通过可视化界面完成日常管理，也可将能力接入已有业务系统；底层包含 Enterprise 引擎。",
             "tag": "系统集成",
-            "videoAria": "查看完整功能：Console 与 OpenAPI（视频）"
+            "videoAria": "查看完整功能：Console 可视化管理（视频）"
           }
         },
         "viewAll": "查看完整功能 "
@@ -1872,24 +1883,28 @@
           "execute": "执行在集群",
           "observe": "用量有记录"
         },
-        "description": "Console 与 OpenAPI 管理集群、资源和权限；Dynamia HAMi 企业版 在受管集群中执行调度与资源控制；监控和计量数据支撑日常运营。",
+        "description": "通过 Console 管理集群、资源和权限；Dynamia HAMi 企业版在受管集群中执行调度与资源控制；监控和计量数据支撑日常运营。",
         "bullets": {
           "organize": "按团队与项目组织资源使用权限",
           "buildOn": "沿用 Kubernetes 与 Prometheus 生态",
           "metering": "以历史计量记录支撑账单与用量归属"
         },
-        "diagram": {
-          "rdCluster": "研发集群",
-          "gpu": "GPU",
-          "rdTeam": "研发团队",
-          "resourcePool": "资源池",
-          "unifiedManagement": "统一管理",
-          "permissions": "权限 / 配额",
-          "prodClusters": "生产集群",
-          "npu": "NPU",
-          "businessTeam": "业务团队"
-        },
-        "note": "逻辑关系示意 · 非产品控制台截图"
+        "layers": {
+          "manage": {
+            "title": "管理入口层",
+            "hint": "统一管理集群、资源与权限"
+          },
+          "execute": {
+            "title": "集群执行层",
+            "meta": "Dynamia HAMi 企业版引擎",
+            "hint": "在受管集群中完成调度与资源控制"
+          },
+          "observe": {
+            "title": "用量记录层",
+            "meta": "监控 · 计量 · 账单",
+            "hint": "支撑日常运营与用量归属"
+          }
+        }
       },
       "delivery": {
         "eyebrow": "DEPLOY WITH CONFIDENCE",
@@ -1898,18 +1913,22 @@
         "steps": {
           "confirm": {
             "title": "确认环境与适配",
-            "body": "核对芯片型号、驱动、运行时、Kubernetes 版本与所需能力，形成明确的适配范围。",
+            "body": "核对芯片型号、驱动、运行时及 Kubernetes 版本。",
             "num": "01"
           },
           "validate": {
             "title": "验证代表性负载",
-            "body": "以业务吞吐、时延、稳定性与资源用量共同验收，保留相同条件下的基线。",
+            "body": "以吞吐、时延、稳定性和资源用量共同验收。",
             "num": "02"
           },
           "deploy": {
             "title": "部署与持续支持",
-            "body": "确定组件安装、升级、监控接入和离线交付方式，按约定服务范围提供支持。",
-            "num": "03"
+            "body": "确定安装、升级、监控接入和离线交付方式。",
+            "num": "03",
+            "onlineLabel": "在线安装",
+            "onlineHref": "https://docs.hami.run/zh/docs/installation/ai-platform-online-deploy/",
+            "offlineLabel": "离线安装",
+            "offlineHref": "https://docs.hami.run/zh/docs/installation/ai-platform-airgap-deploy/"
           }
         },
         "compatibilityLink": "查看兼容性说明",

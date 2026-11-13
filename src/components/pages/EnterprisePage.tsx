@@ -5,6 +5,16 @@ import {websitePath} from '@/lib/site/links';
 export default async function EnterprisePage() {
   const t = await getTranslations('sitePages.enterprise');
   const locale = await getLocale();
+  const linkArrow = (
+    <span className="link-arrow" aria-hidden={true}>
+      <svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M7 4.5h4.5V9" /></svg>
+    </span>
+  );
+  const btnArrow = (
+    <span className="btn-arrow" aria-hidden={true}>
+      <svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" /></svg>
+    </span>
+  );
   return (
     <>
       <div className="product-switch">
@@ -27,7 +37,7 @@ export default async function EnterprisePage() {
           <div className="actions">
             <a className="btn primary" href={localizedPath(websitePath("/contact-sales?product=enterprise"), locale)}>
               {t('hero.contactSales')}
-              <span className="arrow">{t('ui.arrow')}</span>
+              {btnArrow}
             </a>
             <a className="btn" href="https://docs.dynamia.ai" target="_blank" rel="noopener noreferrer">{t('hero.docs')}</a>
           </div>
@@ -53,12 +63,6 @@ export default async function EnterprisePage() {
           </div>
         </div>
       </section>
-      <div className="product-integrations">
-        <span>{t('architecture.fitLabel')}</span>
-        <img data-brand="kubernetes" src="/redesign/assets/402dd0ce3de067d46771.png" alt={t('architecture.logos.kubernetes')} />
-        <img data-brand="prometheus" src="/redesign/assets/d9b9cea796c2b1cc4305.png" alt={t('architecture.logos.prometheus')} />
-        <span>{t('architecture.cloudLabel')}</span>
-      </div>
       <div className="subnav">
         <div className="wrap">
           <a href={localizedPath(websitePath("/enterprise?section=product-value"), locale)}>{t('toc.capabilities')}</a>
@@ -90,6 +94,18 @@ export default async function EnterprisePage() {
               </div>
             </article>
             <article className="product-feature">
+              <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z"></path></svg></span>
+              <h3>{t('capabilities.items.pool.title')}</h3>
+              <p>{t('capabilities.items.pool.body')}</p>
+              <span className="tag">{t('capabilities.items.pool.tag')}</span>
+              <div className="product-feature-action">
+                <a className="btn" href={localizedPath(websitePath("/videos"), locale)} aria-label={t('capabilities.items.pool.videoAria')}>
+                  {t('capabilities.viewAll')}
+                  <span aria-hidden={true}>{t('ui.externalArrow')}</span>
+                </a>
+              </div>
+            </article>
+            <article className="product-feature">
               <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M9 3h6v6H9z M3 15h6v6H3z M15 15h6v6h-6z M12 9v3 M6 15v-3h12v3"></path></svg></span>
               <h3>{t('capabilities.items.scheduling.title')}</h3>
               <p>{t('capabilities.items.scheduling.body')}</p>
@@ -114,6 +130,18 @@ export default async function EnterprisePage() {
               </div>
             </article>
             <article className="product-feature">
+              <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M8 3H5a2 2 0 0 0-2 2v3 M16 3h3a2 2 0 0 1 2 2v3 M8 21H5a2 2 0 0 1-2-2v-3 M16 21h3a2 2 0 0 0 2-2v-3 M12 8v8 M8 12h8"></path></svg></span>
+              <h3>{t('capabilities.items.expansion.title')}</h3>
+              <p>{t('capabilities.items.expansion.body')}</p>
+              <span className="tag">{t('capabilities.items.expansion.tag')}</span>
+              <div className="product-feature-action">
+                <a className="btn" href={localizedPath(websitePath("/videos"), locale)} aria-label={t('capabilities.items.expansion.videoAria')}>
+                  {t('capabilities.viewAll')}
+                  <span aria-hidden={true}>{t('ui.externalArrow')}</span>
+                </a>
+              </div>
+            </article>
+            <article className="product-feature">
               <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M3 3v18h18 M7 16v-4 M12 16V7 M17 16v-7"></path></svg></span>
               <h3>{t('capabilities.items.turbo.title')}</h3>
               <p>{t('capabilities.items.turbo.body')}</p>
@@ -132,6 +160,18 @@ export default async function EnterprisePage() {
               <span className="tag">{t('capabilities.items.mig.tag')}</span>
               <div className="product-feature-action">
                 <a className="btn" href={localizedPath(websitePath("/videos"), locale)} aria-label={t('capabilities.items.mig.videoAria')}>
+                  {t('capabilities.viewAll')}
+                  <span aria-hidden={true}>{t('ui.externalArrow')}</span>
+                </a>
+              </div>
+            </article>
+            <article className="product-feature">
+              <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M4 6h16 M4 12h16 M4 18h16 M8 6v12 M16 6v12"></path></svg></span>
+              <h3>{t('capabilities.items.npu.title')}</h3>
+              <p>{t('capabilities.items.npu.body')}</p>
+              <span className="tag">{t('capabilities.items.npu.tag')}</span>
+              <div className="product-feature-action">
+                <a className="btn" href={localizedPath(websitePath("/videos"), locale)} aria-label={t('capabilities.items.npu.videoAria')}>
                   {t('capabilities.viewAll')}
                   <span aria-hidden={true}>{t('ui.externalArrow')}</span>
                 </a>
@@ -172,24 +212,33 @@ export default async function EnterprisePage() {
               </ul>
             </div>
             <div className="why-visual">
-              <div className="flow-cards">
-                <div>
-                  {t('workflow.strategies.binpack.name')}
-                  <b>{t('workflow.strategies.binpack.verb')}</b>
-                  <small>{t('workflow.strategies.binpack.hint')}</small>
+              <div className="workflow-arch">
+                <div className="workflow-arch-layer">
+                  <strong>{t('workflow.layers.app.title')}</strong>
+                  <span className="workflow-arch-meta">{t('workflow.layers.app.meta')}</span>
+                  <span>{t('workflow.layers.app.hint')}</span>
                 </div>
-                <div>
-                  {t('workflow.strategies.spread.name')}
-                  <b>{t('workflow.strategies.spread.verb')}</b>
-                  <small>{t('workflow.strategies.spread.hint')}</small>
+                <div className="workflow-arch-arrow" aria-hidden={true} />
+                <div className="workflow-arch-layer workflow-arch-core">
+                  <strong>{t('workflow.layers.hami.title')}</strong>
+                  <span className="workflow-arch-meta">{t('workflow.layers.hami.subtitle')}</span>
+                  <div className="workflow-arch-grid">
+                    <div>
+                      <strong>{t('workflow.layers.hami.cells.schedule')}</strong>
+                      <span>{t('workflow.layers.hami.cells.scheduleHint')}</span>
+                    </div>
+                    <div>
+                      <strong>{t('workflow.layers.hami.cells.runtime')}</strong>
+                      <span>{t('workflow.layers.hami.cells.runtimeHint')}</span>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  {t('workflow.strategies.topology.name')}
-                  <b>{t('workflow.strategies.topology.verb')}</b>
-                  <small>{t('workflow.strategies.topology.hint')}</small>
+                <div className="workflow-arch-arrow" aria-hidden={true} />
+                <div className="workflow-arch-layer">
+                  <strong>{t('workflow.layers.infra.title')}</strong>
+                  <span>{t('workflow.layers.infra.hint')}</span>
                 </div>
               </div>
-              <p className="tiny center">{t('workflow.note')}</p>
             </div>
           </div>
         </div>
@@ -203,32 +252,44 @@ export default async function EnterprisePage() {
               <p>{t('delivery.description')}</p>
             </div>
           </div>
-          <div className="process-steps">
+          <div className="process-board">
             <div className="process-step">
               <b>{t('delivery.steps.confirm.num')}</b>
               <h3>{t('delivery.steps.confirm.title')}</h3>
               <p>{t('delivery.steps.confirm.body')}</p>
+              <div className="process-step-links">
+                <a className="textlink" href={localizedPath(websitePath("/compatibility"), locale)}>
+                  {t('delivery.compatibilityLink')}
+                  {linkArrow}
+                </a>
+              </div>
             </div>
             <div className="process-step">
               <b>{t('delivery.steps.validate.num')}</b>
               <h3>{t('delivery.steps.validate.title')}</h3>
               <p>{t('delivery.steps.validate.body')}</p>
+              <div className="process-step-links">
+                <a className="textlink" href={localizedPath(websitePath("/contact-sales"), locale)}>
+                  {t('delivery.validationLink')}
+                  {linkArrow}
+                </a>
+              </div>
             </div>
             <div className="process-step">
               <b>{t('delivery.steps.deploy.num')}</b>
               <h3>{t('delivery.steps.deploy.title')}</h3>
               <p>{t('delivery.steps.deploy.body')}</p>
+              <div className="process-step-links">
+                <a className="textlink" href={t('delivery.steps.deploy.onlineHref')} target="_blank" rel="noopener noreferrer">
+                  {t('delivery.steps.deploy.onlineLabel')}
+                  {linkArrow}
+                </a>
+                <a className="textlink" href={t('delivery.steps.deploy.offlineHref')} target="_blank" rel="noopener noreferrer">
+                  {t('delivery.steps.deploy.offlineLabel')}
+                  {linkArrow}
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="actions">
-            <a className="textlink" href={localizedPath(websitePath("/compatibility"), locale)}>
-              {t('delivery.compatibilityLink')}
-              <span className="arrow">{t('ui.arrow')}</span>
-            </a>
-            <a className="textlink" href={localizedPath(websitePath("/contact-sales"), locale)}>
-              {t('delivery.validationLink')}
-              <span className="arrow">{t('ui.arrow')}</span>
-            </a>
           </div>
         </div>
       </section>
@@ -261,7 +322,7 @@ export default async function EnterprisePage() {
             <div className="actions">
               <a className="btn primary" href={localizedPath(websitePath("/contact-sales?product=enterprise"), locale)}>
                 {t('hero.contactSales')}
-                <span className="arrow">{t('ui.arrow')}</span>
+                {btnArrow}
               </a>
               <a className="btn" href={localizedPath(websitePath("/products"), locale)}>{t('cta.back')}</a>
             </div>

@@ -1314,7 +1314,6 @@
         "eyebrow": "Dynamia Enterprise for HAMi"
       },
       "ui": {
-        "arrow": "→",
         "externalArrow": "↗"
       },
       "architecture": {
@@ -1331,13 +1330,7 @@
         "layerInfra": {
           "title": "Kubernetes und heterogene Beschleuniger",
           "hint": "Herstellertreiber · Container-Laufzeit · Geräteressourcen"
-        },
-        "fitLabel": "Passt in Ihre Cloud-Native-Infrastruktur",
-        "logos": {
-          "kubernetes": "kubernetes",
-          "prometheus": "prometheus"
-        },
-        "cloudLabel": "Public / Private / Hybrid Cloud"
+        }
       },
       "toc": {
         "capabilities": "Kernfunktionen",
@@ -1356,6 +1349,12 @@
             "tag": "Geräteabhängige Unterstützung",
             "videoAria": "Volle Funktionalität anzeigen: feine Partikelgrößenverteilung und Solation (Video)"
           },
+          "pool": {
+            "title": "Ressourcenpools",
+            "body": "Fassen Sie Beschleuniger unterschiedlicher Hersteller und Modelle in einheitlichen Ressourcenpools zusammen und weisen Sie sie nach Workload-Bedarf zu und planen Sie sie ein – für einfacheres Management heterogener Ressourcen.",
+            "tag": "Enterprise-Fähigkeit",
+            "videoAria": "Volle Funktionalität anzeigen: Ressourcenpools (Video)"
+          },
           "scheduling": {
             "title": "Scheduling für KI-Workloads",
             "body": "Steuern Sie die Platzierung mit Binpack/Spread auf Knoten- und Geräteebene sowie anhand von Gerätetyp, UUID und Topologie.",
@@ -1363,28 +1362,40 @@
             "videoAria": "Volle Funktionalität anzeigen: Schema für AI Tasks (Video)"
           },
           "oversubscription": {
-            "title": "GPU-Speicher-Overprovisionierung und Größenanpassung",
-            "body": "Nutzen Sie Host-Speicher zur GPU-Speicher-Overprovisionierung und passen Sie Speicherkontingente laufender Container innerhalb der verfügbaren Kapazität automatisch oder manuell an.",
+            "title": "GPU-Speicher-Overprovisionierung",
+            "body": "Mit UMI kann ungenutzter GPU-Speicher zurück in den Host-Speicher ausgelagert werden – mehr parallele Workloads jenseits des physischen VRAM, ideal für tideartige Colocation.",
             "tag": "NVIDIA · Modell- und versionsabhängig",
-            "videoAria": "Vollständige Funktionalität anzeigen: GPU Speicher Supersizing und dynamische Anpassungen (Video)"
+            "videoAria": "Volle Funktionalität anzeigen: GPU-Speicher-Overprovisionierung (Video)"
+          },
+          "expansion": {
+            "title": "Elastische GPU-Speichererweiterung",
+            "body": "Passen Sie GPU-Speicherquoten anhand der realen Last an; droht sonst ein OOM, wird das Limit automatisch erhöht – ohne Container-Neustart.",
+            "tag": "NVIDIA · Modell- und versionsabhängig",
+            "videoAria": "Volle Funktionalität anzeigen: elastische GPU-Speichererweiterung (Video)"
           },
           "turbo": {
             "title": "Turbo-Leistungsmodus",
-            "body": "Heben Sie das Rechenleistungslimit auf, während GPU-Speicherlimits und Monitoring erhalten bleiben, um den Steuerungsaufwand zu reduzieren. Validieren Sie die Leistung mit Ihren Workloads.",
+            "body": "Compute-Aufrufe gehen direkt an die CUDA Runtime – ohne Compute-Hijacking. Nur notwendiges Monitoring bleibt; VRAM-Limits gelten weiter – für latenzsensible Workloads.",
             "videoAria": "Vollständige Funktion anzeigen: Turbo High Performance Mode (Video)",
             "tag": "NVIDIA · Modell- und versionsabhängig"
           },
           "mig": {
-            "title": "Dynamisches MIG und NPU-Virtualisierung",
-            "body": "Erstellen Sie bedarfsgerecht Instanzen auf MIG-fähigen NVIDIA-Geräten. Nutzen Sie für unterstützte virtualisierbare NPUs den jeweiligen Partitionierungsmechanismus.",
+            "title": "Dynamisches MIG",
+            "body": "Erstellen und entfernen Sie MIG-Instanzen anhand vordefinierter Templates. Nutzer geben nur Anzahl und Speicher an – Instanznamen bleiben transparent.",
+            "tag": "NVIDIA · Modell- und versionsabhängig",
+            "videoAria": "Volle Funktionalität anzeigen: Dynamisches MIG (Video)"
+          },
+          "npu": {
+            "title": "Dynamisches NPU",
+            "body": "Erstellen und geben Sie vNPU-Instanzen anhand vordefinierter Templates dynamisch frei. Nutzer geben nur Anzahl und Speicher an – ohne Template-Namen kennen zu müssen.",
             "tag": "Abhängig von Hardware und Kompatibilitätsmatrix",
-            "videoAria": "Volle Funktionalität anzeigen: Dynamic MIG und NPU Video"
+            "videoAria": "Volle Funktionalität anzeigen: Dynamisches NPU (Video)"
           },
           "priority": {
-            "title": "Prioritäten und Enterprise-Support",
-            "body": "Gewähren Sie Aufgaben hoher Priorität bevorzugten Zugriff auf Rechenleistung und erhalten Sie kommerziellen Support für Bereitstellung, Kompatibilität und Betrieb.",
-            "tag": "Rechenpriorität: NVIDIA · Versionsabhängig",
-            "videoAria": "Volle Funktionalität anzeigen: Priorität und Business-Support (Video)"
+            "title": "Workload-Priorität",
+            "body": "Nutzt ein hochpriorer Workload die GPU-Rechenleistung, werden niedrigpriore Workloads pausiert und danach fortgesetzt – kritische Kapazität bleibt geschützt.",
+            "tag": "NVIDIA · versionsabhängig",
+            "videoAria": "Volle Funktionalität anzeigen: Workload-Priorität (Video)"
           }
         },
         "viewAll": "Alle Funktionen ansehen "
@@ -1402,24 +1413,27 @@
           "chooseMode": "Je nach Gerät Sharing, exklusive Nutzung oder Hardware-Partitionierung wählen",
           "validate": "Leistung und Isolation mit realen Workloads prüfen"
         },
-        "strategies": {
-          "binpack": {
-            "name": "Binpack",
-            "verb": "Verdichten",
-            "hint": "Geräte zuerst auslasten"
+        "layers": {
+          "app": {
+            "title": "Anwendungs- & Workload-Schicht",
+            "meta": "KI-Training · Modellinferenz · Entwicklungsworkloads",
+            "hint": "Anforderung von GPU-, Rechen- und Speicherressourcen"
           },
-          "spread": {
-            "name": "Spread",
-            "verb": "Verteilen",
-            "hint": "Gleichmäßig zuweisen"
+          "hami": {
+            "title": "HAMi Enterprise",
+            "subtitle": "Enterprise-GPU-Ressourcenmanagement und Scheduling",
+            "cells": {
+              "schedule": "Scheduling wählt Geräte",
+              "scheduleHint": "Geräteauswahl und Ressourcenzuweisung",
+              "runtime": "Laufzeit steuert Ressourcen",
+              "runtimeHint": "Rechen- und GPU-Speichersteuerung"
+            }
           },
-          "topology": {
-            "name": "Topologiebewusst",
-            "verb": "Nahe Ressourcen",
-            "hint": "Kommunikationsbedarf berücksichtigen"
+          "infra": {
+            "title": "GPU-Infrastrukturschicht",
+            "hint": "Physische GPUs · heterogene Beschleuniger · Herstellertreiber"
           }
-        },
-        "note": "Logische Architektur · Kein Screenshot der Produktkonsole"
+        }
       },
       "delivery": {
         "eyebrow": "DEPLOY WITH CONFIDENCE",
@@ -1429,17 +1443,21 @@
           "confirm": {
             "num": "01",
             "title": "Umgebung und Kompatibilität prüfen",
-            "body": "Prüfen Sie Chipmodell, Treiber, Laufzeit, Kubernetes-Version und benötigte Funktionen, um den Kompatibilitätsumfang klar festzulegen."
+            "body": "Prüfen Sie Chipmodell, Treiber, Laufzeit und Kubernetes-Version."
           },
           "validate": {
             "num": "02",
             "title": "Repräsentative Workloads validieren",
-            "body": "Bewerten Sie Durchsatz, Latenz, Stabilität und Ressourcenverbrauch gemeinsam und halten Sie eine Vergleichsbasis unter gleichen Bedingungen fest."
+            "body": "Abnahme anhand von Durchsatz, Latenz, Stabilität und Ressourcenverbrauch."
           },
           "deploy": {
             "num": "03",
             "title": "Bereitstellen und kontinuierlich unterstützen",
-            "body": "Vereinbaren Sie Installation, Upgrades, Monitoring-Integration und Offline-Bereitstellung. Der Support erfolgt im vereinbarten Leistungsumfang."
+            "body": "Installation, Upgrades, Monitoring und Offline-Bereitstellung festlegen.",
+            "onlineLabel": "Online-Installation",
+            "onlineHref": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/",
+            "offlineLabel": "Offline-Installation",
+            "offlineHref": "https://docs.hami.run/zh/docs/installation/enterprise-airgap-deploy/"
           }
         },
         "compatibilityLink": "Kompatibilitätsdetails ansehen",
@@ -1454,7 +1472,7 @@
           },
           "chipParity": {
             "q": "Sind Enterprise-Erweiterungen für alle Chips identisch?",
-            "a": "Nein. GPU-Speicher-Overprovisionierung, dynamische Größenanpassung, Turbo und Rechenpriorität hängen vom NVIDIA-Modell und der Produktversion ab. Dynamisches MIG und NPU-Virtualisierung setzen ebenfalls bestimmte Hardware voraus."
+            "a": "Nein. GPU-Speicher-Overprovisionierung, elastische GPU-Speichererweiterung, Turbo und Workload-Priorität hängen vom NVIDIA-Modell und der Produktversion ab. Dynamisches MIG und Dynamisches NPU setzen ebenfalls bestimmte Hardware voraus."
           }
         },
         "title": "Häufige Fragen"
@@ -1482,14 +1500,13 @@
         "eyebrow": "Dynamia AI Platform for HAMi"
       },
       "ui": {
-        "arrow": "→",
         "externalArrow": "↗"
       },
       "architecture": {
         "bannerTitle": "Dynamia AI Platform for HAMi · Von der Verwaltung zur Ausführung",
         "bannerLabel": "Produktarchitektur",
         "layerConsole": {
-          "title": "Zentrale Verwaltung · Console / OpenAPI",
+          "title": "Zentrale Verwaltung · Console",
           "hint": "Mehrere Cluster · Ressourcenpools · Mandantenrechte · Kontingente"
         },
         "layerWorkloads": {
@@ -1503,13 +1520,7 @@
         "layerInfra": {
           "title": "Kubernetes und heterogene Beschleuniger",
           "hint": "Herstellertreiber · Container-Laufzeit · Geräteressourcen"
-        },
-        "fitLabel": "Passt in Ihre Cloud-Native-Infrastruktur",
-        "logos": {
-          "kubernetes": "kubernetes",
-          "prometheus": "prometheus"
-        },
-        "cloudLabel": "Public / Private / Hybrid Cloud"
+        }
       },
       "toc": {
         "capabilities": "Kernfunktionen",
@@ -1553,10 +1564,10 @@
             "videoAria": "Vollständige Funktionalität anzeigen: retroaktive Messung und Abrechnung (Video)"
           },
           "console": {
-            "title": "Console und OpenAPI",
+            "title": "Console-Verwaltung",
             "body": "Verwalten Sie den täglichen Betrieb über die Konsole oder integrieren Sie Funktionen in bestehende Systeme. Die Enterprise-Engine ist enthalten.",
             "tag": "Systemintegration",
-            "videoAria": "Volle Funktionalität anzeigen: Konsole und OpenAPI (Video)"
+            "videoAria": "Volle Funktionalität anzeigen: Console-Verwaltung (Video)"
           }
         },
         "viewAll": "Alle Funktionen ansehen "
@@ -1568,24 +1579,28 @@
           "execute": "Ausführung in den Clustern",
           "observe": "Erfasste Nutzung"
         },
-        "description": "Console und OpenAPI verwalten Cluster, Ressourcen und Berechtigungen. Dynamia Enterprise for HAMi führt Scheduling und Ressourcensteuerung in den verwalteten Clustern aus. Monitoring und Verbrauchsmessung unterstützen den täglichen Betrieb.",
+        "description": "Verwalten Sie Cluster, Ressourcen und Berechtigungen über die Console. Dynamia Enterprise for HAMi führt Scheduling und Ressourcensteuerung in den verwalteten Clustern aus. Monitoring und Verbrauchsmessung unterstützen den täglichen Betrieb.",
         "bullets": {
           "organize": "Ressourcenzugriff nach Team und Projekt organisieren",
           "buildOn": "Auf Kubernetes und Prometheus aufbauen",
           "metering": "Historische Verbrauchsdaten für Abrechnung und Zuordnung nutzen"
         },
-        "diagram": {
-          "rdCluster": "Forschungs- und Entwicklungs Cluster",
-          "gpu": "GPU",
-          "rdTeam": "Forschungs- und Entwicklungsteam",
-          "resourcePool": "Ressourcenpool",
-          "unifiedManagement": "Zentrale Verwaltung",
-          "permissions": "Berechtigungen / Kontingente",
-          "prodClusters": "Produktionscluster",
-          "npu": "NPU",
-          "businessTeam": "Geschäftsmannschaft"
-        },
-        "note": "Logische Architektur · Kein Screenshot der Produktkonsole"
+        "layers": {
+          "manage": {
+            "title": "Verwaltungseingang",
+            "hint": "Cluster, Ressourcen und Berechtigungen zentral verwalten"
+          },
+          "execute": {
+            "title": "Cluster-Ausführungsschicht",
+            "meta": "Dynamia Enterprise for HAMi Engine",
+            "hint": "Scheduling und Ressourcensteuerung in verwalteten Clustern"
+          },
+          "observe": {
+            "title": "Nutzungserfassungsschicht",
+            "meta": "Monitoring · Verbrauch · Abrechnung",
+            "hint": "Alltagsbetrieb und Nutzungszuordnung unterstützen"
+          }
+        }
       },
       "delivery": {
         "eyebrow": "DEPLOY WITH CONFIDENCE",
@@ -1594,18 +1609,22 @@
         "steps": {
           "confirm": {
             "title": "Umgebung und Kompatibilität prüfen",
-            "body": "Prüfen Sie Chipmodell, Treiber, Laufzeit, Kubernetes-Version und benötigte Funktionen, um den Kompatibilitätsumfang klar festzulegen.",
+            "body": "Prüfen Sie Chipmodell, Treiber, Laufzeit und Kubernetes-Version.",
             "num": "01"
           },
           "validate": {
             "title": "Repräsentative Workloads validieren",
-            "body": "Bewerten Sie Durchsatz, Latenz, Stabilität und Ressourcenverbrauch gemeinsam und halten Sie eine Vergleichsbasis unter gleichen Bedingungen fest.",
+            "body": "Abnahme anhand von Durchsatz, Latenz, Stabilität und Ressourcenverbrauch.",
             "num": "02"
           },
           "deploy": {
             "title": "Bereitstellen und kontinuierlich unterstützen",
-            "body": "Vereinbaren Sie Installation, Upgrades, Monitoring-Integration und Offline-Bereitstellung. Der Support erfolgt im vereinbarten Leistungsumfang.",
-            "num": "03"
+            "body": "Installation, Upgrades, Monitoring und Offline-Bereitstellung festlegen.",
+            "num": "03",
+            "onlineLabel": "Online-Installation",
+            "onlineHref": "https://docs.hami.run/zh/docs/installation/ai-platform-online-deploy/",
+            "offlineLabel": "Offline-Installation",
+            "offlineHref": "https://docs.hami.run/zh/docs/installation/ai-platform-airgap-deploy/"
           }
         },
         "compatibilityLink": "Kompatibilitätsdetails ansehen",

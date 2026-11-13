@@ -1314,7 +1314,6 @@
         "eyebrow": "Dynamia Enterprise for HAMi"
       },
       "ui": {
-        "arrow": "→",
         "externalArrow": "↗"
       },
       "architecture": {
@@ -1331,13 +1330,7 @@
         "layerInfra": {
           "title": "Kubernetes and heterogeneous accelerators",
           "hint": "Vendor drivers · Container runtime · Device resources"
-        },
-        "fitLabel": "Fits your cloud-native infrastructure",
-        "logos": {
-          "kubernetes": "kubernetes",
-          "prometheus": "prometheus"
-        },
-        "cloudLabel": "Public / private / hybrid cloud"
+        }
       },
       "toc": {
         "capabilities": "Core capabilities",
@@ -1356,6 +1349,12 @@
             "tag": "Device-dependent support",
             "videoAria": "View full functionality: fine particle size sharing and solation (video)"
           },
+          "pool": {
+            "title": "Resource pools",
+            "body": "Organize accelerators from different vendors and models into unified resource pools, then allocate and schedule by workload demand to simplify heterogeneous resource management.",
+            "tag": "Enterprise capability",
+            "videoAria": "View full functionality: resource pools (video)"
+          },
           "scheduling": {
             "title": "Scheduling for AI workloads",
             "body": "Use Binpack / Spread at node and device level, plus device type, UUID and topology to control workload placement.",
@@ -1363,28 +1362,40 @@
             "videoAria": "View full functionality: Scheduling for AI Tasks (Video)"
           },
           "oversubscription": {
-            "title": "GPU memory oversubscription and resizing",
-            "body": "Use host memory to support GPU memory oversubscription, and automatically or manually adjust running containers’ GPU memory quotas within available capacity.",
+            "title": "GPU memory oversubscription",
+            "body": "With UMI, idle GPU memory can be swapped back to host memory so more concurrent workloads fit beyond physical VRAM—suited to tidal colocation.",
             "tag": "NVIDIA · Model and version dependent",
-            "videoAria": "View complete functionality: GPU memory supersizing and dynamic adjustments (video)"
+            "videoAria": "View full functionality: GPU memory oversubscription (video)"
+          },
+          "expansion": {
+            "title": "Elastic GPU memory expansion",
+            "body": "Adjust GPU memory quotas from real load; when a workload would otherwise OOM, raise the limit automatically without restarting the container.",
+            "tag": "NVIDIA · Model and version dependent",
+            "videoAria": "View full functionality: elastic GPU memory expansion (video)"
           },
           "turbo": {
             "title": "Turbo performance mode",
-            "body": "Remove the compute cap while retaining GPU memory limits and monitoring to reduce control overhead. Validate performance with your workloads.",
+            "body": "Compute calls go straight to the CUDA Runtime—no compute hijacking. Keep only essential monitoring while VRAM limits still apply; built for low-latency workloads.",
             "videoAria": "View complete function: Turbo High Performance Mode (Video)",
             "tag": "NVIDIA · Model and version dependent"
           },
           "mig": {
-            "title": "Dynamic MIG and NPU virtualization",
-            "body": "Create instances on demand on MIG-capable NVIDIA devices. Use the appropriate partitioning mechanism for supported virtualizable NPUs.",
+            "title": "Dynamic MIG",
+            "body": "Create and remove MIG instances from predefined templates. Users declare count and memory only—MIG instance names stay transparent.",
+            "tag": "NVIDIA · Model and version dependent",
+            "videoAria": "View full functionality: Dynamic MIG (video)"
+          },
+          "npu": {
+            "title": "Dynamic NPU",
+            "body": "Create and reclaim vNPU instances from predefined templates. Users declare count and memory only—no need to know template names.",
             "tag": "Subject to hardware and compatibility matrix",
-            "videoAria": "View full functionality: Dynamic MIG and NPU video"
+            "videoAria": "View full functionality: Dynamic NPU (video)"
           },
           "priority": {
-            "title": "Priority and enterprise support",
-            "body": "Give high-priority tasks preferential access to compute and receive commercial support for deployment, compatibility and operational issues.",
-            "tag": "Compute priority: NVIDIA · Version dependent",
-            "videoAria": "View full functionality: priority and business support (video)"
+            "title": "Workload priority",
+            "body": "When a high-priority workload uses GPU compute, lower-priority workloads are paused and resume after it finishes—protecting critical capacity.",
+            "tag": "NVIDIA · version dependent",
+            "videoAria": "View full functionality: workload priority (video)"
           }
         },
         "viewAll": "View all capabilities "
@@ -1402,24 +1413,27 @@
           "chooseMode": "Choose sharing, exclusive use or hardware partitioning by device capability",
           "validate": "Validate performance and isolation with real workloads"
         },
-        "strategies": {
-          "binpack": {
-            "name": "Binpack",
-            "verb": "Pack",
-            "hint": "Fill devices first"
+        "layers": {
+          "app": {
+            "title": "Application & workload layer",
+            "meta": "AI training · model inference · development workloads",
+            "hint": "Request GPU, compute, and memory resources"
           },
-          "spread": {
-            "name": "Spread",
-            "verb": "Distribute",
-            "hint": "Balance allocation"
+          "hami": {
+            "title": "HAMi Enterprise",
+            "subtitle": "Enterprise GPU resource management and scheduling",
+            "cells": {
+              "schedule": "Scheduling selects devices",
+              "scheduleHint": "Device selection and resource allocation",
+              "runtime": "Runtime enforces limits",
+              "runtimeHint": "Compute and GPU memory control"
+            }
           },
-          "topology": {
-            "name": "Topology-aware",
-            "verb": "Nearby",
-            "hint": "Match communication needs"
+          "infra": {
+            "title": "GPU infrastructure layer",
+            "hint": "Physical GPUs · heterogeneous accelerators · vendor drivers"
           }
-        },
-        "note": "Logical architecture · Not a product console screenshot"
+        }
       },
       "delivery": {
         "eyebrow": "DEPLOY WITH CONFIDENCE",
@@ -1429,17 +1443,21 @@
           "confirm": {
             "num": "01",
             "title": "Confirm environment and compatibility",
-            "body": "Verify chip model, driver, runtime, Kubernetes version and required capabilities to define a clear compatibility scope."
+            "body": "Verify chip model, driver, runtime, and Kubernetes version."
           },
           "validate": {
             "num": "02",
             "title": "Validate representative workloads",
-            "body": "Evaluate throughput, latency, stability and resource usage together, keeping a baseline under identical conditions."
+            "body": "Accept based on throughput, latency, stability, and resource usage."
           },
           "deploy": {
             "num": "03",
             "title": "Deploy with ongoing support",
-            "body": "Agree on installation, upgrades, monitoring integration and offline delivery, with support under the agreed service scope."
+            "body": "Define installation, upgrades, monitoring, and offline delivery.",
+            "onlineLabel": "Online install",
+            "onlineHref": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/",
+            "offlineLabel": "Air-gapped install",
+            "offlineHref": "https://docs.hami.run/zh/docs/installation/enterprise-airgap-deploy/"
           }
         },
         "compatibilityLink": "View compatibility details",
@@ -1454,7 +1472,7 @@
           },
           "chipParity": {
             "q": "Are enterprise enhancements identical across all chips?",
-            "a": "No. GPU memory oversubscription, dynamic resizing, Turbo and compute priority depend on the NVIDIA model and product version. Dynamic MIG and NPU virtualization also have specific hardware requirements."
+            "a": "No. GPU memory oversubscription, elastic GPU memory expansion, Turbo and workload priority depend on the NVIDIA model and product version. Dynamic MIG and Dynamic NPU also have specific hardware requirements."
           }
         },
         "title": "Frequently asked questions"
@@ -1482,14 +1500,13 @@
         "eyebrow": "Dynamia AI Platform for HAMi"
       },
       "ui": {
-        "arrow": "→",
         "externalArrow": "↗"
       },
       "architecture": {
         "bannerTitle": "Dynamia AI Platform for HAMi · From management to execution",
         "bannerLabel": "Product architecture",
         "layerConsole": {
-          "title": "Unified management · Console / OpenAPI",
+          "title": "Unified management · Console",
           "hint": "Multi-cluster · Resource pools · Tenant access · Quotas"
         },
         "layerWorkloads": {
@@ -1503,13 +1520,7 @@
         "layerInfra": {
           "title": "Kubernetes and heterogeneous accelerators",
           "hint": "Vendor drivers · Container runtime · Device resources"
-        },
-        "fitLabel": "Fits your cloud-native infrastructure",
-        "logos": {
-          "kubernetes": "kubernetes",
-          "prometheus": "prometheus"
-        },
-        "cloudLabel": "Public / private / hybrid cloud"
+        }
       },
       "toc": {
         "capabilities": "Core capabilities",
@@ -1553,10 +1564,10 @@
             "videoAria": "View complete functionality: retroactive measurement and billing (video)"
           },
           "console": {
-            "title": "Console and OpenAPI",
+            "title": "Console management",
             "body": "Manage daily operations through the console or integrate capabilities into existing systems. The Enterprise engine is included.",
             "tag": "System integration",
-            "videoAria": "View full functionality: Console and OpenAPI (video)"
+            "videoAria": "View full functionality: Console management (video)"
           }
         },
         "viewAll": "View all capabilities "
@@ -1568,24 +1579,28 @@
           "execute": "Execution inside clusters",
           "observe": "Recorded usage"
         },
-        "description": "Console and OpenAPI manage clusters, resources and permissions. Dynamia Enterprise for HAMi executes scheduling and resource control inside managed clusters. Monitoring and metering support daily operations.",
+        "description": "Manage clusters, resources, and permissions through the Console. Dynamia Enterprise for HAMi executes scheduling and resource control inside managed clusters. Monitoring and metering support daily operations.",
         "bullets": {
           "organize": "Organize resource access by team and project",
           "buildOn": "Build on Kubernetes and Prometheus",
           "metering": "Use historical metering for billing and usage attribution"
         },
-        "diagram": {
-          "rdCluster": "Research and development cluster",
-          "gpu": "GPU",
-          "rdTeam": "Research and development team",
-          "resourcePool": "Resource pool",
-          "unifiedManagement": "Unified management",
-          "permissions": "Permissions / quotas",
-          "prodClusters": "Production clusters",
-          "npu": "NPU",
-          "businessTeam": "Business team"
-        },
-        "note": "Logical architecture · Not a product console screenshot"
+        "layers": {
+          "manage": {
+            "title": "Management entry layer",
+            "hint": "Unify cluster, resource, and permission management"
+          },
+          "execute": {
+            "title": "Cluster execution layer",
+            "meta": "Dynamia Enterprise for HAMi engine",
+            "hint": "Schedule and control resources inside managed clusters"
+          },
+          "observe": {
+            "title": "Usage recording layer",
+            "meta": "Monitoring · metering · billing",
+            "hint": "Support daily operations and usage attribution"
+          }
+        }
       },
       "delivery": {
         "eyebrow": "DEPLOY WITH CONFIDENCE",
@@ -1594,18 +1609,22 @@
         "steps": {
           "confirm": {
             "title": "Confirm environment and compatibility",
-            "body": "Verify chip model, driver, runtime, Kubernetes version and required capabilities to define a clear compatibility scope.",
+            "body": "Verify chip model, driver, runtime, and Kubernetes version.",
             "num": "01"
           },
           "validate": {
             "title": "Validate representative workloads",
-            "body": "Evaluate throughput, latency, stability and resource usage together, keeping a baseline under identical conditions.",
+            "body": "Accept based on throughput, latency, stability, and resource usage.",
             "num": "02"
           },
           "deploy": {
             "title": "Deploy with ongoing support",
-            "body": "Agree on installation, upgrades, monitoring integration and offline delivery, with support under the agreed service scope.",
-            "num": "03"
+            "body": "Define installation, upgrades, monitoring, and offline delivery.",
+            "num": "03",
+            "onlineLabel": "Online install",
+            "onlineHref": "https://docs.hami.run/zh/docs/installation/ai-platform-online-deploy/",
+            "offlineLabel": "Air-gapped install",
+            "offlineHref": "https://docs.hami.run/zh/docs/installation/ai-platform-airgap-deploy/"
           }
         },
         "compatibilityLink": "View compatibility details",

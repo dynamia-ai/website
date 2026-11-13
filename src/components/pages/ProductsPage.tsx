@@ -5,6 +5,11 @@ import {websitePath} from '@/lib/site/links';
 export default async function ProductsPage() {
   const t = await getTranslations('sitePages.products');
   const locale = await getLocale();
+  const btnArrow = (
+    <span className="btn-arrow" aria-hidden={true}>
+      <svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" /></svg>
+    </span>
+  );
   return (
     <>
       <section className="product-overview-hero">
@@ -414,7 +419,7 @@ export default async function ProductsPage() {
             <div className="actions">
               <a className="btn primary" href={localizedPath(websitePath("/contact-sales"), locale)}>
                 {t('cta.link')}
-                <span className="arrow">{t('ui.arrow')}</span>
+                {btnArrow}
               </a>
             </div>
           </div>
