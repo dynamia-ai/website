@@ -24,7 +24,7 @@ linktitle: GPU Spread & Binpack
 
 In the last article, we analyzed the `hami-scheduler` workflow and understood how `hami-webhook` and `hami-scheduler` work together.
 
-[HAMI vGPU Principle Analysis Part 3: hami-scheduler Workflow Analysis](https://dynamia.ai/blog/open-source-vgpu-hami-scheduler-analysis)
+[HAMI vGPU Principle Analysis Part 3: hami-scheduler Workflow Analysis](/blog/open-source-vgpu-hami-scheduler)
 
 This is the fourth article in the HAMI principle analysis series, analyzing how `hami-scheduler` selects nodes during scheduling, i.e., how advanced scheduling strategies like Spread and Binpack are implemented.
 

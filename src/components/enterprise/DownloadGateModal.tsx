@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { companyEmailSchema } from '@/utils/validation';
 import { attributionToPayload } from '@/utils/utm';
-import { submitContact } from '@/utils/contact';
+import { submitContact } from '@/lib/site/contact';
 import FormSuccessMessage from '@/components/FormSuccessMessage';
 import ConsentLabel from '@/components/enterprise/ConsentLabel';
 
@@ -49,6 +49,7 @@ export default function DownloadGateModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting || submitStatus === 'success') return;
     setSubmitStatus('idle');
 
     const emailResult = companyEmailSchema.safeParse(formState.email);
@@ -66,10 +67,10 @@ export default function DownloadGateModal({
     try {
       const { success } = await submitContact({
         locale,
-        '📦 来源': '官网企业版下载页 (Enterprise Download Gate)',
-        '产品': context?.productName ?? '',
-        '版本': context?.version ?? '',
-        '下载介质': context?.artifactLabel ?? '',
+        _type: 'Enterprise Download Registration',
+        product: context?.productName ?? '',
+        version: context?.version ?? '',
+        artifact: context?.artifactLabel ?? '',
         name: formState.name,
         email: formState.email,
         company: formState.company,
@@ -97,7 +98,7 @@ export default function DownloadGateModal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-      onClick={onClose}
+      onClick={isSubmitting || submitStatus === 'success' ? undefined : onClose}
     >
       <div
         className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl max-w-md w-full mx-4 p-8 relative max-h-[90vh] overflow-y-auto"
@@ -105,6 +106,7 @@ export default function DownloadGateModal({
       >
         <button
           onClick={onClose}
+          disabled={isSubmitting || submitStatus === 'success'}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
           aria-label="Close"
         >
@@ -159,7 +161,7 @@ export default function DownloadGateModal({
           <FormSuccessMessage translationKey="enterprise.gate.error" isError />
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form method="post" onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
               htmlFor="dl-gate-name"

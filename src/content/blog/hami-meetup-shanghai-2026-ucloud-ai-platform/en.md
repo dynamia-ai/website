@@ -25,7 +25,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-i
 
 The GPUs are in place; the algorithm team is still waiting for environments. Drivers, images, networking, storage — configured one by one, and re-adapted for every new cluster. Even with GPU sharing in place at the bottom, the platform still has to connect resource specs, scheduling configuration, and development tools so users get an environment they can start working in immediately.
 
-This is the sixth deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026/) series. **Peng Peng**, Senior R&D Engineer at UCloud, placed HAMi inside this environment delivery chain in "Engineering Challenges and Practices of AI Computing Platforms." The team adopted HAMi vGPU for private AI computing scenarios while lowering the usage barrier through resource abstraction, multi-cluster access, tool injection, and image acceleration. For platform teams, the reference value of this practice is how to organize low-level resource capability into a service users can use and ops can manage.
+This is the sixth deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026) series. **Peng Peng**, Senior R&D Engineer at UCloud, placed HAMi inside this environment delivery chain in "Engineering Challenges and Practices of AI Computing Platforms." The team adopted HAMi vGPU for private AI computing scenarios while lowering the usage barrier through resource abstraction, multi-cluster access, tool injection, and image acceleration. For platform teams, the reference value of this practice is how to organize low-level resource capability into a service users can use and ops can manage.
 
 ## Key Takeaways
 
@@ -98,11 +98,11 @@ For enterprises evaluating HAMi, UCloud's practice offers a clear order of check
 
 ## Series
 
-- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026/)
-- [(1) Where Does HAMi Fit in the CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
-- [(2) After GPU Sharing: How HAMi 2.10 Improves Isolation, Scheduling, and Observability](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/)
-- [(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)
-- [(4) Turning GPU Performance into Inference Service Capability: Lessons from Iluvatar](/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/)
-- [(5) How iFLYTEK Manages Multi-Business GPU Sharing with Volcano + HAMi-core](/blog/hami-meetup-shanghai-2026-volcano-hami-core/)
+- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [(1) Where Does HAMi Fit in the CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation)
+- [(2) After GPU Sharing: How HAMi 2.10 Improves Isolation, Scheduling, and Observability](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu)
+- [(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)
+- [(4) Turning GPU Performance into Inference Service Capability: Lessons from Iluvatar](/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference)
+- [(5) How iFLYTEK Manages Multi-Business GPU Sharing with Volcano + HAMi-core](/blog/hami-meetup-shanghai-2026-volcano-hami-core)
 - **(6) How UCloud Turns HAMi Sharing into Ready-to-Use Development Environments** (this post)
-- [(7) From User to Co-Builder: Why Enterprises Need a Sustainable HAMi Community](/blog/hami-meetup-shanghai-2026-community-panel/)
+- [(7) From User to Co-Builder: Why Enterprises Need a Sustainable HAMi Community](/blog/hami-meetup-shanghai-2026-community-panel)

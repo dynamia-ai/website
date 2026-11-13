@@ -23,7 +23,7 @@ coverTitle: HAMi 2.10 解读（二）
 
 > GPU 有 HAMi 做显存硬隔离，昇腾 NPU 呢？本文是 HAMi 2.10 解读系列第二篇：在昇腾 310P3 真机上验证 Volcano 调度 + HAMi-core 软切分——容器内只见 8192 MiB 切片，两个 Pod binpack 到同一张物理卡，监控指标如实上报。
 
-[上一篇](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/)我们实测了 KAI Scheduler + HAMi-core 在 NVIDIA GPU 上的显存硬隔离：两个 Pod 共享一张 T4，谁也别想多占 1 MiB。有读者接着问：**昇腾 NPU 呢？**
+[上一篇](/blog/kai-scheduler-hami-gpu-memory-hard-isolation)我们实测了 KAI Scheduler + HAMi-core 在 NVIDIA GPU 上的显存硬隔离：两个 Pod 共享一张 T4，谁也别想多占 1 MiB。有读者接着问：**昇腾 NPU 呢？**
 
 昇腾是国内 AI 推理的主力卡。一张 310P3 有 21.5 GiB 显存，如果每个推理服务独占一张卡，浪费同样惊人；可 NPU 的共享比 GPU 更容易踩坑——vNPU、硬切分、软切分、Volcano 模式，一堆概念搅在一起，光是分清“谁在切卡、切出来的是什么”就要花掉半天。
 
@@ -193,8 +193,8 @@ hami_vgpu_memory_limit_bytes{...,pod="ascend-vnpu-check-2",vdevice_index="0"} 8.
 
 ## 系列阅读
 
-- 本系列上一篇：[《HAMi 2.10 解读（一）：实测 KAI Scheduler + HAMi GPU 显存硬隔离》](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/)
-- 本系列下一篇：[《HAMi 2.10 解读（三）：既要独占、又要装箱、还要 NUMA 亲和——调度策略可以组合了》](/blog/hami-composable-scheduler-policies/)
+- 本系列上一篇：[《HAMi 2.10 解读（一）：实测 KAI Scheduler + HAMi GPU 显存硬隔离》](/blog/kai-scheduler-hami-gpu-memory-hard-isolation)
+- 本系列下一篇：[《HAMi 2.10 解读（三）：既要独占、又要装箱、还要 NUMA 亲和——调度策略可以组合了》](/blog/hami-composable-scheduler-policies)
 - [《HAMi v2.10.0 发布：Flexible MIG、可组合调度策略与更广阔的加速器生态》](https://project-hami.io/zh/blog/hami-v2-10-0-release)
 - 复现实测：[《实验 13：用 Volcano + HAMi-core 软切分昇腾 310P3 vNPU》](https://project-hami.io/zh/tutorials/labs/volcano-ascend-vnpu)
 

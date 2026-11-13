@@ -16,6 +16,17 @@ export default function middleware(request: NextRequest) {
   }
 
   const response = intlMiddleware(request);
+  // Keep local locale redirects on the browser's current loopback origin.
+  // Must stay absolute — relative Location values make NextURL throw Invalid URL.
+  const location = response.headers.get("location");
+  if (location) {
+    const destination = new URL(location, request.url);
+    if (["localhost", "127.0.0.1"].includes(destination.hostname)) {
+      destination.protocol = request.nextUrl.protocol;
+      destination.host = request.nextUrl.host;
+      response.headers.set("location", destination.toString());
+    }
+  }
 
   if (!request.cookies.get("consent-required")) {
     const country = getCountry(request.headers);

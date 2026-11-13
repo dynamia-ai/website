@@ -23,7 +23,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07
 
 Giving one GPU to multiple jobs is only the start of resource sharing. For enterprise platform teams, the questions that follow are harder: does every job honor its quota, can allocations be observed, and how should different devices and jobs be scheduled? Otherwise the books say "shared," while runtime usage remains a black box.
 
-This is the second deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026/) series. **Li Mengxuan**, co-founder and CTO of Dynamia and HAMi Maintainer, presented "From Local Devices to Remote Compute Pools: Remote GPU and HAMi 2.10 New Capabilities," covering v2.10 progress, DRA ecosystem adaptation, and the v2.11 roadmap announced during the talk. The thread connecting them: shared compute must not only be allocated on demand, but also constrained, observable, and diagnosable while it runs.
+This is the second deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026) series. **Li Mengxuan**, co-founder and CTO of Dynamia and HAMi Maintainer, presented "From Local Devices to Remote Compute Pools: Remote GPU and HAMi 2.10 New Capabilities," covering v2.10 progress, DRA ecosystem adaptation, and the v2.11 roadmap announced during the talk. The thread connecting them: shared compute must not only be allocated on demand, but also constrained, observable, and diagnosable while it runs.
 
 ## Key Takeaways
 
@@ -92,11 +92,11 @@ At Dynamia, we see HAMi's enterprise value in the quality of operations after sh
 
 ## Series
 
-- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026/)
-- [(1) Where Does HAMi Fit in the CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
+- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [(1) Where Does HAMi Fit in the CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation)
 - **(2) After GPU Sharing: How HAMi 2.10 Improves Isolation, Scheduling, and Observability** (this post)
-- [(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)
-- [(4) Turning GPU Performance into Inference Service Capability: Lessons from Iluvatar](/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/)
-- [(5) How iFLYTEK Manages Multi-Business GPU Sharing with Volcano + HAMi-core](/blog/hami-meetup-shanghai-2026-volcano-hami-core/)
-- [(6) How UCloud Turns HAMi Sharing into Ready-to-Use Development Environments](/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/)
-- [(7) From User to Co-Builder: Why Enterprises Need a Sustainable HAMi Community](/blog/hami-meetup-shanghai-2026-community-panel/)
+- [(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)
+- [(4) Turning GPU Performance into Inference Service Capability: Lessons from Iluvatar](/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference)
+- [(5) How iFLYTEK Manages Multi-Business GPU Sharing with Volcano + HAMi-core](/blog/hami-meetup-shanghai-2026-volcano-hami-core)
+- [(6) How UCloud Turns HAMi Sharing into Ready-to-Use Development Environments](/blog/hami-meetup-shanghai-2026-ucloud-ai-platform)
+- [(7) From User to Co-Builder: Why Enterprises Need a Sustainable HAMi Community](/blog/hami-meetup-shanghai-2026-community-panel)

@@ -1,257 +1,144 @@
-'use client';
-
-import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { CONTACT_EMAIL, CONTACT_PHONE_RAW, CONTACT_PHONE_DISPLAY } from '@/config/app-config';
-import { useTranslations, useLocale } from 'next-intl';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faXTwitter, faZhihu, faGithub, faSlack, faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { faBuilding, faCookieBite, faFileAlt, faShieldAlt, faBook, faTag, faVideo, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { openCookiePreferences } from '@/lib/cookieConsent';
+import {getLocale, getTranslations} from 'next-intl/server';
+import {websitePath} from '@/lib/site/links';
+import {localizedPath} from '@/utils/i18n';
 
-const Footer: React.FC = () => {
-  const t = useTranslations();
-  const locale = useLocale();
-  const currentLocale = locale === 'zh' ? 'zh' : 'en';
+export default async function Footer() {
+  const locale = await getLocale();
+  const t = await getTranslations('siteShell');
+  const showCareers = Boolean(t.raw('showCareers'));
 
-  // Get localized href based on current language
-  const getLocalizedHref = (path: string) => {
-    return currentLocale === 'zh' ? `/zh${path}` : path;
-  };
+  function href(route: string) {
+    return localizedPath(websitePath(route), locale);
+  }
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-          {/* Left section - Logo, description and QR code (1/5 width) */}
-          <div className="md:col-span-1">
-            <div className="mb-4">
-              <Image
-                src="/creators-of-hami.svg"
-                alt="Dynamia Logo"
-                width={120}
-                height={40}
-                className="h-8 w-auto dark-logo-monochrome"
+    <footer className="site-footer">
+      <div className="wrap">
+        <div className="site-footer-grid">
+          <div className="site-footer-brand">
+            <Link href={href('/community')} aria-label={t('footer.creatorsAria')}>
+              <img
+                className="creators-mark"
+                src="/redesign/assets/51b48ae8e0a78b280a50.svg"
+                alt={t('footer.creatorsAlt')}
               />
-            </div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
-              {t('footer.companyIntro')}
+            </Link>
+            <p>
+              {t('footer.taglineLead')}
+              <br />
+              {t('footer.taglineTrail')}
             </p>
-            {currentLocale === 'zh' && (
-              <div className="space-y-2">
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('footer.followWechat')}</p>
-                <Image
-                  src="/images/qrcode.jpg"
-                  alt="微信公众号二维码"
-                  width={100}
-                  height={100}
-                  className="rounded"
-                />
-              </div>
-            )}
+            <span className="footer-qr-label">{t('footer.qrLabel')}</span>
+            <img
+              className="footer-qr"
+              src="/redesign/assets/a9fadb5062623ccf2372.jpg"
+              alt={t('footer.qrAlt')}
+              loading="lazy"
+            />
           </div>
 
-          {/* Right section - 4 columns of links (4/5 width) */}
-          <div className="md:col-span-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {/* About */}
-              <div>
-                <h3 className="text-base font-medium text-gray-900 dark:text-gray-100 mb-4">{t('footer.about')}</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <Link href={getLocalizedHref('/company')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faBuilding as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.aboutCompany')}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={getLocalizedHref('/case-studies')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faFileAlt as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.caseStudies')}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={getLocalizedHref('/privacy-policy')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faShieldAlt as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.privacyPolicy')}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={getLocalizedHref('/cookies-policy')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faCookieBite as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.cookiesPolicy')}
-                    </Link>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      onClick={openCookiePreferences}
-                      className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2 text-left"
-                    >
-                      <FontAwesomeIcon icon={faCookieBite as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.cookieSettings')}
-                    </button>
-                  </li>
-                </ul>
-              </div>
+          <div className="site-footer-links">
+            <h3>{t('nav.products')}</h3>
+            <Link href={href('/products')}>{t('footer.productsOverview')}</Link>
+            <Link href={href('/enterprise')}>{t('mobile.enterprise')}</Link>
+            <Link href={href('/platform')}>{t('mobile.platform')}</Link>
+            <Link href={href('/pricing')}>{t('nav.pricing')}</Link>
+            <Link href={href('/contact-sales')}>{t('footer.bookDemo')}</Link>
+          </div>
 
-              {/* Resources */}
-              <div>
-                <h3 className="text-base font-medium text-gray-900 dark:text-gray-100 mb-4">{t('footer.resources')}</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <Link href={getLocalizedHref('/what-is-hami')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faBook as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.documentation')}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={getLocalizedHref('/pricing')} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faTag as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.pricing')}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={currentLocale === 'zh' ? "https://www.bilibili.com/video/BV1A7dNYAED5" : "https://youtu.be/gxUobykvNH4"} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faVideo as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.getDemo')}
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+          <div className="site-footer-links">
+            <h3>{t('nav.resources')}</h3>
+            <Link href={href('/blog')}>{t('mobile.blog')}</Link>
+            <Link href={href('/videos')}>{t('mobile.videos')}</Link>
+            <Link href={href('/tools')}>{t('mobile.tools')}</Link>
+            <a href="https://docs.dynamia.ai" target="_blank" rel="noopener noreferrer">
+              {t('mobile.docs')}
+            </a>
+          </div>
 
-              {/* Community */}
-              <div>
-                <h3 className="text-base font-medium text-gray-900 dark:text-gray-100 mb-4">{t('footer.community')}</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <Link href="https://github.com/Project-HAMi/HAMi" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faGithub as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.github')}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://discord.gg/Amhy7XmbNq" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faDiscord as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.discord')}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://cloud-native.slack.com/archives/C04NHKBFAVC" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faSlack as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.slack')}
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+          <div className="site-footer-links">
+            <h3>{t('footer.companyCommunity')}</h3>
+            <Link href={href('/about')}>{t('mobile.about')}</Link>
+            <Link href={href('/cases')}>{t('nav.cases')}</Link>
+            {showCareers ? <Link href={href('/careers')}>{t('mobile.careers')}</Link> : null}
+            <Link href={href('/events')}>{t('mobile.events')}</Link>
+            <Link href={href('/community')}>{t('footer.aboutHami')}</Link>
+          </div>
 
-              {/* Contact */}
-              <div>
-                <h3 className="text-base font-medium text-gray-900 dark:text-gray-100 mb-4">{t('footer.contactSection')}</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">{t('footer.emailUs')}</p>
-                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                      <FontAwesomeIcon icon={faEnvelope as any} className="h-4 w-4 opacity-70" />
-                      {t('footer.email')}
-                    </a>
-                  </div>
-
-                  {/* Phone - Only show on Chinese pages */}
-                  {currentLocale === 'zh' && (
-                    <div>
-                      <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">服务热线</p>
-                      <a href={`tel:${CONTACT_PHONE_RAW}`} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 flex items-center gap-2">
-                        <FontAwesomeIcon icon={faPhone as any} className="h-4 w-4 opacity-70" />
-                        {CONTACT_PHONE_DISPLAY}
-                      </a>
-                    </div>
-                  )}
-
-                  {/* Social Media Icons */}
-                  <div>
-                    <p className="text-xs text-gray-400 dark:text-gray-500 mb-2">{t('footer.socialMedia')}</p>
-                    <div className="flex space-x-3">
-                      {/* LinkedIn */}
-                      <a
-                        href="https://www.linkedin.com/company/dynamia-ai/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                        aria-label="LinkedIn"
-                      >
-                        <FontAwesomeIcon icon={faLinkedin as any} className="h-5 w-5" />
-                      </a>
-
-                      {/* X (Twitter) */}
-                      <a
-                        href="https://x.com/dynamia_ai"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                        aria-label="X (Twitter)"
-                      >
-                        <FontAwesomeIcon icon={faXTwitter as any} className="h-5 w-5" />
-                      </a>
-
-                      {/* Zhihu - Only show on Chinese pages */}
-                      {currentLocale === 'zh' && (
-                        <a
-                          href="https://www.zhihu.com/org/shang-hai-mi-gua-zhi-neng-ke-ji-you-xian-gong-si"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                          aria-label="知乎"
-                        >
-                          <FontAwesomeIcon icon={faZhihu as any} className="h-5 w-5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="site-footer-links">
+            <h3>{t('footer.contact')}</h3>
+            <span className="contact-caption">{t('footer.emailLabel')}</span>
+            <a href="mailto:info@dynamia.ai">{t('footer.email')}</a>
+            <span className="contact-caption" style={{marginTop: 12}}>
+              {t('footer.phoneLabel')}
+            </span>
+            <a href="tel:4000267800">{t('tel')}</a>
+            <span className="contact-caption" style={{marginTop: 12}}>
+              {t('footer.follow')}
+            </span>
+            <div className="footer-media">
+              <a
+                href="https://www.linkedin.com/company/dynamia-ai/"
+                target="_blank"
+                rel="noopener"
+                aria-label={t('footer.linkedin')}
+                title={t('footer.linkedin')}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true">
+                  <path d="M416 32L31.9 32C14.3 32 0 46.5 0 64.3L0 447.7C0 465.5 14.3 480 31.9 480L416 480c17.6 0 32-14.5 32-32.3l0-383.4C448 46.5 433.6 32 416 32zM135.4 416l-66.4 0 0-213.8 66.5 0 0 213.8-.1 0zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77zM384.3 416l-66.4 0 0-104c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9l0 105.8-66.4 0 0-213.8 63.7 0 0 29.2 .9 0c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9l0 117.2z" />
+                </svg>
+              </a>
+              <a
+                href="https://x.com/dynamia_ai"
+                target="_blank"
+                rel="noopener"
+                aria-label={t('footer.x')}
+                title={t('footer.x')}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true">
+                  <path d="M357.2 48L427.8 48 273.6 224.2 455 464 313 464 201.7 318.6 74.5 464 3.8 464 168.7 275.5-5.2 48 140.4 48 240.9 180.9 357.2 48zM332.4 421.8l39.1 0-252.4-333.8-42 0 255.3 333.8z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.zhihu.com/org/shang-hai-mi-gua-zhi-neng-ke-ji-you-xian-gong-si"
+                target="_blank"
+                rel="noopener"
+              >
+                {t('footer.zhihu')}
+              </a>
             </div>
+          </div>
 
-            {/* CNCF logos */}
-            <div className="mt-12 flex items-center space-x-6">
-              <div className="flex flex-col items-center gap-1">
-                <div className="rounded-lg border border-gray-200 bg-white/80 px-3 py-2 dark:border-gray-700 dark:bg-white/95">
-                  <img
-                    src="/images/cncf.svg"
-                    alt="CNCF Incubating"
-                    width={120}
-                    height={48}
-                    className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity dark:brightness-95"
-                  />
-                </div>
-                <span className="text-xs text-gray-400 dark:text-gray-500">HAMi is a CNCF Incubating Project</span>
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <div className="rounded-lg border border-gray-200 bg-white/80 px-3 py-2 dark:border-gray-700 dark:bg-white/95">
-                  <Image
-                    src="/images/cnai.svg"
-                    alt="CNAI Landscape"
-                    width={120}
-                    height={48}
-                    className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity dark:brightness-95"
-                  />
-                </div>
-                <span className="text-xs text-gray-400 dark:text-gray-500">HAMi is a CNAI Landscape Project</span>
-              </div>
-            </div>
+          <div className="footer-certifications">
+            <a href="https://www.cncf.io/projects/hami/" target="_blank" rel="noopener" aria-label={t('footer.cncfAria')}>
+              <img
+                className="footer-certification-mark"
+                src="/redesign/assets/cncf-mark.svg"
+                alt={t('footer.cncfAria')}
+              />
+              <small>{t('footer.cncfCaption')}</small>
+            </a>
+            <a
+              href="https://landscape.cncf.io/?selected=hami&group=cnai&item=orchestration-management--scheduling-orchestration--hami"
+              target="_blank"
+              rel="noopener"
+              aria-label={t('footer.landscapeAria')}
+            >
+              <img
+                className="footer-certification-mark"
+                src="/redesign/assets/cncf-landscape-mark.svg"
+                alt={t('footer.landscapeAria')}
+              />
+              <small>{t('footer.landscapeCaption')}</small>
+            </a>
           </div>
         </div>
-
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
-          <p className="text-center text-sm text-gray-400 dark:text-gray-500">
-            {t('footer.copyright')}
-          </p>
+        <div className="footer-bottom">
+          <span>{t('footer.copyright')}</span>
+          {t('footer.demoNote') ? <span>{t('footer.demoNote')}</span> : null}
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer; 
+}

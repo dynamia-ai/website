@@ -1,123 +1,27 @@
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import { setRequestLocale, getTranslations } from "next-intl/server";
-import { localizedUrl, localizedAlternates } from "@/utils/i18n";
-import { routing } from "@/i18n/routing";
-import {
-  getBlogPost,
-  getBlogPostSlugs,
-  getPostSocialImage,
-  markdownToHtml,
-} from "@/lib/blog-server";
-import BlogPostClient from "./BlogPostClient";
-import { articleSchema, JsonLd } from "@/components/StructuredData";
+import {setRequestLocale} from 'next-intl/server';
+import {BlogArticlePage, blogArticleSlugs} from '@/components/pages/BlogArticlePage';
+import {siteBlogMetadata} from '@/lib/site/metadata';
+import MainLayout from '@/components/layout/MainLayout';
 
 interface PageProps {
-  params: Promise<{
-    locale: string;
-    slug: string;
-  }>;
+  params: Promise<{locale: string; slug: string}>;
 }
 
-export async function generateStaticParams() {
-  const slugs = getBlogPostSlugs();
-  return slugs.map((slug) => ({ slug }));
+export function generateStaticParams() {
+  return blogArticleSlugs().map((slug) => ({slug}));
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { locale, slug } = await params;
-  const t = await getTranslations({ locale, namespace: "blogUI" });
-  const seo = await getTranslations({ locale, namespace: "Seo.blog" });
-
-  const availableLocales = routing.locales.filter((candidate) =>
-    Boolean(getBlogPost(slug, candidate))
-  );
-  const hasRequestedLocale = availableLocales.some((candidate) => candidate === locale);
-  const canonicalLocale = hasRequestedLocale
-    ? locale
-    : availableLocales.includes(routing.defaultLocale)
-      ? routing.defaultLocale
-      : availableLocales[0];
-  const post = getBlogPost(slug, locale) ??
-    (canonicalLocale ? getBlogPost(slug, canonicalLocale) : null);
-
-  if (!post) {
-    return { title: t("notFound") };
-  }
-
-  const socialImage = getPostSocialImage(post);
-  const title = t("titleTemplate", { title: post.title });
-  const canonicalUrl = localizedUrl(
-    `/blog/${slug}`,
-    canonicalLocale ?? routing.defaultLocale
-  );
-
-  return {
-    title: { absolute: title },
-    description: post.excerpt,
-    keywords: [...post.tags, seo("keywords")].join(", "),
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      url: canonicalUrl,
-      type: "article",
-      publishedTime: post.date,
-      authors: [post.author],
-      images: socialImage
-        ? [{ url: socialImage, width: 1200, height: 630, alt: post.title }]
-        : undefined,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: socialImage ? [socialImage] : undefined,
-    },
-    robots: hasRequestedLocale
-      ? undefined
-      : { index: false, follow: true },
-    alternates: {
-      canonical: canonicalUrl,
-      languages: localizedAlternates(`/blog/${slug}`, availableLocales),
-    },
-  };
+export async function generateMetadata({params}: PageProps) {
+  const {locale, slug} = await params;
+  return siteBlogMetadata(slug, locale);
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
-  const { locale, slug } = await params;
+export default async function Page({params}: PageProps) {
+  const {locale, slug} = await params;
   setRequestLocale(locale);
-
-  const enPost = getBlogPost(slug, "en");
-  const zhPost = getBlogPost(slug, "zh");
-
-  if (!enPost && !zhPost) {
-    notFound();
-  }
-
-  const primaryPost = getBlogPost(slug, locale) ?? enPost ?? zhPost;
-  if (!primaryPost) notFound();
-  const articleLocale = getBlogPost(slug, locale) ? locale : enPost ? "en" : "zh";
-  const t = await getTranslations({ locale: articleLocale, namespace: "blogUI" });
-  const result = await markdownToHtml(primaryPost.content, t("figureLabel"));
-  const articleJsonLd = primaryPost
-    ? articleSchema({
-        title: primaryPost.title,
-        description: primaryPost.excerpt,
-        publishDate: primaryPost.date,
-        url: localizedUrl(`/blog/${slug}`, articleLocale),
-        locale: articleLocale as (typeof routing.locales)[number],
-        author: primaryPost.author,
-        image: getPostSocialImage(primaryPost),
-        keywords: primaryPost.tags,
-      })
-    : null;
-
   return (
-    <>
-      {articleJsonLd && <JsonLd data={articleJsonLd} />}
-      <BlogPostClient post={{ ...primaryPost, content: result.html, toc: result.toc }} />
-    </>
+    <MainLayout>
+      <BlogArticlePage slug={slug} />
+    </MainLayout>
   );
 }

@@ -18,7 +18,7 @@ linktitle: HAMi NVIDIA 设备插件
 
 本文为开源 vGPU 方案 HAMI 实现原理分析第一篇，主要分析 hami-device-plugin-nvidia 实现原理。
 
-之前在 [开源 vGPU 方案：HAMi，实现细粒度 GPU 切分](https://dynamia.ai/zh/blog/open-source-vgpu-hami-fine-grained-partitioning)介绍了 HAMi 是什么，然后在 [开源 vGPU 方案 HAMi: Core & Memory 隔离测试](https://dynamia.ai/zh/blog/open-source-vgpu-hami-core-memory-test)中对 HAMi 提供的 vGPU 方案进行了测试。
+之前在 [开源 vGPU 方案：HAMi，实现细粒度 GPU 切分](/blog/open-source-vgpu-hami-fine-grained-partitioning)介绍了 HAMi 是什么，然后在 [开源 vGPU 方案 HAMi: Core & Memory 隔离测试](/blog/open-source-vgpu-hami-core-memory-test)中对 HAMi 提供的 vGPU 方案进行了测试。
 
 接下来则是逐步分析 HAMI 中的 vGPU 实现原理，涉及到的东西比较多，暂定分为几部分：
 

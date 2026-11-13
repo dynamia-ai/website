@@ -1,19 +1,4 @@
 {
-  "Metadata": {
-    "title": "密瓜智能 - 统一异构计算平台",
-    "description": "密瓜智能无缝加速 AI、HPC 和边缘计算工作负载。企业级 GPU 虚拟化和资源管理平台，基于 CNCF 开源项目 HAMi 构建。",
-    "keywords": "密瓜智能，异构计算，GPU 虚拟化，GPU 共享，AI 基础设施，HAMi, 企业计算",
-    "template": "%s | 密瓜智能",
-    "siteName": "Dynamia AI（密瓜智能）",
-    "ogLocale": "zh_CN",
-    "ogDescription": "密瓜智能无缝加速 AI、HPC 和边缘计算工作负载。",
-    "twitterDescription": "密瓜智能无缝加速 AI、HPC 和边缘计算工作负载。",
-    "creator": "Dynamia AI（密瓜智能）",
-    "orgName": "Dynamia AI",
-    "orgAlternateName": "密瓜智能",
-    "orgDescription": "密瓜智能（Dynamia AI）提供企业级 GPU 虚拟化和资源管理解决方案，覆盖 AI、HPC 和边缘计算场景。",
-    "orgUrl": "https://dynamia.ai"
-  },
   "Seo": {
     "home": {
       "title": "密瓜智能 - 统一异构计算平台",
@@ -50,7 +35,6 @@
       "description": "使用免费的 HAMi 指标分析与 GPU 资产 ROI 估算工具，规划 GPU 虚拟化与 AI 基础设施投入。",
       "keywords": "密瓜智能工具，HAMi，GPU 虚拟化，GPU 共享，ROI 计算器，AI 基础设施"
     },
-
     "solutions": {
       "title": "解决方案 - 密瓜智能 | AI, HPC 与边缘计算",
       "description": "为 AI/ML、HPC 和边缘计算挑战提供强大的计算解决方案。使用密瓜智能的异构计算平台优化您的基础设施。",
@@ -72,280 +56,25 @@
       "keywords": "密瓜智能 常见问题，HAMi 问题，GPU 虚拟化 FAQ, 异构计算问题"
     }
   },
+  "Metadata": {
+    "title": "密瓜智能 - 统一异构计算平台",
+    "description": "密瓜智能无缝加速 AI、HPC 和边缘计算工作负载。企业级 GPU 虚拟化和资源管理平台，基于 CNCF 开源项目 HAMi 构建。",
+    "keywords": "密瓜智能，异构计算，GPU 虚拟化，GPU 共享，AI 基础设施，HAMi, 企业计算",
+    "template": "%s | 密瓜智能",
+    "siteName": "Dynamia AI（密瓜智能）",
+    "ogLocale": "zh_CN",
+    "ogDescription": "密瓜智能无缝加速 AI、HPC 和边缘计算工作负载。",
+    "twitterDescription": "密瓜智能无缝加速 AI、HPC 和边缘计算工作负载。",
+    "creator": "Dynamia AI（密瓜智能）",
+    "orgName": "Dynamia AI",
+    "orgAlternateName": "密瓜智能",
+    "orgDescription": "密瓜智能（Dynamia AI）提供企业级 GPU 虚拟化和资源管理解决方案，覆盖 AI、HPC 和边缘计算场景。",
+    "orgUrl": "https://dynamia.ai"
+  },
   "navigation": {
-    "home": "首页",
-    "hami": "HAMi",
-    "whatIsHami": "什么是 HAMi",
-    "whatIsHamiDesc": "了解 HAMi 开源项目的核心功能与价值",
-    "hamiWebsite": "HAMi 官网",
-    "hamiWebsiteDesc": "访问 HAMi 的官方网站获取详细信息",
-    "hamiGithub": "GitHub",
-    "hamiGithubDesc": "查看源代码并参与 HAMi 的开源协作",
-    "community": "社区",
-    "communityDesc": "加入 HAMi 用户社区，分享经验与获取帮助",
-    "joinCommunity": "加入社区",
-    "joinCommunityDesc": "加入 HAMi 用户社区，分享经验与获取帮助",
-    "products": "产品",
-    "productsOverview": "产品概览",
-    "productsOverviewDesc": "了解密瓜智能异构算力平台与开源 HAMi 项目",
-    "hamiEnterprise": "Dynamia Enterprise for HAMi",
-    "hamiEnterpriseDesc": "基于 CNCF Incubating 项目构建的企业级 GPU 虚拟化方案",
-    "hamiAiPlatform": "Dynamia AI Platform for HAMi",
-    "hamiAiPlatformDesc": "异构算力集群全栈管控平台",
-    "enterpriseDownloads": "企业版下载",
-    "enterpriseDownloadsDesc": "查看企业版矩阵，下载镜像离线包、Helm Chart 与安装指南",
-    "caseStudies": "客户案例",
-    "solutions": "解决方案",
-    "pricing": "定价",
-    "resources": "资源",
-    "resourcesDoc": "文档",
-    "resourcesDocDesc": "访问 HAMi 的全面指南和参考资料",
-    "resourcesBlog": "博客",
-    "resourcesBlogDesc": "阅读有关 HAMi 的最新消息、教程和更新",
-    "resourcesTools": "工具",
-    "resourcesToolsDesc": "打开运维与排障常用工具",
-    "resourcesVideos": "视频",
-    "resourcesVideosDesc": "观看产品演示和介绍视频",
-    "adopters": "采用者",
-    "adoptersDesc": "查看哪些组织在生产环境中使用 HAMi",
-    "company": "公司",
     "freeTrial": "申请试用",
-    "requestDemo": "申请演示",
-    "logo": "/dynamia-logo-zh.svg",
-    "logoDark": "/dynamia-logo-zh-white.svg",
-    "openMenu": "打开菜单",
-    "eventBannerLabel": "KubeCon + CloudNativeCon Europe:",
-    "eventBannerMessage": "HAMi 社区展位：Project Pavilion P-13B。密瓜智能 团队在 3 月 24 日 15:10-19:00、3 月 26 日 12:30-14:00 与你现场交流。",
-    "eventBannerDetails": "活动详情",
-    "eventBannerDetailsAria": "打开 KubeCon Europe 活动详情页面",
-    "eventBannerClose": "关闭顶部通知",
-    "caseTelecom": "电信运营商案例",
-    "caseTelecomDesc": "了解某电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",
-    "caseKeHoldings": "贝壳案例",
-    "caseKeHoldingsDesc": "探索贝壳如何基于 HAMi 与 Kubernetes 实现机器学习基础设施 GPU 虚拟化，利用率提升近 3 倍",
-    "caseDaoCloud": " DaoCloud 案例",
-    "caseDaoCloudDesc": "探索 DaoCloud 如何基于 HAMi 构建灵活的 GPU 云，涵盖 D.run 算力云和 DaoCloud 企业版",
-    "caseSfTechnology": "顺丰科技案例",
-    "caseSfTechnologyDesc": "探索顺丰科技如何基于 HAMi 打造 EffectiveGPU，提升 AI 效率并降低成本",
-    "casePrepEdu": "PREP EDU 案例",
-    "casePrepEduDesc": "探索 PREP EDU 如何基于 HAMi 实现异构 GPU 智能调度，全面提升资源利用率与运维效率"
-  },
-  "home": {
-    "hero": {
-      "title": "开源，多元异构 GPU 共享、调度系统",
-      "subtitle": "提供灵活、可靠、按需、弹性的多元异构 GPU 虚拟化、调度、管理能力，最大化提高 GPU 利用率",
-      "chineseSlogan": "统一异构计算，提升资源效率"
-    },
-    "socialProof": {
-      "title": "全球领先 AI 实验室和企业的信任之选"
-    },
-    "keyAdvantages": {
-      "title": "为什么选择我们？",
-      "advantages": [
-        {
-          "title": "高性能调度",
-          "description": "通过智能工作负载调度优化资源分配"
-        },
-        {
-          "title": "多集群编排",
-          "description": "无缝管理多个集群和环境中的资源"
-        },
-        {
-          "title": "GPU 加速管理",
-          "description": "最大化利用专用硬件处理 AI、ML 和 HPC 工作负载"
-        },
-        {
-          "title": "成本优化和自动扩展",
-          "description": "根据工作负载需求自动扩展或缩减资源"
-        }
-      ],
-      "tabs": [
-        {
-          "title": "多元异构集群",
-          "subtitle": "多元异构 AI 集群统一调度、管理",
-          "description": "密瓜智能 提供统一高效管理多元异构 AI 算力集群，让用户无感使用、管理、调度来自公有云、私有云、本地的 算力集群，最大化利用率，提高管理效率。"
-        },
-        {
-          "title": "GPU 共享",
-          "subtitle": "最大化 GPU 利用率，降低成本，极大提高 AI 效率",
-          "description": "密瓜智能 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU  利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
-        },
-        {
-          "title": "GPU 超卖",
-          "subtitle": "对齐 GPU 显存与主机内存，扩大 AI 资源池",
-          "description": "密瓜智能 提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
-        },
-        {
-          "title": "自动弹性扩缩容",
-          "subtitle": "AI 应用无感、动态扩缩容",
-          "description": "密瓜智能 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
-        },
-        {
-          "title": "集中可观测",
-          "subtitle": "全栈 AI 运行洞察",
-          "description": "通过集中可观测能力统一汇聚公有云、私有云与本地资源，提供可执行洞察、策略化治理与细粒度资源管理，保障 AI 业务高效稳定运行。"
-        },
-        {
-          "title": "高级 AI 调度",
-          "subtitle": "面向场景的智能调度策略",
-          "description": "支持 NUMA-aware、Binpack、Spread 等高级调度策略，降低数据通信开销，减少资源碎片，持续优化任务性能。"
-        }
-      ]
-    },
-    "poweredByHami": {
-      "title": "由 HAMi 提供支持",
-      "description": "领先，开源异构虚拟化中间件，可运行在任意云环境中",
-      "learnMore": "了解更多",
-      "stats": {
-        "contributors": "500+",
-        "commits": "1200+",
-        "dockerPulls": "100K+"
-      }
-    },
-    "joinCommunity": {
-      "title": "加入我们的社区",
-      "bilibili": {
-        "title": "在 Bilibili 上关注我们",
-        "action": "关注"
-      },
-      "slack": {
-        "title": "在 Slack 与我们交流",
-        "action": "加入"
-      },
-      "discord": {
-        "title": "在 Discord 与我们交流",
-        "action": "加入"
-      },
-      "twitter": {
-        "title": "在 X 上关注我们",
-        "action": "关注"
-      },
-      "reddit": {
-        "title": "在 Reddit 上讨论",
-        "action": "加入"
-      },
-      "wechat": {
-        "title": "微信",
-        "action": "添加小助手进群交流"
-      }
-    },
-    "ecosystem": {
-      "title": "生态集成",
-      "subtitle": "GPU 虚拟化与调度的集成由 HAMi 提供支持",
-      "viewDetails": "查看详情"
-    },
-    "testimonials": {
-      "title": "客户评价",
-      "items": [
-        {
-          "quote": "密瓜智能 大大提高了我们的计算效率，使我们能够比以往更快地扩展 AI 研究。",
-          "author": "Dr. Jane Smith",
-          "position": "首席技术官",
-          "company": "AI 研究所"
-        },
-        {
-          "quote": "在我们的 AI 计算基础设施中，跨异构计算环境的无缝集成减少了 60% 的部署时间。",
-          "author": "Michael Johnson",
-          "position": "工程副总裁",
-          "company": "TechCorp Global"
-        }
-      ]
-    },
-    "cta": {
-      "title": "准备好改造您的 AI 计算基础设施了吗？",
-      "freeTrialButton": "开始申请试用",
-      "viewPricing": "查看定价"
-    },
-    "trustedBy": {
-      "title": "行业领导者的信赖选择",
-      "description": "各行业的领先组织都依靠 密瓜智能 高效管理其异构计算资源"
-    },
-    "cncfBanner": {
-      "badge": "社区 Meetup",
-      "headline": "HAMi Community Meetup 上海站",
-      "subline": "9 月 6 日 · HAMi 晋升 CNCF 孵化项目特别活动",
-      "cta": "立即报名"
-    }
-  },
-  "products": {
-    "hamiAiPlatform": {
-      "title": "Dynamia AI Platform for HAMi",
-      "subtitle": "企业级异构计算虚拟化平台",
-      "description": "密瓜智能 提供了一个统一平台，用于管理异构计算资源，优化性能并降低成本。",
-      "overviewTitle": "产品概述",
-      "overviewDescription": "Dynamia AI 是一个专为企业级异构计算环境设计的统一管理平台。它能够无缝整合各种计算资源，包括 CPU、GPU、NPU、DCU 和专用加速器，以优化工作负载分配和资源利用率。",
-      "platformPreview": "Dynamia AI UI",
-      "coreFeaturesTitle": "核心功能",
-      "ctaTitle": "准备好开始使用 Dynamia AI 了吗？",
-      "features": [
-        "智能工作负载调度",
-        "实时资源监控",
-        "自动扩展和优化",
-        "跨平台兼容性",
-        "企业级安全"
-      ],
-      "technicalArchitecture": "技术架构",
-      "architectureDiagram": "架构图",
-      "readyToStart": "准备好转变您的计算基础设施了吗？",
-      "customSolutions": {
-        "title": "定制解决方案",
-        "description": "我们了解每个组织都有独特的需求。我们的专家团队可以为您的特定挑战定制 密瓜智能 解决方案。",
-        "contactText": "联系我们的解决方案专家，准备好解决您的 AI 计算挑战了吗？"
-      },
-      "exploreResources": {
-        "title": "探索我们的技术文档",
-        "description": "探索我们的技术文档、博客文章和实用工具，了解更多关于密瓜智能的信息"
-      },
-      "latestResources": {
-        "title": "最新资源",
-        "newsletterTitle": "订阅我们的技术通讯",
-        "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
-        "subscribeButton": "订阅"
-      },
-      "viewPricing": "查看定价",
-      "ctaDescription": "体验 密瓜智能 如何优化您的计算资源。立即开始免费试用或申请定制定价方案。",
-      "overview": {
-        "title": "企业级异构计算解决方案",
-        "description": "密瓜智能 基于 HAMi 开源技术的强大基础，增加了企业级功能、安全性和对关键业务环境的支持。",
-        "highlights": [
-          "基于 HAMi 开源核心",
-          "增强的企业级功能",
-          "专业技术支持",
-          "持续更新和维护"
-        ]
-      },
-      "architectureDescription": "密瓜智能 提供了全面的基础设施，用于高效管理异构计算资源。",
-      "commercialFeatures": {
-        "title": "企业级功能",
-        "subtitle": "密瓜智能 基于 HAMi 核心能力，打造专为生产环境优化的企业级增强功能。",
-        "list": [
-          {
-            "title": "多元异构集群",
-            "description": "统一管理来自多个厂商的异构算力集群，方便运维。"
-          },
-          {
-            "title": "GPU 共享",
-            "description": "密瓜智能 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU 利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
-          },
-          {
-            "title": "GPU 超卖",
-            "description": "密瓜智能  提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
-          },
-          {
-            "title": "自动弹性扩缩容",
-            "description": "密瓜智能 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
-          },
-          {
-            "title": "中心化的全链路 AI 可观测性",
-            "description": "集中式可观测性将来自云端、本地以及混合环境的资源进行了统一整合，为企业提供了具有可操作性的见解、策略驱动的管理模式以及精细的资源管理，从而实现高效且可扩展的人工智能运营。"
-          },
-          {
-            "title": "高级 AI 调度",
-            "description": "针对包括非统一内存访问（NUMA）感知、装箱（binpack）、分散（spread）等不同场景的先进 AI 调度。降低数据通信成本，最大程度减少碎片化，优化任务性能。"
-          }
-        ]
-      }
-    }
+    "logo": "/redesign/assets/cf10a2fcc13438169897.svg",
+    "logoDark": "/redesign/assets/931baba8fa5e14fe2655.svg"
   },
   "solutions": {
     "title": "解决方案",
@@ -380,14 +109,10 @@
     "readyForChallenge": "准备好解决您的 AI 计算挑战了吗？"
   },
   "freeTrial": {
-    "title": "申请试用",
-    "subtitle": "立即开始申请试用，体验密瓜智能企业级异构计算虚拟化平台的强大功能",
     "form": {
       "name": "姓名",
       "email": "工作邮箱",
       "company": "公司名称",
-      "useCase": "您计划如何使用密瓜智能企业级异构计算虚拟化平台？",
-      "terms": "我同意密瓜智能的服务条款和隐私政策",
       "termsRequired": "您必须同意条款和条件才能继续。",
       "emailRequired": "工作邮箱为必填项。",
       "phoneRequired": "电话号码/微信为必填项。",
@@ -397,115 +122,10 @@
       "invalidPhoneOrWechat": "请输入有效的电话号码或微信号。",
       "jobTitle": "职位",
       "message": "您希望了解或讨论的内容？",
-      "intent": "您本次的需求？",
-      "intentSelfTrial": "自助试用（License & 部署）",
-      "intentDemo": "安排个性化演示",
-      "intentSales": "商务咨询（报价 / 合作）",
       "submitting": "处理中...",
-      "submitButton": "提交申请",
-      "submitSuccess": "谢谢！您的请求已提交。我们的团队将在 24 小时内与您联系。",
-      "submitError": "提交请求时发生错误。请重试或直接通过 info@dynamia.ai 与我们联系。",
-      "fields": {
-        "email": {
-          "required": true,
-          "label": "邮箱"
-        },
-        "phone": {
-          "required": true,
-          "label": "电话/微信号"
-        }
-      }
-    },
-    "disclaimer": "试用结束后，您可以选择升级到付费计划或取消账户。无需信用卡。"
-  },
-  "resources": {
-    "title": "资源中心",
-    "subtitle": "探索我们的技术文档、博客文章和实用工具，了解更多关于密瓜智能的信息",
-    "viewMore": "查看更多",
-    "documentation": {
-      "title": "文档",
-      "description": "技术指南、API 参考和最佳实践"
-    },
-    "blog": {
-      "title": "博客",
-      "description": "来自我们团队的见解、教程和新闻",
-      "tableOfContents": "本页目录",
-      "aiShare": {
-        "exploreTitle": "用 AI 探索",
-        "exploreSubtitle": "使用 AI 工具深入理解文章内容",
-        "shareTitle": "分享这篇文章",
-        "shareAt": "分享到：",
-        "tipLabel": "提示",
-        "tip": "AI 将帮助您总结要点并分析技术细节。",
-        "aiPrompt": "请访问这个链接并为我总结这篇文章：{{url}}",
-        "aiTools": {
-          "chatgpt": {
-            "name": "ChatGPT",
-            "desc": "智能总结"
-          },
-          "perplexity": {
-            "name": "Perplexity",
-            "desc": "深度分析"
-          },
-          "claude": {
-            "name": "Claude",
-            "desc": "专业洞察"
-          },
-          "gemini": {
-            "name": "Google AI",
-            "desc": "快速见解"
-          },
-          "grok": {
-            "name": "Grok",
-            "desc": "X AI 分析"
-          },
-          "deepseek": {
-            "name": "DeepSeek",
-            "desc": "深度分析"
-          }
-        }
-      }
-    },
-    "whitepapers": {
-      "title": "白皮书",
-      "description": "深入分析和研究报告"
-    },
-    "latestResources": {
-      "title": "最新资源",
-      "articles": [
-        {
-          "title": "密瓜智能 v2.0 发布：新特性与改进",
-          "category": "博客",
-          "date": "2025-01-15",
-          "excerpt": "了解 密瓜智能 最新版本中的重要更新和性能提升。",
-          "link": "/resources/blog/密瓜智能-v2-release"
-        },
-        {
-          "title": "异构计算在大规模 AI 训练中的应用",
-          "category": "白皮书",
-          "date": "2024-12-10",
-          "excerpt": "探索如何利用 密瓜智能 优化大规模 AI 模型训练的资源分配。",
-          "link": "/resources/whitepapers/heterogeneous-computing-ai-training"
-        },
-        {
-          "title": "密瓜智能 API 参考指南",
-          "category": "文档",
-          "date": "2024-11-28",
-          "excerpt": "全面的 API 文档，帮助开发者集成和扩展 密瓜智能 平台。",
-          "link": "/resources/documentation/api-reference"
-        },
-        {
-          "title": "案例研究：TechCorp 如何节省 40% 的计算成本",
-          "category": "博客",
-          "date": "2024-11-15",
-          "excerpt": "了解 TechCorp 如何使用 密瓜智能 优化其 HPC 工作负载并显著降低成本。",
-          "link": "/resources/blog/techcorp-case-study"
-        }
-      ],
-      "newsletterTitle": "订阅我们的技术通讯",
-      "newsletterDescription": "定期获取最新的产品更新、技术文章和行业见解，直接发送到您的邮箱。",
-      "emailPlaceholder": "您的邮箱地址",
-      "subscribeButton": "订阅"
+      "jobTitleRequired": "职位为必填项。",
+      "invalidJobTitle": "请输入有效的职位（1-100 个字符，不含特殊符号）。",
+      "useCompanyEmail": "请使用公司邮箱提交表单。"
     }
   },
   "tools": {
@@ -561,8 +181,15 @@
         "none": {
           "title": "无 HAMi",
           "subtitle": "整卡独占 · 现状",
-          "specs": { "utilization": "实际利用率", "sharing": "无共享能力" },
-          "features": ["一卡一任务，资源大量闲置", "显存与算力无法共享", "扩容只能靠继续买卡"]
+          "specs": {
+            "utilization": "实际利用率",
+            "sharing": "无共享能力"
+          },
+          "features": [
+            "一卡一任务，资源大量闲置",
+            "显存与算力无法共享",
+            "扩容只能靠继续买卡"
+          ]
         },
         "oss": {
           "title": "HAMi 开源版",
@@ -571,15 +198,29 @@
           "exceeded": "当前已超出",
           "limitNote": "大规模场景调度能力受限",
           "limitNoteOver": "当前 {count} 卡已超出开源版承载上限",
-          "specs": { "utilization": "利用率上限", "scale": "GPU 规模上限" },
-          "features": ["vGPU 切分 · 显存算力隔离", "适合 ≤200 卡的中小规模", "社区支持，无 SLA 保障"]
+          "specs": {
+            "utilization": "利用率上限",
+            "scale": "GPU 规模上限"
+          },
+          "features": [
+            "vGPU 切分 · 显存算力隔离",
+            "适合 ≤200 卡的中小规模",
+            "社区支持，无 SLA 保障"
+          ]
         },
         "enterprise": {
           "title": "Dynamia Enterprise for HAMi",
           "subtitle": "密瓜智能 · 商业支持",
           "scaleValue": "无上限",
-          "specs": { "utilization": "利用率上限", "scale": "GPU 规模 · 万卡级" },
-          "features": ["显存超配 UMI · 弹性扩缩", "多集群统一管理 · 企业级 SLA", "7×24 专家支持 · 信创适配"]
+          "specs": {
+            "utilization": "利用率上限",
+            "scale": "GPU 规模 · 万卡级"
+          },
+          "features": [
+            "显存超配 UMI · 弹性扩缩",
+            "多集群统一管理 · 企业级 SLA",
+            "7×24 专家支持 · 信创适配"
+          ]
         }
       },
       "comparison": {
@@ -634,7 +275,13 @@
       "config": {
         "currencySymbol": "¥",
         "moneyScale": "eastAsian",
-        "moneyUnits": { "tenThousand": "万", "hundredMillion": "亿", "thousand": "", "million": "", "billion": "" },
+        "moneyUnits": {
+          "tenThousand": "万",
+          "hundredMillion": "亿",
+          "thousand": "",
+          "million": "",
+          "billion": ""
+        },
         "defaultVendorId": "nvidia",
         "electricityPrice": 0.7,
         "serverPrices": {
@@ -643,82 +290,427 @@
           "inference": 120000
         },
         "presets": [
-          { "id": "small", "label": "中小团队 · 100 卡", "count": 100, "vendorId": "metax", "cardId": "C500", "currentUtilization": 22, "ossUtilization": 38, "enterpriseUtilization": 72 },
-          { "id": "mid", "label": "大型央企 · 1,000 卡", "count": 1000, "vendorId": "nvidia", "cardId": "A100-80G", "currentUtilization": 25, "ossUtilization": 35, "enterpriseUtilization": 70 },
-          { "id": "large", "label": "头部金融 · 3,200 卡", "count": 3200, "vendorId": "nvidia", "cardId": "H20", "currentUtilization": 22, "ossUtilization": 33, "enterpriseUtilization": 68 },
-          { "id": "xinchuang", "label": "信创混部 · 2,000 卡", "count": 2000, "vendorId": "ascend", "cardId": "A910B", "currentUtilization": 20, "ossUtilization": 32, "enterpriseUtilization": 65 }
+          {
+            "id": "small",
+            "label": "中小团队 · 100 卡",
+            "count": 100,
+            "vendorId": "metax",
+            "cardId": "C500",
+            "currentUtilization": 22,
+            "ossUtilization": 38,
+            "enterpriseUtilization": 72
+          },
+          {
+            "id": "mid",
+            "label": "大型央企 · 1,000 卡",
+            "count": 1000,
+            "vendorId": "nvidia",
+            "cardId": "A100-80G",
+            "currentUtilization": 25,
+            "ossUtilization": 35,
+            "enterpriseUtilization": 70
+          },
+          {
+            "id": "large",
+            "label": "头部金融 · 3,200 卡",
+            "count": 3200,
+            "vendorId": "nvidia",
+            "cardId": "H20",
+            "currentUtilization": 22,
+            "ossUtilization": 33,
+            "enterpriseUtilization": 68
+          },
+          {
+            "id": "xinchuang",
+            "label": "信创混部 · 2,000 卡",
+            "count": 2000,
+            "vendorId": "ascend",
+            "cardId": "A910B",
+            "currentUtilization": 20,
+            "ossUtilization": 32,
+            "enterpriseUtilization": 65
+          }
         ]
       },
       "catalog": [
         {
-          "id": "nvidia", "name": "NVIDIA", "color": "#76B900",
+          "id": "nvidia",
+          "name": "NVIDIA",
+          "color": "#76B900",
           "cards": [
-            { "id": "A800", "name": "A800", "price": 65000, "tdp": 400, "serverTier": "main" },
-            { "id": "A100-40G", "name": "A100 40G", "price": 73500, "tdp": 400, "serverTier": "main" },
-            { "id": "A100-80G", "name": "A100 80G", "price": 145000, "tdp": 400, "serverTier": "main" },
-            { "id": "H800", "name": "H800", "price": 230000, "tdp": 700, "serverTier": "flagship" },
-            { "id": "H100", "name": "H100", "price": 270000, "tdp": 700, "serverTier": "flagship" },
-            { "id": "H20", "name": "H20 141GB", "price": 120000, "tdp": 400, "serverTier": "main" },
-            { "id": "H200", "name": "H200", "price": 175000, "tdp": 700, "serverTier": "flagship" },
-            { "id": "L20", "name": "L20", "price": 17000, "tdp": 275, "serverTier": "inference" },
-            { "id": "L40", "name": "L40", "price": 32000, "tdp": 300, "serverTier": "inference" },
-            { "id": "L40S", "name": "L40S", "price": 48000, "tdp": 350, "serverTier": "inference" },
-            { "id": "RTX-A6000", "name": "RTX A6000", "price": 32000, "tdp": 300, "serverTier": "inference" },
-            { "id": "RTX-4090", "name": "RTX 4090", "price": 13000, "tdp": 450, "serverTier": "inference" },
-            { "id": "RTX-3080", "name": "RTX 3080", "price": 4000, "tdp": 320, "serverTier": "inference" }
+            {
+              "id": "A800",
+              "name": "A800",
+              "price": 65000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "A100-40G",
+              "name": "A100 40G",
+              "price": 73500,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "A100-80G",
+              "name": "A100 80G",
+              "price": 145000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "H800",
+              "name": "H800",
+              "price": 230000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "H100",
+              "name": "H100",
+              "price": 270000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "H20",
+              "name": "H20 141GB",
+              "price": 120000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "H200",
+              "name": "H200",
+              "price": 175000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "L20",
+              "name": "L20",
+              "price": 17000,
+              "tdp": 275,
+              "serverTier": "inference"
+            },
+            {
+              "id": "L40",
+              "name": "L40",
+              "price": 32000,
+              "tdp": 300,
+              "serverTier": "inference"
+            },
+            {
+              "id": "L40S",
+              "name": "L40S",
+              "price": 48000,
+              "tdp": 350,
+              "serverTier": "inference"
+            },
+            {
+              "id": "RTX-A6000",
+              "name": "RTX A6000",
+              "price": 32000,
+              "tdp": 300,
+              "serverTier": "inference"
+            },
+            {
+              "id": "RTX-4090",
+              "name": "RTX 4090",
+              "price": 13000,
+              "tdp": 450,
+              "serverTier": "inference"
+            },
+            {
+              "id": "RTX-3080",
+              "name": "RTX 3080",
+              "price": 4000,
+              "tdp": 320,
+              "serverTier": "inference"
+            }
           ]
         },
-        { "id": "ascend", "name": "华为昇腾", "color": "#CF0A2C", "cards": [
-          { "id": "A910B", "name": "昇腾 910B", "price": 90000, "tdp": 400, "serverTier": "main" },
-          { "id": "A910C", "name": "昇腾 910C", "price": 165000, "tdp": 750, "serverTier": "flagship" },
-          { "id": "A310P", "name": "昇腾 310P", "price": 18000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "hygon", "name": "海光", "color": "#B5121B", "cards": [
-          { "id": "BW100", "name": "海光 BW100", "price": 100000, "tdp": 400, "serverTier": "main" },
-          { "id": "K100", "name": "DCU K100", "price": 40000, "tdp": 300, "serverTier": "main" },
-          { "id": "Z100", "name": "DCU Z100", "price": 50000, "tdp": 280, "serverTier": "inference" }
-        ] },
-        { "id": "cambricon", "name": "寒武纪", "color": "#F7941E", "cards": [
-          { "id": "MLU590", "name": "思元 590", "price": 65000, "tdp": 350, "serverTier": "main" },
-          { "id": "MLU370", "name": "思元 370", "price": 60000, "tdp": 250, "serverTier": "inference" }
-        ] },
-        { "id": "metax", "name": "沐曦", "color": "#00A0E9", "cards": [
-          { "id": "C500", "name": "曦云 C500", "price": 90000, "tdp": 350, "serverTier": "main" },
-          { "id": "C550", "name": "曦云 C550", "price": 110000, "tdp": 450, "serverTier": "main" },
-          { "id": "N260", "name": "曦思 N260", "price": 70000, "tdp": 200, "serverTier": "inference" },
-          { "id": "N100", "name": "曦思 N100", "price": 50000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "kunlunxin", "name": "昆仑芯", "color": "#0066B3", "cards": [
-          { "id": "P800", "name": "昆仑芯 P800", "price": 90000, "tdp": 400, "serverTier": "main" },
-          { "id": "P200", "name": "昆仑芯 P200", "price": 40000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "enflame", "name": "燧原", "color": "#00457C", "cards": [
-          { "id": "S60", "name": "云燧 S60", "price": 50000, "tdp": 300, "serverTier": "inference" },
-          { "id": "i20", "name": "云燧 i20", "price": 80000, "tdp": 300, "serverTier": "main" }
-        ] },
-        { "id": "iluvatar", "name": "天数智芯", "color": "#1D4E9C", "cards": [
-          { "id": "BI-V100", "name": "天垓 BI-V100", "price": 70000, "tdp": 250, "serverTier": "main" },
-          { "id": "BI-V150", "name": "天垓 BI-V150", "price": 85000, "tdp": 300, "serverTier": "main" },
-          { "id": "MR", "name": "智铠 MR", "price": 30000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "moore", "name": "摩尔线程", "color": "#D7282F", "cards": [
-          { "id": "S4000", "name": "MTT S4000", "price": 65000, "tdp": 350, "serverTier": "main" },
-          { "id": "S5000", "name": "MTT S5000", "price": 80000, "tdp": 450, "serverTier": "main" },
-          { "id": "S3000", "name": "MTT S3000", "price": 10000, "tdp": 250, "serverTier": "inference" }
-        ] },
-        { "id": "biren", "name": "壁仞", "color": "#7B2D8E", "cards": [
-          { "id": "BR100", "name": "BR100", "price": 100000, "tdp": 550, "serverTier": "flagship" },
-          { "id": "BR104", "name": "BR104", "price": 60000, "tdp": 300, "serverTier": "main" }
-        ] },
-        { "id": "pingtouge", "name": "平头哥", "color": "#FF6A00", "cards": [
-          { "id": "ZHENWU-M890", "name": "真武 M890", "price": 180000, "tdp": 700, "serverTier": "flagship" },
-          { "id": "ZHENWU-810E", "name": "真武 810E", "price": 120000, "tdp": 500, "serverTier": "main" },
-          { "id": "HANGUANG-800", "name": "含光 800", "price": 50000, "tdp": 150, "serverTier": "inference" }
-        ] },
-        { "id": "amd", "name": "AMD", "color": "#ED1C24", "cards": [
-          { "id": "MI300X", "name": "MI300X", "price": 140000, "tdp": 750, "serverTier": "flagship" },
-          { "id": "MI250X", "name": "MI250X", "price": 90000, "tdp": 500, "serverTier": "main" }
-        ] }
+        {
+          "id": "ascend",
+          "name": "华为昇腾",
+          "color": "#CF0A2C",
+          "cards": [
+            {
+              "id": "A910B",
+              "name": "昇腾 910B",
+              "price": 90000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "A910C",
+              "name": "昇腾 910C",
+              "price": 165000,
+              "tdp": 750,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "A310P",
+              "name": "昇腾 310P",
+              "price": 18000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "hygon",
+          "name": "海光",
+          "color": "#B5121B",
+          "cards": [
+            {
+              "id": "BW100",
+              "name": "海光 BW100",
+              "price": 100000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "K100",
+              "name": "DCU K100",
+              "price": 40000,
+              "tdp": 300,
+              "serverTier": "main"
+            },
+            {
+              "id": "Z100",
+              "name": "DCU Z100",
+              "price": 50000,
+              "tdp": 280,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "cambricon",
+          "name": "寒武纪",
+          "color": "#F7941E",
+          "cards": [
+            {
+              "id": "MLU590",
+              "name": "思元 590",
+              "price": 65000,
+              "tdp": 350,
+              "serverTier": "main"
+            },
+            {
+              "id": "MLU370",
+              "name": "思元 370",
+              "price": 60000,
+              "tdp": 250,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "metax",
+          "name": "沐曦",
+          "color": "#00A0E9",
+          "cards": [
+            {
+              "id": "C500",
+              "name": "曦云 C500",
+              "price": 90000,
+              "tdp": 350,
+              "serverTier": "main"
+            },
+            {
+              "id": "C550",
+              "name": "曦云 C550",
+              "price": 110000,
+              "tdp": 450,
+              "serverTier": "main"
+            },
+            {
+              "id": "N260",
+              "name": "曦思 N260",
+              "price": 70000,
+              "tdp": 200,
+              "serverTier": "inference"
+            },
+            {
+              "id": "N100",
+              "name": "曦思 N100",
+              "price": 50000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "kunlunxin",
+          "name": "昆仑芯",
+          "color": "#0066B3",
+          "cards": [
+            {
+              "id": "P800",
+              "name": "昆仑芯 P800",
+              "price": 90000,
+              "tdp": 400,
+              "serverTier": "main"
+            },
+            {
+              "id": "P200",
+              "name": "昆仑芯 P200",
+              "price": 40000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "enflame",
+          "name": "燧原",
+          "color": "#00457C",
+          "cards": [
+            {
+              "id": "S60",
+              "name": "云燧 S60",
+              "price": 50000,
+              "tdp": 300,
+              "serverTier": "inference"
+            },
+            {
+              "id": "i20",
+              "name": "云燧 i20",
+              "price": 80000,
+              "tdp": 300,
+              "serverTier": "main"
+            }
+          ]
+        },
+        {
+          "id": "iluvatar",
+          "name": "天数智芯",
+          "color": "#1D4E9C",
+          "cards": [
+            {
+              "id": "BI-V100",
+              "name": "天垓 BI-V100",
+              "price": 70000,
+              "tdp": 250,
+              "serverTier": "main"
+            },
+            {
+              "id": "BI-V150",
+              "name": "天垓 BI-V150",
+              "price": 85000,
+              "tdp": 300,
+              "serverTier": "main"
+            },
+            {
+              "id": "MR",
+              "name": "智铠 MR",
+              "price": 30000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "moore",
+          "name": "摩尔线程",
+          "color": "#D7282F",
+          "cards": [
+            {
+              "id": "S4000",
+              "name": "MTT S4000",
+              "price": 65000,
+              "tdp": 350,
+              "serverTier": "main"
+            },
+            {
+              "id": "S5000",
+              "name": "MTT S5000",
+              "price": 80000,
+              "tdp": 450,
+              "serverTier": "main"
+            },
+            {
+              "id": "S3000",
+              "name": "MTT S3000",
+              "price": 10000,
+              "tdp": 250,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "biren",
+          "name": "壁仞",
+          "color": "#7B2D8E",
+          "cards": [
+            {
+              "id": "BR100",
+              "name": "BR100",
+              "price": 100000,
+              "tdp": 550,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "BR104",
+              "name": "BR104",
+              "price": 60000,
+              "tdp": 300,
+              "serverTier": "main"
+            }
+          ]
+        },
+        {
+          "id": "pingtouge",
+          "name": "平头哥",
+          "color": "#FF6A00",
+          "cards": [
+            {
+              "id": "ZHENWU-M890",
+              "name": "真武 M890",
+              "price": 180000,
+              "tdp": 700,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "ZHENWU-810E",
+              "name": "真武 810E",
+              "price": 120000,
+              "tdp": 500,
+              "serverTier": "main"
+            },
+            {
+              "id": "HANGUANG-800",
+              "name": "含光 800",
+              "price": 50000,
+              "tdp": 150,
+              "serverTier": "inference"
+            }
+          ]
+        },
+        {
+          "id": "amd",
+          "name": "AMD",
+          "color": "#ED1C24",
+          "cards": [
+            {
+              "id": "MI300X",
+              "name": "MI300X",
+              "price": 140000,
+              "tdp": 750,
+              "serverTier": "flagship"
+            },
+            {
+              "id": "MI250X",
+              "name": "MI250X",
+              "price": 90000,
+              "tdp": 500,
+              "serverTier": "main"
+            }
+          ]
+        }
       ]
     },
     "hamiMetricsExplorer": {
@@ -728,7 +720,7 @@
     "hamiMetricsExplorerPage": {
       "subtitle": "解析 HAMi 指标，查看 GPU 分配状态并导出清单 JSON。",
       "uploadTitle": "拖拽 Prometheus 指标文件到这里，或点击选择文件",
-      "uploadDesc": "支持 HAMi / HAMi AI Platform 指标格式",
+      "uploadDesc": "支持 HAMi / Dynamia HAMi 平台版 指标格式",
       "exportButton": "导出 JSON",
       "mergeButton": "与旧数据合并",
       "analysisTitle": "分析",
@@ -804,285 +796,8 @@
       }
     }
   },
-  "company": {
-    "about": {
-      "title": "公司简介",
-      "description": "AI 基础设施的开源内核——让异构算力因开源而好用。",
-      "whoWeAre": {
-        "title": "公司简介",
-        "paragraph1": "上海密瓜智能科技有限公司（简称密瓜智能，Dynamia）于 2025 年 1 月 23 日成立，法定代表人为张潇，注册资本为 205 万元人民币。公司主营异构算力虚拟化、调度和统一管理相关技术研发，为企业提供基于 Kubernetes 的 GPU 资源共享、异构算力调度、AI 工作负载管理及相关技术服务。",
-        "paragraph2": "2025 年 3 月，公司完成超 500 万元人民币种子轮融资，投资方包括 DaoCloud 道客、奇绩创坛及其他种子投资人；2026 年 1 月，公司完成数千万元人民币天使轮融资，由复星创富领投，拙朴投资、种子投资人及产业方跟投。",
-        "paragraph3": "公司由创始人兼 CEO 张潇、联合创始人兼 CTO 李孟轩领衔。两人均为开源项目 HAMi 的发起人及维护者，核心团队成员具有云计算、云原生和异构算力领域从业经历。"
-      },
-      "mission": {
-        "title": "我们的使命",
-        "description1": "在 dynamia ai，我们致力于通过创新的异构计算解决方案帮助组织最大化其计算资源的价值。我们相信，通过智能管理和优化计算资源，我们可以加速科学发现，推动技术创新，并为全球各行业的客户创造价值。",
-        "description2": "我们的旗舰产品 密瓜智能 是一个统一的异构计算平台，专为应对当今最复杂的计算挑战而设计。无论是 AI 训练、高性能计算还是边缘计算，密瓜智能 都能提供无与伦比的资源效率和性能优化。"
-      },
-      "vision": {
-        "title": "公司愿景",
-        "points": [
-          "构建全球领先的异构计算管理平台",
-          "推动计算资源的高效利用，减少能源浪费",
-          "通过优化计算基础设施，赋能组织实现创新"
-        ]
-      },
-      "tagline": "AI 基础设施的开源内核",
-      "missionLine": "让异构算力因开源而好用。"
-    },
-    "milestones": {
-      "title": "发展历程",
-      "subtitle": "从公司成立到 HAMi 晋升 CNCF Incubating——密瓜智能与 HAMi 的成长之路。",
-      "items": [
-        {
-          "date": "2025 年 1 月",
-          "title": "公司成立",
-          "description": "上海密瓜智能科技有限公司成立，张潇担任法定代表人。"
-        },
-        {
-          "date": "2025 年 3 月",
-          "title": "种子轮融资",
-          "description": "公司完成超 500 万元人民币种子轮融资，投资方包括 DaoCloud 道客、奇绩创坛及其他种子投资人。"
-        },
-        {
-          "date": "2026 年 1 月",
-          "title": "天使轮融资",
-          "description": "公司完成数千万元人民币天使轮融资，由复星创富领投，拙朴投资、种子投资人及产业方跟投。"
-        },
-        {
-          "date": "2026 年 1 月",
-          "title": "百度智能云兼容互认",
-          "description": "密瓜智能 HAMi 与百度智能云百舸异构计算平台完成兼容适配和阶段性产品互认。"
-        },
-        {
-          "date": "2026 年 3 月",
-          "title": "OpenCSG 战略合作",
-          "description": "密瓜智能与 OpenCSG 达成战略合作，共同推进面向企业级 AI 工作负载的异构算力调度底座建设。"
-        },
-        {
-          "date": "2026 年 5 月",
-          "title": "加入 ITL 联盟",
-          "description": "经华泰证券与德邦基金联合推荐，公司成为智能投研技术联盟（ITL）成员机构。"
-        },
-        {
-          "date": "2026 年 7 月",
-          "title": "HAMi 晋升 CNCF Incubating",
-          "description": "公司创始团队参与发起并持续维护的开源项目 HAMi 晋升为 CNCF Incubating 项目。"
-        }
-      ]
-    },
-    "business": {
-      "title": "公司业务",
-      "subtitle": "从虚拟化与统一调度，到企业级平台、生态适配和持续技术服务，密瓜智能为异构算力集群提供完整的能力支撑。",
-      "items": [
-        {
-          "title": "异构算力虚拟化与调度技术研发",
-          "description": "公司围绕 GPU、NPU 等异构加速设备开展虚拟化、资源共享和调度技术研发，面向 Kubernetes 环境提供细粒度算力分配、资源隔离和统一调度能力。"
-        },
-        {
-          "title": "企业级异构计算平台",
-          "description": "公司提供基于 HAMi 技术构建的企业级异构计算平台，覆盖 GPU 共享、AI 工作负载统一管理、异构算力集群调度、租户资源治理和可观测等场景。"
-        },
-        {
-          "title": "开源社区与生态适配",
-          "description": "公司持续参与 HAMi 上游研发和开源社区建设，并与 GPU 厂商、云平台及 AI 软件生态开展兼容适配，包括与百度智能云百舸完成产品兼容互认，以及与 OpenCSG 推进异构算力调度能力集成。"
-        },
-        {
-          "title": "部署交付与技术服务",
-          "description": "公司面向企业客户提供安装部署、故障排查、最佳实践指导、版本更新和持续维护等技术服务，支持 AI/ML 训练与推理、高性能计算及其他 GPU 加速工作负载。"
-        }
-      ]
-    },
-    "scale": {
-      "title": "公司规模",
-      "body": "截至 2026 年 7 月，公开工商资料显示，公司注册资本为 205 万元人民币。公司官网公开的核心团队成员包括张潇、李孟轩、宋净超。企业分公司数量、总资产及员工总数未在权威公开资料中披露。"
-    },
-    "culture": {
-      "title": "企业文化",
-      "goalLabel": "企业目标",
-      "goalValue": "让异构算力因开源而好用。",
-      "positioningLabel": "企业定位",
-      "positioningValue": "AI 基础设施的开源内核。",
-      "valueStatement": "开源是密瓜智能的技术底色。创始团队长期参与 Kubernetes 与 CNCF 生态，并持续推动 HAMi 从社区协作走向企业级生产实践。"
-    },
-    "team": {
-      "title": "核心团队",
-      "members": [
-        {
-          "name": "张潇",
-          "position": "创始人兼 CEO · HAMi Maintainer",
-          "image": "CEO"
-        },
-        {
-          "name": "李孟轩",
-          "position": "联合创始人兼 CTO · HAMi Maintainer",
-          "image": "CTO"
-        },
-        {
-          "name": "尹玉",
-          "position": "产品负责人 & HAMi 核心维护者",
-          "image": "COO"
-        },
-        {
-          "name": "陈文",
-          "position": "技术负责人",
-          "image": "CPO"
-        },
-        {
-          "name": "宋净超",
-          "position": "开源生态 VP",
-          "image": "jimmy"
-        }
-      ]
-    },
-    "leadership": {
-      "title": "创始团队",
-      "overviewLabel": "概述",
-      "experienceLabel": "人物经历",
-      "activitiesLabel": "技术与开源活动",
-      "mainWorkLabel": "主要工作",
-      "bios": [
-        {
-          "name": "张潇",
-          "role": "创始人兼 CEO · HAMi Maintainer",
-          "overview": "开源软件开发者、科技创业者，密瓜智能（Dynamia）创始人兼 CEO，HAMi 早期版本共同开源者、项目 Maintainer。曾任 DaoCloud 容器团队负责人，长期参与 Kubernetes 及 CNCF 生态相关开源项目。",
-          "experience": [
-            "曾任云原生企业 DaoCloud 容器团队负责人。",
-            "2021 年 7 月 12 日，与李孟轩首次开源 HAMi 的早期版本。当时张潇任职于 DaoCloud，李孟轩任职于第四范式，两人围绕同一开源项目开展协作。",
-            "此后与李孟轩共同创立密瓜智能，围绕异构 GPU 资源共享、虚拟化和统一调度方向推进 HAMi 的开源发展及相关技术的工程化落地。",
-            "2026 年 7 月 2 日，HAMi 晋升为 CNCF Incubating 项目。CNCF 官方资料显示，HAMi 的 Maintainer 来自密瓜智能、NVIDIA 等企业及独立开发者。"
-          ],
-          "activities": [
-            "张潇是 HAMi 项目 Maintainer，HAMi 项目治理文件显示其当前所属机构为密瓜智能。HAMi 是面向 Kubernetes 的开源云原生 GPU 虚拟化中间件，为 GPU、NPU、DCU、MLU 等异构加速器提供资源切分、工作负载隔离和调度能力。",
-            "2026 年 3 月，以密瓜智能 CEO、HAMi Maintainer 身份参加在荷兰阿姆斯特丹举行的 KubeCon + CloudNativeCon Europe 2026，并在 Cloud Native AI 相关论坛进行题为《K8s Issue #52757: Sharing GPUs Among Multiple Containers》的技术分享。",
-            "该分享围绕 Kubernetes 社区长期讨论的多容器共享 GPU 问题，介绍 AI 推理、批处理、在线服务和多租户场景下的 GPU 细粒度共享需求及相关技术的实现路径。"
-          ],
-          "mainWork": "张潇主要围绕云原生基础设施、异构算力虚拟化与调度、开源社区建设等方向开展工作，并参与推进 HAMi 开源生态及密瓜智能相关产品和技术服务的发展。"
-        },
-        {
-          "name": "李孟轩",
-          "role": "联合创始人兼 CTO · HAMi Maintainer",
-          "overview": "李孟轩，毕业于清华大学计算机系，云原生及异构算力虚拟化领域专家，密瓜智能联合创始人兼 CTO，CNCF 毕业项目 Volcano Reviewer，HAMi 早期版本共同开源者及项目 Maintainer。曾任第四范式异构算力技术负责人，长期参与 Kubernetes 及 CNCF 生态相关开源项目。",
-          "experience": [
-            "曾任第四范式异构算力技术负责人。",
-            "2021 年 7 月 12 日，与张潇首次开源 HAMi 的早期版本。",
-            "此后与张潇共同创立密瓜智能，持续参与 HAMi 的技术研发、项目维护和开源生态建设。",
-            "2026 年 7 月 2 日，HAMi 晋升为 CNCF Incubating 项目，CNCF 官方资料将李孟轩列为 HAMi Maintainer。"
-          ],
-          "activities": [
-            "2026 年 3 月，以密瓜智能联合创始人兼 CTO、HAMi Maintainer 身份参加 KubeCon + CloudNativeCon Europe 2026。在大会前举行的 Maintainer Summit 上，围绕 AI Workloads 分享 HAMi 在 AI 工作负载和 GPU 资源管理方面的实践，并参与 HAMi 与 CNCF、Red Hat、vLLM 社区成员围绕 GPU Sharing 等议题的技术交流。",
-            "在 KubeCon Europe 2026 技术分享环节，以《Dynamic, Smart, Stable GPU-Sharing Middleware in Kubernetes》为题，介绍 HAMi 的 GPU 虚拟化、GPU 共享与调度机制、稳定性设计及生产可用性实践。",
-            "在大会主论坛 Keynote 环节，与 Reza Jelveh 共同完成 HAMi 现场演示，展示基于 Kubernetes 的多工作负载 GPU 调度场景；演示以 YOLO 推理服务和 Qwen3-8B 大模型推理任务为例，呈现多个 Pod 按需共享 GPU 算力和显存资源的运行方式。",
-            "2026 年 4 月 25 日，在第三届 HAMi Meetup 深圳站介绍 HAMi v2.9 版本的核心特性、DRA 生态及异构算力统一管理相关规划。",
-            "2026 年 7 月 16 日，在 vLLM Meetup 进行技术分享，介绍 vLLM 推理集群从单机部署、Kubernetes 工作负载、Prefill 与 Decode 分离到结合 GPU 虚拟化进行资源优化的演进路径。"
-          ],
-          "mainWork": "李孟轩主要围绕异构算力虚拟化与调度、Kubernetes GPU 资源管理、大模型推理集群优化等方向开展技术研发，并参与 HAMi 的项目维护及社区技术交流。"
-        }
-      ],
-      "expandLabel": "展开详情",
-      "collapseLabel": "收起"
-    },
-    "careers": {
-      "title": "职业发展",
-      "description": "加入我们的创新团队，共同塑造计算的未来",
-      "jobs": [
-        {
-          "title": "高级软件工程师",
-          "location": "北京",
-          "type": "全职"
-        },
-        {
-          "title": "机器学习工程师",
-          "location": "上海",
-          "type": "全职"
-        },
-        {
-          "title": "产品经理",
-          "location": "远程",
-          "type": "全职"
-        },
-        {
-          "title": "解决方案架构师",
-          "location": "深圳",
-          "type": "全职"
-        }
-      ],
-      "viewJobsButton": "查看所有职位",
-      "applyButton": "申请"
-    },
-    "contact": {
-      "title": "联系我们",
-      "description": "与我们的团队取得联系",
-      "address": "上海市徐汇区龙台路 180 号 f2 栋 5F503",
-      "email": "info@dynamia.ai",
-      "phone": "+1 (555) 123-4567",
-      "formTitle": "发送消息",
-      "nameLabel": "您的姓名",
-      "emailLabel": "您的邮箱",
-      "messageLabel": "消息内容",
-      "submitting": "发送中...",
-      "submitButton": "发送",
-      "submitSuccess": "感谢您的留言！我们将尽快回复您。",
-      "submitError": "发送消息时出现错误。请重试或直接发送邮件至 info@dynamia.ai。",
-      "social": {
-        "email": {
-          "title": "邮件",
-          "action": "发送邮件"
-        },
-        "slack": {
-          "title": "Slack",
-          "action": "加入我们"
-        },
-        "linkedin": {
-          "title": "LinkedIn",
-          "action": "关注我们"
-        },
-        "twitter": {
-          "title": "X (Twitter)",
-          "action": "关注我们"
-        },
-        "wechat": {
-          "title": "微信",
-          "action": "扫码关注",
-          "qrPlaceholder": "微信二维码"
-        }
-      }
-    }
-  },
   "footer": {
-    "copyright": "© 2025 DYNAMIA INTELLIGENCE PTE. LTD ",
-    "privacyPolicy": "隐私政策",
-    "cookiesPolicy": "Cookie 政策",
-    "cookieSettings": "Cookie 设置",
-    "termsOfService": "服务条款",
-    "company": "公司",
-    "aboutUs": "关于我们",
-    "contactUs": "联系我们",
-    "platformTitle": "密瓜智能 平台",
-    "getDemo": "获取演示",
-    "pricing": "定价",
-    "poweredByHami": "由 HAMi 提供支持",
-    "followWechat": "关注微信公众号",
-    "companyDescription": "密瓜智能专注 GPU 虚拟化与异构算力调度，是 CNCF 开源项目 HAMi 的发起与主导方。",
-    "companyIntro": "企业级 GPU 虚拟化与调度平台，基于 CNCF 开源项目 HAMi 深度优化。",
-    "about": "关于",
-    "aboutCompany": "公司概况",
-    "news": "最新动态",
-    "partners": "合作伙伴",
-    "joinUs": "加入我们",
-    "resources": "资源",
-    "documentation": "文档",
-    "blog": "博客",
-    "caseStudies": "客户案例",
-    "community": "社区",
-    "github": "GitHub",
-    "slack": "Slack (#hami-dev)",
-    "discord": "Discord",
-    "wechat": "微信",
-    "contactSection": "联系我们",
-    "emailUs": "联系邮箱",
-    "email": "info@dynamia.ai",
-    "socialMedia": "关注我们"
+    "copyright": "© 2025 DYNAMIA INTELLIGENCE PTE. LTD "
   },
   "cookieConsent": {
     "bannerTitle": "我们使用 Cookie",
@@ -1119,10 +834,6 @@
     "en": "English",
     "zh": "中文",
     "de": "Deutsch"
-  },
-  "search": {
-    "placeholder": "搜索...",
-    "noResults": "未找到相关结果"
   },
   "privacyPolicy": {
     "title": "隐私政策",
@@ -1195,1500 +906,6 @@
       }
     ]
   },
-  "hamiPage": {
-    "title": "什么是",
-    "subtitle": "开源，异构虚拟化共享中间件，轻量化、无侵入部署在任意云环境",
-    "introduction": "HAMi，唯一专注多云异构 GPU 共享的开源项目，通过灵活、可靠、按需、弹性的 GPU 共享来提升利用率，插拔式、轻量化、无侵入地部署在任意公有云、私有云、混合云环境，支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程，天数智芯等异构芯片。截至目前，HAMi 已经被超过 60+ 操作系统厂商、算力云厂商以及垂直行业客户所采纳，成功地在金融、物流、智驾、机器人、生物科技等行业中实现了从 0 到 1 的落地。",
-    "creator": "HAMi 由密瓜智能团队创作并维护，目前是 CNCF Incubating 与 CNAI Landscape 项目。",
-    "githubButton": "GitHub 仓库",
-    "websiteButton": "访问官网"
-  },
-  "pricing": {
-    "title": "定价",
-    "headline": "灵活的计算需求定价方案",
-    "description": "灵活定价，按集群规模与复杂度定制。联系我们获取报价。",
-    "compareCTA": {
-      "eyebrow": "版本与下载",
-      "title": "查看版本对比 + 获取下载",
-      "desc": "查看三档完整能力矩阵，下载镜像离线包、Helm Chart 与安装指南。",
-      "button": "查看企业版"
-    },
-    "benefits": [
-      "定制化定价方案",
-      "根据集群规模灵活调整",
-      "专业技术支持",
-      "持续的功能更新和升级"
-    ],
-    "form": {
-      "title": "获取定价信息",
-      "name": "姓名",
-      "company": "公司",
-      "jobTitle": "职位",
-      "gpuCount": "GPU 数量",
-      "message": "留言（可选）",
-      "submitButton": "获取定价",
-      "submitting": "提交中...",
-      "submitSuccess": "感谢您的提交！我们的团队将很快与您联系，提供定价信息。",
-      "submitError": "提交请求时发生错误。请重试或直接联系我们：info@dynamia.ai。",
-      "phoneRequired": "电话/微信为必填项。",
-      "invalidPhoneOrWechat": "请输入有效的电话号码或微信号。",
-      "jobTitleRequired": "职位为必填项。",
-      "invalidJobTitle": "请输入有效的职位（1-100 个字符，不含特殊符号）。",
-      "fields": {
-        "email": {
-          "required": true,
-          "label": "邮箱"
-        },
-        "phone": {
-          "required": true,
-          "label": "电话/微信"
-        }
-      },
-      "gpuCountOptions": {
-        "small": "1-10 个",
-        "medium": "10-50 个",
-        "large": "50-200 个",
-        "enterprise": "超过 200 个"
-      }
-    },
-    "trustedBy": {
-      "title": "行业领导者的信赖选择",
-      "description": "各行业的领先组织都依靠 密瓜智能 高效管理其异构计算资源。"
-    }
-  },
-  "caseStudiesPage": {
-    "title": "案例研究",
-    "subtitle": "了解团队如何借助 HAMi 与异构 GPU 调度扩展 AI、HPC 与推理工作负载。",
-    "h1Prefix": "客户案例｜",
-    "notFound": "案例未找到",
-    "cardButton": "查看案例",
-    "cta": {
-      "title": "准备好打造你的成功案例了吗？",
-      "description": "与我们交流，看看 HAMi 如何提升 GPU 利用率、稳定性与成本效率。",
-      "button": "申请试用"
-    },
-    "telLabel": "通信",
-    "truncationLength": 72
-  },
-  "cases": {
-    "cetcCloud": {
-    "cardTitle": "电科云：便携式知识库 GPU 共享底座",
-    "title": "电科云基于 HAMi 构建异构 GPU 共享资源底座，支撑便携式智能知识库",
-    "subtitle": "电科云（北京）科技在一台配备 8 张异构 GPU 的便携式设备上，同时运行文本生成、Embedding、Rerank 等生产模型与 Kubernetes 研发环境，将研发 Pod 并发容量从 2 个提升至 30 个。",
-    "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
-    "sourceLink": "CETC Cloud Builds a Heterogeneous GPU Shared Resource Foundation for a Portable Knowledge Base with HAMi",
-    "stats": [
-      {
-        "value": "15×",
-        "label": "研发 Pod 并发容量提升（2 → 30）"
-      },
-      {
-        "value": "87.5%",
-        "label": "单卡显存回收（释放 56 GB）"
-      },
-      {
-        "value": "80%",
-        "label": "单卡算力回收，保持可调度"
-      }
-    ],
-    "overview": {
-      "title": "客户概览",
-      "description": "电科云（北京）科技需要将智能知识库带到项目现场独立运行，在配备异构 GPU 的同一批便携式设备上，同时承载文本生成、Embedding、Rerank、知识处理与研发调试等负载。团队采用 Kubernetes 与 HAMi，把此前长期绑定在单一服务上的异构 GPU，转变为生产模型与 Kubernetes 研发环境可以按需申请、共享与调度的资源，构成便携式智能知识库的异构算力共享底座。",
-      "keyPoints": [
-        "便携式智能知识库一体机，可携带至项目现场独立运行",
-        "知识库生产流水线与 Kubernetes 研发环境共存于同一台 8 卡异构 GPU 设备",
-        "以 Kubernetes 原生资源声明 + HAMi 设备共享与统一调度为底座"
-      ]
-    },
-    "companyCard": {
-      "name": "电科云（北京）科技有限公司",
-      "description": "中国电科旗下云与智能计算品牌，负责便携式智能知识库的产品研发与工程交付，围绕现场本地运行、知识处理、模型服务与研发环境构建产品能力。"
-    },
-    "info": {
-      "title": "案例信息",
-      "rows": [
-        {
-          "label": "用户",
-          "value": "电科云技术团队"
-        },
-        {
-          "label": "业务场景",
-          "value": "可携带至项目现场、独立运行的智能知识库一体机"
-        },
-        {
-          "label": "部署环境",
-          "value": "Kubernetes 与本地化异构 GPU"
-        },
-        {
-          "label": "使用项目",
-          "value": "Kubernetes、HAMi"
-        },
-        {
-          "label": "核心挑战",
-          "value": "多模型协同、生产与研发共享算力"
-        }
-      ]
-    },
-    "challenge": {
-      "title": "挑战：一台设备，两种 GPU 使用路径",
-      "description": "知识库的在线问答依赖文本生成、向量检索与 Rerank；数据入库要经过解析、切分、向量化、知识抽取与索引构建；研发工程师还需要在 Kubernetes 研发 Pod/容器中调试模型、验证依赖、跑实验。这些负载的 GPU 使用方式截然不同，而它们必须共存于同一台便携设备。",
-      "points": [
-        {
-          "title": "负载特征差异大",
-          "description": "文本生成须长期在线、显存基线高、延迟敏感；Embedding 在批量导入时形成周期性峰值；Rerank 单次计算短但调用频繁；知识处理与索引重建是必须与在线服务隔离的批任务；研发 Pod 周期性、交互式使用。"
-        },
-        {
-          "title": "整卡独占快速耗尽资源",
-          "description": "如果每个服务或研发环境继续长期绑定一整张卡，有限的设备很快被逻辑耗尽，剩余算力无法被其他负载复用。"
-        },
-        {
-          "title": "过细切分引入新问题",
-          "description": "如果只追求尽可能细的切分，又会放大显存不足、调度抖动与故障传播的风险。"
-        },
-        {
-          "title": "需要差异化资源策略",
-          "description": "团队需要让每类负载自行描述资源需求，再由平台基于设备状态与服务等级完成资源放置。"
-        }
-      ]
-    },
-    "solution": {
-      "title": "解决方案：基于 HAMi 的通用资源契约",
-      "description": "HAMi 的价值不只是把一张物理卡切分成多份资源份额，更重要的是建立了一套通用资源契约：负载自行声明所需设备资源，调度基于设备可用状态进行选择，多 Pod 可在各自资源边界内共享同一张异构 GPU，且 Pod、容器、设备与调度结果可相互关联追溯。",
-      "resourceContract": {
-        "title": "Kubernetes 原生资源契约",
-        "description": "保留 Kubernetes 应用交付模式，让平台进一步理解异构 GPU 设备能否满足负载请求，让适合共享的研发环境复用同一张物理 GPU。",
-        "features": [
-          "模型服务与研发 Pod 自行声明设备资源，不再依赖长期人工绑卡",
-          "调度不只判断节点上是否存在 GPU，而是基于设备可用状态选择",
-          "Pod、容器、设备与调度结果可关联追溯，支撑容量观察与配置纠偏"
-        ]
-      },
-      "workloadStrategy": {
-        "title": "按负载画像差异化配给",
-        "description": "团队围绕模型加载、峰值用量、并发、延迟与长期运行行为建立资源画像，再将验证过的需求翻译为 Kubernetes 资源请求，不同负载遵循不同策略。",
-        "features": [
-          "在线路径稳定边界：文本生成、在线检索与 Rerank 优先获得稳定资源",
-          "周期任务错峰执行：向量化、知识抽取与索引重建在低负载时段排队运行",
-          "配置按真实负载纠偏：切分颗粒度来自基线验证与运行时观测，而非预设统一比例"
-        ]
-      },
-      "devSharing": {
-        "title": "研发环境共享单张异构 GPU",
-        "description": "多个 Kubernetes 研发 Pod/容器通过 HAMi 虚拟化复用同一张异构 GPU，而非各自长期独占设备，显存配额由用户按任务需求申请，平台不设统一固定值。",
-        "features": [
-          "多个研发 Pod 共享单张异构 GPU，各有独立资源边界",
-          "复用与生产服务一致的资源声明和调度方式",
-          "实测同机并发运行 30 个研发 Pod"
-        ]
-      }
-    },
-    "results": {
-      "title": "实施成果",
-      "description": "在同一台配备 8 张异构 GPU 的便携式设备上，团队以一致口径对比了引入 HAMi 前后的资源容量：",
-      "items": [
-        {
-          "title": "研发 Pod 并发容量",
-          "value": "2 → 30",
-          "description": "同一台设备的研发 Pod 并发数从 2 个提升至 30 个，达到原来的 15 倍"
-        },
-        {
-          "title": "显存回收",
-          "value": "87.5%",
-          "description": "Embedding 从独占整张 64 GB GPU 改为 8 GB 配额，释放 56 GB 可复用显存"
-        },
-        {
-          "title": "算力回收",
-          "value": "80%",
-          "description": "Embedding 仅分配 20% GPU 算力，其余 80% 保持可调度"
-        },
-        {
-          "title": "性能影响",
-          "value": "< 5%",
-          "description": "Token 吞吐与独占整卡相比变化在 5% 以内，加载时间与 P95 延迟基本持平"
-        }
-      ],
-      "table": {
-        "title": "Embedding 模型单卡资源对比",
-        "description": "同一镜像、同一请求集与并发配置下，独占整卡与 HAMi 切分的同卡同模型对比：",
-        "metricLabel": "对比项",
-        "withoutLabel": "未使用 HAMi",
-        "withLabel": "使用 HAMi",
-        "rows": [
-          {
-            "metric": "显存分配",
-            "without": "独占整张 64 GB GPU",
-            "with": "按需分配 8 GB"
-          },
-          {
-            "metric": "其他任务可复用显存",
-            "without": "0 GB",
-            "with": "56 GB（整卡的 87.5%）"
-          },
-          {
-            "metric": "算力分配",
-            "without": "独占整卡",
-            "with": "分配 20%，其余 80% 可调度"
-          },
-          {
-            "metric": "Token 吞吐（tokens/s）",
-            "without": "基线",
-            "with": "与独占整卡相差 5% 以内"
-          },
-          {
-            "metric": "模型加载时间 / P95 延迟",
-            "without": "基线",
-            "with": "与独占整卡基本一致"
-          }
-        ]
-      }
-    },
-    "lessons": {
-      "title": "经验与下一步",
-      "points": [
-        "异构 GPU 共享应从负载画像出发，而不是预设统一的切分比例——生产模型、批处理任务与研发环境对延迟、显存、吞吐与隔离的要求各不相同，资源策略也应不同。",
-        "研发环境是共享 GPU 的重要消费方。研发负载以 Kubernetes Pod/容器方式运行，可复用与生产服务一致的资源声明和调度方式，同时避免每个研发环境长期独占设备。",
-        "下一阶段，电科云将持续完善生产与研发负载的容量与健康视图，并补充不同模型、不同网络与调用模式下可复现的实验数据。"
-      ]
-    },
-    "conclusion": {
-      "title": "让有限的异构算力承载更多业务",
-      "description": "从整卡独占到按需共享，电科云用 Kubernetes 与 HAMi 在一台便携设备上同时支撑了知识库生产流水线与 30 个并发的研发环境，且生产性能基本无损。同样的资源契约，也适用于任何需要在有限异构算力上共存生产与研发的团队。"
-    },
-    "cta": {
-      "exploreHami": "了解 HAMi 开源项目",
-      "contactUs": "联系我们"
-    }
-  },
-    "sangfor": {
-    "cardTitle": "深信服：企业级 AI 算力平台",
-    "title": "深信服基于 Kubernetes、Volcano 与 HAMi 构建企业级 AI 算力平台",
-    "subtitle": "深信服是中国领先的企业级云计算与网络安全厂商。面对 AI 应用的快速增长，深信服为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服与销售 Agent 等场景——GPU 利用率提升 3 倍以上，单卡承载 8 个以上模型，外部模型调用成本从每月 40 万元降至 20 万元。",
-    "sourceLabel": "本案例源自 CNCF 官方 Case Study：",
-    "sourceLink": "How Sangfor Built an Enterprise AI Compute Platform with Kubernetes, Volcano, and HAMi",
-    "stats": [
-      {
-        "value": "3×+",
-        "label": "GPU 利用率提升"
-      },
-      {
-        "value": "8×+",
-        "label": "单卡模型承载量（1 → 8+）"
-      },
-      {
-        "value": "50%",
-        "label": "外部模型调用成本下降（40 万 → 20 万/月）"
-      }
-    ],
-    "overview": {
-      "title": "客户概览",
-      "description": "深信服是中国领先的企业级云计算与网络安全厂商。随着 AI 应用快速增长，深信服正在为内部研发团队与企业客户构建统一 AI 算力平台，支撑 AI Coding、数字员工、智能客服、销售 Agent 等场景。平台以 AI 算力网关承载路由、治理与安全检查，底层以 Kubernetes、Volcano 与 HAMi 构建共享 GPU 底座，让 Kubernetes 成为统一的 AI 资源控制面。",
-      "keyPoints": [
-        "面向内部研发团队与企业客户的统一 AI 算力平台",
-        "覆盖 AI Coding、数字员工、智能客服、销售 Agent 等生产场景",
-        "AI 算力网关负责路由与治理，Kubernetes + Volcano + HAMi 构建算力底座"
-      ]
-    },
-    "companyCard": {
-      "name": "深信服科技",
-      "description": "中国领先的企业级云计算与网络安全厂商。其云 AI 团队构建的统一 AI 算力平台，支撑 2000+ 研发工程师的日常使用并服务企业客户。"
-    },
-    "info": {
-      "title": "案例信息",
-      "rows": [
-        {
-          "label": "用户",
-          "value": "深信服云 AI 团队"
-        },
-        {
-          "label": "业务场景",
-          "value": "支撑 AI Coding、数字员工、智能客服、销售 Agent 的企业级 AI 算力平台"
-        },
-        {
-          "label": "部署环境",
-          "value": "Kubernetes 与 NVIDIA、昇腾等异构 GPU"
-        },
-        {
-          "label": "使用项目",
-          "value": "Kubernetes、Volcano、HAMi"
-        },
-        {
-          "label": "核心挑战",
-          "value": "GPU 利用率、多租户资源隔离、调度效率"
-        }
-      ]
-    },
-    "challenge": {
-      "title": "挑战：规模化下的 GPU 利用率、隔离与调度",
-      "description": "平台持续扩张的过程中，GPU 利用率、资源隔离与调度效率成为关键瓶颈——平台需要同时服务大量 AI 负载与研发团队。",
-      "points": [
-        {
-          "title": "GPU 利用率不足",
-          "description": "传统模式下，推理服务独占整张 GPU。大量负载只用其中一小部分显存与算力却占住整卡，造成严重的资源碎片化——GPU 扩容速度甚至超过了业务本身的增长速度。"
-        },
-        {
-          "title": "多租户环境下的资源治理复杂",
-          "description": "平台同时承载 AI Coding、数字员工、智能客服、销售 Agent 与企业知识助手等负载，GPU 需求差异巨大——有的需要长驻显存，有的呈现明显的峰谷特征——统一资源池管理与公平分配成为关键问题。"
-        },
-        {
-          "title": "推理与批处理负载共存",
-          "description": "平台同时运行在线推理、批量推理、分布式训练与 Agent 工作流，原生 Kubernetes GPU 调度无法满足这些复杂 AI 负载的需求。"
-        }
-      ]
-    },
-    "solution": {
-      "title": "解决方案：Kubernetes + Volcano + HAMi",
-      "description": "Kubernetes 为 AI 平台提供了统一的控制面，但原生 GPU 调度只能以整卡为单位分配资源，难以满足推理服务、多租户与异构 GPU 环境的需求。深信服引入 Volcano 解决高级调度问题，引入 HAMi 解决 GPU 资源虚拟化问题，构建生产级共享 GPU 平台。",
-      "quote": {
-        "text": "HAMi 的 Kubernetes 原生集成意味着零迁移成本，透明的设备虚拟化让负载无需任何改造即可运行。",
-        "author": "深信服云 AI 总架构师 贾毫杰"
-      },
-      "hamiSharing": {
-        "title": "HAMi：vGPU 共享与隔离",
-        "description": "深信服选择 HAMi 的核心原因：细粒度 GPU 共享与强隔离、跨多代异构 GPU 的统一资源抽象，以及 Kubernetes 领域最活跃的开源 vGPU 生态之一。通过 vGPU 切分，大模型占据单卡大部分资源（例如 70%），剩余切片承载多个小模型，吸收原本闲置的算力。",
-        "features": [
-          "GPU 共享：显存粒度低至 256MB、算力粒度低至 1%，多个 Pod 在强隔离下共享同一张 GPU",
-          "异构 GPU 支持：统一资源抽象，跨多代 GPU 保持一致的调度体验",
-          "开源生态：Kubernetes 领域最活跃的开源 vGPU 项目之一，持续与 Volcano 队列和 vLLM 集成"
-        ]
-      },
-      "scheduling": {
-        "title": "Volcano + HAMi：协同调度",
-        "description": "仅靠 GPU 共享不足以支撑生产环境。Volcano 与 HAMi 结合，实现设备资源与作业调度的统一管理：Volcano 决定负载何时、在哪里运行，HAMi 决定 GPU 资源如何共享与分配。",
-        "points": [
-          {
-            "title": "设备状态维护",
-            "description": "GPU 健康监测、故障自动隔离、资源自动回收。"
-          },
-          {
-            "title": "资源声明治理",
-            "description": "自动补全资源字段、统一配额计算、提前拒绝无效请求。"
-          },
-          {
-            "title": "调度事务隔离",
-            "description": "将资源试算与实际占用解耦，确保状态一致性。"
-          },
-          {
-            "title": "Gang 与 LWS 支持",
-            "description": "Volcano 编排作业、HAMi 分配 GPU，整组任务一同调度。"
-          }
-        ]
-      }
-    },
-    "results": {
-      "title": "落地成效",
-      "description": "借助 HAMi vGPU 切分与 Volcano 协同调度，平台消除了资源碎片化、显著降低模型调用成本并在压力下保持稳定——同时支撑 2000+ 研发团队的日常使用。",
-      "items": [
-        {
-          "title": "GPU 利用率",
-          "value": "3×+",
-          "description": "共享 GPU 池消除碎片化，同样硬件承载更多负载"
-        },
-        {
-          "title": "单卡模型密度",
-          "value": "8×+",
-          "description": "原本需要 3 张卡的负载现在 1–2 张即可承载"
-        },
-        {
-          "title": "外部调用成本",
-          "value": "-50%",
-          "description": "智能路由让月调用成本从 40 万元降至 20 万元"
-        },
-        {
-          "title": "故障恢复",
-          "value": "<10 分钟",
-          "description": "从约 1 小时大幅缩短；3 倍峰值流量下成功率保持 95%+"
-        }
-      ],
-      "table": {
-        "title": "改造前后对比",
-        "description": "共享 GPU 平台建设前后的关键指标对比。",
-        "metricLabel": "指标",
-        "beforeLabel": "改造前",
-        "afterLabel": "改造后",
-        "rows": [
-          {
-            "metric": "GPU 利用率",
-            "before": "基线",
-            "after": "提升 3 倍以上"
-          },
-          {
-            "metric": "单卡模型数",
-            "before": "1",
-            "after": "8+"
-          },
-          {
-            "metric": "外部模型调用成本",
-            "before": "40 万元/月",
-            "after": "20 万元/月"
-          },
-          {
-            "metric": "模型故障恢复时间",
-            "before": "约 1 小时",
-            "after": "10 分钟以内"
-          },
-          {
-            "metric": "3 倍峰值流量成功率",
-            "before": "不稳定",
-            "after": "95%+"
-          },
-          {
-            "metric": "支撑研发团队规模",
-            "before": "有限",
-            "after": "2000+ 工程师"
-          }
-        ]
-      }
-    },
-    "lessons": {
-      "title": "经验总结",
-      "points": [
-        "GPU 共享比加卡更重要：大多数推理负载无法用满整张 GPU，优先做 GPU 共享——ROI 更高、见效更快。",
-        "调度与资源虚拟化解耦：HAMi 负责资源抽象，Volcano 负责调度策略，解耦之后两层各自独立演进。",
-        "Kubernetes 正在成为 AI 资源控制面：AI 基础设施沿云原生路径演进，无需引入新的管理范式即可获得企业级 GPU 管理能力。",
-        "展望未来，深信服将持续与 HAMi 社区合作：参与 HAMi DRA 生态、通过统一抽象扩展昇腾等异构 GPU 支持，并将生产级调度策略回馈 Volcano 与 HAMi 社区。"
-      ]
-    },
-    "conclusion": {
-      "title": "让 Kubernetes 成为统一的 AI 资源控制面",
-      "description": "深信服的实践给出了企业 AI 基础设施的一条路径：在网关层治理模型使用，在虚拟化层共享 GPU，用 Volcano 完成作业调度——全部构建在 Kubernetes 之上，让每一张 GPU 为 2000+ 工程师的团队发挥全部价值。"
-    },
-    "cta": {
-      "exploreHami": "了解 HAMi 开源项目",
-      "contactUs": "联系我们"
-    }
-  },
-    "telecomGpu": {
-      "cardTitle": "电信运营商 GPU 虚拟化",
-      "title": "电信运营商 GPU 虚拟化案例研究",
-      "subtitle": "某领先电信运营商如何利用 HAMi 实现 GPU 虚拟化与异构设备管理",
-      "overview": {
-        "title": "客户概述",
-        "description": "亚洲某大型电信运营商面临着网络运营、客户服务系统和增值服务中对 AI/ML 能力日益增长的需求。该公司拥有超过 2 亿用户，业务遍及多个地区，需要一种高效的方式来管理其不断扩展的 GPU 基础设施。",
-        "keyPoints": [
-          "大规模 GPU 资源池",
-          "多租户隔离",
-          "高性能与低延迟"
-        ]
-      },
-      "challenge": {
-        "title": "挑战与解决方案",
-        "subtitle": "关键挑战",
-        "points": [
-          "GPU 资源利用率低（低于 30%）",
-          "多个孤立集群的管理复杂性",
-          "工作负载需求波动",
-          "硬件采购成本高"
-        ]
-      },
-      "solution": {
-        "subtitle": "HAMi 解决方案",
-        "points": [
-          "细粒度 GPU 共享与虚拟化",
-          "统一集群管理界面",
-          "智能工作负载调度",
-          "硬件加速隔离"
-        ]
-      },
-      "architecture": {
-        "title": "实施架构",
-        "description": "HAMi 解决方案提供了全面的虚拟化层，实现了异构 GPU 资源的统一管理，优化了调度和资源分配。"
-      },
-      "results": {
-        "title": "成果与收益",
-        "items": [
-          {
-            "title": "资源利用率提升",
-            "value": "80%",
-            "description": "GPU 资源利用率显著提高"
-          },
-          {
-            "title": "成本降低",
-            "value": "40%",
-            "description": "硬件与运营成本大幅减少"
-          },
-          {
-            "title": "响应时间",
-            "value": "90%",
-            "description": "服务部署与响应时间显著缩短"
-          }
-        ]
-      },
-      "cta": {
-        "title": "变革您的 GPU 基础设施",
-        "description": "了解 HAMi 如何帮助您的组织通过高效的 GPU 虚拟化和异构计算管理实现类似的成果。",
-        "button": "联系我们"
-      }
-    },
-    "sfTechnologyEffectiveGpu": {
-      "cardTitle": "顺丰科技：提效降本的 GPU 共享实践",
-      "title": "顺丰科技 × HAMi | 提升 AI 效率并大幅削减成本",
-      "subtitle": "探索顺丰科技如何基于开源 HAMi 框架，通过其 EffectiveGPU 技术实践，深度整合异构算力虚拟化与高效调度能力，在 AI 大模型推理、语音识别等关键场景实现生产落地，显著提升 GPU 利用率，实现降本增效，并推动 HAMi 开源生态发展。",
-      "overview": {
-        "title": "公司概述",
-        "description": "顺丰科技是顺丰速运集团的科技板块，作为中国领先的物流科技公司，专注于为物流、AI 和云计算服务开发创新解决方案。",
-        "keyPoints": [
-          "领先的物流科技服务提供商",
-          "广泛的 AI 和机器学习应用",
-          "大规模 GPU 基础设施需求",
-          "专注于成本优化和效率提升"
-        ]
-      },
-      "challenge": {
-        "title": "传统 GPU 管理模式难以为继",
-        "subtitle": "核心痛点",
-        "description": "传统 GPU 使用方式（如整卡独占）导致 GPU 在推理等轻负载场景\"跑不满\"，资源浪费严重。",
-        "points": [
-          "资源利用率低：GPU 平均利用率长期低于 30%，尤其是在推理和测试场景，算力和显存空置问题尤为突出。",
-          "调度粒度粗：缺乏细粒度的资源切分与共享能力，难以实现多任务并发与资源复用。",
-          "异构适配困难：GPU、NPU、国产 AI 芯片等多类设备混布，调度系统面临生态碎片化与管理复杂度攀升。",
-          "影响 ROI：这些问题直接影响 AI 服务的部署灵活性与算力基础设施的 ROI（投资回报率）。"
-        ]
-      },
-      "solution": {
-        "title": "破局之路：EffectiveGPU 技术实践",
-        "subtitle": "基于 HAMi 的创新",
-        "description": "面对挑战，顺丰科技团队基于开源异构算力调度框架 HAMi，并结合自身业务场景需求，推出了 EffectiveGPU 技术方案。",
-        "objective": "目标是构建高效、灵活、统一的 GPU 资源池化与调度管理体系，解决资源利用率低、管理复杂的问题。",
-        "innovations": [
-          {
-            "title": "GPU 池化与虚拟化",
-            "description": "将分散的 GPU 资源整合为统一的资源池，通过虚拟化技术实现资源的按需分配，此能力基于并拓展了 HAMi 的虚拟化基础。"
-          },
-          {
-            "title": "细粒度资源切分",
-            "description": "支持按核心利用率（算力）和显存容量进行精确切分，允许单个 GPU 卡同时服务于多个不同需求的应用，打破整卡独占的限制，这得益于 HAMi 的灵活切分机制。"
-          },
-          {
-            "title": "弹性资源超配",
-            "description": "引入显存和算力的双维度超分技术（如高达 200% 的显存超分比），结合优先级调度，进一步压榨 GPU 潜力，在保障高优先级任务 QoS 的前提下运行更多任务。"
-          },
-          {
-            "title": "统一管理与调度",
-            "description": "提供统一的调度接口，抽象屏蔽底层硬件差异，支持包括国产 GPU 在内的异构资源统一纳管和高效调度，这与 HAMi 构建统一抽象驱动框架的理念一致。"
-          }
-        ]
-      },
-      "results": {
-        "title": "显著成效：资源利用率大幅提升，降本效果显著",
-        "description": "方案已在顺丰科技 AI 平台完成多场景落地，取得显著成果。",
-        "items": [
-          {
-            "title": "大模型推理服务",
-            "value": "28 张卡 → 65 个服务",
-            "description": "使用 28 张 GPU 卡部署 65 个服务，节省 37 张卡"
-          },
-          {
-            "title": "测试服务集群",
-            "value": "6 张卡 → 19 个服务",
-            "description": "使用 6 张测试用 GPU 卡部署 19 个服务，节省 13 张卡"
-          },
-          {
-            "title": "语音识别等业务",
-            "value": "实时性保障",
-            "description": "依托优先级调度与资源超分，确保关键任务实时性"
-          },
-          {
-            "title": "国产算力适配",
-            "value": "多厂商支持",
-            "description": "已适配昇腾、昆仑等国产 AI 芯片，具备完整调度支持，此兼容性部分得益于 HAMi 的异构兼容设计"
-          },
-          {
-            "title": "性能影响",
-            "value": "仅下降 0.5%",
-            "description": "添加池化层后最低仅下降 0.5% 性能"
-          }
-        ]
-      },
-      "hamiIntegration": {
-        "title": "深度融合 HAMi 生态，共筑高效算力底座",
-        "description": "EffectiveGPU 技术的成功实践，离不开与开源异构算力调度框架 HAMi 的深度融合。",
-        "points": [
-          "EffectiveGPU 技术架构深度集成了 HAMi 在异构算力虚拟化、多元异构 GPU 高效调度、统一管理及可观测性等领域的核心能力。",
-          "特别在国产 GPU 的管理与调度方面，正是通过集成 HAMi 生态，构建了统一的抽象驱动框架与跨架构调度模型，实现了对包括华为昇腾、百度昆仑等在内的国产 AI 算力平台的良好适配和高效利用。",
-          "EffectiveGPU 方案在虚拟化接口、调度接口以及异构 GPU 兼容性上，均采用了兼容 HAMi 生态的设计，确保了技术的平滑接入和应用的无缝运行。"
-        ]
-      },
-      "validation": {
-        "title": "验证 HAMi 价值，推动开源异构算力调度走向成熟",
-        "description": "顺丰科技 EffectiveGPU 的成功落地，是对 HAMi 技术理念和工程价值的再一次有力验证。",
-        "points": [
-          "证明 HAMi 在灵活可靠虚拟化、高效调度、统一管理和可观测性等关键能力，完全有能力支撑大型企业在复杂生产环境中的实际需求。",
-          "HAMi 作为 CNCF Incubating & CNAI landscape 项目，此次实践为其进一步推动行业标准化建设与场景落地积累了宝贵经验。"
-        ]
-      },
-      "quote": {
-        "text": "通过与 HAMi 开源社区的紧密合作及基于其框架的二次创新，EffectiveGPU 帮助我们显著提升了 GPU 资源效能，降低了运营成本。这是开源协同与企业实践共赢的典范。",
-        "author": "顺丰科技 AI 平台负责人",
-        "position": "顺丰科技 AI 平台负责人"
-      },
-      "conclusion": {
-        "title": "展望未来",
-        "description": "顺丰科技通过基于 HAMi 的 EffectiveGPU 方案，有效解决了 GPU 资源管理的核心痛点，实现了降本增效。展望未来，HAMi 生态将吸引更多行业用户，共同促进异构算力生态的繁荣。"
-      },
-      "companyCard": {
-        "name": "顺丰科技",
-        "description": "中国领先的物流科技服务提供商"
-      },
-      "cta": {
-        "exploreHami": "探索 HAMi",
-        "contactUs": "联系我们"
-      }
-    },
-    "prepEduHami": {
-      "cardTitle": "PREP EDU × HAMi：异构 GPU 智能调度",
-      "title": "PREP EDU × HAMi｜异构 GPU 智能调度，全面提升 AI 服务效率",
-      "subtitle": "探索 PREP EDU 基于 HAMi，在 Kubernetes（RKE2）生产环境实现异构 GPU 虚拟化与智能调度，解决了多型号显卡利用率低、显存冲突、资源隔离不足等痛点。HAMi 的 vGPU 精细化分配、GPU 类型感知调度、透明设备虚拟化与 Prometheus 监控体系，帮助 PREP EDU 在大规模 AI 推理场景中显著提升资源利用率与运维效率。",
-      "overview": {
-        "title": "公司概述",
-        "description": "PREP EDU 是东南亚增长迅速的教育科技公司，专注于以人工智能重塑语言学习与考试备考体验。",
-        "keyPoints": [
-          "AI 驱动的跨境考试备考服务领航者",
-          "专注 AI 个性化学习场景的技术落地与体验优化",
-          "致力于 AI 教学场景下的算力管理痛点",
-          "注重开源技术教学与科研实践的融合"
-        ]
-      },
-      "challenge": {
-        "title": "异构 GPU 调度复杂度不断攀升",
-        "description": "在 PREP EDU 的大规模 AI 推理业务中，传统的 GPU 使用模式已无法满足快速增长的服务需求，尤其是在混合显卡（RTX 4070 / RTX 4090）环境下，资源浪费、调度不均衡与兼容性问题愈发明显。",
-        "points": [
-          "GPU 利用率偏低：静态整卡分配方式使得推理服务难以吃满 GPU 资源，平均利用率长期低至 10–20%，大量显存与算力处于闲置状态。",
-          "资源冲突频发：缺乏有效的隔离与调度机制时，多任务竞争显存常导致占用飙升至 90–95%，引发应用崩溃与推理中断，影响业务稳定性。",
-          "异构调度困难：4070 与 4090 并存的环境中，不同项目常需指定 GPU 类型，但缺乏统一的分配能力，使资源调度复杂且易产生调度失配问题。",
-          "兼容性门槛高：新方案需与现有 RKE2、GPU Operator、containerd 等组件完全兼容，任何不透明或侵入式的机制都可能增加维护成本或破坏现有业务链路。"
-        ]
-      },
-      "solution": {
-        "title": "破局之路：基于 HAMi 的高效 GPU Orchestration 实践",
-        "description": "面对异构 GPU 调度复杂、利用率低以及资源隔离不足等核心挑战，PREP EDU 工程团队基于开源异构算力调度框架 HAMi，并结合自身大规模 AI 推理业务场景，构建了新一代的 GPU 虚拟化与智能调度体系。",
-        "objective": "目标是在现有 RKE2 + GPU Operator + NVIDIA 多型号 GPU 的生产环境中，实现 稳定、高效、无侵入 的 GPU 资源管理能力，全面解决资源浪费、冲突频发、扩展困难等问题。",
-        "innovations": [
-          {
-            "title": "虚拟化与 GPU 划分",
-            "description": "针对多个推理服务，根据 NLP token 长度与服务需求为每个工作负载设置特定限制。"
-          },
-          {
-            "title": "异构 GPU 管理",
-            "description": "使用 HAMi，可以按 GPU 类型分配工作负载（例如将某些项目仅运行在 RTX 4070 或 4090 上），通过 annotation 实现基于资源选择的兼容性与效率提升。"
-          },
-          {
-            "title": "无缝应用集成",
-            "description": "通过透明设备虚拟化，在无需修改应用的情况下启用 GPU 共享与隔离。"
-          },
-          {
-            "title": "GPU 指定能力",
-            "description": "能够按 GPU UUID 分配任务（例如在某张 24GB 的 RTX 4090 上运行多个进程）。"
-          },
-          {
-            "title": "兼容性",
-            "description": "HAMi 和 NVIDIA GPU Operator 能在其环境中无冲突共存，两者均被配置为使用 containerd。同时借助 Prometheus 实现监控与告警，并与 Kubernetes（RKE2）及 containerd 无缝集成。"
-          }
-        ]
-      },
-      "results": {
-        "title": "显著成效：GPU 利用率全面提升，推理稳定性大幅增强",
-        "description": "方案已在 PREP EDU 的大规模 AI 推理平台完成生产验证，在接入 HAMi 后，PREP EDU 已完成 GPU 设备的解耦和自动组织：",
-        "items": [
-          {
-            "title": "生产环境使用",
-            "value": "1+ 年",
-            "description": "在生产环境中稳定使用 HAMi 超过 1 年"
-          },
-          {
-            "title": "GPU 基础设施优化",
-            "value": "90%",
-            "description": "通过 HAMi 优化了 90% 的 GPU 基础设施"
-          },
-          {
-            "title": "运维痛点减少",
-            "value": "50%",
-            "description": "减少了 50% 由 GPU 管理引发的运维痛点"
-          }
-        ]
-      },
-      "hamiIntegration": {
-        "title": "深度融合 HAMi 生态，共筑高效 GPU 推理底座",
-        "description": "PREP EDU 在 GPU 虚拟化与智能调度方面的成功实践，离不开与开源异构算力调度框架 HAMi 的深度集成。",
-        "points": [
-          "在生产环境中，PREP EDU 的 GPU Orchestration 架构充分利用了 HAMi 在设备虚拟化、vGPU 精细切分、异构调度与可观测性上的核心能力，使多型号 GPU 能够在无需修改应用的前提下实现高效共享与统一管理。",
-          "在调度与资源管理层面，PREP EDU 通过集成 HAMi 的透明虚拟化、annotation 调度能力与 UUID 精准绑定机制，实现了跨 RTX 4070 与 4090 的一致性调度体验，使 GPU 类型可感知、资源可按需分配、多实例可并发运行。同时，依托 HAMi 与 GPU Operator、RKE2、containerd 的无缝兼容性，PREP EDU 能够在现有架构下平滑接入虚拟化调度能力，并将新节点自动纳入统一资源池中。",
-          "在落地实践方面，PREP EDU 在生产环境中的长期探索——包括 Docker 场景下的自托管模式、节点自动纳管流程以及与 GPU Operator 的协同优化，进一步拓展了 HAMi 的应用边界，使其在真实业务规模下展现出更高的灵活性与工程成熟度。"
-        ]
-      },
-      "conclusion": {
-        "title": "展望未来",
-        "description": "PREP EDU 通过基于 HAMi 的 GPU 虚拟化与智能调度方案，成功解决了多型号 GPU 管理的核心痛点，显著提升了推理效率与资源利用率。展望未来，HAMi 生态将吸引更多行业用户，共同促进异构算力生态的繁荣。"
-      },
-      "companyCard": {
-        "name": "PREP EDU",
-        "description": "东南亚增长迅速的教育科技公司"
-      },
-      "cta": {
-        "exploreHami": "探索 HAMi",
-        "contactUs": "联系我们"
-      }
-    },
-    "keHoldings": {
-      "cardTitle": "贝壳：机器学习基础设施 GPU 虚拟化",
-      "title": "贝壳基于 HAMi 与 Kubernetes 实现机器学习基础设施 GPU 虚拟化，利用率提升近 3 倍",
-      "subtitle": "探索贝壳如何基于 HAMi 和 Kubernetes 打造 AIStudio 平台，实现 GPU 利用率从 13% 提升至 37%（近 3 倍提升），同时支持 10,000+ Pod 并发运行和日均 1,000 万 + 请求处理，涵盖混合云环境。",
-      "stats": [
-        {
-          "value": "3x",
-          "label": "GPU 利用率提升"
-        },
-        {
-          "value": "10,000+",
-          "label": "并发运行 Pod 数"
-        },
-        {
-          "value": "1,000 万+",
-          "label": "日均处理请求数"
-        }
-      ],
-      "overview": {
-        "title": "公司概述",
-        "description": "贝壳是中国领先的线上线下房产交易平台和服务提供商。公司集中化基础设施团队运营着跨所有业务单元的共享机器学习平台，为模型开发、训练和大规模推理提供端到端的计算服务。",
-        "keyPoints": [
-          "中国领先的房产交易平台",
-          "集中化机器学习平台服务所有业务单元",
-          "端到端的 AI 工作负载计算服务",
-          "跨混合云的大规模 GPU 基础设施"
-        ]
-      },
-      "challenge": {
-        "title": "机器学习基础设施扩展面临的挑战",
-        "description": "随着机器学习计划的扩展，基础设施团队在跨复杂混合云环境管理 GPU 资源方面面临重大挑战。",
-        "points": [
-          {
-            "title": "规模与复杂性",
-            "description": "跨公有云和私有云的 5 个集群，数千张 GPU 卡包括多种型号（H200、H20、V100、4090、H100、A100）"
-          },
-          {
-            "title": "混合云环境",
-            "description": "跨公有云（火山引擎、腾讯云、阿里云）和拥有约 1,000 张 NVIDIA GPU 的私有云管理 GPU 资源"
-          },
-          {
-            "title": "多样化工作负载需求",
-            "description": "需要完整 GPU 访问的大规模模型训练 vs. 只需最少 GPU 显存（1-2GB）的小模型推理"
-          },
-          {
-            "title": "GPU 利用率低",
-            "description": "由于多云复杂性和多样化工作负载需求，初始利用率仅为 13%"
-          }
-        ]
-      },
-      "solution": {
-        "title": "基于 Kubernetes 和 HAMi 的 AIStudio 平台",
-        "description": "使用 CNCF 项目 HAMi 和 Kubernetes 作为基础，贝壳设计并实施了 AIStudio，一个智能计算平台，作为组织机器学习基础设施的基础。",
-        "platform": "利用 Kubernetes 和 HAMi 进行 GPU 虚拟化，AIStudio 提供统一平台，连接上层 SaaS 服务与底层计算资源。",
-        "features": [
-          {
-            "title": "多场景支持",
-            "description": "在同一基础设施上同时支持推理服务、A/B 测试任务和训练任务"
-          },
-          {
-            "title": "高级优化",
-            "description": "针对推理框架、数据集、镜像、检查点和模型的加速能力，以及硬件故障容错"
-          },
-          {
-            "title": "多框架支持",
-            "description": "PyTorch、DeepSpeed、Megatron、VLLM、RLHF 和 SGLang"
-          },
-          {
-            "title": "AI 资产管理",
-            "description": "资源池、模型仓库、镜像仓库、队列、CubeFS 卷和监控组件的集中管理"
-          }
-        ],
-        "architecture": {
-          "title": "针对不同工作负载的双集群架构",
-          "gpuCluster": {
-            "title": "GPU 集群",
-            "description": "由原生 NVIDIA 设备插件管理，用于需要完整 GPU 资源的训练工作负载：",
-            "items": [
-              "原生 NVIDIA 设备插件",
-              "高性能 GPU（H200、H100）",
-              "专用于 LLM 训练",
-              "完整 GPU 资源分配"
-            ]
-          },
-          "vgpuCluster": {
-            "title": "vGPU 集群",
-            "description": "由 HAMi 管理 GPU 显存虚拟化，用于小模型推理：",
-            "items": [
-              "HAMi GPU 显存虚拟化",
-              "GPU (H20, V100, A100, 4090)",
-              "精细化分配（1-2GB）",
-              "小模型推理"
-            ]
-          }
-        }
-      },
-      "results": {
-        "title": "显著成效：GPU 利用率提升近 3 倍",
-        "description": "通过利用包括 HAMi 和 Kubernetes 在内的开源技术，AIStudio 在大规模环境中取得了显著成果。",
-        "items": [
-          {
-            "title": "GPU 利用率",
-            "value": "13% → 37%",
-            "description": "近 3 倍提升"
-          },
-          {
-            "title": "平台规模",
-            "value": "10,000+ Pod",
-            "description": "并发运行"
-          },
-          {
-            "title": "日请求量",
-            "value": "1,000 万+",
-            "description": "日均处理"
-          },
-          {
-            "title": "集群覆盖",
-            "value": "5 个集群",
-            "description": "公有云和私有云"
-          },
-          {
-            "title": "零停机",
-            "value": "100%",
-            "description": "迁移和运营期间"
-          },
-          {
-            "title": "工作负载类型",
-            "value": "统一",
-            "description": "训练和推理在同一平台"
-          }
-        ]
-      },
-      "hamiIntegration": {
-        "title": "HAMi 实现 GPU 复用与异构调度优化",
-        "description": "HAMi 的成功集成展示了开源技术如何帮助组织实现卓越的基础设施效率。",
-        "points": [
-          "Kubernetes 作为基础，通过强大的调度和管理能力实现稳定运营",
-          "HAMi 实现 GPU 复用和异构调度优化，将集群 GPU 利用率提升近 3 倍",
-          "双集群方法根据资源需求分离工作负载，实现最佳效率",
-          "公有云和私有云环境之间的无缝集成实现统一平台管理"
-        ]
-      },
-      "futurePlans": {
-        "title": "未来创新计划",
-        "description": "贝壳基础设施团队继续在 HAMi 和 Kubernetes 之上创新和扩展其平台。",
-        "plans": [
-          "采用异构设备：计划集成华为昇腾和其他非 NVIDIA 加速器",
-          "云扩展：集成阿里云以补充现有的火山引擎和腾讯云部署",
-          "高级调度策略：网络拓扑感知、卡类型指定和基于 UUID 的分配"
-        ]
-      },
-      "companyCard": {
-        "name": "贝壳",
-        "description": "中国领先的房产交易平台"
-      },
-      "cta": {
-        "exploreHami": "探索 HAMi",
-        "contactUs": "联系我们"
-      },
-      "conclusion": {
-        "title": "开源成功案例",
-        "description": "贝壳成功展示了如何利用 HAMi 和 Kubernetes 显著提升 GPU 利用率，同时支持大规模 AI 工作负载。AIStudio 平台为寻求优化机器学习基础设施的组织树立了典范。"
-      }
-    },
-    "daoCloud": {
-      "cardTitle": "DaoCloud：灵活 GPU 云，利用率超 80%",
-      "title": " DaoCloud 基于 HAMi 构建灵活 GPU 云，利用率超 80%",
-      "subtitle": "探索 DaoCloud 如何运营两大云原生 AI 工作负载平台——D.run 算力云和 DaoCloud 企业版（DCE），使用 HAMi 在跨 10+ 数据中心的 10,000+ GPU 上实现 >80% 的 GPU 利用率。",
-      "stats": [
-        {
-          "value": "10,000+",
-          "label": "跨平台 GPU 数量"
-        },
-        {
-          "value": ">80%",
-          "label": "平均 GPU 利用率"
-        },
-        {
-          "value": "20-30%",
-          "label": "运营成本降低"
-        }
-      ],
-      "overview": {
-        "title": "公司概述",
-        "description": " DaoCloud 运营着两大面向 AI 工作负载的云原生平台。D.run 算力云是面向个人开发者和小团队的公共 GPU 云，而 DaoCloud 企业版（DCE）则是为企业客户运行训练和推理的私有 Kubernetes 平台。",
-        "keyPoints": [
-          "两大云原生 AI 平台",
-          "D.run 算力云面向公共 GPU 云",
-          "DaoCloud 企业版（DCE）面向私有 K8s",
-          "在中国大陆和香港拥有 10+ 数据中心"
-        ]
-      },
-      "challenge": {
-        "title": "GPU 资源管理面临的挑战",
-        "description": "随着两个平台对 GPU 需求的快速增长，出现了多个需要灵活 GPU 虚拟化解决方案的挑战。",
-        "points": [
-          {
-            "title": "整卡分配模式",
-            "description": "许多推理和轻量级工作负载仅使用 GPU 资源的一小部分，导致计算和显存的大部分容量利用不足，限制了 DaoCloud 打包 GPU SKU 的方式。"
-          },
-          {
-            "title": "异构硬件管理",
-            "description": "DaoCloud 需要支持主流 NVIDIA GPU，同时集成来自多个厂商的国产加速器。专有 vGPU 解决方案增加了许可成本。"
-          },
-          {
-            "title": "多租户治理",
-            "description": "在 DCE 上，企业客户需要具有部门级配额、基于队列的资源分配以及跨团队的清晰隔离的共享 GPU 池。"
-          },
-          {
-            "title": "云原生对齐",
-            "description": "DaoCloud 的核心战略围绕 Kubernetes 和开源技术展开。任何 GPU 共享解决方案都必须保持完全云原生、供应商中立，并与现有 CNCF 工具兼容。"
-          }
-        ]
-      },
-      "solution": {
-        "title": "HAMi 作为统一 GPU 层",
-        "description": " DaoCloud 采用了 CNCF Incubating 项目 HAMi 进行异构 AI 计算虚拟化，作为跨 D.run 和 DCE 的统一 GPU 层。HAMi 为 Kubernetes 集群中的异构加速器提供设备虚拟化、vGPU 分区和调度。",
-        "drun": {
-          "title": "D.run 算力云：面向公共 GPU 用户的 vGPU SKU",
-          "description": "在 D.run 上，DaoCloud 将 HAMi 集成到每个区域 Kubernetes 集群中，以实现细粒度 GPU 共享和更高利用率。",
-          "features": [
-            {
-              "title": "vGPU 切片",
-              "description": "物理 GPU 被划分为多个具有定义计算和显存的 vGPU 切片。轻量级推理作业可以在部分 GPU 上运行。"
-            },
-            {
-              "title": "基于 SKU 的市场",
-              "description": "vGPU 切片在中心市场中作为标准化 SKU 公开。用户根据工作负载大小选择 GPU SKU。"
-            },
-            {
-              "title": "多区域部署",
-              "description": "HAMi 为中国大陆和香港的 7 个活跃 D.run 区域提供支持，覆盖 10 多个数据中心。"
-            },
-            {
-              "title": "国产加速器支持",
-              "description": "DaoCloud 扩展了 HAMi 以支持国产 GPU 供应商，确保在统一抽象层下的一致管理。"
-            }
-          ]
-        },
-        "dce": {
-          "title": "DaoCloud 企业版（DCE）：面向企业的共享 GPU 池",
-          "description": "在 DCE 上，DaoCloud 使用 HAMi 构建了集中式 GPU 资源池，为多个企业租户统一 GPU 容量。",
-          "features": [
-            {
-              "title": "统一 GPU 池",
-              "description": "企业用户从服务训练和推理工作负载的中心池中贡献和使用 GPU。"
-            },
-            {
-              "title": "配额和 RBAC",
-              "description": "HAMi 的 vGPU 资源与 DaoCloud 现有的配额和基于角色的访问系统集成。"
-            },
-            {
-              "title": "简化体验",
-              "description": "算法工程师通过平台请求 GPU 资源，而无需担心底层硬件差异。"
-            }
-          ]
-        }
-      },
-      "opensource": {
-        "title": "与社区共同开发 HAMi",
-        "description": " DaoCloud 是 HAMi 最早和最活跃的贡献者之一。",
-        "points": [
-          "将 D.run 和 DCE 的真实见解回馈给开源社区",
-          "与上游合作改进 GPU 超分机制、节点配置管理和异构硬件处理",
-          "帮助维护文档和部署指南，支持其他云提供商的生产采用"
-        ]
-      },
-      "results": {
-        "title": "显著成效：成本降低和效率提升",
-        "description": "通过集成 HAMi，DaoCloud 将以前分散的 GPU 资源整合为跨公共云和私有云的更加统一、高效和可扩展的 GPU 层。",
-        "items": [
-          {
-            "title": "GPU 利用率",
-            "value": ">80%",
-            "description": "部署 HAMi 后每卡平均利用率"
-          },
-          {
-            "title": "成本降低",
-            "value": "20-30%",
-            "description": "GPU 相关运营成本降低"
-          },
-          {
-            "title": "统一抽象",
-            "value": "单一层",
-            "description": "跨 NVIDIA 和国产 GPU"
-          },
-          {
-            "title": "部署规模",
-            "value": "10,000+ GPU",
-            "description": "跨 10+ 数据中心"
-          },
-          {
-            "title": "多区域",
-            "value": "7 个区域",
-            "description": "中国活跃的 D.run 区域"
-          },
-          {
-            "title": "开放协作",
-            "value": "活跃",
-            "description": "向上游贡献改进"
-          }
-        ]
-      },
-      "quote": {
-        "text": "HAMi 不仅仅与 DaoCloud 的业务兼容，它是我们共同构建的产物。作为 HAMi 最早的贡献者之一，我们见证了它从诞生到成熟的演进。HAMi 现在运行在 D.run 和 DCE 上，我们的实际改进不断回馈给社区。HAMi 和 DaoCloud 拥有相同的开源 DNA，我们将继续为 HAMi 做出贡献，将真正的 vGPU 技术带给世界。",
-        "author": "Captain，DaoCloud AI/LLM 基础架构产品负责人"
-      },
-      "companyCard": {
-        "name": " DaoCloud",
-        "description": "面向 AI 工作负载的云原生平台提供商"
-      },
-      "cta": {
-        "exploreHami": "探索 HAMi",
-        "contactUs": "联系我们"
-      },
-      "conclusion": {
-        "title": "开源合作成功",
-        "description": " DaoCloud 成功地将 HAMi 集成到其公共和私有 GPU 云平台中，在利用率和成本效率方面实现了显著改进，同时回馈开源社区。"
-      }
-    },
-    "nio": {
-      "cardTitle": "蔚来：自动驾驶负载 GPU 利用率优化",
-      "title": "蔚来汽车 × HAMi | 提升自动驾驶工作负载 GPU 利用率",
-      "subtitle": "探索蔚来汽车如何采用混合 GPU 共享策略，利用 HAMi 实现 CI 流水线 GPU 利用率提升 10 倍、模拟工作负载 GPU 小时数减少 30%，在 600 张 GPU 规模的自动驾驶 AI 基础设施中实现显著效率提升。",
-      "stats": [
-        {
-          "value": "600",
-          "label": "张 GPU，分布于约 80 个节点"
-        },
-        {
-          "value": "10×",
-          "label": "CI 流水线 GPU 利用率提升"
-        },
-        {
-          "value": "30%",
-          "label": "模拟工作负载 GPU 小时数减少"
-        }
-      ],
-      "overview": {
-        "title": "公司概述",
-        "description": "蔚来汽车运营大规模云基础设施以支持自动驾驶工作负载，包括模型训练、模拟、CI/测试和在线推理。团队专注于 GPU 性能优化，并参与其综合自动驾驶平台的 GPU 和计算资源规划决策。",
-        "keyPoints": [
-          "大规模 GPU 集群：约 80 个节点上的 600 张 GPU",
-          "多样化自动驾驶工作负载：训练、模拟、CI/测试、推理",
-          "专注于 GPU 性能优化和资源规划",
-          "针对不同工作负载类型的混合 GPU 共享策略"
-        ]
-      },
-      "challenge": {
-        "title": "挑战：多样化工作负载下的 GPU 低利用率",
-        "description": "蔚来汽车的大规模云基础设施支持多样化的自动驾驶工作负载。这种多样性导致工作负载 - 资源不匹配，产生了持续的效率挑战，存在几个具体痛点。",
-        "points": [
-          {
-            "title": "CI 和测试任务",
-            "description": "CI 任务的大部分执行时间花费在 CPU 密集型操作（编译、文件获取、预处理）上。GPU 仅间歇性使用，在整卡分配下平均利用率仅为 5–10%。"
-          },
-          {
-            "title": "模拟工作负载",
-            "description": "模拟流水线处理视频流、雷达数据和推理验证。单个任务的计算需求相对较低，适合在共享 GPU 上并发执行。"
-          },
-          {
-            "title": "在线推理",
-            "description": "许多推理服务仅需 ¼ 或 ½ 张 GPU。为这些小工作负载分配整张 GPU 既低效又昂贵。"
-          },
-          {
-            "title": "GPU 集群规模受限",
-            "description": "GPU 集群规模有限，部分容量来自按时间计费的公共云提供商。GPU 低利用率浪费了 GPU 小时数并增加运营成本。"
-          }
-        ]
-      },
-      "solution": {
-        "title": "基于 HAMi 的混合 GPU 共享策略",
-        "description": "蔚来汽车采用了混合 GPU 共享策略，根据工作负载特征选择不同的 GPU 分配机制，而不是强制执行单一方法。HAMi 通过调度器扩展和设备插件集成，为 Kubernetes 提供细粒度 GPU 共享能力。",
-        "approaches": {
-          "title": "评估的方法",
-          "items": [
-            {
-              "title": "NVIDIA MIG",
-              "description": "提供强隔离但仅支持预定义的分区大小，难以匹配更细粒度的需求（例如 1/6 或 1/8 张 GPU）。"
-            },
-            {
-              "title": "时间分片",
-              "description": "允许工作负载以最小开销自由竞争 GPU 资源。但它缺乏对内存和计算使用的严格限制，不适合某些生产工作负载。"
-            },
-            {
-              "title": "HAMi（CNCF Incubating 项目）",
-              "description": "支持对 GPU 内存和计算分配进行细粒度控制，实现基于实际工作负载需求的比例分配，开销最小。"
-            }
-          ]
-        },
-        "productionStrategy": {
-          "title": "生产策略：组合多种方法",
-          "description": "蔚来汽车没有替代现有机制，而是将它们组合起来以实现不同工作负载类型的最佳效率。",
-          "items": [
-            "MIG：用于算法开发以及需要强隔离的环境",
-            "HAMi：用于 CI 任务以及选定的推理和模拟工作负载",
-            "时间分片：用于可以容忍资源竞争的工作负载"
-          ]
-        },
-        "implementation": {
-          "title": "实施细节",
-          "scale": "HAMi 部署在约 50–70 个活动节点上，涵盖 400–560 张 GPU",
-          "resourceDesign": {
-            "title": "资源分配设计",
-            "description": "对于模拟工作负载，蔚来汽车将 GPU 内存（VRAM）作为主要约束，因为计算能力不足可以通过调度延迟缓解，但内存耗尽会立即触发 OOM 失败。",
-            "insight": "分区越细并不总是越好。对于某些模拟工作负载，分配约 1/6 张 GPU 提供了最佳效率。更小的分区（如 1/8）引入了额外的调度和虚拟化开销，降低了整体吞吐量。"
-          }
-        }
-      },
-      "results": {
-        "title": "影响：效率大幅提升",
-        "description": "混合 GPU 共享策略在多种工作负载类型上提供了可衡量的改进，提高了整体系统吞吐量，同时直接降低了 GPU 成本。",
-        "items": [
-          {
-            "title": "CI 工作负载利用率",
-            "value": "5% → 30-50%",
-            "description": "通过将 GPU 分区为 ¼ 或更小的分数，CI 流水线中的有效 GPU 利用率提高了约 4 倍"
-          },
-          {
-            "title": "模拟 GPU 小时数",
-            "value": "-30%",
-            "description": "细粒度 GPU 共享使总体 GPU 小时数减少约 30%"
-          },
-          {
-            "title": "模拟任务持续时间",
-            "value": "3 天 → 2 天",
-            "description": "端到端模拟任务从约 3 天减少到约 2 天"
-          },
-          {
-            "title": "部署规模",
-            "value": "400-560 张 GPU",
-            "description": "使用 HAMi 的 50-70 个节点"
-          },
-          {
-            "title": "总基础设施",
-            "value": "600 张 GPU",
-            "description": "跨约 80 个节点支持自动驾驶工作负载"
-          },
-          {
-            "title": "策略",
-            "value": "混合",
-            "description": "HAMi + MIG + 时间分片实现最佳结果"
-          }
-        ]
-      },
-      "lessonsLearned": {
-        "title": "经验教训",
-        "description": "蔚来汽车的 HAMi 部署为大规模实施 GPU 虚拟化的组织提供了宝贵的见解。",
-        "points": [
-          {
-            "title": "GPU 分区优化",
-            "description": "GPU 分区并非'越细越好'。每个工作负载都有最佳分区大小。过度碎片化可能会降低效率。"
-          },
-          {
-            "title": "性能验证",
-            "description": "版本升级需要性能验证。新的 GPU 虚拟化组件可能会引入性能回归。蔚来汽车采用了分阶段升级策略，在允许不同的 HAMi 组件以不同版本运行之前验证性能基准。"
-          },
-          {
-            "title": "生产安全",
-            "description": "运营变更必须确保生产安全。对于在线推理工作负载，设备插件升级遵循类似蓝绿部署的流程：首先迁移流量，部署新 Pod，然后逐步停用旧实例。"
-          },
-          {
-            "title": "工具链兼容性",
-            "description": "工具链兼容性至关重要。某些编译器或库功能（如指针或地址分析）可能与 GPU 拦截机制冲突。需要在功能和稳定性之间仔细权衡。"
-          }
-        ]
-      },
-      "quote": {
-        "text": "蔚来汽车的 HAMi 部署展示了细粒度 GPU 共享如何显著提高自动驾驶工作负载的基础设施效率。通过将 HAMi 与 Kubernetes 以及现有的 GPU 分配机制（如 MIG 和时间分片）相结合，蔚来汽车在不牺牲稳定性的前提下提高了 GPU 利用率，减少了总体 GPU 小时数，并提高了工作负载吞吐量。",
-        "author": "蔚来汽车基础设施团队"
-      },
-      "companyCard": {
-        "name": "蔚来汽车",
-        "description": "领先的电动汽车公司，拥有自动驾驶 AI 平台"
-      },
-      "cta": {
-        "exploreHami": "探索 HAMi",
-        "contactUs": "联系我们"
-      },
-      "conclusion": {
-        "title": "混合策略成功",
-        "description": "蔚来汽车的混合资源管理策略使其能够在同一 Kubernetes 环境中更高效地支持多样化的 AI 工作负载——从 CI 流水线到模拟和推理。这种方法展示了如何将 HAMi 与其他 GPU 分配机制相结合，为不同的工作负载类型提供最佳结果。"
-      }
-    },
-    "snowCorp": {
-      "cardTitle": "SNOW Corp：支撑 2 亿用户的 GenAI",
-      "title": "SNOW Corp 基于 HAMi GPU 共享与 KEDA 自动伸缩，支撑 2 亿用户 GenAI 服务",
-      "subtitle": "探索 SNOW Corp 如何编排 1,000+ 张 GPU 应对 700% 病毒式流量峰值，实现 MTTR 缩短 91%、峰值流量错误减少 85%、预估节省成本 1,740 万美元，基于 Kubernetes 上的 HAMi 和 KEDA。",
-      "stats": [
-        {
-          "value": "1,000+",
-          "label": "张 A100 GPU 编排管理"
-        },
-        {
-          "value": "2 亿+",
-          "label": "全球用户覆盖 3 款应用"
-        },
-        {
-          "value": "700%",
-          "label": "病毒式流量峰值应对能力"
-        }
-      ],
-      "overview": {
-        "title": "公司概述",
-        "description": "SNOW Corp. 是韩国 NAVER 集团旗下子公司，运营着 1,000+ 张 A100 GPU 的计算集群，为 SNOW、EPIK、B612 三款全球排名领先的 GenAI 应用提供 AI 功能服务，覆盖 2 亿 + 全球用户。基础设施承载 1,200+ AI 工作流和 400+ 模型，需要应对病毒式 AI 趋势带来的极端流量波动。",
-        "keyPoints": [
-          "韩国领先科技平台 NAVER 集团旗下子公司",
-          "三款全球领先的 GenAI 应用：SNOW、EPIK、B612",
-          "生产环境承载 1,200+ AI 工作流和 400+ 模型",
-          "多区域本地化 Kubernetes 平台"
-        ]
-      },
-      "challenge": {
-        "title": "挑战：极端规模下的 GPU 调度",
-        "description": "Kubernetes 原生 GPU 调度将 GPU 视为原子资源——Pod 要么获得整张 GPU，要么什么都没有。这种模式在 SNOW 面临异构工作负载需求和不可预测的病毒式流量峰值时彻底失效。",
-        "points": [
-          {
-            "title": "异构工作负载需求",
-            "description": "训练流水线、推理服务和批处理具有截然不同的 GPU 利用率特征。训练任务可能消耗 80% 的 GPU 算力但仅用 20% 显存，而推理服务的利用率特征正好相反。"
-          },
-          {
-            "title": "流量不可预测性",
-            "description": "病毒式 AI 趋势和异构推理工作负载产生了 700% 的流量峰值。缺乏 GPU 级别的可观测性，扩缩容决策只能依赖人工或粗略的 CPU/内存指标，无法反映 GPU 真实的饱和程度。"
-          },
-          {
-            "title": "调度盲区",
-            "description": "在采用 Kubernetes 之前，同一 Pod 中的 2-3 个容器在无协调的情况下竞争 GPU 资源。基于负载预测的手动 GPU 配置导致约 2 倍的资源超配。"
-          },
-          {
-            "title": "成本爆炸",
-            "description": "为应对峰值负载，SNOW 不得不超配约 2 倍资源——一张用于训练，一张用于推理——而理论上只需要一张即可。"
-          }
-        ]
-      },
-      "solution": {
-        "title": "解决方案：CNCF 生态驱动的 GPU 编排技术栈",
-        "description": "SNOW 迁移至多区域本地化 Kubernetes 平台，整个技术栈由 CNCF 生态支撑：Cilium 作为 CNI、Helm 实现 GitOps 部署、Traefik 作为 Ingress、Prometheus/Loki/Grafana 提供可观测性、HAMi 实现 GPU 共享、KEDA 实现自动伸缩。",
-        "hamiSharing": {
-          "title": "基于 HAMi 的 GPU 共享",
-          "description": "Kubernetes 默认调度器执行严格的 GPU 隔离，这阻断了 SNOW 顺序式训练 - 推理流水线的迁移——训练器和推理引擎必须共享同一张 GPU。HAMi 通过虚拟化 GPU 资源（vGPU）解决此问题，使同一 Pod 中的多个容器能够并发共享单张 GPU。",
-          "features": [
-            "与 kube-scheduler 原生集成，无需修改任何应用代码",
-            "与更广泛的自动伸缩生态系统完全兼容",
-            "训练 + 推理流水线所需 GPU 数量减少 2 倍"
-          ]
-        },
-        "kedaAutoscaling": {
-          "title": "基于 KEDA 的主动 GPU 编排",
-          "description": "标准指标（CPU/内存、DCGM 利用率）对 SNOW 的异构工作负载不可靠。KEDA 内置的 RabbitMQ 缩放器充当滞后指标——考虑到约 60 秒的模型预热时间，在队列积压形成后触发缩放总是太晚。",
-          "features": [
-            "自定义 Metric Server（Python/FastAPI）向 KEDA 暴露消费者饱和度指标",
-            "主动伸缩：当 active_ratio 超过阈值（如 0.7）时，KEDA 在工作池饱和前预配新 GPU Pod",
-            "智能缩容：更长的 stabilizationWindowSeconds 和 cooldownPeriod 防止过早释放资源"
-          ]
-        },
-        "cloudBursting": {
-          "title": "应对病毒式峰值的混合云弹性扩展",
-          "description": "当「吉卜力滤镜」等病毒式趋势在 3 小时内将流量推高三倍时，SNOW 通过统一的 GitOps 流水线动态扩展至云服务商区域，在所有集群中部署相同的 Helm Charts。",
-          "features": [
-            "统一 GitOps 流水线，在所有集群部署相同的 Helm Charts",
-            "云服务商工作节点直接从中央 RabbitMQ 队列消费任务",
-            "无缝多集群扩展，零服务中断"
-          ]
-        }
-      },
-      "results": {
-        "title": "影响与成果",
-        "description": "SNOW 的云原生转型展示了如何将 Kubernetes 与更广泛的 CNCF 生态相结合，在极端规模下克服 GPU 调度和可观测性的根本性限制。",
-        "items": [
-          {
-            "title": "MTTR 改善",
-            "value": "91%",
-            "description": "从约 2 小时缩短至约 10 分钟"
-          },
-          {
-            "title": "峰值错误减少",
-            "value": "85%",
-            "description": "峰值流量期间 GPU 涌涌相关用户错误"
-          },
-          {
-            "title": "成本节省",
-            "value": "1,740 万美元",
-            "description": "相比按需云 GPU 配置的预估节省"
-          },
-          {
-            "title": "GPU 使用时间",
-            "value": "-55%",
-            "description": "通过主动自动伸缩平均 GPU 使用时间减少"
-          },
-          {
-            "title": "GPU 需求",
-            "value": "减少 2 倍",
-            "description": "通过 HAMi 共享训练 + 推理所需 GPU"
-          },
-          {
-            "title": "运维节省",
-            "value": "10.8 人月",
-            "description": "消除手动扩缩容，采用指标驱动的自动化"
-          }
-        ]
-      },
-      "cncfNote": {
-        "title": "CNCF 案例研究",
-        "description": "本案例研究最初由云原生计算基金会（CNCF）作为最终用户案例研究计划的一部分发布，展示了 SNOW Corp. 在更广泛的 CNCF 生态中成功使用 CNCF Incubating 项目 HAMi 的实践。",
-        "link": "https://www.cncf.io/case-studies/snow-corp/"
-      },
-      "quote": {
-        "text": "SNOW 的云原生转型展示了如何将 Kubernetes 与更广泛的 CNCF 生态相结合，在极端规模下克服 GPU 调度和可观测性的根本性限制。通过引入 HAMi 实现 GPU 共享，并利用主动式自定义指标增强 KEDA，SNOW 从被动的手工运营转向了预测性的自动化编排。",
-        "author": "SNOW Corp. 基础设施团队",
-        "position": "基础设施团队，SNOW Corp."
-      },
-      "companyCard": {
-        "name": "SNOW Corp.",
-        "description": "NAVER 旗下子公司，服务全球 2 亿 + GenAI 用户"
-      },
-      "cta": {
-        "exploreHami": "探索 HAMi",
-        "contactUs": "联系我们"
-      },
-      "conclusion": {
-        "title": "大规模 GenAI 的可复制蓝图",
-        "description": "SNOW 的方法为运行大规模 GenAI 工作负载提供了一个可复制的蓝图——智能资源利用、精确的自动伸缩和深度可观测性是将基础设施挑战转化为竞争优势的关键。"
-      }
-    },
-    "chinaMerchantsBank": {
-      "cardTitle": "招商银行：AI 算力调度优化",
-      "title": "招商银行基于 HAMi 在 Kubernetes 上优化 AI 算力调度",
-      "subtitle": "探索招商银行如何基于 Kubernetes 和 HAMi 构建统一 AI 算力调度平台，纳管多厂商加速卡（昆仑芯、昇腾、NVIDIA、PPU、摩尔线程、MetaX），实现拓扑感知调度与细粒度共享，硬件资源池利用率达到 100%，跨机调度下降 30%。",
-      "stats": [
-        {
-          "value": "100%",
-          "label": "硬件资源池利用率"
-        },
-        {
-          "value": "30%",
-          "label": "跨机调度下降"
-        },
-        {
-          "value": "1 GB / 1%",
-          "label": "最细显存 / 算力切分"
-        }
-      ],
-      "overview": {
-        "title": "公司概述",
-        "description": "招商银行是中国领先的商业银行之一，在云原生、AI 和数字基础设施上投入巨大。随着 AI 在越来越多金融场景中成为核心能力，该行需要运行种类繁多的训练、推理和内部 AI 工作负载，对底层算力平台构成了实实在在的压力。",
-        "keyPoints": [
-          "中国领先的商业银行之一",
-          "在云原生、AI 和数字基础设施上投入巨大",
-          "多厂商加速卡：昆仑芯、昇腾、NVIDIA、PPU、摩尔线程、MetaX",
-          "基于 Kubernetes 和 HAMi 搭建统一 AI 算力平台"
-        ]
-      },
-      "challenge": {
-        "title": "挑战：让既有资源高效协同",
-        "description": "大模型训练、推理服务和各类 AI 应用正在快速扩张。真正的瓶颈并不在于算力不足，而在于如何让既有资源高效协同。在企业级规模上搭建 AI 平台，归根结底是三个问题。",
-        "points": [
-          {
-            "title": "资源管理碎片化",
-            "description": "不同 AI 加速器厂商各自交付自己的软件栈和管理工具，结果是资源池相互割裂，调度策略彼此不一致，运维开销持续攀升。"
-          },
-          {
-            "title": "训练硬件未充分利用",
-            "description": "部分训练节点采用多芯片高速互联，任务放置对芯片的物理拓扑极为敏感。不理解这套拓扑的调度器会把任务放到错误的芯片上，轻则性能受损，重则直接失败。"
-          },
-          {
-            "title": "小任务的容量浪费",
-            "description": "大量推理、微调和测试任务并不需要整张加速卡，但传统做法按整卡分配，留下大量闲置容量。"
-          }
-        ]
-      },
-      "solution": {
-        "title": "解决方案：统一 AI 算力调度平台",
-        "description": "招商银行在 Kubernetes 和 HAMi 上搭建了统一 AI 算力平台，随后在资源纳管、共享调度和训练效率上持续迭代。",
-        "unifiedResources": {
-          "title": "统一异构资源管理",
-          "description": "HAMi 把多种不同类型的加速卡（昆仑芯、多款昇腾型号、NVIDIA GPU、PPU、摩尔线程、MetaX 等）汇入一个统一的 Kubernetes 资源池。如果没有 HAMi，每交付一批硬件通常都会伴随一个独立的 Kubernetes 集群，可能要维护八个以上彼此独立的集群。借助 HAMi，这些异构设备通过单一调度框架和一致的平台策略来管理，应用团队继续沿用标准 Kubernetes 工作流。",
-          "features": [
-            "一个 Kubernetes 池纳管多家厂商",
-            "应用团队沿用标准 Kubernetes 工作流",
-            "厂商最佳实践与示例工作负载"
-          ]
-        },
-        "topologyScheduling": {
-          "title": "适配超算节点架构的拓扑感知调度",
-          "description": "部分训练节点采用超算节点（双芯片模组）架构。Kubernetes 默认调度器不理解这种布局，于是该行增强了 HAMi 的 Device Plugin 和调度器，使其识别物理模组并强制成对分配。调度器把卡保持在同一模组内，硬件资源池利用率达到 100%。在 ResNet50 推理基准中，细粒度算力分区把单卡吞吐量从 64.6 提升到 94.8 images/s，整体吞吐量最高提升 46.7%。",
-          "features": [
-            "超算节点模组成对分配",
-            "按最短通信路径放置",
-            "硬件资源池利用率 100%"
-          ]
-        },
-        "fineGrainedSharing": {
-          "title": "基于 vNPU-Core 软件分区的细粒度共享",
-          "description": "推理、小模型微调和研发测试任务通常不需要整张卡。该行使用 HAMi 的 VMPO Core 组件做用户态算力分区，用令牌桶控制算力配额，用用户态管理显存。分区粒度最细可达 1 GB 显存 / 1% 算力，在银行业意义非凡：风控模型和客服模型体量很小，并不需要整张卡。",
-          "features": [
-            "令牌桶控制算力配额",
-            "用户态显存管理",
-            "1 GB 显存 / 1% 算力切分"
-          ]
-        }
-      },
-      "results": {
-        "title": "关键成果",
-        "description": "这些改动让该行能够应对不断增长的 AI 工作负载，而不必持续采购更多硬件。",
-        "items": [
-          {
-            "title": "硬件资源池利用率",
-            "value": "100%",
-            "description": "拓扑感知的成对分配让硬件资源池利用率达到 100%。"
-          },
-          {
-            "title": "跨机调度",
-            "value": "-30%",
-            "description": "跨机调度概率下降 30%，消除了分布式训练的一大瓶颈。"
-          },
-          {
-            "title": "分区粒度",
-            "value": "1 GB / 1%",
-            "description": "最细切分到 1 GB 显存 / 1% 算力，可按任务自由组合。"
-          },
-          {
-            "title": "单卡吞吐量",
-            "value": "+46.7%",
-            "description": "细粒度算力分区让 ResNet50 单卡吞吐量最高提升 46.7%。"
-          },
-          {
-            "title": "跨模组驱动崩溃",
-            "value": "消除",
-            "description": "成对分配消除了奇数卡跨模组放置导致的驱动崩溃。"
-          },
-          {
-            "title": "平台架构",
-            "value": "统一",
-            "description": "在 Kubernetes 上构建单一异构 AI 算力调度平台。"
-          }
-        ]
-      },
-      "cncfNote": {
-        "title": "CNCF 案例研究",
-        "description": "本案例已作为 CNCF 案例研究发布。",
-        "link": "https://www.cncf.io/case-studies/china-merchants-bank/"
-      },
-      "quote": {
-        "text": "通过 HAMi，我们在 Kubernetes 上搭建了统一的异构 AI 算力调度平台，在资源利用率、训练效率和平台稳定性上取得了显著提升。",
-        "author": "招商银行 AI 算力平台团队",
-        "position": "招商银行 AI 算力平台团队"
-      },
-      "companyCard": {
-        "name": "招商银行",
-        "description": "中国领先的商业银行之一，在多厂商加速卡平台上大规模运行训练、推理和内部 AI 工作负载。"
-      },
-      "cta": {
-        "exploreHami": "了解 HAMi",
-        "contactUs": "联系我们"
-      },
-      "conclusion": {
-        "title": "软件才是 AI 基础设施真正的竞争优势",
-        "description": "招商银行的故事说明，AI 基础设施真正的竞争优势并不在于买更多硬件，而在于用 HAMi 这样的软件把既有硬件的价值榨取出来。Kubernetes 正在成为企业 AI 基础设施的控制面。"
-      }
-    }
-  },
   "videos": {
     "pageTitle": "产品视频",
     "pageSubtitle": "由 HAMi 发起团队打造 —— HAMi 是 CNCF Incubating 异构 GPU 共享调度项目。了解密瓜智能如何将开源创新转化为企业级 GPU 编排方案。",
@@ -2716,74 +933,14 @@
     }
   },
   "enterprise": {
-    "list": {
-      "title": "密瓜智能产品概览",
-      "subtitle": "对比 Dynamia Enterprise for HAMi 与 Dynamia AI Platform for HAMi，为生产级异构算力选择合适路径。",
-      "noRelease": "暂无版本",
-      "viewDetail": "查看详情",
-      "downloadCta": "下载",
-      "artifactCount": "{count} 个下载介质",
-      "metaVersion": "版本",
-      "metaReleased": "发布",
-      "metaArtifacts": "介质",
-      "heroBadge": "产品 · 生产就绪",
-      "heroApplyTrial": "申请试用",
-      "statEditions": "产品",
-      "statGA": "GA 产品",
-      "statReleases": "已发布版本",
-      "statArtifacts": "可下载介质",
-      "matrixTitle": "产品线",
-      "matrixDesc": "选择一款产品，查看产品介绍、下载介质、安装指南与兼容矩阵。",
-      "cardEyebrowHamiEnterprise": "GPU 虚拟化",
-      "cardEyebrowHamiAiPlatform": "异构算力平台",
-      "matrixCount": "{count} 款产品",
-      "helpTitle": "选型咨询",
-      "helpDesc": "容量规划、评估授权、离线部署 — 联系我们。",
-      "applyTrial": "申请试用",
-      "viewPricing": "查看定价",
-      "comingSoonBadge": "即将推出",
-      "comingSoonTitle": "更多产品即将推出",
-      "comingSoonDesc": "更多异构加速卡产品正在打包，联系销售获取首发。",
-      "comingSoonHint": "产品路线持续更新"
-    },
     "detail": {
-      "backToList": "返回产品列表",
-      "latest": "最新",
-      "latestLabel": "最新版本",
-      "openDocs": "在线文档",
-      "downloadLatest": "下载最新版",
-      "openInstallGuide": "安装指南",
-      "aboutTitle": "产品介绍",
-      "downloadTitle": "下载",
-      "versionLabel": "版本",
       "releasedAt": "发布时间",
-      "releaseNotes": "Release Notes",
-      "upgradeGuide": "升级指南",
       "noRelease": "当前版本暂无下载介质。",
-      "compatTitle": "兼容性矩阵",
-      "contactTitle": "需要企业级支持？",
-      "contactDesc": "获取定制报价、部署交付与 7×24 SLA。",
-      "contactCta": "联系销售",
-      "casesTitle": "客户部署案例",
-      "casesDesc": "查看真实客户部署架构与生产实践。",
-      "casesCta": "浏览客户案例",
-      "channelStable": "稳定版",
-      "channelBeta": "Beta",
-      "channelRc": "RC",
-      "channelEol": "已停止维护",
-      "eolWarning": "已停止维护，无安全更新。生产请用最新稳定版。",
-      "betaWarning": "Beta — 仅供评估，勿用于生产。",
-      "downloadComingSoonBadge": "Coming Soon",
-      "downloadComingSoonTitle": "下载页面即将开放",
-      "downloadComingSoonDesc": "版本下载、交付流程与下载路径还在准备中，确认后会在这里更新。",
       "deliveryTabsLabel": "安装方式",
       "deliveryTabOnline": "在线安装",
       "deliveryTabOffline": "离线安装",
       "deliveryTabSoon": "筹备中",
       "deliveryOnlineDesc": "在线安装步骤、OCI / Helm 命令与验证说明均见安装指南。",
-      "deliveryOfflineDesc": "离线一体包、镜像 tar 与校验信息，适用于隔离网络与生产交付场景。",
-      "onlineInstallTitle": "推荐：OCI 在线安装",
-      "onlineInstallDesc": "集群可访问 OCI 仓库时，执行以下命令即可完成安装。",
       "offlineComingSoonTitle": "离线安装包筹备中",
       "offlineComingSoonDesc": "All-in-One 离线一体包与分件镜像包正在打包与校验，开放后将在本页提供下载与 SHA256。"
     },
@@ -2819,17 +976,6 @@
       "lastUpdated": "最后更新",
       "tocTitle": "本页目录"
     },
-    "trust": {
-      "deployedBy": "已在生产环境部署",
-      "caseTitle": "真实生产案例",
-      "caseDesc": "头部企业如何大规模部署密瓜智能企业版。",
-      "viewAllCases": "查看全部案例",
-      "readCase": "阅读案例",
-      "contactEyebrow": "联系销售",
-      "contactPhone": "电话",
-      "contactEmail": "邮箱",
-      "truncationLength": 72
-    },
     "gate": {
       "title": "解锁企业版下载",
       "subtitle": "填写信息解锁下载，30 天有效。",
@@ -2839,379 +985,18 @@
       "consentLabel": "我同意<link>隐私政策</link>并同意处理我的信息用于销售跟进（GDPR 第 6 条）。",
       "consentRequired": "请先阅读并同意隐私政策。"
     },
-    "hamiEnterprisePage": {
-      "heroBadge": "企业版",
-      "heroTitle": "Dynamia Enterprise for HAMi",
-      "heroSubtitle": "基于 CNCF Incubating 项目构建的企业级 GPU 虚拟化方案，将 GPU 利用率从 40% 提升至 70%+",
-      "overviewTitle": "为生产环境而生",
-      "overviewDescription": "Dynamia Enterprise for HAMi 基于 GPU License 授权，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴，提供生产级加固与企业级支持。",
-      "highlightsTitle": "企业级特性",
-      "compatTitle": "兼容性",
-      "compatKubernetes": "Kubernetes",
-      "compatOs": "操作系统",
-      "compatGpu": "GPU 驱动",
-      "ctaTitle": "准备开始？",
-      "ctaDescription": "联系我们的团队获取企业授权、部署协助和 7×24 技术支持。",
-      "viewDownloads": "下载",
-      "applyTrial": "申请试用"
-    },
-    "status": {
-      "ga": "正式版",
-      "beta": "Beta",
-      "eol": "已停止维护"
-    },
-    "compatLabels": {
-      "kubernetes": "Kubernetes",
-      "os": "操作系统",
-      "gpu": "GPU 驱动"
-    },
     "checksumPending": "校验和待发布",
     "copyCommand": "复制",
     "copiedCommand": "已复制",
     "downloadContactNeedBundles": "如需提前获取离线包，请",
     "downloadContactSales": "联系销售",
     "downloadContactPhone": "或致电 400-026-7800",
-    "origin": {
-      "eyebrow": "同根同源",
-      "title": "HAMi 与密瓜智能",
-      "subtitle": "HAMi 是 CNCF Incubating 异构 AI 计算虚拟化项目，由密瓜智能创始团队发起并担任核心 Maintainer。我们的企业版与开源同源同代码，加固、运维、SLA 一站式由原厂提供。",
-      "pillars": [
-        {
-          "title": "CNCF Incubating 项目",
-          "desc": "开放治理 · 厂商中立基金会背书"
-        },
-        {
-          "title": "由密瓜智能发起",
-          "desc": "HAMi 的核心 Maintainer 即密瓜工程团队"
-        },
-        {
-          "title": "上游 100% 兼容",
-          "desc": "同源同 API · 无 fork 漂移、无锁定"
-        },
-        {
-          "title": "原厂级 SLA",
-          "desc": "7×24 支持 · 长期版本来自源头"
-        }
-      ],
-      "relation": {
-        "connector1": "发起并维护",
-        "connector2": "原厂交付 · SLA",
-        "team": {
-          "title": "密瓜智能",
-          "titleSub": "Dynamia.AI",
-          "desc": "HAMi 项目的发起者与持续维护方，并以原厂身份交付企业版"
-        },
-        "opensource": {
-          "title": "HAMi",
-          "desc": "异构 AI 计算虚拟化中间件 · 开源项目，社区驱动"
-        },
-        "commercial": {
-          "title": "企业版产品",
-          "desc": "基于 HAMi 的商业发行版，由密瓜智能提供保障与服务"
-        }
-      },
-      "ctaPrimary": "HAMi 官网",
-      "ctaCommunity": "社区",
-      "ctaGithub": "GitHub",
-      "ctaDiscord": "Discord"
-    },
-    "scope": {
-      "title": "如何选择产品",
-      "subtitle": "三条产品线 —— 开源 HAMi、Dynamia Enterprise for HAMi、Dynamia AI Platform for HAMi。",
-      "decisionTitle": "30 秒选型",
-      "totalsLabel": "能力覆盖",
-      "totalsHint": "勾选表示该版本支持",
-      "recommendPrefix": "推荐：",
-      "decisionRows": [
-        {
-          "scenario": "我想自己试验 GPU 共享",
-          "choice": "开源 HAMi"
-        },
-        {
-          "scenario": "我需要可被支持、加固的 GPU 虚拟化层",
-          "choice": "Dynamia Enterprise for HAMi"
-        },
-        {
-          "scenario": "我还需要多集群 GUI、配额和可观测",
-          "choice": "Dynamia AI Platform for HAMi"
-        },
-        {
-          "scenario": "我想为多个内部团队管理平台",
-          "choice": "Dynamia AI Platform for HAMi"
-        }
-      ],
-      "columns": {
-        "feature": "能力",
-        "oss": "开源 HAMi",
-        "ossSub": "",
-        "commercial": "Dynamia Enterprise for HAMi",
-        "commercialSub": "",
-        "enterprise": "Dynamia AI Platform for HAMi",
-        "enterpriseSub": ""
-      },
-      "cta": {
-        "ossLabel": "开源 HAMi",
-        "ossLink": "GitHub",
-        "ossHref": "https://github.com/Project-HAMi/HAMi",
-        "commercialLabel": "Dynamia Enterprise for HAMi",
-        "commercialLink": "下载",
-        "enterpriseLabel": "Dynamia AI Platform for HAMi",
-        "enterpriseLink": "下载"
-      },
-      "groups": [
-        {
-          "id": "gpu-core",
-          "title": "GPU 虚拟化核心",
-          "desc": "开源 HAMi 基础能力 —— 商业版强化",
-          "rows": [
-            {
-              "feature": "显存共享"
-            },
-            {
-              "feature": "算力共享"
-            },
-            {
-              "feature": "显存共享强隔离"
-            },
-            {
-              "feature": "算力共享强隔离"
-            },
-            {
-              "feature": "显存、算力超卖"
-            },
-            {
-              "feature": "HAMi Turbo 模式"
-            },
-            {
-              "feature": "应用无缝自动扩缩容（不重启）"
-            },
-            {
-              "feature": "任务优先级抢占"
-            },
-            {
-              "feature": "空闲统计 & 显存占用分析"
-            },
-            {
-              "feature": "调度引擎并行优化"
-            },
-            {
-              "feature": "Binpack / Spread 策略"
-            },
-            {
-              "feature": "NVIDIA 网络拓扑亲和调度"
-            },
-            {
-              "feature": "Volcano 深度集成（抢占 / vGPU 联合调度）"
-            },
-            {
-              "feature": "GPU 资源池"
-            }
-          ]
-        },
-        {
-          "id": "gpu-vendors",
-          "title": "异构 GPU 厂商支持",
-          "desc": "NVIDIA + AMD + 国产 9 家",
-          "rows": [
-            {
-              "feature": "NVIDIA 全系列"
-            },
-            {
-              "feature": "AMD"
-            },
-            {
-              "feature": "昇腾 全系列"
-            },
-            {
-              "feature": "沐曦"
-            },
-            {
-              "feature": "昆仑芯"
-            },
-            {
-              "feature": "海光"
-            },
-            {
-              "feature": "天数智芯 全系列"
-            },
-            {
-              "feature": "寒武纪"
-            },
-            {
-              "feature": "燧原"
-            },
-            {
-              "feature": "摩尔线程"
-            },
-            {
-              "feature": "平头哥 全系列"
-            }
-          ]
-        },
-        {
-          "id": "multi-cluster",
-          "title": "多集群控制面",
-          "desc": "仅平台版 —— 一站式 UI、可观测、生命周期管理",
-          "rows": [
-            {
-              "feature": "多集群一站式可观测（集群 / 应用 / GPU）"
-            },
-            {
-              "feature": "GPU 硬件监控"
-            },
-            {
-              "feature": "丰富完备的告警策略"
-            },
-            {
-              "feature": "一站式 GUI（多集群 Dashboard / 资源 / 配额 / 工作负载）"
-            },
-            {
-              "feature": "可视化 Binpack / Spread 策略"
-            },
-            {
-              "feature": "完备多集群生命周期管理（LCM）"
-            },
-            {
-              "feature": "一键部署体验模型"
-            }
-          ]
-        },
-        {
-          "id": "enterprise-ops",
-          "title": "企业运营",
-          "desc": "License、多租户、计费、OpenAPI、SLA",
-          "rows": [
-            {
-              "feature": "企业级多租户管理"
-            },
-            {
-              "feature": "计量、计费"
-            },
-            {
-              "feature": "OpenAPI / 开放能力"
-            },
-            {
-              "feature": "License 可视化管理"
-            },
-            {
-              "feature": "OEM 白标品牌配置"
-            },
-            {
-              "feature": "SLA 保障（7×24 交付 SLA）"
-            },
-            {
-              "feature": "Air-gap / 离线部署"
-            }
-          ]
-        }
-      ]
-    },
-    "productsData": {
-      "hami-enterprise": {
-        "name": "Dynamia Enterprise for HAMi",
-        "tagline": "Dynamia Enterprise for HAMi —— 在开源 HAMi（CNCF Incubating 项目）之上提供企业级 GPU 虚拟化能力",
-        "description": "Dynamia Enterprise for HAMi 基于 GPU License 授权，把 GPU 利用率从社区版 40% 提升到 70%+，面向已有 PaaS、研发能力较强的垂直互联网客户与合作伙伴/代理商，提供生产级加固与企业级支持。",
-        "highlights": [
-          {
-            "title": "企业级 SLA",
-            "desc": "7×24 技术支持、热修复响应、长期版本维护。"
-          },
-          {
-            "title": "多厂商 GPU 适配",
-            "desc": "支持英伟达、昇腾、寒武纪、天数智芯、海光 DCU 等主流加速卡。"
-          },
-          {
-            "title": "安全加固",
-            "desc": "镜像签名、CVE 修复流水线、完整审计日志。"
-          }
-        ]
-      },
-      "hami-ai-platform": {
-        "name": "Dynamia AI Platform for HAMi",
-        "tagline": "异构算力集群全栈管控平台",
-        "description": "Dynamia AI Platform for HAMi 是面向异构算力集群的全栈控制面。在 Dynamia Enterprise for HAMi 基础上叠加多集群一站式 GUI、集群/应用/GPU 三维度可观测、企业级租户配额、计量计费、OpenAPI 与 SLA 支持，面向公有云应用市场、中小腰部客户与 KA 客户。",
-        "highlights": [
-          {
-            "title": "多集群联邦",
-            "desc": "跨数据中心、跨云资源池化，单一控制面统一调度。"
-          },
-          {
-            "title": "租户配额",
-            "desc": "层级配额、公平调度、计费报表一站式打通。"
-          },
-          {
-            "title": "实时观测",
-            "desc": "GPU/NPU 利用率、排队延迟、SLO 仪表盘全链路可视。"
-          }
-        ]
-      }
-    },
     "codeLabels": {
       "copy": "复制",
       "copied": "已复制",
       "failed": "复制失败",
       "aria": "复制代码块"
-    },
-    "productIntro": {
-      "hami-enterprise": {
-        "eyebrow": "产品介绍",
-        "title": "面向已有 Kubernetes/PaaS 团队的生产级 GPU 虚拟化产品。",
-        "body": "Dynamia Enterprise for HAMi 将开源 HAMi 的核心能力打包为经过生产加固的商业发行版，重点解决 GPU 细粒度共享、多厂商加速卡适配、安全维护、热修复交付和企业级支持问题，并可集成到客户已有的 PaaS 或内部开发者平台中。",
-        "scenarioTitle": "适用场景",
-        "scenarios": [
-          "已经有 Kubernetes 或 PaaS，需要可被企业支持的 HAMi 发行版。",
-          "需要提升 GPU 利用率，并稳定承载 vGPU 共享、训练、推理和开发机负载。",
-          "需要长期版本维护、离线部署包、安装指南和企业级技术支持。"
-        ],
-        "capabilitiesTitle": "核心产品能力",
-        "capabilities": [
-          {
-            "title": "GPU 细粒度共享",
-            "desc": "按 GPU 算力和显存切分资源，提升训练、推理和开发负载的整体利用率。"
-          },
-          {
-            "title": "生产级交付加固",
-            "desc": "提供镜像签名、CVE 响应、版本包、升级指南和企业部署支持。"
-          },
-          {
-            "title": "多厂商异构加速卡适配",
-            "desc": "通过统一调度与虚拟化层管理多种 GPU/NPU/DCU 加速卡资源。"
-          }
-        ]
-      },
-      "hami-ai-platform": {
-        "eyebrow": "产品介绍",
-        "title": "内置 Dynamia Enterprise for HAMi 能力的异构算力全栈控制面。",
-        "body": "Dynamia AI Platform for HAMi 面向不只需要虚拟化组件、还需要完整平台能力的组织。它包含 Dynamia Enterprise for HAMi，并叠加多集群 GUI、统一可观测、租户配额、计量计费、OpenAPI 与运维工作流，服务于集群管理员、平台团队和 AI 应用负责人。",
-        "scenarioTitle": "适用场景",
-        "scenarios": [
-          "需要通过可视化平台统一管理多个异构算力集群。",
-          "需要面向多个团队做租户配额、计量计费和资源治理。",
-          "需要把集群、应用和 GPU/NPU 可观测统一到一个控制面中。"
-        ],
-        "capabilitiesTitle": "平台能力",
-        "capabilities": [
-          {
-            "title": "多集群资源管控",
-            "desc": "跨集群、跨数据中心、跨云统一资源池化与调度异构算力。"
-          },
-          {
-            "title": "可观测与治理",
-            "desc": "统一查看 GPU/NPU 利用率、队列、租户、应用和 SLO 运行状态。"
-          },
-          {
-            "title": "租户配额与 OpenAPI",
-            "desc": "面向平台团队和内部系统开放配额、计费、自动化和集成能力。"
-          }
-        ]
-      }
     }
-  },
-  "common": {
-    "readMore": "阅读更多",
-    "viewAll": "查看全部",
-    "useCompanyEmail": "请使用公司邮箱提交表单。",
-    "submitting": "提交中..."
   },
   "blogUI": {
     "titleTemplate": "{title} | 密瓜智能博客",
@@ -3304,7 +1089,20 @@
     "ctaPrimary": "申请试用",
     "ctaSecondary": "联系支持"
   },
+  "caseCollectionEmail": {
+    "subject": "密瓜智能｜客户案例集",
+    "body": "你好，感谢你关注密瓜智能。你申请的客户案例集随邮件附上，请查收。\n\n密瓜智能（Dynamia）",
+    "filename": "密瓜智能-客户案例集.pdf"
+  },
   "contactEmail": {
+    "jobTitle": "职位",
+    "gpuCount": "GPU 数量",
+    "message": "备注",
+    "product": "产品",
+    "version": "版本",
+    "artifact": "下载介质",
+    "architecture": "架构",
+    "filename": "文件名",
     "country": "国家",
     "intent": "需求类型",
     "name": "姓名",
@@ -3319,15 +1117,1995 @@
     "intentDemo": "申请演示",
     "intentSales": "商务咨询"
   },
-  "downloadTelemetry": {
-    "source": "📥 来源",
-    "productId": "产品 ID",
-    "version": "版本",
-    "mediaType": "介质类型",
-    "arch": "架构",
-    "filename": "文件名",
-    "imageUrl": "镜像 URL",
-    "language": "语言",
-    "subjectPrefix": "[下载行为]"
+  "gpuCatalog": {
+    "eyebrow": "GPU COMPATIBILITY",
+    "title": "异构 GPU 适配目录",
+    "description": "覆盖 NVIDIA、AMD、AWS 及国产异构加速器，了解支持系列、资源共享能力与部署条件。",
+    "domestic": "GPU 与 AI 加速器支持",
+    "search": "搜索厂商或型号",
+    "empty": "没有找到对应型号，请联系团队确认。",
+    "model": "参考型号",
+    "capability": "能力与部署条件",
+    "source": "查看适配文档",
+    "boundary": "找到适合你的算力方案",
+    "boundaryText": "告诉我们你的 GPU 型号、集群环境与应用场景，一起找到合适的资源共享、调度与管理方案。",
+    "contact": "联系我们",
+    "matrix": "HAMi 官方支持矩阵",
+    "docs": "密瓜产品文档",
+    "name": "厂商",
+    "all": "全部厂商",
+    "devices": [
+      {
+        "name": "英伟达 NVIDIA",
+        "url": "https://project-hami.io/docs/installation/prerequisites",
+        "models": "主流数据中心及消费级 GPU",
+        "detail": "支持显存与算力共享、隔离、多卡虚拟化，以及 Binpack / Spread 调度。部署需要匹配 GPU 型号与 CUDA 的驱动、NVIDIA Container Toolkit 和 HAMi 设备插件；使用 GPU Operator 时关闭其原生设备插件。"
+      },
+      {
+        "name": "超威 AMD",
+        "url": "https://project-hami.io/docs/userguide/amd-device/enable-amd-gpu-sharing",
+        "models": "Instinct 系列",
+        "detail": "支持多任务共享 GPU、按 MiB 分配显存及按比例分配计算单元（CU）。部署需要 AMD 驱动、ROCm 和 HAMi AMD 设备插件；共享任务镜像需 glibc 2.34 或更高版本，并关闭 AMD GPU Operator 原生设备插件。"
+      },
+      {
+        "name": "亚马逊 AWS",
+        "url": "https://project-hami.io/docs/userguide/awsneuron-device/enable-awsneuron-managing",
+        "models": "Inferentia / Trainium 系列（Neuron 生态）",
+        "detail": "支持按 NeuronCore 分配资源、设备共享及多设备拓扑感知调度，覆盖训练与推理场景。部署在 Inf / Trn 型 EC2 实例上，配置 Neuron 驱动与运行环境、Neuron Device Plugin 和 HAMi。"
+      },
+      {
+        "name": "华为昇腾 Huawei Ascend",
+        "models": "910B / 910B3 / 910C / 310P",
+        "url": "https://project-hami.io/docs/userguide/ascend-device/enable-ascend-sharing",
+        "detail": "按模板硬切分或软切分；显存与算力能力依模式而定。软切分需核对 ARM、驱动版本及 HAMi 调度器要求。"
+      },
+      {
+        "name": "海光 Hygon",
+        "models": "DCU · Z100",
+        "url": "https://project-hami.io/docs/userguide/hygon-device/enable-hygon-dcu-sharing",
+        "detail": "支持显存与算力共享；显存隔离适用部分型号。使用厂商设备插件，并核对 DTK、驱动及单容器 vDCU 限制。"
+      },
+      {
+        "name": "寒武纪 Cambricon",
+        "models": "MLU370 / MLU590",
+        "url": "https://project-hami.io/docs/userguide/cambricon-device/enable-cambricon-mlu-sharing",
+        "detail": "支持显存与算力共享。MLU370 指南要求 Dynamic SMLU 插件及匹配的驱动、CNToolkit；其他型号需核对对应版本。"
+      },
+      {
+        "name": "沐曦 MetaX",
+        "models": "MXC500",
+        "url": "https://project-hami.io/docs/userguide/metax-device/metax-sgpu/enable-metax-gpu-sharing",
+        "detail": "通过 sGPU 提供显存与算力共享。需按对应型号启用厂商虚拟化能力并部署设备插件。"
+      },
+      {
+        "name": "天数智芯 Iluvatar CoreX",
+        "models": "BI-V100 / BI-V150 / MR-V50 / MR-V100",
+        "url": "https://project-hami.io/docs/userguide/iluvatar-device/enable-iluvatar-gpu-sharing",
+        "detail": "支持显存与算力共享；指南给出 256 MiB 显存和 1% 算力粒度。需 GPU Manager 及匹配驱动，核对单容器设备限制。"
+      },
+      {
+        "name": "摩尔线程 Moore Threads",
+        "models": "MTT S4000",
+        "url": "https://project-hami.io/docs/userguide/mthreads-device/enable-mthreads-gpu-sharing",
+        "detail": "支持显存与算力共享。具体切分粒度和隔离方式以厂商驱动及对应部署指南为准。"
+      },
+      {
+        "name": "昆仑芯 Kunlunxin",
+        "models": "P800",
+        "url": "https://project-hami.io/docs/userguide/kunlunxin-device/enable-kunlunxin-vxpu",
+        "detail": "提供整卡调度及 VXPU 路径；显存共享不等同于独立算力切分。整卡路径支持拓扑感知，部署时需明确选用的模式。"
+      },
+      {
+        "name": "燧原 Enflame",
+        "models": "S60",
+        "url": "https://project-hami.io/docs/userguide/enflame-device/enable-enflame-gcu-sharing",
+        "detail": "支持显存与算力共享。按 vGCU 及设备插件支持的配置分配资源，核对驱动和设备模式。"
+      },
+      {
+        "name": "瀚博 Vastai",
+        "models": "VA16",
+        "url": "https://project-hami.io/docs/userguide/vastai/enable-vastai-sharing",
+        "detail": "公开矩阵列为可调度设备，未列出显存或算力切分能力。按整卡资源规划，具体共享能力需另行确认。"
+      },
+      {
+        "name": "壁仞 Biren",
+        "models": "Biren166M",
+        "url": "https://project-hami.io/docs/userguide/biren-device/enable-biren-sharing",
+        "detail": "公开矩阵列为可调度设备，未列出显存或算力切分能力。型号、插件与交付能力需按环境确认。"
+      },
+      {
+        "name": "平头哥 T-Head",
+        "url": "https://docs.dynamia.ai",
+        "models": "真武系列",
+        "detail": "支持显存与算力的细粒度隔离，并纳入统一算力管理。通过 Dynamia PPU 设备插件接入，配套部署真武系列驱动、运行环境和密瓜产品组件。"
+      }
+    ]
+  },
+  "imageViewer": {
+    "title": "查看图片",
+    "close": "关闭",
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "reset": "适应窗口"
+  },
+  "sitePages": {
+    "home": {
+      "ui": {
+        "arrow": "→",
+        "externalArrow": "↗",
+        "externalArrowSpaced": " ↗",
+        "emDash": "—",
+        "star": "★",
+        "hami": "HAMi",
+        "viewDetails": "查看详情"
+      },
+      "hero": {
+        "eyebrow": "Dynamia · Creators of HAMi",
+        "titleLine1": "让已有 GPU，",
+        "titleLine2": "承载更多 AI 业务",
+        "positioning": "The Open Kernel for AI Infrastructure",
+        "description": "专注 GPU 虚拟化与异构算力管理的 AI 基础设施企业。通过共享、隔离与调度，让不同类型的 GPU 在现有 AI 平台中得到更高效的使用。",
+        "bookDemo": "预约产品演示 ",
+        "loadingGithubStars": "正在获取 GitHub 星标数",
+        "githubStars": "GitHub Stars",
+        "motionAlt": "HAMi 异构 GPU 共享与调度演示",
+        "usersLabel": "我们的用户",
+        "users": {
+          "sfTechnology": "顺丰科技",
+          "paradigm": "第四范式 4Paradigm",
+          "daocloud": "DaoCloud",
+          "cloudpilotAi": "CloudPilot AI",
+          "opencsg": "OpenCSG 开放传神",
+          "intsig": "合合信息 INTSIG",
+          "seres": "赛力斯",
+          "snowCorp": "SNOW Corp.",
+          "chinaMerchantsBank": "招商银行",
+          "keHoldings": "贝壳",
+          "nio": "蔚来"
+        }
+      },
+      "why": {
+        "title": "为什么选择我们？",
+        "learnMore": "了解更多",
+        "tabs": [
+          {
+            "title": "多元异构集群",
+            "subtitle": "多元异构 AI 集群统一调度、管理",
+            "description": "密瓜智能 提供统一高效管理多元异构 AI 算力集群，让用户无感使用、管理、调度来自公有云、私有云、本地的 算力集群，最大化利用率，提高管理效率。"
+          },
+          {
+            "title": "GPU 共享",
+            "subtitle": "最大化 GPU 利用率，降低成本，极大提高 AI 效率",
+            "description": "密瓜智能 支持 灵活、可靠、按需、弹性的 GPU 共享 来最大化 GPU  利用率，降低成本，让企业借助更普惠的算力加速业务进程。"
+          },
+          {
+            "title": "GPU 超卖",
+            "subtitle": "对齐 GPU 显存与主机内存，扩大 AI 资源池",
+            "description": "密瓜智能 提供无损、应用无感的 GPU 显存与主机内存对齐机制，最大化资源池，让混部 AI 应用更高效。"
+          },
+          {
+            "title": "自动弹性扩缩容",
+            "subtitle": "AI 应用无感、动态扩缩容",
+            "description": "密瓜智能 支持按需扩缩容，应用在波峰波谷无需重启即可弹性扩缩容 GPU 资源。"
+          },
+          {
+            "title": "集中可观测",
+            "subtitle": "全栈 AI 运行洞察",
+            "description": "通过集中可观测能力统一汇聚公有云、私有云与本地资源，提供可执行洞察、策略化治理与细粒度资源管理，保障 AI 业务高效稳定运行。"
+          },
+          {
+            "title": "高级 AI 调度",
+            "subtitle": "面向场景的智能调度策略",
+            "description": "支持 NUMA-aware、Binpack、Spread 等高级调度策略，降低数据通信开销，减少资源碎片，持续优化任务性能。"
+          }
+        ]
+      },
+      "products": {
+        "eyebrow": "BUILT FOR YOUR NEXT STEP",
+        "title": "从你的平台现状，找到合适的产品",
+        "description": "两种交付形态，共同构建在 HAMi 技术基础之上。",
+        "viewOverview": "查看产品概览",
+        "enterprise": {
+          "audience": "我已有 Kubernetes / PaaS 平台",
+          "name": "Dynamia HAMi 企业版",
+          "description": "把企业级 GPU 虚拟化与调度能力，接入你的现有平台。",
+          "layerPlatform": "你的业务平台",
+          "layerPlatformHint": "保留现有工作流",
+          "layerAccentHint": "GPU 虚拟化与调度增强",
+          "feature1": "资源共享与隔离",
+          "feature2": "企业能力增强",
+          "feature3": "商业技术支持",
+          "cta": "了解企业版",
+          "badge": "ENHANCE YOUR STACK"
+        },
+        "platform": {
+          "audience": "我要统一管理多个集群与团队",
+          "name": "Dynamia HAMi 平台版",
+          "description": "从资源分配到团队治理，在一个可视化平台里完成。",
+          "layerHint": "集群 · 租户 · 配额 · 观测 · 计量",
+          "includesEnterprise": "包含 Dynamia HAMi 企业版",
+          "includesHint": "底层能力一体交付",
+          "feature1": "多集群统一视图",
+          "feature2": "租户与权限管理",
+          "feature3": "用量观测与计量",
+          "cta": "了解平台版",
+          "badge": "MANAGE AS ONE"
+        },
+        "opensource": {
+          "title": "从开源开始探索",
+          "description": "了解 HAMi 的基础能力、项目文档与社区。",
+          "cta": "了解开源 HAMi"
+        }
+      },
+      "ecosystem": {
+        "eyebrow": "BUILT FOR YOUR ECOSYSTEM",
+        "title": "连接现有技术栈，接住不同的算力",
+        "description": "向下适配异构加速器，向上融入熟悉的云原生调度生态。",
+        "vendorsTitle": "异构加速器生态",
+        "viewCatalog": "查看完整适配目录 ",
+        "vendors": {
+          "nvidia": "NVIDIA",
+          "amd": "AMD",
+          "awsNeuron": "AWS Neuron",
+          "huaweiAscend": "华为昇腾",
+          "hygon": "海光 Hygon",
+          "cambricon": "寒武纪 Cambricon",
+          "metax": "沐曦 MetaX",
+          "iluvatarCorex": "天数智芯 Iluvatar CoreX",
+          "mooreThreads": "摩尔线程",
+          "kunlunxin": "昆仑芯",
+          "enflame": "燧原科技",
+          "birenTechnology": "壁仞科技",
+          "vastai": "瀚博半导体 VastAI",
+          "tHeadPpu": "平头哥 PPU"
+        },
+        "schedulersTitle": "云原生调度生态",
+        "schedulers": {
+          "kubernetes": {
+            "name": "Kubernetes",
+            "seeDetails": "Kubernetes · 查看详情"
+          },
+          "volcano": {
+            "name": "Volcano",
+            "seeDetails": "Volcano · 查看详情"
+          },
+          "kueue": {
+            "name": "Kueue",
+            "seeDetails": "Kueue · 查看详情"
+          },
+          "koordinator": {
+            "name": "Koordinator",
+            "seeDetails": "Koordinator · 查看详情"
+          },
+          "kai": {
+            "name": "KAI Scheduler",
+            "seeDetails": "KAI Scheduler · 查看详情"
+          }
+        }
+      },
+      "community": {
+        "eyebrow": "开源，与社区同行",
+        "title": "我们对开源社区的持续建设",
+        "leadBefore": "我们是 ",
+        "leadLink": "CNCF 孵化项目 HAMi",
+        "leadAfter": " 的主导发起者与持续推动者，致力于构建 AI 基础设施的开源内核，让异构算力更易用、更高效、更易治理。",
+        "metrics": {
+          "githubStars": "GitHub 星标",
+          "contributors": "社区贡献者",
+          "installations": "装机量",
+          "adopters": "采用者",
+          "adoptersValue": "300+"
+        },
+        "exploreLink": "了解 HAMi 与开源生态 "
+      },
+      "faq": {
+        "eyebrow": "FAQ",
+        "title": "常见问题解答",
+        "items": [
+          {
+            "q": "HAMi 是开源的吗？与密瓜企业产品有什么关系？",
+            "a": "HAMi 是 CNCF Incubating 项目，密瓜智能是该项目的主导发起者与持续推动者，致力于构建 AI 基础设施的开源内核，让异构算力更易用、更高效、更易治理。"
+          },
+          {
+            "q": "已有 Kubernetes 或自建平台，应该选择哪款产品？",
+            "a": "已有 Kubernetes / PaaS，希望补充 GPU 虚拟化与调度能力，可以从 Dynamia HAMi 企业版 开始评估。需要可视化的多集群、租户、配额与用量管理，则进一步了解 Dynamia HAMi 平台版。"
+          },
+          {
+            "q": "支持哪些 GPU？不同设备的能力是否相同？",
+            "a": "已适配的厂商可在本页异构生态中查看。具体支持能力取决于设备型号、驱动、软件栈和产品版本；共享、隔离、监控等能力需要逐项核对。评估时可提供设备清单，由团队确认适配范围。"
+          },
+          {
+            "q": "GPU 共享会影响业务性能吗？",
+            "a": "实际表现与任务类型、资源配额、并发方式和设备环境有关。建议使用代表性业务负载，对比共享前后的吞吐、延迟、显存占用与 GPU 利用率，再确定适合生产环境的配置。"
+          },
+          {
+            "q": "在哪里可以查看实际应用案例？",
+            "a": "网站的「案例」页面汇集了我们在不同业务场景下的用户实践，可查看应用背景、技术方案和关键成果。具体效果以各案例披露的环境与数据范围为准。"
+          },
+          {
+            "q": "开始一次产品评估，需要准备哪些信息？",
+            "a": "准备 GPU 型号与数量、集群和软件版本、代表性业务负载，以及希望改善的指标。通过下方「预约产品演示」提交需求后，可与团队一起确认验证范围和评估方式。"
+          },
+          {
+            "q": "如何参与社区或联系密瓜团队？",
+            "a": "通过网站的「社区」页面了解 HAMi、参与开源交流；企业产品咨询可预约产品演示，也可以发送邮件至 info@dynamia.ai，或拨打 400-026-7800 联系团队。"
+          }
+        ]
+      },
+      "cta": {
+        "title": "让下一步，从你的实际环境开始",
+        "description": "带上设备、集群和业务需求，一起找到合适的产品与验证路径。"
+      },
+      "brand": {
+        "ariaLabel": "密瓜智能；Creators of HAMi",
+        "creatorsOf": "Creators of",
+        "cncfSuffix": "是 CNCF Incubating 项目"
+      }
+    },
+    "products": {
+      "ui": {
+        "arrow": "→",
+        "emDash": "—",
+        "check": "✓",
+        "supported": "支持",
+        "notSupported": "不支持",
+        "dynamia": "密瓜智能",
+        "hami": "HAMi"
+      },
+      "hero": {
+        "eyebrow": "产品 · 生产就绪",
+        "titleEm": "产品概览",
+        "lead": "对比 Dynamia HAMi 企业版 与 Dynamia HAMi 平台版，",
+        "description": "为生产级异构算力选择合适路径。",
+        "startTrial": "申请试用 →",
+        "allCapabilities": "完整功能 ↓"
+      },
+      "relation": {
+        "title": "HAMi 与密瓜智能",
+        "body": "HAMi 是 CNCF Incubating 异构 AI 计算虚拟化项目，由密瓜智能创始团队发起并担任核心 Maintainer。企业产品基于开源 HAMi，提供生产加固、运维与企业级支持。",
+        "cta": "了解我们的开源社区 →"
+      },
+      "lineup": {
+        "eyebrow": "PRODUCT LINEUP",
+        "title": "两款产品，从你的环境出发",
+        "description": "增强已有 Kubernetes 平台，或构建统一的异构算力管理平台。",
+        "enterprise": {
+          "eyebrow": "GPU 虚拟化",
+          "name": "Dynamia HAMi 企业版",
+          "description": "面向已有 Kubernetes / PaaS 的团队，在开源 HAMi 基础上提供 GPU 虚拟化增强、生产加固与企业级支持。",
+          "installDocs": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/"
+        },
+        "viewProduct": "查看产品 →",
+        "releases": "版本与下载 ↗",
+        "platform": {
+          "eyebrow": "异构算力平台",
+          "name": "Dynamia HAMi 平台版",
+          "description": "在 Dynamia HAMi 企业版 基础上，提供多集群 GUI、可观测、租户配额、计量计费与 OpenAPI，统一管理集群、资源与团队。",
+          "installDocs": "https://docs.hami.run/zh/docs/installation/ai-platform-online-deploy/"
+        }
+      },
+      "fit": {
+        "eyebrow": "FIND YOUR FIT",
+        "title": "如何选择产品",
+        "description": "从当前需求出发，对照开源 HAMi、Dynamia HAMi 企业版 与 Dynamia HAMi 平台版 的能力。",
+        "paths": {
+          "experiment": {
+            "label": "我想自己试验 GPU 共享",
+            "product": "开源 HAMi →"
+          },
+          "enterprise": {
+            "label": "我需要可被支持、加固的 GPU 虚拟化层",
+            "product": "Dynamia HAMi 企业版 →"
+          },
+          "platformGui": {
+            "label": "我还需要多集群 GUI、配额和可观测",
+            "product": "Dynamia HAMi 平台版 →"
+          },
+          "platformTeams": {
+            "label": "我想为多个内部团队管理平台",
+            "product": "Dynamia HAMi 平台版 →"
+          }
+        }
+      },
+      "matrix": {
+        "ariaLabel": "完整产品能力对比，可横向滚动",
+        "capabilityCol": "产品能力",
+        "colOpen": "开源 HAMi",
+        "groups": {
+          "virtualization": {
+            "title": "GPU 虚拟化核心",
+            "rows": {
+              "gpuMemorySharing": "显存共享",
+              "gpuComputeSharing": "算力共享",
+              "memoryHardIsolation": "显存共享强隔离",
+              "computeHardIsolation": "算力共享强隔离",
+              "oversubscription": "显存、算力超卖",
+              "hamiTurboMode": "HAMi Turbo 模式",
+              "autoScaling": "应用无缝自动扩缩容（不重启）",
+              "taskPriority": "任务优先级抢占",
+              "idleAnalytics": "空闲统计 & 显存占用分析",
+              "schedulerEngine": "调度引擎并行优化",
+              "binpackSpread": "Binpack / Spread 策略",
+              "nvidiaTopology": "NVIDIA 网络拓扑亲和调度",
+              "volcanoIntegration": "Volcano 深度集成（抢占 / vGPU 联合调度）",
+              "gpuResourcePools": "异构设备资源池"
+            }
+          },
+          "vendors": {
+            "title": "异构 GPU 厂商支持",
+            "rows": {
+              "nvidia": "NVIDIA 全系列",
+              "amd": "AMD",
+              "ascend": "昇腾 全系列",
+              "metax": "沐曦",
+              "kunlunxin": "昆仑芯",
+              "hygon": "海光",
+              "iluvatar": "天数智芯 全系列",
+              "cambricon": "寒武纪",
+              "enflame": "燧原",
+              "mooreThreads": "摩尔线程",
+              "tHead": "平头哥 全系列"
+            }
+          },
+          "controlPlane": {
+            "title": "多集群控制面",
+            "rows": {
+              "observability": "多集群一站式可观测（集群 / 应用 / GPU）",
+              "gpuMonitoring": "GPU 硬件监控",
+              "alertPolicies": "全面完整的告警策略",
+              "turnKeyGui": "一站式 GUI（多集群 Dashboard / 资源 / 配额 / 工作负载）",
+              "strategyEditor": "可视化 Binpack / Spread 策略",
+              "lcm": "完备多集群生命周期管理（LCM）",
+              "oneClickTrial": "一键部署体验模型"
+            }
+          },
+          "operations": {
+            "title": "企业运营",
+            "rows": {
+              "multiTenant": "企业级多租户管理",
+              "metering": "计量、计费",
+              "openapi": "OpenAPI / 开放能力",
+              "license": "License 可视化管理",
+              "oem": "OEM 白标品牌配置",
+              "slaSupport": "SLA 保障（7×24 交付 SLA）",
+              "airGap": "Air-gap / 离线部署"
+            }
+          }
+        },
+        "note": "能力矩阵沿用密瓜智能官网产品概览。具体芯片型号、增强能力与交付范围，以所选产品版本和兼容性确认为准。"
+      },
+      "cases": {
+        "eyebrow": "IN PRODUCTION",
+        "title": "在生产实践中验证",
+        "description": "阅读公开用户案例，了解不同业务中的使用方式。",
+        "allLink": "全部案例",
+        "readLink": "阅读案例 →",
+        "items": {
+          "sfTechnology": {
+            "name": "顺丰科技",
+            "title": "EffectiveGPU：顺丰科技基于 HAMi 的异构 AI 虚拟化池化方案"
+          },
+          "prepEdu": {
+            "name": "PREP EDU",
+            "title": "PREP EDU 为 AI 推理实现高效 GPU 编排"
+          },
+          "keHoldings": {
+            "name": "贝壳",
+            "title": "使用 Kubernetes 与 HAMi 的 GPU 虚拟化，扩展机器学习基础设施"
+          }
+        }
+      },
+      "cta": {
+        "eyebrow": "LET’S TALK",
+        "title": "聊聊你的算力管理需求",
+        "description": "告诉我们设备、集群与业务目标，一起确认适合的产品、部署方式和验证路径。",
+        "link": "联系销售 "
+      }
+    },
+    "enterprise": {
+      "nav": {
+        "allProducts": "全部产品",
+        "enterprise": "Dynamia HAMi 企业版",
+        "platform": "Dynamia HAMi 平台版",
+        "contactSales": "联系销售 ↗"
+      },
+      "hero": {
+        "titleLine1": "为现有平台，释放",
+        "titleLine2": "企业级 GPU 管理能力",
+        "lead": "基于 HAMi 开源底座，为 Kubernetes、PaaS 和 AI 平台提供 GPU 共享、调度与运行时增强，保留你已有的业务工作流。",
+        "contactSales": "联系销售 ",
+        "docs": "产品文档 ↗",
+        "eyebrow": "Dynamia HAMi 企业版"
+      },
+      "ui": {
+        "externalArrow": "↗"
+      },
+      "architecture": {
+        "bannerTitle": "Dynamia HAMi 企业版 · 接入现有技术栈",
+        "bannerLabel": "产品结构示意",
+        "layerApp": {
+          "title": "你的 Kubernetes / PaaS / AI 平台",
+          "hint": "保留业务入口与现有工作流"
+        },
+        "layerEnterprise": {
+          "title": "Dynamia HAMi 企业版 ",
+          "hint": "共享隔离 · 设备调度 · 企业增强"
+        },
+        "layerInfra": {
+          "title": "Kubernetes 与异构加速设备",
+          "hint": "厂商驱动 · 容器运行时 · 设备资源"
+        }
+      },
+      "toc": {
+        "capabilities": "核心能力",
+        "howItWorks": "运行方式",
+        "deployment": "部署与支持",
+        "faq": "常见问题"
+      },
+      "capabilities": {
+        "eyebrow": "ENTERPRISE READY",
+        "title": "让平台团队，专注自己的业务",
+        "description": "从共享效率到运行策略，在已有平台上增强资源管理能力。",
+        "items": {
+          "sharing": {
+            "title": "细粒度共享与隔离",
+            "body": "按显存、算力和设备数声明需求，在支持的设备上运行多个任务，配置资源限制并观测使用情况。",
+            "tag": "依设备适配",
+            "videoAria": "查看完整功能：细粒度共享与隔离（视频）"
+          },
+          "pool": {
+            "title": "资源池",
+            "body": "将不同厂商与型号的加速设备纳入统一资源池，按任务需求进行分配与调度，简化异构环境下的资源组织。",
+            "tag": "企业能力",
+            "videoAria": "查看完整功能：资源池（视频）"
+          },
+          "scheduling": {
+            "title": "面向 AI 任务的调度",
+            "body": "支持节点和设备维度的 Binpack / Spread，结合设备类型、UUID 与拓扑，控制任务放置策略。",
+            "tag": "依设备与版本",
+            "videoAria": "查看完整功能：面向 AI 任务的调度（视频）"
+          },
+          "oversubscription": {
+            "title": "显存超配",
+            "body": "开启 UMI 后，长时间闲置的显存可换回主机内存，在物理显存之外支撑更多并发任务，适合潮汐型混部。",
+            "tag": "NVIDIA · 依型号与版本",
+            "videoAria": "查看完整功能：显存超配（视频）"
+          },
+          "expansion": {
+            "title": "显存弹性扩容",
+            "body": "按真实显存负载动态调整配额；即将 OOM 时可自动扩大上限，无需重启容器。",
+            "tag": "NVIDIA · 依型号与版本",
+            "videoAria": "查看完整功能：显存弹性扩容（视频）"
+          },
+          "turbo": {
+            "title": "Turbo 高性能模式",
+            "body": "算力请求直达 CUDA Runtime，不做算力劫持；仅保留必要监测，显存限制仍生效，适合低延迟场景。",
+            "videoAria": "查看完整功能：Turbo 高性能模式（视频）",
+            "tag": "NVIDIA · 依型号与版本"
+          },
+          "mig": {
+            "title": "动态 MIG",
+            "body": "按预定义 MIG 模板动态创建与删除实例，用户只需声明数量与显存，对 MIG 实例名称完全透明。",
+            "tag": "NVIDIA · 依型号与版本",
+            "videoAria": "查看完整功能：动态 MIG（视频）"
+          },
+          "npu": {
+            "title": "动态 NPU",
+            "body": "按预定义 vNPU 模板动态创建与回收实例，用户只需声明数量与显存，无需关心模板名称。",
+            "tag": "依硬件能力与适配矩阵",
+            "videoAria": "查看完整功能：动态 NPU（视频）"
+          },
+          "priority": {
+            "title": "任务优先级",
+            "body": "高优先级任务占用 GPU 算力时，低优先级任务会被挂起；高优任务结束后再恢复，保障关键业务算力。",
+            "tag": "NVIDIA · 依版本",
+            "videoAria": "查看完整功能：任务优先级（视频）"
+          }
+        },
+        "viewAll": "查看完整功能 "
+      },
+      "workflow": {
+        "eyebrow": "YOUR PLATFORM. ENHANCED.",
+        "steps": {
+          "request": "应用提出需求",
+          "schedule": "调度匹配设备",
+          "enforce": "运行时控制资源"
+        },
+        "description": "通过 Kubernetes 资源请求接入，经过准入、设备选择和设备注入，将任务安排到目标 GPU。运行时实施支持范围内的显存与算力控制。",
+        "bullets": {
+          "keepEntry": "保留已有 Kubernetes / PaaS 入口",
+          "chooseMode": "按设备能力选择共享、独占或硬件切分",
+          "validate": "以真实工作负载验证性能和隔离表现"
+        },
+        "layers": {
+          "app": {
+            "title": "应用与工作负载层",
+            "meta": "AI 训练 · 模型推理 · 开发任务",
+            "hint": "提出 GPU、算力与显存资源需求"
+          },
+          "hami": {
+            "title": "HAMi Enterprise",
+            "subtitle": "企业级 GPU 资源管理与调度",
+            "cells": {
+              "schedule": "调度匹配设备",
+              "scheduleHint": "设备选择与资源分配",
+              "runtime": "运行时控制资源",
+              "runtimeHint": "算力与显存控制"
+            }
+          },
+          "infra": {
+            "title": "GPU 基础设施层",
+            "hint": "物理 GPU · 异构加速设备 · 厂商驱动"
+          }
+        }
+      },
+      "delivery": {
+        "eyebrow": "DEPLOY WITH CONFIDENCE",
+        "title": "从目标环境，到稳定运行",
+        "description": "支持在线与离线部署，按客户基础设施确定交付方式。",
+        "steps": {
+          "confirm": {
+            "num": "01",
+            "title": "确认环境与适配",
+            "body": "核对芯片型号、驱动、运行时及 Kubernetes 版本。"
+          },
+          "validate": {
+            "num": "02",
+            "title": "验证代表性负载",
+            "body": "以吞吐、时延、稳定性和资源用量共同验收。"
+          },
+          "deploy": {
+            "num": "03",
+            "title": "部署与持续支持",
+            "body": "确定安装、升级、监控接入和离线交付方式。",
+            "onlineLabel": "在线安装",
+            "onlineHref": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/",
+            "offlineLabel": "离线安装",
+            "offlineHref": "https://docs.hami.run/zh/docs/installation/enterprise-airgap-deploy/"
+          }
+        },
+        "compatibilityLink": "查看兼容性说明",
+        "validationLink": "讨论验证方案"
+      },
+      "faq": {
+        "eyebrow": "BEFORE YOU START",
+        "items": {
+          "needPlatform": {
+            "q": "已有 PaaS，还需要购买完整平台吗？",
+            "a": "可以选择 Dynamia HAMi 企业版，将虚拟化与调度引擎接入已有平台。若还需要统一管理多集群、租户与账单，可进一步评估 AI Platform。"
+          },
+          "chipParity": {
+            "q": "所有芯片都有相同的企业增强能力吗？",
+            "a": "没有。显存超配、显存弹性扩容、Turbo 和任务优先级等能力需按 NVIDIA 型号与产品版本确认；动态 MIG 与动态 NPU 也有硬件适用条件。"
+          }
+        },
+        "title": "常见问题"
+      },
+      "cta": {
+        "eyebrow": "LET’S TALK",
+        "title": "聊聊你的算力管理需求",
+        "description": "告诉我们设备、集群与业务目标，一起确认适合的产品、部署方式和验证路径。",
+        "back": "返回产品概览"
+      }
+    },
+    "platform": {
+      "nav": {
+        "allProducts": "全部产品",
+        "enterprise": "Dynamia HAMi 企业版",
+        "platform": "Dynamia HAMi 平台版",
+        "contactSales": "联系销售 ↗"
+      },
+      "hero": {
+        "titleLine1": "把集群、团队与算力运营",
+        "titleLine2": "连接在一个平台",
+        "lead": "从多集群纳管、资源授权到监控与计量，为 AI 基础设施建立统一管理入口。内含 Dynamia HAMi 企业版 引擎。",
+        "contactSales": "联系销售 ",
+        "docs": "产品文档 ↗",
+        "eyebrow": "Dynamia HAMi 平台版"
+      },
+      "ui": {
+        "externalArrow": "↗"
+      },
+      "architecture": {
+        "bannerTitle": "Dynamia HAMi 平台版 · 从管理到执行",
+        "bannerLabel": "产品结构示意",
+        "layerConsole": {
+          "title": "统一管理入口 · Console",
+          "hint": "多集群 · 资源池 · 租户权限 · 配额"
+        },
+        "layerWorkloads": {
+          "title": "工作负载与资源运营",
+          "hint": "生命周期 · 监控 · 计量 · 账单"
+        },
+        "layerEnterprise": {
+          "title": "Dynamia HAMi 企业版 · 已包含",
+          "hint": "共享隔离 · 设备调度 · 企业增强"
+        },
+        "layerInfra": {
+          "title": "Kubernetes 与异构加速设备",
+          "hint": "厂商驱动 · 容器运行时 · 设备资源"
+        }
+      },
+      "toc": {
+        "capabilities": "核心能力",
+        "howItWorks": "运行方式",
+        "deployment": "部署与支持",
+        "faq": "常见问题"
+      },
+      "capabilities": {
+        "eyebrow": "ENTERPRISE READY",
+        "title": "让算力可见、可管、可追溯",
+        "description": "以资源池、权限和计量连接平台运维与业务团队。",
+        "items": {
+          "multiCluster": {
+            "title": "跨集群统一管理",
+            "body": "注册多个 Kubernetes 集群，汇总节点、设备、工作负载与容量，按环境查看运行状态。",
+            "tag": "多集群",
+            "videoAria": "查看完整功能：跨集群统一管理（视频）"
+          },
+          "pools": {
+            "title": "资源池、租户与权限",
+            "body": "按物理设备组织资源池，向项目空间授权；结合 RBAC 与配额，明确成员的资源使用范围。",
+            "tag": "资源治理",
+            "videoAria": "查看完整功能：资源池、租户与权限（视频）"
+          },
+          "workloads": {
+            "title": "工作负载全生命周期",
+            "body": "围绕训练、推理与研发任务，管理创建、状态、批量操作、暂停恢复和资源调整。",
+            "tag": "工作负载",
+            "videoAria": "查看完整功能：工作负载全生命周期（视频）"
+          },
+          "monitoring": {
+            "title": "集中监控与容量分析",
+            "body": "结合 Kubernetes 状态和 Prometheus 指标，查看实时用量、历史趋势与 Pending 原因。",
+            "tag": "可观测",
+            "videoAria": "查看完整功能：集中监控与容量分析（视频）"
+          },
+          "metering": {
+            "title": "可追溯的计量与账单",
+            "body": "按分配资源和使用时长建立计量记录，结合设备型号定价，按集群、空间与账期查看和导出账单。",
+            "tag": "算力运营",
+            "videoAria": "查看完整功能：可追溯的计量与账单（视频）"
+          },
+          "console": {
+            "title": "Console 可视化管理",
+            "body": "通过可视化界面完成日常管理，也可将能力接入已有业务系统；底层包含 Enterprise 引擎。",
+            "tag": "系统集成",
+            "videoAria": "查看完整功能：Console 可视化管理（视频）"
+          }
+        },
+        "viewAll": "查看完整功能 "
+      },
+      "workflow": {
+        "eyebrow": "MANAGE. EXECUTE. OBSERVE.",
+        "steps": {
+          "manage": "管理有入口",
+          "execute": "执行在集群",
+          "observe": "用量有记录"
+        },
+        "description": "通过 Console 管理集群、资源和权限；Dynamia HAMi 企业版在受管集群中执行调度与资源控制；监控和计量数据支撑日常运营。",
+        "bullets": {
+          "organize": "按团队与项目组织资源使用权限",
+          "buildOn": "沿用 Kubernetes 与 Prometheus 生态",
+          "metering": "以历史计量记录支撑账单与用量归属"
+        },
+        "layers": {
+          "manage": {
+            "title": "管理入口层",
+            "hint": "统一管理集群、资源与权限"
+          },
+          "execute": {
+            "title": "集群执行层",
+            "meta": "Dynamia HAMi 企业版引擎",
+            "hint": "在受管集群中完成调度与资源控制"
+          },
+          "observe": {
+            "title": "用量记录层",
+            "meta": "监控 · 计量 · 账单",
+            "hint": "支撑日常运营与用量归属"
+          }
+        }
+      },
+      "delivery": {
+        "eyebrow": "DEPLOY WITH CONFIDENCE",
+        "title": "从目标环境，到稳定运行",
+        "description": "支持在线与离线部署，按客户基础设施确定交付方式。",
+        "steps": {
+          "confirm": {
+            "title": "确认环境与适配",
+            "body": "核对芯片型号、驱动、运行时及 Kubernetes 版本。",
+            "num": "01"
+          },
+          "validate": {
+            "title": "验证代表性负载",
+            "body": "以吞吐、时延、稳定性和资源用量共同验收。",
+            "num": "02"
+          },
+          "deploy": {
+            "title": "部署与持续支持",
+            "body": "确定安装、升级、监控接入和离线交付方式。",
+            "num": "03",
+            "onlineLabel": "在线安装",
+            "onlineHref": "https://docs.hami.run/zh/docs/installation/ai-platform-online-deploy/",
+            "offlineLabel": "离线安装",
+            "offlineHref": "https://docs.hami.run/zh/docs/installation/ai-platform-airgap-deploy/"
+          }
+        },
+        "compatibilityLink": "查看兼容性说明",
+        "validationLink": "讨论验证方案"
+      },
+      "faq": {
+        "eyebrow": "BEFORE YOU START",
+        "items": {
+          "enterpriseIncluded": {
+            "q": "是否包含 Dynamia HAMi 企业版？",
+            "a": "包含。Dynamia HAMi 平台版 在 Enterprise 引擎之上，增加多集群、租户权限、资源池、工作负载和计量运营能力。"
+          },
+          "meteringVsMonitoring": {
+            "q": "计量与监控有什么不同？",
+            "a": "监控用于查看当前状态与趋势；计量记录资源使用事实，结合计费策略形成账单。账单不等同于 GPU 实际利用率。"
+          }
+        },
+        "title": "常见问题"
+      },
+      "cta": {
+        "eyebrow": "LET’S TALK",
+        "title": "聊聊你的算力管理需求",
+        "description": "告诉我们设备、集群与业务目标，一起确认适合的产品、部署方式和验证路径。",
+        "back": "返回产品概览"
+      }
+    },
+    "pricing": {
+      "hero": {
+        "eyebrow": "定价",
+        "titleLine1": "灵活的计算需求",
+        "titleLine2": "定价方案",
+        "lead": "灵活定价，按集群规模与复杂度定制。联系我们获取报价。"
+      },
+      "highlights": {
+        "pricing": {
+          "title": "定制化定价方案",
+          "body": "根据集群规模灵活调整"
+        },
+        "support": {
+          "title": "专业技术支持",
+          "body": "持续的功能更新和升级"
+        },
+        "capabilitiesLink": "比较完整产品能力 →"
+      },
+      "form": {
+        "title": "获取定价信息",
+        "requiredHint": "带 * 为必填项。",
+        "gpus": {
+          "label": "GPU 数量 *",
+          "placeholder": "请选择 GPU 规模",
+          "options": {
+            "gt200": "超过 200 个",
+            "r50to200": "50–200 个",
+            "r10to50": "10–50 个",
+            "r1to10": "1–10 个"
+          }
+        },
+        "name": {
+          "label": "姓名 *",
+          "placeholder": "你的姓名"
+        },
+        "company": {
+          "label": "公司 *",
+          "placeholder": "公司或组织名称"
+        },
+        "jobTitle": {
+          "label": "职位 *",
+          "placeholder": "你的职责"
+        },
+        "phone": {
+          "label": "电话 / 微信 *",
+          "placeholder": "便于沟通的联系方式"
+        },
+        "email": {
+          "label": "邮箱 *",
+          "placeholder": "you@company.com"
+        },
+        "message": {
+          "label": "留言（可选）",
+          "placeholder": "集群环境、业务场景，以及你希望了解的产品或服务。"
+        },
+        "consent": {
+          "before": "我同意",
+          "privacy": "隐私政策",
+          "after": "，并同意将所填信息用于销售跟进。"
+        },
+        "submit": "获取定价 →",
+        "success": "提交成功，我们的团队会与你联系。",
+        "edit": "返回修改"
+      },
+      "cta": {
+        "eyebrow": "产品概览",
+        "title": "比较产品能力，选择合适的版本",
+        "body": "了解开源 HAMi、Dynamia HAMi 企业版 与 Dynamia HAMi 平台版 的能力范围。",
+        "link": "查看产品概览 →"
+      }
+    },
+    "getPractices": {
+      "hero": {
+        "eyebrow": "实践资料",
+        "titleLine1": "从别人的实践",
+        "titleLine2": "找到你的下一步",
+        "lead": "介绍一下你的 GPU 规模和业务场景，获取实践资料，带着具体问题展开评估。"
+      },
+      "aside": {
+        "title": "密瓜智能用户案例集",
+        "body1": "阅读不同团队的算力使用实践，了解可借鉴的应用经验。",
+        "body2": "从资源共享、异构调度到训练与推理，按你的实际环境寻找可借鉴的路径。",
+        "back": "← 返回案例"
+      },
+      "form": {
+        "title": "获取更多我们的实践",
+        "subtitle": "提交后，客户案例集 PDF 将自动发送到你填写的邮箱。",
+        "name": {
+          "label": "姓名 *",
+          "placeholder": "你的姓名"
+        },
+        "company": {
+          "label": "公司 / 组织 *",
+          "placeholder": "公司或组织名称"
+        },
+        "email": {
+          "label": "工作邮箱 *",
+          "placeholder": "you@company.com"
+        },
+        "jobTitle": {
+          "label": "职位",
+          "placeholder": "你的职责"
+        },
+        "phone": {
+          "label": "电话 / 微信",
+          "placeholder": "便于沟通的联系方式"
+        },
+        "gpus": {
+          "label": "GPU 数量 *",
+          "options": {
+            "none": "尚未部署",
+            "r1to8": "1–8 张",
+            "r9to32": "9–32 张",
+            "r33to128": "33–128 张",
+            "r129to512": "129–512 张",
+            "r513plus": "513 张及以上"
+          }
+        },
+        "requirements": {
+          "label": "具体需求和应用场景 *",
+          "placeholder": "例如：设备型号、集群环境、训练或推理等应用场景，以及希望解决的问题。至少填写 5 个字符。"
+        },
+        "consent": {
+          "before": "我同意",
+          "privacy": "隐私政策",
+          "after": "，并同意将所填信息用于发送资料及后续联系。"
+        },
+        "submit": "发送案例集到我的邮箱",
+        "success": "客户案例集已发送，请查收邮件及 PDF 附件。"
+      }
+    },
+    "resources": {
+      "crumb": {
+        "home": "首页",
+        "current": "资源"
+      },
+      "ui": {
+        "slash": "/",
+        "externalArrow": "↗"
+      },
+      "hero": {
+        "title": "了解技术，走进实践",
+        "lead": "阅读文章、观看分享，或用工具开始一次具体的评估。"
+      },
+      "cards": {
+        "blog": {
+          "title": "博客",
+          "body": "技术文章、产品解读与实践分享"
+        },
+        "videos": {
+          "title": "视频",
+          "body": "产品演示、技术分享与社区活动"
+        },
+        "tools": {
+          "title": "工具",
+          "body": "指标分析与 GPU 资产 ROI 计算器"
+        }
+      },
+      "tools": {
+        "eyebrow": "TOOLS",
+        "title": "让运维与评估更高效",
+        "metrics": {
+          "title": "HAMi 指标分析工具",
+          "body": "上传 Prometheus 指标文件，快速查看 GPU 清单、利用率，合并和导出分析结果。"
+        },
+        "open": "打开官网工具 ↗",
+        "roi": {
+          "title": "HAMi GPU 资产 ROI 计算器",
+          "body": "对比无 HAMi、开源版与企业版场景下的 GPU 资产利用率、五年 TCO、节约金额与投资回报。"
+        }
+      }
+    },
+    "tools": {
+      "crumb": {
+        "home": "首页",
+        "current": "工具"
+      },
+      "ui": {
+        "slash": "/"
+      },
+      "hero": {
+        "titleLine1": "让评估与运维",
+        "titleLine2": "更有依据",
+        "lead": "从运行指标到资产投入，使用密瓜官网已有工具展开分析。"
+      },
+      "cards": {
+        "metrics": {
+          "title": "HAMi 指标分析工具",
+          "body": "上传 Prometheus 指标文件，快速查看 GPU 清单、利用率，合并和导出分析结果。"
+        },
+        "open": "打开官网工具 ↗",
+        "roi": {
+          "title": "HAMi GPU 资产 ROI 计算器",
+          "body": "对比无 HAMi、开源版与企业版场景下的 GPU 资产利用率、五年 TCO、节约金额与投资回报。"
+        }
+      },
+      "note": "工具在原官网打开。ROI 为基于输入条件的估算，不代表实际交付承诺。"
+    },
+    "contactSales": {
+      "hero": {
+        "eyebrow": "CONTACT SALES",
+        "titleLine1": "从你的场景出发",
+        "titleLine2": "看见算力的新可能",
+        "lead": "告诉我们你的基础设施和业务目标，一起找到合适的产品与落地路径。"
+      },
+      "benefits": {
+        "demo": {
+          "title": "围绕你的环境演示",
+          "body": "根据硬件、集群规模与部署方式，了解相关产品能力。"
+        },
+        "products": {
+          "title": "讨论产品与集成方式",
+          "body": "已有平台增强，或多集群统一管理，明确适合的选择。"
+        },
+        "validation": {
+          "title": "规划验证与商业合作",
+          "body": "交流代表性工作负载、评估目标、部署与服务需求。"
+        }
+      },
+      "direct": {
+        "label": "也可以直接联系",
+        "email": "info@dynamia.ai ↗"
+      },
+      "form": {
+        "title": "介绍一下你和你的需求",
+        "requiredHint": "带 * 为必填项。",
+        "intent": {
+          "label": "你的需求",
+          "trial": "申请自助试用",
+          "demo": "预约演示",
+          "sales": "商务咨询"
+        },
+        "name": {
+          "label": "姓名 *",
+          "placeholder": "你的姓名"
+        },
+        "company": {
+          "label": "公司 / 组织 *",
+          "placeholder": "公司或组织名称"
+        },
+        "email": {
+          "label": "工作邮箱 *",
+          "placeholder": "you@company.com"
+        },
+        "jobTitle": {
+          "label": "职位",
+          "placeholder": "你的职责"
+        },
+        "phone": {
+          "label": "电话 / 微信",
+          "placeholder": "便于沟通的联系方式",
+          "error": "400-026-7800"
+        },
+        "product": {
+          "label": "感兴趣的产品 *",
+          "placeholder": "请选择",
+          "enterprise": "Dynamia HAMi 企业版",
+          "platform": "Dynamia HAMi 平台版",
+          "unsure": "还未确定，希望先交流"
+        },
+        "requirements": {
+          "label": "需求与应用场景 *",
+          "placeholder": "例如：现有设备型号、GPU 数量、集群环境，以及想解决的问题。"
+        },
+        "consent": {
+          "before": "我同意",
+          "privacy": "隐私政策",
+          "after": "，并同意将所填信息用于销售跟进。"
+        },
+        "submit": "提交申请",
+        "success": "提交成功，我们的团队会与你联系。"
+      }
+    },
+    "compatibility": {
+      "crumb": {
+        "home": "首页",
+        "current": "环境与兼容性"
+      },
+      "ui": {
+        "slash": "/",
+        "arrow": "→"
+      },
+      "hero": {
+        "titleLine1": "先看你的环境",
+        "titleLine2": "再确认可用能力",
+        "lead": "统一管理、共享、隔离和观测分别核对。不同设备与版本拥有各自的适配范围。"
+      },
+      "stack": {
+        "eyebrow": "CHECK YOUR STACK",
+        "title": "把技术栈说清楚",
+        "body": "设备品牌只是开始。完整评估需要芯片型号、驱动、操作系统、Kubernetes 与容器运行时，以及业务使用方式。",
+        "cta": "提供环境信息"
+      },
+      "diagram": {
+        "apps": {
+          "title": "业务与应用层",
+          "ai": "AI 应用",
+          "inference": "推理服务",
+          "dev": "研发工作负载"
+        },
+        "dynamia": "密瓜智能 · 共享 / 调度 / 管理",
+        "k8s": "Kubernetes 基础设施",
+        "devices": {
+          "nvidia": "NVIDIA",
+          "ascend": "昇腾",
+          "hygon": "海光",
+          "cambricon": "寒武纪",
+          "mooreThreads": "摩尔线程",
+          "other": "其他适配设备"
+        },
+        "note": "生态结构示意 · 具体能力按芯片型号、版本与适配结果确认"
+      },
+      "capabilities": {
+        "eyebrow": "CAPABILITY BY CAPABILITY",
+        "title": "每项能力，分别确认",
+        "items": {
+          "resource": {
+            "title": "资源纳管",
+            "body": "设备是否可识别、纳入管理与分配。"
+          },
+          "sharing": {
+            "title": "共享与隔离",
+            "body": "支持的资源粒度、隔离方式及任务影响。"
+          },
+          "observe": {
+            "title": "运行观测",
+            "body": "可采集的指标、数据来源和观测粒度。"
+          },
+          "enterprise": {
+            "title": "企业增强",
+            "body": "目标设备与版本支持的增强能力范围。"
+          }
+        },
+        "note": "这里展示环境核对路径。最终兼容结论以目标版本支持范围与验证结果为准，不能将品牌适配推断为全型号、全功能支持。"
+      },
+      "cta": {
+        "title": "带上你的环境，一起确认适配范围",
+        "body": "带上设备、集群和业务需求，一起找到合适的产品与验证路径。",
+        "button": "预约产品演示 "
+      }
+    },
+    "community": {
+      "hero": {
+        "eyebrow": "COMMUNITY",
+        "titleLine1": "在开源中共建",
+        "titleLine2": "让算力更好用",
+        "lead": "认识 HAMi、了解密瓜与社区的关系，找到与你一起解决问题的人。"
+      },
+      "hami": {
+        "eyebrow": "什么是 HAMi？",
+        "name": "HAMi",
+        "badge": "CNCF Incubating Project ↗",
+        "body1": "HAMi 是开源的异构虚拟化共享中间件，以轻量化、无侵入的方式部署在公有云、私有云和混合云环境，让 GPU 资源能够被灵活、可靠、按需地共享。",
+        "body2": "通过显存与算力共享、资源隔离和调度，HAMi 帮助团队提高设备利用率，支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程、天数智芯等异构芯片，连接已有的 Kubernetes 基础设施。",
+        "github": "查看 GitHub ↗",
+        "website": "访问 HAMi 官网 ↗",
+        "diagramAlt": "HAMi 开放生态图：连接 AI 业务、云原生调度生态与异构算力，并提供运行状态观测。"
+      },
+      "relation": {
+        "title": "密瓜与 HAMi 的关系？",
+        "body1": "密瓜智能（Dynamia）由 CNCF 项目 HAMi 的发起与核心维护团队创立，致力于构建 AI 基础设施的开源内核。",
+        "body2": "我们帮助 AI 团队让异构 GPU 与 AI 芯片资源更易用、更高效、更可治理，将复杂算力转化为可共享、可隔离、可按需使用的云原生基础设施能力。",
+        "aboutLink": "认识密瓜团队 →"
+      },
+      "channels": {
+        "title": "在哪里关注我们？",
+        "lead": "看技术分享、交流使用经验，也欢迎把你的问题与想法带到社区。",
+        "bilibili": {
+          "name": "Bilibili",
+          "hint": "关注我们 ↗"
+        },
+        "slack": {
+          "name": "Slack",
+          "hint": "加入交流 ↗"
+        },
+        "discord": {
+          "name": "Discord"
+        },
+        "reddit": {
+          "name": "Reddit",
+          "hint": "参与讨论 ↗"
+        },
+        "wechat": {
+          "name": "微信",
+          "hint": "添加小助手，进群交流 →"
+        }
+      },
+      "toc": {
+        "hami": "01 / HAMi",
+        "relation": "02 / DYNAMIA × HAMi",
+        "channels": "03 / STAY CONNECTED"
+      }
+    },
+    "about": {
+      "ui": {
+        "slash": "/",
+        "arrow": "→",
+        "externalArrow": " ↗"
+      },
+      "hero": {
+        "eyebrow": "ABOUT DYNAMIA",
+        "title": "THE OPEN KERNEL FOR AI INFRASTRUCTURE",
+        "openKernel": "开源内核"
+      },
+      "cncf": {
+        "hami": "HAMi",
+        "org": "Cloud Native Computing Foundation",
+        "badge": "CNCF Incubating ↗",
+        "line": "HAMi 是 CNCF Incubating 项目",
+        "hamiAlt": "密瓜智能由 HAMi 的发起与核心维护团队创立。"
+      },
+      "contact": {
+        "title": "GET IN TOUCH",
+        "email": "info@dynamia.ai",
+        "linkedin": "LinkedIn",
+        "twitter": "X (Twitter)",
+        "cta": "联系我们",
+        "emailLabel": "邮件",
+        "follow": "关注我们 →",
+        "wechat": "微信",
+        "scan": "扫码关注 →"
+      },
+      "teamDialog": {
+        "eyebrow": "MEET OUR TEAM",
+        "close": "×",
+        "closeAria": "关闭团队成员介绍",
+        "separator": " / ",
+        "prev": "←",
+        "next": "→",
+        "prevAria": "上一位成员",
+        "nextAria": "下一位成员",
+        "learnMore": "了解更多"
+      },
+      "teamMembers": [
+        {
+          "id": "zx",
+          "name": "张潇",
+          "role": "创始人兼 CEO",
+          "tag": "HAMi Maintainer",
+          "image": "/redesign/assets/376e39b68e9534e2edf1.png",
+          "github": "https://github.com/wawa0210",
+          "linkedin": "https://www.linkedin.com/in/xiao-zhang-a16604111/",
+          "bio": "开源软件开发者、科技创业者，HAMi 早期版本共同开源者。曾任 DaoCloud 容器团队负责人，长期参与 Kubernetes 与 CNCF 生态。",
+          "details": [
+            {
+              "title": "社区身份",
+              "body": "HAMi Maintainer"
+            },
+            {
+              "title": "人物经历",
+              "body": "2021 年，与李孟轩共同开源 HAMi 早期版本。此后共同创立密瓜智能，围绕异构 GPU 资源共享、虚拟化和统一调度，推动开源技术的持续演进与工程化落地。"
+            },
+            {
+              "title": "技术与开源",
+              "body": "持续参与 HAMi 项目维护与社区建设，并在 KubeCon + CloudNativeCon Europe 2026 分享 Kubernetes 多容器 GPU 共享相关实践。"
+            }
+          ],
+          "linksBelowBio": false
+        },
+        {
+          "id": "lmx",
+          "name": "李孟轩",
+          "role": "联合创始人兼 CTO",
+          "tag": "HAMi Maintainer",
+          "image": "/redesign/assets/0f0face961041678d9ac.png",
+          "github": "https://github.com/archlitchi",
+          "linkedin": "https://www.linkedin.com/in/mengxuan-li-5862a9314/",
+          "bio": "毕业于清华大学计算机系，HAMi 早期版本共同开源者、Volcano Reviewer。曾任第四范式异构算力技术负责人。",
+          "details": [
+            {
+              "title": "社区身份",
+              "body": "HAMi Maintainer"
+            },
+            {
+              "title": "人物经历",
+              "body": "2021 年，与张潇共同开源 HAMi 早期版本。此后共同创立密瓜智能，持续参与异构算力虚拟化与调度、Kubernetes GPU 资源管理和大模型推理集群优化。"
+            },
+            {
+              "title": "技术与开源",
+              "body": "在 KubeCon + CloudNativeCon Europe 2026 进行技术分享与主论坛现场演示，介绍 GPU 共享、调度机制与生产可用性实践。"
+            }
+          ],
+          "linksBelowBio": false
+        },
+        {
+          "id": "jimmy",
+          "name": "宋净超",
+          "role": "开源生态 VP",
+          "tag": "HAMi Community Manager",
+          "image": "/redesign/assets/ba0663d2e9e2f4484a78.png",
+          "github": "https://github.com/rootsongjc",
+          "linkedin": "https://www.linkedin.com/in/jimmysongio/",
+          "bio": "云原生与 AI 原生基础设施实践者，CNCF Ambassador、中国云原生社区创始人，拥有十余年基础设施与开源生态经验。",
+          "details": [
+            {
+              "title": "社区身份",
+              "body": "HAMi community manager"
+            },
+            {
+              "title": "专业背景",
+              "body": "长期参与 Kubernetes、Istio、Envoy 与服务网格领域，近年来聚焦 GPU 虚拟化、异构算力调度，以及连接云原生平台与 AI 工作负载的系统层。"
+            },
+            {
+              "title": "生态与社区",
+              "body": "在密瓜智能负责开源生态战略，围绕 AI 基础设施项目建设可持续发展的开源社区，推动技术在真实生产场景中的采用，并与云厂商、GPU 厂商及平台伙伴开展合作。"
+            },
+            {
+              "title": "交流与分享",
+              "body": "长期关注从云原生到 AI 原生、从应用平台到智能体运行时的基础设施演进，持续经营个人技术博客，面向广泛的技术读者分享实践与思考，并长期参与全球技术演讲和社区协作。"
+            }
+          ],
+          "linksBelowBio": false
+        },
+        {
+          "id": "reza",
+          "name": "Reza Jelveh",
+          "role": "市场拓展与解决方案工程师",
+          "tag": "HAMi Contributor",
+          "image": "/redesign/assets/reza-jelveh.jpg",
+          "github": "https://github.com/fishman",
+          "linkedin": "https://www.linkedin.com/in/rezajelveh/",
+          "bio": "拥有十年 CTO 与工程管理经验，专注将基础设施能力转化为可落地的技术方案与市场价值。",
+          "details": [
+            {
+              "title": "社区身份",
+              "body": "HAMi Contributor"
+            },
+            {
+              "title": "工作重点",
+              "body": "在密瓜智能负责市场拓展与解决方案工程，面向 GPU 云、Neocloud 与企业 Kubernetes AI 集群，围绕 GPU 资源共享、隔离和异构调度，推动 HAMi 的技术评估与生产应用。"
+            },
+            {
+              "title": "工程与管理经历",
+              "body": "曾为一家《财富》百强企业自动驾驶 AI 平台的高级工程管理团队提供顾问支持，相关工程团队规模超过 100 人。在力拓（Rio Tinto）构建实时传感器数据平台，在受限算力环境下处理每日 1 TB 数据；通过在故障发生前发现数据中心规划问题，节省约 1,000 万欧元成本。"
+            },
+            {
+              "title": "技术分享",
+              "body": "KubeCon 讲者，关注 GPU 资源利用率、AI 基础设施效率与企业级平台落地。"
+            }
+          ],
+          "linksBelowBio": true
+        }
+      ],
+      "crumb": {
+        "home": "首页",
+        "current": "公司与团队"
+      },
+      "story": {
+        "aiWord": "AI 基础设施的",
+        "line1": "密瓜智能（Dynamia）由 CNCF Incubating 项目 HAMi 的发起与核心维护团队创立，致力于构建 AI 基础设施的开源内核。",
+        "line2": "我们帮助 AI 团队让异构 GPU 与 AI 芯片资源更易用、更高效、更可治理，将复杂算力转化为可共享、可隔离、可按需使用的云原生基础设施能力。"
+      },
+      "team": {
+        "cta": "认识我们的团队",
+        "eyebrow": "OUR TEAM",
+        "title": "核心团队",
+        "lead1": "从开源技术到企业实践，",
+        "lead2": "一起让异构算力更易用、更高效、更可治理。"
+      },
+      "interview": {
+        "eyebrow": "IN CONVERSATION",
+        "title": "听听我们的开源故事",
+        "infoq": "密瓜智能 × InfoQ 创始人专访",
+        "infoqAlt": "密瓜智能与 InfoQ 创始人专访封面",
+        "watch": "在视频号观看完整专访",
+        "hint": "点击视频窗口，前往微信视频号观看。"
+      }
+    },
+    "careers": {
+      "hero": {
+        "label": "加入密瓜智能",
+        "title": "与我们一起，开启职业新篇章",
+        "description": "从 GPU 虚拟化、异构算力调度到云原生 AI 基础设施，与密瓜智能一起，让开源技术走进更多真实业务。"
+      },
+      "openings": {
+        "title": "探索工作机会",
+        "description": "我们正在寻找志同道合的伙伴，一起构建高效、开放的 AI 基础设施。",
+        "subtitle": "与我们一起，把开源技术带到真实业务中。"
+      },
+      "filter": {
+        "label": "岗位类别",
+        "all": "全部岗位"
+      },
+      "department": {
+        "sales": "销售",
+        "engineering": "研发",
+        "product": "产品"
+      },
+      "duties": "岗位职责",
+      "requirements": "任职要求",
+      "bonus": "加分项",
+      "details": "查看岗位详情",
+      "detailsShort": "查看详情",
+      "detailsClose": "关闭岗位详情",
+      "applyNow": "立即投递",
+      "apply": {
+        "email": "info@dynamia.ai",
+        "mailSubject": "应聘：{role} - 姓名",
+        "mailBody": "您好，密瓜智能团队：\n\n我希望应聘「{role}」岗位。\n\n姓名：\n联系电话：\n相关经历或作品链接（选填）：\n\n个人简历请见附件。\n\n谢谢！"
+      },
+      "contact": {
+        "title": "暂时没有找到合适的岗位？",
+        "description": "欢迎与我们分享你的简历与经历，一起探索未来的工作机会。",
+        "button": "联系我们",
+        "subject": "人才自荐 - 姓名"
+      },
+      "roles": [
+        {
+          "id": "channel",
+          "department": "sales",
+          "title": "渠道销售经理",
+          "experience": "10 年以上 IT 行业销售经验",
+          "cardDescription": "搭建渠道体系，拓展代理商、SI 与 ISV 等合作伙伴，通过伙伴赋能与联合销售推动业务增长。",
+          "duties": [
+            "负责渠道体系的搭建与拓展，发展并管理代理商 / SI / ISV 等合作伙伴。",
+            "做渠道赋能与联合打单，推动合作伙伴独立或协同成单。",
+            "对渠道产生的业绩流水与伙伴健康发展负责（业绩数字 + 渠道发展双考核）。",
+            "具备行业纵深：能清晰掌握目标行业（如医药 BioTech 等行业）的前 5 家核心渠道并有效经营。"
+          ],
+          "requirements": [
+            "10 年以上 IT 行业销售经验。",
+            "5 年以上软件产品（软件 / 人工智能 / 云）经验。",
+            "至少 5 年以上渠道拓展与体系搭建经验，有真实落成单子的渠道合作记录。",
+            "本科及以上学历，计算机（CS）相关专业优先。"
+          ]
+        },
+        {
+          "id": "sales",
+          "department": "sales",
+          "title": "销售经理",
+          "experience": "10 年以上 IT 行业销售经验",
+          "cardDescription": "面向金融、制造、医药、汽车等行业，开发并经营头部客户，推动从需求挖掘、方案沟通到签约回款的完整销售周期。",
+          "duties": [
+            "负责金融 / 制造业 / 医药 / 汽车等行业的头部大客户开发与经营，独立完成从线索到回款的全销售周期。",
+            "挖掘客户在软件 / 人工智能 / 云平台上的需求，提供解决方案并完成商务谈判。",
+            "建立并维护客户高层关系，推动标杆案例落地与持续复购。",
+            "达成并超越销售业绩目标，对合同金额与回款负责。"
+          ],
+          "requirements": [
+            "10 年以上 IT 行业销售经验。",
+            "5 年以上软件产品（软件 / 人工智能 / 云相关）销售经验。",
+            "5 年以上大客户（KA）销售经验，有完整大客户成交与回款记录。",
+            "具备金融 / 制造业 / 医药 / 汽车等至少一个行业的销售经验。",
+            "本科及以上学历，计算机（CS）相关专业优先。"
+          ]
+        },
+        {
+          "id": "director",
+          "department": "engineering",
+          "title": "研发总监",
+          "experience": "8 年以上相关研发经验 · 5 年以上团队管理经验",
+          "cardDescription": "主导技术战略与研发团队建设，推动 HAMi 开源社区、企业级产品及异构 AI 芯片适配的持续演进。",
+          "duties": [
+            "制定研发技术战略与路线规划，把握 GPU 虚拟化、异构算力调度、云原生 AI 基础设施的产品与技术演进。",
+            "组建、管理与培养研发团队（含内核 / 驱动、Kubernetes、调度、平台与 SRE 等多职能），建立人才梯队与招聘机制。",
+            "主导 HAMi 开源社区的技术演进与版本节奏，维护核心 Maintainer 团队，推动 CNCF 项目治理与生态建设。",
+            "负责企业级产品研发：Dynamia Enterprise（vGPU、算力隔离、超卖、Turbo 弹性扩缩容）与 Dynamia AI Platform（多集群管控、可观测、多租户、计费、License、Air-gap 离线部署）。",
+            "主导异构 AI 芯片（NVIDIA / AMD / 昇腾 / 昆仑芯 / 寒武纪等）的适配与兼容互认工程。",
+            "建立研发流程规范与工程效能体系（敏捷 Scrum、CI/CD、测试与发布），保障版本质量与交付节奏。",
+            "向上对齐业务目标并向管理层（CEO）汇报，对外协同云厂商与芯片厂商生态。"
+          ],
+          "requirements": [
+            "同行业背景：8 年以上云原生 / AI 基础设施 / 容器 / GPU 虚拟化 / 异构算力调度研发经验；来自阿里云、腾讯云、华为、字节、百度、浪潮、VMware、NVIDIA 或相关开源社区（Kubernetes / Volcano / KubeFlow 等）者优先。",
+            "团队管理：5 年以上研发团队管理经验，有实际组建团队、人员招聘、梯队建设的成功案例；管理过跨职能（内核 / 平台 / SRE）研发团队者优先。",
+            "技术深度：精通 Go；深入理解 Kubernetes 架构与扩展机制（Device Plugin、Scheduler、CRD / Operator）；熟悉 GPU 虚拟化（vGPU / MIG / MPS）、CUDA 生态与异构算力调度者优先；熟悉 C/C++（GPU 驱动 / 内核层）加分。",
+            "工程体系：熟悉 DevOps、CI/CD、容器化与敏捷开发实践；具备大规模分布式系统设计与落地经验。",
+            "学历：计算机、软件、电子等相关专业本科及以上，硕士优先。"
+          ],
+          "bonus": [
+            "有 CNCF / Kubernetes / Volcano 等开源项目贡献或 Maintainer 经历。",
+            "有 GPU 虚拟化、设备插件、调度器内核级开发经验。",
+            "有国产 AI 芯片（昇腾 / 昆仑芯 / 寒武纪等）适配与生态协作经验。",
+            "有云厂商 AI 平台 / 智算中心 / MLOps 产品从 0 到 1 经验。",
+            "英语可作为工作语言，有跨国团队协作或开源社区运营经验。"
+          ]
+        },
+        {
+          "id": "product",
+          "department": "product",
+          "title": "产品经理（高级 / 专家）・AI 算力基础设施方向",
+          "experience": "8 年以上 B 端产品经验 · 至少 3 年独立负责产品线经验",
+          "cardDescription": "负责 HAMi 产品路线图、需求分析与版本交付，深入客户现场，将 AI 算力基础设施需求转化为可落地的产品能力。",
+          "duties": [
+            "负责 HAMi 产品域（GPU 共享与隔离 / 智能调度 / 可观测与计费 / 企业版 WebUI / 国产芯片适配等）的路线图规划、需求分析与版本管理，输出 PRD 并对交付结果负责。",
+            "深入客户现场，对接客户架构师、SRE、AI 平台负责人及 CTO，开展需求调研、POC 陪跑与客户共创，将客户真实痛点提炼、抽象为结构化产品需求。",
+            "与研发工程师共同评审技术方案，在开源社区诉求、商业客户诉求与技术债之间做优先级取舍，推动产品按节奏上线。",
+            "设计并跟踪产品核心指标（GPU 利用率、切片密度、隔离稳定性、客户上线周期、付费转化），持续迭代产品体验与商业价值。",
+            "输出客户案例与 ROI 测算，配合销售、售前完成重点客户的技术交流与方案落地。"
+          ],
+          "requirements": [
+            "8 年以上 B 端产品经验，其中至少 3 年独立负责过一条产品线并对结果负责。",
+            "有云原生 / Kubernetes / AI Infra / GPU 算力 / 虚拟化 / 智算平台 / 开发者工具中至少一个方向的产品经历。",
+            "能直接对接技术决策者（架构师、CTO、平台负责人），有大客户 POC、售前陪跑或项目落地经验。",
+            "理解 Kubernetes 核心机制（Scheduler Framework、Device Plugin、Mutating Webhook、容器运行时），了解 GPU 切分、QoS 隔离、训练 / 推理负载差异，能与研发平等讨论技术 trade-off。",
+            "具备扎实的产品基本功：市场分析、竞品拆解、需求优先级判断、版本规划。",
+            "本科及以上学历，计算机相关专业优先；英语可作为工作语言者优先。"
+          ]
+        }
+      ]
+    },
+    "events": {
+      "hero": {
+        "eyebrow": "EVENTS & LIVE",
+        "title": "活动与直播",
+        "lead1": "在线上与线下相聚，交流技术、分享实践，",
+        "lead2": "一起探索 AI 基础设施的更多可能。"
+      },
+      "ui": {
+        "externalArrow": "↗",
+        "readRecap": "阅读活动回顾 ",
+        "viewCampaign": "查看活动介绍 ",
+        "readLive": "阅读直播回顾 ",
+        "readPreview": "阅读活动预告 "
+      },
+      "footerNote": "活动详情与回顾来自密瓜智能官网；新活动将在发布后更新。",
+      "items": {
+        "communityNight": {
+          "title": "HAMi Incubating Community Night",
+          "city": "· 上海",
+          "body": "密瓜智能、HAMi 与 CNCF 共同举办社区之夜，与全球贡献者和生态伙伴一起庆祝 HAMi 晋升 CNCF Incubating。",
+          "photoAlt": "HAMi Incubating Community Night 切蛋糕合影",
+          "date": "2026.09.06"
+        },
+        "shanghaiSpecial": {
+          "title": "HAMi Meetup 上海站 · Incubating 特别活动",
+          "body": "从远程 GPU、分布式推理到国产 GPU 适配，连接开源项目、芯片厂商与企业用户的 AI 生产实践。",
+          "photoAlt": "HAMi Meetup 上海站 · Incubating 特别活动活动现场",
+          "date": "2026.06.18—06.19",
+          "city": "· 上海"
+        },
+        "kubeconIndia": {
+          "title": "KubeCon + CloudNativeCon India 2026",
+          "city": "· 孟买",
+          "body": "HAMi 社区参与印度站大会，通过主题分享与项目展台介绍 GPU 共享、异构算力调度和社区协作。",
+          "photoAlt": "KubeCon India 2026 HAMi 展台合照",
+          "date": "2026.05.14"
+        },
+        "webinar29": {
+          "title": "HAMi 2.9 版本解读：昇腾软切分与 DRA 实战",
+          "channel": "· HAMi 社区视频号",
+          "body": "李孟轩与 Jimmy Song 共同解读 HAMi 2.9，结合 Live Demo 展示 Ascend NPU 软切分、DRA 架构与异构算力调度。",
+          "photoAlt": "直播嘉宾李孟轩肖像",
+          "guest": "直播嘉宾：李孟轩",
+          "date": "2026.04.25"
+        },
+        "shenzhen": {
+          "title": "HAMi Meetup 深圳站",
+          "city": "· 深圳",
+          "body": "七位技术专家围绕 GPU 算力池化、异构调度与 DRA 展开分享。活动由密瓜智能主办，顺丰科技协办。",
+          "photoAlt": "HAMi Meetup 深圳站活动现场",
+          "date": "2026.03 · 活动回顾"
+        },
+        "kubeconEu": {
+          "title": "KubeCon + CloudNativeCon Europe 2026",
+          "city": "· 阿姆斯特丹",
+          "body": "从 Maintainer Summit、项目展台到主论坛现场演示，回顾密瓜智能与 HAMi 在欧洲站的技术分享与生态交流。",
+          "linkTitle": "密瓜智能将携 HAMi 社区亮相 KubeCon Europe 2026：重塑 Kubernetes 上的 GPU 使用方式",
+          "linkBody": "本周末，「Dynamia 密瓜智能」团队将启程前往阿姆斯特丹，参加 KubeCon + CloudNativeCon Europe 2026。 作为 CNCF Sandbox 项目 HAMi 的发起与主导方，「Dynamia 密瓜智能」将在大会中代表 HAMi 社区参与多项核心活动。",
+          "photoAlt": "KubeCon + CloudNativeCon Europe 2026活动现场",
+          "date": "2026.03.18 · 活动预告"
+        },
+        "beijing": {
+          "title": "HAMi Meetup 北京站",
+          "city": "· 北京",
+          "body": "以「不卷算力，卷效率」为主题，聚焦国产算力生产落地、异构调度工程与 GPU 资源共享。",
+          "photoAlt": "HAMi Meetup 北京站活动现场",
+          "date": "2025.12.27"
+        },
+        "shanghaiFirst": {
+          "title": "HAMi Meetup 上海站",
+          "body": "首场 HAMi Meetup 汇聚开源社区、芯片厂商与企业用户，分享异构适配、训练优化与国产算力实践。",
+          "photoAlt": "2025 HAMi Meetup 上海站参与者合影",
+          "date": "2025.11.30",
+          "city": "· 上海"
+        }
+      },
+      "places": {
+        "shanghai": "· 上海",
+        "shenzhen": "· 深圳",
+        "beijing": "· 北京",
+        "mumbai": "· 孟买",
+        "amsterdam": "· 阿姆斯特丹",
+        "webinarChannel": "· HAMi 社区视频号"
+      }
+    },
+    "cases": {
+      "hero": {
+        "eyebrow": "案例",
+        "titleLine1": "在真实环境中",
+        "titleLine2": "理解技术的价值",
+        "lead": "从自动驾驶、金融到企业 AI，看看不同团队如何管理异构算力，让共享与调度进入真实业务。",
+        "cncfSource": "来源：CNCF 案例库 ↗",
+        "count": "12 篇案例 · 按发布时间排序"
+      },
+      "ui": {
+        "externalArrow": "↗",
+        "arrow": "→",
+        "readCase": "查看案例 "
+      },
+      "cta": {
+        "title": "找到与你的场景更接近的实践",
+        "body": "从 GPU 规模到业务负载，告诉我们你的需求，获取实践资料，梳理下一步的验证方向。",
+        "button": "获取更多我们的实践 "
+      },
+      "detail": {
+        "breadcrumbAria": "面包屑",
+        "home": "首页",
+        "cases": "案例",
+        "outcomesAria": "关键成果",
+        "onThisPage": "本文目录",
+        "backToCases": "← 返回案例列表",
+        "getPractices": "获取更多我们的实践 →"
+      },
+      "items": {
+        "seres": {
+          "aria": "查看案例：赛力斯如何通过 Kubernetes 与 HAMi 支撑日均百亿 Token 推理",
+          "name": "赛力斯",
+          "title": "赛力斯如何通过 Kubernetes 与 HAMi 支撑日均百亿 Token 推理",
+          "metricLabel": "SeresCloud 日 Token 处理量",
+          "metric": "100亿+",
+          "date": "2026.11.02"
+        },
+        "zhuoyu": {
+          "aria": "查看案例：卓驭科技如何借助 Koordinator 将 Kubernetes 上的 GPU 分配率提升至 95% 以上",
+          "name": "卓驭科技",
+          "title": "卓驭科技如何借助 Koordinator 将 Kubernetes 上的 GPU 分配率提升至 95% 以上",
+          "metricLabel": "GPU 分配率",
+          "metric": ">95%",
+          "date": "2026.09.29"
+        },
+        "sangfor": {
+          "aria": "查看案例：深信服如何基于 Kubernetes、Volcano 与 HAMi 构建企业 AI 算力平台",
+          "name": "深信服",
+          "title": "深信服如何基于 Kubernetes、Volcano 与 HAMi 构建企业 AI 算力平台",
+          "metricLabel": "GPU 利用率提升",
+          "metric": ">3×",
+          "date": "2026.09.08"
+        },
+        "cetc": {
+          "aria": "查看案例：电科云以 HAMi 为便携式知识库构建异构 GPU 共享资源底座",
+          "name": "电科云",
+          "title": "电科云以 HAMi 为便携式知识库构建异构 GPU 共享资源底座",
+          "metricLabel": "开发环境承载量",
+          "metric": "15×",
+          "date": "2026.09.07"
+        },
+        "cmbPool": {
+          "aria": "查看案例：一个异构算力池，两类负载：招商银行在 Kubernetes 上统一训练与推理",
+          "name": "招商银行",
+          "title": "一个异构算力池，两类负载：招商银行在 Kubernetes 上统一训练与推理",
+          "metricLabel": "平均加速器算力利用率",
+          "metric": "60%+",
+          "date": "2026.07.02"
+        },
+        "cmbSched": {
+          "aria": "查看案例：招商银行借助 HAMi 改善 Kubernetes 上的 AI 算力调度",
+          "title": "招商银行借助 HAMi 改善 Kubernetes 上的 AI 算力调度",
+          "metricLabel": "硬件资源池利用率",
+          "metric": "100%",
+          "date": "2026.05.05",
+          "name": "招商银行"
+        },
+        "snow": {
+          "aria": "查看案例：服务 2 亿用户的 GenAI：SNOW 如何编排千张 GPU 应对 700% 流量峰值",
+          "name": "SNOW Corp.",
+          "title": "服务 2 亿用户的 GenAI：SNOW 如何编排千张 GPU 应对 700% 流量峰值",
+          "metricLabel": "平均故障恢复时间缩短",
+          "metric": "91%",
+          "date": "2026.03.17"
+        },
+        "nio": {
+          "aria": "查看案例：蔚来借助 HAMi 提升自动驾驶负载的 GPU 利用率",
+          "name": "蔚来",
+          "title": "蔚来借助 HAMi 提升自动驾驶负载的 GPU 利用率",
+          "metricLabel": "仿真负载 GPU 机时减少",
+          "metric": "30%",
+          "date": "2026.02.05"
+        },
+        "ke": {
+          "aria": "查看案例：使用 Kubernetes 与 HAMi 的 GPU 虚拟化，扩展机器学习基础设施",
+          "name": "贝壳",
+          "title": "使用 Kubernetes 与 HAMi 的 GPU 虚拟化，扩展机器学习基础设施",
+          "metricLabel": "平台 GPU 利用率提升",
+          "metric": "≈3×",
+          "date": "2025.12.02"
+        },
+        "daocloud": {
+          "aria": "查看案例：DaoCloud 使用 HAMi 构建灵活的 GPU 云",
+          "name": "DaoCloud",
+          "title": "DaoCloud 使用 HAMi 构建灵活的 GPU 云",
+          "metricLabel": "平均 GPU 利用率",
+          "metric": "57%",
+          "date": "2025.09.18"
+        },
+        "sf": {
+          "aria": "查看案例：EffectiveGPU：顺丰科技基于 HAMi 的异构 AI 虚拟化池化方案",
+          "name": "顺丰科技",
+          "title": "EffectiveGPU：顺丰科技基于 HAMi 的异构 AI 虚拟化池化方案",
+          "metricLabel": "生产模型服务 GPU 节省",
+          "metric": "90%",
+          "date": "2025.08.20"
+        },
+        "prep": {
+          "aria": "查看案例：PREP EDU 为 AI 推理实现高效 GPU 编排",
+          "name": "PREP EDU",
+          "title": "PREP EDU 为 AI 推理实现高效 GPU 编排",
+          "metricLabel": "GPU 基础设施由 HAMi 优化",
+          "metric": ">80%"
+        }
+      }
+    },
+    "videos": {
+      "crumb": {
+        "home": "首页",
+        "resources": "资源中心",
+        "current": "视频"
+      },
+      "ui": {
+        "slash": "/",
+        "arrow": "→",
+        "play": "▶"
+      },
+      "hero": {
+        "lead": "产品演示、技术分享与社区活动，更多视频内容持续更新。"
+      },
+      "items": {
+        "overview": {
+          "aria": "观看：密瓜智能产品概览",
+          "title": "密瓜智能产品概览",
+          "body": "了解密瓜智能平台的异构 GPU 共享、调度与编排能力。",
+          "duration": "8:50"
+        },
+        "watch": "观看视频 ",
+        "oversell": {
+          "aria": "观看：GPU 超卖企业级特性实战",
+          "title": "GPU 超卖企业级特性实战",
+          "body": "通过实际演示，了解企业级 GPU 超卖能力与资源优化方式。",
+          "duration": "13:29"
+        }
+      },
+      "empty": "更多内容持续更新，欢迎回来看看。",
+      "detail": {
+        "breadcrumbAria": "面包屑",
+        "home": "首页",
+        "backToVideos": "← 返回视频",
+        "hostedOnBilibili": "视频由哔哩哔哩提供。",
+        "hostedOnYoutube": "视频由 YouTube 提供。",
+        "watchOnBilibili": "在哔哩哔哩观看 ↗",
+        "watchOnYoutube": "在 YouTube 观看 ↗"
+      }
+    },
+    "blog": {
+      "breadcrumbHome": "首页",
+      "breadcrumbSep": "/",
+      "title": "博客",
+      "intro": "技术实践、产品更新与社区动态",
+      "categoriesHeading": "文章分类",
+      "categoriesAria": "文章分类",
+      "categories": {
+        "all": "全部",
+        "practice": "实践案例",
+        "tech": "技术博客",
+        "product": "产品解读",
+        "company": "公司新闻",
+        "release": "版本发布",
+        "community": "社区与动态"
+      },
+      "searchAria": "搜索文章",
+      "searchPlaceholder": "搜索文章、作者或关键词",
+      "searchSubmit": "搜索",
+      "resultSuffix": " 篇文章",
+      "mostRecentFirst": "按最新排序",
+      "readMore": "阅读文章",
+      "arrow": "↗",
+      "coverMarkAlt": "密瓜智能",
+      "coverBrand": "密瓜智能 · 开源 AI 基础设施",
+      "emptyTitle": "没有找到匹配的文章",
+      "emptyBody": "试试其他关键词，或重置筛选条件。",
+      "emptyReset": "重置筛选",
+      "paginationAria": "文章分页",
+      "paginationPrev": "上一页",
+      "paginationNext": "下一页",
+      "coverSubtitles": {
+        "practice": "客户实践与落地经验",
+        "tech": "技术深度与工程细节",
+        "product": "产品能力与版本解读",
+        "company": "公司进展与合作动态",
+        "release": "版本发布与更新说明",
+        "community": "一起建设 · 技术交流 · 活动纪要"
+      },
+      "detail": {
+        "authorLabel": "作者",
+        "copyLink": "复制原文链接",
+        "linkCopied": "已复制",
+        "copyFailed": "复制失败",
+        "onThisPage": "本文目录",
+        "keepReading": "继续阅读",
+        "keepReadingEyebrow": "KEEP READING",
+        "allArticles": "全部文章",
+        "coverBrand": "密瓜智能 · 开源 AI 基础设施"
+      }
+    }
+  },
+  "siteShell": {
+    "brandHome": "密瓜智能首页",
+    "brandAlt": "密瓜智能 Dynamia",
+    "navAria": "主导航",
+    "nav": {
+      "products": "产品",
+      "pricing": "定价",
+      "cases": "案例",
+      "resources": "资源",
+      "community": "社区",
+      "company": "公司"
+    },
+    "tel": "400-026-7800",
+    "bookDemo": "预约演示",
+    "themeToDark": "切换为深色模式",
+    "themeToLight": "切换为浅色模式",
+    "openNav": "展开导航",
+    "closeNav": "收起导航",
+    "menuIcon": "☰",
+    "mega": {
+      "products": {
+        "overview": {
+          "kicker": "OVERVIEW",
+          "title": "产品概览",
+          "desc": "了解产品线，比较完整能力"
+        },
+        "enterprise": {
+          "kicker": "GPU VIRTUALIZATION",
+          "title": "Dynamia HAMi 企业版",
+          "desc": "为现有 Kubernetes / PaaS 增强 GPU 管理"
+        },
+        "platform": {
+          "kicker": "COMPUTE PLATFORM",
+          "title": "Dynamia HAMi 平台版",
+          "desc": "统一管理集群、资源与团队"
+        },
+        "docs": {
+          "kicker": "DOCUMENTATION",
+          "title": "产品文档",
+          "desc": "安装部署、功能配置与使用指南"
+        }
+      },
+      "resources": {
+        "blog": {
+          "kicker": "BLOG",
+          "title": "博客",
+          "desc": "技术文章、产品解读与实践分享"
+        },
+        "videos": {
+          "kicker": "VIDEOS",
+          "title": "视频",
+          "desc": "产品演示、技术分享与社区活动"
+        },
+        "tools": {
+          "kicker": "TOOLS",
+          "title": "工具",
+          "desc": "指标分析与 GPU 资产 ROI 计算器"
+        }
+      },
+      "company": {
+        "about": {
+          "kicker": "ABOUT US",
+          "title": "关于我们",
+          "desc": "认识密瓜智能与核心团队"
+        },
+        "careers": {
+          "kicker": "CAREERS",
+          "title": "加入我们",
+          "desc": "一起构建 AI 基础设施的未来"
+        },
+        "events": {
+          "kicker": "EVENTS & LIVE",
+          "title": "活动与直播",
+          "desc": "技术大会、社区 Meetup 与线上分享"
+        }
+      }
+    },
+    "mobile": {
+      "aria": "移动端导航",
+      "productsOverview": "产品概览 →",
+      "enterprise": "Dynamia HAMi 企业版",
+      "platform": "Dynamia HAMi 平台版",
+      "docs": "产品文档",
+      "pricing": "定价 →",
+      "cases": "案例 →",
+      "community": "社区 →",
+      "blog": "博客",
+      "videos": "视频",
+      "tools": "工具",
+      "about": "关于我们",
+      "careers": "加入我们",
+      "events": "活动与直播"
+    },
+    "footer": {
+      "creatorsAria": "密瓜与 HAMi",
+      "creatorsAlt": "Creators of HAMi",
+      "taglineLead": "AI基础设施的开源内核 ·",
+      "taglineTrail": "让异构算力因开源而好用",
+      "qrLabel": "关注微信公众号",
+      "qrAlt": "密瓜智能微信公众号二维码",
+      "productsOverview": "产品概览",
+      "bookDemo": "预约产品演示",
+      "companyCommunity": "公司与社区",
+      "aboutHami": "关于 HAMi",
+      "contact": "联系我们",
+      "emailLabel": "联系邮箱",
+      "email": "info@dynamia.ai",
+      "phoneLabel": "服务热线",
+      "follow": "关注我们",
+      "linkedin": "LinkedIn",
+      "x": "X (Twitter)",
+      "zhihu": "知乎",
+      "cncfAria": "Cloud Native Computing Foundation",
+      "cncfCaption": "HAMi is a CNCF Incubating Project",
+      "landscapeAria": "Cloud Native Landscape",
+      "landscapeCaption": "HAMi is a CNAI Landscape Project",
+      "copyright": "© 2026 密瓜智能（Dynamia）",
+      "demoNote": ""
+    },
+    "backToTop": "回到顶部",
+    "backToTopIcon": "↑",
+    "contactSubmitError": "提交失败，请稍后重试，或发送邮件至 info@dynamia.ai。",
+    "qr": {
+      "close": "关闭二维码",
+      "closeSymbol": "×",
+      "community": {
+        "title": "添加 HAMi 社区小助手",
+        "description": "微信扫码，进群交流",
+        "alt": "HAMi 社区小助手微信二维码",
+        "image": "/redesign/assets/f4ca2534f3305f03676e.png"
+      },
+      "company": {
+        "title": "关注密瓜智能",
+        "description": "使用微信扫一扫",
+        "alt": "密瓜智能微信二维码",
+        "image": "/redesign/assets/34d64f6d1d7842a03139.png"
+      }
+    },
+    "showCareers": true
+  },
+  "productDownloads": {
+    "eyebrow": "下载与安装",
+    "description": "获取安装指南，了解当前版本与交付方式。",
+    "back": "← 返回产品介绍",
+    "title": "安装指南与版本资源",
+    "products": {
+      "hami-enterprise": "Dynamia HAMi 企业版",
+      "hami-ai-platform": "Dynamia HAMi 平台版"
+    }
   }
 }

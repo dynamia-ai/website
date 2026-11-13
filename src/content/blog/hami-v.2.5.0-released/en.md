@@ -68,7 +68,7 @@ We'll leave more updates for you to discover on your own. Next, we will mainly d
 
 Previous versions had an issue: **restarting hami-device-plugin would affect GPU tasks.**
 
-In the article [HAMi vGPU Solution Analysis Part 1: hami-device-plugin-nvidia Implementation](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia), we shared how HAMi achieves GPU core and memory isolation.
+In the article [HAMi vGPU Solution Analysis Part 1: hami-device-plugin-nvidia Implementation](/blog/open-source-vgpu-hami-device-plugin-nvidia), we shared how HAMi achieves GPU core and memory isolation.
 
 > This is actually done by intercepting CUDA APIs with libvgpu.so.
 

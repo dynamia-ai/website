@@ -1,6 +1,8 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { getTranslations } from 'next-intl/server';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { routing } from '@/i18n/routing';
 
 import { NOREPLY_EMAIL, SALES_EMAIL, SALESCN_EMAIL } from '@/config/app-config';
@@ -110,6 +112,9 @@ async function buildHtmlEmail(data: Record<string, string>, subject: string): Pr
     { label: t('email'), value: data.email || '—' },
     { label: t('phone'), value: data.phone || '—' },
     { label: t('useCase'), value: data.useCase || '—' },
+    ...(['jobTitle', 'gpuCount', 'message', 'product', 'version', 'artifact', 'architecture', 'filename'] as const)
+      .filter((key) => data[key])
+      .map((key) => ({ label: t(key), value: data[key] })),
   ];
 
   const rows = fields
@@ -175,7 +180,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, honeypot: true }, { status: 200 });
     }
 
-    const { _subject, _replyto, _type, ...formDataRaw } = body;
+    const { _subject, _replyto, _type, _requestId, ...formDataRaw } = body;
+    const isCaseCollection = _type === 'caseCollection';
 
     /* 5. Field validation */
     const name = typeof body.name === 'string' ? sanitizeString(body.name, 100) : '';
@@ -200,6 +206,10 @@ export async function POST(request: Request) {
     }
     if (replyTo !== undefined && !isValidEmail(replyTo)) {
       return NextResponse.json({ error: 'Invalid reply-to email format' }, { status: 400 });
+    }
+    if (isCaseCollection && (!name || !company || !isValidEmail(email) || body.consent !== true ||
+      typeof _requestId !== 'string' || !/^[0-9a-f-]{36}$/i.test(_requestId))) {
+      return NextResponse.json({ error: 'Case collection requests require contact details and consent' }, { status: 400 });
     }
 
     /* 6. Build sanitized string-only record for email HTML */
@@ -247,6 +257,9 @@ export async function POST(request: Request) {
       : SALES_EMAIL;
 
     const html = await buildHtmlEmail(formData, subject);
+    const attachment = isCaseCollection
+      ? await readFile(path.join(process.cwd(), 'src/content/mail-attachments/dynamia-customer-case-studies.pdf'))
+      : undefined;
 
     /* 7. Send email */
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -256,11 +269,29 @@ export async function POST(request: Request) {
       replyTo,
       subject,
       html,
-    });
+    }, isCaseCollection ? { idempotencyKey: `case-collection-lead/${_requestId}` } : undefined);
 
     if (error) {
       console.error('Resend API error:', error);
       return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    }
+
+    if (attachment) {
+      const locale = (routing.locales as readonly string[]).includes(formData.locale)
+        ? formData.locale
+        : 'en';
+      const t = await getTranslations({ locale, namespace: 'caseCollectionEmail' });
+      const delivery = await resend.emails.send({
+        from: `Dynamia AI <${NOREPLY_EMAIL}>`,
+        to: email,
+        subject: t('subject'),
+        text: t('body'),
+        attachments: [{ filename: t('filename'), content: attachment, contentType: 'application/pdf' }],
+      }, { idempotencyKey: `case-collection-delivery/${_requestId}` });
+      if (delivery.error) {
+        console.error('Case collection delivery failed:', delivery.error);
+        return NextResponse.json({ error: 'Failed to send case collection' }, { status: 502 });
+      }
     }
 
     return NextResponse.json({ success: true, id: data?.id });

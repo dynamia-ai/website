@@ -1,24 +1,19 @@
-import { use } from "react";
-import { setRequestLocale } from "next-intl/server";
-import HomeIndex from "@/components/pages/HomeIndex";
-import { generatePageMetadata } from "@/utils/i18n";
+import {setRequestLocale} from 'next-intl/server';
+import HomePage from '@/components/pages/HomePage';
+import {siteMetadata} from '@/lib/site/metadata';
+import MainLayout from '@/components/layout/MainLayout';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  return generatePageMetadata(locale, "home", "/");
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  return siteMetadata('/', locale);
 }
 
-export default function HomePage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = use(params);
+export default async function Page({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
   setRequestLocale(locale);
-
-  return <HomeIndex />;
+  return (
+    <MainLayout>
+      <HomePage />
+    </MainLayout>
+  );
 }
