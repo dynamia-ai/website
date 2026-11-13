@@ -961,39 +961,38 @@
         }
       },
       "why": {
-        "eyebrow": "WHY DYNAMIA",
-        "title": "Warum Dynamia?",
-        "description": "Von effizienter Ressourcennutzung bis zur zentralen Verwaltung: Nutzen Sie jede GPU sinnvoll.",
-        "panels": [
+        "title": "Warum wir?",
+        "learnMore": "Mehr erfahren",
+        "tabs": [
           {
-            "label": "Heterogene Cluster",
-            "title": "Verteilte Rechenressourcen in einer Übersicht",
-            "body": "Verbinden Sie Kubernetes-Cluster in Public Cloud, Private Cloud und vor Ort, um Knoten, Geräte und Workloads zentral zu sehen. Ressourcenpools und Teamrechte schaffen klare Nutzungsgrenzen."
+            "title": "Hetero multi-cluster",
+            "subtitle": "Unified AI Infrastructure Management",
+            "description": "Dynamia.ai bietet einen zentralisierten Ansatz zur Verwaltung der KI-Infrastruktur."
           },
           {
-            "label": "GPU-Sharing",
-            "title": "Eine GPU. Mehrere Workloads.",
-            "body": "Fordern Sie GPU-Speicher, Rechenleistung und Geräteanzahl passend zur Aufgabe an. Platzieren Sie mehrere Workloads auf geeigneten GPUs, um Leerlauf durch Ganzgerätezuweisung zu reduzieren."
+            "title": "GPU Sharing",
+            "subtitle": "Maximize GPU Utilization, Minimize Costs, and Drive AI Efficiency",
+            "description": "Dynamia.ai dynamically consolidates and orchestrates GPU resources. By eliminating waste, maximizing resource utilization, enterprises achieve superior ROI, reduced operational costs, and faster scaling of AI initiatives."
           },
           {
-            "label": "GPU-Überprovisionierung",
-            "title": "Host-Speicher für flexiblen GPU-Speicherbedarf nutzen",
-            "body": "Verwalten Sie den Speicherbedarf über GPU- und Host-Speicher hinweg, um geeignete Workloads zu überprovisionieren. Prüfen Sie Nutzen und Latenz anhand von Modell und Zugriffsmuster."
+            "title": "GPU Oversubscription",
+            "subtitle": "Alignment of GPU and host memory to expand the available resource pool",
+            "description": "Dynamia.ai unterstuetzt die nahtlose Vereinheitlichung von GPU- und Host-Speicher."
           },
           {
-            "label": "Dynamische Skalierung",
-            "title": "GPU-Speicherkontingente an die Last anpassen",
-            "body": "Erhöhen Sie GPU-Speicherkontingente laufender Container automatisch oder passen Sie sie manuell an – im Rahmen der verfügbaren Kapazität, ohne Container neu erstellen zu müssen."
+            "title": "Seamlessly Auto Scale",
+            "subtitle": "Seamlessly Accelerate AI From V1 to V1 Plus",
+            "description": "Dynamia.ai unterstuetzt GPU-On-Demand-Autoskalierung, nahtlose automatische Skalierung fuer KI-Workloads ohne Neustarts bei GPU-Verbrauchsspitzen."
           },
           {
-            "label": "Zentrale Observability",
-            "title": "Ressourcennutzung vom Cluster bis zum Workload verfolgen",
-            "body": "Kombinieren Sie Kubernetes-Zustände und Prometheus-Metriken, um Geräteauslastung, GPU-Speicher, Workload-Status und historische Trends für Kapazitätsanalyse und Troubleshooting zu sehen."
+            "title": "Centralized Observability",
+            "subtitle": "Complete AI Infrastructure Insights",
+            "description": "Zentrale Observability vereint Ressourcen aus Cloud-, On-Premises- und Hybrid-Umgebungen fuer umsetzbare Erkenntnisse, richtlinienbasierte Governance und feingranulares Ressourcenmanagement."
           },
           {
-            "label": "Erweitertes AI-Scheduling",
-            "title": "Ressourcenzuweisung an Ihre Richtlinien anpassen",
-            "body": "Nutzen Sie Binpack, Spread, die Auswahl nach Gerätemodell und UUID sowie topologiebewusste Richtlinien, um Verdichtung, Lastverteilung und Kommunikationsbedarf auszubalancieren."
+            "title": "Advanced AI Scheduling",
+            "subtitle": "Scenario-Aware Scheduling Strategies",
+            "description": "Erweiterte KI-Planung unterstuetzt NUMA-aware-, Binpack- und Spread-Strategien zur Reduzierung des Kommunikationsaufwands, Minimierung der Fragmentierung und Optimierung der Workload-Leistung."
           }
         ]
       },

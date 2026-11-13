@@ -961,39 +961,38 @@
         }
       },
       "why": {
-        "eyebrow": "WHY DYNAMIA",
-        "title": "Why choose Dynamia",
-        "description": "From resource efficiency to unified management, make every GPU count.",
-        "panels": [
+        "title": "Why us?",
+        "learnMore": "Learn More",
+        "tabs": [
           {
-            "label": "Heterogeneous clusters",
-            "title": "Bring distributed compute into one view",
-            "body": "Connect public cloud, private cloud and on-premises Kubernetes clusters to view nodes, devices and workloads together. Resource pools and team permissions define clear usage boundaries."
+            "title": "Hetero multi-cluster",
+            "subtitle": "Unified AI Infrastructure Management",
+            "description": "Dynamia.ai provides a centralized approach to managing AI infrastructure, ensuring optimal workload distribution across hybrid, multi-cloud, and on-premises environments."
           },
           {
-            "label": "GPU sharing",
-            "title": "One GPU. Multiple workloads.",
-            "body": "Request GPU memory, compute capacity and device counts according to each task. Place multiple workloads on suitable GPUs to reduce idle resources caused by full-device allocation."
+            "title": "GPU Sharing",
+            "subtitle": "Maximize GPU Utilization, Minimize Costs, and Drive AI Efficiency",
+            "description": "Dynamia.ai dynamically consolidates and orchestrates GPU resources. By eliminating waste, maximizing resource utilization, enterprises achieve superior ROI, reduced operational costs, and faster scaling of AI initiatives."
           },
           {
-            "label": "GPU oversubscription",
-            "title": "Use host memory for flexible GPU memory demand",
-            "body": "Manage workload memory across GPU and host memory to enable oversubscription for suitable workloads. Validate actual gains and latency against the model and access patterns."
+            "title": "GPU Oversubscription",
+            "subtitle": "Alignment of GPU and host memory to expand the available resource pool",
+            "description": "Dynamia.ai supports seamlessly unify GPU and host memory to maximize the efficiency of co-located AI workloads."
           },
           {
-            "label": "Dynamic scaling",
-            "title": "Adjust GPU memory quotas as demand changes",
-            "body": "Within available capacity, automatically expand or manually resize GPU memory quotas for running containers, reducing the need to recreate containers when memory settings change."
+            "title": "Seamlessly Auto Scale",
+            "subtitle": "Seamlessly Accelerate AI From V1 to V1 Plus",
+            "description": "Dynamia.ai  support GPU on-demand auto-scaling, seamless auto-scaling for AI workloads without restarts during GPU consumption surges."
           },
           {
-            "label": "Centralized observability",
-            "title": "Trace resource use from cluster to workload",
-            "body": "Combine Kubernetes status and Prometheus metrics to view device utilization, GPU memory, workload status and historical trends for capacity analysis and troubleshooting."
+            "title": "Centralized Observability",
+            "subtitle": "Complete AI Infrastructure Insights",
+            "description": "Its centralized observability unifies resources across cloud, on-premises, and hybrid environments, empowering teams with actionable insights, policy-driven governance, and fine-grained resource management."
           },
           {
-            "label": "Advanced AI scheduling",
-            "title": "Align resource allocation with your policies",
-            "body": "Use Binpack, Spread, device model and UUID selection, and topology-aware policies to balance packing, load distribution and workload communication needs."
+            "title": "Advanced AI Scheduling",
+            "subtitle": "Scenario-Aware Scheduling Strategies",
+            "description": "Advanced AI scheduling supports NUMA-aware, binpack, and spread strategies to reduce communication overhead, minimize fragmentation, and optimize workload performance."
           }
         ]
       },

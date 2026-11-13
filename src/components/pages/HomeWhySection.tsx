@@ -1,85 +1,172 @@
 'use client';
 
-import {useState, type KeyboardEvent} from 'react';
-import {useTranslations} from 'next-intl';
+import {useEffect, useState} from 'react';
+import Image from 'next/image';
+import {useLocale, useTranslations} from 'next-intl';
+import {localizedPath} from '@/utils/i18n';
+import {websitePath} from '@/lib/site/links';
 
-interface WhyPanel {
-  label: string;
+interface WhyTab {
   title: string;
-  body: string;
+  subtitle: string;
+  description: string;
 }
+
+const FEATURE_TAB_IMAGES = [
+  '/images/features/feature1.svg',
+  '/images/features/feature2.svg',
+  '/images/features/feature3.svg',
+  '/images/features/feature4.svg',
+  '/images/features/feature5.svg',
+  '/images/features/feature6.svg',
+] as const;
+
+const FEATURE_AUTOPLAY_MS = 10000;
+const FEATURE_PROGRESS_TICK_MS = 50;
 
 export default function HomeWhySection() {
   const t = useTranslations('sitePages.home');
-  const whyPanels = t.raw('why.panels') as WhyPanel[];
-  const [whyIndex, setWhyIndex] = useState(0);
-  const activeWhy = whyPanels[whyIndex] ?? whyPanels[0];
-  const whyTag = `${String(whyIndex + 1).padStart(2, '0')} / `;
+  const locale = useLocale();
+  const tabs = (t.raw('why.tabs') as WhyTab[]) ?? [];
+  const slides = tabs.slice(0, FEATURE_TAB_IMAGES.length).map((tab, index) => ({
+    ...tab,
+    image: FEATURE_TAB_IMAGES[index],
+  }));
 
-  const onWhyKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (!whyPanels.length) return;
-    const keys = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End'];
-    if (!keys.includes(event.key)) return;
-    event.preventDefault();
-    let next = whyIndex;
-    if (event.key === 'Home') next = 0;
-    else if (event.key === 'End') next = whyPanels.length - 1;
-    else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-      next = (whyIndex + 1) % whyPanels.length;
-    } else {
-      next = (whyIndex - 1 + whyPanels.length) % whyPanels.length;
+  const [activeTab, setActiveTab] = useState(0);
+  const [featureProgress, setFeatureProgress] = useState(0);
+  const [playedFeatureTabs, setPlayedFeatureTabs] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (slides.length === 0) return;
+    if (activeTab >= slides.length) {
+      setActiveTab(0);
+      setFeatureProgress(0);
+      setPlayedFeatureTabs([]);
     }
-    setWhyIndex(next);
-    document.getElementById(`why-tab-${next}`)?.focus();
-  };
+  }, [activeTab, slides.length]);
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const id = setTimeout(() => {
+      setActiveTab((prev) => {
+        const next = (prev + 1) % slides.length;
+        setPlayedFeatureTabs((played) =>
+          next === 0 ? [] : Array.from(new Set([...played, prev])),
+        );
+        setFeatureProgress(0);
+        return next;
+      });
+    }, FEATURE_AUTOPLAY_MS);
+    return () => clearTimeout(id);
+  }, [activeTab, slides.length]);
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const startedAt = Date.now();
+    const id = setInterval(() => {
+      const elapsed = Date.now() - startedAt;
+      setFeatureProgress(Math.min((elapsed / FEATURE_AUTOPLAY_MS) * 100, 100));
+    }, FEATURE_PROGRESS_TICK_MS);
+    return () => clearInterval(id);
+  }, [activeTab, slides.length]);
+
+  if (!slides.length) return null;
+
+  const active = slides[activeTab] ?? slides[0];
 
   return (
-    <section className="section tinted" id="why-us">
-      <div className="wrap">
-        <div className="intro">
-          <div>
-            <div className="eyebrow">{t('why.eyebrow')}</div>
-            <h2>{t('why.title')}</h2>
-            <p>{t('why.description')}</p>
+    <section className="why-main py-12 md:py-24" id="why-us">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="why-main-title font-bold">{t('why.title')}</h2>
+        </div>
+
+        <div className="mb-8 md:mb-12 px-2">
+          <div className="flex items-center gap-2 md:gap-3" role="tablist" aria-label={t('why.title')}>
+            {slides.map((tab, index) => {
+              const isPlayed = playedFeatureTabs.includes(index);
+              const isActive = activeTab === index;
+              return (
+                <button
+                  key={tab.title}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-label={tab.title}
+                  className="group cursor-pointer flex-1 py-1 touch-manipulation"
+                  onClick={() => {
+                    if (index === activeTab) return;
+                    setActiveTab(index);
+                    setFeatureProgress(0);
+                    setPlayedFeatureTabs(
+                      Array.from({length: index}, (_, playedIndex) => playedIndex),
+                    );
+                  }}
+                >
+                  <span
+                    className={`why-main-track relative block h-1.5 w-full overflow-hidden rounded-full transition-colors duration-200 ${
+                      isPlayed ? 'is-played' : ''
+                    }`}
+                  >
+                    <span
+                      className={`why-main-fill absolute left-0 top-0 h-full rounded-full transition-[width] duration-75 ease-linear ${
+                        isPlayed ? 'is-played' : ''
+                      }`}
+                      style={{
+                        width: isPlayed ? '100%' : isActive ? `${featureProgress}%` : '0%',
+                      }}
+                    />
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
-        <div className="why-tabs" role="tablist" aria-label={t('why.title')} onKeyDown={onWhyKeyDown}>
-          {whyPanels.map((panel, index) => {
-            const active = index === whyIndex;
-            return (
-              <button
-                key={panel.label}
-                type="button"
-                role="tab"
-                id={`why-tab-${index}`}
-                aria-controls="why-panel"
-                aria-selected={active}
-                tabIndex={active ? 0 : -1}
-                data-why={String(index)}
-                onClick={() => setWhyIndex(index)}
-              >
-                {panel.label}
-              </button>
-            );
-          })}
-        </div>
-        <div id="why-panel" role="tabpanel" tabIndex={0} aria-labelledby={`why-tab-${whyIndex}`}>
-          <div className="why-panel">
-            <div>
-              <span className="tag">
-                <span>{whyTag}</span>
-                <span>{activeWhy?.label}</span>
-              </span>
-              <h3>{activeWhy?.title}</h3>
-              <p>{activeWhy?.body}</p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-center">
+          <div className="lg:col-span-2 flex justify-center">
+            <div className="w-full">
+              <div className="why-main-media rounded-xl border p-3 md:p-4 shadow-sm">
+                <Image
+                  src={active.image}
+                  alt={active.title}
+                  width={600}
+                  height={400}
+                  quality={90}
+                  priority={activeTab === 0}
+                  className="rounded-lg w-full h-auto"
+                  style={{objectFit: 'contain'}}
+                />
+              </div>
             </div>
-            <div className="why-visual why-visual-approved">
-              <iframe
-                src={`/redesign/compute-motion/revised.html?scene=${whyIndex}`}
-                title={activeWhy?.label}
-                scrolling="no"
-                loading="lazy"
-              />
+          </div>
+
+          <div className="lg:col-span-1">
+            <div key={activeTab} className="why-main-copy space-y-3 md:space-y-4">
+              <h3 className="why-main-subtitle font-bold">{active.subtitle}</h3>
+              <p className="why-main-body leading-relaxed">{active.description}</p>
+              <div className="pt-2 md:pt-4">
+                <a
+                  href={localizedPath(websitePath('/products'), locale)}
+                  className="why-main-cta group inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary transition-colors duration-200 ease-out"
+                >
+                  {t('why.learnMore')}
+                  <svg
+                    aria-hidden="true"
+                    className="h-4 w-4 ml-2 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
