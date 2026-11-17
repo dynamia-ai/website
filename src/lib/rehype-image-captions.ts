@@ -10,6 +10,11 @@ export default function rehypeImageCaptions(options: RehypeImageCaptionsOptions)
     let imageCounter = 0;
 
     visit(tree, 'element', (node, index, parent) => {
+      if (node.tagName === 'img' && node.properties.title === 'no-caption') {
+        delete node.properties.title;
+        return;
+      }
+
       if (
         node.tagName === 'img' &&
         node.properties?.alt &&
