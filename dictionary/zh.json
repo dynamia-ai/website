@@ -902,28 +902,28 @@
     ]
   },
   "videos": {
-    "pageTitle": "产品视频",
-    "pageSubtitle": "由 HAMi 发起团队打造 —— HAMi 是 CNCF Incubating 异构 GPU 共享调度项目。了解密瓜智能如何将开源创新转化为企业级 GPU 编排方案。",
-    "locked": "需解锁",
-    "gate": {
-      "title": "观看产品视频",
-      "subtitle": "填写信息即可解锁全部视频内容",
-      "submit": "解锁视频",
-      "success": "感谢提交！正在解锁视频...",
-      "error": "提交失败，请重试或联系 info@dynamia.ai。",
-      "invalidPhoneOrWechat": "请输入有效的电话号码或微信号。"
-    },
-    "player": {
-      "close": "关闭"
-    },
+    "watch": "观看视频",
+    "watchAria": "观看：{title}",
     "items": {
       "productOverview": {
         "title": "密瓜智能产品概览",
-        "description": "全面了解密瓜智能平台的异构 GPU 共享、调度与编排能力。"
+        "description": "全面了解密瓜智能平台的异构 GPU 共享、调度与编排能力。",
+        "duration": "8:50"
       },
       "gpuOversell": {
         "title": "GPU 超卖企业级特性实战",
-        "description": "企业级 GPU 超卖能力演示 — 资源优化实战。"
+        "description": "通过实际演示，了解企业级 GPU 超卖能力与资源优化方式。",
+        "duration": "13:29"
+      },
+      "gpuSharing": {
+        "title": "GPU 共享与切分",
+        "description": "Dynamia HAMi 企业版与平台版产品能力演示系列（一）：按需分配 GPU，减少独占，任务结束后资源自动释放。",
+        "duration": "4:03"
+      },
+      "memoryAutoExpand": {
+        "title": "显存自动扩容",
+        "description": "Dynamia HAMi 企业版与平台版产品能力演示系列（二）：从较小额度起步，需要时追加显存，原进程无需重启即可完成计算。",
+        "duration": "3:38"
       }
     }
   },
@@ -2823,21 +2823,6 @@
       },
       "hero": {
         "lead": "产品演示、技术分享与社区活动，更多视频内容持续更新。"
-      },
-      "items": {
-        "overview": {
-          "aria": "观看：密瓜智能产品概览",
-          "title": "密瓜智能产品概览",
-          "body": "了解密瓜智能平台的异构 GPU 共享、调度与编排能力。",
-          "duration": "8:50"
-        },
-        "watch": "观看视频",
-        "oversell": {
-          "aria": "观看：GPU 超卖企业级特性实战",
-          "title": "GPU 超卖企业级特性实战",
-          "body": "通过实际演示，了解企业级 GPU 超卖能力与资源优化方式。",
-          "duration": "13:29"
-        }
       },
       "empty": "更多内容持续更新，欢迎回来看看。",
       "detail": {

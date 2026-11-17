@@ -42,8 +42,8 @@ export default async function VideoDetailPage({videoId}: VideoDetailPageProps) {
     useEnPlayer ? video.videoUrlEn! : video.videoUrl,
     videoType,
   );
-  const title = tVideos(video.titleKey);
-  const description = tVideos(video.descriptionKey);
+  const title = tVideos(`items.${video.itemKey}.title`);
+  const description = tVideos(`items.${video.itemKey}.description`);
   const isYoutube = videoType === 'youtube';
 
   return (
@@ -66,6 +66,7 @@ export default async function VideoDetailPage({videoId}: VideoDetailPageProps) {
       <section className="section">
         <div className="wrap">
           <Link className="textlink video-detail-back" href={localizedPath(websitePath('/videos'), locale)}>
+            <SiteArrow variant="back" />
             {t('detail.backToVideos')}
           </Link>
           <div className="video-player">

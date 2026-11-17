@@ -598,28 +598,28 @@
     ]
   },
   "videos": {
-    "pageTitle": "Product Videos",
-    "pageSubtitle": "Built by the creators of HAMi — the CNCF incubating project for heterogeneous GPU sharing and scheduling. See how Dynamia turns open-source innovation into enterprise-grade GPU orchestration.",
-    "locked": "Locked",
-    "gate": {
-      "title": "Watch Product Videos",
-      "subtitle": "Fill in your details to unlock",
-      "submit": "Unlock Videos",
-      "success": "Thanks! Unlocking now...",
-      "error": "Something went wrong. Please retry or email info@dynamia.ai.",
-      "invalidPhoneOrWechat": "Please enter a valid phone number or WeChat ID."
-    },
-    "player": {
-      "close": "Close"
-    },
+    "watch": "Watch video",
+    "watchAria": "Watch: {title}",
     "items": {
       "productOverview": {
         "title": "Product Overview",
-        "description": "GPU sharing, scheduling & orchestration — a quick platform walkthrough."
+        "description": "GPU sharing, scheduling & orchestration — a quick platform walkthrough.",
+        "duration": "8:50"
       },
       "gpuOversell": {
         "title": "GPU Oversubscription in Practice",
-        "description": "Enterprise-grade GPU oversubscription — real-world demo of resource optimization."
+        "description": "See enterprise GPU oversubscription and resource optimization in a hands-on demo.",
+        "duration": "13:29"
+      },
+      "gpuSharing": {
+        "title": "GPU Sharing & Partitioning",
+        "description": "Dynamia HAMi Enterprise & Platform demo series (1): allocate GPUs on demand, reduce exclusive locking, and reclaim capacity when jobs finish.",
+        "duration": "4:03"
+      },
+      "memoryAutoExpand": {
+        "title": "Automatic GPU Memory Expansion",
+        "description": "Dynamia HAMi Enterprise & Platform demo series (2): start with a smaller quota and expand GPU memory in place without restarting the process.",
+        "duration": "3:38"
       }
     }
   },
@@ -2519,21 +2519,6 @@
       },
       "hero": {
         "lead": "Product demos, technical talks and community events. More videos are on the way."
-      },
-      "items": {
-        "overview": {
-          "aria": "View: Overview of Dynamia products",
-          "title": "Dynamia product overview",
-          "body": "Explore heterogeneous GPU sharing, scheduling and orchestration with Dynamia.",
-          "duration": "8:50"
-        },
-        "watch": "Watch video",
-        "oversell": {
-          "aria": "Watch: GPU Supersells Enterprise-level Characterisms",
-          "title": "Enterprise GPU oversubscription in practice",
-          "body": "See enterprise GPU oversubscription and resource optimization in a hands-on demo.",
-          "duration": "13:29"
-        }
       },
       "empty": "More content is on the way. Check back soon.",
       "detail": {
