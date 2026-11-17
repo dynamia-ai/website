@@ -277,7 +277,7 @@ export default async function HomePage() {
               <h3>{t('ecosystem.vendorsTitle')}</h3>
               <a className="textlink" href={localizedPath(websitePath("/gpu-compatibility"), locale)}>
                 {t('ecosystem.viewCatalog')}
-                <SiteArrow variant="link" />
+                <SiteArrow variant="text" />
               </a>
             </div>
             <div className="ecosystem-logo-grid vendor-logo-grid" id="vendor-marquee" role="group" aria-label={t('ecosystem.vendorsTitle')}>
@@ -339,7 +339,7 @@ export default async function HomePage() {
           <div className="community-section-link">
             <a href={localizedPath(websitePath("/opensource"), locale)}>
               {t('community.exploreLink')}
-              <SiteArrow variant="link" />
+              <SiteArrow variant="text" />
             </a>
           </div>
         </div>

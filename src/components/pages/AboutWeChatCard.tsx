@@ -24,7 +24,7 @@ export default function AboutWeChatCard() {
           <strong>{t('contact.wechat')}</strong>
           <span>
             {t('contact.scan')}
-            <SiteArrow variant="link" />
+            <SiteArrow variant="text" />
           </span>
         </button>
       )}

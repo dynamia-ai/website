@@ -137,7 +137,7 @@ export default function AboutTeamSection() {
                   <div className="member-photo" data-person={item.id}>
                     <img src={item.image} alt={item.name} loading="eager" />
                     <span className="member-more" aria-hidden={true}>
-                      <SiteArrow variant="link" />
+                      <SiteArrow variant="text" />
                     </span>
                   </div>
                   <div className="member-name">

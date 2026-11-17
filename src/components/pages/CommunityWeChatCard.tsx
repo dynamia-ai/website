@@ -19,7 +19,7 @@ export default function CommunityWeChatCard() {
           <strong>{t('channels.wechat.name')}</strong>
           <span>
             {t('channels.wechat.hint')}
-            <SiteArrow variant="link" />
+            <SiteArrow variant="text" />
           </span>
         </button>
       )}
