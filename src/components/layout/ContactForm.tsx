@@ -9,7 +9,7 @@ type ContactIntent = 'sales' | 'pricing' | 'practice';
 interface ContactFormProps {
   intent: ContactIntent;
   formId: string;
-  submitLabel: string;
+  submitLabel: ReactNode;
   successMessage: string;
   editLabel?: string;
   children: ReactNode;

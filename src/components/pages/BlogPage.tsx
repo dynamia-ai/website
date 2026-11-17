@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
 import BlogListing from '@/components/pages/BlogListing';
+import '@/styles/blog.css';
 
 export default async function BlogPage() {
   const t = await getTranslations('sitePages.blog');

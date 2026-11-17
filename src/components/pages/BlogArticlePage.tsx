@@ -2,6 +2,8 @@ import {notFound} from 'next/navigation';
 import {getLocale, getTranslations} from 'next-intl/server';
 import Link from 'next/link';
 import ArticleCopyLink from '@/components/layout/ArticleCopyLink';
+import BlogCard from '@/components/layout/BlogCard';
+import SiteArrow from '@/components/layout/SiteArrow';
 import {getBlogPost, getAllBlogPosts, markdownToHtml} from '@/lib/blog-server';
 import {
   CATEGORY_SUBTITLE_KEYS,
@@ -12,6 +14,8 @@ import {localizeContentHtml, websitePath} from '@/lib/site/links';
 import {contentLocaleCandidates} from '@/lib/site/localeFallback';
 import {localizedPath, localizedUrl} from '@/utils/i18n';
 import type {BlogPost} from '@/types/blog';
+import '@/styles/article.css';
+import '@/styles/blog.css';
 
 interface BlogArticlePageProps {
   slug: string;
@@ -29,6 +33,8 @@ export async function BlogArticlePage({slug}: BlogArticlePageProps) {
   const locale = await getLocale();
   const t = await getTranslations({locale, namespace: 'sitePages.blog'});
   const tUi = await getTranslations({locale, namespace: 'blogUI'});
+  const home = await getTranslations({locale, namespace: 'sitePages.home'});
+  const dynamiaLogo = home('brand.logo');
   const post = resolvePost(slug, locale);
   if (!post) notFound();
 
@@ -85,11 +91,7 @@ export async function BlogArticlePage({slug}: BlogArticlePageProps) {
               <div className="content-cover editorial-cover" data-category={categoryId}>
                 <div className="text-cover">
                   <div className="cover-topline">
-                    <img
-                      className="cover-mark"
-                      src="/redesign/assets/cf10a2fcc13438169897.svg"
-                      alt={t('coverMarkAlt')}
-                    />
+                    <img className="cover-mark" src={dynamiaLogo} alt={t('coverMarkAlt')} />
                     {category ? <span className="cover-category">{category}</span> : null}
                   </div>
                   <div className="cover-title-block">
@@ -110,7 +112,7 @@ export async function BlogArticlePage({slug}: BlogArticlePageProps) {
             <div className="article-reading-grid">
               <div>
                 {toc.length ? (
-                  <details className="case-mobile-toc">
+                  <details className="article-mobile-toc">
                     <summary>{t('detail.onThisPage')}</summary>
                     <nav>
                       {toc.map((item) => (
@@ -148,50 +150,28 @@ export async function BlogArticlePage({slug}: BlogArticlePageProps) {
               </div>
               <Link className="textlink" href={localizedPath(websitePath('/blog'), locale)}>
                 {t('detail.allArticles')}
-                <span className="arrow">{t('arrow')}</span>
+                <SiteArrow variant="text" />
               </Link>
             </div>
             <div className="grid3">
               {related.map((item) => {
                 const relatedSubtitleKey = CATEGORY_SUBTITLE_KEYS[item.categoryId];
                 return (
-                  <Link
+                  <BlogCard
                     key={item.id}
-                    className="blog-card"
                     href={localizedPath(websitePath(`/blog/${item.slug}`), locale)}
-                  >
-                    <div className="content-cover editorial-cover" data-category={item.categoryId}>
-                      <div className="text-cover">
-                        <div className="cover-topline">
-                          <img
-                            className="cover-mark"
-                            src="/redesign/assets/cf10a2fcc13438169897.svg"
-                            alt={t('coverMarkAlt')}
-                          />
-                          <span className="cover-category">{item.category}</span>
-                        </div>
-                        <div className="cover-title-block">
-                          <strong>{item.coverTitle || item.title}</strong>
-                          {relatedSubtitleKey ? (
-                            <span className="cover-subtitle">{t(relatedSubtitleKey)}</span>
-                          ) : null}
-                        </div>
-                        <small>{t('coverBrand')}</small>
-                      </div>
-                    </div>
-                    <div className="blog-card-body">
-                      <div className="article-meta">
-                        <span>{item.category}</span>
-                        <time dateTime={item.date}>{formatBlogDate(item.date)}</time>
-                      </div>
-                      <h2>{item.title}</h2>
-                      <p>{item.desc}</p>
-                      <span className="read-more">
-                        {t('readMore')}
-                        <span>{t('arrow')}</span>
-                      </span>
-                    </div>
-                  </Link>
+                    title={item.title}
+                    desc={item.desc}
+                    category={item.category}
+                    categoryId={item.categoryId}
+                    date={item.date}
+                    coverTitle={item.coverTitle}
+                    coverSubtitle={relatedSubtitleKey ? t(relatedSubtitleKey) : undefined}
+                    coverBrand={t('coverBrand')}
+                    coverMarkAlt={t('coverMarkAlt')}
+                    readMore={t('readMore')}
+                    logoSrc={dynamiaLogo}
+                  />
                 );
               })}
             </div>

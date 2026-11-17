@@ -1,0 +1,117 @@
+/* GPU catalog page */
+
+.gpu-catalog .page-hero {
+  padding: 72px 0 48px;
+}
+
+.gpu-catalog .page-hero h1 {
+  font-size: clamp(34px, 4vw, 60px);
+  max-width: 1050px;
+}
+
+.gpu-catalog .page-hero p {
+  max-width: 880px;
+}
+
+.catalog-source {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.catalog-source a {
+  color: var(--green-dark);
+}
+
+.catalog-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.catalog-heading h2 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.catalog-heading input {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  padding: 12px 18px;
+  min-width: 300px;
+  max-width: 100%;
+}
+
+.catalog-list {
+  border-top: 1px solid var(--line);
+}
+
+.catalog-device {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.catalog-device h3 {
+  font-size: 23px;
+  margin: 0 0 14px;
+}
+
+.catalog-label {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.catalog-device p {
+  margin: 6px 0 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.catalog-device .textlink {
+  font-size: 13px;
+}
+
+.catalog-next h2 {
+  font-size: 23px;
+  margin-bottom: 18px;
+}
+
+.catalog-next p {
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.catalog-next {
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  max-width: 1000px;
+}
+
+.catalog-empty {
+  padding: 32px 0;
+}
+
+@media (max-width: 700px) {
+  .catalog-device {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .catalog-heading label,
+  .catalog-heading input {
+    width: 100%;
+    min-width: 0;
+  }
+}

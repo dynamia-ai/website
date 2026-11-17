@@ -1,7 +1,24 @@
 import {getLocale, getTranslations} from 'next-intl/server';
+import SiteArrow from '@/components/layout/SiteArrow';
+import ContactForm from '@/components/layout/ContactForm';
 import {localizedPath} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
-import ContactForm from '@/components/layout/ContactForm';
+import '@/styles/sales.css';
+
+type HighlightId = 'pricing' | 'support';
+type GpuOptionId = 'r1to10' | 'r10to50' | 'r50to200' | 'gt200';
+
+interface HighlightItem {
+  id: HighlightId;
+  icon: string;
+}
+
+const HIGHLIGHTS: HighlightItem[] = [
+  {id: 'pricing', icon: 'm12 3 10 5-10 5L2 8z M2 12l10 5 10-5 M2 16l10 5 10-5'},
+  {id: 'support', icon: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M19 8v6 M16 11h6 M20 21v-2a4 4 0 0 0-2-3.5'},
+];
+
+const GPU_OPTIONS: GpuOptionId[] = ['r1to10', 'r10to50', 'r50to200', 'gt200'];
 
 export default async function PricingPage() {
   const t = await getTranslations('sitePages.pricing');
@@ -21,24 +38,24 @@ export default async function PricingPage() {
             </h1>
             <p>{t('hero.lead')}</p>
             <div className="sales-points">
-              <div className="sales-point">
-                <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="m12 3 10 5-10 5L2 8z M2 12l10 5 10-5 M2 16l10 5 10-5"></path></svg></span>
-                <div><h3>{t('highlights.pricing.title')}</h3></div>
-              </div>
-              <div className="sales-point">
-                <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M6 6h12v12H6z M9 9h6v6H9z M9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3"></path></svg></span>
-                <div><h3>{t('highlights.pricing.body')}</h3></div>
-              </div>
-              <div className="sales-point">
-                <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M19 8v6 M16 11h6 M20 21v-2a4 4 0 0 0-2-3.5"></path></svg></span>
-                <div><h3>{t('highlights.support.title')}</h3></div>
-              </div>
-              <div className="sales-point">
-                <span className="icon"><svg viewBox="0 0 24 24" aria-hidden={true}><path d="m8 6-6 6 6 6 m8-12 6 6-6 6 M14 3l-4 18"></path></svg></span>
-                <div><h3>{t('highlights.support.body')}</h3></div>
-              </div>
+              {HIGHLIGHTS.map((item) => (
+                <div className="sales-point" key={item.id}>
+                  <span className="icon">
+                    <svg viewBox="0 0 24 24" aria-hidden={true}>
+                      <path d={item.icon} />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>{t(`highlights.${item.id}.title`)}</h3>
+                    <p>{t(`highlights.${item.id}.body`)}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <a className="textlink" href={localizedPath(websitePath('/products?section=product-matrix'), locale)}>{t('highlights.capabilitiesLink')}</a>
+            <a className="textlink" href={localizedPath(websitePath('/products?section=product-matrix'), locale)}>
+              {t('highlights.capabilitiesLink')}
+              <SiteArrow variant="text" />
+            </a>
           </div>
           <div className="sales-form">
             <h2>{t('form.title')}</h2>
@@ -46,7 +63,12 @@ export default async function PricingPage() {
             <ContactForm
               intent="pricing"
               formId="pricing-form"
-              submitLabel={t('form.submit')}
+              submitLabel={
+                <>
+                  {t('form.submit')}
+                  <SiteArrow variant="button" />
+                </>
+              }
               successMessage={t('form.success')}
               editLabel={t('form.edit')}
             >
@@ -55,10 +77,11 @@ export default async function PricingPage() {
                   {t('form.gpus.label')}
                   <select name="gpu" required defaultValue="">
                     <option value="">{t('form.gpus.placeholder')}</option>
-                    <option>{t('form.gpus.options.r1to10')}</option>
-                    <option>{t('form.gpus.options.r10to50')}</option>
-                    <option>{t('form.gpus.options.r50to200')}</option>
-                    <option>{t('form.gpus.options.gt200')}</option>
+                    {GPU_OPTIONS.map((id) => (
+                      <option key={id} value={id}>
+                        {t(`form.gpus.options.${id}`)}
+                      </option>
+                    ))}
                   </select>
                 </label>
                 <label className="field">
@@ -86,20 +109,22 @@ export default async function PricingPage() {
                   <textarea name="notes" maxLength={2000} placeholder={t('form.message.placeholder')} />
                 </label>
               </div>
-              <label className="pricing-consent" style={{display: 'flex', alignItems: 'flex-start', gap: '9px', fontSize: '12px', marginTop: '18px'}}>
-                <input type="checkbox" name="consent" required style={{marginTop: '5px', flexShrink: 0}} />
+              <label className="pricing-consent">
+                <input type="checkbox" name="consent" required />
                 <span>
                   {t('form.consent.before')}
-                  <a href={privacyHref} style={{textDecoration: 'underline'}}>{t('form.consent.privacy')}</a>
+                  <a href={privacyHref}>{t('form.consent.privacy')}</a>
                   {t('form.consent.after')}
                 </span>
               </label>
-              <div hidden><input name="_gotcha" autoComplete="off" tabIndex={-1} /></div>
+              <div hidden>
+                <input name="_gotcha" autoComplete="off" tabIndex={-1} />
+              </div>
             </ContactForm>
           </div>
         </div>
       </section>
-      <section className="section ">
+      <section className="section">
         <div className="wrap">
           <div className="intro">
             <div>
@@ -108,7 +133,10 @@ export default async function PricingPage() {
               <p>{t('cta.body')}</p>
             </div>
           </div>
-          <a className="btn" href={localizedPath(websitePath('/products'), locale)}>{t('cta.link')}</a>
+          <a className="btn" href={localizedPath(websitePath('/products'), locale)}>
+            {t('cta.link')}
+            <SiteArrow variant="button" />
+          </a>
         </div>
       </section>
     </>

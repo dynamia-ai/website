@@ -1,19 +1,139 @@
 import {getLocale, getTranslations} from 'next-intl/server';
+import SiteArrow from '@/components/layout/SiteArrow';
+import SiteChevron from '@/components/layout/SiteChevron';
 import {localizedPath} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
 import {HamiLiveStat, HamiLiveStatsProvider} from '@/components/layout/HamiLiveStats';
 import HomeWhySection from '@/components/pages/HomeWhySection';
 import HomeCommunityMetrics from '@/components/pages/HomeCommunityMetrics';
+import '@/styles/home.css';
 
 interface HomeFaqItem {
   q: string;
   a: string;
 }
 
+interface HeroUser {
+  key: string;
+  src: string;
+  href?: string;
+}
+
+interface EcosystemVendor {
+  brand: string;
+  nameKey: string;
+  src: string;
+}
+
+interface EcosystemScheduler {
+  brand: string;
+  nameKey: string;
+  href: string;
+  src: string;
+}
+
+const HERO_USERS: HeroUser[] = [
+  {key: 'sfTechnology', src: '/logos/company8.svg', href: '/cases/sf-technology'},
+  {key: 'paradigm', src: '/logos/company6.png'},
+  {key: 'daocloud', src: '/logos/company7.png', href: '/cases/daocloud'},
+  {key: 'cloudpilotAi', src: '/logos/company9.svg'},
+  {key: 'opencsg', src: '/logos/opencsg.svg'},
+  {key: 'intsig', src: '/logos/intsig-zh.png'},
+  {key: 'seres', src: '/redesign/assets/seres-logo.svg', href: '/cases/seres'},
+  {key: 'snowCorp', src: '/redesign/assets/83f5bec99abccb7f8843.jpg', href: '/cases/snow-corp'},
+  {key: 'chinaMerchantsBank', src: '/redesign/assets/b597756761457e50d747.svg', href: '/cases/china-merchants-bank-2'},
+  {key: 'keHoldings', src: '/redesign/assets/8045f1c8d69940e96b22.png', href: '/cases/ke-holdings-inc'},
+  {key: 'nio', src: '/redesign/assets/nio-user.jpeg', href: '/cases/nio'},
+];
+
+const ECOSYSTEM_VENDORS: EcosystemVendor[] = [
+  {brand: 'nvidia', nameKey: 'nvidia', src: '/redesign/assets/299f066b5f20703e1f89.png'},
+  {brand: 'amd', nameKey: 'amd', src: '/redesign/assets/498422afaaf2753aa9ec.png'},
+  {brand: 'aws', nameKey: 'awsNeuron', src: '/redesign/assets/83a80088931f919ecd6e.png'},
+  {brand: 'ascend', nameKey: 'huaweiAscend', src: '/redesign/assets/2e4ce52270a59db0d74e.jpg'},
+  {brand: 'hygon', nameKey: 'hygon', src: '/redesign/assets/e60523d86501539695c8.jpg'},
+  {brand: 'cambricon', nameKey: 'cambricon', src: '/redesign/assets/2b164046f1f50a1270df.png'},
+  {brand: 'metax', nameKey: 'metax', src: '/redesign/assets/b620972511a1774f5406.png'},
+  {brand: 'iluvatar', nameKey: 'iluvatarCorex', src: '/redesign/assets/iluvatar-official.png'},
+  {brand: 'moore', nameKey: 'mooreThreads', src: '/redesign/assets/45614e0e654b2e055368.png'},
+  {brand: 'kunlunxin', nameKey: 'kunlunxin', src: '/redesign/assets/d41b05c16799270773fc.jpg'},
+  {brand: 'enflame', nameKey: 'enflame', src: '/redesign/assets/0172687d120142161422.png'},
+  {brand: 'biren', nameKey: 'birenTechnology', src: '/redesign/assets/a07b922731bc9166c41c.png'},
+  {brand: 'vastai', nameKey: 'vastai', src: '/redesign/assets/379727e2c45f83876a87.png'},
+  {brand: 't-head', nameKey: 'tHeadPpu', src: '/redesign/assets/de1ec23ff0fe78e98cdd.png'},
+];
+
+const ECOSYSTEM_SCHEDULERS: EcosystemScheduler[] = [
+  {
+    brand: 'kubernetes',
+    nameKey: 'kubernetes',
+    href: 'https://github.com/Project-HAMi/HAMi#quick-start',
+    src: '/redesign/assets/402dd0ce3de067d46771.png',
+  },
+  {
+    brand: 'volcano',
+    nameKey: 'volcano',
+    href: 'https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_volcano_vgpu.md',
+    src: '/redesign/assets/c770463d55a953164ff4.png',
+  },
+  {
+    brand: 'kueue',
+    nameKey: 'kueue',
+    href: 'https://kueue.sigs.k8s.io/docs/tasks/run/using_hami/',
+    src: '/redesign/assets/48d6c0dbf8aa195b05fe.png',
+  },
+  {
+    brand: 'koordinator',
+    nameKey: 'koordinator',
+    href: 'https://koordinator.sh/docs/user-manuals/device-scheduling-gpu-share-with-hami',
+    src: '/images/koordinator.png',
+  },
+  {
+    brand: 'kai',
+    nameKey: 'kai',
+    href: 'https://github.com/kai-scheduler/KAI-Scheduler/blob/main/docs/gpu-sharing/hami/README.md',
+    src: '/redesign/assets/f1c5ef6e0100c77baaaf.png',
+  },
+];
+
 export default async function HomePage() {
   const t = await getTranslations('sitePages.home');
   const locale = await getLocale();
   const faqItems = t.raw('faq.items') as HomeFaqItem[];
+  const userNames = t.raw('hero.users') as Record<string, string>;
+  const vendorNames = t.raw('ecosystem.vendors') as Record<string, string>;
+  const schedulersCopy = t.raw('ecosystem.schedulers') as Record<string, {name: string; seeDetails: string}>;
+  // Dynamia-only wordmark — not navigation.logo (EN creators lockup).
+  const dynamiaLogo = t('brand.logo');
+  const dynamiaLogoDark = t('brand.logoDark');
+
+  const renderHeroUserSet = (setKey: string, opts?: {decorative?: boolean}) => (
+    <div className="hero-users-set" {...(opts?.decorative ? {'aria-hidden': true, inert: true} : {})}>
+      {HERO_USERS.map((user) => {
+        const title = userNames[user.key] ?? user.key;
+        const image = <img src={user.src} alt={opts?.decorative ? '' : title} loading="eager" />;
+        const key = `${setKey}-${user.key}`;
+        if (user.href) {
+          return (
+            <a
+              key={key}
+              className="hero-user-mark"
+              href={localizedPath(websitePath(user.href), locale)}
+              title={title}
+              tabIndex={opts?.decorative ? -1 : undefined}
+            >
+              {image}
+            </a>
+          );
+        }
+        return (
+          <span key={key} className="hero-user-mark" title={title}>
+            {image}
+          </span>
+        );
+      })}
+    </div>
+  );
 
   return (
     <HamiLiveStatsProvider>
@@ -37,55 +157,27 @@ export default async function HomePage() {
                 <span aria-hidden={true}>{t('ui.star')}</span>
                 <b><HamiLiveStat kind="stars" placeholder={t('ui.emDash')} /></b>
                 <span>{t('hero.githubStars')}</span>
-                <span aria-hidden={true}>{t('ui.externalArrow')}</span>
+                <SiteArrow variant="link" />
               </a>
             </div>
           </div>
-          <figure className="original-animation"><img className="" data-motion-image="original" src="/redesign/assets/e80fe85581e8dcc32e1e.gif" alt={t('hero.motionAlt')} data-motion-poster="originalPoster" data-motion-paused="false" /></figure>
+          <figure className="original-animation">
+            <img
+              data-motion-image="original"
+              src="/redesign/assets/e80fe85581e8dcc32e1e.gif"
+              alt={t('hero.motionAlt')}
+              data-motion-poster="originalPoster"
+              data-motion-paused="false"
+            />
+          </figure>
         </div>
         <div className="wrap hero-users">
           <div className="hero-users-label">{t('hero.usersLabel')}</div>
           <div className="hero-users-viewport" role="region" aria-label={t('hero.usersLabel')}>
             <div className="hero-users-track">
-              <div className="hero-users-set">
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/sf-technology"), locale)} title={t('hero.users.sfTechnology')}><img src="/logos/company8.svg" alt={t('hero.users.sfTechnology')} loading="eager" /></a>
-                <span className="hero-user-mark" title={t('hero.users.paradigm')}><img src="/logos/company6.png" alt={t('hero.users.paradigm')} loading="eager" /></span>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/daocloud"), locale)} title={t('hero.users.daocloud')}><img src="/logos/company7.png" alt={t('hero.users.daocloud')} loading="eager" /></a>
-                <span className="hero-user-mark" title={t('hero.users.cloudpilotAi')}><img src="/logos/company9.svg" alt={t('hero.users.cloudpilotAi')} loading="eager" /></span>
-                <span className="hero-user-mark" title={t('hero.users.opencsg')}><img src="/logos/opencsg.svg" alt={t('hero.users.opencsg')} loading="eager" /></span>
-                <span className="hero-user-mark" title={t('hero.users.intsig')}><img src="/logos/intsig-zh.png" alt={t('hero.users.intsig')} loading="eager" /></span>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/seres"), locale)} title={t('hero.users.seres')}><img src="/redesign/assets/seres-logo.svg" alt={t('hero.users.seres')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/snow-corp"), locale)} title={t('hero.users.snowCorp')}><img src="/redesign/assets/83f5bec99abccb7f8843.jpg" alt={t('hero.users.snowCorp')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/china-merchants-bank-2"), locale)} title={t('hero.users.chinaMerchantsBank')}><img src="/redesign/assets/b597756761457e50d747.svg" alt={t('hero.users.chinaMerchantsBank')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/ke-holdings-inc"), locale)} title={t('hero.users.keHoldings')}><img src="/redesign/assets/8045f1c8d69940e96b22.png" alt={t('hero.users.keHoldings')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/nio"), locale)} title={t('hero.users.nio')}><img src="/redesign/assets/nio-user.jpeg" alt={t('hero.users.nio')} loading="eager" /></a>
-              </div>
-              <div className="hero-users-set" aria-hidden={true} inert>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/sf-technology"), locale)} title={t('hero.users.sfTechnology')}><img src="/logos/company8.svg" alt={t('hero.users.sfTechnology')} loading="eager" /></a>
-                <span className="hero-user-mark" title={t('hero.users.paradigm')}><img src="/logos/company6.png" alt={t('hero.users.paradigm')} loading="eager" /></span>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/daocloud"), locale)} title={t('hero.users.daocloud')}><img src="/logos/company7.png" alt={t('hero.users.daocloud')} loading="eager" /></a>
-                <span className="hero-user-mark" title={t('hero.users.cloudpilotAi')}><img src="/logos/company9.svg" alt={t('hero.users.cloudpilotAi')} loading="eager" /></span>
-                <span className="hero-user-mark" title={t('hero.users.opencsg')}><img src="/logos/opencsg.svg" alt={t('hero.users.opencsg')} loading="eager" /></span>
-                <span className="hero-user-mark" title={t('hero.users.intsig')}><img src="/logos/intsig-zh.png" alt={t('hero.users.intsig')} loading="eager" /></span>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/seres"), locale)} title={t('hero.users.seres')}><img src="/redesign/assets/seres-logo.svg" alt={t('hero.users.seres')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/snow-corp"), locale)} title={t('hero.users.snowCorp')}><img src="/redesign/assets/83f5bec99abccb7f8843.jpg" alt={t('hero.users.snowCorp')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/china-merchants-bank-2"), locale)} title={t('hero.users.chinaMerchantsBank')}><img src="/redesign/assets/b597756761457e50d747.svg" alt={t('hero.users.chinaMerchantsBank')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/ke-holdings-inc"), locale)} title={t('hero.users.keHoldings')}><img src="/redesign/assets/8045f1c8d69940e96b22.png" alt={t('hero.users.keHoldings')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/nio"), locale)} title={t('hero.users.nio')}><img src="/redesign/assets/nio-user.jpeg" alt={t('hero.users.nio')} loading="eager" /></a>
-              </div>
-              <div className="hero-users-set" aria-hidden={true} inert>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/sf-technology"), locale)} title={t('hero.users.sfTechnology')}><img src="/logos/company8.svg" alt={t('hero.users.sfTechnology')} loading="eager" /></a>
-                <span className="hero-user-mark" title={t('hero.users.paradigm')}><img src="/logos/company6.png" alt={t('hero.users.paradigm')} loading="eager" /></span>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/daocloud"), locale)} title={t('hero.users.daocloud')}><img src="/logos/company7.png" alt={t('hero.users.daocloud')} loading="eager" /></a>
-                <span className="hero-user-mark" title={t('hero.users.cloudpilotAi')}><img src="/logos/company9.svg" alt={t('hero.users.cloudpilotAi')} loading="eager" /></span>
-                <span className="hero-user-mark" title={t('hero.users.opencsg')}><img src="/logos/opencsg.svg" alt={t('hero.users.opencsg')} loading="eager" /></span>
-                <span className="hero-user-mark" title={t('hero.users.intsig')}><img src="/logos/intsig-zh.png" alt={t('hero.users.intsig')} loading="eager" /></span>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/seres"), locale)} title={t('hero.users.seres')}><img src="/redesign/assets/seres-logo.svg" alt={t('hero.users.seres')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/snow-corp"), locale)} title={t('hero.users.snowCorp')}><img src="/redesign/assets/83f5bec99abccb7f8843.jpg" alt={t('hero.users.snowCorp')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/china-merchants-bank-2"), locale)} title={t('hero.users.chinaMerchantsBank')}><img src="/redesign/assets/b597756761457e50d747.svg" alt={t('hero.users.chinaMerchantsBank')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/ke-holdings-inc"), locale)} title={t('hero.users.keHoldings')}><img src="/redesign/assets/8045f1c8d69940e96b22.png" alt={t('hero.users.keHoldings')} loading="eager" /></a>
-                <a className="hero-user-mark" href={localizedPath(websitePath("/cases/nio"), locale)} title={t('hero.users.nio')}><img src="/redesign/assets/nio-user.jpeg" alt={t('hero.users.nio')} loading="eager" /></a>
-              </div>
+              {renderHeroUserSet('primary')}
+              {renderHeroUserSet('loop-a', {decorative: true})}
+              {renderHeroUserSet('loop-b', {decorative: true})}
             </div>
           </div>
         </div>
@@ -101,7 +193,7 @@ export default async function HomePage() {
             </div>
             <a className="textlink" href={localizedPath(websitePath("/products"), locale)}>
               {t('products.viewOverview')}
-              <span className="arrow">{t('ui.arrow')}</span>
+              <SiteArrow variant="text" />
             </a>
           </div>
           <div className="grid2">
@@ -127,7 +219,7 @@ export default async function HomePage() {
               <div className="card-actions">
                 <a className="textlink" href={localizedPath(websitePath("/enterprise"), locale)}>
                   {t('products.enterprise.cta')}
-                  <span className="arrow">{t('ui.arrow')}</span>
+                  <SiteArrow variant="text" />
                 </a>
                 <span className="label">{t('products.enterprise.badge')}</span>
               </div>
@@ -154,7 +246,7 @@ export default async function HomePage() {
               <div className="card-actions">
                 <a className="textlink" href={localizedPath(websitePath("/platform"), locale)}>
                   {t('products.platform.cta')}
-                  <span className="arrow">{t('ui.arrow')}</span>
+                  <SiteArrow variant="text" />
                 </a>
                 <span className="label">{t('products.platform.badge')}</span>
               </div>
@@ -168,7 +260,7 @@ export default async function HomePage() {
             </p>
             <a className="textlink" href={localizedPath(websitePath("/opensource"), locale)}>
               {t('products.opensource.cta')}
-              <span className="arrow">{t('ui.arrow')}</span>
+              <SiteArrow variant="text" />
             </a>
           </div>
         </div>
@@ -185,74 +277,47 @@ export default async function HomePage() {
               <h3>{t('ecosystem.vendorsTitle')}</h3>
               <a className="textlink" href={localizedPath(websitePath("/gpu-compatibility"), locale)}>
                 {t('ecosystem.viewCatalog')}
-                <span aria-hidden={true}>{t('ui.externalArrow')}</span>
+                <SiteArrow variant="link" />
               </a>
             </div>
             <div className="ecosystem-logo-grid vendor-logo-grid" id="vendor-marquee" role="group" aria-label={t('ecosystem.vendorsTitle')}>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="nvidia" title={t('ecosystem.vendors.nvidia')}><img src="/redesign/assets/299f066b5f20703e1f89.png" alt={t('ecosystem.vendors.nvidia')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="amd" title={t('ecosystem.vendors.amd')}><img src="/redesign/assets/498422afaaf2753aa9ec.png" alt={t('ecosystem.vendors.amd')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="aws" title={t('ecosystem.vendors.awsNeuron')}><img src="/redesign/assets/83a80088931f919ecd6e.png" alt={t('ecosystem.vendors.awsNeuron')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="ascend" title={t('ecosystem.vendors.huaweiAscend')}><img src="/redesign/assets/2e4ce52270a59db0d74e.jpg" alt={t('ecosystem.vendors.huaweiAscend')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="hygon" title={t('ecosystem.vendors.hygon')}><img src="/redesign/assets/e60523d86501539695c8.jpg" alt={t('ecosystem.vendors.hygon')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="cambricon" title={t('ecosystem.vendors.cambricon')}><img src="/redesign/assets/2b164046f1f50a1270df.png" alt={t('ecosystem.vendors.cambricon')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="metax" title={t('ecosystem.vendors.metax')}><img src="/redesign/assets/b620972511a1774f5406.png" alt={t('ecosystem.vendors.metax')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="iluvatar" title={t('ecosystem.vendors.iluvatarCorex')}><img src="/redesign/assets/iluvatar-official.png" alt={t('ecosystem.vendors.iluvatarCorex')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="moore" title={t('ecosystem.vendors.mooreThreads')}><img src="/redesign/assets/45614e0e654b2e055368.png" alt={t('ecosystem.vendors.mooreThreads')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="kunlunxin" title={t('ecosystem.vendors.kunlunxin')}><img src="/redesign/assets/d41b05c16799270773fc.jpg" alt={t('ecosystem.vendors.kunlunxin')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="enflame" title={t('ecosystem.vendors.enflame')}><img src="/redesign/assets/0172687d120142161422.png" alt={t('ecosystem.vendors.enflame')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="biren" title={t('ecosystem.vendors.birenTechnology')}><img src="/redesign/assets/a07b922731bc9166c41c.png" alt={t('ecosystem.vendors.birenTechnology')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="vastai" title={t('ecosystem.vendors.vastai')}><img src="/redesign/assets/379727e2c45f83876a87.png" alt={t('ecosystem.vendors.vastai')} loading="lazy" /></div></div>
-              <div className="ecosystem-unlinked"><div className="brand-tile" data-brand="t-head" title={t('ecosystem.vendors.tHeadPpu')}><img src="/redesign/assets/de1ec23ff0fe78e98cdd.png" alt={t('ecosystem.vendors.tHeadPpu')} loading="lazy" /></div></div>
+              {ECOSYSTEM_VENDORS.map((vendor) => {
+                const name = vendorNames[vendor.nameKey] ?? vendor.nameKey;
+                return (
+                  <div className="ecosystem-unlinked" key={vendor.brand}>
+                    <div className="brand-tile" data-brand={vendor.brand} title={name}>
+                      <img src={vendor.src} alt={name} loading="lazy" />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className="logo-group">
             <div className="logo-group-title"><h3>{t('ecosystem.schedulersTitle')}</h3></div>
             <div className="ecosystem-logo-grid scheduler-logo-grid" id="scheduler-marquee" role="group" aria-label={t('ecosystem.schedulersTitle')}>
-              <a className="ecosystem-link" href="https://github.com/Project-HAMi/HAMi#quick-start" target="_blank" rel="noopener noreferrer" aria-label={t('ecosystem.schedulers.kubernetes.seeDetails')}>
-                <div className="brand-tile" data-brand="kubernetes" title={t('ecosystem.schedulers.kubernetes.name')}>
-                  <img src="/redesign/assets/402dd0ce3de067d46771.png" alt={t('ecosystem.schedulers.kubernetes.name')} loading="lazy" />
-                  <span className="ecosystem-link-caption">
-                    {t('ui.viewDetails')}
-                    <span aria-hidden={true}>{t('ui.externalArrowSpaced')}</span>
-                  </span>
-                </div>
-              </a>
-              <a className="ecosystem-link" href="https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_volcano_vgpu.md" target="_blank" rel="noopener noreferrer" aria-label={t('ecosystem.schedulers.volcano.seeDetails')}>
-                <div className="brand-tile" data-brand="volcano" title={t('ecosystem.schedulers.volcano.name')}>
-                  <img src="/redesign/assets/c770463d55a953164ff4.png" alt={t('ecosystem.schedulers.volcano.name')} loading="lazy" />
-                  <span className="ecosystem-link-caption">
-                    {t('ui.viewDetails')}
-                    <span aria-hidden={true}>{t('ui.externalArrowSpaced')}</span>
-                  </span>
-                </div>
-              </a>
-              <a className="ecosystem-link" href="https://kueue.sigs.k8s.io/docs/tasks/run/using_hami/" target="_blank" rel="noopener noreferrer" aria-label={t('ecosystem.schedulers.kueue.seeDetails')}>
-                <div className="brand-tile" data-brand="kueue" title={t('ecosystem.schedulers.kueue.name')}>
-                  <img src="/redesign/assets/48d6c0dbf8aa195b05fe.png" alt={t('ecosystem.schedulers.kueue.name')} loading="lazy" />
-                  <span className="ecosystem-link-caption">
-                    {t('ui.viewDetails')}
-                    <span aria-hidden={true}>{t('ui.externalArrowSpaced')}</span>
-                  </span>
-                </div>
-              </a>
-              <a className="ecosystem-link" href="https://koordinator.sh/docs/user-manuals/device-scheduling-gpu-share-with-hami" target="_blank" rel="noopener noreferrer" aria-label={t('ecosystem.schedulers.koordinator.seeDetails')}>
-                <div className="brand-tile" data-brand="koordinator" title={t('ecosystem.schedulers.koordinator.name')}>
-                  <img src="/images/koordinator.png" alt={t('ecosystem.schedulers.koordinator.name')} loading="lazy" />
-                  <span className="ecosystem-link-caption">
-                    {t('ui.viewDetails')}
-                    <span aria-hidden={true}>{t('ui.externalArrowSpaced')}</span>
-                  </span>
-                </div>
-              </a>
-              <a className="ecosystem-link" href="https://github.com/kai-scheduler/KAI-Scheduler/blob/main/docs/gpu-sharing/hami/README.md" target="_blank" rel="noopener noreferrer" aria-label={t('ecosystem.schedulers.kai.seeDetails')}>
-                <div className="brand-tile" data-brand="kai" title={t('ecosystem.schedulers.kai.name')}>
-                  <img src="/redesign/assets/f1c5ef6e0100c77baaaf.png" alt={t('ecosystem.schedulers.kai.name')} loading="lazy" />
-                  <span className="ecosystem-link-caption">
-                    {t('ui.viewDetails')}
-                    <span aria-hidden={true}>{t('ui.externalArrowSpaced')}</span>
-                  </span>
-                </div>
-              </a>
+              {ECOSYSTEM_SCHEDULERS.map((scheduler) => {
+                const copy = schedulersCopy[scheduler.nameKey];
+                const name = copy?.name ?? scheduler.nameKey;
+                return (
+                  <a
+                    key={scheduler.brand}
+                    className="ecosystem-link"
+                    href={scheduler.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={copy?.seeDetails ?? name}
+                  >
+                    <div className="brand-tile" data-brand={scheduler.brand} title={name}>
+                      <img src={scheduler.src} alt={name} loading="lazy" />
+                      <span className="ecosystem-link-caption">
+                        {t('ui.viewDetails')}
+                        <SiteArrow variant="link" />
+                      </span>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -274,7 +339,7 @@ export default async function HomePage() {
           <div className="community-section-link">
             <a href={localizedPath(websitePath("/opensource"), locale)}>
               {t('community.exploreLink')}
-              <span aria-hidden={true}>{t('ui.externalArrow')}</span>
+              <SiteArrow variant="link" />
             </a>
           </div>
         </div>
@@ -291,7 +356,7 @@ export default async function HomePage() {
                 <details key={item.q} name="home-faq">
                   <summary>
                     <span>{item.q}</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden={true}><path d="m6 9 6 6 6-6"></path></svg>
+                    <SiteChevron />
                   </summary>
                   <div className="home-faq-answer"><p>{item.a}</p></div>
                 </details>
@@ -309,8 +374,8 @@ export default async function HomePage() {
             <div className="brand-signature">
               <div className="brand-motion brand-cycle" role="img" aria-label={t('brand.ariaLabel')}>
                 <span className="brand-cycle-frame brand-cycle-dynamia" aria-hidden={true}>
-                  <img className="cycle-light" src="/redesign/assets/cf10a2fcc13438169897.svg" alt="" />
-                  <img className="cycle-dark" src="/redesign/assets/931baba8fa5e14fe2655.svg" alt="" />
+                  <img className="cycle-light" src={dynamiaLogo} alt="" />
+                  <img className="cycle-dark" src={dynamiaLogoDark} alt="" />
                 </span>
                 <span className="brand-cycle-frame brand-cycle-hami" aria-hidden={true}>
                   <span className="brand-cycle-label">{t('brand.creatorsOf')}</span>
@@ -323,7 +388,7 @@ export default async function HomePage() {
               <a className="cncf-project-link" href="https://www.cncf.io/projects/hami/" target="_blank" rel="noopener">
                 <b>{t('ui.hami')}</b>
                 <span>{t('brand.cncfSuffix')}</span>
-                <span aria-hidden={true}>{t('ui.externalArrow')}</span>
+                <SiteArrow variant="link" />
               </a>
             </div>
           </div>

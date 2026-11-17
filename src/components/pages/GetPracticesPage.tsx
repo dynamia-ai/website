@@ -1,7 +1,9 @@
 import {getLocale, getTranslations} from 'next-intl/server';
+import ContactForm from '@/components/layout/ContactForm';
+import SiteArrow from '@/components/layout/SiteArrow';
 import {localizedPath} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
-import ContactForm from '@/components/layout/ContactForm';
+import '@/styles/sales.css';
 
 export default async function GetPracticesPage() {
   const t = await getTranslations('sitePages.getPractices');
@@ -24,8 +26,11 @@ export default async function GetPracticesPage() {
               <strong>{t('aside.title')}</strong>
               <p>{t('aside.body1')}</p>
             </div>
-            <p style={{fontSize: '13px'}}>{t('aside.body2')}</p>
-            <a className="textlink" href={localizedPath(websitePath('/cases'), locale)}>{t('aside.back')}</a>
+            <p className="sales-aside-note">{t('aside.body2')}</p>
+            <a className="textlink" href={localizedPath(websitePath('/cases'), locale)}>
+              <span>{t('aside.back')}</span>
+              <SiteArrow variant="text" />
+            </a>
           </div>
           <div className="sales-form">
             <h2>{t('form.title')}</h2>
@@ -61,27 +66,27 @@ export default async function GetPracticesPage() {
                   <legend>{t('form.gpus.label')}</legend>
                   <div className="gpu-options">
                     <label className="gpu-choice">
-                      <input type="radio" name="gpu" value="尚未部署" required />
+                      <input type="radio" name="gpu" value="none" required />
                       {t('form.gpus.options.none')}
                     </label>
                     <label className="gpu-choice">
-                      <input type="radio" name="gpu" value="1–8 张" required />
+                      <input type="radio" name="gpu" value="1-8" required />
                       {t('form.gpus.options.r1to8')}
                     </label>
                     <label className="gpu-choice">
-                      <input type="radio" name="gpu" value="9–32 张" required />
+                      <input type="radio" name="gpu" value="9-32" required />
                       {t('form.gpus.options.r9to32')}
                     </label>
                     <label className="gpu-choice">
-                      <input type="radio" name="gpu" value="33–128 张" required />
+                      <input type="radio" name="gpu" value="33-128" required />
                       {t('form.gpus.options.r33to128')}
                     </label>
                     <label className="gpu-choice">
-                      <input type="radio" name="gpu" value="129–512 张" required />
+                      <input type="radio" name="gpu" value="129-512" required />
                       {t('form.gpus.options.r129to512')}
                     </label>
                     <label className="gpu-choice">
-                      <input type="radio" name="gpu" value="513 张及以上" required />
+                      <input type="radio" name="gpu" value="513+" required />
                       {t('form.gpus.options.r513plus')}
                     </label>
                   </div>
@@ -91,11 +96,11 @@ export default async function GetPracticesPage() {
                   <textarea name="notes" required minLength={5} maxLength={2000} placeholder={t('form.requirements.placeholder')} />
                 </label>
               </div>
-              <label className="pricing-consent" style={{display: 'flex', alignItems: 'flex-start', gap: '9px', fontSize: '12px', marginTop: '18px'}}>
-                <input type="checkbox" name="consent" required style={{marginTop: '5px', flexShrink: 0}} />
+              <label className="pricing-consent">
+                <input type="checkbox" name="consent" required />
                 <span>
                   {t('form.consent.before')}
-                  <a href={privacyHref} style={{textDecoration: 'underline'}}>{t('form.consent.privacy')}</a>
+                  <a href={privacyHref}>{t('form.consent.privacy')}</a>
                   {t('form.consent.after')}
                 </span>
               </label>

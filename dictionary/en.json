@@ -40,11 +40,6 @@
       "description": "Powerful computing solutions for AI/ML, HPC, and Edge Computing challenges. Optimize your infrastructure with Dynamia AI's heterogeneous computing platform.",
       "keywords": "AI solutions, HPC solutions, edge computing, heterogeneous computing solutions, dynamia ai"
     },
-    "resources": {
-      "title": "Resources - Dynamia AI | Documentation, Blog & Tools",
-      "description": "Explore technical documentation, blog articles, and tools to learn more about Dynamia AI and heterogeneous computing best practices.",
-      "keywords": "dynamia ai documentation, heterogeneous computing resources, AI infrastructure guides, HAMi tutorials"
-    },
     "whatIsHami": {
       "title": "What is HAMi? | Heterogeneous AI Computing Virtualization",
       "description": "Learn about HAMi - leading open-source heterogeneous AI computing virtualization middleware by Dynamia AI. CNCF Incubating project powering GPU sharing and resource management.",
@@ -74,7 +69,7 @@
   "navigation": {
     "freeTrial": "Free Trial",
     "logo": "/redesign/assets/dynamia-creators.png",
-    "logoDark": "/redesign/assets/dynamia-creators.png"
+    "logoDark": "/dynamia-logo-white.svg"
   },
   "solutions": {
     "title": "Solutions",
@@ -927,9 +922,6 @@
   "sitePages": {
     "home": {
       "ui": {
-        "arrow": "→",
-        "externalArrow": "↗",
-        "externalArrowSpaced": " ↗",
         "emDash": "—",
         "star": "★",
         "hami": "HAMi",
@@ -1135,12 +1127,13 @@
       "brand": {
         "ariaLabel": "Dynamia; Creators of HAMi",
         "creatorsOf": "Creators of",
-        "cncfSuffix": "is a CNCF Incubating project"
+        "cncfSuffix": "is a CNCF Incubating project",
+        "logo": "/dynamia-logo.svg",
+        "logoDark": "/dynamia-logo-white.svg"
       }
     },
     "products": {
       "ui": {
-        "arrow": "→",
         "emDash": "—",
         "check": "✓",
         "supported": "Supported",
@@ -1153,13 +1146,14 @@
         "titleEm": "Product overview",
         "lead": "Compare Dynamia Enterprise for HAMi and Dynamia AI Platform for HAMi.",
         "description": "Choose your path to production-grade heterogeneous compute.",
-        "startTrial": "Start a trial →",
-        "allCapabilities": "All capabilities ↓"
+        "startTrial": "Start a trial",
+        "allCapabilities": "All capabilities"
       },
       "relation": {
         "title": "HAMi and Dynamia",
         "body": "HAMi is a CNCF Incubating project for heterogeneous AI compute virtualization, initiated and maintained by Dynamia’s founding team. Enterprise products build on open-source HAMi with production hardening, operations and enterprise support.",
-        "cta": "Explore our open-source community →"
+        "cta": "Explore our open-source community",
+        "dynamiaLogo": "/dynamia-logo.svg"
       },
       "lineup": {
         "eyebrow": "PRODUCT LINEUP",
@@ -1171,8 +1165,8 @@
           "description": "For teams with existing Kubernetes / PaaS: enhanced GPU virtualization, production hardening and enterprise support built on open-source HAMi.",
           "installDocs": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/"
         },
-        "viewProduct": "View product →",
-        "releases": "Releases and downloads ↗",
+        "viewProduct": "View product",
+        "releases": "Releases and downloads",
         "platform": {
           "eyebrow": "Heterogeneous compute platform",
           "name": "Dynamia AI Platform for HAMi",
@@ -1187,19 +1181,19 @@
         "paths": {
           "experiment": {
             "label": "I want to experiment with GPU sharing on my own",
-            "product": "Open"
+            "product": "Open-source HAMi"
           },
           "enterprise": {
             "label": "I need a supported, hardened GPU virtualization layer",
-            "product": "Dynamia Enterprise for HAMi →"
+            "product": "Dynamia Enterprise for HAMi"
           },
           "platformGui": {
             "label": "I also need a multi-cluster GUI, quotas, and observability",
-            "product": "Dynamia AI Platform for HAMi →"
+            "product": "Dynamia AI Platform for HAMi"
           },
           "platformTeams": {
             "label": "I want to manage a platform for multiple internal teams",
-            "product": "Dynamia AI Platform for HAMi →"
+            "product": "Dynamia AI Platform for HAMi"
           }
         }
       },
@@ -1275,7 +1269,7 @@
         "title": "Proven in real environments",
         "description": "Read public user case studies to explore how different businesses use the technology.",
         "allLink": "All case studies",
-        "readLink": "Read case study →",
+        "readLink": "Read case study",
         "items": {
           "sfTechnology": {
             "name": "SF Technology",
@@ -1303,19 +1297,17 @@
         "allProducts": "All products",
         "enterprise": "Dynamia Enterprise for HAMi",
         "platform": "Dynamia AI Platform for HAMi",
-        "contactSales": "Contact sales ↗"
+        "contactSales": "Contact sales"
       },
       "hero": {
         "titleLine1": "Bring enterprise GPU management",
         "titleLine2": "to your existing platform",
         "lead": "Built on open-source HAMi, add GPU sharing, scheduling and runtime enhancements to Kubernetes, PaaS and AI platforms while keeping your existing workflows.",
-        "contactSales": "Contact sales ",
-        "docs": "Product documentation ↗",
+        "contactSales": "Contact sales",
+        "docs": "Product documentation",
         "eyebrow": "Dynamia Enterprise for HAMi"
       },
-      "ui": {
-        "externalArrow": "↗"
-      },
+      "ui": {},
       "architecture": {
         "bannerTitle": "Dynamia Enterprise for HAMi · Integrate with your existing stack",
         "bannerLabel": "Product architecture",
@@ -1398,7 +1390,7 @@
             "videoAria": "View full functionality: workload priority (video)"
           }
         },
-        "viewAll": "View all capabilities "
+        "viewAll": "View all capabilities"
       },
       "workflow": {
         "eyebrow": "YOUR PLATFORM. ENHANCED.",
@@ -1489,19 +1481,17 @@
         "allProducts": "All products",
         "enterprise": "Dynamia Enterprise for HAMi",
         "platform": "Dynamia AI Platform for HAMi",
-        "contactSales": "Contact sales ↗"
+        "contactSales": "Contact sales"
       },
       "hero": {
         "titleLine1": "Connect clusters, teams and operations",
         "titleLine2": "on one platform",
         "lead": "A unified entry point for multi-cluster management, resource access, monitoring and metering. Includes the Dynamia Enterprise for HAMi engine.",
-        "contactSales": "Contact sales ",
-        "docs": "Product documentation ↗",
+        "contactSales": "Contact sales",
+        "docs": "Product documentation",
         "eyebrow": "Dynamia AI Platform for HAMi"
       },
-      "ui": {
-        "externalArrow": "↗"
-      },
+      "ui": {},
       "architecture": {
         "bannerTitle": "Dynamia AI Platform for HAMi · From management to execution",
         "bannerLabel": "Product architecture",
@@ -1570,7 +1560,7 @@
             "videoAria": "View full functionality: Console management (video)"
           }
         },
-        "viewAll": "View all capabilities "
+        "viewAll": "View all capabilities"
       },
       "workflow": {
         "eyebrow": "MANAGE. EXECUTE. OBSERVE.",
@@ -1667,7 +1657,7 @@
           "title": "Expert technical support",
           "body": "Ongoing features and upgrades"
         },
-        "capabilitiesLink": "View all product capabilities →"
+        "capabilitiesLink": "View all product capabilities"
       },
       "form": {
         "title": "Request pricing",
@@ -1711,7 +1701,7 @@
           "privacy": "Privacy Policy",
           "after": " and consent to the use of my information for sales follow-up."
         },
-        "submit": "Request pricing →",
+        "submit": "Request pricing",
         "success": "Your request has been submitted. Our team will be in touch.",
         "edit": "Edit details"
       },
@@ -1719,7 +1709,7 @@
         "eyebrow": "Product overview",
         "title": "Compare capabilities. Find the right edition.",
         "body": "Explore the capabilities of open-source HAMi, Dynamia Enterprise for HAMi and Dynamia AI Platform for HAMi.",
-        "link": "View product overview →"
+        "link": "View product overview"
       }
     },
     "getPractices": {
@@ -1782,47 +1772,6 @@
         "success": "The case study collection has been sent. Please check your inbox for the PDF attachment."
       }
     },
-    "resources": {
-      "crumb": {
-        "home": "Home",
-        "current": "Resources"
-      },
-      "ui": {
-        "slash": "/",
-        "externalArrow": "↗"
-      },
-      "hero": {
-        "title": "Explore the technology. Learn from practice.",
-        "lead": "Read an article, watch a talk or start a concrete evaluation with our tools."
-      },
-      "cards": {
-        "blog": {
-          "title": "Blog",
-          "body": "Technical articles, product insights and practical experience"
-        },
-        "videos": {
-          "title": "Videos",
-          "body": "Product demos, technical talks and community events"
-        },
-        "tools": {
-          "title": "Tools",
-          "body": "Metrics analysis and GPU ROI calculator"
-        }
-      },
-      "tools": {
-        "eyebrow": "TOOLS",
-        "title": "More efficient operations and evaluation",
-        "metrics": {
-          "title": "HAMi metrics analyzer",
-          "body": "Upload Prometheus metrics to inspect GPU inventory and utilization, then merge and export the results."
-        },
-        "open": "Open tool ↗",
-        "roi": {
-          "title": "HAMi GPU ROI calculator",
-          "body": "Compare GPU utilization, five-year TCO, savings and ROI without HAMi, with open-source HAMi and with the Enterprise edition."
-        }
-      }
-    },
     "tools": {
       "crumb": {
         "home": "Home",
@@ -1841,7 +1790,7 @@
           "title": "HAMi metrics analyzer",
           "body": "Upload Prometheus metrics to inspect GPU inventory and utilization, then merge and export the results."
         },
-        "open": "Open tool ↗",
+        "open": "Open tool",
         "roi": {
           "title": "HAMi GPU ROI calculator",
           "body": "Compare GPU utilization, five-year TCO, savings and ROI without HAMi, with open-source HAMi and with the Enterprise edition."
@@ -1872,7 +1821,7 @@
       },
       "direct": {
         "label": "Or contact us directly",
-        "email": "info@dynamia.ai ↗"
+        "email": "info@dynamia.ai"
       },
       "form": {
         "title": "Tell us about yourself and your needs",
@@ -1930,8 +1879,7 @@
         "current": "Environment and compatibility"
       },
       "ui": {
-        "slash": "/",
-        "arrow": "→"
+        "slash": "/"
       },
       "hero": {
         "titleLine1": "Understand your environment.",
@@ -2002,40 +1950,42 @@
       "hami": {
         "eyebrow": "What is HAMi?",
         "name": "HAMi",
-        "badge": "CNCF Incubating Project ↗",
+        "badge": "CNCF Incubating Project",
         "body1": "HAMi is open-source middleware for heterogeneous GPU virtualization and sharing. Its lightweight, non-intrusive deployment works across public, private and hybrid clouds, enabling flexible, reliable, on-demand GPU sharing.",
         "body2": "HAMi improves device utilization through GPU memory and compute sharing, resource isolation and scheduling. It supports heterogeneous chips including NVIDIA, Ascend, MetaX, Cambricon, Hygon, Moore Threads and Iluvatar CoreX, integrating with existing Kubernetes infrastructure.",
-        "github": "View GitHub ↗",
-        "website": "Visit the HAMi website ↗",
-        "diagramAlt": "HAMi open ecosystem diagram showing AI workloads, cloud-native schedulers, heterogeneous accelerators and runtime observability."
+        "github": "View GitHub",
+        "website": "Visit the HAMi website",
+        "diagramAlt": "HAMi open ecosystem diagram showing AI workloads, cloud-native schedulers, heterogeneous accelerators and runtime observability.",
+        "diagramSrc": "/redesign/assets/hami-open-ecosystem-en.png"
       },
       "relation": {
         "title": "How are Dynamia and HAMi connected?",
         "body1": "Dynamia was founded by the creators and core maintainers of HAMi, a CNCF project, to build the open-source core of AI infrastructure.",
         "body2": "We help the AI team to make the Heterogeneous GPU and the AI chip resources more accessible, efficient and manageable, turning complex compute resourcees into shared, commotion, demand-based infrastructure capacity.",
-        "aboutLink": "About Dynamia →"
+        "aboutLink": "About Dynamia"
       },
       "channels": {
         "title": "Where can you find us?",
         "lead": "Watch technical talks, share practical experience and bring your questions and ideas to the community.",
         "bilibili": {
           "name": "Bilibili",
-          "hint": "Look at us, Zoo."
+          "hint": "Follow us"
         },
         "slack": {
           "name": "Slack",
-          "hint": "Joining the exchange"
+          "hint": "Join the conversation"
         },
         "discord": {
-          "name": "Discord"
+          "name": "Discord",
+          "hint": "Join the conversation"
         },
         "reddit": {
           "name": "Reddit",
-          "hint": "Participation in discussions"
+          "hint": "Join the discussion"
         },
         "wechat": {
           "name": "WeChat",
-          "hint": "Add our assistant to join the group →"
+          "hint": "Add our assistant to join the group"
         }
       },
       "toc": {
@@ -2046,9 +1996,7 @@
     },
     "about": {
       "ui": {
-        "slash": "/",
-        "arrow": "→",
-        "externalArrow": " ↗"
+        "slash": "/"
       },
       "hero": {
         "eyebrow": "ABOUT DYNAMIA",
@@ -2058,7 +2006,7 @@
       "cncf": {
         "hami": "HAMi",
         "org": "Cloud Native Computing Foundation",
-        "badge": "CNCF Incubating ↗",
+        "badge": "CNCF Incubating",
         "line": "HAMi is a CNCF Incubating project",
         "hamiAlt": "Dynamia was founded by HAMi’s creators and core maintainers."
       },
@@ -2069,17 +2017,17 @@
         "twitter": "X (Twitter)",
         "cta": "Contact us",
         "emailLabel": "Email",
-        "follow": "Follow us →",
+        "follow": "Follow us",
         "wechat": "WeChat",
-        "scan": "Scan to follow →"
+        "scan": "Scan to follow"
       },
       "teamDialog": {
         "eyebrow": "MEET OUR TEAM",
         "close": "×",
         "closeAria": "Close team member profile",
         "separator": " / ",
-        "prev": "←",
-        "next": "→",
+        "prev": "Previous",
+        "next": "Next",
         "prevAria": "Previous team member",
         "nextAria": "Next team member",
         "learnMore": "Learn more"
@@ -2359,11 +2307,10 @@
         "lead2": "Explore what’s next for AI infrastructure."
       },
       "ui": {
-        "externalArrow": "↗",
-        "readRecap": "Review of reading activities ",
-        "viewCampaign": "View the campaign description ",
-        "readLive": "Read the live review. ",
-        "readPreview": "Read the event preview "
+        "readRecap": "Read the event recap",
+        "viewCampaign": "View the campaign",
+        "readLive": "Read the live recap",
+        "readPreview": "Read the event preview"
       },
       "footerNote": "Event details and recaps from Dynamia. New events are added as they are announced.",
       "items": {
@@ -2442,18 +2389,16 @@
         "titleLine1": "Real environments.",
         "titleLine2": "Real technology outcomes.",
         "lead": "From autonomous driving and finance to enterprise AI, explore how teams put heterogeneous compute sharing and scheduling into practice.",
-        "cncfSource": "Source: CNCF case studies ↗",
+        "cncfSource": "Source: CNCF case studies",
         "count": "12 cases · Newest first"
       },
       "ui": {
-        "externalArrow": "↗",
-        "arrow": "→",
-        "readCase": "Read the case study "
+        "readCase": "Read the case study"
       },
       "cta": {
         "title": "Find experience relevant to your environment",
         "body": "Tell us about your GPU estate and workloads to receive practical resources and plan your next evaluation.",
-        "button": "Get more practical insights "
+        "button": "Get more practical insights"
       },
       "detail": {
         "breadcrumbAria": "Breadcrumb",
@@ -2461,8 +2406,8 @@
         "cases": "Case studies",
         "outcomesAria": "Key outcomes",
         "onThisPage": "On this page",
-        "backToCases": "← Back to case studies",
-        "getPractices": "Get more practical insights →"
+        "backToCases": "Back to case studies",
+        "getPractices": "Get more practical insights"
       },
       "items": {
         "seres": {
@@ -2570,7 +2515,6 @@
       },
       "ui": {
         "slash": "/",
-        "arrow": "→",
         "play": "▶"
       },
       "hero": {
@@ -2583,7 +2527,7 @@
           "body": "Explore heterogeneous GPU sharing, scheduling and orchestration with Dynamia.",
           "duration": "8:50"
         },
-        "watch": "Watch video ",
+        "watch": "Watch video",
         "oversell": {
           "aria": "Watch: GPU Supersells Enterprise-level Characterisms",
           "title": "Enterprise GPU oversubscription in practice",
@@ -2595,11 +2539,11 @@
       "detail": {
         "breadcrumbAria": "Breadcrumb",
         "home": "Home",
-        "backToVideos": "← Back to videos",
+        "backToVideos": "Back to videos",
         "hostedOnBilibili": "Video hosted on Bilibili.",
         "hostedOnYoutube": "Video hosted on YouTube.",
-        "watchOnBilibili": "Watch on Bilibili ↗",
-        "watchOnYoutube": "Watch on YouTube ↗"
+        "watchOnBilibili": "Watch on Bilibili",
+        "watchOnYoutube": "Watch on YouTube"
       }
     },
     "blog": {
@@ -2624,7 +2568,6 @@
       "resultSuffix": " articles",
       "mostRecentFirst": "Most recent first",
       "readMore": "Read article",
-      "arrow": "↗",
       "coverMarkAlt": "Dynamia",
       "coverBrand": "Dynamia · Open-source AI infrastructure",
       "emptyTitle": "No matching articles",
@@ -2737,9 +2680,9 @@
       "enterprise": "Dynamia Enterprise for HAMi",
       "platform": "Dynamia AI Platform for HAMi",
       "docs": "Product documentation",
-      "pricing": "Pricing →",
-      "cases": "Case studies →",
-      "community": "Community →",
+      "pricing": "Pricing",
+      "cases": "Case studies",
+      "community": "Community",
       "blog": "Blog",
       "videos": "Videos",
       "tools": "Tools",

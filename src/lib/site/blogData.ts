@@ -1,19 +1,19 @@
 import editorialData from '@/lib/site/blogEditorialData.json';
 
 export type BlogCategoryId =
-  | '全部'
-  | '实践案例'
-  | '技术博客'
-  | '产品解读'
-  | '公司新闻'
-  | '版本发布'
-  | '社区与动态';
+  | 'all'
+  | 'practice'
+  | 'tech'
+  | 'product'
+  | 'company'
+  | 'release'
+  | 'community';
 
 export interface BlogPostSource {
   id: number;
   slug: string;
   date: string;
-  category: BlogCategoryId | string;
+  category: string;
   originalCategory?: string;
   image?: string;
   title: string;
@@ -27,30 +27,50 @@ export interface LocalizedBlogPost {
   slug: string;
   date: string;
   category: string;
-  categoryId: string;
+  categoryId: BlogCategoryId | string;
   title: string;
   coverTitle: string;
   desc: string;
   authorSearch: string;
 }
 
+/** Map legacy Chinese category labels in editorial data to stable IDs. */
+const SOURCE_CATEGORY_TO_ID: Record<string, Exclude<BlogCategoryId, 'all'>> = {
+  实践案例: 'practice',
+  技术博客: 'tech',
+  产品解读: 'product',
+  公司新闻: 'company',
+  版本发布: 'release',
+  社区与动态: 'community',
+};
+
 export const CATEGORY_SUBTITLE_KEYS: Record<string, string> = {
-  实践案例: 'coverSubtitles.practice',
-  技术博客: 'coverSubtitles.tech',
-  产品解读: 'coverSubtitles.product',
-  公司新闻: 'coverSubtitles.company',
-  版本发布: 'coverSubtitles.release',
-  社区与动态: 'coverSubtitles.community',
+  practice: 'coverSubtitles.practice',
+  tech: 'coverSubtitles.tech',
+  product: 'coverSubtitles.product',
+  company: 'coverSubtitles.company',
+  release: 'coverSubtitles.release',
+  community: 'coverSubtitles.community',
+};
+
+export const CATEGORY_LABEL_KEYS: Record<BlogCategoryId, string> = {
+  all: 'categories.all',
+  practice: 'categories.practice',
+  tech: 'categories.tech',
+  product: 'categories.product',
+  company: 'categories.company',
+  release: 'categories.release',
+  community: 'categories.community',
 };
 
 const CATEGORY_FILTERS: BlogCategoryId[] = [
-  '全部',
-  '实践案例',
-  '技术博客',
-  '产品解读',
-  '公司新闻',
-  '版本发布',
-  '社区与动态',
+  'all',
+  'practice',
+  'tech',
+  'product',
+  'company',
+  'release',
+  'community',
 ];
 
 const AUTHOR_SEARCH: Record<string, string> = {
@@ -69,6 +89,10 @@ const data = editorialData as {
   locales: Record<string, {en: LocaleBundle; de: LocaleBundle}>;
 };
 
+function toCategoryId(source: string): BlogCategoryId | string {
+  return SOURCE_CATEGORY_TO_ID[source] ?? source;
+}
+
 export function blogCategoryFilters(): BlogCategoryId[] {
   return CATEGORY_FILTERS;
 }
@@ -78,7 +102,7 @@ export function localizedBlogPosts(locale: string): LocalizedBlogPost[] {
   return data.posts.map((post) => {
     const localized =
       lang === 'zh' ? null : data.locales[post.slug]?.[lang] ?? null;
-    const categoryId = post.category;
+    const categoryId = toCategoryId(post.category);
     return {
       id: post.id,
       slug: post.slug,

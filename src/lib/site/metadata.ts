@@ -24,7 +24,6 @@ type SeoPage =
   | 'caseStudies'
   | 'tools'
   | 'solutions'
-  | 'resources'
   | 'whatIsHami'
   | 'faq';
 
@@ -39,7 +38,6 @@ const SEO_BY_ROUTE: Record<string, SeoPage> = {
   '/cases': 'caseStudies',
   '/tools': 'tools',
   '/solutions': 'solutions',
-  '/resources': 'resources',
   '/faq': 'faq',
   '/community': 'whatIsHami',
   '/what-is-hami': 'whatIsHami',

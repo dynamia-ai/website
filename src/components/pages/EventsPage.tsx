@@ -1,7 +1,9 @@
 import {getLocale, getTranslations} from 'next-intl/server';
+import SiteArrow from '@/components/layout/SiteArrow';
 import Link from 'next/link';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
+import '@/styles/events.css';
 
 interface EventItem {
   slug: string;
@@ -30,7 +32,7 @@ const EVENTS: EventItem[] = [
   {
     slug: 'hami-meetup-shanghai-2026',
     titleKey: 'items.shanghaiSpecial.title',
-    dateKey: 'items.communityNight.date',
+    dateKey: 'items.shanghaiSpecial.date',
     placeKey: 'places.shanghai',
     bodyKey: 'items.shanghaiSpecial.body',
     ctaKey: 'ui.readRecap',
@@ -40,7 +42,7 @@ const EVENTS: EventItem[] = [
   {
     slug: 'hami-at-kubecon-india-2026',
     titleKey: 'items.kubeconIndia.title',
-    dateKey: 'items.shanghaiSpecial.date',
+    dateKey: 'items.kubeconIndia.date',
     placeKey: 'places.mumbai',
     bodyKey: 'items.kubeconIndia.body',
     ctaKey: 'ui.viewCampaign',
@@ -50,7 +52,7 @@ const EVENTS: EventItem[] = [
   {
     slug: 'hami-2.9-webinar-recap',
     titleKey: 'items.webinar29.title',
-    dateKey: 'items.kubeconIndia.date',
+    dateKey: 'items.webinar29.date',
     placeKey: 'places.webinarChannel',
     bodyKey: 'items.webinar29.body',
     ctaKey: 'ui.readLive',
@@ -62,7 +64,7 @@ const EVENTS: EventItem[] = [
   {
     slug: 'hami-meetup-shenzhen-recap',
     titleKey: 'items.shenzhen.title',
-    dateKey: 'items.webinar29.date',
+    dateKey: 'items.shenzhen.date',
     placeKey: 'places.shenzhen',
     bodyKey: 'items.shenzhen.body',
     ctaKey: 'ui.readRecap',
@@ -72,7 +74,7 @@ const EVENTS: EventItem[] = [
   {
     slug: 'kubecon-eu-2026-hami-recap',
     titleKey: 'items.kubeconEu.title',
-    dateKey: 'items.shenzhen.date',
+    dateKey: 'items.kubeconEu.date',
     placeKey: 'places.amsterdam',
     bodyKey: 'items.kubeconEu.body',
     ctaKey: 'ui.readRecap',
@@ -87,7 +89,7 @@ const EVENTS: EventItem[] = [
     bodyKey: 'items.kubeconEu.linkBody',
     ctaKey: 'ui.readPreview',
     image: '/images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png',
-    imageAltKey: 'items.kubeconEu.title',
+    imageAltKey: 'items.kubeconEu.photoAlt',
   },
   {
     slug: 'hami-meetup-beijing-recap',
@@ -128,6 +130,7 @@ export default async function EventsPage() {
           </p>
         </div>
       </section>
+
       <section className="event-content">
         <div className="wrap">
           <div id="event-results">
@@ -136,8 +139,9 @@ export default async function EventsPage() {
               const coverClass = event.portrait
                 ? 'event-cover event-photo event-photo-portrait'
                 : 'event-cover event-photo';
+
               return (
-                <article className="event-row" key={event.slug}>
+                <article className="event-row" key={event.slug + event.titleKey}>
                   <div>
                     <h2>
                       <Link href={href}>{t(event.titleKey)}</Link>
@@ -151,7 +155,7 @@ export default async function EventsPage() {
                     <p>{t(event.bodyKey)}</p>
                     <Link className="textlink" href={href}>
                       {t(event.ctaKey)}
-                      <span>{t('ui.externalArrow')}</span>
+                      <SiteArrow variant="text" />
                     </Link>
                   </div>
                   <figure className="event-photo-figure">

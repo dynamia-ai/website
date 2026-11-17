@@ -8,7 +8,6 @@ export const STATIC_INDEXABLE_PATHS = [
   "/pricing",
   "/privacy-policy",
   "/products",
-  "/resources",
   "/solutions",
   "/tools",
   "/tools/hami-metrics-explorer",

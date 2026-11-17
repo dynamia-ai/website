@@ -2,6 +2,8 @@
 
 import {useEffect, useRef, useState} from 'react';
 import {useTranslations} from 'next-intl';
+import SiteArrow from '@/components/layout/SiteArrow';
+
 
 interface TeamDetail {
   title: string;
@@ -135,7 +137,7 @@ export default function AboutTeamSection() {
                   <div className="member-photo" data-person={item.id}>
                     <img src={item.image} alt={item.name} loading="eager" />
                     <span className="member-more" aria-hidden={true}>
-                      ↗
+                      <SiteArrow variant="link" />
                     </span>
                   </div>
                   <div className="member-name">
@@ -152,7 +154,7 @@ export default function AboutTeamSection() {
                     onClick={() => openMember(index)}
                   >
                     {tDialog('learnMore')}
-                    <span className="arrow">→</span>
+                    <SiteArrow variant="text" />
                   </button>
                   <TeamSocial member={item} />
                 </div>

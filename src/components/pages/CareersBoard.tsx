@@ -118,11 +118,11 @@ export default function CareersBoard() {
                   </a>
                   <button
                     type="button"
-                    className="career-details-link"
+                    className="career-details-link textlink"
                     aria-haspopup="dialog"
                     onClick={() => setOpenRoleId(role.id)}
                   >
-                    {t('detailsShort')}
+                    <span>{t('detailsShort')}</span>
                   </button>
                 </div>
               </article>

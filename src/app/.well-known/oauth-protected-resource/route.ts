@@ -10,6 +10,6 @@ export function GET() {
     ],
     scopes_supported: ['contact:write'],
     bearer_methods_supported: ['header'],
-    resource_documentation: absoluteUrl('/resources'),
+    resource_documentation: absoluteUrl('/blog'),
   });
 }

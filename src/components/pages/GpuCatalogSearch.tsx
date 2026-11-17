@@ -2,6 +2,7 @@
 
 import {useMemo, useState} from 'react';
 import {useTranslations} from 'next-intl';
+import SiteArrow from '@/components/layout/SiteArrow';
 
 interface Device {
   name: string;
@@ -46,7 +47,8 @@ export default function GpuCatalogSearch() {
               <span className="catalog-label">{t('capability')}</span>
               <p>{d.detail}</p>
               <a className="textlink" href={d.url} target="_blank" rel="noopener noreferrer">
-                {d.url === 'https://docs.dynamia.ai' ? t('docs') : t('source')} ↗
+                <span>{d.url === 'https://docs.dynamia.ai' ? t('docs') : t('source')}</span>
+                <SiteArrow variant="link" />
               </a>
             </div>
           </article>

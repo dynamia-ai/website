@@ -11,10 +11,23 @@ export default function HomeCommunityMetrics() {
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+
+    const rows = () => root.querySelectorAll<HTMLElement>('.community-number-row');
+
+    // Reduced motion: show the fully lit state and skip scroll-linked animation.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      rows().forEach((row) => {
+        row.style.setProperty('--lit-opacity', '1');
+        row.style.setProperty('--row-opacity', '1');
+        row.classList.add('is-lit');
+      });
+      return;
+    }
+
     let frame = 0;
     const update = () => {
       frame = 0;
-      root.querySelectorAll<HTMLElement>('.community-number-row').forEach((row) => {
+      rows().forEach((row) => {
         const rect = row.getBoundingClientRect();
         const center = rect.top + rect.height / 2;
         const progress = Math.max(

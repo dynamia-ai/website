@@ -12,6 +12,6 @@ export function GET() {
     response_types_supported: ['code'],
     scopes_supported: ['contact:write'],
     token_endpoint_auth_methods_supported: ['client_secret_basic', 'client_secret_post'],
-    service_documentation: absoluteUrl('/resources'),
+    service_documentation: absoluteUrl('/blog'),
   });
 }

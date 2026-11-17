@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from 'react';
 import Link from 'next/link';
 import {useLocale, useTranslations} from 'next-intl';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import SiteArrow from '@/components/layout/SiteArrow';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
 
@@ -208,28 +209,32 @@ export default function Header() {
           <Link href={href('/products')} onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.products.overview.kicker')}</span>
             <strong>
-              {t('mega.products.overview.title')} <b>↗</b>
+              {t('mega.products.overview.title')}
+              <SiteArrow variant="text" />
             </strong>
             <span>{t('mega.products.overview.desc')}</span>
           </Link>
           <Link href={href('/enterprise')} onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.products.enterprise.kicker')}</span>
             <strong>
-              {t('mega.products.enterprise.title')} <b>↗</b>
+              {t('mega.products.enterprise.title')}
+              <SiteArrow variant="text" />
             </strong>
             <span>{t('mega.products.enterprise.desc')}</span>
           </Link>
           <Link href={href('/platform')} onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.products.platform.kicker')}</span>
             <strong>
-              {t('mega.products.platform.title')} <b>↗</b>
+              {t('mega.products.platform.title')}
+              <SiteArrow variant="text" />
             </strong>
             <span>{t('mega.products.platform.desc')}</span>
           </Link>
           <a href="https://docs.dynamia.ai" target="_blank" rel="noopener noreferrer" onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.products.docs.kicker')}</span>
             <strong>
-              {t('mega.products.docs.title')} <b>↗</b>
+              {t('mega.products.docs.title')}
+              <SiteArrow variant="link" />
             </strong>
             <span>{t('mega.products.docs.desc')}</span>
           </a>
@@ -241,21 +246,24 @@ export default function Header() {
           <Link href={href('/blog')} onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.resources.blog.kicker')}</span>
             <strong>
-              {t('mega.resources.blog.title')} <b>↗</b>
+              {t('mega.resources.blog.title')}
+              <SiteArrow variant="text" />
             </strong>
             <span>{t('mega.resources.blog.desc')}</span>
           </Link>
           <Link href={href('/videos')} onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.resources.videos.kicker')}</span>
             <strong>
-              {t('mega.resources.videos.title')} <b>↗</b>
+              {t('mega.resources.videos.title')}
+              <SiteArrow variant="text" />
             </strong>
             <span>{t('mega.resources.videos.desc')}</span>
           </Link>
           <Link href={href('/tools')} onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.resources.tools.kicker')}</span>
             <strong>
-              {t('mega.resources.tools.title')} <b>↗</b>
+              {t('mega.resources.tools.title')}
+              <SiteArrow variant="text" />
             </strong>
             <span>{t('mega.resources.tools.desc')}</span>
           </Link>
@@ -267,7 +275,8 @@ export default function Header() {
           <Link href={href('/about')} onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.company.about.kicker')}</span>
             <strong>
-              {t('mega.company.about.title')} <b>↗</b>
+              {t('mega.company.about.title')}
+              <SiteArrow variant="text" />
             </strong>
             <span>{t('mega.company.about.desc')}</span>
           </Link>
@@ -275,7 +284,8 @@ export default function Header() {
             <Link href={href('/careers')} onClick={closeMenus}>
               <span className="menu-kicker">{t('mega.company.careers.kicker')}</span>
               <strong>
-                {t('mega.company.careers.title')} <b>↗</b>
+                {t('mega.company.careers.title')}
+                <SiteArrow variant="text" />
               </strong>
               <span>{t('mega.company.careers.desc')}</span>
             </Link>
@@ -283,7 +293,8 @@ export default function Header() {
           <Link href={href('/events')} onClick={closeMenus}>
             <span className="menu-kicker">{t('mega.company.events.kicker')}</span>
             <strong>
-              {t('mega.company.events.title')} <b>↗</b>
+              {t('mega.company.events.title')}
+              <SiteArrow variant="text" />
             </strong>
             <span>{t('mega.company.events.desc')}</span>
           </Link>
@@ -307,13 +318,16 @@ export default function Header() {
           </a>
         </div>
         <Link href={href('/pricing')} onClick={closeMenus}>
-          {t('mobile.pricing')}
+          <span>{t('mobile.pricing')}</span>
+          <SiteArrow variant="text" />
         </Link>
         <Link href={href('/cases')} onClick={closeMenus}>
-          {t('mobile.cases')}
+          <span>{t('mobile.cases')}</span>
+          <SiteArrow variant="text" />
         </Link>
         <Link href={href('/community')} onClick={closeMenus}>
-          {t('mobile.community')}
+          <span>{t('mobile.community')}</span>
+          <SiteArrow variant="text" />
         </Link>
         <div className="mobile-company">
           <span>{t('nav.resources')}</span>

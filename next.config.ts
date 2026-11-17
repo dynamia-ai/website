@@ -31,6 +31,7 @@ const nextConfig: NextConfig = {
         return [
           { source: `${prefix}/resources/blog`, destination: `${targetPrefix}/blog`, permanent: true },
           { source: `${prefix}/resources/documentation`, destination: 'https://project-hami.io/docs/', permanent: true },
+          { source: `${prefix}/resources`, destination: `${targetPrefix}/blog`, permanent: true },
           { source: `${prefix}/contact`, destination: `${targetPrefix}/apply-trial`, permanent: true },
         ];
       }),

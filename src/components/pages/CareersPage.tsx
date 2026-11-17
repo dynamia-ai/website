@@ -1,5 +1,6 @@
 import {getTranslations} from 'next-intl/server';
 import CareersBoard from '@/components/pages/CareersBoard';
+import '@/styles/careers.css';
 
 export default async function CareersPage() {
   const t = await getTranslations('sitePages.careers');

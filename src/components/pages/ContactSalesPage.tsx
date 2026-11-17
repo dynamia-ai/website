@@ -1,7 +1,9 @@
 import {getLocale, getTranslations} from 'next-intl/server';
 import ContactForm from '@/components/layout/ContactForm';
+import SiteArrow from '@/components/layout/SiteArrow';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
+import '@/styles/sales.css';
 
 export default async function ContactSalesPage() {
   const t = await getTranslations('sitePages.contactSales');
@@ -43,10 +45,13 @@ export default async function ContactSalesPage() {
                 </div>
               </div>
             </div>
-            <p style={{fontSize: '14px'}}>
+            <p className="sales-direct">
               {t('direct.label')}
               <br />
-              <a className="textlink" href="mailto:info@dynamia.ai">{t('direct.email')}</a>
+              <a className="textlink" href="mailto:info@dynamia.ai">
+                <span>{t('direct.email')}</span>
+                <SiteArrow variant="link" />
+              </a>
               <br />
               <a href="tel:4000267800">{t('form.phone.error')}</a>
             </p>
@@ -103,11 +108,11 @@ export default async function ContactSalesPage() {
                   <textarea name="notes" required minLength={5} maxLength={2000} placeholder={t('form.requirements.placeholder')} />
                 </label>
               </div>
-              <label className="pricing-consent" style={{display: 'flex', alignItems: 'flex-start', gap: '9px', fontSize: '12px', marginTop: '18px'}}>
-                <input type="checkbox" name="consent" required style={{marginTop: '5px', flexShrink: 0}} />
+              <label className="pricing-consent">
+                <input type="checkbox" name="consent" required />
                 <span>
                   {t('form.consent.before')}
-                  <a href={privacyHref} style={{textDecoration: 'underline'}}>{t('form.consent.privacy')}</a>
+                  <a href={privacyHref}>{t('form.consent.privacy')}</a>
                   {t('form.consent.after')}
                 </span>
               </label>

@@ -16,7 +16,7 @@ export function GET() {
           ],
           'service-doc': [
             {
-              href: absoluteUrl('/resources'),
+              href: absoluteUrl('/blog'),
               type: 'text/html',
             },
           ],

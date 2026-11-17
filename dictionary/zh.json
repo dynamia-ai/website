@@ -40,11 +40,6 @@
       "description": "为 AI/ML、HPC 和边缘计算挑战提供强大的计算解决方案。使用密瓜智能的异构计算平台优化您的基础设施。",
       "keywords": "AI 解决方案，HPC 解决方案，边缘计算，异构计算解决方案，密瓜智能"
     },
-    "resources": {
-      "title": "资源 - 密瓜智能 | 文档、博客与工具",
-      "description": "探索技术文档、博客文章和工具，了解更多关于密瓜智能和异构计算最佳实践的信息。",
-      "keywords": "密瓜智能文档，异构计算资源，AI 基础设施指南，HAMi 教程"
-    },
     "whatIsHami": {
       "title": "什么是 HAMi？| 异构 AI 计算虚拟化",
       "description": "了解 HAMi - 由密瓜智能创建的领先开源异构 AI 计算虚拟化中间件。CNCF Incubating 项目，支持 GPU 共享和资源管理。",
@@ -1231,9 +1226,6 @@
   "sitePages": {
     "home": {
       "ui": {
-        "arrow": "→",
-        "externalArrow": "↗",
-        "externalArrowSpaced": " ↗",
         "emDash": "—",
         "star": "★",
         "hami": "HAMi",
@@ -1439,12 +1431,13 @@
       "brand": {
         "ariaLabel": "密瓜智能；Creators of HAMi",
         "creatorsOf": "Creators of",
-        "cncfSuffix": "是 CNCF Incubating 项目"
+        "cncfSuffix": "是 CNCF Incubating 项目",
+        "logo": "/redesign/assets/cf10a2fcc13438169897.svg",
+        "logoDark": "/redesign/assets/931baba8fa5e14fe2655.svg"
       }
     },
     "products": {
       "ui": {
-        "arrow": "→",
         "emDash": "—",
         "check": "✓",
         "supported": "支持",
@@ -1457,13 +1450,14 @@
         "titleEm": "产品概览",
         "lead": "对比 Dynamia HAMi 企业版 与 Dynamia HAMi 平台版，",
         "description": "为生产级异构算力选择合适路径。",
-        "startTrial": "申请试用 →",
-        "allCapabilities": "完整功能 ↓"
+        "startTrial": "申请试用",
+        "allCapabilities": "完整功能"
       },
       "relation": {
         "title": "HAMi 与密瓜智能",
         "body": "HAMi 是 CNCF Incubating 异构 AI 计算虚拟化项目，由密瓜智能创始团队发起并担任核心 Maintainer。企业产品基于开源 HAMi，提供生产加固、运维与企业级支持。",
-        "cta": "了解我们的开源社区 →"
+        "cta": "了解我们的开源社区",
+        "dynamiaLogo": "/redesign/assets/cf10a2fcc13438169897.svg"
       },
       "lineup": {
         "eyebrow": "PRODUCT LINEUP",
@@ -1475,8 +1469,8 @@
           "description": "面向已有 Kubernetes / PaaS 的团队，在开源 HAMi 基础上提供 GPU 虚拟化增强、生产加固与企业级支持。",
           "installDocs": "https://docs.hami.run/zh/docs/installation/enterprise-online-deploy/"
         },
-        "viewProduct": "查看产品 →",
-        "releases": "版本与下载 ↗",
+        "viewProduct": "查看产品",
+        "releases": "版本与下载",
         "platform": {
           "eyebrow": "异构算力平台",
           "name": "Dynamia HAMi 平台版",
@@ -1491,19 +1485,19 @@
         "paths": {
           "experiment": {
             "label": "我想自己试验 GPU 共享",
-            "product": "开源 HAMi →"
+            "product": "开源 HAMi"
           },
           "enterprise": {
             "label": "我需要可被支持、加固的 GPU 虚拟化层",
-            "product": "Dynamia HAMi 企业版 →"
+            "product": "Dynamia HAMi 企业版"
           },
           "platformGui": {
             "label": "我还需要多集群 GUI、配额和可观测",
-            "product": "Dynamia HAMi 平台版 →"
+            "product": "Dynamia HAMi 平台版"
           },
           "platformTeams": {
             "label": "我想为多个内部团队管理平台",
-            "product": "Dynamia HAMi 平台版 →"
+            "product": "Dynamia HAMi 平台版"
           }
         }
       },
@@ -1579,7 +1573,7 @@
         "title": "在生产实践中验证",
         "description": "阅读公开用户案例，了解不同业务中的使用方式。",
         "allLink": "全部案例",
-        "readLink": "阅读案例 →",
+        "readLink": "阅读案例",
         "items": {
           "sfTechnology": {
             "name": "顺丰科技",
@@ -1607,19 +1601,17 @@
         "allProducts": "全部产品",
         "enterprise": "Dynamia HAMi 企业版",
         "platform": "Dynamia HAMi 平台版",
-        "contactSales": "联系销售 ↗"
+        "contactSales": "联系销售"
       },
       "hero": {
         "titleLine1": "为现有平台，释放",
         "titleLine2": "企业级 GPU 管理能力",
         "lead": "基于 HAMi 开源底座，为 Kubernetes、PaaS 和 AI 平台提供 GPU 共享、调度与运行时增强，保留你已有的业务工作流。",
-        "contactSales": "联系销售 ",
-        "docs": "产品文档 ↗",
+        "contactSales": "联系销售",
+        "docs": "产品文档",
         "eyebrow": "Dynamia HAMi 企业版"
       },
-      "ui": {
-        "externalArrow": "↗"
-      },
+      "ui": {},
       "architecture": {
         "bannerTitle": "Dynamia HAMi 企业版 · 接入现有技术栈",
         "bannerLabel": "产品结构示意",
@@ -1702,7 +1694,7 @@
             "videoAria": "查看完整功能：任务优先级（视频）"
           }
         },
-        "viewAll": "查看完整功能 "
+        "viewAll": "查看完整功能"
       },
       "workflow": {
         "eyebrow": "YOUR PLATFORM. ENHANCED.",
@@ -1793,19 +1785,17 @@
         "allProducts": "全部产品",
         "enterprise": "Dynamia HAMi 企业版",
         "platform": "Dynamia HAMi 平台版",
-        "contactSales": "联系销售 ↗"
+        "contactSales": "联系销售"
       },
       "hero": {
         "titleLine1": "把集群、团队与算力运营",
         "titleLine2": "连接在一个平台",
         "lead": "从多集群纳管、资源授权到监控与计量，为 AI 基础设施建立统一管理入口。内含 Dynamia HAMi 企业版 引擎。",
-        "contactSales": "联系销售 ",
-        "docs": "产品文档 ↗",
+        "contactSales": "联系销售",
+        "docs": "产品文档",
         "eyebrow": "Dynamia HAMi 平台版"
       },
-      "ui": {
-        "externalArrow": "↗"
-      },
+      "ui": {},
       "architecture": {
         "bannerTitle": "Dynamia HAMi 平台版 · 从管理到执行",
         "bannerLabel": "产品结构示意",
@@ -1874,7 +1864,7 @@
             "videoAria": "查看完整功能：Console 可视化管理（视频）"
           }
         },
-        "viewAll": "查看完整功能 "
+        "viewAll": "查看完整功能"
       },
       "workflow": {
         "eyebrow": "MANAGE. EXECUTE. OBSERVE.",
@@ -1971,7 +1961,7 @@
           "title": "专业技术支持",
           "body": "持续的功能更新和升级"
         },
-        "capabilitiesLink": "比较完整产品能力 →"
+        "capabilitiesLink": "比较完整产品能力"
       },
       "form": {
         "title": "获取定价信息",
@@ -2015,7 +2005,7 @@
           "privacy": "隐私政策",
           "after": "，并同意将所填信息用于销售跟进。"
         },
-        "submit": "获取定价 →",
+        "submit": "获取定价",
         "success": "提交成功，我们的团队会与你联系。",
         "edit": "返回修改"
       },
@@ -2023,7 +2013,7 @@
         "eyebrow": "产品概览",
         "title": "比较产品能力，选择合适的版本",
         "body": "了解开源 HAMi、Dynamia HAMi 企业版 与 Dynamia HAMi 平台版 的能力范围。",
-        "link": "查看产品概览 →"
+        "link": "查看产品概览"
       }
     },
     "getPractices": {
@@ -2086,47 +2076,6 @@
         "success": "客户案例集已发送，请查收邮件及 PDF 附件。"
       }
     },
-    "resources": {
-      "crumb": {
-        "home": "首页",
-        "current": "资源"
-      },
-      "ui": {
-        "slash": "/",
-        "externalArrow": "↗"
-      },
-      "hero": {
-        "title": "了解技术，走进实践",
-        "lead": "阅读文章、观看分享，或用工具开始一次具体的评估。"
-      },
-      "cards": {
-        "blog": {
-          "title": "博客",
-          "body": "技术文章、产品解读与实践分享"
-        },
-        "videos": {
-          "title": "视频",
-          "body": "产品演示、技术分享与社区活动"
-        },
-        "tools": {
-          "title": "工具",
-          "body": "指标分析与 GPU 资产 ROI 计算器"
-        }
-      },
-      "tools": {
-        "eyebrow": "TOOLS",
-        "title": "让运维与评估更高效",
-        "metrics": {
-          "title": "HAMi 指标分析工具",
-          "body": "上传 Prometheus 指标文件，快速查看 GPU 清单、利用率，合并和导出分析结果。"
-        },
-        "open": "打开官网工具 ↗",
-        "roi": {
-          "title": "HAMi GPU 资产 ROI 计算器",
-          "body": "对比无 HAMi、开源版与企业版场景下的 GPU 资产利用率、五年 TCO、节约金额与投资回报。"
-        }
-      }
-    },
     "tools": {
       "crumb": {
         "home": "首页",
@@ -2145,7 +2094,7 @@
           "title": "HAMi 指标分析工具",
           "body": "上传 Prometheus 指标文件，快速查看 GPU 清单、利用率，合并和导出分析结果。"
         },
-        "open": "打开官网工具 ↗",
+        "open": "打开官网工具",
         "roi": {
           "title": "HAMi GPU 资产 ROI 计算器",
           "body": "对比无 HAMi、开源版与企业版场景下的 GPU 资产利用率、五年 TCO、节约金额与投资回报。"
@@ -2176,7 +2125,7 @@
       },
       "direct": {
         "label": "也可以直接联系",
-        "email": "info@dynamia.ai ↗"
+        "email": "info@dynamia.ai"
       },
       "form": {
         "title": "介绍一下你和你的需求",
@@ -2234,8 +2183,7 @@
         "current": "环境与兼容性"
       },
       "ui": {
-        "slash": "/",
-        "arrow": "→"
+        "slash": "/"
       },
       "hero": {
         "titleLine1": "先看你的环境",
@@ -2306,40 +2254,42 @@
       "hami": {
         "eyebrow": "什么是 HAMi？",
         "name": "HAMi",
-        "badge": "CNCF Incubating Project ↗",
+        "badge": "CNCF Incubating Project",
         "body1": "HAMi 是开源的异构虚拟化共享中间件，以轻量化、无侵入的方式部署在公有云、私有云和混合云环境，让 GPU 资源能够被灵活、可靠、按需地共享。",
         "body2": "通过显存与算力共享、资源隔离和调度，HAMi 帮助团队提高设备利用率，支持 NVIDIA、昇腾、沐曦、寒武纪、海光、摩尔线程、天数智芯等异构芯片，连接已有的 Kubernetes 基础设施。",
-        "github": "查看 GitHub ↗",
-        "website": "访问 HAMi 官网 ↗",
-        "diagramAlt": "HAMi 开放生态图：连接 AI 业务、云原生调度生态与异构算力，并提供运行状态观测。"
+        "github": "查看 GitHub",
+        "website": "访问 HAMi 官网",
+        "diagramAlt": "HAMi 开放生态图：连接 AI 业务、云原生调度生态与异构算力，并提供运行状态观测。",
+        "diagramSrc": "/redesign/assets/hami-open-ecosystem.png"
       },
       "relation": {
         "title": "密瓜与 HAMi 的关系？",
         "body1": "密瓜智能（Dynamia）由 CNCF 项目 HAMi 的发起与核心维护团队创立，致力于构建 AI 基础设施的开源内核。",
         "body2": "我们帮助 AI 团队让异构 GPU 与 AI 芯片资源更易用、更高效、更可治理，将复杂算力转化为可共享、可隔离、可按需使用的云原生基础设施能力。",
-        "aboutLink": "认识密瓜团队 →"
+        "aboutLink": "认识密瓜团队"
       },
       "channels": {
         "title": "在哪里关注我们？",
         "lead": "看技术分享、交流使用经验，也欢迎把你的问题与想法带到社区。",
         "bilibili": {
           "name": "Bilibili",
-          "hint": "关注我们 ↗"
+          "hint": "关注我们"
         },
         "slack": {
           "name": "Slack",
-          "hint": "加入交流 ↗"
+          "hint": "加入交流"
         },
         "discord": {
-          "name": "Discord"
+          "name": "Discord",
+          "hint": "加入交流"
         },
         "reddit": {
           "name": "Reddit",
-          "hint": "参与讨论 ↗"
+          "hint": "参与讨论"
         },
         "wechat": {
           "name": "微信",
-          "hint": "添加小助手，进群交流 →"
+          "hint": "添加小助手，进群交流"
         }
       },
       "toc": {
@@ -2350,9 +2300,7 @@
     },
     "about": {
       "ui": {
-        "slash": "/",
-        "arrow": "→",
-        "externalArrow": " ↗"
+        "slash": "/"
       },
       "hero": {
         "eyebrow": "ABOUT DYNAMIA",
@@ -2362,7 +2310,7 @@
       "cncf": {
         "hami": "HAMi",
         "org": "Cloud Native Computing Foundation",
-        "badge": "CNCF Incubating ↗",
+        "badge": "CNCF Incubating",
         "line": "HAMi 是 CNCF Incubating 项目",
         "hamiAlt": "密瓜智能由 HAMi 的发起与核心维护团队创立。"
       },
@@ -2373,17 +2321,17 @@
         "twitter": "X (Twitter)",
         "cta": "联系我们",
         "emailLabel": "邮件",
-        "follow": "关注我们 →",
+        "follow": "关注我们",
         "wechat": "微信",
-        "scan": "扫码关注 →"
+        "scan": "扫码关注"
       },
       "teamDialog": {
         "eyebrow": "MEET OUR TEAM",
         "close": "×",
         "closeAria": "关闭团队成员介绍",
         "separator": " / ",
-        "prev": "←",
-        "next": "→",
+        "prev": "上一位",
+        "next": "下一位",
         "prevAria": "上一位成员",
         "nextAria": "下一位成员",
         "learnMore": "了解更多"
@@ -2663,11 +2611,10 @@
         "lead2": "一起探索 AI 基础设施的更多可能。"
       },
       "ui": {
-        "externalArrow": "↗",
-        "readRecap": "阅读活动回顾 ",
-        "viewCampaign": "查看活动介绍 ",
-        "readLive": "阅读直播回顾 ",
-        "readPreview": "阅读活动预告 "
+        "readRecap": "阅读活动回顾",
+        "viewCampaign": "查看活动介绍",
+        "readLive": "阅读直播回顾",
+        "readPreview": "阅读活动预告"
       },
       "footerNote": "活动详情与回顾来自密瓜智能官网；新活动将在发布后更新。",
       "items": {
@@ -2746,18 +2693,16 @@
         "titleLine1": "在真实环境中",
         "titleLine2": "理解技术的价值",
         "lead": "从自动驾驶、金融到企业 AI，看看不同团队如何管理异构算力，让共享与调度进入真实业务。",
-        "cncfSource": "来源：CNCF 案例库 ↗",
+        "cncfSource": "来源：CNCF 案例库",
         "count": "12 篇案例 · 按发布时间排序"
       },
       "ui": {
-        "externalArrow": "↗",
-        "arrow": "→",
-        "readCase": "查看案例 "
+        "readCase": "查看案例"
       },
       "cta": {
         "title": "找到与你的场景更接近的实践",
         "body": "从 GPU 规模到业务负载，告诉我们你的需求，获取实践资料，梳理下一步的验证方向。",
-        "button": "获取更多我们的实践 "
+        "button": "获取更多我们的实践"
       },
       "detail": {
         "breadcrumbAria": "面包屑",
@@ -2765,8 +2710,8 @@
         "cases": "案例",
         "outcomesAria": "关键成果",
         "onThisPage": "本文目录",
-        "backToCases": "← 返回案例列表",
-        "getPractices": "获取更多我们的实践 →"
+        "backToCases": "返回案例列表",
+        "getPractices": "获取更多我们的实践"
       },
       "items": {
         "seres": {
@@ -2874,7 +2819,6 @@
       },
       "ui": {
         "slash": "/",
-        "arrow": "→",
         "play": "▶"
       },
       "hero": {
@@ -2887,7 +2831,7 @@
           "body": "了解密瓜智能平台的异构 GPU 共享、调度与编排能力。",
           "duration": "8:50"
         },
-        "watch": "观看视频 ",
+        "watch": "观看视频",
         "oversell": {
           "aria": "观看：GPU 超卖企业级特性实战",
           "title": "GPU 超卖企业级特性实战",
@@ -2899,11 +2843,11 @@
       "detail": {
         "breadcrumbAria": "面包屑",
         "home": "首页",
-        "backToVideos": "← 返回视频",
+        "backToVideos": "返回视频",
         "hostedOnBilibili": "视频由哔哩哔哩提供。",
         "hostedOnYoutube": "视频由 YouTube 提供。",
-        "watchOnBilibili": "在哔哩哔哩观看 ↗",
-        "watchOnYoutube": "在 YouTube 观看 ↗"
+        "watchOnBilibili": "在哔哩哔哩观看",
+        "watchOnYoutube": "在 YouTube 观看"
       }
     },
     "blog": {
@@ -2928,7 +2872,6 @@
       "resultSuffix": " 篇文章",
       "mostRecentFirst": "按最新排序",
       "readMore": "阅读文章",
-      "arrow": "↗",
       "coverMarkAlt": "密瓜智能",
       "coverBrand": "密瓜智能 · 开源 AI 基础设施",
       "emptyTitle": "没有找到匹配的文章",
@@ -3037,13 +2980,13 @@
     },
     "mobile": {
       "aria": "移动端导航",
-      "productsOverview": "产品概览 →",
+      "productsOverview": "产品概览",
       "enterprise": "Dynamia HAMi 企业版",
       "platform": "Dynamia HAMi 平台版",
       "docs": "产品文档",
-      "pricing": "定价 →",
-      "cases": "案例 →",
-      "community": "社区 →",
+      "pricing": "定价",
+      "cases": "案例",
+      "community": "社区",
       "blog": "博客",
       "videos": "视频",
       "tools": "工具",

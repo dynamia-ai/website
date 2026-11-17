@@ -1,0 +1,327 @@
+/* Community page */
+
+.community-page-hero {
+  padding: 85px 0 56px;
+  background: #f7f9f4;
+  border-bottom: 1px solid var(--line);
+}
+.community-page-hero h1 {
+  font-size: clamp(36px, 4vw, 60px);
+  line-height: 1.25;
+  margin: 14px 0 22px;
+}
+.community-page-hero p {
+  max-width: 630px;
+  color: var(--muted);
+  font-size: 18px;
+}
+.community-questions {
+  padding-top: 22px;
+  padding-bottom: 85px;
+}
+.community-question {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 70px;
+  padding: 58px 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 110px;
+}
+.question-title small {
+  display: block;
+  color: #7e9364;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  margin-bottom: 15px;
+}
+.question-title h2 {
+  font-size: 28px;
+  line-height: 1.5;
+  margin: 0;
+}
+.question-answer {
+  font-size: 17px;
+  line-height: 1.95;
+}
+.question-answer p {
+  margin: 0 0 20px;
+  color: #53616e;
+}
+.community-hami-mark {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+.community-hami-mark img {
+  width: 148px;
+  height: 54px;
+  object-fit: contain;
+}
+.community-hami-mark a {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  border: 1px solid #dbe4d0;
+  border-radius: 5px;
+  padding: 5px 13px;
+  background: #f6f9ef;
+  color: #50643d;
+}
+.social-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+.social-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 25px 12px 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100%;
+  cursor: pointer;
+  color: var(--ink);
+  font: inherit;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.social-card:hover,
+.social-card:focus-visible {
+  border-color: #a5b98b;
+  background: #fbfcf8;
+}
+.social-card img {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  object-fit: contain;
+  margin-bottom: 14px;
+}
+.social-card strong {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.social-card > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #638344;
+}
+
+.social-card .site-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  flex: none;
+  margin: 0;
+  line-height: 0;
+  overflow: visible;
+}
+
+.social-card .site-arrow svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+  max-width: none;
+  margin: 0;
+}
+.community-question:last-child {
+  grid-template-columns: 1fr;
+}
+.community-question:last-child .question-answer {
+  margin-top: -38px;
+}
+.qr-dialog {
+  margin: auto;
+  width: min(380px, calc(100vw - 32px));
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-align: center;
+  padding: 40px 28px;
+  color: var(--ink);
+}
+.qr-dialog h2 {
+  font-size: 23px;
+  margin: 8px 0;
+}
+.qr-dialog p {
+  font-size: 14px;
+  color: var(--muted);
+}
+.qr-dialog img {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+.qr-dialog::backdrop {
+  background: rgba(18, 34, 33, 0.45);
+}
+
+.community-project-links .btn svg {
+  width: 19px;
+  height: 19px;
+  flex: none;
+}
+.community-project-links .btn.primary svg {
+  fill: currentColor;
+}
+.community-ecosystem {
+  margin: clamp(40px, 5vw, 72px) 0 0;
+}
+.community-ecosystem a {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.community-ecosystem img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.community-hami-mark a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.community-question .textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+  color: var(--green-dark);
+}
+
+.community-question .textlink > span {
+  line-height: 1;
+}
+
+.community-hami-mark a:hover .site-arrow--link,
+.community-project-links .btn:hover .site-arrow--link,
+.social-card:hover .site-arrow--link,
+.social-card:focus-visible .site-arrow--link {
+  transform: translate(2px, -2px);
+}
+
+
+@media (max-width: 1100px) {
+  .community-question {
+    grid-template-columns: 230px 1fr;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 700px) {
+  .community-page-hero {
+    padding: 48px 0 35px;
+  }
+
+  .community-question {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 35px 0;
+  }
+
+  .question-title h2 {
+    font-size: 25px;
+  }
+
+  .community-question:last-child .question-answer {
+    margin-top: 0;
+  }
+
+  .question-answer {
+    font-size: 16px;
+  }
+
+  .social-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .social-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-card {
+    transition: none;
+  }
+}
+
+:root[data-theme="dark"] .community-page-hero {
+  background: #141c11;
+}
+
+:root[data-theme="dark"] .question-title small {
+  color: #b5beb0;
+}
+
+:root[data-theme="dark"] .question-answer p {
+  color: #b5beb0;
+}
+
+:root[data-theme="dark"] .community-hami-mark a {
+  border-color: #43583a;
+  background: #141c11;
+  color: #b5beb0;
+}
+
+:root[data-theme="dark"] .community-hami-mark > img {
+  background: #f8faf6;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+:root[data-theme="dark"] .community-ecosystem a {
+  background: #f7f9f4;
+  border: 1px solid var(--line);
+}
+
+:root[data-theme="dark"] .social-card {
+  background: #161616;
+  border-color: #3a4336;
+}
+
+:root[data-theme="dark"] .social-card:hover,
+:root[data-theme="dark"] .social-card:focus-visible {
+  border-color: #43583a;
+  background: #141c11;
+}
+
+:root[data-theme="dark"] .social-card > span {
+  color: #a8d677;
+}
+
+:root[data-theme="dark"] .qr-dialog {
+  background: #161616;
+}
+
+:root[data-theme="dark"] .qr-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+:root[data-theme="dark"] .qr-dialog img {
+  background: white;
+  border: 8px solid white;
+}

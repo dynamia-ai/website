@@ -2,6 +2,7 @@
 
 import {useTranslations} from 'next-intl';
 import QrDialog from '@/components/layout/QrDialog';
+import SiteArrow from '@/components/layout/SiteArrow';
 
 export default function CommunityWeChatCard() {
   const t = useTranslations('sitePages.community');
@@ -16,7 +17,10 @@ export default function CommunityWeChatCard() {
         <button className="social-card" type="button" data-community-wechat="" onClick={open}>
           <img src="/redesign/assets/8a29ffa502745afa1684.svg" alt="" />
           <strong>{t('channels.wechat.name')}</strong>
-          <span>{t('channels.wechat.hint')}</span>
+          <span>
+            {t('channels.wechat.hint')}
+            <SiteArrow variant="link" />
+          </span>
         </button>
       )}
     />

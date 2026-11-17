@@ -70,11 +70,11 @@ export default async function Footer() {
             <h3>{t('footer.contact')}</h3>
             <span className="contact-caption">{t('footer.emailLabel')}</span>
             <a href="mailto:info@dynamia.ai">{t('footer.email')}</a>
-            <span className="contact-caption" style={{marginTop: 12}}>
+            <span className="contact-caption">
               {t('footer.phoneLabel')}
             </span>
             <a href="tel:4000267800">{t('tel')}</a>
-            <span className="contact-caption" style={{marginTop: 12}}>
+            <span className="contact-caption">
               {t('footer.follow')}
             </span>
             <div className="footer-media">

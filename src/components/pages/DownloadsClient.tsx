@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import {useLocale, useTranslations} from 'next-intl';
 import DownloadDeliveryTabs from '@/components/enterprise/DownloadDeliveryTabs';
 import DownloadGateModal from '@/components/enterprise/DownloadGateModal';
+import SiteArrow from '@/components/layout/SiteArrow';
 import {localizedPath} from '@/utils/i18n';
 import {submitContact} from '@/lib/site/contact';
 import {attributionToPayload, captureAttribution} from '@/utils/utm';
@@ -62,7 +63,8 @@ export default function DownloadsClient({
           <h1>{productName}</h1>
           <p>{t('description')}</p>
           <a className="textlink" href={backHref}>
-            {t('back')}
+            <span>{t('back')}</span>
+            <SiteArrow variant="text" />
           </a>
         </div>
       </section>

@@ -1,9 +1,11 @@
 import {notFound} from 'next/navigation';
 import {getLocale, getTranslations} from 'next-intl/server';
 import Link from 'next/link';
+import SiteArrow from '@/components/layout/SiteArrow';
 import {videos} from '@/data/videos';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
+import '@/styles/videos.css';
 
 interface VideoDetailPageProps {
   videoId: string;
@@ -42,16 +44,17 @@ export default async function VideoDetailPage({videoId}: VideoDetailPageProps) {
   );
   const title = tVideos(video.titleKey);
   const description = tVideos(video.descriptionKey);
+  const isYoutube = videoType === 'youtube';
 
   return (
     <>
       <section className="page-hero">
         <div className="wrap">
-          <div className="breadcrumb">
+          <nav className="breadcrumb" aria-label={t('detail.breadcrumbAria')}>
             <Link href={localizedPath(websitePath('/'), locale)}>{t('detail.home')}</Link>
-            <span>/</span>
-            <span>{t('crumb.current')}</span>
-          </div>
+            <span>{t('ui.slash')}</span>
+            <Link href={localizedPath(websitePath('/videos'), locale)}>{t('crumb.current')}</Link>
+          </nav>
           <div>
             <div className="eyebrow">{t('crumb.current')}</div>
             <h1>{title}</h1>
@@ -62,7 +65,7 @@ export default async function VideoDetailPage({videoId}: VideoDetailPageProps) {
 
       <section className="section">
         <div className="wrap">
-          <Link className="textlink" href={localizedPath(websitePath('/videos'), locale)}>
+          <Link className="textlink video-detail-back" href={localizedPath(websitePath('/videos'), locale)}>
             {t('detail.backToVideos')}
           </Link>
           <div className="video-player">
@@ -75,10 +78,11 @@ export default async function VideoDetailPage({videoId}: VideoDetailPageProps) {
             />
           </div>
           <p className="video-player-note">
-            {videoType === 'youtube' ? t('detail.hostedOnYoutube') : t('detail.hostedOnBilibili')}{' '}
+            {isYoutube ? t('detail.hostedOnYoutube') : t('detail.hostedOnBilibili')}{' '}
             {watchUrl ? (
-              <a href={watchUrl} target="_blank" rel="noopener">
-                {videoType === 'youtube' ? t('detail.watchOnYoutube') : t('detail.watchOnBilibili')}
+              <a href={watchUrl} target="_blank" rel="noopener noreferrer">
+                {isYoutube ? t('detail.watchOnYoutube') : t('detail.watchOnBilibili')}
+                <SiteArrow variant="link" />
               </a>
             ) : null}
           </p>

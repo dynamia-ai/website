@@ -1,10 +1,13 @@
 import {notFound} from 'next/navigation';
 import {getLocale, getTranslations} from 'next-intl/server';
 import Link from 'next/link';
+import SiteArrow from '@/components/layout/SiteArrow';
 import {caseContentSlug, getCaseDocument} from '@/lib/site/caseContent';
 import {markdownToHtml} from '@/lib/blog-server';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
+import '@/styles/article.css';
+import '@/styles/cases.css';
 
 interface CaseDetailPageProps {
   slug: string;
@@ -94,9 +97,8 @@ export default async function CaseDetailPage({slug}: CaseDetailPageProps) {
               <details className="case-mobile-toc">
                 <summary>{t('detail.onThisPage')}</summary>
                 <nav>
-                  {sections.map((section, index) => (
+                  {sections.map((section) => (
                     <a key={section.id} href={`#${section.id}`}>
-                      <span>{String(index + 1).padStart(2, '0')}</span>
                       {section.title}
                     </a>
                   ))}
@@ -106,12 +108,13 @@ export default async function CaseDetailPage({slug}: CaseDetailPageProps) {
 
             <div className="article-prose" dangerouslySetInnerHTML={{__html: html}} />
 
-            <div className="actions" style={{marginTop: 30}}>
+            <div className="case-detail-actions">
               <Link className="btn" href={localizedPath(websitePath('/case-studies'), locale)}>
                 {t('detail.backToCases')}
               </Link>
               <Link className="btn primary" href={localizedPath(websitePath('/get-practices'), locale)}>
                 {t('detail.getPractices')}
+                <SiteArrow variant="button" />
               </Link>
             </div>
           </div>
@@ -119,9 +122,8 @@ export default async function CaseDetailPage({slug}: CaseDetailPageProps) {
           {sections.length ? (
             <aside className="article-toc" aria-label={t('detail.onThisPage')}>
               <strong>{t('detail.onThisPage')}</strong>
-              {sections.map((section, index) => (
+              {sections.map((section) => (
                 <a key={section.id} href={`#${section.id}`}>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
                   {section.title}
                 </a>
               ))}
