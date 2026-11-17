@@ -178,7 +178,7 @@ export async function siteVideoMetadata(videoId: string, locale: string): Promis
   }
   const tVideos = await getTranslations({locale, namespace: 'videos'});
   return buildPageMetadata({
-    title: tVideos(video.titleKey),
+    title: tVideos(`items.${video.itemKey}.title`),
     description: mt('description'),
     path: websitePath(`/videos/${videoId}`),
     locale,

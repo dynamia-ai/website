@@ -541,14 +541,6 @@
     "name": "cases--prep-edu",
     "title": "PREP EDU 为 AI 推理实现高效 GPU 编排"
   },
-  "/videos/product-overview": {
-    "name": "videos--product-overview",
-    "title": "密瓜智能产品概览"
-  },
-  "/videos/gpu-oversell": {
-    "name": "videos--gpu-oversell",
-    "title": "GPU 超卖企业级特性实战"
-  },
   "/faq": {
     "name": "faq",
     "title": "常见问题"

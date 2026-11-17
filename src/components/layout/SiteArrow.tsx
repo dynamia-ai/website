@@ -4,8 +4,9 @@ interface SiteArrowProps {
    * `text`: same glyph for internal `.textlink` rows.
    * `link`: northeast arrow for external / leave-site links.
    * `down`: in-page jump (e.g. scroll to a section).
+   * `back`: left arrow for return / back links (place before the label).
    */
-  variant?: 'button' | 'text' | 'link' | 'down';
+  variant?: 'button' | 'text' | 'link' | 'down' | 'back';
 }
 
 const PATHS = {
@@ -13,6 +14,7 @@ const PATHS = {
   text: 'M3 8h9M8.5 4.5 12 8l-3.5 3.5',
   link: 'M4.5 11.5L11.5 4.5M7 4.5h4.5V9',
   down: 'M8 3v9M4.5 8.5 8 12l3.5-3.5',
+  back: 'M13 8H4M7.5 4.5 4 8l3.5 3.5',
 } as const;
 
 export default function SiteArrow({variant = 'button'}: SiteArrowProps) {

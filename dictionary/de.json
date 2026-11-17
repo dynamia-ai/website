@@ -598,28 +598,28 @@
     ]
   },
   "videos": {
-    "pageTitle": "Produktvideos",
-    "pageSubtitle": "Built by the creators of HAMi — the CNCF incubating project for heterogeneous GPU sharing and scheduling. See how Dynamia turns open-source innovation into enterprise-grade GPU orchestration.",
-    "locked": "Gesperrt",
-    "gate": {
-      "title": "Watch Product Videos",
-      "subtitle": "Fill in your details to unlock",
-      "submit": "Videos freischalten",
-      "success": "Danke! Wird freigeschaltet...",
-      "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder senden Sie eine E-Mail an info@dynamia.ai.",
-      "invalidPhoneOrWechat": "Bitte geben Sie eine gueltige Telefonnummer oder WeChat-ID ein."
-    },
-    "player": {
-      "close": "Schliessen"
-    },
+    "watch": "Video ansehen",
+    "watchAria": "Ansehen: {title}",
     "items": {
       "productOverview": {
         "title": "Produktuebersicht",
-        "description": "GPU sharing, scheduling & orchestration — a quick platform walkthrough."
+        "description": "GPU-Sharing, Scheduling und Orchestrierung — ein kurzer Plattformueberblick.",
+        "duration": "8:50"
       },
       "gpuOversell": {
-        "title": "GPU Oversubscription in Practice",
-        "description": "Enterprise-grade GPU oversubscription — real-world demo of resource optimization."
+        "title": "GPU-Overprovisionierung in der Praxis",
+        "description": "Erleben Sie GPU-Overprovisionierung und Ressourcenoptimierung in einer praktischen Demo.",
+        "duration": "13:29"
+      },
+      "gpuSharing": {
+        "title": "GPU-Sharing und Partitionierung",
+        "description": "Dynamia HAMi Enterprise & Platform Demo-Serie (1): GPUs bedarfsweise zuweisen, Exklusivbelegung reduzieren und Kapazitaet nach Jobende freigeben.",
+        "duration": "4:03"
+      },
+      "memoryAutoExpand": {
+        "title": "Automatische GPU-Speichererweiterung",
+        "description": "Dynamia HAMi Enterprise & Platform Demo-Serie (2): mit kleinerem Kontingent starten und GPU-Speicher ohne Neustart erweitern.",
+        "duration": "3:38"
       }
     }
   },
@@ -2519,21 +2519,6 @@
       },
       "hero": {
         "lead": "Produktdemos, technische Vorträge und Community-Veranstaltungen. Weitere Videos folgen."
-      },
-      "items": {
-        "overview": {
-          "aria": "Blick: Übersicht Dynamia Produkte",
-          "title": "Dynamia-Produktübersicht",
-          "body": "Entdecken Sie heterogene GPU-Freigabe, Scheduling und Orchestrierung mit Dynamia.",
-          "duration": "8:50"
-        },
-        "watch": "Video ansehen",
-        "oversell": {
-          "aria": "Uhr: GPU Supersells Enterprise-Level Charakterismen",
-          "title": "GPU-Overprovisionierung für Unternehmen in der Praxis",
-          "body": "Erleben Sie GPU-Overprovisionierung und Ressourcenoptimierung in einer praktischen Demo.",
-          "duration": "13:29"
-        }
       },
       "empty": "Weitere Inhalte folgen. Schauen Sie bald wieder vorbei.",
       "detail": {
