@@ -201,6 +201,14 @@ export async function POST(request: Request) {
     if (body.company !== undefined && company.length === 0) {
       return NextResponse.json({ error: 'Company is required' }, { status: 400 });
     }
+    const locale =
+      typeof body.locale === 'string' ? sanitizeString(body.locale, 10) : '';
+    const phone =
+      typeof body.phone === 'string' ? sanitizeString(body.phone, 80) : '';
+    // Chinese leads: phone / WeChat is required on sales and practices forms.
+    if (locale === 'zh' && body.phone !== undefined && phone.length === 0) {
+      return NextResponse.json({ error: 'Phone / WeChat is required' }, { status: 400 });
+    }
     if (email.length > 0 && !isValidEmail(email)) {
       return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
     }

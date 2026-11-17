@@ -8,6 +8,7 @@ import '@/styles/sales.css';
 export default async function ContactSalesPage() {
   const t = await getTranslations('sitePages.contactSales');
   const locale = await getLocale();
+  const phoneRequired = locale === 'zh';
   const privacyHref = localizedPath(websitePath('/privacy-policy'), locale);
 
   return (
@@ -92,7 +93,13 @@ export default async function ContactSalesPage() {
                 </label>
                 <label className="field">
                   {t('form.phone.label')}
-                  <input name="phone" placeholder={t('form.phone.placeholder')} />
+                  <input
+                    name="phone"
+                    required={phoneRequired}
+                    maxLength={80}
+                    autoComplete="tel"
+                    placeholder={t('form.phone.placeholder')}
+                  />
                 </label>
                 <label className="field full">
                   {t('form.product.label')}
