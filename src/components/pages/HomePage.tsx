@@ -111,7 +111,14 @@ export default async function HomePage() {
     <div className="hero-users-set" {...(opts?.decorative ? {'aria-hidden': true, inert: true} : {})}>
       {HERO_USERS.map((user) => {
         const title = userNames[user.key] ?? user.key;
-        const image = <img src={user.src} alt={opts?.decorative ? '' : title} loading="eager" />;
+        const image = (
+          <img
+            src={user.src}
+            alt={opts?.decorative ? '' : title}
+            loading={opts?.decorative ? 'lazy' : 'eager'}
+            decoding="async"
+          />
+        );
         const key = `${setKey}-${user.key}`;
         if (user.href) {
           return (
@@ -168,6 +175,8 @@ export default async function HomePage() {
               alt={t('hero.motionAlt')}
               data-motion-poster="originalPoster"
               data-motion-paused="false"
+              decoding="async"
+              fetchPriority="high"
             />
           </figure>
         </div>
@@ -177,7 +186,6 @@ export default async function HomePage() {
             <div className="hero-users-track">
               {renderHeroUserSet('primary')}
               {renderHeroUserSet('loop-a', {decorative: true})}
-              {renderHeroUserSet('loop-b', {decorative: true})}
             </div>
           </div>
         </div>
@@ -253,7 +261,12 @@ export default async function HomePage() {
             </article>
           </div>
           <div className="opensource-strip">
-            <img src="/redesign/assets/0f7fb2749db6ecded91c.png" alt={t('ui.hami')} />
+            <img
+              src="/redesign/assets/0f7fb2749db6ecded91c.png"
+              alt={t('ui.hami')}
+              loading="lazy"
+              decoding="async"
+            />
             <p>
               <strong>{t('products.opensource.title')}</strong>
               {t('products.opensource.description')}
@@ -286,7 +299,7 @@ export default async function HomePage() {
                 return (
                   <div className="ecosystem-unlinked" key={vendor.brand}>
                     <div className="brand-tile" data-brand={vendor.brand} title={name}>
-                      <img src={vendor.src} alt={name} loading="lazy" />
+                      <img src={vendor.src} alt={name} loading="lazy" decoding="async" />
                     </div>
                   </div>
                 );
@@ -309,7 +322,7 @@ export default async function HomePage() {
                     aria-label={copy?.seeDetails ?? name}
                   >
                     <div className="brand-tile" data-brand={scheduler.brand} title={name}>
-                      <img src={scheduler.src} alt={name} loading="lazy" />
+                      <img src={scheduler.src} alt={name} loading="lazy" decoding="async" />
                       <span className="ecosystem-link-caption">
                         {t('ui.viewDetails')}
                         <SiteArrow variant="link" />
@@ -374,14 +387,26 @@ export default async function HomePage() {
             <div className="brand-signature">
               <div className="brand-motion brand-cycle" role="img" aria-label={t('brand.ariaLabel')}>
                 <span className="brand-cycle-frame brand-cycle-dynamia" aria-hidden={true}>
-                  <img className="cycle-light" src={dynamiaLogo} alt="" />
-                  <img className="cycle-dark" src={dynamiaLogoDark} alt="" />
+                  <img className="cycle-light" src={dynamiaLogo} alt="" loading="lazy" decoding="async" />
+                  <img className="cycle-dark" src={dynamiaLogoDark} alt="" loading="lazy" decoding="async" />
                 </span>
                 <span className="brand-cycle-frame brand-cycle-hami" aria-hidden={true}>
                   <span className="brand-cycle-label">{t('brand.creatorsOf')}</span>
                   <span className="brand-cycle-logo">
-                    <img className="cycle-light" src="/redesign/assets/0f7fb2749db6ecded91c.png" alt="" />
-                    <img className="cycle-dark" src="/redesign/assets/hami-horizontal-color-white.png" alt="" />
+                    <img
+                      className="cycle-light"
+                      src="/redesign/assets/0f7fb2749db6ecded91c.png"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <img
+                      className="cycle-dark"
+                      src="/redesign/assets/hami-horizontal-color-white.png"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </span>
                 </span>
               </div>

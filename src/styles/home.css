@@ -167,7 +167,8 @@
   }
 
   to {
-    transform: translateX(-33.333333%);
+    /* Two equal sets: shift by one set width for a seamless loop. */
+    transform: translateX(-50%);
   }
 }
 

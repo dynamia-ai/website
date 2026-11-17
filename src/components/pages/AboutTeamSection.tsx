@@ -135,7 +135,7 @@ export default function AboutTeamSection() {
                   onClick={() => openMember(index)}
                 >
                   <div className="member-photo" data-person={item.id}>
-                    <img src={item.image} alt={item.name} loading="eager" />
+                    <img src={item.image} alt={item.name} loading="lazy" decoding="async" />
                     <span className="member-more" aria-hidden={true}>
                       <SiteArrow variant="text" />
                     </span>
@@ -178,7 +178,13 @@ export default function AboutTeamSection() {
             </button>
             <div className="team-dialog-grid">
               <div className="team-dialog-photo">
-                <img data-person={member.id} src={member.image} alt={member.name} />
+                <img
+                  data-person={member.id}
+                  src={member.image}
+                  alt={member.name}
+                  loading="lazy"
+                  decoding="async"
+                />
                 {!member.linksBelowBio ? <TeamSocial member={member} /> : null}
               </div>
               <div className="team-dialog-info">
