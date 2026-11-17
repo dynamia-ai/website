@@ -2148,8 +2148,8 @@
       },
       "story": {
         "aiWord": "The Open Kernel",
-        "line1": "Dynamia was founded by the creators and core maintainers of HAMi, a CNCF Incubating project, with a mission to build the open-source core of AI infrastructure. Through open-source collaboration, we develop the underlying scheduling and virtualization capabilities for heterogeneous compute, making GPUs and other AI accelerators easier to use, more efficient and easier to govern in cloud-native environments. Focused on heterogeneous GPU resource virtualization, efficient scheduling and production deployment, Dynamia helps enterprises turn fragmented, complex and costly compute resources into infrastructure that can be shared, isolated and consumed on demand.",
-        "line2": "HAMi is currently the only open-source project in the industry dedicated to heterogeneous GPU resource virtualization and efficient scheduling. It improves resource utilization through flexible, reliable, on-demand and elastic GPU virtualization, with lightweight, pluggable and non-intrusive deployment across public, private and hybrid clouds. HAMi supports mainstream GPU and accelerator providers including NVIDIA, AMD and AWS, and integrates seamlessly with upstream and downstream open-source schedulers such as Volcano, Koordinator, Kueue and KAI Scheduler, steadily building a reliable heterogeneous compute ecosystem."
+        "line1": "Dynamia was founded by the initiating and core maintainer team behind HAMi, a CNCF project, and is committed to building the open kernel for AI infrastructure. Through heterogeneous GPU resource virtualization, efficient scheduling, and production-grade adoption, Dynamia turns complex compute resources into cloud-native infrastructure capabilities that can be shared, isolated, and consumed on demand.",
+        "line2": "Together with more than 500 contributors across over 40 countries and more than 300 enterprise users, Dynamia continues to advance a global heterogeneous compute ecosystem spanning mainstream GPU and AI accelerators as well as upstream and downstream open source projects."
       },
       "team": {
         "cta": "Meet our team",
