@@ -1,6 +1,5 @@
 import {getLocale, getTranslations} from 'next-intl/server';
 import ContactForm from '@/components/layout/ContactForm';
-import SiteArrow from '@/components/layout/SiteArrow';
 import {localizedPath} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
 import '@/styles/sales.css';
@@ -8,6 +7,7 @@ import '@/styles/sales.css';
 export default async function GetPracticesPage() {
   const t = await getTranslations('sitePages.getPractices');
   const locale = await getLocale();
+  const phoneRequired = locale === 'zh';
   const privacyHref = localizedPath(websitePath('/privacy-policy'), locale);
 
   return (
@@ -28,8 +28,7 @@ export default async function GetPracticesPage() {
             </div>
             <p className="sales-aside-note">{t('aside.body2')}</p>
             <a className="textlink" href={localizedPath(websitePath('/cases'), locale)}>
-              <span>{t('aside.back')}</span>
-              <SiteArrow variant="text" />
+              {t('aside.back')}
             </a>
           </div>
           <div className="sales-form">
@@ -60,7 +59,13 @@ export default async function GetPracticesPage() {
                 </label>
                 <label className="field">
                   {t('form.phone.label')}
-                  <input name="phone" maxLength={80} placeholder={t('form.phone.placeholder')} />
+                  <input
+                    name="phone"
+                    required={phoneRequired}
+                    maxLength={80}
+                    autoComplete="tel"
+                    placeholder={t('form.phone.placeholder')}
+                  />
                 </label>
                 <fieldset className="practice-gpu full">
                   <legend>{t('form.gpus.label')}</legend>

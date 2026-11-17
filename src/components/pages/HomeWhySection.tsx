@@ -134,6 +134,7 @@ export default function HomeWhySection() {
                 height={400}
                 quality={90}
                 priority={activeTab === 0}
+                loading={activeTab === 0 ? 'eager' : 'lazy'}
                 className="why-main-image"
               />
             </div>

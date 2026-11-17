@@ -2049,7 +2049,7 @@
           "placeholder": "你的职责"
         },
         "phone": {
-          "label": "电话 / 微信",
+          "label": "电话 / 微信 *",
           "placeholder": "便于沟通的联系方式"
         },
         "gpus": {
@@ -2153,7 +2153,7 @@
           "placeholder": "你的职责"
         },
         "phone": {
-          "label": "电话 / 微信",
+          "label": "电话 / 微信 *",
           "placeholder": "便于沟通的联系方式",
           "error": "400-026-7800"
         },
