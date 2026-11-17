@@ -184,6 +184,7 @@ export default async function CasesPage() {
             })}
           </div>
 
+          {/* Temporarily hidden: get-practices CTA
           <div className="case-more">
             <div>
               <h2>{t('cta.title')}</h2>
@@ -194,6 +195,7 @@ export default async function CasesPage() {
               <SiteArrow variant="button" />
             </a>
           </div>
+          */}
         </div>
       </section>
     </>

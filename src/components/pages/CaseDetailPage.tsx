@@ -1,8 +1,8 @@
 import {notFound} from 'next/navigation';
 import {getLocale, getTranslations} from 'next-intl/server';
 import Link from 'next/link';
-import SiteArrow from '@/components/layout/SiteArrow';
 import {caseContentSlug, getCaseDocument} from '@/lib/site/caseContent';
+// import SiteArrow from '@/components/layout/SiteArrow'; // restore with get-practices CTA
 import {markdownToHtml} from '@/lib/blog-server';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
@@ -112,10 +112,12 @@ export default async function CaseDetailPage({slug}: CaseDetailPageProps) {
               <Link className="btn" href={localizedPath(websitePath('/case-studies'), locale)}>
                 {t('detail.backToCases')}
               </Link>
+              {/* Temporarily hidden: get-practices CTA
               <Link className="btn primary" href={localizedPath(websitePath('/get-practices'), locale)}>
                 {t('detail.getPractices')}
                 <SiteArrow variant="button" />
               </Link>
+              */}
             </div>
           </div>
 
