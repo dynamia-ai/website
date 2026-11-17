@@ -25,9 +25,9 @@ const companySchema = z.string().trim().min(1).max(100).regex(
   'freeTrial.form.invalidCompany',
 );
 
-const jobTitleSchema = z.string().trim().min(1, 'pricing.form.jobTitleRequired').max(100).regex(
+const jobTitleSchema = z.string().trim().min(1, 'freeTrial.form.jobTitleRequired').max(100).regex(
   /^[^<>{}[\]|\\]*$/,
-  'pricing.form.invalidJobTitle',
+  'freeTrial.form.invalidJobTitle',
 );
 
 const emailFormatSchema = z.string().trim().min(1, 'freeTrial.form.emailRequired').email('freeTrial.form.invalidEmail');
@@ -35,7 +35,7 @@ const emailFormatSchema = z.string().trim().min(1, 'freeTrial.form.emailRequired
 /** Standalone company email validator for gate/pricing forms. */
 export const companyEmailSchema = emailFormatSchema.refine(
   isCompanyDomain,
-  'common.useCompanyEmail',
+  'freeTrial.form.useCompanyEmail',
 );
 
 function createEmailSchema(isRequired: boolean) {
@@ -115,7 +115,7 @@ export function createGateSchema(fields: {
 
 /**
  * Returns a Zod schema for the pricing form. Field requirements
- * come from the dictionary's `pricing.form.fields` config.
+ * come from the dictionary's `freeTrial.form.fields` config.
  */
 export function createPricingSchema(fields: {
   email: { required: boolean };
@@ -127,8 +127,8 @@ export function createPricingSchema(fields: {
     company: companySchema,
     jobTitle: jobTitleSchema,
     phone: createContactSchema(fields.phone.required, {
-      required: 'pricing.form.phoneRequired',
-      invalid: 'pricing.form.invalidPhoneOrWechat',
+      required: 'freeTrial.form.phoneRequired',
+      invalid: 'freeTrial.form.invalidPhoneOrWechat',
     }),
     gpuCount: z.string().min(1),
     message: z.string().optional(),

@@ -1,0 +1,55 @@
+/* Tools and resources listing cards */
+
+.tool-cards .feature-card {
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.tool-cards .feature-card:hover {
+  border-color: #aac68a;
+  box-shadow: 0 12px 30px #1835270a;
+  transform: translateY(-2px);
+}
+
+.tool-cards h3 {
+  margin-top: 25px;
+}
+
+.tool-cards p {
+  flex: 1;
+}
+
+.tool-cards .textlink {
+  margin-top: 24px;
+  gap: 8px;
+}
+
+.section .tools-note {
+  font-size: 11px;
+  margin-top: 48px;
+  color: #7f8a81;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-cards .feature-card {
+    transition: none;
+  }
+
+  .tool-cards .feature-card:hover {
+    transform: none;
+  }
+}
+
+:root[data-theme="dark"] .tool-cards .feature-card:hover {
+  border-color: #43583a;
+}
+
+:root[data-theme="dark"] .section .tools-note {
+  color: #b5beb0;
+}

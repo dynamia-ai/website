@@ -9,7 +9,6 @@ npm run dev          # Development server
 npm run build        # Production build
 npm start            # Start production server
 npm run lint         # Linting
-npm run algolia:index # Generate Algolia search index
 ```
 
 ## Tech Stack
@@ -17,10 +16,10 @@ npm run algolia:index # Generate Algolia search index
 - **Framework:** Next.js 15 with App Router
 - **React:** 19
 - **Language:** TypeScript 5 (strict mode)
-- **Styling:** Tailwind CSS v4
+- **Styling:** Tailwind CSS v4 + `src/styles/site.css` (marketing shell)
 - **Animations:** Framer Motion
-- **i18n:** next-intl (server + client), locale prefix `as-needed`
-- **Fonts:** Geist Sans & Geist Mono
+- **i18n:** next-intl (server + client), locale prefix `always`
+- **Fonts:** Geist Sans & Geist Mono (app shell); marketing pages also load redesign webfonts
 
 ## Project Structure
 
@@ -39,9 +38,11 @@ src/
 │   ├── api/                 # API routes
 │   └── globals.css
 ├── components/
-│   ├── layout/              # Header, Footer, MainLayout
-│   ├── enterprise/          # Enterprise product components
-│   └── ...
+│   ├── layout/              # Header, Footer, MainLayout (+ shell widgets)
+│   ├── pages/               # Page implementations imported by app/[locale]/*
+│   ├── enterprise/          # Download gate / install doc clients
+│   ├── tools/               # Interactive tools UI
+│   └── ui/                  # Shared UI primitives
 ├── dictionary/              # next-intl translation files
 │   ├── en.json
 │   ├── zh.json
@@ -51,9 +52,11 @@ src/
 │   ├── request.ts           # next-intl request config
 │   └── navigation.ts        # Link/useRouter/usePathname wrappers
 ├── utils/
-│   ├── i18n.ts              # localizedPath, localizedUrl, shortenDescription
-│   └── seo.ts               # (deprecated — use @/utils/i18n)
-├── lib/                     # Utility functions
+│   └── i18n.ts              # localizedPath, localizedUrl, shortenDescription
+├── lib/
+│   └── site/                # Site domain helpers (links, metadata, contact, content)
+├── styles/
+│   └── site.css             # Marketing site stylesheet (imported by MainLayout)
 └── types/                   # TypeScript interfaces
 ```
 

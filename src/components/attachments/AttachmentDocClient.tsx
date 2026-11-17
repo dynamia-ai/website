@@ -7,7 +7,6 @@ import {
   PaperClipIcon,
   ListBulletIcon,
 } from '@heroicons/react/24/outline';
-import MainLayout from '@/components/layout/MainLayout';
 import { useDocContentEnhancements } from '@/hooks/useDocContentEnhancements';
 import { useActiveHeading } from '@/hooks/useActiveHeading';
 import type { TocItem } from '@/types/blog';
@@ -34,7 +33,7 @@ export default function AttachmentDocClient({
   useDocContentEnhancements(contentRef, html);
 
   return (
-    <MainLayout>
+    <>
       <section className="relative overflow-hidden border-b border-gray-200 dark:border-gray-800">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 dark:from-primary/10 dark:via-transparent dark:to-primary/10 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -99,6 +98,6 @@ export default function AttachmentDocClient({
           )}
         </div>
       </article>
-    </MainLayout>
+    </>
   );
 }

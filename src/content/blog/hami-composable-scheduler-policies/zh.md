@@ -20,7 +20,7 @@ coverTitle: HAMi 2.10 解读（三）
 
 > 推理副本要紧凑装箱，多卡要落同一 NUMA 节点保带宽，时延敏感的负载干脆独占几张卡——一句话里三种策略，以前只能选一个。本文是 HAMi 2.10 解读系列第三篇：讲清“先过滤、后排序”的求值模型，并用四张 T4 上的真实选择路径逐一验证。
 
-[系列前两篇](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/)讲了 HAMi 与外部调度器的集成：KAI Scheduler 之于 NVIDIA GPU（[解读一](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/)），Volcano 之于昇腾 NPU（[解读二](/blog/volcano-ascend-vnpu-soft-slicing/)）。本篇回到 HAMi 自己的调度器，看 v2.10.0 里另一个容易被忽视但很实用的调度特性：**可组合调度策略**。
+[系列前两篇](/blog/kai-scheduler-hami-gpu-memory-hard-isolation)讲了 HAMi 与外部调度器的集成：KAI Scheduler 之于 NVIDIA GPU（[解读一](/blog/kai-scheduler-hami-gpu-memory-hard-isolation)），Volcano 之于昇腾 NPU（[解读二](/blog/volcano-ascend-vnpu-soft-slicing)）。本篇回到 HAMi 自己的调度器，看 v2.10.0 里另一个容易被忽视但很实用的调度特性：**可组合调度策略**。
 
 HAMi 一直通过 `hami.io/gpu-scheduler-policy` 注解提供按 Pod 生效的 GPU 调度策略：`binpack` 尽量把负载堆叠到少数卡上，`spread` 尽量打散，v2.10.0 新增的 `mutex` 则要求独占一张卡。但在 v2.10.0 之前，这个注解只能填**一个**值。
 
@@ -159,8 +159,8 @@ kubectl -n kube-system logs deploy/hami-scheduler -c vgpu-scheduler-extender \
 
 ## 系列阅读
 
-- 本系列上一篇：[《HAMi 2.10 解读（二）：一张昇腾卡切给两个 Pod——Volcano + HAMi-core vNPU 软切分实测》](/blog/volcano-ascend-vnpu-soft-slicing/)
-- 本系列第一篇：[《HAMi 2.10 解读（一）：实测 KAI Scheduler + HAMi GPU 显存硬隔离》](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/)
+- 本系列上一篇：[《HAMi 2.10 解读（二）：一张昇腾卡切给两个 Pod——Volcano + HAMi-core vNPU 软切分实测》](/blog/volcano-ascend-vnpu-soft-slicing)
+- 本系列第一篇：[《HAMi 2.10 解读（一）：实测 KAI Scheduler + HAMi GPU 显存硬隔离》](/blog/kai-scheduler-hami-gpu-memory-hard-isolation)
 - [《HAMi v2.10.0 发布：Flexible MIG、可组合调度策略与更广阔的加速器生态》](https://project-hami.io/zh/blog/hami-v2-10-0-release)
 - 动手实验：[《实验 14：在 GKE 上验证可组合调度策略》](https://project-hami.io/zh/tutorials/labs/composable-scheduler-policies-gke)
 

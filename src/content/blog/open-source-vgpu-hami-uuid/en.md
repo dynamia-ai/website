@@ -50,7 +50,7 @@ The specific workflow can be divided into the following steps:
 
 ## 2. DevicePlugin Reports GPU Information
 
-This part has been analyzed in detail before. Recommended reading: [HAMi vGPU Solution Analysis Part 1: hami-device-plugin-nvidia Implementation](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)
+This part has been analyzed in detail before. Recommended reading: [HAMi vGPU Solution Analysis Part 1: hami-device-plugin-nvidia Implementation](/blog/open-source-vgpu-hami-device-plugin-nvidia)
 
 ### Reporting GPU Information
 
@@ -205,9 +205,9 @@ The processing logic for By Type, By UUID, Use, and NoUse is similar, so we won'
 
 Refer to the previous articles on HAMi scheduling:
 
-[HAMi vGPU Solution Analysis Part 3: hami-scheduler Workflow Analysis](https://dynamia.ai/zh/blog/open-source-vgpu-hami-scheduler)
+[HAMi vGPU Solution Analysis Part 3: hami-scheduler Workflow Analysis](/blog/open-source-vgpu-hami-scheduler)
 
-[HAMi vGPU Solution Analysis Part 4: Implementation of Advanced Scheduling Strategies Spread & Binpack](https://dynamia.ai/zh/blog/open-source-vgpu-hami-Spread-Binpack)
+[HAMi vGPU Solution Analysis Part 4: Implementation of Advanced Scheduling Strategies Spread & Binpack](/blog/open-source-vgpu-spread-binpack)
 
 The scheduling process is as follows:
 

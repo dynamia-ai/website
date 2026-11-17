@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import AttachmentDocClient from '@/components/attachments/AttachmentDocClient';
 import { getAttachmentDoc, getAttachmentSlugs } from '@/lib/attachments';
+import MainLayout from '@/components/layout/MainLayout';
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -37,12 +38,14 @@ export default async function AttachmentPage({ params }: PageProps) {
   if (!doc) notFound();
 
   return (
-    <AttachmentDocClient
-      title={doc.frontmatter.title}
-      description={doc.frontmatter.description}
-      lastUpdated={doc.frontmatter.lastUpdated}
-      html={doc.html}
-      toc={doc.toc}
-    />
+  <MainLayout>
+      <AttachmentDocClient
+        title={doc.frontmatter.title}
+        description={doc.frontmatter.description}
+        lastUpdated={doc.frontmatter.lastUpdated}
+        html={doc.html}
+        toc={doc.toc}
+      />
+  </MainLayout>
   );
 }

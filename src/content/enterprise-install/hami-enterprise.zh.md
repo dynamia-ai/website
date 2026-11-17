@@ -4,10 +4,10 @@ productId: "hami-enterprise"
 version: "v2.9.0"
 lastUpdated: "2026-05-20"
 language: "zh"
-description: "HAMi Enterprise 在 Kubernetes 集群上的部署、GPU 节点对接与监控配置。"
+description: "Dynamia HAMi 企业版 在 Kubernetes 集群上的部署、GPU 节点对接与监控配置。"
 ---
 
-> 本文档面向 SRE / 平台工程师，介绍如何在 Kubernetes 集群上部署 **HAMi Enterprise**（HAMi 企业版），并完成 GPU
+> 本文档面向 SRE / 平台工程师，介绍如何在 Kubernetes 集群上部署 **Dynamia HAMi 企业版**（HAMi 企业版），并完成 GPU
 > 节点开启、监控对接与功能验证。
 
 > ⚠️ **安装 ≠ 激活**
@@ -19,7 +19,7 @@ description: "HAMi Enterprise 在 Kubernetes 集群上的部署、GPU 节点对�
 
 ## 架构与定位
 
-HAMi Enterprise 是开源 HAMi 项目的企业版，包含：
+Dynamia HAMi 企业版 是开源 HAMi 项目的企业版，包含：
 
 - **增强版 Device Plugin**：替代 NVIDIA 默认 device-plugin，支持 vGPU 切分、显存超卖
 - **Scheduler 扩展**：基于 GPU 拓扑的调度策略
@@ -42,7 +42,7 @@ HAMi Enterprise 是开源 HAMi 项目的企业版，包含：
 > 关键约束：HAMi 自带 device-plugin，与 NVIDIA GPU Operator 内置 device-plugin **冲突**。若已安装 GPU Operator，务必通过
 `--set devicePlugin.enabled=false` 禁用其内置 plugin。
 
-## 安装 HAMi Enterprise
+## 安装 Dynamia HAMi 企业版
 
 > 两种安装路径，按场景选：
 >

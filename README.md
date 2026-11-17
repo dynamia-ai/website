@@ -57,8 +57,6 @@ npm run lint             # Run ESLint
 npm run typecheck        # Generate the asset manifest, then check TypeScript
 npm run test:blog-assets  # Test image selection, the manifest and function traces
 
-# Search
-npm run algolia:index    # Generate Algolia search index
 ```
 
 ## Project Structure

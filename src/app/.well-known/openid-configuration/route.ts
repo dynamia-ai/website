@@ -15,6 +15,6 @@ export function GET() {
     scopes_supported: ['openid', 'profile', 'email', 'contact:write'],
     claims_supported: ['sub', 'name', 'email'],
     token_endpoint_auth_methods_supported: ['client_secret_basic', 'client_secret_post'],
-    service_documentation: absoluteUrl('/resources'),
+    service_documentation: absoluteUrl('/blog'),
   });
 }

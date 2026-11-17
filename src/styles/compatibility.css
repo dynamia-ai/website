@@ -1,0 +1,127 @@
+/* Compatibility page */
+
+.compat {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 65px;
+  align-items: center;
+}
+.compat p {
+  font-size: 15px;
+  line-height: 1.9;
+  margin-top: 20px;
+}
+.ecosystem {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 30px;
+}
+.eco-layer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.eco-label {
+  text-align: center;
+  font-size: 10px;
+  color: var(--muted);
+  margin: 20px 0 8px;
+}
+.eco-label:first-child {
+  margin-top: 0;
+}
+.eco-layer span {
+  font-size: 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 16px;
+  color: #526358;
+}
+.eco-core {
+  text-align: center;
+  background: #edf5e2;
+  border: 1px solid #d6e8bf;
+  padding: 18px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #547731;
+}
+.eco-connector {
+  height: 22px;
+  width: 1px;
+  background: #cadbc3;
+  margin: auto;
+}
+.eco-hardware {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+.eco-hardware span {
+  padding: 12px 5px;
+  font-size: 11px;
+  text-align: center;
+  background: #f7f9f6;
+  border: 1px solid #edf1e9;
+  border-radius: 5px;
+}
+.eco-note {
+  font-size: 9px;
+  text-align: center;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+.eco-layer-tight {
+  margin: 0;
+}
+
+:root[data-theme="dark"] .ecosystem {
+  background: #161616;
+}
+
+:root[data-theme="dark"] .eco-layer span {
+  color: #b5beb0;
+}
+:root[data-theme="dark"] .eco-core {
+  background: #202b18;
+  border: 1px solid #43583a;
+  color: #a8d677;
+}
+:root[data-theme="dark"] .eco-connector {
+  background: #202b18;
+}
+:root[data-theme="dark"] .eco-hardware span {
+  background: #141c11;
+  border: 1px solid #43583a;
+}
+
+@media (max-width: 900px) {
+  .compat {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 760px) {
+  .ecosystem {
+    padding: 23px 17px;
+  }
+
+  .eco-layer span {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+
+  .eco-hardware {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eco-hardware span {
+    font-size: 10px;
+  }
+}

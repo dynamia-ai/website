@@ -311,7 +311,7 @@ Let's briefly analyze the vdcu-device-plugin. According to the steps for using v
     - This is the only way for the driver to know how much core and memory to limit this vDCU to.
 
 It's recommended to read this first:
-[HAMi vGPU Solution Analysis Part 1: hami-device-plugin-nvidia Implementation](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)
+[HAMi vGPU Solution Analysis Part 1: hami-device-plugin-nvidia Implementation](/blog/open-source-vgpu-hami-device-plugin-nvidia)
 
 The implementations are similar.
 

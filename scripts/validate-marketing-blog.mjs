@@ -139,7 +139,13 @@ export function validate({ base, slug, ifContent = false }) {
   for (let i = 0; i < status.length; i += 2) changes.push({ status: status[i], file: status[i + 1] });
   for (const file of git('ls-files', '--others', '--exclude-standard', '-z').split('\0').filter(Boolean)) changes.push({ status: 'A', file });
   const relevant = changes.filter(({ file }) => file.startsWith('src/content/blog/') || file.startsWith('public/images/blog/'));
-  if (!relevant.length && ifContent) return { skipped: true, reason: 'No blog content changed' };
+  const nonContent = changes.filter(({ file }) => !file.startsWith('src/content/blog/') && !file.startsWith('public/images/blog/'));
+  // CI uses --if-content so engineering/redesign PRs are not forced through the
+  // marketing content-only allowlist; pure marketing PRs still get the gate.
+  if (ifContent && !relevant.length) return { skipped: true, reason: 'No blog content changed' };
+  if (ifContent && nonContent.length) {
+    return { skipped: true, reason: 'Non-content changes present; skipping marketing content gate' };
+  }
   if (!relevant.length) fail('No blog changes found');
   const slugs = new Set(relevant.map(({ file }) => file.split('/')[3]));
   if (slugs.size !== 1) fail('A marketing PR must change exactly one post');

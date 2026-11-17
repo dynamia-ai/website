@@ -1,0 +1,102 @@
+/* Privacy, cookies, FAQ and similar long-form pages */
+
+.legal-page {
+  padding-bottom: 72px;
+}
+
+.legal-body {
+  max-width: 760px;
+}
+
+.legal-body > p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.legal-section + .legal-section {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.legal-section h2 {
+  font-size: 22px;
+  margin: 0 0 12px;
+}
+
+.legal-section p,
+.legal-section div {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.legal-faq-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.legal-faq-item {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px 24px;
+  background: #fff;
+}
+
+.legal-faq-item h2 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.legal-faq-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.85;
+}
+
+.legal-cta {
+  margin-top: 48px;
+  padding: 32px;
+  border-radius: 12px;
+  background: #f4f7f0;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.legal-cta h3 {
+  font-size: 24px;
+  margin: 0 0 12px;
+}
+
+.legal-cta p {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+
+.legal-cta .actions {
+  justify-content: center;
+}
+
+.legal-body .legal-footer-note {
+  margin-top: 36px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .legal-faq-item,
+  .legal-cta {
+    padding: 20px;
+  }
+}
+
+:root[data-theme="dark"] .legal-faq-item {
+  background: #161616;
+}
+
+:root[data-theme="dark"] .legal-cta {
+  background: #141c11;
+  border-color: #43583a;
+}

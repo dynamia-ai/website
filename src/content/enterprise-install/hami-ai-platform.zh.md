@@ -11,7 +11,7 @@ description: "HAMi 平台版在 Kubernetes 集群上的部署、组件依赖、H
 >
 > ⚠️ **安装 ≠ 激活**
 >
-> 完成本节的 Helm 安装后，HAMi 平台版的组件会运行，但 **HAMi Enterprise 底层的 GPU 虚拟化与调度功能需要激活证书后才能正常使用**。
+> 完成本节的 Helm 安装后，HAMi 平台版的组件会运行，但 **Dynamia HAMi 企业版 底层的 GPU 虚拟化与调度功能需要激活证书后才能正常使用**。
 > 安装过程本身不依赖证书，您可以先完成部署，再通过后续步骤申请并导入证书。
 >
 > 简而言之：**先装软件，后拿证书；不激活则 vGPU 切分与调度功能不可用，验证也会失败。**
@@ -42,9 +42,9 @@ HAMi 平台版（密瓜智能异构算力调度、虚拟化系统）是部署在
 
 > 关键约束：HAMi 自带 device-plugin，与 NVIDIA GPU Operator 内置 device-plugin **冲突**。若已安装 GPU Operator，务必通过 `--set devicePlugin.enabled=false` 禁用其内置 plugin。
 
-## 安装 HAMi Enterprise
+## 安装 Dynamia HAMi 企业版
 
-HAMi 平台版依赖 HAMi Enterprise 作为底层 GPU 虚拟化与调度层。请先完成 HAMi Enterprise 的部署与激活。
+HAMi 平台版依赖 Dynamia HAMi 企业版 作为底层 GPU 虚拟化与调度层。请先完成 Dynamia HAMi 企业版 的部署与激活。
 
 > 两种安装路径，按场景选：
 >
@@ -134,7 +134,7 @@ helm install kantaloupe \
 
 `hami-ai-platform(kantaloupe)` 由于需要配置“功能特性”，“服务暴露”，“采集监控指标”等事项，配置自由度较高，请按需配置。
 
-`hami-ai-platform(kantaloupe)` 常见 Chart 自定义选项如下表，完整 values 配置请见：[HAMi AI Platform Helm Values Reference](/zh/attachments/kantaloupe-helm-values)。
+`hami-ai-platform(kantaloupe)` 常见 Chart 自定义选项如下表，完整 values 配置请见：[Dynamia HAMi 平台版 Helm Values Reference](/zh/attachments/kantaloupe-helm-values)。
 
 | 参数 | 说明 | 默认值 |
 |---|---|---|
@@ -150,7 +150,7 @@ helm install kantaloupe \
 | `auth.existingAuthSecret` | 包含 `jwt-secret` 和 `bootstrap-admin-password` 的现有 Secret 名称（生产环境推荐） | `""` |
 | `monitoring.enabled` | 是否创建 ServiceMonitor、PrometheusRule 等监控资源 | `true` |
 | `monitoring.namespace` | 监控资源（ServiceMonitor 等）所在的命名空间 | `monitoring` |
-| `hamiNamespace` | 已安装的 HAMi Enterprise 所在的命名空间 | `hami-system` |
+| `hamiNamespace` | 已安装的 Dynamia HAMi 企业版 所在的命名空间 | `hami-system` |
 | `controllerManager.replicaCount` | controller-manager 副本数 | `1` |
 | `installCRDs` | 是否在安装时创建/更新 CRD 资源 | `true` |
 | `fullnameOverride` | 覆盖所有资源名称前缀 | `kantaloupe` |
@@ -327,7 +327,7 @@ kubectl -n kantaloupe-system get pods
 kubectl -n kantaloupe-system get svc
 ```
 
-HAMi AI Platform 服务暴露后，打开站点，确认前后端正常工作。
+Dynamia HAMi 平台版 服务暴露后，打开站点，确认前后端正常工作。
 
 #### 创建工作负载
 

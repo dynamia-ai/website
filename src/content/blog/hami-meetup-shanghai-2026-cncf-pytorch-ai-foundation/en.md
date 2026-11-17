@@ -24,7 +24,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/sl
 
 The model runs, yet the business never ships. One team waits for GPUs while another team's devices sit underused. For enterprise AI platform teams, the hard part usually sits at the seams between models, toolchains, and infrastructure. As model counts grow, those gaps turn into cost, collaboration, and operational pressure.
 
-This is the first deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026/) series. **Keith Chan**, CNCF China Director and Linux Foundation APAC Vice President, opened the event with "CNCF x PyTorch: Building a Cloud Native AI R&D Foundation for Industry Adoption," offering a layered collaboration model. In it, HAMi occupies the scheduling and resource management layer, responsible for heterogeneous compute sharing and management. From an enterprise platform perspective, understanding that position is what lets you judge what adopting HAMi solves — and which other components you still need.
+This is the first deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026) series. **Keith Chan**, CNCF China Director and Linux Foundation APAC Vice President, opened the event with "CNCF x PyTorch: Building a Cloud Native AI R&D Foundation for Industry Adoption," offering a layered collaboration model. In it, HAMi occupies the scheduling and resource management layer, responsible for heterogeneous compute sharing and management. From an enterprise platform perspective, understanding that position is what lets you judge what adopting HAMi solves — and which other components you still need.
 
 ## Key Takeaways
 
@@ -99,11 +99,11 @@ For Dynamia, enterprise AI foundation building should be accepted against a real
 
 ## Series
 
-- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026/)
+- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
 - **(1) Where Does HAMi Fit in the CNCF × PyTorch Cloud Native AI Foundation?** (this post)
-- [(2) After GPU Sharing: How HAMi 2.10 Improves Isolation, Scheduling, and Observability](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/)
-- [(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)
-- [(4) Turning GPU Performance into Inference Service Capability: Lessons from Iluvatar](/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/)
-- [(5) How iFLYTEK Manages Multi-Business GPU Sharing with Volcano + HAMi-core](/blog/hami-meetup-shanghai-2026-volcano-hami-core/)
-- [(6) How UCloud Turns HAMi Sharing into Ready-to-Use Development Environments](/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/)
-- [(7) From User to Co-Builder: Why Enterprises Need a Sustainable HAMi Community](/blog/hami-meetup-shanghai-2026-community-panel/)
+- [(2) After GPU Sharing: How HAMi 2.10 Improves Isolation, Scheduling, and Observability](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu)
+- [(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)
+- [(4) Turning GPU Performance into Inference Service Capability: Lessons from Iluvatar](/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference)
+- [(5) How iFLYTEK Manages Multi-Business GPU Sharing with Volcano + HAMi-core](/blog/hami-meetup-shanghai-2026-volcano-hami-core)
+- [(6) How UCloud Turns HAMi Sharing into Ready-to-Use Development Environments](/blog/hami-meetup-shanghai-2026-ucloud-ai-platform)
+- [(7) From User to Co-Builder: Why Enterprises Need a Sustainable HAMi Community](/blog/hami-meetup-shanghai-2026-community-panel)

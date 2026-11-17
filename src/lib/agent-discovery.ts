@@ -5,7 +5,7 @@ export const SITE_ORIGIN = SITE_URL;
 export const AGENT_LINK_HEADERS = [
   '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
   '</openapi.json>; rel="service-desc"; type="application/vnd.oai.openapi+json"',
-  '</resources>; rel="service-doc"; type="text/html"',
+  '</blog>; rel="service-doc"; type="text/html"',
   '</.well-known/oauth-protected-resource>; rel="oauth-protected-resource"; type="application/json"',
   '</.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json"',
   '</.well-known/agent-skills/index.json>; rel="service-meta"; type="application/json"',
@@ -19,7 +19,7 @@ Dynamia AI builds enterprise-grade heterogeneous computing infrastructure for AI
 
 - [Products](/products)
 - [Solutions](/solutions)
-- [Resources](/resources)
+- [Blog](/blog)
 - [Case studies](/case-studies)
 - [API catalog](/.well-known/api-catalog)
 - [OpenAPI description](/openapi.json)

@@ -1,41 +1,19 @@
-import { use } from "react";
-import { setRequestLocale, getTranslations } from "next-intl/server";
-import type { Metadata } from "next";
-import CompanyPage from "@/components/pages/CompanyPage";
-import { localizedUrl, pageAlternates } from "@/utils/i18n";
+import {setRequestLocale} from 'next-intl/server';
+import AboutPage from '@/components/pages/AboutPage';
+import {siteMetadata} from '@/lib/site/metadata';
+import MainLayout from '@/components/layout/MainLayout';
 
-const PATH = "/company";
-
-export default function Company({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = use(params);
-  setRequestLocale(locale);
-  return <CompanyPage />;
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  return siteMetadata('/about', locale);
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "company" });
-  const title = t("about.title");
-  const description = t("about.description");
-  const url = localizedUrl(PATH, locale);
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url,
-      type: "website",
-    },
-    alternates: pageAlternates(PATH, locale),
-  };
+export default async function Page({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  setRequestLocale(locale);
+  return (
+    <MainLayout>
+      <AboutPage />
+    </MainLayout>
+  );
 }

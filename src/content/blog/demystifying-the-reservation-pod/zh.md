@@ -20,7 +20,7 @@ linktitle: 深入理解 Reservation Pod
 ---
 
 
-昨天我们发布的[《Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望》](<https://dynamia.ai/zh/blog/Run> ai- KAI-scheduler vs hami)深入探讨了 KAI-Scheduler 如何实现 GPU 分数共享，非常感谢大家的关注和热烈讨论！特别是有读者指出了一个关键技术细节需要进一步澄清，今天我们就来专门解析这个问题。
+昨天我们发布的[《Nvidia 收购 Run:ai 后开源的 KAI-Scheduler vs HAMi：GPU 共享的技术路线分析与协同展望》](/blog/run-ai-kai-scheduler-vs-hami)深入探讨了 KAI-Scheduler 如何实现 GPU 分数共享，非常感谢大家的关注和热烈讨论！特别是有读者指出了一个关键技术细节需要进一步澄清，今天我们就来专门解析这个问题。
 
 ## 读者反馈与技术澄清
 

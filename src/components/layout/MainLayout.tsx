@@ -1,19 +1,31 @@
-import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import '@/styles/site.css';
+import type {ReactNode} from 'react';
+import {getLocale} from 'next-intl/server';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
+import PageEffects from '@/components/layout/PageEffects';
+import ThemeSync from '@/components/layout/ThemeSync';
+import BackToTop from '@/components/layout/BackToTop';
+import ArticleImageViewer from '@/components/layout/ArticleImageViewer';
 
 interface MainLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+export default async function MainLayout({children}: MainLayoutProps) {
+  const locale = await getLocale();
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="site-root" data-locale={locale}>
+      <ThemeSync />
       <Header />
-      <main className="flex-grow">{children}</main>
+      <main id="app" className="native-content">
+        {children}
+      </main>
+      <PageEffects />
       <Footer />
+      <BackToTop />
+      <ArticleImageViewer />
     </div>
   );
-};
-
-export default MainLayout; 
+}

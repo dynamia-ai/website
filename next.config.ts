@@ -4,6 +4,11 @@ import createNextIntlPlugin from "next-intl/plugin";
 import { PublicAssetManifestPlugin, writePublicAssetManifest } from "./scripts/public-assets.mjs";
 
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: process.cwd(),
+  outputFileTracingIncludes: {
+    '/*': ['./src/content/site/**/*', './dictionary/**/*'],
+    '/api/contact': ['./src/content/mail-attachments/dynamia-customer-case-studies.pdf'],
+  },
   webpack(config, { dev, isServer, nextRuntime }) {
     if (dev && isServer && nextRuntime === 'nodejs') {
       config.plugins.push(new PublicAssetManifestPlugin(__dirname));
@@ -26,6 +31,7 @@ const nextConfig: NextConfig = {
         return [
           { source: `${prefix}/resources/blog`, destination: `${targetPrefix}/blog`, permanent: true },
           { source: `${prefix}/resources/documentation`, destination: 'https://project-hami.io/docs/', permanent: true },
+          { source: `${prefix}/resources`, destination: `${targetPrefix}/blog`, permanent: true },
           { source: `${prefix}/contact`, destination: `${targetPrefix}/apply-trial`, permanent: true },
         ];
       }),

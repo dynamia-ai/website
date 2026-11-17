@@ -4,7 +4,6 @@ import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useLocale, useTranslations } from 'next-intl';
-import MainLayout from '@/components/layout/MainLayout';
 import { localizedPath } from '@/utils/i18n';
 
 interface MetricEntry {
@@ -563,7 +562,7 @@ export default function HamiMetricsExplorer() {
   const nodesUnitText = t('tools.hamiMetricsExplorerPage.nodesUnit');
 
   return (
-    <MainLayout>
+    <>
       <div className="bg-[#f8fafc] py-12 text-gray-900 min-h-screen dark:bg-gray-900 dark:text-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div>
@@ -1105,6 +1104,6 @@ export default function HamiMetricsExplorer() {
           </div>
         </div>
       ) : null}
-    </MainLayout>
+    </>
   );
 }

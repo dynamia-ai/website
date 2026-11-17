@@ -25,7 +25,7 @@ coverTitle: HAMi 2.10 Deep Dive (Part 3)
 
 > Inference replicas want tight binpacking, multi-GPU Pods want the same NUMA node for bandwidth, and latency-sensitive workloads want whole GPUs to themselves — three policies in one sentence, and you used to have to pick just one. In the third article of our HAMi 2.10 deep-dive series, we explain the filter-then-sort evaluation model and verify each step with a real selection path across four T4s.
 
-The [first two articles](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/) in this series covered HAMi's integration with external schedulers: KAI Scheduler for NVIDIA GPUs ([Part 1](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/)) and Volcano for Ascend NPUs ([Part 2](/blog/volcano-ascend-vnpu-soft-slicing/)). This article returns to HAMi's own scheduler for another easily overlooked but very practical v2.10.0 feature: **composable scheduling policies**.
+The [first two articles](/blog/kai-scheduler-hami-gpu-memory-hard-isolation) in this series covered HAMi's integration with external schedulers: KAI Scheduler for NVIDIA GPUs ([Part 1](/blog/kai-scheduler-hami-gpu-memory-hard-isolation)) and Volcano for Ascend NPUs ([Part 2](/blog/volcano-ascend-vnpu-soft-slicing)). This article returns to HAMi's own scheduler for another easily overlooked but very practical v2.10.0 feature: **composable scheduling policies**.
 
 HAMi has long offered per-Pod GPU scheduling policies via the `hami.io/gpu-scheduler-policy` annotation: `binpack` stacks workloads onto fewer cards, `spread` scatters them, and the new-in-v2.10.0 `mutex` demands a card of its own. But before v2.10.0, the annotation accepted only **one** value.
 
@@ -164,8 +164,8 @@ Author: Jimmy Song (宋净超), Dynamia AI.
 
 ## Series Reading
 
-- Previous: [HAMi 2.10 Deep Dive (Part 2): One Ascend Card, Two Pods — Testing Volcano + HAMi-core vNPU Soft Slicing](/blog/volcano-ascend-vnpu-soft-slicing/)
-- Part 1: [HAMi 2.10 Deep Dive (Part 1): Tested — KAI Scheduler + HAMi GPU Memory Hard Isolation](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/)
+- Previous: [HAMi 2.10 Deep Dive (Part 2): One Ascend Card, Two Pods — Testing Volcano + HAMi-core vNPU Soft Slicing](/blog/volcano-ascend-vnpu-soft-slicing)
+- Part 1: [HAMi 2.10 Deep Dive (Part 1): Tested — KAI Scheduler + HAMi GPU Memory Hard Isolation](/blog/kai-scheduler-hami-gpu-memory-hard-isolation)
 - [HAMi v2.10.0 Release: Flexible MIG, Composable Scheduling Policies, and a Broader Accelerator Ecosystem](https://project-hami.io/blog/hami-v2-10-0-release)
 - Hands-on lab: [Lab 14: Validating Composable Scheduling Policies on GKE](https://project-hami.io/tutorials/labs/composable-scheduler-policies-gke)
 

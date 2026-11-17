@@ -423,7 +423,7 @@ void* utilization_watcher() {
 
 It calculates how many tokens to add back in each cycle using the `delta` function and then calls `change_token` to replenish the tokens. The `delta` function calculates the increment based on the difference between the target utilization (`upper_limit`) and the current utilization.
 
-This is consistent with the test results from [Open Source vGPU Solution HAMI: Core & Memory Isolation Test](https://dynamia.ai/blog/open-source-vgpu-hami-core-memory-test), where the GPU utilization might exceed the threshold in the short term, but over a longer period, the average value fluctuates around the threshold.
+This is consistent with the test results from [Open Source vGPU Solution HAMI: Core & Memory Isolation Test](/blog/open-source-vgpu-hami-core-memory-test), where the GPU utilization might exceed the threshold in the short term, but over a longer period, the average value fluctuates around the threshold.
 
 ![vGPU memory allocation and isolation diagram](/images/blog/gpu7/p3.jpg)
 > The image above shows the test result when the GPU Core Limit is set to 30.

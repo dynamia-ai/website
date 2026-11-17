@@ -23,7 +23,7 @@ linktitle: HAMi NVIDIA Device Plugin
 
 This is the first article in a series analyzing the implementation principles of the open-source vGPU solution HAMI, focusing on the implementation of `hami-device-plugin-nvidia`.
 
-Previously, in [Open Source vGPU Solution: HAMI for Fine-Grained GPU Partitioning](https://dynamia.ai/blog/open-source-vgpu-hami-fine-grained-partitioning), we introduced what HAMI is. Then, in [Open Source vGPU Solution HAMI: Core & Memory Isolation Test](https://dynamia.ai/blog/open-source-vgpu-hami-core-memory-test), we tested the vGPU solution provided by HAMI.
+Previously, in [Open Source vGPU Solution: HAMI for Fine-Grained GPU Partitioning](/blog/open-source-vgpu-hami-fine-grained-partitioning), we introduced what HAMI is. Then, in [Open Source vGPU Solution HAMI: Core & Memory Isolation Test](/blog/open-source-vgpu-hami-core-memory-test), we tested the vGPU solution provided by HAMI.
 
 Next, we will gradually analyze the implementation principles of vGPU in HAMI, which involves many components. It is tentatively divided into several parts:
 

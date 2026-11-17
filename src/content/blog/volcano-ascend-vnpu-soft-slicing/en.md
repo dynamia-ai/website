@@ -25,7 +25,7 @@ coverTitle: HAMi 2.10 Deep Dive (Part 2)
 
 > GPUs have HAMi for hard memory isolation — but what about Ascend NPUs? In the second article of our HAMi 2.10 deep-dive series, we validate Volcano scheduling + HAMi-core soft slicing on a real Ascend 310P3: the container sees only its 8192 MiB slice, two Pods binpack onto the same physical card, and monitoring metrics report faithfully.
 
-In [Part 1](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/) we tested KAI Scheduler + HAMi-core hard memory isolation on NVIDIA GPUs: two Pods sharing one T4, and neither could grab a single extra MiB. Readers immediately asked: **what about Ascend NPUs?**
+In [Part 1](/blog/kai-scheduler-hami-gpu-memory-hard-isolation) we tested KAI Scheduler + HAMi-core hard memory isolation on NVIDIA GPUs: two Pods sharing one T4, and neither could grab a single extra MiB. Readers immediately asked: **what about Ascend NPUs?**
 
 Ascend is the workhorse of domestic AI inference in China. A 310P3 carries 21.5 GiB of memory; wasting an entire card per inference service is just as painful there. But sharing an NPU is even easier to get wrong than sharing a GPU — vNPU, hard slicing, soft slicing, Volcano modes: a pile of concepts tangled together, and just sorting out "who is slicing the card and what comes out" can cost you half a day.
 
@@ -195,8 +195,8 @@ Author: Jimmy Song (宋净超), Dynamia AI.
 
 ## Series Reading
 
-- Previous: [HAMi 2.10 Deep Dive (Part 1): Tested — KAI Scheduler + HAMi GPU Memory Hard Isolation](/blog/kai-scheduler-hami-gpu-memory-hard-isolation/)
-- Next: [HAMi 2.10 Deep Dive (Part 3): Exclusive, Binpacked, and NUMA-Aligned — Scheduling Policies Are Now Composable](/blog/hami-composable-scheduler-policies/)
+- Previous: [HAMi 2.10 Deep Dive (Part 1): Tested — KAI Scheduler + HAMi GPU Memory Hard Isolation](/blog/kai-scheduler-hami-gpu-memory-hard-isolation)
+- Next: [HAMi 2.10 Deep Dive (Part 3): Exclusive, Binpacked, and NUMA-Aligned — Scheduling Policies Are Now Composable](/blog/hami-composable-scheduler-policies)
 - [HAMi v2.10.0 Release: Flexible MIG, Composable Scheduling Policies, and a Broader Accelerator Ecosystem](https://project-hami.io/blog/hami-v2-10-0-release)
 - Reproduce the test: [Lab 13: Soft-Slicing Ascend 310P3 vNPUs with Volcano + HAMi-core](https://project-hami.io/tutorials/labs/volcano-ascend-vnpu)
 

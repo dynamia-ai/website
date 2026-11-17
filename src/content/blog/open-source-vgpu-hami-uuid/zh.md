@@ -49,7 +49,7 @@ HAMi 提供了按 GPU 类型和 GPU UUID 的精准调度的能力：
 
 ## 2. DevicePlugin 上报 GPU 信息
 
-这部分之前详细分析过，推荐阅读：[HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现](https://dynamia.ai/zh/blog/open-source-vgpu-hami-device-plugin-nvidia)
+这部分之前详细分析过，推荐阅读：[HAMi vGPU 方案原理分析 Part1：hami-device-plugin-nvidia 实现](/blog/open-source-vgpu-hami-device-plugin-nvidia)
 
 ### 上报 GPU 信息
 
@@ -204,9 +204,9 @@ spec:
 
 参考前面几篇 HAMi 调度相关的文章：
 
-[HAMi vGPU 原理分析 Part3：hami-scheduler 工作流程分析](https://dynamia.ai/zh/blog/open-source-vgpu-hami-scheduler)
+[HAMi vGPU 原理分析 Part3：hami-scheduler 工作流程分析](/blog/open-source-vgpu-hami-scheduler)
 
-[HAMi vGPU 原理分析 Part4：Spread&Binpack 高级调度策略实现](https://dynamia.ai/zh/blog/open-source-vgpu-hami-Spread-Binpack)
+[HAMi vGPU 原理分析 Part4：Spread&Binpack 高级调度策略实现](/blog/open-source-vgpu-spread-binpack)
 
 调度流程如下：
 

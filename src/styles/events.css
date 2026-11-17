@@ -1,0 +1,229 @@
+/* Events page */
+
+.events-hero {
+  text-align: center;
+  padding: 76px 0 44px;
+  background: radial-gradient(ellipse at 50% 0, #f0f6e8, transparent 75%);
+}
+.events-hero .eyebrow {
+  justify-content: center;
+}
+.events-hero h1 {
+  font-size: 48px;
+}
+.events-hero p {
+  font-size: 16px;
+  max-width: 610px;
+  margin: 20px auto 0;
+}
+.event-content {
+  padding: 14px 0 75px;
+}
+.event-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr 0.95fr;
+  align-items: center;
+  gap: 42px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+.event-row h2 {
+  font-size: 24px;
+  line-height: 1.45;
+}
+.event-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: #819071;
+  margin-top: 17px;
+}
+.event-description p {
+  font-size: 14px;
+  line-height: 1.95;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.event-description .textlink {
+  font-size: 12px;
+  margin-top: 20px;
+}
+.event-cover {
+  border-radius: 9px;
+  border: 1px solid #e1e9dc;
+  display: block;
+  overflow: hidden;
+}
+.event-cover .text-cover {
+  min-height: 165px;
+}
+.event-cover .text-cover strong {
+  font-size: 19px;
+}
+.event-cover img {
+  object-fit: cover;
+}
+.event-row:hover h2 {
+  color: #557d31;
+}
+.section .event-note {
+  font-size: 11px;
+  color: #8a9582;
+  margin-top: 48px;
+}
+.event-photo {
+  display: block;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  position: relative;
+}
+.event-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--photo-position, center);
+  transition: transform 0.25s;
+}
+.event-photo:hover img {
+  transform: scale(1.025);
+}
+.event-photo-figure {
+  margin: 0;
+}
+.event-photo-figure figcaption {
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 8px;
+  color: var(--muted);
+}
+.event-photo-portrait img {
+  object-position: center 38%;
+}
+@media (max-width: 760px) {
+  .event-cover .text-cover small {
+    display: none;
+  }
+  .event-photo-figure {
+    grid-row: 2;
+  }
+  .event-photo {
+    aspect-ratio: 3/2;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .event-photo img {
+    transition: none;
+  }
+  .event-photo:hover img {
+    transform: none;
+  }
+}
+
+:root[data-theme="dark"] .events-hero {
+  background: radial-gradient(ellipse at 50% 0, #202b18, transparent 75%);
+}
+:root[data-theme="dark"] .event-meta {
+  color: #b5beb0;
+}
+:root[data-theme="dark"] .event-row:hover h2 {
+  color: #a8d677;
+}
+:root[data-theme="dark"] .section .event-note {
+  color: #b5beb0;
+}
+
+@media (max-width: 1050px) {
+  .event-row {
+    gap: 25px;
+  }
+  .event-row h2 {
+    font-size: 21px;
+  }
+}
+@media (max-width: 760px) {
+  .events-hero h1 {
+    font-size: 36px;
+  }
+  .events-hero p {
+    font-size: 14px;
+  }
+  .event-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 21px;
+    padding: 28px 0;
+  }
+  .event-description {
+    grid-column: 1/-1;
+    grid-row: 2;
+  }
+  .event-row h2 {
+    font-size: 20px;
+  }
+  .event-meta {
+    font-size: 10px;
+    gap: 6px;
+  }
+  .event-description p {
+    font-size: 13px;
+  }
+  .events-hero {
+    padding: 44px 0 26px;
+  }
+  .events-hero .eyebrow {
+    font-size: 10px;
+  }
+  .event-cover .text-cover strong {
+    font-size: 14px;
+  }
+  .event-cover .text-cover {
+    min-height: 110px;
+    padding: 14px;
+  }
+  .event-cover .cover-mark {
+    width: 48px;
+    height: 19px;
+  }
+}
+@media (max-width: 480px) {
+  .event-row {
+    grid-template-columns: 1fr;
+  }
+  .event-cover {
+    grid-row: 2;
+  }
+  .event-description {
+    grid-row: 3;
+  }
+  .event-row h2 {
+    font-size: 23px;
+  }
+  .event-cover .text-cover {
+    min-height: 180px;
+    padding: 24px;
+  }
+  .event-cover .text-cover strong {
+    font-size: 23px;
+  }
+  .event-cover .cover-mark {
+    width: 65px;
+    height: 24px;
+  }
+  .event-description p {
+    -webkit-line-clamp: unset;
+  }
+}
+
+.event-description .textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.event-cover {
+  border-radius: 9px;
+}

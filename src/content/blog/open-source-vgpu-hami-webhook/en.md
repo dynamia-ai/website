@@ -21,7 +21,7 @@ linktitle: HAMi Webhook Explained
 
 In the last article, we analyzed `hami-device-plugin-nvidia` and understood how HAMI's NVIDIA device plugin works.
 
-[Previous article: "HAMI vGPU Solution Principle Analysis Part 1: hami-device-plugin-nvidia Implementation"](https://dynamia.ai/blog/open-source-vgpu-hami-device-plugin-nvidia-analysis)
+[Previous article: "HAMI vGPU Solution Principle Analysis Part 1: hami-device-plugin-nvidia Implementation"](/blog/open-source-vgpu-hami-device-plugin-nvidia)
 
 This is the second article in the HAMI principle analysis series, analyzing the implementation of `hami-scheduler`.
 

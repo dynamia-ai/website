@@ -1,113 +1,77 @@
-"use client";
+import {getLocale, getTranslations} from 'next-intl/server';
+import SiteArrow from '@/components/layout/SiteArrow';
+import {localizedPath} from '@/utils/i18n';
+import {websitePath} from '@/lib/site/links';
+import '@/styles/solutions.css';
 
-import React from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useLocale, useTranslations } from 'next-intl';
-import { localizedPath } from '@/utils/i18n';
-import MainLayout from '@/components/layout/MainLayout';
+interface SolutionCategory {
+  title: string;
+  description: string;
+}
 
-// Animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-export default function Solutions() {
-  const t = useTranslations();
-  const locale = useLocale();
-  
-  const categoriesData = t.raw('solutions.categories');
-  const categories: { title: string; description: string }[] = Object.values(categoriesData);
+export default async function SolutionsPage() {
+  const t = await getTranslations('solutions');
+  const nav = await getTranslations('navigation');
+  const locale = await getLocale();
+  const categoriesRaw = t.raw('categories');
+  const categories = Array.isArray(categoriesRaw)
+    ? (categoriesRaw as SolutionCategory[])
+    : [];
 
   return (
-    <MainLayout>
-      <div className="py-16 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-4xl">
-              {t('solutions.title')}
-            </h1>
-            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400 dark:text-gray-500 sm:mt-4">
-              {t('solutions.subtitle')}
-            </p>
+    <>
+      <section className="page-hero">
+        <div className="wrap">
+          <div className="eyebrow">{t('title')}</div>
+          <h1>{t('title')}</h1>
+          <p className="lead">{t('subtitle')}</p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="solutions-grid">
+            {categories.map((category) => (
+              <article className="solutions-card" key={category.title}>
+                <h3>{category.title}</h3>
+                <p>{category.description}</p>
+              </article>
+            ))}
           </div>
 
-          <div className="mt-16">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
-              {categories.map((category, index) => (
-                <motion.div
-                  key={index}
-                  initial="hidden"
-                  whileInView="visible"
-                  variants={fadeIn}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-900 overflow-hidden shadow rounded-lg"
-                >
-                  <div className="h-48 bg-primary-light flex items-center justify-center">
-                    <div className="w-24 h-24 bg-primary-light rounded-full flex items-center justify-center">
-                      <span className="text-primary font-bold">{category.title.split('/')[0]}</span>
-                    </div>
-                  </div>
-                  <div className="px-4 py-5 sm:p-6">
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">{category.title}</h3>
-                    <p className="mt-2 text-base text-gray-500 dark:text-gray-400 dark:text-gray-500">{category.description}</p>
-
-                  </div>
-                </motion.div>
-              ))}
+          <div className="solutions-split">
+            <div>
+              <h2>{t('customSolutions.title')}</h2>
+              <p>{t('customSolutions.description')}</p>
+              <a className="btn primary" href={localizedPath(websitePath('/contact-sales'), locale)}>
+                {t('customSolutions.contactButton')}
+                <SiteArrow variant="button" />
+              </a>
+            </div>
+            <div>
+              <h3>{t('successStories.title')}</h3>
+              <p>{t('successStories.subtitle')}</p>
+              <a className="textlink" href={localizedPath(websitePath('/cases'), locale)}>
+                <span>{t('successStories.viewAllButton')}</span>
+                <SiteArrow variant="text" />
+              </a>
             </div>
           </div>
 
-          <div className="mt-16 bg-primary-lighter rounded-lg p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">{t('solutions.customSolutions.title')}</h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {t('solutions.customSolutions.description')}
-                </p>
-                <Link
-                  href={localizedPath('/apply-trial', locale)}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark"
-                >
-                  {t('solutions.customSolutions.contactButton')}
-                </Link>
-              </div>
-              <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">{t('solutions.successStories.title')}</h3>
-                <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-6">{t('solutions.successStories.subtitle')}</p>
-                <Link
-                  href={localizedPath('/case-studies', locale)}
-                  className="text-primary hover:text-primary-dark font-medium"
-                >
-                  {t('solutions.successStories.viewAllButton')} &rarr;
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-              {t('solutions.readyForChallenge')}
-            </h2>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href={localizedPath('/apply-trial', locale)}
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary-dark transition-colors"
-              >
-                {t('navigation.freeTrial')}
-              </Link>
-              <Link
-                href={localizedPath('/apply-trial', locale)}
-                className="inline-flex items-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white dark:bg-gray-900 hover:bg-gray-50 dark:bg-gray-900 transition-colors"
-              >
-                {t('navigation.freeTrial')}
-              </Link>
+          <div className="solutions-cta">
+            <h2>{t('readyForChallenge')}</h2>
+            <div className="actions">
+              <a className="btn primary" href={localizedPath(websitePath('/contact-sales'), locale)}>
+                {nav('freeTrial')}
+                <SiteArrow variant="button" />
+              </a>
+              <a className="btn" href={localizedPath(websitePath('/cases'), locale)}>
+                {t('successStories.viewAllButton')}
+              </a>
             </div>
           </div>
         </div>
-      </div>
-    </MainLayout>
+      </section>
+    </>
   );
-} 
+}

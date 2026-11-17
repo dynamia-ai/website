@@ -40,7 +40,7 @@ export function GET() {
           properties: {
             path: {
               type: 'string',
-              enum: ['/products', '/solutions', '/resources', '/case-studies', '/tools'],
+              enum: ['/products', '/solutions', '/blog', '/case-studies', '/tools'],
             },
           },
           required: ['path'],

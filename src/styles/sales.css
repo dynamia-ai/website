@@ -1,0 +1,302 @@
+/* Pricing, contact sales, and related form pages */
+
+.sales-page {
+  background:
+    radial-gradient(ellipse at 15% 20%, #edf6e3, transparent 45%), #f7f9f6;
+  padding: 70px 0 90px;
+}
+
+.sales-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 85px;
+  align-items: start;
+}
+
+.sales-copy h1 {
+  font-size: clamp(34px, 4vw, 54px);
+}
+
+.sales-copy > p {
+  margin-top: 24px;
+  font-size: 17px;
+}
+
+.sales-points {
+  margin: 34px 0;
+}
+
+.sales-point {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.sales-point .icon {
+  flex-shrink: 0;
+}
+
+.sales-point h3 {
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+
+.sales-point h3:last-child {
+  margin-bottom: 0;
+}
+
+.sales-point p {
+  font-size: 13px;
+}
+
+.sales-form {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 36px;
+  border-radius: 20px;
+  box-shadow: 0 15px 60px #1d3e1f07;
+}
+
+.sales-form h2 {
+  font-size: 25px;
+  margin-bottom: 9px;
+}
+
+.sales-form > p {
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.sales-direct {
+  font-size: 14px;
+}
+
+.sales-aside-note {
+  font-size: 13px;
+}
+
+.sales-form .field {
+  font-size: 12px;
+}
+
+.sales-form .btn {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.sales-form .field input,
+.sales-form .field select,
+.sales-form .field textarea {
+  background-color: #fcfdfb;
+}
+
+.sales-result {
+  background: var(--pale);
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 24px;
+}
+
+.sales-result h3 {
+  font-size: 20px;
+  margin-bottom: 13px;
+}
+
+.sales-result p {
+  font-size: 14px;
+}
+
+.sales-result[hidden] {
+  display: none;
+}
+
+form .form-footnote {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 15px;
+}
+
+.pricing-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 12px;
+  margin-top: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.pricing-consent input {
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.pricing-consent a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.pricing-consent a:hover {
+  color: var(--green-dark);
+}
+
+@media (max-width: 800px) {
+  .sales-page {
+    padding: 40px 0 60px;
+  }
+  .sales-form {
+    padding: 25px;
+  }
+  .sales-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 760px) {
+  .gpu-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+:root[data-theme="dark"] .sales-page {
+  background:
+    radial-gradient(ellipse at 15% 20%, #202b18, transparent 45%), #141c11;
+}
+
+:root[data-theme="dark"] .sales-form {
+  background: #161616;
+}
+
+:root[data-theme="dark"] .sales-form .field input,
+:root[data-theme="dark"] .sales-form .field select,
+:root[data-theme="dark"] .sales-form .field textarea {
+  background-color: #141c11;
+}
+
+/* Get practices form */
+.practice-gpu {
+  grid-column: 1/-1;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.practice-gpu legend {
+  font-size: 14px;
+  font-weight: 550;
+  margin-bottom: 12px;
+}
+.gpu-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+.gpu-choice {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  padding: 12px 10px;
+  border: 1px solid #dce4d7;
+  border-radius: 7px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.gpu-choice:has(input:checked) {
+  background: #edf5e4;
+  border-color: #83aa53;
+  color: #355421;
+}
+.gpu-choice input {
+  width: 15px;
+  height: 15px;
+  accent-color: #729d41;
+}
+.practice-result {
+  padding: 32px;
+  border: 1px solid #d5e6c3;
+  background: #f3f8ed;
+  border-radius: 10px;
+  line-height: 1.8;
+}
+.practice-result h3 {
+  font-size: 25px;
+  margin: 12px 0;
+}
+.practice-result p {
+  font-size: 14px;
+}
+.practice-result .btn {
+  margin-top: 22px;
+}
+.practice-result [data-download-status] {
+  margin-top: 12px;
+  font-size: 12px;
+}
+.practice-pack-preview {
+  margin: 36px 0;
+  padding: 24px;
+  border-top: 1px solid #dce4d7;
+  border-bottom: 1px solid #dce4d7;
+}
+.practice-pack-preview strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+.practice-pack-preview p {
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+:root[data-theme="dark"] .gpu-choice {
+  border: 1px solid #343a32;
+}
+:root[data-theme="dark"] .gpu-choice:has(input:checked) {
+  background: #202b18;
+  border-color: #43583a;
+  color: #a8d677;
+}
+:root[data-theme="dark"] .practice-result {
+  border: 1px solid #43583a;
+  background: #141c11;
+}
+:root[data-theme="dark"] .practice-pack-preview {
+  border-top: 1px solid #343a32;
+  border-bottom: 1px solid #343a32;
+}
+
+/* Shared page-end closing CTA */
+/* Sales entry: page-end closing action */
+.sales-closing {
+  text-align: center;
+  padding: 22px 0;
+}
+.sales-closing .eyebrow {
+  justify-content: center;
+}
+.sales-closing h2 {
+  font-size: clamp(28px, 3.2vw, 43px);
+}
+.sales-closing p {
+  max-width: 660px;
+  margin: 20px auto 0;
+  font-size: 16px;
+  line-height: 1.9;
+}
+.sales-closing .actions {
+  justify-content: center;
+  margin-top: 30px;
+}
+.sales-closing .btn {
+  min-width: 174px;
+  padding: 15px 28px;
+}
+@media (max-width: 700px) {
+  .sales-closing p {
+    font-size: 15px;
+  }
+}
+
+
