@@ -50,7 +50,7 @@ DRA + Kueue + HAMi + vLLM: A Production Architecture for Scheduler-Agnostic GPU 
 
 同时，Kueue 可以承担工作负载的配额管理和准入控制，帮助团队管理不同任务对算力资源的使用。
 
-![HAMi DRA 接入生产推理的架构示意](/images/blog/hami-kubecon-na-2026-recap/image-01.png "unnumbered-caption")
+![HAMi DRA 接入生产推理的架构示意](/images/blog/hami-kubecon-na-2026-recap/image-01.png)
 
 ### **推理请求需要更聪明的路由**
 
@@ -62,7 +62,7 @@ DRA + Kueue + HAMi + vLLM: A Production Architecture for Scheduler-Agnostic GPU 
 
 针对这一情况，分享进一步介绍了 llm-d 的 EPP（Endpoint Picker）机制，通过感知缓存状态，将请求优先路由到已经持有相关前缀缓存的推理实例。
 
-![前缀感知路由与负载感知路由对比](/images/blog/hami-kubecon-na-2026-recap/image-02.png "unnumbered-caption")
+![前缀感知路由与负载感知路由对比](/images/blog/hami-kubecon-na-2026-recap/image-02.png)
 
 在分享展示的一组 MI355X 实验中，三个 vLLM 实例分别使用 30% 的 HBM 资源。在 QPS 为 8 的测试条件下，开启 EPP 后，Prefix Cache 命中率从 45.2% 提升至 92.4%，TTFT P90 从 251ms 降至 157ms。
 
@@ -98,7 +98,7 @@ DRA + Kueue + HAMi + vLLM: A Production Architecture for Scheduler-Agnostic GPU 
 - Spread：将任务分散到不同设备，减少资源竞争。
 - NUMA：结合 CPU NUMA 节点与 GPU 拓扑进行资源放置，减少跨 NUMA 访问带来的性能损耗。
 
-![Mutex、Spread 与 NUMA 组合调度策略](/images/blog/hami-kubecon-na-2026-recap/image-03.png "unnumbered-caption")
+![Mutex、Spread 与 NUMA 组合调度策略](/images/blog/hami-kubecon-na-2026-recap/image-03.png)
 
 ### **Flexible-MIG**
 
@@ -108,7 +108,7 @@ Flexible-MIG 则尝试改变这一过程：先根据 Pod 的资源请求寻找�
 
 例如，一个任务需要 18GB 显存，系统可以根据可用模板寻找满足条件的分区，而不是要求用户提前将 GPU 固定切成某一种规格。
 
-![Flexible-MIG 按显存请求匹配分区模板](/images/blog/hami-kubecon-na-2026-recap/image-04.png "unnumbered-caption")
+![Flexible-MIG 按显存请求匹配分区模板](/images/blog/hami-kubecon-na-2026-recap/image-04.png)
 
 ### **Remote-GPU**
 
@@ -124,7 +124,7 @@ Remote-GPU 是本次分享介绍的另一个能力。
 
 这意味着用户可以通过相对统一的资源请求和调度方式管理不同类型的加速设备，减少异构硬件接入带来的使用复杂度。
 
-![HAMi v2.10 的 AMD GPU 支持](/images/blog/hami-kubecon-na-2026-recap/image-05.png "unnumbered-caption")
+![HAMi v2.10 的 AMD GPU 支持](/images/blog/hami-kubecon-na-2026-recap/image-05.png)
 
 ### **HAMi-DRA**
 
@@ -136,7 +136,7 @@ HAMi-DRA 并不是另起一套设备管理标准，而是基于 Kubernetes DRA �
 
 从调度策略、远程 GPU 到 DRA，HAMi 正在逐步扩展 GPU 资源管理的适用范围，让用户能够根据实际工作负载选择合适的资源分配方式。
 
-![HAMi DRA 与 Kubernetes 原生资源分配的关系](/images/blog/hami-kubecon-na-2026-recap/image-06.png "unnumbered-caption")
+![HAMi DRA 与 Kubernetes 原生资源分配的关系](/images/blog/hami-kubecon-na-2026-recap/image-06.png)
 
 ## ContribFest：从零开始理解 GPU 虚拟化
 
@@ -174,7 +174,7 @@ Reza Jelveh（HAMi Community Contributor）、李孟轩（HAMi 核心作者）�
 
 这个实验展示了 GPU 共享场景下一个容易被忽略的问题：**资源总量充足，并不意味着单个设备一定能够满足任务需求。** 实际调度还需要考虑单张设备的资源容量和分配情况。
 
-![模拟 GPU 上的 Pod 调度实验](/images/blog/hami-kubecon-na-2026-recap/image-07.png "unnumbered-caption")
+![模拟 GPU 上的 Pod 调度实验](/images/blog/hami-kubecon-na-2026-recap/image-07.png)
 
 随后，参与者进一步对比 Binpack 和 Spread 两种 GPU 调度策略，观察相同资源请求在不同策略下的分配结果，理解资源集中与分散部署各自适用的场景。
 
@@ -195,7 +195,7 @@ Reza Jelveh（HAMi Community Contributor）、李孟轩（HAMi 核心作者）�
 
 通过 ResourceSlice、DeviceClass、ResourceClaim 和 ResourceClaimTemplate 等核心对象，参与者了解了 DRA 如何描述设备、声明资源需求并完成设备分配。
 
-![Kubernetes DRA 的四类核心对象](/images/blog/hami-kubecon-na-2026-recap/image-08.png "unnumbered-caption")
+![Kubernetes DRA 的四类核心对象](/images/blog/hami-kubecon-na-2026-recap/image-08.png)
 
 分享进一步介绍了 HAMi-DRA 的实现路径：通过 HAMi-DRA Webhook 将原有 HAMi GPU 资源请求转换为 DRA ResourceClaim，再由 Kubernetes 原生调度流程完成资源分配，同时保留 HAMi-Core 在容器内的资源隔离能力。
 
@@ -212,7 +212,7 @@ Reza Jelveh（HAMi Community Contributor）、李孟轩（HAMi 核心作者）�
 
 从安装项目、观察调度结果，到理解底层机制，再到寻找第一个贡献入口，这场 ContribFest 希望让开发者不仅能够使用 HAMi，也能进一步理解项目，并找到参与社区共建的切入点。
 
-![ContribFest 分享的 HAMi 社区贡献入口](/images/blog/hami-kubecon-na-2026-recap/image-09.png "unnumbered-caption")
+![ContribFest 分享的 HAMi 社区贡献入口](/images/blog/hami-kubecon-na-2026-recap/image-09.png)
 
 ## HAMi Booth：与全球开发者面对面交流
 
@@ -224,9 +224,9 @@ Reza Jelveh（HAMi Community Contributor）、李孟轩（HAMi 核心作者）�
 
 这些面对面的交流，让社区能够更直接地了解不同用户在 GPU 资源管理中遇到的挑战，也为后续的技术交流和生态合作创造了机会。
 
-![KubeCon 北美站 HAMi 展台交流现场](/images/blog/hami-kubecon-na-2026-recap/image-10.jpg "unnumbered-caption")
+![KubeCon 北美站 HAMi 展台交流现场](/images/blog/hami-kubecon-na-2026-recap/image-10.jpg)
 
-![HAMi 展台合影](/images/blog/hami-kubecon-na-2026-recap/image-11.jpg "unnumbered-caption")
+![HAMi 展台合影](/images/blog/hami-kubecon-na-2026-recap/image-11.jpg)
 
 ## 社区荣誉
 
