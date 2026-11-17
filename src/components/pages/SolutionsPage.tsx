@@ -13,7 +13,10 @@ export default async function SolutionsPage() {
   const t = await getTranslations('solutions');
   const nav = await getTranslations('navigation');
   const locale = await getLocale();
-  const categories = t.raw('categories') as SolutionCategory[];
+  const categoriesRaw = t.raw('categories');
+  const categories = Array.isArray(categoriesRaw)
+    ? (categoriesRaw as SolutionCategory[])
+    : [];
 
   return (
     <>
