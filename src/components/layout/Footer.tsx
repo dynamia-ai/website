@@ -30,12 +30,28 @@ export default async function Footer() {
               {t('footer.taglineTrail')}
             </p>
             <span className="footer-qr-label">{t('footer.qrLabel')}</span>
-            <img
-              className="footer-qr"
-              src="/redesign/assets/a9fadb5062623ccf2372.jpg"
-              alt={t('footer.qrAlt')}
-              loading="lazy"
-            />
+            {locale === 'zh' ? (
+              <img
+                className="footer-qr"
+                src="/redesign/assets/a9fadb5062623ccf2372.jpg"
+                alt={t('footer.qrAlt')}
+                loading="lazy"
+              />
+            ) : (
+              <a
+                href="https://www.linkedin.com/company/dynamia-ai/"
+                target="_blank"
+                rel="noopener"
+                aria-label={t('footer.linkedin')}
+              >
+                <img
+                  className="footer-qr"
+                  src="/images/linkedin-qr-code.png"
+                  alt={t('footer.qrAlt')}
+                  loading="lazy"
+                />
+              </a>
+            )}
           </div>
 
           <div className="site-footer-links">
@@ -100,13 +116,15 @@ export default async function Footer() {
                   <path d="M357.2 48L427.8 48 273.6 224.2 455 464 313 464 201.7 318.6 74.5 464 3.8 464 168.7 275.5-5.2 48 140.4 48 240.9 180.9 357.2 48zM332.4 421.8l39.1 0-252.4-333.8-42 0 255.3 333.8z" />
                 </svg>
               </a>
-              <a
-                href="https://www.zhihu.com/org/shang-hai-mi-gua-zhi-neng-ke-ji-you-xian-gong-si"
-                target="_blank"
-                rel="noopener"
-              >
-                {t('footer.zhihu')}
-              </a>
+              {locale === 'zh' ? (
+                <a
+                  href="https://www.zhihu.com/org/shang-hai-mi-gua-zhi-neng-ke-ji-you-xian-gong-si"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {t('footer.zhihu')}
+                </a>
+              ) : null}
             </div>
           </div>
 
