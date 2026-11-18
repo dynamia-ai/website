@@ -27,7 +27,7 @@ export default async function GetPracticesPage() {
               <p>{t('aside.body1')}</p>
             </div>
             <p className="sales-aside-note">{t('aside.body2')}</p>
-            <a className="textlink" href={localizedPath(websitePath('/cases'), locale)}>
+            <a className="textlink" href={localizedPath(websitePath('/case-studies'), locale)}>
               {t('aside.back')}
             </a>
           </div>

@@ -131,7 +131,7 @@ export default function Header() {
           <Link className="navlink" href={href('/pricing')} onClick={closeMenus}>
             {t('nav.pricing')}
           </Link>
-          <Link className="navlink" href={href('/cases')} onClick={closeMenus}>
+          <Link className="navlink" href={href('/case-studies')} onClick={closeMenus}>
             {t('nav.cases')}
           </Link>
           <div className="navitem">
@@ -321,7 +321,7 @@ export default function Header() {
           <span>{t('mobile.pricing')}</span>
           <SiteArrow variant="text" />
         </Link>
-        <Link href={href('/cases')} onClick={closeMenus}>
+        <Link href={href('/case-studies')} onClick={closeMenus}>
           <span>{t('mobile.cases')}</span>
           <SiteArrow variant="text" />
         </Link>

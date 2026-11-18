@@ -3,6 +3,7 @@ title: "卓驭科技如何借助 Koordinator 将 Kubernetes 上的 GPU 分配率
 company: "zhuoyu-technology"
 companyName: "卓驭科技"
 logo: "/redesign/assets/947e64289732bbc6003c.svg"
+logoDark: true
 date: "2026-09-29"
 dateLabel: "2026.09.29"
 sourceKind: "CNCF 案例 · 中文译文"

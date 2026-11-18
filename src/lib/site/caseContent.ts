@@ -21,6 +21,7 @@ export interface CaseDocument {
   company: string;
   companyName: string;
   logo: string;
+  logoDark: boolean;
   date: string;
   dateLabel: string;
   sourceKind: string;
@@ -40,22 +41,12 @@ export function caseContentSlug(slug: string): string {
   return slug;
 }
 
-export function casePublicSlug(contentSlug: string): string {
-  if (contentSlug === 'ke-holdings-inc') return 'ke-holdings';
-  return contentSlug;
-}
-
 export function getCaseSlugs(): string[] {
   if (!fs.existsSync(CONTENT_PATH)) return [];
   return fs
     .readdirSync(CONTENT_PATH, {withFileTypes: true})
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name);
-}
-
-/** Public URL slugs for case studies (content dirs mapped through aliases). */
-export function getCasePublicSlugs(): string[] {
-  return getCaseSlugs().map(casePublicSlug).sort();
 }
 
 export function getCaseDocument(slug: string, locale: string): CaseDocument | null {
@@ -73,6 +64,7 @@ export function getCaseDocument(slug: string, locale: string): CaseDocument | nu
       company: String(data.company || contentSlug),
       companyName: String(data.companyName || data.company || contentSlug),
       logo: String(data.logo || ''),
+      logoDark: data.logoDark === true,
       date: String(data.date || ''),
       dateLabel: String(data.dateLabel || data.date || ''),
       sourceKind: String(data.sourceKind || ''),

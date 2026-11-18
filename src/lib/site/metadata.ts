@@ -3,17 +3,10 @@ import {getTranslations} from 'next-intl/server';
 import {localizedUrl, pageAlternates} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
 import {contentLocaleCandidates} from '@/lib/site/localeFallback';
-import manifestData from '@/content/site/manifest.json';
 import {getBlogPost} from '@/lib/blog-server';
 import {getCaseDocument} from '@/lib/site/caseContent';
 import {videos} from '@/data/videos';
 import {SITE_URL} from '@/config/app-config';
-
-interface Entry {
-  name: string;
-  title: string;
-  articleId?: number;
-}
 
 type SeoPage =
   | 'home'
@@ -25,9 +18,17 @@ type SeoPage =
   | 'tools'
   | 'solutions'
   | 'whatIsHami'
-  | 'faq';
-
-const manifest = manifestData as Record<string, Entry>;
+  | 'faq'
+  | 'enterprise'
+  | 'platform'
+  | 'getPractices'
+  | 'videos'
+  | 'contactSales'
+  | 'compatibility'
+  | 'events'
+  | 'careers'
+  | 'privacyPolicy'
+  | 'cookiesPolicy';
 
 const SEO_BY_ROUTE: Record<string, SeoPage> = {
   '/': 'home',
@@ -36,12 +37,23 @@ const SEO_BY_ROUTE: Record<string, SeoPage> = {
   '/about': 'company',
   '/blog': 'blog',
   '/cases': 'caseStudies',
+  '/case-studies': 'caseStudies',
   '/tools': 'tools',
   '/solutions': 'solutions',
   '/faq': 'faq',
   '/community': 'whatIsHami',
   '/what-is-hami': 'whatIsHami',
   '/opensource': 'whatIsHami',
+  '/enterprise': 'enterprise',
+  '/platform': 'platform',
+  '/get-practices': 'getPractices',
+  '/videos': 'videos',
+  '/contact-sales': 'contactSales',
+  '/compatibility': 'compatibility',
+  '/events': 'events',
+  '/careers': 'careers',
+  '/privacy-policy': 'privacyPolicy',
+  '/cookies-policy': 'cookiesPolicy',
 };
 
 function buildPageMetadata(input: {
@@ -104,10 +116,11 @@ export async function siteMetadata(route: string, locale: string): Promise<Metad
 
   if (seoPage) {
     const t = await getTranslations({locale, namespace: 'Seo'});
+    const seo = t.raw(seoPage) as {title: string; description: string; keywords?: string};
     return buildPageMetadata({
-      title: t(`${seoPage}.title`),
-      description: t(`${seoPage}.description`),
-      keywords: t(`${seoPage}.keywords`),
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
       path: publicPath,
       locale,
       siteName,
@@ -115,9 +128,8 @@ export async function siteMetadata(route: string, locale: string): Promise<Metad
     });
   }
 
-  const title = manifest[route]?.title || mt('title');
   return buildPageMetadata({
-    title,
+    title: mt('title'),
     description: mt('description'),
     keywords: mt('keywords'),
     path: publicPath,

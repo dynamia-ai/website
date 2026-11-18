@@ -2,6 +2,7 @@ import {getLocale, getTranslations} from 'next-intl/server';
 import SiteArrow from '@/components/layout/SiteArrow';
 import {localizedPath} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
+import {getCaseDocument} from '@/lib/site/caseContent';
 import '@/styles/products.css';
 import '@/styles/cases.css';
 import '@/styles/sales.css';
@@ -29,13 +30,6 @@ interface FitPath {
   external?: boolean;
 }
 
-interface CaseCard {
-  id: 'sfTechnology' | 'prepEdu' | 'keHoldings';
-  company: string;
-  src: string;
-  href: string;
-}
-
 const LINEUP: LineupProduct[] = [
   {id: 'enterprise', href: '/enterprise'},
   {id: 'platform', href: '/platform'},
@@ -48,26 +42,7 @@ const FIT_PATHS: FitPath[] = [
   {id: 'platformTeams', href: '/platform'},
 ];
 
-const CASE_CARDS: CaseCard[] = [
-  {
-    id: 'sfTechnology',
-    company: 'sf-technology',
-    src: '/redesign/assets/e2e5754a2a04fd08a050.svg',
-    href: '/cases/sf-technology',
-  },
-  {
-    id: 'prepEdu',
-    company: 'prep-edu',
-    src: '/redesign/assets/c53a000a30233660d2d0.svg',
-    href: '/cases/prep-edu',
-  },
-  {
-    id: 'keHoldings',
-    company: 'ke-holdings-inc',
-    src: '/redesign/assets/8045f1c8d69940e96b22.png',
-    href: '/cases/ke-holdings-inc',
-  },
-];
+const FEATURED_CASE_SLUGS = ['sf-technology', 'prep-edu', 'ke-holdings-inc'] as const;
 
 const MATRIX_GROUPS: MatrixGroup[] = [
   {
@@ -154,6 +129,11 @@ function MatrixCell({yes, supportedLabel, notSupportedLabel, check, emDash}: Mat
 export default async function ProductsPage() {
   const t = await getTranslations('sitePages.products');
   const locale = await getLocale();
+  const featuredCases = FEATURED_CASE_SLUGS.map((slug) => {
+    const caseDocument = getCaseDocument(slug, locale);
+    if (!caseDocument) throw new Error(`Missing featured case study: ${slug}`);
+    return caseDocument;
+  });
   const supportedLabel = t('ui.supported');
   const notSupportedLabel = t('ui.notSupported');
   const check = t('ui.check');
@@ -319,22 +299,22 @@ export default async function ProductsPage() {
               <h2>{t('cases.title')}</h2>
               <p>{t('cases.description')}</p>
             </div>
-            <a className="textlink" href={localizedPath(websitePath('/cases'), locale)}>
+            <a className="textlink" href={localizedPath(websitePath('/case-studies'), locale)}>
               {t('cases.allLink')}
               <SiteArrow variant="text" />
             </a>
           </div>
           <div className="overview-cases">
-            {CASE_CARDS.map((item) => (
+            {featuredCases.map((item) => (
               <a
                 className="overview-case"
-                href={localizedPath(websitePath(item.href), locale)}
-                key={item.id}
+                href={localizedPath(websitePath(`/case-studies/${item.slug}`), locale)}
+                key={item.slug}
               >
                 <span data-company={item.company} className="case-company-logo">
-                  <img src={item.src} alt={t(`cases.items.${item.id}.name`)} loading="lazy" />
+                  <img src={item.logo} alt={item.companyName} loading="lazy" />
                 </span>
-                <h3>{t(`cases.items.${item.id}.title`)}</h3>
+                <h3>{item.title}</h3>
                 <span className="textlink">
                   {t('cases.readLink')}
                   <SiteArrow variant="text" />

@@ -60,7 +60,7 @@ export default async function Footer() {
           <div className="site-footer-links">
             <h3>{t('footer.companyCommunity')}</h3>
             <Link href={href('/about')}>{t('mobile.about')}</Link>
-            <Link href={href('/cases')}>{t('nav.cases')}</Link>
+            <Link href={href('/case-studies')}>{t('nav.cases')}</Link>
             {showCareers ? <Link href={href('/careers')}>{t('mobile.careers')}</Link> : null}
             <Link href={href('/events')}>{t('mobile.events')}</Link>
             <Link href={href('/community')}>{t('footer.aboutHami')}</Link>

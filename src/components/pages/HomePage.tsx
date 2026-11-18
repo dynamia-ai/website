@@ -33,17 +33,17 @@ interface EcosystemScheduler {
 }
 
 const HERO_USERS: HeroUser[] = [
-  {key: 'sfTechnology', src: '/logos/company8.svg', href: '/cases/sf-technology'},
+  {key: 'sfTechnology', src: '/logos/company8.svg', href: '/case-studies/sf-technology'},
   {key: 'paradigm', src: '/logos/company6.png'},
-  {key: 'daocloud', src: '/logos/company7.png', href: '/cases/daocloud'},
+  {key: 'daocloud', src: '/logos/company7.png', href: '/case-studies/daocloud'},
   {key: 'cloudpilotAi', src: '/logos/company9.svg'},
   {key: 'opencsg', src: '/logos/opencsg.svg'},
   {key: 'intsig', src: '/logos/intsig-zh.png'},
-  {key: 'seres', src: '/redesign/assets/seres-logo.svg', href: '/cases/seres'},
-  {key: 'snowCorp', src: '/redesign/assets/83f5bec99abccb7f8843.jpg', href: '/cases/snow-corp'},
-  {key: 'chinaMerchantsBank', src: '/redesign/assets/b597756761457e50d747.svg', href: '/cases/china-merchants-bank-2'},
-  {key: 'keHoldings', src: '/redesign/assets/8045f1c8d69940e96b22.png', href: '/cases/ke-holdings-inc'},
-  {key: 'nio', src: '/redesign/assets/nio-user.jpeg', href: '/cases/nio'},
+  {key: 'seres', src: '/redesign/assets/seres-logo.svg', href: '/case-studies/seres'},
+  {key: 'snowCorp', src: '/redesign/assets/83f5bec99abccb7f8843.jpg', href: '/case-studies/snow-corp'},
+  {key: 'chinaMerchantsBank', src: '/redesign/assets/b597756761457e50d747.svg', href: '/case-studies/china-merchants-bank-2'},
+  {key: 'keHoldings', src: '/redesign/assets/8045f1c8d69940e96b22.png', href: '/case-studies/ke-holdings-inc'},
+  {key: 'nio', src: '/redesign/assets/nio-user.jpeg', href: '/case-studies/nio'},
 ];
 
 const ECOSYSTEM_VENDORS: EcosystemVendor[] = [
