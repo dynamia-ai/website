@@ -664,64 +664,12 @@
     }
   },
   "enterprise": {
-    "detail": {
-      "releasedAt": "Released",
-      "noRelease": "No release available for this version.",
-      "deliveryTabsLabel": "Delivery mode",
-      "deliveryTabOnline": "Online install",
-      "deliveryTabOffline": "Offline install",
-      "deliveryTabSoon": "Soon",
-      "deliveryOnlineDesc": "Online install steps, OCI/Helm commands, and verification are in the installation guide.",
-      "offlineComingSoonTitle": "Offline packages in preparation",
-      "offlineComingSoonDesc": "All-in-one air-gap bundles and image archives are being packaged and verified. Downloads and SHA256 checksums will appear here when ready."
-    },
-    "artifact": {
-      "download": "Download",
-      "view": "View",
-      "unlockToDownload": "Unlock to download",
-      "installCommand": "Install command",
-      "mirrorLabel": "Download mirror",
-      "groupBundles": "All-in-One Air-gap Bundle",
-      "groupBundlesDesc": "Single tarball with images + Helm chart + install scripts + docs — for fully isolated networks.",
-      "recommendedBadge": "Recommended",
-      "bundleContents": "Includes:",
-      "contentBundle": "All-in-One",
-      "contentImage": "Container images",
-      "contentChart": "Helm chart",
-      "contentDocs": "Install docs",
-      "contentReleaseNotes": "Release notes",
-      "contentChecksum": "Checksum",
-      "groupImages": "Container Images",
-      "groupImagesDesc": "Offline image bundles for air-gapped environments.",
-      "groupCharts": "Helm Charts",
-      "groupChartsDesc": "Install via OCI online, or download a chart tarball.",
-      "groupChartsDescOnline": "Download the chart archive if OCI is unavailable.",
-      "groupChartsDescOffline": "Chart package for offline or private Helm installs.",
-      "groupChartsOptional": "Chart archive (optional)",
-      "groupDocs": "Documentation",
-      "groupDocsDesc": "Installation guides and release notes."
-    },
     "installDoc": {
       "back": "Back to Product",
       "label": "Installation Guide",
       "lastUpdated": "Last updated",
       "tocTitle": "On this page"
     },
-    "gate": {
-      "title": "Unlock Enterprise Downloads",
-      "subtitle": "Unlock with your details — 30-day access.",
-      "submit": "Unlock Downloads",
-      "success": "Thanks! Unlocking now...",
-      "error": "Something went wrong. Please retry or email info@dynamia.ai.",
-      "consentLabel": "I agree to the <link>Privacy Policy</link> and consent to the processing of my information for sales follow-up (GDPR Article 6).",
-      "consentRequired": "Please review and accept the privacy policy to continue."
-    },
-    "checksumPending": "Checksum pending",
-    "copyCommand": "Copy",
-    "copiedCommand": "Copied",
-    "downloadContactNeedBundles": "Need bundles early? Contact sales",
-    "downloadContactSales": "Contact sales",
-    "downloadContactPhone": "or call 400-026-7800",
     "codeLabels": {
       "copy": "Copy",
       "copied": "Copied",
@@ -831,7 +779,6 @@
     "message": "Message",
     "product": "Product",
     "version": "Version",
-    "artifact": "Download artifact",
     "architecture": "Architecture",
     "filename": "Filename",
     "country": "Country",
@@ -2700,15 +2647,5 @@
       }
     },
     "showCareers": false
-  },
-  "productDownloads": {
-    "eyebrow": "DOWNLOADS & INSTALLATION",
-    "description": "Find installation guides, release information and delivery options.",
-    "back": "← Back to product",
-    "title": "Installation guides and releases",
-    "products": {
-      "hami-enterprise": "Dynamia Enterprise for HAMi",
-      "hami-ai-platform": "Dynamia AI Platform for HAMi"
-    }
   }
 }

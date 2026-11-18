@@ -10,7 +10,6 @@
     "lint": "eslint src --quiet && npm run validate:analytics",
     "generate:public-assets": "node scripts/public-assets.mjs",
     "typecheck": "npm run generate:public-assets && tsc --noEmit",
-    "validate:enterprise": "node scripts/validate-enterprise.mjs",
     "validate:analytics": "node scripts/validate-analytics-consent.mjs",
     "validate:blog": "node scripts/validate-blog-metadata.mjs",
     "test:blog-assets": "node --experimental-strip-types --test scripts/public-assets.test.mjs scripts/validate-blog-function-traces.test.mjs",
