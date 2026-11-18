@@ -11,16 +11,10 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
 import { cache } from 'react';
 import { BlogPost, BlogPostMeta, BlogPostsResult, TocItem } from '@/types/blog';
-import {
-  resolveBlogCategoryId,
-  type LocalizedBlogPost,
-} from '@/lib/site/blogData';
-import { contentLocaleCandidates } from '@/lib/site/localeFallback';
 import rehypeImageCaptions from './rehype-image-captions';
 import publicAssetPaths from '@/generated/public-asset-paths.json';
 import { selectPostSocialImage } from './blog-social-image';
 
-const HIDDEN_BLOG_SLUGS = new Set(['hello-world']);
 
 const CONTENT_PATH = path.join(process.cwd(), 'src/content/blog');
 const PUBLIC_ASSETS = new Set(publicAssetPaths);
@@ -70,11 +64,10 @@ export function getBlogPost(slug: string, language = 'en'): BlogPost | null {
       excerpt: data.excerpt || '',
       author: data.author || '',
       tags: data.tags || [],
-      category: data.category || 'Uncategorized',
-      categoryId: data.categoryId,
+      category: data.category || 'Uncategorized', // 博客分类
       coverImage: data.coverImage,
       coverDisplay: data.coverDisplay,
-      coverTitle: data.coverTitle,
+      coverTitle: data.coverTitle, // 自定义封面标题
       language: data.language || language,
       content,
     };
@@ -100,6 +93,11 @@ function getBlogPostMeta(slug: string, language = 'en'): BlogPostMeta | null {
       excerpt: false,
     });
 
+    // 调试日志：检查 linktitle 是否被正确读取
+    if (data.linktitle) {
+      console.log(`[blog-debug] ${slug} has linktitle: "${data.linktitle}"`);
+    }
+
     return {
       slug,
       title: data.title || '',
@@ -108,8 +106,7 @@ function getBlogPostMeta(slug: string, language = 'en'): BlogPostMeta | null {
       excerpt: data.excerpt || '',
       author: data.author || '',
       tags: data.tags || [],
-      category: data.category || 'Uncategorized',
-      categoryId: data.categoryId,
+      category: data.category || 'Uncategorized', // 博客分类
       coverImage: data.coverImage,
       coverDisplay: data.coverDisplay,
       coverTitle: data.coverTitle,
@@ -121,38 +118,6 @@ function getBlogPostMeta(slug: string, language = 'en'): BlogPostMeta | null {
   }
 }
 
-function resolveBlogPostMeta(slug: string, locale: string): BlogPostMeta | null {
-  for (const lang of contentLocaleCandidates(locale)) {
-    const post = getBlogPostMeta(slug, lang);
-    if (post) return post;
-  }
-  return null;
-}
-
-function toLocalizedBlogPost(post: BlogPostMeta): LocalizedBlogPost {
-  const categoryId = resolveBlogCategoryId(post.categoryId, post.category);
-  return {
-    slug: post.slug,
-    date: post.date,
-    categoryId,
-    title: post.title,
-    coverTitle: post.coverTitle || post.linktitle || post.title,
-    desc: post.excerpt || '',
-    authorSearch: post.author || '',
-  };
-}
-
-/** Blog listing / related-rail catalog derived from markdown (single source of truth). */
-export const getBlogCatalog = cache((locale: string): LocalizedBlogPost[] => {
-  const posts: LocalizedBlogPost[] = [];
-  for (const slug of getBlogPostSlugs()) {
-    if (HIDDEN_BLOG_SLUGS.has(slug)) continue;
-    const post = resolveBlogPostMeta(slug, locale);
-    if (post) posts.push(toLocalizedBlogPost(post));
-  }
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-});
-
 // 获取所有博客文章元数据和标签（使用缓存优化性能）
 export const getAllBlogPosts = cache((language = 'en'): BlogPostsResult => {
   const slugs = getBlogPostSlugs();
@@ -160,8 +125,12 @@ export const getAllBlogPosts = cache((language = 'en'): BlogPostsResult => {
   const tags = new Set<string>();
   const categories = new Set<string>();
 
+  // 需要隐藏的文章 slug 列表
+  const hiddenSlugs = ['hello-world'];
+
   for (const slug of slugs) {
-    if (HIDDEN_BLOG_SLUGS.has(slug)) {
+    // 跳过需要隐藏的文章
+    if (hiddenSlugs.includes(slug)) {
       continue;
     }
 

@@ -176,6 +176,18 @@
   color: #688362;
   margin-top: 10px;
 }
+.text-cover[data-tone="技术博客"] {
+  background: linear-gradient(125deg, #eaf1f7, #f4f8fb 60%, #e9f3f2);
+}
+.text-cover[data-tone="版本发布"] {
+  background: linear-gradient(125deg, #e4f1d1, #f5f9eb 70%, #e0f0da);
+}
+.text-cover[data-tone="公司新闻"] {
+  background: linear-gradient(125deg, #f5f1e4, #fbf9f0 65%, #f1eee3);
+}
+.text-cover[data-tone="实践案例"] {
+  background: linear-gradient(125deg, #e5efed, #f1f8f5 65%, #e8f1ee);
+}
 .blog-card-body {
   padding: 22px 23px 20px;
   display: flex;
@@ -641,32 +653,27 @@
   position: relative;
   border-bottom: 3px solid var(--cover-line);
 }
-.content-cover[data-category="practice"] {
-  --cover-bg: #e5eee9;
-  --cover-ink: #48695c;
-}
-
-.content-cover[data-category="tech"] {
+.content-cover[data-category="技术博客"] {
   --cover-bg: #e5edf5;
   --cover-ink: #4b6682;
   --cover-line: #a6b9cc;
 }
-.content-cover[data-category="product"] {
+.content-cover[data-category="产品解读"] {
   --cover-bg: #ece8f2;
   --cover-ink: #6c5e7d;
   --cover-line: #bdb1cd;
 }
-.content-cover[data-category="company"] {
+.content-cover[data-category="公司新闻"] {
   --cover-bg: #f1ebdf;
   --cover-ink: #7b6b4d;
   --cover-line: #c9bc9f;
 }
-.content-cover[data-category="release"] {
+.content-cover[data-category="版本发布"] {
   --cover-bg: #eaf0df;
   --cover-ink: #607345;
   --cover-line: #b2c296;
 }
-.content-cover[data-category="community"] {
+.content-cover[data-category="社区与动态"] {
   --cover-bg: #f2e7e2;
   --cover-ink: #85695d;
   --cover-line: #cdb4a8;
@@ -720,6 +727,24 @@
 }
 .article-cover .cover-category {
   font-size: 12px;
+}
+[data-blog-category="实践案例"] {
+  --dot: #a8beb2;
+}
+[data-blog-category="技术博客"] {
+  --dot: #a6b9cc;
+}
+[data-blog-category="产品解读"] {
+  --dot: #bdb1cd;
+}
+[data-blog-category="公司新闻"] {
+  --dot: #c9bc9f;
+}
+[data-blog-category="版本发布"] {
+  --dot: #b2c296;
+}
+[data-blog-category="社区与动态"] {
+  --dot: #cdb4a8;
 }
 .article-toc a {
   display: flex;
@@ -802,32 +827,27 @@
   border-bottom: 0;
   background: var(--cover-light);
 }
-.content-cover.editorial-cover[data-category="practice"] {
-  --cover-deep: #2f675c;
-  --cover-mid: #7eaea3;
-}
-
-.content-cover.editorial-cover[data-category="tech"] {
+.content-cover.editorial-cover[data-category="技术博客"] {
   --cover-deep: #244c79;
   --cover-mid: #74a4c2;
   --cover-light: #eaf4f8;
 }
-.content-cover.editorial-cover[data-category="product"] {
+.content-cover.editorial-cover[data-category="产品解读"] {
   --cover-deep: #554d76;
   --cover-mid: #a39bbd;
   --cover-light: #f1eef7;
 }
-.content-cover.editorial-cover[data-category="company"] {
+.content-cover.editorial-cover[data-category="公司新闻"] {
   --cover-deep: #786044;
   --cover-mid: #b9a383;
   --cover-light: #f7f2e8;
 }
-.content-cover.editorial-cover[data-category="release"] {
+.content-cover.editorial-cover[data-category="版本发布"] {
   --cover-deep: #496442;
   --cover-mid: #99b18b;
   --cover-light: #eff5e9;
 }
-.content-cover.editorial-cover[data-category="community"] {
+.content-cover.editorial-cover[data-category="社区与动态"] {
   --cover-deep: #7c565c;
   --cover-mid: #bd999e;
   --cover-light: #f7eef0;
