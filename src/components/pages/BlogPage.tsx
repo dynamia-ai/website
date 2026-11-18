@@ -1,6 +1,5 @@
 import {getLocale, getTranslations} from 'next-intl/server';
 import Link from 'next/link';
-import {getBlogCatalog} from '@/lib/blog-server';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
 import BlogListing from '@/components/pages/BlogListing';
@@ -9,7 +8,6 @@ import '@/styles/blog.css';
 export default async function BlogPage() {
   const t = await getTranslations('sitePages.blog');
   const locale = await getLocale();
-  const posts = getBlogCatalog(locale);
 
   return (
     <>
@@ -28,7 +26,7 @@ export default async function BlogPage() {
           </div>
         </div>
       </section>
-      <BlogListing posts={posts} />
+      <BlogListing />
     </>
   );
 }

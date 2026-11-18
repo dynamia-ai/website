@@ -16,7 +16,7 @@ Agent 处理其余字段并随预览展示，无需逐项请求确认：
 - `excerpt`：由 Agent 从正文忠实生成 1–2 句摘要，不添加原文没有的事实或主张。预览时显眼列出摘要并提示市场检查，按聊天反馈直接局部调整，不要求填写摘要或额外确认表单。兼容旧版公司模板中的摘要或用户明确提供的摘要，按用户指示使用；这不是新模板的输入要求。
 - locale：优先用户指定，否则依据单一原文语言判断 zh/en；混合而目标不明时询问。德文需维护者先扩展页面。
 - `date`：新稿默认处理当天的 Asia/Shanghai 日期；用户指定日期则用指定值。日期只用于展示，不预约上线。
-- `category`：**新增时必须先询问运营确认，不得静默自定。** 在聊天中列出全部可选分类（见下方对照表，写清英文 `category` 与中文列表名），可附一条推荐项及一句理由，等用户明确选定后再写入 frontmatter。用户已在本轮明确指定分类则可直接采用，仍须在预览中回显。不新建分类；取值须为 `blogUI.categories` 共有键。
+- `category`：从 `dictionary/en.json`、`dictionary/zh.json` 的 `blogUI.categories` 共有键选择最贴切项，不新建分类。
 - `tags`：从原文主题或名称提取，不能添加无关标签。
 - slug：生成英文小写、数字和连字符形式，检查文章路径及已有 PR，不覆盖已有文章；`hello-world` 为隐藏示例，不作为投稿目标。
 - 封面：封面区域有一张图时使用图片封面；空白用网站文字封面。不把首张正文图擅自当作封面。多张且用途不明才询问。
@@ -39,22 +39,7 @@ coverImage: '/images/blog/example-post/cover.jpg'
 ---
 ```
 
-`title/date/excerpt/author/category/tags` 非空，日期为真实有效的 `YYYY-MM-DD` 字符串。新稿不加 `language`，语言由文件名决定。
-
-`category` 使用下列规范英文标签之一（列表筛选与封面色板在运行时映射为稳定 ID，**不必**也不应批量写入 `categoryId`）：
-
-| `category` | 列表分类 |
-|---|---|
-| `Case Study` / `Customer Success Story` | 实践案例 |
-| `Technical Deep Dive` / `Open Source` | 技术博客 |
-| `Integration & Ecosystem` | 产品解读 |
-| `Company News` / `Partnership` | 公司新闻 |
-| `Product Release` | 版本发布 |
-| `Community & Events` / `Events` / `Year in Review` | 社区与动态 |
-
-仅当某篇需要偏离上述映射时，才可选写 `categoryId`（`practice` \| `tech` \| `product` \| `company` \| `release` \| `community`）。博客列表直接扫描 `src/content/blog`，**不要**再写入已删除的 `blogEditorialData.json`。
-
-`linktitle`、`coverTitle` 为可选独立标题；文字封面新稿可提供简洁的 `coverTitle`（没有需求时可省略，列表会回退到 `linktitle` 或 `title`）。`title` 是文章标题，`coverTitle` 是文字封面标题，`linktitle` 是短标题；修改其中一个不隐含修改其余两个，需结合实际预览说明差异。
+`title/date/excerpt/author/category/tags` 非空，日期为真实有效的 `YYYY-MM-DD` 字符串。新稿不加 `language`，语言由文件名决定。`linktitle`、`coverTitle` 为可选独立标题；没有需求不填。`title` 是文章标题，`coverTitle` 是文字封面标题，`linktitle` 是短标题；修改其中一个不隐含修改其余两个，需结合实际预览说明差异。
 
 `author` 当前用于文章数据、Article 结构化数据和 Open Graph 作者信息，正文页尚不展示署名。不承诺读者能在页面看到，也不擅自把署名插入正文或修改组件；原文已有署名照常保留。
 

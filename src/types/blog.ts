@@ -14,8 +14,7 @@ export interface BlogPost {
   excerpt: string;
   author: string;
   tags: string[];
-  category: string; // legacy display/source label
-  categoryId?: string; // stable filter id: practice|tech|product|company|release|community
+  category: string; // 博客分类
   coverImage?: string;
   coverDisplay?: 'image' | 'text';
   coverTitle?: string; // 自定义封面标题，如果不设置则使用 title
@@ -33,8 +32,7 @@ export interface BlogPostMeta {
   excerpt: string;
   author: string;
   tags: string[];
-  category: string; // legacy display/source label
-  categoryId?: string; // stable filter id: practice|tech|product|company|release|community
+  category: string; // 博客分类
   coverImage?: string;
   coverDisplay?: 'image' | 'text';
   coverTitle?: string; // 自定义封面标题，如果不设置则使用 title
