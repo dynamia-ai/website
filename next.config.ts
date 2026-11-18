@@ -28,11 +28,16 @@ const nextConfig: NextConfig = {
     return [
       ...['', '/en', '/zh', '/de'].flatMap((prefix) => {
         const targetPrefix = prefix === '/en' ? '' : prefix;
+        const caseTargetPrefix = prefix || '/en';
         return [
           { source: `${prefix}/resources/blog`, destination: `${targetPrefix}/blog`, permanent: true },
           { source: `${prefix}/resources/documentation`, destination: 'https://project-hami.io/docs/', permanent: true },
           { source: `${prefix}/resources`, destination: `${targetPrefix}/blog`, permanent: true },
           { source: `${prefix}/contact`, destination: `${targetPrefix}/apply-trial`, permanent: true },
+          { source: `${prefix}/cases`, destination: `${caseTargetPrefix}/case-studies`, permanent: true },
+          { source: `${prefix}/cases/ke-holdings`, destination: `${caseTargetPrefix}/case-studies/ke-holdings-inc`, permanent: true },
+          { source: `${prefix}/cases/:slug`, destination: `${caseTargetPrefix}/case-studies/:slug`, permanent: true },
+          { source: `${prefix}/case-studies/ke-holdings`, destination: `${caseTargetPrefix}/case-studies/ke-holdings-inc`, permanent: true },
         ];
       }),
       { source: '/request-demo', destination: '/apply-trial', permanent: true },

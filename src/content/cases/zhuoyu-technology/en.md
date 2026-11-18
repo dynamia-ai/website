@@ -3,6 +3,7 @@ title: "How Zhuoyu Technology raised GPU allocation above 95% on Kubernetes with
 company: "zhuoyu-technology"
 companyName: "Zhuoyu Technology"
 logo: "/redesign/assets/947e64289732bbc6003c.svg"
+logoDark: true
 date: "2026-09-29"
 dateLabel: "2026.09.29"
 sourceKind: "CNCF case study · Localized edition"

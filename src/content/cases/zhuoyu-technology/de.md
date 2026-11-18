@@ -3,6 +3,7 @@ title: "Wie Zhuoyu Technology mit Koordinator die GPU-Zuweisungsquote auf Kubern
 company: "zhuoyu-technology"
 companyName: "Zhuoyu Technology"
 logo: "/redesign/assets/947e64289732bbc6003c.svg"
+logoDark: true
 date: "2026-09-29"
 dateLabel: "2026.09.29"
 sourceKind: "CNCF-Fallstudie · Übersetzte Fassung"

@@ -49,6 +49,46 @@
       "title": "FAQ - Frequently Asked Questions | Dynamia AI",
       "description": "Find answers to frequently asked questions about Dynamia AI, HAMi, GPU virtualization, pricing, and technical support. Learn more about our heterogeneous computing platform.",
       "keywords": "dynamia ai faq, HAMi questions, GPU virtualization FAQ, heterogeneous computing questions"
+    },
+    "enterprise": {
+      "title": "Bring enterprise GPU management to your existing platform | Dynamia AI",
+      "description": "Built on open-source HAMi, add GPU sharing, scheduling and runtime enhancements to Kubernetes, PaaS and AI platforms while keeping your existing workflows."
+    },
+    "platform": {
+      "title": "Connect clusters, teams and operations on one platform | Dynamia AI",
+      "description": "A unified entry point for multi-cluster management, resource access, monitoring and metering. Includes the Dynamia Enterprise for HAMi engine."
+    },
+    "getPractices": {
+      "title": "Learn from others. Plan your next step. | Dynamia AI",
+      "description": "Tell us about your GPU estate and use case to access practical resources for your evaluation."
+    },
+    "videos": {
+      "title": "Videos | Dynamia AI",
+      "description": "Product demos, technical talks and community events. More videos are on the way."
+    },
+    "contactSales": {
+      "title": "Start with your use case. Discover what compute can do. | Dynamia AI",
+      "description": "Tell us about your infrastructure and business goals to find the right product and deployment path."
+    },
+    "compatibility": {
+      "title": "GPU Environment and Compatibility | Dynamia AI",
+      "description": "Check GPU management, sharing, isolation, and observability against your infrastructure and deployment needs."
+    },
+    "events": {
+      "title": "Events & live streams | Dynamia AI",
+      "description": "Meet online and in person to exchange ideas and practical experience. Explore what’s next for AI infrastructure."
+    },
+    "careers": {
+      "title": "Start your next chapter with us | Dynamia AI",
+      "description": "From GPU virtualization and heterogeneous scheduling to cloud-native AI infrastructure, help bring open-source technology into more real-world workloads."
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy | Dynamia AI",
+      "description": "Read how Dynamia AI collects, uses, and protects personal information."
+    },
+    "cookiesPolicy": {
+      "title": "Cookies Policy | Dynamia AI",
+      "description": "Learn how Dynamia AI uses cookies and manages your consent choices."
     }
   },
   "Metadata": {
@@ -1269,21 +1309,7 @@
         "title": "Proven in real environments",
         "description": "Read public user case studies to explore how different businesses use the technology.",
         "allLink": "All case studies",
-        "readLink": "Read case study",
-        "items": {
-          "sfTechnology": {
-            "name": "SF Technology",
-            "title": "EffectiveGPU: SF Technology’s heterogeneous AI virtualization and pooling solution built on HAMi"
-          },
-          "prepEdu": {
-            "name": "PREP EDU",
-            "title": "PREP EDU enables efficient GPU orchestration for AI inference"
-          },
-          "keHoldings": {
-            "name": "KE Holdings",
-            "title": "Scaling machine learning infrastructure with Kubernetes and HAMi GPU virtualization"
-          }
-        }
+        "readLink": "Read case study"
       },
       "cta": {
         "eyebrow": "LET’S TALK",
@@ -2390,7 +2416,7 @@
         "titleLine2": "Real technology outcomes.",
         "lead": "From autonomous driving and finance to enterprise AI, explore how teams put heterogeneous compute sharing and scheduling into practice.",
         "cncfSource": "Source: CNCF case studies",
-        "count": "12 cases · Newest first"
+        "count": "{count} cases · Newest first"
       },
       "ui": {
         "readCase": "Read the case study"
@@ -2411,97 +2437,50 @@
       },
       "items": {
         "seres": {
-          "aria": "Read case study: How SeresCloud scaled AI inference to 10 billion daily tokens with Kubernetes and HAMi",
-          "name": "Seres",
-          "title": "How SeresCloud scaled AI inference to 10 billion daily tokens with Kubernetes and HAMi",
           "metricLabel": "Daily tokens on SeresCloud",
-          "metric": "10B+",
-          "date": "2026.11.02"
+          "metric": "10B+"
         },
-        "zhuoyu": {
-          "aria": "View case: How Zhuoyu Technology used Koordinator to increase the GPU allocation on Kubernetes to more than 95%",
-          "name": "Zhuoyu Technology",
-          "title": "How Zhuoyu Technology raised GPU allocation above 95% on Kubernetes with Koordinator",
+        "zhuoyu-technology": {
           "metricLabel": "GPU allocation rate",
-          "metric": ">95%",
-          "date": "2026.09.29"
+          "metric": ">95%"
         },
         "sangfor": {
-          "aria": "View the case: how Sangfor built an AI company resourcees platform based on Kubernetes, Volcano and HAMi",
-          "name": "Sangfor",
-          "title": "How Sangfor built an enterprise AI compute platform with Kubernetes, Volcano and HAMi",
           "metricLabel": "Improvement in GPU utilization",
-          "metric": ">3×",
-          "date": "2026.09.08"
+          "metric": ">3×"
         },
-        "cetc": {
-          "aria": "View case: electromechanical cloud constructs a Heterogeneous GPU shared resource base for the portable knowledge base at Hami",
-          "name": "CETC Cloud",
-          "title": "CETC Cloud uses HAMi to build shared heterogeneous GPU infrastructure for a portable knowledge base",
+        "cetc-cloud": {
           "metricLabel": "Development of environmental loads",
-          "metric": "15×",
-          "date": "2026.09.07"
+          "metric": "15×"
         },
-        "cmbPool": {
-          "aria": "View case: a heterogeneous utility pool with two loads: China Merchants Bank training and reference on Kubernetes",
-          "name": "China Merchants Bank",
-          "title": "One heterogeneous compute pool, two workloads: China Merchants Bank unifies training and inference on Kubernetes",
+        "china-merchants-bank-2": {
           "metricLabel": "Average accelerator utilization",
-          "metric": "60%+",
-          "date": "2026.07.02"
+          "metric": "60%+"
         },
-        "cmbSched": {
-          "aria": "View case: China Mercantants Bank improves the AI access resourcechemuling on Kubernetes by using HAMi",
-          "title": "China Merchants Bank improves AI compute scheduling on Kubernetes with HAMi",
+        "china-merchants-bank": {
           "metricLabel": "Hardware resource pool utilization",
-          "metric": "100%",
-          "date": "2026.05.05",
-          "name": "China Merchants Bank"
+          "metric": "100%"
         },
-        "snow": {
-          "aria": "View cases: GenAI: SNOW for 200 million users how to organize thousands of GPUs against 700% traffic peaks",
-          "name": "SNOW Corp.",
-          "title": "GenAI for 200 million users: how SNOW orchestrates 1,000 GPUs to handle 700% traffic spikes",
+        "snow-corp": {
           "metricLabel": "Reduction in average failure recovery time",
-          "metric": "91%",
-          "date": "2026.03.17"
+          "metric": "91%"
         },
         "nio": {
-          "aria": "View case: NIO boosts the GPU usage of autopilot loads with HAMi",
-          "name": "NIO",
-          "title": "NIO improves GPU utilization for autonomous driving workloads with HAMi",
           "metricLabel": "Reduced while imitating load GPU",
-          "metric": "30%",
-          "date": "2026.02.05"
+          "metric": "30%"
         },
-        "ke": {
-          "aria": "View case: expand machine learning infrastructure using Kubernetes and HAMi GPU virtualization",
-          "name": "KE Holdings",
-          "title": "Scaling machine learning infrastructure with Kubernetes and HAMi GPU virtualization",
+        "ke-holdings-inc": {
           "metricLabel": "Increased utilization of the platform GPU",
-          "metric": "≈3×",
-          "date": "2025.12.02"
+          "metric": "≈3×"
         },
         "daocloud": {
-          "aria": "View case: DaoCloud uses Hami to build flexible GPU clouds",
-          "name": "DaoCloud",
-          "title": "DaoCloud builds a flexible GPU cloud with HAMi",
           "metricLabel": "Average GPU utilization",
-          "metric": "57%",
-          "date": "2025.09.18"
+          "metric": "57%"
         },
-        "sf": {
-          "aria": "View case: Effictive GPU: SF Technology based on the Heterogeneous AI videoization scheme of Hami",
-          "name": "SF Technology",
-          "title": "EffectiveGPU: SF Technology’s heterogeneous AI virtualization and pooling solution built on HAMi",
+        "sf-technology": {
           "metricLabel": "GPUs saved in production model serving",
-          "metric": "90%",
-          "date": "2025.08.20"
+          "metric": "90%"
         },
-        "prep": {
-          "aria": "View case: PREP EDU arranges for AI access to GPU",
-          "name": "PREP EDU",
-          "title": "PREP EDU enables efficient GPU orchestration for AI inference",
+        "prep-edu": {
           "metricLabel": "GPU infrastructure optimized by HAMi",
           "metric": ">80%"
         }

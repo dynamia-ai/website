@@ -9,9 +9,7 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  const slugs = new Set(getCaseSlugs());
-  if (slugs.has('ke-holdings-inc')) slugs.add('ke-holdings');
-  return [...slugs].map((slug) => ({slug}));
+  return getCaseSlugs().map((slug) => ({slug}));
 }
 
 export async function generateMetadata({params}: PageProps) {

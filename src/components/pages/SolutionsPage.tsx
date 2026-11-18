@@ -51,7 +51,7 @@ export default async function SolutionsPage() {
             <div>
               <h3>{t('successStories.title')}</h3>
               <p>{t('successStories.subtitle')}</p>
-              <a className="textlink" href={localizedPath(websitePath('/cases'), locale)}>
+              <a className="textlink" href={localizedPath(websitePath('/case-studies'), locale)}>
                 <span>{t('successStories.viewAllButton')}</span>
                 <SiteArrow variant="text" />
               </a>
@@ -65,7 +65,7 @@ export default async function SolutionsPage() {
                 {nav('freeTrial')}
                 <SiteArrow variant="button" />
               </a>
-              <a className="btn" href={localizedPath(websitePath('/cases'), locale)}>
+              <a className="btn" href={localizedPath(websitePath('/case-studies'), locale)}>
                 {t('successStories.viewAllButton')}
               </a>
             </div>

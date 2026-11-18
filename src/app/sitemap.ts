@@ -8,7 +8,7 @@ import {
   CASE_STUDY_LOCALES,
   STATIC_INDEXABLE_PATHS,
 } from "@/lib/seo-routes";
-import { getCasePublicSlugs } from "@/lib/site/caseContent";
+import { getCaseSlugs } from "@/lib/site/caseContent";
 import { localizedAlternates, localizedUrl } from "@/utils/i18n";
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
@@ -60,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  const caseStudyEntries = getCasePublicSlugs().flatMap((slug) =>
+  const caseStudyEntries = getCaseSlugs().flatMap((slug) =>
     entriesForPath(`/case-studies/${slug}`, CASE_STUDY_LOCALES, {
       changeFrequency: "monthly",
       priority: 0.7,
