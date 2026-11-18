@@ -4,11 +4,12 @@ import Link from 'next/link';
 import ArticleCopyLink from '@/components/layout/ArticleCopyLink';
 import BlogCard from '@/components/layout/BlogCard';
 import SiteArrow from '@/components/layout/SiteArrow';
-import {getBlogPost, getAllBlogPosts, markdownToHtml} from '@/lib/blog-server';
+import {getBlogPost, getAllBlogPosts, getBlogCatalog, markdownToHtml} from '@/lib/blog-server';
 import {
+  CATEGORY_LABEL_KEYS,
   CATEGORY_SUBTITLE_KEYS,
   formatBlogDate,
-  localizedBlogPosts,
+  resolveBlogCategoryId,
 } from '@/lib/site/blogData';
 import {localizeContentHtml, websitePath} from '@/lib/site/links';
 import {contentLocaleCandidates} from '@/lib/site/localeFallback';
@@ -42,13 +43,12 @@ export async function BlogArticlePage({slug}: BlogArticlePageProps) {
   const rendered = await markdownToHtml(post.content, figureLabel);
   const html = localizeContentHtml(rendered.html, locale);
   const toc = rendered.toc;
-  const editorial = localizedBlogPosts(locale).find((item) => item.slug === slug);
-  const category = editorial?.category || post.category || '';
-  const categoryId = editorial?.categoryId || category;
-  const coverTitle = editorial?.coverTitle || post.coverTitle || post.linktitle || post.title;
+  const categoryId = resolveBlogCategoryId(post.categoryId, post.category);
+  const category = t(CATEGORY_LABEL_KEYS[categoryId]);
+  const coverTitle = post.coverTitle || post.linktitle || post.title;
   const subtitleKey = CATEGORY_SUBTITLE_KEYS[categoryId];
   const coverSubtitle = subtitleKey ? t(subtitleKey) : '';
-  const related = localizedBlogPosts(locale)
+  const related = getBlogCatalog(locale)
     .filter((item) => item.slug !== slug)
     .slice(0, 3);
   const shareUrl = localizedUrl(websitePath(`/blog/${slug}`), locale);
@@ -156,13 +156,14 @@ export async function BlogArticlePage({slug}: BlogArticlePageProps) {
             <div className="grid3">
               {related.map((item) => {
                 const relatedSubtitleKey = CATEGORY_SUBTITLE_KEYS[item.categoryId];
+                const relatedCategory = t(CATEGORY_LABEL_KEYS[item.categoryId]);
                 return (
                   <BlogCard
-                    key={item.id}
+                    key={item.slug}
                     href={localizedPath(websitePath(`/blog/${item.slug}`), locale)}
                     title={item.title}
                     desc={item.desc}
-                    category={item.category}
+                    category={relatedCategory}
                     categoryId={item.categoryId}
                     date={item.date}
                     coverTitle={item.coverTitle}

@@ -9,14 +9,18 @@ import {
   blogCategoryFilters,
   CATEGORY_LABEL_KEYS,
   CATEGORY_SUBTITLE_KEYS,
-  localizedBlogPosts,
   type BlogCategoryId,
+  type LocalizedBlogPost,
 } from '@/lib/site/blogData';
 import '@/styles/blog.css';
 
 const PAGE_SIZE = 6;
 
-export default function BlogListing() {
+interface BlogListingProps {
+  posts: LocalizedBlogPost[];
+}
+
+export default function BlogListing({posts}: BlogListingProps) {
   const t = useTranslations('sitePages.blog');
   const home = useTranslations('sitePages.home');
   const locale = useLocale();
@@ -26,7 +30,6 @@ export default function BlogListing() {
   const [draftQuery, setDraftQuery] = useState('');
   const [page, setPage] = useState(1);
 
-  const posts = useMemo(() => localizedBlogPosts(locale), [locale]);
   const categories = blogCategoryFilters();
 
   const filtered = useMemo(() => {
@@ -35,12 +38,13 @@ export default function BlogListing() {
       const categoryOk = category === 'all' || post.categoryId === category;
       if (!categoryOk) return false;
       if (!q) return true;
-      return [post.title, post.desc, post.category, post.coverTitle, post.authorSearch]
+      const categoryLabel = t(CATEGORY_LABEL_KEYS[post.categoryId]);
+      return [post.title, post.desc, categoryLabel, post.coverTitle, post.authorSearch]
         .join(' ')
         .toLocaleLowerCase()
         .includes(q);
     });
-  }, [posts, category, query]);
+  }, [posts, category, query, t]);
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount);
@@ -116,13 +120,14 @@ export default function BlogListing() {
           <div className="blog-grid">
             {pageItems.map((post) => {
               const subtitleKey = CATEGORY_SUBTITLE_KEYS[post.categoryId];
+              const categoryLabel = t(CATEGORY_LABEL_KEYS[post.categoryId]);
               return (
                 <BlogCard
-                  key={post.id}
+                  key={post.slug}
                   href={localizedPath(websitePath(`/blog/${post.slug}`), locale)}
                   title={post.title}
                   desc={post.desc}
-                  category={post.category}
+                  category={categoryLabel}
                   categoryId={post.categoryId}
                   date={post.date}
                   coverTitle={post.coverTitle}
