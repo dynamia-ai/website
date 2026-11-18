@@ -17,8 +17,12 @@ category: Community & Events
 language: en
 coverImage: /images/blog/hami-meetup-beijing-recap/hami-meetup-beijing-banner.webp
 linktitle: HAMi Beijing Meetup Recap
+eventsPage:
+  itemKey: beijing
+  placeKey: beijing
+  ctaKey: readRecap
+  image: /redesign/assets/248d187773d7c891a2c7.webp
 ---
-
 ![HAMi Meetup Beijing](/images/blog/hami-meetup-beijing-recap/hami-meetup-beijing-banner.webp)
 
 On December 27, "Efficiency Over Compute Power: HAMi Meetup Beijing Station" concluded successfully in Beijing's Haidian District, bringing high-quality exchanges and profound insights, leaving many wonderful moments! As the second stop of HAMi Meetup, the Beijing Station continued to focus on the practical implementation of domestic compute power in real production scenarios and heterogeneous scheduling engineering practices.

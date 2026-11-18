@@ -3,9 +3,10 @@ title: Dynamia Team to Represent HAMi at KubeCon EU 2026
 linktitle: Dynamia and HAMi at KubeCon EU 2026
 date: '2026-03-18'
 excerpt: >-
-  This weekend, the Dynamia team heads to Amsterdam for KubeCon + CloudNativeCon Europe 2026.
-  As the initiator and leading contributor of the CNCF Sandbox project HAMi, Dynamia will participate
-  in multiple core activities representing the HAMi community.
+  This weekend, the Dynamia team heads to Amsterdam for KubeCon + CloudNativeCon
+  Europe 2026. As the initiator and leading contributor of the CNCF Sandbox
+  project HAMi, Dynamia will participate in multiple core activities
+  representing the HAMi community.
 author: Dynamia
 tags:
   - KubeCon
@@ -16,8 +17,14 @@ tags:
 category: Events
 language: en
 coverImage: /images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png
+eventsPage:
+  itemKey: kubeconEu
+  placeKey: amsterdam
+  ctaKey: readPreview
+  image: /images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png
+  titleField: linkTitle
+  bodyField: linkBody
 ---
-
 This weekend, the **Dynamia** team will head to Amsterdam to attend the upcoming [KubeCon + CloudNativeCon Europe 2026](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/). As one of the most influential conferences in the global cloud native space, this year's KubeCon is expected to attract over **13,000 developers, architects, and infrastructure practitioners** to discuss Kubernetes, AI, and next-generation infrastructure.
 
 ![KubeCon EU 2026 attracts 13,000 attendees](/images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png)

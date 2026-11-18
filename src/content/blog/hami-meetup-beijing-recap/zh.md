@@ -15,8 +15,12 @@ category: Community & Events
 language: zh
 coverImage: /images/blog/hami-meetup-beijing-recap/hami-meetup-beijing-banner.webp
 linktitle: HAMi 北京 Meetup 回顾
+eventsPage:
+  itemKey: beijing
+  placeKey: beijing
+  ctaKey: readRecap
+  image: /redesign/assets/248d187773d7c891a2c7.webp
 ---
-
 ![HAMi Meetup 北京站](/images/blog/hami-meetup-beijing-recap/hami-meetup-beijing-banner.webp)
 
 12 月 27 日，「不卷算力卷效率｜HAMi Meetup 北京站」在北京海淀区圆满落幕，带来了许多高质量的交流和深刻的思想碰撞，留下许多精彩的瞬间！作为 HAMi Meetup 的第二站，北京站继续聚焦国产算力在实际生产场景中的落地探索与异构调度工程实践。

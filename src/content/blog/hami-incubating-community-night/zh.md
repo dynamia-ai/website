@@ -3,8 +3,8 @@ title: 每一份贡献，都让 HAMi 向前｜HAMi Incubating Community Night �
 linktitle: HAMi Incubating Community Night 回顾
 date: '2026-09-09'
 excerpt: >-
-  9 月 6 日晚，密瓜智能、HAMi 与 CNCF 在上海共同举办 HAMi Incubating Community
-  Night，纪念 HAMi 迈入 CNCF Incubating。现场发布 HAMi Ambassador Program，并向 Maintainer、Approver 与
+  9 月 6 日晚，密瓜智能、HAMi 与 CNCF 在上海共同举办 HAMi Incubating Community Night，纪念 HAMi 迈入
+  CNCF Incubating。现场发布 HAMi Ambassador Program，并向 Maintainer、Approver 与
   Contributor 致谢。
 author: 密瓜智能
 tags:
@@ -18,8 +18,12 @@ tags:
 category: Community & Events
 coverImage: /images/blog/hami-incubating-community-night/image1.png
 language: zh
+eventsPage:
+  itemKey: communityNight
+  placeKey: shanghai
+  ctaKey: readRecap
+  image: /redesign/assets/d8e98dc53b24974446f6.png
 ---
-
 9 月 6 日晚，由密瓜智能（Dynamia）、HAMi 与 CNCF 共同举办的 **HAMi Incubating Community Night** 在上海举行。来自 HAMi 社区、云原生与 AI 基础设施生态的伙伴在这里相聚：既有从日本、越南远道而来的社区贡献者、用户，也有来自 CNCF、华为、AMD、壁仞、Daocloud 道客、核聚变、JuiceFS 等全球组织与企业的代表。
 
 与他们一同到场的，还有部分在沪的 HAMi Maintainer、Approver、Contributor，以及终端用户、芯片与云厂商、开源社区代表。这一晚既纪念 HAMi 迈入 CNCF Incubating，也把舞台留给一路参与项目建设的人。技术让更多人认识 HAMi，而这些持续发生的协作，让 HAMi 走到了今天。

@@ -1,11 +1,13 @@
 ---
-title: "HAMi at KubeCon India 2026: From Amsterdam to Mumbai, Taking GPU Sharing Global"
-linktitle: "HAMi at KubeCon India 2026"
+title: >-
+  HAMi at KubeCon India 2026: From Amsterdam to Mumbai, Taking GPU Sharing
+  Global
+linktitle: HAMi at KubeCon India 2026
 date: '2026-06-12'
 excerpt: >-
-  After the landmark Keynote Demo at KubeCon EU 2026, the HAMi community is heading to
-  KubeCon India 2026. CNCF Ambassador Saiyam Pathak will deliver a keynote featuring a live
-  GPU sharing demo on NVIDIA DGX Spark.
+  After the landmark Keynote Demo at KubeCon EU 2026, the HAMi community is
+  heading to KubeCon India 2026. CNCF Ambassador Saiyam Pathak will deliver a
+  keynote featuring a live GPU sharing demo on NVIDIA DGX Spark.
 author: Jimmy Song
 tags:
   - KubeCon
@@ -16,8 +18,12 @@ tags:
 category: Events
 language: en
 coverImage: /images/blog/kubecon-eu-2026-hami-recap/keynote-live-demo.jpg
+eventsPage:
+  itemKey: kubeconIndia
+  placeKey: mumbai
+  ctaKey: viewCampaign
+  image: /redesign/assets/22219a4000d21c3913b8.png
 ---
-
 Three months ago, [Dynamia and the HAMi community made a landmark appearance at KubeCon EU 2026](/blog/kubecon-eu-2026-hami-recap) — from the Maintainer Summit and Lightning Talks to the Project Pavilion, and ultimately taking the KubeCon main stage for a Keynote Demo. HAMi became the first China-originated open source project to present on the KubeCon EU main stage.
 
 Now, that momentum continues. The [HAMi community](https://github.com/Project-HAMi/HAMi) is heading to **KubeCon + CloudNativeCon India 2026**, June 18–19 in Mumbai.

@@ -1,10 +1,11 @@
 ---
-title: "HAMi 社区 Meetup 深圳站圆满落幕：七位专家共话 AI 算力云原生未来"
+title: HAMi 社区 Meetup 深圳站圆满落幕：七位专家共话 AI 算力云原生未来
 date: '2026-04-25'
 excerpt: >-
-  4 月 25 日，HAMi 社区在深圳成功举办第三场线下 Meetup。来自 CNCF、顺丰科技、招商银行、燧原科技、深信服、博维智慧科技及密瓜智能的七位技术专家，围绕
-  AI 基础设施云原生演进、GPU 算力池化、异构调度、DRA 技术展望等前沿话题展开深度分享。
-author: "密瓜智能"
+  4 月 25 日，HAMi 社区在深圳成功举办第三场线下 Meetup。来自
+  CNCF、顺丰科技、招商银行、燧原科技、深信服、博维智慧科技及密瓜智能的七位技术专家，围绕 AI 基础设施云原生演进、GPU 算力池化、异构调度、DRA
+  技术展望等前沿话题展开深度分享。
+author: 密瓜智能
 tags:
   - HAMi
   - Meetup
@@ -17,9 +18,13 @@ tags:
 category: Community & Events
 language: zh
 coverImage: /images/blog/hami-meetup-shenzhen-recap/shenzhen-meetup-group-photo.webp
-linktitle: "HAMi 深圳 Meetup 回顾"
+linktitle: HAMi 深圳 Meetup 回顾
+eventsPage:
+  itemKey: shenzhen
+  placeKey: shenzhen
+  ctaKey: readRecap
+  image: /redesign/assets/9adcfe16b1696313f773.webp
 ---
-
 ![HAMi Meetup 深圳站](/images/blog/hami-meetup-shenzhen-recap/shenzhen-meetup-group-photo.webp)
 
 4 月 25 日，HAMi 社区在深圳成功举办第三场线下 Meetup。本次活动以"不卷算力卷效率"为主题，来自 CNCF、顺丰科技、招商银行、燧原科技、深信服、博维智慧科技及密瓜智能的七位技术专家，围绕 AI 基础设施云原生演进、GPU 算力池化、异构调度、DRA 技术展望等前沿话题，为现场观众带来了一场深度技术盛宴。

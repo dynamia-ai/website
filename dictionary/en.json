@@ -861,6 +861,7 @@
     "boundary": "Find the right compute solution",
     "boundaryText": "Tell us about your GPU models, cluster environment and workloads. Together, we can find the right approach to resource sharing, scheduling and management.",
     "contact": "Contact us",
+    "environmentLink": "Environment and compatibility overview",
     "matrix": "Official HAMi support matrix",
     "docs": "Dynamia product documentation",
     "name": "Vendor",
@@ -1963,7 +1964,8 @@
       "cta": {
         "title": "Take your environment and confirm the range.",
         "body": "Tell us about your devices, clusters and workloads. Together, we can identify the right product and validation path.",
-        "button": "Book a demo "
+        "button": "Book a demo ",
+        "catalogLink": "Browse GPU compatibility catalog"
       }
     },
     "community": {

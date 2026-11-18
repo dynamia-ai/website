@@ -1,11 +1,12 @@
 ---
-title: 'Every Contribution Moves HAMi Forward | HAMi Incubating Community Night Recap'
+title: Every Contribution Moves HAMi Forward | HAMi Incubating Community Night Recap
 linktitle: HAMi Incubating Community Night Recap
 date: '2026-09-09'
 excerpt: >-
-  On the evening of September 6, Dynamia, HAMi, and CNCF co-hosted the HAMi Incubating Community Night
-  in Shanghai to celebrate HAMi entering CNCF Incubating. The event launched the HAMi Ambassador
-  Program and honored Maintainers, Approvers, and Contributors.
+  On the evening of September 6, Dynamia, HAMi, and CNCF co-hosted the HAMi
+  Incubating Community Night in Shanghai to celebrate HAMi entering CNCF
+  Incubating. The event launched the HAMi Ambassador Program and honored
+  Maintainers, Approvers, and Contributors.
 author: Dynamia
 tags:
   - HAMi
@@ -18,8 +19,12 @@ tags:
 category: Community & Events
 coverImage: /images/blog/hami-incubating-community-night/image1.png
 language: en
+eventsPage:
+  itemKey: communityNight
+  placeKey: shanghai
+  ctaKey: readRecap
+  image: /redesign/assets/d8e98dc53b24974446f6.png
 ---
-
 On the evening of September 6, **HAMi Incubating Community Night**, co-hosted by Dynamia, HAMi, and CNCF, was held in Shanghai. Partners from the HAMi community and the broader cloud-native and AI infrastructure ecosystem gathered: community contributors and users who traveled from Japan and Vietnam, alongside representatives of global organizations and companies including CNCF, Huawei, AMD, Biren, DaoCloud, FusionNuke, and JuiceFS.
 
 They were joined by HAMi Maintainers, Approvers, and Contributors based in Shanghai, as well as end users, chip and cloud vendors, and open-source community representatives. The night both commemorated HAMi entering CNCF Incubating and gave the stage to the people who built the project along the way. Technology introduced HAMi to more people — but it is this ongoing collaboration that brought HAMi where it stands today.

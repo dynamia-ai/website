@@ -10,7 +10,13 @@ import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
 import { cache } from 'react';
-import { BlogPost, BlogPostMeta, BlogPostsResult, TocItem } from '@/types/blog';
+import {
+  BlogEventsPageMeta,
+  BlogPost,
+  BlogPostMeta,
+  BlogPostsResult,
+  TocItem,
+} from '@/types/blog';
 import {
   resolveBlogCategoryId,
   type LocalizedBlogPost,
@@ -21,6 +27,32 @@ import publicAssetPaths from '@/generated/public-asset-paths.json';
 import { selectPostSocialImage } from './blog-social-image';
 
 const HIDDEN_BLOG_SLUGS = new Set(['hello-world']);
+
+function parseEventsPage(value: unknown): BlogEventsPageMeta | undefined {
+  if (!value || typeof value !== 'object') return undefined;
+  const raw = value as Record<string, unknown>;
+  const itemKey = typeof raw.itemKey === 'string' ? raw.itemKey.trim() : '';
+  const placeKey = typeof raw.placeKey === 'string' ? raw.placeKey.trim() : '';
+  const ctaKey = typeof raw.ctaKey === 'string' ? raw.ctaKey.trim() : '';
+  const image = typeof raw.image === 'string' ? raw.image.trim() : '';
+  if (!itemKey || !placeKey || !ctaKey || !image) return undefined;
+
+  const eventsPage: BlogEventsPageMeta = {itemKey, placeKey, ctaKey, image};
+  if (raw.portrait === true) eventsPage.portrait = true;
+  if (typeof raw.captionKey === 'string' && raw.captionKey.trim()) {
+    eventsPage.captionKey = raw.captionKey.trim();
+  }
+  if (typeof raw.titleField === 'string' && raw.titleField.trim()) {
+    eventsPage.titleField = raw.titleField.trim();
+  }
+  if (typeof raw.bodyField === 'string' && raw.bodyField.trim()) {
+    eventsPage.bodyField = raw.bodyField.trim();
+  }
+  if (typeof raw.imageAltField === 'string' && raw.imageAltField.trim()) {
+    eventsPage.imageAltField = raw.imageAltField.trim();
+  }
+  return eventsPage;
+}
 
 const CONTENT_PATH = path.join(process.cwd(), 'src/content/blog');
 const PUBLIC_ASSETS = new Set(publicAssetPaths);
@@ -76,6 +108,7 @@ export function getBlogPost(slug: string, language = 'en'): BlogPost | null {
       coverDisplay: data.coverDisplay,
       coverTitle: data.coverTitle,
       language: data.language || language,
+      eventsPage: parseEventsPage(data.eventsPage),
       content,
     };
   } catch (error) {
@@ -114,12 +147,31 @@ function getBlogPostMeta(slug: string, language = 'en'): BlogPostMeta | null {
       coverDisplay: data.coverDisplay,
       coverTitle: data.coverTitle,
       language: data.language || language,
+      eventsPage: parseEventsPage(data.eventsPage),
     };
   } catch (error) {
     console.error(`Error reading blog post meta ${slug}:`, error);
     return null;
   }
 }
+
+export interface EventCatalogEntry {
+  slug: string;
+  date: string;
+  eventsPage: BlogEventsPageMeta;
+}
+
+/** Posts opted into `/events` via frontmatter `eventsPage`. */
+export const getEventCatalog = cache((locale: string): EventCatalogEntry[] => {
+  const entries: EventCatalogEntry[] = [];
+  for (const slug of getBlogPostSlugs()) {
+    if (HIDDEN_BLOG_SLUGS.has(slug)) continue;
+    const post = resolveBlogPostMeta(slug, locale);
+    if (!post?.eventsPage) continue;
+    entries.push({slug, date: post.date, eventsPage: post.eventsPage});
+  }
+  return entries.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+});
 
 function resolveBlogPostMeta(slug: string, locale: string): BlogPostMeta | null {
   for (const lang of contentLocaleCandidates(locale)) {

@@ -861,6 +861,7 @@
     "boundary": "Die passende Compute-Lösung finden",
     "boundaryText": "Erzählen Sie uns von Ihren GPU-Modellen, Ihrer Cluster-Umgebung und Ihren Workloads. Gemeinsam finden wir die passende Lösung für Ressourcen-Sharing, Scheduling und Verwaltung.",
     "contact": "Kontakt aufnehmen",
+    "environmentLink": "Übersicht zu Umgebung und Kompatibilität",
     "matrix": "Offizielle HAMi-Kompatibilitätsmatrix",
     "docs": "Dynamia-Produktdokumentation",
     "name": "Hersteller",
@@ -1963,7 +1964,8 @@
       "cta": {
         "title": "Nehmen Sie Ihre Umgebung und bestätigen Sie die Reichweite.",
         "body": "Teilen Sie uns Ihre Geräte, Cluster und Workloads mit. Gemeinsam finden wir das passende Produkt und den richtigen Weg zur Validierung.",
-        "button": "Demo vereinbaren "
+        "button": "Demo vereinbaren ",
+        "catalogLink": "GPU-Kompatibilitätskatalog öffnen"
       }
     },
     "community": {

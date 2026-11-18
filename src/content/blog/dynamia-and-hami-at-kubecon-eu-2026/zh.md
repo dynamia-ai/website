@@ -3,8 +3,8 @@ title: 密瓜智能将携 HAMi 社区亮相 KubeCon Europe 2026：重塑 Kuberne
 linktitle: 「Dynamia 密瓜智能」与 HAMi 在 KubeCon EU 2026
 date: '2026-03-18'
 excerpt: >-
-  本周末，「Dynamia 密瓜智能」团队将启程前往阿姆斯特丹，参加 KubeCon + CloudNativeCon Europe 2026。
-  作为 CNCF Sandbox 项目 HAMi 的发起与主导方，「Dynamia 密瓜智能」将在大会中代表 HAMi 社区参与多项核心活动。
+  本周末，「Dynamia 密瓜智能」团队将启程前往阿姆斯特丹，参加 KubeCon + CloudNativeCon Europe 2026。 作为
+  CNCF Sandbox 项目 HAMi 的发起与主导方，「Dynamia 密瓜智能」将在大会中代表 HAMi 社区参与多项核心活动。
 author: 密瓜智能
 tags:
   - KubeCon
@@ -15,8 +15,14 @@ tags:
 category: Events
 language: zh
 coverImage: /images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png
+eventsPage:
+  itemKey: kubeconEu
+  placeKey: amsterdam
+  ctaKey: readPreview
+  image: /images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png
+  titleField: linkTitle
+  bodyField: linkBody
 ---
-
 本周末，**「Dynamia 密瓜智能」** 团队将启程前往阿姆斯特丹，参加即将举行的 [KubeCon + CloudNativeCon Europe 2026](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/)。作为全球云原生领域最具影响力的大会之一，本届 KubeCon 预计将吸引超过 **13000 名开发者、架构师与基础设施从业者**参与，围绕 Kubernetes、AI 以及下一代基础设施展开讨论。
 
 ![KubeCon EU 2026 吸引力 13000 人报名](/images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png)

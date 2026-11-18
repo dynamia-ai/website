@@ -1,11 +1,14 @@
 ---
-title: 'Efficiency over Raw Compute | HAMi Meetup Shanghai Recap: From Heterogeneous Compute Management to AI Production Practice'
+title: >-
+  Efficiency over Raw Compute | HAMi Meetup Shanghai Recap: From Heterogeneous
+  Compute Management to AI Production Practice
 linktitle: HAMi Meetup Shanghai 2026 Recap
 date: '2026-09-09'
 excerpt: >-
-  Five production talks unpacking AI compute efficiency. Recap of the HAMi Meetup Shanghai Incubating
-  special event: remote GPUs and HAMi 2.10, the llm-d distributed inference control plane, SLO-driven
-  inference on Chinese GPUs, Volcano + HAMi-core scheduling and isolation, and UCloud's AI platform
+  Five production talks unpacking AI compute efficiency. Recap of the HAMi
+  Meetup Shanghai Incubating special event: remote GPUs and HAMi 2.10, the llm-d
+  distributed inference control plane, SLO-driven inference on Chinese GPUs,
+  Volcano + HAMi-core scheduling and isolation, and UCloud's AI platform
   engineering.
 author: Dynamia
 tags:
@@ -22,8 +25,12 @@ tags:
 category: Community & Events
 coverImage: /images/blog/hami-meetup-shanghai-2026/image1.png
 language: en
+eventsPage:
+  itemKey: shanghaiSpecial
+  placeKey: shanghai
+  ctaKey: readRecap
+  image: /redesign/assets/f3ec370573587df8b44d.jpg
 ---
-
 As large models move into production, the real question enterprises face is no longer "do we have GPUs," but how to turn scattered, heterogeneous, scarce compute into infrastructure that is schedulable, isolated, observable, and continuously deliverable.
 
 Remote GPUs, distributed inference, Chinese GPU adaptation, Kubernetes heterogeneous compute foundations, and AI platform engineering are converging from isolated technical topics into a single industry question: **how does compute efficiency actually reach the production side?**

@@ -40,6 +40,10 @@ export default async function GpuCatalogPage() {
                 {t('contact')}
                 <SiteArrow variant="button" />
               </a>
+              <a className="textlink" href={localizedPath(websitePath('/compatibility'), locale)}>
+                <span>{t('environmentLink')}</span>
+                <SiteArrow variant="text" />
+              </a>
               <a
                 className="textlink"
                 href="https://docs.dynamia.ai"

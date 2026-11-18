@@ -1,12 +1,15 @@
 ---
-title: "Dynamia at KubeCon EU 2026: From Booth Talks to Main Stage Demo — HAMi Enters the Core of AI Infrastructure"
-linktitle: "HAMi Recap at KubeCon EU 2026"
+title: >-
+  Dynamia at KubeCon EU 2026: From Booth Talks to Main Stage Demo — HAMi Enters
+  the Core of AI Infrastructure
+linktitle: HAMi Recap at KubeCon EU 2026
 date: '2026-03-31'
 excerpt: >-
-  KubeCon EU 2026 has concluded, and one signal was unmistakable: cloud native is rapidly evolving
-  from an application platform into the foundational layer for AI infrastructure. As the initiator and
-  core driver of the HAMi project, Dynamia made a landmark appearance — from Maintainer Summit and
-  Lightning Talks to the KubeCon main stage Keynote Demo.
+  KubeCon EU 2026 has concluded, and one signal was unmistakable: cloud native
+  is rapidly evolving from an application platform into the foundational layer
+  for AI infrastructure. As the initiator and core driver of the HAMi project,
+  Dynamia made a landmark appearance — from Maintainer Summit and Lightning
+  Talks to the KubeCon main stage Keynote Demo.
 author: Dynamia
 tags:
   - KubeCon
@@ -17,8 +20,12 @@ tags:
 category: Events
 language: en
 coverImage: /images/blog/kubecon-eu-2026-hami-recap/keynote-live-demo.jpg
+eventsPage:
+  itemKey: kubeconEu
+  placeKey: amsterdam
+  ctaKey: readRecap
+  image: /redesign/assets/e6fc62f061c19423122b.jpg
 ---
-
 The recently concluded **KubeCon + CloudNativeCon Europe 2026** sent an increasingly clear signal across the industry:
 
 **Cloud native is rapidly evolving from an "application runtime platform" into the foundational layer for AI infrastructure.**

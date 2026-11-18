@@ -106,10 +106,16 @@ export default async function CompatibilityPage() {
               <h3>{t('cta.title')}</h3>
               <p>{t('cta.body')}</p>
             </div>
-            <a className="btn primary" href={localizedPath(websitePath('/contact-sales'), locale)}>
-              {t('cta.button')}
-              <SiteArrow variant="button" />
-            </a>
+            <div className="actions">
+              <a className="btn primary" href={localizedPath(websitePath('/contact-sales'), locale)}>
+                {t('cta.button')}
+                <SiteArrow variant="button" />
+              </a>
+              <a className="textlink" href={localizedPath(websitePath('/gpu-compatibility'), locale)}>
+                <span>{t('cta.catalogLink')}</span>
+                <SiteArrow variant="text" />
+              </a>
+            </div>
           </div>
         </div>
       </section>

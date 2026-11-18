@@ -1,10 +1,10 @@
 ---
-title: "HAMi 亮相 KubeCon India 2026：从阿姆斯特丹到孟买，GPU 共享的全球化推进"
-linktitle: "HAMi 亮相 KubeCon India 2026"
+title: HAMi 亮相 KubeCon India 2026：从阿姆斯特丹到孟买，GPU 共享的全球化推进
+linktitle: HAMi 亮相 KubeCon India 2026
 date: '2026-06-12'
 excerpt: >-
-  在 KubeCon EU 2026 主论坛 Keynote Demo 之后，HAMi 社区即将亮相 KubeCon India 2026。
-  CNCF Ambassador Saiyam Pathak 将带来 Keynote 演讲，现场展示基于 NVIDIA DGX Spark 的 GPU 共享 Demo。
+  在 KubeCon EU 2026 主论坛 Keynote Demo 之后，HAMi 社区即将亮相 KubeCon India 2026。 CNCF
+  Ambassador Saiyam Pathak 将带来 Keynote 演讲，现场展示基于 NVIDIA DGX Spark 的 GPU 共享 Demo。
 author: Jimmy Song
 tags:
   - KubeCon
@@ -15,8 +15,12 @@ tags:
 category: Events
 language: zh
 coverImage: /images/blog/kubecon-eu-2026-hami-recap/keynote-live-demo.jpg
+eventsPage:
+  itemKey: kubeconIndia
+  placeKey: mumbai
+  ctaKey: viewCampaign
+  image: /redesign/assets/22219a4000d21c3913b8.png
 ---
-
 三个月前，[密瓜智能携 HAMi 社区在 KubeCon EU 2026 上完成了一次标志性亮相](/blog/kubecon-eu-2026-hami-recap)——从 Maintainer Summit、Lightning Talk、Project Pavilion，到最后登上主论坛 Keynote Demo，HAMi 作为第一个中国原创开源项目站上了 KubeCon 的主舞台。
 
 现在，这股势头正在延续。[HAMi 社区](https://github.com/Project-HAMi/HAMi)即将亮相 **KubeCon + CloudNativeCon India 2026**，6 月 18–19 日，孟买。

@@ -1,5 +1,7 @@
 ---
-title: "HAMi Community Meetup Shenzhen Recap: Seven Experts Discuss the Cloud-Native Future of AI Compute"
+title: >-
+  HAMi Community Meetup Shenzhen Recap: Seven Experts Discuss the Cloud-Native
+  Future of AI Compute
 date: '2026-04-25'
 excerpt: >-
   On April 25, 2026, the HAMi Community successfully held its third offline
@@ -21,8 +23,12 @@ category: Community & Events
 language: en
 coverImage: /images/blog/hami-meetup-shenzhen-recap/shenzhen-meetup-group-photo.webp
 linktitle: HAMi Shenzhen Meetup Recap
+eventsPage:
+  itemKey: shenzhen
+  placeKey: shenzhen
+  ctaKey: readRecap
+  image: /redesign/assets/9adcfe16b1696313f773.webp
 ---
-
 ![HAMi Meetup Shenzhen](/images/blog/hami-meetup-shenzhen-recap/shenzhen-meetup-group-photo.webp)
 
 On April 25, 2026, the HAMi Community successfully hosted its third offline Meetup in Shenzhen. Themed "Compete on Efficiency, Not Compute," seven technical experts from CNCF, SF Technology, China Merchants Bank, Enflame, Sangfor, BroadWare Technology, and Dynamia AI delivered an in-depth technical feast, covering frontier topics including cloud-native evolution of AI infrastructure, GPU compute pooling, heterogeneous scheduling, and DRA technology outlook.

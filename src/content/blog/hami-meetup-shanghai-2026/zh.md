@@ -20,8 +20,12 @@ tags:
 category: Community & Events
 coverImage: /images/blog/hami-meetup-shanghai-2026/image1.png
 language: zh
+eventsPage:
+  itemKey: shanghaiSpecial
+  placeKey: shanghai
+  ctaKey: readRecap
+  image: /redesign/assets/f3ec370573587df8b44d.jpg
 ---
-
 大模型进入生产，企业真正面对的已经不只是"有没有 GPU"，而是如何把分散、异构、稀缺的算力，转化为可调度、可隔离、可观测、可持续交付的基础设施。
 
 远程 GPU、分布式推理、国产 GPU 适配、Kubernetes 异构算力底座与智算平台工程，正在从一个个局部技术问题，汇成同一道产业命题：**算力效率如何真正落实到生产侧？**

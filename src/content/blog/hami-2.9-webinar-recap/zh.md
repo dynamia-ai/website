@@ -1,10 +1,10 @@
 ---
-title: "直播回顾 | HAMi 2.9 昇腾软切分与 DRA 实战详解，附完整 QA"
-linktitle: "HAMi 2.9 直播回顾：昇腾软切分与 DRA"
+title: 直播回顾 | HAMi 2.9 昇腾软切分与 DRA 实战详解，附完整 QA
+linktitle: HAMi 2.9 直播回顾：昇腾软切分与 DRA
 date: '2026-05-15'
 excerpt: >-
-  HAMi Maintainer 李孟轩详解 HAMi 2.9 核心特性——昇腾 NPU 用户态软切分、HAMi-DRA
-  生产级能力，及异构调度增强。结合 Live Demo 和完整 QA，带你一文掌握 v2.9 全部亮点。
+  HAMi Maintainer 李孟轩详解 HAMi 2.9 核心特性——昇腾 NPU 用户态软切分、HAMi-DRA 生产级能力，及异构调度增强。结合
+  Live Demo 和完整 QA，带你一文掌握 v2.9 全部亮点。
 author: Dynamia AI Team
 tags:
   - HAMi
@@ -17,8 +17,14 @@ tags:
 category: Community & Events
 language: zh
 coverImage: /images/blog/hami-2.9-webinar-recap/cover.png
+eventsPage:
+  itemKey: webinar29
+  placeKey: webinarChannel
+  ctaKey: readLive
+  image: /redesign/assets/0f0face961041678d9ac.png
+  portrait: true
+  captionKey: guest
 ---
-
 ![直播封面](/images/blog/hami-2.9-webinar-recap/cover.png)
 
 **主题：** HAMi 2.9 版本发布解读 —— 《HAMi 2.9 如何重构 Kubernetes AI 算力调度》

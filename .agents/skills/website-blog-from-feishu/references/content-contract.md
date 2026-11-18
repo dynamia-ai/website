@@ -54,6 +54,21 @@ coverImage: '/images/blog/example-post/cover.jpg'
 
 仅当某篇需要偏离上述映射时，才可选写 `categoryId`（`practice` \| `tech` \| `product` \| `company` \| `release` \| `community`）。博客列表直接扫描 `src/content/blog`，**不要**再写入已删除的 `blogEditorialData.json`。
 
+若文章应出现在 `/events`，在 frontmatter 增加 `eventsPage`（活动页文案仍走 `sitePages.events` 字典）：
+
+```yaml
+eventsPage:
+  itemKey: communityNight   # sitePages.events.items.<itemKey>
+  placeKey: shanghai        # sitePages.events.places.<placeKey>
+  ctaKey: readRecap         # sitePages.events.ui.<ctaKey>
+  image: /redesign/assets/example.png
+  # optional: portrait: true
+  # optional: captionKey: guest
+  # optional: titleField / bodyField / imageAltField（默认 title / body / photoAlt）
+```
+
+没有 `eventsPage` 的文章不会出现在活动页；不要再往 `EventsPage` 硬编码 slug 列表。
+
 `linktitle`、`coverTitle` 为可选独立标题；文字封面新稿可提供简洁的 `coverTitle`（没有需求时可省略，列表会回退到 `linktitle` 或 `title`）。`title` 是文章标题，`coverTitle` 是文字封面标题，`linktitle` 是短标题；修改其中一个不隐含修改其余两个，需结合实际预览说明差异。
 
 `author` 当前用于文章数据、Article 结构化数据和 Open Graph 作者信息，正文页尚不展示署名。不承诺读者能在页面看到，也不擅自把署名插入正文或修改组件；原文已有署名照常保留。

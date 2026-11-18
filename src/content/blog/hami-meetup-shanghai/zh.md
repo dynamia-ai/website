@@ -19,8 +19,12 @@ category: Community & Events
 coverImage: /images/blog/hami-meetup-shanghai/cover.png
 language: zh
 linktitle: HAMi 上海 Meetup 回顾
+eventsPage:
+  itemKey: shanghaiFirst
+  placeKey: shanghai
+  ctaKey: readRecap
+  image: /redesign/assets/d6e3f43f4a67602a15c0.png
 ---
-
 ![HAMi Meetup 上海站](/images/blog/hami-meetup-shanghai/cover.png)
 
 11 月 30 日，首场 HAMi Meetup 在上海模速空间圆满结束！本次活动以"不卷算力卷效率"为主题，近百位 AI 开发者、运维工程师、企业 IT 架构师齐聚现场，线上 700 多名观众通过直播间实时围观，共同聚焦异构算力调度的核心命题。CNCF、密瓜智能、蔚来、沐曦股份、DaoCloud、星环科技的实战派专家轮番登场，围绕异构芯片适配、资源利用率提升、AI 训练优化、国产算力落地的核心痛点，不仅拆解了可直接复用的技术方案，更毫无保留分享了落地过程中的协同经验与避坑指南，干货密度拉满！
