@@ -40,7 +40,7 @@ src/
 ├── components/
 │   ├── layout/              # Header, Footer, MainLayout (+ shell widgets)
 │   ├── pages/               # Page implementations imported by app/[locale]/*
-│   ├── enterprise/          # Download gate / install doc clients
+│   ├── enterprise/          # Install doc clients
 │   ├── tools/               # Interactive tools UI
 │   └── ui/                  # Shared UI primitives
 ├── dictionary/              # next-intl translation files
@@ -164,7 +164,7 @@ Uses the `LanguageSwitcher` component from `@/components/LanguageSwitcher`. It h
     ```tsx
     // Dictionary: "I agree to the <link>Privacy Policy</link>."
     // Component:
-    {t.rich('enterprise.gate.consentLabel', {
+    {t.rich('consentLabel', {
       link: (chunks) => <a href="/privacy-policy" className="text-primary underline">{chunks}</a>,
     })}
     ```
