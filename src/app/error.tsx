@@ -1,46 +1,38 @@
-"use client";
+'use client';
 
-import { ServerCrash } from "lucide-react";
-import { use, useEffect } from "react";
+import {ServerCrash} from 'lucide-react';
+import {useEffect} from 'react';
 
-import { Button } from "@/components/ui/button";
+import {Button} from '@/components/ui/button';
+import {Link} from '@/i18n/navigation';
 
-import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-
-export default function Error({
-  params,
-  error,
-  reset,
-}: {
-  params: Promise<{ locale: string }>;
-  error: Error & { digest?: string };
+interface ErrorProps {
+  error: Error & {digest?: string};
   reset: () => void;
-}) {
+}
+
+export default function Error({error, reset}: ErrorProps) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
-  const { locale } = use(params);
-  setRequestLocale(locale);
-  const t = useTranslations("error");
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
-      <div className="flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-red-100">
-        <ServerCrash className="w-10 h-10 text-red-600" />
+    <div className="flex min-h-[70vh] flex-col items-center justify-center px-4 text-center">
+      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
+        <ServerCrash className="h-10 w-10 text-red-600" />
       </div>
       <h1 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-        {t("title")}
+        Something went wrong
       </h1>
-      <p className="mb-8 text-lg text-gray-600">{t("sorry")}</p>
+      <p className="mb-8 text-lg text-gray-600">
+        Please try again, or return to the homepage.
+      </p>
       <div className="flex flex-col gap-4 sm:flex-row">
         <Button onClick={() => reset()} variant="default">
-          {t("tryAgain")}
+          Try again
         </Button>
         <Button variant="outline" asChild>
-          <Link href="/">{t("returnHome")}</Link>
+          <Link href="/">Return home</Link>
         </Button>
       </div>
     </div>

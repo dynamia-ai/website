@@ -968,64 +968,12 @@
     }
   },
   "enterprise": {
-    "detail": {
-      "releasedAt": "发布时间",
-      "noRelease": "当前版本暂无下载介质。",
-      "deliveryTabsLabel": "安装方式",
-      "deliveryTabOnline": "在线安装",
-      "deliveryTabOffline": "离线安装",
-      "deliveryTabSoon": "筹备中",
-      "deliveryOnlineDesc": "在线安装步骤、OCI / Helm 命令与验证说明均见安装指南。",
-      "offlineComingSoonTitle": "离线安装包筹备中",
-      "offlineComingSoonDesc": "All-in-One 离线一体包与分件镜像包正在打包与校验，开放后将在本页提供下载与 SHA256。"
-    },
-    "artifact": {
-      "download": "下载",
-      "view": "查看",
-      "unlockToDownload": "解锁后下载",
-      "installCommand": "安装命令",
-      "mirrorLabel": "下载镜像",
-      "groupBundles": "All-in-One 离线一体包",
-      "groupBundlesDesc": "一个 tarball 内含镜像 + Helm Chart + 安装脚本 + 文档，面向完全隔离网络的私有化部署。",
-      "recommendedBadge": "推荐",
-      "bundleContents": "内含：",
-      "contentBundle": "一体包",
-      "contentImage": "容器镜像",
-      "contentChart": "Helm Chart",
-      "contentDocs": "安装文档",
-      "contentReleaseNotes": "版本说明",
-      "contentChecksum": "校验和",
-      "groupImages": "容器镜像",
-      "groupImagesDesc": "面向离线 / 隔离网络环境的镜像离线包。",
-      "groupCharts": "Helm Charts",
-      "groupChartsDesc": "在线 OCI 安装，或下载 Chart 离线包。",
-      "groupChartsDescOnline": "无法使用 OCI 时，可下载 Chart 归档包。",
-      "groupChartsDescOffline": "下载 Chart 包用于离线或内网 Helm 安装。",
-      "groupChartsOptional": "Chart 归档包（可选）",
-      "groupDocs": "文档资料",
-      "groupDocsDesc": "安装指南与版本说明。"
-    },
     "installDoc": {
       "back": "返回产品页",
       "label": "安装指南",
       "lastUpdated": "最后更新",
       "tocTitle": "本页目录"
     },
-    "gate": {
-      "title": "解锁企业版下载",
-      "subtitle": "填写信息解锁下载，30 天有效。",
-      "submit": "解锁下载",
-      "success": "提交成功，正在为您解锁下载。",
-      "error": "提交失败，请重试或邮件 info@dynamia.ai。",
-      "consentLabel": "我同意<link>隐私政策</link>并同意处理我的信息用于销售跟进（GDPR 第 6 条）。",
-      "consentRequired": "请先阅读并同意隐私政策。"
-    },
-    "checksumPending": "校验和待发布",
-    "copyCommand": "复制",
-    "copiedCommand": "已复制",
-    "downloadContactNeedBundles": "如需提前获取离线包，请",
-    "downloadContactSales": "联系销售",
-    "downloadContactPhone": "或致电 400-026-7800",
     "codeLabels": {
       "copy": "复制",
       "copied": "已复制",
@@ -1135,7 +1083,6 @@
     "message": "备注",
     "product": "产品",
     "version": "版本",
-    "artifact": "下载介质",
     "architecture": "架构",
     "filename": "文件名",
     "country": "国家",
@@ -3004,15 +2951,5 @@
       }
     },
     "showCareers": true
-  },
-  "productDownloads": {
-    "eyebrow": "下载与安装",
-    "description": "获取安装指南，了解当前版本与交付方式。",
-    "back": "← 返回产品介绍",
-    "title": "安装指南与版本资源",
-    "products": {
-      "hami-enterprise": "Dynamia HAMi 企业版",
-      "hami-ai-platform": "Dynamia HAMi 平台版"
-    }
   }
 }
