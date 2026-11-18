@@ -112,7 +112,7 @@ async function buildHtmlEmail(data: Record<string, string>, subject: string): Pr
     { label: t('email'), value: data.email || '—' },
     { label: t('phone'), value: data.phone || '—' },
     { label: t('useCase'), value: data.useCase || '—' },
-    ...(['jobTitle', 'gpuCount', 'message', 'product', 'version', 'architecture', 'filename'] as const)
+    ...(['jobTitle', 'gpuCount', 'message', 'product', 'version', 'artifact', 'architecture', 'filename'] as const)
       .filter((key) => data[key])
       .map((key) => ({ label: t(key), value: data[key] })),
   ];

@@ -664,12 +664,64 @@
     }
   },
   "enterprise": {
+    "detail": {
+      "releasedAt": "Veroeffentlicht",
+      "noRelease": "Kein Release fuer diese Version verfuegbar.",
+      "deliveryTabsLabel": "Bereitstellungsmodus",
+      "deliveryTabOnline": "Online-Installation",
+      "deliveryTabOffline": "Offline-Installation",
+      "deliveryTabSoon": "Bald",
+      "deliveryOnlineDesc": "Online-Installationsschritte, OCI/Helm-Befehle und Verifizierung finden Sie in der Installationsanleitung.",
+      "offlineComingSoonTitle": "Offline-Pakete in Vorbereitung",
+      "offlineComingSoonDesc": "All-in-One Air-Gap-Bundles und Image-Archive werden verpackt und verifiziert. Downloads und SHA256-Pruefsummen erscheinen hier, sobald sie bereit sind."
+    },
+    "artifact": {
+      "download": "Herunterladen",
+      "view": "View",
+      "unlockToDownload": "Zum Herunterladen freischalten",
+      "installCommand": "Installationsbefehl",
+      "mirrorLabel": "Download-Spiegel",
+      "groupBundles": "All-in-One Air-Gap-Bundle",
+      "groupBundlesDesc": "Einzelner Tarball mit Images + Helm-Chart + Installationsskripten + Dokumentation — fuer vollstaendig isolierte Netzwerke.",
+      "recommendedBadge": "Empfohlen",
+      "bundleContents": "Enthaelt:",
+      "contentBundle": "All-in-One",
+      "contentImage": "Container-Images",
+      "contentChart": "Helm-Chart",
+      "contentDocs": "Installationsdokumente",
+      "contentReleaseNotes": "Release Notes",
+      "contentChecksum": "Pruefsumme",
+      "groupImages": "Container-Images",
+      "groupImagesDesc": "Offline-Image-Bundles fuer Air-Gap-Umgebungen.",
+      "groupCharts": "Helm-Charts",
+      "groupChartsDesc": "Installation via OCI online, oder laden Sie ein Chart-Tarball herunter.",
+      "groupChartsDescOnline": "Laden Sie das Chart-Archiv herunter, wenn OCI nicht verfuegbar ist.",
+      "groupChartsDescOffline": "Chart-Paket fuer Offline- oder private Helm-Installationen.",
+      "groupChartsOptional": "Chart-Archiv (optional)",
+      "groupDocs": "Dokumentation",
+      "groupDocsDesc": "Installationsanleitungen und Release Notes."
+    },
     "installDoc": {
       "back": "Zurueck zum Produkt",
       "label": "Installationsanleitung",
       "lastUpdated": "Zuletzt aktualisiert",
       "tocTitle": "Auf dieser Seite"
     },
+    "gate": {
+      "title": "Enterprise-Downloads freischalten",
+      "subtitle": "Mit Ihren Daten freischalten — 30-Tage-Zugang.",
+      "submit": "Downloads freischalten",
+      "success": "Danke! Wird freigeschaltet...",
+      "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder senden Sie eine E-Mail an info@dynamia.ai.",
+      "consentLabel": "Ich stimme der <link>Datenschutzerklaerung</link> zu und willige in die Verarbeitung meiner Daten fuer die Vertriebsnachverfolgung ein (DSGVO Artikel 6).",
+      "consentRequired": "Bitte akzeptieren Sie die Datenschutzerklaerung, um fortzufahren."
+    },
+    "checksumPending": "Pruefsumme ausstehend",
+    "copyCommand": "Kopieren",
+    "copiedCommand": "Kopiert",
+    "downloadContactNeedBundles": "Benoetigen Sie Bundles frueher?",
+    "downloadContactSales": "Vertrieb kontaktieren",
+    "downloadContactPhone": "oder rufen Sie 400-026-7800 an",
     "codeLabels": {
       "copy": "Kopieren",
       "copied": "Kopiert",
@@ -779,6 +831,7 @@
     "message": "Nachricht",
     "product": "Produkt",
     "version": "Version",
+    "artifact": "Download-Datei",
     "architecture": "Architektur",
     "filename": "Dateiname",
     "country": "Land",
@@ -2647,5 +2700,15 @@
       }
     },
     "showCareers": false
+  },
+  "productDownloads": {
+    "eyebrow": "DOWNLOADS & INSTALLATION",
+    "description": "Installationsanleitungen, Versionsinformationen und Bereitstellungsoptionen.",
+    "back": "← Zurück zum Produkt",
+    "title": "Installationsanleitungen und Versionen",
+    "products": {
+      "hami-enterprise": "Dynamia Enterprise for HAMi",
+      "hami-ai-platform": "Dynamia AI Platform for HAMi"
+    }
   }
 }

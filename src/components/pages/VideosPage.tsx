@@ -1,6 +1,6 @@
 import {getLocale, getTranslations} from 'next-intl/server';
 import SiteArrow from '@/components/layout/SiteArrow';
-import {videos} from '@/data/videos';
+import {VIDEO_LIST_COVER, videos} from '@/data/videos';
 import {localizedPath} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
 import '@/styles/videos.css';
@@ -43,9 +43,7 @@ export default async function VideosPage() {
                   key={video.id}
                 >
                   <div className="video-cover">
-                    {video.cover ? (
-                      <img src={video.cover} alt="" loading="lazy" />
-                    ) : null}
+                    <img src={VIDEO_LIST_COVER} alt="" loading="lazy" />
                     <span className="video-play" aria-hidden={true}>
                       {t('ui.play')}
                     </span>
