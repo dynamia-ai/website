@@ -1,5 +1,3 @@
-import editorialData from '@/lib/site/blogEditorialData.json';
-
 export type BlogCategoryId =
   | 'all'
   | 'practice'
@@ -9,39 +7,32 @@ export type BlogCategoryId =
   | 'release'
   | 'community';
 
-export interface BlogPostSource {
-  id: number;
-  slug: string;
-  date: string;
-  category: string;
-  originalCategory?: string;
-  image?: string;
-  title: string;
-  coverTitle: string;
-  desc: string;
-  authorId?: string | null;
-}
-
 export interface LocalizedBlogPost {
-  id: number;
   slug: string;
   date: string;
-  category: string;
-  categoryId: BlogCategoryId | string;
+  categoryId: Exclude<BlogCategoryId, 'all'>;
   title: string;
   coverTitle: string;
   desc: string;
   authorSearch: string;
 }
 
-/** Map legacy Chinese category labels in editorial data to stable IDs. */
+/**
+ * Map frontmatter `category` → filter/cover IDs.
+ * Optional frontmatter `categoryId` can override a specific post.
+ */
 const SOURCE_CATEGORY_TO_ID: Record<string, Exclude<BlogCategoryId, 'all'>> = {
-  实践案例: 'practice',
-  技术博客: 'tech',
-  产品解读: 'product',
-  公司新闻: 'company',
-  版本发布: 'release',
-  社区与动态: 'community',
+  'Case Study': 'practice',
+  'Customer Success Story': 'practice',
+  'Technical Deep Dive': 'tech',
+  'Open Source': 'tech',
+  'Integration & Ecosystem': 'product',
+  'Company News': 'company',
+  Partnership: 'company',
+  'Product Release': 'release',
+  'Community & Events': 'community',
+  Events: 'community',
+  'Year in Review': 'community',
 };
 
 export const CATEGORY_SUBTITLE_KEYS: Record<string, string> = {
@@ -73,48 +64,23 @@ const CATEGORY_FILTERS: BlogCategoryId[] = [
   'community',
 ];
 
-const AUTHOR_SEARCH: Record<string, string> = {
-  song_jingchao: '宋净超 Jimmy Song 云原生布道师 HAMi community manager',
-};
-
-type LocaleBundle = {
-  title: string;
-  coverTitle: string;
-  desc: string;
-  category: string;
-};
-
-const data = editorialData as {
-  posts: BlogPostSource[];
-  locales: Record<string, {en: LocaleBundle; de: LocaleBundle}>;
-};
-
-function toCategoryId(source: string): BlogCategoryId | string {
-  return SOURCE_CATEGORY_TO_ID[source] ?? source;
-}
+const CATEGORY_IDS = new Set<string>(CATEGORY_FILTERS.filter((id) => id !== 'all'));
 
 export function blogCategoryFilters(): BlogCategoryId[] {
   return CATEGORY_FILTERS;
 }
 
-export function localizedBlogPosts(locale: string): LocalizedBlogPost[] {
-  const lang = locale === 'en' || locale === 'de' ? locale : 'zh';
-  return data.posts.map((post) => {
-    const localized =
-      lang === 'zh' ? null : data.locales[post.slug]?.[lang] ?? null;
-    const categoryId = toCategoryId(post.category);
-    return {
-      id: post.id,
-      slug: post.slug,
-      date: post.date,
-      categoryId,
-      category: localized?.category ?? post.category,
-      title: localized?.title ?? post.title,
-      coverTitle: localized?.coverTitle ?? post.coverTitle,
-      desc: localized?.desc ?? post.desc,
-      authorSearch: post.authorId ? AUTHOR_SEARCH[post.authorId] || '' : '',
-    };
-  });
+export function isBlogCategoryId(value: string): value is Exclude<BlogCategoryId, 'all'> {
+  return CATEGORY_IDS.has(value);
+}
+
+export function resolveBlogCategoryId(
+  categoryId: string | undefined,
+  category: string | undefined,
+): Exclude<BlogCategoryId, 'all'> {
+  if (categoryId && isBlogCategoryId(categoryId)) return categoryId;
+  if (category && SOURCE_CATEGORY_TO_ID[category]) return SOURCE_CATEGORY_TO_ID[category];
+  return 'tech';
 }
 
 export function formatBlogDate(date: string): string {
