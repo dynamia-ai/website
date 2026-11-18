@@ -1,5 +1,5 @@
 ---
-title: Dynamia Invited to COPU Regular Meeting: AI Agents Accelerate Adoption, Compute Infrastructure Faces a Critical Opportunity
+title: 'Dynamia Invited to COPU Regular Meeting: AI Agents Accelerate Adoption, Compute Infrastructure Faces a Critical Opportunity'
 date: '2026-04-14'
 excerpt: >-
   On April 14, Dynamia was invited to a regular meeting of the China OSS Promotion Union (COPU), where it shared on AI Agent trends and heterogeneous compute scheduling, joining industry partners to discuss the critical shift of AI from "conversational ability" to "execution ability."
