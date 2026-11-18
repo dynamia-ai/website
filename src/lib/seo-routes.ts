@@ -16,20 +16,6 @@ export const STATIC_INDEXABLE_PATHS = [
   "/what-is-hami",
 ] as const;
 
-export const CASE_STUDY_SLUGS = [
-  'seres',
-  "sangfor",
-  "cetc-cloud",
-  "sf-technology",
-  "prep-edu",
-  "ke-holdings",
-  "nio",
-  "snow-corp",
-  "china-merchants-bank",
-  "daocloud",
-  "telecom",
-] as const;
-
 /** Indexable case-study locales (de is served but noindex). */
 export const CASE_STUDY_LOCALES = ["en", "zh"] as const;
 

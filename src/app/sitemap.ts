@@ -6,9 +6,9 @@ import { getInstallDocLocales, getInstallDocSlugs } from "@/lib/enterprise-docs"
 import {
   BLOG_LOCALES,
   CASE_STUDY_LOCALES,
-  CASE_STUDY_SLUGS,
   STATIC_INDEXABLE_PATHS,
 } from "@/lib/seo-routes";
+import { getCasePublicSlugs } from "@/lib/site/caseContent";
 import { localizedAlternates, localizedUrl } from "@/utils/i18n";
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
@@ -60,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  const caseStudyEntries = CASE_STUDY_SLUGS.flatMap((slug) =>
+  const caseStudyEntries = getCasePublicSlugs().flatMap((slug) =>
     entriesForPath(`/case-studies/${slug}`, CASE_STUDY_LOCALES, {
       changeFrequency: "monthly",
       priority: 0.7,
