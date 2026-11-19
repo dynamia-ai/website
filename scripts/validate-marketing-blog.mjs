@@ -159,7 +159,7 @@ export function validate({ base, slug, ifContent = false }) {
   const changedImages = [];
   for (const { status, file } of changes) {
     if (!['A', 'M'].includes(status)) fail(`Deletion, rename or type change is not allowed: ${file}`);
-    if (file.startsWith(prefix) && /^(zh|en)\.md$/.test(file.slice(prefix.length))) posts.push(file);
+    if (file.startsWith(prefix) && /^(zh|en|de)\.md$/.test(file.slice(prefix.length))) posts.push(file);
     else if (file.startsWith(imagePrefix) && /^[a-zA-Z0-9._-]+\.(png|jpe?g|webp|gif)$/i.test(file.slice(imagePrefix.length))) {
       // Existing assets can be shared by old posts/locales: always add a new filename.
       if (status !== 'A') fail(`Use a new image filename instead of overwriting: ${file}`);

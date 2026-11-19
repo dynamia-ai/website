@@ -18,87 +18,98 @@ tags:
 category: Product Release
 linktitle: HAMi v2.9.0 Release Deep Dive
 ---
-**HAMi v2.9.0** has been officially released! Since v2.8, the project has made significant progress in **heterogeneous device virtualization depth, Kubernetes native standards adoption, and scheduler ecosystem expansion**. v2.9 brings systematic enhancements in **Ascend user-space partitioning, DRA production readiness, pluggable scheduler integration, and observability/security**, evolving HAMi from a "GPU sharing tool" into a **unified heterogeneous computing management and scheduling infrastructure platform**.
 
-## Highlights at a Glance
+**HAMi v2.9.0** ist offiziell erschienen! Seit v2.8 hat das Projekt deutliche Fortschritte bei der **Tiefe der Virtualisierung heterogener Geräte, der Übernahme nativer Kubernetes-Standards und dem Ausbau des Scheduler-Ökosystems** gemacht. v2.9 bringt systematische Verbesserungen bei **Ascend-Partitionierung im Userspace, DRA-Produktionsreife, pluggbarer Scheduler-Integration sowie Observability und Sicherheit** und entwickelt HAMi von einem „GPU-Sharing-Werkzeug“ zu einer **einheitlichen Infrastrukturplattform für Management und Scheduling heterogenen Computings**.
 
-Key feature highlights of the v2.9 release:
+## Highlights auf einen Blick
 
-1. **Ascend 910C User-Space Virtualization:** Introduces HAMi-core mode with LD_PRELOAD-based user-space interception, enabling fine-grained memory and compute sharing without modifying application code, validated in China Merchants Bank's production environment.
-2. **HAMi-DRA Production-Ready:** HAMi-DRA, the independent implementation based on Kubernetes DRA standards, bumps to v0.2.0, officially reaching production-ready status across NVIDIA / Ascend / Enflame platforms.
-3. **Security & Stability Enhancements:** Scheduler routes add DoS protection, NodeLock optimizes to exponential backoff, Webhook adds resource quota checking, with fixes for multiple critical production stability issues.
-4. **Heterogeneous Device Coverage Expansion:** New Vastai (Hanbo Semiconductor) device support further enriches the domestic heterogeneous computing management landscape.
+Die wichtigsten Features des v2.9-Releases:
 
-## Ascend 910C User-Space Partitioning — HAMi-core Mode (Key Feature)
+1. **Ascend-910C-Userspace-Virtualisierung:** Einführung des HAMi-core-Modus mit LD_PRELOAD-basierter Userspace-Interzeption — feingranulares Speicher- und Compute-Sharing ohne Änderungen am Anwendungscode, validiert in der Produktionsumgebung der China Merchants Bank.
+2. **HAMi-DRA produktionsreif:** HAMi-DRA, die unabhängige Implementierung auf Basis der Kubernetes-DRA-Standards, steigt auf v0.2.0 und erreicht offiziell Produktionsreife auf den Plattformen NVIDIA, Ascend und Enflame.
+3. **Sicherheit und Stabilität:** Scheduler-Routen erhalten DoS-Schutz, NodeLock wird auf exponentielles Backoff optimiert, der Webhook prüft Resource Quotas; zudem werden mehrere kritische Stabilitätsprobleme in Produktion behoben.
+4. **Breitere Abdeckung heterogener Geräte:** Neue Unterstützung für Vastai-Geräte (Hanbo Semiconductor) erweitert das Portfolio für heimisches heterogenes Computing-Management.
 
-Huawei Ascend 910C is one of the primary domestic AI computing chips. In production environments, users have long faced a critical question: **How can multiple inference/training tasks share a single Ascend card?**
+## Ascend-910C-Partitionierung im Userspace — HAMi-core-Modus (Schlüsselfeature)
 
-Traditional device management approaches have two extremes:
+Huawei Ascend 910C zählt zu den zentralen heimischen KI-Rechenchips. In Produktionsumgebungen steht Nutzerinnen und Nutzern seit Langem eine zentrale Frage gegenüber: **Wie können mehrere Inference-/Training-Aufgaben eine einzelne Ascend-Karte teilen?**
 
-- **Exclusive mode**: One Pod occupies the entire card, resulting in extremely low resource utilization
-- **SR-IOV hardware partitioning**: Requires specific hardware support, fixed partitioning granularity, insufficient flexibility
+Herkömmliche Geräteverwaltung kennt zwei Extreme:
 
-HAMi v2.9.0 introduces **HAMi-core mode**, implementing user-space soft partitioning of memory and compute without modifying application code or requiring specific hardware support. This is the most important feature in this release.
+- **Exklusivmodus**: Ein Pod belegt die gesamte Karte — die Ressourcenauslastung bleibt extrem niedrig
+- **SR-IOV-Hardware-Partitionierung**: Erfordert spezielle Hardwareunterstützung, feste Partitionierungsgranularität, zu wenig Flexibilität
 
-### Why User-Space Partitioning?
+HAMi v2.9.0 führt den **HAMi-core-Modus** ein und realisiert Soft-Partitionierung von Speicher und Compute im Userspace — ohne Änderungen am Anwendungscode und ohne spezielle Hardwarevoraussetzungen. Das ist das wichtigste Feature dieses Releases.
 
-Before HAMi-core, Ascend device sharing primarily relied on SR-IOV hardware virtualization, which had several fundamental limitations:
+### Warum Partitionierung im Userspace?
 
-- **Coarse granularity**: SR-IOV splits a physical card into fixed Virtual Functions (VFs), typically only supporting fixed ratios like 1/2, 1/4 of the entire card
-- **Inflexible**: Partitioning ratios are preset at the hardware level and cannot be dynamically adjusted based on actual workloads
-- **Hardware dependency**: Not all Ascend hardware versions support SR-IOV, and firmware coordination is required
+Vor HAMi-core stützte sich Ascend-Geräte-Sharing vor allem auf SR-IOV-Hardware-Virtualisierung — mit mehreren grundlegenden Einschränkungen:
 
-HAMi-core fundamentally changes this landscape — through pure software interception and management of ACL calls in user space, it achieves **MB-level memory and percentage-level compute** fine-grained partitioning. A single Ascend 910C can simultaneously serve multiple inference or training tasks with different specifications.
+- **Grobe Granularität**: SR-IOV teilt eine physische Karte in feste Virtual Functions (VFs) und unterstützt typischerweise nur feste Anteile wie 1/2 oder 1/4 der gesamten Karte
+- **Unflexibel**: Partitionierungsverhältnisse sind auf Hardwareebene vorgegeben und lassen sich nicht dynamisch an reale Workloads anpassen
+- **Hardwareabhängigkeit**: Nicht alle Ascend-Hardwareversionen unterstützen SR-IOV; Firmware-Abstimmung ist erforderlich
 
-### Technical Architecture
+HAMi-core verändert dieses Bild grundlegend: Durch reine Software-Interzeption und Verwaltung von ACL-Aufrufen im Userspace erreicht es **feingranulare Partitionierung auf MB-Ebene für Speicher und auf Prozent-Ebene für Compute**. Eine einzelne Ascend 910C kann gleichzeitig mehrere Inference- oder Training-Aufgaben mit unterschiedlichen Spezifikationen bedienen.
 
-How HAMi-core works:
+### Technische Architektur
 
-1. **LD_PRELOAD Interception**: At container startup, an interception library is injected via `LD_PRELOAD`, intercepting the application's calls to Ascend Computing Language (ACL)
-2. **Memory Isolation**: Each Pod's memory allocation is strictly limited to its declared quota at **MB-level** granularity, preventing one task from exhausting the entire card's memory
-3. **Compute Throttling**: Based on the Pod's declared compute quota, ACL compute calls are scheduled via time-slice round-robin, ensuring fair compute resource access for all tasks
-4. **Passthrough Execution**: Calls within quota limits are passed directly to the hardware driver without additional latency, ensuring near-native performance
+So funktioniert HAMi-core:
 
-### Partitioning Granularity Comparison
+1. **LD_PRELOAD-Interzeption**: Beim Start des Containers wird über `LD_PRELOAD` eine Interzeptionsbibliothek injiziert, die Aufrufe der Anwendung an die Ascend Computing Language (ACL) abfängt
+2. **Speicherisolation**: Die Speicherzuweisung jedes Pods wird streng auf das deklarierte Kontingent mit **MB-Granularität** begrenzt — eine Aufgabe kann den gesamten Kartenspeicher nicht mehr erschöpfen
+3. **Compute-Throttling**: Auf Basis des deklarierten Compute-Kontingents des Pods werden ACL-Compute-Aufrufe per Time-Slice-Round-Robin geplant, sodass alle Aufgaben fairen Zugang zu Compute-Ressourcen erhalten
+4. **Passthrough-Ausführung**: Aufrufe innerhalb der Kontingentgrenzen gehen ohne zusätzliche Latenz direkt an den Hardwaretreiber — Performance nahe am Native-Niveau
 
-Comparison of HAMi-core with traditional approaches:
+### Vergleich der Partitionierungsgranularität
 
-| Dimension | Exclusive Mode | SR-IOV | HAMi-core (v2.9) |
+Vergleich von HAMi-core mit herkömmlichen Ansätzen:
+
+| Dimension | Exklusivmodus | SR-IOV | HAMi-core (v2.9) |
 |-|-|-|-|
-| Memory Partitioning | Not partitionable | Fixed per VF allocation | **MB-level precise control** |
-| Compute Partitioning | Not partitionable | Proportional per VF | **Percentage-level flexible configuration** |
-| Number of Partitions | 1 Pod/card | Usually 2-4 VF/card | **10+ Pods/card** |
-| Hardware Support Required | No | Yes | **No** |
-| Application Code Changes Required | No | No | **No** |
-| Dynamic Adjustment | Not supported | Not supported | **Supported** |
+| Speicherpartitionierung | Nicht partitionierbar | Feste Zuteilung je VF | **Präzise Steuerung auf MB-Ebene** |
+| Compute-Partitionierung | Nicht partitionierbar | Proportional je VF | **Flexible Konfiguration auf Prozent-Ebene** |
+| Anzahl Partitionen | 1 Pod/Karte | Üblicherweise 2–4 VF/Karte | **10+ Pods/Karte** |
+| Hardwareunterstützung nötig | Nein | Ja | **Nein** |
+| Änderungen am Anwendungscode nötig | Nein | Nein | **Nein** |
+| Dynamische Anpassung | Nicht unterstützt | Nicht unterstützt | **Unterstützt** |
 
-For example, a 64GB Ascend 910C can be allocated to multiple tasks as follows:```yaml
+Beispielsweise lässt sich eine Ascend 910C mit 64 GB wie folgt auf mehrere Aufgaben verteilen:
+
+```yaml
 # Task 1: Large model inference, 32GB memory + 50% compute
 resources:
   limits:
     hami.io/vnpu-core: "50"
     hami.io/vnpu-core-memory: "32768"  # 32GB = 32768MB
-``````yaml
+```
+
+```yaml
 # Task 2: Model fine-tuning, 16GB memory + 30% compute
 resources:
   limits:
     hami.io/vnpu-core: "30"
     hami.io/vnpu-core-memory: "16384"  # 16GB = 16384MB
-``````yaml
+```
+
+```yaml
 # Task 3: Lightweight inference, 8GB memory + 20% compute
 resources:
   limits:
     hami.io/vnpu-core: "20"
     hami.io/vnpu-core-memory: "8192"  # 8GB = 8192MB
-```### Core Capabilities
+```
 
-**Ascend 910C SuperPod Support**
+### Kernfähigkeiten
 
-For SuperPod environments, HAMi implements **module-pair level** resource allocation. In distributed training scenarios, multiple Ascend chips are interconnected via HCCS/RoCE to form super nodes. HAMi can identify and manage this topology structure, fully leveraging the hardware advantages of super nodes.
+**Unterstützung für Ascend-910C-SuperPod**
 
-**vNPU-Core Virtualization**
+Für SuperPod-Umgebungen implementiert HAMi Ressourcenallokation auf **Module-Pair-Ebene**. In verteilten Trainingsszenarien werden mehrere Ascend-Chips über HCCS/RoCE zu Superknoten verbunden. HAMi kann diese Topologie erkennen und verwalten und so die Hardwarevorteile von Superknoten voll ausschöpfen.
 
-A new `hami-vnpu-core` resource type supports more flexible compute partitioning strategies:```yaml
+**vNPU-Core-Virtualisierung**
+
+Ein neuer Ressourcentyp `hami-vnpu-core` unterstützt flexiblere Strategien zur Compute-Partitionierung:
+
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -113,20 +124,32 @@ spec:
         limits:
           hami.io/vnpu-core: "1"
           hami.io/vnpu-core-memory: "16384"
-```Annotation-based node filtering and multi-device request capabilities:```yaml
+```
+
+Annotation-basiertes Node-Filtering und Multi-Device-Anfragen:
+
+```yaml
 # Node filtering: Only schedule on nodes with specific annotations
 metadata:
   annotations:
     hami.io/vnpu-core-node-filter: "ascend910c-module-0"
-```### Enabling HAMi-core
+```
 
-Set `ascend.hamiVnpuCore` to `true` in Helm values to enable this feature:```yaml
+### HAMi-core aktivieren
+
+Setzen Sie `ascend.hamiVnpuCore` in den Helm-Values auf `true`, um dieses Feature zu aktivieren:
+
+```yaml
 # values.yaml
 ascend:
   hamiVnpuCore: true
-```It can also be enabled individually in `ascend-device-plugin` node configuration, supporting partial node enablement within the same cluster.
+```
 
-> **Important:** In v2.9, Pods must explicitly declare `huawei.com/vnpu-mode: 'hami-core'` in annotations to use HAMi-core mode:```yaml
+Es lässt sich auch einzeln in der Node-Konfiguration von `ascend-device-plugin` einschalten — so ist eine teilweise Aktivierung innerhalb desselben Clusters möglich.
+
+> **Wichtig:** In v2.9 müssen Pods in den Annotations explizit `huawei.com/vnpu-mode: 'hami-core'` deklarieren, um den HAMi-core-Modus zu nutzen:
+
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -141,60 +164,64 @@ spec:
         limits:
           hami.io/vnpu-core: "1"
           hami.io/vnpu-core-memory: "16384"
-```Pods without this annotation will continue using the legacy template-based vNPU partitioning. If no suitable nodes are available, the task will remain in pending state.
+```
 
-### Production Validation
+Pods ohne diese Annotation nutzen weiterhin die legacy template-basierte vNPU-Partitionierung. Fehlen geeignete Nodes, bleibt die Aufgabe im Pending-Zustand.
 
-This feature has been validated in **China Merchants Bank's** production environment. Based on the HAMi-vNPU-Core soft partitioning solution, China Merchants Bank achieved 100% resource pooling of Ascend 910C computing power and high-performance communication for large models, significantly improving domestic computing resource utilization.
+### Produktionsvalidierung
 
-Thanks to Huawei Cloud Canada Lab and China Merchants Bank [@ashergaga](https://github.com/ashergaga) for their contributions to this feature.
+Dieses Feature wurde in der Produktionsumgebung der **China Merchants Bank** validiert. Auf Basis der Soft-Partitionierung mit HAMi-vNPU-Core erreichte die China Merchants Bank eine 100-prozentige Ressourcen-Poolbildung der Ascend-910C-Rechenleistung sowie Hochleistungskommunikation für große Modelle und steigerte die Auslastung heimischer Rechenressourcen deutlich.
 
-This release also updates the [HAMi-core performance benchmark data](https://github.com/Project-HAMi/HAMi/blob/master/docs/benchmark_cn.md). For detailed benchmark procedures, refer to the [project documentation](https://github.com/Project-HAMi/HAMi/tree/master/benchmarks).
+Dank an das Huawei Cloud Canada Lab und die China Merchants Bank [@ashergaga](https://github.com/ashergaga) für die Beiträge zu diesem Feature.
 
-## HAMi-DRA — Lightweight HAMi Based on Kubernetes Standards
+Dieses Release aktualisiert zudem die [HAMi-core-Performance-Benchmark-Daten](https://github.com/Project-HAMi/HAMi/blob/master/docs/benchmark_cn.md). Detaillierte Benchmark-Abläufe finden Sie in der [Projektdokumentation](https://github.com/Project-HAMi/HAMi/tree/master/benchmarks).
 
-In HAMi v2.9.0, **HAMi-DRA** officially reaches production-ready status. HAMi-DRA is an independent implementation project based on Kubernetes **Dynamic Resource Assignment (DRA)** standards, positioned as a "lightweight HAMi".
+## HAMi-DRA — leichtgewichtiges HAMi auf Basis von Kubernetes-Standards
 
-### From Device Plugin to DRA
+In HAMi v2.9.0 erreicht **HAMi-DRA** offiziell Produktionsreife. HAMi-DRA ist ein unabhängiges Implementierungsprojekt auf Basis der Kubernetes-Standards für **Dynamic Resource Allocation (DRA)** und positioniert sich als „leichtgewichtiges HAMi“.
 
-DRA is the next-generation device resource declaration and allocation mechanism being advanced by the Kubernetes community. The traditional Device Plugin model has the following limitations:
+### Vom Device Plugin zu DRA
 
-1. **Inflexible resource declaration:** Device resources are hard-coded via `limits[nvidia.com/gpu]`, unable to express complex requirements like memory/compute separation or topology constraints
-2. **Scattered scheduling logic:** Each device plugin needs to implement its own scheduling logic, making unified management difficult
-3. **Difficult resource composition:** Cannot express compound requirements like "multiple GPUs with specific topology"
+DRA ist der von der Kubernetes-Community vorangetriebene Mechanismus der nächsten Generation zur Deklaration und Zuweisung von Geräteressourcen. Das klassische Device-Plugin-Modell hat folgende Grenzen:
 
-DRA standardizes device resource declaration, allocation, and management by introducing new APIs like `ResourceClaim` and `DeviceClass`.
+1. **Unflexible Ressourcendeklaration:** Geräteressourcen werden über `limits[nvidia.com/gpu]` hart kodiert und können komplexe Anforderungen wie getrennten Speicher/Compute oder Topologie-Constraints nicht ausdrücken
+2. **Verstreute Scheduling-Logik:** Jedes Device Plugin muss eigene Scheduling-Logik implementieren — einheitliches Management wird schwierig
+3. **Schwierige Ressourcenkomposition:** Zusammengesetzte Anforderungen wie „mehrere GPUs mit bestimmter Topologie“ lassen sich nicht ausdrücken
 
-![Device Plugin vs DRA Model Comparison](/images/blog/hami-v29-deep-dive/dra-device-plugin-comparison-en.png)
+DRA standardisiert Deklaration, Zuweisung und Verwaltung von Geräteressourcen durch neue APIs wie `ResourceClaim` und `DeviceClass`.
 
-### HAMi-DRA Design Philosophy
+![Vergleich Device-Plugin- und DRA-Modell](/images/blog/hami-v29-deep-dive/dra-device-plugin-comparison-en.png)
 
-HAMi-DRA adopts a Mutating Webhook architecture. The core philosophy can be summarized in three points:
+### Designphilosophie von HAMi-DRA
 
-1. **Don't change user habits:** Continue using Device Plugin syntax, automatically converting to DRA resource models underneath
-2. **Internalize complexity:** Webhook, Driver, and lifecycle management are all handled by the system
-3. **Drive evolution through community collaboration:** Contributors from different companies validate solutions in real production environments
+HAMi-DRA setzt auf eine Mutating-Webhook-Architektur. Die Kernphilosophie lässt sich in drei Punkten zusammenfassen:
 
-![HAMi-DRA Request Flow](/images/blog/hami-v29-deep-dive/hami-dra-flow-en.png)
+1. **Nutzergewohnheiten nicht ändern:** Weiterhin Device-Plugin-Syntax verwenden, darunter automatisch in DRA-Ressourcenmodelle umwandeln
+2. **Komplexität internalisieren:** Webhook, Driver und Lifecycle-Management übernimmt das System
+3. **Evolution durch Community-Zusammenarbeit vorantreiben:** Mitwirkende aus unterschiedlichen Unternehmen validieren Lösungen in realen Produktionsumgebungen
 
-### Platform Support
+![HAMi-DRA-Anfragefluss](/images/blog/hami-v29-deep-dive/hami-dra-flow-en.png)
 
-HAMi-DRA has bumped to **v0.2.0**, supporting three major platforms:
+### Plattformunterstützung
 
-| Platform | Virtualization Method | Status |
+HAMi-DRA ist auf **v0.2.0** gestiegen und unterstützt drei große Plattformen:
+
+| Plattform | Virtualisierungsmethode | Status |
 |-|-|-|
-| NVIDIA | HAMi-core time-slicing + memory soft limits | Production-ready |
-| Ascend | vNPU-Core user-space partitioning | Production-ready |
-| Enflame | Compute/memory partitioning | Production-ready |
+| NVIDIA | HAMi-core Time-Slicing + Soft-Limits für Speicher | Produktionsreif |
+| Ascend | vNPU-Core-Userspace-Partitionierung | Produktionsreif |
+| Enflame | Compute-/Speicherpartitionierung | Produktionsreif |
 
-Installing HAMi-DRA:
+HAMi-DRA installieren:
 
-**Prerequisites:**
+**Voraussetzungen:**
 
-- Kubernetes >= 1.34 with DRA Consumable Capacity featuregate enabled
-- Container runtime with CDI (Container Device Interface) enabled
+- Kubernetes >= 1.34 mit aktiviertem Featuregate DRA Consumable Capacity
+- Container-Runtime mit aktiviertem CDI (Container Device Interface)
 - NVIDIA GPU Driver 440+
-- cert-manager installed```bash
+- cert-manager installiert
+
+```bash
 # Clone the repository and install
 git clone https://github.com/Project-HAMi/HAMi-DRA.git
 cd HAMi-DRA
@@ -205,9 +232,13 @@ helm install hami-dra ./charts/hami-dra --set drivers.nvidia.containerDriver=fal
 
 # If monitoring components are not needed:
 helm install hami-dra ./charts/hami-dra --set monitor.enabled=false
-```After installation, usage is the same as HAMi.
+```
 
-Submitting workloads (automatically converted from Device Plugin syntax):```yaml
+Nach der Installation ist die Nutzung identisch mit HAMi.
+
+Workloads einreichen (automatische Umwandlung aus der Device-Plugin-Syntax):
+
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -222,40 +253,48 @@ spec:
       resources:
         limits:
           nvidia.com/gpu: "1"
-```**HAMi-DRA Project:** [https://github.com/Project-HAMi/HAMi-DRA](https://github.com/Project-HAMi/HAMi-DRA)
+```
 
-## Volcano vGPU Upgraded to v0.19 + CDI
+**HAMi-DRA-Projekt:** [https://github.com/Project-HAMi/HAMi-DRA](https://github.com/Project-HAMi/HAMi-DRA)
 
-HAMi v2.9.0 synchronizes the built-in Volcano vGPU Device Plugin to **v0.19**, maintaining consistency with the Volcano upstream.
+## Volcano vGPU auf v0.19 + CDI aktualisiert
 
-**CDI Mode Support**
+HAMi v2.9.0 synchronisiert das integrierte Volcano-vGPU-Device-Plugin auf **v0.19** und bleibt damit konsistent mit dem Volcano-Upstream.
 
-Container Device Interface (CDI) is the standard device injection interface for container runtimes defined by the CNCF CDI specification. Compared to traditional approaches:
+**CDI-Modus-Unterstützung**
 
-| Dimension | Traditional Approach | CDI Approach |
+Container Device Interface (CDI) ist die von der CNCF-CDI-Spezifikation definierte Standard-Schnittstelle zur Geräteinjektion für Container-Runtimes. Im Vergleich zu herkömmlichen Ansätzen:
+
+| Dimension | Herkömmlicher Ansatz | CDI-Ansatz |
 |-|-|-|
-| Device Injection | Manual /dev mounts, environment variable setup | Declarative CDI device list |
-| Runtime Coupling | Tightly coupled | Loosely coupled |
-| Multi-device Support | Manual management required | Automatic aggregation |
-| MIG Support | Complex configuration management | Standardized declaration |
+| Geräteinjektion | Manuelle /dev-Mounts, Umgebungsvariablen | Deklarative CDI-Geräteliste |
+| Runtime-Kopplung | Eng gekoppelt | Lose gekoppelt |
+| Multi-Device-Unterstützung | Manuelle Verwaltung nötig | Automatische Aggregation |
+| MIG-Unterstützung | Komplexe Konfigurationsverwaltung | Standardisierte Deklaration |
 
-Enable CDI mode:```yaml
+CDI-Modus aktivieren:
+
+```yaml
 # values.yaml
 devicePlugin:
   cdIEnabled: true
   nvidia:
     cdIEnabled: true
-```This upgrade also **fixes MIG allocation issues under CDI mode**, further enhancing NVIDIA GPU flexible partitioning capabilities.
+```
 
-## Observability Enhancements
+Dieses Upgrade **behebt außerdem MIG-Allokationsprobleme im CDI-Modus** und stärkt die flexible Partitionierung von NVIDIA-GPUs weiter.
 
-v2.9.0 includes multiple observability improvements:
+## Observability-Verbesserungen
 
-- vGPU Monitor adds `--metrics-bind-address` parameter for custom metrics exposure address
-- Helm Chart adds Prometheus ServiceMonitor covering scheduler and device plugin
-- Prometheus metrics and label naming aligned with community best practices
-- New device type label support in metrics
-- Optimized log level control with related unit tests added```yaml
+v2.9.0 bringt mehrere Observability-Verbesserungen:
+
+- vGPU Monitor erhält den Parameter `--metrics-bind-address` für eine benutzerdefinierte Metrics-Expose-Adresse
+- Helm Chart ergänzt einen Prometheus ServiceMonitor für Scheduler und Device Plugin
+- Prometheus-Metriken und Label-Benennung an Community-Best-Practices angeglichen
+- Neue Unterstützung für Device-Type-Labels in Metriken
+- Optimierte Log-Level-Steuerung inklusive zugehöriger Unit Tests
+
+```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -268,65 +307,77 @@ spec:
   endpoints:
     - port: metrics
       interval: 15s
-```## Security & Stability
+```
 
-### Security Hardening
+## Sicherheit und Stabilität
 
-**DoS Protection**
+### Sicherheitsabsicherung
 
-Scheduler routes add `io.LimitReader` to limit HTTP request body size, preventing OOM caused by malicious or abnormally large request bodies.
+**DoS-Schutz**
 
-**Webhook Resource Quota Checking**
+Scheduler-Routen nutzen `io.LimitReader`, um die Größe des HTTP-Request-Body zu begrenzen und OOM durch böswillige oder anomal große Request Bodies zu verhindern.
 
-v2.9.0 adds **Resource Quota checking** capability in the Webhook. GPU resource requests can be validated against quota limits at the Pod submission stage, avoiding post-scheduling rollbacks and improving overall scheduling efficiency.
+**Resource-Quota-Prüfung im Webhook**
 
-![Resource Quota Checking](/images/blog/hami-v29-deep-dive/webhook-quota-en.png)
+v2.9.0 ergänzt im Webhook die Fähigkeit zur **Resource-Quota-Prüfung**. GPU-Ressourcenanfragen lassen sich bereits bei der Pod-Einreichung gegen Quota-Limits validieren — Rollbacks nach dem Scheduling entfallen, die Scheduling-Effizienz steigt insgesamt.
 
-### Critical Bug Fixes
+![Resource-Quota-Prüfung](/images/blog/hami-v29-deep-dive/webhook-quota-en.png)
 
-v2.9.0 fixes multiple critical issues affecting production stability:
+### Kritische Bugfixes
 
-| Issue | Impact | Fix |
+v2.9.0 behebt mehrere kritische Probleme, die die Produktionsstabilität betreffen:
+
+| Problem | Auswirkung | Fix |
 |-|-|-|
-| NodeLock contention | Large-scale cluster scheduling performance degradation | Exponential backoff strategy |
-| Leader election nil pointer | HA deployment occasional crashes | Null check |
-| Scheduler score division by zero | Scoring anomalies | Safe division |
-| Multi-container Pod device allocation | Init container device allocation conflicts | Lifecycle-aware allocation |
-| Kernel 6.17 NVIDIA health check | GPU status check handshake failure | Boundary condition handling |
-| Global image tag override | Component-level image tags ignored | Tag priority fix |
-| Stale Deleted handshake | Node scheduling interruption | State cleanup |
-| Device filter ineffective | filter device config not working | Filter logic fix |
-| Device Plugin/Scheduler annotation mismatch | Device allocation anomalies | Annotation alignment |
+| NodeLock-Contention | Scheduling-Performance-Einbußen in großen Clustern | Exponentielle Backoff-Strategie |
+| Nil-Pointer bei Leader Election | Gelegentliche Crashes in HA-Deployments | Null-Check |
+| Division durch null bei Scheduler-Score | Scoring-Anomalien | Sichere Division |
+| Geräteallokation bei Multi-Container-Pods | Konflikte bei Init-Container-Geräteallokation | Lifecycle-bewusste Allokation |
+| NVIDIA-Health-Check unter Kernel 6.17 | Handshake-Fehler bei GPU-Statusprüfung | Behandlung von Grenzbedingungen |
+| Globales Überschreiben von Image-Tags | Komponenten-Image-Tags ignoriert | Korrektur der Tag-Priorität |
+| Veralteter Deleted-Handshake | Unterbrechung des Node-Schedulings | Zustandsbereinigung |
+| Unwirksamer Device Filter | filter-device-Konfiguration wirkungslos | Korrektur der Filterlogik |
+| Annotation-Mismatch Device Plugin/Scheduler | Anomalien bei Geräteallokation | Annotation-Angleichung |
 
-## Heterogeneous Device Ecosystem Expansion
+## Ausbau des Ökosystems heterogener Geräte
 
-### New Vastai (Hanbo Semiconductor) Device Support
+### Neue Unterstützung für Vastai-Geräte (Hanbo Semiconductor)
 
-Vastai Technologies is a leading domestic general-purpose GPU chip design company, with chips widely used in AI inference, graphics rendering, video processing, and other scenarios. HAMi v2.9.0 adds support for Vastai devices, further expanding HAMi's heterogeneous computing management into the domestic GPU space.
+Vastai Technologies ist ein führendes heimisches Designunternehmen für General-Purpose-GPU-Chips; die Chips kommen breit in KI-Inference, Grafikrendering, Videoverarbeitung und weiteren Szenarien zum Einsatz. HAMi v2.9.0 ergänzt die Unterstützung für Vastai-Geräte und erweitert das heterogene Computing-Management von HAMi weiter in den heimischen GPU-Bereich.
 
-#### Two Allocation Modes
+#### Zwei Allokationsmodi
 
-Vastai devices support two resource allocation modes:
+Vastai-Geräte unterstützen zwei Ressourcenallokationsmodi:
 
-| Mode | Description | Use Case |
+| Modus | Beschreibung | Einsatzszenario |
 |-|-|-|
-| **Full-Card Mode** | Each Pod exclusively occupies an entire GPU | Large model training, performance-sensitive inference |
-| **Die Mode** | Partitioned by chip Die, supports topology-aware scheduling | Multi-task sharing, resource utilization optimization |
+| **Full-Card-Modus** | Jeder Pod belegt exklusiv eine gesamte GPU | Training großer Modelle, performance-sensitive Inference |
+| **Die-Modus** | Partitionierung nach Chip-Die, topologiebewusstes Scheduling | Multi-Task-Sharing, Optimierung der Ressourcenauslastung |
 
-In Die mode, the scheduler is aware of the AIC (Accelerator Interface Card) topology, attempting to allocate multiple resources requested by the same Pod to the same AIC, reducing cross-Die communication overhead.
+Im Die-Modus kennt der Scheduler die AIC-Topologie (Accelerator Interface Card) und versucht, mehrere vom selben Pod angeforderte Ressourcen derselben AIC zuzuweisen — so sinkt der Kommunikationsoverhead über Die-Grenzen hinweg.
 
-#### Configuration and Usage
+#### Konfiguration und Nutzung
 
-**Node Labeling:**
+**Node-Labeling:**
 
-Before installing HAMi, label nodes with Vastai devices:```bash
+Vor der HAMi-Installation Nodes mit Vastai-Geräten labeln:
+
+```bash
 kubectl label node <node-name> vastai=on
-```**Helm values configuration:**```yaml
+```
+
+**Helm-Values-Konfiguration:**
+
+```yaml
 vastai:
   enabled: true
   customresources:
     - vastaitech.com/va
-```**Full-Card mode example:**```yaml
+```
+
+**Beispiel Full-Card-Modus:**
+
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -338,9 +389,13 @@ spec:
       resources:
         limits:
           vastaitech.com/va: "1"
-```**Die mode example:**
+```
 
-Specify device selection strategy via annotations:```yaml
+**Beispiel Die-Modus:**
+
+Geräteauswahlstrategie über Annotations festlegen:
+
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -355,81 +410,87 @@ spec:
       resources:
         limits:
           vastaitech.com/va: "2"
-```With Vastai device support, HAMi now covers **NVIDIA, Huawei Ascend, Cambricon, Hygon DCU, Biren, Enflame, MetaX, Kunlunxin, AMD, Iluvatar, AWS Neuron**, and **Vastai** — over a dozen heterogeneous computing devices, making it one of the most broadly covering heterogeneous device virtualization and scheduling projects in the Kubernetes ecosystem.
+```
+
+Mit Vastai-Geräteunterstützung deckt HAMi nun **NVIDIA, Huawei Ascend, Cambricon, Hygon DCU, Biren, Enflame, MetaX, Kunlunxin, AMD, Iluvatar, AWS Neuron** und **Vastai** ab — mehr als ein Dutzend heterogener Computing-Geräte und damit eines der am breitesten abdeckenden Projekte für Virtualisierung und Scheduling heterogener Geräte im Kubernetes-Ökosystem.
 
 ### DRA Ecosystem Alliance
 
-DRA is becoming the next-generation device management model for Kubernetes, but there are implementation uncertainties on the vendor side and high usage barriers on the user side. To address this, the HAMi community announced the launch of the **DRA Ecosystem Alliance** at the 3rd HAMi Meetup in Shenzhen.
+DRA entwickelt sich zum Geräteverwaltungsmodell der nächsten Generation für Kubernetes — auf Herstellerseite bleiben Implementierungsunsicherheiten, auf Nutzerseite hohe Einstiegshürden. Deshalb hat die HAMi-Community beim 3. HAMi Meetup in Shenzhen den Start der **DRA Ecosystem Alliance** angekündigt.
 
-Goals of the DRA Ecosystem Alliance:
+Ziele der DRA Ecosystem Alliance:
 
-- **Connect device vendors with users** to drive DRA adoption in real-world scenarios
-- **Promote DRA standards evolution** to reduce the engineering cost of heterogeneous device integration
-- **Unify the scheduling layer to abstract underlying hardware differences**, enabling unified heterogeneous computing management
+- **Gerätehersteller und Nutzer verbinden**, um die DRA-Adoption in realen Szenarien voranzutreiben
+- **Evolution der DRA-Standards fördern**, um den Engineering-Aufwand für die Integration heterogener Geräte zu senken
+- **Scheduling-Schicht vereinheitlichen und Hardwareunterschiede abstrahieren**, für einheitliches Management heterogenen Computings
 
-## Upgrade Guide
+## Upgrade-Leitfaden
 
-Upgrade to v2.9.0 via Helm:```bash
+Upgrade auf v2.9.0 per Helm:
+
+```bash
 helm repo add hami-charts https://project-hami.github.io/HAMi/
 helm repo update
 helm upgrade hami hami-charts/hami -n hami-system
-```For complete installation documentation, visit: [https://project-hami.io/docs/usage/install](https://project-hami.io/docs/usage/install)
+```
 
-> **Upgrade Notes:**
+Vollständige Installationsdokumentation: [https://project-hami.io/docs/usage/install](https://project-hami.io/docs/usage/install)
+
+> **Hinweise zum Upgrade:**
 >
-> - If using Volcano vGPU mode, note the CDI-related configuration changes
-> - If using Ascend devices and want to enable HAMi-core mode, refer to the Ascend configuration section in the latest documentation
-> - It's recommended to verify compatibility in a test environment before upgrading
+> - Bei Nutzung des Volcano-vGPU-Modus CDI-bezogene Konfigurationsänderungen beachten
+> - Bei Ascend-Geräten und gewünschter Aktivierung des HAMi-core-Modus den Ascend-Konfigurationsabschnitt in der aktuellen Dokumentation konsultieren
+> - Kompatibilität vor dem Upgrade idealerweise in einer Testumgebung prüfen
 
-## Community Updates
+## Community-Updates
 
-During the v2.9.0 release cycle, the HAMi community remained active in technical advocacy, product ecosystem, and user practices. Here are the noteworthy community developments.
+Im Release-Zyklus von v2.9.0 blieb die HAMi-Community in technischer Advocacy, Produktökosystem und Nutzerpraxis aktiv. Hier die bemerkenswerten Community-Entwicklungen.
 
-### Community Events
+### Community-Events
 
-- **KubeCon EU 2026**: HAMi appeared in Amsterdam as a CNCF Sandbox project, setting up a Project Pavilion booth and taking the main stage Keynote Demo to showcase the latest Kubernetes GPU virtualization advancements to developers worldwide. [Read recap](https://project-hami.io/blog/kubecon-eu-2026-recap)
-- **KCD Beijing 2026**: Over 1,000 registrations, breaking KCD Beijing records. The HAMi community was invited to share "From Device Plugin to DRA: GPU Scheduling Paradigm Upgrade and HAMi-DRA Practice." [Read recap](https://project-hami.io/blog/kcd-beijing-2026-dra-gpu-scheduling)
-- **3rd HAMi Meetup Shenzhen**: Seven experts from CNCF, SF Technology, China Merchants Bank, Enflame Technology, and others shared insights on the future of AI computing cloud-native. [Read recap](https://project-hami.io/blog/hami-meetup-shenzhen-2026)
-- **HAMi WebUI Official Release**: The HAMi community launched the open-source GPU monitoring dashboard [HAMi WebUI](https://github.com/Project-HAMi/HAMi-WebUI) v1.1.0, presenting the entire GPU cluster in a single visual interface, achieving a complete closed loop from GPU scheduling to visual observability. [Read blog post](https://project-hami.io/blog/introducing-hami-webui)
+- **KubeCon EU 2026**: HAMi war in Amsterdam als CNCF-Sandbox-Projekt vertreten, mit einem Stand im Project Pavilion und einer Keynote-Demo auf der Hauptbühne, um Entwicklerinnen und Entwicklern weltweit die neuesten Fortschritte bei Kubernetes-GPU-Virtualisierung zu zeigen. [Recap lesen](https://project-hami.io/blog/kubecon-eu-2026-recap)
+- **KCD Beijing 2026**: Über 1.000 Anmeldungen und neuer Rekord für KCD Beijing. Die HAMi-Community war eingeladen, „From Device Plugin to DRA: GPU Scheduling Paradigm Upgrade and HAMi-DRA Practice“ zu teilen. [Recap lesen](https://project-hami.io/blog/kcd-beijing-2026-dra-gpu-scheduling)
+- **3. HAMi Meetup Shenzhen**: Sieben Expertinnen und Experten von CNCF, SF Technology, China Merchants Bank, Enflame Technology und weiteren Organisationen teilten Einblicke in die Zukunft von AI Computing Cloud-Native. [Recap lesen](https://project-hami.io/blog/hami-meetup-shenzhen-2026)
+- **Offizielle Veröffentlichung von HAMi WebUI**: Die HAMi-Community hat das Open-Source-GPU-Monitoring-Dashboard [HAMi WebUI](https://github.com/Project-HAMi/HAMi-WebUI) v1.1.0 veröffentlicht — der gesamte GPU-Cluster in einer visuellen Oberfläche, vom GPU-Scheduling bis zur visuellen Observability geschlossen. [Blogbeitrag lesen](https://project-hami.io/blog/introducing-hami-webui)
 
-### Website and Documentation Overhaul
+### Überarbeitung von Website und Dokumentation
 
-Since the v2.8.0 release, the HAMi website and documentation have undergone the largest-scale restructuring in project history. Approximately 195 PRs were merged into the website repository, covering the following major areas:
+Seit dem Release von v2.8.0 haben Website und Dokumentation von HAMi die größte Umstrukturierung in der Projektgeschichte durchlaufen. Rund 195 PRs wurden in das Website-Repository gemergt und decken folgende Schwerpunkte ab:
 
-- **Website Redesign**: Homepage redesign, architecture diagram redraws, unified blog styling, mobile optimization, enhanced footer, migration from external search to built-in search
-- **New Documentation**: GPU virtualization principles page, HAMi quick start guide, real-time GPU monitoring guide, upgrade and uninstallation guide, HAMi WebUI user and developer guides, Vastai device documentation
-- **i18n Sync**: Continuous Chinese-English documentation alignment, sidebar label localization, announcement banner multilingual support
-- **Community Content**: New blog posts including KubeCon EU 2026 recap, KCD Beijing 2026 DRA sharing, HAMi WebUI release, Meetup Shenzhen recap; adopter information updates for Keike, NIO, SNOW Corp., Bovi Wisdom
-- **Quality Governance**: Site-wide copy de-marketing, grammar corrections, code block language annotations, format standardization, contributor guide and governance documentation improvements
+- **Website-Redesign**: Homepage-Neugestaltung, neu gezeichnete Architekturdiagramme, einheitliches Blog-Styling, Mobile-Optimierung, erweiterter Footer, Migration von externer Suche zur integrierten Suche
+- **Neue Dokumentation**: Seite zu GPU-Virtualisierungsprinzipien, HAMi-Schnellstart, Leitfaden für Echtzeit-GPU-Monitoring, Upgrade- und Deinstallationsleitfaden, HAMi-WebUI-Nutzer- und Entwicklerleitfäden, Vastai-Gerätedokumentation
+- **i18n-Sync**: Fortlaufende Angleichung chinesisch-englischer Dokumentation, Lokalisierung von Sidebar-Labels, mehrsprachige Announcement-Banner
+- **Community-Inhalte**: Neue Blogbeiträge zu KubeCon EU 2026 Recap, KCD Beijing 2026 DRA-Sharing, HAMi-WebUI-Release, Meetup Shenzhen Recap; Aktualisierung der Adopter-Informationen zu Keike, NIO, SNOW Corp., Bovi Wisdom
+- **Qualitätsgovernance**: Site-weite Entmarketingisierung der Texte, Grammatikkorrekturen, Sprachannotationen für Codeblöcke, Formatstandardisierung, Verbesserungen an Contributor Guide und Governance-Dokumentation
 
-Thanks to [@mesutoezdil](https://github.com/mesutoezdil) for contributions to HAMi official documentation optimization.
+Dank an [@mesutoezdil](https://github.com/mesutoezdil) für Beiträge zur Optimierung der offiziellen HAMi-Dokumentation.
 
 Website: [https://project-hami.io](https://project-hami.io)
 
 ### CNCF Case Studies
 
-An increasing number of enterprises are using HAMi in production environments to build GPU virtualization and heterogeneous computing scheduling capabilities. The following case studies have been published on the CNCF website:
+Immer mehr Unternehmen setzen HAMi in Produktionsumgebungen ein, um GPU-Virtualisierung und Scheduling für heterogenes Computing aufzubauen. Die folgenden Case Studies sind auf der CNCF-Website veröffentlicht:
 
-- **Keike Holdings**: Built AIStudio intelligent computing platform based on Kubernetes + HAMi, improving GPU utilization from 13% to 37% (nearly 3x), supporting 10,000+ concurrent Pods, processing tens of millions of daily business requests. [Read full article](https://www.cncf.io/case-studies/ke-holdings-inc/)
-- **NIO**: Adopted HAMi hybrid GPU sharing strategy for autonomous driving workloads, improving CI pipeline GPU utilization by approximately 10x, reducing simulation workload GPU time by approximately 30%, covering a production cluster of approximately 600 GPUs. [Read full article](https://www.cncf.io/case-studies/nio/)
-- **SNOW Corp.**: Korea's NAVER subsidiary SNOW Corp. manages 1,000+ A100 GPUs, achieving GPU sharing through HAMi to handle 700% traffic spikes, halving GPU requirements with estimated savings of $17.4 million. [Read full article](https://www.cncf.io/case-studies/snow-corp/)
+- **Keike Holdings**: Aufbau der intelligenten Computing-Plattform AIStudio auf Basis von Kubernetes + HAMi — GPU-Auslastung von 13 % auf 37 % (nahezu 3×), Unterstützung von 10.000+ gleichzeitigen Pods, Verarbeitung von zig Millionen täglichen Business-Anfragen. [Vollständigen Artikel lesen](https://www.cncf.io/case-studies/ke-holdings-inc/)
+- **NIO**: Hybrid-GPU-Sharing-Strategie mit HAMi für Autonomous-Driving-Workloads — GPU-Auslastung der CI-Pipeline um etwa 10× gesteigert, GPU-Zeit für Simulations-Workloads um etwa 30 % gesenkt, Produktionscluster mit etwa 600 GPUs. [Vollständigen Artikel lesen](https://www.cncf.io/case-studies/nio/)
+- **SNOW Corp.**: Die NAVER-Tochter SNOW Corp. in Korea verwaltet 1.000+ A100-GPUs; durch GPU-Sharing mit HAMi werden Traffic-Spitzen von 700 % bewältigt, der GPU-Bedarf halbiert sich, geschätzte Einsparungen von 17,4 Mio. USD. [Vollständigen Artikel lesen](https://www.cncf.io/case-studies/snow-corp/)
 
-### New Contributors
+### Neue Contributors
 
-The v2.9.0 release welcomed **19 new contributors** to the HAMi project from different countries and organizations:
+Das v2.9.0-Release begrüßte **19 neue Contributors** im HAMi-Projekt aus verschiedenen Ländern und Organisationen:
 
 [@maishivamhoo123](https://github.com/maishivamhoo123), [@hoteye](https://github.com/hoteye), [@jsl9208](https://github.com/jsl9208), [@ashergaga](https://github.com/ashergaga), [@Atroxgod](https://github.com/Atroxgod), [@MyoungHaSong](https://github.com/MyoungHaSong), [@charford](https://github.com/charford), [@jcustenborder](https://github.com/jcustenborder), [@Nov11](https://github.com/Nov11), [@ilia-medvedev](https://github.com/ilia-medvedev), [@Yonsun-w](https://github.com/Yonsun-w), [@CFH2436](https://github.com/CFH2436), [@kenwoodjw](https://github.com/kenwoodjw), [@anandj91](https://github.com/anandj91), [@ManishSharma1609](https://github.com/ManishSharma1609), [@maverick123123](https://github.com/maverick123123), [@almazkhalikov](https://github.com/almazkhalikov), [@lin121291](https://github.com/lin121291), [@mesutoezdil](https://github.com/mesutoezdil)
 
-Thank you to every contributor!
+Danke an alle Contributors!
 
 ---
 
-**Related Links:**
+**Weiterführende Links:**
 
 - GitHub Release: [https://github.com/Project-HAMi/HAMi/releases/tag/v2.9.0](https://github.com/Project-HAMi/HAMi/releases/tag/v2.9.0)
 - HAMi-DRA: [https://github.com/Project-HAMi/HAMi-DRA](https://github.com/Project-HAMi/HAMi-DRA)
 - Volcano vGPU Device Plugin: [https://github.com/Project-HAMi/volcano-vgpu-device-plugin](https://github.com/Project-HAMi/volcano-vgpu-device-plugin)
-- Project Documentation: [https://project-hami.io](https://project-hami.io)
-- Community Portal: [https://project-hami.io/community](https://project-hami.io/community)
-- Community Discord (recommended): [https://discord.gg/Amhy7XmbNq](https://discord.gg/Amhy7XmbNq)
+- Projektdokumentation: [https://project-hami.io](https://project-hami.io)
+- Community-Portal: [https://project-hami.io/community](https://project-hami.io/community)
+- Community Discord (empfohlen): [https://discord.gg/Amhy7XmbNq](https://discord.gg/Amhy7XmbNq)
 - Community CNCF Slack: [https://cloud-native.slack.com/archives/C08844T5WBQ](https://cloud-native.slack.com/archives/C08844T5WBQ)

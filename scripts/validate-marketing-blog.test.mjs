@@ -69,8 +69,9 @@ test('rejects invalid date', () => fixture(({ write, check }) => {
 test('rejects unregistered categories', () => fixture(({ write, check }) => {
   write('src/content/blog/existing/zh.md', post.replace('Company News', 'Unknown')); rejected(check(), /Unknown category/);
 }));
-test('rejects unsupported German content', () => fixture(({ write, check }) => {
-  write('src/content/blog/existing/de.md', post); rejected(check(), /allowlist/);
+test('accepts German content for an existing post', () => fixture(({ write, check }) => {
+  write('src/content/blog/existing/de.md', post);
+  const result = check(); assert.equal(result.status, 0, result.stderr);
 }));
 test('rejects inert draft fields', () => fixture(({ write, check }) => {
   write('src/content/blog/existing/zh.md', post.replace('title:', 'draft: true\ntitle:')); rejected(check(), /Unsupported frontmatter/);
