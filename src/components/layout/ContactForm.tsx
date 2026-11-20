@@ -181,7 +181,7 @@ export default function ContactForm({
             }}
             onError={() => setScriptFailed(true)}
           />
-          <div ref={turnstileContainer} />
+          <div ref={turnstileContainer} className="turnstile-container" />
         </>
       ) : null}
       <p className="form-footnote" role="status" hidden={!verificationUnavailable && status !== 'verifying'}>
