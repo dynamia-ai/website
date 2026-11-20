@@ -21,7 +21,7 @@ tags:
 category: Case Study
 language: de
 linktitle: Sangfor CNCF Case Study
-coverImage: "/images/blog/sangfor-cncf-case-study/architecture.png"
+coverImage: "/images/blog/sangfor-cncf-case-study/architecture-en.png"
 ---
 
 > Eine KI-Plattform für 2.000 Engineers kaufte GPUs im Eiltempo — während Rechenleistung ungenutzt blieb. Nach dem Rebuild mit Kubernetes + Volcano + HAMi: GPU-Auslastung mehr als verdreifacht, 8+ Modelle pro GPU, externe Modellkosten von ¥400.000 auf ¥200.000 pro Monat. Wie ging das?
@@ -69,7 +69,7 @@ Drei Gründe für HAMi:
 
 ## 04 Architektur: ein Request-Pfad + ein Compute-Fundament
 
-![Sangfor-Architektur: Data Plane und Component Architecture](/images/blog/sangfor-cncf-case-study/architecture.png)
+![Sangfor-Architektur: Data Plane und Component Architecture](/images/blog/sangfor-cncf-case-study/architecture-en.png)
 
 Zwei Ebenen. **Data Plane**: Anwendungen über AI Computing Gateway (Routing, Governance, Security) zur Modellschicht. **Component Architecture**: Volcano für Job-Scheduling, HAMi für Virtualisierung/Sharing/Isolation, Kubernetes für Nodes und Device Plugins, unten heterogene GPUs (NVIDIA, Ascend). Ende-zu-Ende von Request bis Compute.
 
@@ -77,7 +77,7 @@ Zwei Ebenen. **Data Plane**: Anwendungen über AI Computing Gateway (Routing, Go
 
 Der sichtbarste Schritt. Vorher Dedicated — eine Karte, ein Modell:
 
-![GPU-Pooling vorher/nachher](/images/blog/sangfor-cncf-case-study/gpu-pooling.png)
+![GPU-Pooling vorher/nachher](/images/blog/sangfor-cncf-case-study/gpu-pooling-en.png)
 
 vGPU-Slicing brachte:
 

@@ -19,7 +19,7 @@ tags:
   - Domestic GPU
 category: Community & Events
 language: en
-coverImage: /images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-03-ecosystem-to-slo-metrics.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-03-ecosystem-to-slo-metrics-en.png
 ---
 
 The GPU's compute performance is good, yet users still wait for the first token or feel stutters during generation. When enterprises deploy LLMs, problems like these don't necessarily come from the chip. Where resources are placed, how requests are routed, how cache moves, when a new replica is truly ready — all of it shapes the final experience.
@@ -42,7 +42,7 @@ Upstream compatibility lets applications keep the interfaces they know; downstre
 
 The talk focused on TTFT (time to first token), TPOT (time per output token) — especially their P99 — plus cluster throughput and effective token output. Beyond average speed, whether tail requests still meet the bar is part of service acceptance.
 
-![From ecosystem compatibility and the in-house execution stack to end-to-end experience metrics (slide 3)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-03-ecosystem-to-slo-metrics.png)
+![From ecosystem compatibility and the in-house execution stack to end-to-end experience metrics (slide 3)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-03-ecosystem-to-slo-metrics-en.png)
 
 Evaluating a domestic GPU inference solution therefore means tracing one application request all the way to final output. A fast operator proves local capability; a model that starts proves local capability; what users need is the whole service chain holding its SLO — its service level objective.
 
@@ -52,7 +52,7 @@ Idle GPUs in a cluster don't mean arbitrary combinations work. Once Prefill and 
 
 The control plane in the talk organizes resource information, monitoring metrics, and topology discovery; ix-gpu-scheduler makes topology-aware placement decisions, used together with Volcano. The goal: pick suitable GPU and RDMA resources for inference instances and avoid needless cross-device, cross-node transfer.
 
-![Topology-aware joint placement of GPU and RDMA (slide 7)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-07-gpu-rdma-topology-placement.png)
+![Topology-aware joint placement of GPU and RDMA (slide 7)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-07-gpu-rdma-topology-placement-en.png)
 
 Once requests enter the service, llm-d's Proxy and EPP pick endpoints by combining KV Cache affinity and live load; model compute and in-pool parallel communication go to the Iluvatar execution stack and IXCCL.
 
@@ -60,7 +60,7 @@ Don't conflate the two scheduling layers. Resource placement decides which set o
 
 HAMi has a clear position in this practice. Ye explained that the team uses HAMi when small models need to share GPUs, and the architecture lists it as an on-demand branch. HAMi handles small-model resource sharing, llm-d handles endpoint selection and inference-phase coordination, and Iluvatar's execution stack and IXCCL handle compute and communication. When enterprises compose these capabilities by workload, they must validate sharing configuration, inference orchestration, and underlying execution separately.
 
-![Control-plane division and the HAMi small-model sharing branch (slide 6)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-06-control-plane-hami-sharing.png)
+![Control-plane division and the HAMi small-model sharing branch (slide 6)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-06-control-plane-hami-sharing-en.png)
 
 ## Is PD Disaggregation Worth It? Count the Added Costs In
 
@@ -70,7 +70,7 @@ But Ye stressed: different bottlenecks don't automatically mean disaggregation i
 
 The talk drew a clear boundary: short-prefix, low-concurrency, or congested-link scenarios should prefer co-location. For workloads that do suit disaggregation, there is no universal P/D instance ratio. In the Q&A, Ye described load-testing before launch to find the ratio, then adjusting for topology at deployment; online scale-out policy is still being explored.
 
-![PD disaggregation: gains, added costs, and when to enable it (slide 11)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-11-pd-disaggregation-tradeoffs.png)
+![PD disaggregation: gains, added costs, and when to enable it (slide 11)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-11-pd-disaggregation-tradeoffs-en.png)
 
 Cache affinity needs similar trade-offs. A high hit rate on one instance doesn't mean every request should keep going there. When queues run deep, endpoint selection must re-weight queue depth against cache hits. This was presented as a tuning approach, not a validated universal parameter set.
 
@@ -80,11 +80,11 @@ After devices are allocated, a new replica still goes through model loading, ker
 
 The talk traced the chain from device allocation and topology binding all the way to the first SLO-compliant token. Half-loaded or half-recovered instances must not count toward available capacity — otherwise scale-out looks successful while requests still wait or fail.
 
-![The readiness chain from device allocation to the first qualifying token (slide 8)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-08-device-allocation-to-first-token.png)
+![The readiness chain from device allocation to the first qualifying token (slide 8)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-08-device-allocation-to-first-token-en.png)
 
 To shorten that path, Ye introduced directions under exploration at the time: ModelExpress, Snapshot, and KVCR — covering weight reuse, process and GPU state restoration, and KV Cache lifecycle management. These were presented as attempts or validation work, not delivered performance results.
 
-![Ongoing explorations in weight, process-state, and KV Cache reuse (slide 12)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-12-reuse-explorations.png)
+![Ongoing explorations in weight, process-state, and KV Cache reuse (slide 12)](/images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-12-reuse-explorations-en.png)
 
 For enterprise platforms, keep two judgments separate at adoption time: whether a large model suits PD disaggregation — check the benefit-cost of compute, cache transfer, and queueing; and whether a small model suits GPU sharing — check post-sharing contention and service behavior. Around HAMi's enterprise application, Dynamia focuses on bringing share-friendly workloads into exactly this validation: stress-test with real inputs, concurrency, and hardware, watch first-token, sustained generation, and replica-ready times together, so that resource-efficiency gains survive scrutiny by business experience.
 

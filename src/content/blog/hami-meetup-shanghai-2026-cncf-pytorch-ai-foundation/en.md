@@ -19,7 +19,7 @@ tags:
   - Heterogeneous Computing
 category: Community & Events
 language: en
-coverImage: /images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-08-layered-architecture.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-08-layered-architecture-en.png
 ---
 
 The model runs, yet the business never ships. One team waits for GPUs while another team's devices sit underused. For enterprise AI platform teams, the hard part usually sits at the seams between models, toolchains, and infrastructure. As model counts grow, those gaps turn into cost, collaboration, and operational pressure.
@@ -54,7 +54,7 @@ At the bottom, Kubernetes handles container orchestration, nodes, networking, an
 
 Above that sit training orchestration, model serving, and pipelines. Kubeflow Trainer, KServe, Argo Workflows, and their peers organize concrete tasks into manageable lifecycles. PyTorch and its surrounding training, fine-tuning, and inference tooling carry the model compute and execution.
 
-![Layered architecture of the cloud native AI R&D foundation (slide 8)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-08-layered-architecture.png)
+![Layered architecture of the cloud native AI R&D foundation (slide 8)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-08-layered-architecture-en.png)
 
 This division of labor helps platform teams answer a very practical question: when a bottleneck appears, which layer should change? Job queuing and slow model execution are not the same problem; queue configuration, device allocation, and the model runtime are not interchangeable.
 
@@ -66,7 +66,7 @@ Keith used Uber's Michelangelo platform to illustrate layered design for trainin
 
 In the architecture shown, PyTorch and DeepSpeed handle model training, Ray serves as the unified distributed execution layer, and Kubernetes orchestrates GPU cluster resources. Model definition, distributed execution, and resource management land on distinct layers, making their collaboration clearer.
 
-![Layered collaboration in distributed training (slide 10)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-10-distributed-training-layers.png)
+![Layered collaboration in distributed training (slide 10)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-10-distributed-training-layers-en.png)
 
 What's worth borrowing from this case is the responsibility boundaries — not the specific tech stack.
 
@@ -88,7 +88,7 @@ He introduced the Kubernetes AI Conformance effort, emphasizing standardized tes
 
 The starting point he offered is concrete: take one training job and one inference service, run the full train-to-infer path on your existing Kubernetes cluster, then progressively add resource management, monitoring, and automation.
 
-![A practical starting point, from training to inference (slide 15)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-15-practice-starting-point.png)
+![A practical starting point, from training to inference (slide 15)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-15-practice-starting-point-en.png)
 
 For Dynamia, enterprise AI foundation building should be accepted against a real business chain: can training and inference run back to back, are resource requests honored, is post-sharing behavior observable? HAMi provides an open source foundation for heterogeneous compute management; adopting enterprises still own platform integration, device adaptation, and ongoing operations. Making those responsibilities explicit is what turns open source capability into infrastructure the business can actually use.
 

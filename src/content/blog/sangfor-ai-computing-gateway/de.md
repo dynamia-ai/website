@@ -17,7 +17,7 @@ tags:
   - GPU-Virtualisierung
 category: Community & Events
 linktitle: Sangfor AI Computing Gateway und vGPU-Scheduling
-coverImage: /images/blog/sangfor-ai-computing-gateway/architecture-overview.png
+coverImage: /images/blog/sangfor-ai-computing-gateway/architecture-overview-en.png
 ---
 
 **Kernpunkte**
@@ -60,7 +60,7 @@ Einzelne Compute-Anbieter und Modellservices bergen hohe Single-Point-of-Failure
 
 ## AI Computing Gateway: Das eigene „Rechen-Scheduling- und Optimierungszentrum“ des Unternehmens
 
-![Architektur des AI Computing Gateway](/images/blog/sangfor-ai-computing-gateway/architecture-overview.png)
+![Architektur des AI Computing Gateway](/images/blog/sangfor-ai-computing-gateway/architecture-overview-en.png)
 
 > Sangfor AI Computing Gateway ist die einheitliche KI-Modell-Zugriffsschicht des Unternehmens: nach oben an diverse Agent-Anwendungen angebunden, nach unten heterogene Rechen- und Modellservices aggregiert — mit drei Hauptzielen: **einheitlicher Modellservice-Zugang, globale Sicht auf Rechennutzung und kostenoptimiertes intelligentes Routing**.
 
@@ -84,7 +84,7 @@ Präzises Rate-Limiting und Quota-Management nach Anfragefrequenz, Ein-/Ausgabe-
 
 ## Intelligente Routing-Engine: Jeder Rechen-Yuan zählt
 
-![Intelligente Routing-Engine](/images/blog/sangfor-ai-computing-gateway/smart-routing.png)
+![Intelligente Routing-Engine](/images/blog/sangfor-ai-computing-gateway/smart-routing-en.png)
 
 > **Praxisergebnis:** Mit der intelligenten Routing-Engine und Claude Code sanken die monatlichen externen Modellaufruf-Kosten eines 2.000-köpfigen Entwicklerteams von **¥400.000 auf ¥200.000** — 50 % Kostensenkung bei gleichbleibender Servicequalität.
 
@@ -168,7 +168,7 @@ Sangfor führt die Smart Fusion Architecture (SFA) ein und verbirgt die Komplexi
 
 ### Ergebnisse der vGPU-Partitionierung
 
-![Ergebnisse der vGPU-Partitionierung](/images/blog/sangfor-ai-computing-gateway/vgpu-splitting.png)
+![Ergebnisse der vGPU-Partitionierung](/images/blog/sangfor-ai-computing-gateway/vgpu-splitting-en.png)
 
 | GPU-Modell | Ohne Partitionierung | Mit vGPU-Partitionierung | Einsparung |
 |-|-|-|-|
@@ -194,7 +194,7 @@ Für schwere Agent-Workloads baute Sangfor die adaptive Inferenzarchitektur Smar
 
 ## Volcano + HAMi: vier Optimierungen für produktionsreifes vGPU-Scheduling
 
-![Volcano- und HAMi-Scheduling-Architektur](/images/blog/sangfor-ai-computing-gateway/volcano-hami-scheduling.png)
+![Volcano- und HAMi-Scheduling-Architektur](/images/blog/sangfor-ai-computing-gateway/volcano-hami-scheduling-en.png)
 
 > Gesamtansatz vGPU-Scheduling: **Workload-Anfrage → Volcano-Scheduling-Control-Plane → HAMi-vGPU-Device-Foundation**. Volcano orchestriert Jobs (Batch/Gang/LWS), HAMi übernimmt Device-Sharing und Feinpartitionierung. Bei geteilten GPUs in Gang- und LWS-Szenarien muss die Control Plane Device- und Job-Seite gleichzeitig steuern.
 
@@ -210,7 +210,7 @@ Sangfors Praxis ist nicht nur eine Einzelanbieter-Optimierung; sie zeigt die Evo
 
 Sangfors Fall ist ein Landing-Sample der HAMi-Community in Enterprise-KI-Infrastruktur: Das Unternehmen liefert komplexe Szenarien und Feedback, die Community konsolidiert allgemeine Fähigkeiten, Schnittstellen und wiederverwendbare Implementierungen — gemeinsam von „funktional nutzbar“ zu „produktionsreif“.
 
-![Community-Mitgestaltung](/images/blog/sangfor-ai-computing-gateway/community-contribution.png)
+![Community-Mitgestaltung](/images/blog/sangfor-ai-computing-gateway/community-contribution-en.png)
 
 ### Plattformwahl: Job-Level-Scheduling als Obergrenze für Shared-GPU-Deployment
 
@@ -220,7 +220,7 @@ Sangfors Fall ist ein Landing-Sample der HAMi-Community in Enterprise-KI-Infrast
 | Gang-Jobs | Task-Gruppe | Mitglieder gleichzeitig bereit | PodGroup / Queue / Topologie |
 | LWS | Leader-/Worker-Gruppe | Inferenz-Scheduling und Lifecycle über Nodes | Group Start / Place / Lifecycle |
 
-![Scheduling-Topologie](/images/blog/sangfor-ai-computing-gateway/scheduling-topology.png)
+![Scheduling-Topologie](/images/blog/sangfor-ai-computing-gateway/scheduling-topology-en.png)
 
 ### Device-State-Pflege: vom einmaligen Snapshot zur kontinuierlichen Wartung
 

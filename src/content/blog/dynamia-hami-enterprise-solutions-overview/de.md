@@ -24,22 +24,22 @@ Um die Anforderungen großer Modell-Token-Fabriken und von AI for X zu erfüllen
 
 Die Enterprise Edition stärkt das Rechenfundament für die Token-Produktion; die Platform Edition verbindet Produktion, Betrieb und Management von Branchenmodellservices. Gemeinsam helfen die beiden Produkte Unternehmen, Recheninvestitionen in nachhaltig gelieferte KI-Fähigkeit zu verwandeln. Vom Ressourcen-Pooling und heterogenen Computing bis zu Modellbereitstellung und Inferenzbetrieb verknüpft Dynamia die Rechenebene mit KI-Anwendungen darüber – damit Investitionen in kontinuierlich Wert schaffende intelligente Services münden.
 
-![Dynamia HAMi Enterprise Edition und Platform Edition: vom Compute-Pooling zur Token-Produktion](/images/blog/dynamia-hami-enterprise-solutions-overview/product-overview.png)
+![Dynamia HAMi Enterprise Edition und Platform Edition: vom Compute-Pooling zur Token-Produktion](/images/blog/dynamia-hami-enterprise-solutions-overview/product-overview-en.png)
 
-![Ressourcen-Pooling und elastische Lieferung: Rechenleistung bedarfsgerecht und vorhandene Ressourcen nutzbar machen](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-resource-pooling.png)
+![Ressourcen-Pooling und elastische Lieferung: Rechenleistung bedarfsgerecht und vorhandene Ressourcen nutzbar machen](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-resource-pooling-en.png)
 
-![Ressourcen-Pooling und effizienter Betrieb: kritische Services schützen und Rechenlaufzeiteffizienz verbessern](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-efficient-runtime.png)
+![Ressourcen-Pooling und effizienter Betrieb: kritische Services schützen und Rechenlaufzeiteffizienz verbessern](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-efficient-runtime-en.png)
 
-![Einheitlicher Zugang und Scheduling für heterogene Rechenressourcen: mehr Compute-Optionen für die Token-Produktion](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-heterogeneous-computing.png)
+![Einheitlicher Zugang und Scheduling für heterogene Rechenressourcen: mehr Compute-Optionen für die Token-Produktion](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-heterogeneous-computing-en.png)
 
-![Dynamia HAMi Platform Edition: Plattform für Token-Produktion und -Betrieb für wissenschaftliche Intelligenz und Branchen-Agenten](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-ai-for-x.png)
+![Dynamia HAMi Platform Edition: Plattform für Token-Produktion und -Betrieb für wissenschaftliche Intelligenz und Branchen-Agenten](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-ai-for-x-en.png)
 
-![Modellbereitstellung und Inferenzdienste: Modelle in durchgängig gelieferte KI-Services verwandeln](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-model-services.png)
+![Modellbereitstellung und Inferenzdienste: Modelle in durchgängig gelieferte KI-Services verwandeln](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-model-services-en.png)
 
-![Betrieb und Management: Laufstatus, Ressourcenlieferung und Kosteneffizienz koordinieren](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-operations.png)
+![Betrieb und Management: Laufstatus, Ressourcenlieferung und Kosteneffizienz koordinieren](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-operations-en.png)
 
-![Auswahlhilfe: HAMi Open Source, Dynamia HAMi Enterprise Edition und Platform Edition](/images/blog/dynamia-hami-enterprise-solutions-overview/selection-guide.png)
+![Auswahlhilfe: HAMi Open Source, Dynamia HAMi Enterprise Edition und Platform Edition](/images/blog/dynamia-hami-enterprise-solutions-overview/selection-guide-en.png)
 
-![Heterogenes GPU-Ökosystem](/images/blog/dynamia-hami-enterprise-solutions-overview/gpu-ecosystem.png)
+![Heterogenes GPU-Ökosystem](/images/blog/dynamia-hami-enterprise-solutions-overview/gpu-ecosystem-en.png)
 
 Als Nächstes veröffentlichen wir **Produkt-Walkthroughs und Demo-Videos** und zeigen an konkreten Szenarien, wie Fähigkeiten konfiguriert und genutzt werden – bleiben Sie dran!

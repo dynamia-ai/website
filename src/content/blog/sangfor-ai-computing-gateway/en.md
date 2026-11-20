@@ -16,7 +16,7 @@ tags:
 category: Community & Events
 language: en
 linktitle: Sangfor AI Computing Gateway and vGPU Scheduling
-coverImage: "/images/blog/sangfor-ai-computing-gateway/architecture-overview.png"
+coverImage: "/images/blog/sangfor-ai-computing-gateway/architecture-overview-en.png"
 ---
 
 **Key Highlights**
@@ -59,7 +59,7 @@ Single computing providers and model services create high single-point failure r
 
 ## AI Computing Gateway: The Enterprise's Own "Computing Scheduling & Optimization Center"
 
-![AI Computing Gateway Architecture](/images/blog/sangfor-ai-computing-gateway/architecture-overview.png)
+![AI Computing Gateway Architecture](/images/blog/sangfor-ai-computing-gateway/architecture-overview-en.png)
 
 > Sangfor AI Computing Gateway is positioned as the enterprise's unified AI model access layer, interfacing upward with various Agent applications and downward aggregating diversified computing and model services, achieving three major goals: **unified model service access, global computing usage visibility, and intelligent routing cost optimization**.
 
@@ -83,7 +83,7 @@ Precise rate limiting and quota control based on request frequency, input/output
 
 ## Intelligent Routing Engine: Making Every Computing Dollar Count
 
-![Intelligent Routing Engine](/images/blog/sangfor-ai-computing-gateway/smart-routing.png)
+![Intelligent Routing Engine](/images/blog/sangfor-ai-computing-gateway/smart-routing-en.png)
 
 > **Real-World Result:** Using the intelligent routing engine with Claude Code, a 2,000-developer team's monthly external model invocation costs dropped from **¥400K to ¥200K**, a 50% cost reduction while maintaining service quality.
 
@@ -167,7 +167,7 @@ Sangfor introduced the Smart Fusion Architecture (SFA), shielding the complexity
 
 ### vGPU Partitioning Results
 
-![vGPU Partitioning Results](/images/blog/sangfor-ai-computing-gateway/vgpu-splitting.png)
+![vGPU Partitioning Results](/images/blog/sangfor-ai-computing-gateway/vgpu-splitting-en.png)
 
 | GPU Model | Without Partitioning | After vGPU Partitioning | Savings |
 |-|-|-|-|
@@ -193,7 +193,7 @@ For heavy-load Agent application deployment, Sangfor built the adaptive inferenc
 
 ## Volcano + HAMi: Four Optimizations for Production-Grade vGPU Scheduling
 
-![Volcano + HAMi Scheduling Architecture](/images/blog/sangfor-ai-computing-gateway/volcano-hami-scheduling.png)
+![Volcano + HAMi Scheduling Architecture](/images/blog/sangfor-ai-computing-gateway/volcano-hami-scheduling-en.png)
 
 > The overall vGPU scheduling approach: **Workload Request → Volcano Scheduling Control Plane → HAMi vGPU Device Capability Foundation**. Volcano handles job orchestration (batch/gang/LWS), while HAMi handles device sharing and fine-grained partitioning. When shared GPUs enter gang and LWS scenarios, the control plane must simultaneously manage both device-side management and job-side scheduling.
 
@@ -209,7 +209,7 @@ Sangfor's practice is not just a single vendor's computing platform optimization
 
 Sangfor's case is a landing sample of HAMi community capabilities in enterprise-grade AI infrastructure: the enterprise side contributed complex scenarios and engineering feedback, while the community side deposits general capabilities, interface semantics, and reusable implementations, jointly advancing vGPU scheduling from functionally usable to production-ready.
 
-![Community Co-Building](/images/blog/sangfor-ai-computing-gateway/community-contribution.png)
+![Community Co-Building](/images/blog/sangfor-ai-computing-gateway/community-contribution-en.png)
 
 ### Platform Selection: Job-Level Scheduling as the Upper Constraint for Shared GPU Deployment
 
@@ -219,7 +219,7 @@ Sangfor's case is a landing sample of HAMi community capabilities in enterprise-
 | Gang jobs | Group of tasks | Members ready simultaneously | PodGroup / queue / topology |
 | LWS | leader / worker group | Cross-node inference scheduling and lifecycle | group start / place / lifecycle |
 
-![Scheduling Topology](/images/blog/sangfor-ai-computing-gateway/scheduling-topology.png)
+![Scheduling Topology](/images/blog/sangfor-ai-computing-gateway/scheduling-topology-en.png)
 
 ### Device State Maintenance: From One-Time Snapshot to Continuous Maintenance
 

@@ -12,7 +12,7 @@ tags:
   - Heterogenes Scheduling
   - Cloud Native
 category: Community & Events
-coverImage: /images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/slide-cover.png
+coverImage: /images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/slide-cover-en.png
 linktitle: HAMi vNPU Evolution & CMB-Praxis
 ---
 
@@ -32,7 +32,7 @@ Mit wachsenden Training-, Inferenz- und R&D-Test-Workloads werden GPUs und NPUs 
 
 ## 2. Community–CMB-Zusammenarbeit: Bedarf, Technik, Validierung
 
-![HAMi-Community–CMB-Kollaborationsschleife: Kontakt → Projekt → gemeinsame Validierung](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/community-cmb-collaboration.png)
+![HAMi-Community–CMB-Kollaborationsschleife: Kontakt → Projekt → gemeinsame Validierung](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/community-cmb-collaboration-en.png)
 
 Der erste Teil rekapitulierte die Partnerschaft zwischen HAMi-Community und CMB. Nicht einmalige Lieferung, sondern geschlossener Kreislauf: langfristiger Kontakt über Community-Outreach, reale Projekte (Muxi, Kunlunxin, Ascend bei CMB) zur Erfassung heterogener Compute-Anforderungen, Community-Implementierung in reale Umgebungen zur gemeinsamen Validierung.
 
@@ -44,7 +44,7 @@ In dieser Schleife ist CMB Nutzer und wichtiger Input für Community-Iteration �
 
 ### Hard-Partitionierung: funktioniert, aber wenig flexibles Sharing
 
-![Drei Grenzen der Hard-Partitionierung: uneinheitliche Specs, feste Templates, gebundene Ressourcen](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/hard-partition-limitations.png)
+![Drei Grenzen der Hard-Partitionierung: uneinheitliche Specs, feste Templates, gebundene Ressourcen](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/hard-partition-limitations-en.png)
 
 Frühes NPU-Sharing nutzte vendor-definierte Hard-Partitionierung. Verschiedene Modelle unterstützen feste Partitionstypen (manche vier-, andere siebenteilige Aufteilung); die Zuteilung wirkt präzise, bleibt aber an feste Grenzen gebunden. Wang Jifei fasste drei Punkte zusammen:
 
@@ -54,7 +54,7 @@ Frühes NPU-Sharing nutzte vendor-definierte Hard-Partitionierung. Verschiedene 
 
 ### Warum Soft-Partitionierung lange blockiert war: Low-Level-APIs
 
-![Soft-Partitionierung durch APIs blockiert: GPU-Pfad abfangbar, NPU-Pfad damals nicht steuerbar](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/soft-partition-api-blocked.png)
+![Soft-Partitionierung durch APIs blockiert: GPU-Pfad abfangbar, NPU-Pfad damals nicht steuerbar](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/soft-partition-api-blocked-en.png)
 
 Warum nicht einfach Soft-Partitionierung? Ursache in Low-Level-APIs. Auf dem GPU-Pfad lassen sich Laufzeit-APIs abfangen und umleiten – Ressourcenkontrolle zwischen Prozess und Gerät; die kritischen NPU-APIs waren damals nicht offen, gleiches Hijacking unmöglich.
 
@@ -62,7 +62,7 @@ Warum nicht einfach Soft-Partitionierung? Ursache in Low-Level-APIs. Auf dem GPU
 
 ### Drei entscheidende technische Veränderungen
 
-![Drei Änderungen für Soft-Partitionierung: CANN open source, Experimente, Treiber-Upgrade](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/three-key-changes.png)
+![Drei Änderungen für Soft-Partitionierung: CANN open source, Experimente, Treiber-Upgrade](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/three-key-changes-en.png)
 
 Soft-Partitionierung wurde erst mit der Evolution der Basis möglich. Drei Schritte: CANN wurde open source, die Community bereitete Ascend-Sharing vor; in Experimenten unterstützte das Gerät erwartete Multi-Prozess-Aufrufe noch nicht; erst nach Treiber-Upgrade mit Multi-Prozess reifte die Sharing-Grundlage.
 
@@ -70,7 +70,7 @@ Ein Umweg: Huaweis Open-Source Flex:AI – Ziel Ascend-Sharing, aber noch an Ger
 
 ### Soft-Partitionierung in Kubernetes: Multi-Prozess + hami-core
 
-![Vier Schritte für Soft-Partitionierung in Kubernetes](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/soft-partition-k8s-pipeline.png)
+![Vier Schritte für Soft-Partitionierung in Kubernetes](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/soft-partition-k8s-pipeline-en.png)
 
 Nach dem Treiber-Upgrade baute Huaweis Canada Lab die Low-Level-Sharing-Bibliothek (hami-core-ähnlich); Device Plugin und Kubernetes-Scheduling übernahmen die Steuerung. Vier Schritte für Produktion:
 
@@ -89,7 +89,7 @@ Genau diese „Produktionsprobleme zurück zur Community“-Zusammenarbeit macht
 
 ## 4. Performancedaten: Wendepunkt bei 2 / 4 / 8 / 16-fach
 
-![Performance-Wendepunkt 2 / 4 / 8 / 16-fach](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/performance-inflection-table.png)
+![Performance-Wendepunkt 2 / 4 / 8 / 16-fach](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/performance-inflection-table-en.png)
 
 Wie fein soll Soft-Partitionierung sein? Gemessene Daten: eine 910C-Karte, 7B-Klasse, 200 Input / 128 Output Tokens, eine Anfrage pro vNPU, P50:
 
@@ -100,7 +100,7 @@ Wie fein soll Soft-Partitionierung sein? Gemessene Daten: eine 910C-Karte, 7B-Kl
 | 1 / 8 | 134 | 43.9 | 8 | Dichte zuerst / lockeres SLA |
 | 1 / 16 | 248 | 76.4 | 16 | Dev & Test / Offline |
 
-![4-fach-Split als empfohlene Online-Balance](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/performance-balance-card.png)
+![4-fach-Split als empfohlene Online-Balance](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/performance-balance-card-en.png)
 
 Entscheidend ist der „Wendepunkt“, nicht „je feiner desto besser“. Gegenüber 2-fach: 4-fach nur ca. +18 % TTFT und +24 % TPOT – Latenz kontrollierbar, Dichte 4 Instanzen pro Karte; 8- und 16-fach tauschen deutlich mehr Latenz gegen Dichte – für leichte Modelle, async oder lockerere SLAs sowie Dev/Test/Offline. Für Online: **4-fach-Split als empfohlene Balance**.
 
@@ -108,7 +108,7 @@ Entscheidend ist der „Wendepunkt“, nicht „je feiner desto besser“. Gegen
 
 ## 5. Ausblick: UX und dynamische Governance
 
-![Ausblick: von statischer Partitionierung zu dynamischer Governance](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/future-outlook.png)
+![Ausblick: von statischer Partitionierung zu dynamischer Governance](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/future-outlook-en.png)
 
 Kurzfristig UX: Hard- und Soft-Partitionierung einheitlich verwalten; Aufgaben on-demand, transparent nach oben; Partitionierung im Container sichtbar, Compute-/Speicher-Monitoring auf Container-Ebene; Volcano Ascend Device Plugin aktuell halten; values und Fehlerlogs für Self-Diagnose. Kurz: weniger Regeln merken, klare Plattformsicht, begrenzte Upgrades, saubere Anomalie-Recovery.
 

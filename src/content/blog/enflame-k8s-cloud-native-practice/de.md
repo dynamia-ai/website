@@ -53,7 +53,7 @@ Enflame-GPUs zählen zu den wichtigen heimischen KI-Beschleunigern. Training und
 
 ### Gesamtarchitektur
 
-![Gesamtarchitektur des GPU Operator](/images/blog/enflame-k8s-cloud-native-practice/gpu-operator-architecture.webp)
+![Gesamtarchitektur des GPU Operator](/images/blog/enflame-k8s-cloud-native-practice/gpu-operator-architecture-en.png)
 
 Enflame nutzt den GPU Operator zur einheitlichen Verwaltung von **7+ Kernkomponenten** über den gesamten Lebenszyklus von Hardware bis Cluster:
 
@@ -171,7 +171,7 @@ Von Pod-Einreichung bis GPU-Inferenz: vollautomatische Kette — **aus Nutzersic
 
 ### Full-Stack-Architektur von GPU-Management bis LLM-Inferenz
 
-![Full-Stack-Architektur des Inference Gateway](/images/blog/enflame-k8s-cloud-native-practice/inference-gateway-stack.webp)
+![Full-Stack-Architektur des Inference Gateway](/images/blog/enflame-k8s-cloud-native-practice/inference-gateway-stack-en.png)
 
 Große Modell-Inferenz wandelt sich von monolithischem Deployment zu verteilter cloud-nativer Inferenz — mit hoher Parallelität, langem Kontext, KV-Cache-Management, SLO-Garantien u. a. Enflame orientiert sich am **CNCF-Vier-Schichten-Standard-Inferenz-Stack** und will GPUs als natives Backend in allen vier Schichten:
 

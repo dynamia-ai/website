@@ -42,7 +42,7 @@ linktitle: "HAMi DRA Ecosystem and v2.9 Preview"
 
 As a HAMi Maintainer, Li Mengxuan has a firsthand understanding of GPU resource waste. He opened with a straightforward question: how are GPUs allocated in Kubernetes? The answer is blunt — an entire GPU card is bound to a single Pod, and any unused portion cannot be shared with others. This exclusive allocation model, which he likened to a "communal pot," is particularly painful when AI compute resources are already in short supply.
 
-![Heterogeneous compute will inevitably become the mainstream](/images/blog/hami-v29-dra-ecosystem-limengxuan/heterogeneous-compute-mainstream.png)
+![Heterogeneous compute will inevitably become the mainstream](/images/blog/hami-v29-dra-ecosystem-limengxuan/heterogeneous-compute-mainstream-en.png)
 
 As a CNCF Sandbox project, HAMi is fundamentally doing one thing: transforming GPUs from "exclusive" to "shared." Specifically, it delivers several key capabilities:
 
@@ -61,19 +61,19 @@ After covering the project's positioning, Li Mengxuan shifted to the upcoming HA
 
 In GPU sharing scenarios, "able to share" and "safely share" are two different things. If two tenants' workloads run on the same card without isolation, resource contention becomes inevitable. v2.9 introduces the `kai-resource-isolator` component, specifically addressing low-level resource isolation for KAI-Scheduler scenarios. Moving from "able to share" to "safely share" represents a critical step for HAMi in the multi-tenant direction.
 
-![KAI-scheduler resource isolation solution](/images/blog/hami-v29-dra-ecosystem-limengxuan/kai-scheduler-isolation.png)
+![KAI-scheduler resource isolation solution](/images/blog/hami-v29-dra-ecosystem-limengxuan/kai-scheduler-isolation-en.png)
 
 ### 2. Volcano vGPU Version Upgrade
 
 The underlying Device Plugin has been upgraded to version 0.19, with CDI mode support and compatibility with the latest NVIDIA drivers and devices. For teams already running Volcano vGPU in production, this upgrade means improved stability and compatibility.
 
-![Volcano vGPU Device Plugin upgrade](/images/blog/hami-v29-dra-ecosystem-limengxuan/volcano-vgpu-upgrade.png)
+![Volcano vGPU Device Plugin upgrade](/images/blog/hami-v29-dra-ecosystem-limengxuan/volcano-vgpu-upgrade-en.png)
 
 ### 3. Ascend 910C Userspace Partitioning
 
 This is the most notable domestic chip support advancement in v2.9. The Ascend 910C doesn't support hardware-level isolation like NVIDIA's MIG, but HAMi found a software-based solution — using environment variables to control compute and memory allocation limits, achieving MIG-like virtualization through purely software means. For teams heavily using domestic chips, this feature is highly practical.
 
-![Ascend 910C userspace partitioning solution](/images/blog/hami-v29-dra-ecosystem-limengxuan/ascend-910c-partitioning.png)
+![Ascend 910C userspace partitioning solution](/images/blog/hami-v29-dra-ecosystem-limengxuan/ascend-910c-partitioning-en.png)
 
 ## 3. DRA: The Next Frontier in Heterogeneous Compute Management
 
@@ -97,7 +97,7 @@ Facing these challenges, HAMi's approach is to build a "**Lightweight HAMi**":
 - **Downward:** Provides a unified resource request entry point connecting to various heterogeneous hardware drivers
 - **Filling gaps:** Native DRA currently lacks cluster monitoring and scheduling event capabilities — HAMi fills these gaps
 
-![HAMi DRA solution: Lightweight DRA](/images/blog/hami-v29-dra-ecosystem-limengxuan/hami-dra-lightweight.png)
+![HAMi DRA solution: Lightweight DRA](/images/blog/hami-v29-dra-ecosystem-limengxuan/hami-dra-lightweight-en.png)
 
 Additionally, HAMi is partnering with NVIDIA, Enflame, Huawei Ascend, and other chip vendors to jointly validate DRA driver compatibility, accelerating DRA adoption in heterogeneous compute scenarios.
 

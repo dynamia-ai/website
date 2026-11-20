@@ -182,7 +182,7 @@ type GpuSharingNodeInfo struct {
     -   `AllocatedSharedGPUsMemory`
         Records the total memory (in bytes) that has been **allocated by the Scheduler** to Pods, but which the Pods may not have actually occupied yet.
 
-![KAI GPU sharing memory tracking structure diagram](/images/blog/KAI-Scheduler-VS-HAMi/p4.png)
+![KAI GPU sharing memory tracking structure diagram](/images/blog/KAI-Scheduler-VS-HAMi/p8.jpg)
 
 1. **Resource Reclamation**:
 

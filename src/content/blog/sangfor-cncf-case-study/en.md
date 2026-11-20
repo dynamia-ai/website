@@ -21,7 +21,7 @@ tags:
 category: Case Study
 language: en
 linktitle: Sangfor CNCF Case Study
-coverImage: "/images/blog/sangfor-cncf-case-study/architecture.png"
+coverImage: "/images/blog/sangfor-cncf-case-study/architecture-en.png"
 ---
 
 > An AI platform serving 2,000 engineers kept buying GPUs at full speed — while large amounts of compute sat idle. After rebuilding its compute platform on Kubernetes + Volcano + HAMi, Sangfor raised GPU utilization more than 3×, packed 8+ models onto a single GPU, and cut external model invocation costs by ¥200K per month. How did they do it?
@@ -69,7 +69,7 @@ Three core reasons for choosing HAMi:
 
 ## 04 Platform Architecture: One Request Path + One Compute Foundation
 
-![Sangfor platform architecture: the Data Plane request path and the Component Architecture compute foundation](/images/blog/sangfor-cncf-case-study/architecture.png)
+![Sangfor platform architecture: the Data Plane request path and the Component Architecture compute foundation](/images/blog/sangfor-cncf-case-study/architecture-en.png)
 
 The platform has two layers. The **Data Plane** is the request path: AI applications first pass through the AI Computing Gateway for routing, governance, and security checks, then reach the model service layer. The **Component Architecture** is the compute foundation: Volcano handles job scheduling, HAMi handles GPU virtualization and sharing/isolation, and Kubernetes manages nodes and device plugins, finally landing on heterogeneous GPUs such as NVIDIA and Ascend. The two layers connect between model services and Volcano, completing the end-to-end chain from request to compute.
 
@@ -77,7 +77,7 @@ The platform has two layers. The **Data Plane** is the request path: AI applicat
 
 This is the most visible step of the transformation. Before, the platform ran in dedicated mode — one card, one model:
 
-![GPU pooling before and after: from dedicated mode to vGPU sharing](/images/blog/sangfor-cncf-case-study/gpu-pooling.png)
+![GPU pooling before and after: from dedicated mode to vGPU sharing](/images/blog/sangfor-cncf-case-study/gpu-pooling-en.png)
 
 Introducing vGPU slicing brought two core benefits:
 

@@ -41,7 +41,7 @@ linktitle: "HAMi DRA-Ökosystem und v2.9-Vorschau"
 
 Als HAMi-Maintainer kennt Li Mengxuan GPU-Verschwendung aus erster Hand. Er startete mit der Frage: Wie werden GPUs in Kubernetes zugewiesen? Die Antwort ist schonungslos – eine ganze GPU-Karte pro Pod, ungenutzter Rest nicht teilbar. Dieses exklusive Modell, verglichen mit einem „gemeinsamen Topf“, tut besonders weh, wenn KI-Compute knapp ist.
 
-![Heterogene Compute-Ressourcen werden mainstream](/images/blog/hami-v29-dra-ecosystem-limengxuan/heterogeneous-compute-mainstream.png)
+![Heterogene Compute-Ressourcen werden mainstream](/images/blog/hami-v29-dra-ecosystem-limengxuan/heterogeneous-compute-mainstream-en.png)
 
 Als CNCF-Sandbox-Projekt macht HAMi im Kern eines: GPUs von „exklusiv“ zu „geteilt“. Konkret:
 
@@ -60,19 +60,19 @@ HAMi 2.9 bringt deutliche Verbesserungen bei Ökosystem-Kompatibilität und inl�
 
 „Kann teilen“ und „sicher teilen“ sind verschieden. Ohne Isolation bei gemeinsamer Karte entsteht Konkurrenz. v2.9 führt `kai-resource-isolator` für KAI-Scheduler-Szenarien ein – ein kritischer Schritt in Richtung Multi-Tenant.
 
-![KAI-Scheduler-Isolationslösung](/images/blog/hami-v29-dra-ecosystem-limengxuan/kai-scheduler-isolation.png)
+![KAI-Scheduler-Isolationslösung](/images/blog/hami-v29-dra-ecosystem-limengxuan/kai-scheduler-isolation-en.png)
 
 ### 2. Volcano vGPU-Upgrade
 
 Device Plugin auf 0.19, CDI-Modus, Kompatibilität mit neuesten NVIDIA-Treibern und -Geräten. Für Volcano-vGPU in Produktion: mehr Stabilität und Kompatibilität.
 
-![Volcano vGPU Device Plugin Upgrade](/images/blog/hami-v29-dra-ecosystem-limengxuan/volcano-vgpu-upgrade.png)
+![Volcano vGPU Device Plugin Upgrade](/images/blog/hami-v29-dra-ecosystem-limengxuan/volcano-vgpu-upgrade-en.png)
 
 ### 3. Ascend 910C Nutzerraum-Partitionierung
 
 Wichtigster Fortschritt für inländische Chips in v2.9. Ascend 910C ohne MIG-ähnliche Hardware-Isolation – HAMi nutzt Umgebungsvariablen für Compute- und Speicherlimits, rein softwarebasierte Virtualisierung.
 
-![Ascend 910C Nutzerraum-Partitionierung](/images/blog/hami-v29-dra-ecosystem-limengxuan/ascend-910c-partitioning.png)
+![Ascend 910C Nutzerraum-Partitionierung](/images/blog/hami-v29-dra-ecosystem-limengxuan/ascend-910c-partitioning-en.png)
 
 ## 3. DRA: nächste Grenze im heterogenen Compute-Management
 
@@ -90,7 +90,7 @@ DRA (Dynamic Resource Allocation) ist die Kubernetes-Nächstgeneration für Ress
 - **Nach unten:** Einheitlicher Ressourceneinstieg zu heterogenen Treibern
 - **Lücken füllen:** Monitoring und Scheduling-Events, die natives DRA noch nicht bietet
 
-![HAMi DRA-Lösung: Lightweight DRA](/images/blog/hami-v29-dra-ecosystem-limengxuan/hami-dra-lightweight.png)
+![HAMi DRA-Lösung: Lightweight DRA](/images/blog/hami-v29-dra-ecosystem-limengxuan/hami-dra-lightweight-en.png)
 
 Zudem Partnerschaften mit NVIDIA, Enflame, Huawei Ascend u. a. zur Validierung der DRA-Treiber-Kompatibilität.
 

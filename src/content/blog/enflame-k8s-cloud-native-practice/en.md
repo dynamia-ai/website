@@ -55,7 +55,7 @@ Enflame GPUs are an important force among domestic AI accelerators. Large-model 
 
 ### Overall Architecture
 
-![GPU Operator overall architecture](/images/blog/enflame-k8s-cloud-native-practice/gpu-operator-architecture.webp)
+![GPU Operator overall architecture](/images/blog/enflame-k8s-cloud-native-practice/gpu-operator-architecture-en.png)
 
 Enflame uses GPU Operator to unify management of **7+ core components**, covering the full lifecycle from hardware to cluster:
 
@@ -173,7 +173,7 @@ From Pod submission to GPU inference, the full automated chain means, **from the
 
 ### Full-Stack Architecture from GPU Management to LLM Inference
 
-![Inference Gateway full-stack architecture](/images/blog/enflame-k8s-cloud-native-practice/inference-gateway-stack.webp)
+![Inference Gateway full-stack architecture](/images/blog/enflame-k8s-cloud-native-practice/inference-gateway-stack-en.png)
 
 Large-model inference is moving from monolithic deployment to distributed cloud-native inference, facing high concurrency, long context, KV cache management, SLO guarantees, and more. Enflame aligns with the **CNCF four-layer standard inference stack**, aiming for GPUs as a native backend across all four layers:
 

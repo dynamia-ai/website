@@ -53,7 +53,7 @@ The AI platform was initially built on Kubeflow, with core business covering thr
 - **Workflow:** Model training and data processing pipelines
 - **Model Serving:** Online inference services
 
-![SF Technology's GPU compute evolution journey](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_02.png)
+![SF Technology's GPU compute evolution journey](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_02-en.png)
 
 ### Evolution: Full Scheduler Replacement
 
@@ -65,7 +65,7 @@ The platform currently manages **5 private cloud K8s clusters** and has integrat
 
 **Why multi-cloud?** On-premises data centers primarily deploy V100, A100, and some H20 GPUs, but procurement costs are high with long lead times. Public cloud resources are mostly procured on monthly or annual subscriptions, used to handle compute shortages and flexible scaling needs.
 
-![Multi-cloud hybrid architecture — 5 private clusters connected to 4 public clouds](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_04.png)
+![Multi-cloud hybrid architecture — 5 private clusters connected to 4 public clouds](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_04-en.png)
 
 ## II. GPU Resource Management: Deep Customization of Device Plugin
 
@@ -79,7 +79,7 @@ gpu-a100, gpu-v100, gpu-h20 ...
 
 This enables **precise GPU model matching** at the scheduling layer.
 
-![GPU resource pool abstraction + Volcano Queue quota management](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_05.png)
+![GPU resource pool abstraction + Volcano Queue quota management](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_05-en.png)
 
 ### Simplified Operations: Goodbye Labels and Taints
 
@@ -95,7 +95,7 @@ Code modifications were made to Volcano's vGPU Device Plugin, enabling it to rep
 
 For tasks with low memory and compute utilization, HAMi enables fine-grained GPU partitioning (at the memory/compute level), splitting a physical GPU into multiple independently schedulable resource units, thereby improving resource utilization and reducing fragmentation waste.
 
-![Using HAMi for memory partitioning](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image.png)
+![Using HAMi for memory partitioning](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-en.png)
 
 The core of this capability lies in transforming GPUs from "whole-card exclusive" to "allocatable fine-grained resources," enabling low-load tasks to share the same physical card.
 
@@ -105,13 +105,13 @@ Building on GPU partitioning, development tasks (sandbox/Notebook) are colocated
 
 Sandbox and inference tasks have natural temporal staggering — developers tune parameters during the day, inference services scale elastically with business traffic. Scheduling strategies enable resource reuse and dynamic yield.
 
-![Using HAMi for colocation and priority scheduling](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-1.png)
+![Using HAMi for colocation and priority scheduling](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-1-en.png)
 
 ### Use Case 3: Memory Oversubscription
 
 Leveraging task stagger patterns (e.g., customer service scenarios with high concurrency during the day, idle at night), **memory oversubscription** was implemented, allowing different tasks to share physical GPU memory. Through staggered scheduling, multiple tasks use the same memory space at different times, significantly improving resource utilization.
 
-![Memory oversubscription — sharing physical memory via staggered scheduling](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-2.png)
+![Memory oversubscription — sharing physical memory via staggered scheduling](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-2-en.png)
 
 > Chen Junchao revealed that the community edition does not yet support memory oversubscription. SF Technology implemented this feature with the help of key community contributors.
 
@@ -119,7 +119,7 @@ Leveraging task stagger patterns (e.g., customer service scenarios with high con
 
 The team collects not only physical card monitoring data but also HAMi virtual card memory utilization metrics, writing them to the BDP platform via Prometheus for utilization reporting. This provides data-driven support for resource operation decisions.
 
-![Full-chain monitoring — physical card + virtual card metric collection loop](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-3.png)
+![Full-chain monitoring — physical card + virtual card metric collection loop](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-3-en.png)
 
 ## V. Selected Q&A from the Event
 

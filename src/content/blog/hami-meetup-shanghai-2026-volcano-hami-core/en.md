@@ -18,7 +18,7 @@ tags:
   - Heterogeneous Computing
 category: Community & Events
 language: en
-coverImage: /images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8s-volcano-hami-core-roles.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8s-volcano-hami-core-roles-en.png
 ---
 
 Research jobs want GPUs as soon as possible; online business needs stable resource guarantees; data processing and model training each come with their own orchestration tools. For an enterprise AI platform to let these workloads share compute, it must answer three questions at once: who may use which resources, when idle capacity can be borrowed, and how interference is located and recovered. HAMi-core's fine-grained resource control has to work together with cluster scheduling, business processes, and runtime records.
@@ -39,11 +39,11 @@ iFLYTEK's AI infrastructure supports education, healthcare, and smart-city busin
 
 The practice runs Kubernetes for nodes and the base runtime, Volcano for multi-workload scheduling and orchestration, and HAMi-core for fine-grained GPU memory and compute quota control. Volcano organizes how jobs obtain resources; HAMi-core controls resource usage within a shared GPU. With that division clear, in-card sharing can plug into the platform's job scheduling and tenant management rules.
 
-![Responsibility split among Kubernetes, Volcano, and HAMi-core (slide 7)](/images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8s-volcano-hami-core-roles.png)
+![Responsibility split among Kubernetes, Volcano, and HAMi-core (slide 7)](/images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8s-volcano-hami-core-roles-en.png)
 
 At the organization level, the platform maps business needs onto dedicated and shared queues, with minimum guarantees, maximum quotas, and weights. Idle capacity can be borrowed by other queues and reclaimed by rule when needed — guarantee and elastic sharing coexist.
 
-![Resource allocation between dedicated and shared queues (slide 8)](/images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-08-dedicated-shared-queues.png)
+![Resource allocation between dedicated and shared queues (slide 8)](/images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-08-dedicated-shared-queues-en.png)
 
 Borrowing has a price, though. Reclamation can trigger job eviction and rebuilds, so whether a job is recomputable and interruptible must enter queue design up front. Only when sharing rules correspond to business priorities does the pressure to raise utilization stay off critical services.
 

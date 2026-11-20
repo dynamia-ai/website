@@ -45,7 +45,7 @@ In practice, iFLYTEK brought existing GPUs such as T4 and A30 into research scen
 
 **In this way, iFLYTEK kept its original business workflows, folded GPU sharing into the existing scheduling stack, reduced business-side changes, and provided technical support for flexible use of existing compute.**
 
-![Layered architecture that keeps existing workflows and adds GPU sharing](/images/blog/iflytek-gpu-resource-sharing/image-01.png)
+![Layered architecture that keeps existing workflows and adds GPU sharing](/images/blog/iflytek-gpu-resource-sharing/image-01-en.png)
 
 ## Guarantees for Critical Workloads, Elastic Access for R&D
 
@@ -57,7 +57,7 @@ Critical workloads receive resource guarantees under established rules; interrup
 
 That said, **elastic sharing has bounds.** Reclamation may trigger eviction and rebuild, so resource rules must reflect whether a job can be interrupted and whether re-computation is allowed. HAMi-Core’s userspace limits are also not the same as hardware-level fault isolation; when jobs share one GPU, teams still need to assess interference and the impact of failures.
 
-![Dedicated queues protect critical workloads; shared queues support elastic borrowing for R&D](/images/blog/iflytek-gpu-resource-sharing/image-02.png)
+![Dedicated queues protect critical workloads; shared queues support elastic borrowing for R&D](/images/blog/iflytek-gpu-resource-sharing/image-02-en.png)
 
 To keep sharing rules effective over time, iFLYTEK also improved GPU observability and traceability.
 

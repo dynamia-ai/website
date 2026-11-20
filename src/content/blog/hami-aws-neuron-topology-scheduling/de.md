@@ -18,7 +18,7 @@ tags:
   - Kubernetes
   - Deep Dive
 category: Technical Deep Dive
-coverImage: /images/blog/hami-aws-neuron-topology/cover-zh.png
+coverImage: /images/blog/hami-aws-neuron-topology/cover-en.png
 language: de
 linktitle: AWS Neuron Topologie-Scheduling
 ---

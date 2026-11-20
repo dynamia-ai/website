@@ -109,7 +109,7 @@ The main feature of HAMi is fine-grained GPU isolation, allowing you to isolate 
 
 For example:
 
-![GPU memory allocation diagram](/images/blog/gpu1/photo4.jpg)
+![GPU memory allocation diagram](/images/blog/gpu1/photo4-en.png)
 
 - **nvidia.com/gpu**: Request one GPU
 - **nvidia.com/gpumem**: Request 3000M GPU memory

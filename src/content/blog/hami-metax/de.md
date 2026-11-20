@@ -22,7 +22,7 @@ tags:
   - spread
   - GPU-Virtualisierung
 category: Integration & Ecosystem
-coverImage: /images/blog/hami-MetaX/coverpage-Hami-MetaX.png
+coverImage: /images/blog/hami-MetaX/coverpage-Hami-MetaX-en.png
 linktitle: HAMi-Unterstützung für MetaX-GPU
 ---
 
@@ -101,7 +101,7 @@ func prioritizeExclusiveDevices(candidateDevices device.ContainerDevices, requir
 ```
 
 **Designbegründung:** Regelbasiert statt alle `C(n, k)` zu scoren. Konsens: Kommunikation innerhalb einer Domäne ist deutlich besser. Gefundenes Optimum (Priorität 1) beendet die Suche — höhere Scheduling-Effizienz.
-![MetaX device priority selection flowchart](/images/blog/hami-MetaX/im2.png)
+![MetaX device priority selection flowchart](/images/blog/hami-MetaX/im2-en.png)
 
 ### Stufe 2: Knotenübergreifendes Scoring — vorausschauend
 
@@ -147,7 +147,7 @@ Aufschlüsselung:
 - Der Scheduler bestraft fragmentierende Allokationen und schützt Topologie-Ressourcen für künftige große Jobs.
 
 **Fazit Stufe 1+2:** Prioritätsregeln pro Knoten, dann globales Scoring zwischen „Jetzt“ und „Langfristig“.
-![MetaX two-stage topology scheduling architecture](/images/blog/hami-MetaX/im3.png)
+![MetaX two-stage topology scheduling architecture](/images/blog/hami-MetaX/im3-en.png)
 
 ## 3. Quality of Service (QoS): Isolation durch „Gleichtyp-Aggregation“
 
@@ -177,7 +177,7 @@ Pods mit passender QoS-Annotation werden akzeptiert, sonst Scheduling-Ablehnung.
 1. **GPU leer?** Jeder QoS-Job darf starten und setzt den Modus.
 2. **QoS passt?** Neue Annotation **muss exakt** dem bestehenden Modus entsprechen.
 3. **Exklusiv-Ausnahme:** 100 % Compute teilt nicht — Regel gilt nicht.
-![MetaX QoS same-type aggregation isolation flowchart](/images/blog/hami-MetaX/p3.png)
+![MetaX QoS same-type aggregation isolation flowchart](/images/blog/hami-MetaX/p3-en.png)
 
 ```go
 // file: pkg/device/metax/sdevice.go
@@ -203,7 +203,7 @@ func (sdev *MetaxSDevices) checkDeviceQos(reqQos string, usage device.DeviceUsag
 
 „Gleichtyp-Aggregation“ bildet logische QoS-Pools — manche Karten nur FixedShare, andere nur BestEffort.
 
-![MetaX QoS resource pool auto-grouping diagram](/images/blog/hami-MetaX/p4.png)
+![MetaX QoS resource pool auto-grouping diagram](/images/blog/hami-MetaX/p4-en.png)
 
 ## 4. WebUI-Unterstützung
 

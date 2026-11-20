@@ -51,7 +51,7 @@ GPU usage scenarios in research labs differ significantly from enterprise produc
 
 Boardware has deep experience in research and university scenarios, accumulating rich AI compute management expertise. In field research, they discovered that over **70% of research GPU resources are idle or underutilized** — not because no tasks are running, but because resource allocation granularity is too coarse, resulting in significant memory waste.
 
-![Core Pain Points of GPU Management in Research Labs](/images/blog/boardware-hami-gpu-virtualization/gpu-pain-points.webp)
+![Core Pain Points of GPU Management in Research Labs](/images/blog/boardware-hami-gpu-virtualization/gpu-pain-points-en.png)
 
 ## 2. Architecture Evolution: From VMs to Containerization
 
@@ -67,7 +67,7 @@ The team initially used VM-exclusive access or VPC partitioning for GPU resource
 
 The team fully embraced Kubernetes, achieving lightweight compute and flexible scheduling through containerization, and introduced HAMi as the GPU virtualization and scheduling layer. HAMi (Heterogeneous AI Computing Virtualization Middleware) is a CNCF incubating project that provides fine-grained GPU memory isolation and compute partitioning, enabling multiple containers to safely share the same physical GPU.
 
-![K8s + HAMi Architecture Evolution](/images/blog/boardware-hami-gpu-virtualization/k8s-hami-architecture.webp)
+![K8s + HAMi Architecture Evolution](/images/blog/boardware-hami-gpu-virtualization/k8s-hami-architecture-en.png)
 
 ## 3. Custom Scheduling Platform: One Click Deployment Platform
 
@@ -108,7 +108,7 @@ This achieved **physical isolation** of training, evaluation, and inference with
 - Completed small-scale validation with 9B models
 - Fine-grained GPU partitioning through HAMi Core
 
-![Agent RL Combined with HAMi Deployment](/images/blog/boardware-hami-gpu-virtualization/agent-rl-hami-deployment.webp)
+![Agent RL Combined with HAMi Deployment](/images/blog/boardware-hami-gpu-virtualization/agent-rl-hami-deployment-en.png)
 
 ## 5. Multi-Scenario Compute Support for Universities
 
@@ -120,7 +120,7 @@ In university scenarios, the same cluster needs to handle multiple workload type
 
 Through HAMi Core, multiple workloads run in a **mixed mode** on the same cluster, solving the fragmentation between CPU and GPU environments and providing universities with a one-stop AI compute platform. This solution has been deployed at multiple universities and research institutions, significantly lowering the operational barrier for AI infrastructure.
 
-![Multi-Scenario Mixed Workloads in Universities](/images/blog/boardware-hami-gpu-virtualization/multi-scenario-workload.webp)
+![Multi-Scenario Mixed Workloads in Universities](/images/blog/boardware-hami-gpu-virtualization/multi-scenario-workload-en.png)
 
 ## Conclusion
 

@@ -50,7 +50,7 @@ GPU-Nutzung in Laboren unterscheidet sich stark von Enterprise-Produktion:
 
 Boardware hat tiefe Erfahrung in Forschung und Universitäten. In Feldstudien zeigte sich: **über 70 % der Forschungs-GPUs sind idle oder unterausgelastet** — nicht weil keine Tasks laufen, sondern weil die Zuteilungsgranularität zu grob ist und Speicher verschwendet wird.
 
-![Kernschmerzpunkte GPU-Management in Forschungslaboren](/images/blog/boardware-hami-gpu-virtualization/gpu-pain-points.webp)
+![Kernschmerzpunkte GPU-Management in Forschungslaboren](/images/blog/boardware-hami-gpu-virtualization/gpu-pain-points-en.png)
 
 ## 2. Architektur-Evolution: von VMs zur Containerisierung
 
@@ -66,7 +66,7 @@ Anfangs VM-exklusiv oder VPC für GPU-Management — mit Schmerzpunkten:
 
 Das Team setzte auf Kubernetes für leichtes Compute und flexibles Scheduling und HAMi als GPU-Virtualisierungs- und Scheduling-Schicht. HAMi (Heterogeneous AI Computing Virtualization Middleware) ist ein CNCF-Incubating-Projekt mit feingranularer GPU-Speicherisolation und Compute-Partitionierung für sicheres Multi-Container-Sharing einer physischen GPU.
 
-![K8s + HAMi Architektur-Evolution](/images/blog/boardware-hami-gpu-virtualization/k8s-hami-architecture.webp)
+![K8s + HAMi Architektur-Evolution](/images/blog/boardware-hami-gpu-virtualization/k8s-hami-architecture-en.png)
 
 ## 3. Eigene Scheduling-Plattform: One Click Deployment Platform
 
@@ -107,7 +107,7 @@ Unter OpenRL partitionierte HAMi den 12-GPU-Cluster in:
 - Kleinskalige Validierung mit 9B-Modellen
 - Feingranulare Partitionierung über HAMi Core
 
-![Agent RL mit HAMi Deployment](/images/blog/boardware-hami-gpu-virtualization/agent-rl-hami-deployment.webp)
+![Agent RL mit HAMi Deployment](/images/blog/boardware-hami-gpu-virtualization/agent-rl-hami-deployment-en.png)
 
 ## 5. Multi-Szenario-Compute für Universitäten
 
@@ -119,7 +119,7 @@ Ein Cluster für mehrere Workload-Typen:
 
 Über HAMi Core laufen mehrere Workloads **gemischt** auf demselben Cluster — Brücke zwischen CPU- und GPU-Umgebungen, One-Stop-KI-Compute für Universitäten, bereits an mehreren Institutionen deployed.
 
-![Multi-Szenario gemischte Workloads an Universitäten](/images/blog/boardware-hami-gpu-virtualization/multi-scenario-workload.webp)
+![Multi-Szenario gemischte Workloads an Universitäten](/images/blog/boardware-hami-gpu-virtualization/multi-scenario-workload-en.png)
 
 ## Fazit
 
