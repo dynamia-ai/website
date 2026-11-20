@@ -50,12 +50,20 @@ export default function ContactForm({
   const t = useTranslations('siteShell');
   const [status, setStatus] = useState<'idle' | 'verifying' | 'submitting' | 'success' | 'error'>('idle');
   const [scriptReady, setScriptReady] = useState(false);
+  const [scriptFailed, setScriptFailed] = useState(false);
   const [widgetReady, setWidgetReady] = useState(false);
   const turnstileContainer = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
   const verification = useRef<{resolve: (token: string) => void; reject: () => void} | null>(null);
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const isSuccess = status === 'success';
+  const verificationUnavailable = !turnstileSiteKey || scriptFailed;
+
+  useEffect(() => {
+    if (!turnstileSiteKey || scriptReady) return;
+    const timeout = window.setTimeout(() => setScriptFailed(true), 10000);
+    return () => window.clearTimeout(timeout);
+  }, [scriptReady, turnstileSiteKey]);
 
   useEffect(() => {
     if (!scriptReady || !turnstileSiteKey || isSuccess || !turnstileContainer.current || !window.turnstile) return;
@@ -144,17 +152,25 @@ export default function ContactForm({
       {children}
       {turnstileSiteKey ? (
         <>
-          <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" strategy="afterInteractive" onReady={() => setScriptReady(true)} />
+          <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+            strategy="afterInteractive"
+            onReady={() => {
+              setScriptReady(true);
+              setScriptFailed(false);
+            }}
+            onError={() => setScriptFailed(true)}
+          />
           <div ref={turnstileContainer} />
         </>
       ) : null}
-      <p className="form-footnote" role="status" hidden={!!turnstileSiteKey && status !== 'verifying'}>
-        {turnstileSiteKey ? t('contactVerifying') : t('contactVerificationUnavailable')}
+      <p className="form-footnote" role="status" hidden={!verificationUnavailable && status !== 'verifying'}>
+        {verificationUnavailable ? t('contactVerificationUnavailable') : t('contactVerifying')}
       </p>
       <p className="form-footnote" role="alert" hidden={status !== 'error'}>
         {t('contactSubmitError')}
       </p>
-      <button type="submit" className="btn primary" disabled={!widgetReady || status === 'verifying' || status === 'submitting'}>
+      <button type="submit" className="btn primary" disabled={verificationUnavailable || !widgetReady || status === 'verifying' || status === 'submitting'}>
         {submitLabel}
       </button>
     </form>
