@@ -2630,6 +2630,8 @@
     "backToTop": "Nach oben",
     "backToTopIcon": "↑",
     "contactSubmitError": "Etwas ist schiefgelaufen. Bitte erneut versuchen oder info@dynamia.ai kontaktieren.",
+    "contactVerifying": "Ihr Browser wird überprüft…",
+    "contactVerificationUnavailable": "Die Überprüfung ist nicht verfügbar. Bitte schreiben Sie an info@dynamia.ai.",
     "qr": {
       "close": "QR-Code schließen",
       "closeSymbol": "×",
