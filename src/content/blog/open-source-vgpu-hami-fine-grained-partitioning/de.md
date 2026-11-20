@@ -108,7 +108,7 @@ Kernfeature: feinkörnige GPU-Isolation von Core und Memory im 1%-Granularitäts
 
 Beispiel:
 
-![GPU memory allocation diagram](/images/blog/gpu1/photo4.jpg)
+![GPU memory allocation diagram](/images/blog/gpu1/photo4-en.png)
 
 - **nvidia.com/gpu**: eine GPU anfordern
 - **nvidia.com/gpumem**: 3000M GPU-Speicher

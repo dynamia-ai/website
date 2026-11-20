@@ -34,7 +34,7 @@ In this article, we will address the final question: *How are advanced schedulin
 
 Here again is the HAMI Webhook & Scheduler workflow summarized in the previous article:
 
-![HAMi Webhook & Scheduler workflow diagram](/images/blog/gpu6/p2.jpg)
+![HAMi Webhook & Scheduler workflow diagram](/images/blog/gpu5/p1-en.png)
 
 1. A user creates a Pod and requests vGPU resources in it.
 2. The kube-apiserver, based on the `MutatingWebhookConfiguration`, sends a request to the HAMI-Webhook.

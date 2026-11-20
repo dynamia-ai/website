@@ -52,7 +52,7 @@ Die AI-Plattform startete auf Kubeflow mit drei Kernmodulen:
 - **Workflow:** Pipelines für Modelltraining und Datenverarbeitung
 - **Model Serving:** Online-Inferenzdienste
 
-![Evolutionsreise der GPU-Rechenleistung bei SF Technology](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_02.png)
+![Evolutionsreise der GPU-Rechenleistung bei SF Technology](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_02-en.png)
 
 ### Evolution: vollständiger Scheduler-Tausch
 
@@ -64,7 +64,7 @@ Die Plattform verwaltet **5 Private-Cloud-K8s-Cluster** und ist mit vier Public-
 
 **Warum Multi-Cloud?** On-Prem-Rechenzentren setzen vor allem V100, A100 und einige H20-GPUs ein, Beschaffung ist teuer mit langen Lieferzeiten. Public-Cloud-Ressourcen werden meist monats- oder jahresweise gemietet, um Rechenengpässe und flexible Skalierung abzufedern.
 
-![Multi-Cloud-Hybridarchitektur – 5 Private-Cluster verbunden mit 4 Public Clouds](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_04.png)
+![Multi-Cloud-Hybridarchitektur – 5 Private-Cluster verbunden mit 4 Public Clouds](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_04-en.png)
 
 ## II. GPU-Ressourcenmanagement: tiefe Device-Plugin-Anpassung
 
@@ -78,7 +78,7 @@ gpu-a100, gpu-v100, gpu-h20 ...
 
 So ist **präzises GPU-Modell-Matching** auf der Scheduling-Ebene möglich.
 
-![GPU-Ressourcenpool-Abstraktion + Volcano-Queue-Quota-Management](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_05.png)
+![GPU-Ressourcenpool-Abstraktion + Volcano-Queue-Quota-Management](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/slide_05-en.png)
 
 ### Vereinfachter Betrieb: Abschied von Labels und Taints
 
@@ -94,7 +94,7 @@ Code-Anpassungen am Volcano-vGPU-Device-Plugin ermöglichen Meldung spezifischer
 
 Bei Aufgaben mit niedriger Speicher- und Compute-Auslastung ermöglicht HAMi feinkörnige GPU-Partitionierung (Speicher-/Compute-Ebene) und teilt eine physische GPU in mehrere unabhängig schedulbare Einheiten – höhere Auslastung, weniger Fragmentierung.
 
-![HAMi für Speicherpartitionierung](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image.png)
+![HAMi für Speicherpartitionierung](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-en.png)
 
 Der Kern: GPUs werden von „Ganzkarten-Exklusiv“ zu „feinkörnig zuweisbaren Ressourcen“, sodass Low-Load-Tasks dieselbe physische Karte teilen können.
 
@@ -104,13 +104,13 @@ Aufbauend auf Partitionierung werden Entwicklungsaufgaben (Sandbox/Notebook) mit
 
 Sandbox und Inferenz sind zeitlich natürlich versetzt – Entwickler tunen tagsüber, Inferenz skaliert mit Traffic. Scheduling-Strategien ermöglichen Ressourcenwiederverwendung und dynamisches Yield.
 
-![HAMi für Colocation und Prioritäts-Scheduling](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-1.png)
+![HAMi für Colocation und Prioritäts-Scheduling](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-1-en.png)
 
 ### Use Case 3: Memory-Oversubscription
 
 Nutzen zeitlicher Muster (z. B. Customer Service mit hoher Tageslast, nachts idle) ermöglichte **Memory-Oversubscription**, sodass verschiedene Tasks physischen GPU-Speicher teilen. Durch versetztes Scheduling nutzen mehrere Tasks denselben Speicher zu unterschiedlichen Zeiten.
 
-![Memory-Oversubscription – geteilter physischer Speicher via versetztem Scheduling](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-2.png)
+![Memory-Oversubscription – geteilter physischer Speicher via versetztem Scheduling](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-2-en.png)
 
 > Chen Junchao berichtete, dass die Community-Edition Memory-Oversubscription noch nicht unterstützt. SF Technology implementierte das Feature mit Hilfe zentraler Community-Contributors.
 
@@ -118,7 +118,7 @@ Nutzen zeitlicher Muster (z. B. Customer Service mit hoher Tageslast, nachts idl
 
 Das Team sammelt nicht nur Monitoring-Daten physischer Karten, sondern auch HAMi-Virtual-Card-Speicherauslastung und schreibt sie via Prometheus auf die BDP-Plattform für Auslastungsreporting – datengetriebene Ressourcenentscheidungen.
 
-![Full-Chain-Monitoring – physische Karte + virtuelle Karte](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-3.png)
+![Full-Chain-Monitoring – physische Karte + virtuelle Karte](/images/blog/hami-sf-tech-gpu-pooling-chenjunchao/image-3-en.png)
 
 ## V. Ausgewähltes Q&A der Veranstaltung
 

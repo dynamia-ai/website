@@ -17,7 +17,7 @@ tags:
   - Large-Scale Cluster
   - Troubleshooting
 category: Technical Deep Dive
-coverImage: /images/blog/hami-vgpu-scheduling-fix-large-cluster/resource-view.png
+coverImage: /images/blog/hami-vgpu-scheduling-fix-large-cluster/resource-view-en.png
 language: en
 linktitle: vGPU Scheduling Fix for Large Clusters
 ---
@@ -56,7 +56,7 @@ GPU-f571c8f8-948a-71b4-3be1-2bf02c7a1b20,10,32768,NVIDIA-Tesla V100S-PCIE-32GB,t
 
 Volcano-scheduler generates a hami vGPU resource view based on node annotations, recording the total resources across three dimensions: GPU count per node, gpu-number quantity per GPU, memory amount, and compute percentage.
 
-![Resource View](/images/blog/hami-vgpu-scheduling-fix-large-cluster/resource-view.png)
+![Resource View](/images/blog/hami-vgpu-scheduling-fix-large-cluster/resource-view-en.png)
 
 ### Handshake Mechanism
 
@@ -95,7 +95,7 @@ if strings.Contains(handshake, "Requesting") {
 
 **Handshake frequency issue**: hami-dp updates handshake annotations every 30s. With 200 NVIDIA nodes in the cluster, each dp pod patches node annotations, and the resulting node update events also trigger the scheduler to patch annotations. This means **400 patch node annotation operations every 30 seconds**.
 
-![Handshake Frequency](/images/blog/hami-vgpu-scheduling-fix-large-cluster/handshake-frequency.png)
+![Handshake Frequency](/images/blog/hami-vgpu-scheduling-fix-large-cluster/handshake-frequency-en.png)
 
 ## Root Cause Analysis
 

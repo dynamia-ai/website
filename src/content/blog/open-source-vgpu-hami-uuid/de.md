@@ -210,7 +210,7 @@ Vorherige Artikel zum HAMi-Scheduling:
 
 Der Scheduling-Ablauf:
 
-![HAMi scheduling workflow diagram showing Pod creation and GPU allocation process](/images/blog/gpu9/p2.jpg)
+![HAMi scheduling workflow diagram showing Pod creation and GPU allocation process](/images/blog/gpu5/p1-en.png)
 
 1. Ein Nutzer erstellt einen Pod und fordert darin vGPU-Ressourcen an.
 

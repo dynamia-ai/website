@@ -20,7 +20,7 @@ tags:
   - Multi-Cluster
 category: Community & Events
 language: en
-coverImage: /images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-instance-spec-abstraction.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-instance-spec-abstraction-en.png
 ---
 
 The GPUs are in place; the algorithm team is still waiting for environments. Drivers, images, networking, storage — configured one by one, and re-adapted for every new cluster. Even with GPU sharing in place at the bottom, the platform still has to connect resource specs, scheduling configuration, and development tools so users get an environment they can start working in immediately.
@@ -43,7 +43,7 @@ What users submit is usually clear: image, CPU and memory, GPU model and count, 
 
 The team uses Instance Specs to define stable instance specifications, expressing whole-card or vGPU allocation uniformly, with an adaptation layer translating to the underlying configuration. Resource claims, vendor annotations, scheduling constraints, and runtime parameters are handled centrally, so each workload doesn't rewrite hardware adaptation logic. HAMi-provided shared resources enter the platform's unified environment creation flow the same way.
 
-![Stable instance specs and an adaptation layer for underlying differences (slide 9)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-instance-spec-abstraction.png)
+![Stable instance specs and an adaptation layer for underlying differences (slide 9)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-instance-spec-abstraction-en.png)
 
 Users still choose the right model, count, and image. What the platform unifies is spec expression and translation — not the assumption that all GPUs are interchangeable. When new devices arrive, adaptation work can also start and validate around this layer early.
 
@@ -55,7 +55,7 @@ The team evaluated full multi-cluster orchestrators like Karmada, and ultimately
 
 Under that premise, lightweight access avoids the maintenance burden of an extra control plane and resource model. Logs and metrics still need separate adaptation; credentials must be managed as sensitive information with access control enforced.
 
-![The lightweight-access trade-off for single-task, single-cluster scenarios (slide 11)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-11-lightweight-multi-cluster.png)
+![The lightweight-access trade-off for single-task, single-cluster scenarios (slide 11)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-11-lightweight-multi-cluster-en.png)
 
 The choice has a clear applicability range. When business truly needs cross-cluster migration and disaster recovery, the orchestration solution and data conditions must be re-evaluated — lightweight access is not a substitute for full multi-cluster capability.
 
@@ -65,13 +65,13 @@ Algorithm frameworks and project dependencies want stability; dev tools like SSH
 
 The team moved to assembling tools at environment creation — injecting development capability via sidecars and supplementing configuration through rules. The algorithm container and platform tools can be maintained separately, while shared files, network interfaces, and configuration boundaries still need defining.
 
-![Assembling dev tools at runtime, decoupling algorithm images from tool updates (slide 13)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-13-runtime-tool-injection.png)
+![Assembling dev tools at runtime, decoupling algorithm images from tool updates (slide 13)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-13-runtime-tool-injection-en.png)
 
 Image size itself slows startup. The traditional flow downloads and decompresses every layer before assembling the filesystem. The acceleration approach in the talk scans the original image's compressed layers and generates independent file indexes. At runtime, the system fetches metadata and indexes first, mounts remote layers, and reads needed chunks — writing them to local cache — only when files are actually accessed.
 
 Downloading hasn't disappeared; some reads have just moved after container start. If the application immediately reads large files, the wait is still there; layers without usable indexes or unsuited to lazy loading fall back to regular pulling.
 
-![Image indexing, on-demand reads, and the fallback path to regular pulling (slide 14)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-14-on-demand-image-loading.png)
+![Image indexing, on-demand reads, and the fallback path to regular pulling (slide 14)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-14-on-demand-image-loading-en.png)
 
 So judging whether environments got faster should follow through to the application actually being usable — not stop at "container started."
 
@@ -81,7 +81,7 @@ Peng recounted that the team tried MIG early on, but under their device and busi
 
 The selection logic is clear: HAMi carries user-space resource sharing and quota control in private scenarios, fitting Kubernetes resource usage; kernel-level vGPU and QEMU per-card passthrough are UCloud's engineering solutions for the other two deployment environments. The three paths face different hardware and tenant-isolation conditions, and each needs its own design and validation.
 
-![Different deployment scenarios map to different GPU management approaches (slide 16)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-16-gpu-isolation-scenarios.png)
+![Different deployment scenarios map to different GPU management approaches (slide 16)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-16-gpu-isolation-scenarios-en.png)
 
 Enterprise-card passthrough must also consider multi-card communication. Keeping NVLink requires a trusted Fabric service managing the shared NVSwitch, coordinated with VM lifecycle; the alternative disables NVLink and passes GPUs through as independent PCIe devices — simpler engineering, but losing that high-speed interconnect.
 

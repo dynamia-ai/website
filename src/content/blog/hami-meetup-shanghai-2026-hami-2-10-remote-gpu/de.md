@@ -17,7 +17,7 @@ tags:
   - Remote GPU
   - KAI Scheduler
 category: Community & Events
-coverImage: /images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07-kai-scheduler-hami-core.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07-kai-scheduler-hami-core-en.png
 ---
 
 Eine GPU mehreren Jobs zu geben, ist nur der Start von Resource Sharing. Für Enterprise-Plattformteams folgen härtere Fragen: hält jeder Job seine Quote ein, sind Zuweisungen beobachtbar, wie schedulen verschiedene Geräte und Jobs? Sonst steht im Buch „geteilt“, zur Laufzeit bleibt Nutzung eine Black Box.
@@ -40,7 +40,7 @@ Als Middleware für heterogene Compute-Virtualisierung bietet HAMi Device-Sharin
 
 Die KAI-Scheduler-Anpassung zeigt die Arbeitsteilung zwischen HAMi-core und Scheduling-Ökosystem. Der Scheduler ordnet Jobs nach Ressourcen-Claims; HAMi-core geht per Injection-Komponenten in Container und erzwingt Speicher- und Rechenlimits. Ersterer verteilt Ressourcen, letzterer begrenzt Nutzung. Unternehmen mit bestehendem Scheduling können Sharing entlang dieser Schnittstelle integrieren — Deployment erfordert passende Komponenten und Versionen; nur Scheduler installieren gibt keine Laufzeitkontrolle.
 
-![KAI Scheduler und HAMi-core: Aufteilung der Sharing-Kontrolle (Folie 7)](/images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07-kai-scheduler-hami-core.png)
+![KAI Scheduler und HAMi-core: Aufteilung der Sharing-Kontrolle (Folie 7)](/images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07-kai-scheduler-hami-core-en.png)
 
 Das Ascend-Soft-Slicing-Update zielt auf ein anderes Problem: Limits greifen, während Abfrage-Tools weiter Vollspeicher melden. Neue Monitoring-Metriken zeigen Speichernutzung und -limits auf Container-Ebene — Plattformen unterscheiden Gerätegesamt von Job-Quota und bestätigen korrektes Slicing.
 
@@ -66,7 +66,7 @@ DRA löst eine andere Schicht: Nach DRA-Zuweisung brauchen Nutzer vertraute Requ
 
 HAMi-DRA adressiert diese Touchpoints: Request-Übersetzung in DRA-Logik plus Cluster-Monitoring und Scheduling-Events. Restressourcen sichtbar; Engpässe nach Gerätetyp, Speicher usw. erkennbar. Ascend-DRA-Fortschritt im Vortrag — Deployment braucht passende Kubernetes-Versionen und Treiber.
 
-![HAMi-DRA: Arbeitsteilung und Nutzung (Folie 13)](/images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-13-hami-dra.png)
+![HAMi-DRA: Arbeitsteilung und Nutzung (Folie 13)](/images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-13-hami-dra-en.png)
 
 ## Remote GPU und CPU-NUMA-Ausrichtung: nächste Schritte
 

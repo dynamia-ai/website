@@ -22,7 +22,7 @@ tags:
   - spread
   - GPU Virtualization
 category: Integration & Ecosystem
-coverImage: /images/blog/hami-MetaX/coverpage-Hami-MetaX.png
+coverImage: /images/blog/hami-MetaX/coverpage-Hami-MetaX-en.png
 language: en
 linktitle: HAMi Support for MetaX GPU
 ---
@@ -102,7 +102,7 @@ func prioritizeExclusiveDevices(candidateDevices device.ContainerDevices, requir
 ```
 
 **Design rationale**: This rule-first design avoids the huge cost of brute-force scoring all `C(n, k)` combinations. It rests on a core consensus: intra-domain communication performs far better than cross-domain communication. Therefore, once a qualifying “best” result (first priority) is found, no other combination needs to be considered — greatly improving scheduling efficiency.
-![MetaX device priority selection flowchart](/images/blog/hami-MetaX/im2.png)
+![MetaX device priority selection flowchart](/images/blog/hami-MetaX/im2-en.png)
 
 ### Stage 2: Inter-Node Scoring — Forward-Looking Quantitative Evaluation
 
@@ -148,7 +148,7 @@ Breaking the formula down:
 - This means the scheduler penalizes allocations that fragment the node’s topology resources. When allocation quality scores are equal, this term matters, protecting the cluster’s ability to keep high-quality, intact topology resources for future large jobs.
 
 **Bottom line**: This two-stage design first uses rigid priority rules to pick the best combination inside each node, then uses a scoring formula that balances “current benefit” and “long-term planning” to make a globally better choice among all candidates.
-![MetaX two-stage topology scheduling architecture](/images/blog/hami-MetaX/im3.png)
+![MetaX two-stage topology scheduling architecture](/images/blog/hami-MetaX/im3-en.png)
 
 ## 3. Quality of Service (QoS): Isolation via “Same-Type Aggregation”
 
@@ -178,7 +178,7 @@ Any Pod that tries to enter a card with a mismatched identity is rejected at sch
 1. **Check whether the GPU is idle**: If fully idle, any QoS job may land, and that job sets the card’s QoS mode.
 2. **Check whether QoS matches**: If the GPU is already occupied, the new job’s QoS annotation **must exactly equal** the QoS mode of existing jobs on the card; otherwise scheduling is rejected.
 3. **Exclusive-job exception**: Jobs requesting 100% compute do not share, so they are not constrained by this rule.
-![MetaX QoS same-type aggregation isolation flowchart](/images/blog/hami-MetaX/p3.png)
+![MetaX QoS same-type aggregation isolation flowchart](/images/blog/hami-MetaX/p3-en.png)
 
 ```go
 // file: pkg/device/metax/sdevice.go
@@ -204,7 +204,7 @@ func (sdev *MetaxSDevices) checkDeviceQos(reqQos string, usage device.DeviceUsag
 
 This simple “same-type aggregation” rule naturally forms logical “QoS resource pools” in the cluster — for example, some cards become FixedShare-only while others become BestEffort-only — achieving elegant, efficient isolation.
 
-![MetaX QoS resource pool auto-grouping diagram](/images/blog/hami-MetaX/p4.png)
+![MetaX QoS resource pool auto-grouping diagram](/images/blog/hami-MetaX/p4-en.png)
 
 ## 4. WebUI Support
 

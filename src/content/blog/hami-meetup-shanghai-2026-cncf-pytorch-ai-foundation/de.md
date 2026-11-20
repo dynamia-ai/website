@@ -18,7 +18,7 @@ tags:
   - KI-Infrastruktur
   - Heterogene Computing
 category: Community & Events
-coverImage: /images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-08-layered-architecture.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-08-layered-architecture-en.png
 ---
 
 Das Modell läuft, das Geschäft nicht. Ein Team wartet auf GPUs, während anderswo Geräte untergenutzt bleiben. Für Enterprise-KI-Plattformteams sitzt die Schwierigkeit meist an den Nahtstellen zwischen Modellen, Toolchains und Infrastruktur. Mit wachsender Modellzahl werden daraus Kosten-, Kollaborations- und Betriebsdruck.
@@ -53,7 +53,7 @@ Unten: Kubernetes für Container-Orchestrierung, Knoten, Netzwerk, Storage. Dar�
 
 Darüber: Training-Orchestrierung, Model Serving, Pipelines. Kubeflow Trainer, KServe, Argo Workflows u. a. strukturieren konkrete Tasks in handhabbare Lifecycles. PyTorch und Training/Fine-Tuning/Inferenz-Tooling tragen Modell-Compute und -Ausführung.
 
-![Schichtenarchitektur der Cloud-Native-KI-F&E-Foundation (Folie 8)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-08-layered-architecture.png)
+![Schichtenarchitektur der Cloud-Native-KI-F&E-Foundation (Folie 8)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-08-layered-architecture-en.png)
 
 Diese Arbeitsteilung hilft Plattformteams: Bei einem Engpass – welche Schicht ändern? Job-Warteschlange und langsame Modellausführung sind nicht dasselbe; Queue-Konfiguration, Device-Zuteilung und Modell-Runtime sind nicht austauschbar.
 
@@ -65,7 +65,7 @@ Keith nutzte Ubers Michelangelo-Plattform für Schichten im Training und in der 
 
 PyTorch und DeepSpeed für Training, Ray als verteilte Ausführungsschicht, Kubernetes für GPU-Cluster – Modelldefinition, verteilte Ausführung und Ressourcenmanagement auf getrennten Schichten, klarere Zusammenarbeit.
 
-![Schichten in verteiltem Training (Folie 10)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-10-distributed-training-layers.png)
+![Schichten in verteiltem Training (Folie 10)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-10-distributed-training-layers-en.png)
 
 Wichtig sind Verantwortungsgrenzen – nicht der konkrete Stack.
 
@@ -87,7 +87,7 @@ Er stellte Kubernetes AI Conformance vor: standardisierte Tests reduzieren Unsic
 
 Konkreter Start: einen Trainingsjob und einen Inferenzdienst, vollständigen Train-to-Infer-Pfad auf dem bestehenden Kubernetes-Cluster, schrittweise Ressourcenmanagement, Monitoring und Automatisierung ergänzen.
 
-![Praktischer Startpunkt von Training bis Inferenz (Folie 15)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-15-practice-starting-point.png)
+![Praktischer Startpunkt von Training bis Inferenz (Folie 15)](/images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/slide-15-practice-starting-point-en.png)
 
 Für Dynamia gilt: Enterprise-KI-Foundation gegen eine echte Geschäftskette bewerten – laufen Training und Inferenz durchgängig, werden Ressourcenanfragen eingehalten, ist Verhalten nach Sharing beobachtbar? HAMi ist Open-Source-Basis für heterogenes Compute-Management; Adoptierende tragen Integration, Geräteanpassung und Betrieb. Klare Verantwortlichkeiten machen aus Open Source nutzbare Infrastruktur.
 

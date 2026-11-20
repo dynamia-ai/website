@@ -42,7 +42,7 @@ linktitle: KI-Infrastruktur aus CNCF-Sicht
 
 Keith Chan eröffnete mit CNCF-Umfragedaten Ende 2025: **66 % der Unternehmen weltweit betreiben KI-Workloads in Cloud-Native-Umgebungen**. In China nutzen über 90 % der KI-Nutzer Cloud-Native-KI-Technologien.
 
-![Diagramm: 66 % der Unternehmen mit KI auf Cloud Native](/images/blog/keith-chan-ai-infrastructure-cloud-native/cncf-survey-66-percent.png)
+![Diagramm: 66 % der Unternehmen mit KI auf Cloud Native](/images/blog/keith-chan-ai-infrastructure-cloud-native/cncf-survey-66-percent-en.png)
 
 Der Trend dahinter ist klar: **Kubernetes ist zur einheitlichen Orchestrierungsschicht der KI-Infrastruktur geworden**. Auto-Scaling, CI/CD und Hochverfügbarkeit treffen die Anforderungen generativer KI an Echtzeit und Elastizität.
 
@@ -71,7 +71,7 @@ Da **90 % der LLMs auf PyTorch basieren**, arbeiten PyTorch- und Cloud-Native-Co
 
 ## 4. HAMi: fehlendes Puzzleteil für GPU-Scheduling in der CNCF
 
-![HAMis CNCF Case Studies](/images/blog/keith-chan-ai-infrastructure-cloud-native/hami-cncf-case-studies.png)
+![HAMis CNCF Case Studies](/images/blog/keith-chan-ai-infrastructure-cloud-native/hami-cncf-case-studies-en.png)
 
 Keith hob HAMis Rolle hervor:
 
@@ -83,7 +83,7 @@ Keith hob HAMis Rolle hervor:
 
 ## 5. Ausblick KubeCon Shanghai
 
-![KubeCon China, 8.–9. September 2026, Shanghai](/images/blog/keith-chan-ai-infrastructure-cloud-native/kubecon-shanghai-2026.png)
+![KubeCon China, 8.–9. September 2026, Shanghai](/images/blog/keith-chan-ai-infrastructure-cloud-native/kubecon-shanghai-2026-en.png)
 
 - Erwartet starke internationale Expertise
 - **Erstmals PyTorch- und MCP-AI-Tracks**

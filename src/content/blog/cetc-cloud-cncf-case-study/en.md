@@ -22,7 +22,7 @@ tags:
 category: Case Study
 language: en
 linktitle: CETC Cloud CNCF Case Study
-coverImage: "/images/blog/cetc-cloud-cncf-case-study/fig1-topology.png"
+coverImage: "/images/blog/cetc-cloud-cncf-case-study/fig1-topology-en.png"
 ---
 
 CETC Cloud needed to bring its intelligent knowledge base to project sites, running text generation, embedding, rerank, knowledge processing, and R&D debugging on a single set of portable devices equipped with domestic GPUs. The team introduced Kubernetes and HAMi to turn these limited GPUs — previously bound long-term to individual services — into resources that production models and Kubernetes dev environments can request, share, and schedule on demand.
@@ -47,7 +47,7 @@ On this resource foundation, text generation, embedding, and rerank models form 
 
 The practice includes two GPU usage paths: knowledge base production models primarily use stable local resources, while Kubernetes dev Pods/containers share local domestic GPUs through HAMi.
 
-![Production models and Kubernetes dev environments each use local domestic GPUs through HAMi](/images/blog/cetc-cloud-cncf-case-study/fig1-topology.png)
+![Production models and Kubernetes dev environments each use local domestic GPUs through HAMi](/images/blog/cetc-cloud-cncf-case-study/fig1-topology-en.png)
 
 *Figure 1: Production models and Kubernetes dev environments each use local domestic GPUs through HAMi.*
 
@@ -63,7 +63,7 @@ The knowledge base's online Q&A depends on text generation, vector retrieval, an
 
 If every service or dev environment keeps a whole card bound long-term, the limited devices are quickly exhausted logically; if the platform only chases the finest possible slicing, it amplifies VRAM shortage, queuing jitter, and fault propagation. The team needed each workload class to describe its own needs, with the platform placing resources based on device state and service levels.
 
-![Business documents flow through parsing, embedding, and index building; online questions flow through retrieval, rerank, and text generation](/images/blog/cetc-cloud-cncf-case-study/fig2-pipeline.png)
+![Business documents flow through parsing, embedding, and index building; online questions flow through retrieval, rerank, and text generation](/images/blog/cetc-cloud-cncf-case-study/fig2-pipeline-en.png)
 
 *Figure 2: Business documents flow through parsing, embedding, and index building into the knowledge base; online questions return answers, citations, or reports via retrieval, rerank, and text generation.*
 
@@ -123,7 +123,7 @@ The embedding model actually needs about 8 GB of memory on a 64 GB domestic GPU.
 
 This same-card, same-model comparison shows that HAMi moved embedding from whole-card dedication to on-demand allocation, freeing memory and compute while keeping token throughput within 5%, with model loading time and P95 latency essentially stable — letting the same domestic GPU continue hosting dev environments or other sharing-friendly tasks.
 
-![With HAMi, embedding moved from whole-card dedication to on-demand allocation](/images/blog/cetc-cloud-cncf-case-study/fig3-results.png)
+![With HAMi, embedding moved from whole-card dedication to on-demand allocation](/images/blog/cetc-cloud-cncf-case-study/fig3-results-en.png)
 
 *Figure 3: With HAMi, embedding moved from whole-card dedication to on-demand allocation, freeing 56 GB of memory and 80% of compute on a single card for other tasks; per-device dev Pod capacity rose from 2 to 30.*
 
