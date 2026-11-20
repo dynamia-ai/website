@@ -31,7 +31,7 @@ Yet **a new Pod requesting an entire GPU may still be unschedulable**.
 
 That is because **the free resources are not concentrated on one completely idle GPU**. The scheduler cannot place the Pod, which remains `Pending`, while much of the GPU capacity sits idle.
 
-![Workload placement before and after GPU defragmentation](/images/blog/hami-gpu-descheduler/image-01.png)
+![Workload placement before and after GPU defragmentation](/images/blog/hami-gpu-descheduler/image-01-en.png)
 
 This resembles memory fragmentation: total capacity is not the same as currently available contiguous capacity.
 
@@ -81,7 +81,7 @@ Its role resembles a disk defragmenter in an operating system: bring scattered w
 
 It complements HAMi Scheduler. The scheduler handles GPU virtualization, scheduling and isolation; the descheduler consolidates workloads that are already running to create a more compact resource layout.
 
-![HamiPodPlacement and admission webhook workflow](/images/blog/hami-gpu-descheduler/image-02.png)
+![HamiPodPlacement and admission webhook workflow](/images/blog/hami-gpu-descheduler/image-02-en.png)
 
 The process works as follows:
 
