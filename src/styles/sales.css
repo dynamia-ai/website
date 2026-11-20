@@ -117,6 +117,10 @@ form .form-footnote {
   margin-top: 15px;
 }
 
+form .turnstile-container {
+  margin-top: 16px;
+}
+
 .pricing-consent {
   display: flex;
   align-items: flex-start;

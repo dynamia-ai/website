@@ -85,11 +85,11 @@ export default async function ContactSalesPage() {
                 </label>
                 <label className="field full">
                   {t('form.email.label')}
-                  <input type="email" name="email" required autoComplete="email" placeholder={t('form.email.placeholder')} />
+                  <input type="email" name="email" required maxLength={254} autoComplete="email" placeholder={t('form.email.placeholder')} />
                 </label>
                 <label className="field">
                   {t('form.jobTitle.label')}
-                  <input name="role" autoComplete="organization-title" placeholder={t('form.jobTitle.placeholder')} />
+                  <input name="role" maxLength={120} autoComplete="organization-title" placeholder={t('form.jobTitle.placeholder')} />
                 </label>
                 <label className="field">
                   {t('form.phone.label')}
