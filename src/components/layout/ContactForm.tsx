@@ -98,6 +98,21 @@ export default function ContactForm({
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
+    for (const field of form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]')) {
+      if (field.type === 'checkbox' || field.type === 'radio') continue;
+      const value = field.value.trim();
+      if (!value) {
+        field.setCustomValidity(t('contactFieldRequired'));
+      } else if (field.minLength > 0 && value.length < field.minLength) {
+        field.setCustomValidity(t('contactFieldTooShort', {count: field.minLength}));
+      } else {
+        field.setCustomValidity('');
+      }
+      if (!field.checkValidity()) {
+        field.reportValidity();
+        return;
+      }
+    }
     setStatus('verifying');
 
     const data = new FormData(form);
@@ -148,7 +163,12 @@ export default function ContactForm({
   }
 
   return (
-    <form id={formId} method="post" onSubmit={onSubmit}>
+    <form id={formId} method="post" onSubmit={onSubmit} onInput={(event) => {
+      const field = event.target;
+      if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) {
+        field.setCustomValidity('');
+      }
+    }}>
       {children}
       {turnstileSiteKey ? (
         <>
