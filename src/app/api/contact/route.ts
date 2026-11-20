@@ -82,6 +82,28 @@ function escapeHtml(unsafe: unknown): string {
     .replace(/'/g, '&#039;');
 }
 
+async function verifyTurnstile(token: unknown): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) {
+    console.error('TURNSTILE_SECRET_KEY is not configured');
+    return false;
+  }
+  if (typeof token !== 'string' || token.length === 0 || token.length > 2048) {
+    return false;
+  }
+
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ secret, response: token }),
+    signal: AbortSignal.timeout(5000),
+  });
+  if (!response.ok) return false;
+  const result: unknown = await response.json();
+  return !!result && typeof result === 'object' &&
+    (result as { success?: unknown }).success === true;
+}
+
 /* ─── Email builder ─── */
 async function buildHtmlEmail(data: Record<string, string>, subject: string): Promise<string> {
   const locale = data.locale && (routing.locales as readonly string[]).includes(data.locale)
@@ -180,7 +202,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, honeypot: true }, { status: 200 });
     }
 
+    /* A widget token is only trusted after server-side Siteverify succeeds. */
+    if (!await verifyTurnstile(body['cf-turnstile-response'])) {
+      return NextResponse.json({ error: 'Human verification failed' }, { status: 403 });
+    }
+
     const { _subject, _replyto, _type, _requestId, ...formDataRaw } = body;
+    delete formDataRaw._gotcha;
+    delete formDataRaw['cf-turnstile-response'];
     const isCaseCollection = _type === 'caseCollection';
 
     /* 5. Field validation */

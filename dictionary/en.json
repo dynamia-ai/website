@@ -2630,6 +2630,8 @@
     "backToTop": "Back to top",
     "backToTopIcon": "↑",
     "contactSubmitError": "Something went wrong. Please try again or email info@dynamia.ai.",
+    "contactVerifying": "Checking your browser…",
+    "contactVerificationUnavailable": "Verification is unavailable. Please email info@dynamia.ai.",
     "qr": {
       "close": "Close QR code",
       "closeSymbol": "×",

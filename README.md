@@ -33,6 +33,15 @@ and `nvm use` to select the version in `.nvmrc`.
 
 ### Development Server
 
+Contact forms use Cloudflare Turnstile. Create a widget for `dynamia.ai` in Cloudflare and configure both environment variables before deploying:
+
+```text
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=<public widget site key>
+TURNSTILE_SECRET_KEY=<private widget secret key>
+```
+
+Verification starts when a visitor submits a contact form. The challenge only appears if interaction is required; the API rejects submissions without a valid Turnstile token. Keep the secret key server-side. For local development, use Cloudflare's [test keys](https://developers.cloudflare.com/turnstile/troubleshooting/testing/) in `.env.local`.
+
 ```bash
 npm run dev
 ```
