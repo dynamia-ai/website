@@ -4,6 +4,7 @@ import {localizedUrl, pageAlternates} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
 import {contentLocaleCandidates} from '@/lib/site/localeFallback';
 import {getBlogPost} from '@/lib/blog-server';
+import {getEventArticle} from '@/lib/event-server';
 import {getCaseDocument} from '@/lib/site/caseContent';
 import {videos} from '@/data/videos';
 import {SITE_URL} from '@/config/app-config';
@@ -158,6 +159,23 @@ export async function siteBlogMetadata(slug: string, locale: string): Promise<Me
     title,
     description: mt('description'),
     path: websitePath(`/blog/${slug}`),
+    locale,
+    siteName: mt('siteName'),
+    ogLocale: mt('ogLocale'),
+  });
+}
+
+export async function siteEventMetadata(slug: string, locale: string): Promise<Metadata> {
+  const article = getEventArticle(slug, locale);
+  const mt = await getTranslations({locale, namespace: 'Metadata'});
+  if (!article) {
+    const t = await getTranslations({locale, namespace: 'blogUI'});
+    return {title: t('notFound')};
+  }
+  return buildPageMetadata({
+    title: article.title,
+    description: article.excerpt || mt('description'),
+    path: websitePath(`/events/${slug}`),
     locale,
     siteName: mt('siteName'),
     ogLocale: mt('ogLocale'),

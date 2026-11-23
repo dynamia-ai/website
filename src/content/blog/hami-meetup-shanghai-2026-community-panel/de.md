@@ -15,12 +15,12 @@ tags:
   - AI Coding
   - Open-Source-Beitrag
 category: Community & Events
-coverImage: /images/blog/hami-meetup-shanghai-2026/image8.png
+coverImage: /images/events/hami-meetup-shanghai-2026/image8.png
 ---
 
 Läuft Open-Source-Software in Produktion, reichen die Sorgen bald über den Code hinaus. Werden Issues beantwortet? Wie gelangen neue Anforderungen in die öffentliche Roadmap? Lassen sich Anpassungen und Tuning, in die ein Team investiert hat, langfristig gemeinsam mit der Community pflegen? Diese Fragen prägen direkt das Vertrauen von Unternehmen in Open-Source-Infrastruktur.
 
-Dies ist der siebte und abschließende Deep-Dive unserer [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026)-Serie zum Community-Panel „Setting Off Again from Incubating: How Does HAMi Move Toward a More Open, More Sustainable Community?“ — Fragen, die HAMi nach dem Eintritt in CNCF Incubating weiter beantworten muss. Auf der Bühne: **Li Mengxuan**, Co-Founder und CTO von Dynamia und HAMi Maintainer; **Wang Jifei**, Entwickler bei Dynamia und HAMi Approver; **Hou Yuxi** von Transwarps KI-Tool-Plattform-Entwicklung; und **James**, Entwickler bei 4Paradigm und HAMi Approver. Für Enterprise-Platform-Teams liefert das Gespräch ein zweites Set an Bewertungskriterien neben der Technikwahl.
+Dies ist der siebte und abschließende Deep-Dive unserer [HAMi Meetup Shanghai](/events/hami-meetup-shanghai-2026)-Serie zum Community-Panel „Setting Off Again from Incubating: How Does HAMi Move Toward a More Open, More Sustainable Community?“ — Fragen, die HAMi nach dem Eintritt in CNCF Incubating weiter beantworten muss. Auf der Bühne: **Li Mengxuan**, Co-Founder und CTO von Dynamia und HAMi Maintainer; **Wang Jifei**, Entwickler bei Dynamia und HAMi Approver; **Hou Yuxi** von Transwarps KI-Tool-Plattform-Entwicklung; und **James**, Entwickler bei 4Paradigm und HAMi Approver. Für Enterprise-Platform-Teams liefert das Gespräch ein zweites Set an Bewertungskriterien neben der Technikwahl.
 
 ## Kernerkenntnisse
 
@@ -78,7 +78,7 @@ Starten Sie mit einem echten Problem, einer Diskussion oder einer Doc-Verbesseru
 
 ## Serie
 
-- [Überblick: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [Überblick: HAMi Meetup Shanghai Recap](/events/hami-meetup-shanghai-2026)
 - [(1) Wo passt HAMi in CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation)
 - [(2) Nach GPU-Sharing: HAMi 2.10 zu Isolation, Scheduling und Observability](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu)
 - [(3) Inferenz-Steuerung vs. GPU-Ressourcenmanagement: llm-d und HAMi](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)

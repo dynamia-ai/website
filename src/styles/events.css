@@ -69,11 +69,6 @@
 .event-row:hover h2 {
   color: #557d31;
 }
-.section .event-note {
-  font-size: 11px;
-  color: #8a9582;
-  margin-top: 48px;
-}
 .event-photo {
   display: block;
   aspect-ratio: 3/2;
@@ -134,10 +129,6 @@
 :root[data-theme="dark"] .event-row:hover h2 {
   color: #a8d677;
 }
-:root[data-theme="dark"] .section .event-note {
-  color: #b5beb0;
-}
-
 @media (max-width: 1050px) {
   .event-row {
     gap: 25px;
@@ -226,4 +217,8 @@
 }
 .event-cover {
   border-radius: 9px;
+}
+
+.event-detail-no-toc {
+  grid-template-columns: minmax(0, 1fr);
 }

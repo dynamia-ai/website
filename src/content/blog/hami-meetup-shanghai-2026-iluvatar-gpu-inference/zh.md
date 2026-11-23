@@ -22,7 +22,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-iluvatar-gpu-inference/slide-
 
 GPU 的计算性能不错，用户却仍在等待首个 Token，或在生成过程中感到卡顿。企业部署大模型时，这类问题不一定出在芯片本身。资源放在哪里、请求如何路由、缓存如何传输、新副本何时真正可用，都可能影响最终体验。
 
-本文是 [HAMi Meetup 上海站](/zh/blog/hami-meetup-shanghai-2026/) 系列深度解读的第四篇。天数智芯 Infra 研发总监 **叶成林**在本场活动分享的《天数智芯 GPU 上的高性能推理部署实践》，展示了执行优化、拓扑调度与推理编排之间的分工，也介绍了小模型场景使用 HAMi 共享 GPU 的路径。对企业平台，借鉴这套实践的重点，是按负载选择资源形态，再用端到端指标检查各层能力是否真正配合起来。
+本文是 [HAMi Meetup 上海站](/zh/events/hami-meetup-shanghai-2026/) 系列深度解读的第四篇。天数智芯 Infra 研发总监 **叶成林**在本场活动分享的《天数智芯 GPU 上的高性能推理部署实践》，展示了执行优化、拓扑调度与推理编排之间的分工，也介绍了小模型场景使用 HAMi 共享 GPU 的路径。对企业平台，借鉴这套实践的重点，是按负载选择资源形态，再用端到端指标检查各层能力是否真正配合起来。
 
 ## 核心亮点
 
@@ -93,7 +93,7 @@ Prefill 更偏计算密集，Decode 对显存带宽、KV 容量和并发队列�
 
 ## 系列文章
 
-- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/blog/hami-meetup-shanghai-2026/)
+- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/events/hami-meetup-shanghai-2026/)
 - [（一）CNCF × PyTorch 的云原生 AI 基座里，HAMi 解决哪一层问题？](/zh/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
 - [（二）GPU 共享之后，HAMi 如何进一步做好隔离、调度与观测？](/zh/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/)
 - [（三）推理控制与 GPU 资源管理如何分工？llm-d 与 HAMi 的协同方向](/zh/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)

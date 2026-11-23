@@ -17,7 +17,7 @@ tags:
   - AI Infrastructure
 category: Technical Deep Dive
 language: en
-coverImage: /images/blog/kubecon-eu-2026-hami-recap/keynote-stage.jpg
+coverImage: /images/events/kubecon-eu-2026-hami-recap/keynote-stage.jpg
 ---
 
 KCD Beijing 2026 was one of the largest Kubernetes community events in recent years, with **over 1,000 registrations, setting a new record for KCD Beijing.**

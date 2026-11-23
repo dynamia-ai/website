@@ -1,4 +1,4 @@
 interface:
-  display_name: "官网博客新增、修改与发布"
-  short_description: "从公司飞书模板新增或按官网链接改稿，完成预览与审核，获授权后自行合并发布"
-  default_prompt: "使用 $website-blog-from-feishu 从公司飞书模板新增博客或按官网链接局部改稿，生成预览、PR 和审核说明；我明确要求发布时，检查通过后合并并验证正式页面。"
+  display_name: "官网博客与活动内容发布"
+  short_description: "发布博客文章或活动与直播条目，完成预览、审核与 PR"
+  default_prompt: "使用 $website-blog-from-feishu 发布或修改官网博客、活动与直播内容；先选择对应流程，检查链接、三语文案和图片，再生成预览、PR 与审核说明。"
