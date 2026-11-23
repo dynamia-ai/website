@@ -23,7 +23,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/slide-0
 
 You deployed multiple replicas of the same model, spread requests evenly across them, and responses didn't necessarily get faster. Whether multi-turn conversations can reuse cache, whether instances are already queue-saturated — these determine how long users wait for an answer. For enterprise AI platforms, how requests are routed and how GPU resources are allocated are two layers of work that must connect, yet cannot substitute for each other.
 
-This is the third deep-dive in our [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026) series. **Zhang Jiaju**, Red Hat Greater China CTO, presented "llm-d: Building a Distributed Inference Plane Across Workloads, Modalities, Hardware, and Platforms," offering a concrete architecture for understanding this division. He explained how llm-d coordinates routing, caching, and the different inference phases, and addressed the collaboration direction with HAMi in the Q&A. This post sorts it out from a platform-building perspective: which problems the inference control plane solves, and which still require resource management.
+This is the third deep-dive in our [HAMi Meetup Shanghai](/events/hami-meetup-shanghai-2026) series. **Zhang Jiaju**, Red Hat Greater China CTO, presented "llm-d: Building a Distributed Inference Plane Across Workloads, Modalities, Hardware, and Platforms," offering a concrete architecture for understanding this division. He explained how llm-d coordinates routing, caching, and the different inference phases, and addressed the collaboration direction with HAMi in the Q&A. This post sorts it out from a platform-building perspective: which problems the inference control plane solves, and which still require resource management.
 
 ## Key Takeaways
 
@@ -90,7 +90,7 @@ The enterprise-adoption question Dynamia cares about is bringing resource config
 
 ## Series
 
-- [Overview: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [Overview: HAMi Meetup Shanghai Recap](/events/hami-meetup-shanghai-2026)
 - [(1) Where Does HAMi Fit in the CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation)
 - [(2) After GPU Sharing: How HAMi 2.10 Improves Isolation, Scheduling, and Observability](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu)
 - **(3) Inference Control vs. GPU Resource Management: How llm-d and HAMi Can Work Together** (this post)

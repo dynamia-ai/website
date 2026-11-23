@@ -2285,7 +2285,6 @@
         "readLive": "Read the live recap",
         "readPreview": "Read the event preview"
       },
-      "footerNote": "Event details and recaps from Dynamia. New events are added as they are announced.",
       "items": {
         "communityNight": {
           "title": "HAMi Incubating Community Night",
@@ -2630,6 +2629,10 @@
     "backToTop": "Back to top",
     "backToTopIcon": "↑",
     "contactSubmitError": "Something went wrong. Please try again or email info@dynamia.ai.",
+    "contactFieldRequired": "Please enter a value, not just spaces.",
+    "contactFieldTooShort": "Please enter at least {count} characters, excluding spaces at the ends.",
+    "contactVerifying": "Checking your browser…",
+    "contactVerificationUnavailable": "Verification is unavailable. Please email info@dynamia.ai.",
     "qr": {
       "close": "Close QR code",
       "closeSymbol": "×",

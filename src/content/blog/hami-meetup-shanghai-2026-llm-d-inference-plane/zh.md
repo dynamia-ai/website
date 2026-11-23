@@ -22,7 +22,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/slide-0
 
 同一个模型部署了多个副本，请求平均分过去，响应却未必更快。多轮对话能否复用缓存、实例是否已经排满队列，都会影响用户等待答案的时间。对企业 AI 平台来说，请求如何路由与 GPU 资源如何分配，是需要衔接、又不能相互替代的两层工作。
 
-本文是 [HAMi Meetup 上海站](/zh/blog/hami-meetup-shanghai-2026/) 系列深度解读的第三篇。红帽大中华区 CTO **张家驹**在本场活动的分享《llm-d：打造跨负载、跨模态、跨硬件、跨平台的分布式推理平面》，提供了理解这层分工的具体架构。他介绍了 llm-d 如何协调路由、缓存与不同推理阶段，也在问答中谈到了与 HAMi 的协同方向。本文从企业平台建设的角度，梳理哪些问题由推理控制平面解决，哪些还需要资源管理能力配合。
+本文是 [HAMi Meetup 上海站](/zh/events/hami-meetup-shanghai-2026/) 系列深度解读的第三篇。红帽大中华区 CTO **张家驹**在本场活动的分享《llm-d：打造跨负载、跨模态、跨硬件、跨平台的分布式推理平面》，提供了理解这层分工的具体架构。他介绍了 llm-d 如何协调路由、缓存与不同推理阶段，也在问答中谈到了与 HAMi 的协同方向。本文从企业平台建设的角度，梳理哪些问题由推理控制平面解决，哪些还需要资源管理能力配合。
 
 ## 核心亮点
 
@@ -89,7 +89,7 @@ llm-d 把这些差异纳入选点过程。请求经过 Proxy，由 EPP（Endpoin
 
 ## 系列文章
 
-- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/blog/hami-meetup-shanghai-2026/)
+- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/events/hami-meetup-shanghai-2026/)
 - [（一）CNCF × PyTorch 的云原生 AI 基座里，HAMi 解决哪一层问题？](/zh/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
 - [（二）GPU 共享之后，HAMi 如何进一步做好隔离、调度与观测？](/zh/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/)
 - **（三）推理控制与 GPU 资源管理如何分工？llm-d 与 HAMi 的协同方向**（本文）

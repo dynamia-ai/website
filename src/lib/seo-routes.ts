@@ -3,6 +3,7 @@ export const STATIC_INDEXABLE_PATHS = [
   "/",
   "/apply-trial",
   "/company",
+  "/events",
   "/cookies-policy",
   "/faq",
   "/pricing",
@@ -16,7 +17,8 @@ export const STATIC_INDEXABLE_PATHS = [
   "/what-is-hami",
 ] as const;
 
-/** Indexable case-study locales (de is served but noindex). */
-export const CASE_STUDY_LOCALES = ["en", "zh"] as const;
+/** Indexable case-study locales (all three have dedicated content). */
+export const CASE_STUDY_LOCALES = ["en", "zh", "de"] as const;
 
-export const BLOG_LOCALES = ["en", "zh"] as const;
+/** Indexable blog/event article locales (all three have dedicated content). */
+export const BLOG_LOCALES = ["en", "zh", "de"] as const;

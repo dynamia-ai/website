@@ -2285,7 +2285,6 @@
         "readLive": "Live-Rückblick lesen",
         "readPreview": "Veranstaltungsvorschau lesen"
       },
-      "footerNote": "Veranstaltungsdetails und Rückblicke von Dynamia. Neue Veranstaltungen ergänzen wir nach ihrer Ankündigung.",
       "items": {
         "communityNight": {
           "title": "HAMi Incubating Community Night",
@@ -2630,6 +2629,10 @@
     "backToTop": "Nach oben",
     "backToTopIcon": "↑",
     "contactSubmitError": "Etwas ist schiefgelaufen. Bitte erneut versuchen oder info@dynamia.ai kontaktieren.",
+    "contactFieldRequired": "Bitte geben Sie einen Wert ein, nicht nur Leerzeichen.",
+    "contactFieldTooShort": "Bitte geben Sie mindestens {count} Zeichen ein, ohne Leerzeichen am Anfang und Ende.",
+    "contactVerifying": "Ihr Browser wird überprüft…",
+    "contactVerificationUnavailable": "Die Überprüfung ist nicht verfügbar. Bitte schreiben Sie an info@dynamia.ai.",
     "qr": {
       "close": "QR-Code schließen",
       "closeSymbol": "×",

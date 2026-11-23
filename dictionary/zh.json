@@ -2589,7 +2589,6 @@
         "readLive": "阅读直播回顾",
         "readPreview": "阅读活动预告"
       },
-      "footerNote": "活动详情与回顾来自密瓜智能官网；新活动将在发布后更新。",
       "items": {
         "communityNight": {
           "title": "HAMi Incubating Community Night",
@@ -2934,6 +2933,10 @@
     "backToTop": "回到顶部",
     "backToTopIcon": "↑",
     "contactSubmitError": "提交失败，请稍后重试，或发送邮件至 info@dynamia.ai。",
+    "contactFieldRequired": "请填写内容，不能只输入空格。",
+    "contactFieldTooShort": "请至少输入 {count} 个字符（不计首尾空格）。",
+    "contactVerifying": "正在进行安全验证…",
+    "contactVerificationUnavailable": "人机验证暂不可用，请发送邮件至 info@dynamia.ai。",
     "qr": {
       "close": "关闭二维码",
       "closeSymbol": "×",

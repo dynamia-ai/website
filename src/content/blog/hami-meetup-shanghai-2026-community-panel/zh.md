@@ -15,12 +15,12 @@ tags:
   - 开源贡献
 category: Community & Events
 language: zh
-coverImage: /images/blog/hami-meetup-shanghai-2026/image8.png
+coverImage: /images/events/hami-meetup-shanghai-2026/image8.png
 ---
 
 企业把开源软件用进生产环境后，关注的问题会逐渐延伸到代码之外。遇到问题能否得到响应？新的需求如何进入公共路线？团队投入的适配与优化，能否与社区一起长期维护？这些问题，直接影响企业采用开源基础设施的信心。
 
-本文是 [HAMi Meetup 上海站](/zh/blog/hami-meetup-shanghai-2026/) 系列深度解读的第七篇（完结篇），聚焦本场活动的社区圆桌《从 Incubating 再出发：HAMi 如何走向更开放、更可持续的社区共建？》。这些问题也是 HAMi 进入 CNCF Incubating 后，社区需要持续面对的工作。圆桌中，密瓜智能联合创始人兼 CTO、HAMi Maintainer **李孟轩**，与密瓜智能研发工程师、HAMi Approver **王纪飞**，星环科技人工智能产品部 AI 工具平台研发 **侯雨希**，以及第四范式研发工程师、HAMi Approver **James**，围绕真实使用、贡献门槛与协作质量展开讨论。对企业平台团队，这场对话提供了技术选型之外的另一组判断依据。
+本文是 [HAMi Meetup 上海站](/zh/events/hami-meetup-shanghai-2026/) 系列深度解读的第七篇（完结篇），聚焦本场活动的社区圆桌《从 Incubating 再出发：HAMi 如何走向更开放、更可持续的社区共建？》。这些问题也是 HAMi 进入 CNCF Incubating 后，社区需要持续面对的工作。圆桌中，密瓜智能联合创始人兼 CTO、HAMi Maintainer **李孟轩**，与密瓜智能研发工程师、HAMi Approver **王纪飞**，星环科技人工智能产品部 AI 工具平台研发 **侯雨希**，以及第四范式研发工程师、HAMi Approver **James**，围绕真实使用、贡献门槛与协作质量展开讨论。对企业平台团队，这场对话提供了技术选型之外的另一组判断依据。
 
 ## 核心亮点
 
@@ -78,7 +78,7 @@ James 强调，开发者需要对提交的代码负责。AI 辅助评审可以�
 
 ## 系列文章
 
-- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/blog/hami-meetup-shanghai-2026/)
+- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/events/hami-meetup-shanghai-2026/)
 - [（一）CNCF × PyTorch 的云原生 AI 基座里，HAMi 解决哪一层问题？](/zh/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
 - [（二）GPU 共享之后，HAMi 如何进一步做好隔离、调度与观测？](/zh/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/)
 - [（三）推理控制与 GPU 资源管理如何分工？llm-d 与 HAMi 的协同方向](/zh/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)

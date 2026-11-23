@@ -22,7 +22,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-i
 
 GPU 已经到位，算法团队却还在等待环境。驱动、镜像、网络和存储逐项配置，换一个集群又要重新适配。即使底层具备了 GPU 共享能力，平台仍需把资源规格、调度配置和开发工具接起来，让用户获得可以直接开始工作的环境。
 
-本文是 [HAMi Meetup 上海站](/zh/blog/hami-meetup-shanghai-2026/) 系列深度解读的第六篇。UCloud 高级研发工程师 **彭鹏**在本场活动分享的《智算平台的工程挑战与实践》，把 HAMi 放进了这条环境交付链路。团队在私有化智算场景采用 HAMi vGPU，同时通过资源抽象、多集群接入、工具注入和镜像加速降低使用门槛。对企业平台团队，这套实践的参考价值在于，如何将底层的资源能力组织成用户可用、运维可管的服务。
+本文是 [HAMi Meetup 上海站](/zh/events/hami-meetup-shanghai-2026/) 系列深度解读的第六篇。UCloud 高级研发工程师 **彭鹏**在本场活动分享的《智算平台的工程挑战与实践》，把 HAMi 放进了这条环境交付链路。团队在私有化智算场景采用 HAMi vGPU，同时通过资源抽象、多集群接入、工具注入和镜像加速降低使用门槛。对企业平台团队，这套实践的参考价值在于，如何将底层的资源能力组织成用户可用、运维可管的服务。
 
 ## 核心亮点
 
@@ -95,7 +95,7 @@ UCloud 建设智算平台的需求来自三个方向：内部算法团队需要�
 
 ## 系列文章
 
-- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/blog/hami-meetup-shanghai-2026/)
+- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/events/hami-meetup-shanghai-2026/)
 - [（一）CNCF × PyTorch 的云原生 AI 基座里，HAMi 解决哪一层问题？](/zh/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
 - [（二）GPU 共享之后，HAMi 如何进一步做好隔离、调度与观测？](/zh/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/)
 - [（三）推理控制与 GPU 资源管理如何分工？llm-d 与 HAMi 的协同方向](/zh/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)

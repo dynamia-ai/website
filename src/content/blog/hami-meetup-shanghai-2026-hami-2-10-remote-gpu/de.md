@@ -22,7 +22,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07
 
 Eine GPU mehreren Jobs zu geben, ist nur der Start von Resource Sharing. Für Enterprise-Plattformteams folgen härtere Fragen: hält jeder Job seine Quote ein, sind Zuweisungen beobachtbar, wie schedulen verschiedene Geräte und Jobs? Sonst steht im Buch „geteilt“, zur Laufzeit bleibt Nutzung eine Black Box.
 
-Das ist der zweite Deep Dive in unserer [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026)-Reihe. **Li Mengxuan**, Mitgründer und CTO von Dynamia und HAMi-Maintainer, präsentierte „From Local Devices to Remote Compute Pools: Remote GPU and HAMi 2.10 New Capabilities“ — v2.10-Fortschritt, DRA-Anpassung und v2.11-Roadmap. Der Faden: geteilte Compute-Ressourcen müssen bedarfsgerecht zugewiesen und zur Laufzeit begrenzt, beobachtbar und diagnostizierbar sein.
+Das ist der zweite Deep Dive in unserer [HAMi Meetup Shanghai](/events/hami-meetup-shanghai-2026)-Reihe. **Li Mengxuan**, Mitgründer und CTO von Dynamia und HAMi-Maintainer, präsentierte „From Local Devices to Remote Compute Pools: Remote GPU and HAMi 2.10 New Capabilities“ — v2.10-Fortschritt, DRA-Anpassung und v2.11-Roadmap. Der Faden: geteilte Compute-Ressourcen müssen bedarfsgerecht zugewiesen und zur Laufzeit begrenzt, beobachtbar und diagnostizierbar sein.
 
 ## Wichtigste Erkenntnisse
 
@@ -91,7 +91,7 @@ Bei Dynamia liegt HAMis Enterprise-Wert in der Betriebsqualität nach dem Teilen
 
 ## Serie
 
-- [Überblick: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [Überblick: HAMi Meetup Shanghai Recap](/events/hami-meetup-shanghai-2026)
 - [(1) Wo passt HAMi in die CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation)
 - **(2) Nach GPU-Sharing: Isolation, Scheduling und Observability in HAMi 2.10** (dieser Beitrag)
 - [(3) Inferenz-Steuerung vs. GPU-Ressourcenmanagement: llm-d und HAMi](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)

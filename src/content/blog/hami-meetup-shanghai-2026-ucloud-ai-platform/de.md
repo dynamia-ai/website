@@ -23,7 +23,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-i
 
 GPUs stehen bereit; das Algorithmus-Team wartet noch auf Umgebungen. Treiber, Images, Netzwerk, Storage — einzeln konfiguriert und für jeden neuen Cluster erneut angepasst. Selbst mit GPU-Sharing unten muss die Plattform Ressourcen-Specs, Scheduling-Konfiguration und Dev-Tools verbinden, damit Nutzer sofort loslegen können.
 
-Das ist der sechste Deep Dive in unserer [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026)-Reihe. **Peng Peng**, Senior R&D Engineer bei UCloud, ordnete HAMi in diese Umgebungslieferkette in „Engineering Challenges and Practices of AI Computing Platforms“ ein. Das Team nutzt HAMi vGPU in privaten KI-Compute-Szenarien und senkt die Nutzungshürde durch Ressourcen-Abstraktion, Multi-Cluster-Zugang, Tool-Injection und Image-Beschleunigung. Für Plattformteams zeigt die Praxis, wie Low-Level-Ressourcenfähigkeit in einen nutzer- und betriebsfähigen Service organisiert wird.
+Das ist der sechste Deep Dive in unserer [HAMi Meetup Shanghai](/events/hami-meetup-shanghai-2026)-Reihe. **Peng Peng**, Senior R&D Engineer bei UCloud, ordnete HAMi in diese Umgebungslieferkette in „Engineering Challenges and Practices of AI Computing Platforms“ ein. Das Team nutzt HAMi vGPU in privaten KI-Compute-Szenarien und senkt die Nutzungshürde durch Ressourcen-Abstraktion, Multi-Cluster-Zugang, Tool-Injection und Image-Beschleunigung. Für Plattformteams zeigt die Praxis, wie Low-Level-Ressourcenfähigkeit in einen nutzer- und betriebsfähigen Service organisiert wird.
 
 ## Wichtigste Erkenntnisse
 
@@ -96,7 +96,7 @@ Für Unternehmen, die HAMi evaluieren, bietet UClouds Praxis eine klare Prüfrei
 
 ## Serie
 
-- [Überblick: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [Überblick: HAMi Meetup Shanghai Recap](/events/hami-meetup-shanghai-2026)
 - [(1) Wo passt HAMi in die CNCF × PyTorch Cloud Native AI Foundation?](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation)
 - [(2) Nach GPU-Sharing: Isolation, Scheduling und Observability in HAMi 2.10](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu)
 - [(3) Inferenz-Steuerung vs. GPU-Ressourcenmanagement: llm-d und HAMi](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)

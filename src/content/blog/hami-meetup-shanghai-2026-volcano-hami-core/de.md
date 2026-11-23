@@ -23,7 +23,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8
 
 Forschungsjobs wollen GPUs so schnell wie möglich; Online-Geschäft braucht stabile Ressourcengarantien; Datenverarbeitung und Modelltraining bringen jeweils eigene Orchestrierungstools mit. Eine Enterprise-AI-Plattform, die diese Workloads Rechenleistung teilen lässt, muss drei Fragen gleichzeitig beantworten: Wer darf welche Ressourcen nutzen, wann Leerlaufkapazität ausgeliehen werden kann und wie Störungen lokalisiert und behoben werden. HAMi-cores feingranulare Ressourcensteuerung muss mit Cluster-Scheduling, Geschäftsprozessen und Laufzeitprotokollen zusammenspielen.
 
-Dies ist der fünfte Deep-Dive unserer Serie zum [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026). **Dong Jiang**, Senior Architect bei iFLYTEK, präsentierte „Building a K8s Heterogeneous AI Acceleration Compute Base with Volcano + HAMi-core“ — eine konkrete Kombinationspraxis. Das Team verbindet Volcanos Queueing und Orchestrierung mit HAMi-cores GPU-Ressourcensteuerung: verschiedene Geschäftsbereiche behalten ihre Ausführungspfade, gemeinsame Ressourcen erhalten klare Nutzungsregeln. Die Praxis zeigt, wie HAMi in bestehende Enterprise-Plattformen einbindet.
+Dies ist der fünfte Deep-Dive unserer Serie zum [HAMi Meetup Shanghai](/events/hami-meetup-shanghai-2026). **Dong Jiang**, Senior Architect bei iFLYTEK, präsentierte „Building a K8s Heterogeneous AI Acceleration Compute Base with Volcano + HAMi-core“ — eine konkrete Kombinationspraxis. Das Team verbindet Volcanos Queueing und Orchestrierung mit HAMi-cores GPU-Ressourcensteuerung: verschiedene Geschäftsbereiche behalten ihre Ausführungspfade, gemeinsame Ressourcen erhalten klare Nutzungsregeln. Die Praxis zeigt, wie HAMi in bestehende Enterprise-Plattformen einbindet.
 
 ## Kernerkenntnisse
 
@@ -86,7 +86,7 @@ Was Dynamia an der Enterprise-Adoption von HAMi schätzt, ist genau diese Schnit
 
 ## Serie
 
-- [Überblick: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [Überblick: HAMi Meetup Shanghai Recap](/events/hami-meetup-shanghai-2026)
 - [(1) Wo HAMi in der CNCF × PyTorch Cloud Native AI Foundation steht](/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation)
 - [(2) Nach GPU-Sharing: Wie HAMi 2.10 Isolation, Scheduling und Observability verbessert](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu)
 - [(3) Inferenzsteuerung vs. GPU-Ressourcenmanagement: Wie llm-d und HAMi zusammenarbeiten](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)
