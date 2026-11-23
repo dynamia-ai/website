@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { getAllBlogPosts } from "@/lib/blog-server";
+import { getEventArticle, getEventArticleSlugs } from "@/lib/event-server";
 import { getProductIds } from "@/lib/enterprise";
 import { getInstallDocLocales, getInstallDocSlugs } from "@/lib/enterprise-docs";
 import {
@@ -84,6 +85,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const eventEntries = getEventArticleSlugs().flatMap((slug) => {
+    const path = `/events/${slug}`;
+    return BLOG_LOCALES.flatMap((locale) => {
+      const article = getEventArticle(slug, locale);
+      if (!article) return [];
+      return [{
+        url: localizedUrl(path, locale),
+        lastModified: new Date(article.date),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+        alternates: { languages: localizedAlternates(path, BLOG_LOCALES) },
+      }];
+    });
+  });
+
   return [
     ...staticEntries,
     ...blogIndexEntries,
@@ -92,5 +108,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...installEntries,
     ...caseStudyEntries,
     ...blogPostEntries,
+    ...eventEntries,
   ];
 }

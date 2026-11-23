@@ -16,7 +16,7 @@ tags:
   - KI-Infrastruktur
 category: Technical Deep Dive
 language: de
-coverImage: /images/blog/kubecon-eu-2026-hami-recap/keynote-stage.jpg
+coverImage: /images/events/kubecon-eu-2026-hami-recap/keynote-stage.jpg
 ---
 
 Die KCD Beijing 2026 war mit **über 1.000 Anmeldungen** eine der größten Kubernetes-Community-Events der letzten Jahre — Rekord für KCD Beijing.

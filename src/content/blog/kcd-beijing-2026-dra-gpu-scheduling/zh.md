@@ -16,7 +16,7 @@ tags:
   - AI 基础设施
 category: Technical Deep Dive
 language: zh
-coverImage: /images/blog/kubecon-eu-2026-hami-recap/keynote-stage.jpg
+coverImage: /images/events/kubecon-eu-2026-hami-recap/keynote-stage.jpg
 ---
 
 KCD Beijing 2026 是近年来规模最大的 Kubernetes 社区大会之一，**超过 1000 人报名参与，刷新了历届 KCD 北京的记录。**

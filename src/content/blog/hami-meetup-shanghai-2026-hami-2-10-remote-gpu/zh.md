@@ -21,7 +21,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07
 
 把一张 GPU 分给多个任务，只是资源共享的开始。对企业平台团队来说，还要确认每个任务是否遵守配额、分配结果能否被观测，以及不同设备和任务应该如何调度。否则，账面上完成了共享，运行时的资源使用仍然难以掌握。
 
-本文是 [HAMi Meetup 上海站](/zh/blog/hami-meetup-shanghai-2026/) 系列深度解读的第二篇。密瓜智能联合创始人兼 CTO、HAMi Maintainer **李孟轩**在本场活动的分享《从本地设备到远程算力池：远程 GPU 方案与 HAMi 2.10 新能力》中，介绍了 v2.10 的能力进展、DRA 生态适配，以及演讲时公布的 v2.11 规划。串起这些变化的主线，是让共享后的算力既能按需分配，也能在运行过程中被约束、观测和诊断。
+本文是 [HAMi Meetup 上海站](/zh/events/hami-meetup-shanghai-2026/) 系列深度解读的第二篇。密瓜智能联合创始人兼 CTO、HAMi Maintainer **李孟轩**在本场活动的分享《从本地设备到远程算力池：远程 GPU 方案与 HAMi 2.10 新能力》中，介绍了 v2.10 的能力进展、DRA 生态适配，以及演讲时公布的 v2.11 规划。串起这些变化的主线，是让共享后的算力既能按需分配，也能在运行过程中被约束、观测和诊断。
 
 ## 核心亮点
 
@@ -90,7 +90,7 @@ HAMi-DRA 围绕这些使用环节，提供资源请求到 DRA 分配逻辑的转
 
 ## 系列文章
 
-- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/blog/hami-meetup-shanghai-2026/)
+- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/events/hami-meetup-shanghai-2026/)
 - [（一）CNCF × PyTorch 的云原生 AI 基座里，HAMi 解决哪一层问题？](/zh/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
 - **（二）GPU 共享之后，HAMi 如何进一步做好隔离、调度与观测？**（本文）
 - [（三）推理控制与 GPU 资源管理如何分工？llm-d 与 HAMi 的协同方向](/zh/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)

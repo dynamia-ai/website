@@ -1,17 +1,19 @@
 import {getLocale, getTranslations} from 'next-intl/server';
 import SiteArrow from '@/components/layout/SiteArrow';
 import Link from 'next/link';
+import type {EventArticleSlug} from '@/lib/event-article-slugs';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
 import '@/styles/events.css';
 
 interface EventItem {
-  slug: string;
+  /** Must match an entry in EVENT_ARTICLE_SLUGS when linking to a detail page. */
+  slug?: EventArticleSlug;
   titleKey: string;
   dateKey: string;
   placeKey: string;
   bodyKey: string;
-  ctaKey: string;
+  ctaKey?: string;
   image: string;
   imageAltKey: string;
   portrait?: boolean;
@@ -88,7 +90,7 @@ const EVENTS: EventItem[] = [
     placeKey: 'places.amsterdam',
     bodyKey: 'items.kubeconEu.linkBody',
     ctaKey: 'ui.readPreview',
-    image: '/images/blog/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png',
+    image: '/images/events/dynamia-and-hami-at-kubecon-eu-2026/kubecon-eu-2026.png',
     imageAltKey: 'items.kubeconEu.photoAlt',
   },
   {
@@ -135,7 +137,7 @@ export default async function EventsPage() {
         <div className="wrap">
           <div id="event-results">
             {EVENTS.map((event) => {
-              const href = localizedPath(websitePath(`/blog/${event.slug}`), locale);
+              const href = event.slug ? localizedPath(websitePath(`/events/${event.slug}`), locale) : undefined;
               const coverClass = event.portrait
                 ? 'event-cover event-photo event-photo-portrait'
                 : 'event-cover event-photo';
@@ -144,7 +146,7 @@ export default async function EventsPage() {
                 <article className="event-row" key={event.slug + event.titleKey}>
                   <div>
                     <h2>
-                      <Link href={href}>{t(event.titleKey)}</Link>
+                      {href ? <Link href={href}>{t(event.titleKey)}</Link> : t(event.titleKey)}
                     </h2>
                     <div className="event-meta">
                       <span>{t(event.dateKey)}</span>
@@ -153,22 +155,29 @@ export default async function EventsPage() {
                   </div>
                   <div className="event-description">
                     <p>{t(event.bodyKey)}</p>
-                    <Link className="textlink" href={href}>
-                      {t(event.ctaKey)}
-                      <SiteArrow variant="text" />
-                    </Link>
+                    {href && event.ctaKey ? (
+                      <Link className="textlink" href={href}>
+                        {t(event.ctaKey)}
+                        <SiteArrow variant="text" />
+                      </Link>
+                    ) : null}
                   </div>
                   <figure className="event-photo-figure">
-                    <Link className={coverClass} href={href} aria-label={t(event.titleKey)}>
-                      <img src={event.image} alt={t(event.imageAltKey)} loading="lazy" />
-                    </Link>
+                    {href ? (
+                      <Link className={coverClass} href={href} aria-label={t(event.titleKey)}>
+                        <img src={event.image} alt={t(event.imageAltKey)} loading="lazy" />
+                      </Link>
+                    ) : (
+                      <div className={coverClass}>
+                        <img src={event.image} alt={t(event.imageAltKey)} loading="lazy" />
+                      </div>
+                    )}
                     {event.captionKey ? <figcaption>{t(event.captionKey)}</figcaption> : null}
                   </figure>
                 </article>
               );
             })}
           </div>
-          <p className="event-note">{t('footerNote')}</p>
         </div>
       </section>
     </>

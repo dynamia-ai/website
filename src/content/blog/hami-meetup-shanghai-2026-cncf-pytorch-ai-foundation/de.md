@@ -23,7 +23,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/sl
 
 Das Modell läuft, das Geschäft nicht. Ein Team wartet auf GPUs, während anderswo Geräte untergenutzt bleiben. Für Enterprise-KI-Plattformteams sitzt die Schwierigkeit meist an den Nahtstellen zwischen Modellen, Toolchains und Infrastruktur. Mit wachsender Modellzahl werden daraus Kosten-, Kollaborations- und Betriebsdruck.
 
-Dies ist der erste Deep Dive in unserer [HAMi Meetup Shanghai](/blog/hami-meetup-shanghai-2026)-Serie. **Keith Chan**, CNCF China Director und Vizepräsident Linux Foundation APAC, eröffnete mit „CNCF x PyTorch: Building a Cloud Native AI R&D Foundation for Industry Adoption“ und einem Schichtenmodell der Zusammenarbeit. Dort nimmt HAMi die Scheduling- und Ressourcenschicht ein – heterogenes Compute-Sharing und -Management. Aus Unternehmenssicht klärt diese Position, was HAMi-Adoption löst und welche weiteren Komponenten nötig sind.
+Dies ist der erste Deep Dive in unserer [HAMi Meetup Shanghai](/events/hami-meetup-shanghai-2026)-Serie. **Keith Chan**, CNCF China Director und Vizepräsident Linux Foundation APAC, eröffnete mit „CNCF x PyTorch: Building a Cloud Native AI R&D Foundation for Industry Adoption“ und einem Schichtenmodell der Zusammenarbeit. Dort nimmt HAMi die Scheduling- und Ressourcenschicht ein – heterogenes Compute-Sharing und -Management. Aus Unternehmenssicht klärt diese Position, was HAMi-Adoption löst und welche weiteren Komponenten nötig sind.
 
 ## Kernerkenntnisse
 
@@ -98,7 +98,7 @@ Für Dynamia gilt: Enterprise-KI-Foundation gegen eine echte Geschäftskette bew
 
 ## Serie
 
-- [Überblick: HAMi Meetup Shanghai Recap](/blog/hami-meetup-shanghai-2026)
+- [Überblick: HAMi Meetup Shanghai Recap](/events/hami-meetup-shanghai-2026)
 - **(1) Wo steht HAMi in der CNCF × PyTorch Cloud-Native-KI-Foundation?** (dieser Beitrag)
 - [(2) Nach GPU-Sharing: wie HAMi 2.10 Isolation, Scheduling und Observability verbessert](/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu)
 - [(3) Inferenzsteuerung vs. GPU-Ressourcenmanagement: llm-d und HAMi](/blog/hami-meetup-shanghai-2026-llm-d-inference-plane)

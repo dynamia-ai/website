@@ -1,5 +1,7 @@
-// Only aliases with an existing equivalent article are redirected.
-// Keep case-only redirects in middleware: next.config redirects match case-insensitively.
+// Legacy /blog/<slug> aliases: renamed posts and case-only canonicalization.
+// Keep these in middleware — next.config redirects match case-insensitively
+// and would collapse case-only targets. Moved event posts are intentionally
+// not redirected; old /blog/<event-slug> URLs 404.
 const canonicalSlugs = new Set([
   "faq",
   "hami-metax",

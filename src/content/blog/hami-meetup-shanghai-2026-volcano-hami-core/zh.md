@@ -21,7 +21,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8
 
 研究任务希望尽快拿到 GPU，线上业务需要稳定的资源保障，大数据处理和模型训练又各有一套编排工具。企业 AI 平台要让这些任务共享算力，就必须同时回答三件事：谁可以使用哪些资源，空闲资源何时能被借用，发生干扰后怎样定位和恢复。HAMi-core 的细粒度资源控制，需要与集群调度、业务流程和运行记录一起发挥作用。
 
-本文是 [HAMi Meetup 上海站](/zh/blog/hami-meetup-shanghai-2026/) 系列深度解读的第五篇。科大讯飞资深架构师 **董江**在本场活动分享的《基于 Volcano + HAMi-core 打造 K8s 异构 AI 加速算力底座》，给出了一套真实的组合实践。团队将 Volcano 的队列与编排能力和 HAMi-core 的 GPU 资源控制结合，让不同业务保留自己的执行方式，也让共享资源拥有清楚的使用规则。沿着这套实践，可以看清 HAMi 如何进入企业已有的平台体系。
+本文是 [HAMi Meetup 上海站](/zh/events/hami-meetup-shanghai-2026/) 系列深度解读的第五篇。科大讯飞资深架构师 **董江**在本场活动分享的《基于 Volcano + HAMi-core 打造 K8s 异构 AI 加速算力底座》，给出了一套真实的组合实践。团队将 Volcano 的队列与编排能力和 HAMi-core 的 GPU 资源控制结合，让不同业务保留自己的执行方式，也让共享资源拥有清楚的使用规则。沿着这套实践，可以看清 HAMi 如何进入企业已有的平台体系。
 
 ## 核心亮点
 
@@ -84,7 +84,7 @@ coverImage: /images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8
 
 ## 系列文章
 
-- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/blog/hami-meetup-shanghai-2026/)
+- [总览：不卷算力，卷效率｜HAMi Meetup 上海站回顾](/zh/events/hami-meetup-shanghai-2026/)
 - [（一）CNCF × PyTorch 的云原生 AI 基座里，HAMi 解决哪一层问题？](/zh/blog/hami-meetup-shanghai-2026-cncf-pytorch-ai-foundation/)
 - [（二）GPU 共享之后，HAMi 如何进一步做好隔离、调度与观测？](/zh/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/)
 - [（三）推理控制与 GPU 资源管理如何分工？llm-d 与 HAMi 的协同方向](/zh/blog/hami-meetup-shanghai-2026-llm-d-inference-plane/)
