@@ -20,7 +20,7 @@ tags:
   - AI Infrastructure
 category: Case Study
 linktitle: CETC Cloud CNCF Case Study
-coverImage: "/images/blog/cetc-cloud-cncf-case-study/fig1-topology.png"
+coverImage: "/images/blog/cetc-cloud-cncf-case-study/fig1-topology-en.png"
 ---
 
 CETC Cloud musste die intelligente Wissensbasis an Projektstandorte bringen — Textgenerierung, Embedding, Rerank, Wissensverarbeitung und R&D-Debugging auf einer portablen Geräteserie mit domestic GPUs. Das Team nutzte Kubernetes und HAMi, um die begrenzten GPUs — zuvor dauerhaft einzelnen Diensten zugeordnet — in Ressourcen zu verwandeln, die Produktionsmodelle und Kubernetes-Dev-Umgebungen on demand anfordern, teilen und schedulen können.
@@ -45,7 +45,7 @@ Auf dieser Ressourcenbasis bilden Textgenerierung, Embedding und Rerank eine vol
 
 Zwei GPU-Nutzungspfade: Produktionsmodelle nutzen primär stabile lokale Ressourcen; Dev-Pods/Container teilen lokale domestic GPUs über HAMi.
 
-![Produktionsmodelle und Kubernetes-Dev-Umgebungen nutzen jeweils lokale domestic GPUs über HAMi](/images/blog/cetc-cloud-cncf-case-study/fig1-topology.png)
+![Produktionsmodelle und Kubernetes-Dev-Umgebungen nutzen jeweils lokale domestic GPUs über HAMi](/images/blog/cetc-cloud-cncf-case-study/fig1-topology-en.png)
 
 *Abbildung 1: Produktionsmodelle und Kubernetes-Dev-Umgebungen nutzen jeweils lokale domestic GPUs über HAMi.*
 
@@ -61,7 +61,7 @@ Das Online-Q&A der Wissensbasis hängt von Textgenerierung, Vektorretrieval und 
 
 Wenn jeder Dienst oder jede Dev-Umgebung eine ganze Karte dauerhaft bindet, sind die wenigen Geräte logisch schnell erschöpft; jagt die Plattform nur die feinste mögliche Aufteilung, verstärkt das VRAM-Mangel, Queue-Jitter und Fehlerfortpflanzung. Jedes Workload-Segment soll eigene Bedürfnisse beschreiben; die Plattform platziert nach Gerätestatus und Service-Levels.
 
-![Geschäftsdokumente durch Parsing, Embedding und Indexaufbau; Online-Fragen durch Retrieval, Rerank und Textgenerierung](/images/blog/cetc-cloud-cncf-case-study/fig2-pipeline.png)
+![Geschäftsdokumente durch Parsing, Embedding und Indexaufbau; Online-Fragen durch Retrieval, Rerank und Textgenerierung](/images/blog/cetc-cloud-cncf-case-study/fig2-pipeline-en.png)
 
 *Abbildung 2: Geschäftsdokumente fließen über Parsing, Embedding und Indexaufbau in die Wissensbasis; Online-Fragen liefern Antworten, Zitate oder Berichte über Retrieval, Rerank und Textgenerierung.*
 
@@ -121,7 +121,7 @@ Das Embedding-Modell braucht auf einer 64-GB-domestic-GPU etwa 8 GB. Bei Ganzkar
 
 Derselbe Vergleich auf derselben Karte mit demselben Modell zeigt: HAMi verschob Embedding von Ganzkarten-Dedizierung zu On-Demand-Zuweisung, gab Speicher und Compute frei und hielt Token-Durchsatz, Ladezeit und P95 stabil — dieselbe domestic GPU kann weiter Dev-Umgebungen oder andere sharing-taugliche Tasks hosten.
 
-![Mit HAMi von Ganzkarten-Dedizierung zu On-Demand-Zuweisung beim Embedding](/images/blog/cetc-cloud-cncf-case-study/fig3-results.png)
+![Mit HAMi von Ganzkarten-Dedizierung zu On-Demand-Zuweisung beim Embedding](/images/blog/cetc-cloud-cncf-case-study/fig3-results-en.png)
 
 *Abbildung 3: Mit HAMi gab Embedding 56 GB Speicher und 80 % Compute auf einer Karte für andere Tasks frei; Dev-Pod-Kapazität pro Gerät stieg von 2 auf 30.*
 

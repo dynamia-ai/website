@@ -35,7 +35,7 @@ This article begins the analysis of `hami-scheduler`, addressing another questio
 
 **The HAMI Webhook and Scheduler workflow is as follows:**
 
-![HAMi scheduler workflow diagram](/images/blog/gpu5/p1.jpg)
+![HAMi scheduler workflow diagram](/images/blog/gpu5/p1-en.png)
 
 1. A user creates a Pod and requests vGPU resources in it.
 2. The kube-apiserver, based on the `MutatingWebhookConfiguration`, sends a request to the HAMI-Webhook.
@@ -600,7 +600,7 @@ This article has mainly analyzed the implementation principle of `hami-scheduler
 
 ### HAMI Webhook & Scheduler Workflow
 
-![HAMi device plugin workflow diagram](/images/blog/gpu5/p1.jpg)
+![HAMi device plugin workflow diagram](/images/blog/gpu5/p1-en.png)
 
 1. A user creates a Pod and requests vGPU resources in it.
 2. **The kube-apiserver, based on the `MutatingWebhookConfiguration`, sends a request to the HAMI-Webhook.**

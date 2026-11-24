@@ -45,7 +45,7 @@ In der Praxis band iFLYTEK GPUs wie T4 und A30 in F&E-Szenarien ein und nutzte H
 
 **So blieben die ursprünglichen Workflows erhalten, GPU-Sharing wurde in den bestehenden Scheduling-Stack integriert, Business-Änderungen sanken – und vorhandene Compute-Ressourcen wurden flexibler nutzbar.**
 
-![Geschichtete Architektur: bestehende Workflows plus GPU-Sharing](/images/blog/iflytek-gpu-resource-sharing/image-01.png)
+![Geschichtete Architektur: bestehende Workflows plus GPU-Sharing](/images/blog/iflytek-gpu-resource-sharing/image-01-en.png)
 
 ## Garantien für kritische Workloads, elastischer Zugang für F&E
 
@@ -57,7 +57,7 @@ Kritische Workloads erhalten Garantien; unterbrechbare F&E-Jobs können freie Ka
 
 **Elastisches Teilen hat Grenzen.** Rücknahme kann Eviction und Rebuild auslösen; Regeln müssen Unterbrechbarkeit und Neuberechnung abbilden. HAMi-Cores Userspace-Limits sind nicht gleichbedeutend mit Hardware-Fehlerisolation; bei geteilter GPU sind Störungen und Ausfallwirkungen zu bewerten.
 
-![Dedizierte Queues für kritische Workloads; gemeinsame Queues für elastisches F&E-Borrowing](/images/blog/iflytek-gpu-resource-sharing/image-02.png)
+![Dedizierte Queues für kritische Workloads; gemeinsame Queues für elastisches F&E-Borrowing](/images/blog/iflytek-gpu-resource-sharing/image-02-en.png)
 
 Damit Sharing-Regeln langfristig greifen, verbesserte iFLYTEK GPU-Observability und Nachverfolgbarkeit.
 

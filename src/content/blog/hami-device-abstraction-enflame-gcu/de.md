@@ -18,7 +18,7 @@ tags:
   - Kubernetes
   - Integration
 category: Technical Deep Dive
-coverImage: /images/blog/hami-device-abstraction-gcu/cover-zh.png
+coverImage: /images/blog/hami-device-abstraction-gcu/cover-en.png
 linktitle: HAMi-Unterstützung für Enflame GCU
 ---
 
@@ -32,7 +32,7 @@ Um Hardware verschiedener Anbieter und Typen einheitlich zu behandeln, definiert
 
 Diese Schichtabstraktion entkoppelt generische Scheduling-Logik von hardwarespezifischen Implementierungen. Die Beziehung sieht so aus:
 
-![HAMi Device Abstraction Layer Architektur](/images/blog/hami-device-abstraction-gcu/architecture.png)
+![HAMi Device Abstraction Layer Architektur](/images/blog/hami-device-abstraction-gcu/architecture-en.png)
 
 Die Kernidee des Interfaces ist, hardwarespezifische Komplexität in jeder Device-Implementierung zu „lokalisieren“ und den Scheduler vor unterliegenden Unterschieden zu schützen. Die wichtigsten Interface-Funktionen:
 
@@ -53,7 +53,7 @@ Die Kernidee des Interfaces ist, hardwarespezifische Komplexität in jeder Devic
 - **Verantwortung**: Auf einem Knoten, gegeben `ContainerDeviceRequest` und aktuelle Device-Nutzung, entscheiden, ob der Knoten die Pod-Ressourcenanforderungen erfüllen kann, und einen konkreten Zuweisungsplan finden.
 - **Rolle**: Kernentscheidungslogik für **intra-node** Scheduling, inklusive Ressourcen-Matching, Topologieauswahl und allen anderen device-bezogenen komplexen Urteilen.
 
-![Kern-Interface-Aufruffluss](/images/blog/hami-device-abstraction-gcu/interface-flow.png)
+![Kern-Interface-Aufruffluss](/images/blog/hami-device-abstraction-gcu/interface-flow-en.png)
 
 #### `ScoreNode()`
 

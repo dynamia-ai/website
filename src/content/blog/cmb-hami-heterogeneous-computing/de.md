@@ -52,7 +52,7 @@ Die Kernherausforderung der China Merchants Bank ist **Diversifikation des Compu
 
 Auf Basis von HAMi baute CMB eine einheitliche heterogene Infrastruktur für optimiertes Management und Scheduling mehrerer Chiptypen.
 
-![Warum CMB HAMi wählte](/images/blog/cmb-hami-heterogeneous-computing/cmb-choose-hami.webp)
+![Warum CMB HAMi wählte](/images/blog/cmb-hami-heterogeneous-computing/cmb-choose-hami-en.png)
 
 ## 2. Super-Node-Hardware-Anpassung: Dual-Chip-Modul
 
@@ -60,7 +60,7 @@ Auf Basis von HAMi baute CMB eine einheitliche heterogene Infrastruktur für opt
 
 Super-Nodes kombinieren mehrere Chips per Hochgeschwindigkeitsinterconnect zu einer logischen Einheit. CMB nutzt **Dual-Chip-Module (DCM)** mit mehreren Compute-Karten pro Modul.
 
-![Super-Node-Anpassung: Bedeutung und Wert](/images/blog/cmb-hami-heterogeneous-computing/super-node-value.webp)
+![Super-Node-Anpassung: Bedeutung und Wert](/images/blog/cmb-hami-heterogeneous-computing/super-node-value-en.png)
 
 ### Probleme des nativen Ansatzes
 
@@ -78,9 +78,9 @@ Erweiterung von Device Plugin und Scheduler für Modul-Topologie und Paar-Zuteil
 - Keine Treiberfehler durch ungerade Cross-Module-Zuteilung
 - **Pooling-Rate 100 %**
 
-![Super-Node Design Teil 1](/images/blog/cmb-hami-heterogeneous-computing/super-node-adapter-1.webp)
+![Super-Node Design Teil 1](/images/blog/cmb-hami-heterogeneous-computing/super-node-adapter-1-en.png)
 
-![Super-Node Design Teil 2](/images/blog/cmb-hami-heterogeneous-computing/super-node-adapter-2.webp)
+![Super-Node Design Teil 2](/images/blog/cmb-hami-heterogeneous-computing/super-node-adapter-2-en.png)
 
 ### Ergebnisse
 
@@ -92,17 +92,17 @@ Der native Scheduler kennt keine GPU-Physik-Topologie. HAMi bringt Modul-Bewusst
 
 Open Source: erste feingranulare Scheduling-Implementierung für heimische Beschleuniger im Super-Node-Modell, Topology-aware Scheduling Primitive.
 
-![Super-Node Ergebnisse](/images/blog/cmb-hami-heterogeneous-computing/super-node-results.webp)
+![Super-Node Ergebnisse](/images/blog/cmb-hami-heterogeneous-computing/super-node-results-en.png)
 
 ## 3. vNPU-Core: 1 GB VRAM / 1 % Compute
 
-![GPU-Partitionierungsvergleich](/images/blog/cmb-hami-heterogeneous-computing/gpu-partition-comparison.webp)
+![GPU-Partitionierungsvergleich](/images/blog/cmb-hami-heterogeneous-computing/gpu-partition-comparison-en.png)
 
 Für kleine/mittlere Fine-Tuning- und Inferenz-Tasks nutzt CMB HAMi VNPU Core zur Software-Partitionierung.
 
 ### Technik
 
-![HAMi-vNPU-Core-Architektur](/images/blog/cmb-hami-heterogeneous-computing/vnpu-core-arch.webp)
+![HAMi-vNPU-Core-Architektur](/images/blog/cmb-hami-heterogeneous-computing/vnpu-core-arch-en.png)
 
 API-Intercept im Userspace, **Token-Bucket** und Shared Memory:
 
@@ -117,7 +117,7 @@ Wichtig für Banking: viele Risiko- und Service-Modelle brauchen keine ganze Kar
 
 ## 4. Netzwerktopologie-bewusstes Scheduling
 
-![Dreistufige Topologie](/images/blog/cmb-hami-heterogeneous-computing/topology-3layer.webp)
+![Dreistufige Topologie](/images/blog/cmb-hami-heterogeneous-computing/topology-3layer-en.png)
 
 Verteiltes Training: zufällige Verteilung über Leaf-Switches erzeugt Cross-Switch-Engpässe — Co-Optimierung von Compute und Netzwerk nötig.
 
@@ -129,7 +129,7 @@ Level 2: Same LEAF Switch   — geringere Latenz
 Level 3: Cross LEAF Switch  — höchste Latenz
 ```
 
-![Adaptiver Topologie-Scheduler](/images/blog/cmb-hami-heterogeneous-computing/topology-scheduling-algo.webp)
+![Adaptiver Topologie-Scheduler](/images/blog/cmb-hami-heterogeneous-computing/topology-scheduling-algo-en.png)
 
 Scoring in der Scheduler-Phase → **Cross-Node-Wahrscheinlichkeit −30 %**.
 
@@ -146,7 +146,7 @@ Deterministisches Hashing auf Controller-UIDs — Pods derselben Charge bevorzug
 
 ## 5. Zusammenfassung
 
-![Ausblick](/images/blog/cmb-hami-heterogeneous-computing/summary.webp)
+![Ausblick](/images/blog/cmb-hami-heterogeneous-computing/summary-en.png)
 
 Su Xi zeigte CMBs Weg auf HAMi: Super-Node-Anpassung (**100 % Pooling**), vNPU-Core (**1 GB / 1 %**), dreistufiges Topologie-Scheduling (**−30 % Cross-Node**). Die Kette Hardware → Partitionierung → Scheduling hebt heterogene Compute von „nutzbar“ auf „effizient nutzbar“. Rückgabe an HAMi spiegelt den Übergang von „Nutzer“ zu „Mitgestalter“ in der KI-Infrastruktur.
 

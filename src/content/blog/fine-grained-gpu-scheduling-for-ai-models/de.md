@@ -32,7 +32,7 @@ OpenRouter-Nutzungsdaten liefern einen Blickwinkel.
 
 Im Dezember 2025 veröffentlichten OpenRouter und a16z *[State of AI: An Empirical 100 Trillion Token Study](https://openrouter.ai/state-of-ai/)* – Analyse von Modellnutzung, Entwicklerverhalten und KI-Trends aus über 100 Billionen Tokens realer Interaktionen auf der OpenRouter-Plattform.
 
-![Token-Nutzungsanteile offener Modelle verschiedener Größen](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-01.png "no-caption")
+![Token-Nutzungsanteile offener Modelle verschiedener Größen](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-01-en.png "no-caption")
 
 Die Studie gruppierte Open-Weight-Modelle in klein, mittel und groß.
 
@@ -42,7 +42,7 @@ Bemerkenswerter Befund:
 
 **Medium is the New Small – mittlere Modelle werden die neuen kleinen Modelle.**
 
-![Zusammensetzung offener Modelle nach Größe](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-02.png "no-caption")
+![Zusammensetzung offener Modelle nach Größe](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-02-en.png "no-caption")
 
 Mittlere Modelle bieten Entwicklern einen Kompromiss zwischen Fähigkeit und Deploy-Kosten.
 
@@ -64,7 +64,7 @@ Welche Modelle und Workloads Unternehmen nutzen, war im vorigen Abschnitt Thema.
 
 Im Juli 2026 präsentierte das USENIX OSDI 2026-Paper *[Heterogeneity at Hyperscale: Characterization and Scheduling of Large Production AI Clusters at Alibaba](https://www.usenix.org/conference/osdi26/presentation/li-suyi)* eine systematische Untersuchung von Alibabas Serverless Infrastructure (ASI) Produktionsclustern.
 
-![Überblick über die Stichprobe der Alibaba-ASI-Produktionscluster-Studie](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-03.png "no-caption")
+![Überblick über die Stichprobe der Alibaba-ASI-Produktionscluster-Studie](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-03-en.png "no-caption")
 
 Sechs Monate Produktionsdaten: 155.410 GPUs verschiedener Anbieter und Generationen, 81 Business Units, Workloads von kurzlebiger F&E über Training bis Online- und Offline-Inferenz.
 
@@ -100,7 +100,7 @@ Spot-GPUs sind günstigere, zurücknehmbare Kapazität für unterbrechbare Jobs.
 
 In den beobachteten Clustern stieg die GPU-Allokationsrate von **68 % auf 93 %**. Klarstellung: 93 % ist Allokationsrate, nicht Compute-Auslastung – unterschiedliche Metriken.
 
-![SpotGPU-Scheduling und Änderung der GPU-Allokationsrate](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-04.png "no-caption")
+![SpotGPU-Scheduling und Änderung der GPU-Allokationsrate](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-04-en.png "no-caption")
 
 Diese Praktiken zeigen: In hyperskalen heterogenen GPU-Clustern können Konsolidierung und Job-Scheduling Kapazität freisetzen, die zuvor schwer effektiv zuweisbar war – nicht nur durch mehr Hardware.
 
@@ -174,7 +174,7 @@ Wenn mehrere Teams verschiedene GPU-Typen teilen, müssen Quotas, Isolation und 
 
 **Dynamia wurde von den Initiatoren und Core-Maintainern des CNCF-Projekts HAMi gegründet und baut einen Open-Source-Kern für KI-Infrastruktur. Wir helfen KI-Teams, heterogene GPUs und KI-Chips einfacher, effizienter und steuerbarer zu nutzen – komplexes Computing als cloud-native Infrastruktur zum Teilen, Isolieren und On-Demand-Verbrauchen.**
 
-![Von GPU-Virtualisierung zu Heterogen-Compute-Governance](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-05.png "no-caption")
+![Von GPU-Virtualisierung zu Heterogen-Compute-Governance](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-05-en.png "no-caption")
 
 Auf Open-Source-HAMi bietet Dynamia Scheduling-Produkte und Services für Produktion – von GPU-Zuteilung pro Job bis Multi-Team-/Multi-Cluster-Management. Auf Geräteschicht: HAMi Enterprise für shareable Workloads nach Speicher und Compute; fortlaufend Compute für Großmodell-Inferenz-„Token-Factories“. Plattformschicht: HAMi AI Platform für Verteilung und Nutzung über verbundene Cluster, Team-Quotas, Access Control; auf Enterprise-Basis Modell-Deployment, Inferenz, Runtime-Observability und Ressourcen-Ops auf einer Plattform. Topologie-Matching für Multi-GPU-Jobs, Cluster-Konsolidierung und Job-Scheduling weiterhin mit passenden Cluster-Scheduler-Komponenten.
 

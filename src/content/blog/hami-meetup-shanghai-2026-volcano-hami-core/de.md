@@ -18,7 +18,7 @@ tags:
   - GPU Sharing
   - Heterogeneous Computing
 category: Community & Events
-coverImage: /images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8s-volcano-hami-core-roles.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8s-volcano-hami-core-roles-en.png
 ---
 
 Forschungsjobs wollen GPUs so schnell wie möglich; Online-Geschäft braucht stabile Ressourcengarantien; Datenverarbeitung und Modelltraining bringen jeweils eigene Orchestrierungstools mit. Eine Enterprise-AI-Plattform, die diese Workloads Rechenleistung teilen lässt, muss drei Fragen gleichzeitig beantworten: Wer darf welche Ressourcen nutzen, wann Leerlaufkapazität ausgeliehen werden kann und wie Störungen lokalisiert und behoben werden. HAMi-cores feingranulare Ressourcensteuerung muss mit Cluster-Scheduling, Geschäftsprozessen und Laufzeitprotokollen zusammenspielen.
@@ -39,11 +39,11 @@ iFLYTEKs AI-Infrastruktur unterstützt Bildung, Gesundheitswesen und Smart-City-
 
 In der Praxis läuft Kubernetes für Nodes und Basis-Runtime, Volcano für Multi-Workload-Scheduling und -Orchestrierung, HAMi-core für feingranulare GPU-Speicher- und Compute-Quotas. Volcano organisiert, wie Jobs Ressourcen erhalten; HAMi-core steuert die Nutzung innerhalb einer geteilten GPU. Mit dieser Aufteilung lässt sich Kartensharing in Job-Scheduling und Tenant-Management der Plattform einhängen.
 
-![Aufgabenteilung von Kubernetes, Volcano und HAMi-core (Folie 7)](/images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8s-volcano-hami-core-roles.png)
+![Aufgabenteilung von Kubernetes, Volcano und HAMi-core (Folie 7)](/images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-07-k8s-volcano-hami-core-roles-en.png)
 
 Auf Organisationsebene mappt die Plattform Geschäftsanforderungen auf dedizierte und gemeinsame Queues mit Mindestgarantien, Maximalquoten und Gewichten. Leerlaufkapazität kann von anderen Queues ausgeliehen und bei Bedarf regelbasiert zurückgefordert werden — Garantie und elastisches Sharing koexistieren.
 
-![Ressourcenzuweisung zwischen dedizierten und gemeinsamen Queues (Folie 8)](/images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-08-dedicated-shared-queues.png)
+![Ressourcenzuweisung zwischen dedizierten und gemeinsamen Queues (Folie 8)](/images/blog/hami-meetup-shanghai-2026-volcano-hami-core/slide-08-dedicated-shared-queues-en.png)
 
 Ausleihe hat ihren Preis: Rückforderung kann Job-Eviction und Rebuilds auslösen. Ob ein Job recomputierbar und unterbrechbar ist, muss von vornherein ins Queue-Design. Nur wenn Sharing-Regeln den Geschäftsprioritäten entsprechen, bleibt der Druck zur höheren Auslastung kritischen Diensten fern.
 

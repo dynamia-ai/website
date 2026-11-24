@@ -18,10 +18,10 @@ tags:
   - Kubernetes
 category: Community & Events
 language: en
-coverImage: /images/events/hami-2.9-webinar-recap/cover.png
+coverImage: /images/events/hami-2.9-webinar-recap/cover-en.png
 ---
 
-![Webinar cover](/images/events/hami-2.9-webinar-recap/cover.png)
+![Webinar cover](/images/events/hami-2.9-webinar-recap/cover-en.png)
 
 **Topic:** HAMi 2.9 Release Deep Dive — *How HAMi 2.9 Reshapes Kubernetes AI Compute Scheduling*
 
@@ -64,25 +64,25 @@ Feature differences: HAMi 2.9.0 includes multiple feature upgrades, while 2.8.3 
 
 HAMi-Core is one of the most important features in HAMi v2.9. To address the limits of hard partitioning (MIG), HAMi introduced userspace soft partitioning: it splits compute in userspace without depending on vendor proprietary drivers, with better generality and maintainability.
 
-![HAMi-Core optimization](/images/events/hami-2.9-webinar-recap/hami-core-optimization.png)
+![HAMi-Core optimization](/images/events/hami-2.9-webinar-recap/hami-core-optimization-en.png)
 
 ### Advantages and How It Works
 
 - **Beyond hard-partition limits:** For scenarios such as Ascend 910B/C that lack hard partitioning or have coarse granularity (for example, 910B’s minimum 16GB), soft partitioning supports custom slice sizes and elastic compute scaling
 - **Architecture:** A Limiter daemon starts in each container, communicates with a global coordination layer to obtain compute-spec tokens, and uses libvnpu.so to intercept memory allocation and Kernel Launch operations for resource limiting
 
-![Ascend soft partitioning steps](/images/events/hami-2.9-webinar-recap/ascend-soft-partition-steps.png)
+![Ascend soft partitioning steps](/images/events/hami-2.9-webinar-recap/ascend-soft-partition-steps-en.png)
 
-![Ascend soft partitioning flow](/images/events/hami-2.9-webinar-recap/ascend-soft-partition-flow.png)
+![Ascend soft partitioning flow](/images/events/hami-2.9-webinar-recap/ascend-soft-partition-flow-en.png)
 
 ### Configuration and Usage
 
 - **Configuration:** Supports global and node-level configuration; node-level takes precedence over global
 - **Required annotation:** The current release requires an explicit Pod annotation `huawei.com/vnpu-mode: 'hami-core'`; otherwise jobs cannot be scheduled to soft-partition nodes
 
-![Ascend soft partitioning configuration](/images/events/hami-2.9-webinar-recap/ascend-config.png)
+![Ascend soft partitioning configuration](/images/events/hami-2.9-webinar-recap/ascend-config-en.png)
 
-![Ascend soft partitioning usage](/images/events/hami-2.9-webinar-recap/ascend-usage.png)
+![Ascend soft partitioning usage](/images/events/hami-2.9-webinar-recap/ascend-usage-en.png)
 
 > **Live Demo Results**
 >
@@ -92,7 +92,7 @@ HAMi-Core is one of the most important features in HAMi v2.9. To address the lim
 
 HAMi-DRA is an implementation based on Kubernetes Dynamic Resource Allocation (DRA), bringing GPU/NPU and other accelerator resource management onto the native Kubernetes path. HAMi-DRA is now production-ready.
 
-![How to deploy HAMi DRA](/images/events/hami-2.9-webinar-recap/hami-dra-deploy.png)
+![How to deploy HAMi DRA](/images/events/hami-2.9-webinar-recap/hami-dra-deploy-en.png)
 
 ### Architecture Advantages and Compatibility
 

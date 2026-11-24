@@ -18,7 +18,7 @@ tags:
   - Image Acceleration
   - Multi-Cluster
 category: Community & Events
-coverImage: /images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-instance-spec-abstraction.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-instance-spec-abstraction-en.png
 ---
 
 GPUs stehen bereit; das Algorithmus-Team wartet noch auf Umgebungen. Treiber, Images, Netzwerk, Storage — einzeln konfiguriert und für jeden neuen Cluster erneut angepasst. Selbst mit GPU-Sharing unten muss die Plattform Ressourcen-Specs, Scheduling-Konfiguration und Dev-Tools verbinden, damit Nutzer sofort loslegen können.
@@ -41,7 +41,7 @@ Nutzeranfragen sind meist klar: Image, CPU und Speicher, GPU-Modell und -Anzahl,
 
 Das Team definiert stabile Instanz-Specs (Instance Specs) und drückt Ganzkarten- oder vGPU-Zuweisung einheitlich aus; eine Adaptationsschicht übersetzt in die Basiskonfiguration. Ressourcen-Claims, Vendor-Annotations, Scheduling-Constraints und Laufzeitparameter werden zentral behandelt. HAMi-Sharing-Ressourcen fließen wie andere in den einheitlichen Umgebungserstellungsprozess.
 
-![Stabile Instanz-Specs und Adaptationsschicht (Folie 9)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-instance-spec-abstraction.png)
+![Stabile Instanz-Specs und Adaptationsschicht (Folie 9)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-09-instance-spec-abstraction-en.png)
 
 Nutzer wählen weiter Modell, Anzahl und Image. Die Plattform vereinheitlicht Spec-Ausdruck und Übersetzung — nicht die Annahme, alle GPUs seien austauschbar. Bei neuen Geräten startet Adaptionsarbeit früh an dieser Schicht.
 
@@ -53,7 +53,7 @@ Das Team bewertete Orchestratoren wie Karmada und wählte Zugang pro Cluster per
 
 Damit vermeidet leichtgewichtiger Zugang den Overhead einer zusätzlichen Control Plane. Logs und Metriken brauchen weiter eigene Anpassung; Credentials sind sensible Daten mit Zugriffskontrolle.
 
-![Leichtgewichtiger Zugang bei Single-Task-Single-Cluster (Folie 11)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-11-lightweight-multi-cluster.png)
+![Leichtgewichtiger Zugang bei Single-Task-Single-Cluster (Folie 11)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-11-lightweight-multi-cluster-en.png)
 
 Die Wahl hat einen klaren Geltungsbereich. Bei echtem Bedarf für Cross-Cluster-Migration und DR sind Orchestrator und Datenlage neu zu bewerten — leichtgewichtiger Zugang ersetzt keine volle Multi-Cluster-Fähigkeit.
 
@@ -63,13 +63,13 @@ Algorithmus-Frameworks und Projektabhängigkeiten wollen Stabilität; Dev-Tools 
 
 Das Team assembliert Tools bei der Umgebungserstellung — Sidecars für Dev-Fähigkeit, Regeln für ergänzende Konfiguration. Algorithmus-Container und Plattform-Tools werden getrennt gepflegt; gemeinsame Dateien, Netzwerk und Konfigurationsgrenzen müssen definiert bleiben.
 
-![Dev-Tools zur Laufzeit, Entkopplung von Algorithmus-Images (Folie 13)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-13-runtime-tool-injection.png)
+![Dev-Tools zur Laufzeit, Entkopplung von Algorithmus-Images (Folie 13)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-13-runtime-tool-injection-en.png)
 
 Image-Größe verlangsamt den Start. Klassisch: alle Layer laden und entpacken vor Dateisystem-Aufbau. Der beschleunigte Ansatz scannt komprimierte Layer und erzeugt unabhängige Datei-Indizes. Zur Laufzeit: zuerst Metadaten und Indizes, Remote-Layer mounten, benötigte Chunks bei Zugriff in lokalen Cache schreiben.
 
 Download verschwindet nicht; manche Reads verschieben sich nach Containerstart. Liest die Anwendung sofort große Dateien, bleibt Wartezeit; ohne nutzbare Indizes oder bei ungeeignetem Lazy Loading Fallback auf normales Pulling.
 
-![Image-Indexierung, On-Demand-Reads, Fallback (Folie 14)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-14-on-demand-image-loading.png)
+![Image-Indexierung, On-Demand-Reads, Fallback (Folie 14)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-14-on-demand-image-loading-en.png)
 
 Schneller beurteilen heißt: bis zur tatsächlich nutzbaren Anwendung durchdenken — nicht bei „Container gestartet“ stoppen.
 
@@ -79,7 +79,7 @@ Peng berichtete, das Team probierte früh MIG, stieß unter ihren Bedingungen au
 
 Die Logik: HAMi trägt Userspace-Sharing und Quoten in privaten Szenarien; Kernel-vGPU und QEMU-Passthrough sind UClouds Lösungen für die anderen zwei Umgebungen. Drei Pfade, unterschiedliche Hardware- und Mandanten-Isolation — jeweils eigenes Design und Validierung.
 
-![Szenario → GPU-Management-Ansatz (Folie 16)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-16-gpu-isolation-scenarios.png)
+![Szenario → GPU-Management-Ansatz (Folie 16)](/images/blog/hami-meetup-shanghai-2026-ucloud-ai-platform/slide-16-gpu-isolation-scenarios-en.png)
 
 Enterprise-Passthrough muss Multi-GPU-Kommunikation bedenken. NVLink erfordert einen Trusted Fabric Service für den gemeinsamen NVSwitch, abgestimmt mit VM-Lebenszyklus; Alternative: NVLink aus, GPUs als unabhängige PCIe-Geräte — einfacheres Engineering, ohne High-Speed-Interconnect.
 

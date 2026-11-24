@@ -54,7 +54,7 @@ China Merchants Bank's core challenge is **compute pool diversification**:
 
 Based on HAMi, CMB built a unified heterogeneous compute infrastructure, enabling unified management and scheduling optimization across multiple chip types.
 
-![Why China Merchants Bank chose HAMi](/images/blog/cmb-hami-heterogeneous-computing/cmb-choose-hami.webp)
+![Why China Merchants Bank chose HAMi](/images/blog/cmb-hami-heterogeneous-computing/cmb-choose-hami-en.png)
 
 ## 2. Super-Node Hardware Adaptation: The Dual-Chip Module Challenge
 
@@ -62,7 +62,7 @@ Based on HAMi, CMB built a unified heterogeneous compute infrastructure, enablin
 
 A super-node is a hardware architecture that combines multiple chips into a single logical unit through high-speed interconnects. CMB adopted a **Dual-Chip Module (DCM) architecture**, where each module contains multiple compute cards interconnected via a high-speed bus.
 
-![Super-node adaptation: significance and core value](/images/blog/cmb-hami-heterogeneous-computing/super-node-value.webp)
+![Super-node adaptation: significance and core value](/images/blog/cmb-hami-heterogeneous-computing/super-node-value-en.png)
 
 ### Problems with the Native Approach
 
@@ -80,9 +80,9 @@ By enhancing the Device Plugin and scheduler, CMB achieved physical module ident
 - Driver failures caused by odd-card cross-module allocation are eliminated
 - **Hardware pooling rate increased to 100%**
 
-![CMB's super-node adaptation design and implementation (Part 1)](/images/blog/cmb-hami-heterogeneous-computing/super-node-adapter-1.webp)
+![CMB's super-node adaptation design and implementation (Part 1)](/images/blog/cmb-hami-heterogeneous-computing/super-node-adapter-1-en.png)
 
-![CMB's super-node adaptation design and implementation (Part 2)](/images/blog/cmb-hami-heterogeneous-computing/super-node-adapter-2.webp)
+![CMB's super-node adaptation design and implementation (Part 2)](/images/blog/cmb-hami-heterogeneous-computing/super-node-adapter-2-en.png)
 
 ### Results and Benefits
 
@@ -107,17 +107,17 @@ This solution was not only validated in CMB's production environment but also co
 - Established a module-aware scheduling model (Topology-aware Scheduling Primitive)
 - Advanced heterogeneous compute from "usable" to "efficiently usable"
 
-![Super-node adaptation results and benefits](/images/blog/cmb-hami-heterogeneous-computing/super-node-results.webp)
+![Super-node adaptation results and benefits](/images/blog/cmb-hami-heterogeneous-computing/super-node-results-en.png)
 
 ## 3. vNPU-Core Software Partitioning: Fine-Grained Splitting at 1 GB VRAM / 1% Compute
 
-![GPU resource partitioning comparison](/images/blog/cmb-hami-heterogeneous-computing/gpu-partition-comparison.webp)
+![GPU resource partitioning comparison](/images/blog/cmb-hami-heterogeneous-computing/gpu-partition-comparison-en.png)
 
 For small and medium model fine-tuning and inference tasks, CMB leveraged HAMi's VNPU Core component to achieve compute partitioning at the software level.
 
 ### Technical Principles
 
-![HAMi-vNPU-Core architecture](/images/blog/cmb-hami-heterogeneous-computing/vnpu-core-arch.webp)
+![HAMi-vNPU-Core architecture](/images/blog/cmb-hami-heterogeneous-computing/vnpu-core-arch-en.png)
 
 By intercepting operator APIs in user space and using a **token bucket mechanism with shared memory**, compute resources are proportionally allocated:
 
@@ -136,7 +136,7 @@ This capability is particularly important for banking scenarios: many risk manag
 
 This is the most technically deep section of the presentation. CMB designed a multi-level topology-aware scheduling algorithm specifically to optimize communication efficiency for distributed training tasks.
 
-![Three-tier topology abstraction](/images/blog/cmb-hami-heterogeneous-computing/topology-3layer.webp)
+![Three-tier topology abstraction](/images/blog/cmb-hami-heterogeneous-computing/topology-3layer-en.png)
 
 In distributed AI training, tasks randomly distributed across Leaf switches and nodes cause cross-switch communication to become a bottleneck. The shift from compute-first scheduling to compute-and-network-topology co-optimization is essential.
 
@@ -152,7 +152,7 @@ Level 3: Cross LEAF Switch  — Highest latency
 
 ### Multi-Level Topology Scoring
 
-![Adaptive network topology scheduling algorithm](/images/blog/cmb-hami-heterogeneous-computing/topology-scheduling-algo.webp)
+![Adaptive network topology scheduling algorithm](/images/blog/cmb-hami-heterogeneous-computing/topology-scheduling-algo-en.png)
 
 Topology-based scoring is added during the scheduler's scoring phase:
 
@@ -177,7 +177,7 @@ CMB uses **deterministic hashing based on controller UIDs** to ensure that diffe
 
 ## 5. Summary
 
-![Summary and outlook](/images/blog/cmb-hami-heterogeneous-computing/summary.webp)
+![Summary and outlook](/images/blog/cmb-hami-heterogeneous-computing/summary-en.png)
 
 Starting from the real pain points of heterogeneous compute in the financial industry, Su Xi's presentation demonstrated China Merchants Bank's practical path to building a unified compute infrastructure on HAMi: through super-node hardware adaptation to solve resource alignment in dual-chip module architectures, achieving a **100% hardware pooling rate**; combining vNPU-Core software partitioning for fine-grained resource provisioning at the **1 GB VRAM / 1% compute** level on Ascend NPUs; and introducing **network topology-aware scheduling** through three-tier topology abstraction and multi-level scoring, **reducing cross-node scheduling probability by 30%** to significantly optimize distributed training communication efficiency.
 

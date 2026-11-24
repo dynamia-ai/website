@@ -42,7 +42,7 @@ linktitle: "AI Infrastructure from CNCF's Perspective"
 
 Keith Chan opened with CNCF end-of-2025 survey data: **66% of enterprises globally are already running AI workloads on cloud-native environments**. Domestic survey data shows that over 90% of enterprises using AI have adopted cloud-native AI technologies.
 
-![Chart: 66% of enterprises run AI workloads on cloud-native environments](/images/blog/keith-chan-ai-infrastructure-cloud-native/cncf-survey-66-percent.png)
+![Chart: 66% of enterprises run AI workloads on cloud-native environments](/images/blog/keith-chan-ai-infrastructure-cloud-native/cncf-survey-66-percent-en.png)
 
 The core trend behind this data is clear: **Kubernetes has become the unified orchestration layer for AI infrastructure**. K8s features like auto-scaling, CI/CD pipelines, and high availability precisely meet the stringent real-time and elasticity requirements of generative AI.
 
@@ -71,7 +71,7 @@ Keith revealed a striking statistic: at this year's KubeCon, **AI-related sessio
 
 ## 4. HAMi: The Key Missing Piece in CNCF GPU Scheduling
 
-![HAMi's CNCF Case Studies](/images/blog/keith-chan-ai-infrastructure-cloud-native/hami-cncf-case-studies.png)
+![HAMi's CNCF Case Studies](/images/blog/keith-chan-ai-infrastructure-cloud-native/hami-cncf-case-studies-en.png)
 
 Keith specifically highlighted HAMi's unique value in the CNCF ecosystem:
 
@@ -83,7 +83,7 @@ Keith specifically highlighted HAMi's unique value in the CNCF ecosystem:
 
 ## 5. KubeCon Shanghai Preview
 
-![KubeCon China, September 8-9, 2026 in Shanghai](/images/blog/keith-chan-ai-infrastructure-cloud-native/kubecon-shanghai-2026.png)
+![KubeCon China, September 8-9, 2026 in Shanghai](/images/blog/keith-chan-ai-infrastructure-cloud-native/kubecon-shanghai-2026-en.png)
 
 Keith closed with a preview of KubeCon Shanghai this September:
 

@@ -17,7 +17,7 @@ tags:
   - cloud native
 category: Community & Events
 language: en
-coverImage: /images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/slide-cover.png
+coverImage: /images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/slide-cover-en.png
 linktitle: HAMi vNPU Evolution & CMB Practice
 ---
 
@@ -37,7 +37,7 @@ As training, inference, and R&D testing workloads keep growing, GPUs and NPUs fr
 
 ## 2. The Community–CMB Collaboration: A Closed Loop of Needs, Tech, and Validation
 
-![The HAMi community–China Merchants Bank collaboration loop: establish contact → project collaboration → joint validation](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/community-cmb-collaboration.png)
+![The HAMi community–China Merchants Bank collaboration loop: establish contact → project collaboration → joint validation](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/community-cmb-collaboration-en.png)
 
 The first part of the talk reviewed the collaboration between the HAMi community and China Merchants Bank. Their partnership was not a one-off solution delivery, but a continuous closed loop: a long-term relationship established through community-driven outreach, real projects entered (CMB's Muxi, Kunlunxin, Ascend) to understand the actual needs of heterogeneous compute, and finally the community implementation brought into real environments for joint validation.
 
@@ -49,7 +49,7 @@ Within this loop, China Merchants Bank is both a HAMi user and a key input to th
 
 ### Hard Partitioning: Works, but Far from Flexible Sharing
 
-![The three limitations of hard partitioning: inconsistent specs, hardcoded templates, tightly bound resources](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/hard-partition-limitations.png)
+![The three limitations of hard partitioning: inconsistent specs, hardcoded templates, tightly bound resources](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/hard-partition-limitations-en.png)
 
 Early NPU sharing relied on vendor-predefined hard partitioning. Different models supported different fixed partition types (some split into four, others into seven); resource allocation looked precise but was still bound by hardcoded edges. Wang Jifei distilled the limitations of hard partitioning into three points:
 
@@ -59,7 +59,7 @@ Early NPU sharing relied on vendor-predefined hard partitioning. Different model
 
 ### Why Soft Partitioning Was Once Blocked: Differences in Low-Level APIs
 
-![Soft partitioning blocked by low-level APIs: the GPU path could be intercepted, the NPU path was not controllable at the time](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/soft-partition-api-blocked.png)
+![Soft partitioning blocked by low-level APIs: the GPU path could be intercepted, the NPU path was not controllable at the time](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/soft-partition-api-blocked-en.png)
 
 If hard partitioning was too inflexible, why not just do soft partitioning? Wang Jifei explained that the root cause lay in the low-level APIs. On the GPU path, key runtime APIs can be intercepted and redirected, letting the community enforce resource control between a process and a device; at the time, however, the critical low-level NPU APIs were not open, so the same level of hijacking and control was impossible.
 
@@ -67,7 +67,7 @@ If hard partitioning was too inflexible, why not just do soft partitioning? Wang
 
 ### Three Key Changes in Technical Conditions
 
-![The three key changes that made soft partitioning possible: CANN open-sourced, experimental validation, driver upgrade](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/three-key-changes.png)
+![The three key changes that made soft partitioning possible: CANN open-sourced, experimental validation, driver upgrade](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/three-key-changes-en.png)
 
 Soft partitioning became viable only as the underlying technology evolved. The community went through three key changes: first, CANN was open-sourced, and once the low-level software stack opened up, the community began preparing to support Ascend sharing; during experimental validation, however, it turned out the device did not yet support the expected multi-process concurrent calls; only after a driver upgrade enabled multi-process did the foundation for sharing truly mature.
 
@@ -75,7 +75,7 @@ There was also a "detour" worth recording along the way — Huawei's open-source
 
 ### Soft Partitioning Lands: Multi-Process + hami-core → Kubernetes
 
-![The four-step chain for landing soft partitioning in Kubernetes: discovery & registration, allocation & injection, runtime control, closed-loop validation](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/soft-partition-k8s-pipeline.png)
+![The four-step chain for landing soft partitioning in Kubernetes: discovery & registration, allocation & injection, runtime control, closed-loop validation](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/soft-partition-k8s-pipeline-en.png)
 
 Once the driver upgrade let devices run concurrently, Huawei's Canada lab built the low-level sharing control library (providing hami-core-like capabilities), and this low-level control could then be taken up by the Device Plugin and the Kubernetes scheduling system. Wang Jifei broke production landing into four steps:
 
@@ -94,7 +94,7 @@ It is precisely this "bring production problems back to the community" collabora
 
 ## 4. Performance Data: The Inflection Point of 2 / 4 / 8 / 16-Way Partitioning
 
-![Performance inflection data for 2 / 4 / 8 / 16-way partitioning](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/performance-inflection-table.png)
+![Performance inflection data for 2 / 4 / 8 / 16-way partitioning](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/performance-inflection-table-en.png)
 
 How fine should soft partitioning go? Wang Jifei offered a set of measured data. Test environment: a single 910C card, a 7B-class model, 200 input / 128 output tokens, one request per vNPU, P50:
 
@@ -105,7 +105,7 @@ How fine should soft partitioning go? Wang Jifei offered a set of measured data.
 | 1 / 8 | 134 | 43.9 | 8 | Density-first / relaxed SLA |
 | 1 / 16 | 248 | 76.4 | 16 | Dev & test / offline |
 
-![A 4-way split is the recommended balance point for online services](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/performance-balance-card.png)
+![A 4-way split is the recommended balance point for online services](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/performance-balance-card-en.png)
 
 The key observation is the "inflection point," not "the finer the better." Compared with a 2-way split, a 4-way split adds only about 18% TTFT and 24% TPOT — latency stays controllable — while raising instance density per card to 4; 8-way and 16-way splits trade noticeably more latency for instance density, suited to lightweight models, async requests, or more relaxed SLAs, and even dev/test and offline workloads. So for online services, **a 4-way split is the recommended balance point**.
 
@@ -113,7 +113,7 @@ The key observation is the "inflection point," not "the finer the better." Compa
 
 ## 5. Future Outlook: Experience Improvements and Dynamic Governance
 
-![Future outlook: from static partitioning to dynamic governance — Profiling, compute preemption, resource oversubscription](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/future-outlook.png)
+![Future outlook: from static partitioning to dynamic governance — Profiling, compute preemption, resource oversubscription](/images/blog/hami-vnpu-cmb-meetup-hangzhou-recap/future-outlook-en.png)
 
 At the end of the talk, Wang Jifei touched on two directions. In the short term, experience improvements: unify management of hard and soft partitioning; allocate tasks on demand, transparently to upper layers; make partition results visible inside containers and fill in container-level compute/memory monitoring; keep the Volcano Ascend device-plugin updated to strengthen the compatibility matrix; and refine values config and error logs so users can self-diagnose common issues. In one sentence — let users remember fewer rules, let the platform see state clearly, let upgrades stay bounded, and let anomalies recover.
 

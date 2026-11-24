@@ -50,7 +50,7 @@ Bei der Eröffnung teilte **Keith Chan**, Vizepräsident der Linux Foundation un
 
 ![HAMi Neue Features](/images/events/hami-meetup-beijing-recap/hami-new-features-capability-matrix.webp)
 
-![HAMi Community](/images/events/hami-meetup-beijing-recap/hami-community.webp)
+![HAMi Community](/images/events/hami-meetup-beijing-recap/hami-community-en.png)
 
 **Li Mengxuan**, Mitgründer von Dynamia AI, fokussierte Evolution und Community-Planung von HAMi im heterogenen Scheduling. Als CNCF-Sandbox-Projekt hat HAMi Nicht-Intrusivität, starke Isolation und einfaches Deployment in mehreren KI-Beschleuniger-Szenarien bewiesen. Neu u. a. **CDI-Support, Mock Device Plugin und tiefe Ascend-Device-Plugin-Integration mit Volcano**.
 
@@ -60,7 +60,7 @@ Die Community plant **HAMi-DRA im Januar** — Vereinfachung von Webhook + Sched
 
 ![DCU Virtualisierung](/images/events/hami-meetup-beijing-recap/dcu-virtualization-basics.webp)
 
-![DCU Praxis](/images/events/hami-meetup-beijing-recap/dcu-practice-implementation.webp)
+![DCU Praxis](/images/events/hami-meetup-beijing-recap/dcu-practice-implementation-en.png)
 
 **Wang Zhongqin**, Hygon R&D, systematisierte DCU-Virtualisierung in Cloud-Native-Umgebungen und Kubernetes-Landing. Von der Treiberschicht über hy-smi zu feingranularer vDCU-Segmentierung und dynamischer Anpassung; Isolation und Laufzeitkonsistenz an Host- und Container-Beispielen.
 
@@ -72,7 +72,7 @@ Planung mit HAMi: Shared-Modus „nur VRAM deklarieren, Compute teilen“, **meh
 
 ![Bagualu Computing](/images/events/hami-meetup-beijing-recap/bagualu-intelligent-computing-stack.webp)
 
-![Bagualu Performance](/images/events/hami-meetup-beijing-recap/bagualu-performance-delivery.webp)
+![Bagualu Performance](/images/events/hami-meetup-beijing-recap/bagualu-performance-delivery-en.png)
 
 **He Wanqing**, Qingcheng Jizhi, zur Komplexität **k Geschäftstypen × m Modelle × n Beschleuniger** im inländischen LLM-Training und Inferenz. Engineering-Praxis für Software-Stack und Large-Scale-Delivery. Multi-Modell-Multi-Chip erfordert ganzes System von Compilation, Parallelität, Quantisierung bis Inferenz-Engine.
 
@@ -82,7 +82,7 @@ Bagualu-Stack: Beschleunigung auf Compile-, Quantisierungs-, Parallel-Training- 
 
 ![Beike × HAMi](/images/events/hami-meetup-beijing-recap/beike-hami-partnership.webp)
 
-![Beike Praxis](/images/events/hami-meetup-beijing-recap/beike-vgpu-inference-cluster-practice.webp)
+![Beike Praxis](/images/events/hami-meetup-beijing-recap/beike-vgpu-inference-cluster-practice-en.png)
 
 **Wang Ni**, Beike Computing Platform, systematisierte HAMi-Landing: Architektur-Evolution bei großem GPU-Management. Ausgangspunkt: Fragmentierung und Auslastungsengpässe bei Multi-Modell-GPU, Multi-Cluster-Scheduling und millionenfacher täglicher Requests.
 
@@ -92,7 +92,7 @@ Technisch: vGPU-Elastic-Pooling mit HAMi, VRAM-Slicing für Inferenz — TensorF
 
 ![HAMi-Core DRA](/images/events/hami-meetup-beijing-recap/hami-core-dra-architecture.webp)
 
-![DRA Praxis](/images/events/hami-meetup-beijing-recap/dra-driver-practice.webp)
+![DRA Praxis](/images/events/hami-meetup-beijing-recap/dra-driver-practice-en.png)
 
 **Yang Shouren**, 4Paradigm & HAMi Approver: HAMi unter Kubernetes DRA — Evolution von Device Plugin zu nativem DRA-Driver. Grenzen von Device Plugin bei Device-Expression und Lifecycle; Wartbarkeit von Env-Vars und Annotations.
 
@@ -102,7 +102,7 @@ Technisch: vGPU-Elastic-Pooling mit HAMi, VRAM-Slicing für Inferenz — TensorF
 
 ![Device Plugin](/images/events/hami-meetup-beijing-recap/device-plugin-architecture.webp)
 
-![Neue Features](/images/events/hami-meetup-beijing-recap/device-plugin-new-features.webp)
+![Neue Features](/images/events/hami-meetup-beijing-recap/device-plugin-new-features-en.png)
 
 **James**, 4Paradigm: Evolution des HAMi Device Plugins, Volcano-Integration für Ascend. Kubernetes-Scheduling oft ganze Karte exklusiv — grobe Granularität erschwert feingranulares heterogenes Scheduling.
 
@@ -112,7 +112,7 @@ Ascend Device Plugin: Init, Filter, Allocation; Registrierung in device-share f�
 
 ![HAMi v2.7.0](/images/events/hami-meetup-beijing-recap/hami-v2.7.0-domestic-compute.webp)
 
-![Kunlunxin Adaption](/images/events/hami-meetup-beijing-recap/kunlunxin-xpu-adapter.webp)
+![Kunlunxin Adaption](/images/events/hami-meetup-beijing-recap/kunlunxin-xpu-adapter-en.png)
 
 **Ouyang Luwei**, Ruisi Zhilian & HAMi Reviewer: Kunlunxin P800 vXPU mit HAMi — Virtualisierung und Scheduling auf Werksintegration, dynamische vXPU-Segmentierung.
 

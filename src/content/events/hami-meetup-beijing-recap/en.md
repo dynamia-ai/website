@@ -51,7 +51,7 @@ At the opening of the conference, **Keith Chan**, Vice President of the Linux Fo
 
 ![HAMi New Features](/images/events/hami-meetup-beijing-recap/hami-new-features-capability-matrix.webp)
 
-![HAMi Community](/images/events/hami-meetup-beijing-recap/hami-community.webp)
+![HAMi Community](/images/events/hami-meetup-beijing-recap/hami-community-en.png)
 
 **Li Mengxuan**, co-founder of Dynamia AI, focused on the technical evolution and community planning of HAMi in the field of heterogeneous compute scheduling. As a CNCF Sandbox project, HAMi has verified its core capabilities such as application non-intrusiveness, strong isolation, and easy deployment in multiple AI accelerator scenarios. In terms of new features, the community introduced **CDI support, Mock Device Plugin, and deep adaptation of Ascend Device Plugin with Volcano scheduler**, further improving its availability and observability in real production clusters.
 
@@ -61,7 +61,7 @@ Notably, **the HAMi community plans to launch a lightweight solution HAMi-DRA in
 
 ![DCU Virtualization](/images/events/hami-meetup-beijing-recap/dcu-virtualization-basics.webp)
 
-![DCU Practice](/images/events/hami-meetup-beijing-recap/dcu-practice-implementation.webp)
+![DCU Practice](/images/events/hami-meetup-beijing-recap/dcu-practice-implementation-en.png)
 
 **Wang Zhongqin**, an R&D engineer from Hygon, systematically reviewed DCU's software virtualization capabilities in cloud-native environments and its complete landing practices in the Kubernetes system. Starting from the DCU driver layer virtualization mechanism, he explained how to achieve fine-grained segmentation and dynamic adjustment of vDCU in computing units and video memory dimensions based on the hy-smi tool, and demonstrated the implementation of vDCU in resource isolation and runtime consistency combined with host and container environment usage examples.
 
@@ -73,7 +73,7 @@ In terms of planning direction, he also shared the next key points for collabora
 
 ![Bagualu Computing](/images/events/hami-meetup-beijing-recap/bagualu-intelligent-computing-stack.webp)
 
-![Bagualu Performance](/images/events/hami-meetup-beijing-recap/bagualu-performance-delivery.webp)
+![Bagualu Performance](/images/events/hami-meetup-beijing-recap/bagualu-performance-delivery-en.png)
 
 Qingcheng Jizhi Technical Ecology VP and Partner **He Wanqing** focused on the **k types of business × m types of models × n types of AI accelerators** combination complexity problem universally existing in domestic large model training and inference scenarios, systematically introducing Qingcheng Jizhi's engineering practices in training and inference software stack optimization and large-scale delivery. The sharing pointed out that in multi-model and multi-chip coexisting environments, relying solely on single-point performance optimization is difficult to support rapid business landing, and a complete software system covering compilation, parallelism, quantization, and inference is urgently needed.
 
@@ -83,7 +83,7 @@ Focusing on the Bagualu multi-layer AI training-inference software stack, he ana
 
 ![Beike × HAMi](/images/events/hami-meetup-beijing-recap/beike-hami-partnership.webp)
 
-![Beike Practice](/images/events/hami-meetup-beijing-recap/beike-vgpu-inference-cluster-practice.webp)
+![Beike Practice](/images/events/hami-meetup-beijing-recap/beike-vgpu-inference-cluster-practice-en.png)
 
 **Wang Ni**, a computing platform development engineer from Beike, shared HAMi's landing practice in Beike's computing platform, systematically introducing its architecture evolution ideas and key engineering experiences in large-scale GPU management scenarios. The sharing **started from Beike's internal inference business actual requirements, analyzing the resource fragmentation and utilization bottlenecks faced by the computing platform under the pressure of multi-model GPU coexistence, multi-cluster unified scheduling, and tens of millions of daily requests**.
 
@@ -93,7 +93,7 @@ At the technical implementation level, Beike built vGPU elastic pooling capabili
 
 ![HAMi-Core DRA](/images/events/hami-meetup-beijing-recap/hami-core-dra-architecture.webp)
 
-![DRA Practice](/images/events/hami-meetup-beijing-recap/dra-driver-practice.webp)
+![DRA Practice](/images/events/hami-meetup-beijing-recap/dra-driver-practice-en.png)
 
 **Yang Shouren**, an R&D engineer at 4Paradigm & HAMi Approver, shared HAMi's engineering practice under Kubernetes's new generation Dynamic Resource Allocation (DRA) framework, systematically introducing the technical background and implementation path for HAMi-Core's evolution from traditional Device Plugin architecture to native DRA Driver. He pointed out that Device Plugin has natural limitations in container and device information expression and lifecycle management, and HAMi-Core's early capabilities implemented through environment variables and node annotations also gradually exposed maintainability and extensibility issues.
 
@@ -103,7 +103,7 @@ In specific implementation, the sharing deeply analyzed **why HAMi-Core DRA Driv
 
 ![Device Plugin](/images/events/hami-meetup-beijing-recap/device-plugin-architecture.webp)
 
-![New Features](/images/events/hami-meetup-beijing-recap/device-plugin-new-features.webp)
+![New Features](/images/events/hami-meetup-beijing-recap/device-plugin-new-features-en.png)
 
 **James**, a platform engineer at 4Paradigm, focused on the latest functional evolution of the HAMi device plugin, systematically introducing its integration solution with Volcano scheduler in Ascend device scenarios and key engineering improvements. The sharing pointed out that the traditional Kubernetes scheduling model is based on whole-card exclusivity as a premise, and resource abstraction granularity is relatively coarse, making it difficult for heterogeneous devices such as Ascend to be incorporated into a unified, reusable fine-grained scheduling system.
 
@@ -113,7 +113,7 @@ In specific implementation, the sharing focused on analyzing the working mechani
 
 ![HAMi v2.7.0](/images/events/hami-meetup-beijing-recap/hami-v2.7.0-domestic-compute.webp)
 
-![Kunlunxin Adaptation](/images/events/hami-meetup-beijing-recap/kunlunxin-xpu-adapter.webp)
+![Kunlunxin Adaptation](/images/events/hami-meetup-beijing-recap/kunlunxin-xpu-adapter-en.png)
 
 Against the backdrop of continuous accelerated evolution of domestic heterogeneous compute, **Ouyang Luwei**, an R&D engineer at Ruisi Zhilian & HAMi Reviewer, systematically reviewed Ruisi Zhilian's engineering practice and scheduling capability evolution in Kunlunxin P800 vXPU scenarios. The sharing first started from the XPU-P800 adaptation outline, introducing how to extend virtualization and scheduling capabilities through HAMi based on deep integration of original factory capabilities, achieving vXPU dynamic segmentation and stable delivery.
 

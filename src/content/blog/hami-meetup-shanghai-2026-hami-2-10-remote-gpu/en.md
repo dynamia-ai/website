@@ -18,7 +18,7 @@ tags:
   - KAI Scheduler
 category: Community & Events
 language: en
-coverImage: /images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07-kai-scheduler-hami-core.png
+coverImage: /images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07-kai-scheduler-hami-core-en.png
 ---
 
 Giving one GPU to multiple jobs is only the start of resource sharing. For enterprise platform teams, the questions that follow are harder: does every job honor its quota, can allocations be observed, and how should different devices and jobs be scheduled? Otherwise the books say "shared," while runtime usage remains a black box.
@@ -41,7 +41,7 @@ As a heterogeneous compute virtualization middleware, HAMi provides device shari
 
 The KAI Scheduler adaptation shows the division of labor between HAMi-core and the scheduling ecosystem. As presented, the scheduler arranges jobs based on resource claims, while HAMi-core enters containers through its injection components and enforces memory and compute limits based on the allocation. The former decides how resources are distributed; the latter constrains how they are actually used. Enterprises with an existing scheduling system can consider integrating sharing capability along this interface — but deployment still requires matching components and versions. Installing the scheduler alone does not give you runtime control.
 
-![KAI Scheduler and HAMi-core: division of sharing control (slide 7)](/images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07-kai-scheduler-hami-core.png)
+![KAI Scheduler and HAMi-core: division of sharing control (slide 7)](/images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-07-kai-scheduler-hami-core-en.png)
 
 The Ascend soft-slicing update targets another problem: limits may be in effect while device query tools still report full-card memory. New monitoring metrics expose container-level memory usage and limits, letting platforms distinguish device totals from job quotas and confirm slicing behaves as intended.
 
@@ -67,7 +67,7 @@ The DRA progress solves a different layer of the problem. Once devices can be al
 
 HAMi-DRA addresses these usage touchpoints: it translates resource requests into DRA allocation logic and adds cluster monitoring and scheduling events. Platform engineers can see remaining resources directly and determine whether a job is constrained by device type, memory, or something else. The talk also covered Ascend DRA adaptation progress; actual deployment requires checking Kubernetes versions and driver support.
 
-![HAMi-DRA: division of labor and usage experience (slide 13)](/images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-13-hami-dra.png)
+![HAMi-DRA: division of labor and usage experience (slide 13)](/images/blog/hami-meetup-shanghai-2026-hami-2-10-remote-gpu/slide-13-hami-dra-en.png)
 
 ## Remote GPU and CPU NUMA Alignment: The Next Steps
 

@@ -20,12 +20,12 @@ tags:
   - Open Source Ecosystem
   - HAMi Meetup
 category: Community & Events
-coverImage: /images/events/hami-meetup-shanghai/cover.png
+coverImage: /images/events/hami-meetup-shanghai/cover-en.png
 language: en
 linktitle: HAMi Shanghai Meetup Recap
 ---
 
-![HAMi Meetup Shanghai](/images/events/hami-meetup-shanghai/cover.png)
+![HAMi Meetup Shanghai](/images/events/hami-meetup-shanghai/cover-en.png)
 
 On November 30, the first HAMi Meetup wrapped up successfully at Shanghai ModelSpeed Space. Under the theme “Compete on Efficiency, Not Raw Compute,” nearly a hundred AI developers, ops engineers, and enterprise IT architects joined on site, while more than 700 viewers followed the livestream. The event centered on the core challenges of heterogeneous compute scheduling. Practitioners from CNCF, Dynamia, NIO, MetaX, DaoCloud, and Transwarp took the stage in turn, covering accelerator enablement, utilization improvement, AI training optimization, and domestic compute rollout. They not only unpacked reusable technical approaches, but also shared collaboration experience and pitfalls from real deployments — dense with practical takeaways.
 

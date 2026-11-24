@@ -174,7 +174,7 @@ type GpuSharingNodeInfo struct {
     -   `ReleasingSharedGPUsMemory`: Speicher in Freigabe (Bytes).
     -   `AllocatedSharedGPUsMemory`: vom Scheduler zugewiesener, evtl. noch nicht belegter Speicher (Bytes).
 
-![Diagramm KAI GPU-Sharing-Speicher-Tracking](/images/blog/KAI-Scheduler-VS-HAMi/p4.png)
+![Diagramm KAI GPU-Sharing-Speicher-Tracking](/images/blog/KAI-Scheduler-VS-HAMi/p8.jpg)
 
 1. **Ressourcen-Rückgewinnung**:
 

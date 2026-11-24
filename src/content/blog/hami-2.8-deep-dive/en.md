@@ -17,7 +17,7 @@ tags:
   - CDI
   - Release
 category: Product Release
-coverImage: /images/blog/hami-2.8-deep-dive/heterogeneous-gpu-ecosystem.png
+coverImage: /images/blog/hami-2.8-deep-dive/heterogeneous-gpu-ecosystem-en.png
 language: en
 linktitle: HAMi 2.8 Deep Dive
 ---

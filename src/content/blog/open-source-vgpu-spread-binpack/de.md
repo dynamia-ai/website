@@ -31,7 +31,7 @@ Hier die abschließende Frage: *Wie sind Spread und Binpack implementiert?*
 
 Zur Erinnerung der aus Teil 3 bekannte HAMi-Webhook-&-Scheduler-Workflow:
 
-![HAMi Webhook & Scheduler workflow diagram](/images/blog/gpu6/p2.jpg)
+![HAMi Webhook & Scheduler workflow diagram](/images/blog/gpu5/p1-en.png)
 
 1. Ein Nutzer erstellt einen Pod mit vGPU-Ressourcenanfrage.
 2. Der kube-apiserver sendet per `MutatingWebhookConfiguration` eine Anfrage an den HAMi-Webhook.

@@ -16,10 +16,10 @@ tags:
   - NPU
   - Kubernetes
 category: Community & Events
-coverImage: /images/events/hami-2.9-webinar-recap/cover.png
+coverImage: /images/events/hami-2.9-webinar-recap/cover-en.png
 ---
 
-![Webinar-Cover](/images/events/hami-2.9-webinar-recap/cover.png)
+![Webinar-Cover](/images/events/hami-2.9-webinar-recap/cover-en.png)
 
 **Thema:** HAMi 2.9 Release Deep Dive — *Wie HAMi 2.9 das Kubernetes-KI-Compute-Scheduling neu gestaltet*
 
@@ -62,25 +62,25 @@ Funktionsunterschiede: HAMi 2.9.0 enthält mehrere Feature-Upgrades, 2.8.3 fokus
 
 HAMi-Core ist eines der wichtigsten Features in HAMi v2.9. Angesichts der Grenzen harter Partitionierung (MIG) führte HAMi Userspace-Soft-Partitionierung ein: Compute-Trennung im Userspace ohne proprietäre Herstellertreiber — bessere Allgemeingültigkeit und Wartbarkeit.
 
-![HAMi-Core-Optimierung](/images/events/hami-2.9-webinar-recap/hami-core-optimization.png)
+![HAMi-Core-Optimierung](/images/events/hami-2.9-webinar-recap/hami-core-optimization-en.png)
 
 ### Vorteile und Funktionsweise
 
 - **Über Hard-Partition-Grenzen hinaus:** Für Szenarien wie Ascend 910B/C ohne Hard-Partition oder mit grober Granularität (z. B. minimum 16 GB bei 910B) unterstützt Soft-Partitionierung flexible Slice-Größen und elastisches Compute-Scaling
 - **Architektur:** Ein Limiter-Daemon startet in jedem Container, kommuniziert mit einer globalen Koordinationsschicht für Compute-Spec-Tokens und nutzt libvnpu.so zum Abfangen von Speicherallokation und Kernel Launch zur Ressourcenbegrenzung
 
-![Schritte der Ascend-Soft-Partitionierung](/images/events/hami-2.9-webinar-recap/ascend-soft-partition-steps.png)
+![Schritte der Ascend-Soft-Partitionierung](/images/events/hami-2.9-webinar-recap/ascend-soft-partition-steps-en.png)
 
-![Ablauf der Ascend-Soft-Partitionierung](/images/events/hami-2.9-webinar-recap/ascend-soft-partition-flow.png)
+![Ablauf der Ascend-Soft-Partitionierung](/images/events/hami-2.9-webinar-recap/ascend-soft-partition-flow-en.png)
 
 ### Konfiguration und Nutzung
 
 - **Konfiguration:** Global und auf Node-Ebene; Node-Ebene hat Vorrang vor global
 - **Erforderliche Annotation:** Aktuelles Release verlangt explizit `huawei.com/vnpu-mode: 'hami-core'` am Pod; sonst kein Scheduling auf Soft-Partition-Nodes
 
-![Konfiguration der Ascend-Soft-Partitionierung](/images/events/hami-2.9-webinar-recap/ascend-config.png)
+![Konfiguration der Ascend-Soft-Partitionierung](/images/events/hami-2.9-webinar-recap/ascend-config-en.png)
 
-![Nutzung der Ascend-Soft-Partitionierung](/images/events/hami-2.9-webinar-recap/ascend-usage.png)
+![Nutzung der Ascend-Soft-Partitionierung](/images/events/hami-2.9-webinar-recap/ascend-usage-en.png)
 
 > **Live-Demo-Ergebnisse**
 >
@@ -90,7 +90,7 @@ HAMi-Core ist eines der wichtigsten Features in HAMi v2.9. Angesichts der Grenze
 
 HAMi-DRA basiert auf Kubernetes Dynamic Resource Allocation (DRA) und bringt GPU/NPU- und andere Beschleuniger-Verwaltung auf den nativen Kubernetes-Pfad. HAMi-DRA ist jetzt produktionsreif.
 
-![Deployment von HAMi DRA](/images/events/hami-2.9-webinar-recap/hami-dra-deploy.png)
+![Deployment von HAMi DRA](/images/events/hami-2.9-webinar-recap/hami-dra-deploy-en.png)
 
 ### Architekturvorteile und Kompatibilität
 

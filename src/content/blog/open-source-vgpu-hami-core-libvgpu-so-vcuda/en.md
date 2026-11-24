@@ -2,7 +2,7 @@
 title: >-
   HAMI vGPU Principle Analysis Part 5: HAMI-core (libvgpu.so) vCUDA Working
   Principle Analysis
-coverTitle: 'HAMi-Core (ibvgpu.so): How Fine-Grained vGPU Works'
+coverTitle: 'HAMi-Core (libvgpu.so): How Fine-Grained vGPU Works'
 date: '2025-07-28'
 excerpt: >-
   This is the fifth article in the HAMI principle analysis series, providing a

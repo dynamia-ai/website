@@ -24,22 +24,22 @@ To meet the needs of large-model Token factories and AI for X, **Dynamia—build
 
 Enterprise Edition strengthens the compute foundation for Token production; Platform Edition connects production, operations, and management of industry model services. Together, the two products help enterprises turn compute investment into sustainably supplied AI capability. From resource pooling and heterogeneous compute to model deployment and inference operations, Dynamia continues to connect underlying compute with upper-layer AI applications—so compute investment becomes intelligent services that keep creating value.
 
-![Dynamia HAMi Enterprise Edition and Platform Edition: from compute pooling to Token production](/images/blog/dynamia-hami-enterprise-solutions-overview/product-overview.png)
+![Dynamia HAMi Enterprise Edition and Platform Edition: from compute pooling to Token production](/images/blog/dynamia-hami-enterprise-solutions-overview/product-overview-en.png)
 
-![Resource pooling and elastic supply: deliver compute on demand and unlock existing resource value](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-resource-pooling.png)
+![Resource pooling and elastic supply: deliver compute on demand and unlock existing resource value](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-resource-pooling-en.png)
 
-![Resource pooling and efficient runtime: protect critical services and improve compute runtime efficiency](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-efficient-runtime.png)
+![Resource pooling and efficient runtime: protect critical services and improve compute runtime efficiency](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-efficient-runtime-en.png)
 
-![Unified access and scheduling for heterogeneous compute: expand compute choices for Token production](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-heterogeneous-computing.png)
+![Unified access and scheduling for heterogeneous compute: expand compute choices for Token production](/images/blog/dynamia-hami-enterprise-solutions-overview/enterprise-heterogeneous-computing-en.png)
 
-![Dynamia HAMi Platform Edition: a Token production and operations platform for scientific intelligence and industry agents](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-ai-for-x.png)
+![Dynamia HAMi Platform Edition: a Token production and operations platform for scientific intelligence and industry agents](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-ai-for-x-en.png)
 
-![Model deployment and inference services: turn models into continuously supplied AI services](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-model-services.png)
+![Model deployment and inference services: turn models into continuously supplied AI services](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-model-services-en.png)
 
-![Operations and management: coordinate runtime status, resource supply, and cost efficiency](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-operations.png)
+![Operations and management: coordinate runtime status, resource supply, and cost efficiency](/images/blog/dynamia-hami-enterprise-solutions-overview/platform-operations-en.png)
 
-![Selection guide: HAMi open source, Dynamia HAMi Enterprise Edition, and Platform Edition](/images/blog/dynamia-hami-enterprise-solutions-overview/selection-guide.png)
+![Selection guide: HAMi open source, Dynamia HAMi Enterprise Edition, and Platform Edition](/images/blog/dynamia-hami-enterprise-solutions-overview/selection-guide-en.png)
 
-![Heterogeneous GPU ecosystem](/images/blog/dynamia-hami-enterprise-solutions-overview/gpu-ecosystem.png)
+![Heterogeneous GPU ecosystem](/images/blog/dynamia-hami-enterprise-solutions-overview/gpu-ecosystem-en.png)
 
 Next, we will continue to publish **product feature walkthroughs and demo videos**, using concrete scenarios to show how capabilities are configured and used—stay tuned!

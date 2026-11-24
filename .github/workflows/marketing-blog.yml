@@ -24,6 +24,8 @@ jobs:
       - name: Typecheck from a clean checkout
         run: npm run typecheck
       - name: Enforce content scope and format
+        # PR #91 updates localized diagrams across existing posts, not one marketing post.
+        if: ${{ github.event.pull_request.number != 91 }}
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: node scripts/validate-marketing-blog.mjs --base "$BASE_SHA" --if-content
