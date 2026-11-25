@@ -32,7 +32,7 @@ OpenRouter’s usage data offers one angle on this.
 
 In December 2025, OpenRouter and a16z jointly published *[State of AI: An Empirical 100 Trillion Token Study](https://openrouter.ai/state-of-ai/)*, analyzing model usage, developer behavior, and AI application trends from more than 100 trillion tokens of real interaction data on the OpenRouter platform.
 
-![Token usage share changes across open-weight models of different sizes](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-01-en.png "no-caption")
+![Token usage share changes across open-weight models of different sizes](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-01-en.png)
 
 The study grouped open-weight models into three size bands: small, medium, and large.
 
@@ -42,7 +42,7 @@ The report offered a notable takeaway:
 
 **Medium is the New Small—medium models are becoming the new small models.**
 
-![Composition of open-weight models by size](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-02-en.png "no-caption")
+![Composition of open-weight models by size](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-02-en.png)
 
 Medium models give developers a way to trade off capability against deployment cost.
 
@@ -64,7 +64,7 @@ The previous section covered which models and workloads enterprises use. In a pr
 
 In July 2026, the USENIX OSDI 2026 paper *[Heterogeneity at Hyperscale: Characterization and Scheduling of Large Production AI Clusters at Alibaba](https://www.usenix.org/conference/osdi26/presentation/li-suyi)* presented a systematic study of Alibaba’s Serverless Infrastructure (ASI) production clusters.
 
-![Overview of the Alibaba ASI production cluster study sample](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-03-en.png "no-caption")
+![Overview of the Alibaba ASI production cluster study sample](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-03-en.png)
 
 The research was based on six months of production data covering 155,410 GPUs from different vendors and generations, 81 business units, and workloads including short-lived R&D, model training, online inference, and offline inference.
 
@@ -100,7 +100,7 @@ Spot GPUs are lower-priced, reclaimable GPU capacity suited to jobs that can tol
 
 In the clusters observed in the paper, introducing this approach raised the GPU allocation rate from **68% to 93%**. To be clear: 93% is the GPU resource allocation rate, not GPU compute utilization. The two measure different things.
 
-![SpotGPU scheduling and changes in GPU allocation rate](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-04-en.png "no-caption")
+![SpotGPU scheduling and changes in GPU allocation rate](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-04-en.png)
 
 These two practices show that for hyperscale heterogeneous GPU clusters, resource consolidation and job scheduling can free capacity that was hard to allocate effectively—without relying solely on buying more hardware.
 
@@ -176,7 +176,7 @@ When multiple teams start sharing different types of GPUs, the quotas, isolation
 
 **Dynamia was founded by the initiators and core maintainers of the CNCF project HAMi, and is dedicated to building an open-source kernel for AI infrastructure. We help AI teams make heterogeneous GPUs and AI chips easier to use, more efficient, and more governable—turning complex compute into cloud-native infrastructure that can be shared, isolated, and consumed on demand.**
 
-![From GPU virtualization to heterogeneous compute governance](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-05-en.png "no-caption")
+![From GPU virtualization to heterogeneous compute governance](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-05-en.png)
 
 Building on open-source HAMi, Dynamia offers compute-scheduling products and technical services for enterprise production, covering GPU allocation for individual jobs through multi-team, multi-cluster resource management. At the device layer, HAMi Enterprise lets shareable workloads use GPUs by memory and compute needs, and continuously supplies the compute that large-model token factories need for inference. At the platform layer, HAMi AI Platform helps teams see resource distribution and usage across connected clusters, set team quotas and access controls, and—on top of Enterprise capabilities—bring model deployment, inference serving, runtime observability, and resource operations onto one platform. Topology matching for multi-GPU jobs, cluster resource consolidation, and job scheduling still need to work with the corresponding cluster scheduling components.
 

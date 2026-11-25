@@ -32,7 +32,7 @@ OpenRouter 的调用数据提供了一个观察角度。
 
 2025年12月，OpenRouter与a16z联合发布了《[State of AI: An Empirical 100 Trillion Token Study](https://openrouter.ai/state-of-ai/)》，基于OpenRouter平台超过100万亿Token的真实交互数据，分析了模型使用、开发者行为和AI应用趋势。
 
-![不同规模的开放权重模型 Token 使用份额变化](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-01.png "no-caption")
+![不同规模的开放权重模型 Token 使用份额变化](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-01.png)
 
 研究将开源权重模型分为小模型、中型模型和大型模型三个规模区间。
 
@@ -42,7 +42,7 @@ OpenRouter 的调用数据提供了一个观察角度。
 
 **Medium is the New Small——中型模型正在成为新的小模型。**
 
-![不同规模的开放权重模型数量构成](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-02.png "no-caption")
+![不同规模的开放权重模型数量构成](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-02.png)
 
 中型模型为开发者提供了一个在能力和部署成本之间做取舍的选项。
 
@@ -64,7 +64,7 @@ OpenRouter 的调用数据呈现了不同规模模型的使用变化，[Menlo Ve
 
 2026年7月，在USENIX OSDI 2026上发表的论文《[Heterogeneity at Hyperscale: Characterization and Scheduling of Large Production AI Clusters at Alibaba](https://www.usenix.org/conference/osdi26/presentation/li-suyi)》，对阿里巴巴Serverless Infrastructure（ASI）生产集群进行了系统研究。
 
-![阿里巴巴 ASI 生产集群研究样本概览](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-03.png "no-caption")
+![阿里巴巴 ASI 生产集群研究样本概览](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-03.png)
 
 研究基于长达六个月的生产数据，覆盖155,410张来自不同厂商和不同代际的GPU、81个业务部门，以及临时研发、模型训练、在线推理和离线推理等多种工作负载。
 
@@ -100,7 +100,7 @@ Spot GPU 指以较低价格提供、可被回收的 GPU 算力。它适合能接
 
 在论文观察的集群中，引入该方案后，GPU 分配率从 **68% 提升至 93%**。这里需要明确，93%指GPU资源分配率，而不是GPU计算利用率。两者衡量的是不同指标。
 
-![SpotGPU 调度机制与 GPU 分配率变化](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-04.png "no-caption")
+![SpotGPU 调度机制与 GPU 分配率变化](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-04.png)
 
 这两项实践说明，面对超大规模异构GPU集群，资源整理和任务调度能够在不单纯依赖增加硬件投入的情况下，释放原本难以有效分配的算力资源。
 
@@ -176,7 +176,7 @@ Notebook、模型调试、参数实验、批量评测等任务，往往不需要
 
 **密瓜智能（Dynamia）由 CNCF 项目 HAMi 的发起与核心维护团队创立，致力于构建 AI 基础设施的开源内核。我们帮助 AI 团队让异构 GPU 与 AI 芯片资源更易用、更高效、更可治理，将复杂算力转化为可共享、可隔离、可按需使用的云原生基础设施能力。**
 
-![从 GPU 虚拟化到异构算力资源治理](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-05.png "no-caption")
+![从 GPU 虚拟化到异构算力资源治理](/images/blog/fine-grained-gpu-scheduling-for-ai-models/image-05.png)
 
 基于开源 HAMi，密瓜智能面向企业生产环境提供算力调度产品与技术服务，覆盖从单个作业的 GPU 分配到多团队、多集群的资源管理。在设备层，HAMi Enterprise 让适合共享的任务按显存和算力需求用卡，为大模型 Token 工厂持续提供模型推理所需的算力；在平台层，HAMi AI Platform 帮助团队看清已接入集群的资源分布和用量，设置团队配额与访问权限，并在企业版能力基础上，把模型部署、推理服务、运行观测和资源运营接到同一个平台。多卡任务的拓扑匹配、集群资源整理和作业调度，还需要与相应的集群调度组件配合。
 

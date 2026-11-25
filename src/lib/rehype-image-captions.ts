@@ -10,6 +10,11 @@ export default function rehypeImageCaptions(options: RehypeImageCaptionsOptions)
     let imageCounter = 0;
 
     visit(tree, 'element', (node, index, parent) => {
+      if (node.tagName === 'img' && node.properties.title === 'no-caption') {
+        delete node.properties.title;
+        return;
+      }
+
       if (
         node.tagName === 'img' &&
         node.properties?.alt &&
@@ -18,9 +23,12 @@ export default function rehypeImageCaptions(options: RehypeImageCaptionsOptions)
         parent &&
         typeof index === 'number'
       ) {
-        imageCounter++;
         const altText = node.properties.alt as string;
-        const captionNumber = options.figureLabel.replace('{n}', String(imageCounter));
+        const unnumbered = node.properties.title === 'unnumbered-caption';
+        if (unnumbered) delete node.properties.title;
+        const caption = unnumbered
+          ? altText
+          : `${options.figureLabel.replace('{n}', String(++imageCounter))}: ${altText}`;
 
         const figureNode: Element = {
           type: 'element',
@@ -39,7 +47,7 @@ export default function rehypeImageCaptions(options: RehypeImageCaptionsOptions)
               children: [
                 {
                   type: 'text',
-                  value: `${captionNumber}: ${altText}`,
+                  value: caption,
                 },
               ],
             },
