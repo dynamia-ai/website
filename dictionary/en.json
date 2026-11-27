@@ -660,6 +660,16 @@
         "title": "Automatic GPU Memory Expansion",
         "description": "Dynamia HAMi Enterprise & Platform demo series (2): start with a smaller quota and expand GPU memory in place without restarting the process.",
         "duration": "3:38"
+      },
+      "priorityPreemption": {
+        "title": "GPU Priority Preemption",
+        "description": "Dynamia HAMi Enterprise & Platform demo series (3): let critical requests go first so compute prioritizes high-priority workloads.",
+        "duration": "4:27"
+      },
+      "resourcePool": {
+        "title": "GPU Resource Pool",
+        "description": "Dynamia HAMi Enterprise & Platform demo series (4): manage GPUs in one pool to improve allocation efficiency and usage elasticity.",
+        "duration": "5:28"
       }
     }
   },
