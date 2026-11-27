@@ -964,6 +964,16 @@
         "title": "显存自动扩容",
         "description": "Dynamia HAMi 企业版与平台版产品能力演示系列（二）：从较小额度起步，需要时追加显存，原进程无需重启即可完成计算。",
         "duration": "3:38"
+      },
+      "priorityPreemption": {
+        "title": "GPU 优先级抢占",
+        "description": "Dynamia HAMi 企业版与平台版产品能力演示系列（三）：关键请求先行一步，让算力优先满足高优先级任务。",
+        "duration": "4:27"
+      },
+      "resourcePool": {
+        "title": "GPU 资源池",
+        "description": "Dynamia HAMi 企业版与平台版产品能力演示系列（四）：统一纳管 GPU 资源，提升分配效率与使用弹性。",
+        "duration": "5:28"
       }
     }
   },

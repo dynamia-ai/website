@@ -2,7 +2,9 @@ export type VideoItemKey =
   | 'productOverview'
   | 'gpuOversell'
   | 'gpuSharing'
-  | 'memoryAutoExpand';
+  | 'memoryAutoExpand'
+  | 'priorityPreemption'
+  | 'resourcePool';
 
 export interface Video {
   id: string;
@@ -49,6 +51,20 @@ export const videos: Video[] = [
     itemKey: 'memoryAutoExpand',
     cover: '/images/videos/auto-scale.png',
     videoUrl: '//player.bilibili.com/player.html?bvid=BV1cmsu6bERu&autoplay=1&quality=80&danmaku=0',
+    videoType: 'bilibili',
+  },
+  {
+    id: 'priority-preemption',
+    itemKey: 'priorityPreemption',
+    cover: '/images/videos/priority-preemption.jpg',
+    videoUrl: '//player.bilibili.com/player.html?bvid=BV1F8sh6nEJf&autoplay=1&quality=80&danmaku=0',
+    videoType: 'bilibili',
+  },
+  {
+    id: 'resource-pool',
+    itemKey: 'resourcePool',
+    cover: '/images/videos/resource-pool.jpg',
+    videoUrl: '//player.bilibili.com/player.html?bvid=BV1ZH1pzxE5w&autoplay=1&quality=80&danmaku=0',
     videoType: 'bilibili',
   },
 ];

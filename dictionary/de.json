@@ -660,6 +660,16 @@
         "title": "Automatische GPU-Speichererweiterung",
         "description": "Dynamia HAMi Enterprise & Platform Demo-Serie (2): mit kleinerem Kontingent starten und GPU-Speicher ohne Neustart erweitern.",
         "duration": "3:38"
+      },
+      "priorityPreemption": {
+        "title": "GPU-Prioritaets-Preemption",
+        "description": "Dynamia HAMi Enterprise & Platform Demo-Serie (3): kritische Anfragen zuerst, damit Rechenleistung Prioritaetsaufgaben bedient.",
+        "duration": "4:27"
+      },
+      "resourcePool": {
+        "title": "GPU-Ressourcenpool",
+        "description": "Dynamia HAMi Enterprise & Platform Demo-Serie (4): GPUs einheitlich verwalten und Allokation sowie Nutzung elastischer machen.",
+        "duration": "5:28"
       }
     }
   },
