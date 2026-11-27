@@ -1,6 +1,6 @@
 import {setRequestLocale} from 'next-intl/server';
 import VideoDetailPage from '@/components/pages/VideoDetailPage';
-import {videos} from '@/data/videos';
+import {videosForLocale} from '@/data/videos';
 import {siteVideoMetadata} from '@/lib/site/metadata';
 import MainLayout from '@/components/layout/MainLayout';
 
@@ -8,8 +8,8 @@ interface PageProps {
   params: Promise<{locale: string; videoId: string}>;
 }
 
-export function generateStaticParams() {
-  return videos.map((video) => ({videoId: video.id}));
+export function generateStaticParams({params}: {params: {locale: string}}) {
+  return videosForLocale(params.locale).map((video) => ({videoId: video.id}));
 }
 
 export async function generateMetadata({params}: PageProps) {

@@ -15,6 +15,14 @@ export interface Video {
   videoTypeEn?: 'native' | 'youtube' | 'bilibili';
 }
 
+export function getVideoSource(video: Video, locale: string) {
+  if (locale === 'zh') {
+    return {url: video.videoUrl, type: video.videoType};
+  }
+  if (!video.videoUrlEn) return null;
+  return {url: video.videoUrlEn, type: video.videoTypeEn ?? video.videoType};
+}
+
 /** Legacy shared poster for the first two library entries. */
 const LEGACY_COVER = '/redesign/assets/e21fa5bd833c3276b91d.png';
 
@@ -52,3 +60,7 @@ export const videos: Video[] = [
     videoType: 'bilibili',
   },
 ];
+
+export function videosForLocale(locale: string): Video[] {
+  return videos.filter((video) => getVideoSource(video, locale));
+}

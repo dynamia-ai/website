@@ -2,7 +2,7 @@ import {notFound} from 'next/navigation';
 import {getLocale, getTranslations} from 'next-intl/server';
 import Link from 'next/link';
 import SiteArrow from '@/components/layout/SiteArrow';
-import {videos} from '@/data/videos';
+import {getVideoSource, videos} from '@/data/videos';
 import {websitePath} from '@/lib/site/links';
 import {localizedPath} from '@/utils/i18n';
 import '@/styles/videos.css';
@@ -34,14 +34,12 @@ export default async function VideoDetailPage({videoId}: VideoDetailPageProps) {
   const tVideos = await getTranslations({locale, namespace: 'videos'});
   const video = videos.find((item) => item.id === videoId);
   if (!video) notFound();
+  const source = getVideoSource(video, locale);
+  if (!source) notFound();
 
-  const useEnPlayer = locale !== 'zh' && video.videoUrlEn;
-  const embedUrl = normalizeEmbed(useEnPlayer ? video.videoUrlEn! : video.videoUrl);
-  const videoType = useEnPlayer ? video.videoTypeEn || video.videoType : video.videoType;
-  const watchUrl = externalWatchUrl(
-    useEnPlayer ? video.videoUrlEn! : video.videoUrl,
-    videoType,
-  );
+  const embedUrl = normalizeEmbed(source.url);
+  const videoType = source.type;
+  const watchUrl = externalWatchUrl(source.url, videoType);
   const title = tVideos(`items.${video.itemKey}.title`);
   const description = tVideos(`items.${video.itemKey}.description`);
   const isYoutube = videoType === 'youtube';

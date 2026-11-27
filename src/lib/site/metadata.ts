@@ -6,7 +6,7 @@ import {contentLocaleCandidates} from '@/lib/site/localeFallback';
 import {getBlogPost} from '@/lib/blog-server';
 import {getEventArticle} from '@/lib/event-server';
 import {getCaseDocument} from '@/lib/site/caseContent';
-import {videos} from '@/data/videos';
+import {getVideoSource, videos} from '@/data/videos';
 import {SITE_URL} from '@/config/app-config';
 
 type SeoPage =
@@ -202,7 +202,7 @@ export async function siteCaseMetadata(slug: string, locale: string): Promise<Me
 export async function siteVideoMetadata(videoId: string, locale: string): Promise<Metadata> {
   const video = videos.find((item) => item.id === videoId);
   const mt = await getTranslations({locale, namespace: 'Metadata'});
-  if (!video) {
+  if (!video || !getVideoSource(video, locale)) {
     const t = await getTranslations({locale, namespace: 'blogUI'});
     return {title: t('notFound')};
   }

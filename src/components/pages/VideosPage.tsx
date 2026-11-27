@@ -1,6 +1,6 @@
 import {getLocale, getTranslations} from 'next-intl/server';
 import SiteArrow from '@/components/layout/SiteArrow';
-import {videos} from '@/data/videos';
+import {videosForLocale} from '@/data/videos';
 import {localizedPath} from '@/utils/i18n';
 import {websitePath} from '@/lib/site/links';
 import '@/styles/videos.css';
@@ -9,6 +9,7 @@ export default async function VideosPage() {
   const t = await getTranslations('sitePages.videos');
   const tVideos = await getTranslations('videos');
   const locale = await getLocale();
+  const localeVideos = videosForLocale(locale);
 
   return (
     <>
@@ -30,7 +31,7 @@ export default async function VideosPage() {
       <section className="section">
         <div className="wrap">
           <div className="video-library">
-            {videos.map((video) => {
+            {localeVideos.map((video) => {
               const title = tVideos(`items.${video.itemKey}.title`);
               const description = tVideos(`items.${video.itemKey}.description`);
               const duration = tVideos(`items.${video.itemKey}.duration`);
